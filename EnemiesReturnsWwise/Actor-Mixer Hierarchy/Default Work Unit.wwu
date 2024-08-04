@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}" SchemaVersion="97">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Master Mixer" ID="{3160E7DA-6C82-46A8-B27F-DB48223CE56D}" ShortID="1013550545">
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="Sfx Mixer" ID="{D36B1E12-7066-4932-A8CF-74F034D9711D}" ShortID="906046263">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{3FE20814-4F0F-41E4-9DE1-E0FDAD07483B}" ShortID="170998106">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_SFX" ID="{87B00483-D07B-46A4-ACC8-C35846E0105C}" WorkUnitID="{340A7A4D-E82B-41CD-872B-F11446D437C8}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{BEB44810-5FB6-4515-B615-793B640AE9A3}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Folder Name="Spitter" ID="{0779C91D-AB7D-4D40-9F47-81F3D1F63FD3}" ShortID="1017259765">
+									<ChildrenList>
+										<Sound Name="Spitter_Spawn" ID="{B706FF48-6D84-48D1-9173-98A6105037FE}" ShortID="64763262">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wSpitterSpawn" ID="{E3A1778B-37C8-4310-97CC-F41C7D75054D}">
+													<Language>SFX</Language>
+													<AudioFile>wSpitterSpawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="237938261"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wSpitterSpawn" ID="{E3A1778B-37C8-4310-97CC-F41C7D75054D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Spitter_Death" ID="{E09C5CF8-01E9-4799-ACA3-52ABACAAC5CF}" ShortID="739496297">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wMacG_Death" ID="{CFA23338-983A-40CD-95EC-2467F6DABD68}">
+													<Language>SFX</Language>
+													<AudioFile>wMacG_Death.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="146195984"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wMacG_Death" ID="{CFA23338-983A-40CD-95EC-2467F6DABD68}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Spitter_Hit" ID="{D1B12DAD-F9F0-4C64-AF21-8802B9DEBB3C}" ShortID="1066052413">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wSpitterHit" ID="{AB8137E4-2CA2-4667-A114-E37C796ED3AB}">
+													<Language>SFX</Language>
+													<AudioFile>wSpitterHit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1025509273"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wSpitterHit" ID="{AB8137E4-2CA2-4667-A114-E37C796ED3AB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wLizardShoot1" ID="{570D666A-0BDC-4C6F-B30E-A877C9C51DE8}">
+													<Language>SFX</Language>
+													<AudioFile>wLizardShoot1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="727523295"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}">
+													<Language>SFX</Language>
+													<AudioFile>wLizardShoot1_silence.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="847151097"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" ShortID="62111517">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wSpitterShoot1" ID="{D5C263F9-87B5-451A-82C3-277483D7A589}">
+													<Language>SFX</Language>
+													<AudioFile>wSpitterShoot1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="344676234"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}">
+													<Language>SFX</Language>
+													<AudioFile>wSpitterShoot1_cut.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="294903960"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{100D6097-9B7F-4F23-9AA4-747973AB576C}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{100D6097-9B7F-4F23-9AA4-747973AB576C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Sounds" ID="{191D3DB3-BD92-4604-A57C-C7F86AEC1E41}" ShortID="767002557">
+					<ChildrenList>
+						<Folder Name="Spiiter" ID="{02B669BB-8724-4283-BA57-823E24DD6E9A}" ShortID="248100046">
+							<ChildrenList>
+								<Event Name="ER_Spitter_Spawn_Play" ID="{3D2355D2-F588-424F-AC8C-DCE23B7B62BD}">
+									<ChildrenList>
+										<Action Name="" ID="{14C4E682-133C-4BFA-AE4D-355EAA728501}" ShortID="503503305">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Spawn" ID="{B706FF48-6D84-48D1-9173-98A6105037FE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Death_Play" ID="{4DBBE55F-75BC-4C07-82F8-CF57BA1C6356}">
+									<ChildrenList>
+										<Action Name="" ID="{D592D97A-1404-41E3-9A40-6B7954997717}" ShortID="898986841">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Death" ID="{E09C5CF8-01E9-4799-ACA3-52ABACAAC5CF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Bite_Play" ID="{AB0CCEDA-0EEC-452D-A684-5539F326379D}">
+									<ChildrenList>
+										<Action Name="" ID="{7BE81D5F-8156-4110-A2C1-20754C28AF10}" ShortID="161830842">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spiiter_Spit_Play" ID="{18C724A0-FDA2-4B9E-A3FF-69EC639FD3CA}">
+									<ChildrenList>
+										<Action Name="" ID="{5A623A0C-ADB4-44D5-AE27-71119470FAD4}" ShortID="67042762">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Hit_Play" ID="{3BFE2D5D-A6AF-42C6-9082-45007967CD12}">
+									<ChildrenList>
+										<Action Name="" ID="{A2DFC4DF-F2FD-4846-82AA-339F326D0D91}" ShortID="394778542">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Hit" ID="{D1B12DAD-F9F0-4C64-AF21-8802B9DEBB3C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
