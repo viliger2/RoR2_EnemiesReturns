@@ -1,2 +1,2 @@
 # RoR2_EnemiesReturns
-Enemies mod for Risk of Rain 2.
+Enemy mod for Risk of Rain 2.
