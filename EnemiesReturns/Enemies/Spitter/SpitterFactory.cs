@@ -941,7 +941,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             explosion.applyDot = false;
 
-            explosion.impactEffect = null;
+            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
             explosion.lifetimeExpiredSound = null;
             explosion.offsetForLifetimeExpiredSound = 0f;
             explosion.destroyOnEnemy = true;
@@ -995,7 +995,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             explosion.applyDot = false;
 
-            explosion.impactEffect = null;
+            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
             explosion.lifetimeExpiredSound = null;
             explosion.offsetForLifetimeExpiredSound = 0f;
             explosion.destroyOnEnemy = false;

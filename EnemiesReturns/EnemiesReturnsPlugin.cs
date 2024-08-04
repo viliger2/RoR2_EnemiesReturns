@@ -24,11 +24,12 @@ namespace EnemiesReturns
 {
 	[BepInPlugin(GUID, ModName, Version)]
 	[BepInDependency(R2API.PrefabAPI.PluginGUID)]
+	[BepInDependency(R2API.DirectorAPI.PluginGUID)]
 	public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.0.10";
+		public const string Version = "0.0.11";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
