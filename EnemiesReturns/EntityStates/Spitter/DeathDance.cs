@@ -1,8 +1,10 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
@@ -13,16 +15,32 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         private float stopwatch;
 
+        private Transform target;
+
+        public DeathDance(Transform target) => this.target = target;
+
         public override void OnEnter()
         {
             base.OnEnter();
             PlayAnimation("Gesture, Override", "DeathDance");
-            //characterBody.OnTakeDamageServer 
+            GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
+        }
+
+        private void GlobalEventManager_onServerDamageDealt(DamageReport report)
+        {
+            if(report.victimBody == characterBody)
+            {
+                if((healthComponent.combinedHealth / healthComponent.fullCombinedHealth) <= healthFraction)
+                {
+                    outer.SetNextStateToMain();
+                }
+            }
         }
 
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            GlobalEventManager.onServerDamageDealt -= GlobalEventManager_onServerDamageDealt;
             base.OnExit();
         }
 
@@ -30,7 +48,11 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         {
             base.FixedUpdate();
             stopwatch += Time.fixedDeltaTime;
-            if((stopwatch >= duration) || ((healthComponent.health / healthComponent.fullHealth) <= healthFraction))
+            if (target)
+            {
+                StartAimMode(new Ray(target.position, target.forward), 0.16f, false);
+            }
+            if((stopwatch >= duration))
             {
                 outer.SetNextStateToMain();
             }

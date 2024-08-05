@@ -920,6 +920,9 @@ namespace EnemiesReturns.Enemies.Spitter
                 UnityEngine.Object.DestroyImmediate(component2);
             }
 
+            clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetRecoloredSpitProjectileGhost();
+
+
             #region MainSpitZone
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosionWithChildrenArray>();
@@ -984,6 +987,8 @@ namespace EnemiesReturns.Enemies.Spitter
                 UnityEngine.Object.DestroyImmediate(component2);
             }
 
+            clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetRecoloredSpitProjectileGhost();
+
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosion>();
             explosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             explosion.blastRadius = 6.5f * EnemiesReturnsConfiguration.Spitter.ChargedProjectileSmallDoTZoneScale.Value;
@@ -1035,7 +1040,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var decal = child.GetComponentInChildren<Decal>();
             if (decal)
             {
-                decal.Material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion();
+                decal.Material = SetupDoTZoneDecalMaterial();
             }
 
             child.transform.localScale = new Vector3(value, value, value);
@@ -1058,12 +1063,52 @@ namespace EnemiesReturns.Enemies.Spitter
             var decal = child.GetComponentInChildren<Decal>();
             if (decal)
             {
-                decal.Material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion();
+                decal.Material = SetupDoTZoneDecalMaterial();
             }
 
             child.transform.localScale = new Vector3(value, value, value);
 
             return child;
+        }
+
+        private GameObject GetRecoloredSpitProjectileGhost()
+        {
+            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectileGhost");
+            var particle = projectileGhost.GetComponentInChildren<ParticleSystem>();
+            if (particle)
+            {
+                var renderer = particle.gameObject.GetComponent<Renderer>();
+                if (renderer)
+                {
+                    Material newMaterial = ContentProvider.MaterialCache.Find(item => item.name == "matSpitterSpit");
+                    if (newMaterial == default(Material))
+                    {
+                        newMaterial = UnityEngine.Object.Instantiate(renderer.material);
+                        newMaterial.name = "matSpitterSpit";
+                        newMaterial.SetColor("_TintColor", new Color(1f, 0.1764f, 0f));
+                        ContentProvider.MaterialCache.Add(newMaterial); // most likely need it because it will get destroyed otherwise
+                    }
+
+                    renderer.material = newMaterial;
+                }
+            }
+
+            return projectileGhost;
+
+        }
+        
+        private Material SetupDoTZoneDecalMaterial()
+        {
+            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matSpitterAcidDecal");
+            if (material == default(Material))
+            {
+                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
+                material.name = "matSpitterAcidDecal";
+                material.SetColor("_Color", new Color(1f, 140f / 255f, 0f));
+                ContentProvider.MaterialCache.Add(material);
+            }
+
+            return material;
         }
 
         #endregion

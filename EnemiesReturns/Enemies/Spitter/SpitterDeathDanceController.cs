@@ -12,7 +12,7 @@ namespace EnemiesReturns.Enemies.Spitter
         public CharacterBody body;
         public ModelLocator modelLocator;
 
-        private static float triggerDistance = 20f;
+        private static float triggerDistance = 30f;
 
         private void OnEnable()
         {
@@ -36,7 +36,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 var distance = Vector3.Distance(damageReport.victimBody.modelLocator.modelTransform.position, modelLocator.modelTransform.position);
                 if (distance <= triggerDistance)
                 {
-                    EntityStateMachine.FindByCustomName(body.gameObject, "Body").SetNextState(new ModdedEntityStates.Spitter.DeathDance());
+                    EntityStateMachine.FindByCustomName(body.gameObject, "Body").SetNextState(new ModdedEntityStates.Spitter.DeathDance(damageReport.victimBody.modelLocator.modelTransform));
                 }
             }
         }

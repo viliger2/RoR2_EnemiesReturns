@@ -42,7 +42,7 @@ namespace EnemiesReturns
             {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" }
         };
 
-        public static List<Material> SwappedMaterials = new List<Material>(); //apparently you need it because reasons?
+        public static List<Material> MaterialCache = new List<Material>(); //apparently you need it because reasons?
 
         public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
@@ -88,7 +88,7 @@ namespace EnemiesReturns
                         if (replacementShader)
                         {
                             material.shader = replacementShader;
-                            SwappedMaterials.Add(material);
+                            MaterialCache.Add(material);
                         }
                         else
                         {
