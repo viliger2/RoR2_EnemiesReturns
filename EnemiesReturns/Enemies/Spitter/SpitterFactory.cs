@@ -314,6 +314,17 @@ namespace EnemiesReturns.Enemies.Spitter
             spitterDeathDance.modelLocator = modelLocator;
             #endregion
 
+            #region SetStateOnHurt
+            var setStateOnHurt = bodyPrefab.AddComponent<SetStateOnHurt>();
+            setStateOnHurt.targetStateMachine = esmBody;
+            setStateOnHurt.idleStateMachine = new EntityStateMachine[] { esmWeapon };
+            setStateOnHurt.hurtState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState));
+            setStateOnHurt.hitThreshold = 0.3f;
+            setStateOnHurt.canBeHitStunned = true;
+            setStateOnHurt.canBeStunned = true;
+            setStateOnHurt.canBeFrozen = true;
+            #endregion
+
             #endregion
 
             #region SetupBoxes
@@ -488,7 +499,7 @@ namespace EnemiesReturns.Enemies.Spitter
             modelPanelParameters.cameraPositionTransform = cameraPosition;
             modelPanelParameters.modelRotation = new Quaternion(0, 0, 0, 1);
             modelPanelParameters.minDistance = 1.5f;
-            modelPanelParameters.maxDistance = 2.5f;
+            modelPanelParameters.maxDistance = 6f;
             #endregion
 
             #region SkinDefs

@@ -1,0 +1,12 @@
+{
+    "name": "EnemiesReturns",
+    "version_number": "0.0.11",
+    "website_url": "https://github.com/viliger2/RoR2_EnemiesReturns",
+    "description": "Brings back a few guys lost on the way here. Early release with one monster.",
+    "dependencies": [
+	    "bbepis-BepInExPack-5.4.2113",
+		"RiskofThunder-HookGenPatcher-1.2.3",
+		"RiskofThunder-R2API_Prefab-1.0.3",
+		"RiskofThunder-R2API_Director-2.1.2"
+    ]
+}
