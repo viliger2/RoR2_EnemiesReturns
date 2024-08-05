@@ -15,9 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         private float stopwatch;
 
-        private Transform target;
-
-        public DeathDance(Transform target) => this.target = target;
+        public Transform target;
 
         public override void OnEnter()
         {
@@ -48,10 +46,10 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         {
             base.FixedUpdate();
             stopwatch += Time.fixedDeltaTime;
-            if (target)
-            {
-                StartAimMode(new Ray(target.position, target.forward), 0.16f, false);
-            }
+            //if (target)
+            //{
+            //    StartAimMode(new Ray(target.position, target.forward), 0.16f, false);
+            //}
             if((stopwatch >= duration))
             {
                 outer.SetNextStateToMain();

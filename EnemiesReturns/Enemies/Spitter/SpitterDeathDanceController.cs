@@ -36,7 +36,10 @@ namespace EnemiesReturns.Enemies.Spitter
                 var distance = Vector3.Distance(damageReport.victimBody.modelLocator.modelTransform.position, modelLocator.modelTransform.position);
                 if (distance <= triggerDistance)
                 {
-                    EntityStateMachine.FindByCustomName(body.gameObject, "Body").SetNextState(new ModdedEntityStates.Spitter.DeathDance(damageReport.victimBody.modelLocator.modelTransform));
+                    var state = new ModdedEntityStates.Spitter.DeathDance();
+                    state.target = damageReport.victimBody.modelLocator.modelTransform;
+
+                    EntityStateMachine.FindByCustomName(body.gameObject, "Body").SetNextState(state);
                 }
             }
         }
