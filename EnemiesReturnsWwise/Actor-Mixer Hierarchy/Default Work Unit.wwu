@@ -59,6 +59,13 @@
 								<Folder Name="Spitter" ID="{0779C91D-AB7D-4D40-9F47-81F3D1F63FD3}" ShortID="1017259765">
 									<ChildrenList>
 										<Sound Name="Spitter_Spawn" ID="{B706FF48-6D84-48D1-9173-98A6105037FE}" ShortID="64763262">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -84,7 +91,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-5</Value>
+														<Value>-4</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -139,6 +146,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -168,6 +182,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" ShortID="62111517">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
