@@ -176,6 +176,8 @@ namespace EnemiesReturns
                 };
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.Custom, "FBLScene");
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.VoidCell);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.ArtifactReliquary);
 
                 SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SkinDefs.Lakes, spitterBody);
                 DirectorAPI.DirectorCardHolder dchSpitterLakes = new DirectorAPI.DirectorCardHolder
@@ -221,6 +223,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
                 DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
 
                 stateList.Add(typeof(ModdedEntityStates.Spitter.Bite));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpawnState));
