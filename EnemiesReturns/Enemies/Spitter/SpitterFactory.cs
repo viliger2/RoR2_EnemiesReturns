@@ -58,6 +58,10 @@ namespace EnemiesReturns.Enemies.Spitter
             public static CharacterSpawnCard cscSpitterDepths;
         }
 
+        public static GameObject spitterBody;
+
+        public static GameObject spitterMaster;
+
         internal static GameObject biteEffectPrefab;
 
         [Obsolete]
@@ -65,7 +69,6 @@ namespace EnemiesReturns.Enemies.Spitter
 
         internal static GameObject chargedSpitProjectile;
 
-        internal static GameObject spitterBody;
 
         public GameObject CreateSpitterBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {

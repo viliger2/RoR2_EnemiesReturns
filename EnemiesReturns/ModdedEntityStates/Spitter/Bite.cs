@@ -42,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             attack.teamIndex = TeamComponent.GetObjectTeam(attack.attacker);
             attack.damage = damageCoefficient * damageStat;
             attack.hitEffectPrefab = hitEffectPrefab;
-            attack.isCrit = Util.CheckRoll(critStat, base.characterBody.master);
+            attack.isCrit = RollCrit();
             Util.PlayAttackSpeedSound(attackString, base.gameObject, attackSpeedStat);
             if ((bool)modelTransform)
             {

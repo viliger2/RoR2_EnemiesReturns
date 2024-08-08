@@ -154,7 +154,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             }
 
             Quaternion rotation = Util.QuaternionSafeLookRotation(ray.direction);
-            ProjectileManager.instance.FireProjectile(projectilePrefab, ray.origin, rotation, gameObject, damageStat * damageCoefficient, projectileForce, Util.CheckRoll(critStat, characterBody.master), DamageColorIndex.Default, null, magnitude);
+            ProjectileManager.instance.FireProjectile(projectilePrefab, ray.origin, rotation, gameObject, damageStat * damageCoefficient, projectileForce, RollCrit(), DamageColorIndex.Default, null, magnitude);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

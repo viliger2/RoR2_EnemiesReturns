@@ -9,7 +9,6 @@ using static RoR2.Console;
 using UnityEngine.AddressableAssets;
 using RoR2.Skills;
 using RoR2;
-using static EnemiesReturns.Enemies.Spitter.SpitterFactory;
 using EnemiesReturns.Enemies.Spitter;
 using R2API;
 using EnemiesReturns.Enemies.Colossus;
@@ -138,16 +137,16 @@ namespace EnemiesReturns
                 unlockablesList.Add(spitterLog);
 
                 //Skills.NormalSpit = spitterFactory.CreateNormalSpitSkill();
-                Skills.Bite = spitterFactory.CreateBiteSkill();
-                Skills.ChargedSpit = spitterFactory.CreateChargedSpitSkill();
+                SpitterFactory.Skills.Bite = spitterFactory.CreateBiteSkill();
+                SpitterFactory.Skills.ChargedSpit = spitterFactory.CreateChargedSpitSkill();
 
                 //sdList.Add(SpitterFactory.Skills.NormalSpit);
                 sdList.Add(SpitterFactory.Skills.Bite);
                 sdList.Add(SpitterFactory.Skills.ChargedSpit);
 
                 //SkillFamilies.Primary = spitterFactory.CreateSkillFamily("SpitterPrimaryFamily", Skills.NormalSpit);
-                SkillFamilies.Secondary = Utils.CreateSkillFamily("SpitterSecondaryFamily", Skills.Bite);
-                SkillFamilies.Special = Utils.CreateSkillFamily("SpitterSpecialFamily", Skills.ChargedSpit);
+                SpitterFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("SpitterSecondaryFamily", SpitterFactory.Skills.Bite);
+                SpitterFactory.SkillFamilies.Special = Utils.CreateSkillFamily("SpitterSpecialFamily", SpitterFactory.Skills.ChargedSpit);
 
                 //sfList.Add(SpitterFactory.SkillFamilies.Primary);
                 sfList.Add(SpitterFactory.SkillFamilies.Secondary);
@@ -158,10 +157,10 @@ namespace EnemiesReturns
                 bodyList.Add(SpitterFactory.spitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
-                spitterMaster = spitterFactory.CreateSpitterMaster(spitterMaster, spitterBody);
-                masterList.Add(spitterMaster);
+                SpitterFactory.spitterMaster = spitterFactory.CreateSpitterMaster(spitterMaster, spitterBody);
+                masterList.Add(SpitterFactory.spitterMaster);
 
-                SpitterFactory.SpawnCards.cscSpitterDefault = spitterFactory.CreateCard("cscSpitterDefault", spitterMaster, SkinDefs.Default, spitterBody);
+                SpitterFactory.SpawnCards.cscSpitterDefault = spitterFactory.CreateCard("cscSpitterDefault", spitterMaster, SpitterFactory.SkinDefs.Default, spitterBody);
                 DirectorAPI.DirectorCardHolder dchSpitterDefault = new DirectorAPI.DirectorCardHolder
                 {
                     Card = new DirectorCard
@@ -179,7 +178,7 @@ namespace EnemiesReturns
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.VoidCell);
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.ArtifactReliquary);
 
-                SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SkinDefs.Lakes, spitterBody);
+                SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SpitterFactory.SkinDefs.Lakes, spitterBody);
                 DirectorAPI.DirectorCardHolder dchSpitterLakes = new DirectorAPI.DirectorCardHolder
                 {
                     Card = new DirectorCard
@@ -194,7 +193,7 @@ namespace EnemiesReturns
                 };
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterLakes, false, DirectorAPI.Stage.VerdantFalls);
 
-                SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SkinDefs.Sulfur, spitterBody);
+                SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SpitterFactory.SkinDefs.Sulfur, spitterBody);
                 DirectorAPI.DirectorCardHolder dhcSpitterSulfur = new DirectorAPI.DirectorCardHolder
                 {
                     Card = new DirectorCard
@@ -209,7 +208,7 @@ namespace EnemiesReturns
                 };
                 DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterSulfur, false, DirectorAPI.Stage.SulfurPools);
 
-                SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SkinDefs.Depths, spitterBody);
+                SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                 DirectorAPI.DirectorCardHolder dhcSpitterDepths = new DirectorAPI.DirectorCardHolder
                 {
                     Card = new DirectorCard
