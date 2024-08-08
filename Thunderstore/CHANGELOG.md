@@ -1,5 +1,5 @@
 <details>
-<summary>0.0.11 </summary>
+<summary>0.0.12 </summary>
 
 * Spitter:
 	* Fixed log book display and text.

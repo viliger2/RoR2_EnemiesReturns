@@ -15,11 +15,14 @@ using EnemiesReturns.EditorHelpers;
 using RoR2.Skills;
 using RoR2.Projectile;
 using HG;
+using EntityStates;
 using static RoR2.ItemDisplayRuleSet;
 using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
+using EnemiesReturns.ModdedEntityStates.Colossus.Stomp;
+using EnemiesReturns.ModdedEntityStates.Colossus.RockClap;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -27,7 +30,13 @@ namespace EnemiesReturns.Enemies.Colossus
     {
         public struct Skills
         {
+            public static SkillDef Stomp;
 
+            public static SkillDef StoneClap;
+
+            public static SkillDef LaserClap;
+
+            public static SkillDef HeadLaser;
         }
 
         public struct SkillFamilies
@@ -51,38 +60,46 @@ namespace EnemiesReturns.Enemies.Colossus
 
         }
 
-        internal static GameObject colossusBody;
+        public static GameObject colossusBody;
 
-        public GameObject CreateColossusBody(GameObject colossusPrefab, Texture2D colossusIcon, UnlockableDef colossusLog, Dictionary<string, Material> skinsLookup)
+        public static GameObject colossusMaster;
+
+        internal static GameObject stompProjectile;
+
+        internal static GameObject stompEffect;
+
+        public GameObject CreateColossusBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
-            var aimOrigin = colossusPrefab.transform.Find("AimOrigin");
-            var modelTransform = colossusPrefab.transform.Find("ModelBase/mdlColossus");
-            var modelBase = colossusPrefab.transform.Find("ModelBase");
-            var crouchController = colossusPrefab.transform.Find("ModelBase/CrouchController");
+            var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
+            var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus");
+            var modelBase = bodyPrefab.transform.Find("ModelBase");
+            var crouchController = bodyPrefab.transform.Find("ModelBase/CrouchController");
 
-            var focusPoint = colossusPrefab.transform.Find("ModelBase/mdlColossus/LogBookTarget");
-            var cameraPosition = colossusPrefab.transform.Find("ModelBase/mdlColossus/LogBookTarget/LogBookCamera");
+            var focusPoint = bodyPrefab.transform.Find("ModelBase/mdlColossus/LogBookTarget");
+            var cameraPosition = bodyPrefab.transform.Find("ModelBase/mdlColossus/LogBookTarget/LogBookCamera");
 
-            var modelRenderer = colossusPrefab.transform.Find("ModelBase/mdlColossus/Colossus").gameObject.GetComponent<SkinnedMeshRenderer>();
-            var headRenderer = colossusPrefab.transform.Find("ModelBase/mdlColossus/Colossus Head").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var headRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Head").gameObject.GetComponent<SkinnedMeshRenderer>();
 
-            var headTransform = colossusPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head");
-            var rootTransform = colossusPrefab.transform.Find("ModelBase/mdlColossus/Armature/root");
+            var headTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head");
+            var rootTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root");
+
+            var rocksInitialTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Points/RocksSpawnPoint");
 
             #region ColossusBody
 
             #region NetworkIdentity
-            colossusPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+            bodyPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
             #endregion
 
             #region CharacterDirection
-            var characterDirection = colossusPrefab.AddComponent<CharacterDirection>();
+            var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
             characterDirection.turnSpeed = 90f;
             #endregion
 
             #region CharacterMotor
-            var characterMotor = colossusPrefab.AddComponent<CharacterMotor>();
+            var characterMotor = bodyPrefab.AddComponent<CharacterMotor>();
             characterMotor.characterDirection = characterDirection;
             characterMotor.muteWalkMotion = false;
             characterMotor.mass = 2000f;
@@ -92,14 +109,14 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region InputBankTest
-            var inputBank = colossusPrefab.AddComponent<InputBankTest>();
+            var inputBank = bodyPrefab.AddComponent<InputBankTest>();
             #endregion
 
             #region CharacterBody
             CharacterBody characterBody = null;
-            if (!colossusPrefab.TryGetComponent(out characterBody))
+            if (!bodyPrefab.TryGetComponent(out characterBody))
             {
-                characterBody = colossusPrefab.AddComponent<CharacterBody>();
+                characterBody = bodyPrefab.AddComponent<CharacterBody>();
             }
             characterBody.baseNameToken = "ENEMIES_RETURNS_COLOSSUS_BODY_NAME";
             characterBody.subtitleNameToken = "ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE";
@@ -110,7 +127,7 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody.baseMaxHealth = 2100f;
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
-            characterBody.baseMoveSpeed = 5f;
+            characterBody.baseMoveSpeed = 4f;
             characterBody.baseAcceleration = 20f;
             characterBody.baseJumpPower = 5f;
             characterBody.baseDamage = 40f;
@@ -131,19 +148,19 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = colossusIcon;
+            characterBody.portraitIcon = icon;
             characterBody.bodyColor = new Color(0.36f, 0.36f, 0.44f);
             characterBody.isChampion = true;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
             #endregion
 
             #region CameraTargetParams
-            var cameraTargetParams = colossusPrefab.AddComponent<CameraTargetParams>();
+            var cameraTargetParams = bodyPrefab.AddComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandardRaidboss.asset").WaitForCompletion(); // TODO: maybe huge
             #endregion
 
             #region ModelLocator
-            var modelLocator = colossusPrefab.AddComponent<ModelLocator>();
+            var modelLocator = bodyPrefab.AddComponent<ModelLocator>();
             modelLocator.modelTransform = modelTransform;
             modelLocator.modelBaseTransform = modelBase;
 
@@ -160,14 +177,14 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region EntityStateMachineBody
-            var esmBody = colossusPrefab.AddComponent<EntityStateMachine>();
+            var esmBody = bodyPrefab.AddComponent<EntityStateMachine>();
             esmBody.customName = "Body";
             esmBody.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.SpawnState));
             esmBody.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain));
             #endregion
 
             #region EntityStateMachineWeapon
-            var esmWeapon = colossusPrefab.AddComponent<EntityStateMachine>();
+            var esmWeapon = bodyPrefab.AddComponent<EntityStateMachine>();
             esmWeapon.customName = "Weapon";
             esmWeapon.initialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle));
             esmWeapon.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle));
@@ -176,103 +193,111 @@ namespace EnemiesReturns.Enemies.Colossus
             #region GenericSkills
 
             #region Primary
-            //var gsPrimary = spitterPrefab.AddComponent<GenericSkill>();
-            //gsPrimary._skillFamily = SkillFamilies.Primary;
-            //gsPrimary.skillName = "NormalSpit";
-            //gsPrimary.hideInCharacterSelect = false;
+            var gsPrimary = bodyPrefab.AddComponent<GenericSkill>();
+            gsPrimary._skillFamily = SkillFamilies.Primary;
+            gsPrimary.skillName = "Stomp";
+            gsPrimary.hideInCharacterSelect = false;
             #endregion
 
             #region Secondary
-            //var gsSecondary = colossusPrefab.AddComponent<GenericSkill>();
-            //gsSecondary._skillFamily = SkillFamilies.Secondary;
-            //gsSecondary.skillName = "Bite";
-            //gsSecondary.hideInCharacterSelect = false;
+            var gsSecondary = bodyPrefab.AddComponent<GenericSkill>();
+            gsSecondary._skillFamily = SkillFamilies.Secondary;
+            gsSecondary.skillName = "StoneClap";
+            gsSecondary.hideInCharacterSelect = false;
+            #endregion
+
+            #region Utility
+            var gsUtility = bodyPrefab.AddComponent<GenericSkill>();
+            gsUtility._skillFamily = SkillFamilies.Utility;
+            gsUtility.skillName = "LaserClap";
+            gsUtility.hideInCharacterSelect = false;
             #endregion
 
             #region Special
-            //var gsSpecial = colossusPrefab.AddComponent<GenericSkill>();
-            //gsSpecial._skillFamily = SkillFamilies.Special;
-            //gsSpecial.skillName = "ChargedSpit";
-            //gsSpecial.hideInCharacterSelect = false;
+            var gsSpecial = bodyPrefab.AddComponent<GenericSkill>();
+            gsSpecial._skillFamily = SkillFamilies.Special;
+            gsSpecial.skillName = "LaserSpin";
+            gsSpecial.hideInCharacterSelect = false;
             #endregion
 
             #endregion
 
             #region SkillLocator
             SkillLocator skillLocator = null;
-            if (!colossusPrefab.TryGetComponent(out skillLocator))
+            if (!bodyPrefab.TryGetComponent(out skillLocator))
             {
-                skillLocator = colossusPrefab.AddComponent<SkillLocator>();
+                skillLocator = bodyPrefab.AddComponent<SkillLocator>();
             }
-            //skillLocator.primary = gsPrimary;
-            //skillLocator.secondary = gsSecondary;
-            //skillLocator.special = gsSpecial;
+            skillLocator.primary = gsPrimary;
+            skillLocator.secondary = gsSecondary;
+            skillLocator.utility = gsUtility;
+            skillLocator.special = gsSpecial;
             #endregion
 
             #region TeamComponent
             TeamComponent teamComponent = null;
-            if (!colossusPrefab.TryGetComponent(out teamComponent))
+            if (!bodyPrefab.TryGetComponent(out teamComponent))
             {
-                teamComponent = colossusPrefab.AddComponent<TeamComponent>();
+                teamComponent = bodyPrefab.AddComponent<TeamComponent>();
             }
             teamComponent.teamIndex = TeamIndex.None;
             #endregion
 
             #region HealthComponent
-            var healthComponent = colossusPrefab.AddComponent<HealthComponent>();
+            var healthComponent = bodyPrefab.AddComponent<HealthComponent>();
             healthComponent.dontShowHealthbar = false;
             healthComponent.globalDeathEventChanceCoefficient = 1f;
             #endregion
 
             #region Interactor
-            colossusPrefab.AddComponent<Interactor>().maxInteractionDistance = 3f;
+            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 3f;
             #endregion
 
             #region InteractionDriver
-            colossusPrefab.AddComponent<InteractionDriver>();
+            bodyPrefab.AddComponent<InteractionDriver>();
             #endregion
 
             #region CharacterDeathBehavior
-            var characterDeathBehavior = colossusPrefab.AddComponent<CharacterDeathBehavior>();
+            var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
             characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterDeath));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon };
             #endregion
 
             #region CharacterNetworkTransform
-            var characterNetworkTransform = colossusPrefab.AddComponent<CharacterNetworkTransform>();
+            var characterNetworkTransform = bodyPrefab.AddComponent<CharacterNetworkTransform>();
             characterNetworkTransform.positionTransmitInterval = 0.1f;
             characterNetworkTransform.interpolationFactor = 2f;
             #endregion
 
             #region NetworkStateMachine
-            var networkStateMachine = colossusPrefab.AddComponent<NetworkStateMachine>();
+            var networkStateMachine = bodyPrefab.AddComponent<NetworkStateMachine>();
             networkStateMachine.stateMachines = new EntityStateMachine[] { esmBody, esmWeapon };
             #endregion
 
             #region DeathRewards
-            colossusPrefab.AddComponent<DeathRewards>().logUnlockableDef = colossusLog;
+            bodyPrefab.AddComponent<DeathRewards>().logUnlockableDef = log;
             #endregion
 
             #region EquipmentSlot
-            colossusPrefab.AddComponent<EquipmentSlot>();
+            bodyPrefab.AddComponent<EquipmentSlot>();
             #endregion
 
             #region SfxLocator
-            var sfxLocator = colossusPrefab.AddComponent<SfxLocator>();
+            var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
             sfxLocator.deathSound = ""; // TODO
             sfxLocator.barkSound = ""; // TODO
             #endregion
 
             #region KinematicCharacterMotor
-            var kinematicCharacterMotor = colossusPrefab.AddComponent<KinematicCharacterMotor>();
+            var kinematicCharacterMotor = bodyPrefab.AddComponent<KinematicCharacterMotor>();
             kinematicCharacterMotor.CharacterController = characterMotor;
-            kinematicCharacterMotor.Capsule = colossusPrefab.GetComponent<CapsuleCollider>();
-            kinematicCharacterMotor.Rigidbody = colossusPrefab.GetComponent<Rigidbody>();
+            kinematicCharacterMotor.Capsule = bodyPrefab.GetComponent<CapsuleCollider>();
+            kinematicCharacterMotor.Rigidbody = bodyPrefab.GetComponent<Rigidbody>();
 
-            kinematicCharacterMotor.CapsuleRadius = 3.273956f;
-            kinematicCharacterMotor.CapsuleHeight = 12.43986f;
-            kinematicCharacterMotor.CapsuleYOffset = 6.57514f;
+            kinematicCharacterMotor.CapsuleRadius = 7.137788f;
+            kinematicCharacterMotor.CapsuleHeight = 29.72898f;
+            kinematicCharacterMotor.CapsuleYOffset = 15.2197f;
 
             kinematicCharacterMotor.DetectDiscreteCollisions = false;
             kinematicCharacterMotor.GroundDetectionExtraDistance = 0f;
@@ -307,7 +332,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var golemSurfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdGolem.asset").WaitForCompletion();
 
-            var hurtBoxesTransform = colossusPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
+            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
             foreach (Transform t in hurtBoxesTransform)
             {
@@ -319,7 +344,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = golemSurfaceDef;
             }
 
-            var sniperHurtBoxes = colossusPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
+            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
             foreach (Transform t in sniperHurtBoxes)
             {
                 var hurtBox = t.gameObject.AddComponent<HurtBox>();
@@ -332,7 +357,7 @@ namespace EnemiesReturns.Enemies.Colossus
             }
 
             // TODO
-            var mainHurtboxTransform =  colossusPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/MainHurtBox");
+            var mainHurtboxTransform =  bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/MainHurtBox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -446,10 +471,20 @@ namespace EnemiesReturns.Enemies.Colossus
             };
             #endregion
 
-            #region HitBoxGroupBite
-            var hbgBite = mdlColossus.AddComponent<HitBoxGroup>();
-            //hbgBite.groupName = "Bite";
-            //hbgBite.hitBoxes = new HitBox[] { hitBox };
+            #region HitBoxGroupLeftStomp
+            var leftstompHitbox = mdlColossus.transform.Find("Armature/foot.l/LeftStompHitbox").gameObject.AddComponent<HitBox>();
+
+            var hbgLeftStomp = mdlColossus.AddComponent<HitBoxGroup>();
+            hbgLeftStomp.groupName = "LeftStomp";
+            hbgLeftStomp.hitBoxes = new HitBox[] { leftstompHitbox };
+            #endregion
+
+            #region HitBoxGroupLeftStomp
+            var rightStompHitbox = mdlColossus.transform.Find("Armature/foot.r/RightStompHitbox").gameObject.AddComponent<HitBox>();
+
+            var hbgRightStomp = mdlColossus.AddComponent<HitBoxGroup>();
+            hbgRightStomp.groupName = "RightStomp";
+            hbgRightStomp.hitBoxes = new HitBox[] { rightStompHitbox };
             #endregion
 
             #region FootstepHandler
@@ -474,98 +509,103 @@ namespace EnemiesReturns.Enemies.Colossus
 
             #region SkinDefs
 
-//            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-//            {
-//                renderer = (SkinnedMeshRenderer)item.renderer,
-//                material = item.defaultMaterial,
-//                ignoreOverlays = item.ignoreOverlays
+            //            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
+            //            {
+            //                renderer = (SkinnedMeshRenderer)item.renderer,
+            //                material = item.defaultMaterial,
+            //                ignoreOverlays = item.ignoreOverlays
 
-//            });
-//            SkinDefs.Default = CreateSkinDef("skinSpitterDefault", mdlColossus, defaultRender);
+            //            });
+            //            SkinDefs.Default = CreateSkinDef("skinSpitterDefault", mdlColossus, defaultRender);
 
-//            RenderInfo[] lakesRender = new RenderInfo[]
-//            {
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matSpitterLakes"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = gumsRenderer,
-//                    material = skinsLookup["matSpitterGutsLakes"],
-//                    ignoreOverlays = true
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = teethenderer,
-//                    material = skinsLookup["matSpitterLakes"],
-//                    ignoreOverlays = true
-//                }
-//            };
-//            SkinDefs.Lakes = CreateSkinDef("skinSpitterLakes", mdlColossus, lakesRender, SkinDefs.Default);
+            //            RenderInfo[] lakesRender = new RenderInfo[]
+            //            {
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matSpitterLakes"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = gumsRenderer,
+            //                    material = skinsLookup["matSpitterGutsLakes"],
+            //                    ignoreOverlays = true
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = teethenderer,
+            //                    material = skinsLookup["matSpitterLakes"],
+            //                    ignoreOverlays = true
+            //                }
+            //            };
+            //            SkinDefs.Lakes = CreateSkinDef("skinSpitterLakes", mdlColossus, lakesRender, SkinDefs.Default);
 
-//            RenderInfo[] sulfurRender = new RenderInfo[]
-//            {
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matSpitterSulfur"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = gumsRenderer,
-//                    material = skinsLookup["matSpitterGutsSulfur"],
-//                    ignoreOverlays = true
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = teethenderer,
-//                    material = skinsLookup["matSpitterSulfur"],
-//                    ignoreOverlays = true
-//                }
-//            };
-//            SkinDefs.Sulfur = CreateSkinDef("skinSpitterSulfur", mdlColossus, sulfurRender, SkinDefs.Default);
+            //            RenderInfo[] sulfurRender = new RenderInfo[]
+            //            {
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matSpitterSulfur"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = gumsRenderer,
+            //                    material = skinsLookup["matSpitterGutsSulfur"],
+            //                    ignoreOverlays = true
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = teethenderer,
+            //                    material = skinsLookup["matSpitterSulfur"],
+            //                    ignoreOverlays = true
+            //                }
+            //            };
+            //            SkinDefs.Sulfur = CreateSkinDef("skinSpitterSulfur", mdlColossus, sulfurRender, SkinDefs.Default);
 
-//            RenderInfo[] depthsRender = new RenderInfo[]
-//{
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matSpitterDepths"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = gumsRenderer,
-//                    material = skinsLookup["matSpitterGutsDepths"],
-//                    ignoreOverlays = true
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = teethenderer,
-//                    material = skinsLookup["matSpitterDepths"],
-//                    ignoreOverlays = true
-//                }
-//};
-//            SkinDefs.Depths = CreateSkinDef("skinSpitterDepths", mdlColossus, depthsRender, SkinDefs.Default);
+            //            RenderInfo[] depthsRender = new RenderInfo[]
+            //{
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matSpitterDepths"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = gumsRenderer,
+            //                    material = skinsLookup["matSpitterGutsDepths"],
+            //                    ignoreOverlays = true
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = teethenderer,
+            //                    material = skinsLookup["matSpitterDepths"],
+            //                    ignoreOverlays = true
+            //                }
+            //};
+            //            SkinDefs.Depths = CreateSkinDef("skinSpitterDepths", mdlColossus, depthsRender, SkinDefs.Default);
 
-//            var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
-//            modelSkinController.skins = new SkinDef[]
-//            {
-//                SkinDefs.Default,
-//                SkinDefs.Lakes,
-//                SkinDefs.Sulfur,
-//                SkinDefs.Depths
-//            };
+            //            var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
+            //            modelSkinController.skins = new SkinDef[]
+            //            {
+            //                SkinDefs.Default,
+            //                SkinDefs.Lakes,
+            //                SkinDefs.Sulfur,
+            //                SkinDefs.Depths
+            //            };
             #endregion
 
+            //var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
+            //helper.animator = animator;
+            //helper.animationParameters = new string[] { "walkSpeedDebug" };
+
+            mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
             #endregion
 
             #region AimAssist
-            var aimAssistTarget = colossusPrefab.transform.Find("ModelBase/mdlColossus/AimAssist").gameObject.AddComponent<AimAssistTarget>();
+            var aimAssistTarget = bodyPrefab.transform.Find("ModelBase/mdlColossus/AimAssist").gameObject.AddComponent<AimAssistTarget>();
             aimAssistTarget.point0 = headTransform;
             aimAssistTarget.point1 = rootTransform;
             aimAssistTarget.assistScale = 4f;
@@ -582,9 +622,9 @@ namespace EnemiesReturns.Enemies.Colossus
             crouchMecanim.initialVerticalOffset = 4.91f;
             #endregion
 
-            colossusPrefab.RegisterNetworkPrefab();
+            bodyPrefab.RegisterNetworkPrefab();
 
-            return colossusPrefab;
+            return bodyPrefab;
         }
 
         public GameObject CreateColossusMaster(GameObject masterPrefab, GameObject bodyPrefab)
@@ -633,6 +673,43 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 masterPrefab.AddComponent<MinionOwnership>();
             }
+            #endregion
+
+            #region AISkillDriver_FireStomp
+            var asdFireStomp = masterPrefab.AddComponent<AISkillDriver>();
+            asdFireStomp.customName = "FireStomp";
+            asdFireStomp.skillSlot = SkillSlot.Primary;
+
+            asdFireStomp.requiredSkill = null;
+            asdFireStomp.requireSkillReady = true;
+            asdFireStomp.requireEquipmentReady = false;
+            asdFireStomp.minUserHealthFraction = float.NegativeInfinity;
+            asdFireStomp.maxUserHealthFraction = float.PositiveInfinity;
+            asdFireStomp.minTargetHealthFraction = float.NegativeInfinity;
+            asdFireStomp.maxTargetHealthFraction = float.PositiveInfinity;
+            asdFireStomp.minDistance = 0f;
+            asdFireStomp.maxDistance = 60f;
+            asdFireStomp.selectionRequiresTargetLoS = true;
+            asdFireStomp.selectionRequiresOnGround = false;
+            asdFireStomp.selectionRequiresAimTarget = false;
+            asdFireStomp.maxTimesSelected = -1;
+
+            asdFireStomp.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdFireStomp.activationRequiresTargetLoS = true;
+            asdFireStomp.activationRequiresAimTargetLoS = false;
+            asdFireStomp.activationRequiresAimConfirmation = false;
+            asdFireStomp.movementType = AISkillDriver.MovementType.Stop;
+            asdFireStomp.moveInputScale = 1;
+            asdFireStomp.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdFireStomp.ignoreNodeGraph = false;
+            asdFireStomp.shouldSprint = false;
+            asdFireStomp.shouldFireEquipment = false;
+            asdFireStomp.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdFireStomp.driverUpdateTimerOverride = 0.5f;
+            asdFireStomp.resetCurrentEnemyOnNextDriverSelection = false;
+            asdFireStomp.noRepeat = false;
+            asdFireStomp.nextHighPriorityOverride = null;
             #endregion
 
             #region AISkillDriver_ChaseOffNodeGraph
@@ -716,9 +793,200 @@ namespace EnemiesReturns.Enemies.Colossus
 
         #region GameObjects
 
+        public GameObject CreateStompEffect()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+
+            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
+            {
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            return clonedEffect;
+        }
+
+        public GameObject CreateStompProjectile()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
+            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
+
+            var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
+            foreach(var component in components)
+            {
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            var ghostAnchor = new GameObject();
+            ghostAnchor.name = "Anchor";
+            ghostAnchor.transform.parent = clonedEffect.transform;
+            ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
+            ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            var projectileController = clonedEffect.GetComponent<ProjectileController>();
+            projectileController.ghostPrefab = clonedEffectGhost;
+            projectileController.ghostTransformAnchor = ghostAnchor.transform;
+
+            var hitbox = clonedEffect.transform.Find("Hitbox");
+            hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
+
+            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
+            clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            return clonedEffect;
+        }
+
         #endregion
 
         #region SkillDefs
+
+        internal SkillDef CreateStompSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "ColossusBodyStomp";
+            skillDef.skillName = "Stomp";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_STOMP_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION";
+            //bite.icon = ; yeah, right
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(StompEnter));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateStoneClapSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "ColossusBodyStoneClap";
+            skillDef.skillName = "StoneClap";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION";
+            //bite.icon = ; yeah, right
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(RockClapStart));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateLaserClapSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "ColossusBodyLaserClap";
+            skillDef.skillName = "LaserClap";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_LASER_CLAP_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_LASER_CLAP_DESCRIPTION";
+            //bite.icon = ; yeah, right
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.LaserClapStart));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateHeadLaserSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "ColossusBodyHeadLaser";
+            skillDef.skillName = "HeadLaser";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION";
+            //bite.icon = ; yeah, right
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.HeadLaserStart));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
 
         #endregion
 
@@ -969,6 +1237,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         private void Renamer(GameObject object1)
         {
+
         }
     }
 }

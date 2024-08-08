@@ -236,16 +236,47 @@ namespace EnemiesReturns
                 #endregion
 
                 #region Colossus
-                //var colossusFactory = new ColossusFactory();
-                //var colossusBody = assets.First(body => body.name == "ColossusBody");
-                //ColossusFactory.colossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
-                //bodyList.Add(ColossusFactory.colossusBody);
+                var colossusFactory = new ColossusFactory();
 
-                //var colossusMaster = assets.First(master => master.name == "ColossusMaster");
-                //colossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
-                //masterList.Add(colossusMaster);
+                ColossusFactory.stompProjectile = colossusFactory.CreateStompProjectile();
+                projectilesList.Add(ColossusFactory.stompProjectile);
 
-                //stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
+                ColossusFactory.stompEffect = colossusFactory.CreateStompEffect();
+                effectsList.Add(new EffectDef(ColossusFactory.stompEffect));
+
+                ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
+                ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
+                ColossusFactory.Skills.LaserClap = colossusFactory.CreateLaserClapSkill();
+                ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
+                sdList.Add(ColossusFactory.Skills.Stomp);
+                sdList.Add(ColossusFactory.Skills.StoneClap);
+                sdList.Add(ColossusFactory.Skills.LaserClap);
+                sdList.Add(ColossusFactory.Skills.HeadLaser);
+
+                ColossusFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("ColossusPrimaryFamily", ColossusFactory.Skills.Stomp);
+                ColossusFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("ColossusSecondaryFamily", ColossusFactory.Skills.StoneClap);
+                ColossusFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusFactory.Skills.LaserClap);
+                ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
+                sfList.Add(ColossusFactory.SkillFamilies.Primary);
+                sfList.Add(ColossusFactory.SkillFamilies.Secondary);
+                sfList.Add(ColossusFactory.SkillFamilies.Utility);
+                sfList.Add(ColossusFactory.SkillFamilies.Special);
+
+                var colossusBody = assets.First(body => body.name == "ColossusBody");
+                ColossusFactory.colossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
+                bodyList.Add(ColossusFactory.colossusBody);
+
+                var colossusMaster = assets.First(master => master.name == "ColossusMaster");
+                ColossusFactory.colossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
+                masterList.Add(ColossusFactory.colossusMaster);
+
+                stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompBase));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompL));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompR));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());
