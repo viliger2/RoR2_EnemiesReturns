@@ -79,21 +79,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             base.FixedUpdate();
             if (modelAnimator && modelAnimator.GetFloat("Stomp.activate") >= 0.8f)
             {
-                if(NetworkServer.active)
-                {
-                    attack.Fire();
-                }
-                if (isAuthority && !hasFired)
-                {
-                    float angle = 360f / projectilesCount;
-                    for (int i = 0; i < projectilesCount; i++)
-                    {
-                        var forward = Quaternion.AngleAxis(angle * i, Vector3.up);
-                        ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
-                    }
-                    EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
-                    hasFired = true;
-                }
+                Fire();
             }
             if (fixedAge >= duration && isAuthority)
             {
@@ -101,8 +87,31 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             }
         }
 
+        private void Fire()
+        {
+            if (NetworkServer.active)
+            {
+                attack.Fire();
+            }
+            if (isAuthority && !hasFired)
+            {
+                float angle = 360f / projectilesCount;
+                for (int i = 0; i < projectilesCount; i++)
+                {
+                    var forward = Quaternion.AngleAxis(angle * i, Vector3.up);
+                    ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
+                }
+                EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
+                hasFired = true;
+            }
+        }
+
         public override void OnExit()
         {
+            if(!hasFired)
+            {
+                Fire();
+            }
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
         }

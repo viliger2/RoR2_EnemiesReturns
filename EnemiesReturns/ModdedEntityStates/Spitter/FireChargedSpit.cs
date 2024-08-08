@@ -56,13 +56,10 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
                 return;
             }
 
-            if(!hasFired)
+            if(!hasFired && base.isAuthority)
             {
-                if(base.isAuthority)
-                {
-                    FireProjectile();
-                    hasFired = true;
-                }
+                FireProjectile();
+                hasFired = true;
             }
 
             if(base.isAuthority && fixedAge >= duration)

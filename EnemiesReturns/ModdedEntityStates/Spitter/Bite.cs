@@ -63,18 +63,32 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             base.FixedUpdate();
             if (NetworkServer.active && (bool)modelAnimator && modelAnimator.GetFloat("Bite.hitBoxActive") > 0.1f)
             {
-                if (!hasBit)
-                {
-                    EffectManager.SimpleMuzzleFlash(biteEffectPrefab, base.gameObject, "BiteSpot", transmit: true);
-                    hasBit = true;
-                }
-                attack.forceVector = base.transform.forward * forceMagnitude;
-                attack.Fire();
+                Fire();
             }
             if (base.fixedAge >= duration && base.isAuthority)
             {
                 outer.SetNextStateToMain();
             }
+        }
+
+        private void Fire()
+        {
+            if (!hasBit)
+            {
+                EffectManager.SimpleMuzzleFlash(biteEffectPrefab, base.gameObject, "BiteSpot", transmit: true);
+                hasBit = true;
+            }
+            attack.forceVector = base.transform.forward * forceMagnitude;
+            attack.Fire();
+        }
+
+        public override void OnExit()
+        {
+            if(!hasBit)
+            {
+                Fire();
+            }
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
