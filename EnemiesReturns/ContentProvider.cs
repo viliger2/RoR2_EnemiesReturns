@@ -119,16 +119,18 @@ namespace EnemiesReturns
                 #region Spitter
                 var spitterFactory = new SpitterFactory();
 
-                SpitterFactory.biteEffectPrefab = spitterFactory.CreateBiteEffect();
-                effectsList.Add(new EffectDef(SpitterFactory.biteEffectPrefab));
+                var biteEffectPrefab = spitterFactory.CreateBiteEffect();
+                ModdedEntityStates.Spitter.Bite.biteEffectPrefab = biteEffectPrefab;
+                effectsList.Add(new EffectDef(biteEffectPrefab));
 
                 //SpitterFactory.normalSpitProjectile = spitterFactory.CreateNormalSpitProjectile();
                 var chargedSpitSmallDoTZone = spitterFactory.CreatedChargedSpitSmallDoTZone();
                 var chargedSpitDoTZone = spitterFactory.CreateChargedSpitDoTZone();
                 var chargedSpitChunkProjectile = spitterFactory.CreateChargedSpitSplitProjectile(chargedSpitSmallDoTZone);
-                SpitterFactory.chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile);;
+                var chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile);;
+                ModdedEntityStates.Spitter.FireChargedSpit.projectilePrefab = chargedSpitProjectile;
                 //projectilesList.Add(SpitterFactory.normalSpitProjectile);
-                projectilesList.Add(SpitterFactory.chargedSpitProjectile);
+                projectilesList.Add(chargedSpitProjectile);
                 projectilesList.Add(chargedSpitSmallDoTZone);
                 projectilesList.Add(chargedSpitDoTZone);
                 projectilesList.Add(chargedSpitChunkProjectile);

@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             damageCoefficient = EnemiesReturnsConfiguration.Spitter.NormalSpitDamage.Value;
             targetMuzzle = "MuzzleMouth";
             recoilAmplitude = 0f;
-            projectilePrefab = SpitterFactory.normalSpitProjectile;
+            //projectilePrefab = SpitterFactory.normalSpitProjectile;
             projectilePitchBonus = -1f;
             minSpread = 0f;
             maxSpread = 1f;

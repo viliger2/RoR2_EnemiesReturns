@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public static string targetMuzzle = "MuzzleMouth";
 
-        public static GameObject projectilePrefab = Enemies.Spitter.SpitterFactory.chargedSpitProjectile;
+        public static GameObject projectilePrefab;
 
         public static float projectileSpeed = 55f;
 

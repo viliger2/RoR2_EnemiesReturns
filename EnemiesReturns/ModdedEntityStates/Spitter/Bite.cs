@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
-        public static GameObject biteEffectPrefab = SpitterFactory.biteEffectPrefab;
+        public static GameObject biteEffectPrefab;
 
         public static string attackString = "ER_Spitter_Bite_Play";
 
@@ -84,10 +84,6 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public override void OnExit()
         {
-            if(!hasBit)
-            {
-                Fire();
-            }
             base.OnExit();
         }
 

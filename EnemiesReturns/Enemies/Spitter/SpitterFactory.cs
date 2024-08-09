@@ -62,14 +62,6 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public static GameObject spitterMaster;
 
-        internal static GameObject biteEffectPrefab;
-
-        [Obsolete]
-        internal static GameObject normalSpitProjectile;
-
-        internal static GameObject chargedSpitProjectile;
-
-
         public GameObject CreateSpitterBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
