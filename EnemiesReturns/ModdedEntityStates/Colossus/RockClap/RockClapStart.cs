@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 
         private float duration;
 
-        private FloatingRocksController controller;
+        private FloatingRocksController floatingRocksController;
 
         private Transform rockTarget;
 
@@ -22,9 +22,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
 
-            controller = modelLocator.modelTransform.gameObject.GetComponent<FloatingRocksController>();
-            controller.enabled = true;
-            rockTarget = modelLocator.modelTransform.Find("rockEndPoint");
+            floatingRocksController = modelLocator.modelTransform.gameObject.GetComponent<FloatingRocksController>();
+            floatingRocksController.enabled = true;
+            rockTarget = FindModelChild("RocksEnd");
 
             PlayCrossfade("Gesture, Override", "ClapStart", "Clap.playbackrate", duration, 0.1f);
         }
@@ -32,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            controller.SetRockThingPosition(Vector3.Lerp(controller.initialPosition.position, rockTarget.position, fixedAge / duration));
+            floatingRocksController.SetRockThingPosition(Vector3.Lerp(floatingRocksController.initialPosition.position, rockTarget.position, fixedAge / duration));
             if(fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new RockClapEnd());

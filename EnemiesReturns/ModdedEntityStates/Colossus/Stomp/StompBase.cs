@@ -16,24 +16,23 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
     {
         public static float baseDuration = 4.5f;
 
-        public static GameObject projectilePrefab = ColossusFactory.stompProjectile;
+        public static GameObject projectilePrefab;
 
-        public static GameObject stompEffectPrefab = ColossusFactory.stompEffect;
-        //public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSunderWave.prefab").WaitForCompletion();
+        public static GameObject stompEffectPrefab;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
-        public static float projectileDamageCoefficient = 3f;
+        public static float projectileDamageCoefficient = EnemiesReturnsConfiguration.Colossus.StompProjectileDamage.Value;
 
-        public static float stompDamageCoefficient = 6f;
+        public static float stompDamageCoefficient = EnemiesReturnsConfiguration.Colossus.StompOverlapAttackDamage.Value;
 
-        public static int projectilesCount = 16;
+        public static int projectilesCount = EnemiesReturnsConfiguration.Colossus.StompProjectileCount.Value;
 
-        public static float projectileForceMagnitude = -2500f; // its minus for beetle guard
+        public static float projectileForceMagnitude = EnemiesReturnsConfiguration.Colossus.StompProjectileForce.Value; // its minus for beetle guard
 
-        public static float stompForceMagnitude = 6000f;
+        public static float stompForceMagnitude = EnemiesReturnsConfiguration.Colossus.StompOverlapAttackForce.Value;
 
-        public static float speed = 60f;
+        public static float speed = EnemiesReturnsConfiguration.Colossus.StompProjectileSpeed.Value;
 
         public string animationStateName;
 

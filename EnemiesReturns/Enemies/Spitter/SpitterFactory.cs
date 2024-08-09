@@ -58,9 +58,9 @@ namespace EnemiesReturns.Enemies.Spitter
             public static CharacterSpawnCard cscSpitterDepths;
         }
 
-        public static GameObject spitterBody;
+        public static GameObject SpitterBody;
 
-        public static GameObject spitterMaster;
+        public static GameObject SpitterMaster;
 
         public GameObject CreateSpitterBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {

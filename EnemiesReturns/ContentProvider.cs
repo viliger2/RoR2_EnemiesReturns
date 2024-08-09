@@ -155,12 +155,12 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.spitterBody = spitterFactory.CreateSpitterBody(spitterBody, spitterIcon, spitterLog, skinsLookup);
-                bodyList.Add(SpitterFactory.spitterBody);
+                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, spitterIcon, spitterLog, skinsLookup);
+                bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
-                SpitterFactory.spitterMaster = spitterFactory.CreateSpitterMaster(spitterMaster, spitterBody);
-                masterList.Add(SpitterFactory.spitterMaster);
+                SpitterFactory.SpitterMaster = spitterFactory.CreateSpitterMaster(spitterMaster, spitterBody);
+                masterList.Add(SpitterFactory.SpitterMaster);
 
                 SpitterFactory.SpawnCards.cscSpitterDefault = spitterFactory.CreateCard("cscSpitterDefault", spitterMaster, SpitterFactory.SkinDefs.Default, spitterBody);
                 DirectorAPI.DirectorCardHolder dchSpitterDefault = new DirectorAPI.DirectorCardHolder
@@ -240,11 +240,22 @@ namespace EnemiesReturns
                 #region Colossus
                 var colossusFactory = new ColossusFactory();
 
-                ColossusFactory.stompProjectile = colossusFactory.CreateStompProjectile();
-                projectilesList.Add(ColossusFactory.stompProjectile);
+                var stompProjectile = colossusFactory.CreateStompProjectile();
+                ModdedEntityStates.Colossus.Stomp.StompBase.projectilePrefab = stompProjectile;
+                projectilesList.Add(stompProjectile);
 
-                ColossusFactory.stompEffect = colossusFactory.CreateStompEffect();
-                effectsList.Add(new EffectDef(ColossusFactory.stompEffect));
+                var clapEffect = colossusFactory.CreateClapEffect();
+                ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
+
+                var stompEffect = colossusFactory.CreateStompEffect();
+                ModdedEntityStates.Colossus.Stomp.StompBase.stompEffectPrefab = stompEffect;
+                effectsList.Add(new EffectDef(stompEffect));
+
+                var flyingRockGhost = colossusFactory.CreateFlyingRocksGhost();
+                Enemies.Colossus.FloatingRocksController.flyingRockPrefab = flyingRockGhost;
+                var flyingRockProjectile = colossusFactory.CreateFlyingRockProjectile(flyingRockGhost);
+                ModdedEntityStates.Colossus.RockClap.RockClapEnd.projectilePrefab = flyingRockProjectile;
+                projectilesList.Add(flyingRockProjectile);
 
                 ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
                 ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
@@ -265,12 +276,12 @@ namespace EnemiesReturns
                 sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.colossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
-                bodyList.Add(ColossusFactory.colossusBody);
+                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
+                bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");
-                ColossusFactory.colossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
-                masterList.Add(ColossusFactory.colossusMaster);
+                ColossusFactory.ColossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
+                masterList.Add(ColossusFactory.ColossusMaster);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));

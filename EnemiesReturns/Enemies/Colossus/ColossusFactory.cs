@@ -60,13 +60,9 @@ namespace EnemiesReturns.Enemies.Colossus
 
         }
 
-        public static GameObject colossusBody;
+        public static GameObject ColossusBody;
 
-        public static GameObject colossusMaster;
-
-        internal static GameObject stompProjectile;
-
-        internal static GameObject stompEffect;
+        public static GameObject ColossusMaster;
 
         public GameObject CreateColossusBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
@@ -487,6 +483,14 @@ namespace EnemiesReturns.Enemies.Colossus
             hbgRightStomp.hitBoxes = new HitBox[] { rightStompHitbox };
             #endregion
 
+            #region HitBoxGroupClap
+            //var clapHitBox = mdlColossus.transform.Find("Armature/ClapHitbox").gameObject.AddComponent<HitBox>();
+
+            //var hbgClap = mdlColossus.AddComponent<HitBoxGroup>();
+            //hbgClap.groupName = "Clap";
+            //hbgClap.hitBoxes = new HitBox[] { clapHitBox };
+            #endregion
+
             #region FootstepHandler
             FootstepHandler footstepHandler = null;
             if (!mdlColossus.TryGetComponent(out footstepHandler))
@@ -809,33 +813,71 @@ namespace EnemiesReturns.Enemies.Colossus
             return clonedEffect;
         }
 
-        public GameObject CreateStompProjectile()
+        public GameObject CreateClapEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
-            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
-
-            var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
-            foreach(var component in components)
+            GameObject clapEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolemDeath.prefab").WaitForCompletion().InstantiateClone("ColossusClapEffect", false);
+            var components = clapEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
             {
                 var main = component.main;
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            var ghostAnchor = new GameObject();
-            ghostAnchor.name = "Anchor";
-            ghostAnchor.transform.parent = clonedEffect.transform;
-            ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
-            ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
+            // scaling size of default values
+            // 3.5f is default effect scale
+            // 12f is default damage radius scale
+            var radius = 3.5f / 12f * EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
 
-            var projectileController = clonedEffect.GetComponent<ProjectileController>();
-            projectileController.ghostPrefab = clonedEffectGhost;
-            projectileController.ghostTransformAnchor = ghostAnchor.transform;
+            clapEffect.transform.localScale = new Vector3(radius, radius, radius);
+            return clapEffect;
+        }
 
-            var hitbox = clonedEffect.transform.Find("Hitbox");
-            hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
+        public GameObject CreateStompProjectile()
+            {
+                var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
+                var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
 
+                var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
+                foreach(var component in components)
+                {
+                    var main = component.main;
+                    main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                }
+
+                var ghostAnchor = new GameObject();
+                ghostAnchor.name = "Anchor";
+                ghostAnchor.transform.parent = clonedEffect.transform;
+                ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
+                ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                var projectileController = clonedEffect.GetComponent<ProjectileController>();
+                projectileController.ghostPrefab = clonedEffectGhost;
+                projectileController.ghostTransformAnchor = ghostAnchor.transform;
+
+                var hitbox = clonedEffect.transform.Find("Hitbox");
+                hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
+
+                clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
+                clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
+
+                return clonedEffect;
+            }
+
+        public GameObject CreateFlyingRocksGhost()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockGhost", false);
+            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f); // for future reference: ProjectileController does not scale ghost to its size
+
+            return clonedEffect;
+        }
+
+        public GameObject CreateFlyingRockProjectile(GameObject rockGhost)
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
+            clonedEffect.GetComponent<ProjectileController>().ghostPrefab = rockGhost;
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
-            clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = 5f;
 
             return clonedEffect;
         }

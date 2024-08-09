@@ -47,6 +47,41 @@ namespace EnemiesReturns
             public static ConfigEntry<float> ChargedProjectileSmallDoTZoneScale;
         }
 
+        public struct Colossus
+        {
+            public static ConfigEntry<int> DirectorCost;
+            public static ConfigEntry<int> SelectionWeight;
+            public static ConfigEntry<int> MinimumStageCompletion;
+
+            public static ConfigEntry<float> BaseMaxHealth;
+            public static ConfigEntry<float> BaseMoveSpeed;
+            public static ConfigEntry<float> BaseJumpPower;
+            public static ConfigEntry<float> BaseDamage;
+            public static ConfigEntry<float> BaseArmor;
+            public static ConfigEntry<float> LevelMaxHealth;
+            public static ConfigEntry<float> LevelDamage;
+            public static ConfigEntry<float> LevelArmor;
+
+            public static ConfigEntry<float> StompOverlapAttackDamage;
+            public static ConfigEntry<float> StompOverlapAttackForce;
+            public static ConfigEntry<float> StompProjectileDamage;
+            public static ConfigEntry<float> StompProjectileForce;
+            public static ConfigEntry<float> StompProjectileSpeed;
+            public static ConfigEntry<int> StompProjectileCount;
+
+            public static ConfigEntry<float> RockClapProjectileDamage;
+            public static ConfigEntry<float> RockClapProjectileForce;
+            public static ConfigEntry<float> RockClapProjectileSpeed;
+            public static ConfigEntry<float> RockClapProjectileSpeedDelta;
+            public static ConfigEntry<float> RockClapProjectileDistanceFraction;
+            public static ConfigEntry<float> RockClapProjectileDistanceFractionDelta;
+            public static ConfigEntry<float> RockClapProjectileSpawnDistance;
+            public static ConfigEntry<int> RockClapProjectileCount;
+            public static ConfigEntry<float> RockClapDamage;
+            public static ConfigEntry<float> RockClapForce;
+            public static ConfigEntry<float> RockClapRadius;
+        }
+
         public static void PopulateConfig(ConfigFile config) 
         {
             config.Clear();
@@ -88,6 +123,28 @@ namespace EnemiesReturns
             Spitter.ChargedProjectileSmallDoTZoneDamage = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Damage", 0.15f, "Spitter's Charged Large DoT zone damage off projectile's damage.");
             Spitter.ChargedProjectileSmallDoTZoneScale = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Scale", 0.3f, "Spitter's Charged Large DoT Zone scale off Mini Mushrim's DoT zone (since it was used as basis). Also controls projectile's blast radius.");
 
+            #endregion
+
+            #region Colossus
+
+            Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 6f, "Colossus' Stomp Overlap (aka stomp itself) damage.");
+            Colossus.StompOverlapAttackForce = config.Bind("Colossus Stomp", "Stomp Overlap Force", 6000f, "Colossus' Stomp Overlap (aka stomp itself) force.");
+            Colossus.StompProjectileDamage = config.Bind("Colossus Stomp", "Stomp Projectile Damage", 3f, "Colossus' Stomp Projectile damage.");
+            Colossus.StompProjectileForce = config.Bind("Colossus Stomp", "Stomp Projectile Force", -2500f, "Colossus' Stomp Projectile force. Default number is negative, that means it pulls towards Colossus.");
+            Colossus.StompProjectileSpeed = config.Bind("Colossus Stomp", "Stomp Projectile Speed", 60f, "Colossus' Stomp Projectile speed.");
+            Colossus.StompProjectileCount = config.Bind("Colossus Stomp", "Stomp Projectile Count", 16, "Colossus' Stomp Projectile count.");
+
+            Colossus.RockClapProjectileDamage = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Damage", 3f, "Colossus' Rock Clap projectile damage.");
+            Colossus.RockClapProjectileForce = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Force", 3000f, "Colossus' Rock Clap projectile force."); // TODO: might be too much
+            Colossus.RockClapProjectileSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Speed", 50f, "Colossus' Rock Clap projectile speed.");
+            Colossus.RockClapProjectileSpeedDelta = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Speed Delta", 5f, "Colossus' Rock Clap projectile speed delta (speed = Random(speed - delta, speed + delta)).");
+            Colossus.RockClapProjectileDistanceFraction = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Distance Fraction", 0.8f, "Basically determines angle at which rocks fly upwards. Uses colossus' position and rock initial position and takes a distance between them at this fraction.");
+            Colossus.RockClapProjectileDistanceFractionDelta = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Distance Fraction Delta", 0.1f, "Projectile distance delta. See Projectile distance for explanation and see Speed delta for the formula.");
+            Colossus.RockClapProjectileSpawnDistance = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Spawn Distance", 15f, "Colossus' Rock Clap projectile distance from body. Basically controls how far rocks spawn from the center of the body.");
+            Colossus.RockClapProjectileCount = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Count", 20, "Colossus' Rock Clap projectile count.");
+            Colossus.RockClapDamage = config.Bind("Colossus Rock Clap", "Rock Clap Damage", 6f, "Colossus' Rock Clap damage.");
+            Colossus.RockClapForce = config.Bind("Colossus Rock Clap", "Rock Clap Force", 6000f, "Colossus' Rock Clap force."); // TODO: might be too much
+            Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 12f, "Colossus' Rock Clap radius.");
             #endregion
         }
 

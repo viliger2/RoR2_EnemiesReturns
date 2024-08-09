@@ -123,8 +123,8 @@ namespace EnemiesReturns
 				ambientGroundColor = Color.white
 			};
 			yield return new WaitForEndOfFrame();
-			yield return GeneratePortrait(modelPanel, SpitterFactory.spitterBody);
-			yield return GeneratePortrait(modelPanel, ColossusFactory.colossusBody);
+			yield return GeneratePortrait(modelPanel, SpitterFactory.SpitterBody);
+			yield return GeneratePortrait(modelPanel, ColossusFactory.ColossusBody);
 			yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());
 			UnityEngine.Object.Destroy(modelPanel.transform.root.gameObject);
 			Debug.Log("Portrait generation complete.");
