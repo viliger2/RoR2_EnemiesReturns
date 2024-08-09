@@ -295,13 +295,13 @@ namespace EnemiesReturns.Enemies.Colossus
             kinematicCharacterMotor.Capsule = bodyPrefab.GetComponent<CapsuleCollider>();
             kinematicCharacterMotor.Rigidbody = bodyPrefab.GetComponent<Rigidbody>();
 
-            kinematicCharacterMotor.CapsuleRadius = 7.137788f;
-            kinematicCharacterMotor.CapsuleHeight = 29.72898f;
-            kinematicCharacterMotor.CapsuleYOffset = 15.2197f;
+            kinematicCharacterMotor.CapsuleRadius = 7.15f;
+            kinematicCharacterMotor.CapsuleHeight = 28.15f;
+            kinematicCharacterMotor.CapsuleYOffset = 0f;
 
             kinematicCharacterMotor.DetectDiscreteCollisions = false;
             kinematicCharacterMotor.GroundDetectionExtraDistance = 0f;
-            kinematicCharacterMotor.MaxStepHeight = 0.2f;
+            kinematicCharacterMotor.MaxStepHeight = 1f;
             kinematicCharacterMotor.MinRequiredStepDepth = 0.1f;
             kinematicCharacterMotor.MaxStableSlopeAngle = 55f;
             kinematicCharacterMotor.MaxStableDistanceFromLedge = 0.5f;
@@ -357,7 +357,7 @@ namespace EnemiesReturns.Enemies.Colossus
             }
 
             // TODO
-            var mainHurtboxTransform =  bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/MainHurtBox");
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/MainHurtBox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -366,7 +366,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = golemSurfaceDef;
 
-            //var hitBox = colossusPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
+            //var hitBox = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
             #region mdlColossus

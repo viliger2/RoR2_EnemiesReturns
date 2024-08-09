@@ -288,7 +288,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             kinematicCharacterMotor.CapsuleRadius = 0.58f;
             kinematicCharacterMotor.CapsuleHeight = 2.529011f;
-            kinematicCharacterMotor.CapsuleYOffset = 0.4645057f;
+            kinematicCharacterMotor.CapsuleYOffset = 0f;
 
             kinematicCharacterMotor.DetectDiscreteCollisions = false;
             kinematicCharacterMotor.GroundDetectionExtraDistance = 0f;
