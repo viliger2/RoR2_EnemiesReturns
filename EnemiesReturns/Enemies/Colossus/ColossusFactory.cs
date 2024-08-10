@@ -899,9 +899,9 @@ namespace EnemiesReturns.Enemies.Colossus
             }
 
             // scaling size of default values
-            // 3.5f is default effect scale
+            // 4f is default effect scale (actually not, this is the value due to separated bulletattacks)
             // 12f is default damage radius scale
-            var radius = 3.5f / 12f * EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
+            var radius = 4f / 12f * EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
 
             clapEffect.transform.localScale = new Vector3(radius, radius, radius);
             return clapEffect;

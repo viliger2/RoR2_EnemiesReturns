@@ -10,6 +10,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 {
     public class HeadLaserAttack : BaseState
     {
+
+        // TODO: unfuck transforms, too many unncessesary points
+        // maybe add a hit\filter callback so enemies only get hit every x seconds\only once per swipe
         public static float baseDuration = EnemiesReturnsConfiguration.Colossus.HeadLaserDuration.Value;
 
         public static float baseFireFrequency = EnemiesReturnsConfiguration.Colossus.HeadLaserFireFrequency.Value;
@@ -30,6 +33,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
         private static float laserMaxDistance = 2000f;
 
+        private static int bulletCount = 6;
+
         private float duration;
 
         private Animator modelAnimator;
@@ -42,7 +47,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
         private Transform effectPoint;
 
-        private Transform bulletAttackPoint;
+        private Transform initialPoint;
+
+        private Transform bulletSpawnHelperPoint;
 
         private float fireFrequency;
 
@@ -54,6 +61,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
         private BulletAttack bulletAttack;
 
+        private float angleBetweenBullets;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -63,11 +72,14 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             fireFrequency = baseFireFrequency / attackSpeedStat;
 
             effectPoint = FindModelChild("LaserEffectPoint");
-            bulletAttackPoint = FindModelChild("LaserInitialPoint");
+            initialPoint = FindModelChild("LaserInitialPoint");
+            bulletSpawnHelperPoint = FindModelChild("BulletAttackHelper");
 
             bulletAttack = CreateBulletAttack();
 
             modelAnimator = GetModelAnimator();
+
+            angleBetweenBullets = 360 / bulletCount;
 
             beamInstance = UnityEngine.Object.Instantiate(beamPrefab);
             beamInstance.transform.SetParent(effectPoint, worldPositionStays: true);
@@ -85,13 +97,26 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             {
                 // math is fun
                 modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Abs(Mathf.Sin(fixedAge * anglePerSecond * angleAttackSpeedMult * Mathf.Deg2Rad)), 0f, 0.99f));
-                modelAnimator.SetFloat(aimPitchCycleHas, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min((fixedAge / (duration / totalTurnCount)), totalTurnCount - 1), 0f, 0.99f));
+                modelAnimator.SetFloat(aimPitchCycleHas, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(fixedAge / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
             }
             if(isAuthority && stopwatch >= fireFrequency)
             {
-                bulletAttack.origin = bulletAttackPoint.position;
-                bulletAttack.aimVector = new Ray(bulletAttackPoint.position, bulletAttackPoint.forward).direction;
-                bulletAttack.Fire();
+                if (bulletSpawnHelperPoint)
+                {
+                    for (int i = 0; i < bulletCount; i++)
+                    {
+                        var x = laserRadius / 2 / 14 * Mathf.Cos(angleBetweenBullets * i * Mathf.Deg2Rad); // 14 is colossus scale
+                        var y = laserRadius / 2 / 14 * Mathf.Sin(angleBetweenBullets * i * Mathf.Deg2Rad);
+                        bulletSpawnHelperPoint.localPosition = new Vector3(x, y, 0f);
+                        bulletAttack.origin = bulletSpawnHelperPoint.position;
+                        bulletAttack.aimVector = new Ray(bulletSpawnHelperPoint.position, bulletSpawnHelperPoint.forward).direction;
+                        bulletAttack.radius = laserRadius / 4;
+                        //bulletAttack.filterCallback
+                        //bulletAttack.hitCallback
+                        bulletAttack.Fire();
+                    }
+                }
+
                 stopwatch -= fireFrequency;
             }
 
@@ -106,8 +131,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             var bulletAttack = new BulletAttack();
             bulletAttack.owner = gameObject;
             bulletAttack.weapon = gameObject;
-            bulletAttack.origin = bulletAttackPoint.position;
-            bulletAttack.aimVector = new Ray(bulletAttackPoint.position, bulletAttackPoint.forward).direction;
+            bulletAttack.origin = initialPoint.position;
+            bulletAttack.aimVector = new Ray(initialPoint.position, initialPoint.forward).direction;
             bulletAttack.minSpread = 0f;
             bulletAttack.maxSpread = 0f;
             bulletAttack.bulletCount = 1;

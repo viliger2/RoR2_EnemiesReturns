@@ -156,7 +156,7 @@ namespace EnemiesReturns
             Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
 
             Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 15f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
-            Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.03f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
+            Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
             Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 6f, "Colossus' Head Laser Damage");
             Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
             Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 15f, "Colossus' Head Laser radius.");

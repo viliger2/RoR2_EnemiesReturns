@@ -318,6 +318,9 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompBase));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompL));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompR));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserEnd));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserStart));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());

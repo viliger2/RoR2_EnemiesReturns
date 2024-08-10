@@ -67,6 +67,8 @@ MonoBehaviour:
     transform: {fileID: 3760019727031151039}
   - name: StompRightSearchPoint
     transform: {fileID: 4391212264599345029}
+  - name: BulletAttackHelper
+    transform: {fileID: 5507867907269826088}
   - name: LaserEffectPoint
     transform: {fileID: 8643595272026139903}
 --- !u!114 &7706340093702680604
@@ -242,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5507867907269826088}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BulletAttackHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
