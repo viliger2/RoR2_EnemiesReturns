@@ -31,7 +31,7 @@ namespace EnemiesReturns
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.0.12";
+		public const string Version = "0.1.0";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
