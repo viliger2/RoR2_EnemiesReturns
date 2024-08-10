@@ -23,6 +23,7 @@ using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
 using EnemiesReturns.ModdedEntityStates.Colossus.Stomp;
 using EnemiesReturns.ModdedEntityStates.Colossus.RockClap;
+using EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -691,8 +692,8 @@ namespace EnemiesReturns.Enemies.Colossus
             asdFireStomp.maxUserHealthFraction = float.PositiveInfinity;
             asdFireStomp.minTargetHealthFraction = float.NegativeInfinity;
             asdFireStomp.maxTargetHealthFraction = float.PositiveInfinity;
-            asdFireStomp.minDistance = 0f;
-            asdFireStomp.maxDistance = 60f;
+            asdFireStomp.minDistance = 15f;
+            asdFireStomp.maxDistance = 90f;
             asdFireStomp.selectionRequiresTargetLoS = true;
             asdFireStomp.selectionRequiresOnGround = false;
             asdFireStomp.selectionRequiresAimTarget = false;
@@ -710,11 +711,85 @@ namespace EnemiesReturns.Enemies.Colossus
             asdFireStomp.shouldFireEquipment = false;
             asdFireStomp.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            asdFireStomp.driverUpdateTimerOverride = 0.5f;
+            asdFireStomp.driverUpdateTimerOverride = -1f;
             asdFireStomp.resetCurrentEnemyOnNextDriverSelection = false;
             asdFireStomp.noRepeat = false;
             asdFireStomp.nextHighPriorityOverride = null;
             #endregion
+
+            #region AISkillDriver_StoneClap
+            var asdClap = masterPrefab.AddComponent<AISkillDriver>();
+            asdClap.customName = "StoneClap";
+            asdClap.skillSlot = SkillSlot.Secondary;
+
+            asdClap.requiredSkill = null;
+            asdClap.requireSkillReady = true;
+            asdClap.requireEquipmentReady = false;
+            asdClap.minUserHealthFraction = float.NegativeInfinity;
+            asdClap.maxUserHealthFraction = float.PositiveInfinity;
+            asdClap.minTargetHealthFraction = float.NegativeInfinity;
+            asdClap.maxTargetHealthFraction = float.PositiveInfinity;
+            asdClap.minDistance = 0f;
+            asdClap.maxDistance = 30f;
+            asdClap.selectionRequiresTargetLoS = true;
+            asdClap.selectionRequiresOnGround = false;
+            asdClap.selectionRequiresAimTarget = false;
+            asdClap.maxTimesSelected = -1;
+
+            asdClap.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdClap.activationRequiresTargetLoS = true;
+            asdClap.activationRequiresAimTargetLoS = false;
+            asdClap.activationRequiresAimConfirmation = false;
+            asdClap.movementType = AISkillDriver.MovementType.Stop;
+            asdClap.moveInputScale = 1;
+            asdClap.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdClap.ignoreNodeGraph = false;
+            asdClap.shouldSprint = false;
+            asdClap.shouldFireEquipment = false;
+            asdClap.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdClap.driverUpdateTimerOverride = -1f;
+            asdClap.resetCurrentEnemyOnNextDriverSelection = false;
+            asdClap.noRepeat = false;
+            asdClap.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_HeadLaser
+            var asdHeadLaser = masterPrefab.AddComponent<AISkillDriver>();
+            asdHeadLaser.customName = "HeadLaser";
+            asdHeadLaser.skillSlot = SkillSlot.Special;
+
+            asdHeadLaser.requiredSkill = null;
+            asdHeadLaser.requireSkillReady = true;
+            asdHeadLaser.requireEquipmentReady = false;
+            asdHeadLaser.minUserHealthFraction = float.NegativeInfinity;
+            asdHeadLaser.maxUserHealthFraction = 0.35f;
+            asdHeadLaser.minTargetHealthFraction = float.NegativeInfinity;
+            asdHeadLaser.maxTargetHealthFraction = float.PositiveInfinity;
+            asdHeadLaser.minDistance = 0f;
+            asdHeadLaser.maxDistance = 60f;
+            asdHeadLaser.selectionRequiresTargetLoS = false;
+            asdHeadLaser.selectionRequiresOnGround = false;
+            asdHeadLaser.selectionRequiresAimTarget = false;
+            asdHeadLaser.maxTimesSelected = -1;
+
+            asdHeadLaser.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdHeadLaser.activationRequiresTargetLoS = false;
+            asdHeadLaser.activationRequiresAimTargetLoS = false;
+            asdHeadLaser.activationRequiresAimConfirmation = false;
+            asdHeadLaser.movementType = AISkillDriver.MovementType.Stop;
+            asdHeadLaser.moveInputScale = 1;
+            asdHeadLaser.aimType = AISkillDriver.AimType.MoveDirection;
+            asdHeadLaser.ignoreNodeGraph = false;
+            asdHeadLaser.shouldSprint = false;
+            asdHeadLaser.shouldFireEquipment = false;
+            asdHeadLaser.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdHeadLaser.driverUpdateTimerOverride = -1f;
+            asdHeadLaser.resetCurrentEnemyOnNextDriverSelection = false;
+            asdHeadLaser.noRepeat = false;
+            asdHeadLaser.nextHighPriorityOverride = null;
+            #endregion   
 
             #region AISkillDriver_ChaseOffNodeGraph
             var asdChaseOffNodeGraph = masterPrefab.AddComponent<AISkillDriver>();
@@ -833,35 +908,35 @@ namespace EnemiesReturns.Enemies.Colossus
         }
 
         public GameObject CreateStompProjectile()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
+            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
+
+            var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
             {
-                var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
-                var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
-
-                var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
-                foreach(var component in components)
-                {
-                    var main = component.main;
-                    main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-                }
-
-                var ghostAnchor = new GameObject();
-                ghostAnchor.name = "Anchor";
-                ghostAnchor.transform.parent = clonedEffect.transform;
-                ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
-                ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
-
-                var projectileController = clonedEffect.GetComponent<ProjectileController>();
-                projectileController.ghostPrefab = clonedEffectGhost;
-                projectileController.ghostTransformAnchor = ghostAnchor.transform;
-
-                var hitbox = clonedEffect.transform.Find("Hitbox");
-                hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
-
-                clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
-                clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
-
-                return clonedEffect;
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
+
+            var ghostAnchor = new GameObject();
+            ghostAnchor.name = "Anchor";
+            ghostAnchor.transform.parent = clonedEffect.transform;
+            ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
+            ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            var projectileController = clonedEffect.GetComponent<ProjectileController>();
+            projectileController.ghostPrefab = clonedEffectGhost;
+            projectileController.ghostTransformAnchor = ghostAnchor.transform;
+
+            var hitbox = clonedEffect.transform.Find("Hitbox");
+            hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
+
+            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
+            clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            return clonedEffect;
+        }
 
         public GameObject CreateFlyingRocksGhost()
         {
@@ -880,6 +955,78 @@ namespace EnemiesReturns.Enemies.Colossus
             clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = 5f;
 
             return clonedEffect;
+        }
+
+        public GameObject CreateLaserEffect()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/VoidRaidCrabSpinBeamVFX.prefab").WaitForCompletion().InstantiateClone("ColossusEyeLaserEffect", false);
+
+            var radius = EnemiesReturnsConfiguration.Colossus.HeadLaserRadius.Value;
+            clonedEffect.transform.localScale = new Vector3(radius, radius, clonedEffect.transform.localScale.z);
+
+            // coloring book
+            clonedEffect.transform.Find("Mesh, Additive").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder2Material();
+            clonedEffect.transform.Find("Mesh, Additive/Mesh, Transparent").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder1Material();
+            clonedEffect.transform.Find("Billboards").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard1Material();
+            clonedEffect.transform.Find("SwirlyTrails").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
+            clonedEffect.transform.Find("MuzzleRayParticles").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
+
+            clonedEffect.transform.Find("Point Light, Middle").GetComponent<Light>().color = Color.red;
+            clonedEffect.transform.Find("Point Light, End").GetComponent<Light>().color = Color.red;
+
+            return clonedEffect;
+        }
+
+        private Material SetupSpinBeamCylinder2Material()
+        {
+            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder2");
+            if (material == default(Material))
+            {
+                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());
+                material.name = "matColossusSpinBeamCylinder2";
+                material.SetColor("_TintColor", Color.red); // I mean
+                ContentProvider.MaterialCache.Add(material);
+            }
+            return material;
+        }
+        
+        private Material SetupSpinBeamCylinder1Material()
+        {
+            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder1");
+            if (material == default(Material))
+            {
+                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
+                material.name = "matColossusSpinBeamCylinder1";
+                material.SetColor("_TintColor", Color.red); // I mean
+                ContentProvider.MaterialCache.Add(material);
+            }
+            return material;
+        }
+
+        private Material SetupSpinBeamBillboard1Material()
+        {
+            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard1");
+            if (material == default(Material))
+            {
+                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard1.mat").WaitForCompletion());
+                material.name = "matColossusSpinBeamBillboard1";
+                material.SetColor("_TintColor", Color.red); // I mean
+                ContentProvider.MaterialCache.Add(material);
+            }
+            return material;
+        }
+
+        private Material SetupSpinBeamBillboard2Material()
+        {
+            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard2");
+            if (material == default(Material))
+            {
+                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
+                material.name = "matColossusSpinBeamBillboard2";
+                material.SetColor("_TintColor", Color.red); // I mean
+                ContentProvider.MaterialCache.Add(material);
+            }
+            return material;
         }
 
         #endregion
@@ -901,7 +1048,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(StompEnter));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseRechargeInterval = 10f;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -937,7 +1084,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(RockClapStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseRechargeInterval = 10f;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1006,10 +1153,10 @@ namespace EnemiesReturns.Enemies.Colossus
             //bite.icon = ; yeah, right
 
             skillDef.activationStateMachineName = "Body";
-            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.HeadLaserStart));
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(HeadLaserStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 6f;
+            skillDef.baseRechargeInterval = 45f;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;

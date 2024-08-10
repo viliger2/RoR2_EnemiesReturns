@@ -17,6 +17,8 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 using static RoR2.SkinDef;
 using EnemiesReturns.Enemies.Colossus;
+using static RoR2.BulletAttack;
+using static UnityEngine.UI.Image;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 
@@ -59,14 +61,13 @@ namespace EnemiesReturns
 			Hooks();
 		}
 
-
 		private void Hooks()
 		{
 			ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
 		}
 
-		[ConCommand(commandName = "returns_spawn_spitters", flags = ConVarFlags.None, helpText = "Spawns all Spitter variants")]
+        [ConCommand(commandName = "returns_spawn_spitters", flags = ConVarFlags.None, helpText = "Spawns all Spitter variants")]
 		private static void CCSpawnSpitters(ConCommandArgs args)
 		{
 			var localPlayers = LocalUserManager.readOnlyLocalUsersList;

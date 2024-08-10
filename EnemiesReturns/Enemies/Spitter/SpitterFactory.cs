@@ -1068,7 +1068,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         private GameObject GetRecoloredSpitProjectileGhost()
         {
-            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectileGhost");
+            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectileGhost", false);
             var particle = projectileGhost.GetComponentInChildren<ParticleSystem>();
             if (particle)
             {

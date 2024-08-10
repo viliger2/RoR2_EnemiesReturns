@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus
+namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 {
     public class HeadLaserStart : BaseState
     {
@@ -21,7 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new HeadLaserAttack());
             }

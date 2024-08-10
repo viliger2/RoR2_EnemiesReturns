@@ -80,6 +80,15 @@ namespace EnemiesReturns
             public static ConfigEntry<float> RockClapDamage;
             public static ConfigEntry<float> RockClapForce;
             public static ConfigEntry<float> RockClapRadius;
+
+            public static ConfigEntry<float> HeadLaserDuration;
+            public static ConfigEntry<float> HeadLaserFireFrequency;
+            public static ConfigEntry<float> HeadLaserDamage;
+            public static ConfigEntry<float> HeadLaserForce;
+            public static ConfigEntry<float> HeadLaserRadius;
+            public static ConfigEntry<int> HeadLaserTurnCount;
+            public static ConfigEntry<float> HeadLaserPitchStart;
+            public static ConfigEntry<float> HeadLaserPitchStep;
         }
 
         public static void PopulateConfig(ConfigFile config) 
@@ -144,7 +153,16 @@ namespace EnemiesReturns
             Colossus.RockClapProjectileCount = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Count", 20, "Colossus' Rock Clap projectile count.");
             Colossus.RockClapDamage = config.Bind("Colossus Rock Clap", "Rock Clap Damage", 6f, "Colossus' Rock Clap damage.");
             Colossus.RockClapForce = config.Bind("Colossus Rock Clap", "Rock Clap Force", 6000f, "Colossus' Rock Clap force."); // TODO: might be too much
-            Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 12f, "Colossus' Rock Clap radius.");
+            Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
+
+            Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 15f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
+            Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.03f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
+            Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 6f, "Colossus' Head Laser Damage");
+            Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
+            Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 15f, "Colossus' Head Laser radius.");
+            Colossus.HeadLaserTurnCount = config.Bind("Colossus Head Laser", "Head Laser Head Turn Count", 3, "How many times Colossus turns its head left to right and back during Head Laser attack. Duration of each turn is (Head Laser Duration)/(Head Laser Head Turn Count).");
+            Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.1f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
+            Colossus.HeadLaserPitchStep = config.Bind("Colossus Head Laser", "Head Laser Head Pitch Step", 0.25f, "Determines how much higher Colossus' head gets after each turn. Final value is (Head Laser Starting Pitch)+(Head Laser Head Turn Count)*(Head Laser Head Pitch Step). Values (including total value) above 1 will be limited to 1.");
             #endregion
         }
 

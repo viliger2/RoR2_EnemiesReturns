@@ -12,6 +12,7 @@ using RoR2;
 using EnemiesReturns.Enemies.Spitter;
 using R2API;
 using EnemiesReturns.Enemies.Colossus;
+using Rewired.Utils.Classes.Utility;
 
 namespace EnemiesReturns
 {
@@ -58,16 +59,32 @@ namespace EnemiesReturns
 
         public IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
         {
+            Stopwatch totalStopwatch = new Stopwatch();
+            totalStopwatch.Start();
+
             _contentPack.identifier = identifier;
 
+            Stopwatch segmentStopWatch = new Stopwatch();
+            segmentStopWatch.Start();
             string soundbanksFolderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(ContentProvider).Assembly.Location), SoundbankFolder);
             LoadSoundBanks(soundbanksFolderPath);
+            segmentStopWatch.Stop();
+            //TimeSpan ts = stopwatch.elapsedSeconds;
+            Log.Info("Soundbanks loaded in " + segmentStopWatch.elapsedSeconds);
 
+
+            segmentStopWatch.Reset();
+            segmentStopWatch.Start();
             string assetBundleFolderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(ContentProvider).Assembly.Location), AssetBundleFolder);
 
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
+            segmentStopWatch.Stop();
+            Log.Info("Added bundle loaded in " + segmentStopWatch.elapsedSeconds);
+
+            segmentStopWatch.Reset();
+            segmentStopWatch.Start();
             Dictionary<string, Material> skinsLookup = new Dictionary<string, Material>();
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
@@ -96,14 +113,22 @@ namespace EnemiesReturns
                     }
                 }
             }));
+            segmentStopWatch.Stop();
+            Log.Info("Materials swapped in " + segmentStopWatch.elapsedSeconds);
 
-            #region Sprites
+            segmentStopWatch.Reset();
+            segmentStopWatch.Start();
             Texture2D spitterIcon = null;
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((assets) =>
             {
                 spitterIcon = assets.First(sprite => sprite.name == "texSpitterIcon");
             }));
-            #endregion
+            segmentStopWatch.Stop();
+            Log.Info("Icons loaded in " + segmentStopWatch.elapsedSeconds);
+
+            segmentStopWatch.Reset();
+            segmentStopWatch.Start();
+
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
                 //var escList = new List<EntityStateConfiguration>();
@@ -244,18 +269,21 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.Stomp.StompBase.projectilePrefab = stompProjectile;
                 projectilesList.Add(stompProjectile);
 
-                var clapEffect = colossusFactory.CreateClapEffect();
-                ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
-
                 var stompEffect = colossusFactory.CreateStompEffect();
                 ModdedEntityStates.Colossus.Stomp.StompBase.stompEffectPrefab = stompEffect;
                 effectsList.Add(new EffectDef(stompEffect));
+
+                var clapEffect = colossusFactory.CreateClapEffect();
+                ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
 
                 var flyingRockGhost = colossusFactory.CreateFlyingRocksGhost();
                 Enemies.Colossus.FloatingRocksController.flyingRockPrefab = flyingRockGhost;
                 var flyingRockProjectile = colossusFactory.CreateFlyingRockProjectile(flyingRockGhost);
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.projectilePrefab = flyingRockProjectile;
                 projectilesList.Add(flyingRockProjectile);
+
+                var laserEffect = colossusFactory.CreateLaserEffect();
+                ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
                 ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
                 ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
@@ -302,7 +330,13 @@ namespace EnemiesReturns
                 _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
             }));
-                
+
+            segmentStopWatch.Stop();
+            Log.Info("Characters loaded in " + segmentStopWatch.elapsedSeconds);
+
+            totalStopwatch.Stop();
+            Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
+
             yield break;
         }
 

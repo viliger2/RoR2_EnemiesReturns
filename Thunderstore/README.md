@@ -18,4 +18,4 @@ Mod is in active development, please address all bugs and suggestions to @vilige
 * Majority of sounds come from RoR and RoRR
 </details>
 
-* Special thanks for Moffein and /vm/ for telling me to fix my (viliger's) shit.
+* Special thanks to Moffein and /vm/ for telling me to fix my (viliger's) shit.
