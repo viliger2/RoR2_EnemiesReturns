@@ -41,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
         private static readonly int aimYawCycleHash = Animator.StringToHash("aimYawCycle");
 
-        private static readonly int aimPitchCycleHas = Animator.StringToHash("aimPitchCycle");
+        private static readonly int aimPitchCycleHash = Animator.StringToHash("aimPitchCycle");
 
         private GameObject beamInstance;
 
@@ -86,7 +86,13 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
             PlayAnimation("Body", "LaserBeamLoop");
             UpdateBeamTransforms();
-            RoR2Application.onLateUpdate += UpdateBeamTransformsInLateUpdate;
+            //RoR2Application.onLateUpdate += UpdateBeamTransformsInLateUpdate;
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            UpdateBeamTransforms();
         }
 
         public override void FixedUpdate()
@@ -97,9 +103,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             {
                 // math is fun
                 modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Abs(Mathf.Sin(fixedAge * anglePerSecond * angleAttackSpeedMult * Mathf.Deg2Rad)), 0f, 0.99f));
-                modelAnimator.SetFloat(aimPitchCycleHas, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(fixedAge / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
+                modelAnimator.SetFloat(aimPitchCycleHash, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(fixedAge / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
             }
-            if(isAuthority && stopwatch >= fireFrequency)
+            if (isAuthority && stopwatch >= fireFrequency)
             {
                 if (bulletSpawnHelperPoint)
                 {
@@ -177,10 +183,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
 
         public override void OnExit()
         {
-            modelAnimator.SetFloat(aimYawCycleHash, 0.5f);
-            modelAnimator.SetFloat(aimPitchCycleHas, 0.5f);
             base.OnExit();
-            RoR2Application.onLateUpdate -= UpdateBeamTransformsInLateUpdate;
+            //RoR2Application.onLateUpdate -= UpdateBeamTransformsInLateUpdate;
             UnityEngine.Object.Destroy(beamInstance);
         }
 

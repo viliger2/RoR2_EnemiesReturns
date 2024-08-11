@@ -121,24 +121,24 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody.rootMotionInMainState = false;
             characterBody.mainRootSpeed = 7.5f;
 
-            characterBody.baseMaxHealth = 2100f;
+            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Colossus.BaseMaxHealth.Value;
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
-            characterBody.baseMoveSpeed = 4f;
+            characterBody.baseMoveSpeed = EnemiesReturnsConfiguration.Colossus.BaseMoveSpeed.Value;
             characterBody.baseAcceleration = 20f;
-            characterBody.baseJumpPower = 5f;
-            characterBody.baseDamage = 40f;
+            characterBody.baseJumpPower = EnemiesReturnsConfiguration.Colossus.BaseJumpPower.Value;
+            characterBody.baseDamage = EnemiesReturnsConfiguration.Colossus.BaseDamage.Value;
             characterBody.baseAttackSpeed = 1f;
             characterBody.baseCrit = 0f;
-            characterBody.baseArmor = 20f;
+            characterBody.baseArmor = EnemiesReturnsConfiguration.Colossus.BaseArmor.Value;
             characterBody.baseVisionDistance = float.PositiveInfinity;
             characterBody.baseJumpCount = 1;
             characterBody.sprintingSpeedMultiplier = 1.45f;
 
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = 630f;
-            characterBody.levelDamage = 8f;
-            characterBody.levelArmor = 0f;
+            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Colossus.LevelMaxHealth.Value;
+            characterBody.levelDamage = EnemiesReturnsConfiguration.Colossus.LevelDamage.Value;
+            characterBody.levelArmor = EnemiesReturnsConfiguration.Colossus.LevelArmor.Value;
 
             characterBody.wasLucky = false;
             characterBody.spreadBloomDecayTime = 0.45f;
@@ -763,11 +763,11 @@ namespace EnemiesReturns.Enemies.Colossus
             asdHeadLaser.requireSkillReady = true;
             asdHeadLaser.requireEquipmentReady = false;
             asdHeadLaser.minUserHealthFraction = float.NegativeInfinity;
-            asdHeadLaser.maxUserHealthFraction = 0.35f;
+            asdHeadLaser.maxUserHealthFraction = 0.60f;
             asdHeadLaser.minTargetHealthFraction = float.NegativeInfinity;
             asdHeadLaser.maxTargetHealthFraction = float.PositiveInfinity;
             asdHeadLaser.minDistance = 0f;
-            asdHeadLaser.maxDistance = 60f;
+            asdHeadLaser.maxDistance = 100f;
             asdHeadLaser.selectionRequiresTargetLoS = false;
             asdHeadLaser.selectionRequiresOnGround = false;
             asdHeadLaser.selectionRequiresAimTarget = false;
@@ -930,7 +930,8 @@ namespace EnemiesReturns.Enemies.Colossus
             projectileController.ghostTransformAnchor = ghostAnchor.transform;
 
             var hitbox = clonedEffect.transform.Find("Hitbox");
-            hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 1.7f, hitbox.transform.localScale.z);
+            hitbox.transform.localScale = new Vector3(1.55f, 1.7f, 1.85f);
+            hitbox.transform.localPosition = new Vector3(0f, 0.2f, 0f);
 
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
             clonedEffectGhost.transform.localScale = new Vector3(2f, 2f, 2f);
@@ -949,10 +950,52 @@ namespace EnemiesReturns.Enemies.Colossus
         public GameObject CreateFlyingRockProjectile(GameObject rockGhost)
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
-            clonedEffect.GetComponent<ProjectileController>().ghostPrefab = rockGhost;
+            var projectileController = clonedEffect.GetComponent<ProjectileController>();
+            projectileController.ghostPrefab = rockGhost;
+            projectileController.allowPrediction = false; // TODO: check if it helps in network play
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
-            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = 5f;
+            var projectileSimple = clonedEffect.GetComponent<ProjectileSimple>();
+            projectileSimple.updateAfterFiring = false;
+            projectileSimple.lifetime = 5f;
+
+            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturnsConfiguration.Colossus.RockClapProjectileBlastRadius.Value;
+
+            //var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            //if(cube.TryGetComponent<BoxCollider>(out var collider))
+            //{
+            //    collider.enabled = false;
+            //};
+            //cube.transform.parent = clonedEffect.transform;
+            //cube.transform.localPosition = Vector3.forward;
+
+            // for now copy laser and see how it goes
+            clonedEffect.AddComponent<ProjectileTargetComponent>();
+
+            var targetFinder = clonedEffect.AddComponent<ProjectileSphereTargetFinder>();
+            targetFinder.lookRange = 100f;
+            targetFinder.targetSearchInterval = 0.25f;
+            targetFinder.onlySearchIfNoTarget = true;
+            targetFinder.allowTargetLoss = false;
+            targetFinder.testLoS = false;
+            targetFinder.ignoreAir = false;
+            targetFinder.flierAltitudeTolerance = float.PositiveInfinity;
+
+            var projectileMover = clonedEffect.AddComponent<ProjectileMoveTowardsTarget>();
+            projectileMover.speed = 15f;
+
+            //var projectleSteer = clonedEffect.AddComponent<ProjectileSteerTowardTarget>();
+            //projectleSteer.yAxisOnly = true;
+            //projectleSteer.rotationSpeed = 30f;
+
+            //var projectileHomingEnabler = clonedEffect.AddComponent<ProjectileEnableHomingAfterTargetAquired>();
+            //projectileHomingEnabler.changeSpeedAfterTargetFound = true;
+            //projectileHomingEnabler.newSpeed = 20f;
+
+            //if(clonedeffect.trygetcomponent<applytorqueonstart>(out var torque))
+            //{
+            //    unityengine.object.destroyimmediate(torque);
+            //}
 
             return clonedEffect;
         }

@@ -73,6 +73,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> RockClapProjectileForce;
             public static ConfigEntry<float> RockClapProjectileSpeed;
             public static ConfigEntry<float> RockClapProjectileSpeedDelta;
+            public static ConfigEntry<float> RockClapProjectileBlastRadius;
             public static ConfigEntry<float> RockClapProjectileDistanceFraction;
             public static ConfigEntry<float> RockClapProjectileDistanceFractionDelta;
             public static ConfigEntry<float> RockClapProjectileSpawnDistance;
@@ -136,32 +137,43 @@ namespace EnemiesReturns
 
             #region Colossus
 
-            Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 6f, "Colossus' Stomp Overlap (aka stomp itself) damage.");
+            Colossus.BaseMaxHealth = config.Bind("Character Stats", "Base Max Health", 2100f, "Colossus' base health.");
+            Colossus.BaseMoveSpeed = config.Bind("Character Stats", "Base Movement Speed", 4f, "Colossus' base movement speed.");
+            Colossus.BaseJumpPower = config.Bind("Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");
+            Colossus.BaseDamage = config.Bind("Character Stats", "Base Damage", 40f, "Colossus' base damage.");
+            Colossus.BaseArmor = config.Bind("Character Stats", "Base Armor", 20f, "Colossus' base armor.");
+
+            Colossus.LevelMaxHealth = config.Bind("Character Stats", "Health per Level", 630f, "Colossus' health increase per level.");
+            Colossus.LevelDamage = config.Bind("Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
+            Colossus.LevelArmor = config.Bind("Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
+
+            Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 2.2f, "Colossus' Stomp Overlap (aka stomp itself) damage.");
             Colossus.StompOverlapAttackForce = config.Bind("Colossus Stomp", "Stomp Overlap Force", 6000f, "Colossus' Stomp Overlap (aka stomp itself) force.");
-            Colossus.StompProjectileDamage = config.Bind("Colossus Stomp", "Stomp Projectile Damage", 3f, "Colossus' Stomp Projectile damage.");
+            Colossus.StompProjectileDamage = config.Bind("Colossus Stomp", "Stomp Projectile Damage", 1.5f, "Colossus' Stomp Projectile damage.");
             Colossus.StompProjectileForce = config.Bind("Colossus Stomp", "Stomp Projectile Force", -2500f, "Colossus' Stomp Projectile force. Default number is negative, that means it pulls towards Colossus.");
             Colossus.StompProjectileSpeed = config.Bind("Colossus Stomp", "Stomp Projectile Speed", 60f, "Colossus' Stomp Projectile speed.");
             Colossus.StompProjectileCount = config.Bind("Colossus Stomp", "Stomp Projectile Count", 16, "Colossus' Stomp Projectile count.");
 
-            Colossus.RockClapProjectileDamage = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Damage", 3f, "Colossus' Rock Clap projectile damage.");
+            Colossus.RockClapProjectileDamage = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Damage", 2f, "Colossus' Rock Clap projectile damage.");
             Colossus.RockClapProjectileForce = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Force", 3000f, "Colossus' Rock Clap projectile force."); // TODO: might be too much
             Colossus.RockClapProjectileSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Speed", 50f, "Colossus' Rock Clap projectile speed.");
             Colossus.RockClapProjectileSpeedDelta = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Speed Delta", 5f, "Colossus' Rock Clap projectile speed delta (speed = Random(speed - delta, speed + delta)).");
+            Colossus.RockClapProjectileBlastRadius = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Blast Radius", 5f, "Colossus' Rock Clap projectile blast radius.");
             Colossus.RockClapProjectileDistanceFraction = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Distance Fraction", 0.8f, "Basically determines angle at which rocks fly upwards. Uses colossus' position and rock initial position and takes a distance between them at this fraction.");
             Colossus.RockClapProjectileDistanceFractionDelta = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Distance Fraction Delta", 0.1f, "Projectile distance delta. See Projectile distance for explanation and see Speed delta for the formula.");
             Colossus.RockClapProjectileSpawnDistance = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Spawn Distance", 15f, "Colossus' Rock Clap projectile distance from body. Basically controls how far rocks spawn from the center of the body.");
             Colossus.RockClapProjectileCount = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Count", 20, "Colossus' Rock Clap projectile count.");
-            Colossus.RockClapDamage = config.Bind("Colossus Rock Clap", "Rock Clap Damage", 6f, "Colossus' Rock Clap damage.");
+            Colossus.RockClapDamage = config.Bind("Colossus Rock Clap", "Rock Clap Damage", 2.5f, "Colossus' Rock Clap damage.");
             Colossus.RockClapForce = config.Bind("Colossus Rock Clap", "Rock Clap Force", 6000f, "Colossus' Rock Clap force."); // TODO: might be too much
             Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
 
-            Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 15f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
+            Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 25f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
             Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
-            Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 6f, "Colossus' Head Laser Damage");
+            Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 0.5f, "Colossus' Head Laser Damage");
             Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
-            Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 15f, "Colossus' Head Laser radius.");
+            Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 7.5f, "Colossus' Head Laser radius.");
             Colossus.HeadLaserTurnCount = config.Bind("Colossus Head Laser", "Head Laser Head Turn Count", 3, "How many times Colossus turns its head left to right and back during Head Laser attack. Duration of each turn is (Head Laser Duration)/(Head Laser Head Turn Count).");
-            Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.1f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
+            Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.05f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
             Colossus.HeadLaserPitchStep = config.Bind("Colossus Head Laser", "Head Laser Head Pitch Step", 0.25f, "Determines how much higher Colossus' head gets after each turn. Final value is (Head Laser Starting Pitch)+(Head Laser Head Turn Count)*(Head Laser Head Pitch Step). Values (including total value) above 1 will be limited to 1.");
             #endregion
         }
