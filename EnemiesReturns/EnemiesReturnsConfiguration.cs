@@ -101,19 +101,19 @@ namespace EnemiesReturns
 
             #region Spitter
 
-            Spitter.SelectionWeight = config.Bind("Director", "Selection Weight", 1, "Selection weight of Spitter.");
-            Spitter.MinimumStageCompletion = config.Bind("Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
-            Spitter.DirectorCost = config.Bind("Director", "Director Cost", 30, "Director cost of Spitter.");
+            Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
+            Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");
             
-            Spitter.BaseMaxHealth = config.Bind("Character Stats", "Base Max Health", 300f, "Spitter's base health.");
-            Spitter.BaseMoveSpeed = config.Bind("Character Stats", "Base Movement Speed", 7f, "Spitter's base movement speed.");
-            Spitter.BaseJumpPower = config.Bind("Character Stats", "Base Jump Power", 20f, "Spitter's base jump power.");
-            Spitter.BaseDamage = config.Bind("Character Stats", "Base Damage", 20f, "Spitter's base damage.");
-            Spitter.BaseArmor = config.Bind("Character Stats", "Base Armor", 0f, "Spitter's base armor.");
+            Spitter.BaseMaxHealth = config.Bind("Spitter Character Stats", "Base Max Health", 300f, "Spitter's base health.");
+            Spitter.BaseMoveSpeed = config.Bind("Spitter Character Stats", "Base Movement Speed", 7f, "Spitter's base movement speed.");
+            Spitter.BaseJumpPower = config.Bind("Spitter Character Stats", "Base Jump Power", 20f, "Spitter's base jump power.");
+            Spitter.BaseDamage = config.Bind("Spitter Character Stats", "Base Damage", 20f, "Spitter's base damage.");
+            Spitter.BaseArmor = config.Bind("Spitter Character Stats", "Base Armor", 0f, "Spitter's base armor.");
 
-            Spitter.LevelMaxHealth = config.Bind("Character Stats", "Health per Level", 90f, "Spitter's health increase per level.");
-            Spitter.LevelDamage = config.Bind("Character Stats", "Damage per Level", 4f, "Spitter's damage increase per level.");
-            Spitter.LevelArmor = config.Bind("Character Stats", "Armor per Level", 0f, "Spitter's armor increase per level.");
+            Spitter.LevelMaxHealth = config.Bind("Spitter Character Stats", "Health per Level", 90f, "Spitter's health increase per level.");
+            Spitter.LevelDamage = config.Bind("Spitter Character Stats", "Damage per Level", 4f, "Spitter's damage increase per level.");
+            Spitter.LevelArmor = config.Bind("Spitter Character Stats", "Armor per Level", 0f, "Spitter's armor increase per level.");
 
             Spitter.BiteDamageModifier = config.Bind("Spitter Bite", "Bite Damage", 1.5f, "Spitter's Bite damage.");
             Spitter.BiteDamageForce = config.Bind("Spitter Bite", "Bite Force", 200f, "Spitter's Bite force, by default equal to that of Lemurian.");
@@ -137,15 +137,15 @@ namespace EnemiesReturns
 
             #region Colossus
 
-            Colossus.BaseMaxHealth = config.Bind("Character Stats", "Base Max Health", 2100f, "Colossus' base health.");
-            Colossus.BaseMoveSpeed = config.Bind("Character Stats", "Base Movement Speed", 4f, "Colossus' base movement speed.");
-            Colossus.BaseJumpPower = config.Bind("Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");
-            Colossus.BaseDamage = config.Bind("Character Stats", "Base Damage", 40f, "Colossus' base damage.");
-            Colossus.BaseArmor = config.Bind("Character Stats", "Base Armor", 20f, "Colossus' base armor.");
+            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 2100f, "Colossus' base health.");
+            Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 4f, "Colossus' base movement speed.");
+            Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");
+            Colossus.BaseDamage = config.Bind("Colossus Character Stats", "Base Damage", 40f, "Colossus' base damage.");
+            Colossus.BaseArmor = config.Bind("Colossus Character Stats", "Base Armor", 20f, "Colossus' base armor.");
 
-            Colossus.LevelMaxHealth = config.Bind("Character Stats", "Health per Level", 630f, "Colossus' health increase per level.");
-            Colossus.LevelDamage = config.Bind("Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
-            Colossus.LevelArmor = config.Bind("Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
+            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 630f, "Colossus' health increase per level.");
+            Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
+            Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
 
             Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 2.2f, "Colossus' Stomp Overlap (aka stomp itself) damage.");
             Colossus.StompOverlapAttackForce = config.Bind("Colossus Stomp", "Stomp Overlap Force", 6000f, "Colossus' Stomp Overlap (aka stomp itself) force.");
