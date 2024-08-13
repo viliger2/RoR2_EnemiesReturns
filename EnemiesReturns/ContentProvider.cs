@@ -320,6 +320,25 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
+
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster);
+                DirectorAPI.DirectorCardHolder dchColossusDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = new DirectorCard
+                    {
+                        spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
+                        selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = true,
+                        minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    },
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.TitanicPlains);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.SunderedGrove);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.RallypointDelta);
                 //stateList.Add(typeof(HeadLaserAttack));
                 //stateList.Add(typeof(HeadLaserEnd));
                 //stateList.Add(typeof(HeadLaserStart));

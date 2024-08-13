@@ -150,6 +150,10 @@ namespace EnemiesReturns
 
             #region Colossus
 
+            Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
+            Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 4, "Minimum stages players need to complete before monster starts spawning.");
+            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 600, "Director cost of Colossus.");
+
             Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 2100f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 4f, "Colossus' base movement speed.");
             Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");

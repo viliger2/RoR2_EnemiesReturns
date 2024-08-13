@@ -58,7 +58,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public struct SpawnCards
         {
-
+            public static SpawnCard cscColossusDefault;
         }
 
         public static GameObject ColossusBody;
@@ -1388,8 +1388,8 @@ namespace EnemiesReturns.Enemies.Colossus
             card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             card.requiredFlags = RoR2.Navigation.NodeFlags.None;
             card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn;
-            card.directorCreditCost = 600;
-            card.occupyPosition = false;
+            card.directorCreditCost = EnemiesReturnsConfiguration.Colossus.DirectorCost.Value;
+            card.occupyPosition = true;
             card.eliteRules = SpawnCard.EliteRules.Default;
             card.noElites = false;
             card.forbiddenAsBoss = false;
