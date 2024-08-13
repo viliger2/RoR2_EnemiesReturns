@@ -335,10 +335,10 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
 
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.TitanicPlains);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.SunderedGrove);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.RallypointDelta);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.WetlandAspect);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlains);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SunderedGrove);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDelta);
                 //stateList.Add(typeof(HeadLaserAttack));
                 //stateList.Add(typeof(HeadLaserEnd));
                 //stateList.Add(typeof(HeadLaserStart));
