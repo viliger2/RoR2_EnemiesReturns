@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using EnemiesReturns.ModdedEntityStates.Junk.Colossus;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus
+
+namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.LaserClap
 {
-    public class LaserClapStart: BaseState
+    public class LaserClapStart : BaseState
     {
         public static float baseDuration = 1.5f;
 
@@ -33,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
         {
             base.FixedUpdate();
             //controller.SetRockThingPosition(Vector3.Lerp(controller.initialPosition.position, rockTarget.position, fixedAge / duration));
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new LaserClapEnd());
             }

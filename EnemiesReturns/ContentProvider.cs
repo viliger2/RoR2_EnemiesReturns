@@ -72,23 +72,18 @@ namespace EnemiesReturns
             //TimeSpan ts = stopwatch.elapsedSeconds;
             Log.Info("Soundbanks loaded in " + segmentStopWatch.elapsedSeconds);
 
-
-            segmentStopWatch.Reset();
-            segmentStopWatch.Start();
             string assetBundleFolderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(ContentProvider).Assembly.Location), AssetBundleFolder);
 
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
-            segmentStopWatch.Stop();
-            Log.Info("Added bundle loaded in " + segmentStopWatch.elapsedSeconds);
-
-            segmentStopWatch.Reset();
-            segmentStopWatch.Start();
             Dictionary<string, Material> skinsLookup = new Dictionary<string, Material>();
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 var materials = assets;
 
                 if (materials != null)
@@ -112,25 +107,25 @@ namespace EnemiesReturns
                         }
                     }
                 }
+                stopwatch.Stop();
+                Log.Info("Materials swapped in " + stopwatch.elapsedSeconds);
             }));
-            segmentStopWatch.Stop();
-            Log.Info("Materials swapped in " + segmentStopWatch.elapsedSeconds);
 
-            segmentStopWatch.Reset();
-            segmentStopWatch.Start();
             Texture2D spitterIcon = null;
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((assets) =>
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 spitterIcon = assets.First(sprite => sprite.name == "texSpitterIcon");
+                stopwatch.Stop();
+                Log.Info("Icons loaded in " + stopwatch.elapsedSeconds);
             }));
-            segmentStopWatch.Stop();
-            Log.Info("Icons loaded in " + segmentStopWatch.elapsedSeconds);
-
-            segmentStopWatch.Reset();
-            segmentStopWatch.Start();
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 //var escList = new List<EntityStateConfiguration>();
                 var bodyList = new List<GameObject>();
                 var masterList = new List<GameObject>();
@@ -282,26 +277,30 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.projectilePrefab = flyingRockProjectile;
                 projectilesList.Add(flyingRockProjectile);
 
-                var laserEffect = colossusFactory.CreateLaserEffect();
-                ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
+                var laserBarrageProjectile = colossusFactory.CreateLaserBarrageProjectile();
+                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.projectilePrefab = laserBarrageProjectile;
+                projectilesList.Add(laserBarrageProjectile);
+
+                //var laserEffect = colossusFactory.CreateLaserEffect();
+                //ModdedEntityStates.Junk.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
                 ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
                 ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
-                ColossusFactory.Skills.LaserClap = colossusFactory.CreateLaserClapSkill();
-                ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
+                ColossusFactory.Skills.LaserBarrage = colossusFactory.CreateLaserClapSkill();
+                //ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
                 sdList.Add(ColossusFactory.Skills.Stomp);
                 sdList.Add(ColossusFactory.Skills.StoneClap);
-                sdList.Add(ColossusFactory.Skills.LaserClap);
-                sdList.Add(ColossusFactory.Skills.HeadLaser);
+                sdList.Add(ColossusFactory.Skills.LaserBarrage);
+                //sdList.Add(ColossusFactory.Skills.HeadLaser);
 
                 ColossusFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("ColossusPrimaryFamily", ColossusFactory.Skills.Stomp);
                 ColossusFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("ColossusSecondaryFamily", ColossusFactory.Skills.StoneClap);
-                ColossusFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusFactory.Skills.LaserClap);
-                ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
+                ColossusFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusFactory.Skills.LaserBarrage);
+                //ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
                 sfList.Add(ColossusFactory.SkillFamilies.Primary);
                 sfList.Add(ColossusFactory.SkillFamilies.Secondary);
                 sfList.Add(ColossusFactory.SkillFamilies.Utility);
-                sfList.Add(ColossusFactory.SkillFamilies.Special);
+                //sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
                 ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
@@ -318,9 +317,12 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompBase));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompL));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompR));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserEnd));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaser.HeadLaserStart));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
+                //stateList.Add(typeof(HeadLaserAttack));
+                //stateList.Add(typeof(HeadLaserEnd));
+                //stateList.Add(typeof(HeadLaserStart));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());
@@ -332,10 +334,9 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(projectilesList.ToArray());
                 _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
+                stopwatch.Stop();
+                Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
-
-            segmentStopWatch.Stop();
-            Log.Info("Characters loaded in " + segmentStopWatch.elapsedSeconds);
 
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
@@ -345,6 +346,9 @@ namespace EnemiesReturns
 
         private IEnumerator LoadAssetBundle(string assetBundleFullPath, IProgress<float> progress, Action<AssetBundle> onAssetBundleLoaded)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(assetBundleFullPath);
             while (!assetBundleCreateRequest.isDone)
             {
@@ -353,6 +357,8 @@ namespace EnemiesReturns
             }
 
             onAssetBundleLoaded(assetBundleCreateRequest.assetBundle);
+            stopwatch.Stop();
+            Log.Info("Asset bundle " + assetBundleFullPath + " loaded in " + stopwatch.elapsedSeconds);
 
             yield break;
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
+namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser
 {
     public class HeadLaserEnd : BaseState
     {
@@ -34,15 +34,20 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             PlayCrossfade("Body", "LaserBeamEnd", "Laser.playbackrate", duration, 0.1f);
         }
 
+        public override void Update()
+        {
+            base.Update();
+            if (modelAnimator)
+            {
+                modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Lerp(startYaw, 0.5f, age / duration), 0f, 0.99f));
+                modelAnimator.SetFloat(aimPitchCycleHash, Mathf.Clamp(Mathf.Lerp(startPitch, 0.5f, age / duration), 0f, 0.99f));
+            }
+        }
+
+        // TODO: MOVE ANIMATION TO UPDATE, WHAT THE FUCK WAS I THINKING
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            if (modelAnimator)
-            {
-                modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Lerp(startYaw, 0.5f, fixedAge / duration), 0f, 0.99f));
-                modelAnimator.SetFloat(aimPitchCycleHash, Mathf.Clamp(Mathf.Lerp(startPitch, 0.5f, fixedAge / duration), 0f, 0.99f));
-            }
 
             if (fixedAge >= duration && isAuthority)
             {

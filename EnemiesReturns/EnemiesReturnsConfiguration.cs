@@ -68,6 +68,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> StompProjectileForce;
             public static ConfigEntry<float> StompProjectileSpeed;
             public static ConfigEntry<int> StompProjectileCount;
+            public static ConfigEntry<float> StompProjectileScale;
 
             public static ConfigEntry<float> RockClapProjectileDamage;
             public static ConfigEntry<float> RockClapProjectileForce;
@@ -81,21 +82,33 @@ namespace EnemiesReturns
             public static ConfigEntry<float> RockClapDamage;
             public static ConfigEntry<float> RockClapForce;
             public static ConfigEntry<float> RockClapRadius;
+            public static ConfigEntry<float> RockClapHomingSpeed;
+            public static ConfigEntry<float> RockClapHomingRange;
 
-            public static ConfigEntry<float> HeadLaserDuration;
-            public static ConfigEntry<float> HeadLaserFireFrequency;
-            public static ConfigEntry<float> HeadLaserDamage;
-            public static ConfigEntry<float> HeadLaserForce;
-            public static ConfigEntry<float> HeadLaserRadius;
-            public static ConfigEntry<int> HeadLaserTurnCount;
-            public static ConfigEntry<float> HeadLaserPitchStart;
-            public static ConfigEntry<float> HeadLaserPitchStep;
+            public static ConfigEntry<float> LaserBarrageDuration;
+            public static ConfigEntry<float> LaserBarrageFrequency;
+            public static ConfigEntry<float> LaserBarrageDamage;
+            public static ConfigEntry<float> LaserBarrageProjectileSpeed;
+            public static ConfigEntry<float> LaserBarrageForce;
+            public static ConfigEntry<float> LaserBarrageSpread;
+            public static ConfigEntry<float> LaserBarrageHeadPitch;
+            public static ConfigEntry<int> LaserBarrageProjectileCount;
+            public static ConfigEntry<float> LaserBarrageExplosionRadius;
+            public static ConfigEntry<float> LaserBarrageExplosionDamage;
+            public static ConfigEntry<float> LaserBarrageExplosionDelay;
+
+            //public static ConfigEntry<float> HeadLaserDuration;
+            //public static ConfigEntry<float> HeadLaserFireFrequency;
+            //public static ConfigEntry<float> HeadLaserDamage;
+            //public static ConfigEntry<float> HeadLaserForce;
+            //public static ConfigEntry<float> HeadLaserRadius;
+            //public static ConfigEntry<int> HeadLaserTurnCount;
+            //public static ConfigEntry<float> HeadLaserPitchStart;
+            //public static ConfigEntry<float> HeadLaserPitchStep;
         }
 
         public static void PopulateConfig(ConfigFile config) 
         {
-            config.Clear();
-
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
             testconfig = config.Bind("test", "test", 5f, "test");
 
@@ -153,6 +166,7 @@ namespace EnemiesReturns
             Colossus.StompProjectileForce = config.Bind("Colossus Stomp", "Stomp Projectile Force", -2500f, "Colossus' Stomp Projectile force. Default number is negative, that means it pulls towards Colossus.");
             Colossus.StompProjectileSpeed = config.Bind("Colossus Stomp", "Stomp Projectile Speed", 60f, "Colossus' Stomp Projectile speed.");
             Colossus.StompProjectileCount = config.Bind("Colossus Stomp", "Stomp Projectile Count", 16, "Colossus' Stomp Projectile count.");
+            Colossus.StompProjectileScale = config.Bind("Colossus Stomp", "Stomp Projectile Scale", 2f, "Colossus' Stomp Projectile scale.");
 
             Colossus.RockClapProjectileDamage = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Damage", 2f, "Colossus' Rock Clap projectile damage.");
             Colossus.RockClapProjectileForce = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Force", 3000f, "Colossus' Rock Clap projectile force."); // TODO: might be too much
@@ -166,15 +180,33 @@ namespace EnemiesReturns
             Colossus.RockClapDamage = config.Bind("Colossus Rock Clap", "Rock Clap Damage", 2.5f, "Colossus' Rock Clap damage.");
             Colossus.RockClapForce = config.Bind("Colossus Rock Clap", "Rock Clap Force", 6000f, "Colossus' Rock Clap force."); // TODO: might be too much
             Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
+            Colossus.RockClapHomingSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Homing Speed", 15f, "Colossus' Rock Clap homing speed. Rocks home onto target by x and z axis (basically parallel to the ground, without homing up or down).");
+            Colossus.RockClapHomingRange = config.Bind("Colossus Rock Clap", "Rock Clap Homing Range", 100f, "Colossus' Rock Clap homing range. How far rocks look for a targer.");
 
-            Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 25f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
-            Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
-            Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 0.5f, "Colossus' Head Laser Damage");
-            Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
-            Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 7.5f, "Colossus' Head Laser radius.");
-            Colossus.HeadLaserTurnCount = config.Bind("Colossus Head Laser", "Head Laser Head Turn Count", 3, "How many times Colossus turns its head left to right and back during Head Laser attack. Duration of each turn is (Head Laser Duration)/(Head Laser Head Turn Count).");
-            Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.05f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
-            Colossus.HeadLaserPitchStep = config.Bind("Colossus Head Laser", "Head Laser Head Pitch Step", 0.25f, "Determines how much higher Colossus' head gets after each turn. Final value is (Head Laser Starting Pitch)+(Head Laser Head Turn Count)*(Head Laser Head Pitch Step). Values (including total value) above 1 will be limited to 1.");
+            Colossus.LaserBarrageDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Damage", 0.5f, "Colossus' Laser Barrage damage.");
+            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 10f, "Colossus' Laser Barrage duration.");
+            Colossus.LaserBarrageProjectileSpeed = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectile Speed", 50f, "Colossus' Laser Barrage projectile speed.");
+            Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.3f, "Colossus' Laser Barrage fire frequency.");
+            Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.18f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
+            Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.75f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
+            Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");
+            Colossus.LaserBarrageProjectileCount = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectiles per Shot", 8, "Colossus' Laser Barrage projectiles per shot count.");
+            Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 5f, "Colossus' Laser Barrage explosion radius.");
+            Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 2.5f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
+            Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
+
+
+
+
+            //Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 25f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
+            //Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
+            //Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 0.5f, "Colossus' Head Laser Damage");
+            //Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
+            //Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 7.5f, "Colossus' Head Laser radius.");
+            //Colossus.HeadLaserTurnCount = config.Bind("Colossus Head Laser", "Head Laser Head Turn Count", 3, "How many times Colossus turns its head left to right and back during Head Laser attack. Duration of each turn is (Head Laser Duration)/(Head Laser Head Turn Count).");
+            //Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.05f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
+            //Colossus.HeadLaserPitchStep = config.Bind("Colossus Head Laser", "Head Laser Head Pitch Step", 0.25f, "Determines how much higher Colossus' head gets after each turn. Final value is (Head Laser Starting Pitch)+(Head Laser Head Turn Count)*(Head Laser Head Pitch Step). Values (including total value) above 1 will be limited to 1.");
+
             #endregion
         }
 

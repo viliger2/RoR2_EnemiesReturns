@@ -29,10 +29,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             PlayCrossfade("Gesture, Override", "ClapStart", "Clap.playbackrate", duration, 0.1f);
         }
 
+        public override void Update()
+        {
+            base.Update();
+            floatingRocksController.SetRockThingPosition(Vector3.Lerp(floatingRocksController.initialPosition.position, rockTarget.position, age / duration));
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            floatingRocksController.SetRockThingPosition(Vector3.Lerp(floatingRocksController.initialPosition.position, rockTarget.position, fixedAge / duration));
             if(fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new RockClapEnd());

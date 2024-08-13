@@ -19,6 +19,7 @@ using static RoR2.ItemDisplayRuleSet;
 using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
+using EnemiesReturns.ModdedEntityStates.Junk.Spitter;
 
 namespace EnemiesReturns.Enemies.Spitter
 {
@@ -1156,7 +1157,7 @@ namespace EnemiesReturns.Enemies.Spitter
             //bite.icon = ; yeah, right
 
             spit.activationStateMachineName = "Weapon";
-            spit.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.NormalSpit));
+            spit.activationState = new EntityStates.SerializableEntityStateType(typeof(NormalSpit));
             spit.interruptPriority = EntityStates.InterruptPriority.Any;
 
             spit.baseRechargeInterval = 0f;

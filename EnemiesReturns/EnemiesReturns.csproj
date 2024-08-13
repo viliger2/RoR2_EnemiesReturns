@@ -38,7 +38,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="cd $(TargetDir)&#xD;&#xA;del Decalicious.dll" />
+	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll" />
 	</Target>
 
 </Project>

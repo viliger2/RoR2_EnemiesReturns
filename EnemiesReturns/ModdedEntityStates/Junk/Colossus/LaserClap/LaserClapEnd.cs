@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus
+namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus
 {
     public class LaserClapEnd : BaseState
     {

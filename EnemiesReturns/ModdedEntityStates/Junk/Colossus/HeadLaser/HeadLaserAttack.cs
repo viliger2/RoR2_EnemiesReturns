@@ -6,30 +6,29 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
+namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser
 {
     public class HeadLaserAttack : BaseState
     {
-
         // TODO: unfuck transforms, too many unncessesary points
         // maybe add a hit\filter callback so enemies only get hit every x seconds\only once per swipe
-        public static float baseDuration = EnemiesReturnsConfiguration.Colossus.HeadLaserDuration.Value;
+        public static float baseDuration = 25f;
 
-        public static float baseFireFrequency = EnemiesReturnsConfiguration.Colossus.HeadLaserFireFrequency.Value;
+        public static float baseFireFrequency = 0.06f;
 
-        public static float laserDamage = EnemiesReturnsConfiguration.Colossus.HeadLaserDamage.Value;
+        public static float laserDamage = 0.5f;
 
-        public static float laserForce = EnemiesReturnsConfiguration.Colossus.HeadLaserForce.Value;
+        public static float laserForce = 0f;
 
-        public static float laserRadius = EnemiesReturnsConfiguration.Colossus.HeadLaserRadius.Value;
+        public static float laserRadius = 7.5f;
 
         public static GameObject beamPrefab;
 
-        public static int totalTurnCount = EnemiesReturnsConfiguration.Colossus.HeadLaserTurnCount.Value;
+        public static int totalTurnCount = 3;
 
-        public static float pitchStart = EnemiesReturnsConfiguration.Colossus.HeadLaserPitchStart.Value;
+        public static float pitchStart = 0.05f;
 
-        public static float pitchStep = EnemiesReturnsConfiguration.Colossus.HeadLaserPitchStep.Value;
+        public static float pitchStep = 0.25f;
 
         private static float laserMaxDistance = 2000f;
 
@@ -68,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             angleAttackSpeedMult = baseDuration / duration;
-            anglePerSecond = (totalTurnCount * 90) / baseDuration; // 90 is for sin()
+            anglePerSecond = totalTurnCount * 90 / baseDuration; // 90 is for sin()
             fireFrequency = baseFireFrequency / attackSpeedStat;
 
             effectPoint = FindModelChild("LaserEffectPoint");
@@ -92,6 +91,12 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
         public override void Update()
         {
             base.Update();
+            if (modelAnimator)
+            {
+                // math is fun
+                modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Abs(Mathf.Sin(age * anglePerSecond * angleAttackSpeedMult * Mathf.Deg2Rad)), 0f, 0.99f));
+                modelAnimator.SetFloat(aimPitchCycleHash, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(age / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
+            }
             UpdateBeamTransforms();
         }
 
@@ -99,12 +104,6 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
         {
             base.FixedUpdate();
             stopwatch += Time.fixedDeltaTime;
-            if (modelAnimator)
-            {
-                // math is fun
-                modelAnimator.SetFloat(aimYawCycleHash, Mathf.Clamp(Mathf.Abs(Mathf.Sin(fixedAge * anglePerSecond * angleAttackSpeedMult * Mathf.Deg2Rad)), 0f, 0.99f));
-                modelAnimator.SetFloat(aimPitchCycleHash, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(fixedAge / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
-            }
             if (isAuthority && stopwatch >= fireFrequency)
             {
                 if (bulletSpawnHelperPoint)
@@ -152,7 +151,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaser
             bulletAttack.smartCollision = false;
             bulletAttack.damageType = DamageType.Generic;
             bulletAttack.maxDistance = laserMaxDistance;
-            bulletAttack.procChainMask = default(ProcChainMask);
+            bulletAttack.procChainMask = default;
             bulletAttack.damageColorIndex = DamageColorIndex.Default;
             bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
             return bulletAttack;

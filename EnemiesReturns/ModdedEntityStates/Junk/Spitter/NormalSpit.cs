@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.ModdedEntityStates.Spitter
+namespace EnemiesReturns.ModdedEntityStates.Junk.Spitter
 {
     public class NormalSpit : GenericProjectileBaseState
     {
@@ -33,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
             Util.PlaySound("ER_Spiiter_Spit_Play", gameObject);
 
-            if(characterBody)
+            if (characterBody)
             {
                 characterBody.SetAimTimer(3f);
             }
