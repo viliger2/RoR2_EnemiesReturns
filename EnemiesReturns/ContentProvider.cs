@@ -286,7 +286,7 @@ namespace EnemiesReturns
 
                 ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
                 ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
-                ColossusFactory.Skills.LaserBarrage = colossusFactory.CreateLaserClapSkill();
+                ColossusFactory.Skills.LaserBarrage = colossusFactory.CreateLaserBarrageSkill();
                 //ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
                 sdList.Add(ColossusFactory.Skills.Stomp);
                 sdList.Add(ColossusFactory.Skills.StoneClap);

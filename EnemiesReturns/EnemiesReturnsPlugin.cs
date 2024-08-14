@@ -69,46 +69,49 @@ namespace EnemiesReturns
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
 		}
 
+        [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]
+		private static void CCSpawnTitans(ConCommandArgs args)
+		{
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Titan/cscTitanBlackBeach.asset").WaitForCompletion(), localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Titan/cscTitanDampCave.asset").WaitForCompletion(), localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Titan/cscTitanGolemPlains.asset").WaitForCompletion(), localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Titan/cscTitanGooLake.asset").WaitForCompletion(), localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Titan/cscTitanGold.asset").WaitForCompletion(), localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
         [ConCommand(commandName = "returns_spawn_spitters", flags = ConVarFlags.None, helpText = "Spawns all Spitter variants")]
 		private static void CCSpawnSpitters(ConCommandArgs args)
 		{
 			var localPlayers = LocalUserManager.readOnlyLocalUsersList;
 			var localPlayer = localPlayers[0].cachedBody;
 
-			var spawnRequest = new DirectorSpawnRequest(
-				Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDefault,
-				new DirectorPlacementRule
-				{
-					placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
-					position = localPlayer.modelLocator.modelBaseTransform.position
-				},
-				new Xoroshiro128Plus(123)
-				);
-			spawnRequest.teamIndexOverride = TeamIndex.Monster;
-			spawnRequest.ignoreTeamMemberLimit = true;
-
-			DirectorCore.instance.TrySpawnObject(spawnRequest);
-
-            var spawnRequest2 = new DirectorSpawnRequest(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterLakes, new DirectorPlacementRule { placementMode = DirectorPlacementRule.PlacementMode.NearestNode, position = localPlayer.modelLocator.modelBaseTransform.position }, new Xoroshiro128Plus(123));
-            spawnRequest2.teamIndexOverride = TeamIndex.Monster;
-            spawnRequest2.ignoreTeamMemberLimit = true;
-
-            DirectorCore.instance.TrySpawnObject(spawnRequest2);
-
-            var spawnRequest3 = new DirectorSpawnRequest(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterSulfur, new DirectorPlacementRule { placementMode = DirectorPlacementRule.PlacementMode.NearestNode, position = localPlayer.modelLocator.modelBaseTransform.position }, new Xoroshiro128Plus(123));
-            spawnRequest3.teamIndexOverride = TeamIndex.Monster;
-            spawnRequest3.ignoreTeamMemberLimit = true;
-
-            DirectorCore.instance.TrySpawnObject(spawnRequest3);
-
-            var spawnRequest4 = new DirectorSpawnRequest(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDepths, new DirectorPlacementRule { placementMode = DirectorPlacementRule.PlacementMode.NearestNode, position = localPlayer.modelLocator.modelBaseTransform.position }, new Xoroshiro128Plus(123));
-            spawnRequest4.teamIndexOverride = TeamIndex.Monster;
-            spawnRequest4.ignoreTeamMemberLimit = true;
-
-            DirectorCore.instance.TrySpawnObject(spawnRequest4);
+			SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterLakes, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDepths, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterLakes, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
-		[ConCommand(commandName = "returns_body_generate_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all EnemiesReturns bodies.")]
+		private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)
+		{
+            var spawnRequest = new DirectorSpawnRequest(
+                card,
+                new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
+                    position = position
+                },
+                new Xoroshiro128Plus(123)
+                );
+            spawnRequest.teamIndexOverride = TeamIndex.Monster;
+            spawnRequest.ignoreTeamMemberLimit = true;
+
+            DirectorCore.instance.TrySpawnObject(spawnRequest);
+        }
+
+        [ConCommand(commandName = "returns_body_generate_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all EnemiesReturns bodies.")]
 		private static void CCBodyGeneratePortraits(ConCommandArgs args)
 		{
 			RoR2Application.instance.StartCoroutine(GeneratePortraits(args.TryGetArgBool(0) ?? false));

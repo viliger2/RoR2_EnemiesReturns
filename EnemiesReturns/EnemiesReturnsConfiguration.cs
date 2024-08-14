@@ -62,6 +62,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LevelDamage;
             public static ConfigEntry<float> LevelArmor;
 
+            public static ConfigEntry<float> StompCooldown;
             public static ConfigEntry<float> StompOverlapAttackDamage;
             public static ConfigEntry<float> StompOverlapAttackForce;
             public static ConfigEntry<float> StompProjectileDamage;
@@ -69,7 +70,9 @@ namespace EnemiesReturns
             public static ConfigEntry<float> StompProjectileSpeed;
             public static ConfigEntry<int> StompProjectileCount;
             public static ConfigEntry<float> StompProjectileScale;
+            public static ConfigEntry<float> StompProjectileLifetime;
 
+            public static ConfigEntry<float> RockClapCooldown;
             public static ConfigEntry<float> RockClapProjectileDamage;
             public static ConfigEntry<float> RockClapProjectileForce;
             public static ConfigEntry<float> RockClapProjectileSpeed;
@@ -85,6 +88,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> RockClapHomingSpeed;
             public static ConfigEntry<float> RockClapHomingRange;
 
+            public static ConfigEntry<float> LaserBarrageCooldown;
             public static ConfigEntry<float> LaserBarrageDuration;
             public static ConfigEntry<float> LaserBarrageFrequency;
             public static ConfigEntry<float> LaserBarrageDamage;
@@ -154,16 +158,17 @@ namespace EnemiesReturns
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 4, "Minimum stages players need to complete before monster starts spawning.");
             Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 600, "Director cost of Colossus.");
 
-            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 2100f, "Colossus' base health.");
-            Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 4f, "Colossus' base movement speed.");
+            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 3625f, "Colossus' base health.");
+            Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
             Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");
             Colossus.BaseDamage = config.Bind("Colossus Character Stats", "Base Damage", 40f, "Colossus' base damage.");
             Colossus.BaseArmor = config.Bind("Colossus Character Stats", "Base Armor", 20f, "Colossus' base armor.");
 
-            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 630f, "Colossus' health increase per level.");
+            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 1088f, "Colossus' health increase per level.");
             Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
             Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
 
+            Colossus.StompCooldown = config.Bind("Colossus Stomp", "Stomp Cooldown", 10f, "Colossus' Stomp cooldown.");
             Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 2.2f, "Colossus' Stomp Overlap (aka stomp itself) damage.");
             Colossus.StompOverlapAttackForce = config.Bind("Colossus Stomp", "Stomp Overlap Force", 6000f, "Colossus' Stomp Overlap (aka stomp itself) force.");
             Colossus.StompProjectileDamage = config.Bind("Colossus Stomp", "Stomp Projectile Damage", 1.5f, "Colossus' Stomp Projectile damage.");
@@ -171,7 +176,9 @@ namespace EnemiesReturns
             Colossus.StompProjectileSpeed = config.Bind("Colossus Stomp", "Stomp Projectile Speed", 60f, "Colossus' Stomp Projectile speed.");
             Colossus.StompProjectileCount = config.Bind("Colossus Stomp", "Stomp Projectile Count", 16, "Colossus' Stomp Projectile count.");
             Colossus.StompProjectileScale = config.Bind("Colossus Stomp", "Stomp Projectile Scale", 2f, "Colossus' Stomp Projectile scale.");
+            Colossus.StompProjectileLifetime = config.Bind("Colossus Stomp", "Stomp Projectile Lifetime", 2f, "Colossus' Stomp Projectile lifetime.");
 
+            Colossus.RockClapCooldown = config.Bind("Colossus Rock Clap", "Rock Clap Cooldown", 15f, "Colossus' Rock Clap cooldown.");
             Colossus.RockClapProjectileDamage = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Damage", 2f, "Colossus' Rock Clap projectile damage.");
             Colossus.RockClapProjectileForce = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Force", 3000f, "Colossus' Rock Clap projectile force."); // TODO: might be too much
             Colossus.RockClapProjectileSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Projectile Speed", 50f, "Colossus' Rock Clap projectile speed.");
@@ -187,10 +194,11 @@ namespace EnemiesReturns
             Colossus.RockClapHomingSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Homing Speed", 15f, "Colossus' Rock Clap homing speed. Rocks home onto target by x and z axis (basically parallel to the ground, without homing up or down).");
             Colossus.RockClapHomingRange = config.Bind("Colossus Rock Clap", "Rock Clap Homing Range", 100f, "Colossus' Rock Clap homing range. How far rocks look for a targer.");
 
+            Colossus.LaserBarrageCooldown = config.Bind("Colossus Laser Barrage", "Laser Barrage Cooldown", 45f, "Colossus' Laser Barrage cooldown.");
             Colossus.LaserBarrageDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Damage", 0.5f, "Colossus' Laser Barrage damage.");
-            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 10f, "Colossus' Laser Barrage duration.");
+            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 5f, "Colossus' Laser Barrage duration.");
             Colossus.LaserBarrageProjectileSpeed = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectile Speed", 50f, "Colossus' Laser Barrage projectile speed.");
-            Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.3f, "Colossus' Laser Barrage fire frequency.");
+            Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.2f, "Colossus' Laser Barrage fire frequency.");
             Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.18f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
             Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.75f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
             Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");

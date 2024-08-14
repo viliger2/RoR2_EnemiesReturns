@@ -165,7 +165,7 @@ namespace EnemiesReturns.Enemies.Colossus
             modelLocator.dontDetatchFromParent = false;
 
             modelLocator.noCorpse = false;
-            modelLocator.dontReleaseModelOnDeath = true;
+            modelLocator.dontReleaseModelOnDeath = false;
             modelLocator.preserveModel = false;
 
             modelLocator.normalizeToFloor = false;
@@ -247,7 +247,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region Interactor
-            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 3f;
+            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 10f;
             #endregion
 
             #region InteractionDriver
@@ -484,14 +484,6 @@ namespace EnemiesReturns.Enemies.Colossus
             hbgRightStomp.hitBoxes = new HitBox[] { rightStompHitbox };
             #endregion
 
-            #region HitBoxGroupClap
-            //var clapHitBox = mdlColossus.transform.Find("Armature/ClapHitbox").gameObject.AddComponent<HitBox>();
-
-            //var hbgClap = mdlColossus.AddComponent<HitBoxGroup>();
-            //hbgClap.groupName = "Clap";
-            //hbgClap.hitBoxes = new HitBox[] { clapHitBox };
-            #endregion
-
             #region FootstepHandler
             FootstepHandler footstepHandler = null;
             if (!mdlColossus.TryGetComponent(out footstepHandler))
@@ -499,8 +491,8 @@ namespace EnemiesReturns.Enemies.Colossus
                 footstepHandler = mdlColossus.AddComponent<FootstepHandler>();
             }
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.baseFootstepString = "Play_titanboss_step";
-            footstepHandler.footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericHugeFootstepDust.prefab").WaitForCompletion();
+            footstepHandler.baseFootstepString = "ER_Colossus_Step_wow_Play";
+            footstepHandler.footstepDustPrefab = CreateColossusStepEffect();
             #endregion
 
             #region ModelPanelParameters
@@ -602,9 +594,9 @@ namespace EnemiesReturns.Enemies.Colossus
             //            };
             #endregion
 
-            //var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
-            //helper.animator = animator;
-            //helper.animationParameters = new string[] { "walkSpeedDebug" };
+            var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
+            helper.animator = animator;
+            helper.animationParameters = new string[] { "walkSpeedDebug" };
 
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
             #endregion
@@ -680,43 +672,6 @@ namespace EnemiesReturns.Enemies.Colossus
             }
             #endregion
 
-            #region AISkillDriver_FireStomp
-            var asdFireStomp = masterPrefab.AddComponent<AISkillDriver>();
-            asdFireStomp.customName = "FireStomp";
-            asdFireStomp.skillSlot = SkillSlot.Primary;
-
-            asdFireStomp.requiredSkill = null;
-            asdFireStomp.requireSkillReady = true;
-            asdFireStomp.requireEquipmentReady = false;
-            asdFireStomp.minUserHealthFraction = float.NegativeInfinity;
-            asdFireStomp.maxUserHealthFraction = float.PositiveInfinity;
-            asdFireStomp.minTargetHealthFraction = float.NegativeInfinity;
-            asdFireStomp.maxTargetHealthFraction = float.PositiveInfinity;
-            asdFireStomp.minDistance = 15f;
-            asdFireStomp.maxDistance = 90f;
-            asdFireStomp.selectionRequiresTargetLoS = true;
-            asdFireStomp.selectionRequiresOnGround = false;
-            asdFireStomp.selectionRequiresAimTarget = false;
-            asdFireStomp.maxTimesSelected = -1;
-
-            asdFireStomp.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdFireStomp.activationRequiresTargetLoS = true;
-            asdFireStomp.activationRequiresAimTargetLoS = false;
-            asdFireStomp.activationRequiresAimConfirmation = false;
-            asdFireStomp.movementType = AISkillDriver.MovementType.Stop;
-            asdFireStomp.moveInputScale = 1;
-            asdFireStomp.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdFireStomp.ignoreNodeGraph = false;
-            asdFireStomp.shouldSprint = false;
-            asdFireStomp.shouldFireEquipment = false;
-            asdFireStomp.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdFireStomp.driverUpdateTimerOverride = -1f;
-            asdFireStomp.resetCurrentEnemyOnNextDriverSelection = false;
-            asdFireStomp.noRepeat = false;
-            asdFireStomp.nextHighPriorityOverride = null;
-            #endregion
-
             #region AISkillDriver_StoneClap
             var asdClap = masterPrefab.AddComponent<AISkillDriver>();
             asdClap.customName = "StoneClap";
@@ -726,11 +681,11 @@ namespace EnemiesReturns.Enemies.Colossus
             asdClap.requireSkillReady = true;
             asdClap.requireEquipmentReady = false;
             asdClap.minUserHealthFraction = float.NegativeInfinity;
-            asdClap.maxUserHealthFraction = float.PositiveInfinity;
+            asdClap.maxUserHealthFraction = 0.95f;
             asdClap.minTargetHealthFraction = float.NegativeInfinity;
             asdClap.maxTargetHealthFraction = float.PositiveInfinity;
             asdClap.minDistance = 0f;
-            asdClap.maxDistance = 30f;
+            asdClap.maxDistance = 100f;
             asdClap.selectionRequiresTargetLoS = true;
             asdClap.selectionRequiresOnGround = false;
             asdClap.selectionRequiresAimTarget = false;
@@ -750,45 +705,82 @@ namespace EnemiesReturns.Enemies.Colossus
 
             asdClap.driverUpdateTimerOverride = -1f;
             asdClap.resetCurrentEnemyOnNextDriverSelection = false;
-            asdClap.noRepeat = false;
+            asdClap.noRepeat = true;
             asdClap.nextHighPriorityOverride = null;
             #endregion
 
-            #region AISkillDriver_HeadLaser
-            var asdHeadLaser = masterPrefab.AddComponent<AISkillDriver>();
-            asdHeadLaser.customName = "LaserBarrage";
-            asdHeadLaser.skillSlot = SkillSlot.Utility;
+            #region AISkillDriver_Stomp
+            var asdStomp = masterPrefab.AddComponent<AISkillDriver>();
+            asdStomp.customName = "Stomp";
+            asdStomp.skillSlot = SkillSlot.Primary;
 
-            asdHeadLaser.requiredSkill = null;
-            asdHeadLaser.requireSkillReady = true;
-            asdHeadLaser.requireEquipmentReady = false;
-            asdHeadLaser.minUserHealthFraction = float.NegativeInfinity;
-            asdHeadLaser.maxUserHealthFraction = 0.60f;
-            asdHeadLaser.minTargetHealthFraction = float.NegativeInfinity;
-            asdHeadLaser.maxTargetHealthFraction = float.PositiveInfinity;
-            asdHeadLaser.minDistance = 0f;
-            asdHeadLaser.maxDistance = 100f;
-            asdHeadLaser.selectionRequiresTargetLoS = false;
-            asdHeadLaser.selectionRequiresOnGround = false;
-            asdHeadLaser.selectionRequiresAimTarget = false;
-            asdHeadLaser.maxTimesSelected = -1;
+            asdStomp.requiredSkill = null;
+            asdStomp.requireSkillReady = true;
+            asdStomp.requireEquipmentReady = false;
+            asdStomp.minUserHealthFraction = float.NegativeInfinity;
+            asdStomp.maxUserHealthFraction = float.PositiveInfinity;
+            asdStomp.minTargetHealthFraction = float.NegativeInfinity;
+            asdStomp.maxTargetHealthFraction = float.PositiveInfinity;
+            asdStomp.minDistance = 15f;
+            asdStomp.maxDistance = 90f;
+            asdStomp.selectionRequiresTargetLoS = true;
+            asdStomp.selectionRequiresOnGround = false;
+            asdStomp.selectionRequiresAimTarget = false;
+            asdStomp.maxTimesSelected = -1;
 
-            asdHeadLaser.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdHeadLaser.activationRequiresTargetLoS = false;
-            asdHeadLaser.activationRequiresAimTargetLoS = false;
-            asdHeadLaser.activationRequiresAimConfirmation = false;
-            asdHeadLaser.movementType = AISkillDriver.MovementType.Stop;
-            asdHeadLaser.moveInputScale = 1;
-            asdHeadLaser.aimType = AISkillDriver.AimType.MoveDirection;
-            asdHeadLaser.ignoreNodeGraph = false;
-            asdHeadLaser.shouldSprint = false;
-            asdHeadLaser.shouldFireEquipment = false;
-            asdHeadLaser.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+            asdStomp.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdStomp.activationRequiresTargetLoS = true;
+            asdStomp.activationRequiresAimTargetLoS = false;
+            asdStomp.activationRequiresAimConfirmation = false;
+            asdStomp.movementType = AISkillDriver.MovementType.Stop;
+            asdStomp.moveInputScale = 1;
+            asdStomp.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdStomp.ignoreNodeGraph = false;
+            asdStomp.shouldSprint = false;
+            asdStomp.shouldFireEquipment = false;
+            asdStomp.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            asdHeadLaser.driverUpdateTimerOverride = -1f;
-            asdHeadLaser.resetCurrentEnemyOnNextDriverSelection = false;
-            asdHeadLaser.noRepeat = false;
-            asdHeadLaser.nextHighPriorityOverride = null;
+            asdStomp.driverUpdateTimerOverride = -1f;
+            asdStomp.resetCurrentEnemyOnNextDriverSelection = false;
+            asdStomp.noRepeat = false;
+            asdStomp.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_LaserBarrage
+            var asdLaserBarrage = masterPrefab.AddComponent<AISkillDriver>();
+            asdLaserBarrage.customName = "LaserBarrage";
+            asdLaserBarrage.skillSlot = SkillSlot.Utility;
+
+            asdLaserBarrage.requiredSkill = null;
+            asdLaserBarrage.requireSkillReady = true;
+            asdLaserBarrage.requireEquipmentReady = false;
+            asdLaserBarrage.minUserHealthFraction = float.NegativeInfinity;
+            asdLaserBarrage.maxUserHealthFraction = 0.60f;
+            asdLaserBarrage.minTargetHealthFraction = float.NegativeInfinity;
+            asdLaserBarrage.maxTargetHealthFraction = float.PositiveInfinity;
+            asdLaserBarrage.minDistance = 0f;
+            asdLaserBarrage.maxDistance = 100f;
+            asdLaserBarrage.selectionRequiresTargetLoS = false;
+            asdLaserBarrage.selectionRequiresOnGround = false;
+            asdLaserBarrage.selectionRequiresAimTarget = false;
+            asdLaserBarrage.maxTimesSelected = -1;
+
+            asdLaserBarrage.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdLaserBarrage.activationRequiresTargetLoS = false;
+            asdLaserBarrage.activationRequiresAimTargetLoS = false;
+            asdLaserBarrage.activationRequiresAimConfirmation = false;
+            asdLaserBarrage.movementType = AISkillDriver.MovementType.Stop;
+            asdLaserBarrage.moveInputScale = 1;
+            asdLaserBarrage.aimType = AISkillDriver.AimType.MoveDirection;
+            asdLaserBarrage.ignoreNodeGraph = false;
+            asdLaserBarrage.shouldSprint = false;
+            asdLaserBarrage.shouldFireEquipment = false;
+            asdLaserBarrage.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdLaserBarrage.driverUpdateTimerOverride = -1f;
+            asdLaserBarrage.resetCurrentEnemyOnNextDriverSelection = false;
+            asdLaserBarrage.noRepeat = false;
+            asdLaserBarrage.nextHighPriorityOverride = null;
             #endregion   
 
             #region AISkillDriver_ChaseOffNodeGraph
@@ -872,6 +864,20 @@ namespace EnemiesReturns.Enemies.Colossus
 
         #region GameObjects
 
+        public GameObject CreateColossusStepEffect()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericHugeFootstepDust.prefab").WaitForCompletion().InstantiateClone("ColossusFootstepDust", false);
+
+            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
+            {
+                var main = component.main;
+                main.startSize = new ParticleSystem.MinMaxCurve(15f, 18f);
+            }
+
+            return clonedEffect;
+        }
+
         public GameObject CreateStompEffect()
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
@@ -918,6 +924,8 @@ namespace EnemiesReturns.Enemies.Colossus
                 var main = component.main;
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
+
+            clonedEffect.GetComponent<ProjectileCharacterController>().lifetime = EnemiesReturnsConfiguration.Colossus.StompProjectileLifetime.Value;
 
             var ghostAnchor = new GameObject();
             ghostAnchor.name = "Anchor";
@@ -1247,7 +1255,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(StompEnter));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 10f;
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.StompCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1283,7 +1291,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(RockClapStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 10f;
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.RockClapCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1304,7 +1312,7 @@ namespace EnemiesReturns.Enemies.Colossus
             return skillDef;
         }
 
-        internal SkillDef CreateLaserClapSkill()
+        internal SkillDef CreateLaserBarrageSkill()
         {
             var skillDef = ScriptableObject.CreateInstance<SkillDef>();
 
@@ -1319,7 +1327,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 45f;
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.LaserBarrageCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;

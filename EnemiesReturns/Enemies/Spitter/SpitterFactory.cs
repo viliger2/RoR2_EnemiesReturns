@@ -973,6 +973,8 @@ namespace EnemiesReturns.Enemies.Spitter
             var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSplitProjectile", true);
             clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 15f;
 
+            clonedProjectile.layer = LayerIndex.fakeActor.intVal; // TODO: check it later
+
             if (clonedProjectile.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
                 UnityEngine.Object.DestroyImmediate(component);

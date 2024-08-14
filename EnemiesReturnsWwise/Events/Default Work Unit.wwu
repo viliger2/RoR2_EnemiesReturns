@@ -64,6 +64,32 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Colossus" ID="{84525F7E-DC03-4EB5-9812-0912DCF8A0F4}" ShortID="1070853532">
+							<ChildrenList>
+								<Event Name="ER_Colossus_Step_rob_Play" ID="{9A96EED3-C23A-4C11-955B-2F7A7F499637}">
+									<ChildrenList>
+										<Action Name="" ID="{679DB5EE-CE28-4BEB-94AB-43ACA3533526}" ShortID="1010754232">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Step_rob" ID="{015418C1-4661-40BC-85BA-22549D96416B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Step_wow_Play" ID="{7355F2E1-A0E1-44B7-BABA-D819A770F227}">
+									<ChildrenList>
+										<Action Name="" ID="{0075A481-4A9E-4E12-81AA-E21D795AFE1A}" ShortID="990625144">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Step_wow" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

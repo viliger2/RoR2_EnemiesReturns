@@ -186,8 +186,106 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/foot.l
+        weight: 0
+      - path: Armature/foot.l/foot.l_end
+        weight: 0
+      - path: Armature/foot.r
+        weight: 0
+      - path: Armature/foot.r/foot.r_end
+        weight: 0
+      - path: Armature/root
+        weight: 0
+      - path: Armature/root/IK.l
+        weight: 0
+      - path: Armature/root/IK.l/pole.l
+        weight: 0
+      - path: Armature/root/IK.l/pole.l/pole.l_end
+        weight: 0
+      - path: Armature/root/IK.r
+        weight: 0
+      - path: Armature/root/IK.r/pole.r
+        weight: 0
+      - path: Armature/root/IK.r/pole.r/pole.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l/calf.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r/calf.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l/finger1.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l/finger2.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l/thumb.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r/finger1.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r/finger2.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r/thumb.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head/head_end
+        weight: 1
+      - path: Colossus
+        weight: 0
+      - path: Colossus Eye
+        weight: 0
+      - path: Colossus Head
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 10
     - serializedVersion: 16
@@ -215,8 +313,106 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/foot.l
+        weight: 0
+      - path: Armature/foot.l/foot.l_end
+        weight: 0
+      - path: Armature/foot.r
+        weight: 0
+      - path: Armature/foot.r/foot.r_end
+        weight: 0
+      - path: Armature/root
+        weight: 0
+      - path: Armature/root/IK.l
+        weight: 0
+      - path: Armature/root/IK.l/pole.l
+        weight: 0
+      - path: Armature/root/IK.l/pole.l/pole.l_end
+        weight: 0
+      - path: Armature/root/IK.r
+        weight: 0
+      - path: Armature/root/IK.r/pole.r
+        weight: 0
+      - path: Armature/root/IK.r/pole.r/pole.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l/calf.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r/calf.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l/finger1.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l/finger2.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l/thumb.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r/finger1.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r/finger2.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r/thumb.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head/head_end
+        weight: 1
+      - path: Colossus
+        weight: 0
+      - path: Colossus Eye
+        weight: 0
+      - path: Colossus Head
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 9.5
     - serializedVersion: 16
