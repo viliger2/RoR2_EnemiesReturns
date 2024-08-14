@@ -82,5 +82,16 @@ namespace EnemiesReturns
             return unlockableDef;
         }
 
+        public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
+        {
+            for (int i = 0; i < dcs.categories.Length; i++)
+            {
+                if (string.CompareOrdinal(dcs.categories[i].name, categoryName) == 0)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

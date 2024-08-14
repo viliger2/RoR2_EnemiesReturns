@@ -156,15 +156,15 @@ namespace EnemiesReturns
 
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 4, "Minimum stages players need to complete before monster starts spawning.");
-            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 600, "Director cost of Colossus.");
+            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 4000, "Director cost of Colossus.");
 
-            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 3625f, "Colossus' base health.");
+            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 12000f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
-            Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 5f, "Colossus' base jump power.");
+            Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 10f, "Colossus' base jump power.");
             Colossus.BaseDamage = config.Bind("Colossus Character Stats", "Base Damage", 40f, "Colossus' base damage.");
             Colossus.BaseArmor = config.Bind("Colossus Character Stats", "Base Armor", 20f, "Colossus' base armor.");
 
-            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 1088f, "Colossus' health increase per level.");
+            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 3600f, "Colossus' health increase per level.");
             Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
             Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
 

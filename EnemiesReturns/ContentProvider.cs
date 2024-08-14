@@ -322,23 +322,35 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster);
+                DirectorCard dcColossusDefault = new DirectorCard
+                {
+                    spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
+                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                };
+
                 DirectorAPI.DirectorCardHolder dchColossusDefault = new DirectorAPI.DirectorCardHolder
                 {
-                    Card = new DirectorCard
-                    {
-                        spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
-                        selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
-                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                        preventOverhead = true,
-                        minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
-                    },
+                    Card = dcColossusDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
 
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.WetlandAspect);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlains);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SunderedGrove);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDelta);
+                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.WetlandAspect);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SiphonedForest); // TODO: swap to snowy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlains); // TODO: swap to grassy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.AbandonedAqueduct); // TODO: swap to sandy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDelta); // TODO: swap to snowy
+
+                // TODO: variants have their own family cards
+                var golemFamilyCard = Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion();
+                int num = Utils.FindCategoryIndexByName(golemFamilyCard, "Champions");
+                if (num >= 0)
+                {
+                    golemFamilyCard.AddCard(num, dcColossusDefault);
+                }
+
                 //stateList.Add(typeof(HeadLaserAttack));
                 //stateList.Add(typeof(HeadLaserEnd));
                 //stateList.Add(typeof(HeadLaserStart));
@@ -446,5 +458,6 @@ namespace EnemiesReturns
                     $"Error code : {akResult}");
             }
         }
+
     }
 }
