@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,6 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             rockTarget = FindModelChild("RocksEnd");
 
             PlayCrossfade("Gesture, Override", "ClapStart", "Clap.playbackrate", duration, 0.1f);
+            Util.PlayAttackSpeedSound("ER_Colossus_ArmsSpread_Play", gameObject, attackSpeedStat);
         }
 
         public override void Update()

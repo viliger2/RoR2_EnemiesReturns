@@ -11,8 +11,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
     {
         public override void OnEnter()
         {
-            duration = 2f;
-            spawnSoundString = "";
+            duration = 5f;
+            spawnSoundString = "ER_Colossus_Spawn_Play";
 
             base.OnEnter();
         }

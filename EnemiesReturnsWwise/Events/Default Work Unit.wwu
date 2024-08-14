@@ -88,6 +88,61 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Colossus_Death2_Play" ID="{9D2A9FD7-5E64-455B-A576-CB59B871CE42}">
+									<ChildrenList>
+										<Action Name="" ID="{8819B608-5CD3-4462-A205-6DB8A503AC90}" ShortID="359347546">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Death2" ID="{F346D3E7-EB5C-40F9-8857-5B08A06AE4EC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Clap_Play" ID="{6F2F94A3-339C-43D7-92C9-FFC0C5B5B7B2}">
+									<ChildrenList>
+										<Action Name="" ID="{0E60A417-7BE8-4258-B909-D0E1BBB58325}" ShortID="303578330">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Clap" ID="{299D96F5-58FB-4C4B-963B-A41EF84A0BC0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_ArmsSpread_Play" ID="{781FD5A2-D285-431A-A33F-E26E3134DB7B}">
+									<ChildrenList>
+										<Action Name="" ID="{4E1A6AD1-6BF2-4E28-B451-2B47B8CE9A1A}" ShortID="961123909">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Arms_Spread" ID="{0A057427-CD79-493C-B61E-6844F9CAF726}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Barrage_Charge_Play" ID="{494BF0B6-48B3-4747-9FB0-DA1B1075C609}">
+									<ChildrenList>
+										<Action Name="" ID="{D8A6A80F-DB91-4ADA-93D3-B3869AAF9FE0}" ShortID="590290270">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Barrage_Charge" ID="{E0E9B8D2-C3E6-4997-BF39-AA3A84E96CBE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Barrage_Move_Play" ID="{0AD69476-67F3-431B-9E82-9546CA5B73CF}">
+									<ChildrenList>
+										<Action Name="" ID="{460C3DDD-8A25-4CF0-8EB4-AA8604EFE472}" ShortID="721605023">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Barrage_Body" ID="{FAAF7AFE-0532-4C6F-BE4E-8EE4C4A7A1F6}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

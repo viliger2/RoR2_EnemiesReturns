@@ -282,7 +282,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             #region SfxLocator
             var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
-            sfxLocator.deathSound = ""; // TODO
+            sfxLocator.deathSound = ""; // each death will have its own sound in animator
             sfxLocator.barkSound = ""; // TODO
             #endregion
 
@@ -491,7 +491,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 footstepHandler = mdlColossus.AddComponent<FootstepHandler>();
             }
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.baseFootstepString = "ER_Colossus_Step_wow_Play";
+            footstepHandler.baseFootstepString = "ER_Colossus_Step_Play";
             footstepHandler.footstepDustPrefab = CreateColossusStepEffect();
             #endregion
 
@@ -963,6 +963,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = rockGhost;
             projectileController.allowPrediction = false;
+            projectileController.flightSoundLoop = null;
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
             var projectileSimple = clonedEffect.GetComponent<ProjectileSimple>();

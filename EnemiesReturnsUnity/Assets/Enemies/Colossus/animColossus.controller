@@ -310,6 +310,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isMoving
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5805215884186575724}
   m_Solo: 0
@@ -408,8 +411,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6638235670865868914, guid: 913eed9d753fbf24b9767d8422f7639a,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 83679705be2983d45b6fc32d65a131f6, type: 2}
   m_Tag: 
   m_SpeedParameter: Laser.playbackrate
   m_MirrorParameter: 
@@ -1708,7 +1710,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Death2
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours:
@@ -1721,8 +1723,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8323008515181824085, guid: 913eed9d753fbf24b9767d8422f7639a,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 3f35205a3efc4b34a8ccda7d069499df, type: 2}
   m_Tag: 
   m_SpeedParameter: walkSpeedDebug
   m_MirrorParameter: 
@@ -1903,8 +1904,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6973425109628891585, guid: 913eed9d753fbf24b9767d8422f7639a,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 523edd51d62109f4d82b5ed3ca5d0d2e, type: 2}
   m_Tag: 
   m_SpeedParameter: Laser.playbackrate
   m_MirrorParameter: 

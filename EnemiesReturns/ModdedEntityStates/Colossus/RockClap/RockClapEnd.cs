@@ -55,6 +55,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             rockController = GetModelTransform().gameObject.GetComponent<FloatingRocksController>();
             clapTransform = FindModelChild("ClapPoint");
             PlayCrossfade("Gesture, Override", "ClapEnd", "Clap.playbackrate", duration, 0.1f);
+            Util.PlayAttackSpeedSound("ER_Colossus_Clap_Play", gameObject, attackSpeedStat);
         }
 
         public override void FixedUpdate()

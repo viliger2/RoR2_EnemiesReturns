@@ -501,6 +501,162 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<Sound Name="Colossus_Death2" ID="{F346D3E7-EB5C-40F9-8857-5B08A06AE4EC}" ShortID="841957440">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wGolemGDeath" ID="{B358564B-D3E5-4C30-BA9E-BF73CC43BD5A}">
+													<Language>SFX</Language>
+													<AudioFile>Colossus\Death\wGolemGDeath.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="287318356"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wGolemGDeath" ID="{B358564B-D3E5-4C30-BA9E-BF73CC43BD5A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Folder Name="Clap" ID="{F91E5118-A124-4569-988C-99B210AC74D5}" ShortID="154082906">
+											<ChildrenList>
+												<Sound Name="Colossus_Clap" ID="{299D96F5-58FB-4C4B-963B-A41EF84A0BC0}" ShortID="837491124">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\Clap\clap_test.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="152242903"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Colossus_Arms_Spread" ID="{0A057427-CD79-493C-B61E-6844F9CAF726}" ShortID="1073695654">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MountainGiantAttackA" ID="{E139342C-0453-4F99-91F4-9AB9E9B2742E}">
+															<Language>SFX</Language>
+															<AudioFile>MountainGiantAttackA.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="304481895"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="MountainGiantAttackA" ID="{E139342C-0453-4F99-91F4-9AB9E9B2742E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Barrage" ID="{F7D9D71F-B154-42E0-A5C9-973C2BD91618}" ShortID="731031422">
+											<ChildrenList>
+												<Sound Name="Colossus_Barrage_Charge" ID="{E0E9B8D2-C3E6-4997-BF39-AA3A84E96CBE}" ShortID="723232699">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="charged-laser-7125" ID="{96583F50-2A53-4BED-823F-A64AD11A2CD8}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\Barrage\charged-laser-7125.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="558140598"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="charged-laser-7125" ID="{96583F50-2A53-4BED-823F-A64AD11A2CD8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Colossus_Barrage_Body" ID="{FAAF7AFE-0532-4C6F-BE4E-8EE4C4A7A1F6}" ShortID="202257879">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="mStoneGolemAttack2A" ID="{48A86514-41DC-4653-B6B7-186830381B73}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\Barrage\mStoneGolemAttack2A.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="975510839"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="mStoneGolemAttack2A" ID="{48A86514-41DC-4653-B6B7-186830381B73}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

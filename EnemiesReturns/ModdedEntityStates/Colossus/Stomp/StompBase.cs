@@ -92,16 +92,20 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             {
                 attack.Fire();
             }
-            if (isAuthority && !hasFired)
+            if (!hasFired) 
             {
-                float angle = 360f / projectilesCount;
-                for (int i = 0; i < projectilesCount; i++)
+                if (isAuthority)
                 {
-                    var forward = Quaternion.AngleAxis(angle * i, Vector3.up);
-                    ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
+                    float angle = 360f / projectilesCount;
+                    for (int i = 0; i < projectilesCount; i++)
+                    {
+                        var forward = Quaternion.AngleAxis(angle * i, Vector3.up);
+                        ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
+                    }
+                    EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
+                    hasFired = true;
                 }
-                EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
-                hasFired = true;
+                Util.PlayAttackSpeedSound("ER_Colossus_Stomp_Play", gameObject, attackSpeedStat);
             }
         }
 

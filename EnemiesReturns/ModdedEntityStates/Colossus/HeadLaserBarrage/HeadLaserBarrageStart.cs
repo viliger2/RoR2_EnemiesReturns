@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
@@ -35,6 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             }
             duration = baseDuration / attackSpeedStat;
             PlayCrossfade("Body", "LaserBeamStart", "Laser.playbackrate", duration, 0.1f);
+            Util.PlayAttackSpeedSound("ER_Colossus_Barrage_Charge_Play", gameObject, attackSpeedStat);
         }
 
         public override void Update()
