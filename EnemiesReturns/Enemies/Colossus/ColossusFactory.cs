@@ -1075,7 +1075,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = rockGhost;
-            projectileController.allowPrediction = false;
+            projectileController.allowPrediction = true;
             projectileController.flightSoundLoop = null;
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
@@ -1098,6 +1098,10 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var projectileMover = clonedEffect.AddComponent<ProjectileMoveTowardsTarget>();
             projectileMover.speed = EnemiesReturnsConfiguration.Colossus.RockClapHomingSpeed.Value;
+
+            var networkTransform = clonedEffect.AddComponent<ProjectileNetworkTransform>();
+            networkTransform.positionTransmitInterval = 0.033f;
+            networkTransform.interpolationFactor = 1f;
 
             return clonedEffect;
         }

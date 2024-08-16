@@ -1,24 +1,24 @@
 {
 	"strings": {
-		"ENEMIES_RETURNS_SPITTER_BODY_NAME": "Spitter",
-		"ENEMIES_RETURNS_SPITTER_BODY_LORE": "Field Notes:  Alas, another hostile creature. This one's nature certainly betrays its precocious appearance. It even seems to be vexed by my retaliation. What a petulant fellow.\n\nHis snapping maw hurls orange bile. The acidic mucus must be detonated by the gnashing teeth- conceivably similar to our picric acid. Fascinating, how could this have arisen?\n\nPost-mortem I was also able to discover the source of the creature's impressive flexibility. Aside from the skull, mandible, and teeth, the skeleton is highly cartilaginous!",
-		"ENEMIES_RETURNS_SPITTER_BITE_NAME": "Bite",
-		"ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION": "Bite enemies in melee range.",
-		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME": "Spit",
-		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION": "Fire a fast projectile.",
-		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME": "Charged Spit",
-		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION": "Charge a slow projectile that leaves a puddle of poison on hit.",
-		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "Monster Log: Spitter",
+		"ENEMIES_RETURNS_SPITTER_BODY_NAME": "Плевальщик",
+		"ENEMIES_RETURNS_SPITTER_BODY_LORE": "Полевые заметки:\n\nУвы, ещё одно враждебное существо. Выглядит солидно, а ведёт себя как обидчивый ребёнок. По-моему, его раздражает тот факт, что я могу постоять за себя. Вздорная тварь.\n\nОн плюётся оранжевой желчью, которая, по всей видимости, детонирует при контакте с зубами, что похоже на действие пикриновой кислоты. Поразительно. Как он развил такой механизм? \n\nПри осмотре трупа мне удалось обнаружить источник удивительной гибкости этого существа: помимо черепа, челюсти и зубов, в его скелете полно хрящей!",
+		"ENEMIES_RETURNS_SPITTER_BITE_NAME": "Укус",
+		"ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION": "Кусает врагов в ближнем бою.",
+		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME": "Плевок",
+		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION": "Выплевывает быстрый снаряд.",
+		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME": "Заряженный плевок",
+		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION": "Заряжает медленный снаряд, который оставляет ядовитую лужу при поражении.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "Запись о монстре: Плевальщик",
 
-		"ENEMIES_RETURNS_COLOSSUS_BODY_NAME": "Colossus",
-		"ENEMIES_RETURNS_COLOSSUS_BODY_LORE": "Field Notes:  A low groaning, lasting for a few days at least. From the relative safety of my drop pod I watched as a mountain rose to its knees, pushing itself up with arms of stone and dirt and twine.\n\nThe Colossus appears as a cousin of the Rock Golem and share many similarities, from its red gaze to its stocky stature. Around its feet many smaller golems rose, joining it. In what possible ways could conventional weapons help me?\n\nI've begun to find a dark humor in the absolute overkill that I face. This is simply ridiculous.",
-		"ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE": "Giant Stone Guardian",
-		"ENEMIES_RETURNS_COLOSSUS_STOMP_NAME": "Stomp",
-		"ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION": "Stomp nearby enemies, sending shockwaves all around.",
-		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME": "Rock Clap",
-		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "Spread arms, while stones rise from the ground, then make a sudden clap, forcing stones to fly around and hit neaby targets.",
-		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Laser Barrage",
-		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Take a stance, preparing to fire. After a short period rain a devastating barrage of projectiles.",
-		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Monster Log: Colossus"
+		"ENEMIES_RETURNS_COLOSSUS_BODY_NAME": "Колосс",
+		"ENEMIES_RETURNS_COLOSSUS_BODY_LORE": "Полевые заметки:\n\nЕщё находясь в своей относительно безопасной десантной капсуле, я видел, как гора встаёт на ноги, подталкивая себя руками из камня, земли и корней. Этот колосс издаёт низкий стон, который раздаётся по округе как минимум пару дней.\n\nОн имеет много общего с каменными големами, начиная с огромного роста и заканчивая красными глазами. К нему присоединилось множество менее крупных големов, которые поднялись возле его ног. Разве обычное оружие позволит справиться с таким громадным чудовищем?\n\nЯ даже начал находить в этой неравной борьбе какой-то извращённый юмор. Серьёзно, это уже чересчур.",
+		"ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE": "Гигантский каменный страж",
+		"ENEMIES_RETURNS_COLOSSUS_STOMP_NAME": "Топот",
+		"ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION": "Топчит близжайших врагов, отправляя ударные волны вокруг.",
+		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME": "Каменный хлопок",
+		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "Раздвигает руки, поднимая камни из земли, затем производит резкий хлопок, отправляя камни в близжайшие цели.",
+		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Лазерный огонь",
+		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Занимает стойку, готовясь к огню. Затем выпускает заградительный огонь из лазеров.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Запись о монстре: Колосс"
 	}
 }

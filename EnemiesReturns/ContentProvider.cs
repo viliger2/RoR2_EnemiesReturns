@@ -327,6 +327,7 @@ namespace EnemiesReturns
                 masterList.Add(ColossusFactory.ColossusMaster);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.DeathState));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));
