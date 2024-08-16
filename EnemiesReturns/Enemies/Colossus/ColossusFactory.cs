@@ -1528,10 +1528,10 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = fireEquipDisplay,
-                childName = "JawR",
-                localPos = new Vector3(-0.32686F, 2.51006F, -0.21041F),
-                localAngles = new Vector3(354.7525F, 340F, 7.12234F),
-                localScale = new Vector3(0.6F, 0.6F, 0.6F),
+                childName = "Head",
+                localPos = new Vector3(0.00133F, 0.11172F, 0.00157F),
+                localAngles = new Vector3(20.60016F, 340F, 359.7185F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
 
@@ -1539,10 +1539,10 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = fireEquipDisplay,
-                childName = "JawL",
-                localPos = new Vector3(-0.12522F, 2.55699F, -0.28728F),
-                localAngles = new Vector3(354.7525F, 20.00001F, 351.6044F),
-                localScale = new Vector3(-0.6F, 0.6F, 0.6F),
+                childName = "Head",
+                localPos = new Vector3(0.00095F, 0.07965F, 0.00112F),
+                localAngles = new Vector3(24.60459F, 24.28895F, 2.60649F),
+                localScale = new Vector3(-0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
 
@@ -1559,10 +1559,10 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(0F, -0.29125F, -0.36034F),
+                childName = "Chest",
+                localPos = new Vector3(-0.01152F, -0.32538F, -0.02099F),
                 localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.43975F, 0.43975F, 0.43975F),
+                localScale = new Vector3(0.16025F, 0.11155F, 0.21315F),
                 limbMask = LimbFlags.None
             });
 
@@ -1580,9 +1580,9 @@ namespace EnemiesReturns.Enemies.Colossus
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
                 childName = "Head",
-                localPos = new Vector3(-0.36417F, 4.08597F, -0.81975F),
-                localAngles = new Vector3(88.15041F, 342.9204F, 152.0255F),
-                localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                localPos = new Vector3(-0.02513F, 0.56141F, -0.269F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
                 limbMask = LimbFlags.None
             });
 
@@ -1599,30 +1599,30 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "TailEnd",
-                localPos = new Vector3(-0.00302F, 0.77073F, 0.00143F),
-                localAngles = new Vector3(284.2227F, 198.9412F, 159.205F),
-                localScale = new Vector3(1.15579F, 1.15579F, 1.15579F),
+                childName = "Head",
+                localPos = new Vector3(-0.02181F, 0.46209F, 0.10716F),
+                localAngles = new Vector3(292.6887F, 3.59969F, 181.911F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "JawL",
-                localPos = new Vector3(-0.25677F, 2.49244F, -0.13195F),
-                localAngles = new Vector3(323.8193F, 261.7038F, 7.48606F),
-                localScale = new Vector3(1.45f, 1.45f, 1.45f),
+                childName = "Head",
+                localPos = new Vector3(-0.12685F, 0.47042F, -0.11722F),
+                localAngles = new Vector3(288.6145F, 259.8474F, 143.9413F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "JawR",
-                localPos = new Vector3(-0.00804F, 2.49258F, -0.13194F),
-                localAngles = new Vector3(322.8305F, 89.99672F, 7F),
-                localScale = new Vector3(1.45f, 1.45f, 1.45f),
+                childName = "Head",
+                localPos = new Vector3(0.10414F, 0.45989F, -0.09844F),
+                localAngles = new Vector3(287.5787F, 127.0641F, 171.7998F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
                 limbMask = LimbFlags.None
             });
 
@@ -1640,10 +1640,10 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(0F, 0F, 0F),
-                localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.8F, 0.8F, 0.8F),
+                childName = "Chest",
+                localPos = new Vector3(0F, 0.00002F, -0.37656F),
+                localAngles = new Vector3(-0.00001F, 180F, 180F),
+                localScale = new Vector3(0.22275F, 0.22275F, 0.22275F),
                 limbMask = LimbFlags.None
             });
 
@@ -1660,20 +1660,40 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "JawL",
-                localPos = new Vector3(0F, 0.38638F, -0.00001F),
-                localAngles = new Vector3(0F, 270F, 0F),
-                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                childName = "ShoulderR",
+                localPos = new Vector3(0.05337F, 0.29063F, -0.02488F),
+                localAngles = new Vector3(318.2777F, 269.6648F, 89.31491F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "JawR",
-                localPos = new Vector3(0F, 0.38638F, -0.00001F),
-                localAngles = new Vector3(0F, 90F, 0F),
-                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                childName = "ShoulderL",
+                localPos = new Vector3(-0.0039F, 0.27819F, 0.00551F),
+                localAngles = new Vector3(309.1658F, 90.22986F, 270.5801F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                childName = "ThighR",
+                localPos = new Vector3(0.00182F, 0.49292F, 0.15797F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.05F, 0.05F, 0.05F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                childName = "ThighL",
+                localPos = new Vector3(-0.00176F, 0.47607F, 0.14286F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.05F, 0.05F, 0.05F),
                 limbMask = LimbFlags.None
             });
 
@@ -1691,9 +1711,9 @@ namespace EnemiesReturns.Enemies.Colossus
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
                 childName = "Head",
-                localPos = new Vector3(-0.12323F, 2.48183F, -0.47279F),
-                localAngles = new Vector3(7.00848F, 2.28661F, 1.77239F),
-                localScale = new Vector3(4.42437F, 4.42437F, 4.42437F),
+                localPos = new Vector3(-0.00503F, 0.35341F, -0.06072F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(1.1449F, 1.1449F, 1.1449F),
                 limbMask = LimbFlags.None
             });
 
@@ -1710,10 +1730,10 @@ namespace EnemiesReturns.Enemies.Colossus
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(0F, 1.1304F, 0.00001F),
-                localAngles = new Vector3(0F, 0F, 0F),
-                localScale = new Vector3(0.84412F, 0.84412F, 0.84412F),
+                childName = "Chest",
+                localPos = new Vector3(0F, -0.10164F, 0.24164F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(0.35F, 0.35F, 0.35F),
                 limbMask = LimbFlags.None
             });
 

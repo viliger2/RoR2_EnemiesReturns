@@ -503,6 +503,14 @@ MonoBehaviour:
     transform: {fileID: 6559895516205848249}
   - name: Death2FallEffect
     transform: {fileID: 2846572817825384033}
+  - name: ShoulderR
+    transform: {fileID: 3351670129982374553}
+  - name: ShoulderL
+    transform: {fileID: 1388555139415450061}
+  - name: ThighR
+    transform: {fileID: 1099352614353005801}
+  - name: ThighL
+    transform: {fileID: 1310788123719708055}
 --- !u!114 &7706340093702680604
 MonoBehaviour:
   m_ObjectHideFlags: 0

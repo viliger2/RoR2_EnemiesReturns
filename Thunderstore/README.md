@@ -1,12 +1,18 @@
-# EnemiesReturns
-A mod that adds enemies that somehow got lost between Risk of Rain 1 and Risk of Rain 2.
+## EnemiesReturns
 
-Currently adds:
-* Spitter
-	* Golem-sized enemy that will stay mid-range, barraging survivors with devastating projectiles that split on impact, leaving deadly toxic goo on the ground. It only uses melee as last resort, never attempting to fight in melee range unless the target comes to it.
-	* Can spawn on Wetland Aspect, Verdant Falls, Sulfur Pools and Abyssal Depths. If installed it can also spawn on Fogbound Lagoon.
+This mod adds enemies and bosses from Risk of Rain Returns.
 
-Mod is in active development, please address all bugs and suggestions to @viliger in modding discord or create an issue on github page.
+**Mod is in active development**, please address all bugs and suggestions to **@viliger** in the modding discord or create an issue on **GitHub** page.
+
+## Roster
+
+| Medium Enemies | Name | Description | Stages |
+|:--:|:--:|--|--|
+| ![](https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png) | Spitter | Lobs acid spit that  explodes and leaves a lingering puddle. | Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Fogbound Lagoon |
+
+| Bosses  | Name | Description | Stages |
+|:--:|:--:|--|--|
+|  | Colossus | The one and only. | TBD |
 
 ## Credits
 <details>
@@ -18,4 +24,18 @@ Mod is in active development, please address all bugs and suggestions to @vilige
 * Majority of sounds come from RoR and RoRR
 </details>
 
-* Special thanks to Moffein and /vm/ for telling me to fix my (viliger's) shit.
+<details>
+<summary>Colossus</summary>
+
+* Model by Jinazler
+* Rigging and animation by Sentinel 
+* Code by viliger
+* Help with AI pathfinding by DestroyedClone
+* Additional sound design by rob
+* Majority of sounds come from RoR, RoRR and WoW
+* Laser charge sound - https://pixabay.com/sound-effects/charged-laser-7125/
+</details>
+- Special thanks to 
+
+* Moffein for balance and design help
+* /vm/ for telling me to fix my (viliger's) shit.
