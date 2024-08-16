@@ -123,6 +123,9 @@ ModelImporter:
   - first:
       74: -5763560626026369408
     second: ColossusStompR
+  - first:
+      74: 8697320614429704286
+    second: Armature|Armature|Crouch
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -485,7 +488,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

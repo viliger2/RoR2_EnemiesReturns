@@ -274,13 +274,19 @@ namespace EnemiesReturns.Enemies.Spitter
             #endregion
 
             #region KinematicCharacterMotor
+            var capsuleCollider = bodyPrefab.GetComponent<CapsuleCollider>();
+
             var kinematicCharacterMotor = bodyPrefab.AddComponent<KinematicCharacterMotor>();
             kinematicCharacterMotor.CharacterController = characterMotor;
-            kinematicCharacterMotor.Capsule = bodyPrefab.GetComponent<CapsuleCollider>();
+            kinematicCharacterMotor.Capsule = capsuleCollider;
             kinematicCharacterMotor.Rigidbody = bodyPrefab.GetComponent<Rigidbody>();
 
-            kinematicCharacterMotor.CapsuleRadius = 0.58f;
-            kinematicCharacterMotor.CapsuleHeight = 2.529011f;
+            kinematicCharacterMotor.CapsuleRadius = capsuleCollider.radius;
+            kinematicCharacterMotor.CapsuleHeight = capsuleCollider.height;
+            if (capsuleCollider.center != Vector3.zero)
+            {
+                Log.Error("CapsuleCollider for " + bodyPrefab + " has non-zero center. This WILL result in pathing issues for AI.");
+            }
             kinematicCharacterMotor.CapsuleYOffset = 0f;
 
             kinematicCharacterMotor.DetectDiscreteCollisions = false;

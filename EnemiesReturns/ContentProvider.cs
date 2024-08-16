@@ -355,6 +355,12 @@ namespace EnemiesReturns
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlains); // TODO: swap to grassy
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.AbandonedAqueduct); // TODO: swap to sandy
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDelta); // TODO: swap to snowy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadow);
+
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlainsSimulacrum); // TODO: swap to snowy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum); // TODO: swap to snowy
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDeltaSimulacrum); // TODO: swap to snowy
 
                 // TODO: variants have their own family cards
                 var golemFamilyCard = Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion();
