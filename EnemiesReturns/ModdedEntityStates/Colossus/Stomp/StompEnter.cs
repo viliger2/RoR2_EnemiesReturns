@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
     public class StompEnter : BaseState
     {
-        public static float searchRadius = 10f; // TODO
+        public static float searchRadius = 10f; 
 
         public override void OnEnter()
         {

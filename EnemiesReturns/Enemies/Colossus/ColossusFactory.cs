@@ -37,7 +37,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             public static SkillDef LaserBarrage;
 
-            public static SkillDef HeadLaser;
+            //public static SkillDef HeadLaser;
         }
 
         public struct SkillFamilies
@@ -48,7 +48,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             public static SkillFamily Utility;
 
-            public static SkillFamily Special;
+            //public static SkillFamily Special;
         }
 
         public struct SkinDefs
@@ -62,10 +62,10 @@ namespace EnemiesReturns.Enemies.Colossus
         }
 
         #region InternalConfigs
+
         public const float MAX_BARRAGE_EMISSION = 7f;
 
         public const float MAX_EYE_LIGHT_RANGE = 15f;
-
 
         #endregion
 
@@ -167,7 +167,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             #region CameraTargetParams
             var cameraTargetParams = bodyPrefab.AddComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandardRaidboss.asset").WaitForCompletion(); // TODO: maybe huge
+            cameraTargetParams.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandardRaidboss.asset").WaitForCompletion();
             #endregion
 
             #region ModelLocator
@@ -337,19 +337,13 @@ namespace EnemiesReturns.Enemies.Colossus
             kinematicCharacterMotor.SafeMovement = false;
             #endregion
 
-            //#region SpitterDeathDanceController // TODO: maybe use GPReference for this
-            //var spitterDeathDance = colossusPrefab.AddComponent<SpitterDeathDanceController>();
-            //spitterDeathDance.body = characterBody;
-            //spitterDeathDance.modelLocator = modelLocator;
-            //#endregion
-
             #endregion
 
             #region SetupBoxes
 
             var golemSurfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdGolem.asset").WaitForCompletion();
 
-            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
+            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "HurtBox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
             foreach (Transform t in hurtBoxesTransform)
             {
@@ -361,7 +355,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = golemSurfaceDef;
             }
 
-            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
+            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtBox").ToArray();
             foreach (Transform t in sniperHurtBoxes)
             {
                 var hurtBox = t.gameObject.AddComponent<HurtBox>();
@@ -373,8 +367,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = golemSurfaceDef;
             }
 
-            // TODO
-            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/MainHurtBox");
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/MainHurtBox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -382,8 +375,6 @@ namespace EnemiesReturns.Enemies.Colossus
             hurtBoxes.Add(mainHurtBox);
 
             mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = golemSurfaceDef;
-
-            //var hitBox = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
             #region mdlColossus
@@ -636,11 +627,14 @@ namespace EnemiesReturns.Enemies.Colossus
             //            };
             #endregion
 
-            var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
-            helper.animator = animator;
-            helper.animationParameters = new string[] { "walkSpeedDebug" };
+            //var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
+            //helper.animator = animator;
+            //helper.animationParameters = new string[] { "walkSpeedDebug" };
 
+            #region FloatingRocksController
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
+            #endregion
+
             #endregion
 
             #region AimAssist
@@ -653,7 +647,6 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region CrouchController
-            // all numbers are taken from titan
             var crouchMecanim = crouchController.gameObject.AddComponent<CrouchMecanim>();
             crouchMecanim.duckHeight = 25f;
             crouchMecanim.animator = animator;
@@ -1092,15 +1085,6 @@ namespace EnemiesReturns.Enemies.Colossus
 
             clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturnsConfiguration.Colossus.RockClapProjectileBlastRadius.Value;
 
-            //var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //if(cube.TryGetComponent<BoxCollider>(out var collider))
-            //{
-            //    collider.enabled = false;
-            //};
-            //cube.transform.parent = clonedEffect.transform;
-            //cube.transform.localPosition = Vector3.forward;
-
-            // for now copy laser and see how it goes
             clonedEffect.AddComponent<ProjectileTargetComponent>();
 
             var targetFinder = clonedEffect.AddComponent<ProjectileSphereTargetFinder>();
@@ -1114,19 +1098,6 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var projectileMover = clonedEffect.AddComponent<ProjectileMoveTowardsTarget>();
             projectileMover.speed = EnemiesReturnsConfiguration.Colossus.RockClapHomingSpeed.Value;
-
-            //var projectleSteer = clonedEffect.AddComponent<ProjectileSteerTowardTarget>();
-            //projectleSteer.yAxisOnly = true;
-            //projectleSteer.rotationSpeed = 30f;
-
-            //var projectileHomingEnabler = clonedEffect.AddComponent<ProjectileEnableHomingAfterTargetAquired>();
-            //projectileHomingEnabler.changeSpeedAfterTargetFound = true;
-            //projectileHomingEnabler.newSpeed = 20f;
-
-            //if(clonedeffect.trygetcomponent<applytorqueonstart>(out var torque))
-            //{
-            //    unityengine.object.destroyimmediate(torque);
-            //}
 
             return clonedEffect;
         }

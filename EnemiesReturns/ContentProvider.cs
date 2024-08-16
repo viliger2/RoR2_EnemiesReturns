@@ -294,6 +294,9 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.SpawnState.burrowPrefab = spawnEffect;
                 effectsList.Add(new EffectDef(spawnEffect));
 
+                var colossusLog = Utils.CreateUnlockableDef("Logs.ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
+                unlockablesList.Add(colossusLog);
+
                 //var laserEffect = colossusFactory.CreateLaserEffect();
                 //ModdedEntityStates.Junk.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
@@ -316,7 +319,7 @@ namespace EnemiesReturns
                 //sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, null, null, null);
+                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, null, colossusLog, null);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");

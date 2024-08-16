@@ -44,7 +44,6 @@ namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser
             }
         }
 
-        // TODO: MOVE ANIMATION TO UPDATE, WHAT THE FUCK WAS I THINKING
         public override void FixedUpdate()
         {
             base.FixedUpdate();

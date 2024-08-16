@@ -11,7 +11,7 @@ namespace EnemiesReturns.Enemies.Colossus
 {
     public class FloatingRocksController : MonoBehaviour
     {
-        public static float distance = EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpawnDistance.Value; // TODO
+        public static float distance = EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpawnDistance.Value;
 
         public static int rockCount = EnemiesReturnsConfiguration.Colossus.RockClapProjectileCount.Value;
 
