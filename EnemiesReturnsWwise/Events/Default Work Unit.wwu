@@ -66,23 +66,12 @@
 						</Folder>
 						<Folder Name="Colossus" ID="{84525F7E-DC03-4EB5-9812-0912DCF8A0F4}" ShortID="1070853532">
 							<ChildrenList>
-								<Event Name="ER_Colossus_Step_rob_Play" ID="{9A96EED3-C23A-4C11-955B-2F7A7F499637}">
-									<ChildrenList>
-										<Action Name="" ID="{679DB5EE-CE28-4BEB-94AB-43ACA3533526}" ShortID="1010754232">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Colossus_Step_rob" ID="{015418C1-4661-40BC-85BA-22549D96416B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="ER_Colossus_Step_wow_Play" ID="{7355F2E1-A0E1-44B7-BABA-D819A770F227}">
+								<Event Name="ER_Colossus_Step_Play" ID="{7355F2E1-A0E1-44B7-BABA-D819A770F227}">
 									<ChildrenList>
 										<Action Name="" ID="{0075A481-4A9E-4E12-81AA-E21D795AFE1A}" ShortID="990625144">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Colossus_Step_wow" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+													<ObjectRef Name="Colossus_Step" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -138,6 +127,39 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="Colossus_Barrage_Body" ID="{FAAF7AFE-0532-4C6F-BE4E-8EE4C4A7A1F6}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Stomp_Play" ID="{73156638-BEC0-4797-8D9A-C2CD6F7DBD4E}">
+									<ChildrenList>
+										<Action Name="" ID="{EB346782-A385-4238-BD1E-5377AD261B35}" ShortID="325019493">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Stomp" ID="{C6BE682B-A735-4EA1-AA93-B18E682BD1FD}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Spawn_Play" ID="{F4E5E911-4F5F-452F-9C04-11156B67E554}">
+									<ChildrenList>
+										<Action Name="" ID="{A6D0F439-F0A8-437D-AE5B-14300DE1A49C}" ShortID="572952914">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Spawn" ID="{1F8B5A22-A479-4AB5-B994-29FADD1D3624}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Death1_Play" ID="{988DD1C8-C248-40CA-A32D-58F3A46D4106}">
+									<ChildrenList>
+										<Action Name="" ID="{1EB8B5DD-0407-4FA3-9ADD-F55D0F1AF564}" ShortID="773793164">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Death1" ID="{14CF106B-EFF6-4705-B80E-21B2DF8F36B8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

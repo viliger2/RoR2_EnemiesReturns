@@ -28,6 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             rockTarget = FindModelChild("RocksEnd");
 
             PlayCrossfade("Gesture, Override", "ClapStart", "Clap.playbackrate", duration, 0.1f);
+            //PlayCrossfade("Body", "ClapStart", "Clap.playbackrate", duration, 0.1f);
             Util.PlayAttackSpeedSound("ER_Colossus_ArmsSpread_Play", gameObject, attackSpeedStat);
         }
 
@@ -44,6 +45,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             {
                 outer.SetNextState(new RockClapEnd());
             }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

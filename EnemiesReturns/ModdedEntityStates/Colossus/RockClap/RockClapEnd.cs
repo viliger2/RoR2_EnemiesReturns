@@ -13,29 +13,29 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {
     public class RockClapEnd : BaseState
     {
+        public static float projectileDamageCoefficient => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDamage.Value;
+
+        public static float projectileForce => EnemiesReturnsConfiguration.Colossus.RockClapProjectileForce.Value;
+
+        public static float projectileSpeed => EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeed.Value;
+
+        public static float projectileSpeedDelta => EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeedDelta.Value;
+
+        public static float projectileDistanceFraction => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFraction.Value;
+
+        public static float projectileDistanceFractionDelta => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFractionDelta.Value;
+
+        public static float clapDamageCoefficient => EnemiesReturnsConfiguration.Colossus.RockClapDamage.Value;
+
+        public static float clapForce => EnemiesReturnsConfiguration.Colossus.RockClapForce.Value;
+
+        public static float clapRadius => EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
+
         public static GameObject projectilePrefab;
 
         public static float baseDuration = 2.2f;
 
-        public static float projectileDamageCoefficient = EnemiesReturnsConfiguration.Colossus.RockClapProjectileDamage.Value;
-
-        public static float projectileForce = EnemiesReturnsConfiguration.Colossus.RockClapProjectileForce.Value;
-
-        public static float projectileSpeed = EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeed.Value;
-
-        public static float projectileSpeedDelta = EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeedDelta.Value;
-
-        public static float projectileDistanceFraction = EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFraction.Value;
-
-        public static float projectileDistanceFractionDelta = EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFractionDelta.Value;
-
         public static GameObject clapEffect;
-
-        public static float clapDamageCoefficient = EnemiesReturnsConfiguration.Colossus.RockClapDamage.Value;
-
-        public static float clapForce = EnemiesReturnsConfiguration.Colossus.RockClapForce.Value;
-
-        public static float clapRadius = EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
 
         private Animator modelAnimator;
 

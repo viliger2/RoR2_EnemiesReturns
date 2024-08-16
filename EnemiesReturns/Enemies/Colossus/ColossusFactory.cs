@@ -61,6 +61,16 @@ namespace EnemiesReturns.Enemies.Colossus
             public static SpawnCard cscColossusDefault;
         }
 
+        #region InternalConfigs
+        public const float MAX_BARRAGE_EMISSION = 7f;
+
+        public const float MAX_EYE_LIGHT_RANGE = 15f;
+
+
+        #endregion
+
+        public static float normalEyeLightRange = 6f; // we have to save it somewhere so we don't lose it when we change it in laser barrage
+
         public static GameObject ColossusBody;
 
         public static GameObject ColossusMaster;
@@ -77,6 +87,10 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus").gameObject.GetComponent<SkinnedMeshRenderer>();
             var headRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Head").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var eyeRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Eye").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var eyeLight = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/Light").gameObject.GetComponent<Light>();
+
+            normalEyeLightRange = eyeLight.range;
 
             var headTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head");
             var rootTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root");
@@ -247,7 +261,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region Interactor
-            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 10f;
+            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 20f;
             #endregion
 
             #region InteractionDriver
@@ -257,7 +271,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterDeath));
+            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.DeathState));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon };
             #endregion
 
@@ -293,7 +307,7 @@ namespace EnemiesReturns.Enemies.Colossus
             kinematicCharacterMotor.Rigidbody = bodyPrefab.GetComponent<Rigidbody>();
 
             kinematicCharacterMotor.CapsuleRadius = 7.15f;
-            kinematicCharacterMotor.CapsuleHeight = 28.15f;
+            kinematicCharacterMotor.CapsuleHeight = 29.09565f;
             kinematicCharacterMotor.CapsuleYOffset = 0f;
 
             kinematicCharacterMotor.DetectDiscreteCollisions = false;
@@ -443,6 +457,12 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region CharacterModel
+            // the only way to fix vertex colors not working is to put model with
+            // vertex color preview material in the bundle and then swap material here
+            // this is the most retarded, asinine bullshit yet with this game
+            modelRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
+            headRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
+
             var characterModel = mdlColossus.AddComponent<CharacterModel>();
             characterModel.body = characterBody;
             characterModel.itemDisplayRuleSet = CreateItemDisplayRuleSet();
@@ -464,6 +484,22 @@ namespace EnemiesReturns.Enemies.Colossus
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false,
                     hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = eyeRenderer,
+                    defaultMaterial = eyeRenderer.material,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    ignoreOverlays = true,
+                    hideOnDeath = false
+                }
+            };
+            characterModel.baseLightInfos = new CharacterModel.LightInfo[]
+            {
+                new CharacterModel.LightInfo
+                {
+                    light = eyeLight,
+                    defaultColor = eyeLight.color
                 }
             };
             #endregion
@@ -863,6 +899,84 @@ namespace EnemiesReturns.Enemies.Colossus
         }
 
         #region GameObjects
+
+        public GameObject CreateSpawnEffect()
+        {
+            var cloneEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanSpawnEffect.prefab").WaitForCompletion().InstantiateClone("ColossusSpawnEffect", false);
+
+            var shakeEmitter = cloneEffect.GetComponent<ShakeEmitter>();
+            shakeEmitter.duration = 5f;
+            shakeEmitter.radius = 100f;
+
+            var components = cloneEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
+            {
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            var light = cloneEffect.GetComponentInChildren<Light>();
+            if(light)
+            {
+                light.range = 20f;
+            }
+
+            //cloneEffect.GetComponent<EffectComponent>().applyScale = true;
+            cloneEffect.transform.localScale = new Vector3(2f, 2f, 2f);
+
+            return cloneEffect;
+        }
+
+        public GameObject CreateDeath2Effect()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanRechargeRocksEffect.prefab").WaitForCompletion().InstantiateClone("ColossusDeathEffect", false);
+
+            var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
+            shakeEmitter.duration = 2f;
+            shakeEmitter.radius = 100f;
+
+            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
+            {
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            var light = clonedEffect.GetComponentInChildren<Light>();
+            if (light)
+            {
+                light.range = 20f;
+            }
+
+            clonedEffect.transform.localScale = new Vector3(3f, 3f, 3f);
+
+            return clonedEffect;
+        }
+
+        public GameObject CreateDeathFallEffect()
+        {
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+
+            var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
+            shakeEmitter.duration = 4f;
+            shakeEmitter.radius = 100f;
+            shakeEmitter.wave.amplitude = 0.3f;
+            shakeEmitter.wave.frequency = 200f;
+
+            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
+            foreach (var component in components)
+            {
+                var main = component.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            UnityEngine.Object.DestroyImmediate(clonedEffect.transform.Find("ParticleInitial/Spikes, Large").gameObject);
+            UnityEngine.Object.DestroyImmediate(clonedEffect.transform.Find("ParticleInitial/Spikes, Small").gameObject);
+
+            clonedEffect.transform.localScale = new Vector3(4f, 4f, 4f);
+
+            return clonedEffect;
+        }
 
         public GameObject CreateColossusStepEffect()
         {

@@ -1,3 +1,15 @@
-﻿{
-	"name": "EnemiesReturns"
+{
+    "name": "EnemiesReturns",
+    "references": [
+        "GUID:26de243acf0c25a41819e8522ac395f0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

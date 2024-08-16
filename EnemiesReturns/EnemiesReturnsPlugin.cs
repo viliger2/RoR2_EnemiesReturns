@@ -33,13 +33,13 @@ namespace EnemiesReturns
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.1.3";
+		public const string Version = "0.1.4";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
 		{
-#if DEBUG == true
-			On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
+#if DEBUG == true || NOWEAVER == true
+            On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 #endif
 
 			var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");

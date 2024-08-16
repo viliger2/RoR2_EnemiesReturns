@@ -14,33 +14,33 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
     public class StompBase : BaseState
     {
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
+
+        public static float projectileDamageCoefficient => EnemiesReturnsConfiguration.Colossus.StompProjectileDamage.Value;
+
+        public static float stompDamageCoefficient => EnemiesReturnsConfiguration.Colossus.StompOverlapAttackDamage.Value;
+
+        public static int projectilesCount => EnemiesReturnsConfiguration.Colossus.StompProjectileCount.Value;
+
+        public static float projectileForceMagnitude => EnemiesReturnsConfiguration.Colossus.StompProjectileForce.Value;
+
+        public static float stompForceMagnitude => EnemiesReturnsConfiguration.Colossus.StompOverlapAttackForce.Value;
+
+        public static float speed => EnemiesReturnsConfiguration.Colossus.StompProjectileSpeed.Value;
+
         public static float baseDuration = 4.5f;
 
         public static GameObject projectilePrefab;
 
         public static GameObject stompEffectPrefab;
 
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
+        internal string animationStateName;
 
-        public static float projectileDamageCoefficient = EnemiesReturnsConfiguration.Colossus.StompProjectileDamage.Value;
+        internal string targetMuzzle;
 
-        public static float stompDamageCoefficient = EnemiesReturnsConfiguration.Colossus.StompOverlapAttackDamage.Value;
+        internal OverlapAttack attack;
 
-        public static int projectilesCount = EnemiesReturnsConfiguration.Colossus.StompProjectileCount.Value;
-
-        public static float projectileForceMagnitude = EnemiesReturnsConfiguration.Colossus.StompProjectileForce.Value; // its minus for beetle guard
-
-        public static float stompForceMagnitude = EnemiesReturnsConfiguration.Colossus.StompOverlapAttackForce.Value;
-
-        public static float speed = EnemiesReturnsConfiguration.Colossus.StompProjectileSpeed.Value;
-
-        public string animationStateName;
-
-        public string targetMuzzle;
-
-        public OverlapAttack attack;
-
-        public Transform modelTransform;
+        internal Transform modelTransform;
 
         private bool hasFired;
 
@@ -103,8 +103,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                         ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
                     }
                     EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
-                    hasFired = true;
                 }
+                hasFired = true;
                 Util.PlayAttackSpeedSound("ER_Colossus_Stomp_Play", gameObject, attackSpeedStat);
             }
         }

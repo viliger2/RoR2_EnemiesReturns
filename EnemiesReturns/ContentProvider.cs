@@ -13,6 +13,7 @@ using EnemiesReturns.Enemies.Spitter;
 using R2API;
 using EnemiesReturns.Enemies.Colossus;
 using Rewired.Utils.Classes.Utility;
+using EnemiesReturns.EditorHelpers;
 
 namespace EnemiesReturns
 {
@@ -268,6 +269,14 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.Stomp.StompBase.stompEffectPrefab = stompEffect;
                 effectsList.Add(new EffectDef(stompEffect));
 
+                var deathFallEffect = colossusFactory.CreateDeathFallEffect();
+                effectsList.Add(new EffectDef(deathFallEffect));
+                OurAnimationEvents.effectDictionary.Add(0, deathFallEffect);
+
+                var death2Effect = colossusFactory.CreateDeath2Effect();
+                effectsList.Add(new EffectDef(death2Effect));
+                OurAnimationEvents.effectDictionary.Add(1, death2Effect);
+
                 var clapEffect = colossusFactory.CreateClapEffect();
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
 
@@ -280,6 +289,10 @@ namespace EnemiesReturns
                 var laserBarrageProjectile = colossusFactory.CreateLaserBarrageProjectile();
                 ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.projectilePrefab = laserBarrageProjectile;
                 projectilesList.Add(laserBarrageProjectile);
+
+                var spawnEffect = colossusFactory.CreateSpawnEffect();
+                ModdedEntityStates.Colossus.SpawnState.burrowPrefab = spawnEffect;
+                effectsList.Add(new EffectDef(spawnEffect));
 
                 //var laserEffect = colossusFactory.CreateLaserEffect();
                 //ModdedEntityStates.Junk.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
@@ -367,6 +380,12 @@ namespace EnemiesReturns
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
+            }));
+
+            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
+            {
+                var acdLaserBarrage = assets.First(acd => acd.name == "LaserBarrageLightIntencity");
+                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLaserBarrage.curve;
             }));
 
             totalStopwatch.Stop();

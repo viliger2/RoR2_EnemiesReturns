@@ -10,17 +10,15 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
     public class Bite : BaseState
     {
-        public static float baseDuration = 1f;
+        public static float damageCoefficient => EnemiesReturnsConfiguration.Spitter.BiteDamageModifier.Value;
 
-        public static float damageCoefficient = EnemiesReturnsConfiguration.Spitter.BiteDamageModifier.Value;
-
-        public static float forceMagnitude = EnemiesReturnsConfiguration.Spitter.BiteDamageForce.Value;
+        public static float forceMagnitude => EnemiesReturnsConfiguration.Spitter.BiteDamageForce.Value;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
-        public static GameObject biteEffectPrefab;
+        public static float baseDuration = 1f;
 
-        public static string attackString = "ER_Spitter_Bite_Play";
+        public static GameObject biteEffectPrefab;
 
         private OverlapAttack attack;
 
@@ -43,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             attack.damage = damageCoefficient * damageStat;
             attack.hitEffectPrefab = hitEffectPrefab;
             attack.isCrit = RollCrit();
-            Util.PlayAttackSpeedSound(attackString, base.gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound("ER_Spitter_Bite_Play", base.gameObject, attackSpeedStat);
             if ((bool)modelTransform)
             {
                 attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Bite");

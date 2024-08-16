@@ -27,11 +27,11 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public static float maximumDistance = 70f;
 
-        public static float timeToTarget = EnemiesReturnsConfiguration.Spitter.ChargedProjectileFlyTime.Value; // used to calculate projectile speed when we were able to find the target in direct vision, othewise projectileSpeed is used
+        public static float timeToTarget => EnemiesReturnsConfiguration.Spitter.ChargedProjectileFlyTime.Value; // used to calculate projectile speed when we were able to find the target in direct vision, othewise projectileSpeed is used
 
-        public static float damageCoefficient = EnemiesReturnsConfiguration.Spitter.ChargedProjectileDamage.Value;
+        public static float damageCoefficient => EnemiesReturnsConfiguration.Spitter.ChargedProjectileDamage.Value;
 
-        public static float projectileForce = EnemiesReturnsConfiguration.Spitter.ChargedProjectileForce.Value;
+        public static float projectileForce => EnemiesReturnsConfiguration.Spitter.ChargedProjectileForce.Value;
 
         private float duration;
 
