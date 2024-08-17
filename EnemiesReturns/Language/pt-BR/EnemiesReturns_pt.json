@@ -1,0 +1,29 @@
+{
+	"strings": {
+		"ENEMIES_RETURNS_SPITTER_BODY_NAME": "Cuspidor",
+		"ENEMIES_RETURNS_SPITTER_BODY_LORE": "Notas de Campo: Ai de mim, mais uma criatura hostil. A natureza dela certamente trai sua aparência imatura. Até parece irritada com a minha retaliação. Que criatura mais petulante. \n\nSua bocarra lança bile laranja. O muco ácido deve ser detonado pelo ranger dos dentes, possivelmente semelhante ao nosso ácido pícrico. Fascinante. Como algo assim pode ter surgido? \n\nApós morta, também consegui descobrir a fonte da impressionante flexibilidade da criatura. Além do crânio, mandíbula e dentes, o esqueleto delas é altamente cartilaginoso!",
+		"ENEMIES_RETURNS_SPITTER_BITE_NAME": "Mordida",
+		"ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION": "Morde um inimigo corpo-a-corpo.",
+		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME": "Cuspida",
+		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION": "Dispara um rápido projétil.",
+		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME": "Cuspida Carregada",
+		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION": "Carrega um projétil lento que deixa uma poça de veneno ao atingir.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "Registro de Monstro: Cuspidor"
+
+		"ENEMIES_RETURNS_COLOSSUS_BODY_NAME": "Colosso",
+		"ENEMIES_RETURNS_COLOSSUS_BODY_LORE": "Notas de Campo:\n\nUm gemido baixo, duradouro. Da relativa segurança da minha cápsula de descida, observei enquanto uma montanha se erguia de joelhos, levantando-se com braços de pedra, terra e cipós.\n\nO Colosso se assemelha a um primo do Golem de Pedra e compartilha muitas semelhanças, desde o olhar vermelho até a estatura robusta. Ao redor de seus pés, muitos golems menores surgiram, juntando-se a ele. De que maneira as armas convencionais poderiam me ajudar?\n\nComecei a encontrar um humor sombrio no massacre absoluto que enfrento. Isso é simplesmente ridículo.",
+		"ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE": "Guardião de Pedra Gigante",
+		"ENEMIES_RETURNS_COLOSSUS_STOMP_NAME": "Pisão",
+		"ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION": "Pise nos inimigos próximos, enviando ondas de choque por todos os lados.",
+		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME": "Estalo Rochoso",
+		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "Abra os braços enquanto pedras se erguem do chão, depois faça um estalo repentino, forçando as pedras a voarem e atingirem alvos próximos.",
+		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Barragem de Laser",
+		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Assuma uma postura, preparando-se para disparar. Após um curto período, lance uma devastadora barragem de projéteis.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Registro de Monstro: Colosso",
+
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Knurl Colossal",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Aumente a armadura e gere um aliado golem.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsHealing>Aumente a armadura</style> em <style=cIsHealing>{0}</style><style=cStack>(+{1} por acúmulo)</style>. Gere um <style=cIsUtility>golem aliado</style>, que possui um bônus de <style=cIsDamage>{2}<style=cStack>(+{3} por acúmulo)</style> de dano</style>, <style=cIsHealth>{4}<style=cStack>(+{5} por acúmulo)</style> de saúde máxima</style> e <style=cIsUtility>{6}<style=cStack>(+{7} por acúmulo)</style> de velocidade de movimento</style>.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Destination: Nº 6542, Rocha Fraturada, Desconhecido\n\nEntrega Estimada: 7/22/2056\n\nObviamente, resta alguma essência neste naco. O Knurl ainda está atraindo terra e poeira das proximidades, tentando se reconstruir. Talvez eu possa usar isso a meu favor. Um bocado de terra autorreparadora poderia servir como um bom escudo."
+	}
+}
