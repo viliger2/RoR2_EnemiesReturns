@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: matColossus
   m_Shader: {fileID: 4800000, guid: c6e3cc6d1ef256644b62462606b5ab4b, type: 3}
-  m_ShaderKeywords: DITHER FORCE_SPEC SPLATMAP USE_VERTEX_COLORS
+  m_ShaderKeywords: DITHER FORCE_SPEC USE_VERTEX_COLORS
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GreenChannelNormalTex:
-        m_Texture: {fileID: 2800000, guid: b73559b97afdbde45870c66e56dc5b2e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GreenChannelTex:
@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f175ce183eac62d46b8f31fcb218331f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 350fc16eec2405f4b878f080faf418ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 34c3dca96e0ae434bb4495550d19daf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -140,18 +140,18 @@ Material:
     - _FlowTextureScaleFactor: 1
     - _FlowmapOn: 0
     - _ForceSpecOn: 1
-    - _FresnelBoost: 1
-    - _FresnelPower: 1
+    - _FresnelBoost: 0
+    - _FresnelPower: 0.1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GreenChannelBias: 0.86
+    - _GreenChannelBias: -0.44
     - _GreenChannelSmoothness: 0
     - _LimbPrimeMask: 1
     - _LimbRemovalOn: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 1
+    - _NormalStrength: 0.73
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -163,12 +163,12 @@ Material:
     - _SliceAlphaDepth: 0.1
     - _SliceBandHeight: 1
     - _SliceHeight: 5
-    - _Smoothness: 0.118
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularExponent: 0.1
     - _SpecularHighlights: 1
     - _SpecularStrength: 0.015
-    - _SplatmapOn: 1
+    - _SplatmapOn: 0
     - _SplatmapTileScale: 1.84
     - _SrcBlend: 1
     - _UVSec: 0

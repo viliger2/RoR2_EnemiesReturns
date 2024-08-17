@@ -63,7 +63,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public static GameObject SpitterMaster;
 
-        public GameObject CreateSpitterBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
+        public GameObject CreateSpitterBody(GameObject bodyPrefab, Dictionary<string, Texture2D> iconLookup, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter");
@@ -140,7 +140,7 @@ namespace EnemiesReturns.Enemies.Spitter
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = icon;
+            characterBody.portraitIcon = iconLookup["texSpitterIcon"];
             characterBody.bodyColor = new Color(0.737f, 0.682f, 0.588f);
             characterBody.isChampion = false;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));

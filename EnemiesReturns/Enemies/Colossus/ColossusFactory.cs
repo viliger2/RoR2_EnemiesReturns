@@ -53,12 +53,21 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public struct SkinDefs
         {
-
+            public static SkinDef Default;
+            public static SkinDef Snowy;
+            public static SkinDef Sandy;
+            public static SkinDef Grassy;
         }
 
         public struct SpawnCards
         {
-            public static SpawnCard cscColossusDefault;
+            public static CharacterSpawnCard cscColossusDefault;
+
+            public static CharacterSpawnCard cscColossusSandy;
+
+            public static CharacterSpawnCard cscColossusSnowy;
+
+            public static CharacterSpawnCard cscColossusGrassy;
         }
 
         #region InternalConfigs
@@ -75,7 +84,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public static GameObject ColossusMaster;
 
-        public GameObject CreateColossusBody(GameObject bodyPrefab, Texture2D icon, UnlockableDef log, Dictionary<string, Material> skinsLookup)
+        public GameObject CreateColossusBody(GameObject bodyPrefab, Dictionary<string, Texture2D> iconLookup, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus");
@@ -159,7 +168,7 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = icon;
+            characterBody.portraitIcon = iconLookup["texColossusIcon"];
             characterBody.bodyColor = new Color(0.36f, 0.36f, 0.44f);
             characterBody.isChampion = true;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
@@ -287,7 +296,12 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region DeathRewards
-            bodyPrefab.AddComponent<DeathRewards>().logUnlockableDef = log;
+            var deathRewards = bodyPrefab.AddComponent<DeathRewards>();
+            deathRewards.logUnlockableDef = log;
+            if (droptable) 
+            {
+                deathRewards.bossDropTable = droptable; 
+            }
             #endregion
 
             #region EquipmentSlot
@@ -457,8 +471,10 @@ namespace EnemiesReturns.Enemies.Colossus
             // the only way to fix vertex colors not working is to put model with
             // vertex color preview material in the bundle and then swap material here
             // this is the most retarded, asinine bullshit yet with this game
-            modelRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
-            headRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
+            //modelRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
+            //headRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
+            modelRenderer.material = skinsLookup["matColossus"];
+            headRenderer.material = skinsLookup["matColossus"];
 
             var characterModel = mdlColossus.AddComponent<CharacterModel>();
             characterModel.body = characterBody;
@@ -533,98 +549,98 @@ namespace EnemiesReturns.Enemies.Colossus
             modelPanelParameters.focusPointTransform = focusPoint;
             modelPanelParameters.cameraPositionTransform = cameraPosition;
             modelPanelParameters.modelRotation = new Quaternion(0, 0, 0, 1);
-            modelPanelParameters.minDistance = 7.5f;
-            modelPanelParameters.maxDistance = 22f;
+            modelPanelParameters.minDistance = 15f;
+            modelPanelParameters.maxDistance = 50f;
             #endregion
 
             #region SkinDefs
 
-            //            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-            //            {
-            //                renderer = (SkinnedMeshRenderer)item.renderer,
-            //                material = item.defaultMaterial,
-            //                ignoreOverlays = item.ignoreOverlays
+            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
+            {
+                renderer = (SkinnedMeshRenderer)item.renderer,
+                material = item.defaultMaterial,
+                ignoreOverlays = item.ignoreOverlays
 
-            //            });
-            //            SkinDefs.Default = CreateSkinDef("skinSpitterDefault", mdlColossus, defaultRender);
+            });
+            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlColossus, defaultRender);
 
-            //            RenderInfo[] lakesRender = new RenderInfo[]
-            //            {
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matSpitterLakes"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = gumsRenderer,
-            //                    material = skinsLookup["matSpitterGutsLakes"],
-            //                    ignoreOverlays = true
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = teethenderer,
-            //                    material = skinsLookup["matSpitterLakes"],
-            //                    ignoreOverlays = true
-            //                }
-            //            };
-            //            SkinDefs.Lakes = CreateSkinDef("skinSpitterLakes", mdlColossus, lakesRender, SkinDefs.Default);
+            RenderInfo[] snowyRenderer = new RenderInfo[]
+            {
+                new RenderInfo
+                {
+                    renderer = modelRenderer,
+                    material = skinsLookup["matColossusSnowy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = headRenderer,
+                    material = skinsLookup["matColossusSnowy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = eyeRenderer,
+                    material = skinsLookup["matColossusEye"],
+                    ignoreOverlays = true
+                }
+            };
+            SkinDefs.Snowy = CreateSkinDef("skinColossusSnowy", mdlColossus, snowyRenderer, SkinDefs.Default);
 
-            //            RenderInfo[] sulfurRender = new RenderInfo[]
-            //            {
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matSpitterSulfur"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = gumsRenderer,
-            //                    material = skinsLookup["matSpitterGutsSulfur"],
-            //                    ignoreOverlays = true
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = teethenderer,
-            //                    material = skinsLookup["matSpitterSulfur"],
-            //                    ignoreOverlays = true
-            //                }
-            //            };
-            //            SkinDefs.Sulfur = CreateSkinDef("skinSpitterSulfur", mdlColossus, sulfurRender, SkinDefs.Default);
+            RenderInfo[] sandyRenderer = new RenderInfo[]
+            {
+                new RenderInfo
+                {
+                    renderer = modelRenderer,
+                    material = skinsLookup["matColossusSandy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = headRenderer,
+                    material = skinsLookup["matColossusSandy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = eyeRenderer,
+                    material = skinsLookup["matColossusEye"],
+                    ignoreOverlays = true
+                }
+            };
+            SkinDefs.Sandy = CreateSkinDef("skinColossusSandy", mdlColossus, sandyRenderer, SkinDefs.Default);
 
-            //            RenderInfo[] depthsRender = new RenderInfo[]
-            //{
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matSpitterDepths"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = gumsRenderer,
-            //                    material = skinsLookup["matSpitterGutsDepths"],
-            //                    ignoreOverlays = true
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = teethenderer,
-            //                    material = skinsLookup["matSpitterDepths"],
-            //                    ignoreOverlays = true
-            //                }
-            //};
-            //            SkinDefs.Depths = CreateSkinDef("skinSpitterDepths", mdlColossus, depthsRender, SkinDefs.Default);
+            RenderInfo[] grassyRenderer = new RenderInfo[]
+{
+                new RenderInfo
+                {
+                    renderer = modelRenderer,
+                    material = skinsLookup["matColossusGrassy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = headRenderer,
+                    material = skinsLookup["matColossusGrassy"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = eyeRenderer,
+                    material = skinsLookup["matColossusEye"],
+                    ignoreOverlays = true
+                }
+};
+            SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlColossus, grassyRenderer, SkinDefs.Default);
 
-            //            var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
-            //            modelSkinController.skins = new SkinDef[]
-            //            {
-            //                SkinDefs.Default,
-            //                SkinDefs.Lakes,
-            //                SkinDefs.Sulfur,
-            //                SkinDefs.Depths
-            //            };
+            var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
+            modelSkinController.skins = new SkinDef[]
+            {
+                SkinDefs.Default,
+                SkinDefs.Snowy,
+                SkinDefs.Grassy,
+                SkinDefs.Sandy
+            };
             #endregion
 
             //var helper = mdlColossus.AddComponent<AnimationParameterHelper>();

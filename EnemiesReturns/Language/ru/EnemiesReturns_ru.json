@@ -19,6 +19,11 @@
 		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "Раздвигает руки, поднимая камни из земли, затем производит резкий хлопок, отправляя камни в ближайшие цели.",
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Лазерный огонь",
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Занимает стойку, готовясь к огню. Затем выпускает заградительный огонь из лазеров.",
-		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Запись о монстре: Колосс"
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Запись о монстре: Колосс",
+
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Колоссальная шишка",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Увеличивает броню и призывает союзного голема.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsHealing>Увеличивает броню</style> на <style=cIsHealing>{0}</style><style=cStack>(+{1} за штуку)</style>. Призывает <style=cIsUtility>союзного голема</style> с дополнительными <style=cIsDamage>{2}<style=cStack>(+{3} за штуку)</style> урона</style>, <style=cIsHealth>{4}<style=cStack>(+{5} за штуку)</style> здоровья</style> и <style=cIsUtility>{6}<style=cStack>(+{7} за штуку)</style> скорости передвижения</style>.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Направление: 6542, Расколотая скала, Неизвестно\n\nДата: 22.07.2056\n\nВ этой шишке явно осталась какая-то сущность. Она притягивает землю, пытаясь собрать себя заново. Возможно, я смогу извлечь из этого пользу. Самовосстанавливающийся кусок земли может служить неплохим щитом."
 	}
 }

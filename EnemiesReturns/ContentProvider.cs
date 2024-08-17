@@ -14,6 +14,7 @@ using R2API;
 using EnemiesReturns.Enemies.Colossus;
 using Rewired.Utils.Classes.Utility;
 using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Items.ColossalKnurl;
 
 namespace EnemiesReturns
 {
@@ -112,12 +113,13 @@ namespace EnemiesReturns
                 Log.Info("Materials swapped in " + stopwatch.elapsedSeconds);
             }));
 
-            Texture2D spitterIcon = null;
+            Dictionary<string, Texture2D> iconLookup = new Dictionary<string, Texture2D>();
+
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((assets) =>
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-                spitterIcon = assets.First(sprite => sprite.name == "texSpitterIcon");
+                iconLookup = assets.ToDictionary(item => item.name, item => item);
                 stopwatch.Stop();
                 Log.Info("Icons loaded in " + stopwatch.elapsedSeconds);
             }));
@@ -136,6 +138,7 @@ namespace EnemiesReturns
                 var effectsList = new List<EffectDef>();
                 var projectilesList = new List<GameObject>();
                 var unlockablesList = new List<UnlockableDef>();
+                var itemList = new List<ItemDef>();
 
                 #region Spitter
                 var spitterFactory = new SpitterFactory();
@@ -148,7 +151,7 @@ namespace EnemiesReturns
                 var chargedSpitSmallDoTZone = spitterFactory.CreatedChargedSpitSmallDoTZone();
                 var chargedSpitDoTZone = spitterFactory.CreateChargedSpitDoTZone();
                 var chargedSpitChunkProjectile = spitterFactory.CreateChargedSpitSplitProjectile(chargedSpitSmallDoTZone);
-                var chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile);;
+                var chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile); ;
                 ModdedEntityStates.Spitter.FireChargedSpit.projectilePrefab = chargedSpitProjectile;
                 //projectilesList.Add(SpitterFactory.normalSpitProjectile);
                 projectilesList.Add(chargedSpitProjectile);
@@ -176,7 +179,7 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, spitterIcon, spitterLog, skinsLookup);
+                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, iconLookup, spitterLog, skinsLookup);
                 bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
@@ -259,6 +262,32 @@ namespace EnemiesReturns
                 #endregion
 
                 #region Colossus
+
+                #region ColossalKnurl
+                var KnurlFactory = new ColossalKnurlFactory();
+                var golemAllyBody = KnurlFactory.CreateGolemAllyBody(iconLookup["texGolemAllyIcon"]);
+                bodyList.Add(golemAllyBody);
+
+                var golemAllyMaster = KnurlFactory.CreateGolemAllyMaster(golemAllyBody);
+                masterList.Add(golemAllyMaster);
+
+                ColossalKnurlFactory.cscGolemAlly = KnurlFactory.CreateCard("cscTitanAlly", golemAllyMaster);
+                ColossalKnurlFactory.colossalKnurl = KnurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"));
+                itemList.Add(ColossalKnurlFactory.colossalKnurl);
+
+                var dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
+                dtColossus.pickupEntries = new ExplicitPickupDropTable.PickupDefEntry[]
+                {
+                    new ExplicitPickupDropTable.PickupDefEntry
+                    {
+                        pickupWeight = 1,
+                        pickupDef = ColossalKnurlFactory.colossalKnurl
+                    }
+                };
+
+                ColossalKnurlFactory.deployableSlot = DeployableAPI.RegisterDeployableSlot(ColossalKnurlBodyBehavior.GetModdedCount);
+                #endregion
+
                 var colossusFactory = new ColossusFactory();
 
                 var stompProjectile = colossusFactory.CreateStompProjectile();
@@ -319,7 +348,7 @@ namespace EnemiesReturns
                 //sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, null, colossusLog, null);
+                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, iconLookup, colossusLog, skinsLookup, dtColossus);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");
@@ -338,7 +367,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster);
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster, ColossusFactory.SkinDefs.Default, colossusBody);
                 DirectorCard dcColossusDefault = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
@@ -347,36 +376,69 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-
                 DirectorAPI.DirectorCardHolder dchColossusDefault = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcColossusDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.WetlandAspect);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SiphonedForest); // TODO: swap to snowy
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlains); // TODO: swap to grassy
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.AbandonedAqueduct); // TODO: swap to sandy
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDelta); // TODO: swap to snowy
+                AddMonsterToFamily(dcColossusDefault, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadow);
-
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.TitanicPlainsSimulacrum); // TODO: swap to snowy
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum); // TODO: swap to snowy
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.RallypointDeltaSimulacrum); // TODO: swap to snowy
 
-                // TODO: variants have their own family cards
-                var golemFamilyCard = Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion();
-                int num = Utils.FindCategoryIndexByName(golemFamilyCard, "Champions");
-                if (num >= 0)
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
+                DirectorCard dcColossusGrassy = new DirectorCard
                 {
-                    golemFamilyCard.AddCard(num, dcColossusDefault);
-                }
+                    spawnCard = ColossusFactory.SpawnCards.cscColossusGrassy,
+                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchColossusGrassy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusGrassy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                AddMonsterToFamily(dcColossusGrassy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature.asset").WaitForCompletion());
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlains);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlainsSimulacrum);
 
-                //stateList.Add(typeof(HeadLaserAttack));
-                //stateList.Add(typeof(HeadLaserEnd));
-                //stateList.Add(typeof(HeadLaserStart));
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy = colossusFactory.CreateCard("cscColossusSandy", colossusMaster, ColossusFactory.SkinDefs.Sandy, colossusBody);
+                DirectorCard dcColossusSandy = new DirectorCard
+                {
+                    spawnCard = ColossusFactory.SpawnCards.cscColossusSandy,
+                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchColossusSandy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSandy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                AddMonsterToFamily(dcColossusSandy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueduct); 
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum);
+
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy = colossusFactory.CreateCard("cscColossusSnowy", colossusMaster, ColossusFactory.SkinDefs.Snowy, colossusBody);
+                DirectorCard dcColossusSnowy = new DirectorCard
+                {
+                    spawnCard = ColossusFactory.SpawnCards.cscColossusSnowy,
+                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchColossusSnowy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSnowy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                AddMonsterToFamily(dcColossusSnowy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.SiphonedForest);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDelta);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());
@@ -387,6 +449,7 @@ namespace EnemiesReturns
                 _contentPack.effectDefs.Add(effectsList.ToArray());
                 _contentPack.projectilePrefabs.Add(projectilesList.ToArray());
                 _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
+                _contentPack.itemDefs.Add(itemList.ToArray());
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -402,6 +465,15 @@ namespace EnemiesReturns
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
             yield break;
+        }
+
+        private static void AddMonsterToFamily(DirectorCard dcColossusDefault, FamilyDirectorCardCategorySelection golemFamilyCard)
+        {
+            int num = Utils.FindCategoryIndexByName(golemFamilyCard, "Champions");
+            if (num >= 0)
+            {
+                golemFamilyCard.AddCard(num, dcColossusDefault);
+            }
         }
 
         private IEnumerator LoadAssetBundle(string assetBundleFullPath, IProgress<float> progress, Action<AssetBundle> onAssetBundleLoaded)

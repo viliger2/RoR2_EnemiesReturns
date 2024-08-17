@@ -21,6 +21,7 @@ using static RoR2.BulletAttack;
 using static UnityEngine.UI.Image;
 using RoR2.Projectile;
 using UnityEngine.Networking;
+using EnemiesReturns.Items.ColossalKnurl;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 
@@ -29,11 +30,13 @@ namespace EnemiesReturns
 	[BepInPlugin(GUID, ModName, Version)]
 	[BepInDependency(R2API.PrefabAPI.PluginGUID)]
 	[BepInDependency(R2API.DirectorAPI.PluginGUID)]
+	[BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
+	[BepInDependency(R2API.DeployableAPI.PluginGUID)]
 	public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.1.5";
+		public const string Version = "0.1.6";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
@@ -67,7 +70,25 @@ namespace EnemiesReturns
 		{
 			ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
+            RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
+			ColossalKnurlFactory.Hooks();
+            // using singal R2API recalcstats hook for the sake of performance
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 		}
+
+
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+			if(sender && sender.inventory)
+			{
+				var count = sender.inventory.GetItemCount(ColossalKnurlFactory.colossalKnurl);
+				if(count > 0)
+				{
+					args.armorAdd += EnemiesReturnsConfiguration.Colossus.KnurlArmor.Value + EnemiesReturnsConfiguration.Colossus.KnurlArmorPerStack.Value * (count - 1);
+				}
+			}
+        }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]
 		private static void CCSpawnTitans(ConCommandArgs args)
@@ -94,7 +115,19 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterLakes, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
-		private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)
+        [ConCommand(commandName = "returns_spawn_colossi", flags = ConVarFlags.None, helpText = "Spawns all Colossus variants")]
+        private static void CCSpawnColossi(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
+        private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)
 		{
             var spawnRequest = new DirectorSpawnRequest(
                 card,
@@ -103,7 +136,7 @@ namespace EnemiesReturns
                     placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
                     position = position
                 },
-                new Xoroshiro128Plus(123)
+                RoR2Application.rng
                 );
             spawnRequest.teamIndexOverride = TeamIndex.Monster;
             spawnRequest.ignoreTeamMemberLimit = true;
@@ -199,7 +232,7 @@ namespace EnemiesReturns
 
 		private void CollectLanguageRootFolders(List<string> folders)
 		{
-			folders.Add(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(base.Info.Location), "Language"));
+			folders.Add(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(base.Info.Location), Language.LanguageFolder));
 		}
 	}
 }

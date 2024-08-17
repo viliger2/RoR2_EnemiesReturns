@@ -19,6 +19,13 @@
 		"ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "Spread arms, while stones rise from the ground, then make a sudden clap, forcing stones to fly around and hit nearby targets.",
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Laser Barrage",
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Take a stance, preparing to fire. After a short period rain a devastating barrage of projectiles.",
-		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Monster Log: Colossus"
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Monster Log: Colossus",
+
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Colossal Knurl",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Increase armor and summon an ally Golem.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsHealing>Increase armor</style> by <style=cIsHealing>{0}</style><style=cStack>(+{1} per stack)</style>. Summon an <style=cIsUtility>ally Golem</style> with bonus <style=cIsDamage>{2}<style=cStack>(+{3} per stack)</style> damage</style>, <style=cIsHealth>{4}<style=cStack>(+{5} per stack)</style> health</style> and <style=cIsUtility>{6}<style=cStack>(+{7} per stack)</style> movement speed</style>.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Destination: 6542, Fractured Rock, Unknown\n\nDate: 7/22/2056\n\nThere is obviously some essence left in this hunk; the KNURL is still attracting nearby earth and dirt, trying to reconstruct itself. Perhaps I can use this to my advantage; a self-repairing chunk of earth could serve as a good shield."
+
+
 	}
 }
