@@ -264,16 +264,10 @@ namespace EnemiesReturns
                 #region Colossus
 
                 #region ColossalKnurl
-                var KnurlFactory = new ColossalKnurlFactory();
-                var golemAllyBody = KnurlFactory.CreateGolemAllyBody(iconLookup["texGolemAllyIcon"]);
-                bodyList.Add(golemAllyBody);
+                var knurlFactory = new ColossalKnurlFactory();
 
-                var golemAllyMaster = KnurlFactory.CreateGolemAllyMaster(golemAllyBody);
-                masterList.Add(golemAllyMaster);
-
-                ColossalKnurlFactory.cscGolemAlly = KnurlFactory.CreateCard("cscTitanAlly", golemAllyMaster);
-                ColossalKnurlFactory.colossalKnurl = KnurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"));
-                itemList.Add(ColossalKnurlFactory.colossalKnurl);
+                ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"));
+                itemList.Add(ColossalKnurlFactory.itemDef);
 
                 var dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 dtColossus.pickupEntries = new ExplicitPickupDropTable.PickupDefEntry[]
@@ -281,22 +275,28 @@ namespace EnemiesReturns
                     new ExplicitPickupDropTable.PickupDefEntry
                     {
                         pickupWeight = 1,
-                        pickupDef = ColossalKnurlFactory.colossalKnurl
+                        pickupDef = ColossalKnurlFactory.itemDef
                     }
                 };
 
-                ColossalKnurlFactory.deployableSlot = DeployableAPI.RegisterDeployableSlot(ColossalKnurlBodyBehavior.GetModdedCount);
+                var knurlProjectileGhost = assets.First(item => item.name == "ColossalKnurlFistProjectileGhost");
+                knurlProjectileGhost = knurlFactory.CreateFistGhostPrefab(knurlProjectileGhost);
+
+                var knurlProjectile = assets.First(item => item.name == "ColossalKnurlFistProjectile");
+                ColossalKnurlFactory.projectilePrefab = knurlFactory.CreateFistProjectile(knurlProjectile, knurlProjectileGhost);
+
+                projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
                 #endregion
 
                 var colossusFactory = new ColossusFactory();
 
-                var stompProjectile = colossusFactory.CreateStompProjectile();
-                ModdedEntityStates.Colossus.Stomp.StompBase.projectilePrefab = stompProjectile;
-                projectilesList.Add(stompProjectile);
-
                 var stompEffect = colossusFactory.CreateStompEffect();
                 ModdedEntityStates.Colossus.Stomp.StompBase.stompEffectPrefab = stompEffect;
                 effectsList.Add(new EffectDef(stompEffect));
+
+                var stompProjectile = colossusFactory.CreateStompProjectile();
+                ModdedEntityStates.Colossus.Stomp.StompBase.projectilePrefab = stompProjectile;
+                projectilesList.Add(stompProjectile);
 
                 var deathFallEffect = colossusFactory.CreateDeathFallEffect();
                 effectsList.Add(new EffectDef(deathFallEffect));

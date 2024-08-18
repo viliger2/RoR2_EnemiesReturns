@@ -101,14 +101,20 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LaserBarrageExplosionDamage;
             public static ConfigEntry<float> LaserBarrageExplosionDelay;
 
-            public static ConfigEntry<int> KnurlGolemAllyDamageModifier;
-            public static ConfigEntry<int> KnurlGolemAllyDamageModifierPerStack;
-            public static ConfigEntry<int> KnurlGolemAllyHealthModifier;
-            public static ConfigEntry<int> KnurlGolemAllyHealthModifierPerStack;
-            public static ConfigEntry<int> KnurlGolemAllySpeedModifier;
-            public static ConfigEntry<int> KnurlGolemAllySpeedModifierPerStack;
-            public static ConfigEntry<int> KnurlArmor;
-            public static ConfigEntry<int> KnurlArmorPerStack;
+            public static ConfigEntry<float> KnurlDamage;
+            public static ConfigEntry<float> KnurlDamagePerStack;
+            public static ConfigEntry<float> KnurlProcChance;
+            public static ConfigEntry<float> KnurlProcCoefficient;
+            public static ConfigEntry<float> KnurlForce;
+
+            //public static ConfigEntry<int> KnurlGolemAllyDamageModifier;
+            //public static ConfigEntry<int> KnurlGolemAllyDamageModifierPerStack;
+            //public static ConfigEntry<int> KnurlGolemAllyHealthModifier;
+            //public static ConfigEntry<int> KnurlGolemAllyHealthModifierPerStack;
+            //public static ConfigEntry<int> KnurlGolemAllySpeedModifier;
+            //public static ConfigEntry<int> KnurlGolemAllySpeedModifierPerStack;
+            //public static ConfigEntry<int> KnurlArmor;
+            //public static ConfigEntry<int> KnurlArmorPerStack;
 
             //public static ConfigEntry<float> HeadLaserDuration;
             //public static ConfigEntry<float> HeadLaserFireFrequency;
@@ -164,16 +170,16 @@ namespace EnemiesReturns
             #region Colossus
 
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
-            Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 4, "Minimum stages players need to complete before monster starts spawning.");
-            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 4000, "Director cost of Colossus.");
+            Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 3, "Minimum stages players need to complete before monster starts spawning.");
+            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 2000, "Director cost of Colossus.");
 
-            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 12000f, "Colossus' base health.");
+            Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 7000f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
             Colossus.BaseJumpPower = config.Bind("Colossus Character Stats", "Base Jump Power", 10f, "Colossus' base jump power.");
             Colossus.BaseDamage = config.Bind("Colossus Character Stats", "Base Damage", 40f, "Colossus' base damage.");
-            Colossus.BaseArmor = config.Bind("Colossus Character Stats", "Base Armor", 20f, "Colossus' base armor.");
+            Colossus.BaseArmor = config.Bind("Colossus Character Stats", "Base Armor", 35f, "Colossus' base armor.");
 
-            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 3600f, "Colossus' health increase per level.");
+            Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 2100f, "Colossus' health increase per level.");
             Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
             Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
 
@@ -216,15 +222,21 @@ namespace EnemiesReturns
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
 
-            Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
-            Colossus.KnurlArmorPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Armor Per Stack", 20, "How much armor Colossal Knurl grants per stack.");
-            Colossus.KnurlGolemAllyDamageModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier", 30, "Additiona damage modifier for ally golem, 10% each.");
-            Colossus.KnurlGolemAllyDamageModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier Per Stack", 30, "Additiona damage modifier for ally golem per stack, 10% each.");
-            Colossus.KnurlGolemAllyHealthModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier", 10, "Additiona health modifier for ally golem, 10% each.");
-            Colossus.KnurlGolemAllyHealthModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier Per Stack", 10, "Additiona health modifier for ally golem per stack, 10% each.");
-            Colossus.KnurlGolemAllySpeedModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier", 5, "Additiona movement speed modifier for ally golem, 14% each (basically one hoof).");
-            Colossus.KnurlGolemAllySpeedModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier Per Stack", 5, "Additiona movement speed modifier for ally golem per stack, 14% each (basically one hoof).");
-          
+            Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 8f, "Colossal Fist' damage");
+            Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 8f, "Colossal Fist' damage per stack");
+            Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");
+            Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 5f, "Colossal Fist proc chance.");
+            Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
+
+            //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
+            //Colossus.KnurlArmorPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Armor Per Stack", 20, "How much armor Colossal Knurl grants per stack.");
+            //Colossus.KnurlGolemAllyDamageModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier", 30, "Additiona damage modifier for ally golem, 10% each.");
+            //Colossus.KnurlGolemAllyDamageModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier Per Stack", 30, "Additiona damage modifier for ally golem per stack, 10% each.");
+            //Colossus.KnurlGolemAllyHealthModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier", 10, "Additiona health modifier for ally golem, 10% each.");
+            //Colossus.KnurlGolemAllyHealthModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier Per Stack", 10, "Additiona health modifier for ally golem per stack, 10% each.");
+            //Colossus.KnurlGolemAllySpeedModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier", 5, "Additiona movement speed modifier for ally golem, 14% each (basically one hoof).");
+            //Colossus.KnurlGolemAllySpeedModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier Per Stack", 5, "Additiona movement speed modifier for ally golem per stack, 14% each (basically one hoof).");
+
             //Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 25f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
             //Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
             //Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 0.5f, "Colossus' Head Laser Damage");

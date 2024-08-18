@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.ModdedEntityStates.Junk.Spitter
+namespace EnemiesReturns.Junk.ModdedEntityStates.Spitter
 {
     public class NormalSpit : GenericProjectileBaseState
     {

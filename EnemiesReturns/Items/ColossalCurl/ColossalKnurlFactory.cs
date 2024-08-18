@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using RoR2.Projectile;
+using R2API;
 using RoR2;
 using RoR2.CharacterAI;
 using System;
@@ -6,17 +7,16 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 using UnityEngine.TextCore;
 
 namespace EnemiesReturns.Items.ColossalKnurl
 {
     public class ColossalKnurlFactory
     {
-        public static ItemDef colossalKnurl;
+        public static ItemDef itemDef;
 
-        public static DeployableSlot deployableSlot;
-
-        public static CharacterSpawnCard cscGolemAlly;
+        public static GameObject projectilePrefab;
 
         public ItemDef CreateItem(GameObject prefab)
         {
@@ -38,211 +38,94 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.pickupModelPrefab = prefab; // TODO
             itemDef.canRemove = true;
             //itemDef.pickupIconSprite = ; TODO
-            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy };
 
             return itemDef;
         }
 
-        public GameObject CreateGolemAllyBody(Texture2D icon)
+        public GameObject CreateFistGhostPrefab(GameObject prefab)
         {
-            var clonedObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/GolemBody.prefab").WaitForCompletion().InstantiateClone("GolemAllyBody", true);
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Low;
 
-            var body = clonedObject.GetComponent<CharacterBody>();
-            body.baseRegen = 0.6f;
-            body.levelRegen = 0.12f;
-            body.portraitIcon = icon;
+            prefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = true;
 
-            clonedObject.GetComponent<DeathRewards>().logUnlockableDef = null;
-
-            var renderer = clonedObject.transform.Find("ModelBase/mdlGolem/golem").GetComponent<Renderer>();
-
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Golem/matGolem.mat").WaitForCompletion());
-            material.name = "matGolemAlly";
-            material.SetColor("_Color", new Color(0.92f, 0.92f, 1f)); // slightly blue
-            renderer.material = material;
-
-            var mdlGolem = clonedObject.transform.Find("ModelBase/mdlGolem").gameObject;
-
-            var characterModel = mdlGolem.GetComponent<CharacterModel>();
-            characterModel.baseRendererInfos = new CharacterModel.RendererInfo[]
-            {
-                new CharacterModel.RendererInfo()
-                {
-                    renderer = renderer,
-                    defaultMaterial = material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false,
-                    hideOnDeath = false
-                }
-            };
-            ContentProvider.MaterialCache.Add(material);
-
-            UnityEngine.Object.DestroyImmediate(mdlGolem.GetComponent<ModelSkinController>());
-
-            return clonedObject;
+            return prefab;
         }
 
-        // TODO: maybe reogranize AISkillDrivers
-        public GameObject CreateGolemAllyMaster(GameObject body)
-        {
-            var clonedObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/GolemMaster.prefab").WaitForCompletion().InstantiateClone("GolemAllyMaster", true);
+        public GameObject CreateFistProjectile(GameObject fistPrefab, GameObject fistGhostPrefab)
+        { 
+            fistPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
-            clonedObject.GetComponent<CharacterMaster>().bodyPrefab = body;
+            fistPrefab.AddComponent<TeamFilter>();
 
-            #region asdReturnToLeaderLeash
-            var asdStomp = clonedObject.AddComponent<AISkillDriver>();
-            asdStomp.customName = "ReturnToOwnerLeash";
-            asdStomp.skillSlot = SkillSlot.None;
+            var projectileController = fistPrefab.AddComponent<ProjectileController>();
+            projectileController.ghostPrefab = fistGhostPrefab;
+            projectileController.cannotBeDeleted = true; // why would you allow captain to delete stone fist, that's just inapropriate
+            projectileController.canImpactOnTrigger = false;
+            projectileController.allowPrediction = true;
+            projectileController.procCoefficient = EnemiesReturnsConfiguration.Colossus.KnurlProcCoefficient.Value;
+            projectileController.startSound = "ER_Knurl_Fist_Spawn_Play";
 
-            asdStomp.requiredSkill = null;
-            asdStomp.requireSkillReady = false;
-            asdStomp.requireEquipmentReady = false;
-            asdStomp.minUserHealthFraction = float.NegativeInfinity;
-            asdStomp.maxUserHealthFraction = float.PositiveInfinity;
-            asdStomp.minTargetHealthFraction = float.NegativeInfinity;
-            asdStomp.maxTargetHealthFraction = float.PositiveInfinity;
-            asdStomp.minDistance = 100f;
-            asdStomp.maxDistance = float.PositiveInfinity;
-            asdStomp.selectionRequiresTargetLoS = false;
-            asdStomp.selectionRequiresOnGround = false;
-            asdStomp.selectionRequiresAimTarget = false;
-            asdStomp.maxTimesSelected = -1;
+            var projectileDamage = fistPrefab.AddComponent<ProjectileDamage>();
+            projectileDamage.damageType = DamageType.Generic;
+            projectileDamage.useDotMaxStacksFromAttacker = false;
 
-            asdStomp.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
-            asdStomp.activationRequiresTargetLoS = false;
-            asdStomp.activationRequiresAimTargetLoS = false;
-            asdStomp.activationRequiresAimConfirmation = false;
-            asdStomp.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            asdStomp.moveInputScale = 1;
-            asdStomp.aimType = AISkillDriver.AimType.AtCurrentLeader;
-            asdStomp.ignoreNodeGraph = false;
-            asdStomp.shouldSprint = false;
-            asdStomp.shouldFireEquipment = false;
-            asdStomp.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+            var projectileImpactExplosion = fistPrefab.AddComponent<ProjectileImpactExplosion>();
+            projectileImpactExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            projectileImpactExplosion.blastRadius = 6f;
+            projectileImpactExplosion.blastDamageCoefficient = 1f;
+            projectileImpactExplosion.blastProcCoefficient = EnemiesReturnsConfiguration.Colossus.KnurlProcCoefficient.Value;
+            projectileImpactExplosion.blastAttackerFiltering = AttackerFiltering.Default;
+            projectileImpactExplosion.canRejectForce = true;
 
-            asdStomp.driverUpdateTimerOverride = 3f;
-            asdStomp.resetCurrentEnemyOnNextDriverSelection = true;
-            asdStomp.noRepeat = false;
-            asdStomp.nextHighPriorityOverride = null;
-            #endregion
+            projectileImpactExplosion.fireChildren = false;
+            projectileImpactExplosion.applyDot = false;
 
-            #region asdReturnToLeader
-            var asdReturnToLeader = clonedObject.AddComponent<AISkillDriver>();
-            asdReturnToLeader.customName = "ReturnToLeader";
-            asdReturnToLeader.skillSlot = SkillSlot.None;
+            projectileImpactExplosion.impactOnWorld = true;
+            projectileImpactExplosion.lifetime = 0.65f; // matches with animation and sound, DO NOT TOUCH
+            projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion();
 
-            asdReturnToLeader.requiredSkill = null;
-            asdReturnToLeader.requireSkillReady = false;
-            asdReturnToLeader.requireEquipmentReady = false;
-            asdReturnToLeader.minUserHealthFraction = float.NegativeInfinity;
-            asdReturnToLeader.maxUserHealthFraction = float.PositiveInfinity;
-            asdReturnToLeader.minTargetHealthFraction = float.NegativeInfinity;
-            asdReturnToLeader.maxTargetHealthFraction = float.PositiveInfinity;
-            asdReturnToLeader.minDistance = 15f;
-            asdReturnToLeader.maxDistance = float.PositiveInfinity;
-            asdReturnToLeader.selectionRequiresTargetLoS = false;
-            asdReturnToLeader.selectionRequiresOnGround = false;
-            asdReturnToLeader.selectionRequiresAimTarget = false;
-            asdReturnToLeader.maxTimesSelected = -1;
+            fistPrefab.RegisterNetworkPrefab();
 
-            asdReturnToLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
-            asdReturnToLeader.activationRequiresTargetLoS = false;
-            asdReturnToLeader.activationRequiresAimTargetLoS = false;
-            asdReturnToLeader.activationRequiresAimConfirmation = false;
-            asdReturnToLeader.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            asdReturnToLeader.moveInputScale = 1;
-            asdReturnToLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdReturnToLeader.ignoreNodeGraph = false;
-            asdReturnToLeader.shouldSprint = false;
-            asdReturnToLeader.shouldFireEquipment = false;
-            asdReturnToLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdReturnToLeader.driverUpdateTimerOverride = -1f;
-            asdReturnToLeader.resetCurrentEnemyOnNextDriverSelection = false;
-            asdReturnToLeader.noRepeat = false;
-            asdReturnToLeader.nextHighPriorityOverride = null;
-            #endregion
-
-            #region asdWaitNearLeader
-            var asdWaitNearLeader = clonedObject.AddComponent<AISkillDriver>();
-            asdWaitNearLeader.customName = "WaitNearLeaderDefault";
-            asdWaitNearLeader.skillSlot = SkillSlot.None;
-
-            asdWaitNearLeader.requiredSkill = null;
-            asdWaitNearLeader.requireSkillReady = false;
-            asdWaitNearLeader.requireEquipmentReady = false;
-            asdWaitNearLeader.minUserHealthFraction = float.NegativeInfinity;
-            asdWaitNearLeader.maxUserHealthFraction = float.PositiveInfinity;
-            asdWaitNearLeader.minTargetHealthFraction = float.NegativeInfinity;
-            asdWaitNearLeader.maxTargetHealthFraction = float.PositiveInfinity;
-            asdWaitNearLeader.minDistance = 0f;
-            asdWaitNearLeader.maxDistance = float.PositiveInfinity;
-            asdWaitNearLeader.selectionRequiresTargetLoS = false;
-            asdWaitNearLeader.selectionRequiresOnGround = false;
-            asdWaitNearLeader.selectionRequiresAimTarget = false;
-            asdWaitNearLeader.maxTimesSelected = -1;
-
-            asdWaitNearLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
-            asdWaitNearLeader.activationRequiresTargetLoS = true;
-            asdWaitNearLeader.activationRequiresAimTargetLoS = false;
-            asdWaitNearLeader.activationRequiresAimConfirmation = false;
-            asdWaitNearLeader.movementType = AISkillDriver.MovementType.Stop;
-            asdWaitNearLeader.moveInputScale = 1;
-            asdWaitNearLeader.aimType = AISkillDriver.AimType.AtCurrentLeader;
-            asdWaitNearLeader.ignoreNodeGraph = false;
-            asdWaitNearLeader.shouldSprint = false;
-            asdWaitNearLeader.shouldFireEquipment = false;
-            asdWaitNearLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdWaitNearLeader.driverUpdateTimerOverride = -1f;
-            asdWaitNearLeader.resetCurrentEnemyOnNextDriverSelection = false;
-            asdWaitNearLeader.noRepeat = false;
-            asdWaitNearLeader.nextHighPriorityOverride = null;
-            #endregion
-
-            clonedObject.AddComponent<GolemAllyDeployable>();
-
-            return clonedObject;
+            return fistPrefab;
         }
 
-        public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
-        {
-            var card = ScriptableObject.CreateInstance<CharacterSpawnCard>();
-            (card as ScriptableObject).name = name;
-            card.prefab = master;
-            card.sendOverNetwork = true;
-            card.hullSize = HullClassification.Golem;
-            card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            card.requiredFlags = RoR2.Navigation.NodeFlags.None;
-            card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn;
-            card.directorCreditCost = 0;
-            card.occupyPosition = false;
-            card.eliteRules = SpawnCard.EliteRules.Default;
-            card.noElites = false;
-            card.forbiddenAsBoss = false;
-            if (skin && bodyGameObject && bodyGameObject.TryGetComponent<CharacterBody>(out var body))
-            {
-                card.loadout = new SerializableLoadout
-                {
-                    bodyLoadouts = new SerializableLoadout.BodyLoadout[]
-                    {
-                        new SerializableLoadout.BodyLoadout()
-                        {
-                            body = body,
-                            skinChoice = skin,
-                            skillChoices = Array.Empty<SerializableLoadout.BodyLoadout.SkillChoice>() // yes, we need it
-                        }
-                    }
-                };
-            };
-
-            return card;
-        }
-       
         public static void Hooks()
         {
-            CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
             Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+        }
+
+        public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
+        {
+            var itemCount = attackerBody.inventory.GetItemCount(itemDef);
+            if(itemCount > 0 && Util.CheckRoll(EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
+            {
+                bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath
+                if(victim.TryGetComponent<CharacterBody>(out var victimBody))
+                {
+                    isFlying = victimBody.isFlying;
+                }
+
+                var position = damageInfo.position;
+                if (!isFlying && Physics.Raycast(new Ray(damageInfo.position, Vector3.down), out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                {
+                    position = hitInfo.point;
+                }
+
+                float damageCoef = EnemiesReturnsConfiguration.Colossus.KnurlDamage.Value + EnemiesReturnsConfiguration.Colossus.KnurlDamagePerStack.Value * (itemCount - 1);
+
+                var fireProjectileInfo = default(FireProjectileInfo);
+                fireProjectileInfo.projectilePrefab = projectilePrefab;
+                fireProjectileInfo.position = position;
+                fireProjectileInfo.rotation = Quaternion.identity;
+                fireProjectileInfo.owner = attackerBody.gameObject;
+                fireProjectileInfo.damage = damageInfo.damage * damageCoef;
+                fireProjectileInfo.force = EnemiesReturnsConfiguration.Colossus.KnurlForce.Value; 
+                fireProjectileInfo.crit = damageInfo.crit;
+                ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+            }
         }
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
@@ -252,24 +135,11 @@ namespace EnemiesReturns.Items.ColossalKnurl
             {
                 string description = string.Format(
                     keyPair.Value, 
-                    EnemiesReturnsConfiguration.Colossus.KnurlArmor.Value.ToString(),
-                    EnemiesReturnsConfiguration.Colossus.KnurlArmorPerStack.Value.ToString(),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllyDamageModifier.Value * 0.1f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllyDamageModifierPerStack.Value * 0.1f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllyHealthModifier.Value * 0.1f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllyHealthModifierPerStack.Value * 0.1f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllySpeedModifier.Value * 0.14f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlGolemAllySpeedModifierPerStack.Value * 0.14f).ToString("###%")
+                    (EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value / 100f).ToString("###%"),
+                    (EnemiesReturnsConfiguration.Colossus.KnurlDamage.Value).ToString("###%"),
+                    (EnemiesReturnsConfiguration.Colossus.KnurlDamagePerStack.Value).ToString("###%")
                     );
                 language.SetStringByToken("ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION", description);
-            }
-        }
-
-        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
-        {
-            if(body && body.inventory)
-            {
-                body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCount(colossalKnurl));
             }
         }
     }

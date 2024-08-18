@@ -586,6 +586,39 @@
 												<ActiveSource Name="death1" ID="{6D18AA74-1DDA-4C63-BF45-CA3E9A071255}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Folder Name="Item" ID="{FF5003ED-2413-499A-BF8E-BE97AA17FEB0}" ShortID="773254157">
+											<ChildrenList>
+												<Sound Name="Fist_Spawn" ID="{4FBE5A23-6AF5-49C7-A470-F974563DF14E}" ShortID="76957848">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\item_fist_spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="860858375"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

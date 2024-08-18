@@ -165,6 +165,21 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Folder Name="Item" ID="{87A720BE-7B6D-4C33-881F-FE375C4CC659}" ShortID="651243245">
+									<ChildrenList>
+										<Event Name="ER_Knurl_Fist_Spawn_Play" ID="{7A4CD32C-6AAC-4BEF-89BE-AFDB61492231}">
+											<ChildrenList>
+												<Action Name="" ID="{DA1A8EDE-48B2-4E27-B00F-F8D6A76D45D4}" ShortID="1018984005">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Fist_Spawn" ID="{4FBE5A23-6AF5-49C7-A470-F974563DF14E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

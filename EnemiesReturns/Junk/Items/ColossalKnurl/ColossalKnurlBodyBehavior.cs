@@ -7,8 +7,9 @@ using System.Text;
 using UnityEngine;
 using System.Resources;
 using static EnemiesReturns.EnemiesReturnsConfiguration.Colossus;
+using EnemiesReturns.Junk.Items.ColossalKnurl;
 
-namespace EnemiesReturns.Items.ColossalKnurl
+namespace EnemiesReturns.Junk.Items.ColossalKnurl
 {
     public class ColossalKnurlBodyBehavior : CharacterBody.ItemBehavior
     {
@@ -23,12 +24,12 @@ namespace EnemiesReturns.Items.ColossalKnurl
         private void OnEnable()
         {
             master = body.master;
-            golemAllySpawner = new DeployableMinionSpawner(master, ColossalKnurlFactory.deployableSlot, RoR2Application.rng)
+            golemAllySpawner = new DeployableMinionSpawner(master, ColossalKnurlFactoryJunk.deployableSlot, RoR2Application.rng)
             {
                 respawnInterval = 10f,
-                spawnCard = ColossalKnurlFactory.cscGolemAlly
+                spawnCard = ColossalKnurlFactoryJunk.cscGolemAlly
             };
-            golemAllySpawner.onMinionSpawnedServer += OnTitanAllySpawned;
+            golemAllySpawner.onMinionSpawnedServer += OnGolemAllySpawned;
         }
 
         private void OnDisable()
@@ -37,24 +38,24 @@ namespace EnemiesReturns.Items.ColossalKnurl
             golemAllySpawner = null;
         }
 
-        private void OnTitanAllySpawned(SpawnCard.SpawnResult result)
+        private void OnGolemAllySpawned(SpawnCard.SpawnResult result)
         {
             var spawnedObject = result.spawnedInstance;
-            if(spawnedObject)
+            if (spawnedObject)
             {
                 var master = spawnedObject.GetComponent<CharacterMaster>();
-                if(master)
+                if (master)
                 {
                     master.inventory.GiveItem(RoR2Content.Items.BoostDamage,
-                        KnurlGolemAllyDamageModifier.Value + KnurlGolemAllyDamageModifierPerStack.Value * (stack - 1));
+                        30 + 30 * (stack - 1));
                     master.inventory.GiveItem(RoR2Content.Items.BoostHp,
-                        KnurlGolemAllyHealthModifier.Value + KnurlGolemAllyHealthModifierPerStack.Value * (stack - 1));
-                    master.inventory.GiveItem(RoR2Content.Items.Hoof, 
-                        KnurlGolemAllySpeedModifier.Value + KnurlGolemAllySpeedModifierPerStack.Value * (stack - 1)); // TODO: maybe too much
+                        10 + 10 * (stack - 1));
+                    master.inventory.GiveItem(RoR2Content.Items.Hoof,
+                        5 + 5 * (stack - 1)); // maybe too much
                     var deployable = master.GetComponent<Deployable>();
-                    if(deployable)
+                    if (deployable)
                     {
-                        body.master.AddDeployable(deployable, ColossalKnurlFactory.deployableSlot);
+                        body.master.AddDeployable(deployable, ColossalKnurlFactoryJunk.deployableSlot);
                     }
                 }
             }

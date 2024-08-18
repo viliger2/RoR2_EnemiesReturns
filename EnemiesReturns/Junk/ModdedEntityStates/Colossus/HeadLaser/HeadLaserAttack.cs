@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -6,11 +7,11 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser
+namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 {
     public class HeadLaserAttack : BaseState
     {
-        // TODO: unfuck transforms, too many unncessesary points
+        // unfuck transforms, too many unncessesary points
         // maybe add a hit\filter callback so enemies only get hit every x seconds\only once per swipe
         public static float baseDuration = 25f;
 
@@ -145,7 +146,7 @@ namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser
             bulletAttack.force = laserForce;
             bulletAttack.tracerEffectPrefab = null;
             bulletAttack.muzzleName = "";
-            bulletAttack.hitEffectPrefab = null; // TODO
+            bulletAttack.hitEffectPrefab = null;
             bulletAttack.isCrit = false;
             bulletAttack.radius = laserRadius;
             bulletAttack.smartCollision = false;

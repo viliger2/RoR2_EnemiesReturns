@@ -71,23 +71,32 @@ namespace EnemiesReturns
 			ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 			ColossalKnurlFactory.Hooks();
             // using singal R2API recalcstats hook for the sake of performance
-            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 		}
 
-
-
-        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-			if(sender && sender.inventory)
-			{
-				var count = sender.inventory.GetItemCount(ColossalKnurlFactory.colossalKnurl);
-				if(count > 0)
-				{
-					args.armorAdd += EnemiesReturnsConfiguration.Colossus.KnurlArmor.Value + EnemiesReturnsConfiguration.Colossus.KnurlArmorPerStack.Value * (count - 1);
-				}
-			}
+            orig(self, damageInfo, victim);
+            // adding all vanilla checks because fuck you, we couldn't be arsed to add a delegate to this function at the very end
+            if (damageInfo.procCoefficient == 0f || damageInfo.rejected || !NetworkServer.active || !damageInfo.attacker || !(damageInfo.procCoefficient > 0f))
+            {
+                return;
+            }
+
+            if (!damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
+            {
+                return;
+            }
+
+            if (!attackerBody.master)
+            {
+                return;
+            }
+
+			ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
         }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]

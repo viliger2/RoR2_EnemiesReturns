@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
 
-namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus
+namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.LaserClap
 {
     public class LaserClapEnd : BaseState
     {
@@ -52,12 +52,12 @@ namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus
             base.FixedUpdate();
             if (modelAnimator && modelAnimator.GetFloat("Clap.activate") >= 0.8f && !hasFired)
             {
-                for(int i = 0; i < laserCount; i++)
+                for (int i = 0; i < laserCount; i++)
                 {
                     var position = laserStart.position;
                     laserDirectionPoint.localPosition = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(0, 1f), UnityEngine.Random.Range(-1f, 1f));
                     var rotation = Quaternion.LookRotation(laserDirectionPoint.position - laserStart.position, Vector3.up);
-                    ProjectileManager.instance.FireProjectile(projectilePrefab, position, rotation, base.gameObject, damageStat * damageCoefficient, forceMagnitude, RollCrit(), RoR2.DamageColorIndex.Default, null, speed);
+                    ProjectileManager.instance.FireProjectile(projectilePrefab, position, rotation, gameObject, damageStat * damageCoefficient, forceMagnitude, RollCrit(), RoR2.DamageColorIndex.Default, null, speed);
                 }
 
 
@@ -75,7 +75,7 @@ namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus
                 hasFired = true;
             }
 
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

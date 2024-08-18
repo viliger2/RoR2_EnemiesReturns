@@ -4,10 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using EnemiesReturns.ModdedEntityStates.Junk.Colossus;
 
 
-namespace EnemiesReturns.ModdedEntityStates.Junk.Colossus.LaserClap
+namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.LaserClap
 {
     public class LaserClapStart : BaseState
     {

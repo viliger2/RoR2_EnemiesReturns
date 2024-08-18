@@ -19,7 +19,7 @@ using static RoR2.ItemDisplayRuleSet;
 using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
-using EnemiesReturns.ModdedEntityStates.Junk.Spitter;
+using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
 
 namespace EnemiesReturns.Enemies.Spitter
 {

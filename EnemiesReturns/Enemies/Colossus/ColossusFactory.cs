@@ -23,7 +23,7 @@ using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
 using EnemiesReturns.ModdedEntityStates.Colossus.Stomp;
 using EnemiesReturns.ModdedEntityStates.Colossus.RockClap;
-using EnemiesReturns.ModdedEntityStates.Junk.Colossus.HeadLaser;
+using EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
