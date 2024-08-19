@@ -36,7 +36,7 @@ namespace EnemiesReturns
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.1.6";
+		public const string Version = "0.1.7";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
@@ -73,7 +73,7 @@ namespace EnemiesReturns
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 			ColossalKnurlFactory.Hooks();
-            // using singal R2API recalcstats hook for the sake of performance
+            // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 		}
 

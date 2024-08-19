@@ -63,7 +63,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public static GameObject SpitterMaster;
 
-        public GameObject CreateSpitterBody(GameObject bodyPrefab, Dictionary<string, Texture2D> iconLookup, UnlockableDef log, Dictionary<string, Material> skinsLookup)
+        public GameObject CreateSpitterBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter");
@@ -140,7 +140,7 @@ namespace EnemiesReturns.Enemies.Spitter
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = iconLookup["texSpitterIcon"];
+            characterBody.portraitIcon = sprite.texture;
             characterBody.bodyColor = new Color(0.737f, 0.682f, 0.588f);
             characterBody.isChampion = false;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
@@ -979,7 +979,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSplitProjectile", true);
             clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 15f;
 
-            clonedProjectile.layer = LayerIndex.fakeActor.intVal;
+            clonedProjectile.layer = LayerIndex.debris.intVal; // no collision with entityprecise or itself, but with world
 
             if (clonedProjectile.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {

@@ -84,7 +84,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public static GameObject ColossusMaster;
 
-        public GameObject CreateColossusBody(GameObject bodyPrefab, Dictionary<string, Texture2D> iconLookup, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
+        public GameObject CreateColossusBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus");
@@ -168,7 +168,7 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = iconLookup["texColossusIcon"];
+            characterBody.portraitIcon = sprite.texture;
             characterBody.bodyColor = new Color(0.36f, 0.36f, 0.44f);
             characterBody.isChampion = true;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));

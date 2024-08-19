@@ -113,9 +113,9 @@ namespace EnemiesReturns
                 Log.Info("Materials swapped in " + stopwatch.elapsedSeconds);
             }));
 
-            Dictionary<string, Texture2D> iconLookup = new Dictionary<string, Texture2D>();
+            Dictionary<string, Sprite> iconLookup = new Dictionary<string, Sprite>();
 
-            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((assets) =>
+            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Sprite[]>)((assets) =>
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
@@ -179,7 +179,7 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, iconLookup, spitterLog, skinsLookup);
+                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, skinsLookup);
                 bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
@@ -266,7 +266,7 @@ namespace EnemiesReturns
                 #region ColossalKnurl
                 var knurlFactory = new ColossalKnurlFactory();
 
-                ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"));
+                ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
                 itemList.Add(ColossalKnurlFactory.itemDef);
 
                 var dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
@@ -348,7 +348,7 @@ namespace EnemiesReturns
                 //sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, iconLookup, colossusLog, skinsLookup, dtColossus);
+                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, skinsLookup, dtColossus);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");

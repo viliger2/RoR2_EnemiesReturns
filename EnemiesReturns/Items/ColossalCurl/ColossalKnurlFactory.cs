@@ -18,7 +18,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
         public static GameObject projectilePrefab;
 
-        public ItemDef CreateItem(GameObject prefab)
+        public ItemDef CreateItem(GameObject prefab, Sprite icon)
         {
             var modelPanelParameters = prefab.AddComponent<ModelPanelParameters>();
             modelPanelParameters.focusPointTransform = prefab.transform.Find("FocusPoint");
@@ -35,9 +35,9 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.pickupToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP";
             itemDef.descriptionToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE";
-            itemDef.pickupModelPrefab = prefab; // TODO
+            itemDef.pickupModelPrefab = prefab;
             itemDef.canRemove = true;
-            //itemDef.pickupIconSprite = ; TODO
+            itemDef.pickupIconSprite = icon;
             itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy };
 
             return itemDef;

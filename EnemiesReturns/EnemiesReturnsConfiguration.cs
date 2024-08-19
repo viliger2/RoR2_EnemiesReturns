@@ -222,10 +222,10 @@ namespace EnemiesReturns
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
 
-            Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 8f, "Colossal Fist' damage");
-            Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 8f, "Colossal Fist' damage per stack");
+            Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 4f, "Colossal Fist' damage");
+            Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 4f, "Colossal Fist' damage per stack");
             Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");
-            Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 5f, "Colossal Fist proc chance.");
+            Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 10f, "Colossal Fist proc chance.");
             Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
 
             //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
