@@ -979,7 +979,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSplitProjectile", true);
             clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 15f;
 
-            clonedProjectile.layer = LayerIndex.debris.intVal; // no collision with entityprecise or itself, but with world
+            clonedProjectile.layer = LayerIndex.debris.intVal; // no collision with entityprecise or itself, but with world 
 
             if (clonedProjectile.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
