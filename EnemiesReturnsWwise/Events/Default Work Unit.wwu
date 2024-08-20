@@ -62,6 +62,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Spitter_Charge_Spit_Play" ID="{F555A457-1464-441C-93D5-E2725DC86CC0}">
+									<ChildrenList>
+										<Action Name="" ID="{80C19DC1-369F-48BE-8D2F-A7ADC20CD02E}" ShortID="549151127">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Colossus" ID="{84525F7E-DC03-4EB5-9812-0912DCF8A0F4}" ShortID="1070853532">

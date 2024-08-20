@@ -1681,14 +1681,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5697517218268567499, guid: 789f1ffee3695c5438d9b5fe442f28a5,
         type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5697517218268567499, guid: 789f1ffee3695c5438d9b5fe442f28a5,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 426bcd41a6bab09459db45589ddeeb3c, type: 2}
     - target: {fileID: -5050706571780228697, guid: 789f1ffee3695c5438d9b5fe442f28a5,
         type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5050706571780228697, guid: 789f1ffee3695c5438d9b5fe442f28a5,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7990c6f8a0b0f7a40a3ae32854761087, type: 2}
+    - target: {fileID: -4381783249258080745, guid: 789f1ffee3695c5438d9b5fe442f28a5,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4381783249258080745, guid: 789f1ffee3695c5438d9b5fe442f28a5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1706,8 +1721,13 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 2c87bda5b94cea94d855975fd89eb4f9, type: 2}
     - target: {fileID: 5866666021909216657, guid: 789f1ffee3695c5438d9b5fe442f28a5,
         type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 789f1ffee3695c5438d9b5fe442f28a5,
+        type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 789f1ffee3695c5438d9b5fe442f28a5, type: 3}

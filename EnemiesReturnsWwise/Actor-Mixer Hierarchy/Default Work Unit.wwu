@@ -217,6 +217,35 @@
 												<ActiveSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" ShortID="1055049522">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}">
+													<Language>SFX</Language>
+													<AudioFile>sfx_spitter_spit_windup.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="821461000"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Colossus" ID="{124E035B-5625-48AF-8186-B9A676A61F16}" ShortID="720897954">
