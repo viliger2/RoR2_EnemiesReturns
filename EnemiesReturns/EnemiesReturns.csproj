@@ -33,6 +33,9 @@
 	  <None Update="Language\en\EnemiesReturns_en.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="Language\pt-BR\EnemiesReturns_pt.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="Language\ru\EnemiesReturns_ru.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

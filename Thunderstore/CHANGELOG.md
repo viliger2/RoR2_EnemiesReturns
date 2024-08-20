@@ -1,4 +1,14 @@
 <details>
+<summary>0.1.8 </summary>
+
+* Added new Champion-tier (or boss) monster: Colossus.
+* Spitter:
+	* Split projectiles no longer collide with bodies.
+		* _It is done to remove "shotgun effect" where in some situations, depending on target's and Spitter's elevation all 4 projectiles will hit the same target, resulting in massive, unintended damage._
+* Added pt-BR translation by [Kauzok](https://github.com/Kauzok)
+</details>
+
+<details>
 <summary>0.0.12 </summary>
 
 * Spitter:
