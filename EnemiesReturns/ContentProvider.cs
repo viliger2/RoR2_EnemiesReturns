@@ -382,8 +382,23 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 AddMonsterToFamily(dcColossusDefault, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadow);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusDefault, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
+
+                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow = colossusFactory.CreateCard("cscColossusSkyMeadow", colossusMaster, ColossusFactory.SkinDefs.SkyMeadow, colossusBody);
+                DirectorCard dcColossusSkyMeadow = new DirectorCard
+                {
+                    spawnCard = ColossusFactory.SpawnCards.cscColossusSkyMeadow,
+                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchColossusSkyMeadow = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSkyMeadow,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadow);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
                 DirectorCard dcColossusGrassy = new DirectorCard

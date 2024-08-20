@@ -57,6 +57,7 @@ namespace EnemiesReturns.Enemies.Colossus
             public static SkinDef Snowy;
             public static SkinDef Sandy;
             public static SkinDef Grassy;
+            public static SkinDef SkyMeadow;
         }
 
         public struct SpawnCards
@@ -68,6 +69,8 @@ namespace EnemiesReturns.Enemies.Colossus
             public static CharacterSpawnCard cscColossusSnowy;
 
             public static CharacterSpawnCard cscColossusGrassy;
+
+            public static CharacterSpawnCard cscColossusSkyMeadow;
         }
 
         #region InternalConfigs
@@ -633,13 +636,37 @@ namespace EnemiesReturns.Enemies.Colossus
 };
             SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlColossus, grassyRenderer, SkinDefs.Default);
 
+            RenderInfo[] skyMeadowRenderer = new RenderInfo[]
+{
+                new RenderInfo
+                {
+                    renderer = modelRenderer,
+                    material = skinsLookup["matColossusSkyMeadow"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = headRenderer,
+                    material = skinsLookup["matColossusSkyMeadow"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = eyeRenderer,
+                    material = skinsLookup["matColossusEye"],
+                    ignoreOverlays = true
+                }
+};
+            SkinDefs.SkyMeadow = CreateSkinDef("matColossusSkyMeadow", mdlColossus, skyMeadowRenderer, SkinDefs.Default);
+
             var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
             modelSkinController.skins = new SkinDef[]
             {
                 SkinDefs.Default,
                 SkinDefs.Snowy,
                 SkinDefs.Grassy,
-                SkinDefs.Sandy
+                SkinDefs.Sandy,
+                SkinDefs.SkyMeadow
             };
             #endregion
 

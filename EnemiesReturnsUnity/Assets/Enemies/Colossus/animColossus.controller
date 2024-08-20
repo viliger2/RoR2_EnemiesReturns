@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156375ae28c15164c92c3f41f085273e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetOnExit: 1
+  resetOnExit: 0
   layerName: Gesture, Override
 --- !u!114 &-6134713614310529563
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156375ae28c15164c92c3f41f085273e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetOnExit: 1
+  resetOnExit: 0
   layerName: Idle, Additive
 --- !u!1101 &-6086172586510012160
 AnimatorStateTransition:
