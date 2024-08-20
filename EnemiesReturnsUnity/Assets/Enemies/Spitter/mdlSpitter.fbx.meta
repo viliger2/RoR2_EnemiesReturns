@@ -111,6 +111,24 @@ ModelImporter:
   - first:
       74: 285638931474496449
     second: SpitterDeathFBX
+  - first:
+      74: -3395164473200251766
+    second: SpitterChargedSpitBeginFBX
+  - first:
+      74: -982115091633673366
+    second: SpitterDeathFBX
+  - first:
+      74: -5392195937436897604
+    second: SpitterDescendingFBX
+  - first:
+      74: -8945691123924629249
+    second: SpitterIdleFBX
+  - first:
+      74: 7252043281845069420
+    second: SpitterIdleAdditiveFBX
+  - first:
+      74: -3498632222991233575
+    second: SplitterAimYawFBX
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -151,10 +169,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: SpitterAimPitchFBX
-      takeName: Armature|Armature|AimPitch
+      takeName: Armature|AimPitch
       internalID: 0
       firstFrame: 0
-      lastFrame: 7
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -177,13 +195,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 3.5
+      additiveReferencePoseFrame: 15
     - serializedVersion: 16
       name: SpitterAimYawFBX
-      takeName: Armature|Armature|AimYaw
+      takeName: Armature|AimYaw
       internalID: 0
       firstFrame: 0
-      lastFrame: 7
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -206,13 +224,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 3.5
+      additiveReferencePoseFrame: 15
     - serializedVersion: 16
       name: SpitterAscendingFBX
-      takeName: Armature|Armature|Ascending
+      takeName: Armature|Ascend
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -238,10 +256,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterBiteFBX
-      takeName: Armature|Armature|Bite
+      takeName: Armature|Bite
       internalID: 0
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -267,10 +285,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterChargedSpitBeginFBX
-      takeName: Armature|Armature|ChargedSpitBegin
+      takeName: Armature|ChargeSpit
       internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -296,10 +314,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterChargedSpitEndFBX
-      takeName: Armature|Armature|ChargedSpitEnd
+      takeName: Armature|ThrowSpit
       internalID: 0
       firstFrame: 0
-      lastFrame: 27
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -354,10 +372,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterDeathFBX
-      takeName: Armature|Armature|Death
+      takeName: Armature|Death
       internalID: 0
       firstFrame: 0
-      lastFrame: 9
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -383,7 +401,7 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterDescendingFBX
-      takeName: Armature|Armature|Descending
+      takeName: Armature|Descend
       internalID: 0
       firstFrame: 0
       lastFrame: 40
@@ -557,10 +575,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterIdleFBX
-      takeName: Armature|Armature|Idle
+      takeName: Armature|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 169
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -586,10 +604,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterIntoIdleFBX
-      takeName: Armature|Armature|IntoIdle
+      takeName: Armature|IdleIn
       internalID: 0
       firstFrame: 0
-      lastFrame: 11
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -615,10 +633,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterJumpFBX
-      takeName: Armature|Armature|Jump
+      takeName: Armature|Jump
       internalID: 0
       firstFrame: 0
-      lastFrame: 7
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -672,40 +690,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
-      name: SpitterSimpleSpitFBX
-      takeName: Armature|Armature|SimpleSpit
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 3.5
-    - serializedVersion: 16
       name: SpitterSpawnFBX
-      takeName: Armature|Armature|Spawn
+      takeName: Armature|Spawn
       internalID: 0
       firstFrame: 0
-      lastFrame: 13
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -725,59 +714,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 3.5
-    - serializedVersion: 16
-      name: SpitterSprintForwardFBX
-      takeName: Armature|Armature|SpeedWalkFWD
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 22
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.43585148
-        functionName: Footstep(AnimationEvent)
-        data: FootR
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.96547985
-        functionName: Footstep(AnimationEvent)
-        data: FootL
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterWalkBFBX
-      takeName: Armature|Armature|WalkB
+      takeName: Armature|RunB
       internalID: 0
       firstFrame: 0
-      lastFrame: 66
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -831,10 +777,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterWalkFFBX
-      takeName: Armature|Armature|WalkF
+      takeName: Armature|RunF
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -860,10 +806,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterWalkLFBX
-      takeName: Armature|Armature|WalkL
+      takeName: Armature|RunL
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -889,10 +835,10 @@ ModelImporter:
       additiveReferencePoseFrame: 3.5
     - serializedVersion: 16
       name: SpitterWalkRFBX
-      takeName: Armature|Armature|WalkR
+      takeName: Armature|RunR
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -900,6 +846,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 3.5
+    - serializedVersion: 16
+      name: SpitterIdleAdditiveFBX
+      takeName: Armature|Idle, Additive
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

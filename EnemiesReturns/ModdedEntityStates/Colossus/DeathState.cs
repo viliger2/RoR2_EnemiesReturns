@@ -50,6 +50,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             if(age <= duration)
             {
                 eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmmision, 0f, age / duration));
+                eyeRenderer.SetPropertyBlock(eyePropertyBlock);
                 headLight.range = Mathf.Lerp(initialRange, 0f, age / duration);
             }
         }

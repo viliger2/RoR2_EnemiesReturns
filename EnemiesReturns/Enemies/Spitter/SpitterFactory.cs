@@ -385,8 +385,8 @@ namespace EnemiesReturns.Enemies.Spitter
             aimAnimator.pitchRangeMin = -65f; // its looking up, not down, for fuck sake
             aimAnimator.pitchRangeMax = 65f;
 
-            aimAnimator.yawRangeMin = -15f;
-            aimAnimator.yawRangeMax = 15f;
+            aimAnimator.yawRangeMin = -60f;
+            aimAnimator.yawRangeMax = 60f;
 
             aimAnimator.pitchGiveupRange = 40f;
             aimAnimator.yawGiveupRange = 20f;
@@ -594,6 +594,10 @@ namespace EnemiesReturns.Enemies.Spitter
             };
             #endregion
 
+            //var helper = mdlSpitter.AddComponent<AnimationParameterHelper>();
+            //helper.animator = modelTransform.gameObject.GetComponent<Animator>();
+            //helper.animationParameters = new string[] { "walkSpeedDebug" };
+
             #endregion
 
             #region AimAssist
@@ -756,7 +760,7 @@ namespace EnemiesReturns.Enemies.Spitter
             asdChargedSpit.activationRequiresAimTargetLoS = false;
             asdChargedSpit.activationRequiresAimConfirmation = true;
             asdChargedSpit.movementType = AISkillDriver.MovementType.StrafeMovetarget;
-            asdChargedSpit.moveInputScale = 1f;
+            asdChargedSpit.moveInputScale = 0.7f;
             asdChargedSpit.aimType = AISkillDriver.AimType.AtMoveTarget;
             asdChargedSpit.ignoreNodeGraph = true;
             asdChargedSpit.shouldSprint = false;
@@ -1133,7 +1137,7 @@ namespace EnemiesReturns.Enemies.Spitter
             bite.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.Bite));
             bite.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            bite.baseRechargeInterval = 1f;
+            bite.baseRechargeInterval = 2f;
             bite.baseMaxStock = 1;
             bite.rechargeStock = 1;
             bite.requiredStock = 1;
@@ -1199,7 +1203,7 @@ namespace EnemiesReturns.Enemies.Spitter
             chargedSpit.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION";
             //bite.icon = ; yeah, right
 
-            chargedSpit.activationStateMachineName = "Weapon";
+            chargedSpit.activationStateMachineName = "Body";
             chargedSpit.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
             chargedSpit.interruptPriority = EntityStates.InterruptPriority.Any; // not sure
 

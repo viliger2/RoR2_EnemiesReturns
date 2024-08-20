@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
     {
         public static float baseDuration = 1f;
 
-        public static float baseChargeTime = 0.1f;
+        public static float baseChargeTime = 0.2f;
 
         public static string targetMuzzle = "MuzzleMouth";
 

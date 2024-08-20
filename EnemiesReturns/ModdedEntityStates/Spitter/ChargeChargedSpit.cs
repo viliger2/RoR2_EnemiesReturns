@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static Rewired.InputMapper;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
-    public class ChargeChargedSpit : BaseState
+    public class ChargeChargedSpit : GenericCharacterMain
     {
         public static float baseDuration = 1.1f;
 
@@ -43,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
                 }
             }
 
-            PlayAnimation("Gesture", "ChargeSpit");
+            PlayAnimation("Gesture", "ChargeSpit", "ChargedSpit.playbackRate", duration);
             if (characterBody)
             {
                 characterBody.SetAimTimer(2f);
@@ -66,6 +67,8 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             base.FixedUpdate();
             if(fixedAge >= duration && isAuthority)
             {
+                //outer.SetNextStateToMain();
+                //EntityStateMachine.FindByCustomName(characterBody.gameObject, "Body")?.SetState(RoR2.EntityStateCatalog.InstantiateState(typeof(ModdedEntityStates.Spitter.FireChargedSpit)));
                 outer.SetNextState(new FireChargedSpit());
             }
         }
