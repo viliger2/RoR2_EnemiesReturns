@@ -537,14 +537,15 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region FootstepHandler
-            FootstepHandler footstepHandler = null;
+            ColossusFootstepHandler footstepHandler = null;
             if (!mdlColossus.TryGetComponent(out footstepHandler))
             {
-                footstepHandler = mdlColossus.AddComponent<FootstepHandler>();
+                footstepHandler = mdlColossus.AddComponent<ColossusFootstepHandler>();
             }
             footstepHandler.enableFootstepDust = true;
             footstepHandler.baseFootstepString = "ER_Colossus_Step_Play";
             footstepHandler.footstepDustPrefab = CreateColossusStepEffect();
+            //footstepHandler.footstepDustInstanceShakeEmitter =  // TODO
             #endregion
 
             #region ModelPanelParameters

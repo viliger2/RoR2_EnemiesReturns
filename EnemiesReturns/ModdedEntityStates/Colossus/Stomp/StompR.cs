@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
         public override void OnEnter()
         {
             animationStateName = "StompR";
-            targetMuzzle = "FootR";
+            targetMuzzle = "StompSpawnR";
             base.OnEnter();
             attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), element => element.groupName == "RightStomp");
         }

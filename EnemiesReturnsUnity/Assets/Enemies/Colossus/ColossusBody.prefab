@@ -426,18 +426,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &646404280710264820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550044190681913642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5977bd6c20ab174fbe262d0dca4dd79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2872824041070980802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +436,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11f17122a7e820249b06b53bd37b149d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4319147371688713012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550044190681913642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57db74414cc0d7147a6934f96ce44e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5458964923753675535
@@ -463,9 +463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformPairs:
-  - name: FootL
+  - name: StompSpawnL
     transform: {fileID: 6470060261311211727}
-  - name: FootR
+  - name: StompSpawnR
     transform: {fileID: 3205269569272415163}
   - name: HandL
     transform: {fileID: 3011765655915815028}
@@ -511,6 +511,10 @@ MonoBehaviour:
     transform: {fileID: 1099352614353005801}
   - name: ThighL
     transform: {fileID: 1310788123719708055}
+  - name: FootL
+    transform: {fileID: 2372079168862995485}
+  - name: FootR
+    transform: {fileID: 72675117391153274}
 --- !u!114 &7706340093702680604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3205269569272415163}
   m_Layer: 0
-  m_Name: FootR
+  m_Name: StompSpawnR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6470060261311211727}
   m_Layer: 0
-  m_Name: FootL
+  m_Name: StompSpawnL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
