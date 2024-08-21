@@ -300,11 +300,13 @@ namespace EnemiesReturns
 
                 var deathFallEffect = colossusFactory.CreateDeathFallEffect();
                 effectsList.Add(new EffectDef(deathFallEffect));
-                OurAnimationEvents.effectDictionary.Add(0, deathFallEffect);
+                ModdedEntityStates.Colossus.Death.Death2.fallEffect = deathFallEffect;
+                //OurAnimationEvents.effectDictionary.Add(0, deathFallEffect);
 
                 var death2Effect = colossusFactory.CreateDeath2Effect();
                 effectsList.Add(new EffectDef(death2Effect));
-                OurAnimationEvents.effectDictionary.Add(1, death2Effect);
+                ModdedEntityStates.Colossus.Death.Death2.deathEffect = death2Effect;
+                //OurAnimationEvents.effectDictionary.Add(1, death2Effect);
 
                 var clapEffect = colossusFactory.CreateClapEffect();
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
@@ -356,7 +358,10 @@ namespace EnemiesReturns
                 masterList.Add(ColossusFactory.ColossusMaster);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.DeathState));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.InitialDeathState));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.BaseDeath));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death1));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death2));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));

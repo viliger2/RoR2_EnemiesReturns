@@ -1,16 +1,23 @@
-﻿using EnemiesReturns.Enemies.Colossus;
-using EntityStates;
-using Rewired.HID;
+﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Colossus
+namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 {
-    public class DeathState : GenericCharacterDeath
+    public abstract class BaseDeath : GenericCharacterDeath
     {
-        public static float duration = 1f;
+        public abstract float duration { get; }
+
+        public abstract float fallEffectSpawnTime { get; }
+
+        public abstract string fallEffectChild { get; }
+
+        public static GameObject fallEffect;
+
+        public Transform fallTransform;
 
         private Renderer eyeRenderer;
 
@@ -22,15 +29,12 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
 
         private float initialRange;
 
+        private bool fallEffectSpawned;
+
         public override void OnEnter()
         {
+            bodyPreservationDuration = 5f; // just to be sure
             base.OnEnter();
-            var rockController = GetModelTransform().gameObject.GetComponent<FloatingRocksController>();
-
-            if(rockController)
-            {
-                rockController.enabled = false;
-            }
 
             var childLocator = GetModelChildLocator();
 
@@ -40,6 +44,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             eyePropertyBlock.SetFloat("_EmPower", initialEmmision);
             eyeRenderer.SetPropertyBlock(eyePropertyBlock);
 
+            fallTransform = FindModelChild(fallEffectChild).transform;
+
             headLight = childLocator.FindChildComponent<Light>("HeadLight");
             initialRange = headLight.range;
         }
@@ -47,7 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
         public override void Update()
         {
             base.Update();
-            if(age <= duration)
+            if (age <= duration)
             {
                 eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmmision, 0f, age / duration));
                 eyeRenderer.SetPropertyBlock(eyePropertyBlock);
@@ -55,5 +61,14 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             }
         }
 
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (fixedAge >= fallEffectSpawnTime && !fallEffectSpawned)
+            {
+                EffectManager.SpawnEffect(fallEffect, new EffectData { origin = fallTransform.position }, true);
+                fallEffectSpawned = true;
+            }
+        }
     }
 }

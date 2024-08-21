@@ -62,6 +62,9 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LevelDamage;
             public static ConfigEntry<float> LevelArmor;
 
+            public static ConfigEntry<float> FootstepShockwaveDistance;
+            public static ConfigEntry<float> FootstepShockwaveForce;
+
             public static ConfigEntry<float> StompCooldown;
             public static ConfigEntry<float> StompOverlapAttackDamage;
             public static ConfigEntry<float> StompOverlapAttackForce;
@@ -182,6 +185,9 @@ namespace EnemiesReturns
             Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 2100f, "Colossus' health increase per level.");
             Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
             Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
+
+            Colossus.FootstepShockwaveDistance = config.Bind("Colossus Footstep Shockwave", "Shockwave Distance", 9f, "Colossus's footstep shockwave distance.");
+            Colossus.FootstepShockwaveForce = config.Bind("Colossus Footstep Shockwave", "Shockwave Force", 1800f, "Colossus's footstep shockwave force.");
 
             Colossus.StompCooldown = config.Bind("Colossus Stomp", "Stomp Cooldown", 10f, "Colossus' Stomp cooldown.");
             Colossus.StompOverlapAttackDamage = config.Bind("Colossus Stomp", "Stomp Overlap Damage", 2.5f, "Colossus' Stomp Overlap (aka stomp itself) damage.");

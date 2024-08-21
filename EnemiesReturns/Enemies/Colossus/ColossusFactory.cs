@@ -24,6 +24,7 @@ using RoR2.Mecanim;
 using EnemiesReturns.ModdedEntityStates.Colossus.Stomp;
 using EnemiesReturns.ModdedEntityStates.Colossus.RockClap;
 using EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser;
+using EnemiesReturns.ModdedEntityStates.Colossus.Death;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -283,7 +284,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.DeathState));
+            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(InitialDeathState));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon };
             #endregion
 
@@ -352,6 +353,10 @@ namespace EnemiesReturns.Enemies.Colossus
             kinematicCharacterMotor.LedgeHandling = true;
             kinematicCharacterMotor.InteractiveRigidbodyHandling = true;
             kinematicCharacterMotor.SafeMovement = false;
+            #endregion
+
+            #region ColossusAwooga
+            //bodyPrefab.AddComponent<ColossusAwooga>();
             #endregion
 
             #endregion
@@ -545,7 +550,6 @@ namespace EnemiesReturns.Enemies.Colossus
             footstepHandler.enableFootstepDust = true;
             footstepHandler.baseFootstepString = "ER_Colossus_Step_Play";
             footstepHandler.footstepDustPrefab = CreateColossusStepEffect();
-            //footstepHandler.footstepDustInstanceShakeEmitter =  // TODO
             #endregion
 
             #region ModelPanelParameters
@@ -1083,6 +1087,13 @@ namespace EnemiesReturns.Enemies.Colossus
             }
 
             clonedEffect.GetComponent<ProjectileCharacterController>().lifetime = EnemiesReturnsConfiguration.Colossus.StompProjectileLifetime.Value;
+
+            var shakeEmiiter = clonedEffectGhost.GetComponent<ShakeEmitter>();
+            shakeEmiiter.radius = 30;
+            shakeEmiiter.duration = 0.15f;
+            shakeEmiiter.wave.amplitude = 10f;
+            shakeEmiiter.wave.frequency = 30f;
+            shakeEmiiter.wave.cycleOffset = 0f;
 
             var ghostAnchor = new GameObject();
             ghostAnchor.name = "Anchor";
