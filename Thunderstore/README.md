@@ -44,6 +44,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Model by Jinazler
 * Rigging and animation by Sentinel 
 * Code by [viliger](https://thunderstore.io/package/viliger/)
+* Additional animations and sounds by [rob](https://thunderstore.io/package/rob_gaming/)
 * Majority of sounds come from RoR and RoRR
 </details>
 

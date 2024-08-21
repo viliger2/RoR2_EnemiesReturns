@@ -26,6 +26,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LevelDamage;
             public static ConfigEntry<float> LevelArmor;
 
+            public static ConfigEntry<float> BiteCooldown;
             public static ConfigEntry<float> BiteDamageModifier;
             public static ConfigEntry<float> BiteDamageForce;
             public static ConfigEntry<float> BiteRadius;
@@ -150,6 +151,7 @@ namespace EnemiesReturns
             Spitter.LevelDamage = config.Bind("Spitter Character Stats", "Damage per Level", 4f, "Spitter's damage increase per level.");
             Spitter.LevelArmor = config.Bind("Spitter Character Stats", "Armor per Level", 0f, "Spitter's armor increase per level.");
 
+            Spitter.BiteCooldown = config.Bind("Spitter Bite", "Bite Cooldown", 2f, "Spitter's Bite cooldown.");
             Spitter.BiteDamageModifier = config.Bind("Spitter Bite", "Bite Damage", 1.5f, "Spitter's Bite damage.");
             Spitter.BiteDamageForce = config.Bind("Spitter Bite", "Bite Force", 200f, "Spitter's Bite force, by default equal to that of Lemurian.");
             Spitter.BiteRadius = config.Bind("Spitter Bite", "Bite Radius", 0f, "Spitter's Bite radius.");

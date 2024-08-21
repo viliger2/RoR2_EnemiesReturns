@@ -246,8 +246,8 @@
 											<ChildrenList>
 												<AudioFileSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}">
 													<PropertyList>
-														<Property Name="LoopBegin" Type="Real64" Value="0.121048515981735"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.12"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>sfx_spitter_spit_windup.wav</AudioFile>

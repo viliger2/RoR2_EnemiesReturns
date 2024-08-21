@@ -1137,7 +1137,7 @@ namespace EnemiesReturns.Enemies.Spitter
             bite.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.Bite));
             bite.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            bite.baseRechargeInterval = 2f;
+            bite.baseRechargeInterval = EnemiesReturnsConfiguration.Spitter.BiteCooldown.Value;
             bite.baseMaxStock = 1;
             bite.rechargeStock = 1;
             bite.requiredStock = 1;
