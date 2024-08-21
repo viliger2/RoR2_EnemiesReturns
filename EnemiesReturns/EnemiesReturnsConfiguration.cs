@@ -224,7 +224,7 @@ namespace EnemiesReturns
             Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.75f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
             Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");
             Colossus.LaserBarrageProjectileCount = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectiles per Shot", 8, "Colossus' Laser Barrage projectiles per shot count.");
-            Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 5f, "Colossus' Laser Barrage explosion radius.");
+            Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 10f, "Colossus' Laser Barrage explosion radius.");
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
 
