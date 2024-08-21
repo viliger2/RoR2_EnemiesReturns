@@ -360,8 +360,10 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.InitialDeathState));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.BaseDeath));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.DeathFallBase));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death1));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death2));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.DeathBoner));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));

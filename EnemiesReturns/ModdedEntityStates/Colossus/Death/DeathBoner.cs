@@ -10,8 +10,8 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 {
-    public class Death1 : DeathFallBase
+    public class DeathBoner : DeathFallBase
     {
-        public override string fallAnimation => "Death1";
+        public override string fallAnimation => "DeathBoner";
     }
 }

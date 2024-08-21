@@ -20,7 +20,7 @@ ModelImporter:
     second: ColossusCrouch
   - first:
       74: -7528349071394716303
-    second: ColossusDeath
+    second: ColossusDeathBoner
   - first:
       74: 8323008515181824085
     second: ColossusDeath2
@@ -506,7 +506,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ColossusDeath
+      name: ColossusDeathBoner
       takeName: Armature|Armature|Death
       internalID: 0
       firstFrame: 0

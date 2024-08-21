@@ -15,12 +15,6 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void OnEnter()
         {
             base.OnEnter();
-            var awooga = characterBody.gameObject.GetComponent<ColossusAwooga>();
-            if (awooga && awooga.boing)
-            {
-                Debug.Log("hehehe boner");
-            }
-
             var rockController = GetModelTransform().gameObject.GetComponent<FloatingRocksController>();
 
             if (rockController)
@@ -30,14 +24,22 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 
             if (NetworkServer.active)
             {
-                int value = UnityEngine.Random.Range(0, 100);
-                if (value > 50)
+                var awooga = characterBody.gameObject.GetComponent<ColossusAwooga>();
+                if (awooga && awooga.boing)
                 {
-                    outer.SetNextState(new Death1());
+                    outer.SetNextState(new DeathBoner());
                 }
                 else
                 {
-                    outer.SetNextState(new Death2());
+                    int value = UnityEngine.Random.Range(0, 100);
+                    if (value > 50)
+                    {
+                        outer.SetNextState(new Death1());
+                    }
+                    else
+                    {
+                        outer.SetNextState(new Death2());
+                    }
                 }
             }
         }

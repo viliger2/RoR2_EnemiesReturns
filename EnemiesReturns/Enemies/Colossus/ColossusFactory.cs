@@ -359,7 +359,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region ColossusAwooga
-            //bodyPrefab.AddComponent<ColossusAwooga>();
+            bodyPrefab.AddComponent<ColossusAwooga>();
             #endregion
 
             #endregion
