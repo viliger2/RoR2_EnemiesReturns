@@ -133,6 +133,7 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow, localPlayer.modelLocator.modelBaseTransform.position);
+			SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)

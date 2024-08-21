@@ -59,6 +59,7 @@ namespace EnemiesReturns.Enemies.Colossus
             public static SkinDef Sandy;
             public static SkinDef Grassy;
             public static SkinDef SkyMeadow;
+            public static SkinDef Castle;
         }
 
         public struct SpawnCards
@@ -72,6 +73,8 @@ namespace EnemiesReturns.Enemies.Colossus
             public static CharacterSpawnCard cscColossusGrassy;
 
             public static CharacterSpawnCard cscColossusSkyMeadow;
+
+            public static CharacterSpawnCard cscColossusCastle;
         }
 
         #region InternalConfigs
@@ -662,7 +665,30 @@ namespace EnemiesReturns.Enemies.Colossus
                     ignoreOverlays = true
                 }
 };
-            SkinDefs.SkyMeadow = CreateSkinDef("matColossusSkyMeadow", mdlColossus, skyMeadowRenderer, SkinDefs.Default);
+            SkinDefs.SkyMeadow = CreateSkinDef("skinColossusSkyMeadow", mdlColossus, skyMeadowRenderer, SkinDefs.Default);
+
+            RenderInfo[] castleRenderer = new RenderInfo[]
+{
+                new RenderInfo
+                {
+                    renderer = modelRenderer,
+                    material = skinsLookup["matColossusSMBBody"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = headRenderer,
+                    material = skinsLookup["matColossusSMBHead"],
+                    ignoreOverlays = false
+                },
+                new RenderInfo
+                {
+                    renderer = eyeRenderer,
+                    material = skinsLookup["matColossusEye"],
+                    ignoreOverlays = true
+                }
+};
+            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlColossus, castleRenderer, SkinDefs.Default);
 
             var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
             modelSkinController.skins = new SkinDef[]
@@ -671,7 +697,8 @@ namespace EnemiesReturns.Enemies.Colossus
                 SkinDefs.Snowy,
                 SkinDefs.Grassy,
                 SkinDefs.Sandy,
-                SkinDefs.SkyMeadow
+                SkinDefs.SkyMeadow,
+                SkinDefs.Castle
             };
             #endregion
 
