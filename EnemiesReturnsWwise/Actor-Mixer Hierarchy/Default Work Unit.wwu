@@ -219,6 +219,11 @@
 										</Sound>
 										<Sound Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" ShortID="1055049522">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-500</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-5</Value>
@@ -229,12 +234,21 @@
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 												</Reference>
+												<Reference Name="Effect0">
+													<Custom>
+														<Effect Name="Wwise_Time_Stretch_(Custom)" ID="{449710A3-7677-4C82-8676-568AEDFB8A89}" ShortID="317366288" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3"/>
+													</Custom>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.121048515981735"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>sfx_spitter_spit_windup.wav</AudioFile>
 													<MediaIDList>

@@ -1549,6 +1549,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 5030567279330711369}
     m_Position: {x: 610, y: 280, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 9126969034996911415}
+    m_Position: {x: 770, y: 380, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -2069,3 +2072,30 @@ MonoBehaviour:
   intParameterName: flinchIndex
   rangeMin: 0
   rangeMax: 2
+--- !u!1102 &9126969034996911415
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FireChargedSpit
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 0
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 2905410273900591302, guid: 789f1ffee3695c5438d9b5fe442f28a5,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: ChargedSpit.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 

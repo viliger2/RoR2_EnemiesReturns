@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
     public class FireChargedSpit : BaseState
     {
-        public static float baseDuration = 1f;
+        public static float baseDuration = 2.1f;
 
         public static float baseChargeTime = 0.2f;
 
@@ -45,7 +45,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             duration = baseDuration / attackSpeedStat;
             chargeTime = baseChargeTime / attackSpeedStat;
             Util.PlaySound("ER_Spiiter_Spit_Play", gameObject);
-            PlayCrossfade("Gesture", "FireChargedSpit", "ChargedSpit.playbackRate", duration, 0.1f);
+            PlayCrossfade("Gesture, Override", "FireChargedSpit", "ChargedSpit.playbackRate", duration, 0.1f);
         }
 
         public override void FixedUpdate()
@@ -70,8 +70,12 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public override void OnExit()
         {
-            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
+            if (characterBody)
+            {
+                characterBody.SetAimTimer(1f);
+            }
         }
 
         // this entire thing is pretty much copy paste of Mushrum's FireGrenade
