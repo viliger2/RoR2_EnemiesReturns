@@ -174,7 +174,7 @@ namespace EnemiesReturns
 
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 3, "Minimum stages players need to complete before monster starts spawning.");
-            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 2000, "Director cost of Colossus.");
+            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1200, "Director cost of Colossus.");
 
             Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 7000f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
