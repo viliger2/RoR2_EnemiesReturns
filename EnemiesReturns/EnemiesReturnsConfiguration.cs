@@ -63,6 +63,8 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LevelDamage;
             public static ConfigEntry<float> LevelArmor;
 
+            public static ConfigEntry<bool> DestroyModelOnDeath;
+
             public static ConfigEntry<float> FootstepShockwaveDistance;
             public static ConfigEntry<float> FootstepShockwaveForce;
 
@@ -175,8 +177,8 @@ namespace EnemiesReturns
             #region Colossus
 
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
-            Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 3, "Minimum stages players need to complete before monster starts spawning.");
-            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1200, "Director cost of Colossus.");
+            Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1000, "Director cost of Colossus.");
 
             Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 7000f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
@@ -187,6 +189,8 @@ namespace EnemiesReturns
             Colossus.LevelMaxHealth = config.Bind("Colossus Character Stats", "Health per Level", 2100f, "Colossus' health increase per level.");
             Colossus.LevelDamage = config.Bind("Colossus Character Stats", "Damage per Level", 8f, "Colossus' damage increase per level.");
             Colossus.LevelArmor = config.Bind("Colossus Character Stats", "Armor per Level", 0f, "Colossus' armor increase per level.");
+
+            Colossus.DestroyModelOnDeath = config.Bind("Colossus Model", "Destroy Model On Death", false, "Destroys model 5 seconds after Colossus' death. Use to remove a giant slab from the battlefield that might block stuff.");
 
             Colossus.FootstepShockwaveDistance = config.Bind("Colossus Footstep Shockwave", "Shockwave Distance", 9f, "Colossus's footstep shockwave distance.");
             Colossus.FootstepShockwaveForce = config.Bind("Colossus Footstep Shockwave", "Shockwave Force", 1800f, "Colossus's footstep shockwave force.");
@@ -222,18 +226,18 @@ namespace EnemiesReturns
             Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 5f, "Colossus' Laser Barrage duration.");
             Colossus.LaserBarrageProjectileSpeed = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectile Speed", 50f, "Colossus' Laser Barrage projectile speed.");
             Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.2f, "Colossus' Laser Barrage fire frequency.");
-            Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.18f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
-            Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.75f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
+            Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.15f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
+            Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.05f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
             Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");
             Colossus.LaserBarrageProjectileCount = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectiles per Shot", 8, "Colossus' Laser Barrage projectiles per shot count.");
             Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 10f, "Colossus' Laser Barrage explosion radius.");
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
 
-            Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 4f, "Colossal Fist' damage");
-            Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 4f, "Colossal Fist' damage per stack");
+            Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 5f, "Colossal Fist' damage");
+            Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 5f, "Colossal Fist' damage per stack");
             Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");
-            Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 10f, "Colossal Fist proc chance.");
+            Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 8f, "Colossal Fist proc chance.");
             Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
 
             //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
