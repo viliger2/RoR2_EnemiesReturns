@@ -195,7 +195,7 @@ namespace EnemiesReturns.Enemies.Colossus
             modelLocator.dontDetatchFromParent = false;
 
             modelLocator.noCorpse = false;
-            modelLocator.dontReleaseModelOnDeath = false;
+            modelLocator.dontReleaseModelOnDeath = EnemiesReturnsConfiguration.Colossus.DestroyModelOnDeath.Value;
             modelLocator.preserveModel = false;
 
             modelLocator.normalizeToFloor = false;

@@ -7,7 +7,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
     public class HeadLaserBarrageStart : BaseState
     {
-        public static float baseDuration = 5.5f;
+        public static float baseDuration = 4.5f;
 
         public static float baseChargeEffectDuration = 4f;
 
