@@ -11,6 +11,8 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Spitter
 {
     public class NormalSpit : GenericProjectileBaseState
     {
+        public static GameObject normalSpitProjectile;
+
         private static GameObject spitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Vermin/MuzzleflashVerminSpit.prefab").WaitForCompletion();
 
         public override void OnEnter()
@@ -19,14 +21,14 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Spitter
             attackSoundString = "";
             bloom = 0f;
             baseDuration = 1.5f;
-            damageCoefficient = EnemiesReturnsConfiguration.Spitter.NormalSpitDamage.Value;
+            damageCoefficient = 2f;
             targetMuzzle = "MuzzleMouth";
             recoilAmplitude = 0f;
-            //projectilePrefab = SpitterFactory.normalSpitProjectile;
+            projectilePrefab = normalSpitProjectile;
             projectilePitchBonus = -1f;
             minSpread = 0f;
             maxSpread = 1f;
-            force = EnemiesReturnsConfiguration.Spitter.NormalSpitForce.Value;
+            force = 1000f;
             effectPrefab = spitEffectPrefab;
 
             base.OnEnter();

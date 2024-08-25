@@ -10,6 +10,7 @@ namespace EnemiesReturns.EditorHelpers
 {
     // I love doing this stupid shit because I refuse to use thunderkit
     // and unity doesn't keep events through scenes or whatever
+    // TODO: shards fly away on clients
     public class DumbProjectileStickHelper : NetworkBehaviour
     {
         public GameObject shardEffect;

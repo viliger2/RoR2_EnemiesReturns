@@ -147,34 +147,35 @@ namespace EnemiesReturns
                 ModdedEntityStates.Spitter.Bite.biteEffectPrefab = biteEffectPrefab;
                 effectsList.Add(new EffectDef(biteEffectPrefab));
 
-                //SpitterFactory.normalSpitProjectile = spitterFactory.CreateNormalSpitProjectile();
                 var chargedSpitSmallDoTZone = spitterFactory.CreatedChargedSpitSmallDoTZone();
                 var chargedSpitDoTZone = spitterFactory.CreateChargedSpitDoTZone();
                 var chargedSpitChunkProjectile = spitterFactory.CreateChargedSpitSplitProjectile(chargedSpitSmallDoTZone);
                 var chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile); ;
                 ModdedEntityStates.Spitter.FireChargedSpit.projectilePrefab = chargedSpitProjectile;
-                //projectilesList.Add(SpitterFactory.normalSpitProjectile);
                 projectilesList.Add(chargedSpitProjectile);
                 projectilesList.Add(chargedSpitSmallDoTZone);
                 projectilesList.Add(chargedSpitDoTZone);
                 projectilesList.Add(chargedSpitChunkProjectile);
 
+                Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile = spitterFactory.CreateNormalSpitProjectile();
+                projectilesList.Add(Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile);
+
                 var spitterLog = Utils.CreateUnlockableDef("Logs.SpitterBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER");
                 unlockablesList.Add(spitterLog);
 
-                //Skills.NormalSpit = spitterFactory.CreateNormalSpitSkill();
+                SpitterFactory.Skills.NormalSpit = spitterFactory.CreateNormalSpitSkill();
                 SpitterFactory.Skills.Bite = spitterFactory.CreateBiteSkill();
                 SpitterFactory.Skills.ChargedSpit = spitterFactory.CreateChargedSpitSkill();
 
-                //sdList.Add(SpitterFactory.Skills.NormalSpit);
+                sdList.Add(SpitterFactory.Skills.NormalSpit);
                 sdList.Add(SpitterFactory.Skills.Bite);
                 sdList.Add(SpitterFactory.Skills.ChargedSpit);
 
-                //SkillFamilies.Primary = spitterFactory.CreateSkillFamily("SpitterPrimaryFamily", Skills.NormalSpit);
+                SpitterFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("SpitterPrimaryFamily", SpitterFactory.Skills.NormalSpit);
                 SpitterFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("SpitterSecondaryFamily", SpitterFactory.Skills.Bite);
                 SpitterFactory.SkillFamilies.Special = Utils.CreateSkillFamily("SpitterSpecialFamily", SpitterFactory.Skills.ChargedSpit);
 
-                //sfList.Add(SpitterFactory.SkillFamilies.Primary);
+                sfList.Add(SpitterFactory.SkillFamilies.Primary);
                 sfList.Add(SpitterFactory.SkillFamilies.Secondary);
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
@@ -252,7 +253,7 @@ namespace EnemiesReturns
 
                 stateList.Add(typeof(ModdedEntityStates.Spitter.Bite));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpawnState));
-                //stateList.Add(typeof(ModdedEntityStates.Spitter.NormalSpit));
+                stateList.Add(typeof(Junk.ModdedEntityStates.Spitter.NormalSpit));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.FireChargedSpit));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDance));
@@ -301,12 +302,10 @@ namespace EnemiesReturns
                 var deathFallEffect = colossusFactory.CreateDeathFallEffect();
                 effectsList.Add(new EffectDef(deathFallEffect));
                 ModdedEntityStates.Colossus.Death.Death2.fallEffect = deathFallEffect;
-                //OurAnimationEvents.effectDictionary.Add(0, deathFallEffect);
 
                 var death2Effect = colossusFactory.CreateDeath2Effect();
                 effectsList.Add(new EffectDef(death2Effect));
                 ModdedEntityStates.Colossus.Death.Death2.deathEffect = death2Effect;
-                //OurAnimationEvents.effectDictionary.Add(1, death2Effect);
 
                 var clapEffect = colossusFactory.CreateClapEffect();
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
@@ -328,26 +327,26 @@ namespace EnemiesReturns
                 var colossusLog = Utils.CreateUnlockableDef("Logs.ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
                 unlockablesList.Add(colossusLog);
 
-                //var laserEffect = colossusFactory.CreateLaserEffect();
-                //ModdedEntityStates.Junk.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
+                var laserEffect = colossusFactory.CreateLaserEffect();
+                Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
                 ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
                 ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
                 ColossusFactory.Skills.LaserBarrage = colossusFactory.CreateLaserBarrageSkill();
-                //ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
+                ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
                 sdList.Add(ColossusFactory.Skills.Stomp);
                 sdList.Add(ColossusFactory.Skills.StoneClap);
                 sdList.Add(ColossusFactory.Skills.LaserBarrage);
-                //sdList.Add(ColossusFactory.Skills.HeadLaser);
+                sdList.Add(ColossusFactory.Skills.HeadLaser);
 
                 ColossusFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("ColossusPrimaryFamily", ColossusFactory.Skills.Stomp);
                 ColossusFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("ColossusSecondaryFamily", ColossusFactory.Skills.StoneClap);
                 ColossusFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusFactory.Skills.LaserBarrage);
-                //ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
+                ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
                 sfList.Add(ColossusFactory.SkillFamilies.Primary);
                 sfList.Add(ColossusFactory.SkillFamilies.Secondary);
                 sfList.Add(ColossusFactory.SkillFamilies.Utility);
-                //sfList.Add(ColossusFactory.SkillFamilies.Special);
+                sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
                 ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, skinsLookup, dtColossus);
@@ -373,6 +372,9 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
+                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserStart));
+                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack));
+                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserEnd));
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster, ColossusFactory.SkinDefs.Default, colossusBody);
                 DirectorCard dcColossusDefault = new DirectorCard

@@ -21,10 +21,6 @@ using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
-using EnemiesReturns.ModdedEntityStates.Colossus.Stomp;
-using EnemiesReturns.ModdedEntityStates.Colossus.RockClap;
-using EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser;
-using EnemiesReturns.ModdedEntityStates.Colossus.Death;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -38,7 +34,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             public static SkillDef LaserBarrage;
 
-            //public static SkillDef HeadLaser;
+            public static SkillDef HeadLaser;
         }
 
         public struct SkillFamilies
@@ -49,7 +45,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             public static SkillFamily Utility;
 
-            //public static SkillFamily Special;
+            public static SkillFamily Special;
         }
 
         public struct SkinDefs
@@ -236,16 +232,16 @@ namespace EnemiesReturns.Enemies.Colossus
             #region Utility
             var gsUtility = bodyPrefab.AddComponent<GenericSkill>();
             gsUtility._skillFamily = SkillFamilies.Utility;
-            gsUtility.skillName = "LaserClap";
+            gsUtility.skillName = "LaserBarrage";
             gsUtility.hideInCharacterSelect = false;
             #endregion
 
-            //#region Special
-            //var gsSpecial = bodyPrefab.AddComponent<GenericSkill>();
-            //gsSpecial._skillFamily = SkillFamilies.Special;
-            //gsSpecial.skillName = "LaserSpin";
-            //gsSpecial.hideInCharacterSelect = false;
-            //#endregion
+            #region Special
+            var gsSpecial = bodyPrefab.AddComponent<GenericSkill>();
+            gsSpecial._skillFamily = SkillFamilies.Special;
+            gsSpecial.skillName = "HeadLaser";
+            gsSpecial.hideInCharacterSelect = false;
+            #endregion
 
             #endregion
 
@@ -258,7 +254,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillLocator.primary = gsPrimary;
             skillLocator.secondary = gsSecondary;
             skillLocator.utility = gsUtility;
-            //skillLocator.special = gsSpecial;
+            skillLocator.special = gsSpecial;
             #endregion
 
             #region TeamComponent
@@ -287,7 +283,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(InitialDeathState));
+            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.Death.InitialDeathState));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon };
             #endregion
 
@@ -482,8 +478,6 @@ namespace EnemiesReturns.Enemies.Colossus
             // the only way to fix vertex colors not working is to put model with
             // vertex color preview material in the bundle and then swap material here
             // this is the most retarded, asinine bullshit yet with this game
-            //modelRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
-            //headRenderer.material = ContentProvider.MaterialCache.First(mat => mat.name == "matColossus");
             modelRenderer.material = skinsLookup["matColossus"];
             headRenderer.material = skinsLookup["matColossus"];
 
@@ -995,7 +989,6 @@ namespace EnemiesReturns.Enemies.Colossus
                 light.range = 20f;
             }
 
-            //cloneEffect.GetComponent<EffectComponent>().applyScale = true;
             cloneEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
             return cloneEffect;
@@ -1279,8 +1272,6 @@ namespace EnemiesReturns.Enemies.Colossus
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            // TODO: maybe destroy shake emmiter
-            // TODO: check if light needs scaling
             var scale = 2f * (EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value / 5f); // 5f is the value it was scaled to
             explosionEffect.transform.localScale = new Vector3(scale, scale, scale);
 
@@ -1427,10 +1418,15 @@ namespace EnemiesReturns.Enemies.Colossus
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_STOMP_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION";
+            var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
+            if (loaderGroundSlam)
+            {
+                skillDef.icon = loaderGroundSlam.icon;
+            }
             //bite.icon = ; yeah, right
 
             skillDef.activationStateMachineName = "Body";
-            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(StompEnter));
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.StompCooldown.Value;
@@ -1463,10 +1459,15 @@ namespace EnemiesReturns.Enemies.Colossus
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION";
+            var commandoBarrage = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyBarrage.asset").WaitForCompletion();
+            if(commandoBarrage)
+            {
+                skillDef.icon = commandoBarrage.icon;
+            }
             //bite.icon = ; yeah, right
 
             skillDef.activationStateMachineName = "Body";
-            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(RockClapStart));
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.RockClapCooldown.Value;
@@ -1499,6 +1500,11 @@ namespace EnemiesReturns.Enemies.Colossus
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION";
+            var captainShotgun = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainShotgun.asset").WaitForCompletion();
+            if(captainShotgun)
+            {
+                skillDef.icon = captainShotgun.icon;
+            }
             //bite.icon = ; yeah, right
 
             skillDef.activationStateMachineName = "Body";
@@ -1535,10 +1541,15 @@ namespace EnemiesReturns.Enemies.Colossus
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION";
+            var voidFiend = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC1/VoidSurvivor/FireCorruptBeam.asset").WaitForCompletion();
+            if(voidFiend)
+            {
+                skillDef.icon = voidFiend.icon;
+            }
             //bite.icon = ; yeah, right
 
             skillDef.activationStateMachineName = "Body";
-            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(HeadLaserStart));
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = 45f;

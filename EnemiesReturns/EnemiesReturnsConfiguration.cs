@@ -31,13 +31,6 @@ namespace EnemiesReturns
             public static ConfigEntry<float> BiteDamageForce;
             public static ConfigEntry<float> BiteRadius;
 
-            [Obsolete]
-            public static ConfigEntry<float> NormalSpitDamage;
-            [Obsolete]
-            public static ConfigEntry<float> NormalSpitSpeed;
-            [Obsolete]
-            public static ConfigEntry<float> NormalSpitForce;
-
             public static ConfigEntry<float> ChargedProjectileCooldown;
             public static ConfigEntry<float> ChargedProjectileDamage;
             public static ConfigEntry<float> ChargedProjectileForce;
@@ -157,10 +150,6 @@ namespace EnemiesReturns
             Spitter.BiteDamageModifier = config.Bind("Spitter Bite", "Bite Damage", 1.5f, "Spitter's Bite damage.");
             Spitter.BiteDamageForce = config.Bind("Spitter Bite", "Bite Force", 200f, "Spitter's Bite force, by default equal to that of Lemurian.");
             Spitter.BiteRadius = config.Bind("Spitter Bite", "Bite Radius", 0f, "Spitter's Bite radius.");
-
-            //Spitter.NormalSpitDamage = config.Bind("Spitter Normal Spit", "Spit Damage", 2f, "Spitter's Normal Spit projectile damage.");
-            //Spitter.NormalSpitForce = config.Bind("Spitter Normal Spit", "Spit Force", 1000f, "Spitter's Normal Spit force.");
-            //Spitter.NormalSpitSpeed = config.Bind("Spitter Normal Spit", "Spit Speed", 50f, "Spitter's Normal Spit projectile speed.");
 
             Spitter.ChargedProjectileCooldown = config.Bind("Spitter Charged Spit", "Charged Spit Cooldown", 6f, "Charged Spit Cooldown");
             Spitter.ChargedProjectileDamage = config.Bind("Spitter Charged Spit", "Charged Spit Damage", 1.6f, "Spitter's Charged projectile damage.");

@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
         public override void OnEnter()
         {
             base.OnEnter();
-            if (NetworkServer.active)
+            if (isAuthority)
             {
                 var sphereSearch = new SphereSearch();
 

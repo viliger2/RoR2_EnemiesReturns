@@ -13,7 +13,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
     {
         // unfuck transforms, too many unncessesary points
         // maybe add a hit\filter callback so enemies only get hit every x seconds\only once per swipe
-        public static float baseDuration = 25f;
+        public static float baseDuration = 20f;
 
         public static float baseFireFrequency = 0.06f;
 
@@ -25,11 +25,11 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 
         public static GameObject beamPrefab;
 
-        public static int totalTurnCount = 3;
+        public static int totalTurnCount = 4;
 
         public static float pitchStart = 0.05f;
 
-        public static float pitchStep = 0.25f;
+        public static float pitchStep = 0.15f;
 
         private static float laserMaxDistance = 2000f;
 
@@ -71,7 +71,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
             anglePerSecond = totalTurnCount * 90 / baseDuration; // 90 is for sin()
             fireFrequency = baseFireFrequency / attackSpeedStat;
 
-            effectPoint = FindModelChild("LaserEffectPoint");
+            effectPoint = FindModelChild("LaserInitialPoint");
             initialPoint = FindModelChild("LaserInitialPoint");
             bulletSpawnHelperPoint = FindModelChild("BulletAttackHelper");
 
@@ -86,7 +86,6 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 
             PlayAnimation("Body", "LaserBeamLoop");
             UpdateBeamTransforms();
-            //RoR2Application.onLateUpdate += UpdateBeamTransformsInLateUpdate;
         }
 
         public override void Update()
@@ -156,18 +155,6 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
             bulletAttack.damageColorIndex = DamageColorIndex.Default;
             bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
             return bulletAttack;
-        }
-
-        private void UpdateBeamTransformsInLateUpdate()
-        {
-            try
-            {
-                UpdateBeamTransforms();
-            }
-            catch (Exception exception)
-            {
-                Debug.LogException(exception);
-            }
         }
 
         private void UpdateBeamTransforms()

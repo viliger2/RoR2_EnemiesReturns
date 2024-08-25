@@ -69,7 +69,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         private void FixedUpdate()
         {
-            rockThing.transform.Rotate(new Vector3(0f, 90f * Time.deltaTime, 0f));
+            rockThing.transform.Rotate(new Vector3(0f, 90f * Time.fixedDeltaTime, 0f));
         }
 
         public void SetRockThingPosition(Vector3 position)

@@ -55,7 +55,6 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             headLight = childLocator.FindChildComponent<Light>("HeadLight");
             initialLightRange = headLight.range;
 
-
             modelAnimator = GetModelAnimator();
             if (modelAnimator)
             {

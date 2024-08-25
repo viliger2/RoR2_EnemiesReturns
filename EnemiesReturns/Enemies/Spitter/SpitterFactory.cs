@@ -20,6 +20,7 @@ using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
+using EnemiesReturns.ModdedEntityStates.Spitter;
 
 namespace EnemiesReturns.Enemies.Spitter
 {
@@ -27,7 +28,7 @@ namespace EnemiesReturns.Enemies.Spitter
     {
         public struct Skills
         {
-            //public static SkillDef NormalSpit;
+            public static SkillDef NormalSpit;
 
             public static SkillDef Bite;
 
@@ -36,7 +37,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public struct SkillFamilies
         {
-            //public static SkillFamily Primary;
+            public static SkillFamily Primary;
 
             public static SkillFamily Secondary;
 
@@ -185,10 +186,10 @@ namespace EnemiesReturns.Enemies.Spitter
             #region GenericSkills
 
             #region Primary
-            //var gsPrimary = spitterPrefab.AddComponent<GenericSkill>();
-            //gsPrimary._skillFamily = SkillFamilies.Primary;
-            //gsPrimary.skillName = "NormalSpit";
-            //gsPrimary.hideInCharacterSelect = false;
+            var gsPrimary = bodyPrefab.AddComponent<GenericSkill>();
+            gsPrimary._skillFamily = SkillFamilies.Primary;
+            gsPrimary.skillName = "NormalSpit";
+            gsPrimary.hideInCharacterSelect = false;
             #endregion
 
             #region Secondary
@@ -213,7 +214,7 @@ namespace EnemiesReturns.Enemies.Spitter
             {
                 skillLocator = bodyPrefab.AddComponent<SkillLocator>();
             }
-            //skillLocator.primary = gsPrimary;
+            skillLocator.primary = gsPrimary;
             skillLocator.secondary = gsSecondary;
             skillLocator.special = gsSpecial;
             #endregion
@@ -774,43 +775,6 @@ namespace EnemiesReturns.Enemies.Spitter
             asdChargedSpit.nextHighPriorityOverride = null;
             #endregion
 
-            #region AISkillDriver_StrafeAndShootNormalSpit
-            //var asdNormalSpit = masterPrefab.AddComponent<AISkillDriver>();
-            //asdNormalSpit.customName = "StrafeAndShootNormalSpit";
-            //asdNormalSpit.skillSlot = SkillSlot.Primary;
-
-            //asdNormalSpit.requiredSkill = null;
-            //asdNormalSpit.requireSkillReady = false;
-            //asdNormalSpit.requireEquipmentReady = false;
-            //asdNormalSpit.minUserHealthFraction = float.NegativeInfinity;
-            //asdNormalSpit.maxUserHealthFraction = float.PositiveInfinity;
-            //asdNormalSpit.minTargetHealthFraction = float.NegativeInfinity;
-            //asdNormalSpit.maxTargetHealthFraction = float.PositiveInfinity;
-            //asdNormalSpit.minDistance = 15f;
-            //asdNormalSpit.maxDistance = 35f;
-            //asdNormalSpit.selectionRequiresTargetLoS = true;
-            //asdNormalSpit.selectionRequiresOnGround = false;
-            //asdNormalSpit.selectionRequiresAimTarget = false;
-            //asdNormalSpit.maxTimesSelected = -1;
-
-            //asdNormalSpit.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            //asdNormalSpit.activationRequiresTargetLoS = false;
-            //asdNormalSpit.activationRequiresAimTargetLoS = false;
-            //asdNormalSpit.activationRequiresAimConfirmation = true;
-            //asdNormalSpit.movementType = AISkillDriver.MovementType.StrafeMovetarget;
-            //asdNormalSpit.moveInputScale = 1f;
-            //asdNormalSpit.aimType = AISkillDriver.AimType.AtMoveTarget;
-            //asdNormalSpit.ignoreNodeGraph = true;
-            //asdNormalSpit.shouldSprint = false;
-            //asdNormalSpit.shouldFireEquipment = false;
-            //asdNormalSpit.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            //asdNormalSpit.driverUpdateTimerOverride = -1f;
-            //asdNormalSpit.resetCurrentEnemyOnNextDriverSelection = false;
-            //asdNormalSpit.noRepeat = false;
-            //asdNormalSpit.nextHighPriorityOverride = null;
-            #endregion
-
             #region AISkillDriver_ChaseOffNodeGraph
             var asdChaseOffNodeGraph = masterPrefab.AddComponent<AISkillDriver>();
             asdChaseOffNodeGraph.customName = "ChaseOffNodegraph";
@@ -905,8 +869,8 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public GameObject CreateNormalSpitProjectile()
         {
-            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterSimpleSpitProjectile", true);
-            clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = EnemiesReturnsConfiguration.Spitter.NormalSpitSpeed.Value;
+            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitProjectile.prefab").WaitForCompletion().InstantiateClone("SpitterSimpleSpitProjectile", true);
+            clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 50f;
 
             return clonedProjectile;
         }
@@ -1131,7 +1095,11 @@ namespace EnemiesReturns.Enemies.Spitter
 
             bite.skillNameToken = "ENEMIES_RETURNS_SPITTER_BITE_NAME";
             bite.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION";
-            //bite.icon = ; yeah, right
+            var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
+            if (acridBite)
+            {
+                bite.icon = acridBite.icon;
+            }
 
             bite.activationStateMachineName = "Weapon";
             bite.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.Bite));
@@ -1166,7 +1134,11 @@ namespace EnemiesReturns.Enemies.Spitter
 
             spit.skillNameToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME";
             spit.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION";
-            //bite.icon = ; yeah, right
+            var crocoSpit = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoSpit.asset").WaitForCompletion();
+            if (crocoSpit)
+            {
+                spit.icon = crocoSpit.icon;
+            }
 
             spit.activationStateMachineName = "Weapon";
             spit.activationState = new EntityStates.SerializableEntityStateType(typeof(NormalSpit));
@@ -1201,7 +1173,11 @@ namespace EnemiesReturns.Enemies.Spitter
 
             chargedSpit.skillNameToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME";
             chargedSpit.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION";
-            //bite.icon = ; yeah, right
+            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
+            if(acridEpidemic)
+            {
+                chargedSpit.icon = acridEpidemic.icon;
+            }
 
             chargedSpit.activationStateMachineName = "Body";
             chargedSpit.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
