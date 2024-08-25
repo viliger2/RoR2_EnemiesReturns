@@ -102,6 +102,8 @@ namespace EnemiesReturns.Enemies.Colossus
             var eyeRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Eye").gameObject.GetComponent<SkinnedMeshRenderer>();
             var eyeLight = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/Light").gameObject.GetComponent<Light>();
 
+            var flagObject = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/mdlFlag").gameObject;
+
             normalEyeLightRange = eyeLight.range;
 
             var headTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head");
@@ -559,7 +561,6 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region SkinDefs
-
             RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
             {
                 renderer = (SkinnedMeshRenderer)item.renderer,
@@ -682,7 +683,7 @@ namespace EnemiesReturns.Enemies.Colossus
                     ignoreOverlays = true
                 }
 };
-            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlColossus, castleRenderer, SkinDefs.Default);
+            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlColossus, castleRenderer, SkinDefs.Default, new GameObject[] { flagObject });
 
             var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
             modelSkinController.skins = new SkinDef[]

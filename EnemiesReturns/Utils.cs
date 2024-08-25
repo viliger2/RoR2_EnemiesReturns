@@ -18,7 +18,7 @@ namespace EnemiesReturns
             public bool ignoreOverlays;
         }
 
-        public static SkinDef CreateSkinDef(string name, GameObject model, RenderInfo[] renderInfo, SkinDef baseSkin = null)
+        public static SkinDef CreateSkinDef(string name, GameObject model, RenderInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
         {
             //var skinDef = ScriptableObject.CreateInstance<SkinDef>();
             // fuck me
@@ -51,6 +51,13 @@ namespace EnemiesReturns
                 ignoreOverlays = item.ignoreOverlays,
                 hideOnDeath = false
             });
+            if (gameObjectActivations != null) {
+                skinDef.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDef.GameObjectActivation
+                {
+                    gameObject = item,
+                    shouldActivate = true
+                });
+            }
 
             skinDef.Bake(); //dunno if we need it
 
