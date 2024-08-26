@@ -2,7 +2,7 @@ REM original version https://github.com/risk-of-thunder/R2Wiki/wiki/Networking-w
 REM open this in vs it'll be so much nicer
 
 set TargetFileName=EnemiesReturns.dll
-set TargetDir=bin\Debug\netstandard2.0
+set TargetDir=bin\Release\netstandard2.0
 
 REM robocopy to our weaver folder. idk what the fuck robocopy does but we leave one there for storage
 robocopy %TargetDir% Weaver %TargetFileName% > %TargetDir%\Robocopy

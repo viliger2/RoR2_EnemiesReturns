@@ -173,7 +173,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var esmBody = bodyPrefab.AddComponent<EntityStateMachine>();
             esmBody.customName = "Body";
             esmBody.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState));
-            esmBody.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain));
+            esmBody.mainStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpitterMain));
             #endregion
 
             #region EntityStateMachineWeapon

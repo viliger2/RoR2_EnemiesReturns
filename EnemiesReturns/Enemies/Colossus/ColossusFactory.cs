@@ -90,6 +90,7 @@ namespace EnemiesReturns.Enemies.Colossus
         public GameObject CreateColossusBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
+            var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus");
             var modelBase = bodyPrefab.transform.Find("ModelBase");
             var crouchController = bodyPrefab.transform.Find("ModelBase/CrouchController");
@@ -182,6 +183,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #region CameraTargetParams
             var cameraTargetParams = bodyPrefab.AddComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandardRaidboss.asset").WaitForCompletion();
+            cameraTargetParams.cameraPivotTransform = cameraPivot;
             #endregion
 
             #region ModelLocator
@@ -205,7 +207,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var esmBody = bodyPrefab.AddComponent<EntityStateMachine>();
             esmBody.customName = "Body";
             esmBody.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.SpawnState));
-            esmBody.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain));
+            esmBody.mainStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.ColossusMain));
             #endregion
 
             #region EntityStateMachineWeapon
@@ -275,7 +277,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region Interactor
-            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 20f;
+            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 8f;
             #endregion
 
             #region InteractionDriver

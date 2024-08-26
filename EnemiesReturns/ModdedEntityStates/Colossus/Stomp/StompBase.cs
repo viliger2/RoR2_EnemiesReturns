@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
-    public class StompBase : BaseState
+    public abstract class StompBase : BaseState
     {
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
@@ -34,9 +34,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 
         public static GameObject stompEffectPrefab;
 
-        internal string animationStateName;
+        internal abstract string animationStateName { get; }
 
-        internal string targetMuzzle;
+        internal abstract string targetMuzzle { get; }
+
+        internal abstract string hitBoxGroupName { get; }
 
         internal OverlapAttack attack;
 
@@ -71,6 +73,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             {
                 characterBody.SetAimTimer(duration + 2f);
             }
+
+            attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), element => element.groupName == hitBoxGroupName);
         }
 
         public override void FixedUpdate()

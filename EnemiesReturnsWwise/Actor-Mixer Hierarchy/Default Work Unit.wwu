@@ -260,6 +260,140 @@
 												<ActiveSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" ShortID="890434051">
+											<PropertyList>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="laugh_1" ID="{EB46E9B6-9E9B-4623-883C-E014BC56A1F5}" ShortID="364849263">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="laugh_1" ID="{B055118F-B507-488C-AE0F-7AD64A98DADA}">
+															<Language>SFX</Language>
+															<AudioFile>Spitter\Laugh\laugh_1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="757388376"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="laugh_1" ID="{B055118F-B507-488C-AE0F-7AD64A98DADA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="laugh_2" ID="{F6B60C69-1A63-4F73-A9B2-33D59280FE89}" ShortID="249878981">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="laugh_2" ID="{89F25F11-A6D0-4D8C-9591-E605F6FE14F8}">
+															<Language>SFX</Language>
+															<AudioFile>Spitter\Laugh\laugh_2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="982490257"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="laugh_2" ID="{89F25F11-A6D0-4D8C-9591-E605F6FE14F8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="laugh_3" ID="{4A647EB0-4EF5-462D-99B6-443CEFE99A8F}" ShortID="603819983">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="laugh_3" ID="{1EB18C6B-E45B-4608-AB34-B4FE88D479A5}">
+															<Language>SFX</Language>
+															<AudioFile>Spitter\Laugh\laugh_3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="442216035"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="laugh_3" ID="{1EB18C6B-E45B-4608-AB34-B4FE88D479A5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="laugh_4" ID="{43C2903E-2513-4654-8611-78C6BC39C7C8}" ShortID="472802391">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="laugh_4" ID="{73FC5186-DC4A-4844-826E-8100AF819E1C}">
+															<Language>SFX</Language>
+															<AudioFile>Spitter\Laugh\laugh_4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="172902234"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="laugh_4" ID="{73FC5186-DC4A-4844-826E-8100AF819E1C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="laugh_5" ID="{06C686FA-0FBF-46ED-AFB5-3E95011D37AF}" ShortID="38346949">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="laugh_5" ID="{2369C078-7EB9-4F1D-9602-8EC4A9399973}">
+															<Language>SFX</Language>
+															<AudioFile>Spitter\Laugh\laugh_5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="356148722"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="laugh_5" ID="{2369C078-7EB9-4F1D-9602-8EC4A9399973}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Colossus" ID="{124E035B-5625-48AF-8186-B9A676A61F16}" ShortID="720897954">
@@ -662,6 +796,31 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
+										<Sound Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" ShortID="117074778">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="GOGOGO" ID="{89A82452-240D-4363-9465-14CDA9312FA6}">
+													<Language>SFX</Language>
+													<AudioFile>Colossus\Dance\GOGOGO.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="460928661"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="GOGOGO" ID="{89A82452-240D-4363-9465-14CDA9312FA6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

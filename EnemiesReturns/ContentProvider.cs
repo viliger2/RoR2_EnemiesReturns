@@ -140,6 +140,8 @@ namespace EnemiesReturns
                 var unlockablesList = new List<UnlockableDef>();
                 var itemList = new List<ItemDef>();
 
+                stateList.Add(typeof(ModdedEntityStates.BaseEmoteState)); // dunno if I need it, but just in case
+
                 #region Spitter
                 var spitterFactory = new SpitterFactory();
 
@@ -257,6 +259,8 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.FireChargedSpit));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDance));
+                stateList.Add(typeof(ModdedEntityStates.Spitter.SpitterMain));
+                stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDancePlayer));
 
                 //escList.Add(spitterFactory.CreateSpawnStateConfiguration());
                 //escList.Add(spitterFactory.CreateBiteStateConfiguration());
@@ -356,7 +360,9 @@ namespace EnemiesReturns
                 ColossusFactory.ColossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
                 masterList.Add(ColossusFactory.ColossusMaster);
 
+                stateList.Add(typeof(ModdedEntityStates.Colossus.ColossusMain));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Colossus.DancePlayer));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.InitialDeathState));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.BaseDeath));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.Death.DeathFallBase));

@@ -21,6 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         {
             base.OnEnter();
             PlayAnimation("Gesture, Override", "DeathDance");
+            Util.PlaySound("ER_Spitter_Laugh_Play", gameObject);
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
         }
 
@@ -38,6 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            Util.PlaySound("ER_Spitter_Laugh_Stop", gameObject);
             GlobalEventManager.onServerDamageDealt -= GlobalEventManager_onServerDamageDealt;
             base.OnExit();
         }

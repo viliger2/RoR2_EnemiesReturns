@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns
 {
@@ -39,6 +40,8 @@ namespace EnemiesReturns
             public static ConfigEntry<float> ChargedProjectileFlyTime;
             public static ConfigEntry<float> ChargedProjectileSmallDoTZoneDamage;
             public static ConfigEntry<float> ChargedProjectileSmallDoTZoneScale;
+
+            public static ConfigEntry<KeyCode> EmoteKey;
         }
 
         public struct Colossus
@@ -106,6 +109,8 @@ namespace EnemiesReturns
             public static ConfigEntry<float> KnurlProcCoefficient;
             public static ConfigEntry<float> KnurlForce;
 
+            public static ConfigEntry<KeyCode> EmoteKey;
+
             //public static ConfigEntry<int> KnurlGolemAllyDamageModifier;
             //public static ConfigEntry<int> KnurlGolemAllyDamageModifierPerStack;
             //public static ConfigEntry<int> KnurlGolemAllyHealthModifier;
@@ -114,15 +119,6 @@ namespace EnemiesReturns
             //public static ConfigEntry<int> KnurlGolemAllySpeedModifierPerStack;
             //public static ConfigEntry<int> KnurlArmor;
             //public static ConfigEntry<int> KnurlArmorPerStack;
-
-            //public static ConfigEntry<float> HeadLaserDuration;
-            //public static ConfigEntry<float> HeadLaserFireFrequency;
-            //public static ConfigEntry<float> HeadLaserDamage;
-            //public static ConfigEntry<float> HeadLaserForce;
-            //public static ConfigEntry<float> HeadLaserRadius;
-            //public static ConfigEntry<int> HeadLaserTurnCount;
-            //public static ConfigEntry<float> HeadLaserPitchStart;
-            //public static ConfigEntry<float> HeadLaserPitchStep;
         }
 
         public static void PopulateConfig(ConfigFile config) 
@@ -161,6 +157,7 @@ namespace EnemiesReturns
             Spitter.ChargedProjectileSmallDoTZoneDamage = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Damage", 0.15f, "Spitter's Charged Large DoT zone damage off projectile's damage.");
             Spitter.ChargedProjectileSmallDoTZoneScale = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Scale", 0.3f, "Spitter's Charged Large DoT Zone scale off Mini Mushrim's DoT zone (since it was used as basis). Also controls projectile's blast radius.");
 
+            Spitter.EmoteKey = config.Bind("Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             #endregion
 
             #region Colossus
@@ -229,6 +226,7 @@ namespace EnemiesReturns
             Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 8f, "Colossal Fist proc chance.");
             Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
 
+            Colossus.EmoteKey = config.Bind("Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
             //Colossus.KnurlArmorPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Armor Per Stack", 20, "How much armor Colossal Knurl grants per stack.");
             //Colossus.KnurlGolemAllyDamageModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier", 30, "Additiona damage modifier for ally golem, 10% each.");
@@ -237,16 +235,6 @@ namespace EnemiesReturns
             //Colossus.KnurlGolemAllyHealthModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier Per Stack", 10, "Additiona health modifier for ally golem per stack, 10% each.");
             //Colossus.KnurlGolemAllySpeedModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier", 5, "Additiona movement speed modifier for ally golem, 14% each (basically one hoof).");
             //Colossus.KnurlGolemAllySpeedModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier Per Stack", 5, "Additiona movement speed modifier for ally golem per stack, 14% each (basically one hoof).");
-
-            //Colossus.HeadLaserDuration = config.Bind("Colossus Head Laser", "Head Laser Duration", 25f, "Colossus' Head Laser duration. Only includes firing laser itself, pre and post states are not included.");
-            //Colossus.HeadLaserFireFrequency = config.Bind("Colossus Head Laser", "Head Laser Fire Frequency", 0.06f, "How frequently Colossus' Head Laser fires. Has no effect on visuals.");
-            //Colossus.HeadLaserDamage = config.Bind("Colossus Head Laser", "Head Laser Damage", 0.5f, "Colossus' Head Laser Damage");
-            //Colossus.HeadLaserForce = config.Bind("Colossus Head Laser", "Head Laser Force", 0f, "Colossus' Head Laser force");
-            //Colossus.HeadLaserRadius = config.Bind("Colossus Head Laser", "Head Laser Radius", 7.5f, "Colossus' Head Laser radius.");
-            //Colossus.HeadLaserTurnCount = config.Bind("Colossus Head Laser", "Head Laser Head Turn Count", 3, "How many times Colossus turns its head left to right and back during Head Laser attack. Duration of each turn is (Head Laser Duration)/(Head Laser Head Turn Count).");
-            //Colossus.HeadLaserPitchStart = config.Bind("Colossus Head Laser", "Head Laser Starting Pitch", 0.05f, "Determines starting pitch of Colossus' head. Values (including total value) above 1 will be limited to 1.");
-            //Colossus.HeadLaserPitchStep = config.Bind("Colossus Head Laser", "Head Laser Head Pitch Step", 0.25f, "Determines how much higher Colossus' head gets after each turn. Final value is (Head Laser Starting Pitch)+(Head Laser Head Turn Count)*(Head Laser Head Pitch Step). Values (including total value) above 1 will be limited to 1.");
-
             #endregion
         }
 

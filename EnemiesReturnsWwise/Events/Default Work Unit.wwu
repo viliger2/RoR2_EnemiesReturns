@@ -73,6 +73,31 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Spitter_Laugh_Play" ID="{66E96321-A87B-49D7-8123-FFE7F28D5339}">
+									<ChildrenList>
+										<Action Name="" ID="{E0890045-D5C2-47BF-9367-BF059F5DD86C}" ShortID="38068498">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Laugh_Stop" ID="{2CCF0FA3-1CA1-4327-AEEA-D0283755DDC6}">
+									<ChildrenList>
+										<Action Name="" ID="{CE480A30-C6E5-4300-81F6-FA8A7DF2911F}" ShortID="940381171">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Colossus" ID="{84525F7E-DC03-4EB5-9812-0912DCF8A0F4}" ShortID="1070853532">
