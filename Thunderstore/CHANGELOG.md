@@ -1,4 +1,23 @@
 <details>
+<summary>0.1.11 (Dawn of the Final Day, 24 Hours Remain)  </summary>
+
+* Added Colossus to Fogbound Laggon.
+* Some general polish.
+</details>
+<details>
+<summary>0.1.10 (Dawn of the Second Day, 48 Hours Remain)  </summary>
+
+* Colossus:
+	* Added config option to destroy model after death (turned off by default).
+	* Lowered director cost to 1000 (from 1200). Lowered minimum stage completion to 0 (from 3).
+		* _With these changes he should become even more frequent, and with 1000\0 on director it is very possible to encounter Colossus on first stage with Shrines of the Mountain._
+	* Laser Barrage's head pitch is lowered to 0.05 (from 0.75). Spread is lowered to 0.15 (from 0.18). Prep time lowered to 4.5 seconds (from 5.5).
+		* _Now you can't just hide under his feet, you have to get around him or run far away. Well, not as far as it used to be._
+	* Colossal Fist now deals 500% damage (was 400%) with 8% proc chance (was 10%).
+		* _This is mostly performance related. DPS is still the same._
+	* Castle variant visual polish.
+</details>
+<details>
 <summary>0.1.9 </summary>
 
 * Fixed an issue where loading the game with mod's unsupported language would hang the game at 100%.
