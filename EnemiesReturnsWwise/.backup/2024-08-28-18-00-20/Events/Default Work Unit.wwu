@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{100D6097-9B7F-4F23-9AA4-747973AB576C}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{100D6097-9B7F-4F23-9AA4-747973AB576C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Sounds" ID="{191D3DB3-BD92-4604-A57C-C7F86AEC1E41}" ShortID="767002557">
+					<ChildrenList>
+						<Folder Name="Spiiter" ID="{02B669BB-8724-4283-BA57-823E24DD6E9A}" ShortID="248100046">
+							<ChildrenList>
+								<Event Name="ER_Spitter_Spawn_Play" ID="{3D2355D2-F588-424F-AC8C-DCE23B7B62BD}">
+									<ChildrenList>
+										<Action Name="" ID="{14C4E682-133C-4BFA-AE4D-355EAA728501}" ShortID="503503305">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Spawn" ID="{B706FF48-6D84-48D1-9173-98A6105037FE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Death_Play" ID="{4DBBE55F-75BC-4C07-82F8-CF57BA1C6356}">
+									<ChildrenList>
+										<Action Name="" ID="{D592D97A-1404-41E3-9A40-6B7954997717}" ShortID="898986841">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Death" ID="{E09C5CF8-01E9-4799-ACA3-52ABACAAC5CF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Bite_Play" ID="{AB0CCEDA-0EEC-452D-A684-5539F326379D}">
+									<ChildrenList>
+										<Action Name="" ID="{7BE81D5F-8156-4110-A2C1-20754C28AF10}" ShortID="161830842">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spiiter_Spit_Play" ID="{18C724A0-FDA2-4B9E-A3FF-69EC639FD3CA}">
+									<ChildrenList>
+										<Action Name="" ID="{5A623A0C-ADB4-44D5-AE27-71119470FAD4}" ShortID="67042762">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Hit_Play" ID="{3BFE2D5D-A6AF-42C6-9082-45007967CD12}">
+									<ChildrenList>
+										<Action Name="" ID="{A2DFC4DF-F2FD-4846-82AA-339F326D0D91}" ShortID="394778542">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Hit" ID="{D1B12DAD-F9F0-4C64-AF21-8802B9DEBB3C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Charge_Spit_Play" ID="{F555A457-1464-441C-93D5-E2725DC86CC0}">
+									<ChildrenList>
+										<Action Name="" ID="{80C19DC1-369F-48BE-8D2F-A7ADC20CD02E}" ShortID="549151127">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Laugh_Play" ID="{66E96321-A87B-49D7-8123-FFE7F28D5339}">
+									<ChildrenList>
+										<Action Name="" ID="{E0890045-D5C2-47BF-9367-BF059F5DD86C}" ShortID="38068498">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spitter_Laugh_Stop" ID="{2CCF0FA3-1CA1-4327-AEEA-D0283755DDC6}">
+									<ChildrenList>
+										<Action Name="" ID="{CE480A30-C6E5-4300-81F6-FA8A7DF2911F}" ShortID="940381171">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Colossus" ID="{84525F7E-DC03-4EB5-9812-0912DCF8A0F4}" ShortID="1070853532">
+							<ChildrenList>
+								<Event Name="ER_Colossus_Step_Play" ID="{7355F2E1-A0E1-44B7-BABA-D819A770F227}">
+									<ChildrenList>
+										<Action Name="" ID="{0075A481-4A9E-4E12-81AA-E21D795AFE1A}" ShortID="990625144">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Step" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Death2_Play" ID="{9D2A9FD7-5E64-455B-A576-CB59B871CE42}">
+									<ChildrenList>
+										<Action Name="" ID="{8819B608-5CD3-4462-A205-6DB8A503AC90}" ShortID="359347546">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Death2" ID="{F346D3E7-EB5C-40F9-8857-5B08A06AE4EC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Clap_Play" ID="{6F2F94A3-339C-43D7-92C9-FFC0C5B5B7B2}">
+									<ChildrenList>
+										<Action Name="" ID="{0E60A417-7BE8-4258-B909-D0E1BBB58325}" ShortID="303578330">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Clap" ID="{299D96F5-58FB-4C4B-963B-A41EF84A0BC0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_ArmsSpread_Play" ID="{781FD5A2-D285-431A-A33F-E26E3134DB7B}">
+									<ChildrenList>
+										<Action Name="" ID="{4E1A6AD1-6BF2-4E28-B451-2B47B8CE9A1A}" ShortID="961123909">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Arms_Spread" ID="{0A057427-CD79-493C-B61E-6844F9CAF726}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Barrage_Charge_Play" ID="{494BF0B6-48B3-4747-9FB0-DA1B1075C609}">
+									<ChildrenList>
+										<Action Name="" ID="{D8A6A80F-DB91-4ADA-93D3-B3869AAF9FE0}" ShortID="590290270">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Barrage_Charge" ID="{E0E9B8D2-C3E6-4997-BF39-AA3A84E96CBE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Barrage_Move_Play" ID="{0AD69476-67F3-431B-9E82-9546CA5B73CF}">
+									<ChildrenList>
+										<Action Name="" ID="{460C3DDD-8A25-4CF0-8EB4-AA8604EFE472}" ShortID="721605023">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Barrage_Body" ID="{FAAF7AFE-0532-4C6F-BE4E-8EE4C4A7A1F6}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Stomp_Play" ID="{73156638-BEC0-4797-8D9A-C2CD6F7DBD4E}">
+									<ChildrenList>
+										<Action Name="" ID="{EB346782-A385-4238-BD1E-5377AD261B35}" ShortID="325019493">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Stomp" ID="{C6BE682B-A735-4EA1-AA93-B18E682BD1FD}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Spawn_Play" ID="{F4E5E911-4F5F-452F-9C04-11156B67E554}">
+									<ChildrenList>
+										<Action Name="" ID="{A6D0F439-F0A8-437D-AE5B-14300DE1A49C}" ShortID="572952914">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Spawn" ID="{1F8B5A22-A479-4AB5-B994-29FADD1D3624}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_Death1_Play" ID="{988DD1C8-C248-40CA-A32D-58F3A46D4106}">
+									<ChildrenList>
+										<Action Name="" ID="{1EB8B5DD-0407-4FA3-9ADD-F55D0F1AF564}" ShortID="773793164">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Death1" ID="{14CF106B-EFF6-4705-B80E-21B2DF8F36B8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Item" ID="{87A720BE-7B6D-4C33-881F-FE375C4CC659}" ShortID="651243245">
+									<ChildrenList>
+										<Event Name="ER_Knurl_Fist_Spawn_Play" ID="{7A4CD32C-6AAC-4BEF-89BE-AFDB61492231}">
+											<ChildrenList>
+												<Action Name="" ID="{DA1A8EDE-48B2-4E27-B00F-F8D6A76D45D4}" ShortID="1018984005">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Fist_Spawn" ID="{4FBE5A23-6AF5-49C7-A470-F974563DF14E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Event Name="ER_Colossus_GOGOGO_Play" ID="{A9AEA6C7-556F-4B58-ADEF-AF8D041A2C30}">
+									<ChildrenList>
+										<Action Name="" ID="{5FF6FAEF-72FE-4467-981B-D2F4D894DEE1}" ShortID="119207816">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_GOGOGO_Stop" ID="{4AE8C432-5901-47C0-8259-38D8D447B861}">
+									<ChildrenList>
+										<Action Name="" ID="{7C508034-CD83-441A-AB50-D98057F49054}" ShortID="507390264">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

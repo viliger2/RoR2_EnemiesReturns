@@ -75,8 +75,6 @@ namespace EnemiesReturns.PrefabAPICompat
             if (networkIdentity)
             {
                 SetFieldValue(networkIdentity, "m_AssetId", NetworkHash128.Parse(MakeHash(gameObject.name + "EnemiesReturns")));
-                //networkIdentity.GetType().GetFieldSetDelegate<NetworkHash128>("m_AssetId")(networkIdentity, NetworkHash128.Parse(MakeHash(gameObject.name + "EnemiesReturns")));
-                //networkIdentity.SetFieldValue("m_AssetId", NetworkHash128.Parse(MakeHash(gameObject.name + "EnemiesReturns")));
             }
         }
 
@@ -90,8 +88,6 @@ namespace EnemiesReturns.PrefabAPICompat
             {
                 Log.Error("Couldn't find field " + fieldName + " in " + identity);
             }
-            //System.Reflection.FieldInfo[] fields = identity.GetType().GetFields();
-            //fields.First(item => item.Name == fieldName).SetValue(identity, value);
         }
 
         // shamelessly stolen from r2api, even more so than the rest

@@ -3,7 +3,6 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using KinematicCharacterController;
@@ -21,6 +20,7 @@ using static EnemiesReturns.Utils;
 using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
 using EnemiesReturns.ModdedEntityStates.Spitter;
 using EnemiesReturns.PrefabAPICompat;
+using UnityEngine;
 
 namespace EnemiesReturns.Enemies.Spitter
 {
@@ -280,7 +280,18 @@ namespace EnemiesReturns.Enemies.Spitter
             var kinematicCharacterMotor = bodyPrefab.AddComponent<KinematicCharacterMotor>();
             kinematicCharacterMotor.CharacterController = characterMotor;
             kinematicCharacterMotor.Capsule = capsuleCollider;
-            kinematicCharacterMotor.Rigidbody = bodyPrefab.GetComponent<Rigidbody>();
+            kinematicCharacterMotor._attachedRigidbody = bodyPrefab.GetComponent<Rigidbody>();
+
+            // new shit
+            kinematicCharacterMotor.StableGroundLayers = LayerIndex.world.mask;
+            kinematicCharacterMotor.AllowSteppingWithoutStableGrounding = false;
+            kinematicCharacterMotor.LedgeAndDenivelationHandling = true;
+            kinematicCharacterMotor.SimulatedCharacterMass = 1f;
+            kinematicCharacterMotor.CheckMovementInitialOverlaps = true;
+            kinematicCharacterMotor.KillVelocityWhenExceedMaxMovementIterations = true;
+            kinematicCharacterMotor.KillRemainingMovementWhenExceedMaxMovementIterations = true;
+            kinematicCharacterMotor.DiscreteCollisionEvents = false;
+            // end new shit
 
             kinematicCharacterMotor.CapsuleRadius = capsuleCollider.radius;
             kinematicCharacterMotor.CapsuleHeight = capsuleCollider.height;
@@ -290,13 +301,11 @@ namespace EnemiesReturns.Enemies.Spitter
             }
             kinematicCharacterMotor.CapsuleYOffset = 0f;
 
-            kinematicCharacterMotor.DetectDiscreteCollisions = false;
             kinematicCharacterMotor.GroundDetectionExtraDistance = 0f;
             kinematicCharacterMotor.MaxStepHeight = 0.2f;
             kinematicCharacterMotor.MinRequiredStepDepth = 0.1f;
             kinematicCharacterMotor.MaxStableSlopeAngle = 55f;
             kinematicCharacterMotor.MaxStableDistanceFromLedge = 0.5f;
-            kinematicCharacterMotor.PreventSnappingOnLedges = false;
             kinematicCharacterMotor.MaxStableDenivelationAngle = 55f;
 
             kinematicCharacterMotor.RigidbodyInteractionType = RigidbodyInteractionType.None;
@@ -306,9 +315,7 @@ namespace EnemiesReturns.Enemies.Spitter
             kinematicCharacterMotor.PlanarConstraintAxis = new Vector3(0f, 0f, 1f);
 
             kinematicCharacterMotor.StepHandling = StepHandlingMethod.Standard;
-            kinematicCharacterMotor.LedgeHandling = true;
             kinematicCharacterMotor.InteractiveRigidbodyHandling = true;
-            kinematicCharacterMotor.SafeMovement = false;
             #endregion
 
             #region SpitterDeathDanceController

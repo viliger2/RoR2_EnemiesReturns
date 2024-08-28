@@ -26,6 +26,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
+            modelAnimator = GetModelAnimator();
             if (modelAnimator)
             {
                 startYaw = modelAnimator.GetFloat(aimPitchCycleHash);
