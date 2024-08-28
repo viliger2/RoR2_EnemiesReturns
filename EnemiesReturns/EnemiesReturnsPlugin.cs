@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using HG;
-using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.UI;
@@ -24,12 +23,11 @@ using UnityEngine.Networking;
 using EnemiesReturns.Items.ColossalKnurl;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
-
 namespace EnemiesReturns
 {
 	[BepInPlugin(GUID, ModName, Version)]
-	[BepInDependency(R2API.PrefabAPI.PluginGUID)]
-	[BepInDependency(R2API.DirectorAPI.PluginGUID)]
+	[BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
+	//[BepInDependency(R2API.DirectorAPI.PluginGUID)]
 	public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
 		public const string Author = "Viliger";

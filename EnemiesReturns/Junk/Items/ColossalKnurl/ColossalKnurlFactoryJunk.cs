@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 using RoR2.CharacterAI;
-using R2API;
+using EnemiesReturns.PrefabAPICompat;
 
 namespace EnemiesReturns.Junk.Items.ColossalKnurl
 {
@@ -217,14 +217,14 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
             CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
         }
 
-        public static void RecalcStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
-        {
-            var count = sender.inventory.GetItemCount(ColossalKnurlFactory.itemDef);
-            if (count > 0)
-            {
-                args.armorAdd += 20 + 20 * (count - 1);
-            }
-        }
+        //public static void RecalcStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        //{
+        //    var count = sender.inventory.GetItemCount(ColossalKnurlFactory.itemDef);
+        //    if (count > 0)
+        //    {
+        //        args.armorAdd += 20 + 20 * (count - 1);
+        //    }
+        //}
 
         private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {

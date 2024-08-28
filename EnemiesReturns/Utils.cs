@@ -91,6 +91,10 @@ namespace EnemiesReturns
 
         public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
         {
+            if(dcs == null)
+            {
+                return -1;
+            }
             for (int i = 0; i < dcs.categories.Length; i++)
             {
                 if (string.CompareOrdinal(dcs.categories[i].name, categoryName) == 0)

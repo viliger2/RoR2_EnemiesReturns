@@ -1,5 +1,5 @@
 ﻿using RoR2.Projectile;
-using R2API;
+
 using RoR2;
 using RoR2.CharacterAI;
 using System;
@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.TextCore;
+using EnemiesReturns.PrefabAPICompat;
 
 namespace EnemiesReturns.Items.ColossalKnurl
 {

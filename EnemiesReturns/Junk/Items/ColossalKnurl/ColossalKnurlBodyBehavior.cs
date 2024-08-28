@@ -1,5 +1,5 @@
 ﻿using RoR2;
-using R2API;
+
 using RoR2.Items;
 using System;
 using System.Collections.Generic;

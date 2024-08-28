@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 using KinematicCharacterController;
 using System.Linq;
 using Newtonsoft.Json.Utilities;
-using R2API;
 using RoR2.CharacterAI;
 using EnemiesReturns.EditorHelpers;
 using RoR2.Skills;
@@ -21,6 +20,7 @@ using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
 using EnemiesReturns.ModdedEntityStates.Spitter;
+using EnemiesReturns.PrefabAPICompat;
 
 namespace EnemiesReturns.Enemies.Spitter
 {

@@ -216,6 +216,31 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Event Name="ER_Colossus_GOGOGO_Play" ID="{A9AEA6C7-556F-4B58-ADEF-AF8D041A2C30}">
+									<ChildrenList>
+										<Action Name="" ID="{5FF6FAEF-72FE-4467-981B-D2F4D894DEE1}" ShortID="119207816">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Colossus_GOGOGO_Stop" ID="{4AE8C432-5901-47C0-8259-38D8D447B861}">
+									<ChildrenList>
+										<Action Name="" ID="{7C508034-CD83-441A-AB50-D98057F49054}" ShortID="507390264">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

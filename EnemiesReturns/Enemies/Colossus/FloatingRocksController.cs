@@ -1,4 +1,4 @@
-﻿using R2API;
+﻿using EnemiesReturns.PrefabAPICompat;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;

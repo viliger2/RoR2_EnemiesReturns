@@ -8,8 +8,6 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 using System.Linq;
-using Newtonsoft.Json.Utilities;
-using R2API;
 using RoR2.CharacterAI;
 using EnemiesReturns.EditorHelpers;
 using RoR2.Skills;
@@ -21,6 +19,7 @@ using EnemiesReturns.Projectiles;
 using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
+using EnemiesReturns.PrefabAPICompat;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
