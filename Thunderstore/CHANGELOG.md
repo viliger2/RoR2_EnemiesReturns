@@ -1,4 +1,11 @@
 <details>
+<summary>0.1.12 (The Moon actually fell)  </summary>
+
+* SoTS update.
+* Removed R2API dependencies.
+* I would like to take a moment and tell Randy that he can go fuck himself.
+</details>
+<details>
 <summary>0.1.11 (Dawn of the Final Day, 24 Hours Remain)  </summary>
 
 * Added Colossus to Fogbound Laggon.
