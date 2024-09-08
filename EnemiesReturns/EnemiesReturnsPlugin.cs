@@ -27,12 +27,13 @@ namespace EnemiesReturns
 {
 	[BepInPlugin(GUID, ModName, Version)]
 	[BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
-	//[BepInDependency(R2API.DirectorAPI.PluginGUID)]
-	public class EnemiesReturnsPlugin : BaseUnityPlugin
+    [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
+    //[BepInDependency(R2API.DirectorAPI.PluginGUID)]
+    public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.1.12";
+		public const string Version = "0.1.13";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
@@ -40,10 +41,9 @@ namespace EnemiesReturns
 #if DEBUG == true || NOWEAVER == true
             On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 #endif
-
 			var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
 
-			Log.Init(Logger);
+            Log.Init(Logger);
 
 			if (UseConfigFile.Value)
 			{
@@ -67,22 +67,19 @@ namespace EnemiesReturns
 			ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
-			ColossalKnurlFactory.Hooks();
+            //On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
+            ColossalKnurlFactory.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 		}
 
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        private void GlobalEventManager_onServerDamageDealt(DamageReport obj)
         {
-            orig(self, damageInfo, victim);
-            // adding all vanilla checks because fuck you, we couldn't be arsed to add a delegate to this function at the very end
-            if (damageInfo.procCoefficient == 0f || damageInfo.rejected || !NetworkServer.active || !damageInfo.attacker || !(damageInfo.procCoefficient > 0f))
-            {
-                return;
-            }
+            var damageInfo = obj.damageInfo;
+            var victim = obj.victim.gameObject;
 
-            if (!damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
+            if (!damageInfo.attacker || !damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
             {
                 return;
             }
@@ -92,8 +89,30 @@ namespace EnemiesReturns
                 return;
             }
 
-			ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
+            ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
         }
+
+   //     private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+   //     {
+   //         orig(self, damageInfo, victim);
+   //         // adding all vanilla checks because fuck you, we couldn't be arsed to add a delegate to this function at the very end
+   //         if (damageInfo.procCoefficient == 0f || damageInfo.rejected || !NetworkServer.active || !damageInfo.attacker || !(damageInfo.procCoefficient > 0f))
+   //         {
+   //             return;
+   //         }
+
+   //         if (!damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
+   //         {
+   //             return;
+   //         }
+
+   //         if (!attackerBody.master)
+   //         {
+   //             return;
+   //         }
+
+			//ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
+   //     }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]
 		private static void CCSpawnTitans(ConCommandArgs args)

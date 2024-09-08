@@ -95,7 +95,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             if (modelAnimator)
             {
                 // math is fun
-                modelAnimator.SetFloat(MissingAnimationParameters.aimYawCycle, Mathf.Clamp(age / baseDuration, 0f, 0.99f));
+                modelAnimator.SetFloat(MissingAnimationParameters.aimYawCycle, Mathf.Clamp(age / duration, 0f, 0.99f));
                 modelAnimator.SetFloat(MissingAnimationParameters.aimPitchCycle, pitch);
                 //modelAnimator.SetFloat(aimPitchCycle, Mathf.Clamp(pitchStart + pitchStep * Mathf.Min(age / (duration / totalTurnCount), totalTurnCount - 1), 0f, 0.99f));
             }

@@ -42,14 +42,14 @@ namespace EnemiesReturns.PrefabAPICompat
         {
             if (!parent)
             {
-                parent = new GameObject("EnemiesReturnsNetworkParent");
+                parent = new GameObject(EnemiesReturnsPlugin.ModName + "NetworkParent");
                 UnityEngine.Object.DontDestroyOnLoad(parent);
                 parent.SetActive(false);
             }
 
             On.RoR2.Util.IsPrefab += (orig, obj) =>
             {
-                if (obj.transform.parent && obj.transform.parent.gameObject.name == "EnemiesReturnsNetworkParent") return true;
+                if (obj.transform.parent && obj.transform.parent.gameObject.name == EnemiesReturnsPlugin.ModName + "NetworkParent") return true;
                 return orig(obj);
             };
 
@@ -74,7 +74,7 @@ namespace EnemiesReturns.PrefabAPICompat
             var networkIdentity = gameObject.GetComponent<NetworkIdentity>();
             if (networkIdentity)
             {
-                SetFieldValue(networkIdentity, "m_AssetId", NetworkHash128.Parse(MakeHash(gameObject.name + "EnemiesReturns")));
+                SetFieldValue(networkIdentity, "m_AssetId", NetworkHash128.Parse(MakeHash(gameObject.name + EnemiesReturnsPlugin.ModName)));
             }
         }
 

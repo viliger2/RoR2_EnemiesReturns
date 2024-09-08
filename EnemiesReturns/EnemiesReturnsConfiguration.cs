@@ -237,7 +237,5 @@ namespace EnemiesReturns
             //Colossus.KnurlGolemAllySpeedModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier Per Stack", 5, "Additiona movement speed modifier for ally golem per stack, 14% each (basically one hoof).");
             #endregion
         }
-
-
     }
 }
