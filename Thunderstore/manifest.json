@@ -1,10 +1,11 @@
 {
     "name": "EnemiesReturns",
-    "version_number": "0.1.12",
+    "version_number": "0.1.13",
     "website_url": "https://github.com/viliger2/RoR2_EnemiesReturns",
-    "description": "Brings back a few guys lost on the way here. BADDASS™ update.",
+    "description": "Brings back a few guys lost on the way here.",
     "dependencies": [
 	"bbepis-BepInExPack-5.4.2116",
-	"RiskofThunder-HookGenPatcher-1.2.4"
+	"RiskofThunder-HookGenPatcher-1.2.4",
+	"viliger-RestoreGrandparentRock-1.0.0"
     ]
 }

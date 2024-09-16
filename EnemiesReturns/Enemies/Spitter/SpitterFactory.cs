@@ -64,7 +64,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public static GameObject SpitterMaster;
 
-        public GameObject CreateSpitterBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter");
@@ -339,7 +339,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             #region SetupBoxes
 
-            var lemurianSurfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
+            var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
 
             var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
@@ -350,7 +350,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 hurtBox.damageModifier = HurtBox.DamageModifier.Normal;
                 hurtBoxes.Add(hurtBox);
 
-                t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = lemurianSurfaceDef;
+                t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
             var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
@@ -362,7 +362,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 hurtBox.isSniperTarget = true;
                 hurtBoxes.Add(hurtBox);
 
-                t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = lemurianSurfaceDef;
+                t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
             var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/MainHurtbox");
@@ -372,7 +372,7 @@ namespace EnemiesReturns.Enemies.Spitter
             mainHurtBox.isBullseye = true;
             hurtBoxes.Add(mainHurtBox);
 
-            mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = lemurianSurfaceDef;
+            mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
 
             var hitBox = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
             #endregion
@@ -622,7 +622,7 @@ namespace EnemiesReturns.Enemies.Spitter
             return bodyPrefab;
         }
 
-        public GameObject CreateSpitterMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
         {
             #region NetworkIdentity
             masterPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;

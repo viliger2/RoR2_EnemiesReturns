@@ -21,6 +21,7 @@ using static UnityEngine.UI.Image;
 using RoR2.Projectile;
 using UnityEngine.Networking;
 using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Enemies.Ifrit;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -28,6 +29,7 @@ namespace EnemiesReturns
 	[BepInPlugin(GUID, ModName, Version)]
 	[BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
+	[BepInDependency(R2API.DeployableAPI.PluginGUID)]
     //[BepInDependency(R2API.DirectorAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
@@ -70,8 +72,10 @@ namespace EnemiesReturns
             //On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             ColossalKnurlFactory.Hooks();
+			IfritFactory.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+			
 		}
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)

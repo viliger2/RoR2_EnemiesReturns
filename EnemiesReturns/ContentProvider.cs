@@ -15,6 +15,7 @@ using EnemiesReturns.Enemies.Colossus;
 using Rewired.Utils.Classes.Utility;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Enemies.Ifrit;
 
 namespace EnemiesReturns
 {
@@ -37,6 +38,7 @@ namespace EnemiesReturns
             {"stubbedror2/base/shaders/hgtriplanarterrainblend", "RoR2/Base/Shaders/HGTriplanarTerrainBlend.shader"},
             {"stubbedror2/base/shaders/hgintersectioncloudremap", "RoR2/Base/Shaders/HGIntersectionCloudRemap.shader" },
             {"stubbedror2/base/shaders/hgcloudremap", "RoR2/Base/Shaders/HGCloudRemap.shader" },
+            {"stubbedror2/base/shaders/hgopaquecloudremap", "RoR2/Base/Shaders/HGOpaqueCloudRemap.shader" },
             {"stubbedror2/base/shaders/hgdistortion", "RoR2/Base/Shaders/HGDistortion.shader" },
             {"stubbedcalm water/calmwater - dx11 - doublesided", "Calm Water/CalmWater - DX11 - DoubleSided.shader" },
             {"stubbedcalm water/calmwater - dx11", "Calm Water/CalmWater - DX11.shader" },
@@ -190,11 +192,11 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateSpitterBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, skinsLookup);
+                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, skinsLookup);
                 bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
-                SpitterFactory.SpitterMaster = spitterFactory.CreateSpitterMaster(spitterMaster, spitterBody);
+                SpitterFactory.SpitterMaster = spitterFactory.CreateMaster(spitterMaster, spitterBody);
                 masterList.Add(SpitterFactory.SpitterMaster);
 
                 SpitterFactory.SpawnCards.cscSpitterDefault = spitterFactory.CreateCard("cscSpitterDefault", spitterMaster, SpitterFactory.SkinDefs.Default, spitterBody);
@@ -400,11 +402,11 @@ namespace EnemiesReturns
                 sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateColossusBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, skinsLookup, dtColossus);
+                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, skinsLookup, dtColossus);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");
-                ColossusFactory.ColossusMaster = colossusFactory.CreateColossusMaster(colossusMaster, colossusBody);
+                ColossusFactory.ColossusMaster = colossusFactory.CreateMaster(colossusMaster, colossusBody);
                 masterList.Add(ColossusFactory.ColossusMaster);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.ColossusMain));
@@ -587,6 +589,47 @@ namespace EnemiesReturns
                 //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.SiphonedForest);
                 //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDelta);
                 //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
+                #endregion
+
+                #region Ifrit
+
+                #region IfritPylon
+                var ifritPylonFactory = new IfritPylonFactory();
+
+                var pylonBody = assets.First(body => body.name == "IfritPylonBody");
+                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody);
+                bodyList.Add(IfritPylonFactory.IfritPylonBody);
+
+                var pylonMaster = assets.First(master => master.name == "IfritPylonMaster");
+                IfritPylonFactory.IfritPylonMaster = ifritPylonFactory.CreateMaster(pylonMaster, IfritPylonFactory.IfritPylonBody);
+                masterList.Add(IfritPylonFactory.IfritPylonMaster);
+
+                IfritPylonFactory.scIfritPylon = ifritPylonFactory.CreateCard("cscIfritPylon", IfritPylonFactory.IfritPylonMaster);
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.ChargingExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FiringExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FireExplosion));
+                #endregion
+
+
+                var ifritFactory = new IfritFactory();
+
+                IfritFactory.Skills.SummonPylon = ifritFactory.CreateSummonPylonSkill();
+                IfritFactory.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritFactory.Skills.SummonPylon);
+
+                var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
+                unlockablesList.Add(ifritLog);
+
+                var ifritBody = assets.First(body => body.name == "IfritBody");
+                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, null, ifritLog, skinsLookup, null);
+                bodyList.Add(IfritFactory.IfritBody);
+
+                var ifritMaster = assets.First(master => master.name == "IfritMaster");
+                IfritFactory.IfritMaster = ifritFactory.CreateMaster(ifritMaster, IfritFactory.IfritBody);
+                masterList.Add(IfritFactory.IfritMaster);
+
+
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.SummonPylon));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());

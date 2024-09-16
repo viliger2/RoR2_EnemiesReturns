@@ -121,6 +121,23 @@ namespace EnemiesReturns
             //public static ConfigEntry<int> KnurlArmorPerStack;
         }
 
+        public struct Ifrit
+        {
+            public static ConfigEntry<int> DirectorCost;
+            public static ConfigEntry<int> SelectionWeight;
+            public static ConfigEntry<int> MinimumStageCompletion;
+
+            public static ConfigEntry<float> BaseMaxHealth;
+            public static ConfigEntry<float> BaseMoveSpeed;
+            public static ConfigEntry<float> BaseJumpPower;
+            public static ConfigEntry<float> BaseDamage;
+            public static ConfigEntry<float> BaseArmor;
+            public static ConfigEntry<float> LevelMaxHealth;
+            public static ConfigEntry<float> LevelDamage;
+            public static ConfigEntry<float> LevelArmor;
+        }
+
+
         public static void PopulateConfig(ConfigFile config) 
         {
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
@@ -157,7 +174,7 @@ namespace EnemiesReturns
             Spitter.ChargedProjectileSmallDoTZoneDamage = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Damage", 0.15f, "Spitter's Charged Large DoT zone damage off projectile's damage.");
             Spitter.ChargedProjectileSmallDoTZoneScale = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Scale", 0.3f, "Spitter's Charged Large DoT Zone scale off Mini Mushrim's DoT zone (since it was used as basis). Also controls projectile's blast radius.");
 
-            Spitter.EmoteKey = config.Bind("Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
+            Spitter.EmoteKey = config.Bind("Colossus Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             #endregion
 
             #region Colossus
@@ -226,7 +243,7 @@ namespace EnemiesReturns
             Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 8f, "Colossal Fist proc chance.");
             Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
 
-            Colossus.EmoteKey = config.Bind("Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
+            Colossus.EmoteKey = config.Bind("Colossus Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
             //Colossus.KnurlArmorPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Armor Per Stack", 20, "How much armor Colossal Knurl grants per stack.");
             //Colossus.KnurlGolemAllyDamageModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier", 30, "Additiona damage modifier for ally golem, 10% each.");
@@ -235,6 +252,24 @@ namespace EnemiesReturns
             //Colossus.KnurlGolemAllyHealthModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Health Modifier Per Stack", 10, "Additiona health modifier for ally golem per stack, 10% each.");
             //Colossus.KnurlGolemAllySpeedModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier", 5, "Additiona movement speed modifier for ally golem, 14% each (basically one hoof).");
             //Colossus.KnurlGolemAllySpeedModifierPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Movement Speed Modifier Per Stack", 5, "Additiona movement speed modifier for ally golem per stack, 14% each (basically one hoof).");
+            #endregion
+
+            #region Ifrit
+            Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
+            Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 1000, "Director cost of Ifrit.");
+
+            Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 7000f, "Ifrit' base health.");
+            Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 8f, "Ifrit' base movement speed.");
+            Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 10f, "Ifrit' base jump power.");
+            Ifrit.BaseDamage = config.Bind("Ifrit Character Stats", "Base Damage", 40f, "Ifrit' base damage.");
+            Ifrit.BaseArmor = config.Bind("Ifrit Character Stats", "Base Armor", 35f, "Ifrit' base armor.");
+
+            Ifrit.LevelMaxHealth = config.Bind("Ifrit Character Stats", "Health per Level", 2100f, "Ifrit' health increase per level.");
+            Ifrit.LevelDamage = config.Bind("Ifrit Character Stats", "Damage per Level", 8f, "Ifrit' damage increase per level.");
+            Ifrit.LevelArmor = config.Bind("Ifrit Character Stats", "Armor per Level", 0f, "Ifrit' armor increase per level.");
+
+
             #endregion
         }
     }

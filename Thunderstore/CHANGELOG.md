@@ -1,4 +1,11 @@
 <details>
+<summary>0.1.13</summary>
+
+* Fixed Colossus not spawning outside of family events.
+* Fixed Colossus' Laser Barrage not doing full head spin on high attack speed.
+* Added soft dependency on RestoreGrandparentRock.
+</details>
+<details>
 <summary>0.1.12 (The Moon actually fell)  </summary>
 
 * SoTS update.

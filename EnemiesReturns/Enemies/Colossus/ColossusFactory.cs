@@ -20,6 +20,7 @@ using ThreeEyedGames;
 using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
 using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.Helpers;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -86,7 +87,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public static GameObject ColossusMaster;
 
-        public GameObject CreateColossusBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
@@ -737,7 +738,7 @@ namespace EnemiesReturns.Enemies.Colossus
             return bodyPrefab;
         }
 
-        public GameObject CreateColossusMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
         {
             #region NetworkIdentity
             masterPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;

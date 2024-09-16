@@ -28,7 +28,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public void OnKilledServer(DamageReport damageReport)
         {
-            string bodyName = damageReport.attacker.name;
+            string bodyName = damageReport?.attacker?.name ?? "";
             bodyName = bodyName.Replace("(Clone)", "");
             if (dames.Contains(bodyName.Trim().ToLower()))
             {
