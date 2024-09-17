@@ -21,6 +21,7 @@ using static EnemiesReturns.Utils;
 using RoR2.Mecanim;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Helpers;
+using RoR2.EntityLogic;
 
 namespace EnemiesReturns.Enemies.Ifrit
 {
@@ -29,6 +30,8 @@ namespace EnemiesReturns.Enemies.Ifrit
         public struct Skills
         {
             public static SkillDef SummonPylon;
+
+            public static SkillDef Hellzone;
             //public static SkillDef Stomp;
 
             //public static SkillDef StoneClap;
@@ -42,9 +45,9 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             public static SkillFamily Special;
 
-            //public static SkillFamily Primary;
+            public static SkillFamily Secondary;
 
-            //public static SkillFamily Secondary;
+            //public static SkillFamily Primary;
 
             //public static SkillFamily Utility;
 
@@ -217,10 +220,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region Secondary
-            //var gsSecondary = bodyPrefab.AddComponent<GenericSkill>();
-            //gsSecondary._skillFamily = SkillFamilies.Secondary;
-            //gsSecondary.skillName = "StoneClap";
-            //gsSecondary.hideInCharacterSelect = false;
+            var gsSecondary = bodyPrefab.AddComponent<GenericSkill>();
+            gsSecondary._skillFamily = SkillFamilies.Secondary;
+            gsSecondary.skillName = "Hellzone";
+            gsSecondary.hideInCharacterSelect = false;
             #endregion
 
             #region Utility
@@ -246,7 +249,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 skillLocator = bodyPrefab.AddComponent<SkillLocator>();
             }
             //skillLocator.primary = gsPrimary;
-            //skillLocator.secondary = gsSecondary;
+            skillLocator.secondary = gsSecondary;
             //skillLocator.utility = gsUtility;
             skillLocator.special = gsSpecial;
             #endregion
@@ -874,442 +877,97 @@ namespace EnemiesReturns.Enemies.Ifrit
         }
 
         #region GameObjects
-
-        public GameObject CreateSpawnEffect()
-        {
-            var cloneEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanSpawnEffect.prefab").WaitForCompletion().InstantiateClone("ColossusSpawnEffect", false);
-
-            var shakeEmitter = cloneEffect.GetComponent<ShakeEmitter>();
-            shakeEmitter.duration = 5f;
-            shakeEmitter.radius = 100f;
-
-            var components = cloneEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            var light = cloneEffect.GetComponentInChildren<Light>();
-            if(light)
-            {
-                light.range = 20f;
-            }
-
-            cloneEffect.transform.localScale = new Vector3(2f, 2f, 2f);
-
-            return cloneEffect;
-        }
-
-        public GameObject CreateDeath2Effect()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanRechargeRocksEffect.prefab").WaitForCompletion().InstantiateClone("ColossusDeathEffect", false);
-
-            var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
-            shakeEmitter.duration = 2f;
-            shakeEmitter.radius = 100f;
-
-            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            var light = clonedEffect.GetComponentInChildren<Light>();
-            if (light)
-            {
-                light.range = 20f;
-            }
-
-            clonedEffect.transform.localScale = new Vector3(3f, 3f, 3f);
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateDeathFallEffect()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
-
-            var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
-            shakeEmitter.duration = 4f;
-            shakeEmitter.radius = 100f;
-            shakeEmitter.wave.amplitude = 0.3f;
-            shakeEmitter.wave.frequency = 200f;
-
-            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            UnityEngine.Object.DestroyImmediate(clonedEffect.transform.Find("ParticleInitial/Spikes, Large").gameObject);
-            UnityEngine.Object.DestroyImmediate(clonedEffect.transform.Find("ParticleInitial/Spikes, Small").gameObject);
-
-            clonedEffect.transform.localScale = new Vector3(4f, 4f, 4f);
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateColossusStepEffect()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericHugeFootstepDust.prefab").WaitForCompletion().InstantiateClone("ColossusFootstepDust", false);
-
-            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.startSize = new ParticleSystem.MinMaxCurve(15f, 18f);
-            }
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateStompEffect()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
-
-            var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateClapEffect()
-        {
-            GameObject clapEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolemDeath.prefab").WaitForCompletion().InstantiateClone("ColossusClapEffect", false);
-            var components = clapEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            // scaling size of default values
-            // 4f is default effect scale (actually not, this is the value due to separated bulletattacks)
-            // 12f is default damage radius scale
-            var radius = 4f / 12f * EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
-
-            clapEffect.transform.localScale = new Vector3(radius, radius, radius);
-            return clapEffect;
-        }
-
-        public GameObject CreateStompProjectile()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
-            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
-
-            var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
-            foreach (var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            clonedEffect.GetComponent<ProjectileCharacterController>().lifetime = EnemiesReturnsConfiguration.Colossus.StompProjectileLifetime.Value;
-
-            var shakeEmiiter = clonedEffectGhost.GetComponent<ShakeEmitter>();
-            shakeEmiiter.radius = 30;
-            shakeEmiiter.duration = 0.15f;
-            shakeEmiiter.wave.amplitude = 10f;
-            shakeEmiiter.wave.frequency = 30f;
-            shakeEmiiter.wave.cycleOffset = 0f;
-
-            var ghostAnchor = new GameObject();
-            ghostAnchor.name = "Anchor";
-            ghostAnchor.transform.parent = clonedEffect.transform;
-            ghostAnchor.transform.localPosition = new Vector3(0f, -0.5f, 0f);
-            ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
-
-            var projectileController = clonedEffect.GetComponent<ProjectileController>();
-            projectileController.ghostPrefab = clonedEffectGhost;
-            projectileController.ghostTransformAnchor = ghostAnchor.transform;
-
-            var hitbox = clonedEffect.transform.Find("Hitbox");
-            hitbox.transform.localScale = new Vector3(1f, 1.2f, 1.5f);
-            hitbox.transform.localPosition = new Vector3(0f, 0.1f, 0f);
-
-            var scale = EnemiesReturnsConfiguration.Colossus.StompProjectileScale.Value;
-
-            clonedEffect.transform.localScale = new Vector3(scale, scale, scale);
-            clonedEffectGhost.transform.localScale = new Vector3(scale, scale, scale);
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateFlyingRocksGhost()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockGhost", false);
-            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f); // for future reference: ProjectileController does not scale ghost to its size, unless ghost has a flag for it
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateFlyingRockProjectile(GameObject rockGhost)
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
-            var projectileController = clonedEffect.GetComponent<ProjectileController>();
-            projectileController.ghostPrefab = rockGhost;
-            projectileController.allowPrediction = true;
-            projectileController.flightSoundLoop = null;
-            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
-
-            var projectileSimple = clonedEffect.GetComponent<ProjectileSimple>();
-            projectileSimple.updateAfterFiring = false;
-            projectileSimple.lifetime = 5f;
-
-            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturnsConfiguration.Colossus.RockClapProjectileBlastRadius.Value;
-
-            clonedEffect.AddComponent<ProjectileTargetComponent>();
-
-            var targetFinder = clonedEffect.AddComponent<ProjectileSphereTargetFinder>();
-            targetFinder.lookRange = EnemiesReturnsConfiguration.Colossus.RockClapHomingRange.Value;
-            targetFinder.targetSearchInterval = 0.25f;
-            targetFinder.onlySearchIfNoTarget = true;
-            targetFinder.allowTargetLoss = false;
-            targetFinder.testLoS = false;
-            targetFinder.ignoreAir = false;
-            targetFinder.flierAltitudeTolerance = float.PositiveInfinity;
-
-            var projectileMover = clonedEffect.AddComponent<ProjectileMoveTowardsTarget>();
-            projectileMover.speed = EnemiesReturnsConfiguration.Colossus.RockClapHomingSpeed.Value;
-
-            var networkTransform = clonedEffect.AddComponent<ProjectileNetworkTransform>();
-            networkTransform.positionTransmitInterval = 0.033f;
-            networkTransform.interpolationFactor = 1f;
-
-            return clonedEffect;
-        }
-
-        public GameObject CreateLaserBarrageProjectile()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanRockProjectile.prefab").WaitForCompletion().InstantiateClone("ColossusLaserBarrageProjectile", true);
-
-            clonedEffect.layer = LayerIndex.debris.intVal;
-                
-            //var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //if (cube.TryGetComponent<BoxCollider>(out var collider))
-            //{
-            //    collider.enabled = false;
-            //};
-            //cube.transform.parent = clonedEffect.transform;
-            //cube.transform.localPosition = Vector3.forward;
-
-            GameObject shardEffect = CreateLaserBarrageShard();
-
-            shardEffect.transform.parent = clonedEffect.transform;
-            shardEffect.transform.localPosition = Vector3.zero;
-            shardEffect.transform.localRotation = Quaternion.identity;
-            shardEffect.transform.localScale = Vector3.one;
-
-            shardEffect.SetActive(false);
-
-            clonedEffect.GetComponent<Rigidbody>().useGravity = true;
-
-            clonedEffect.GetComponent<ProjectileSimple>().updateAfterFiring = false;
-
-            UnityEngine.Object.DestroyImmediate(clonedEffect.GetComponent<ProjectileSteerTowardTarget>());
-            UnityEngine.Object.DestroyImmediate(clonedEffect.GetComponent<ProjectileDirectionalTargetFinder>());
-            UnityEngine.Object.DestroyImmediate(clonedEffect.GetComponent<ProjectileTargetComponent>());
-
-            var hitbox = new GameObject();
-            hitbox.name = "Hitbox";
-            hitbox.layer = LayerIndex.projectile.intVal;
-            hitbox.transform.parent = clonedEffect.transform;
-            hitbox.transform.localScale = Vector3.one;
-            hitbox.transform.localPosition = Vector3.zero;
-            var hitboxComponent = hitbox.gameObject.AddComponent<HitBox>();
-
-            var hibboxGroup = clonedEffect.AddComponent<HitBoxGroup>();
-            hibboxGroup.groupName = "Hitbox";
-            hibboxGroup.hitBoxes = new HitBox[] { hitboxComponent };
-
-            var overlapAttack = clonedEffect.AddComponent<ProjectileOverlapAttack>();
-            overlapAttack.maximumOverlapTargets = 100;
-            overlapAttack.overlapProcCoefficient = 1f;
-            overlapAttack.damageCoefficient = 1f;
-
-            var stickOnImpact = clonedEffect.AddComponent<ProjectileStickOnImpact>();
-            stickOnImpact.ignoreCharacters = true;
-            stickOnImpact.ignoreWorld = false;
-            stickOnImpact.alignNormals = true;
-
-            var impactExplosion = clonedEffect.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value;
-            impactExplosion.blastDamageCoefficient = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value;
-            impactExplosion.blastProcCoefficient = 1f;
-            impactExplosion.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
-            impactExplosion.canRejectForce = true;
-            impactExplosion.explosionEffect = CreateLaserBarrageExplosion();
-
-            impactExplosion.destroyOnEnemy = false;
-            impactExplosion.destroyOnWorld = false;
-            impactExplosion.impactOnWorld = true;
-            impactExplosion.timerAfterImpact = true;
-            impactExplosion.lifetime = 15f;
-            impactExplosion.lifetimeAfterImpact = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionDelay.Value;
-            impactExplosion.transformSpace = ProjectileImpactExplosion.TransformSpace.World;
-
-            var dumbHelper = clonedEffect.AddComponent<DumbProjectileStickHelper>();
-            dumbHelper.shardEffect = shardEffect;
-            dumbHelper.stickOnImpact = stickOnImpact;
-            dumbHelper.overlapAttack = overlapAttack;
-            dumbHelper.controller = clonedEffect.GetComponent<ProjectileController>();
-            dumbHelper.childToRotateTo = "LaserInitialPoint";
-
-            return clonedEffect;
-        }
-
-        private GameObject CreateLaserBarrageExplosion()
-        {
-            var explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion().InstantiateClone("ColossusLaserBarrageExplosion", false);
-
-            var components = explosionEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach(var component in components)
-            {
-                var main = component.main;
-                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
-            }
-
-            var scale = 2f * (EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value / 5f); // 5f is the value it was scaled to
-            explosionEffect.transform.localScale = new Vector3(scale, scale, scale);
-
-            return explosionEffect;
-        }
-
-        private GameObject CreateLaserBarrageShard()
-        {
-            var shardEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/LunarShardGhost.prefab").WaitForCompletion().InstantiateClone("ColossusLaserBarrageImpactShard", false);
-
-            UnityEngine.Object.DestroyImmediate(shardEffect.GetComponent<ProjectileGhostController>());
-
-            shardEffect.transform.Find("Mesh").GetComponent<MeshRenderer>().material = SetupLaserBarrageShardMeshMaterial();
-            shardEffect.transform.Find("Trail").GetComponent<TrailRenderer>().material = SetupLaserBarrageShardTrailMaterial();
-            shardEffect.transform.Find("PulseGlow").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupLaserBarrageShardPulseMaterial();
-
-            return shardEffect;
-        }
-
-        private Material SetupLaserBarrageShardMeshMaterial()
-        {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardMesh");
-            if (material == default(Material))
-            {
-                // TODO: maybe do better
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/bazaar/matLunarInfection.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardMesh";
-                material.SetColor("_Color", new Color(181/255, 0, 0));
-                material.SetTexture("_MainTex", Texture2D.redTexture);
-                material.SetColor("_EmColor", new Color(255 / 255, 115 / 255, 115 / 255));
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
-        }
-
-        private Material SetupLaserBarrageShardTrailMaterial()
-        {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardTrail");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matLunarShardTrail.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardTrail";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
-        }
-
-        private Material SetupLaserBarrageShardPulseMaterial()
-        {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardPulse");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matGlowItemPickup.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardPulse";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
-        }
-
-        public GameObject CreateLaserEffect()
-        {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/VoidRaidCrabSpinBeamVFX.prefab").WaitForCompletion().InstantiateClone("ColossusEyeLaserEffect", false);
-
-            var radius = 7.5f;
-            clonedEffect.transform.localScale = new Vector3(radius, radius, clonedEffect.transform.localScale.z);
-
-            // coloring book
-            clonedEffect.transform.Find("Mesh, Additive").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder2Material();
-            clonedEffect.transform.Find("Mesh, Additive/Mesh, Transparent").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder1Material();
-            clonedEffect.transform.Find("Billboards").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard1Material();
-            clonedEffect.transform.Find("SwirlyTrails").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
-            clonedEffect.transform.Find("MuzzleRayParticles").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
-
-            clonedEffect.transform.Find("Point Light, Middle").GetComponent<Light>().color = Color.red;
-            clonedEffect.transform.Find("Point Light, End").GetComponent<Light>().color = Color.red;
-
-            return clonedEffect;
-        }
-
-        private Material SetupSpinBeamCylinder2Material()
-        {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder2");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamCylinder2";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
-        }
         
-        private Material SetupSpinBeamCylinder1Material()
+        public GameObject CreateHellzoneProjectile(GameObject pillarPrefab, GameObject pillarGhostPrefab)
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder1");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamCylinder1";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
+
+            var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRows>();
+            spawnChildrenComponent.radius = 9f; // TODO
+            spawnChildrenComponent.numberOfRows = 3; // TODO
+            spawnChildrenComponent.childrenDamageCoefficient = 1f; // TODO
+            spawnChildrenComponent.delayEachRow = 0.5f; // TODO
+            spawnChildrenComponent.childPrefab = CreateHellzonePillarProjectile(pillarPrefab, pillarGhostPrefab);
+
+            return gameObject;
         }
 
-        private Material SetupSpinBeamBillboard1Material()
+        public GameObject CreateHellzonePillarProjectile(GameObject gameObject, GameObject ghostPrefab)
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard1");
-            if (material == default(Material))
+            var hitboxTransform = gameObject.transform.Find("Hitbox");
+            if(!hitboxTransform)
             {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard1.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamBillboard1";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
+                Log.Error("Projectile " + gameObject.name + " doesn't have a hitbox.");
+                return gameObject;
             }
-            return material;
+
+            var hitbox = hitboxTransform.gameObject.AddComponent<HitBox>();
+
+            gameObject.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+
+            var projectileController = gameObject.AddComponent<ProjectileController>();
+            projectileController.ghostPrefab = CreateHellzonePillarProjectileGhost(ghostPrefab);
+            projectileController.cannotBeDeleted = true;
+            projectileController.canImpactOnTrigger = false;
+            projectileController.allowPrediction = false;
+            projectileController.procCoefficient = 1f;
+
+
+            var networkTransform = gameObject.AddComponent<ProjectileNetworkTransform>();
+            networkTransform.positionTransmitInterval = 0.03f;
+            networkTransform.interpolationFactor = 1f;
+            networkTransform.allowClientsideCollision = false;
+
+            var projectileDamage = gameObject.AddComponent<ProjectileDamage>();
+            projectileDamage.damageType = (DamageTypeCombo)DamageType.IgniteOnHit;
+            projectileDamage.useDotMaxStacksFromAttacker = false;
+
+            gameObject.AddComponent<TeamFilter>();
+
+            var hitboxGroup = gameObject.AddComponent<HitBoxGroup>();
+            hitboxGroup.name = "Hitbox";
+            hitboxGroup.hitBoxes = new HitBox[] { hitbox };
+
+            var projectileOverlapAttack = gameObject.AddComponent<ProjectileOverlapAttack>();
+            projectileOverlapAttack.enabled = false;
+            projectileOverlapAttack.damageCoefficient = 1f;
+            //projectileOverlapAttack.impactEffect = ; // TODO
+            projectileOverlapAttack.forceVector = new Vector3(0f, 2400f, 0f);
+            projectileOverlapAttack.overlapProcCoefficient = 1f;
+            projectileOverlapAttack.maximumOverlapTargets = 100;
+            projectileOverlapAttack.fireFrequency = 0.001f;
+            projectileOverlapAttack.resetInterval = -1f;
+
+            var projectileSimple = gameObject.AddComponent<ProjectileSimple>();
+            projectileSimple.lifetime = 3f; // TODO
+            projectileSimple.lifetimeExpiredEffect = null;
+            projectileSimple.desiredForwardSpeed = 0f;
+            projectileSimple.updateAfterFiring = false;
+            projectileSimple.enableVelocityOverLifetime = false;
+            projectileSimple.oscillate = false;
+
+            var enabler = gameObject.AddComponent<ComponentStateSwitcher>();
+            enabler.enabled = false;
+            enabler.delay = 0.5f; // TODO
+            enabler.state = true;
+            enabler.component = projectileOverlapAttack;
+
+            gameObject.RegisterNetworkPrefab();
+            return gameObject;
         }
 
-        private Material SetupSpinBeamBillboard2Material()
+        public GameObject CreateHellzonePillarProjectileGhost(GameObject gameObject)
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard2");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamBillboard2";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
-            return material;
+            gameObject.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = true;
+
+            var vfxAttributes = gameObject.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.DoNotPool = true;
+
+            //gameObject.AddComponent<EffectManagerHelper>();
+
+            return gameObject;
         }
 
         #endregion
@@ -1336,6 +994,46 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = 45f; // TODO
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateHellzoneSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "IfritBodyHellzone";
+            skillDef.skillName = "Hellzone";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_HELLZONE_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION";
+            //var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
+            //if (loaderGroundSlam)
+            //{
+            //    skillDef.icon = loaderGroundSlam.icon;
+            //}
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 10f; // TODO
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;

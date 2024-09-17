@@ -610,8 +610,14 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FireExplosion));
                 #endregion
 
-
                 var ifritFactory = new IfritFactory();
+
+                var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
+                var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
+                ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = ifritFactory.CreateHellzoneProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
+
+                IfritFactory.Skills.Hellzone = ifritFactory.CreateHellzoneSkill();
+                IfritFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritFactory.Skills.Hellzone);
 
                 IfritFactory.Skills.SummonPylon = ifritFactory.CreateSummonPylonSkill();
                 IfritFactory.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritFactory.Skills.SummonPylon);
@@ -630,6 +636,9 @@ namespace EnemiesReturns
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SummonPylon));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());

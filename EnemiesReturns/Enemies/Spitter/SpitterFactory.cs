@@ -899,7 +899,6 @@ namespace EnemiesReturns.Enemies.Spitter
 
             clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetRecoloredSpitProjectileGhost();
 
-
             #region MainSpitZone
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosionWithChildrenArray>();
