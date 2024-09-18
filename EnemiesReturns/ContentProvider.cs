@@ -614,7 +614,15 @@ namespace EnemiesReturns
 
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
-                ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = ifritFactory.CreateHellzoneProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
+                var pillarProjectile = ifritFactory.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
+                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile);
+                var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile(dotZoneProjectile);
+
+                projectilesList.Add(dotZoneProjectile);
+                projectilesList.Add(hellzoneProjectile);
+                projectilesList.Add(pillarProjectile);
+
+                ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = hellzoneProjectile;
 
                 IfritFactory.Skills.Hellzone = ifritFactory.CreateHellzoneSkill();
                 IfritFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritFactory.Skills.Hellzone);

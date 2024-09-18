@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Projectiles
 {
-    public class ProjectileSpawnChildrenInRows : MonoBehaviour, IProjectileImpactBehavior
+    public class ProjectileSpawnChildrenInRowsWithDelay : MonoBehaviour
     {
         public float radius = 9f;
 
@@ -29,36 +29,40 @@ namespace EnemiesReturns.Projectiles
 
         protected bool alive = true;
 
+        private float timer;
+
+        private int currentRow;
+
+        private float smallRadius;
+
+        private Vector3 childScale;
+
         private void Awake()
         {
             projectileController = GetComponent<ProjectileController>();
             projectileDamage = GetComponent<ProjectileDamage>();
             teamFilter = GetComponent<TeamFilter>();
+            smallRadius = (radius / ((numberOfRows - 1) + 0.5f));
+            childScale = new Vector3(smallRadius, smallRadius, smallRadius);
+            currentRow = 0;
         }
 
-        public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
+        private void FixedUpdate()
         {
-            if(!NetworkServer.active)
+            if (!NetworkServer.active)
             {
                 return;
             }
 
-            var smallRadius = (radius / ((numberOfRows - 1) + 0.5f));
-            var childScale = new Vector3(smallRadius, smallRadius, smallRadius);
-            //var mainSphere = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            //mainSphere.transform.parent = gameObject.transform;
-            //mainSphere.transform.localScale = new Vector3(radius * 2, 0.1f, radius * 2);
-            //mainSphere.transform.localPosition = Vector3.zero;
-            for (int i = 0; i < numberOfRows; i++)
+            timer += Time.fixedDeltaTime;
+            if(timer >= delayEachRow)
             {
-                float delay = delayEachRow + delayEachRow * i;
-                float fromCentre = smallRadius * i;
-                if (i == 0)
+                if(currentRow == 0)
                 {
-                    SpawnChild(base.transform.position, childScale, delay);
-                }
-                else
+                    SpawnChild(base.transform.position, childScale);
+                } else
                 {
+                    float fromCentre = smallRadius * currentRow;
                     var angleCos = (Mathf.Pow(fromCentre, 2f) + Mathf.Pow(fromCentre, 2f) - Mathf.Pow(smallRadius, 2f)) / (2 * fromCentre * fromCentre);
                     var angle = Mathf.Acos(angleCos) / (MathF.PI / 180);
                     int rockCount = (int)(360f / angle);
@@ -71,19 +75,25 @@ namespace EnemiesReturns.Projectiles
 
                         if (Physics.Raycast(base.transform.position + new Vector3(x, 5f, x), Vector3.down, out var hit, 100f, LayerIndex.world.intVal))
                         {
-                            SpawnChild(hit.point, childScale, delay);
+                            SpawnChild(hit.point, childScale);
                         }
                         else
                         {
-                            SpawnChild(base.transform.position + new Vector3(x, 0f, z), childScale, delay);
+                            SpawnChild(base.transform.position + new Vector3(x, 0f, z), childScale);
                         }
                     }
                 }
+                currentRow++;
+                timer -= delayEachRow;
+            }
 
+            if(currentRow >= numberOfRows)
+            {
+                UnityEngine.Object.Destroy(this);
             }
         }
 
-        private void SpawnChild(Vector3 position, Vector3 scale, float delay)
+        private void SpawnChild(Vector3 position, Vector3 scale)
         {
             var newObject = UnityEngine.Object.Instantiate(childPrefab, position, Quaternion.identity);
             newObject.transform.localScale = scale;
@@ -95,15 +105,15 @@ namespace EnemiesReturns.Projectiles
                 newController.procCoefficient = projectileController.procCoefficient;
                 newController.Networkowner = projectileController.Networkowner;
 
-                if(newController.ghostPrefab)
-                {
-                    newController.ghostPrefab = UnityEngine.Object.Instantiate(newController.ghostPrefab);
-                    if (newController.ghostPrefab.TryGetComponent<InvokeDelayedEventOnStart>(out var component))
-                    {
-                        component.timer = delay;
-                        component.enabled = true;
-                    }
-                }
+                //if(newController.ghostPrefab)
+                //{
+                //    newController.ghostPrefab = UnityEngine.Object.Instantiate(newController.ghostPrefab);
+                //    if (newController.ghostPrefab.TryGetComponent<InvokeDelayedEventOnStart>(out var component))
+                //    {
+                //        component.timer = delay;
+                //        component.enabled = true;
+                //    }
+                //}
             }
 
             var teamFilter = newObject.GetComponent<TeamFilter>();
@@ -121,9 +131,9 @@ namespace EnemiesReturns.Projectiles
                 newDamage.damageColorIndex = projectileDamage.damageColorIndex;
             }
 
-            var enabler = newObject.GetComponent<ComponentStateSwitcher>();
-            enabler.delay = delay;
-            enabler.enabled = true;
+            //var enabler = newObject.GetComponent<ComponentStateSwitcher>();
+            //enabler.delay = delay;
+            //enabler.enabled = true;
 
             NetworkServer.Spawn(newObject);
         }

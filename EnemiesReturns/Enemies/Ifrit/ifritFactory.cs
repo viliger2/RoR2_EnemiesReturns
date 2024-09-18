@@ -878,16 +878,28 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         #region GameObjects
         
-        public GameObject CreateHellzoneProjectile(GameObject pillarPrefab, GameObject pillarGhostPrefab)
+        public GameObject CreateHellzoneProjectile(GameObject dotzonePrefab)
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
 
-            var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRows>();
+            if (gameObject.TryGetComponent <ProjectileImpactExplosion>(out var component))
+            {
+                component.childrenProjectilePrefab = dotzonePrefab;
+            }
+
+            return gameObject;
+        }
+
+        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab)
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
+
+            var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
             spawnChildrenComponent.radius = 9f; // TODO
             spawnChildrenComponent.numberOfRows = 3; // TODO
             spawnChildrenComponent.childrenDamageCoefficient = 1f; // TODO
             spawnChildrenComponent.delayEachRow = 0.5f; // TODO
-            spawnChildrenComponent.childPrefab = CreateHellzonePillarProjectile(pillarPrefab, pillarGhostPrefab);
+            spawnChildrenComponent.childPrefab = pillarPrefab;
 
             return gameObject;
         }
@@ -912,7 +924,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             projectileController.allowPrediction = false;
             projectileController.procCoefficient = 1f;
 
-
             var networkTransform = gameObject.AddComponent<ProjectileNetworkTransform>();
             networkTransform.positionTransmitInterval = 0.03f;
             networkTransform.interpolationFactor = 1f;
@@ -929,7 +940,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             hitboxGroup.hitBoxes = new HitBox[] { hitbox };
 
             var projectileOverlapAttack = gameObject.AddComponent<ProjectileOverlapAttack>();
-            projectileOverlapAttack.enabled = false;
             projectileOverlapAttack.damageCoefficient = 1f;
             //projectileOverlapAttack.impactEffect = ; // TODO
             projectileOverlapAttack.forceVector = new Vector3(0f, 2400f, 0f);
@@ -939,18 +949,18 @@ namespace EnemiesReturns.Enemies.Ifrit
             projectileOverlapAttack.resetInterval = -1f;
 
             var projectileSimple = gameObject.AddComponent<ProjectileSimple>();
-            projectileSimple.lifetime = 3f; // TODO
+            projectileSimple.lifetime = 0.25f; // TODO
             projectileSimple.lifetimeExpiredEffect = null;
             projectileSimple.desiredForwardSpeed = 0f;
             projectileSimple.updateAfterFiring = false;
             projectileSimple.enableVelocityOverLifetime = false;
             projectileSimple.oscillate = false;
 
-            var enabler = gameObject.AddComponent<ComponentStateSwitcher>();
-            enabler.enabled = false;
-            enabler.delay = 0.5f; // TODO
-            enabler.state = true;
-            enabler.component = projectileOverlapAttack;
+            //var enabler = gameObject.AddComponent<ComponentStateSwitcher>();
+            //enabler.enabled = false;
+            //enabler.delay = 0.5f; // TODO
+            //enabler.state = true;
+            //enabler.component = projectileOverlapAttack;
 
             gameObject.RegisterNetworkPrefab();
             return gameObject;
@@ -963,9 +973,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             var vfxAttributes = gameObject.AddComponent<VFXAttributes>();
             vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
             vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
-            vfxAttributes.DoNotPool = true;
 
-            //gameObject.AddComponent<EffectManagerHelper>();
+            gameObject.AddComponent<EffectManagerHelper>();
 
             return gameObject;
         }
