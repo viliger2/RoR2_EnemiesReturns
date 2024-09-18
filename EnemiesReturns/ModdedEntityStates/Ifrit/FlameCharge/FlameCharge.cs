@@ -125,12 +125,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                     if (ledgeHandling)
                     {
                         var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
-                        if ()
+                        if (!result || hitinfo.distance > 20f)
                         {
-                            if(hitinfo.distance > 20f)
-                            {
-                                outer.SetNextStateToMain();
-                            }
+                            outer.SetNextStateToMain();
                         }
                     }
                 }
