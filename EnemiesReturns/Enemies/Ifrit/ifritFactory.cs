@@ -32,6 +32,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             public static SkillDef SummonPylon;
 
             public static SkillDef Hellzone;
+
+            public static SkillDef FlameCharge;
             //public static SkillDef Stomp;
 
             //public static SkillDef StoneClap;
@@ -46,6 +48,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             public static SkillFamily Special;
 
             public static SkillFamily Secondary;
+
+            public static SkillFamily Utility;
 
             //public static SkillFamily Primary;
 
@@ -111,7 +115,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region CharacterDirection
             var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
-            characterDirection.turnSpeed = 100f;
+            characterDirection.turnSpeed = 100f; // TODO?
             #endregion
 
             #region CharacterMotor
@@ -144,7 +148,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
             characterBody.baseMoveSpeed = EnemiesReturnsConfiguration.Ifrit.BaseMoveSpeed.Value;
-            characterBody.baseAcceleration = 20f;
+            characterBody.baseAcceleration = 60f;
             characterBody.baseJumpPower = EnemiesReturnsConfiguration.Ifrit.BaseJumpPower.Value;
             characterBody.baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value;
             characterBody.baseAttackSpeed = 1f;
@@ -227,10 +231,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region Utility
-            //var gsUtility = bodyPrefab.AddComponent<GenericSkill>();
-            //gsUtility._skillFamily = SkillFamilies.Utility;
-            //gsUtility.skillName = "LaserBarrage";
-            //gsUtility.hideInCharacterSelect = false;
+            var gsUtility = bodyPrefab.AddComponent<GenericSkill>();
+            gsUtility._skillFamily = SkillFamilies.Utility;
+            gsUtility.skillName = "FlameCharge";
+            gsUtility.hideInCharacterSelect = false;
             #endregion
 
             #region Special
@@ -250,7 +254,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             }
             //skillLocator.primary = gsPrimary;
             skillLocator.secondary = gsSecondary;
-            //skillLocator.utility = gsUtility;
+            skillLocator.utility = gsUtility;
             skillLocator.special = gsSpecial;
             #endregion
 
@@ -388,7 +392,6 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            //var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/root/root_pelvis_control/spine/MainHurtBox"); // TODO
             var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Hurtbox"); // TODO
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
@@ -397,6 +400,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             hurtBoxes.Add(mainHurtBox);
 
             mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
+
+            var flameHitBox = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/Neck/Head/Jaw/FlameChargeHitbox").gameObject.AddComponent<HitBox>();
+            var chargeHitbox = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/ChargeHitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
             #region mdlIfrit
@@ -520,20 +526,16 @@ namespace EnemiesReturns.Enemies.Ifrit
             //};
             #endregion
 
-            #region HitBoxGroupLeftStomp
-            //var leftstompHitbox = mdlIfrit.transform.Find("Armature/foot.l/LeftStompHitbox").gameObject.AddComponent<HitBox>();
-
-            //var hbgLeftStomp = mdlIfrit.AddComponent<HitBoxGroup>();
-            //hbgLeftStomp.groupName = "LeftStomp";
-            //hbgLeftStomp.hitBoxes = new HitBox[] { leftstompHitbox };
+            #region HitBoxFlameBreath
+            var hbgFlame = mdlIfrit.AddComponent<HitBoxGroup>();
+            hbgFlame.groupName = "FlameCharge";
+            hbgFlame.hitBoxes = new HitBox[] { flameHitBox };
             #endregion
 
-            #region HitBoxGroupLeftStomp
-            //var rightStompHitbox = mdlIfrit.transform.Find("Armature/foot.r/RightStompHitbox").gameObject.AddComponent<HitBox>();
-
-            //var hbgRightStomp = mdlIfrit.AddComponent<HitBoxGroup>();
-            //hbgRightStomp.groupName = "RightStomp";
-            //hbgRightStomp.hitBoxes = new HitBox[] { rightStompHitbox };
+            #region HitBoxBodyCharge
+            var hbgBody = mdlIfrit.AddComponent<HitBoxGroup>();
+            hbgBody.groupName = "BodyCharge";
+            hbgBody.hitBoxes = new HitBox[] { chargeHitbox };
             #endregion
 
             #region FootstepHandler
@@ -557,129 +559,129 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region SkinDefs
-//            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-//            {
-//                renderer = (SkinnedMeshRenderer)item.renderer,
-//                material = item.defaultMaterial,
-//                ignoreOverlays = item.ignoreOverlays
+            //            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
+            //            {
+            //                renderer = (SkinnedMeshRenderer)item.renderer,
+            //                material = item.defaultMaterial,
+            //                ignoreOverlays = item.ignoreOverlays
 
-//            });
-//            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlIfrit, defaultRender);
+            //            });
+            //            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlIfrit, defaultRender);
 
-//            RenderInfo[] snowyRenderer = new RenderInfo[]
-//            {
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matColossusSnowy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = headRenderer,
-//                    material = skinsLookup["matColossusSnowy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = eyeRenderer,
-//                    material = skinsLookup["matColossusEye"],
-//                    ignoreOverlays = true
-//                }
-//            };
-//            SkinDefs.Snowy = CreateSkinDef("skinColossusSnowy", mdlIfrit, snowyRenderer, SkinDefs.Default);
+            //            RenderInfo[] snowyRenderer = new RenderInfo[]
+            //            {
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matColossusSnowy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = headRenderer,
+            //                    material = skinsLookup["matColossusSnowy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = eyeRenderer,
+            //                    material = skinsLookup["matColossusEye"],
+            //                    ignoreOverlays = true
+            //                }
+            //            };
+            //            SkinDefs.Snowy = CreateSkinDef("skinColossusSnowy", mdlIfrit, snowyRenderer, SkinDefs.Default);
 
-//            RenderInfo[] sandyRenderer = new RenderInfo[]
-//            {
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matColossusSandy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = headRenderer,
-//                    material = skinsLookup["matColossusSandy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = eyeRenderer,
-//                    material = skinsLookup["matColossusEye"],
-//                    ignoreOverlays = true
-//                }
-//            };
-//            SkinDefs.Sandy = CreateSkinDef("skinColossusSandy", mdlIfrit, sandyRenderer, SkinDefs.Default);
+            //            RenderInfo[] sandyRenderer = new RenderInfo[]
+            //            {
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matColossusSandy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = headRenderer,
+            //                    material = skinsLookup["matColossusSandy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = eyeRenderer,
+            //                    material = skinsLookup["matColossusEye"],
+            //                    ignoreOverlays = true
+            //                }
+            //            };
+            //            SkinDefs.Sandy = CreateSkinDef("skinColossusSandy", mdlIfrit, sandyRenderer, SkinDefs.Default);
 
-//            RenderInfo[] grassyRenderer = new RenderInfo[]
-//{
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matColossusGrassy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = headRenderer,
-//                    material = skinsLookup["matColossusGrassy"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = eyeRenderer,
-//                    material = skinsLookup["matColossusEye"],
-//                    ignoreOverlays = true
-//                }
-//};
-//            SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlIfrit, grassyRenderer, SkinDefs.Default);
+            //            RenderInfo[] grassyRenderer = new RenderInfo[]
+            //{
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matColossusGrassy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = headRenderer,
+            //                    material = skinsLookup["matColossusGrassy"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = eyeRenderer,
+            //                    material = skinsLookup["matColossusEye"],
+            //                    ignoreOverlays = true
+            //                }
+            //};
+            //            SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlIfrit, grassyRenderer, SkinDefs.Default);
 
-//            RenderInfo[] skyMeadowRenderer = new RenderInfo[]
-//{
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matColossusSkyMeadow"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = headRenderer,
-//                    material = skinsLookup["matColossusSkyMeadow"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = eyeRenderer,
-//                    material = skinsLookup["matColossusEye"],
-//                    ignoreOverlays = true
-//                }
-//};
-//            SkinDefs.SkyMeadow = CreateSkinDef("skinColossusSkyMeadow", mdlIfrit, skyMeadowRenderer, SkinDefs.Default);
+            //            RenderInfo[] skyMeadowRenderer = new RenderInfo[]
+            //{
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matColossusSkyMeadow"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = headRenderer,
+            //                    material = skinsLookup["matColossusSkyMeadow"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = eyeRenderer,
+            //                    material = skinsLookup["matColossusEye"],
+            //                    ignoreOverlays = true
+            //                }
+            //};
+            //            SkinDefs.SkyMeadow = CreateSkinDef("skinColossusSkyMeadow", mdlIfrit, skyMeadowRenderer, SkinDefs.Default);
 
-//            RenderInfo[] castleRenderer = new RenderInfo[]
-//{
-//                new RenderInfo
-//                {
-//                    renderer = modelRenderer,
-//                    material = skinsLookup["matColossusSMBBody"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = headRenderer,
-//                    material = skinsLookup["matColossusSMBHead"],
-//                    ignoreOverlays = false
-//                },
-//                new RenderInfo
-//                {
-//                    renderer = eyeRenderer,
-//                    material = skinsLookup["matColossusEye"],
-//                    ignoreOverlays = true
-//                }
-//};
-//            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlIfrit, castleRenderer, SkinDefs.Default, new GameObject[] { flagObject });
+            //            RenderInfo[] castleRenderer = new RenderInfo[]
+            //{
+            //                new RenderInfo
+            //                {
+            //                    renderer = modelRenderer,
+            //                    material = skinsLookup["matColossusSMBBody"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = headRenderer,
+            //                    material = skinsLookup["matColossusSMBHead"],
+            //                    ignoreOverlays = false
+            //                },
+            //                new RenderInfo
+            //                {
+            //                    renderer = eyeRenderer,
+            //                    material = skinsLookup["matColossusEye"],
+            //                    ignoreOverlays = true
+            //                }
+            //};
+            //            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlIfrit, castleRenderer, SkinDefs.Default, new GameObject[] { flagObject });
 
             //var modelSkinController = mdlIfrit.AddComponent<ModelSkinController>();
             //modelSkinController.skins = new SkinDef[]
@@ -1043,6 +1045,46 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = 10f; // TODO
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateFlameChargeSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "IfritBodyFlameCharge";
+            skillDef.skillName = "FlameCharge";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION";
+            //var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
+            //if (loaderGroundSlam)
+            //{
+            //    skillDef.icon = loaderGroundSlam.icon;
+            //}
+
+            skillDef.activationStateMachineName = "Body";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.BeginFlameCharge));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 20f; // TODO
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;

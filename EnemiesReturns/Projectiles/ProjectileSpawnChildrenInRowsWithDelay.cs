@@ -73,7 +73,7 @@ namespace EnemiesReturns.Projectiles
                         var x = fromCentre * Mathf.Cos(newAngle * k * Mathf.Deg2Rad);
                         var z = fromCentre * Mathf.Sin(newAngle * k * Mathf.Deg2Rad);
 
-                        if (Physics.Raycast(base.transform.position + new Vector3(x, 5f, x), Vector3.down, out var hit, 100f, LayerIndex.world.intVal))
+                        if (Physics.Raycast(base.transform.position + new Vector3(x, 5f, x), Vector3.down, out var hit, 100f, LayerIndex.world.mask))
                         {
                             SpawnChild(hit.point, childScale);
                         }

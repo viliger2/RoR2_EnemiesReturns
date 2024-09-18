@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Helpers
 {
-    public class LineRendererToOwner : MonoBehaviour
+    public class DeployableLineRendererToOwner : MonoBehaviour
     {
         private Deployable deployable;
 

@@ -630,6 +630,9 @@ namespace EnemiesReturns
                 IfritFactory.Skills.SummonPylon = ifritFactory.CreateSummonPylonSkill();
                 IfritFactory.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritFactory.Skills.SummonPylon);
 
+                IfritFactory.Skills.FlameCharge = ifritFactory.CreateFlameChargeSkill();
+                IfritFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("IfritUtilityFamily", IfritFactory.Skills.FlameCharge);
+
                 var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);
 
@@ -641,12 +644,13 @@ namespace EnemiesReturns
                 IfritFactory.IfritMaster = ifritFactory.CreateMaster(ifritMaster, IfritFactory.IfritBody);
                 masterList.Add(IfritFactory.IfritMaster);
 
-
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SummonPylon));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.BeginFlameCharge));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());

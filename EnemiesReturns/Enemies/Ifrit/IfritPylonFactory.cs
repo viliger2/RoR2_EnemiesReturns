@@ -157,7 +157,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region LineRendererHelper
-            mdlPylonGameObject.AddComponent<LineRendererToOwner>();
+            mdlPylonGameObject.AddComponent<DeployableLineRendererToOwner>();
             #endregion
 
             #endregion
