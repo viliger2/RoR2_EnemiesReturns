@@ -1249,7 +1249,7 @@ namespace EnemiesReturns.Enemies.Spitter
         private ItemDisplayRuleSet CreateItemDisplayRuleSet()
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
-
+            (idrs as ScriptableObject).name = "idrsSpitter";
             #region FireElite
             var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
 

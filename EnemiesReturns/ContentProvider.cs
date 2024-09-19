@@ -324,6 +324,8 @@ namespace EnemiesReturns
                 itemList.Add(ColossalKnurlFactory.itemDef);
 
                 var dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
+                (dtColossus as ScriptableObject).name = "epdtColossus";
+                dtColossus.canDropBeReplaced = true;
                 dtColossus.pickupEntries = new ExplicitPickupDropTable.PickupDefEntry[]
                 {
                     new ExplicitPickupDropTable.PickupDefEntry

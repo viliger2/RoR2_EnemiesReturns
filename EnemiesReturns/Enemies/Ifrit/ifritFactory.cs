@@ -1144,7 +1144,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         private ItemDisplayRuleSet CreateItemDisplayRuleSet()
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
-
+            (idrs as ScriptableObject).name = "idrsIfrit";
             #region FireElite
             var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
 

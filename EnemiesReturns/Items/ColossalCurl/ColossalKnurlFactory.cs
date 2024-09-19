@@ -29,6 +29,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             modelPanelParameters.maxDistance = 3f;
 
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
+            (itemDef as ScriptableObject).name = "ColossalKnurl";
             itemDef.tier = ItemTier.Boss;
             itemDef.deprecatedTier = ItemTier.Boss;
             itemDef.name = "ColossalKnurl";
