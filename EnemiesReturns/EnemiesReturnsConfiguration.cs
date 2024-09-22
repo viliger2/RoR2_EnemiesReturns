@@ -260,8 +260,8 @@ namespace EnemiesReturns
             Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 1000, "Director cost of Ifrit.");
 
             Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 7000f, "Ifrit' base health.");
-            Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 8f, "Ifrit' base movement speed.");
-            Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 10f, "Ifrit' base jump power.");
+            Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 13f, "Ifrit' base movement speed.");
+            Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 30f, "Ifrit' base jump power.");
             Ifrit.BaseDamage = config.Bind("Ifrit Character Stats", "Base Damage", 40f, "Ifrit' base damage.");
             Ifrit.BaseArmor = config.Bind("Ifrit Character Stats", "Base Armor", 35f, "Ifrit' base armor.");
 

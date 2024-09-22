@@ -48,6 +48,8 @@ namespace EnemiesReturns
 
         public static List<Material> MaterialCache = new List<Material>(); //apparently you need it because reasons?
 
+        public static List<Texture2D> TextureCache = new List<Texture2D>();
+
         public struct MonsterCategories
         {
             public const string Champions = "Champions";
@@ -89,7 +91,7 @@ namespace EnemiesReturns
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
-            Dictionary<string, Material> skinsLookup = new Dictionary<string, Material>();
+            Dictionary<string, Material> materialLookup = new Dictionary<string, Material>();
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
@@ -102,7 +104,7 @@ namespace EnemiesReturns
                 {
                     foreach (Material material in materials)
                     {
-                        skinsLookup.Add(material.name, material);
+                        materialLookup.Add(material.name, material);
 
                         if (!material.shader.name.StartsWith("Stubbed")) { continue; }
 
@@ -125,6 +127,12 @@ namespace EnemiesReturns
 
             Dictionary<string, Sprite> iconLookup = new Dictionary<string, Sprite>();
 
+            Texture2D texLavaCrackRound = null;
+            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
+            {
+                texLavaCrackRound = textures.First(texture => texture.name == "texLavaCrackRound");
+            }));
+
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Sprite[]>)((assets) =>
             {
                 Stopwatch stopwatch = new Stopwatch();
@@ -132,6 +140,14 @@ namespace EnemiesReturns
                 iconLookup = assets.ToDictionary(item => item.name, item => item);
                 stopwatch.Stop();
                 Log.Info("Icons loaded in " + stopwatch.elapsedSeconds);
+            }));
+
+            AnimationCurveDef adcIfritPylonLight = null;
+            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
+            {
+                adcIfritPylonLight = assets.First(acd => acd.name == "adcIfritPylonLightIntencityCurve");
+                var acdLaserBarrage = assets.First(acd => acd.name == "LaserBarrageLightIntencity");
+                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLaserBarrage.curve;
             }));
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
@@ -192,7 +208,7 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, skinsLookup);
+                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, materialLookup);
                 bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
@@ -404,7 +420,7 @@ namespace EnemiesReturns
                 sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, skinsLookup, dtColossus);
+                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, materialLookup, dtColossus);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");
@@ -598,8 +614,12 @@ namespace EnemiesReturns
                 #region IfritPylon
                 var ifritPylonFactory = new IfritPylonFactory();
 
+                //ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExplosionEffect();
+                ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab));
+
                 var pylonBody = assets.First(body => body.name == "IfritPylonBody");
-                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody);
+                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody, adcIfritPylonLight);
                 bodyList.Add(IfritPylonFactory.IfritPylonBody);
 
                 var pylonMaster = assets.First(master => master.name == "IfritPylonMaster");
@@ -614,16 +634,22 @@ namespace EnemiesReturns
 
                 var ifritFactory = new IfritFactory();
 
+                var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
+                var maneMaterial = ifritFactory.CreateManeMaterial();
+                materialLookup.Add(maneMaterial.name, maneMaterial);
+                ifritManePrefab.GetComponent<Renderer>().material = maneMaterial;
+
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
                 var pillarProjectile = ifritFactory.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
-                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile);
+                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, texLavaCrackRound);
                 var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile(dotZoneProjectile);
 
                 projectilesList.Add(dotZoneProjectile);
                 projectilesList.Add(hellzoneProjectile);
                 projectilesList.Add(pillarProjectile);
 
+                ModdedEntityStates.Ifrit.FlameCharge.FlameCharge.flamethrowerEffectPrefab = ifritFactory.CreateFlameBreath();
                 ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = hellzoneProjectile;
 
                 IfritFactory.Skills.Hellzone = ifritFactory.CreateHellzoneSkill();
@@ -639,7 +665,7 @@ namespace EnemiesReturns
                 unlockablesList.Add(ifritLog);
 
                 var ifritBody = assets.First(body => body.name == "IfritBody");
-                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, null, ifritLog, skinsLookup, null);
+                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, null, ifritLog, materialLookup, null);
                 bodyList.Add(IfritFactory.IfritBody);
 
                 var ifritMaster = assets.First(master => master.name == "IfritMaster");
@@ -651,7 +677,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.BeginFlameCharge));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
                 #endregion
 
@@ -667,12 +693,6 @@ namespace EnemiesReturns
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
-            }));
-
-            yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
-            {
-                var acdLaserBarrage = assets.First(acd => acd.name == "LaserBarrageLightIntencity");
-                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLaserBarrage.curve;
             }));
 
             totalStopwatch.Stop();

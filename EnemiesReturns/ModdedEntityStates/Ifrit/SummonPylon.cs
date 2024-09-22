@@ -18,13 +18,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         private float duration;
 
-
-
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayCrossfade("Body", "PillarSummon", 0.5f);
+            PlayCrossfade("Body", "PillarSummon", "PillarSummon.playbackRate", duration, 0.2f);
         }
 
         public override void FixedUpdate()
@@ -49,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
                 minDistance = 30f,
-                maxDistance = 50f,
+                maxDistance = 50f, // TODO
                 spawnOnTarget = transform
             }, RoR2Application.rng);
             directorSpawnRequest.summonerBodyObject = base.gameObject;

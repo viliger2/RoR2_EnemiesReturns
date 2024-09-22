@@ -1,12 +1,16 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
+using HG;
 using RoR2;
+using RoR2.EntityLogic;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace EnemiesReturns.Enemies.Ifrit
 {
@@ -18,11 +22,12 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public static GameObject IfritPylonMaster;
 
-        public GameObject CreateBody(GameObject bodyPrefab)
+        public GameObject CreateBody(GameObject bodyPrefab, AnimationCurveDef acdLight)
         {
             Transform modelBase = bodyPrefab.transform.Find("ModelBase");
-            Transform modelTransform = bodyPrefab.transform.Find("ModelBase/mdlPylon");
+            Transform modelTransform = bodyPrefab.transform.Find("ModelBase/IfritPillar");
             Transform hurtboxTransform = bodyPrefab.transform.Find("ModelBase/Hurtbox");
+            Transform fireball = bodyPrefab.transform.Find("ModelBase/IfritPillar/Fireball");
 
             #region PylonBody
 
@@ -106,6 +111,14 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region Model
             var mdlPylonGameObject = modelTransform.gameObject;
 
+            var lavaFlow = bodyPrefab.transform.Find("ModelBase/IfritPillar/MeshLavaFlow");
+            var lavaMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRLava.mat").WaitForCompletion());
+            lavaMaterial.name = "matIfritPylonLava";
+            lavaMaterial.SetTexture("_EmTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC2/Scorchling/texLavaCrack.png").WaitForCompletion());
+            lavaMaterial.SetFloat("_EmPower", 10f);
+            ContentProvider.MaterialCache.Add(lavaMaterial);
+            lavaFlow.gameObject.GetComponent<MeshRenderer>().material = lavaMaterial;
+
             #region HurtBoxGroup
             var hurtboxGroup = mdlPylonGameObject.AddComponent<HurtBoxGroup>();
             hurtboxGroup.mainHurtBox = hurtbox;
@@ -156,15 +169,119 @@ namespace EnemiesReturns.Enemies.Ifrit
             //};
             #endregion
 
+            #region LineRenderer
+            var linerenderer = mdlPylonGameObject.GetComponent<LineRenderer>();
+
+            var lineMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Captain/matCaptainAirstrikeAltLaser.mat").WaitForCompletion());
+            lineMaterial.name = "matIfritPylonLine";
+            lineMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampCaptainAirstrike.png").WaitForCompletion());
+            lineMaterial.SetColor("_TintColor", new Color(255f / 255f, 53f / 255f, 0f));
+            lineMaterial.SetFloat("_Boost", 7.315614f);
+            lineMaterial.SetFloat("_AlphaBoost", 5.603551f);
+            lineMaterial.SetFloat("_AlphaBias", 0f);
+            lineMaterial.SetFloat("_DistortionStrength", 1f);
+            lineMaterial.SetVector("_CutoffScroll", new Vector4(5f, 0f, 0f, 0f));
+            ContentProvider.MaterialCache.Add(lineMaterial);
+            linerenderer.material = lineMaterial;
+            #endregion
+
             #region LineRendererHelper
-            mdlPylonGameObject.AddComponent<DeployableLineRendererToOwner>();
+            mdlPylonGameObject.AddComponent<DeployableLineRendererToOwner>().childOriginName = "LineOriginPoint";
+            #endregion
+
+            #region TeamIndicator
+            var indicatorObject = UnityEngine.GameObject.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
+            indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
+            indicatorObject.transform.parent = modelTransform;
+            indicatorObject.transform.localScale = new Vector3(22f, 22f, 22f); // TODO: 22 is equal to 30 explosion radius
+            indicatorObject.transform.localPosition = Vector3.zero;
+            indicatorObject.transform.localRotation = Quaternion.identity;
+
+            ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "TeamAreaIndicator", transform = indicatorObject.transform });
             #endregion
 
             #endregion
+
+            #region Fireball
+            var fire = fireball.Find("Fire");
+            var fireParticleSystem = fire.gameObject.GetComponent<ParticleSystem>();
+            var fireRenderer = fireParticleSystem.GetComponent<Renderer>();
+            fireRenderer.material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matOmniExplosion1.mat").WaitForCompletion();
+
+            var fireLightTransform = fireball.Find("Light");
+            var fireFlickerLight = fireLightTransform.gameObject.AddComponent<FlickerLight>();
+            fireFlickerLight.light = fireLightTransform.gameObject.GetComponent<Light>();
+            fireFlickerLight.sinWaves = new Wave[]
+            {
+                new Wave
+                {
+                    amplitude = 0.1f,
+                    frequency = 4,
+                    cycleOffset = 1.23f
+                },
+                new Wave
+                {
+                    amplitude = 0.2f,
+                    frequency = 3,
+                    cycleOffset = 1.34f
+                },
+                new Wave
+                {
+                    amplitude = 0.2f,
+                    frequency = 5,
+                    cycleOffset = 0f
+                },
+            };
+
+            var fireLightIntencityCurve = fireLightTransform.gameObject.AddComponent<LightIntensityCurve>();
+            fireLightIntencityCurve.curve = acdLight.curve;
+            fireLightIntencityCurve.timeMax = 30f; // TODO
+            #endregion
+
+            //#region FireballPP
+            //var ppFireball = fireball.Find("PP");
+            //var ppVolume = ppFireball.gameObject.GetComponent<PostProcessVolume>();
+            //ppVolume.profile = Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppLocalGrandparent.asset").WaitForCompletion();
+            //var ppDuration = ppFireball.gameObject.AddComponent<PostProcessDuration>();
+            //ppDuration.maxDuration = 30f;
+            //ppDuration.destroyOnEnd = true;
+            //ppDuration.ppVolume = ppVolume;
+            //ppDuration.ppWeightCurve = acd.curve;
+            //#endregion
 
             bodyPrefab.RegisterNetworkPrefab();
 
             return bodyPrefab;
+        }
+
+        public GameObject CreateExplosionEffect()
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/RoboBallBoss/OmniExplosionVFXRoboBallBossDeath.prefab").WaitForCompletion().InstantiateClone("IfritPylonExplosionEffect", false);
+
+            UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<OmniEffect>());
+
+            foreach(Transform child in gameObject.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+
+            return gameObject;
+        }
+
+        public GameObject CreateExlosionEffectAlt()
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ClayBoss/ClayBossDeath.prefab").WaitForCompletion().InstantiateClone("IfritPylonExplosionEffectAlt", false);
+            gameObject.GetComponent<EffectComponent>().applyScale = true;
+
+            UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<AwakeEvent>());
+            UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<DelayedEvent>());
+            UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<Corpse>());
+
+            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("mdlClayBossShattered").gameObject);
+
+            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("Particles/Goo").gameObject);
+
+            return gameObject;
         }
 
         public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
@@ -225,7 +342,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                             body = body,
                             skinChoice = skin,
                             skillChoices = Array.Empty<SerializableLoadout.BodyLoadout.SkillChoice>() // yes, we need it
-                        }
+						}
                     }
                 };
             };

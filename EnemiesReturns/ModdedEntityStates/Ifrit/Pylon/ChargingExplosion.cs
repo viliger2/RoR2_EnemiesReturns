@@ -11,13 +11,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
         public static float duration = 30f; // TODO: config
 
         public static Vector3 fireballFinishScale = new Vector3(4f, 4f, 4f);
-        public static Vector3 pillarFinishPosition = new Vector3(-1f, 2.71f, 0f);
+        public static Vector3 pillarFinishPosition = new Vector3(0, -7.83f, 0f);
 
         private Transform fireball;
         private Transform pillar;
 
-        private Vector3 fireballStartScale;
-        private Vector3 pillarStartPosition;
+        private Vector3 fireballStartScale = Vector3.one;
+        private Vector3 pillarStartPosition = new Vector3(0f, -17.5f, 0f);
 
         public override void OnEnter()
         {
@@ -30,10 +30,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
             }
 
             pillar = childLocator.FindChild("GlowPillar");
-            if(pillar)
-            {
-                pillarStartPosition = pillar.localPosition;
-            }
+            //if(pillar)
+            //{
+            //    pillarStartPosition = pillar.localPosition;
+            //}
         }
 
         public override void Update()
@@ -54,7 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
             base.FixedUpdate();
             if(fixedAge >= duration && base.isAuthority)
             {
-                outer.SetNextState(new FiringExplosion());
+                outer.SetNextState(new FireExplosion());
             }
         }
     }

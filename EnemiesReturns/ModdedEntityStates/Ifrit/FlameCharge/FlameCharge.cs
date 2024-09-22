@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
     {
         public static GameObject flamethrowerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion();
 
-        public static float tickFrequency = 8f;
+        public static float tickFrequency = 8f; // TODO: lods of config
 
         public static float chargeDuration = 5f;
 
@@ -21,7 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static float turnSpeed = 300f;
 
-        public static float chargeMovementSpeedCoefficient = 8f;
+        public static float chargeMovementSpeedCoefficient = 2f;
 
         public static float chargeDamageCoefficient = 2f;
 
@@ -65,8 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             animator = GetModelAnimator();
             muzzleMouth = FindModelChild(muzzleString);
             ledgeHandling = FindModelChild("LedgeHandling");
-            PlayCrossfade("Gesture,Override", "RunForward", 0.2f);
-            PlayAnimation("Gesture,Additive", "FlameBlastFiring");
+            PlayCrossfade("Gesture,Override", "FlameBlastFiring", 0.2f);
             bool isCrit = RollCrit();
             SetupFlameAttack(modelTransform, isCrit);
             SetupChargeAttack(modelTransform, isCrit);
@@ -127,51 +126,19 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                         var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
                         if (!result || hitinfo.distance > 20f)
                         {
-                            outer.SetNextStateToMain();
+                            outer.SetNextState(new FlameChargeEnd());
                         }
                     }
                 }
-
             }
 
             if(fixedAge >= chargeDuration && isAuthority)
             {
-                outer.SetNextStateToMain();
+                outer.SetNextState(new FlameChargeEnd());
             }
 
             base.FixedUpdate();
         }
-
-        //private void FireBullet()
-        //{
-        //    if(muzzleMouth)
-        //    {
-        //        if(bulletAttack == null)
-        //        {
-        //            bulletAttack= new OverlapAttack();
-        //        }
-
-        //        bulletAttack.owner = base.gameObject;
-        //        bulletAttack.weapon = base.gameObject;
-        //        bulletAttack.origin = muzzleMouth.position;
-        //        bulletAttack.aimVector = muzzleMouth.forward;
-        //        bulletAttack.minSpread = 0f;
-        //        bulletAttack.maxSpread = 0f;
-        //        bulletAttack.damage = flameDamageCoefficient * damageStat;
-        //        bulletAttack.force = flameForce;
-        //        bulletAttack.muzzleName = muzzleString;
-        //        bulletAttack.hitEffectPrefab = null; // TODO: grab from lemurianbruiser
-        //        bulletAttack.isCrit = isCrit;
-        //        bulletAttack.radius = flameRadius;
-        //        bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
-        //        bulletAttack.stopperMask = LayerIndex.world.mask;
-        //        bulletAttack.procCoefficient = flameProcCoef;
-        //        bulletAttack.maxDistance = flameMaxDistance;
-        //        bulletAttack.smartCollision = true;
-        //        bulletAttack.damageType = ;
-        //        bulletAttack.Fire();
-        //    }
-        //}
 
         private void SpawnEffect()
         {
@@ -184,7 +151,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                 flamethrowerEffectInstance = _emh_flamethrowerEffectInstance.gameObject.transform;
             }
             flamethrowerEffectInstance.transform.localPosition = Vector3.zero;
-            flamethrowerEffectInstance.GetComponent<ScaleParticleSystemDuration>().newDuration = chargeDuration;
         }
 
         private void DestroyEffect()
@@ -205,7 +171,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public override void OnExit()
         {
-            PlayCrossfade("Gesture,Additive", "BufferEmpty", 0.1f);
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
             DestroyEffect();
             base.OnExit();

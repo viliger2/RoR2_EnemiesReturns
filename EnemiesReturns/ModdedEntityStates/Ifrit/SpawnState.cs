@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
     {
         public override void OnEnter()
         {
-            duration = 2f;
+            duration = 3f;
             //spawnSoundString = "ER_Spitter_Spawn_Play";
 
             base.OnEnter();

@@ -22,6 +22,7 @@ using RoR2.Mecanim;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Helpers;
 using RoR2.EntityLogic;
+using RoR2.Audio;
 
 namespace EnemiesReturns.Enemies.Ifrit
 {
@@ -89,7 +90,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public static DeployableSlot PylonDeployable;
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> materialLookup, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
@@ -142,7 +143,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             characterBody.subtitleNameToken = "ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE";
             characterBody.bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage;
             characterBody.rootMotionInMainState = false;
-            characterBody.mainRootSpeed = 7.5f;
+            characterBody.mainRootSpeed = 33f;
 
             characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Ifrit.BaseMaxHealth.Value;
             characterBody.baseRegen = 0f;
@@ -195,7 +196,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             modelLocator.dontDetatchFromParent = false;
             modelLocator.preserveModel = false;
 
-            modelLocator.normalizeToFloor = false;
+            modelLocator.normalizeToFloor = true; // TODO: maybe?
             modelLocator.normalSmoothdampTime = 0.1f;
             modelLocator.normalMaxAngleDelta = 90f;
             #endregion
@@ -695,7 +696,20 @@ namespace EnemiesReturns.Enemies.Ifrit
             //};
             #endregion
 
-            //var helper = mdlColossus.AddComponent<AnimationParameterHelper>();
+            #region RandomBlinkController
+            var rbc = mdlIfrit.AddComponent<RandomBlinkController>();
+            rbc.animator = animator;
+            rbc.blinkTriggers = new string[] { "BlinkEye" };
+            rbc.blinkChancePerUpdate = 10f;
+            #endregion
+
+            var particles = mdlIfrit.gameObject.GetComponentsInChildren<ParticleSystem>();
+            foreach(var particleComponent in particles)
+            {
+                particleComponent.GetComponent<Renderer>().material = materialLookup["matIfritManeFire"];
+            }
+
+            //var helper = mdlIfrit.AddComponent<AnimationParameterHelper>();
             //helper.animator = animator;
             //helper.animationParameters = new string[] { "walkSpeedDebug" };
             #endregion
@@ -884,7 +898,14 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
 
-            if (gameObject.TryGetComponent <ProjectileImpactExplosion>(out var component))
+            var controller = gameObject.GetComponent<ProjectileController>();
+            controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/MegaFireballGhost.prefab").WaitForCompletion();
+            controller.startSound = "Play_lemurianBruiser_m1_shoot";
+            controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
+
+            gameObject.GetComponent<ProjectileImpactExplosion>().impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
+
+            if (gameObject.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
                 component.childrenProjectilePrefab = dotzonePrefab;
             }
@@ -892,9 +913,58 @@ namespace EnemiesReturns.Enemies.Ifrit
             return gameObject;
         }
 
-        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab)
+        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, Texture2D texLavaCrack)
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
+
+            gameObject.GetComponent<ProjectileDotZone>().lifetime = 3f + 3 * 0.5f; // TODO
+
+            gameObject.GetComponent<ProjectileController>().ghostPrefab = null;
+
+            var fxTransform = gameObject.transform.Find("FX");
+            fxTransform.localScale = new Vector3(9f, 9f, 9f); // TODO
+
+            var decal = gameObject.transform.Find("FX/Decal");
+            decal.gameObject.SetActive(true);
+            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("FX/Spittle").gameObject);
+            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("FX/Gas").gameObject);
+
+            var light = gameObject.transform.Find("FX/Point Light");
+            light.gameObject.SetActive(true);
+            light.localPosition = new Vector3(0f, 0.1f, 0f);
+
+            var lightComponent = light.GetComponent<Light>();
+            lightComponent.range = 9f; // TODO
+            lightComponent.color = new Color(1f, 0.54f, 0.172f);
+
+            gameObject.transform.Find("FX/Hitbox").transform.localScale = new Vector3(1.5f, 0.33f, 1.5f);
+
+            var decalGameObject = decal.gameObject;
+            decal.localScale = new Vector3(1.8f, 0.5f, 1.8f);
+            var decalComponent = decalGameObject.GetComponent<Decal>();
+            var newDecalMaterial = UnityEngine.Object.Instantiate(decalComponent.Material);
+            newDecalMaterial.name = "matIfritHellzoneDecalLavaCrack";
+            newDecalMaterial.SetTexture("_MaskTex", texLavaCrack);
+            newDecalMaterial.SetColor("_Color", new Color(255f / 255f, 103f / 255f, 127f / 255f));
+            newDecalMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texBehemothRamp.png").WaitForCompletion());
+            newDecalMaterial.SetFloat("_AlphaBoost", 1f);
+            decalComponent.Material = newDecalMaterial;
+
+            var teamIndicator = UnityEngine.GameObject.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, GroundOnly.prefab").WaitForCompletion());
+            teamIndicator.transform.parent = fxTransform;
+            teamIndicator.transform.localPosition = Vector3.zero;
+            teamIndicator.transform.localRotation = Quaternion.Euler(-90f, 0f, 0f);
+            teamIndicator.transform.localScale = Vector3.one;
+            teamIndicator.GetComponent<TeamAreaIndicator>().teamFilter = gameObject.GetComponent<TeamFilter>();
+
+            var scorchlingBody = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Scorchling/ScorchlingBody.prefab").WaitForCompletion();
+            var scorchlingPile = UnityEngine.GameObject.Instantiate(scorchlingBody.transform.Find("ModelBase/mdlScorchling/mdlScorchlingBreachPile").gameObject);
+            scorchlingPile.transform.parent = fxTransform;
+            scorchlingPile.transform.localPosition = Vector3.zero;
+            scorchlingPile.transform.localRotation = Quaternion.identity;
+            scorchlingPile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // TODO: 0.5 fits 9 so scalle of it
+
+            //gameObject.GetComponent<ProjectileController>().ghostPrefab = CreateHellfireDotZoneProjectileGhost(coalTexture);
 
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
             spawnChildrenComponent.radius = 9f; // TODO
@@ -951,7 +1021,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             projectileOverlapAttack.resetInterval = -1f;
 
             var projectileSimple = gameObject.AddComponent<ProjectileSimple>();
-            projectileSimple.lifetime = 0.25f; // TODO
+            projectileSimple.lifetime = 1f; // TODO
             projectileSimple.lifetimeExpiredEffect = null;
             projectileSimple.desiredForwardSpeed = 0f;
             projectileSimple.updateAfterFiring = false;
@@ -977,6 +1047,49 @@ namespace EnemiesReturns.Enemies.Ifrit
             vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
 
             gameObject.AddComponent<EffectManagerHelper>();
+
+            var sparksTransform = gameObject.transform.Find("FX/Sparks");
+            var psSparks = sparksTransform.gameObject.GetComponent<Renderer>();
+            psSparks.material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matTracerBright.mat").WaitForCompletion();
+
+            var rocksTransform = gameObject.transform.Find("FX/Rocks");
+            var psRocks = rocksTransform.gameObject.GetComponent<Renderer>();
+            psRocks.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRRocks.mat").WaitForCompletion();
+
+            var fireballTransform = gameObject.transform.Find("FX/MainFireball");
+            var psFireball = fireballTransform.gameObject.GetComponent<Renderer>();
+            psFireball.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRLava.mat").WaitForCompletion();
+
+            var steamedHamsTransform = gameObject.transform.Find("FX/MainFireball/Smoke");
+            var psSmoke = steamedHamsTransform.GetComponent<Renderer>();
+            psSmoke.material = Addressables.LoadAssetAsync<Material>("RoR2/Base/dampcave/matEnvSteam.mat").WaitForCompletion();
+
+            return gameObject;
+        }
+
+        public Material CreateManeMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/GreaterWisp/matGreaterWispFire.mat").WaitForCompletion());
+            material.name = "matIfritManeFire";
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
+            ContentProvider.MaterialCache.Add(material);
+
+            return material;
+        }
+
+        public GameObject CreateFlameBreath()
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion();
+
+            UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<ScaleParticleSystemDuration>());
+
+            var components = gameObject.GetComponentsInChildren<ParticleSystem>();
+            foreach(var component in components)
+            {
+                var main = component.main;
+                main.loop = true;
+                component.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
 
             return gameObject;
         }
@@ -1081,7 +1194,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             //}
 
             skillDef.activationStateMachineName = "Body";
-            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.BeginFlameCharge));
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = 20f; // TODO

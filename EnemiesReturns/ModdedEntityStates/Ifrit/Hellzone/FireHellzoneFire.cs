@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         public static float projectileSpeed = 50f;
 
-        public static float damageCoefficient = 10f;
+        public static float damageCoefficient = 10f; // TODO: config
 
         public static float force = 0f;
 

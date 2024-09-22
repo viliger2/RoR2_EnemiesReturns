@@ -8,12 +8,32 @@ namespace EnemiesReturns.Helpers
 {
     public class DeployableLineRendererToOwner : MonoBehaviour
     {
+        public string childOriginName;
+
         private Deployable deployable;
 
         private LineRenderer lineRenderer;
 
+        private Transform originPoint;
+
+        private Transform targetPoint;
+
+        private CharacterBody ownerBody;
+
         private void OnEnable()
         {
+            originPoint = gameObject.transform;
+            var childLocator = GetComponent<ChildLocator>();
+            if (childLocator)
+            {
+                var child = childLocator.FindChild(childOriginName);
+                if (child)
+                {
+                    originPoint = child;
+                    targetPoint = child;
+                }
+            }
+
             var characterModel = GetComponent<CharacterModel>();
             if (characterModel && characterModel.body) 
             {
@@ -24,11 +44,21 @@ namespace EnemiesReturns.Helpers
 
         private void Update()
         {
-            if(deployable && deployable.ownerMaster && lineRenderer)
+            if(!ownerBody)
+            {
+                if (deployable && deployable.ownerMaster)
+                {
+                    ownerBody = deployable.ownerMaster.GetBody();
+                }
+            } else
+            {
+                targetPoint = ownerBody.transform;
+            }
+            if (deployable && deployable.ownerMaster && lineRenderer)
             {
                 lineRenderer.positionCount = 2;
-                lineRenderer.SetPosition(0, base.gameObject.transform.position);
-                lineRenderer.SetPosition(1, deployable.ownerMaster.GetBody().transform.position);
+                lineRenderer.SetPosition(0, originPoint.position);
+                lineRenderer.SetPosition(1, targetPoint.position);
             }
         }
 

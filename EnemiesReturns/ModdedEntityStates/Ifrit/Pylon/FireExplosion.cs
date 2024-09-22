@@ -3,6 +3,8 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
@@ -11,14 +13,30 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
     {
         public static float duration = 1f; // just to be safe
 
+        public static GameObject explosionPrefab;
+
+        private BlastAttack blastAttack;
+
+        private Transform fireball;
+        private Transform areaIndicator;
+
         public override void OnEnter()
         {
             base.OnEnter();
+
+            var childLocator = GetModelChildLocator();
+            fireball = childLocator.FindChild("Fireball");
+            areaIndicator = childLocator.FindChild("TeamAreaIndicator");
             if (NetworkServer.active)
             {
-                BlastAttack blastAttack = new BlastAttack();
+                if(explosionPrefab)
+                {
+                    EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f }, true);
+                }
+
+                blastAttack = new BlastAttack();
                 blastAttack.attacker = base.gameObject;
-                blastAttack.radius = 100f; // TODO
+                blastAttack.radius = 30f; // TODO
                 blastAttack.procCoefficient = 0f;
                 blastAttack.position = transform.position;
                 blastAttack.crit = false;
@@ -31,14 +49,31 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.Fire();
             }
+            if(fireball)
+            {
+                fireball.gameObject.SetActive(false);
+            }
+            if(areaIndicator)
+            {
+                areaIndicator.gameObject.SetActive(false);
+            }
+            var modelTransform = GetModelTransform();
+            if(modelTransform.gameObject.TryGetComponent<LineRenderer>(out var lineRenderer))
+            {
+                lineRenderer.enabled = false;
+            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && base.isAuthority)
+            if (NetworkServer.active)
             {
-                base.healthComponent.Suicide();
+                //blastAttack.Fire();
+                if (fixedAge >= duration)
+                {
+                    base.healthComponent.Suicide();
+                }
             }
         }
     }
