@@ -35,13 +35,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             public static SkillDef Hellzone;
 
             public static SkillDef FlameCharge;
-            //public static SkillDef Stomp;
-
-            //public static SkillDef StoneClap;
-
-            //public static SkillDef LaserBarrage;
-
-            //public static SkillDef HeadLaser;
         }
 
         public struct SkillFamilies
@@ -51,12 +44,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             public static SkillFamily Secondary;
 
             public static SkillFamily Utility;
-
-            //public static SkillFamily Primary;
-
-            //public static SkillFamily Utility;
-
-            //public static SkillFamily Special;
         }
 
         public struct SkinDefs
@@ -285,7 +272,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterDeath));
+            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.DeathState));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon };
             #endregion
 
@@ -546,8 +533,8 @@ namespace EnemiesReturns.Enemies.Ifrit
                 footstepHandler = mdlIfrit.AddComponent<FootstepHandler>(); // TODO
             }
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.baseFootstepString = "Play_lemurian_step";
-            footstepHandler.footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion();
+            footstepHandler.baseFootstepString = "Play_beetle_queen_step";
+            footstepHandler.footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericHugeFootstepDust.prefab").WaitForCompletion();
             #endregion
 
             #region ModelPanelParameters
@@ -703,12 +690,26 @@ namespace EnemiesReturns.Enemies.Ifrit
             rbc.blinkChancePerUpdate = 10f;
             #endregion
 
+            #region FixFireShader
             var particles = mdlIfrit.gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach(var particleComponent in particles)
             {
                 particleComponent.GetComponent<Renderer>().material = materialLookup["matIfritManeFire"];
             }
+            #endregion
 
+            #region BisonSprintEffect
+            var bisonBody = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bison/BisonBody.prefab").WaitForCompletion();
+            var sprintEffectTransform = bisonBody.transform.Find("ModelBase/mdlBison/BisonArmature/ROOT/SprintEffect");
+            var sprintEffectCopy = UnityEngine.GameObject.Instantiate(sprintEffectTransform.gameObject);
+            sprintEffectCopy.transform.parent = modelTransform.Find("Armature");
+            sprintEffectCopy.transform.localPosition = new Vector3(-0.7647f, 3.0132f, 0.0441f);
+            sprintEffectCopy.transform.localRotation = Quaternion.Euler(270f, 0f, 0f);
+            sprintEffectCopy.transform.localScale = new Vector3(2f, 2f, 2f);
+            sprintEffectCopy.SetActive(false);
+
+            ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "SprintEffect", transform = sprintEffectCopy.transform });
+            #endregion
             //var helper = mdlIfrit.AddComponent<AnimationParameterHelper>();
             //helper.animator = animator;
             //helper.animationParameters = new string[] { "walkSpeedDebug" };
@@ -903,11 +904,13 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.startSound = "Play_lemurianBruiser_m1_shoot";
             controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
 
-            gameObject.GetComponent<ProjectileImpactExplosion>().impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
-
             if (gameObject.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
+                component.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
                 component.childrenProjectilePrefab = dotzonePrefab;
+                component.blastRadius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value; 
+                component.blastDamageCoefficient = 1f; // leave it at 1 so projectile itself deals full damage
+                component.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneDamage.Value;
             }
 
             return gameObject;
@@ -917,12 +920,14 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
 
-            gameObject.GetComponent<ProjectileDotZone>().lifetime = 3f + 3 * 0.5f; // TODO
+            gameObject.GetComponent<ProjectileDotZone>().lifetime = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneLifetime.Value
+                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value; 
 
             gameObject.GetComponent<ProjectileController>().ghostPrefab = null;
 
             var fxTransform = gameObject.transform.Find("FX");
-            fxTransform.localScale = new Vector3(9f, 9f, 9f); // TODO
+            var fxScale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            fxTransform.localScale = new Vector3(fxScale, fxScale, fxScale); 
 
             var decal = gameObject.transform.Find("FX/Decal");
             decal.gameObject.SetActive(true);
@@ -934,7 +939,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             light.localPosition = new Vector3(0f, 0.1f, 0f);
 
             var lightComponent = light.GetComponent<Light>();
-            lightComponent.range = 9f; // TODO
+            lightComponent.range = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value; 
             lightComponent.color = new Color(1f, 0.54f, 0.172f);
 
             gameObject.transform.Find("FX/Hitbox").transform.localScale = new Vector3(1.5f, 0.33f, 1.5f);
@@ -962,15 +967,16 @@ namespace EnemiesReturns.Enemies.Ifrit
             scorchlingPile.transform.parent = fxTransform;
             scorchlingPile.transform.localPosition = Vector3.zero;
             scorchlingPile.transform.localRotation = Quaternion.identity;
-            scorchlingPile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // TODO: 0.5 fits 9 so scalle of it
+            float scale = 0.5f * (EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value / 9f); // 0.5 fits 9 so scale of it
+            scorchlingPile.transform.localScale = new Vector3(scale, scale, scale);
 
             //gameObject.GetComponent<ProjectileController>().ghostPrefab = CreateHellfireDotZoneProjectileGhost(coalTexture);
 
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
-            spawnChildrenComponent.radius = 9f; // TODO
-            spawnChildrenComponent.numberOfRows = 3; // TODO
-            spawnChildrenComponent.childrenDamageCoefficient = 1f; // TODO
-            spawnChildrenComponent.delayEachRow = 0.5f; // TODO
+            spawnChildrenComponent.radius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            spawnChildrenComponent.numberOfRows = EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value;
+            spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDamage.Value; // TODO
+            spawnChildrenComponent.delayEachRow = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value; // TODO
             spawnChildrenComponent.childPrefab = pillarPrefab;
 
             return gameObject;
@@ -1013,26 +1019,20 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var projectileOverlapAttack = gameObject.AddComponent<ProjectileOverlapAttack>();
             projectileOverlapAttack.damageCoefficient = 1f;
-            //projectileOverlapAttack.impactEffect = ; // TODO
-            projectileOverlapAttack.forceVector = new Vector3(0f, 2400f, 0f);
+            projectileOverlapAttack.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
+            projectileOverlapAttack.forceVector = new Vector3(0f, EnemiesReturnsConfiguration.Ifrit.HellzonePillarForce.Value, 0f);
             projectileOverlapAttack.overlapProcCoefficient = 1f;
             projectileOverlapAttack.maximumOverlapTargets = 100;
             projectileOverlapAttack.fireFrequency = 0.001f;
             projectileOverlapAttack.resetInterval = -1f;
 
             var projectileSimple = gameObject.AddComponent<ProjectileSimple>();
-            projectileSimple.lifetime = 1f; // TODO
+            projectileSimple.lifetime = 1f;
             projectileSimple.lifetimeExpiredEffect = null;
             projectileSimple.desiredForwardSpeed = 0f;
             projectileSimple.updateAfterFiring = false;
             projectileSimple.enableVelocityOverLifetime = false;
             projectileSimple.oscillate = false;
-
-            //var enabler = gameObject.AddComponent<ComponentStateSwitcher>();
-            //enabler.enabled = false;
-            //enabler.delay = 0.5f; // TODO
-            //enabler.state = true;
-            //enabler.component = projectileOverlapAttack;
 
             gameObject.RegisterNetworkPrefab();
             return gameObject;
@@ -1089,6 +1089,24 @@ namespace EnemiesReturns.Enemies.Ifrit
                 var main = component.main;
                 main.loop = true;
                 component.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
+
+            return gameObject;
+        }
+
+        public GameObject CreateBreathParticle()
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenScream.prefab").WaitForCompletion().InstantiateClone("IfritScream", false);
+
+            var components = gameObject.GetComponentsInChildren<ParticleSystem>();
+            foreach(var component in components)
+            {
+                var main = component.main;
+                main.duration = 1f;
+                if (component.gameObject.name == "Spit")
+                {
+                    main.startColor = new Color(1f, 0.4895f, 0f);
+                }
             }
 
             return gameObject;
@@ -1157,7 +1175,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 10f; // TODO
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.HellzoneCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1197,7 +1215,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 20f; // TODO
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.FlameChargeCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;

@@ -13,31 +13,35 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
     {
         public static GameObject flamethrowerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion();
 
-        public static float tickFrequency = 8f; // TODO: lods of config
+        public static GameObject bodyImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXLarge.prefab").WaitForCompletion();
 
-        public static float chargeDuration = 5f;
+        public static GameObject flameImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
 
-        public static float turnSmoothTime = 0.01f;
+        public static float chargeDuration => EnemiesReturnsConfiguration.Ifrit.FlameChargeDuration.Value;
 
-        public static float turnSpeed = 300f;
+        public static float turnSpeed => EnemiesReturnsConfiguration.Ifrit.FlameChargeTurnSpeed.Value;
 
-        public static float chargeMovementSpeedCoefficient = 2f;
+        public static float chargeMovementSpeedCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeSpeedCoefficient.Value;
 
-        public static float chargeDamageCoefficient = 2f;
+        public static float chargeDamageCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeDamage.Value;
 
-        public static float chargeForce = 5000f;
+        public static float chargeForce => EnemiesReturnsConfiguration.Ifrit.FlameChargeForce.Value;
 
-        public static float chargeProcCoef = 1.0f;
+        public static float chargeProcCoef => EnemiesReturnsConfiguration.Ifrit.FlameChargeProcCoefficient.Value;
 
-        public static float flameDamageCoefficient = 5f;
+        public static float flameTickFrequency => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameTickFrequency.Value;
 
-        public static float flameIgnitePercentChance = 100f;
+        public static float flameDamageCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameDamage.Value;
 
-        public static float flameForce = 0f;
+        public static float flameIgnitePercentChance => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameIgniteChance.Value;
 
-        public static float flameProcCoef = 0.2f;
+        public static float flameForce => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameForce.Value;
+
+        public static float flameProcCoef => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameProcCoefficient.Value;
 
         public static string muzzleString = "MuzzleMouth";
+
+        private static float turnSmoothTime = 0.01f;
 
         private Vector3 targetMoveVector;
 
@@ -48,6 +52,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         private Transform flamethrowerEffectInstance;
 
         private Transform ledgeHandling;
+
+        private Transform sprintEffect;
 
         private EffectManagerHelper _emh_flamethrowerEffectInstance;
 
@@ -65,12 +71,21 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             animator = GetModelAnimator();
             muzzleMouth = FindModelChild(muzzleString);
             ledgeHandling = FindModelChild("LedgeHandling");
+            sprintEffect = FindModelChild("SprintEffect");
             PlayCrossfade("Gesture,Override", "FlameBlastFiring", 0.2f);
             bool isCrit = RollCrit();
             SetupFlameAttack(modelTransform, isCrit);
             SetupChargeAttack(modelTransform, isCrit);
             SpawnEffect();
+            SetSprintEffectState(true);
+        }
 
+        private void SetSprintEffectState(bool active)
+        {
+            if(sprintEffect)
+            {
+                sprintEffect.gameObject.SetActive(active);
+            }
         }
 
         private void SetupChargeAttack(Transform modelTransform, bool isCrit)
@@ -80,7 +95,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             chargeAttack.inflictor = base.gameObject;
             chargeAttack.teamIndex = TeamComponent.GetObjectTeam(chargeAttack.attacker);
             chargeAttack.damage = chargeDamageCoefficient * damageStat;
-            //attack.hitEffectPrefab = hitEffectPrefab; // TODO: bison
+            chargeAttack.hitEffectPrefab = bodyImpactEffect;
             chargeAttack.isCrit = isCrit;
             chargeAttack.forceVector = Vector3.forward * chargeForce;
             chargeAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "BodyCharge");
@@ -95,7 +110,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             flameAttack.inflictor = base.gameObject;
             flameAttack.teamIndex = TeamComponent.GetObjectTeam(flameAttack.attacker);
             flameAttack.damage = flameDamageCoefficient * damageStat;
-            //attack.hitEffectPrefab = hitEffectPrefab; // TODO: lemurianbruiser
+            flameAttack.hitEffectPrefab = flameImpactEffect;
             flameAttack.isCrit = isCrit;
             flameAttack.forceVector = Vector3.forward * flameForce;
             flameAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "FlameCharge");
@@ -116,9 +131,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             {
                 chargeAttack.Fire();
                 bulletAttackStopwatch += Time.fixedDeltaTime;
-                if(bulletAttackStopwatch > 1f / tickFrequency)
+                if(bulletAttackStopwatch > 1f / flameTickFrequency)
                 {
-                    bulletAttackStopwatch -= 1f / tickFrequency;
+                    bulletAttackStopwatch -= 1f / flameTickFrequency;
                     flameAttack.Fire();
 
                     if (ledgeHandling)
@@ -173,6 +188,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         {
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
             DestroyEffect();
+            SetSprintEffectState(false);
             base.OnExit();
         }
 

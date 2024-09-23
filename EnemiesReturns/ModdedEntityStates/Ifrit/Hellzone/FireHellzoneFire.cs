@@ -17,11 +17,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         public static GameObject projectilePrefab;
 
-        public static float projectileSpeed = 50f;
+        public static float projectileSpeed = EnemiesReturnsConfiguration.Ifrit.HellzoneProjectileSpeed.Value;
 
-        public static float damageCoefficient = 10f; // TODO: config
+        public static float damageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDamage.Value;
 
-        public static float force = 0f;
+        public static float force = EnemiesReturnsConfiguration.Ifrit.HellzoneForce.Value;
 
         private float duration;
 

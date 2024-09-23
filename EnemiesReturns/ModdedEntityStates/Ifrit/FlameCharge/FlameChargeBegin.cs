@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone;
+﻿using EnemiesReturns.Helpers;
+using EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone;
 using EntityStates;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,12 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         public override void OnEnter()
         {
             base.OnEnter();
-
             duration = baseDuration / attackSpeedStat;
+            var modelTransform = GetModelTransform();
+            if (modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
+            {
+                transformScaler.SetScaling(new UnityEngine.Vector3(1.25f, 1.25f, 1.25f), duration);
+            }
             //Util.PlayAttackSpeedSound(attackString, gameObject, attackSpeedStat);
             PlayCrossfade("Gesture,Override", "FlameBlastBegin", "FlameBlast.playbackRate", duration, 0.2f);
 

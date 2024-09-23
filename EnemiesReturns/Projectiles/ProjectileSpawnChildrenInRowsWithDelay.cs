@@ -11,13 +11,13 @@ namespace EnemiesReturns.Projectiles
 {
     public class ProjectileSpawnChildrenInRowsWithDelay : MonoBehaviour
     {
-        public float radius = 9f;
+        public float radius;
 
-        public int numberOfRows = 3;
+        public int numberOfRows;
 
         public float childrenDamageCoefficient;
 
-        public float delayEachRow = 0.5f;
+        public float delayEachRow;
 
         public GameObject childPrefab;
 

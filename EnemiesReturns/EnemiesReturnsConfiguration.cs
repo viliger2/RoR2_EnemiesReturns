@@ -135,6 +135,31 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LevelMaxHealth;
             public static ConfigEntry<float> LevelDamage;
             public static ConfigEntry<float> LevelArmor;
+
+            public static ConfigEntry<float> FlameChargeCooldown;
+            public static ConfigEntry<float> FlameChargeDuration;
+            public static ConfigEntry<float> FlameChargeTurnSpeed;
+            public static ConfigEntry<float> FlameChargeSpeedCoefficient;
+            public static ConfigEntry<float> FlameChargeDamage;
+            public static ConfigEntry<float> FlameChargeForce;
+            public static ConfigEntry<float> FlameChargeProcCoefficient;
+            public static ConfigEntry<float> FlameChargeFlameDamage;
+            public static ConfigEntry<float> FlameChargeFlameIgniteChance;
+            public static ConfigEntry<float> FlameChargeFlameForce;
+            public static ConfigEntry<float> FlameChargeFlameTickFrequency;
+            public static ConfigEntry<float> FlameChargeFlameProcCoefficient;
+
+            public static ConfigEntry<float> HellzoneCooldown;
+            public static ConfigEntry<float> HellzoneDamage;
+            public static ConfigEntry<float> HellzoneProjectileSpeed;
+            public static ConfigEntry<float> HellzoneForce;
+            public static ConfigEntry<float> HellzoneDoTZoneDamage;
+            public static ConfigEntry<float> HellzoneDoTZoneLifetime;
+            public static ConfigEntry<float> HellzoneRadius;
+            public static ConfigEntry<int> HellzonePillarCount;
+            public static ConfigEntry<float> HellzonePillarDelay;
+            public static ConfigEntry<float> HellzonePillarDamage;
+            public static ConfigEntry<float> HellzonePillarForce;
         }
 
 
@@ -256,20 +281,44 @@ namespace EnemiesReturns
 
             #region Ifrit
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
-            Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
-            Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 1000, "Director cost of Ifrit.");
+            Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 2, "Minimum stages players need to complete before monster starts spawning.");
+            Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 800, "Director cost of Ifrit.");
 
-            Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 7000f, "Ifrit' base health.");
+            Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 2800f, "Ifrit' base health.");
             Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 13f, "Ifrit' base movement speed.");
             Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 30f, "Ifrit' base jump power.");
-            Ifrit.BaseDamage = config.Bind("Ifrit Character Stats", "Base Damage", 40f, "Ifrit' base damage.");
-            Ifrit.BaseArmor = config.Bind("Ifrit Character Stats", "Base Armor", 35f, "Ifrit' base armor.");
+            Ifrit.BaseDamage = config.Bind("Ifrit Character Stats", "Base Damage", 16f, "Ifrit' base damage.");
+            Ifrit.BaseArmor = config.Bind("Ifrit Character Stats", "Base Armor", 20f, "Ifrit' base armor.");
 
-            Ifrit.LevelMaxHealth = config.Bind("Ifrit Character Stats", "Health per Level", 2100f, "Ifrit' health increase per level.");
-            Ifrit.LevelDamage = config.Bind("Ifrit Character Stats", "Damage per Level", 8f, "Ifrit' damage increase per level.");
+            Ifrit.LevelMaxHealth = config.Bind("Ifrit Character Stats", "Health per Level", 840f, "Ifrit' health increase per level.");
+            Ifrit.LevelDamage = config.Bind("Ifrit Character Stats", "Damage per Level", 3.2f, "Ifrit' damage increase per level.");
             Ifrit.LevelArmor = config.Bind("Ifrit Character Stats", "Armor per Level", 0f, "Ifrit' armor increase per level.");
 
+            Ifrit.FlameChargeCooldown = config.Bind("Ifrit Flame Charge", "Flame Charge Cooldown", 15f, "Ifrit's Flame Charge cooldown.");
+            Ifrit.FlameChargeDuration = config.Bind("Ifrit Flame Charge", "Flame Charge Duration", 7.5f, "Ifrit's Flame Charge duration.");
+            Ifrit.FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 300f, "Ifrit's Flame Charge turn speed.");
+            Ifrit.FlameChargeSpeedCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Movement Speed Multiplier", 2f, "Ifrit's Flame Charge speed multiplier.") ;
+            Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 2f, "Ifrit's Flame Charge body contact damage.");
+            Ifrit.FlameChargeForce = config.Bind("Ifrit Flame Charge", "Flame Charge Body Force", 5000f, "Ifrit's Flame Charge body contact force.");
+            Ifrit.FlameChargeProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Body Proc Coefficient", 1f, "Ifrit's Flame Charge body contact proc coefficient.");
+            Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.4f, "Ifrit's Flame Charge flame damage.");
+            Ifrit.FlameChargeFlameIgniteChance = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Ignite Chance", 100f, "Ifrit's Flame Charge flame ignite chance.");
+            Ifrit.FlameChargeFlameForce = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Force", 0f, "Ifrit's Flame Charge flame force.");
+            Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 8f, "How many times per second Ifrit's Flame Charge flame deal damage.");
+            Ifrit.FlameChargeFlameProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Proc Coefficient", 0.2f, "Ifrit's Flame Charge flame proc coefficient.");
 
+            config.Bind("Ifrit Hellzone", "", 10f, "");
+            Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
+            Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 9f, "Ifrit's Hellzone radius.");
+            Ifrit.HellzoneDamage = config.Bind("Ifrit Hellzone", "Hellzone Damage", 3f, "Ifrit's Hellzone projectile initial damage.");
+            Ifrit.HellzoneProjectileSpeed = config.Bind("Ifrit Hellzone", "Hellzone Projectile Speed", 50f, "Ifrit's Hellzone projectile speed.");
+            Ifrit.HellzoneForce = config.Bind("Ifrit Hellzone", "Hellzone Projectile Force", 0f, "Ifrit's Hellzone projectile force.");
+            Ifrit.HellzonePillarCount = config.Bind("Ifrit Hellzone", "Hellzone Pillar Count", 3, "Ifrit's Hellzone flame pillar count.");
+            Ifrit.HellzonePillarDelay = config.Bind("Ifrit Hellzone", "Hellzone Pillar Delay", 0.5f, "Ifrit's Hellzone delay between each pillar firing.");
+            Ifrit.HellzoneDoTZoneLifetime = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Lifetime", 3f, "Ifrit's Hellzone DoT zone lifetime. Pillar count multiplied by pillar delay will be added to this value to get total dot zone lifetime.");
+            Ifrit.HellzoneDoTZoneDamage = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Damage", 0.2f, "Ifrit's Hellzone DoT zone damage.");
+            Ifrit.HellzonePillarDamage = config.Bind("Ifrit Hellzone", "Hellzone Pillar Damage", 3f, "Ifrit's Hellzone pillar damage. Scales of DoT Zone Damage.");
+            Ifrit.HellzonePillarForce = config.Bind("Ifrit Hellzone", "Hellzone Pillar Force", 2400f, "Ifrit's Hellzone pillar force.");
             #endregion
         }
     }

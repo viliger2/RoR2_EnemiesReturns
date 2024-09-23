@@ -628,7 +628,6 @@ namespace EnemiesReturns
 
                 IfritPylonFactory.scIfritPylon = ifritPylonFactory.CreateCard("cscIfritPylon", IfritPylonFactory.IfritPylonMaster);
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.ChargingExplosion));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FiringExplosion));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FireExplosion));
                 #endregion
 
@@ -638,6 +637,9 @@ namespace EnemiesReturns
                 var maneMaterial = ifritFactory.CreateManeMaterial();
                 materialLookup.Add(maneMaterial.name, maneMaterial);
                 ifritManePrefab.GetComponent<Renderer>().material = maneMaterial;
+
+                ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritFactory.CreateBreathParticle();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
 
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
@@ -673,6 +675,7 @@ namespace EnemiesReturns
                 masterList.Add(IfritFactory.IfritMaster);
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SummonPylon));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire));

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
@@ -12,33 +13,55 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
     {
         public static float baseDuration = 3f; // TODO: config
 
-        public static float pillarSummonDuration = 2.5f; // TODO: config
+        public static float baseSummonTimer = 1f;
+
+        public static GameObject screamPrefab;
 
         public static SpawnCard scPylon => Enemies.Ifrit.IfritPylonFactory.scIfritPylon;
 
         private float duration;
 
+        private float summonTimer;
+
+        private Transform muzzleMouth;
+
+        private bool hasSummoned;
+
         public override void OnEnter()
         {
             base.OnEnter();
+            hasSummoned = false;
             duration = baseDuration / attackSpeedStat;
+            summonTimer = baseSummonTimer / attackSpeedStat;
+            muzzleMouth = FindModelChild("MuzzleMouth");
             PlayCrossfade("Body", "PillarSummon", "PillarSummon.playbackRate", duration, 0.2f);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration)
+            if(fixedAge >= summonTimer && !hasSummoned)
             {
-                if(NetworkServer.active)
+                hasSummoned = true;
+                if (NetworkServer.active)
                 {
                     SummonPillar();
                 }
-                if(base.isAuthority)
+                if(muzzleMouth)
                 {
-                    outer.SetNextStateToMain();
+                    SpawnEffect(muzzleMouth);
                 }
             }
+
+            if(fixedAge >= duration && base.isAuthority)
+            {
+                outer.SetNextStateToMain();
+            }
+        }
+
+        private void SpawnEffect(Transform position)
+        {
+            EffectManager.SpawnEffect(screamPrefab, new EffectData { rootObject = muzzleMouth.gameObject }, false);
         }
 
         private void SummonPillar()

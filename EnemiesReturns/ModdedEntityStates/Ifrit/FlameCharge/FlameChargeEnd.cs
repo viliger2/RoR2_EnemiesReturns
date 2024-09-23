@@ -1,4 +1,6 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Helpers;
+using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,8 +11,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
     {
         public static float baseDuration = 0.8f;
 
-        public static string attackString = "";
-
         private float duration;
 
         public override void OnEnter()
@@ -18,7 +18,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             base.OnEnter();
 
             duration = baseDuration / attackSpeedStat;
-            //Util.PlayAttackSpeedSound(attackString, gameObject, attackSpeedStat);
+            duration = baseDuration / attackSpeedStat;
+            var modelTransform = GetModelTransform();
+            if (modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
+            {
+                transformScaler.SetScaling(new UnityEngine.Vector3(1f, 1f, 1f), duration, new UnityEngine.Vector3(1.25f, 1.25f, 1.25f), true);
+            }
+            Util.PlaySound("Play_bison_charge_attack_end_skid", base.gameObject);
             PlayCrossfade("Gesture,Override", "FlameBlastEnd", "FlameBlast.playbackRate", duration, 0.2f);
 
         }

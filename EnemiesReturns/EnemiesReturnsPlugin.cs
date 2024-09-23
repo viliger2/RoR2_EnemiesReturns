@@ -96,28 +96,6 @@ namespace EnemiesReturns
             ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
         }
 
-   //     private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
-   //     {
-   //         orig(self, damageInfo, victim);
-   //         // adding all vanilla checks because fuck you, we couldn't be arsed to add a delegate to this function at the very end
-   //         if (damageInfo.procCoefficient == 0f || damageInfo.rejected || !NetworkServer.active || !damageInfo.attacker || !(damageInfo.procCoefficient > 0f))
-   //         {
-   //             return;
-   //         }
-
-   //         if (!damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
-   //         {
-   //             return;
-   //         }
-
-   //         if (!attackerBody.master)
-   //         {
-   //             return;
-   //         }
-
-			//ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
-   //     }
-
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]
 		private static void CCSpawnTitans(ConCommandArgs args)
 		{
