@@ -18,6 +18,12 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 
         public override string fallEffectChild => "Death1FallEffect";
 
+        public static float fallBlastAttackRadius = 15f;
+
+        public static float fallBlastAttackDamage = 0.5f;
+
+        public static float fallBlastAttackForce = 3000f;
+
         public abstract string fallAnimation { get; }
 
         private bool hasFiredAttack;
@@ -35,15 +41,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             if(NetworkServer.active && fixedAge >= fallEffectSpawnTime && !hasFiredAttack)
             {
                 BlastAttack blastAttack = new BlastAttack();
-                blastAttack.radius = 15f; // TODO
+                blastAttack.radius = fallBlastAttackRadius;
                 blastAttack.procCoefficient = 0f;
                 blastAttack.position = fallTransform.position;
                 blastAttack.attacker = characterBody.gameObject;
                 blastAttack.crit = false;
-                blastAttack.baseDamage = 0.5f * damageStat;
+                blastAttack.baseDamage = fallBlastAttackDamage * damageStat;
                 blastAttack.canRejectForce = false;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                blastAttack.baseForce = 3000f;
+                blastAttack.baseForce = fallBlastAttackForce;
                 blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
                 blastAttack.damageType = DamageType.NonLethal;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
@@ -52,6 +58,5 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
                 hasFiredAttack = true;
             }
         }
-
     }
 }
