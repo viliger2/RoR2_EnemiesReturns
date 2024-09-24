@@ -80,6 +80,8 @@ namespace EnemiesReturns.Enemies.Spitter
             var headTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head");
             var rootTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root");
 
+            var animator = modelTransform.gameObject.GetComponent<Animator>();
+
             #region SpitterBody
 
             #region NetworkIdentity
@@ -90,6 +92,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
             characterDirection.turnSpeed = 720f;
+            characterDirection.modelAnimator = animator;
             #endregion
 
             #region CharacterMotor

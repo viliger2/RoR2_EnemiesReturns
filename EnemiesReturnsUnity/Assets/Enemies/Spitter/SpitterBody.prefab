@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7068133438962008669}
   - component: {fileID: 5887855431491250781}
+  - component: {fileID: 7516723731668920890}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -78,6 +79,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7516723731668920890
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219147619578622170}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1308833896985540143
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4481141808323104145}
   - component: {fileID: 6088699428673442352}
+  - component: {fileID: 2059238970611010980}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -124,6 +142,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2059238970611010980
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308833896985540143}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1705186856071103618
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8492620946789237978}
   - component: {fileID: 2221599374885244688}
+  - component: {fileID: 1969506993067609140}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -169,6 +204,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1969506993067609140
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705186856071103618}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1965516225246505843
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7727391644472263381}
   - component: {fileID: 8701039315606805470}
+  - component: {fileID: 2494558188047353939}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -247,6 +299,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2494558188047353939
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100817271297000883}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2117291143308772499
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268170598363769092}
   - component: {fileID: 741961970791240509}
+  - component: {fileID: 2118294872797434451}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -293,6 +362,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2118294872797434451
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117291143308772499}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2241611479521826231
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198267243024807777}
   - component: {fileID: 634767999795966453}
+  - component: {fileID: 4552162172360945529}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -369,6 +455,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4552162172360945529
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606260488516763749}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3279229082087299701
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 988682447363154442}
   - component: {fileID: 3083725794010959195}
+  - component: {fileID: 5780391104802801701}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -415,6 +518,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5780391104802801701
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3279229082087299701}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3364127424684453142
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315407604881094284}
   - component: {fileID: 3531699191618510074}
+  - component: {fileID: 8196310672372354401}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -491,6 +611,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8196310672372354401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3479558001012584657}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3710885452457894154
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6222020223786298498}
   - component: {fileID: 5048537237337037479}
+  - component: {fileID: 809354523954499204}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -536,6 +673,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &809354523954499204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710885452457894154}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3861968930502590854
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709523876314817140}
   - component: {fileID: 4164459249293256913}
+  - component: {fileID: 1603607648461950560}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -582,6 +736,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1603607648461950560
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861968930502590854}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4059393220361434097
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 387076513221168702}
   - component: {fileID: 2438616377753813340}
+  - component: {fileID: 1358567984087128064}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -628,6 +799,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1358567984087128064
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059393220361434097}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4143386822554823715
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9039667293825691229}
   - component: {fileID: 3494786217490863710}
+  - component: {fileID: 1810801242829760608}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -756,6 +944,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1810801242829760608
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354853585698448433}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4673122253076979458
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +1001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3240046776163614909}
   - component: {fileID: 7514813795037027427}
+  - component: {fileID: 4553734826524647283}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -833,6 +1038,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4553734826524647283
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845561320761880272}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5131521875374903545
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +1130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8961047079608472985}
   - component: {fileID: 5813981454537930188}
+  - component: {fileID: 3810294263688789230}
   m_Layer: 12
   m_Name: MainHurtbox
   m_TagString: Untagged
@@ -944,6 +1166,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3810294263688789230
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460630150750806149}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5612351062464894269
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3729834532357241338}
   - component: {fileID: 3569517853887736546}
+  - component: {fileID: 28309442528329124}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -989,6 +1228,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &28309442528329124
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5612351062464894269}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5783947851483931435
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4015757068274276802}
   - component: {fileID: 242826224809186897}
+  - component: {fileID: 7580917744706881671}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1035,6 +1291,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7580917744706881671
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5783947851483931435}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5786603599723570068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3966005534425673839}
   - component: {fileID: 8172128485975277493}
+  - component: {fileID: 7797038099010423628}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1081,6 +1354,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7797038099010423628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786603599723570068}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6008011766976229632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217976874403811434}
   - component: {fileID: 3338882527779313411}
+  - component: {fileID: 3306289752250481792}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1126,6 +1416,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3306289752250481792
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6008011766976229632}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6145848082237875815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 823870159552060849}
   - component: {fileID: 1147173812558833093}
+  - component: {fileID: 9170317311875240866}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1172,6 +1479,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &9170317311875240866
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145848082237875815}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6404407047890437489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816320906380448230}
   - component: {fileID: 1090403151726146752}
+  - component: {fileID: 3734784835054346486}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1281,6 +1605,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3734784835054346486
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060565246113407565}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7483654376278994578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4764468822845484674}
   - component: {fileID: 866419453403070539}
+  - component: {fileID: 3207990472175571039}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1326,6 +1667,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3207990472175571039
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483654376278994578}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7907101737492443432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8229921335069876536}
   - component: {fileID: 6743759585505984978}
+  - component: {fileID: 626226604453681075}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1403,6 +1761,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &626226604453681075
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7936239386602499216}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7990453269801683796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1437260646724871175}
   - component: {fileID: 678668441085562571}
+  - component: {fileID: 3990331794951026992}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1448,6 +1823,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3990331794951026992
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990453269801683796}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7996627660207585901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 663233810579960822}
   - component: {fileID: 2426538109673910983}
+  - component: {fileID: 4036510256872315130}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1493,6 +1885,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4036510256872315130
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996627660207585901}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8075884940916088847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5265913357819263188}
   - component: {fileID: 626148174562538653}
+  - component: {fileID: 3542008333131612540}
   m_Layer: 12
   m_Name: SniperHurtbox
   m_TagString: Untagged
@@ -1569,6 +1978,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3542008333131612540
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655581633390179692}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8980193312134458101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +2004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7432272385802239709}
   - component: {fileID: 1838248972627402548}
+  - component: {fileID: 7286179181095201787}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1614,6 +2040,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7286179181095201787
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980193312134458101}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &9186741096808674694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +2066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2013681402111802753}
   - component: {fileID: 7359356927718164005}
+  - component: {fileID: 8134675542095586236}
   m_Layer: 12
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1660,6 +2103,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8134675542095586236
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186741096808674694}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &976977290555028795
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -112,6 +112,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var rocksInitialTransform = bodyPrefab.transform.Find("ModelBase/mdlColossus/Points/RocksSpawnPoint");
 
+            var animator = modelTransform.gameObject.GetComponent<Animator>();
+
             #region ColossusBody
 
             #region NetworkIdentity
@@ -122,6 +124,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
             characterDirection.turnSpeed = 90f;
+            characterDirection.modelAnimator = animator;
             #endregion
 
             #region CharacterMotor
@@ -411,7 +414,6 @@ namespace EnemiesReturns.Enemies.Colossus
 
             #region mdlColossus
             var mdlColossus = modelTransform.gameObject;
-            var animator = modelTransform.gameObject.GetComponent<Animator>();
 
             #region AimAnimator
             // if you are having issues with AimAnimator,

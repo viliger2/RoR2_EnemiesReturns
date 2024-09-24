@@ -16,6 +16,7 @@ using Rewired.Utils.Classes.Utility;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Enemies.Ifrit;
+using R2API;
 
 namespace EnemiesReturns
 {
@@ -224,33 +225,15 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/foggyswamp/dccsFoggySwampMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/foggyswamp/dccsFoggySwampMonstersDLC.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsFoggySwampMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsFoggySwampMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/arena/dccsArenaMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/arena/dccsArenaMonstersDLC1.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/artifactworld/dccsArtifactWorldMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/artifactworld/dccsArtifactWorldMonstersDLC1.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld01/dccsArtifactWorld01Monsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld01/dccsArtifactWorld01Monsters_DLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld02/dccsArtifactWorld02Monsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld02/dccsArtifactWorld02Monsters_DLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld03/dccsArtifactWorld03Monsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDefault, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/artifactworld03/dccsArtifactWorld03MonstersDLC1.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dchSpitterDefault = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcSpitterDefault,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
-                //};
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.Custom, "FBLScene");
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.VoidCell);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.ArtifactReliquary);
+                DirectorAPI.DirectorCardHolder dchSpitterDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSpitterDefault,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.Custom, "FBLScene");
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.VoidCell);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.ArtifactReliquary);
 
                 SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SpitterFactory.SkinDefs.Lakes, spitterBody);
                 var dcSpitterLakes = new DirectorCard
@@ -261,19 +244,12 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                AddMonsterToCardCategory(dcSpitterLakes, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/lakes/dccsLakesMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterLakes, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/lakes/dccsLakesMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterLakes, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/lakes/dccsLakesMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterLakes, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/lakes/dccsLakesMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcSpitterLakes, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/CU8/lakes/dccsLakesMonsters.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dchSpitterLakes = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcSpitterLakes,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
-                //};
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterLakes, false, DirectorAPI.Stage.VerdantFalls);
+                DirectorAPI.DirectorCardHolder dchSpitterLakes = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSpitterLakes,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterLakes, false, DirectorAPI.Stage.VerdantFalls);
 
                 SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SpitterFactory.SkinDefs.Sulfur, spitterBody);
                 var dcSpitterSulfur = new DirectorCard
@@ -284,14 +260,11 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                AddMonsterToCardCategory(dcSpitterSulfur, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/sulfurpools/dccsSulfurPoolsMonstersDLC1.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dhcSpitterSulfur = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcSpitterSulfur,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
-                //};
-
+                DirectorAPI.DirectorCardHolder dhcSpitterSulfur = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSpitterSulfur,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
+                };
 
                 SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                 var dcSpitterDepth = new DirectorCard
@@ -302,21 +275,13 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/dampcave/dccsDampCaveMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/dampcave/dccsDampCaveMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsDampCaveMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsDampCaveMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itdampcave/dccsITDampCaveMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcSpitterDepth, MonsterCategories.Minibosses, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itdampcave/dccsITDampCaveMonstersDLC2.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dhcSpitterDepths = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcSpitterDepth,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
-                //};
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
+                DirectorAPI.DirectorCardHolder dhcSpitterDepths = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSpitterDepth,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
 
                 stateList.Add(typeof(ModdedEntityStates.Spitter.Bite));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpawnState));
@@ -326,9 +291,6 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDance));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpitterMain));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDancePlayer));
-
-                //escList.Add(spitterFactory.CreateSpawnStateConfiguration());
-                //escList.Add(spitterFactory.CreateBiteStateConfiguration());
                 #endregion
 
                 #region Colossus
@@ -459,12 +421,6 @@ namespace EnemiesReturns
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
                 AddMonsterToCardCategory(dcColossusDefault, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
-                //DirectorAPI.DirectorCardHolder dchColossusDefault = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusDefault,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //AddMonsterToFamily(dcColossusDefault, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow = colossusFactory.CreateCard("cscColossusSkyMeadow", colossusMaster, ColossusFactory.SkinDefs.SkyMeadow, colossusBody);
                 DirectorCard dcColossusSkyMeadow = new DirectorCard
@@ -475,21 +431,13 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/skymeadow/dccsSkyMeadowMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/skymeadow/dccsSkyMeadowMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsSkyMeadowMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsSkyMeadowMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itskymeadow/dccsITSkyMeadowMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSkyMeadow, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itskymeadow/dccsITSkyMeadowMonstersDLC2.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dchColossusSkyMeadow = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusSkyMeadow,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadow);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
+                DirectorAPI.DirectorCardHolder dchColossusSkyMeadow = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSkyMeadow,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadow);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
                 DirectorCard dcColossusGrassy = new DirectorCard
@@ -500,39 +448,18 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-                //DirectorAPI.DirectorCardHolder dchColossusGrassy = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusGrassy,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //AddMonsterToFamily(dcColossusGrassy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature.asset").WaitForCompletion());
-
+                DirectorAPI.DirectorCardHolder dchColossusGrassy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusGrassy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
                 AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/golemplains/dccsGolemplainsMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/golemplains/dccsGolemplainsMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsGolemplainsMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsGolemplainsMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/arena/dccsArenaMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/arena/dccsArenaMonstersDLC1.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/dampcave/dccsDampCaveMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/dampcave/dccsDampCaveMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsDampCaveMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsDampCaveMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itgolemplains/dccsITGolemplainsMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itgolemplains/dccsITGolemplainsMonstersDLC2.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itdampcave/dccsITDampCaveMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itdampcave/dccsITDampCaveMonstersDLC2.asset").WaitForCompletion());
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlains);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlainsSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.VoidCell);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepths);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.Custom, "FBLScene");
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlains);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlainsSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.VoidCell);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepths);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.Custom, "FBLScene");
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle = colossusFactory.CreateCard("cscColossusCastle", colossusMaster, ColossusFactory.SkinDefs.Castle, colossusBody);
                 DirectorCard dcColossusCastle = new DirectorCard
@@ -543,12 +470,12 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-                //DirectorAPI.DirectorCardHolder dchColossusCastle = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusCastle,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusCastle, false, DirectorAPI.Stage.Custom, "sm64_bbf_SM64_BBF");
+                DirectorAPI.DirectorCardHolder dchColossusCastle = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusCastle,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusCastle, false, DirectorAPI.Stage.Custom, "sm64_bbf_SM64_BBF");
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy = colossusFactory.CreateCard("cscColossusSandy", colossusMaster, ColossusFactory.SkinDefs.Sandy, colossusBody);
                 DirectorCard dcColossusSandy = new DirectorCard
@@ -560,21 +487,13 @@ namespace EnemiesReturns
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
                 AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/goolake/dccsGooLakeMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/goolake/dccsGooLakeMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsGooLakeMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsGooLakeMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itgoolake/dccsITGooLakeMonsters.asset").WaitForCompletion());
-                //DirectorAPI.DirectorCardHolder dchColossusSandy = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusSandy,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //AddMonsterToFamily(dcColossusSandy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueduct); 
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum);
+                DirectorAPI.DirectorCardHolder dchColossusSandy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSandy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueduct);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy = colossusFactory.CreateCard("cscColossusSnowy", colossusMaster, ColossusFactory.SkinDefs.Snowy, colossusBody);
                 DirectorCard dcColossusSnowy = new DirectorCard
@@ -586,27 +505,14 @@ namespace EnemiesReturns
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
                 AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/snowyforest/dccsSnowyForestMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsSnowyForestMonstersDLC2.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/frozenwall/dccsFrozenWallMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/frozenwall/dccsFrozenWallMonstersDLC1.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsFrozenWallMonstersDLC2.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC2/dccsFrozenWallMonstersDLC2Only.asset").WaitForCompletion());
-
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itfrozenwall/dccsITFrozenWallMonsters.asset").WaitForCompletion());
-                AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/DLC1/itfrozenwall/dccsITFrozenWallMonstersDLC2.asset").WaitForCompletion());
-
-                //DirectorAPI.DirectorCardHolder dchColossusSnowy = new DirectorAPI.DirectorCardHolder
-                //{
-                //    Card = dcColossusSnowy,
-                //    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
-                //};
-                //AddMonsterToFamily(dcColossusSnowy, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.SiphonedForest);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDelta);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
+                DirectorAPI.DirectorCardHolder dchColossusSnowy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcColossusSnowy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.SiphonedForest);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDelta);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
                 #endregion
 
                 #region Ifrit
