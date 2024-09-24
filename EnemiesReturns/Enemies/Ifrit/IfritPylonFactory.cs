@@ -56,18 +56,18 @@ namespace EnemiesReturns.Enemies.Ifrit
             }
             characterBody.baseNameToken = "ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME";
             characterBody.bodyFlags = CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.HasBackstabImmunity;
-            characterBody.baseMaxHealth = 300f; // TODO: stats
-            characterBody.baseDamage = 20f;
+            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyBaseMaxHealth.Value;
+            characterBody.baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value;
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = 90f;
-            characterBody.levelDamage = 4f;
+            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyLevelMaxHealth.Value;
+            characterBody.levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value;
             characterBody.hullClassification = HullClassification.Golem;
             #endregion
 
             #region HealthComponent
             var healthComponent = bodyPrefab.AddComponent<HealthComponent>();
             healthComponent.globalDeathEventChanceCoefficient = 1f;
-            healthComponent.dontShowHealthbar = true;
+            healthComponent.dontShowHealthbar = false;
             #endregion
 
             #region ModelLocator
@@ -193,7 +193,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             var indicatorObject = UnityEngine.GameObject.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
             indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
             indicatorObject.transform.parent = modelTransform;
-            indicatorObject.transform.localScale = new Vector3(22f, 22f, 22f); // TODO: 22 is equal to 30 explosion radius
+            var teamIndicatorScale = 22f * (EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value / 30f);
+            indicatorObject.transform.localScale = new Vector3(teamIndicatorScale, teamIndicatorScale, teamIndicatorScale); // 22 is equal to 30 explosion radius
             indicatorObject.transform.localPosition = Vector3.zero;
             indicatorObject.transform.localRotation = Quaternion.identity;
 
@@ -235,19 +236,8 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var fireLightIntencityCurve = fireLightTransform.gameObject.AddComponent<LightIntensityCurve>();
             fireLightIntencityCurve.curve = acdLight.curve;
-            fireLightIntencityCurve.timeMax = 30f; // TODO
+            fireLightIntencityCurve.timeMax = EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value;
             #endregion
-
-            //#region FireballPP
-            //var ppFireball = fireball.Find("PP");
-            //var ppVolume = ppFireball.gameObject.GetComponent<PostProcessVolume>();
-            //ppVolume.profile = Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/Base/title/PostProcessing/ppLocalGrandparent.asset").WaitForCompletion();
-            //var ppDuration = ppFireball.gameObject.AddComponent<PostProcessDuration>();
-            //ppDuration.maxDuration = 30f;
-            //ppDuration.destroyOnEnd = true;
-            //ppDuration.ppVolume = ppVolume;
-            //ppDuration.ppWeightCurve = acd.curve;
-            //#endregion
 
             bodyPrefab.RegisterNetworkPrefab();
 

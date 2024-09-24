@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
 {
     public class ChargingExplosion : BaseState
     {
-        public static float duration = 30f; // TODO: config
+        public static float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
 
         public static Vector3 fireballFinishScale = new Vector3(4f, 4f, 4f);
         public static Vector3 pillarFinishPosition = new Vector3(0, -7.83f, 0f);

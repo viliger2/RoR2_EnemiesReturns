@@ -11,7 +11,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
 {
     public class FireExplosion : BaseState
     {
-        public static float duration = 1f; // just to be safe
+        public static float duration = 0.1f; // just to be safe
+
+        public static float damage => EnemiesReturnsConfiguration.Ifrit.PillarExplosionDamage.Value;
+
+        public static float radius => EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value;
+
+        public static float force => EnemiesReturnsConfiguration.Ifrit.PillarExplosionForce.Value;
 
         public static GameObject explosionPrefab;
 
@@ -36,14 +42,14 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
 
                 blastAttack = new BlastAttack();
                 blastAttack.attacker = base.gameObject;
-                blastAttack.radius = 30f; // TODO
+                blastAttack.radius = radius;
                 blastAttack.procCoefficient = 0f;
                 blastAttack.position = transform.position;
                 blastAttack.crit = false;
-                blastAttack.baseDamage = 0.5f * damageStat;
+                blastAttack.baseDamage = damage * damageStat;
                 blastAttack.canRejectForce = false;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                blastAttack.baseForce = 3000f;
+                blastAttack.baseForce = force;
                 blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
                 blastAttack.damageType = DamageType.Generic;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;

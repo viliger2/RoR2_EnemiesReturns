@@ -11,13 +11,17 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 {
     public class SummonPylon : BaseState
     {
-        public static float baseDuration = 3f; // TODO: config
+        public static float baseDuration = 3f;
 
         public static float baseSummonTimer = 1f;
 
         public static GameObject screamPrefab;
 
         public static SpawnCard scPylon => Enemies.Ifrit.IfritPylonFactory.scIfritPylon;
+
+        public static float minSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMinSpawnDistance.Value;
+
+        public static float maxSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMaxSpawnDistance.Value;
 
         private float duration;
 
@@ -69,16 +73,27 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(scPylon, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
-                minDistance = 30f,
-                maxDistance = 50f, // TODO
+                minDistance = minSpawnDistance,
+                maxDistance = maxSpawnDistance,
                 spawnOnTarget = transform
             }, RoR2Application.rng);
             directorSpawnRequest.summonerBodyObject = base.gameObject;
             directorSpawnRequest.ignoreTeamMemberLimit = true;
             directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
             {
-                if (spawnResult.success && spawnResult.spawnedInstance && base.characterBody)
+                if(!spawnResult.success) 
                 {
+                    SummonPillar(); // surely this won't break anything
+                    return;
+                }
+                if (spawnResult.spawnedInstance && base.characterBody)
+                {
+                    var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
+                    if(inventory)
+                    {
+                        inventory.CopyEquipmentFrom(base.characterBody.inventory);
+                    }
+
                     if(spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))
                     {
                         var body = deployableMaster.GetBody();

@@ -302,7 +302,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region SfxLocator
             var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
-            sfxLocator.deathSound = ""; // each death will have its own sound in animator
+            sfxLocator.deathSound = ""; // TODO
             sfxLocator.barkSound = ""; // TODO
             #endregion
 
@@ -530,7 +530,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             FootstepHandler footstepHandler = null;
             if (!mdlIfrit.TryGetComponent(out footstepHandler))
             {
-                footstepHandler = mdlIfrit.AddComponent<FootstepHandler>(); // TODO
+                footstepHandler = mdlIfrit.AddComponent<FootstepHandler>();
             }
             footstepHandler.enableFootstepDust = true;
             footstepHandler.baseFootstepString = "Play_beetle_queen_step";
@@ -970,13 +970,11 @@ namespace EnemiesReturns.Enemies.Ifrit
             float scale = 0.5f * (EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value / 9f); // 0.5 fits 9 so scale of it
             scorchlingPile.transform.localScale = new Vector3(scale, scale, scale);
 
-            //gameObject.GetComponent<ProjectileController>().ghostPrefab = CreateHellfireDotZoneProjectileGhost(coalTexture);
-
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
             spawnChildrenComponent.radius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
             spawnChildrenComponent.numberOfRows = EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value;
-            spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDamage.Value; // TODO
-            spawnChildrenComponent.delayEachRow = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value; // TODO
+            spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDamage.Value;
+            spawnChildrenComponent.delayEachRow = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
             spawnChildrenComponent.childPrefab = pillarPrefab;
 
             return gameObject;
@@ -1135,7 +1133,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.SummonPylon));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = 45f; // TODO
+            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.PillarCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1510,7 +1508,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)
         {
-            return 1; // TODO: config
+            return EnemiesReturnsConfiguration.Ifrit.PillarMaxInstances.Value;
         }
 
         private void Renamer(GameObject object1)
