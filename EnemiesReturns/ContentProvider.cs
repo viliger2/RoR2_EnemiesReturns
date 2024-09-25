@@ -143,10 +143,10 @@ namespace EnemiesReturns
                 Log.Info("Icons loaded in " + stopwatch.elapsedSeconds);
             }));
 
-            AnimationCurveDef adcIfritPylonLight = null;
+            Dictionary<string, AnimationCurveDef> acdLookup = new Dictionary<string, AnimationCurveDef>();
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
             {
-                adcIfritPylonLight = assets.First(acd => acd.name == "adcIfritPylonLightIntencityCurve");
+                acdLookup = assets.ToDictionary(item => item.name);
                 var acdLaserBarrage = assets.First(acd => acd.name == "LaserBarrageLightIntencity");
                 ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLaserBarrage.curve;
             }));
@@ -520,12 +520,21 @@ namespace EnemiesReturns
                 #region IfritPylon
                 var ifritPylonFactory = new IfritPylonFactory();
 
+                var maneMaterial = ifritPylonFactory.CreateManeMaterial();
+                materialLookup.Add(maneMaterial.name, maneMaterial);
+
+                ModdedEntityStates.Ifrit.Pillar.SpawnState.burrowPrefab = ifritPylonFactory.CreateSpawnEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.SpawnState.burrowPrefab));
+
+                ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect = ifritPylonFactory.CreateDeathFallEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect));
+
                 //ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExplosionEffect();
-                ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
-                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab));
+                ModdedEntityStates.Ifrit.Pillar.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.FireExplosion.explosionPrefab));
 
                 var pylonBody = assets.First(body => body.name == "IfritPylonBody");
-                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody, adcIfritPylonLight);
+                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody, acdLookup, materialLookup);
                 bodyList.Add(IfritPylonFactory.IfritPylonBody);
 
                 var pylonMaster = assets.First(master => master.name == "IfritPylonMaster");
@@ -533,15 +542,15 @@ namespace EnemiesReturns
                 masterList.Add(IfritPylonFactory.IfritPylonMaster);
 
                 IfritPylonFactory.scIfritPylon = ifritPylonFactory.CreateCard("cscIfritPylon", IfritPylonFactory.IfritPylonMaster);
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.ChargingExplosion));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pylon.FireExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.ChargingExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.FireExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.DeathState));
                 #endregion
 
                 var ifritFactory = new IfritFactory();
 
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
-                var maneMaterial = ifritFactory.CreateManeMaterial();
-                materialLookup.Add(maneMaterial.name, maneMaterial);
                 ifritManePrefab.GetComponent<Renderer>().material = maneMaterial;
 
                 ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritFactory.CreateBreathParticle();
@@ -579,6 +588,25 @@ namespace EnemiesReturns
                 var ifritMaster = assets.First(master => master.name == "IfritMaster");
                 IfritFactory.IfritMaster = ifritFactory.CreateMaster(ifritMaster, IfritFactory.IfritBody);
                 masterList.Add(IfritFactory.IfritMaster);
+
+                IfritFactory.SpawnCards.cscIfritDefault = ifritFactory.CreateCard("cscIfritDefault", ifritMaster, IfritFactory.SkinDefs.Default, ifritBody);
+                var dcIfritDefault = new DirectorCard
+                {
+                    spawnCard = IfritFactory.SpawnCards.cscIfritDefault,
+                    selectionWeight = EnemiesReturnsConfiguration.Ifrit.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturnsConfiguration.Ifrit.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchIfritDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcIfritDefault,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+                };
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.TitanicPlains);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepths);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDelta);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.HelminthHatchery);
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));

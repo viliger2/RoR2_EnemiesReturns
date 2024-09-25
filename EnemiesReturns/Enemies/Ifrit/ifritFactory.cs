@@ -48,27 +48,13 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public struct SkinDefs
         {
-            //public static SkinDef Default;
-            //public static SkinDef Snowy;
-            //public static SkinDef Sandy;
-            //public static SkinDef Grassy;
-            //public static SkinDef SkyMeadow;
-            //public static SkinDef Castle;
+            public static SkinDef Default;
+
         }
 
         public struct SpawnCards
         {
-            //public static CharacterSpawnCard cscColossusDefault;
-
-            //public static CharacterSpawnCard cscColossusSandy;
-
-            //public static CharacterSpawnCard cscColossusSnowy;
-
-            //public static CharacterSpawnCard cscColossusGrassy;
-
-            //public static CharacterSpawnCard cscColossusSkyMeadow;
-
-            //public static CharacterSpawnCard cscColossusCastle;
+            public static CharacterSpawnCard cscIfritDefault;
         }
 
         public static GameObject IfritBody;
@@ -92,7 +78,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             var beardRenderer = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Flame beard").gameObject.GetComponent<SkinnedMeshRenderer>();
 
             var headTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/Neck/Head");
-            var rootTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root");
+            var tailTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Tail/Tail.001");
+
+            var animator = modelTransform.gameObject.GetComponent<Animator>();
 
             #region IfritBody
 
@@ -103,7 +91,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region CharacterDirection
             var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
-            characterDirection.turnSpeed = 100f; // TODO?
+            characterDirection.turnSpeed = EnemiesReturnsConfiguration.Ifrit.TurnSpeed.Value;
+            characterDirection.modelAnimator = animator;
             #endregion
 
             #region CharacterMotor
@@ -160,7 +149,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 characterBody.portraitIcon = sprite.texture;
             }
-            characterBody.bodyColor = new Color(0.36f, 0.36f, 0.44f);
+            characterBody.bodyColor = new Color(1f, 0.6082f, 0f);
             characterBody.isChampion = true;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
             #endregion
@@ -175,15 +164,13 @@ namespace EnemiesReturns.Enemies.Ifrit
             var modelLocator = bodyPrefab.AddComponent<ModelLocator>();
             modelLocator.modelTransform = modelTransform;
             modelLocator.modelBaseTransform = modelBase;
-
             modelLocator.autoUpdateModelTransform = true;
-            modelLocator.dontDetatchFromParent = false;
 
             modelLocator.noCorpse = false;
             modelLocator.dontDetatchFromParent = false;
             modelLocator.preserveModel = false;
 
-            modelLocator.normalizeToFloor = true; // TODO: maybe?
+            modelLocator.normalizeToFloor = true; // TODO: i dont fucking know anymore
             modelLocator.normalSmoothdampTime = 0.1f;
             modelLocator.normalMaxAngleDelta = 90f;
             #endregion
@@ -262,7 +249,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region Interactor
-            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 8f;
+            bodyPrefab.AddComponent<Interactor>().maxInteractionDistance = 4f;
             #endregion
 
             #region InteractionDriver
@@ -356,7 +343,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdLemurian.asset").WaitForCompletion();
 
-            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "HurtBox").ToArray();
+            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
             foreach (Transform t in hurtBoxesTransform)
             {
@@ -368,7 +355,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtBox").ToArray();
+            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
             foreach (Transform t in sniperHurtBoxes)
             {
                 var hurtBox = t.gameObject.AddComponent<HurtBox>();
@@ -380,7 +367,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Hurtbox"); // TODO
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/MainHurtbox"); // TODO
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -395,7 +382,6 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region mdlIfrit
             var mdlIfrit = modelTransform.gameObject;
-            var animator = modelTransform.gameObject.GetComponent<Animator>();
 
             #region AimAnimator
             // if you are having issues with AimAnimator,
@@ -406,7 +392,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             var aimAnimator = mdlIfrit.AddComponent<AimAnimator>();
             aimAnimator.inputBank = inputBank;
             aimAnimator.directionComponent = characterDirection;
-
+            // TODO: maybe change ranges?
             aimAnimator.pitchRangeMin = -70f; // its looking up, not down, for fuck sake
             aimAnimator.pitchRangeMax = 70f;
 
@@ -504,14 +490,6 @@ namespace EnemiesReturns.Enemies.Ifrit
                     hideOnDeath = false
                 }
             };
-            //characterModel.baseLightInfos = new CharacterModel.LightInfo[] // TODO
-            //{
-            //    new CharacterModel.LightInfo
-            //    {
-            //        light = eyeLight,
-            //        defaultColor = eyeLight.color
-            //    }
-            //};
             #endregion
 
             #region HitBoxFlameBreath
@@ -547,140 +525,21 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region SkinDefs
-            //            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-            //            {
-            //                renderer = (SkinnedMeshRenderer)item.renderer,
-            //                material = item.defaultMaterial,
-            //                ignoreOverlays = item.ignoreOverlays
+            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
+            {
+                renderer = (SkinnedMeshRenderer)item.renderer,
+                material = item.defaultMaterial,
+                ignoreOverlays = item.ignoreOverlays
 
-            //            });
-            //            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlIfrit, defaultRender);
+            });
 
-            //            RenderInfo[] snowyRenderer = new RenderInfo[]
-            //            {
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matColossusSnowy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = headRenderer,
-            //                    material = skinsLookup["matColossusSnowy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = eyeRenderer,
-            //                    material = skinsLookup["matColossusEye"],
-            //                    ignoreOverlays = true
-            //                }
-            //            };
-            //            SkinDefs.Snowy = CreateSkinDef("skinColossusSnowy", mdlIfrit, snowyRenderer, SkinDefs.Default);
+            SkinDefs.Default = CreateSkinDef("skinIfritDefault", mdlIfrit, defaultRender);
 
-            //            RenderInfo[] sandyRenderer = new RenderInfo[]
-            //            {
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matColossusSandy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = headRenderer,
-            //                    material = skinsLookup["matColossusSandy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = eyeRenderer,
-            //                    material = skinsLookup["matColossusEye"],
-            //                    ignoreOverlays = true
-            //                }
-            //            };
-            //            SkinDefs.Sandy = CreateSkinDef("skinColossusSandy", mdlIfrit, sandyRenderer, SkinDefs.Default);
-
-            //            RenderInfo[] grassyRenderer = new RenderInfo[]
-            //{
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matColossusGrassy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = headRenderer,
-            //                    material = skinsLookup["matColossusGrassy"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = eyeRenderer,
-            //                    material = skinsLookup["matColossusEye"],
-            //                    ignoreOverlays = true
-            //                }
-            //};
-            //            SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlIfrit, grassyRenderer, SkinDefs.Default);
-
-            //            RenderInfo[] skyMeadowRenderer = new RenderInfo[]
-            //{
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matColossusSkyMeadow"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = headRenderer,
-            //                    material = skinsLookup["matColossusSkyMeadow"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = eyeRenderer,
-            //                    material = skinsLookup["matColossusEye"],
-            //                    ignoreOverlays = true
-            //                }
-            //};
-            //            SkinDefs.SkyMeadow = CreateSkinDef("skinColossusSkyMeadow", mdlIfrit, skyMeadowRenderer, SkinDefs.Default);
-
-            //            RenderInfo[] castleRenderer = new RenderInfo[]
-            //{
-            //                new RenderInfo
-            //                {
-            //                    renderer = modelRenderer,
-            //                    material = skinsLookup["matColossusSMBBody"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = headRenderer,
-            //                    material = skinsLookup["matColossusSMBHead"],
-            //                    ignoreOverlays = false
-            //                },
-            //                new RenderInfo
-            //                {
-            //                    renderer = eyeRenderer,
-            //                    material = skinsLookup["matColossusEye"],
-            //                    ignoreOverlays = true
-            //                }
-            //};
-            //            SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlIfrit, castleRenderer, SkinDefs.Default, new GameObject[] { flagObject });
-
-            //var modelSkinController = mdlIfrit.AddComponent<ModelSkinController>();
-            //modelSkinController.skins = new SkinDef[]
-            //{
-            //    SkinDefs.Default,
-            //    SkinDefs.Snowy,
-            //    SkinDefs.Grassy,
-            //    SkinDefs.Sandy,
-            //    SkinDefs.SkyMeadow,
-            //    SkinDefs.Castle
-            //};
+            var modelSkinController = mdlIfrit.AddComponent<ModelSkinController>();
+            modelSkinController.skins = new SkinDef[]
+            {
+                SkinDefs.Default
+            };
             #endregion
 
             #region RandomBlinkController
@@ -710,6 +569,9 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "SprintEffect", transform = sprintEffectCopy.transform });
             #endregion
+
+            //mdlIfrit.AddComponent<DunnoRaycasterOrSomething>();
+
             //var helper = mdlIfrit.AddComponent<AnimationParameterHelper>();
             //helper.animator = animator;
             //helper.animationParameters = new string[] { "walkSpeedDebug" };
@@ -718,8 +580,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region AimAssist
             var aimAssistTarget = bodyPrefab.transform.Find("ModelBase/mdlIfrit/AimAssist").gameObject.AddComponent<AimAssistTarget>();
             aimAssistTarget.point0 = headTransform;
-            aimAssistTarget.point1 = rootTransform;
-            aimAssistTarget.assistScale = 4f;
+            aimAssistTarget.point1 = tailTransform;
+            aimAssistTarget.assistScale = 2f;
             aimAssistTarget.healthComponent = healthComponent;
             aimAssistTarget.teamComponent = teamComponent;
             #endregion
@@ -778,40 +640,114 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region AISkillDriver_SummonPylon
-            var asdClap = masterPrefab.AddComponent<AISkillDriver>();
-            asdClap.customName = "SummonPylon";
-            asdClap.skillSlot = SkillSlot.Special;
+            var asdPylon = masterPrefab.AddComponent<AISkillDriver>();
+            asdPylon.customName = "SummonPylon";
+            asdPylon.skillSlot = SkillSlot.Special;
 
-            asdClap.requiredSkill = null;
-            asdClap.requireSkillReady = true;
-            asdClap.requireEquipmentReady = false;
-            asdClap.minUserHealthFraction = float.NegativeInfinity;
-            asdClap.maxUserHealthFraction = 0.6f;
-            asdClap.minTargetHealthFraction = float.NegativeInfinity;
-            asdClap.maxTargetHealthFraction = float.PositiveInfinity;
-            asdClap.minDistance = 0f;
-            asdClap.maxDistance = float.PositiveInfinity;
-            asdClap.selectionRequiresTargetLoS = false;
-            asdClap.selectionRequiresOnGround = false;
-            asdClap.selectionRequiresAimTarget = false;
-            asdClap.maxTimesSelected = -1;
+            asdPylon.requiredSkill = null;
+            asdPylon.requireSkillReady = true;
+            asdPylon.requireEquipmentReady = false;
+            asdPylon.minUserHealthFraction = float.NegativeInfinity;
+            asdPylon.maxUserHealthFraction = 0.6f;
+            asdPylon.minTargetHealthFraction = float.NegativeInfinity;
+            asdPylon.maxTargetHealthFraction = float.PositiveInfinity;
+            asdPylon.minDistance = 0f;
+            asdPylon.maxDistance = float.PositiveInfinity;
+            asdPylon.selectionRequiresTargetLoS = false;
+            asdPylon.selectionRequiresOnGround = false;
+            asdPylon.selectionRequiresAimTarget = false;
+            asdPylon.maxTimesSelected = -1;
 
-            asdClap.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdClap.activationRequiresTargetLoS = true;
-            asdClap.activationRequiresAimTargetLoS = false;
-            asdClap.activationRequiresAimConfirmation = false;
-            asdClap.movementType = AISkillDriver.MovementType.Stop;
-            asdClap.moveInputScale = 1;
-            asdClap.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdClap.ignoreNodeGraph = false;
-            asdClap.shouldSprint = false;
-            asdClap.shouldFireEquipment = false;
-            asdClap.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+            asdPylon.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdPylon.activationRequiresTargetLoS = true;
+            asdPylon.activationRequiresAimTargetLoS = false;
+            asdPylon.activationRequiresAimConfirmation = false;
+            asdPylon.movementType = AISkillDriver.MovementType.Stop;
+            asdPylon.moveInputScale = 1;
+            asdPylon.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdPylon.ignoreNodeGraph = false;
+            asdPylon.shouldSprint = false;
+            asdPylon.shouldFireEquipment = false;
+            asdPylon.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            asdClap.driverUpdateTimerOverride = -1f;
-            asdClap.resetCurrentEnemyOnNextDriverSelection = false;
-            asdClap.noRepeat = true;
-            asdClap.nextHighPriorityOverride = null;
+            asdPylon.driverUpdateTimerOverride = -1f;
+            asdPylon.resetCurrentEnemyOnNextDriverSelection = false;
+            asdPylon.noRepeat = true;
+            asdPylon.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_Hellzone
+            var asdHellzone = masterPrefab.AddComponent<AISkillDriver>();
+            asdHellzone.customName = "Hellzone";
+            asdHellzone.skillSlot = SkillSlot.Secondary;
+
+            asdHellzone.requiredSkill = null;
+            asdHellzone.requireSkillReady = true;
+            asdHellzone.requireEquipmentReady = false;
+            asdHellzone.minUserHealthFraction = float.NegativeInfinity;
+            asdHellzone.maxUserHealthFraction = float.PositiveInfinity;
+            asdHellzone.minTargetHealthFraction = float.NegativeInfinity;
+            asdHellzone.maxTargetHealthFraction = float.PositiveInfinity;
+            asdHellzone.minDistance = 0f;
+            asdHellzone.maxDistance = 15f;
+            asdHellzone.selectionRequiresTargetLoS = true;
+            asdHellzone.selectionRequiresOnGround = false;
+            asdHellzone.selectionRequiresAimTarget = true;
+            asdHellzone.maxTimesSelected = -1;
+
+            asdHellzone.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdHellzone.activationRequiresTargetLoS = true;
+            asdHellzone.activationRequiresAimTargetLoS = false;
+            asdHellzone.activationRequiresAimConfirmation = true;
+            asdHellzone.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdHellzone.moveInputScale = 0;
+            asdHellzone.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdHellzone.ignoreNodeGraph = false;
+            asdHellzone.shouldSprint = false;
+            asdHellzone.shouldFireEquipment = false;
+            asdHellzone.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdHellzone.driverUpdateTimerOverride = -1f;
+            asdHellzone.resetCurrentEnemyOnNextDriverSelection = false;
+            asdHellzone.noRepeat = true;
+            asdHellzone.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_FlameCharge
+            var asdFlameCharge = masterPrefab.AddComponent<AISkillDriver>();
+            asdFlameCharge.customName = "FlameCharge";
+            asdFlameCharge.skillSlot = SkillSlot.Utility;
+
+            asdFlameCharge.requiredSkill = null;
+            asdFlameCharge.requireSkillReady = true;
+            asdFlameCharge.requireEquipmentReady = false;
+            asdFlameCharge.minUserHealthFraction = float.NegativeInfinity;
+            asdFlameCharge.maxUserHealthFraction = float.PositiveInfinity;
+            asdFlameCharge.minTargetHealthFraction = float.NegativeInfinity;
+            asdFlameCharge.maxTargetHealthFraction = float.PositiveInfinity;
+            asdFlameCharge.minDistance = 7f;
+            asdFlameCharge.maxDistance = 60f;
+            asdFlameCharge.selectionRequiresTargetLoS = true;
+            asdFlameCharge.selectionRequiresOnGround = false;
+            asdFlameCharge.selectionRequiresAimTarget = false;
+            asdFlameCharge.maxTimesSelected = -1;
+
+            asdFlameCharge.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdFlameCharge.activationRequiresTargetLoS = true;
+            asdFlameCharge.activationRequiresAimTargetLoS = false;
+            asdFlameCharge.activationRequiresAimConfirmation = true;
+            asdFlameCharge.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdFlameCharge.moveInputScale = 1;
+            asdFlameCharge.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdFlameCharge.ignoreNodeGraph = true;
+            asdFlameCharge.shouldSprint = false;
+            asdFlameCharge.shouldFireEquipment = false;
+            asdFlameCharge.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdFlameCharge.driverUpdateTimerOverride = -1f;
+            asdFlameCharge.resetCurrentEnemyOnNextDriverSelection = false;
+            asdFlameCharge.noRepeat = true;
+            asdFlameCharge.nextHighPriorityOverride = null;
             #endregion
 
             #region AISkillDriver_ChaseOffNodeGraph
@@ -904,6 +840,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.startSound = "Play_lemurianBruiser_m1_shoot";
             controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
 
+            gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
+
             if (gameObject.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
                 component.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
@@ -924,6 +862,8 @@ namespace EnemiesReturns.Enemies.Ifrit
                 + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value; 
 
             gameObject.GetComponent<ProjectileController>().ghostPrefab = null;
+
+            gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
 
             var fxTransform = gameObject.transform.Find("FX");
             var fxScale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;

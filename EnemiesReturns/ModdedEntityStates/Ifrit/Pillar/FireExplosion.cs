@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
     public class FireExplosion : BaseState
     {
@@ -23,21 +23,17 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
 
         private BlastAttack blastAttack;
 
-        private Transform fireball;
-        private Transform areaIndicator;
-
         public override void OnEnter()
         {
             base.OnEnter();
 
             var childLocator = GetModelChildLocator();
-            fireball = childLocator.FindChild("Fireball");
-            areaIndicator = childLocator.FindChild("TeamAreaIndicator");
+            var fireball = childLocator.FindChild("Fireball");
             if (NetworkServer.active)
             {
                 if(explosionPrefab)
                 {
-                    EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f }, true);
+                    EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f * (radius / 30f) }, true); // TODO
                 }
 
                 blastAttack = new BlastAttack();
@@ -51,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
                 blastAttack.falloffModel = BlastAttack.FalloffModel.None;
                 blastAttack.baseForce = force;
                 blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
-                blastAttack.damageType = DamageType.Generic;
+                blastAttack.damageType = DamageType.IgniteOnHit;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.Fire();
             }
@@ -59,14 +55,15 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
             {
                 fireball.gameObject.SetActive(false);
             }
-            if(areaIndicator)
+            var areaIndicator = childLocator.FindChild("TeamAreaIndicator");
+            if (areaIndicator)
             {
                 areaIndicator.gameObject.SetActive(false);
             }
-            var modelTransform = GetModelTransform();
-            if(modelTransform.gameObject.TryGetComponent<LineRenderer>(out var lineRenderer))
+            var lineRenderer = childLocator.FindChild("LineOriginPoint");
+            if (lineRenderer)
             {
-                lineRenderer.enabled = false;
+                lineRenderer.gameObject.SetActive(false);
             }
         }
 

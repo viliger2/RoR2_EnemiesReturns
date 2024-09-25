@@ -1,7 +1,9 @@
 ﻿using EntityStates;
+using RoR2;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -67,7 +69,48 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         private void FireProjectile()
         {
             var rotation = Quaternion.LookRotation(fireballAimHelper.position - muzzleMouth.position, Vector3.up);
+
+            var colliders = Physics.OverlapSphere(muzzleMouth.position + Vector3.forward * 30f, 30f, LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore);
+            if (colliders.Length > 0)
+            {
+                // finding closest collider 
+                float distance = 30f;
+                int index = -1;
+                for (int i = 0; i < colliders.Count(); i++)
+                {
+                    var hurtbox = colliders[i].GetComponent<HurtBox>();
+                    if (hurtbox && hurtbox.healthComponent)
+                    {
+                        if(hurtbox.healthComponent.body == this.characterBody)
+                        {
+                            continue;
+                        }
+                        float currentDistance = Mathf.Abs(Vector3.Distance(colliders[i].transform.position, muzzleMouth.position));
+                        if (currentDistance < distance)
+                        {
+                            distance = currentDistance;
+                            index = i;
+                        }
+                    }
+                }
+
+                if (index > -1)
+                {
+                    var collider = colliders[index];
+                    if (Physics.Raycast(collider.transform.position, Vector3.down, out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                    {
+                        rotation = Quaternion.LookRotation(result.point - muzzleMouth.position, Vector3.up);
+                    }
+                }
+            }
+
             ProjectileManager.instance.FireProjectile(projectilePrefab, muzzleMouth.position, rotation, gameObject, damageStat * damageCoefficient, force, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
+        }
+
+        public override void OnExit()
+        {
+            PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

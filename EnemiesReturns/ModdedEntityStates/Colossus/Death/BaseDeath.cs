@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             eyePropertyBlock.SetFloat("_EmPower", initialEmmision);
             eyeRenderer.SetPropertyBlock(eyePropertyBlock);
 
-            fallTransform = FindModelChild(fallEffectChild).transform;
+            fallTransform = childLocator.FindChild(fallEffectChild);
 
             headLight = childLocator.FindChildComponent<Light>("HeadLight");
             initialRange = headLight.range;

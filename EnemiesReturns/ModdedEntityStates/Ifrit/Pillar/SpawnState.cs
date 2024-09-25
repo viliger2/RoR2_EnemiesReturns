@@ -1,0 +1,26 @@
+﻿using EntityStates;
+using RoR2;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
+{
+    public class SpawnState : GenericCharacterSpawnState
+    {
+        public static GameObject burrowPrefab;
+
+        public override void OnEnter()
+        {
+            duration = 2f;
+            //spawnSoundString = "ER_Spitter_Spawn_Play";
+
+            base.OnEnter();
+            if (burrowPrefab)
+            {
+                EffectManager.SimpleMuzzleFlash(burrowPrefab, base.gameObject, "SpawnEffectOrigin", false);
+            }
+        }
+    }
+}

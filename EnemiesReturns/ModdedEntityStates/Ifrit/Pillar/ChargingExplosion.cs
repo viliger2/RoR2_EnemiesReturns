@@ -4,20 +4,20 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
     public class ChargingExplosion : BaseState
     {
         public static float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
 
         public static Vector3 fireballFinishScale = new Vector3(4f, 4f, 4f);
-        public static Vector3 pillarFinishPosition = new Vector3(0, -7.83f, 0f);
+        public static float pillarFinishYScale = 10f;
 
         private Transform fireball;
         private Transform pillar;
 
         private Vector3 fireballStartScale = Vector3.one;
-        private Vector3 pillarStartPosition = new Vector3(0f, -17.5f, 0f);
+        private float pillarStartYScale = 0f;
 
         public override void OnEnter()
         {
@@ -30,6 +30,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
             }
 
             pillar = childLocator.FindChild("GlowPillar");
+            if(pillar)
+            {
+                pillar.gameObject.SetActive(true);
+            }
             //if(pillar)
             //{
             //    pillarStartPosition = pillar.localPosition;
@@ -45,7 +49,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pylon
             }
             if(pillar)
             {
-                pillar.localPosition = Vector3.Lerp(pillarStartPosition, pillarFinishPosition, age / duration);
+                pillar.localScale = new Vector3(pillar.localScale.x, Mathf.Lerp(pillarStartYScale, pillarFinishYScale, age / duration), pillar.localScale.z);
             }
         }
 

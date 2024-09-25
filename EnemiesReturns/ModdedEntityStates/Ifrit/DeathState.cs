@@ -13,7 +13,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         private Renderer maneRenderer;
         private Renderer bodyRenderer;
-        //private (Transform, Vector3)[] flames;
 
         private float initialEmission;
 
@@ -40,16 +39,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             var bodyTransform = childLocator.FindChild("MainBody");
             bodyRenderer = bodyTransform.GetComponent<Renderer>();
             bodyPropertyBlock = SetupPropertyBlock(bodyRenderer, out initialEmission);
-
-            // fuck me, surely this won't complely shit itself
-            //flames = new (Transform, Vector3)[]
-            //{
-            //    (childLocator.FindChild("Fire1"), childLocator.FindChild("Fire1")?.localScale ?? Vector3.zero),
-            //    (childLocator.FindChild("Fire2"), childLocator.FindChild("Fire2")?.localScale ?? Vector3.zero),
-            //    (childLocator.FindChild("Fire3"), childLocator.FindChild("Fire3")?.localScale ?? Vector3.zero),
-            //    (childLocator.FindChild("Fire4"), childLocator.FindChild("Fire4")?.localScale ?? Vector3.zero),
-            //    (childLocator.FindChild("Fire5"), childLocator.FindChild("Fire5")?.localScale ?? Vector3.zero)
-            //};
         }
 
         public override void Update()
@@ -59,13 +48,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             {
                 SetPropertyBlock(maneRenderer, manePropertyBlock, initialEmission, age);
                 SetPropertyBlock(bodyRenderer, bodyPropertyBlock, initialEmission, age);
-                //foreach((Transform, Vector3) t in flames)
-                //{
-                //    if(t.Item1)
-                //    {
-                //        t.Item1.localScale = Vector3.Lerp(t.Item2, Vector3.zero, age / effectDuration);
-                //    }
-                //}
             }
         }
 

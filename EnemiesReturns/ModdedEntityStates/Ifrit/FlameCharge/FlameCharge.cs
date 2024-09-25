@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static float chargeDuration => EnemiesReturnsConfiguration.Ifrit.FlameChargeDuration.Value;
 
-        public static float turnSpeed => EnemiesReturnsConfiguration.Ifrit.FlameChargeTurnSpeed.Value;
+        public static float turnSpeed => EnemiesReturnsConfiguration.Ifrit.TurnSpeed.Value;
 
         public static float chargeMovementSpeedCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeSpeedCoefficient.Value;
 
@@ -38,6 +38,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         public static float flameForce => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameForce.Value;
 
         public static float flameProcCoef => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameProcCoefficient.Value;
+
+        public static float heighCheck => EnemiesReturnsConfiguration.Ifrit.FlameChargeHeighCheck.Value;
 
         public static string muzzleString = "MuzzleMouth";
 
@@ -101,6 +103,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             chargeAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "BodyCharge");
             chargeAttack.procCoefficient = chargeProcCoef;
             chargeAttack.damageType = DamageType.Generic;
+            chargeAttack.retriggerTimeout = 0.5f;
         }
 
         private void SetupFlameAttack(Transform modelTransform, bool isCrit)
@@ -116,6 +119,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             flameAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "FlameCharge");
             flameAttack.procCoefficient = flameProcCoef;
             flameAttack.damageType = (Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic);
+            flameAttack.retriggerTimeout = (1 / flameTickFrequency) * 2;
         }
 
         public override void FixedUpdate()
@@ -139,7 +143,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                     if (ledgeHandling)
                     {
                         var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
-                        if (!result || hitinfo.distance > 20f)
+                        if (!result || hitinfo.distance > heighCheck)
                         {
                             outer.SetNextState(new FlameChargeEnd());
                         }
@@ -186,10 +190,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public override void OnExit()
         {
+            base.OnExit();
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
             DestroyEffect();
             SetSprintEffectState(false);
-            base.OnExit();
+            base.characterMotor.moveDirection = Vector3.zero;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

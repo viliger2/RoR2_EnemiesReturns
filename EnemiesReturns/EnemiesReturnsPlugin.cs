@@ -30,12 +30,12 @@ namespace EnemiesReturns
 	[BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency(R2API.DeployableAPI.PluginGUID)]
-    //[BepInDependency(R2API.DirectorAPI.PluginGUID)]
+    [BepInDependency(R2API.DirectorAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
 	{
 		public const string Author = "Viliger";
 		public const string ModName = "EnemiesReturns";
-		public const string Version = "0.1.13";
+		public const string Version = "0.2.1";
 		public const string GUID = "com." + Author + "." + ModName;
 
 		private void Awake()
@@ -70,6 +70,7 @@ namespace EnemiesReturns
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             //On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            //On.RoR2.HealthComponent.Suicide += HealthComponent_Suicide;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             ColossalKnurlFactory.Hooks();
 			IfritFactory.Hooks();
@@ -77,6 +78,12 @@ namespace EnemiesReturns
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 			
 		}
+
+        private void HealthComponent_Suicide(On.RoR2.HealthComponent.orig_Suicide orig, HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageTypeCombo damageType)
+        {
+			Log.Info("suiciding " + self.body.name);
+			orig(self, killerOverride, inflictorOverride, damageType);
+        }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)
         {

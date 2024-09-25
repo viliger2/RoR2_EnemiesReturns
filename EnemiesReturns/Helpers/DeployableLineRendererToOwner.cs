@@ -10,6 +10,8 @@ namespace EnemiesReturns.Helpers
     {
         public string childOriginName;
 
+        public string ownerTargetName;
+
         private Deployable deployable;
 
         private LineRenderer lineRenderer;
@@ -17,8 +19,6 @@ namespace EnemiesReturns.Helpers
         private Transform originPoint;
 
         private Transform targetPoint;
-
-        private CharacterBody ownerBody;
 
         private void OnEnable()
         {
@@ -30,7 +30,6 @@ namespace EnemiesReturns.Helpers
                 if (child)
                 {
                     originPoint = child;
-                    targetPoint = child;
                 }
             }
 
@@ -39,26 +38,43 @@ namespace EnemiesReturns.Helpers
             {
                 deployable = characterModel.body.GetComponent<Deployable>();
             }
-            lineRenderer = GetComponent<LineRenderer>();
+            if(originPoint)
+            {
+                lineRenderer = originPoint.gameObject.GetComponent<LineRenderer>();
+            }
         }
 
         private void Update()
         {
-            if(!ownerBody)
+            if (!targetPoint)
             {
-                if (deployable && deployable.ownerMaster)
+                CharacterBody ownerBody = null;
+                if(deployable && deployable.ownerMaster)
                 {
                     ownerBody = deployable.ownerMaster.GetBody();
                 }
-            } else
-            {
-                targetPoint = ownerBody.transform;
+
+                ChildLocator ownerChildLocator = null;
+                if(ownerBody)
+                {
+                    ownerChildLocator = ownerBody.modelLocator?.modelTransform?.gameObject.GetComponent<ChildLocator>() ?? null;
+                }
+
+                if (ownerChildLocator)
+                {
+                    targetPoint = ownerChildLocator.FindChild("Chest");
+                }
+                else if (ownerBody)
+                {
+                    targetPoint = ownerBody.transform;
+                }
             }
+
             if (deployable && deployable.ownerMaster && lineRenderer)
             {
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, originPoint.position);
-                lineRenderer.SetPosition(1, targetPoint.position);
+                lineRenderer.SetPosition(1, targetPoint?.position ?? originPoint.position);
             }
         }
 

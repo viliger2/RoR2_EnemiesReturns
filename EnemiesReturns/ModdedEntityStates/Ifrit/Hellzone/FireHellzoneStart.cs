@@ -32,6 +32,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             }
         }
 
+        public override void OnExit()
+        {
+            PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
+            base.OnExit();
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
