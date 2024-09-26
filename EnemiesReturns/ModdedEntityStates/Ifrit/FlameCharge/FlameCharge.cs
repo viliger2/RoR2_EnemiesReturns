@@ -75,6 +75,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             ledgeHandling = FindModelChild("LedgeHandling");
             sprintEffect = FindModelChild("SprintEffect");
             PlayCrossfade("Gesture,Override", "FlameBlastFiring", 0.2f);
+            Util.PlaySound("ER_Ifrit_FireBreath_Play", base.gameObject);
             bool isCrit = RollCrit();
             SetupFlameAttack(modelTransform, isCrit);
             SetupChargeAttack(modelTransform, isCrit);
@@ -191,6 +192,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         public override void OnExit()
         {
             base.OnExit();
+            Util.PlaySound("ER_Ifrit_FireBreath_Stop", base.gameObject);
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
             DestroyEffect();
             SetSprintEffectState(false);

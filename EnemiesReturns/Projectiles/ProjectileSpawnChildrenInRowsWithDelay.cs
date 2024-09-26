@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Helpers;
 using RoR2;
+using RoR2.Audio;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace EnemiesReturns.Projectiles
         public float delayEachRow;
 
         public GameObject childPrefab;
+
+        public NetworkSoundEventDef soundEventDef;
 
         protected ProjectileController projectileController;
 
@@ -82,6 +85,10 @@ namespace EnemiesReturns.Projectiles
                             SpawnChild(base.transform.position + new Vector3(x, 0f, z), childScale);
                         }
                     }
+                }
+                if (soundEventDef)
+                {
+                    EntitySoundManager.EmitSoundServer(soundEventDef.akId, this.gameObject);
                 }
                 currentRow++;
                 timer -= delayEachRow;

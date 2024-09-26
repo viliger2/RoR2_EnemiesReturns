@@ -146,8 +146,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1552954533891980107, guid: c67a7976c3e30e54a90d8ed3161da5a2,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 12f7799fd972c3344b0569d884f2d18e, type: 2}
   m_Tag: 
   m_SpeedParameter: FireFireball.playbackRate
   m_MirrorParameter: 
@@ -798,8 +797,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -855743547833391510, guid: c67a7976c3e30e54a90d8ed3161da5a2,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: be1779f5e3946be41b07f4a35af92d59, type: 2}
   m_Tag: 
   m_SpeedParameter: FlameBlast.playbackRate
   m_MirrorParameter: 

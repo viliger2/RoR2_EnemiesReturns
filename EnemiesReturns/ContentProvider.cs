@@ -166,6 +166,7 @@ namespace EnemiesReturns
                 var projectilesList = new List<GameObject>();
                 var unlockablesList = new List<UnlockableDef>();
                 var itemList = new List<ItemDef>();
+                var nsedList = new List<NetworkSoundEventDef>();
 
                 stateList.Add(typeof(ModdedEntityStates.BaseEmoteState)); // dunno if I need it, but just in case
 
@@ -556,10 +557,13 @@ namespace EnemiesReturns
                 ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritFactory.CreateBreathParticle();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
 
+                var nsedHellzoneRockFire = CreateNetworkSoundDef("ER_Ifrit_Hellzone_Rock_Play");
+                nsedList.Add(nsedHellzoneRockFire);
+
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
                 var pillarProjectile = ifritFactory.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
-                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, texLavaCrackRound);
+                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, texLavaCrackRound, nsedHellzoneRockFire);
                 var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile(dotZoneProjectile);
 
                 projectilesList.Add(dotZoneProjectile);
@@ -616,6 +620,9 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
+
+
+
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());
@@ -627,6 +634,7 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(projectilesList.ToArray());
                 _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
                 _contentPack.itemDefs.Add(itemList.ToArray());
+                _contentPack.networkSoundEventDefs.Add(nsedList.ToArray());
                 //_contentPack.entityStateConfigurations.Add(escList.ToArray());
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -680,6 +688,13 @@ namespace EnemiesReturns
             yield break;
         }
 
+        public static NetworkSoundEventDef CreateNetworkSoundDef(string eventName)
+        {
+            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            networkSoundEventDef.eventName = eventName;
+
+            return networkSoundEventDef;
+        }
 
         private static void LoadSoundBanks(string soundbanksFolderPath)
         {

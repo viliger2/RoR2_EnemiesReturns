@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
         public override void OnEnter()
         {
             duration = 2f;
-            //spawnSoundString = "ER_Spitter_Spawn_Play";
+            spawnSoundString = "ER_Ifrit_Pillar_Spawn_Play";
 
             base.OnEnter();
             if (burrowPrefab)

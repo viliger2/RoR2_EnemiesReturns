@@ -115,133 +115,6 @@
 												<ActiveSource Name="wSpitterHit" ID="{AB8137E4-2CA2-4667-A114-E37C796ED3AB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-1</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="wLizardShoot1" ID="{570D666A-0BDC-4C6F-B30E-A877C9C51DE8}">
-													<Language>SFX</Language>
-													<AudioFile>wLizardShoot1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="727523295"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}">
-													<Language>SFX</Language>
-													<AudioFile>wLizardShoot1_silence.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="847151097"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" ShortID="62111517">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>2</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="wSpitterShoot1" ID="{D5C263F9-87B5-451A-82C3-277483D7A589}">
-													<Language>SFX</Language>
-													<AudioFile>wSpitterShoot1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="344676234"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}">
-													<Language>SFX</Language>
-													<AudioFile>wSpitterShoot1_cut.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="294903960"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" ShortID="1055049522">
-											<PropertyList>
-												<Property Name="Pitch" Type="int32">
-													<ValueList>
-														<Value>-500</Value>
-													</ValueList>
-												</Property>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.12"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>sfx_spitter_spit_windup.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="821461000"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="Effects">
-													<Reference>
-														<Local>
-															<EffectSlot Name="" ID="{3538A040-1B1B-4C8D-BC66-9B4D23353053}" ShortID="362513998">
-																<ReferenceList>
-																	<Reference Name="Effect">
-																		<Custom>
-																			<Effect Name="Wwise_Time_Stretch_(Custom)" ID="{449710A3-7677-4C82-8676-568AEDFB8A89}" ShortID="317366288" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3"/>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</EffectSlot>
-														</Local>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
-											<ActiveSourceList>
-												<ActiveSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<RandomSequenceContainer Name="Spitter_Laugh" ID="{7A05C488-1810-4455-9FE0-932DAB067A92}" ShortID="890434051">
 											<PropertyList>
 												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
@@ -376,16 +249,20 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
-									</ChildrenList>
-								</Folder>
-								<Folder Name="Colossus" ID="{124E035B-5625-48AF-8186-B9A676A61F16}" ShortID="720897954">
-									<ChildrenList>
-										<RandomSequenceContainer Name="Colossus_Step" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" ShortID="130084273">
+										<ActorMixer Name="Random Pitch" ID="{8304063E-813D-4035-98E9-7D0BB1C64774}" ShortID="731113307">
 											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-3</Value>
-													</ValueList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4375092D-55B9-4A3E-98B6-C10CF9B91F5E}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -397,8 +274,33 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="mFootHugeGiantDirtA" ID="{DB55A435-971C-4DA8-ABC6-874096724847}" ShortID="747460348">
+												<Sound Name="Spitter_Charge_Spit" ID="{C114CFA1-1599-41B1-A53B-32A002EAF797}" ShortID="1055049522">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>-500</Value>
+															</ValueList>
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{06287708-789C-4CE3-8ED0-84833D2F228F}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 														</Reference>
@@ -407,20 +309,63 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="mFootHugeGiantDirtA" ID="{CE307141-8949-4798-B0E7-0DD92E070F3B}">
+														<AudioFileSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.12"/>
+															</PropertyList>
 															<Language>SFX</Language>
-															<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtA.wav</AudioFile>
+															<AudioFile>sfx_spitter_spit_windup.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="143513538"/>
+																<MediaID ID="821461000"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Effects">
+															<Reference>
+																<Local>
+																	<EffectSlot Name="" ID="{3538A040-1B1B-4C8D-BC66-9B4D23353053}" ShortID="362513998">
+																		<ReferenceList>
+																			<Reference Name="Effect">
+																				<Custom>
+																					<Effect Name="Wwise_Time_Stretch_(Custom)" ID="{449710A3-7677-4C82-8676-568AEDFB8A89}" ShortID="317366288" PluginName="Wwise Time Stretch" CompanyID="0" PluginID="130" PluginType="3"/>
+																				</Custom>
+																			</Reference>
+																		</ReferenceList>
+																	</EffectSlot>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
 													<ActiveSourceList>
-														<ActiveSource Name="mFootHugeGiantDirtA" ID="{CE307141-8949-4798-B0E7-0DD92E070F3B}" Platform="Linked"/>
+														<ActiveSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="mFootHugeGiantDirtB" ID="{925B0FA6-986C-4E6A-B6A6-7A0C5044265A}" ShortID="738193634">
+												<Sound Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{76F64F66-7C9B-49D0-BC86-C0DAFC254701}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 														</Reference>
@@ -429,20 +374,49 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="mFootHugeGiantDirtB" ID="{6368F34E-3396-4265-A7CA-ECB318C6B3DA}">
+														<AudioFileSource Name="wLizardShoot1" ID="{570D666A-0BDC-4C6F-B30E-A877C9C51DE8}">
 															<Language>SFX</Language>
-															<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtB.wav</AudioFile>
+															<AudioFile>wLizardShoot1.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="302757301"/>
+																<MediaID ID="727523295"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}">
+															<Language>SFX</Language>
+															<AudioFile>wLizardShoot1_silence.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="847151097"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="mFootHugeGiantDirtB" ID="{6368F34E-3396-4265-A7CA-ECB318C6B3DA}" Platform="Linked"/>
+														<ActiveSource Name="wLizardShoot1_silence" ID="{C265955F-A768-4B55-B07E-059E29169135}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="mFootHugeGiantDirtC" ID="{9A3BB814-7CFE-4539-8D40-9ECE5981722D}" ShortID="912776409">
+												<Sound Name="Spitter_Spit" ID="{F9C891EC-8414-413A-A956-166646F002D0}" ShortID="62111517">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{4939889E-1797-40BC-BC8D-C139A2AAB952}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 														</Reference>
@@ -451,64 +425,31 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="mFootHugeGiantDirtC" ID="{0172FA60-D366-4D35-95DD-09CE485C7A0F}">
+														<AudioFileSource Name="wSpitterShoot1" ID="{D5C263F9-87B5-451A-82C3-277483D7A589}">
 															<Language>SFX</Language>
-															<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtC.wav</AudioFile>
+															<AudioFile>wSpitterShoot1.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="720604510"/>
+																<MediaID ID="344676234"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}">
+															<Language>SFX</Language>
+															<AudioFile>wSpitterShoot1_cut.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="294903960"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="mFootHugeGiantDirtC" ID="{0172FA60-D366-4D35-95DD-09CE485C7A0F}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="mFootHugeGiantDirtD" ID="{019808FB-BCD4-4076-8E4D-5D72CA70947F}" ShortID="515923749">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="mFootHugeGiantDirtD" ID="{848BF207-E8BB-46F2-86ED-6BE6EEA846A7}">
-															<Language>SFX</Language>
-															<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtD.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="904550696"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="mFootHugeGiantDirtD" ID="{848BF207-E8BB-46F2-86ED-6BE6EEA846A7}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="mFootHugeGiantDirtE" ID="{2EEB067E-1E4C-4E98-B092-B9D4A96396FF}" ShortID="182221113">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="mFootHugeGiantDirtE" ID="{89824252-09EB-4C75-8610-B613ABC8606A}">
-															<Language>SFX</Language>
-															<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtE.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="49154136"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="mFootHugeGiantDirtE" ID="{89824252-09EB-4C75-8610-B613ABC8606A}" Platform="Linked"/>
+														<ActiveSource Name="wSpitterShoot1_cut" ID="{94607F6B-DF42-4D9C-AB54-F4889FDA9DEC}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-										</RandomSequenceContainer>
+										</ActorMixer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Colossus" ID="{124E035B-5625-48AF-8186-B9A676A61F16}" ShortID="720897954">
+									<ChildrenList>
 										<Sound Name="Colossus_Death2" ID="{F346D3E7-EB5C-40F9-8857-5B08A06AE4EC}" ShortID="841957440">
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
@@ -540,38 +481,6 @@
 										</Sound>
 										<Folder Name="Clap" ID="{F91E5118-A124-4569-988C-99B210AC74D5}" ShortID="154082906">
 											<ChildrenList>
-												<Sound Name="Colossus_Clap" ID="{299D96F5-58FB-4C4B-963B-A41EF84A0BC0}" ShortID="837491124">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-7</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Attenuation">
-															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-														</Reference>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}">
-															<Language>SFX</Language>
-															<AudioFile>Colossus\Clap\clap_test.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="152242903"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Sound Name="Colossus_Arms_Spread" ID="{0A057427-CD79-493C-B61E-6844F9CAF726}" ShortID="1073695654">
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
@@ -665,35 +574,6 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
-										<Sound Name="Colossus_Stomp" ID="{C6BE682B-A735-4EA1-AA93-B18E682BD1FD}" ShortID="429807491">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-4</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="step_mimic_3" ID="{F9377E7B-39B0-4077-A550-588B9B3B9753}">
-													<Language>SFX</Language>
-													<AudioFile>Colossus\Stomp\step_mimic_3.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="70830560"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="step_mimic_3" ID="{F9377E7B-39B0-4077-A550-588B9B3B9753}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="Colossus_Spawn" ID="{1F8B5A22-A479-4AB5-B994-29FADD1D3624}" ShortID="30799422">
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -745,39 +625,6 @@
 												<ActiveSource Name="death1" ID="{6D18AA74-1DDA-4C63-BF45-CA3E9A071255}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Folder Name="Item" ID="{FF5003ED-2413-499A-BF8E-BE97AA17FEB0}" ShortID="773254157">
-											<ChildrenList>
-												<Sound Name="Fist_Spawn" ID="{4FBE5A23-6AF5-49C7-A470-F974563DF14E}" ShortID="76957848">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-8</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}">
-															<Language>SFX</Language>
-															<AudioFile>Colossus\item_fist_spawn.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="860858375"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-											</ChildrenList>
-										</Folder>
 										<Sound Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" ShortID="117074778">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
@@ -801,6 +648,855 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="GOGOGO" ID="{89A82452-240D-4363-9465-14CDA9312FA6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<ActorMixer Name="Random Pitch" ID="{8AE92BF2-1DD9-48A0-AD69-03D96213706D}" ShortID="982000951">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5E812BC7-1780-433D-890D-0BD61CC794D7}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Colossus_Step" ID="{0EBDE311-7D18-4992-A949-66D08CE20E2A}" ShortID="130084273">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{9B7AFC76-055F-40E0-BE47-8BDC06968643}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="mFootHugeGiantDirtA" ID="{DB55A435-971C-4DA8-ABC6-874096724847}" ShortID="747460348">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mFootHugeGiantDirtA" ID="{CE307141-8949-4798-B0E7-0DD92E070F3B}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtA.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="143513538"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mFootHugeGiantDirtA" ID="{CE307141-8949-4798-B0E7-0DD92E070F3B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="mFootHugeGiantDirtB" ID="{925B0FA6-986C-4E6A-B6A6-7A0C5044265A}" ShortID="738193634">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mFootHugeGiantDirtB" ID="{6368F34E-3396-4265-A7CA-ECB318C6B3DA}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtB.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="302757301"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mFootHugeGiantDirtB" ID="{6368F34E-3396-4265-A7CA-ECB318C6B3DA}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="mFootHugeGiantDirtC" ID="{9A3BB814-7CFE-4539-8D40-9ECE5981722D}" ShortID="912776409">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mFootHugeGiantDirtC" ID="{0172FA60-D366-4D35-95DD-09CE485C7A0F}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtC.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="720604510"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mFootHugeGiantDirtC" ID="{0172FA60-D366-4D35-95DD-09CE485C7A0F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="mFootHugeGiantDirtD" ID="{019808FB-BCD4-4076-8E4D-5D72CA70947F}" ShortID="515923749">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mFootHugeGiantDirtD" ID="{848BF207-E8BB-46F2-86ED-6BE6EEA846A7}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtD.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="904550696"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mFootHugeGiantDirtD" ID="{848BF207-E8BB-46F2-86ED-6BE6EEA846A7}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="mFootHugeGiantDirtE" ID="{2EEB067E-1E4C-4E98-B092-B9D4A96396FF}" ShortID="182221113">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mFootHugeGiantDirtE" ID="{89824252-09EB-4C75-8610-B613ABC8606A}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\Steps\wow\mFootHugeGiantDirtE.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="49154136"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mFootHugeGiantDirtE" ID="{89824252-09EB-4C75-8610-B613ABC8606A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Folder Name="Item" ID="{FF5003ED-2413-499A-BF8E-BE97AA17FEB0}" ShortID="773254157">
+													<ChildrenList>
+														<Sound Name="Fist_Spawn" ID="{4FBE5A23-6AF5-49C7-A470-F974563DF14E}" ShortID="76957848">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-8</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}">
+																	<Language>SFX</Language>
+																	<AudioFile>Colossus\item_fist_spawn.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="860858375"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="item_fist_spawn" ID="{7A9F8794-BC32-4852-80CE-F357F41955E9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Sound Name="Colossus_Clap" ID="{299D96F5-58FB-4C4B-963B-A41EF84A0BC0}" ShortID="837491124">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\Clap\clap_test.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="152242903"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="clap_test" ID="{9890C3A6-7E89-40DB-931E-162D7B7996D5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Colossus_Stomp" ID="{C6BE682B-A735-4EA1-AA93-B18E682BD1FD}" ShortID="429807491">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="step_mimic_3" ID="{F9377E7B-39B0-4077-A550-588B9B3B9753}">
+															<Language>SFX</Language>
+															<AudioFile>Colossus\Stomp\step_mimic_3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="70830560"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="step_mimic_3" ID="{F9377E7B-39B0-4077-A550-588B9B3B9753}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</ActorMixer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Ifrit" ID="{133CFACA-5D3B-49CB-B50F-C11B6F3E6689}" ShortID="821048277">
+									<ChildrenList>
+										<Folder Name="Pillar" ID="{B81559F6-32BD-49FB-8F5E-FD00159B1DCE}" ShortID="19118240">
+											<ChildrenList>
+												<Sound Name="Pillar_Fire" ID="{909FB14F-E84F-4787-A790-E9E2B039E823}" ShortID="325345748">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{5539199A-DF6F-4563-B6F0-E2600B5D2EA2}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PreCastFireLow" ID="{F612683A-25D4-4A78-A05B-DF3A99B3FDDD}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\PreCastFireLow.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="150878353"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<Reference>
+																<Local>
+																	<RTPC Name="" ID="{46DD2E2F-274A-44DF-81F8-928F6189C52C}" ShortID="829658023">
+																		<PropertyList>
+																			<Property Name="PropertyName" Type="string" Value="Volume"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="ControlInput">
+																				<ObjectRef Name="ER_Ifrit_Pillar_Fire_Volume" ID="{801E9AE7-80B7-4EA3-9707-8F6B8B7D8B06}" WorkUnitID="{340A7A4D-E82B-41CD-872B-F11446D437C8}"/>
+																			</Reference>
+																			<Reference Name="Curve">
+																				<Custom>
+																					<Curve Name="" ID="{0476B2A2-FAA5-4339-841B-E8F21DF9258D}">
+																						<PropertyList>
+																							<Property Name="Flags" Type="int32" Value="3"/>
+																						</PropertyList>
+																						<PointList>
+																							<Point>
+																								<XPos>0</XPos>
+																								<YPos>-200</YPos>
+																								<Flags>5</Flags>
+																							</Point>
+																							<Point>
+																								<XPos>100</XPos>
+																								<YPos>0</YPos>
+																								<Flags>37</Flags>
+																							</Point>
+																						</PointList>
+																					</Curve>
+																				</Custom>
+																			</Reference>
+																		</ReferenceList>
+																	</RTPC>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+													<ActiveSourceList>
+														<ActiveSource Name="PreCastFireLow" ID="{F612683A-25D4-4A78-A05B-DF3A99B3FDDD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" ShortID="35986962">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{66215FCF-9459-4BFD-B838-2C12C1ED8243}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="lava-loop-3-28887" ID="{35DA012C-EB2F-4A4B-B542-3CA2A4AA56F9}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\lava-loop-3-28887.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="639166742"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="lava-loop-3-28887" ID="{35DA012C-EB2F-4A4B-B542-3CA2A4AA56F9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Pillar_Explosion" ID="{0142AE89-D7FD-46A4-9450-7B501314A1D6}" ShortID="759269306">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="supernatural-explosion-104295" ID="{1026E737-EF78-4439-9629-665B8ACF7E1C}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\supernatural-explosion-104295.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="420363145"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="supernatural-explosion-104295" ID="{1026E737-EF78-4439-9629-665B8ACF7E1C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<ActorMixer Name="Random Pitch" ID="{B8EE2D6D-08A7-4A86-8BA7-EF03B2FB8261}" ShortID="720149048">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{BE0C9A05-B632-4251-95B7-AED40742A52D}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Pillar_Death" ID="{CE84B909-9C8C-4511-A7B6-54703B03D175}" ShortID="966454275">
+															<PropertyList>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{4B0833A2-9A07-45B3-85B2-1B2E05C29835}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="wGolemT_Death" ID="{BD94010D-B23A-4E09-BB37-B68801547AFA}">
+																	<Language>SFX</Language>
+																	<AudioFile>Ifrit\wGolemT_Death.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="740622718"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="wGolemT_Death" ID="{BD94010D-B23A-4E09-BB37-B68801547AFA}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Pillar_Spawn" ID="{FCE6727B-D132-4E95-93A5-001957E7A294}" ShortID="295395310">
+															<PropertyList>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{36D4E009-5F21-4B7A-8C9D-035E54903D7D}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="mStoneGolemDeathA" ID="{255B4193-649E-486A-870E-DC001F1F200A}">
+																	<Language>SFX</Language>
+																	<AudioFile>Ifrit\mStoneGolemDeathA.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="501723475"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="mStoneGolemDeathA" ID="{255B4193-649E-486A-870E-DC001F1F200A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</ActorMixer>
+											</ChildrenList>
+										</Folder>
+										<Sound Name="Ifrit_Spawn" ID="{62ADAEFC-25F4-4A4C-AEF4-6E6DE4468FFD}" ShortID="545513826">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wWurmRoar" ID="{13787E92-0D04-419C-995D-7F0ACF923623}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\wWurmRoar.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="470213146"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wWurmRoar" ID="{13787E92-0D04-419C-995D-7F0ACF923623}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_Hit" ID="{4B1E45C6-1168-4A79-BF4C-1E05DA3E34BD}" ShortID="893778988">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D90CCF61-79C2-4155-917E-F4D8B1ADFB40}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wLizardGHit" ID="{38B327AB-5699-4B35-A651-E2F9CEAF63F6}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\wLizardGHit.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="88037240"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wLizardGHit" ID="{38B327AB-5699-4B35-A651-E2F9CEAF63F6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_Summon_Pillar" ID="{D85BFF2A-26FB-4509-9993-14EBEA011752}" ShortID="45952534">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wWormRoar" ID="{8D783BAF-C989-425C-9206-BBBDBDE92E78}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\wWormRoar.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="746885925"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wWormRoar" ID="{8D783BAF-C989-425C-9206-BBBDBDE92E78}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_Breathe_Fire" ID="{6CF08F87-136E-4AB8-B6E2-81465DA8178A}" ShortID="940641635">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wArtiShoot4_2" ID="{14A9F72C-53AC-4376-9120-1711420DA521}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\wArtiShoot4_2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="264263352"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wArtiShoot4_2" ID="{14A9F72C-53AC-4376-9120-1711420DA521}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_Death" ID="{C0180D46-33E0-45E3-ADEF-BE22BC0BF4B6}" ShortID="26960764">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{924028C2-AF7C-4FAE-BB94-E608EBCFAD2F}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wLizardGDeath" ID="{7119D449-88B8-461C-8303-80ECF1C6A73F}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\wLizardGDeath.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="568118791"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wLizardGDeath" ID="{7119D449-88B8-461C-8303-80ECF1C6A73F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<ActorMixer Name="Random Pitch" ID="{A4A86B2D-F227-410F-9274-7434B180150E}" ShortID="163421716">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{91F72A0F-E208-4096-9E43-438F45356FA9}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Ifrit_Hellzone_Rock" ID="{D2BE6B83-3DFE-49C8-93D5-2E6170294817}" ShortID="203311838">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6518361F-8272-45FB-9E2C-A80E45CF1E5B}">
+																		<PropertyList>
+																			<Property Name="Max" Type="Real64" Value="253"/>
+																			<Property Name="Min" Type="Real64" Value="-152"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="FireCast" ID="{917E3214-A4F8-4EFF-A47F-75703D63B374}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\FireCast.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="104206474"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="FireCast" ID="{917E3214-A4F8-4EFF-A47F-75703D63B374}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Ifrit_Hellzone_Spawn" ID="{A7C2BFD1-9548-4D76-839B-2C004A92C6A3}" ShortID="920708288">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Flamestrike" ID="{0D0C3598-AF7A-4379-A376-412941CE1332}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\Flamestrike.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="537004202"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Flamestrike" ID="{0D0C3598-AF7A-4379-A376-412941CE1332}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</ActorMixer>
+										<Sound Name="Ifrit_BreatheIn_Charge" ID="{93A51D56-1D4D-44FA-B139-0BF876D958A1}" ShortID="541914337">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{36E1EBD3-672E-4B0F-BBE0-A9C8FEB3FACA}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="breathe_in" ID="{3609387D-08B1-42AA-A579-D27AB1A86617}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.1"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\breathe_in.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="483116788"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="breathe_in" ID="{3609387D-08B1-42AA-A579-D27AB1A86617}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_BreathIn_Fireball" ID="{8227FE77-B738-4BA8-85B6-A93992371FA9}" ShortID="1051199020">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="breath_in_fireball" ID="{042F7406-13C9-479D-A660-417F5D4E5FEF}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\breath_in_fireball.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="823053918"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="breath_in_fireball" ID="{042F7406-13C9-479D-A660-417F5D4E5FEF}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

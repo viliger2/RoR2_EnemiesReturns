@@ -289,8 +289,8 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region SfxLocator
             var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
-            sfxLocator.deathSound = ""; // TODO
-            sfxLocator.barkSound = ""; // TODO
+            sfxLocator.deathSound = "ER_Ifrit_Death_Play";
+            sfxLocator.barkSound = "";
             #endregion
 
             #region KinematicCharacterMotor
@@ -854,14 +854,16 @@ namespace EnemiesReturns.Enemies.Ifrit
             return gameObject;
         }
 
-        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, Texture2D texLavaCrack)
+        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, Texture2D texLavaCrack, NetworkSoundEventDef nsedChildSpawnSound)
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
 
             gameObject.GetComponent<ProjectileDotZone>().lifetime = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneLifetime.Value
-                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value; 
+                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
 
-            gameObject.GetComponent<ProjectileController>().ghostPrefab = null;
+            var controller = gameObject.GetComponent<ProjectileController>();
+            controller.ghostPrefab = null;
+            controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
 
             gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
 
@@ -916,6 +918,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDamage.Value;
             spawnChildrenComponent.delayEachRow = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
             spawnChildrenComponent.childPrefab = pillarPrefab;
+            spawnChildrenComponent.soundEventDef = nsedChildSpawnSound;
 
             return gameObject;
         }
@@ -939,6 +942,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             projectileController.canImpactOnTrigger = false;
             projectileController.allowPrediction = false;
             projectileController.procCoefficient = 1f;
+            projectileController.startSound = "";
 
             var networkTransform = gameObject.AddComponent<ProjectileNetworkTransform>();
             networkTransform.positionTransmitInterval = 0.03f;

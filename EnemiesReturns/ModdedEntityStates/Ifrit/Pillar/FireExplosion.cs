@@ -65,6 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             {
                 lineRenderer.gameObject.SetActive(false);
             }
+            Util.PlaySound("ER_Ifrit_Pillar_Explosion_Play", gameObject);
         }
 
         public override void FixedUpdate()

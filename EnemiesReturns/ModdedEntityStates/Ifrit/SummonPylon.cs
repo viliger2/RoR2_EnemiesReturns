@@ -38,6 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             duration = baseDuration / attackSpeedStat;
             summonTimer = baseSummonTimer / attackSpeedStat;
             muzzleMouth = FindModelChild("MuzzleMouth");
+            Util.PlaySound("ER_Ifrit_SummonPillar_Play", base.gameObject);
             PlayCrossfade("Body", "PillarSummon", "PillarSummon.playbackRate", duration, 0.2f);
         }
 

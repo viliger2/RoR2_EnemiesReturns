@@ -69,21 +69,12 @@ namespace EnemiesReturns
 			ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
 			RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
-            //On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
-            //On.RoR2.HealthComponent.Suicide += HealthComponent_Suicide;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             ColossalKnurlFactory.Hooks();
 			IfritFactory.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
-			
 		}
-
-        private void HealthComponent_Suicide(On.RoR2.HealthComponent.orig_Suicide orig, HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageTypeCombo damageType)
-        {
-			Log.Info("suiciding " + self.body.name);
-			orig(self, killerOverride, inflictorOverride, damageType);
-        }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)
         {

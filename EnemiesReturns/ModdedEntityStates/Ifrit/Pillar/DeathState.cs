@@ -49,6 +49,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             base.FixedUpdate();
             if (fixedAge >= fallEffectSpawnTime && !fallEffectSpawned && fallTransform)
             {
+                Util.PlaySound("ER_Ifrit_Pillar_Death_Play", gameObject);
                 EffectManager.SpawnEffect(fallEffect, new EffectData { origin = fallTransform.position }, true);
                 fallEffectSpawned = true;
             }

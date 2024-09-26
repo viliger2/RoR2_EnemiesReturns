@@ -243,6 +243,210 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Ifrit" ID="{84F2140A-F343-4030-A929-0BBC9690A422}" ShortID="981367310">
+							<ChildrenList>
+								<Event Name="ER_Ifrit_Spawn_Play" ID="{1643C14E-F5D6-4CA3-ABFF-6B927D69AE0F}">
+									<ChildrenList>
+										<Action Name="" ID="{88963181-67B6-4679-9D75-970A6AB1FA6B}" ShortID="887008921">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Spawn" ID="{62ADAEFC-25F4-4A4C-AEF4-6E6DE4468FFD}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_Death_Play" ID="{43307CB6-1901-4679-A42B-C9635B9B5937}">
+									<ChildrenList>
+										<Action Name="" ID="{7981B985-63E5-4FEC-A88F-24061919AFBC}" ShortID="812433594">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Death" ID="{C0180D46-33E0-45E3-ADEF-BE22BC0BF4B6}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_Hit_Play" ID="{0576204F-9620-4ADB-9734-F18EDEB9A6D8}">
+									<ChildrenList>
+										<Action Name="" ID="{DD942A72-3430-40AD-B828-881585A716A1}" ShortID="423823389">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Hit" ID="{4B1E45C6-1168-4A79-BF4C-1E05DA3E34BD}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_FireBreath_Play" ID="{F85C931A-5DD2-4F45-9446-75D99C71A9F8}">
+									<ChildrenList>
+										<Action Name="" ID="{52A44919-8E56-43DA-A908-021ADA879695}" ShortID="540550021">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Breathe_Fire" ID="{6CF08F87-136E-4AB8-B6E2-81465DA8178A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_FireBreath_Stop" ID="{02DC6E85-57BB-4C78-897E-E29E5CEA95AD}">
+									<ChildrenList>
+										<Action Name="" ID="{A3E67956-B0DB-4800-9A44-E6E13D8118DF}" ShortID="812377693">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Breathe_Fire" ID="{6CF08F87-136E-4AB8-B6E2-81465DA8178A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_SummonPillar_Play" ID="{33C28DE0-EA28-44B9-A382-550DE4A08070}">
+									<ChildrenList>
+										<Action Name="" ID="{9F80B1AB-FD3A-47C9-9BEA-CEBF27D5294A}" ShortID="652367122">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Summon_Pillar" ID="{D85BFF2A-26FB-4509-9993-14EBEA011752}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Pillar" ID="{1038FAD9-9404-47E7-916E-D7FA264620D0}" ShortID="464901157">
+									<ChildrenList>
+										<Event Name="ER_Ifrit_Pillar_Death_Play" ID="{434FF8D3-6631-4327-BFDF-2F243FE68E18}">
+											<ChildrenList>
+												<Action Name="" ID="{4387B55C-7195-4880-82FF-EA253706F0A7}" ShortID="437827918">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Death" ID="{CE84B909-9C8C-4511-A7B6-54703B03D175}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Fire_Play" ID="{15B3B7C2-6FAB-4551-B8A4-3A1B4062B321}">
+											<ChildrenList>
+												<Action Name="" ID="{224051DF-A0EC-4055-BF0B-860431AA1142}" ShortID="61054134">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Fire" ID="{909FB14F-E84F-4787-A790-E9E2B039E823}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Fire_Stop" ID="{C1D32C75-3406-448F-A1F2-86D91E961709}">
+											<ChildrenList>
+												<Action Name="" ID="{AA86467E-8732-4DA2-A555-AFB9F0F1D768}" ShortID="623027149">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Fire" ID="{909FB14F-E84F-4787-A790-E9E2B039E823}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Spawn_Play" ID="{5EDEFC55-E397-4E20-B9B1-00806572FCAB}">
+											<ChildrenList>
+												<Action Name="" ID="{34A8BC11-2626-44AB-B7C0-73DBECEC42E1}" ShortID="816946999">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Spawn" ID="{FCE6727B-D132-4E95-93A5-001957E7A294}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Lava_Play" ID="{DCE6A439-F359-4B91-9AFB-95CE268F88C8}">
+											<ChildrenList>
+												<Action Name="" ID="{FCE6F322-1CD5-4F38-9A04-F1B69FF49785}" ShortID="244094364">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Lava_Stop" ID="{6837B1C2-382C-4D57-9404-E4F9C31D7A32}">
+											<ChildrenList>
+												<Action Name="" ID="{480EF076-4A4A-4C05-8B26-FA8D473CAEEB}" ShortID="721685871">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Ifrit_Pillar_Explosion_Play" ID="{D4109B25-2464-45A7-9159-5462A440BF37}">
+											<ChildrenList>
+												<Action Name="" ID="{54EBBB0E-BE2F-45D6-AA27-16E6C8EBCFFE}" ShortID="183095284">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Explosion" ID="{0142AE89-D7FD-46A4-9450-7B501314A1D6}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Event Name="ER_Ifrit_Hellzone_Rock_Play" ID="{19F16852-29AC-41E9-B73B-D8CDD46F072F}">
+									<ChildrenList>
+										<Action Name="" ID="{032763AF-3425-4113-8F3A-3903269F7EDB}" ShortID="107520399">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Hellzone_Rock" ID="{D2BE6B83-3DFE-49C8-93D5-2E6170294817}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_Hellzone_Spawn_Play" ID="{8CD91A5C-4027-421B-ABB5-829C96069089}">
+									<ChildrenList>
+										<Action Name="" ID="{98950993-723F-4E0E-A679-6D510A25D18C}" ShortID="796619022">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Hellzone_Spawn" ID="{A7C2BFD1-9548-4D76-839B-2C004A92C6A3}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_BreathIn_Charge_Play" ID="{E69B7ADF-8058-4248-9D0B-33CA9EDAFFCA}">
+									<ChildrenList>
+										<Action Name="" ID="{99F07877-C28C-48B7-891A-38D3497D4A63}" ShortID="926508297">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_BreatheIn_Charge" ID="{93A51D56-1D4D-44FA-B139-0BF876D958A1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_BreathIn_Fireball_Play" ID="{4D583C23-C030-4996-AE76-FBEEF49F827F}">
+									<ChildrenList>
+										<Action Name="" ID="{C2C47350-0508-48EB-AC1B-404E1615EC78}" ShortID="965670930">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_BreathIn_Fireball" ID="{8227FE77-B738-4BA8-85B6-A93992371FA9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

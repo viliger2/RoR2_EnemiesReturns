@@ -4,6 +4,7 @@
 		<WorkUnit Name="Default Work Unit" ID="{340A7A4D-E82B-41CD-872B-F11446D437C8}" PersistMode="Standalone">
 			<ChildrenList>
 				<GameParameter Name="Volume_SFX" ID="{87B00483-D07B-46A4-ACC8-C35846E0105C}"/>
+				<GameParameter Name="ER_Ifrit_Pillar_Fire_Volume" ID="{801E9AE7-80B7-4EA3-9707-8F6B8B7D8B06}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
