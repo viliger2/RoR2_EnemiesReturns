@@ -1249,7 +1249,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var impactExplosion = clonedEffect.GetComponent<ProjectileImpactExplosion>();
             impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             impactExplosion.blastRadius = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value;
-            impactExplosion.blastDamageCoefficient = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value;
+            impactExplosion.blastDamageCoefficient = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionDamage.Value;
             impactExplosion.blastProcCoefficient = 1f;
             impactExplosion.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             impactExplosion.canRejectForce = true;
