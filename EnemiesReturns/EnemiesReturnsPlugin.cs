@@ -22,6 +22,7 @@ using RoR2.Projectile;
 using UnityEngine.Networking;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -72,6 +73,7 @@ namespace EnemiesReturns
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             ColossalKnurlFactory.Hooks();
 			IfritFactory.Hooks();
+			SpawnPillarOnChampionKillFactory.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 		}
@@ -153,7 +155,17 @@ namespace EnemiesReturns
         [ConCommand(commandName = "returns_body_generate_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all EnemiesReturns bodies.")]
 		private static void CCBodyGeneratePortraits(ConCommandArgs args)
 		{
-			RoR2Application.instance.StartCoroutine(GeneratePortraits(args.TryGetArgBool(0) ?? false));
+			var addressable = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/IconGenerator.prefab").WaitForCompletion();
+			if(addressable)
+			{
+				var modelPanel = addressable.GetComponentInChildren<ModelPanel>();
+				if(modelPanel)
+				{
+                    modelPanel.modelPostProcessVolumePrefab = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Cube);
+                }
+            }
+
+            RoR2Application.instance.StartCoroutine(GeneratePortraits(args.TryGetArgBool(0) ?? false));
 		}
 
 		private static IEnumerator GeneratePortraits(bool forceRegeneration)
@@ -168,8 +180,12 @@ namespace EnemiesReturns
 				ambientGroundColor = Color.white
 			};
 			yield return new WaitForEndOfFrame();
+			modelPanel.BuildRenderTexture();
+			yield return new WaitForEndOfFrame();
 			yield return GeneratePortrait(modelPanel, SpitterFactory.SpitterBody);
 			yield return GeneratePortrait(modelPanel, ColossusFactory.ColossusBody);
+			yield return GeneratePortrait(modelPanel, IfritFactory.IfritBody);
+			yield return GeneratePortrait(modelPanel, IfritPillarFactory.Enemy.IfritPillarBody);
 			yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());
 			UnityEngine.Object.Destroy(modelPanel.transform.root.gameObject);
 			Debug.Log("Portrait generation complete.");
@@ -185,6 +201,7 @@ namespace EnemiesReturns
 				{
 					Debug.LogFormat("Generating portrait for {0}", gameObject.name);
 					modelPanel.modelPrefab = gameObject.GetComponent<ModelLocator>()?.modelTransform.gameObject;
+					//modelPanel.modelPostProcessVolumePrefab = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Cube);
 					modelPanel.SetAnglesForCharacterThumbnail(setZoom: true);
 					PrintController printController;
 					if ((object)(printController = modelPanel.modelPrefab?.GetComponentInChildren<PrintController>()) != null)
@@ -196,6 +213,17 @@ namespace EnemiesReturns
 					{
 						num = Mathf.Max(num, temporaryOverlay.duration + 1f);
 					}
+					var particles = modelPanel.modelPrefab.GetComponentsInChildren<ParticleSystem>();
+					foreach(var particle in particles)
+					{
+						UnityEngine.Object.Destroy(particle.gameObject);
+					}
+					var lights = modelPanel.modelPrefab.GetComponentsInChildren<Light>();
+					foreach(var light in lights)
+					{
+						UnityEngine.Object.Destroy(light.gameObject);
+					}
+
 				}
 				catch (Exception message)
 				{

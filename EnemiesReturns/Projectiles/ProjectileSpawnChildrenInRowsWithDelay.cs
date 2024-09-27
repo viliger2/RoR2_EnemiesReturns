@@ -111,16 +111,6 @@ namespace EnemiesReturns.Projectiles
                 newController.procChainMask = projectileController.procChainMask;
                 newController.procCoefficient = projectileController.procCoefficient;
                 newController.Networkowner = projectileController.Networkowner;
-
-                //if(newController.ghostPrefab)
-                //{
-                //    newController.ghostPrefab = UnityEngine.Object.Instantiate(newController.ghostPrefab);
-                //    if (newController.ghostPrefab.TryGetComponent<InvokeDelayedEventOnStart>(out var component))
-                //    {
-                //        component.timer = delay;
-                //        component.enabled = true;
-                //    }
-                //}
             }
 
             var teamFilter = newObject.GetComponent<TeamFilter>();
@@ -137,10 +127,6 @@ namespace EnemiesReturns.Projectiles
                 newDamage.force = projectileDamage.force;
                 newDamage.damageColorIndex = projectileDamage.damageColorIndex;
             }
-
-            //var enabler = newObject.GetComponent<ComponentStateSwitcher>();
-            //enabler.delay = delay;
-            //enabler.enabled = true;
 
             NetworkServer.Spawn(newObject);
         }

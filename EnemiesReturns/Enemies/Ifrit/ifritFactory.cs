@@ -520,8 +520,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             modelPanelParameters.focusPointTransform = focusPoint;
             modelPanelParameters.cameraPositionTransform = cameraPosition;
             modelPanelParameters.modelRotation = new Quaternion(0, 0, 0, 1);
-            modelPanelParameters.minDistance = 15f;
-            modelPanelParameters.maxDistance = 50f;
+            modelPanelParameters.minDistance = 4f;
+            modelPanelParameters.maxDistance = 24f;
             #endregion
 
             #region SkinDefs
@@ -909,8 +909,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             scorchlingPile.transform.parent = fxTransform;
             scorchlingPile.transform.localPosition = Vector3.zero;
             scorchlingPile.transform.localRotation = Quaternion.identity;
-            float scale = 0.5f * (EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value / 9f); // 0.5 fits 9 so scale of it
-            scorchlingPile.transform.localScale = new Vector3(scale, scale, scale);
+            scorchlingPile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 0.5 works, since we attach it to projectile and then it scales of main projectile scaling
 
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
             spawnChildrenComponent.radius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
@@ -950,7 +949,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             networkTransform.allowClientsideCollision = false;
 
             var projectileDamage = gameObject.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType = (DamageTypeCombo)DamageType.IgniteOnHit;
+            projectileDamage.damageType.damageType = DamageType.IgniteOnHit;
             projectileDamage.useDotMaxStacksFromAttacker = false;
 
             gameObject.AddComponent<TeamFilter>();

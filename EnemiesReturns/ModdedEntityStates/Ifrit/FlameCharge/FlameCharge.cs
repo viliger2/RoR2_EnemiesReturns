@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using HG;
 using JetBrains.Annotations;
 using RoR2;
 using System;
@@ -65,6 +66,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private float bulletAttackStopwatch;
 
+        private DamageTrail fireTrail;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -81,6 +84,12 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             SetupChargeAttack(modelTransform, isCrit);
             SpawnEffect();
             SetSprintEffectState(true);
+
+            fireTrail = UnityEngine.GameObject.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/FireTrail"), transform).GetComponent<DamageTrail>();
+            fireTrail.transform.position = characterBody.footPosition;
+            fireTrail.owner = base.gameObject;
+            fireTrail.radius *= characterBody.radius;
+            fireTrail.damagePerSecond = damageStat * 1.5f;
         }
 
         private void SetSprintEffectState(bool active)
@@ -119,12 +128,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             flameAttack.forceVector = Vector3.forward * flameForce;
             flameAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "FlameCharge");
             flameAttack.procCoefficient = flameProcCoef;
-            flameAttack.damageType = (Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic);
+            flameAttack.damageType.damageType = (Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic);
             flameAttack.retriggerTimeout = (1 / flameTickFrequency) * 2;
         }
 
         public override void FixedUpdate()
         {
+            characterBody.outOfCombatStopwatch = 0f;
             Vector3 targetMoveVelocity = Vector3.zero; 
             targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
             base.characterDirection.moveVector = targetMoveVector;
@@ -196,6 +206,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
             DestroyEffect();
             SetSprintEffectState(false);
+            UnityEngine.GameObject.Destroy(fireTrail.gameObject);
+            fireTrail = null;
             base.characterMotor.moveDirection = Vector3.zero;
         }
 

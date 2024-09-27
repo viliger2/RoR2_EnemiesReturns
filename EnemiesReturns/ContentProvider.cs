@@ -10,13 +10,13 @@ using UnityEngine.AddressableAssets;
 using RoR2.Skills;
 using RoR2;
 using EnemiesReturns.Enemies.Spitter;
-//
 using EnemiesReturns.Enemies.Colossus;
 using Rewired.Utils.Classes.Utility;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Enemies.Ifrit;
 using R2API;
+using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 
 namespace EnemiesReturns
 {
@@ -519,7 +519,7 @@ namespace EnemiesReturns
                 #region Ifrit
 
                 #region IfritPylon
-                var ifritPylonFactory = new IfritPylonFactory();
+                var ifritPylonFactory = new IfritPillarFactory();
 
                 var maneMaterial = ifritPylonFactory.CreateManeMaterial();
                 materialLookup.Add(maneMaterial.name, maneMaterial);
@@ -530,26 +530,82 @@ namespace EnemiesReturns
                 ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect = ifritPylonFactory.CreateDeathFallEffect();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect));
 
-                //ModdedEntityStates.Ifrit.Pylon.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExplosionEffect();
-                ModdedEntityStates.Ifrit.Pillar.FireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
-                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.FireExplosion.explosionPrefab));
+                ModdedEntityStates.Ifrit.Pillar.BaseFireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.BaseFireExplosion.explosionPrefab));
 
                 var pylonBody = assets.First(body => body.name == "IfritPylonBody");
-                IfritPylonFactory.IfritPylonBody = ifritPylonFactory.CreateBody(pylonBody, acdLookup, materialLookup);
-                bodyList.Add(IfritPylonFactory.IfritPylonBody);
-
                 var pylonMaster = assets.First(master => master.name == "IfritPylonMaster");
-                IfritPylonFactory.IfritPylonMaster = ifritPylonFactory.CreateMaster(pylonMaster, IfritPylonFactory.IfritPylonBody);
-                masterList.Add(IfritPylonFactory.IfritPylonMaster);
 
-                IfritPylonFactory.scIfritPylon = ifritPylonFactory.CreateCard("cscIfritPylon", IfritPylonFactory.IfritPylonMaster);
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.ChargingExplosion));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.FireExplosion));
+                #region Enemy
+                var pillarEnemyBodyInformation = new IfritPillarFactory.BodyInformation
+                {
+                    bodyPrefab = pylonBody.InstantiateClone("IfritPylonEnemyBody", false),
+                    sprite = iconLookup["texIconPillarEnemy"], // TODO
+                    baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value,
+                    levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value,
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion)),
+                    enableLineRenderer = true,
+                    explosionRadius = EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value
+                };
+
+                IfritPillarFactory.Enemy.IfritPillarBody = ifritPylonFactory.CreateBody(pillarEnemyBodyInformation, acdLookup);
+                bodyList.Add(IfritPillarFactory.Enemy.IfritPillarBody);
+
+                IfritPillarFactory.Enemy.IfritPillarMaster = ifritPylonFactory.CreateMaster(pylonMaster.InstantiateClone("IfritPylonEnemyMaster", false), IfritPillarFactory.Enemy.IfritPillarBody);
+                masterList.Add(IfritPillarFactory.Enemy.IfritPillarMaster);
+
+                IfritPillarFactory.Enemy.scIfritPillar = ifritPylonFactory.CreateCard("cscIfritEnemyPillar", IfritPillarFactory.Enemy.IfritPillarMaster);
+                #endregion
+
+                #region Player
+                var pillarPlayerBodyInformation = new IfritPillarFactory.BodyInformation
+                {
+                    bodyPrefab = pylonBody.InstantiateClone("IfritPylonPlayerBody", false),
+                    sprite = iconLookup["texIconPillarAlly"], // TODO
+                    baseDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyBaseDamage.Value,
+                    levelDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyLevelDamage.Value,
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion)),
+                    enableLineRenderer = false,
+                    explosionRadius = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillRadius.Value
+                };
+
+                IfritPillarFactory.Player.IfritPillarBody = ifritPylonFactory.CreateBody(pillarPlayerBodyInformation, acdLookup);
+                bodyList.Add(IfritPillarFactory.Player.IfritPillarBody);
+
+                IfritPillarFactory.Player.IfritPillarMaster = ifritPylonFactory.CreateMaster(pylonMaster.InstantiateClone("IfritPylonPlayerMaster", false), IfritPillarFactory.Player.IfritPillarBody);
+                masterList.Add(IfritPillarFactory.Player.IfritPillarMaster);
+
+                IfritPillarFactory.Player.scIfritPillar = ifritPylonFactory.CreateCard("cscIfritPlayerPillar", IfritPillarFactory.Player.IfritPillarMaster);
+                #endregion
+
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.FireExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion));
+                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Player.FireExplosion));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.DeathState));
                 #endregion
 
                 var ifritFactory = new IfritFactory();
+
+                #region SpawnPillarOnChampionKill
+                var pillarItemFactory = new SpawnPillarOnChampionKillFactory();
+
+                SpawnPillarOnChampionKillFactory.itemDef = pillarItemFactory.CreateItem(assets.First(item => item.name == "IfritItem"), iconLookup["texIconIfritItem"]); // TODO
+                itemList.Add(SpawnPillarOnChampionKillFactory.itemDef);
+
+                var dtIfrit = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
+                (dtIfrit as ScriptableObject).name = "epdtIfrit";
+                dtIfrit.canDropBeReplaced = true;
+                dtIfrit.pickupEntries = new ExplicitPickupDropTable.PickupDefEntry[]
+                {
+                    new ExplicitPickupDropTable.PickupDefEntry
+                    {
+                        pickupWeight = 1,
+                        pickupDef = SpawnPillarOnChampionKillFactory.itemDef
+                    }
+                };
+                #endregion
 
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
                 ifritManePrefab.GetComponent<Renderer>().material = maneMaterial;
@@ -586,7 +642,7 @@ namespace EnemiesReturns
                 unlockablesList.Add(ifritLog);
 
                 var ifritBody = assets.First(body => body.name == "IfritBody");
-                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, null, ifritLog, materialLookup, null);
+                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, materialLookup, dtIfrit); // TODO: sprite
                 bodyList.Add(IfritFactory.IfritBody);
 
                 var ifritMaster = assets.First(master => master.name == "IfritMaster");

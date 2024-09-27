@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
-    public class ChargingExplosion : BaseState
+    public abstract class BaseChargingExplosion : BaseState
     {
-        public static float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
+        //public static float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
+        public abstract float duration { get; }
 
-        public static Vector3 fireballFinishScale = new Vector3(4f, 4f, 4f);
+        public static Vector3 fireballFinishScale = new Vector3(2.5f, 2.5f, 2.5f);
         public static float pillarFinishYScale = 10f;
 
         private Transform fireball;
@@ -32,14 +33,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             }
 
             pillar = childLocator.FindChild("GlowPillar");
-            if(pillar)
-            {
-                Util.PlaySound("ER_Ifrit_Pillar_Lava_Play", pillar.gameObject);
-                pillar.gameObject.SetActive(true);
-            }
             //if(pillar)
             //{
-            //    pillarStartPosition = pillar.localPosition;
+            //    Util.PlaySound("ER_Ifrit_Pillar_Lava_Play", pillar.gameObject);
+            //    pillar.gameObject.SetActive(true);
             //}
         }
 
@@ -64,19 +61,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             {
                 Util.PlaySound("ER_Ifrit_Pillar_Fire_Stop", fireball.gameObject);
             }
-            if (pillar)
-            {
-                Util.PlaySound("ER_Ifrit_Pillar_Lava_Stop", pillar.gameObject);
-            }
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if(fixedAge >= duration && base.isAuthority)
-            {
-                outer.SetNextState(new FireExplosion());
-            }
+            //if (pillar)
+            //{
+            //    Util.PlaySound("ER_Ifrit_Pillar_Lava_Stop", pillar.gameObject);
+            //}
         }
     }
 }

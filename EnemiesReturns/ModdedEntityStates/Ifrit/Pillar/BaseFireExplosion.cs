@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2.CharacterAI;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,23 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
-    public class FireExplosion : BaseState
+    public abstract class BaseFireExplosion : BaseState
     {
         public static float duration = 0.1f; // just to be safe
 
-        public static float damage => EnemiesReturnsConfiguration.Ifrit.PillarExplosionDamage.Value;
+        public abstract float damage { get; }
 
-        public static float radius => EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value;
+        public abstract float radius { get; }
 
-        public static float force => EnemiesReturnsConfiguration.Ifrit.PillarExplosionForce.Value;
+        public abstract float force { get; }
+
+        public abstract bool ignoresLoS { get; }
+
+        public abstract float damagePerStack { get; }
 
         public static GameObject explosionPrefab;
+
+        private int stackCount = 1;
 
         private BlastAttack blastAttack;
 
@@ -33,25 +40,35 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             {
                 if(explosionPrefab)
                 {
-                    EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f * (radius / 30f) }, true); // TODO
+                    EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f * (radius / 30f) }, true);
+                }
+
+                if(characterBody.master)
+                {
+                    var aiOwnership = characterBody.master.gameObject.GetComponent<AIOwnership>();
+                    if(aiOwnership && aiOwnership.ownerMaster)
+                    {
+                        stackCount = aiOwnership.ownerMaster.inventory.GetItemCount(Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.itemDef);
+                    }
                 }
 
                 blastAttack = new BlastAttack();
                 blastAttack.attacker = base.gameObject;
                 blastAttack.radius = radius;
-                blastAttack.procCoefficient = 0f;
+                blastAttack.procCoefficient = 1f;
                 blastAttack.position = transform.position;
                 blastAttack.crit = false;
-                blastAttack.baseDamage = damage * damageStat;
+                blastAttack.baseDamage = damageStat * (damage + damagePerStack * (stackCount - 1));
                 blastAttack.canRejectForce = false;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.None;
                 blastAttack.baseForce = force;
+                blastAttack.losType = ignoresLoS ? BlastAttack.LoSType.None : BlastAttack.LoSType.NearestHit;
                 blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
-                blastAttack.damageType = DamageType.IgniteOnHit;
+                blastAttack.damageType.damageType = DamageType.IgniteOnHit;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.Fire();
             }
-            if(fireball)
+            if (fireball)
             {
                 fireball.gameObject.SetActive(false);
             }
@@ -71,13 +88,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (NetworkServer.active)
+            if (NetworkServer.active && fixedAge >= duration)
             {
-                //blastAttack.Fire();
-                if (fixedAge >= duration)
-                {
-                    base.healthComponent.Suicide();
-                }
+                base.healthComponent.Suicide();
             }
         }
     }

@@ -44,7 +44,7 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: PillarDeath
-      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|Fall
+      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|IfritP
       internalID: 7084491525036612708
       firstFrame: 0
       lastFrame: 70
@@ -73,7 +73,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: PillarIdle
-      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|Idle
+      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|If
       internalID: 2857904417784325420
       firstFrame: 0
       lastFrame: 20
@@ -102,7 +102,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: PillarSpawn
-      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|Spawn
+      takeName: IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|IfritPillarArmture|If.001
       internalID: 9193482721280283121
       firstFrame: 0
       lastFrame: 41

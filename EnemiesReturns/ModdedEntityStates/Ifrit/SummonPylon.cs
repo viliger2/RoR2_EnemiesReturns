@@ -17,11 +17,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         public static GameObject screamPrefab;
 
-        public static SpawnCard scPylon => Enemies.Ifrit.IfritPylonFactory.scIfritPylon;
+        public static SpawnCard scPylon => Enemies.Ifrit.IfritPillarFactory.Enemy.scIfritPillar;
 
         public static float minSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMinSpawnDistance.Value;
 
         public static float maxSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMaxSpawnDistance.Value;
+
+        public static int pillarCount => EnemiesReturnsConfiguration.Ifrit.PillarMaxInstances.Value;
 
         private float duration;
 
@@ -50,7 +52,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                 hasSummoned = true;
                 if (NetworkServer.active)
                 {
-                    SummonPillar();
+                    for (int i = 0; i < pillarCount; i++)
+                    {
+                        SummonPillar();
+                    }
                 }
                 if(muzzleMouth)
                 {
