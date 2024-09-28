@@ -23,7 +23,25 @@
 
 		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Colossal Fist",
 		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Chance on hit to summon a giant fist.",
-		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsDamage>{0}</style> chance on hit to summon <style=cIsDamage>hand of Colossus</style> that will deal <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> TOTAL damage.",
-		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Destination: 6542, Fractured Rock, Unknown\n\nDate: 7/22/2056\n\nThere is obviously some essence left in this hunk; the KNURL is still attracting nearby earth and dirt, trying to reconstruct itself. Perhaps I can use this to my advantage; a self-repairing chunk of earth could serve as a good shield."
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsDamage>{0}</style> chance on hit to summon a <style=cIsDamage>Colossal Fist</style> that deals <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> TOTAL damage.",
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Destination: 6542, Fractured Rock, Unknown\n\nDate: 7/22/2056\n\nThere is obviously some essence left in this hunk; the Knurl is still attracting nearby earth and dirt, trying to reconstruct itself. Perhaps I can use this to my advantage; a self-repairing chunk of earth could serve as a good shield.",
+
+		"ENEMIES_RETURNS_IFRIT_BODY_NAME": "Ifrit",
+		"ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE": "Scion of the Infernal King",
+		"ENEMIES_RETURNS_IFRIT_BODY_LORE": "Field Notes:\n\nCould this be..? Tales I never believed recounted a horrible beast, fire incarnate. Scourder of another solar system, the Ifrit nearly wiped out an entire space colony before being chained and launched into the great black void. Supposedly the flaming jets that accompanied his roars could be seen for days as he drifted outwards.\n\nGreat towers, what must have been the containment structure, prevented his escape even on this forsaken plane. The only explanation I have for my surviving this legendary encounter is his many years drifting in space and having been fettered in this unforgiving, frozen wasteland.",
+		"ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_NAME": "Summon Pillars",
+		"ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_DESCRIPTION": "Summons multiple pillars in nearby locations. Pillars take some time to charge and once fully charged deal devastating damage to surrounding enemies and burning them.",
+		"ENEMIES_RETURNS_IFRIT_HELLZONE_NAME": "Hellzone",
+		"ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION": "Fires a giant fireball that leaves a crater on impact. After a few moments molten rocks shoot into the sky that burn enemies.",
+		"ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME": "Flame Charge",
+		"ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION": "Charges forward, burning everything in its path, leaving burn trail behind.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT": "Monster Log: Ifrit",
+
+		"ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "Fiery Pillar",
+
+		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Infernal Lantern",
+		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "Upon large or elite monster kill summon a fiery pillar.",
+		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius. <style=cIsDamage>Killing elite monsters</style> has <style=cIsDamage>{4}</style> chance to cause the same effect.",
+		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destination: Lot Z, Auction House, Unknown\n\nDate: 4/10/2056\n\nWhen I finally took the beast down, I tore the lantern off the tower it summoned, hoping for it to help on this journey. I've felt a strange power since obtaining it... while I feel stronger, I feel like I am no longer alone."
 	}
 }
