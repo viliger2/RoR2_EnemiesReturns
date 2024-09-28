@@ -210,24 +210,14 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 #region LineRenderer
                 var linerenderer = mdlPillar.GetComponentInChildren<LineRenderer>();
-
-                var lineMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Captain/matCaptainAirstrikeAltLaser.mat").WaitForCompletion());
-                lineMaterial.name = "matIfritPylonLine";
-                lineMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampCaptainAirstrike.png").WaitForCompletion());
-                lineMaterial.SetColor("_TintColor", new Color(255f / 255f, 53f / 255f, 0f));
-                lineMaterial.SetFloat("_Boost", 7.315614f);
-                lineMaterial.SetFloat("_AlphaBoost", 5.603551f);
-                lineMaterial.SetFloat("_AlphaBias", 0f);
-                lineMaterial.SetFloat("_DistortionStrength", 1f);
-                lineMaterial.SetVector("_CutoffScroll", new Vector4(5f, 0f, 0f, 0f));
-                ContentProvider.MaterialCache.Add(lineMaterial);
-                linerenderer.material = lineMaterial;
+                linerenderer.material = ContentProvider.GetOrCreateMaterial("matIfritPylonLine", CreateLineRendererMaterial);
                 #endregion
 
                 #region LineRendererHelper
                 mdlPillar.AddComponent<DeployableLineRendererToOwner>().childOriginName = "LineOriginPoint";
                 #endregion
-            } else
+            }
+            else
             {
                 var linerenderer = mdlPillar.GetComponentInChildren<LineRenderer>();
                 UnityEngine.GameObject.Destroy(linerenderer);
@@ -259,15 +249,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region LanternFire
             var lanternFire = bodyPrefab.transform.Find("ModelBase/IfritPillar/IfritPillarArmture/MainPillar/Chain1.1/Lantern/Fire");
-            var material = ContentProvider.MaterialCache.Find(item => item.name == "matIfritLanternFire");
-            if(!material)
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRFireStaticRedLArge.mat").WaitForCompletion());
-                material.name = "matIfritLanternFire";
-                material.SetFloat("_DepthOffset", -10f);
-                ContentProvider.MaterialCache.Add(material);
-            }
-            lanternFire.gameObject.GetComponent<Renderer>().material = material;
+            lanternFire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial);;
             #endregion
 
             #region ModelPanelParameters
@@ -331,6 +313,30 @@ namespace EnemiesReturns.Enemies.Ifrit
             return bodyPrefab;
         }
 
+        public Material CreateLanternFireMaterial()
+        {
+            Material material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRFireStaticRedLArge.mat").WaitForCompletion());
+            material.name = "matIfritLanternFire";
+            material.SetFloat("_DepthOffset", -10f);
+
+            return material;
+        }
+
+        public Material CreateLineRendererMaterial()
+        {
+            var lineMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Captain/matCaptainAirstrikeAltLaser.mat").WaitForCompletion());
+            lineMaterial.name = "matIfritPylonLine";
+            lineMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampCaptainAirstrike.png").WaitForCompletion());
+            lineMaterial.SetColor("_TintColor", new Color(255f / 255f, 53f / 255f, 0f));
+            lineMaterial.SetFloat("_Boost", 7.315614f);
+            lineMaterial.SetFloat("_AlphaBoost", 5.603551f);
+            lineMaterial.SetFloat("_AlphaBias", 0f);
+            lineMaterial.SetFloat("_DistortionStrength", 1f);
+            lineMaterial.SetVector("_CutoffScroll", new Vector4(5f, 0f, 0f, 0f));
+
+            return lineMaterial;
+        }
+
         public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
         {
             #region NetworkIdentity
@@ -386,16 +392,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             masterPrefab.RegisterNetworkPrefab();
 
             return masterPrefab;
-        }
-
-        public Material CreateManeMaterial()
-        {
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/GreaterWisp/matGreaterWispFire.mat").WaitForCompletion());
-            material.name = "matIfritManeFire";
-            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
-            ContentProvider.MaterialCache.Add(material);
-
-            return material;
         }
 
         public GameObject CreateExplosionEffect()

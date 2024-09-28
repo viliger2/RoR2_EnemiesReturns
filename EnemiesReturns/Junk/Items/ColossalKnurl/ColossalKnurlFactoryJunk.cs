@@ -29,10 +29,7 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
 
             var renderer = clonedObject.transform.Find("ModelBase/mdlGolem/golem").GetComponent<Renderer>();
 
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Golem/matGolem.mat").WaitForCompletion());
-            material.name = "matGolemAlly";
-            material.SetColor("_Color", new Color(0.92f, 0.92f, 1f)); // slightly blue
-            renderer.material = material;
+            renderer.material = ContentProvider.GetOrCreateMaterial("matGolemAlly", CreateGolemAllyMaterial);
 
             var mdlGolem = clonedObject.transform.Find("ModelBase/mdlGolem").gameObject;
 
@@ -42,17 +39,25 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
                 new CharacterModel.RendererInfo()
                 {
                     renderer = renderer,
-                    defaultMaterial = material,
+                    defaultMaterial = renderer.material,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false,
                     hideOnDeath = false
                 }
             };
-            ContentProvider.MaterialCache.Add(material);
 
             UnityEngine.Object.DestroyImmediate(mdlGolem.GetComponent<ModelSkinController>());
 
             return clonedObject;
+        }
+
+        private Material CreateGolemAllyMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Golem/matGolem.mat").WaitForCompletion());
+            material.name = "matGolemAlly";
+            material.SetColor("_Color", new Color(0.92f, 0.92f, 1f)); // slightly blue
+
+            return material;
         }
 
         // maybe reogranize AISkillDrivers

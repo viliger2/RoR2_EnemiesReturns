@@ -63,7 +63,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public static DeployableSlot PylonDeployable;
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> materialLookup, ExplicitPickupDropTable droptable)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
@@ -551,9 +551,10 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region FixFireShader
             var particles = mdlIfrit.gameObject.GetComponentsInChildren<ParticleSystem>();
-            foreach(var particleComponent in particles)
+            var material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", CreateManeFiresMaterial);
+            foreach (var particleComponent in particles)
             {
-                particleComponent.GetComponent<Renderer>().material = materialLookup["matIfritManeFire"];
+                particleComponent.GetComponent<Renderer>().material = material;
             }
             #endregion
 
@@ -1008,12 +1009,11 @@ namespace EnemiesReturns.Enemies.Ifrit
             return gameObject;
         }
 
-        public Material CreateManeMaterial()
+        public Material CreateManeFiresMaterial()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/GreaterWisp/matGreaterWispFire.mat").WaitForCompletion());
             material.name = "matIfritManeFire";
             material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
-            ContentProvider.MaterialCache.Add(material);
 
             return material;
         }

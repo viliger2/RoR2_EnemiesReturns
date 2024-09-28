@@ -47,9 +47,7 @@ namespace EnemiesReturns
             {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" }
         };
 
-        public static List<Material> MaterialCache = new List<Material>(); //apparently you need it because reasons?
-
-        public static List<Texture2D> TextureCache = new List<Texture2D>();
+        public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?
 
         public struct MonsterCategories
         {
@@ -92,8 +90,6 @@ namespace EnemiesReturns
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
-            Dictionary<string, Material> materialLookup = new Dictionary<string, Material>();
-
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
                 Stopwatch stopwatch = new Stopwatch();
@@ -105,21 +101,16 @@ namespace EnemiesReturns
                 {
                     foreach (Material material in materials)
                     {
-                        materialLookup.Add(material.name, material);
-
-                        if (!material.shader.name.StartsWith("Stubbed")) { continue; }
-
                         var replacementShader = Addressables.LoadAssetAsync<Shader>(ShaderLookup[material.shader.name.ToLower()]).WaitForCompletion();
-                        var oldName = material.shader.name.ToLower();
                         if (replacementShader)
                         {
                             material.shader = replacementShader;
-                            MaterialCache.Add(material);
                         }
                         else
                         {
-                            Log.Warning("Couldn't find replacement shader for " + material.shader.name.ToLower());
+                            Log.Info("Couldn't find replacement shader for " + material.shader.name.ToLower());
                         }
+                        MaterialCache.Add(material.name, material);
                     }
                 }
                 stopwatch.Stop();
@@ -147,8 +138,6 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
             {
                 acdLookup = assets.ToDictionary(item => item.name);
-                var acdLaserBarrage = assets.First(acd => acd.name == "LaserBarrageLightIntencity");
-                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLaserBarrage.curve;
             }));
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
@@ -210,7 +199,7 @@ namespace EnemiesReturns
                 sfList.Add(SpitterFactory.SkillFamilies.Special);
 
                 var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog, materialLookup);
+                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog);
                 bodyList.Add(SpitterFactory.SpitterBody);
 
                 var spitterMaster = assets.First(master => master.name == "SpitterMaster");
@@ -358,6 +347,8 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.SpawnState.burrowPrefab = spawnEffect;
                 effectsList.Add(new EffectDef(spawnEffect));
 
+                ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLookup["LaserBarrageLightIntencity"].curve;
+
                 var colossusLog = Utils.CreateUnlockableDef("Logs.ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
                 unlockablesList.Add(colossusLog);
 
@@ -383,7 +374,7 @@ namespace EnemiesReturns
                 sfList.Add(ColossusFactory.SkillFamilies.Special);
 
                 var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, materialLookup, dtColossus);
+                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, dtColossus);
                 bodyList.Add(ColossusFactory.ColossusBody);
 
                 var colossusMaster = assets.First(master => master.name == "ColossusMaster");
@@ -540,7 +531,7 @@ namespace EnemiesReturns
                 var pillarEnemyBodyInformation = new IfritPillarFactory.BodyInformation
                 {
                     bodyPrefab = pylonBody.InstantiateClone("IfritPylonEnemyBody", false),
-                    sprite = iconLookup["texIconPillarEnemy"], // TODO
+                    sprite = iconLookup["texIconPillarEnemy"],
                     baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value,
                     levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value,
                     mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion)),
@@ -561,7 +552,7 @@ namespace EnemiesReturns
                 var pillarPlayerBodyInformation = new IfritPillarFactory.BodyInformation
                 {
                     bodyPrefab = pylonBody.InstantiateClone("IfritPylonPlayerBody", false),
-                    sprite = iconLookup["texIconPillarAlly"], // TODO
+                    sprite = iconLookup["texIconPillarAlly"],
                     baseDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyBaseDamage.Value,
                     levelDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyLevelDamage.Value,
                     mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion)),
@@ -608,7 +599,7 @@ namespace EnemiesReturns
                 #endregion
 
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
-                ifritManePrefab.GetComponent<Renderer>().material = maneMaterial;
+                ifritManePrefab.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", ifritFactory.CreateManeFiresMaterial);
 
                 ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritFactory.CreateBreathParticle();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
@@ -642,7 +633,7 @@ namespace EnemiesReturns
                 unlockablesList.Add(ifritLog);
 
                 var ifritBody = assets.First(body => body.name == "IfritBody");
-                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, materialLookup, dtIfrit); // TODO: sprite
+                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, dtIfrit); // TODO: sprite
                 bodyList.Add(IfritFactory.IfritBody);
 
                 var ifritMaster = assets.First(master => master.name == "IfritMaster");
@@ -676,9 +667,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
-
-
-
+                }
                 #endregion
 
                 _contentPack.bodyPrefabs.Add(bodyList.ToArray());
@@ -750,6 +739,15 @@ namespace EnemiesReturns
             networkSoundEventDef.eventName = eventName;
 
             return networkSoundEventDef;
+        }
+
+        public static Material GetOrCreateMaterial(string materialName, Func<Material> materialCreateFunc)
+        {
+            if(!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
+            {
+                material = materialCreateFunc();
+            }
+            return material;
         }
 
         private static void LoadSoundBanks(string soundbanksFolderPath)

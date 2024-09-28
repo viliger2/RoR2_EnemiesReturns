@@ -64,7 +64,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public static GameObject SpitterMaster;
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter");
@@ -531,19 +531,19 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matSpitterLakes"],
+                    material = ContentProvider.MaterialCache["matSpitterLakes"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = gumsRenderer,
-                    material = skinsLookup["matSpitterGutsLakes"],
+                    material = ContentProvider.MaterialCache["matSpitterGutsLakes"],
                     ignoreOverlays = true
                 },
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = skinsLookup["matSpitterLakes"],
+                    material = ContentProvider.MaterialCache["matSpitterLakes"],
                     ignoreOverlays = true
                 }
             };
@@ -554,19 +554,19 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matSpitterSulfur"],
+                    material = ContentProvider.MaterialCache["matSpitterSulfur"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = gumsRenderer,
-                    material = skinsLookup["matSpitterGutsSulfur"],
+                    material = ContentProvider.MaterialCache["matSpitterGutsSulfur"],
                     ignoreOverlays = true
                 },
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = skinsLookup["matSpitterSulfur"],
+                    material = ContentProvider.MaterialCache["matSpitterSulfur"],
                     ignoreOverlays = true
                 }
             };
@@ -577,19 +577,19 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matSpitterDepths"],
+                    material = ContentProvider.MaterialCache["matSpitterDepths"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = gumsRenderer,
-                    material = skinsLookup["matSpitterGutsDepths"],
+                    material = ContentProvider.MaterialCache["matSpitterGutsDepths"],
                     ignoreOverlays = true
                 },
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = skinsLookup["matSpitterDepths"],
+                    material = ContentProvider.MaterialCache["matSpitterDepths"],
                     ignoreOverlays = true
                 }
 };
@@ -1021,7 +1021,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var decal = child.GetComponentInChildren<Decal>();
             if (decal)
             {
-                decal.Material = SetupDoTZoneDecalMaterial();
+                decal.Material = ContentProvider.GetOrCreateMaterial("matSpitterAcidDecal", SetupDoTZoneDecalMaterial);
             }
 
             child.transform.localScale = new Vector3(value, value, value);
@@ -1044,7 +1044,7 @@ namespace EnemiesReturns.Enemies.Spitter
             var decal = child.GetComponentInChildren<Decal>();
             if (decal)
             {
-                decal.Material = SetupDoTZoneDecalMaterial();
+                decal.Material = ContentProvider.GetOrCreateMaterial("matSpitterAcidDecal", SetupDoTZoneDecalMaterial);
             }
 
             child.transform.localScale = new Vector3(value, value, value);
@@ -1061,33 +1061,28 @@ namespace EnemiesReturns.Enemies.Spitter
                 var renderer = particle.gameObject.GetComponent<Renderer>();
                 if (renderer)
                 {
-                    Material newMaterial = ContentProvider.MaterialCache.Find(item => item.name == "matSpitterSpit");
-                    if (newMaterial == default(Material))
-                    {
-                        newMaterial = UnityEngine.Object.Instantiate(renderer.material);
-                        newMaterial.name = "matSpitterSpit";
-                        newMaterial.SetColor("_TintColor", new Color(1f, 0.1764f, 0f));
-                        ContentProvider.MaterialCache.Add(newMaterial); // most likely need it because it will get destroyed otherwise
-                    }
-
-                    renderer.material = newMaterial;
+                    renderer.material = ContentProvider.GetOrCreateMaterial("matSpitterSpit", CreateRecoloredSpitMaterial);
                 }
             }
 
             return projectileGhost;
 
         }
-        
-        private Material SetupDoTZoneDecalMaterial()
+
+        public Material CreateRecoloredSpitMaterial()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matSpitterAcidDecal");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
-                material.name = "matSpitterAcidDecal";
-                material.SetColor("_Color", new Color(1f, 140f / 255f, 0f));
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleSpitLarge.mat").WaitForCompletion());
+            newMaterial.name = "matSpitterSpit";
+            newMaterial.SetColor("_TintColor", new Color(1f, 0.1764f, 0f));
+
+            return newMaterial;
+        }
+
+        public Material SetupDoTZoneDecalMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
+            material.name = "matSpitterAcidDecal";
+            material.SetColor("_Color", new Color(1f, 140f / 255f, 0f));
 
             return material;
         }

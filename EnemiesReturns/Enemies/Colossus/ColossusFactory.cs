@@ -87,7 +87,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public static GameObject ColossusMaster;
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, Material> skinsLookup, ExplicitPickupDropTable droptable)
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
@@ -491,8 +491,8 @@ namespace EnemiesReturns.Enemies.Colossus
             // the only way to fix vertex colors not working is to put model with
             // vertex color preview material in the bundle and then swap material here
             // this is the most retarded, asinine bullshit yet with this game
-            modelRenderer.material = skinsLookup["matColossus"];
-            headRenderer.material = skinsLookup["matColossus"];
+            modelRenderer.material = ContentProvider.MaterialCache["matColossus"];
+            headRenderer.material = ContentProvider.MaterialCache["matColossus"];
 
             var characterModel = mdlColossus.AddComponent<CharacterModel>();
             characterModel.body = characterBody;
@@ -586,19 +586,19 @@ namespace EnemiesReturns.Enemies.Colossus
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matColossusSnowy"],
+                    material = ContentProvider.MaterialCache["matColossusSnowy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = headRenderer,
-                    material = skinsLookup["matColossusSnowy"],
+                    material = ContentProvider.MaterialCache["matColossusSnowy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = eyeRenderer,
-                    material = skinsLookup["matColossusEye"],
+                    material = ContentProvider.MaterialCache["matColossusEye"],
                     ignoreOverlays = true
                 }
             };
@@ -609,19 +609,19 @@ namespace EnemiesReturns.Enemies.Colossus
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matColossusSandy"],
+                    material = ContentProvider.MaterialCache["matColossusSandy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = headRenderer,
-                    material = skinsLookup["matColossusSandy"],
+                    material = ContentProvider.MaterialCache["matColossusSandy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = eyeRenderer,
-                    material = skinsLookup["matColossusEye"],
+                    material = ContentProvider.MaterialCache["matColossusEye"],
                     ignoreOverlays = true
                 }
             };
@@ -632,19 +632,19 @@ namespace EnemiesReturns.Enemies.Colossus
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matColossusGrassy"],
+                    material = ContentProvider.MaterialCache["matColossusGrassy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = headRenderer,
-                    material = skinsLookup["matColossusGrassy"],
+                    material = ContentProvider.MaterialCache["matColossusGrassy"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = eyeRenderer,
-                    material = skinsLookup["matColossusEye"],
+                    material = ContentProvider.MaterialCache["matColossusEye"],
                     ignoreOverlays = true
                 }
 };
@@ -655,19 +655,19 @@ namespace EnemiesReturns.Enemies.Colossus
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matColossusSkyMeadow"],
+                    material = ContentProvider.MaterialCache["matColossusSkyMeadow"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = headRenderer,
-                    material = skinsLookup["matColossusSkyMeadow"],
+                    material = ContentProvider.MaterialCache["matColossusSkyMeadow"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = eyeRenderer,
-                    material = skinsLookup["matColossusEye"],
+                    material = ContentProvider.MaterialCache["matColossusEye"],
                     ignoreOverlays = true
                 }
 };
@@ -678,19 +678,19 @@ namespace EnemiesReturns.Enemies.Colossus
                 new RenderInfo
                 {
                     renderer = modelRenderer,
-                    material = skinsLookup["matColossusSMBBody"],
+                    material = ContentProvider.MaterialCache["matColossusSMBBody"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = headRenderer,
-                    material = skinsLookup["matColossusSMBHead"],
+                    material = ContentProvider.MaterialCache["matColossusSMBHead"],
                     ignoreOverlays = false
                 },
                 new RenderInfo
                 {
                     renderer = eyeRenderer,
-                    material = skinsLookup["matColossusEye"],
+                    material = ContentProvider.MaterialCache["matColossusEye"],
                     ignoreOverlays = true
                 }
 };
@@ -1296,52 +1296,39 @@ namespace EnemiesReturns.Enemies.Colossus
 
             UnityEngine.Object.DestroyImmediate(shardEffect.GetComponent<ProjectileGhostController>());
 
-            shardEffect.transform.Find("Mesh").GetComponent<MeshRenderer>().material = SetupLaserBarrageShardMeshMaterial();
-            shardEffect.transform.Find("Trail").GetComponent<TrailRenderer>().material = SetupLaserBarrageShardTrailMaterial();
-            shardEffect.transform.Find("PulseGlow").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupLaserBarrageShardPulseMaterial();
+            shardEffect.transform.Find("Mesh").GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matColossusLaserBarrageShardMesh", CreateLaserBarrageShardMeshMaterial);
+            shardEffect.transform.Find("Trail").GetComponent<TrailRenderer>().material = ContentProvider.GetOrCreateMaterial("matColossusLaserBarrageShardTrail", CreateLaserBarrageShardTrailMaterial);
+            shardEffect.transform.Find("PulseGlow").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matColossusLaserBarrageShardPulse", CreateLaserBarrageShardPulseMaterial);
 
             return shardEffect;
         }
 
-        private Material SetupLaserBarrageShardMeshMaterial()
+        public Material CreateLaserBarrageShardMeshMaterial()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardMesh");
-            if (material == default(Material))
-            {
-                // TODO: maybe do better
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/bazaar/matLunarInfection.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardMesh";
-                material.SetColor("_Color", new Color(181/255, 0, 0));
-                material.SetTexture("_MainTex", Texture2D.redTexture);
-                material.SetColor("_EmColor", new Color(255 / 255, 115 / 255, 115 / 255));
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/bazaar/matLunarInfection.mat").WaitForCompletion());
+            material.name = "matColossusLaserBarrageShardMesh";
+            material.SetColor("_Color", new Color(181/255, 0, 0));
+            material.SetTexture("_MainTex", Texture2D.redTexture);
+            material.SetColor("_EmColor", new Color(255 / 255, 115 / 255, 115 / 255));
+
             return material;
         }
 
-        private Material SetupLaserBarrageShardTrailMaterial()
+        public Material CreateLaserBarrageShardTrailMaterial()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardTrail");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matLunarShardTrail.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardTrail";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matLunarShardTrail.mat").WaitForCompletion());
+            material.name = "matColossusLaserBarrageShardTrail";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
 
-        private Material SetupLaserBarrageShardPulseMaterial()
+        public Material CreateLaserBarrageShardPulseMaterial()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusLaserBarrageShardPulse");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matGlowItemPickup.mat").WaitForCompletion());
-                material.name = "matColossusLaserBarrageShardPulse";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matGlowItemPickup.mat").WaitForCompletion());
+            material.name = "matColossusLaserBarrageShardPulse";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
 
@@ -1353,11 +1340,11 @@ namespace EnemiesReturns.Enemies.Colossus
             clonedEffect.transform.localScale = new Vector3(radius, radius, clonedEffect.transform.localScale.z);
 
             // coloring book
-            clonedEffect.transform.Find("Mesh, Additive").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder2Material();
-            clonedEffect.transform.Find("Mesh, Additive/Mesh, Transparent").GetComponent<MeshRenderer>().material = SetupSpinBeamCylinder1Material();
-            clonedEffect.transform.Find("Billboards").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard1Material();
-            clonedEffect.transform.Find("SwirlyTrails").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
-            clonedEffect.transform.Find("MuzzleRayParticles").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = SetupSpinBeamBillboard2Material();
+            clonedEffect.transform.Find("Mesh, Additive").GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matColossusSpinBeamCylinder2", CreateSpinBeamCylinder2Material);
+            clonedEffect.transform.Find("Mesh, Additive/Mesh, Transparent").GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matColossusSpinBeamCylinder1", CreateSpinBeamCylinder1Material);
+            clonedEffect.transform.Find("Billboards").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matColossusSpinBeamBillboard1", CreateSpinBeamBillboard1Material);
+            clonedEffect.transform.Find("SwirlyTrails").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matColossusSpinBeamBillboard2", CreateSpinBeamBillboard2Material);
+            clonedEffect.transform.Find("MuzzleRayParticles").GetComponent<ParticleSystem>().GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matColossusSpinBeamBillboard2", CreateSpinBeamBillboard2Material);
 
             clonedEffect.transform.Find("Point Light, Middle").GetComponent<Light>().color = Color.red;
             clonedEffect.transform.Find("Point Light, End").GetComponent<Light>().color = Color.red;
@@ -1365,55 +1352,39 @@ namespace EnemiesReturns.Enemies.Colossus
             return clonedEffect;
         }
 
-        private Material SetupSpinBeamCylinder2Material()
+        public Material CreateSpinBeamCylinder2Material()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder2");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamCylinder2";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());
+            material.name = "matColossusSpinBeamCylinder2";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
         
-        private Material SetupSpinBeamCylinder1Material()
+        public Material CreateSpinBeamCylinder1Material()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamCylinder1");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamCylinder1";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
+            material.name = "matColossusSpinBeamCylinder1";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
 
-        private Material SetupSpinBeamBillboard1Material()
+        public Material CreateSpinBeamBillboard1Material()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard1");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard1.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamBillboard1";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard1.mat").WaitForCompletion());
+            material.name = "matColossusSpinBeamBillboard1";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
 
-        private Material SetupSpinBeamBillboard2Material()
+        public Material CreateSpinBeamBillboard2Material()
         {
-            Material material = ContentProvider.MaterialCache.Find(item => item.name == "matColossusSpinBeamBillboard2");
-            if (material == default(Material))
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
-                material.name = "matColossusSpinBeamBillboard2";
-                material.SetColor("_TintColor", Color.red); // I mean
-                ContentProvider.MaterialCache.Add(material);
-            }
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
+            material.name = "matColossusSpinBeamBillboard2";
+            material.SetColor("_TintColor", Color.red); // I mean
+
             return material;
         }
 

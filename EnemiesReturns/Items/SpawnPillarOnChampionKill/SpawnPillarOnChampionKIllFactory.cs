@@ -15,15 +15,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
         public ItemDef CreateItem(GameObject prefab, Sprite icon)
         {
             var fire = prefab.transform.Find("mdlIfritItem/Fire");
-            var material = ContentProvider.MaterialCache.Find(item => item.name == "matIfritLanternFire");
-            if (!material)
-            {
-                material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRFireStaticRedLArge.mat").WaitForCompletion());
-                material.name = "matIfritLanternFire";
-                material.SetFloat("_DepthOffset", -10f);
-                ContentProvider.MaterialCache.Add(material);
-            }
-            fire.gameObject.GetComponent<Renderer>().material = material;
+            fire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial);
 
             var modelPanelParameters = prefab.AddComponent<ModelPanelParameters>();
             modelPanelParameters.focusPointTransform = prefab.transform.Find("FocusPoint");
@@ -47,6 +39,15 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy };
 
             return itemDef;
+        }
+
+        private Material CreateLanternFireMaterial()
+        {
+            Material material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRFireStaticRedLArge.mat").WaitForCompletion());
+            material.name = "matIfritLanternFire";
+            material.SetFloat("_DepthOffset", -10f);
+
+            return material;
         }
 
         public static void Hooks()
