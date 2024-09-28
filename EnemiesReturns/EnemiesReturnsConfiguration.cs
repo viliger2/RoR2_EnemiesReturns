@@ -14,6 +14,7 @@ namespace EnemiesReturns
 
         public struct Spitter
         {
+            public static ConfigEntry<bool> Enabled;
             public static ConfigEntry<int> DirectorCost;
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
@@ -45,6 +46,7 @@ namespace EnemiesReturns
 
         public struct Colossus
         {
+            public static ConfigEntry<bool> Enabled;
             public static ConfigEntry<int> DirectorCost;
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
@@ -102,6 +104,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> LaserBarrageExplosionDamage;
             public static ConfigEntry<float> LaserBarrageExplosionDelay;
 
+            public static ConfigEntry<bool> ItemEnabled;
             public static ConfigEntry<float> KnurlDamage;
             public static ConfigEntry<float> KnurlDamagePerStack;
             public static ConfigEntry<float> KnurlProcChance;
@@ -122,6 +125,7 @@ namespace EnemiesReturns
 
         public struct Ifrit
         {
+            public static ConfigEntry<bool> Enabled;
             public static ConfigEntry<int> DirectorCost;
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
@@ -173,6 +177,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> PillarMinSpawnDistance;
             public static ConfigEntry<float> PillarMaxSpawnDistance;
 
+            public static ConfigEntry<bool> ItemEnabled;
             public static ConfigEntry<float> SpawnPillarOnChampionKillDamage;
             public static ConfigEntry<float> SpawnPillarOnChampionKillDamagePerStack;
             public static ConfigEntry<float> SpawnPillarOnChampionKillRadius;
@@ -190,6 +195,7 @@ namespace EnemiesReturns
 
             #region Spitter
 
+            Spitter.Enabled = config.Bind("Spitter Director", "Enable Spitter", true, "Enables Spitter.");
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");
@@ -223,6 +229,7 @@ namespace EnemiesReturns
 
             #region Colossus
 
+            Colossus.Enabled = config.Bind("Colossus Director", "Enable Colossus", true, "Enables Colossus.");
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1150, "Director cost of Colossus.");
@@ -281,6 +288,7 @@ namespace EnemiesReturns
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
 
+            Colossus.ItemEnabled = config.Bind("Colossal Fist", "Enable Colossal Fist", true, "Enables Colossal Fist to drop from Colossus and appear in printers.");
             Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 5f, "Colossal Fist' damage");
             Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 5f, "Colossal Fist' damage per stack");
             Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");
@@ -299,6 +307,7 @@ namespace EnemiesReturns
             #endregion
 
             #region Ifrit
+            Ifrit.Enabled = config.Bind("Ifrit Director", "Enable Ifrit", true, "Enables Ifrit.");
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
             Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 2, "Minimum stages players need to complete before monster starts spawning.");
             Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 800, "Director cost of Ifrit.");
@@ -351,6 +360,7 @@ namespace EnemiesReturns
             Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum distance for pillar spawning.");
             Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum distance for pillar spawning.");
 
+            Ifrit.ItemEnabled = config.Bind("ITEM_NAME_REPLACE", "Enable ITEM_NAME_REPLACE", true, "Enables ITEM_NAME_REPLACE to drop from Ifrit and appear in printers.");
             Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Damage", 10f, "ITEM_NAME explosion damage.");
             Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Damage Per Stack", 10f, "ITEM_NAME explosion damage per stack.");
             Ifrit.SpawnPillarOnChampionKillRadius = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Radius", 80f, "ITEM_NAME explosion radius."); ;
