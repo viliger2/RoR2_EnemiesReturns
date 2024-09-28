@@ -1,12 +1,5 @@
 ﻿using R2API;
-using R2API.Utils;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.PrefabAPICompat
 {

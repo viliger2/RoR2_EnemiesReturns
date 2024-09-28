@@ -1,10 +1,7 @@
-﻿using EnemiesReturns.Helpers;
-using RoR2;
+﻿using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -58,12 +55,13 @@ namespace EnemiesReturns.Projectiles
             }
 
             timer += Time.fixedDeltaTime;
-            if(timer >= delayEachRow)
+            if (timer >= delayEachRow)
             {
-                if(currentRow == 0)
+                if (currentRow == 0)
                 {
                     SpawnChild(base.transform.position, childScale);
-                } else
+                }
+                else
                 {
                     float fromCentre = smallRadius * currentRow;
                     var angleCos = (Mathf.Pow(fromCentre, 2f) + Mathf.Pow(fromCentre, 2f) - Mathf.Pow(smallRadius, 2f)) / (2 * fromCentre * fromCentre);
@@ -94,7 +92,7 @@ namespace EnemiesReturns.Projectiles
                 timer -= delayEachRow;
             }
 
-            if(currentRow >= numberOfRows)
+            if (currentRow >= numberOfRows)
             {
                 UnityEngine.Object.Destroy(this);
             }
@@ -106,7 +104,7 @@ namespace EnemiesReturns.Projectiles
             newObject.transform.localScale = scale;
 
             var newController = newObject.GetComponent<ProjectileController>();
-            if(newController)
+            if (newController)
             {
                 newController.procChainMask = projectileController.procChainMask;
                 newController.procCoefficient = projectileController.procCoefficient;
@@ -114,7 +112,7 @@ namespace EnemiesReturns.Projectiles
             }
 
             var teamFilter = newObject.GetComponent<TeamFilter>();
-            if(teamFilter)
+            if (teamFilter)
             {
                 teamFilter.teamIndex = this.teamFilter.teamIndex;
             }

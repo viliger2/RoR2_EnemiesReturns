@@ -1,11 +1,7 @@
-﻿using EnemiesReturns.Enemies.Colossus;
-using EntityStates;
-using Rewired;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -96,7 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             {
                 attack.Fire();
             }
-            if (!hasFired) 
+            if (!hasFired)
             {
                 if (isAuthority)
                 {
@@ -115,7 +111,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 
         public override void OnExit()
         {
-            if(!hasFired)
+            if (!hasFired)
             {
                 Fire();
             }

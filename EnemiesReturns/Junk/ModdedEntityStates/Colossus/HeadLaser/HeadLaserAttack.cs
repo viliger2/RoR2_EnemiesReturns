@@ -1,11 +1,6 @@
-﻿using EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 {

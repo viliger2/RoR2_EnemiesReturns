@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
@@ -48,7 +45,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             {
                 fireball.localScale = Vector3.Lerp(fireballStartScale, fireballFinishScale, age / duration);
             }
-            if(pillar)
+            if (pillar)
             {
                 pillar.localScale = new Vector3(pillar.localScale.x, Mathf.Lerp(pillarStartYScale, pillarFinishYScale, age / duration), pillar.localScale.z);
             }

@@ -1,14 +1,10 @@
-﻿using RoR2.Projectile;
+﻿using EnemiesReturns.PrefabAPICompat;
 using RoR2;
-using RoR2.CharacterAI;
-using System;
+using RoR2.Projectile;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using UnityEngine.TextCore;
-using EnemiesReturns.PrefabAPICompat;
 
 namespace EnemiesReturns.Items.ColossalKnurl
 {
@@ -56,7 +52,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
         }
 
         public GameObject CreateFistProjectile(GameObject fistPrefab, GameObject fistGhostPrefab)
-        { 
+        {
             fistPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             fistPrefab.AddComponent<TeamFilter>();
@@ -101,10 +97,10 @@ namespace EnemiesReturns.Items.ColossalKnurl
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
             var itemCount = attackerBody.inventory.GetItemCount(itemDef);
-            if(itemCount > 0 && Util.CheckRoll(EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
+            if (itemCount > 0 && Util.CheckRoll(EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
             {
                 bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath
-                if(victim.TryGetComponent<CharacterBody>(out var victimBody))
+                if (victim.TryGetComponent<CharacterBody>(out var victimBody))
                 {
                     isFlying = victimBody.isFlying;
                 }
@@ -123,7 +119,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                 fireProjectileInfo.rotation = Quaternion.identity;
                 fireProjectileInfo.owner = attackerBody.gameObject;
                 fireProjectileInfo.damage = damageInfo.damage * damageCoef;
-                fireProjectileInfo.force = EnemiesReturnsConfiguration.Colossus.KnurlForce.Value; 
+                fireProjectileInfo.force = EnemiesReturnsConfiguration.Colossus.KnurlForce.Value;
                 fireProjectileInfo.crit = damageInfo.crit;
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
@@ -132,10 +128,10 @@ namespace EnemiesReturns.Items.ColossalKnurl
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
         {
             var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION");
-            if(!keyPair.Equals(default(KeyValuePair<string, string>)))
+            if (!keyPair.Equals(default(KeyValuePair<string, string>)))
             {
                 string description = string.Format(
-                    keyPair.Value, 
+                    keyPair.Value,
                     (EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value / 100f).ToString("###%"),
                     (EnemiesReturnsConfiguration.Colossus.KnurlDamage.Value).ToString("###%"),
                     (EnemiesReturnsConfiguration.Colossus.KnurlDamagePerStack.Value).ToString("###%")

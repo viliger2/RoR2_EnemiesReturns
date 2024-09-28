@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Enemies.Spitter;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;

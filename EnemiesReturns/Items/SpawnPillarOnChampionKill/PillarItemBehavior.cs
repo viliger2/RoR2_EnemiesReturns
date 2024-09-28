@@ -1,8 +1,5 @@
-﻿using RoR2.CharacterAI;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
+using RoR2.CharacterAI;
 using static RoR2.CharacterBody;
 
 namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
@@ -20,7 +17,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                     spawn = Util.CheckRoll(EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
                 }
             }
-            if(spawn)
+            if (spawn)
             {
                 DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(Enemies.Ifrit.IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
                 {
@@ -34,7 +31,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                     if (spawnResult.success && spawnResult.spawnedInstance)
                     {
                         var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
-                        if(aiownership)
+                        if (aiownership)
                         {
                             aiownership.ownerMaster = this.body.master;
                         }

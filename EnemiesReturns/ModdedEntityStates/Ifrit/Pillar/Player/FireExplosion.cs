@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
+﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
 {
     public class FireExplosion : BaseFireExplosion
     {

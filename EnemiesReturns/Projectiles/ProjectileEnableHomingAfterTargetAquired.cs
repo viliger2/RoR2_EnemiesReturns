@@ -1,7 +1,4 @@
 ﻿using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -21,7 +18,7 @@ namespace EnemiesReturns.Projectiles
 
         private void Start()
         {
-            if(!NetworkServer.active)
+            if (!NetworkServer.active)
             {
                 this.enabled = false;
                 return;
@@ -29,9 +26,9 @@ namespace EnemiesReturns.Projectiles
 
             projectileSimple = GetComponent<ProjectileSimple>();
             sphereTargetFinder = GetComponent<ProjectileSphereTargetFinder>();
-            if(sphereTargetFinder)
+            if (sphereTargetFinder)
             {
-                if(sphereTargetFinder.onNewTargetFound == null)
+                if (sphereTargetFinder.onNewTargetFound == null)
                 {
                     sphereTargetFinder.onNewTargetFound = new UnityEngine.Events.UnityEvent();
                 }
@@ -41,10 +38,10 @@ namespace EnemiesReturns.Projectiles
 
         private void OnTargetFoundChangeSpeed()
         {
-            if(projectileSimple)
+            if (projectileSimple)
             {
                 projectileSimple.updateAfterFiring = true;
-                if(changeSpeedAfterTargetFound)
+                if (changeSpeedAfterTargetFound)
                 {
                     projectileSimple.desiredForwardSpeed = newSpeed;
                 }

@@ -45,7 +45,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
         {
             base.OnEnter();
             modelAnimator = GetModelAnimator();
-            if(modelAnimator)
+            if (modelAnimator)
             {
                 startYaw = modelAnimator.GetFloat(MissingAnimationParameters.aimYawCycle);
                 startPitch = modelAnimator.GetFloat(MissingAnimationParameters.aimPitchCycle);
@@ -85,7 +85,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
                 modelAnimator.SetFloat(MissingAnimationParameters.aimPitchCycle, Mathf.Clamp(Mathf.Lerp(startPitch, targetPitch, age / duration), 0f, 0.99f));
             }
 
-            if(age <= chargeEffectDuration)
+            if (age <= chargeEffectDuration)
             {
                 eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(_initialEmission, finalEmmision, age / chargeEffectDuration));
                 eyeRenderer.SetPropertyBlock(eyePropertyBlock);

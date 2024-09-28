@@ -1,11 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static Rewired.InputMapper;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
@@ -32,10 +28,10 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             if (modelTransform)
             {
                 var childLocator = modelTransform.GetComponent<ChildLocator>();
-                if(childLocator)
+                if (childLocator)
                 {
                     var muzzleMouth = childLocator.FindChild("MuzzleMouth");
-                    if(muzzleMouth)
+                    if (muzzleMouth)
                     {
                         chargeVfxInstance = UnityEngine.Object.Instantiate(chargeVfxPrefab, muzzleMouth.position, muzzleMouth.rotation);
                         chargeVfxInstance.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
@@ -65,7 +61,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 //outer.SetNextStateToMain();
                 //EntityStateMachine.FindByCustomName(characterBody.gameObject, "Body")?.SetState(RoR2.EntityStateCatalog.InstantiateState(typeof(ModdedEntityStates.Spitter.FireChargedSpit)));

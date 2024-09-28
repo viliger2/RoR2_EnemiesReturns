@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
@@ -26,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new FireHellzoneFire());
             }

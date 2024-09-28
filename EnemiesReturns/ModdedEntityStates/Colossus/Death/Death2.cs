@@ -1,12 +1,5 @@
-﻿using EnemiesReturns.Enemies.Colossus;
-using EntityStates;
-using Rewired.HID;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 {

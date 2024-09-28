@@ -1,8 +1,5 @@
-﻿using EnemiesReturns.Items.SpawnPillarOnChampionKill;
-using RoR2;
-using System;
+﻿using RoR2;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

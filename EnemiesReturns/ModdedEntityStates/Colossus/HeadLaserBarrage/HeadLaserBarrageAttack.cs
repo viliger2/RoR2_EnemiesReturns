@@ -1,19 +1,11 @@
-﻿using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using static Rewired.ComponentControls.Effects.RotateAroundAxis;
-using UnityEngine.UIElements;
+﻿using EnemiesReturns.Enemies.Colossus;
+using EntityStates;
 using RoR2.Projectile;
-using Rewired.HID;
-using EnemiesReturns.Enemies.Colossus;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
-    public class HeadLaserBarrageAttack: BaseState
+    public class HeadLaserBarrageAttack : BaseState
     {
         public static float baseDuration => EnemiesReturnsConfiguration.Colossus.LaserBarrageDuration.Value;
 
@@ -110,7 +102,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
         {
             base.FixedUpdate();
             fireStopwatch += Time.fixedDeltaTime;
-            if(fireStopwatch > fireFrequency)
+            if (fireStopwatch > fireFrequency)
             {
                 Fire();
                 fireStopwatch -= fireFrequency;

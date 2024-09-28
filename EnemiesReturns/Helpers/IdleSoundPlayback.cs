@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Helpers
@@ -17,17 +14,17 @@ namespace EnemiesReturns.Helpers
 
         private void OnEnable()
         {
-            if(!characterModel)
+            if (!characterModel)
             {
                 characterModel = GetComponent<CharacterModel>();
             }
 
-            if(characterModel.body)
+            if (characterModel.body)
             {
                 master = characterModel.body.master;
             }
 
-            if(master)
+            if (master)
             {
                 master.onBodyStart += Master_onBodyStart;
                 master.onBodyDeath.AddListener(OnBodyDeath);

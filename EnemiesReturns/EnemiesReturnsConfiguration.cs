@@ -1,7 +1,4 @@
 ﻿using BepInEx.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns
@@ -188,7 +185,7 @@ namespace EnemiesReturns
             public static ConfigEntry<float> SpawnPillarOnChampionKillEliteChance;
         }
 
-        public static void PopulateConfig(ConfigFile config) 
+        public static void PopulateConfig(ConfigFile config)
         {
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
             testconfig = config.Bind("test", "test", 5f, "test");
@@ -199,7 +196,7 @@ namespace EnemiesReturns
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");
-            
+
             Spitter.BaseMaxHealth = config.Bind("Spitter Character Stats", "Base Max Health", 300f, "Spitter's base health.");
             Spitter.BaseMoveSpeed = config.Bind("Spitter Character Stats", "Base Movement Speed", 7f, "Spitter's base movement speed.");
             Spitter.BaseJumpPower = config.Bind("Spitter Character Stats", "Base Jump Power", 20f, "Spitter's base jump power.");
@@ -325,7 +322,7 @@ namespace EnemiesReturns
 
             Ifrit.FlameChargeCooldown = config.Bind("Ifrit Flame Charge", "Flame Charge Cooldown", 15f, "Ifrit's Flame Charge cooldown.");
             Ifrit.FlameChargeDuration = config.Bind("Ifrit Flame Charge", "Flame Charge Duration", 5f, "Ifrit's Flame Charge duration.");
-            Ifrit.FlameChargeSpeedCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Movement Speed Multiplier", 2f, "Ifrit's Flame Charge speed multiplier.") ;
+            Ifrit.FlameChargeSpeedCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Movement Speed Multiplier", 2f, "Ifrit's Flame Charge speed multiplier.");
             Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 2.5f, "Ifrit's Flame Charge body contact damage.");
             Ifrit.FlameChargeForce = config.Bind("Ifrit Flame Charge", "Flame Charge Body Force", 5000f, "Ifrit's Flame Charge body contact force.");
             Ifrit.FlameChargeProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Body Proc Coefficient", 1f, "Ifrit's Flame Charge body contact proc coefficient.");
@@ -370,6 +367,6 @@ namespace EnemiesReturns
             Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Base Damage", 2.4f, "ITEM_NAME pillar damage per level. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Elite Kill Spawn Chance", 20f, "ITEM_NAME chance to spawn on elite kill.");
             #endregion
+        }
     }
-}
 }

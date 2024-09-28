@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using RoR2;
 
 namespace EnemiesReturns.Helpers
 {
@@ -28,10 +24,10 @@ namespace EnemiesReturns.Helpers
 
         private void FixedUpdate()
         {
-            if(ledgeChecker)
+            if (ledgeChecker)
             {
                 var ray = new Ray(ledgeChecker.position, Vector3.down);
-                if(Physics.Raycast(ray, out var hitinfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(ray, out var hitinfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                 {
                     Log.Info("Distance: " + hitinfo.distance);
                 }

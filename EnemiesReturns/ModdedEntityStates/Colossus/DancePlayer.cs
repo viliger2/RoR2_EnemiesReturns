@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.Colossus
+﻿namespace EnemiesReturns.ModdedEntityStates.Colossus
 {
     public class DancePlayer : BaseEmoteState
     {

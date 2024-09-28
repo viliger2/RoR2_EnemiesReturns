@@ -1,10 +1,7 @@
 ﻿using RoR2;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -16,7 +13,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public new void Footstep(AnimationEvent animationEvent)
         {
-            if(animationEvent.animatorClipInfo.weight > 0.5f)
+            if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 Footstep(animationEvent.stringParameter, (GameObject)animationEvent.objectReferenceParameter);
             }
@@ -46,13 +43,13 @@ namespace EnemiesReturns.Enemies.Colossus
                 List<HealthComponent> targets = new List<HealthComponent>();
                 foreach (var hurtbox in result)
                 {
-                    if(targets.Contains(hurtbox.healthComponent))
+                    if (targets.Contains(hurtbox.healthComponent))
                     {
                         continue;
                     }
                     targets.Add(hurtbox.healthComponent);
 
-                    if(!Util.HasEffectiveAuthority(hurtbox.healthComponent.gameObject))
+                    if (!Util.HasEffectiveAuthority(hurtbox.healthComponent.gameObject))
                     {
                         continue;
                     }

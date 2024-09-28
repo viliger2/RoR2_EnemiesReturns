@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
@@ -48,18 +45,18 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge <= chargeTime)
+            if (fixedAge <= chargeTime)
             {
                 return;
             }
 
-            if(!hasFired && isAuthority)
+            if (!hasFired && isAuthority)
             {
                 FireProjectile();
                 hasFired = true;
             }
 
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new FireHellzoneEnd());
             }
@@ -81,7 +78,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
                     var hurtbox = colliders[i].GetComponent<HurtBox>();
                     if (hurtbox && hurtbox.healthComponent)
                     {
-                        if(hurtbox.healthComponent.body == this.characterBody)
+                        if (hurtbox.healthComponent.body == this.characterBody)
                         {
                             continue;
                         }

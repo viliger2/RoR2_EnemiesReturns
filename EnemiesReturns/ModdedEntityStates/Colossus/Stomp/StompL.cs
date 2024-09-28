@@ -1,9 +1,4 @@
-﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
+﻿namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
     public class StompL : StompBase
     {

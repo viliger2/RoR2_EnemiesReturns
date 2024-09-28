@@ -1,26 +1,23 @@
-﻿using RoR2.Networking;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
+using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.Projectiles;
+using HG;
+using KinematicCharacterController;
 using RoR2;
+using RoR2.CharacterAI;
+using RoR2.Networking;
+using RoR2.Projectile;
+using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using ThreeEyedGames;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using KinematicCharacterController;
-using System.Linq;
-using Newtonsoft.Json.Utilities;
-using RoR2.CharacterAI;
-using EnemiesReturns.EditorHelpers;
-using RoR2.Skills;
-using RoR2.Projectile;
-using HG;
-using static RoR2.ItemDisplayRuleSet;
-using EnemiesReturns.Projectiles;
-using ThreeEyedGames;
 using static EnemiesReturns.Utils;
-using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
-using EnemiesReturns.ModdedEntityStates.Spitter;
-using EnemiesReturns.PrefabAPICompat;
-using UnityEngine;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Spitter
 {
@@ -1178,7 +1175,7 @@ namespace EnemiesReturns.Enemies.Spitter
             chargedSpit.skillNameToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME";
             chargedSpit.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION";
             var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
-            if(acridEpidemic)
+            if (acridEpidemic)
             {
                 chargedSpit.icon = acridEpidemic.icon;
             }

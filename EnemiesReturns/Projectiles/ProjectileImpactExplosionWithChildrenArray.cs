@@ -1,13 +1,8 @@
-﻿using HG;
-using RoR2;
+﻿using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UIElements;
 using static RoR2.Projectile.ProjectileImpactExplosion;
 
 namespace EnemiesReturns.Projectiles
@@ -109,7 +104,7 @@ namespace EnemiesReturns.Projectiles
         public float dotZoneDamageCoefficient;
 
         public float dotZoneMinRollDegrees;
-        
+
         public float dotZoneRangeRollDegrees;
 
         public float dotZoneMinPitchDegrees;
@@ -242,7 +237,7 @@ namespace EnemiesReturns.Projectiles
             {
                 FireChild();
             }
-            if(fireDoTZone)
+            if (fireDoTZone)
             {
                 FireDoTZone();
             }

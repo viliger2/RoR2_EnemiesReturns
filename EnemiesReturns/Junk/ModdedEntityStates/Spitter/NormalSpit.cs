@@ -1,9 +1,5 @@
-﻿using EnemiesReturns.Enemies.Spitter;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

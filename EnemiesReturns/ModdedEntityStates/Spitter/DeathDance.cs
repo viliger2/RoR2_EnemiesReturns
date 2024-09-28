@@ -1,10 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
@@ -27,9 +23,9 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport report)
         {
-            if(report.victimBody == characterBody)
+            if (report.victimBody == characterBody)
             {
-                if((healthComponent.combinedHealth / healthComponent.fullCombinedHealth) <= healthFraction)
+                if ((healthComponent.combinedHealth / healthComponent.fullCombinedHealth) <= healthFraction)
                 {
                     outer.SetNextStateToMain();
                 }
@@ -52,7 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             //{
             //    StartAimMode(new Ray(target.position, target.forward), 0.16f, false);
             //}
-            if((stopwatch >= duration))
+            if ((stopwatch >= duration))
             {
                 outer.SetNextStateToMain();
             }

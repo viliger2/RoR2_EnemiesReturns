@@ -1,10 +1,6 @@
 ﻿using EntityStates;
-using HG;
-using JetBrains.Annotations;
 using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -94,7 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private void SetSprintEffectState(bool active)
         {
-            if(sprintEffect)
+            if (sprintEffect)
             {
                 sprintEffect.gameObject.SetActive(active);
             }
@@ -135,18 +131,18 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
         public override void FixedUpdate()
         {
             characterBody.outOfCombatStopwatch = 0f;
-            Vector3 targetMoveVelocity = Vector3.zero; 
+            Vector3 targetMoveVelocity = Vector3.zero;
             targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
             base.characterDirection.moveVector = targetMoveVector;
             Vector3 forward = base.characterDirection.forward;
             float value = moveSpeedStat * chargeMovementSpeedCoefficient;
             base.characterMotor.moveDirection = forward * chargeMovementSpeedCoefficient;
             animator.SetFloat(AnimationParameters.forwardSpeed, value);
-            if(isAuthority)
+            if (isAuthority)
             {
                 chargeAttack.Fire();
                 bulletAttackStopwatch += Time.fixedDeltaTime;
-                if(bulletAttackStopwatch > 1f / flameTickFrequency)
+                if (bulletAttackStopwatch > 1f / flameTickFrequency)
                 {
                     bulletAttackStopwatch -= 1f / flameTickFrequency;
                     flameAttack.Fire();
@@ -162,7 +158,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                 }
             }
 
-            if(fixedAge >= chargeDuration && isAuthority)
+            if (fixedAge >= chargeDuration && isAuthority)
             {
                 outer.SetNextState(new FlameChargeEnd());
             }
@@ -172,10 +168,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private void SpawnEffect()
         {
-            if(!EffectManager.ShouldUsePooledEffect(flamethrowerEffectPrefab))
+            if (!EffectManager.ShouldUsePooledEffect(flamethrowerEffectPrefab))
             {
                 flamethrowerEffectInstance = UnityEngine.Object.Instantiate(flamethrowerEffectPrefab, muzzleMouth).transform;
-            } else
+            }
+            else
             {
                 _emh_flamethrowerEffectInstance = EffectManager.GetAndActivatePooledEffect(flamethrowerEffectPrefab, muzzleMouth, true);
                 flamethrowerEffectInstance = _emh_flamethrowerEffectInstance.gameObject.transform;
@@ -185,12 +182,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private void DestroyEffect()
         {
-            if(flamethrowerEffectInstance != null)
+            if (flamethrowerEffectInstance != null)
             {
-                if(_emh_flamethrowerEffectInstance != null && _emh_flamethrowerEffectInstance.OwningPool != null)
+                if (_emh_flamethrowerEffectInstance != null && _emh_flamethrowerEffectInstance.OwningPool != null)
                 {
                     _emh_flamethrowerEffectInstance.OwningPool.ReturnObject(_emh_flamethrowerEffectInstance);
-                } else
+                }
+                else
                 {
                     EntityState.Destroy(flamethrowerEffectInstance.gameObject);
                 }

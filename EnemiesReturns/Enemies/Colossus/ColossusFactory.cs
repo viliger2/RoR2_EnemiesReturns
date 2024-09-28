@@ -1,26 +1,23 @@
-﻿using RoR2.Networking;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Helpers;
+using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.Projectiles;
+using HG;
+using KinematicCharacterController;
 using RoR2;
+using RoR2.CharacterAI;
+using RoR2.Mecanim;
+using RoR2.Networking;
+using RoR2.Projectile;
+using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using KinematicCharacterController;
-using System.Linq;
-using RoR2.CharacterAI;
-using EnemiesReturns.EditorHelpers;
-using RoR2.Skills;
-using RoR2.Projectile;
-using HG;
-using EntityStates;
-using static RoR2.ItemDisplayRuleSet;
-using EnemiesReturns.Projectiles;
-using ThreeEyedGames;
 using static EnemiesReturns.Utils;
-using RoR2.Mecanim;
-using EnemiesReturns.PrefabAPICompat;
-using EnemiesReturns.Helpers;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Colossus
 {
@@ -308,9 +305,9 @@ namespace EnemiesReturns.Enemies.Colossus
             #region DeathRewards
             var deathRewards = bodyPrefab.AddComponent<DeathRewards>();
             deathRewards.logUnlockableDef = log;
-            if (droptable) 
+            if (droptable)
             {
-                deathRewards.bossDropTable = droptable; 
+                deathRewards.bossDropTable = droptable;
             }
             #endregion
 
@@ -345,7 +342,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             kinematicCharacterMotor.CapsuleRadius = capsuleCollider.radius;
             kinematicCharacterMotor.CapsuleHeight = capsuleCollider.height;
-            if(capsuleCollider.center != Vector3.zero)
+            if (capsuleCollider.center != Vector3.zero)
             {
                 Log.Error("CapsuleCollider for " + bodyPrefab + " has non-zero center. This WILL result in pathing issues for AI.");
             }
@@ -996,7 +993,7 @@ namespace EnemiesReturns.Enemies.Colossus
             }
 
             var light = cloneEffect.GetComponentInChildren<Light>();
-            if(light)
+            if (light)
             {
                 light.range = 20f;
             }
@@ -1198,7 +1195,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanRockProjectile.prefab").WaitForCompletion().InstantiateClone("ColossusLaserBarrageProjectile", true);
 
             clonedEffect.layer = LayerIndex.debris.intVal;
-                
+
             //var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             //if (cube.TryGetComponent<BoxCollider>(out var collider))
             //{
@@ -1278,7 +1275,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion().InstantiateClone("ColossusLaserBarrageExplosion", false);
 
             var components = explosionEffect.GetComponentsInChildren<ParticleSystem>();
-            foreach(var component in components)
+            foreach (var component in components)
             {
                 var main = component.main;
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
@@ -1307,7 +1304,7 @@ namespace EnemiesReturns.Enemies.Colossus
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/bazaar/matLunarInfection.mat").WaitForCompletion());
             material.name = "matColossusLaserBarrageShardMesh";
-            material.SetColor("_Color", new Color(181/255, 0, 0));
+            material.SetColor("_Color", new Color(181 / 255, 0, 0));
             material.SetTexture("_MainTex", Texture2D.redTexture);
             material.SetColor("_EmColor", new Color(255 / 255, 115 / 255, 115 / 255));
 
@@ -1360,7 +1357,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             return material;
         }
-        
+
         public Material CreateSpinBeamCylinder1Material()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
@@ -1443,7 +1440,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION";
             var commandoBarrage = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyBarrage.asset").WaitForCompletion();
-            if(commandoBarrage)
+            if (commandoBarrage)
             {
                 skillDef.icon = commandoBarrage.icon;
             }
@@ -1484,7 +1481,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION";
             var captainShotgun = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainShotgun.asset").WaitForCompletion();
-            if(captainShotgun)
+            if (captainShotgun)
             {
                 skillDef.icon = captainShotgun.icon;
             }
@@ -1525,7 +1522,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.skillNameToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION";
             var voidFiend = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC1/VoidSurvivor/FireCorruptBeam.asset").WaitForCompletion();
-            if(voidFiend)
+            if (voidFiend)
             {
                 skillDef.icon = voidFiend.icon;
             }

@@ -7,11 +7,9 @@ using RoR2.CharacterAI;
 using RoR2.EntityLogic;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace EnemiesReturns.Enemies.Ifrit
 {
@@ -99,7 +97,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             characterBody.hullClassification = HullClassification.Golem;
             if (bodyInformation.sprite != null)
             {
-                characterBody.portraitIcon = bodyInformation.sprite.texture; 
+                characterBody.portraitIcon = bodyInformation.sprite.texture;
             }
             #endregion
 
@@ -249,7 +247,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region LanternFire
             var lanternFire = bodyPrefab.transform.Find("ModelBase/IfritPillar/IfritPillarArmture/MainPillar/Chain1.1/Lantern/Fire");
-            lanternFire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial);;
+            lanternFire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial); ;
             #endregion
 
             #region ModelPanelParameters
@@ -400,7 +398,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<OmniEffect>());
 
-            foreach(Transform child in gameObject.transform)
+            foreach (Transform child in gameObject.transform)
             {
                 child.gameObject.SetActive(true);
             }

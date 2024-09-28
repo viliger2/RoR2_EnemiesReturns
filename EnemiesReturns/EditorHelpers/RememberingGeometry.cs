@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.EditorHelpers
@@ -18,23 +16,24 @@ namespace EnemiesReturns.EditorHelpers
             mainSphere.transform.parent = gameObject.transform;
             mainSphere.transform.localScale = new Vector3(largeRadius * 2, 0.1f, largeRadius * 2);
             mainSphere.transform.localPosition = Vector3.zero;
-            for(int i = 0; i< numberOfRows; i++)
+            for (int i = 0; i < numberOfRows; i++)
             {
                 float fromCentre = smallRadius * i;
-                if(i == 0)
+                if (i == 0)
                 {
                     var smallSphere = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     smallSphere.transform.parent = gameObject.transform;
                     smallSphere.transform.localScale = new Vector3(smallRadius, smallRadius, smallRadius);
                     smallSphere.transform.localPosition = Vector3.zero;
-                } else
+                }
+                else
                 {
                     var angleCos = (Mathf.Pow(fromCentre, 2f) + Mathf.Pow(fromCentre, 2f) - Mathf.Pow(smallRadius, 2f)) / (2 * fromCentre * fromCentre);
                     var angle = Mathf.Acos(angleCos) / (MathF.PI / 180);
                     int rockCount = (int)(360f / angle);
                     float newAngle = 360f / rockCount;
                     Debug.Log("angle: " + angle.ToString() + ", rockCount: " + rockCount.ToString() + ", newAngle: " + newAngle.ToString());
-                    for(int k = 0; k < rockCount; k++)
+                    for (int k = 0; k < rockCount; k++)
                     {
                         var x = fromCentre * Mathf.Cos(newAngle * k * Mathf.Deg2Rad);
                         var z = fromCentre * Mathf.Sin(newAngle * k * Mathf.Deg2Rad);

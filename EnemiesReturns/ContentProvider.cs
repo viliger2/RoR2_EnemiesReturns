@@ -1,22 +1,20 @@
-﻿using RoR2.ContentManagement;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Spitter;
+using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Items.SpawnPillarOnChampionKill;
+using R2API;
+using Rewired.Utils.Classes.Utility;
+using RoR2;
+using RoR2.ContentManagement;
+using RoR2.Skills;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using static RoR2.Console;
 using UnityEngine.AddressableAssets;
-using RoR2.Skills;
-using RoR2;
-using EnemiesReturns.Enemies.Spitter;
-using EnemiesReturns.Enemies.Colossus;
-using Rewired.Utils.Classes.Utility;
-using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Items.ColossalKnurl;
-using EnemiesReturns.Enemies.Ifrit;
-using R2API;
-using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 
 namespace EnemiesReturns
 {
@@ -291,8 +289,8 @@ namespace EnemiesReturns
 
                 #region ColossalKnurl
                 ExplicitPickupDropTable dtColossus = null;
-                if (EnemiesReturnsConfiguration.Colossus.ItemEnabled.Value) 
-                { 
+                if (EnemiesReturnsConfiguration.Colossus.ItemEnabled.Value)
+                {
                     var knurlFactory = new ColossalKnurlFactory();
 
                     ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
@@ -319,7 +317,7 @@ namespace EnemiesReturns
                     projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
                 }
                 #endregion
-               
+
                 if (EnemiesReturnsConfiguration.Colossus.Enabled.Value)
                 {
                     var colossusFactory = new ColossusFactory();
@@ -714,7 +712,7 @@ namespace EnemiesReturns
         private void AddMonsterToCardCategory(DirectorCard card, string categoryName, DirectorCardCategorySelection stageCard)
         {
             int num = Utils.FindCategoryIndexByName(stageCard, categoryName);
-            if(num >= 0)
+            if (num >= 0)
             {
                 stageCard.AddCard(num, card);
             }
@@ -763,7 +761,7 @@ namespace EnemiesReturns
 
         public static Material GetOrCreateMaterial(string materialName, Func<Material> materialCreateFunc)
         {
-            if(!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
+            if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc();
             }

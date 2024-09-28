@@ -1,11 +1,4 @@
-﻿using EnemiesReturns.Enemies.Colossus;
-using EntityStates;
-using Rewired.HID;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using RoR2;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
@@ -38,7 +31,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(NetworkServer.active && fixedAge >= fallEffectSpawnTime && !hasFiredAttack)
+            if (NetworkServer.active && fixedAge >= fallEffectSpawnTime && !hasFiredAttack)
             {
                 BlastAttack blastAttack = new BlastAttack();
                 blastAttack.radius = fallBlastAttackRadius;

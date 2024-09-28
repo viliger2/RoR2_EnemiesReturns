@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Helpers
@@ -12,7 +9,8 @@ namespace EnemiesReturns.Helpers
 
         public void Awake()
         {
-            if (!inputBank) { 
+            if (!inputBank)
+            {
                 inputBank = GetComponent<InputBankTest>();
             }
         }
@@ -20,7 +18,7 @@ namespace EnemiesReturns.Helpers
 
         public void FixedUpdate()
         {
-            if(inputBank)
+            if (inputBank)
             {
                 Log.Info("aimOrigin: " + inputBank.aimOrigin + ", aimDirection: " + inputBank.aimDirection);
             }

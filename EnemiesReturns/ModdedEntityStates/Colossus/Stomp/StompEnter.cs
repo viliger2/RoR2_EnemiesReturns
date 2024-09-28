@@ -1,17 +1,14 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
     public class StompEnter : BaseState
     {
-        public static float searchRadius = 10f; 
+        public static float searchRadius = 10f;
 
         public override void OnEnter()
         {

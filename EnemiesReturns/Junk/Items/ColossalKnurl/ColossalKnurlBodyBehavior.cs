@@ -1,14 +1,5 @@
 ﻿using RoR2;
 
-using RoR2.Items;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using System.Resources;
-using static EnemiesReturns.EnemiesReturnsConfiguration.Colossus;
-using EnemiesReturns.Junk.Items.ColossalKnurl;
-
 namespace EnemiesReturns.Junk.Items.ColossalKnurl
 {
     public class ColossalKnurlBodyBehavior : CharacterBody.ItemBehavior

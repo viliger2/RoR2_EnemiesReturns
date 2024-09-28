@@ -1,11 +1,7 @@
 ﻿using EntityStates;
-using RoR2.CharacterAI;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RoR2.CharacterAI;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
@@ -38,15 +34,15 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             var fireball = childLocator.FindChild("Fireball");
             if (NetworkServer.active)
             {
-                if(explosionPrefab)
+                if (explosionPrefab)
                 {
                     EffectManager.SpawnEffect(explosionPrefab, new EffectData { origin = fireball ? fireball.position : gameObject.transform.position, scale = 5f * (radius / 30f) }, true);
                 }
 
-                if(characterBody.master)
+                if (characterBody.master)
                 {
                     var aiOwnership = characterBody.master.gameObject.GetComponent<AIOwnership>();
-                    if(aiOwnership && aiOwnership.ownerMaster)
+                    if (aiOwnership && aiOwnership.ownerMaster)
                     {
                         stackCount = aiOwnership.ownerMaster.inventory.GetItemCount(Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.itemDef);
                     }

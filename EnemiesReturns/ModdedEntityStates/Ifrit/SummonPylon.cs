@@ -1,10 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
@@ -47,7 +43,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= summonTimer && !hasSummoned)
+            if (fixedAge >= summonTimer && !hasSummoned)
             {
                 hasSummoned = true;
                 if (NetworkServer.active)
@@ -57,13 +53,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                         SummonPillar();
                     }
                 }
-                if(muzzleMouth)
+                if (muzzleMouth)
                 {
                     SpawnEffect(muzzleMouth);
                 }
             }
 
-            if(fixedAge >= duration && base.isAuthority)
+            if (fixedAge >= duration && base.isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -87,7 +83,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             directorSpawnRequest.ignoreTeamMemberLimit = true;
             directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
             {
-                if(!spawnResult.success) 
+                if (!spawnResult.success)
                 {
                     SummonPillar(); // surely this won't break anything
                     return;
@@ -95,15 +91,15 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                 if (spawnResult.spawnedInstance && base.characterBody)
                 {
                     var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
-                    if(inventory)
+                    if (inventory)
                     {
                         inventory.CopyEquipmentFrom(base.characterBody.inventory);
                     }
 
-                    if(spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))
+                    if (spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))
                     {
                         var body = deployableMaster.GetBody();
-                        if(body && body.gameObject.TryGetComponent<Deployable>(out var deployable))
+                        if (body && body.gameObject.TryGetComponent<Deployable>(out var deployable))
                         {
                             deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
                             characterBody.master.AddDeployable(deployable, Enemies.Ifrit.IfritFactory.PylonDeployable);

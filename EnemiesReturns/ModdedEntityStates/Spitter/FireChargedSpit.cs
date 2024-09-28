@@ -1,13 +1,8 @@
 ﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.AddressableAssets;
-using UnityEngine;
-using EnemiesReturns.Enemies.Spitter;
-using RoR2.Projectile;
 using RoR2;
+using RoR2.Projectile;
 using System.Linq;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
@@ -56,13 +51,13 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
                 return;
             }
 
-            if(!hasFired && base.isAuthority)
+            if (!hasFired && base.isAuthority)
             {
                 FireProjectile();
                 hasFired = true;
             }
 
-            if(base.isAuthority && fixedAge >= duration)
+            if (base.isAuthority && fixedAge >= duration)
             {
                 outer.SetNextStateToMain();
             }
@@ -87,7 +82,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             Ray ray = new Ray(aimRay.origin, Vector3.up);
             // getting position of projectile's initial point
             var transform = FindModelChild(targetMuzzle);
-            if(transform)
+            if (transform)
             {
                 ray.origin = transform.position;
             }
@@ -115,11 +110,12 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
             // checking if it exists and if it doesn't just shooting a ray from creature to target
             Vector3 vector = Vector3.zero;
-            if(hurtBox)
+            if (hurtBox)
             {
                 vector = hurtBox.transform.position;
                 flag = true;
-            } else if (Physics.Raycast(aimRay, out var hitInfo, 1000f, LayerIndex.world.mask | LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore))
+            }
+            else if (Physics.Raycast(aimRay, out var hitInfo, 1000f, LayerIndex.world.mask | LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore))
             {
                 vector = hitInfo.point;
                 flag = true;
@@ -127,7 +123,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
             // getting magnitude
             float magnitude = projectileSpeed;
-            if(flag)
+            if (flag)
             {
                 // getting vector between target and creature
                 Vector3 vectorToTarget = vector - ray.origin;
@@ -137,11 +133,11 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
                 // dividing vector by its own magnitude for some reason
                 Vector2 anotherVector2 = vector2 / magnitude2;
                 // limiting projectile range
-                if(magnitude2 < minimumDistance)
+                if (magnitude2 < minimumDistance)
                 {
                     magnitude2 = minimumDistance;
                 }
-                if(magnitude2 > maximumDistance)
+                if (magnitude2 > maximumDistance)
                 {
                     magnitude2 = maximumDistance;
                 }

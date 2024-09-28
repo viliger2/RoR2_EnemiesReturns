@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates
@@ -18,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates
         public override void OnEnter()
         {
             base.OnEnter();
-            if(!string.IsNullOrEmpty(soundEventPlayName))
+            if (!string.IsNullOrEmpty(soundEventPlayName))
             {
                 Util.PlaySound(soundEventPlayName, base.gameObject);
             }
@@ -37,14 +34,14 @@ namespace EnemiesReturns.ModdedEntityStates
         {
             base.FixedUpdate();
             bool endEmote = false;
-            if(characterMotor && !characterMotor.isGrounded)
+            if (characterMotor && !characterMotor.isGrounded)
             {
                 endEmote = true;
             }
 
-            if(inputBank)
+            if (inputBank)
             {
-                if(inputBank.skill1.down) endEmote = true;
+                if (inputBank.skill1.down) endEmote = true;
                 if (inputBank.skill2.down) endEmote = true;
                 if (inputBank.skill3.down) endEmote = true;
                 if (inputBank.skill4.down) endEmote = true;
@@ -52,12 +49,12 @@ namespace EnemiesReturns.ModdedEntityStates
                 if (inputBank.moveVector != Vector3.zero) endEmote = true;
             }
 
-            if(duration > 0 && fixedAge >= duration)
+            if (duration > 0 && fixedAge >= duration)
             {
                 endEmote = true;
             }
 
-            if(endEmote)
+            if (endEmote)
             {
                 outer.SetNextStateToMain();
             }

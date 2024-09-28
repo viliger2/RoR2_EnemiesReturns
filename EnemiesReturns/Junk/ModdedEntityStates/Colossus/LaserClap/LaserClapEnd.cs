@@ -1,12 +1,7 @@
-﻿using EnemiesReturns.Enemies.Colossus;
-using EntityStates;
+﻿using EntityStates;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.LaserClap
 {

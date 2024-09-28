@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Helpers
@@ -34,11 +31,11 @@ namespace EnemiesReturns.Helpers
             }
 
             var characterModel = GetComponent<CharacterModel>();
-            if (characterModel && characterModel.body) 
+            if (characterModel && characterModel.body)
             {
                 deployable = characterModel.body.GetComponent<Deployable>();
             }
-            if(originPoint)
+            if (originPoint)
             {
                 lineRenderer = originPoint.gameObject.GetComponent<LineRenderer>();
             }
@@ -49,13 +46,13 @@ namespace EnemiesReturns.Helpers
             if (!targetPoint)
             {
                 CharacterBody ownerBody = null;
-                if(deployable && deployable.ownerMaster)
+                if (deployable && deployable.ownerMaster)
                 {
                     ownerBody = deployable.ownerMaster.GetBody();
                 }
 
                 ChildLocator ownerChildLocator = null;
-                if(ownerBody)
+                if (ownerBody)
                 {
                     ownerChildLocator = ownerBody.modelLocator?.modelTransform?.gameObject.GetComponent<ChildLocator>() ?? null;
                 }

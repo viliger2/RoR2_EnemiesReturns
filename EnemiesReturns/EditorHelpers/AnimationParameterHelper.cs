@@ -1,7 +1,4 @@
-﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemiesReturns.EditorHelpers
@@ -16,7 +13,7 @@ namespace EnemiesReturns.EditorHelpers
 
         private void Awake()
         {
-            foreach(string animationParameter in animationParameters)
+            foreach (string animationParameter in animationParameters)
             {
                 animationParametersHashes.Add(animationParameter, Animator.StringToHash(animationParameter));
             }

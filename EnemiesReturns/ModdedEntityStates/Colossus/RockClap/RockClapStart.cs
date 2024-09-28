@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
@@ -41,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new RockClapEnd());
             }

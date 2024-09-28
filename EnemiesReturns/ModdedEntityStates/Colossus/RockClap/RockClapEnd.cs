@@ -2,12 +2,7 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {

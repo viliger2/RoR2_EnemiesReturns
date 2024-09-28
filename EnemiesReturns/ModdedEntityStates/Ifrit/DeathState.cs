@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Helpers;
 using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
@@ -25,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             base.OnEnter();
 
             var modelTransform = GetModelTransform();
-            if(modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
+            if (modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
             {
                 transformScaler.SetScaling(Vector3.zero, effectDuration);
             }
@@ -44,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         public override void Update()
         {
             base.Update();
-            if(age <= effectDuration)
+            if (age <= effectDuration)
             {
                 SetPropertyBlock(maneRenderer, manePropertyBlock, initialEmission, age);
                 SetPropertyBlock(bodyRenderer, bodyPropertyBlock, initialEmission, age);

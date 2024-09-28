@@ -1,12 +1,9 @@
-﻿using EnemiesReturns.Items.ColossalKnurl;
+﻿using EnemiesReturns.PrefabAPICompat;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.AddressableAssets;
-using UnityEngine;
 using RoR2.CharacterAI;
-using EnemiesReturns.PrefabAPICompat;
+using System;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Junk.Items.ColossalKnurl
 {

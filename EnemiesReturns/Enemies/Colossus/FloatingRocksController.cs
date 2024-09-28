@@ -1,10 +1,7 @@
 ﻿using EnemiesReturns.PrefabAPICompat;
 using RoR2.Projectile;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace EnemiesReturns.Enemies.Colossus

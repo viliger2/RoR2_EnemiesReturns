@@ -1,7 +1,4 @@
 ﻿using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -17,7 +14,7 @@ namespace EnemiesReturns.Projectiles
 
         private void Start()
         {
-            if(!NetworkServer.active)
+            if (!NetworkServer.active)
             {
                 this.enabled = false;
                 return;
@@ -28,13 +25,14 @@ namespace EnemiesReturns.Projectiles
 
         private void FixedUpdate()
         {
-            if(target.target)
+            if (target.target)
             {
                 var newVector = Vector3.MoveTowards(gameObject.transform.position, target.target.position, speed * Time.fixedDeltaTime);
-                if (moveYAxis) 
+                if (moveYAxis)
                 {
                     gameObject.transform.position = newVector;
-                } else
+                }
+                else
                 {
                     gameObject.transform.position = new Vector3(newVector.x, gameObject.transform.position.y, newVector.z);
                 }

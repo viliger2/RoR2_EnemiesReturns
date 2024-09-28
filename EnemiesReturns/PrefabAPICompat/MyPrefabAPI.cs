@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
-using UnityEngine.Networking;
 using UnityEngine;
-using System.Linq;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.PrefabAPICompat
 {
@@ -81,10 +79,11 @@ namespace EnemiesReturns.PrefabAPICompat
         private static void SetFieldValue(NetworkIdentity identity, string fieldName, object value)
         {
             var field = identity.GetType().GetField(fieldName, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Instance);
-            if(field != null)
+            if (field != null)
             {
                 field.SetValue(identity, value);
-            } else
+            }
+            else
             {
                 Log.Error("Couldn't find field " + fieldName + " in " + identity);
             }

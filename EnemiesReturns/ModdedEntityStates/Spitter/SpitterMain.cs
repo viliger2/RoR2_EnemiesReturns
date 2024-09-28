@@ -1,7 +1,4 @@
 ﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
@@ -11,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         public override void Update()
         {
             base.Update();
-            if(base.isAuthority && base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterMotor.isGrounded)
             {
                 if (Input.GetKeyDown(EnemiesReturnsConfiguration.Spitter.EmoteKey.Value))
                 {

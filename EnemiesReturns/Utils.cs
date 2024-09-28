@@ -1,9 +1,6 @@
 ﻿using RoR2;
 using RoR2.Skills;
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -51,7 +48,8 @@ namespace EnemiesReturns
                 ignoreOverlays = item.ignoreOverlays,
                 hideOnDeath = false
             });
-            if (gameObjectActivations != null) {
+            if (gameObjectActivations != null)
+            {
                 skinDef.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDef.GameObjectActivation
                 {
                     gameObject = item,
@@ -91,7 +89,7 @@ namespace EnemiesReturns
 
         public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
         {
-            if(dcs == null)
+            if (dcs == null)
             {
                 return -1;
             }

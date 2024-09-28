@@ -1,28 +1,24 @@
-﻿using RoR2.Networking;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.Projectiles;
+using HG;
+using KinematicCharacterController;
 using RoR2;
+using RoR2.Audio;
+using RoR2.CharacterAI;
+using RoR2.Mecanim;
+using RoR2.Networking;
+using RoR2.Projectile;
+using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using ThreeEyedGames;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using KinematicCharacterController;
-using System.Linq;
-using RoR2.CharacterAI;
-using EnemiesReturns.EditorHelpers;
-using RoR2.Skills;
-using RoR2.Projectile;
-using HG;
-using EntityStates;
-using static RoR2.ItemDisplayRuleSet;
-using EnemiesReturns.Projectiles;
-using ThreeEyedGames;
 using static EnemiesReturns.Utils;
-using RoR2.Mecanim;
-using EnemiesReturns.PrefabAPICompat;
-using EnemiesReturns.Helpers;
-using RoR2.EntityLogic;
-using RoR2.Audio;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Ifrit
 {
@@ -277,9 +273,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region DeathRewards
             var deathRewards = bodyPrefab.AddComponent<DeathRewards>();
             deathRewards.logUnlockableDef = log;
-            if (droptable) 
+            if (droptable)
             {
-                deathRewards.bossDropTable = droptable; 
+                deathRewards.bossDropTable = droptable;
             }
             #endregion
 
@@ -314,7 +310,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             kinematicCharacterMotor.CapsuleRadius = capsuleCollider.radius;
             kinematicCharacterMotor.CapsuleHeight = capsuleCollider.height;
-            if(capsuleCollider.center != Vector3.zero)
+            if (capsuleCollider.center != Vector3.zero)
             {
                 Log.Error("CapsuleCollider for " + bodyPrefab + " has non-zero center. This WILL result in pathing issues for AI.");
             }
@@ -831,7 +827,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         }
 
         #region GameObjects
-        
+
         public GameObject CreateHellzoneProjectile(GameObject dotzonePrefab)
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
@@ -847,7 +843,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 component.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
                 component.childrenProjectilePrefab = dotzonePrefab;
-                component.blastRadius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value; 
+                component.blastRadius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
                 component.blastDamageCoefficient = 1f; // leave it at 1 so projectile itself deals full damage
                 component.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneDamage.Value;
             }
@@ -870,7 +866,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var fxTransform = gameObject.transform.Find("FX");
             var fxScale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
-            fxTransform.localScale = new Vector3(fxScale, fxScale, fxScale); 
+            fxTransform.localScale = new Vector3(fxScale, fxScale, fxScale);
 
             var decal = gameObject.transform.Find("FX/Decal");
             decal.gameObject.SetActive(true);
@@ -882,7 +878,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             light.localPosition = new Vector3(0f, 0.1f, 0f);
 
             var lightComponent = light.GetComponent<Light>();
-            lightComponent.range = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value; 
+            lightComponent.range = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
             lightComponent.color = new Color(1f, 0.54f, 0.172f);
 
             gameObject.transform.Find("FX/Hitbox").transform.localScale = new Vector3(1.5f, 0.33f, 1.5f);
@@ -926,7 +922,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         public GameObject CreateHellzonePillarProjectile(GameObject gameObject, GameObject ghostPrefab)
         {
             var hitboxTransform = gameObject.transform.Find("Hitbox");
-            if(!hitboxTransform)
+            if (!hitboxTransform)
             {
                 Log.Error("Projectile " + gameObject.name + " doesn't have a hitbox.");
                 return gameObject;
@@ -1025,7 +1021,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<ScaleParticleSystemDuration>());
 
             var components = gameObject.GetComponentsInChildren<ParticleSystem>();
-            foreach(var component in components)
+            foreach (var component in components)
             {
                 var main = component.main;
                 main.loop = true;
@@ -1040,7 +1036,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenScream.prefab").WaitForCompletion().InstantiateClone("IfritScream", false);
 
             var components = gameObject.GetComponentsInChildren<ParticleSystem>();
-            foreach(var component in components)
+            foreach (var component in components)
             {
                 var main = component.main;
                 main.duration = 1f;
