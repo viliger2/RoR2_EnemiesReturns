@@ -674,10 +674,14 @@ namespace EnemiesReturns
                         MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                     };
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepths);
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.SiphonedForest);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDelta);
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.HelminthHatchery);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.Custom, "catacombs_DS1_Catacombs");
+
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.VoidCell);
 
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
