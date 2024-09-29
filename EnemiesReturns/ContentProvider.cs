@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static R2API.DirectorAPI;
 
 namespace EnemiesReturns
 {
@@ -672,10 +673,11 @@ namespace EnemiesReturns
                         Card = dcIfritDefault,
                         MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                     };
-                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.TitanicPlains);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepths);
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.SiphonedForest);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDelta);
                     DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.HelminthHatchery);
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.Custom, "catacombs_DS1_Catacombs");
 
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
@@ -685,6 +687,7 @@ namespace EnemiesReturns
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
+                    stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeEnd));
                 }
                 #endregion
 

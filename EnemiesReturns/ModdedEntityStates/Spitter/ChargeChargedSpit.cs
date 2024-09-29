@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public static GameObject chargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoFistEffect.prefab").WaitForCompletion();
 
-        public static string attackString = "ER_Spitter_Charge_Spit_Play"; // TODO: come up with something
+        public static string attackString = "ER_Spitter_Charge_Spit_Play";
 
         private float duration;
 

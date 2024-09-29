@@ -44,6 +44,7 @@ namespace EnemiesReturns.Projectiles
             teamFilter = GetComponent<TeamFilter>();
             smallRadius = (radius / ((numberOfRows - 1) + 0.5f));
             childScale = new Vector3(smallRadius, smallRadius, smallRadius);
+            childPrefab.transform.localScale = childScale;
             currentRow = 0;
         }
 
@@ -101,7 +102,7 @@ namespace EnemiesReturns.Projectiles
         private void SpawnChild(Vector3 position, Vector3 scale)
         {
             var newObject = UnityEngine.Object.Instantiate(childPrefab, position, Quaternion.identity);
-            newObject.transform.localScale = scale;
+            //newObject.transform.localScale = scale;
 
             var newController = newObject.GetComponent<ProjectileController>();
             if (newController)

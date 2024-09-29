@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2990613023713464923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -4.56, z: 0}
+  m_LocalPosition: {x: -0.09, y: -2.81, z: 0}
   m_LocalScale: {x: 1.9499999, y: 1.9499999, z: 1.9499999}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2180,8 +2180,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 4.3916683
-  m_Height: 9.040829
+  m_Radius: 1.5
+  m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8812239642049098944
@@ -2350,8 +2350,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9116609720042062009}
-  m_LocalRotation: {x: -0.670858, y: -0, z: -0, w: 0.7415859}
-  m_LocalPosition: {x: -0.71, y: 8.32, z: -1.7}
+  m_LocalRotation: {x: 0.0010838208, y: -0, z: -0, w: 0.9999994}
+  m_LocalPosition: {x: 0.024287224, y: 9.75, z: -1.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4042,6 +4042,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7795179030447350321}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &524787995444850412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7738980632109403357, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7795179030447350321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &849979914287309897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1736781705904355720, guid: c67a7976c3e30e54a90d8ed3161da5a2,
@@ -4462,6 +4468,8 @@ MonoBehaviour:
     transform: {fileID: 2343626039171952617}
   - name: HealthBarOrigin
     transform: {fileID: 1195265588545463623}
+  - name: Pelvis
+    transform: {fileID: 524787995444850412}
 --- !u!114 &1664444030460202335
 MonoBehaviour:
   m_ObjectHideFlags: 0

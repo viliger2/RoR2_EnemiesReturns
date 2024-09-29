@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
 using HG;
@@ -166,9 +167,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             modelLocator.dontDetatchFromParent = false;
             modelLocator.preserveModel = false;
 
-            modelLocator.normalizeToFloor = true; // TODO: i dont fucking know anymore
-            modelLocator.normalSmoothdampTime = 0.1f;
-            modelLocator.normalMaxAngleDelta = 90f;
+            modelLocator.normalizeToFloor = true; 
+            modelLocator.normalSmoothdampTime = 0.5f;
+            modelLocator.normalMaxAngleDelta = 35f;
             #endregion
 
             #region EntityStateMachineBody
@@ -363,7 +364,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/MainHurtbox"); // TODO
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/MainHurtbox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -388,7 +389,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             var aimAnimator = mdlIfrit.AddComponent<AimAnimator>();
             aimAnimator.inputBank = inputBank;
             aimAnimator.directionComponent = characterDirection;
-            // TODO: maybe change ranges?
             aimAnimator.pitchRangeMin = -70f; // its looking up, not down, for fuck sake
             aimAnimator.pitchRangeMax = 70f;
 
@@ -567,6 +567,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "SprintEffect", transform = sprintEffectCopy.transform });
             #endregion
 
+            #region RemoveJitterBones
+            var fixBones = mdlIfrit.AddComponent<RemoveJitterBones>();
+            #endregion
             //mdlIfrit.AddComponent<DunnoRaycasterOrSomething>();
 
             //var helper = mdlIfrit.AddComponent<AnimationParameterHelper>();
@@ -1221,9 +1224,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = fireEquipDisplay,
-                childName = "Head",
-                localPos = new Vector3(0.00133F, 0.11172F, 0.00157F),
-                localAngles = new Vector3(20.60016F, 340F, 359.7185F),
+                childName = "ShoulderR",
+                localPos = new Vector3(-0.07618F, -0.22209F, -0.07389F),
+                localAngles = new Vector3(356.5784F, 60.60427F, 303.4548F),
                 localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
@@ -1232,10 +1235,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = fireEquipDisplay,
-                childName = "Head",
-                localPos = new Vector3(0.00095F, 0.07965F, 0.00112F),
-                localAngles = new Vector3(24.60459F, 24.28895F, 2.60649F),
-                localScale = new Vector3(-0.2F, 0.2F, 0.2F),
+                childName = "ShoulderL",
+                localPos = new Vector3(0.02979F, -0.23431F, -0.0541F),
+                localAngles = new Vector3(333.7023F, 319.7617F, 43.31199F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
 
@@ -1252,10 +1255,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
-                childName = "Chest",
-                localPos = new Vector3(-0.01152F, -0.32538F, -0.02099F),
-                localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.16025F, 0.11155F, 0.21315F),
+                childName = "Head",
+                localPos = new Vector3(0.04621F, -0.3427F, -0.48813F),
+                localAngles = new Vector3(329.0771F, 358.3423F, 183.6484F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
 
@@ -1273,8 +1276,8 @@ namespace EnemiesReturns.Enemies.Ifrit
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
                 childName = "Head",
-                localPos = new Vector3(-0.02513F, 0.56141F, -0.269F),
-                localAngles = new Vector3(270F, 0F, 0F),
+                localPos = new Vector3(0.06479F, -0.38449F, -0.49458F),
+                localAngles = new Vector3(42.55269F, 173.9934F, 178.0236F),
                 localScale = new Vector3(0.1F, 0.1F, 0.1F),
                 limbMask = LimbFlags.None
             });
@@ -1292,30 +1295,60 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(-0.02181F, 0.46209F, 0.10716F),
-                localAngles = new Vector3(292.6887F, 3.59969F, 181.911F),
-                localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                childName = "Chest",
+                localPos = new Vector3(0.1547F, -0.21215F, -0.27268F),
+                localAngles = new Vector3(330.5753F, 141.3175F, 118.0065F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(-0.12685F, 0.47042F, -0.11722F),
-                localAngles = new Vector3(288.6145F, 259.8474F, 143.9413F),
-                localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                childName = "Chest",
+                localPos = new Vector3(-0.12394F, 0.58573F, -0.3623F),
+                localAngles = new Vector3(338.1842F, 225.1289F, 269.9162F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
-                childName = "Head",
-                localPos = new Vector3(0.10414F, 0.45989F, -0.09844F),
-                localAngles = new Vector3(287.5787F, 127.0641F, 171.7998F),
-                localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                childName = "Pelvis",
+                localPos = new Vector3(-0.11418F, 0.03336F, -0.08187F),
+                localAngles = new Vector3(341.638F, 224.6317F, 258.2183F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(-0.12395F, -0.24669F, -0.21695F),
+                localAngles = new Vector3(338.1842F, 225.1289F, 269.9162F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(0.31959F, 0.56037F, -0.22525F),
+                localAngles = new Vector3(336.4365F, 137.4821F, 109.3917F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "Pelvis",
+                localPos = new Vector3(0.21452F, 0.02704F, -0.06636F),
+                localAngles = new Vector3(357.0562F, 147.3994F, 121.6319F),
+                localScale = new Vector3(0.7F, 0.7F, 0.7F),
                 limbMask = LimbFlags.None
             });
 
@@ -1334,9 +1367,29 @@ namespace EnemiesReturns.Enemies.Ifrit
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
                 childName = "Chest",
-                localPos = new Vector3(0F, 0.00002F, -0.37656F),
-                localAngles = new Vector3(-0.00001F, 180F, 180F),
-                localScale = new Vector3(0.22275F, 0.22275F, 0.22275F),
+                localPos = new Vector3(0F, 0.11885F, -0.18199F),
+                localAngles = new Vector3(7.73144F, 180.0001F, 180F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(-0.00001F, 0.75732F, -0.35454F),
+                localAngles = new Vector3(7.73144F, 180.0001F, 180F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(-0.00002F, -0.34168F, -0.561F),
+                localAngles = new Vector3(7.73144F, 180.0001F, 180F),
+                localScale = new Vector3(0.3F, 0.3F, 0.3F),
                 limbMask = LimbFlags.None
             });
 
@@ -1353,40 +1406,30 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "ShoulderR",
-                localPos = new Vector3(0.05337F, 0.29063F, -0.02488F),
-                localAngles = new Vector3(318.2777F, 269.6648F, 89.31491F),
-                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                childName = "Chest",
+                localPos = new Vector3(0.02025F, 1.06304F, -0.35235F),
+                localAngles = new Vector3(321.0952F, 175.1595F, 1.17263F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "ShoulderL",
-                localPos = new Vector3(-0.0039F, 0.27819F, 0.00551F),
-                localAngles = new Vector3(309.1658F, 90.22986F, 270.5801F),
-                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                childName = "Chest",
+                localPos = new Vector3(0.00727F, 0.3707F, -0.44392F),
+                localAngles = new Vector3(3.87917F, 179.9956F, 182.1576F),
+                localScale = new Vector3(0.15F, 0.15F, 0.15F),
                 limbMask = LimbFlags.None
             });
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "ThighR",
-                localPos = new Vector3(0.00182F, 0.49292F, 0.15797F),
-                localAngles = new Vector3(0F, 0F, 0F),
-                localScale = new Vector3(0.05F, 0.05F, 0.05F),
-                limbMask = LimbFlags.None
-            });
-            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
-            {
-                ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "ThighL",
-                localPos = new Vector3(-0.00176F, 0.47607F, 0.14286F),
-                localAngles = new Vector3(0F, 0F, 0F),
-                localScale = new Vector3(0.05F, 0.05F, 0.05F),
+                childName = "Pelvis",
+                localPos = new Vector3(-0.22009F, 0.02119F, -0.10358F),
+                localAngles = new Vector3(358.2295F, 178.8255F, 0.63453F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
                 limbMask = LimbFlags.None
             });
 
@@ -1404,9 +1447,9 @@ namespace EnemiesReturns.Enemies.Ifrit
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
                 childName = "Head",
-                localPos = new Vector3(-0.00503F, 0.35341F, -0.06072F),
-                localAngles = new Vector3(0F, 0F, 0F),
-                localScale = new Vector3(1.1449F, 1.1449F, 1.1449F),
+                localPos = new Vector3(-0.00464F, 0.09453F, 0.00552F),
+                localAngles = new Vector3(296.9135F, 187.694F, 169.9966F),
+                localScale = new Vector3(3F, 3F, 3F),
                 limbMask = LimbFlags.None
             });
 
@@ -1423,10 +1466,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
-                childName = "Chest",
-                localPos = new Vector3(0F, -0.10164F, 0.24164F),
-                localAngles = new Vector3(90F, 0F, 0F),
-                localScale = new Vector3(0.35F, 0.35F, 0.35F),
+                childName = "Head",
+                localPos = new Vector3(-0.01302F, 0.66335F, 0.04278F),
+                localAngles = new Vector3(278.5223F, 352.4039F, 6.56596F),
+                localScale = new Vector3(0.6F, 0.6F, 0.6F),
                 limbMask = LimbFlags.None
             });
 
@@ -1436,6 +1479,47 @@ namespace EnemiesReturns.Enemies.Ifrit
                 keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
             });
             #endregion
+
+            #region BeadElite
+            var displayRuleGroupBead = new DisplayRuleGroup();
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(-0.03164F, 0.04501F, -0.42897F),
+                localAngles = new Vector3(285.3486F, 351.2853F, 11.47881F),
+                localScale = new Vector3(0.14951F, 0.14951F, 0.14951F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupBead,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region GoldElite
+            var displayRuleGroupGold = new DisplayRuleGroup();
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                childName = "Head",
+                localPos = new Vector3(-0.01787F, 0.91068F, -0.17726F),
+                localAngles = new Vector3(343.8055F, 180.3407F, 177.7121F),
+                localScale = new Vector3(1.17694F, 1.17694F, 1.17694F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupGold,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
 
             return idrs;
         }
