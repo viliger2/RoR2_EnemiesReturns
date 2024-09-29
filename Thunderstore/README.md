@@ -35,6 +35,12 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td>The one and only.</td>
 		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Abyssal Depths, Bob-omb Battlefield, Fogbound Lagoon</td>
 	</tr>
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
+		<td>Ifrit</td>
+		<td>Fiery spawn of Hell. He will burn you with every attack.</td>
+		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, Catacombs</td>
+	</tr>	
 </table>
 
 ## Credits
@@ -61,9 +67,21 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Laser charge sound - https://pixabay.com/sound-effects/charged-laser-7125/
 * Woosh sound - https://pixabay.com/sound-effects/long-whoosh-194554/
 </details>
+<details>
+<summary>Ifrit</summary>
+
+* Model by Jinazler
+* Rigging and animation by Sentinel 
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Item pickup model and texture, pillar model, texture and animations by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
+* Majority of sounds come from RoR, RoRR and WoW
+* Super natural explosion - https://pixabay.com/sound-effects/supernatural-explosion-104295/
+* Monster breathing - https://pixabay.com/sound-effects/animal-breathing-monster-78392/
+</details>
 - Special thanks to 
 
 * [Moffein](https://thunderstore.io/package/Moffein/) for balance and design help
+* [rob](https://thunderstore.io/package/rob_gaming/) - the fun guy
 * /vm/ for telling me to fix my (viliger's) shit.
 * Translations:
 	* pt-BR by [Kauzok](https://github.com/Kauzok)

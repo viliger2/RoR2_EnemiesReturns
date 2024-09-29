@@ -1,4 +1,16 @@
 <details>
+<summary>0.2.3</summary>
+
+* Added new Champion-tier (or boss) monster: Ifrit.
+* Restored DirectorAPI dependency and added DeployableAPI dependency.
+	* _DirectorAPI dependency restores enemy spawns on custom stages. It wasn't working since SoTS._
+* Fixed potential issue with boss drops in other mods due to code-created ScriptableObjects not having names.
+* Added option to disable each instance of content separately.
+	* _This means you can have boss items without bosses and vice versa. But obviously if you have boss item without a boss that means it can only spawn either via printers or Artifact of Command._
+* Colossus:
+	* Fixed Laser Barrage explosion damage being scaled of Laser Barrage Explosion radius config instead of correct config.
+</details>
+<details>
 <summary>0.1.13</summary>
 
 * Fixed Colossus not spawning outside of family events.
@@ -15,7 +27,7 @@
 <details>
 <summary>0.1.11 (Dawn of the Final Day, 24 Hours Remain)  </summary>
 
-* Added Colossus to Fogbound Laggon.
+* Added Colossus to Fogbound Lagoon.
 * Some general polish.
 </details>
 <details>
@@ -75,7 +87,7 @@
 	* Fixed Spitter not being stunnable, frozable, etc.
 	* Adjusted sounds' volume and attenuation to roughly match vanilla.
 	* Made projectile and DoT zone decal more orange-ish.
-	* Slight adjustments to elite colors so hopefully Overloading and Glacial are easier to differenciate.
+	* Slight adjustments to elite colors so hopefully Overloading and Glacial are easier to differentiate.
 	* Added monster to Void Cells, Abyssal Depths (Simulacrum) and Bulwark's Ambry.
 </details>
 
