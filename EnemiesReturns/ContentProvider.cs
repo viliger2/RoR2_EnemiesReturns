@@ -257,6 +257,7 @@ namespace EnemiesReturns
                         Card = dcSpitterSulfur,
                         MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                     };
+                    DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterSulfur, false, DirectorAPI.Stage.SulfurPools);
 
                     SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                     var dcSpitterDepth = new DirectorCard
