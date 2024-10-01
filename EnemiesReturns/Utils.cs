@@ -87,6 +87,23 @@ namespace EnemiesReturns
             return unlockableDef;
         }
 
+        public static NetworkSoundEventDef CreateNetworkSoundDef(string eventName)
+        {
+            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            networkSoundEventDef.eventName = eventName;
+
+            return networkSoundEventDef;
+        }
+
+        public static void AddMonsterToCardCategory(DirectorCard card, string categoryName, DirectorCardCategorySelection stageCard)
+        {
+            int num = Utils.FindCategoryIndexByName(stageCard, categoryName);
+            if (num >= 0)
+            {
+                stageCard.AddCard(num, card);
+            }
+        }
+
         public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
         {
             if (dcs == null)
