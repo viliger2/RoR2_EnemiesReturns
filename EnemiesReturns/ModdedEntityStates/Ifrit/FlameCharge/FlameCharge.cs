@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 {
     public class FlameCharge : BaseState
     {
-        public static GameObject flamethrowerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion();
+        public static GameObject flamethrowerEffectPrefab;
 
         public static GameObject bodyImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXLarge.prefab").WaitForCompletion();
 

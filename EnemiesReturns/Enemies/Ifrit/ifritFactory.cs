@@ -1019,7 +1019,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public GameObject CreateFlameBreath()
         {
-            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion();
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FlamebreathEffect.prefab").WaitForCompletion().InstantiateClone("IfritFlameBreathEffect", false);
 
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<ScaleParticleSystemDuration>());
 

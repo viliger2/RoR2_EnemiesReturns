@@ -89,6 +89,8 @@ namespace EnemiesReturns.Enemies.Ifrit
             characterBody.bodyFlags = CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.HasBackstabImmunity;
             characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyBaseMaxHealth.Value;
             characterBody.baseDamage = bodyInformation.baseDamage;
+            characterBody.baseArmor = 0f;
+            characterBody.levelArmor = 0f;
             characterBody.autoCalculateLevelStats = true;
             characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyLevelMaxHealth.Value;
             characterBody.levelDamage = bodyInformation.levelDamage;
