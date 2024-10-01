@@ -1,4 +1,16 @@
 <details>
+<summary>0.2.4</summary>
+
+* Colossus:
+	* Director credits increased from 1000 to 1150.
+		* _This was actually made last patch but I forgot to add it to changelog. He is a bit too strong to appear early on, but should still be there if you just keep that Shrine of Mountain streak going._
+* Ifrit:
+	* Added missing Simulacrum stages and Void Cell as possible spawn stage.
+	* Fixed NRE with Elder Lemurian flame attack.
+* Spitter:
+	* Restored Sulfur Pools spawning.
+</details>
+<details>
 <summary>0.2.3</summary>
 
 * Added new Champion-tier (or boss) monster: Ifrit.
