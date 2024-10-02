@@ -1,4 +1,7 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
+﻿using RoR2.CharacterAI;
+using UnityEngine;
+
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
 {
     public class FireExplosion : BaseFireExplosion
     {
@@ -11,5 +14,22 @@
         public override bool ignoresLoS => EnemiesReturnsConfiguration.Ifrit.PillarExplosionIgnoesLoS.Value;
 
         public override float damagePerStack => EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillDamagePerStack.Value;
+
+        public override GameObject GetAttacker()
+        {
+            if (characterBody.master)
+            {
+                var aiOwnership = characterBody.master.gameObject.GetComponent<AIOwnership>();
+                if (aiOwnership && aiOwnership.ownerMaster)
+                {
+                    var body = aiOwnership.ownerMaster.GetBody();
+                    if (body)
+                    {
+                        return body.gameObject;
+                    }
+                }
+            }
+            return base.GetAttacker();
+        }
     }
 }

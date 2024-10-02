@@ -1,5 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
+using System.Linq;
+using UnityEngine.Networking;
+using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
@@ -7,7 +10,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
     {
         public static float baseDuration = 1.8f;
 
+        public static float maxSearchDistance = 60f; // TODO
+
         public static string attackString = "ER_Ifrit_BreathIn_Fireball_Play";
+
+        private Predictor predictor;
 
         private float duration;
 
@@ -18,6 +25,30 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             duration = baseDuration / attackSpeedStat;
             Util.PlayAttackSpeedSound(attackString, gameObject, attackSpeedStat);
             PlayAnimation("Gesture,Override", "FireballStart", "FireFireball.playbackRate", duration);
+            if (NetworkServer.active)
+            {
+                BullseyeSearch search = new BullseyeSearch();
+                search.teamMaskFilter = TeamMask.allButNeutral;
+                if(teamComponent)
+                {
+                    search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
+                }
+                search.maxDistanceFilter = maxSearchDistance;
+                search.maxAngleFilter = 90f;
+                var aimRay = GetAimRay();
+                search.searchOrigin= aimRay.origin;
+                search.searchDirection = aimRay.direction;
+                search.filterByLoS = false;
+                search.sortMode = BullseyeSearch.SortMode.Angle;
+                search.RefreshCandidates();
+                var hurtBox = search.GetResults().FirstOrDefault();
+                if(hurtBox)
+                {
+                    predictor = new Predictor(base.transform);
+                    predictor.SetTargetTransform(hurtBox.transform);
+                }
+
+            }
         }
 
         public override void FixedUpdate()
@@ -25,7 +56,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             base.FixedUpdate();
             if (fixedAge >= duration && isAuthority)
             {
-                outer.SetNextState(new FireHellzoneFire());
+                var nextState = new FireHellzoneFire();
+                nextState.predictor = predictor;
+                outer.SetNextState(nextState);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.CharacterAI;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -90,6 +91,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                 }
                 if (spawnResult.spawnedInstance && base.characterBody)
                 {
+                    var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
+                    if (aiownership)
+                    {
+                        aiownership.ownerMaster = this.characterBody.master;
+                    }
                     var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {

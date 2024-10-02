@@ -151,9 +151,9 @@ namespace EnemiesReturns
             public static ConfigEntry<float> FlameChargeHeighCheck;
 
             public static ConfigEntry<float> HellzoneCooldown;
-            public static ConfigEntry<float> HellzoneDamage;
-            public static ConfigEntry<float> HellzoneProjectileSpeed;
-            public static ConfigEntry<float> HellzoneForce;
+            public static ConfigEntry<float> HellzoneFireballDamage;
+            public static ConfigEntry<float> HellzoneFireballProjectileSpeed;
+            public static ConfigEntry<float> HellzoneFireballForce;
             public static ConfigEntry<float> HellzoneDoTZoneDamage;
             public static ConfigEntry<float> HellzoneDoTZoneLifetime;
             public static ConfigEntry<float> HellzoneRadius;
@@ -335,13 +335,13 @@ namespace EnemiesReturns
 
             Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
             Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 12f, "Ifrit's Hellzone radius.");
-            Ifrit.HellzoneDamage = config.Bind("Ifrit Hellzone", "Hellzone Damage", 2.5f, "Ifrit's Hellzone projectile initial damage.");
-            Ifrit.HellzoneProjectileSpeed = config.Bind("Ifrit Hellzone", "Hellzone Projectile Speed", 50f, "Ifrit's Hellzone projectile speed.");
-            Ifrit.HellzoneForce = config.Bind("Ifrit Hellzone", "Hellzone Projectile Force", 0f, "Ifrit's Hellzone projectile force.");
+            Ifrit.HellzoneFireballDamage = config.Bind("Ifrit Hellzone", "Hellzone Fireball Damage", 2.5f, "Ifrit's Hellzone initial fireball projectile damage.");
+            Ifrit.HellzoneFireballProjectileSpeed = config.Bind("Ifrit Hellzone", "Hellzone Fireball Projectile Speed", 50f, "Ifrit's Hellzone fireball projectile speed.");
+            Ifrit.HellzoneFireballForce = config.Bind("Ifrit Hellzone", "Hellzone Fireball Projectile Force", 0f, "Ifrit's Hellzone fireball projectile force.");
             Ifrit.HellzonePillarCount = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Count", 4, "Ifrit's Hellzone number of secondary explosions.");
             Ifrit.HellzonePillarDelay = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Delay", 0.5f, "Ifrit's Hellzone delay between each secondary explosion.");
             Ifrit.HellzoneDoTZoneLifetime = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Lifetime", 3f, "Ifrit's Hellzone DoT zone initial lifetime. Secondary projectile count multiplied by secondary projectile delay will be added to this value to get total dot zone lifetime.");
-            Ifrit.HellzoneDoTZoneDamage = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Damage", 0.2f, "Ifrit's Hellzone DoT zone damage. Scales off Hellzone initial projectile damage.");
+            Ifrit.HellzoneDoTZoneDamage = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Damage", 0.5f, "Ifrit's Hellzone DoT zone damage. Scales off Hellzone initial projectile damage.");
             Ifrit.HellzonePillarDamage = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Damage", 3f, "Ifrit's Hellzone secondary projectile damage. Scales of DoT Zone Damage.");
             Ifrit.HellzonePillarForce = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Force", 2400f, "Ifrit's Hellzone secondary projectile force.");
 

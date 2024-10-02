@@ -207,16 +207,20 @@ namespace EnemiesReturns
 
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
+                var IfritHellzoneVolcanoEffect = assets.First(projectile => projectile.name == "IfritHellzoneVolcanoEffect");
                 var pillarProjectile = ifritFactory.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
-                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, texLavaCrackRound, nsedHellzoneRockFire);
-                var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile(dotZoneProjectile);
+                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, IfritHellzoneVolcanoEffect, texLavaCrackRound, nsedHellzoneRockFire);
+                var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile();
+                var preProjectile = ifritFactory.CreateHellzonePredictionProjectile(dotZoneProjectile, texLavaCrackRound);
 
                 projectilesList.Add(dotZoneProjectile);
                 projectilesList.Add(hellzoneProjectile);
                 projectilesList.Add(pillarProjectile);
+                projectilesList.Add(preProjectile);
 
                 ModdedEntityStates.Ifrit.FlameCharge.FlameCharge.flamethrowerEffectPrefab = ifritFactory.CreateFlameBreath();
                 ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = hellzoneProjectile;
+                ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.dotZoneProjectile = preProjectile;
 
                 IfritFactory.Skills.Hellzone = ifritFactory.CreateHellzoneSkill();
                 IfritFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritFactory.Skills.Hellzone);
@@ -777,6 +781,15 @@ namespace EnemiesReturns
             if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc();
+            }
+            return material;
+        }
+
+        public static Material GetOrCreateMaterial(string materialName, Func<Texture2D, Material> materialCreateFunc, Texture2D texture)
+        {
+            if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
+            {
+                material = materialCreateFunc(texture);
             }
             return material;
         }

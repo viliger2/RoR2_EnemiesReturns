@@ -48,18 +48,21 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                     }
                 }
 
-                blastAttack = new BlastAttack();
-                blastAttack.attacker = base.gameObject;
-                blastAttack.radius = radius;
-                blastAttack.procCoefficient = 1f;
-                blastAttack.position = transform.position;
-                blastAttack.crit = false;
-                blastAttack.baseDamage = damageStat * (damage + damagePerStack * (stackCount - 1));
-                blastAttack.canRejectForce = false;
-                blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                blastAttack.baseForce = force;
-                blastAttack.losType = ignoresLoS ? BlastAttack.LoSType.None : BlastAttack.LoSType.NearestHit;
-                blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
+                blastAttack = new BlastAttack
+                {
+                    attacker = GetAttacker(),
+                    inflictor = base.gameObject,
+                    radius = radius,
+                    procCoefficient = 1f,
+                    position = transform.position,
+                    crit = false,
+                    baseDamage = damageStat * (damage + damagePerStack * (stackCount - 1)),
+                    canRejectForce = false,
+                    falloffModel = BlastAttack.FalloffModel.None,
+                    baseForce = force,
+                    losType = ignoresLoS ? BlastAttack.LoSType.None : BlastAttack.LoSType.NearestHit,
+                    teamIndex = characterBody.teamComponent.teamIndex
+                };
                 blastAttack.damageType.damageType = DamageType.IgniteOnHit;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.Fire();
@@ -79,6 +82,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                 lineRenderer.gameObject.SetActive(false);
             }
             Util.PlaySound("ER_Ifrit_Pillar_Explosion_Play", gameObject);
+        }
+
+        public virtual GameObject GetAttacker()
+        {
+            return base.gameObject;
         }
 
         public override void FixedUpdate()

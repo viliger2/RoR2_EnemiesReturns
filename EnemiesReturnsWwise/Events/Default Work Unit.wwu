@@ -363,31 +363,6 @@
 												</Action>
 											</ChildrenList>
 										</Event>
-										<Event Name="ER_Ifrit_Pillar_Lava_Play" ID="{DCE6A439-F359-4B91-9AFB-95CE268F88C8}">
-											<ChildrenList>
-												<Action Name="" ID="{FCE6F322-1CD5-4F38-9A04-F1B69FF49785}" ShortID="244094364">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
-										<Event Name="ER_Ifrit_Pillar_Lava_Stop" ID="{6837B1C2-382C-4D57-9404-E4F9C31D7A32}">
-											<ChildrenList>
-												<Action Name="" ID="{480EF076-4A4A-4C05-8B26-FA8D473CAEEB}" ShortID="721685871">
-													<PropertyList>
-														<Property Name="ActionType" Type="int16" Value="2"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Event Name="ER_Ifrit_Pillar_Explosion_Play" ID="{D4109B25-2464-45A7-9159-5462A440BF37}">
 											<ChildrenList>
 												<Action Name="" ID="{54EBBB0E-BE2F-45D6-AA27-16E6C8EBCFFE}" ShortID="183095284">
@@ -406,7 +381,7 @@
 										<Action Name="" ID="{032763AF-3425-4113-8F3A-3903269F7EDB}" ShortID="107520399">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Ifrit_Hellzone_Rock" ID="{D2BE6B83-3DFE-49C8-93D5-2E6170294817}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+													<ObjectRef Name="Ifrit_Hellzone_Rock" ID="{2E8821F2-DFA3-4D7C-B3B7-DFDC046D6C60}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -440,6 +415,17 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="Ifrit_BreathIn_Fireball" ID="{8227FE77-B738-4BA8-85B6-A93992371FA9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_Volcano_Play" ID="{ACF43B36-8AC9-49A0-B862-49FC7D8B0B7B}">
+									<ChildrenList>
+										<Action Name="" ID="{6E7A7EB8-3C38-4B43-8F72-BA096C7B40B4}" ShortID="615734924">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Volcano_Spawn" ID="{14FDBEAF-0CCD-4CA6-BE4B-46CC2D383A82}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

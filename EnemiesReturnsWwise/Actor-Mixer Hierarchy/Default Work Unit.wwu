@@ -1131,7 +1131,7 @@
 																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-5</Value>
+																		<Value>-3</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -1238,7 +1238,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-5</Value>
+														<Value>-2</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -1352,50 +1352,6 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="Ifrit_Hellzone_Rock" ID="{D2BE6B83-3DFE-49C8-93D5-2E6170294817}" ShortID="203311838">
-													<PropertyList>
-														<Property Name="Pitch" Type="int32">
-															<ModifierList>
-																<ModifierInfo>
-																	<Modifier Name="" ID="{6518361F-8272-45FB-9E2C-A80E45CF1E5B}">
-																		<PropertyList>
-																			<Property Name="Max" Type="Real64" Value="253"/>
-																			<Property Name="Min" Type="Real64" Value="-152"/>
-																		</PropertyList>
-																	</Modifier>
-																</ModifierInfo>
-															</ModifierList>
-														</Property>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-3</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Attenuation">
-															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-														</Reference>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="FireCast" ID="{917E3214-A4F8-4EFF-A47F-75703D63B374}">
-															<Language>SFX</Language>
-															<AudioFile>Ifrit\FireCast.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="104206474"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="FireCast" ID="{917E3214-A4F8-4EFF-A47F-75703D63B374}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Sound Name="Ifrit_Hellzone_Spawn" ID="{A7C2BFD1-9548-4D76-839B-2C004A92C6A3}" ShortID="920708288">
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
@@ -1417,6 +1373,11 @@
 													</ReferenceList>
 													<ChildrenList>
 														<AudioFileSource Name="Flamestrike" ID="{0D0C3598-AF7A-4379-A376-412941CE1332}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="1.78965643753342"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="4.52616599027351"/>
+															</PropertyList>
 															<Language>SFX</Language>
 															<AudioFile>Ifrit\Flamestrike.wav</AudioFile>
 															<MediaIDList>
@@ -1428,6 +1389,120 @@
 														<ActiveSource Name="Flamestrike" ID="{0D0C3598-AF7A-4379-A376-412941CE1332}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Ifrit_Volcano_Spawn" ID="{14FDBEAF-0CCD-4CA6-BE4B-46CC2D383A82}" ShortID="803072848">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="DynamiteExplode" ID="{0F68825F-785C-4152-BDE6-A0D0E8455BA5}">
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\DynamiteExplode.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="859465449"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="DynamiteExplode" ID="{0F68825F-785C-4152-BDE6-A0D0E8455BA5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="Ifrit_Hellzone_Rock" ID="{2E8821F2-DFA3-4D7C-B3B7-DFDC046D6C60}" ShortID="922796979">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Rock1" ID="{1C5AB0B3-69EB-4B79-AA95-40F3FF73AADF}" ShortID="566718902">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FireCast3" ID="{79A1FC01-1F2C-4139-830C-EB0E046A906E}">
+																	<Language>SFX</Language>
+																	<AudioFile>Ifrit\firerocks\FireCast3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="556054288"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FireCast3" ID="{79A1FC01-1F2C-4139-830C-EB0E046A906E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Rock2" ID="{7DC47DD1-107E-4FAD-B612-F720F86705D6}" ShortID="212233706">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FireCast2" ID="{80AD7D9C-67AE-49F2-8052-F0FC354EE797}">
+																	<Language>SFX</Language>
+																	<AudioFile>Ifrit\firerocks\FireCast2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1024383268"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FireCast2" ID="{80AD7D9C-67AE-49F2-8052-F0FC354EE797}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Rock3" ID="{151D0EBF-03FF-458D-9425-B5F07774134B}" ShortID="672154563">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="FireCast1" ID="{786EA6DF-3970-4A80-A927-29DA795335B3}">
+																	<Language>SFX</Language>
+																	<AudioFile>Ifrit\firerocks\FireCast1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="828788037"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="FireCast1" ID="{786EA6DF-3970-4A80-A927-29DA795335B3}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</ActorMixer>
 										<Sound Name="Ifrit_BreatheIn_Charge" ID="{93A51D56-1D4D-44FA-B139-0BF876D958A1}" ShortID="541914337">

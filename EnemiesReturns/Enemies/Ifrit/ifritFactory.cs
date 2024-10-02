@@ -18,6 +18,7 @@ using ThreeEyedGames;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 using static EnemiesReturns.Utils;
 using static RoR2.ItemDisplayRuleSet;
 
@@ -689,16 +690,16 @@ namespace EnemiesReturns.Enemies.Ifrit
             asdHellzone.minTargetHealthFraction = float.NegativeInfinity;
             asdHellzone.maxTargetHealthFraction = float.PositiveInfinity;
             asdHellzone.minDistance = 0f;
-            asdHellzone.maxDistance = 15f;
-            asdHellzone.selectionRequiresTargetLoS = true;
+            asdHellzone.maxDistance = 50f;
+            asdHellzone.selectionRequiresTargetLoS = false;
             asdHellzone.selectionRequiresOnGround = false;
-            asdHellzone.selectionRequiresAimTarget = true;
+            asdHellzone.selectionRequiresAimTarget = false;
             asdHellzone.maxTimesSelected = -1;
 
             asdHellzone.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdHellzone.activationRequiresTargetLoS = true;
+            asdHellzone.activationRequiresTargetLoS = false;
             asdHellzone.activationRequiresAimTargetLoS = false;
-            asdHellzone.activationRequiresAimConfirmation = true;
+            asdHellzone.activationRequiresAimConfirmation = false;
             asdHellzone.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
             asdHellzone.moveInputScale = 0;
             asdHellzone.aimType = AISkillDriver.AimType.AtMoveTarget;
@@ -831,7 +832,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         #region GameObjects
 
-        public GameObject CreateHellzoneProjectile(GameObject dotzonePrefab)
+        public GameObject CreateHellzoneProjectile()
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
 
@@ -845,34 +846,71 @@ namespace EnemiesReturns.Enemies.Ifrit
             if (gameObject.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
                 component.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
-                component.childrenProjectilePrefab = dotzonePrefab;
+                component.fireChildren = false;
                 component.blastRadius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
                 component.blastDamageCoefficient = 1f; // leave it at 1 so projectile itself deals full damage
-                component.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneDamage.Value;
             }
 
             return gameObject;
         }
 
-        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, Texture2D texLavaCrack, NetworkSoundEventDef nsedChildSpawnSound)
+        public GameObject CreateHellzonePredictionProjectile(GameObject dotZone, Texture2D texLavaCrack)
         {
-            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
-
-            gameObject.GetComponent<ProjectileDotZone>().lifetime = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneLifetime.Value
-                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanPreFistProjectile.prefab").WaitForCompletion().InstantiateClone("IfritHellzonePreProjectile", true);
 
             var controller = gameObject.GetComponent<ProjectileController>();
             controller.ghostPrefab = null;
             controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
+
+            var scale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            gameObject.transform.Find("TeamAreaIndicator, GroundOnly").transform.localScale = new Vector3(scale, scale, scale); // TODO: check if its correct
+
+            var beetleQueen = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion();
+            var beetleQueenDecal = beetleQueen.transform.Find("FX/Decal");
+            var decalGameObject = UnityEngine.GameObject.Instantiate(beetleQueenDecal.gameObject);
+
+            decalGameObject.SetActive(true);
+            decalGameObject.transform.parent = gameObject.transform;
+            decalGameObject.transform.localPosition = Vector3.zero;
+            decalGameObject.transform.localRotation = Quaternion.identity; // TODO
+            decalGameObject.transform.localScale = new Vector3(20f, 20f, 20f);
+
+            var decal = decalGameObject.GetComponent<Decal>();
+            decal.Material = ContentProvider.GetOrCreateMaterial("matIfritHellzoneDecalLavaCrack", CreatePreditionDecalMaterial, texLavaCrack);
+
+            var impactExplosion = gameObject.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.impactEffect = null;
+            impactExplosion.blastDamageCoefficient = 0.1f;
+            impactExplosion.lifetime = 2f;
+
+            impactExplosion.fireChildren = true;
+            impactExplosion.childrenProjectilePrefab = dotZone;
+            impactExplosion.childrenDamageCoefficient = 1f; // TODO
+            impactExplosion.minAngleOffset = Vector3.zero;
+            impactExplosion.maxAngleOffset = Vector3.zero;
+
+            return gameObject;
+        }
+
+        public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, GameObject volcanoEffectPrefab, Texture2D texLavaCrack, NetworkSoundEventDef nsedChildSpawnSound)
+        {
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
+
+            var lifetime = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneLifetime.Value
+                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
+            gameObject.GetComponent<ProjectileDotZone>().lifetime = lifetime;
+
+            var controller = gameObject.GetComponent<ProjectileController>();
+            controller.ghostPrefab = null;
+            controller.startSound = "ER_Ifrit_Volcano_Play";
 
             gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
 
             var fxTransform = gameObject.transform.Find("FX");
             var fxScale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
             fxTransform.localScale = new Vector3(fxScale, fxScale, fxScale);
+            fxTransform.localRotation = Quaternion.identity;
 
-            var decal = gameObject.transform.Find("FX/Decal");
-            decal.gameObject.SetActive(true);
             UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("FX/Spittle").gameObject);
             UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("FX/Gas").gameObject);
 
@@ -886,17 +924,6 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             gameObject.transform.Find("FX/Hitbox").transform.localScale = new Vector3(1.5f, 0.33f, 1.5f);
 
-            var decalGameObject = decal.gameObject;
-            decal.localScale = new Vector3(1.8f, 0.5f, 1.8f);
-            var decalComponent = decalGameObject.GetComponent<Decal>();
-            var newDecalMaterial = UnityEngine.Object.Instantiate(decalComponent.Material);
-            newDecalMaterial.name = "matIfritHellzoneDecalLavaCrack";
-            newDecalMaterial.SetTexture("_MaskTex", texLavaCrack);
-            newDecalMaterial.SetColor("_Color", new Color(255f / 255f, 103f / 255f, 127f / 255f));
-            newDecalMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texBehemothRamp.png").WaitForCompletion());
-            newDecalMaterial.SetFloat("_AlphaBoost", 1f);
-            decalComponent.Material = newDecalMaterial;
-
             var teamIndicator = UnityEngine.GameObject.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, GroundOnly.prefab").WaitForCompletion());
             teamIndicator.transform.parent = fxTransform;
             teamIndicator.transform.localPosition = Vector3.zero;
@@ -904,12 +931,19 @@ namespace EnemiesReturns.Enemies.Ifrit
             teamIndicator.transform.localScale = Vector3.one;
             teamIndicator.GetComponent<TeamAreaIndicator>().teamFilter = gameObject.GetComponent<TeamFilter>();
 
-            var scorchlingBody = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Scorchling/ScorchlingBody.prefab").WaitForCompletion();
-            var scorchlingPile = UnityEngine.GameObject.Instantiate(scorchlingBody.transform.Find("ModelBase/mdlScorchling/mdlScorchlingBreachPile").gameObject);
-            scorchlingPile.transform.parent = fxTransform;
-            scorchlingPile.transform.localPosition = Vector3.zero;
-            scorchlingPile.transform.localRotation = Quaternion.identity;
-            scorchlingPile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 0.5 works, since we attach it to projectile and then it scales of main projectile scaling
+            var volcano = UnityEngine.GameObject.Instantiate(volcanoEffectPrefab);
+            volcano.transform.parent = fxTransform;
+            volcano.transform.localPosition = Vector3.zero;
+            volcano.transform.localRotation = Quaternion.identity;
+            volcano.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 0.5 works, since we attach it to projectile and then it scales of main projectile scaling
+
+            var particleSystem = volcano.GetComponentInChildren<ParticleSystem>();
+            var main = particleSystem.main;
+            main.startLifetime = lifetime;
+            main.duration = lifetime;
+
+            var particleRenderer = volcano.GetComponentInChildren<ParticleSystemRenderer>();
+            particleRenderer.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Scorchling/matScorchlingBreachPile.mat").WaitForCompletion();
 
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
             spawnChildrenComponent.radius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
@@ -1013,6 +1047,23 @@ namespace EnemiesReturns.Enemies.Ifrit
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/GreaterWisp/matGreaterWispFire.mat").WaitForCompletion());
             material.name = "matIfritManeFire";
             material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public Material CreatePreditionDecalMaterial(Texture2D texLavaCrack)
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
+            material.name = "matIfritHellzoneDecalLavaCrack";
+            material.SetTexture("_MaskTex", texLavaCrack);
+            material.SetColor("_Color", new Color(255f / 255f, 103f / 255f, 127f / 255f));
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texBehemothRamp.png").WaitForCompletion());
+            material.SetFloat("_AlphaBoost", 0.9f);
+            material.SetInt("_DecalSrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            material.SetInt("_DecalDstBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            material.SetTextureScale("_Cloud1Tex", Vector2.zero);
+            material.SetTextureScale("_Cloud2Tex", Vector2.zero);
+            material.SetVector("_CutoffScroll", new Vector4(0f, 0f, 0f, 0f));
 
             return material;
         }

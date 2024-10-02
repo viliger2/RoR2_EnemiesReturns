@@ -1,8 +1,10 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
+using System;
 using System.Linq;
 using UnityEngine;
+using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
@@ -12,21 +14,35 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         public static float baseChargeTime = 0.5f;
 
+        public static float baseSpawnDoTZoneTime = 1f;
+
         public static string targetMuzzle = "MuzzleMouth";
 
         public static GameObject projectilePrefab;
 
-        public static float projectileSpeed = EnemiesReturnsConfiguration.Ifrit.HellzoneProjectileSpeed.Value;
+        public static float projectileSpeed = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballProjectileSpeed.Value;
 
-        public static float damageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDamage.Value;
+        public static float damageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballDamage.Value;
 
-        public static float force = EnemiesReturnsConfiguration.Ifrit.HellzoneForce.Value;
+        public static float dotZoneDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneDamage.Value;
+
+        public static float force = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballForce.Value;
+
+        public static GameObject dotZoneProjectile;
+
+        public Predictor predictor;
 
         private float duration;
 
         private float chargeTime;
 
         private bool hasFired;
+
+        private bool hasSpawnedDoTZone;
+
+        private float spawnDoTZoneTime => baseSpawnDoTZoneTime - (baseChargeTime - chargeTime);
+
+        private Vector3 predictedTargetPosition;
 
         private Transform muzzleMouth;
 
@@ -45,63 +61,60 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (fixedAge <= chargeTime)
+            if (fixedAge <= spawnDoTZoneTime)
             {
-                return;
+                if(predictor!= null)
+                {
+                    predictor.Update();
+                    predictor.GetPredictedTargetPosition(baseDuration - baseChargeTime, out predictedTargetPosition);
+                }
             }
 
-            if (!hasFired && isAuthority)
+            if (!hasFired && isAuthority && fixedAge >= chargeTime)
             {
                 FireProjectile();
                 hasFired = true;
+            }
+
+            if(!hasSpawnedDoTZone && isAuthority && fixedAge >= spawnDoTZoneTime)
+            {
+                FireDoTZone();
+                hasSpawnedDoTZone = true;
             }
 
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new FireHellzoneEnd());
             }
-
         }
 
         private void FireProjectile()
         {
             var rotation = Quaternion.LookRotation(fireballAimHelper.position - muzzleMouth.position, Vector3.up);
+            ProjectileManager.instance.FireProjectile(projectilePrefab, muzzleMouth.position, rotation, gameObject, damageStat * damageCoefficient, force, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
+        }
 
-            var colliders = Physics.OverlapSphere(muzzleMouth.position + Vector3.forward * 30f, 30f, LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore);
-            if (colliders.Length > 0)
+        private void FireDoTZone()
+        {
+            var position = predictedTargetPosition;
+            if (position == Vector3.zero)
             {
-                // finding closest collider 
-                float distance = 30f;
-                int index = -1;
-                for (int i = 0; i < colliders.Count(); i++)
+                if (Physics.Raycast(muzzleMouth.position, muzzleMouth.forward, out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                 {
-                    var hurtbox = colliders[i].GetComponent<HurtBox>();
-                    if (hurtbox && hurtbox.healthComponent)
-                    {
-                        if (hurtbox.healthComponent.body == this.characterBody)
-                        {
-                            continue;
-                        }
-                        float currentDistance = Mathf.Abs(Vector3.Distance(colliders[i].transform.position, muzzleMouth.position));
-                        if (currentDistance < distance)
-                        {
-                            distance = currentDistance;
-                            index = i;
-                        }
-                    }
-                }
-
-                if (index > -1)
-                {
-                    var collider = colliders[index];
-                    if (Physics.Raycast(collider.transform.position, Vector3.down, out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                    {
-                        rotation = Quaternion.LookRotation(result.point - muzzleMouth.position, Vector3.up);
-                    }
+                    position = result.point;
                 }
             }
 
-            ProjectileManager.instance.FireProjectile(projectilePrefab, muzzleMouth.position, rotation, gameObject, damageStat * damageCoefficient, force, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
+            var projectileInfo = new FireProjectileInfo();
+            projectileInfo.projectilePrefab = dotZoneProjectile;
+            projectileInfo.position = position;
+            projectileInfo.rotation = Quaternion.identity;
+            projectileInfo.owner = base.gameObject;
+            projectileInfo.damage = damageStat * dotZoneDamageCoefficient;
+            projectileInfo.force = 0f;
+            projectileInfo.crit = RollCrit();
+            projectileInfo.fuseOverride = baseDuration - baseSpawnDoTZoneTime;
+            ProjectileManager.instance.FireProjectile(projectileInfo);
         }
 
         public override void OnExit()
