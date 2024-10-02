@@ -1,12 +1,18 @@
 ﻿using EnemiesReturns.Helpers;
 using EntityStates;
+using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
 {
     public class DeathState : GenericCharacterDeath
     {
         public static float effectDuration = 1.25f;
+
+        public static float fallEffectTime = 1.75f;
+
+        public static GameObject deathEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion();
 
         private Renderer maneRenderer;
         private Renderer bodyRenderer;
@@ -16,12 +22,16 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         private MaterialPropertyBlock manePropertyBlock;
         private MaterialPropertyBlock bodyPropertyBlock;
 
+        private bool effectSpawned;
+
+        private Transform modelTransform;
+
         public override void OnEnter()
         {
             bodyPreservationDuration = 2f;
             base.OnEnter();
 
-            var modelTransform = GetModelTransform();
+            modelTransform = GetModelTransform();
             if (modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
             {
                 transformScaler.SetScaling(Vector3.zero, effectDuration);
@@ -45,6 +55,16 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             {
                 SetPropertyBlock(maneRenderer, manePropertyBlock, initialEmission, age);
                 SetPropertyBlock(bodyRenderer, bodyPropertyBlock, initialEmission, age);
+            }
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if(fixedAge >= fallEffectTime && !effectSpawned)
+            {
+                EffectManager.SpawnEffect(deathEffect, new EffectData { origin = modelTransform.position }, false);
+                effectSpawned = true;
             }
         }
 

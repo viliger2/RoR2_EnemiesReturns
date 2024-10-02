@@ -93,7 +93,7 @@ AnimatorStateMachine:
     m_Position: {x: 190, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1432940046481334807}
-    m_Position: {x: 536, y: 190.5, z: 0}
+    m_Position: {x: 540, y: 190, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -146,7 +146,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 12f7799fd972c3344b0569d884f2d18e, type: 2}
+  m_Motion: {fileID: -1552954533891980107, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: FireFireball.playbackRate
   m_MirrorParameter: 
@@ -403,7 +404,8 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: dd5e6679df238c24e8973fee341745a2, type: 2}
+    m_Motion: {fileID: 4751643439545705039, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+      type: 3}
     m_Threshold: 0
     m_Position: {x: -0.5, y: 0}
     m_TimeScale: 1
@@ -411,7 +413,8 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ce89ba407eca1df48b837233378c8f14, type: 2}
+    m_Motion: {fileID: 1271182057953987648, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+      type: 3}
     m_Threshold: 0.33333334
     m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
@@ -419,7 +422,8 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 90bcda72fdd75804d8cc47ef9a2eadbb, type: 2}
+    m_Motion: {fileID: 244486605867056200, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+      type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: 0, y: 0.5}
     m_TimeScale: 1
@@ -427,7 +431,8 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f2bfd4ac379c0a44098460ce298caf4a, type: 2}
+    m_Motion: {fileID: -2345240785787722437, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+      type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
@@ -455,9 +460,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.7
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -500,7 +505,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a992aad7ace85b741b0a1898d15a6158, type: 2}
+  m_Motion: {fileID: -6737946981178572239, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: walkSpeed
   m_MirrorParameter: 
@@ -514,7 +520,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FlameBlastFiring
-  m_Speed: 0.125
+  m_Speed: 0.05
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -526,7 +532,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f152530645236c14389b5390f211906a, type: 2}
+  m_Motion: {fileID: -5419697037171263121, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: forwardSpeed
   m_MirrorParameter: 
@@ -678,7 +685,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LightImpact
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5783779999444667718}
@@ -691,8 +698,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -7490047922032694140, guid: c67a7976c3e30e54a90d8ed3161da5a2,
-    type: 3}
+  m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -797,7 +803,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: be1779f5e3946be41b07f4a35af92d59, type: 2}
+  m_Motion: {fileID: -855743547833391510, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: FlameBlast.playbackRate
   m_MirrorParameter: 
@@ -1146,9 +1153,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.714092
+  m_TransitionDuration: 0.19068757
   m_TransitionOffset: 0
-  m_ExitTime: 0.19574733
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1409,15 +1416,14 @@ BlendTree:
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 4870950660792467096, guid: c67a7976c3e30e54a90d8ed3161da5a2,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 228b46f92eed8c84e97079ca29f66de0, type: 2}
     m_Threshold: 30
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeed
     m_Mirror: 0
-  m_BlendParameter: forwardSpeed
+  m_BlendParameter: upSpeed
   m_BlendParameterY: forwardSpeed
   m_MinThreshold: -30
   m_MaxThreshold: 30
@@ -1535,9 +1541,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.47408962
+  m_TransitionDuration: 0.19465251
   m_TransitionOffset: 0
-  m_ExitTime: 0.11570783
+  m_ExitTime: 0.008231979
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1709,9 +1715,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.7479674
+  m_TransitionDuration: 0.10833976
   m_TransitionOffset: 0
-  m_ExitTime: 0.2749635
+  m_ExitTime: 0.02365416
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1908,8 +1914,8 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.6605362
-  m_TransitionOffset: 0.0015822557
+  m_TransitionDuration: 0.16554545
+  m_TransitionOffset: 0.0015822551
   m_ExitTime: 0.15597543
   m_HasExitTime: 1
   m_HasFixedDuration: 1

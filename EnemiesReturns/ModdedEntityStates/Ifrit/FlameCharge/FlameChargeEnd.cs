@@ -6,7 +6,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 {
     public class FlameChargeEnd : BaseState
     {
-        public static float baseDuration = 0.8f;
+        public static float baseDuration = 1.2f;
 
         private float duration;
 

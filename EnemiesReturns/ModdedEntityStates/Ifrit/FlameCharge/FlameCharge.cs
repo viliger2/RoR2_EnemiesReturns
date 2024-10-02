@@ -40,6 +40,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static string muzzleString = "MuzzleMouth";
 
+        public static string overrideFootstepString = "Play_parent_step";
+
         private static float turnSmoothTime = 0.01f;
 
         private Vector3 targetMoveVector;
@@ -64,16 +66,26 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private DamageTrail fireTrail;
 
+        private FootstepHandler footstepHandler;
+
+        private string baseFootstepString;
+
         public override void OnEnter()
         {
             base.OnEnter();
             Transform modelTransform = GetModelTransform();
             var childLocator = GetModelChildLocator();
             animator = GetModelAnimator();
+            footstepHandler = animator.GetComponent<FootstepHandler>();
+            if(footstepHandler)
+            {
+                baseFootstepString = footstepHandler.baseFootstepString;
+                footstepHandler.baseFootstepString = overrideFootstepString;
+            }
             muzzleMouth = FindModelChild(muzzleString);
             ledgeHandling = FindModelChild("LedgeHandling");
             sprintEffect = FindModelChild("SprintEffect");
-            PlayCrossfade("Gesture,Override", "FlameBlastFiring", 0.2f);
+            PlayCrossfade("Gesture,Override", "FlameBlastFiring", 0.4f);
             Util.PlaySound("ER_Ifrit_FireBreath_Play", base.gameObject);
             bool isCrit = RollCrit();
             SetupFlameAttack(modelTransform, isCrit);
@@ -207,6 +219,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             UnityEngine.GameObject.Destroy(fireTrail.gameObject);
             fireTrail = null;
             base.characterMotor.moveDirection = Vector3.zero;
+            if (footstepHandler)
+            {
+                footstepHandler.baseFootstepString = baseFootstepString;
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
