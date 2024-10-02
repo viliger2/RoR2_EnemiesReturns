@@ -357,15 +357,15 @@ namespace EnemiesReturns
             Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum distance for pillar spawning.");
             Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum distance for pillar spawning.");
 
-            Ifrit.ItemEnabled = config.Bind("ITEM_NAME_REPLACE", "Enable ITEM_NAME_REPLACE", true, "Enables ITEM_NAME_REPLACE to drop from Ifrit and appear in printers.");
-            Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Damage", 10f, "ITEM_NAME explosion damage.");
-            Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Damage Per Stack", 10f, "ITEM_NAME explosion damage per stack.");
-            Ifrit.SpawnPillarOnChampionKillRadius = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Radius", 80f, "ITEM_NAME explosion radius."); ;
-            Ifrit.SpawnPillarOnChampionKillChargeTime = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Charge Time", 5f, "ITEM_NAME explosion charge time."); ;
-            Ifrit.SpawnPillarOnChampionKillProcCoefficient = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Proc Coefficient", 0f, "ITEM_NAME explosion proc coefficient."); ;
-            Ifrit.SpawnPillarOnChampionKillBodyBaseDamage = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Base Damage", 12f, "ITEM_NAME pillar base damage. By default equal to most survivors.");
-            Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Base Damage", 2.4f, "ITEM_NAME pillar damage per level. By default equal to most survivors.");
-            Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("ITEM_NAME_REPLACE", "ITEM_NAME Elite Kill Spawn Chance", 20f, "ITEM_NAME chance to spawn on elite kill.");
+            Ifrit.ItemEnabled = config.Bind("Infernal Lantern", "Enable Infernal Lantern", true, "Enables Infernal Lantern to drop from Ifrit and appear in printers.");
+            Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("Infernal Lantern", "Infernal Lantern Damage", 10f, "Infernal Lantern explosion damage.");
+            Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("Infernal Lantern", "Infernal Lantern Damage Per Stack", 10f, "Infernal Lantern explosion damage per stack.");
+            Ifrit.SpawnPillarOnChampionKillRadius = config.Bind("Infernal Lantern", "Infernal Lantern Radius", 80f, "Infernal Lantern explosion radius.");
+            Ifrit.SpawnPillarOnChampionKillChargeTime = config.Bind("Infernal Lantern", "Infernal Lantern Charge Time", 5f, "Infernal Lantern explosion charge time.");
+            Ifrit.SpawnPillarOnChampionKillProcCoefficient = config.Bind("Infernal Lantern", "Infernal Lantern Proc Coefficient", 0f, "Infernal Lantern explosion proc coefficient.");
+            Ifrit.SpawnPillarOnChampionKillBodyBaseDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 12f, "Infernal Lantern pillar base damage. By default equal to most survivors.");
+            Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 2.4f, "Infernal Lantern pillar damage per level. By default equal to most survivors.");
+            Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("Infernal Lantern", "Infernal Lantern Elite Kill Spawn Chance", 20f, "Infernal Lantern chance to spawn on elite kill.");
             #endregion
         }
     }
