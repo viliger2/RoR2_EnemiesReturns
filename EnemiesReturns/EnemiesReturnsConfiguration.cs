@@ -334,11 +334,11 @@ namespace EnemiesReturns
             Ifrit.FlameChargeHeighCheck = config.Bind("Ifrit Flame Charge", "Flame Charge Height Check", 50f, "Checks for falls in front of Ifrit and stops his so he wouldn't yeet himself off cliffs. Set it above 1000 to basically disable the functionality.");
 
             Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
-            Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 12f, "Ifrit's Hellzone radius.");
+            Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 9f, "Ifrit's Hellzone radius.");
             Ifrit.HellzoneFireballDamage = config.Bind("Ifrit Hellzone", "Hellzone Fireball Damage", 2.5f, "Ifrit's Hellzone initial fireball projectile damage.");
             Ifrit.HellzoneFireballProjectileSpeed = config.Bind("Ifrit Hellzone", "Hellzone Fireball Projectile Speed", 50f, "Ifrit's Hellzone fireball projectile speed.");
             Ifrit.HellzoneFireballForce = config.Bind("Ifrit Hellzone", "Hellzone Fireball Projectile Force", 0f, "Ifrit's Hellzone fireball projectile force.");
-            Ifrit.HellzonePillarCount = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Count", 4, "Ifrit's Hellzone number of secondary explosions.");
+            Ifrit.HellzonePillarCount = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Count", 3, "Ifrit's Hellzone number of secondary explosions.");
             Ifrit.HellzonePillarDelay = config.Bind("Ifrit Hellzone", "Hellzone Secondary Projectile Delay", 0.5f, "Ifrit's Hellzone delay between each secondary explosion.");
             Ifrit.HellzoneDoTZoneLifetime = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Lifetime", 3f, "Ifrit's Hellzone DoT zone initial lifetime. Secondary projectile count multiplied by secondary projectile delay will be added to this value to get total dot zone lifetime.");
             Ifrit.HellzoneDoTZoneDamage = config.Bind("Ifrit Hellzone", "Hellzone DoT Zone Damage", 0.5f, "Ifrit's Hellzone DoT zone damage. Scales off Hellzone initial projectile damage.");
@@ -351,8 +351,8 @@ namespace EnemiesReturns
             Ifrit.PillarExplosionRadius = config.Bind("Ifrit Pillar", "Summon Pillar Explosion Radius", 120f, "Ifrit's Summon Pillar explosion radius.");
             Ifrit.PillarExplosionForce = config.Bind("Ifrit Pillar", "Summon Pillar Explosion Force", 3000f, "Ifrit's Summon Pillar explosion force.");
             Ifrit.PillarExplosionIgnoesLoS = config.Bind("Ifrit Pillar", "Summon Pillar Explosion Ignores LoS", false, "Ifrit's Summon Pillar explosion ignores line of sight.");
-            Ifrit.PillarBodyBaseMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Base Max Health", 720f, "Ifrit's Summon Pillar body base max health.");
-            Ifrit.PillarBodyLevelMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Per Level Max Health", 216f, "Ifrit's Summon Pillar body per level max health.");
+            Ifrit.PillarBodyBaseMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Base Max Health", 585f, "Ifrit's Summon Pillar body base max health.");
+            Ifrit.PillarBodyLevelMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Per Level Max Health", 176f, "Ifrit's Summon Pillar body per level max health.");
             Ifrit.PillarMaxInstances = config.Bind("Ifrit Pillar", "Summon Pillar Max Instances", 2, "Maximum instances of Ifrit's Pillar that can exist at the same time. This also controls how many pillar will be summoned on one skill use.");
             Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum distance for pillar spawning.");
             Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum distance for pillar spawning.");
