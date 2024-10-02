@@ -94,8 +94,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             base.FixedUpdate();
             if (NetworkServer.active && fixedAge >= duration)
             {
-                base.healthComponent.Suicide();
+                Suicide();
             }
+        }
+
+        public virtual void Suicide()
+        {
+            base.healthComponent.Suicide(base.gameObject, base.gameObject);
         }
     }
 }

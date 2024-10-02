@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.Ifrit
+namespace EnemiesReturns.Enemies.Ifrit.Pillar
 {
     public class IfritPillarFactory
     {
@@ -40,6 +40,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             public float baseDamage;
             public float levelDamage;
             public EntityStates.SerializableEntityStateType mainState;
+            public EntityStates.SerializableEntityStateType deathState;
             public bool enableLineRenderer;
             public float explosionRadius;
         }
@@ -72,7 +73,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region TeamComponent
             TeamComponent teamComponent = null;
-            if (!bodyPrefab.TryGetComponent<TeamComponent>(out teamComponent))
+            if (!bodyPrefab.TryGetComponent(out teamComponent))
             {
                 teamComponent = bodyPrefab.AddComponent<TeamComponent>();
             }
@@ -81,7 +82,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             #region CharacterBody
             CharacterBody characterBody = null;
-            if (!bodyPrefab.TryGetComponent<CharacterBody>(out characterBody))
+            if (!bodyPrefab.TryGetComponent(out characterBody))
             {
                 characterBody = bodyPrefab.AddComponent<CharacterBody>();
             }
@@ -133,7 +134,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.DeathState));
+            characterDeathBehavior.deathState = bodyInformation.deathState;
             #endregion
 
             #region Deployable
@@ -220,7 +221,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             else
             {
                 var linerenderer = mdlPillar.GetComponentInChildren<LineRenderer>();
-                UnityEngine.GameObject.Destroy(linerenderer);
+                UnityEngine.Object.Destroy(linerenderer);
             }
 
             #region TeamIndicator
@@ -236,7 +237,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             osc.curveZ = acdLookup["acdLinearCurve"].curve;
             osc.overallCurve = acdLookup["acdTeamIndicatorOverallCurve"].curve;
 
-            var indicatorObject = UnityEngine.GameObject.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
+            var indicatorObject = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
             indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
             indicatorObject.transform.parent = scaledTransform;
             var teamIndicatorScale = 18.75f * (bodyInformation.explosionRadius / 30f);
@@ -420,9 +421,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<DelayedEvent>());
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<Corpse>());
 
-            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("mdlClayBossShattered").gameObject);
+            UnityEngine.Object.DestroyImmediate(gameObject.transform.Find("mdlClayBossShattered").gameObject);
 
-            UnityEngine.GameObject.DestroyImmediate(gameObject.transform.Find("Particles/Goo").gameObject);
+            UnityEngine.Object.DestroyImmediate(gameObject.transform.Find("Particles/Goo").gameObject);
 
             return gameObject;
         }

@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -313,14 +314,18 @@ namespace EnemiesReturns
                 ModdedEntityStates.Ifrit.Pillar.SpawnState.burrowPrefab = ifritPylonFactory.CreateSpawnEffect();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.SpawnState.burrowPrefab));
 
-                ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect = ifritPylonFactory.CreateDeathFallEffect();
-                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.DeathState.fallEffect));
+                ModdedEntityStates.Ifrit.Pillar.BaseDeathState.fallEffect = ifritPylonFactory.CreateDeathFallEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.BaseDeathState.fallEffect));
 
-                ModdedEntityStates.Ifrit.Pillar.BaseFireExplosion.explosionPrefab = ifritPylonFactory.CreateExlosionEffectAlt();
+                var explosionEffect = ifritPylonFactory.CreateExlosionEffectAlt();
+                ModdedEntityStates.Ifrit.Pillar.BaseFireExplosion.explosionPrefab = explosionEffect;
+                ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState.explosionPrefab = explosionEffect;
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.Pillar.BaseFireExplosion.explosionPrefab));
 
                 var pylonBody = assets.First(body => body.name == "IfritPylonBody");
                 var pylonMaster = assets.First(master => master.name == "IfritPylonMaster");
+
+                ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState.fireballYCurve = acdLookup["acdFireballFallCurve"].curve;
 
                 if (EnemiesReturnsConfiguration.Ifrit.Enabled.Value)
                 {
@@ -331,6 +336,7 @@ namespace EnemiesReturns
                         baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value,
                         levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value,
                         mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion)),
+                        deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState)),
                         enableLineRenderer = true,
                         explosionRadius = EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value
                     };
@@ -345,6 +351,8 @@ namespace EnemiesReturns
 
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion));
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.FireExplosion));
+                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.SuicideDeathState));
+                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState));
                 }
 
                 if (EnemiesReturnsConfiguration.Ifrit.ItemEnabled.Value)
@@ -356,6 +364,7 @@ namespace EnemiesReturns
                         baseDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyBaseDamage.Value,
                         levelDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyLevelDamage.Value,
                         mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion)),
+                        deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.SuicideDeathState)),
                         enableLineRenderer = false,
                         explosionRadius = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillRadius.Value
                     };
@@ -372,7 +381,6 @@ namespace EnemiesReturns
                 }
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.DeathState));
             }
         }
 

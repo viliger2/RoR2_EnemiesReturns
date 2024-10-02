@@ -10,28 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a63d8f0e5bab0ea408d508511acc02cc, type: 3}
-  m_Name: acdIfritPylonPPVolume
+  m_Name: acdFireballFallCurve
   m_EditorClassIdentifier: 
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 0.024967268
+      value: 0.015924051
+      inSlope: -0.7544383
+      outSlope: -0.7544383
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.19371344
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 0.23716637
+      value: -0.18325746
+      inSlope: 1.2177293
+      outSlope: 1.2177293
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.729958
+      outWeight: 0.22468477
+    - serializedVersion: 3
+      time: 1.0277635
+      value: 1.0109689
+      inSlope: -0.44182423
+      outSlope: -0.44182423
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.28659907
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

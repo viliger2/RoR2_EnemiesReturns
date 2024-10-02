@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
-    public class DeathState : GenericCharacterDeath
+    public class BaseDeathState : GenericCharacterDeath
     {
         public static GameObject fallEffect;
 
@@ -20,11 +20,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
             var childLocator = GetModelChildLocator();
             if (childLocator)
             {
-                var fireball = childLocator.FindChild("Fireball");
-                if (fireball)
-                {
-                    fireball.gameObject.SetActive(false);
-                }
                 var areaIndicator = childLocator.FindChild("TeamAreaIndicator");
                 if (areaIndicator)
                 {

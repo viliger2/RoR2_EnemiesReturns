@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+using RoR2;
 using RoR2.CharacterAI;
 using static RoR2.CharacterBody;
 
@@ -19,7 +20,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             }
             if (spawn)
             {
-                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(Enemies.Ifrit.IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
+                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
                 {
                     placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
                     position = damageReport.victimBody.transform.position
