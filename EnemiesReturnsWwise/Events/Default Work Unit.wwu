@@ -374,6 +374,17 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Ifrit_Pillar_Killed_By_Player_Play" ID="{9567C6E7-92BD-4B19-9E6E-6673C3799AC1}">
+											<ChildrenList>
+												<Action Name="" ID="{EF5FE4AF-2D24-4543-89FF-62307B03A12E}" ShortID="762327870">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Pillar_Killed_By_Player" ID="{492CB734-74F6-4FB1-95C2-80AD7FEF6D65}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Event Name="ER_Ifrit_Hellzone_Rock_Play" ID="{19F16852-29AC-41E9-B73B-D8CDD46F072F}">

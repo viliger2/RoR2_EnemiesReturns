@@ -52,6 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
                     }
                 }
             }
+            Util.PlaySound("ER_Ifrit_Pillar_Killed_By_Player_Play", gameObject);
             base.OnEnter();
         }
 

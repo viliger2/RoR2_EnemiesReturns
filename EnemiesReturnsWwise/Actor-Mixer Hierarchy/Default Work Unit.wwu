@@ -1161,6 +1161,39 @@
 														</Sound>
 													</ChildrenList>
 												</ActorMixer>
+												<Sound Name="Pillar_Killed_By_Player" ID="{492CB734-74F6-4FB1-95C2-80AD7FEF6D65}" ShortID="82611726">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="hit-3-40697" ID="{3B4FAA53-956B-4299-A296-6A6858661970}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.058901009514126"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Ifrit\hit-3-40697.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="61355974"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="hit-3-40697" ID="{3B4FAA53-956B-4299-A296-6A6858661970}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Sound Name="Ifrit_Spawn" ID="{62ADAEFC-25F4-4A4C-AEF4-6E6DE4468FFD}" ShortID="545513826">
