@@ -1462,6 +1462,48 @@ namespace EnemiesReturns.Enemies.Spitter
             });
             #endregion
 
+            #region BeadElite
+            var displayRuleGroupBead = new DisplayRuleGroup();
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(0.03071F, 0.76725F, -0.77548F),
+                localAngles = new Vector3(285.3486F, 351.2853F, 11.4788F),
+                localScale = new Vector3(0.14951F, 0.14951F, 0.14951F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupBead,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region GoldElite
+            var displayRuleGroupGold = new DisplayRuleGroup();
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                childName = "Head",
+                localPos = new Vector3(-0.08902F, 0.78706F, 1.13371F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(3.40115F, 3.40115F, 3.40115F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupGold,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+
+
             return idrs;
         }
 

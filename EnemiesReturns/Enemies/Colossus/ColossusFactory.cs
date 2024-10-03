@@ -1909,6 +1909,66 @@ namespace EnemiesReturns.Enemies.Colossus
             });
             #endregion
 
+            #region BeadElite
+            var displayRuleGroupBead = new DisplayRuleGroup();
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "Head",
+                localPos = new Vector3(-0.03787F, 0.48882F, -0.059F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.03455F, 0.025F, 0.03455F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "ShoulderR",
+                localPos = new Vector3(0.0042F, 0.32214F, -0.06562F),
+                localAngles = new Vector3(0.55693F, 359.2249F, 48.48366F),
+                localScale = new Vector3(0.04197F, 0.03F, 0.04197F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "ShoulderL",
+                localPos = new Vector3(-0.00393F, 0.28007F, 0.00555F),
+                localAngles = new Vector3(0.24913F, 0.51682F, 331.4208F),
+                localScale = new Vector3(0.041F, 0.03F, 0.041F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupBead,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region GoldElite
+            var displayRuleGroupGold = new DisplayRuleGroup();
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                childName = "Chest",
+                localPos = new Vector3(0F, -0.66501F, 0.23605F),
+                localAngles = new Vector3(12.27343F, 0F, -0.00001F),
+                localScale = new Vector3(0.99081F, 1.07413F, 1.17694F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupGold,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
             return idrs;
         }
 
