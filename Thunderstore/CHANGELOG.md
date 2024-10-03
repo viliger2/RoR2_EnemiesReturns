@@ -1,4 +1,32 @@
 <details>
+<summary>0.2.5 (Visual Polish Update)</summary>
+
+* Colossus:
+	* Polished visuals.
+	* Added SoTS elite displays.
+	* Removed Abyssal Depths from possible stages, added Shattered Abodes and Disturbed Impact instead.
+	* Laser Barrage:
+		* Now has particles to indicate that Colossus is charging the attack and spotlight to indicate where he is firing.
+	* Rock Clap:
+		* Added option (disabled by default) to spawn monsters post loop on skill use. Non-elite Colossus will spawn one Golem, Fire Colossus will spawn 6 Wisps, Overloading will spawn 6 Jellyfishes, other elites will spawn 2 Golems. Spawned monsters inherit elite equipment but not do not get elite stat boosts.
+* Spitter:
+	* Polished visuals.
+	* Added SoTS elite displays.	
+	* Added Helminth Hatchery as possible stage. Replaces Mini Mushroom (can be disabled in the config).
+	* Restored Bite effect that was broken post-SoTS.
+* Ifrit:
+	* Polished visuals.
+	* Increased volume of some sounds so they are more distinct.
+	* Hellzone:
+		* Reworked. Now Ifrit fires fireball under his feet, that will spawn a volcano near targeted player. Behaves similarly to Stone Titan's fist attack.
+		* As a result of rework volcano radius is nerfed to 9m (was 12m), number of rock shoots lowered to 3 (was 4).
+	* Summon Pillar:
+		* Now destroying the pillar makes it explode and deal damage to all monsters without dealing damage to players. It will play a distinct sound effect and play animation of fireball hitting the ground if players manage to do that.
+		* Lowered pillar health to 585(+176) (was 720(+216)).
+	* Flame Charge:
+		* Now has new animation and sound effects on stomping.	
+</details>
+<details>
 <summary>0.2.4</summary>
 
 * Colossus:

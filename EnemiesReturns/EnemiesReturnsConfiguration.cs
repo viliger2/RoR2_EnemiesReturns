@@ -15,6 +15,7 @@ namespace EnemiesReturns
             public static ConfigEntry<int> DirectorCost;
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
+            public static ConfigEntry<bool> HelminthroostReplaceMushrum;
 
             public static ConfigEntry<float> BaseMaxHealth;
             public static ConfigEntry<float> BaseMoveSpeed;
@@ -197,6 +198,7 @@ namespace EnemiesReturns
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");
+            Spitter.HelminthroostReplaceMushrum = config.Bind("Spitter Director", "Replace Mini Mushrum On Helminth Hatchery", true, "Spitter replaces Mini Mushrum on Helminth Hatchery");
 
             Spitter.BaseMaxHealth = config.Bind("Spitter Character Stats", "Base Max Health", 300f, "Spitter's base health.");
             Spitter.BaseMoveSpeed = config.Bind("Spitter Character Stats", "Base Movement Speed", 7f, "Spitter's base movement speed.");

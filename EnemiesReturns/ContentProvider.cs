@@ -531,8 +531,8 @@ namespace EnemiesReturns
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlains);
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlainsSimulacrum);
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.VoidCell);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepths);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.ShatteredAbodes);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.DisturbedImpact);
                 DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.Custom, "FBLScene");
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle = colossusFactory.CreateCard("cscColossusCastle", colossusMaster, ColossusFactory.SkinDefs.Castle, colossusBody);
@@ -719,12 +719,12 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                DirectorAPI.DirectorCardHolder dhcSpitterSulfur = new DirectorAPI.DirectorCardHolder
+                DirectorAPI.DirectorCardHolder dchSpitterSulfur = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterSulfur,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterSulfur, false, DirectorAPI.Stage.SulfurPools);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterSulfur, false, DirectorAPI.Stage.SulfurPools);
 
                 SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                 var dcSpitterDepth = new DirectorCard
@@ -735,13 +735,18 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
                 };
-                DirectorAPI.DirectorCardHolder dhcSpitterDepths = new DirectorAPI.DirectorCardHolder
+                DirectorAPI.DirectorCardHolder dchSpitterDepths = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterDepth,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
-                DirectorAPI.Helpers.AddNewMonsterToStage(dhcSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
+                DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.HelminthHatchery);
+                if (EnemiesReturnsConfiguration.Spitter.HelminthroostReplaceMushrum.Value)
+                {
+                    DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.MiniMushrum, DirectorAPI.Stage.HelminthHatchery);
+                }
 
                 stateList.Add(typeof(ModdedEntityStates.Spitter.Bite));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpawnState));

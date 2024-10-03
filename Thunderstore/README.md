@@ -19,7 +19,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Fogbound Lagoon </td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, Fogbound Lagoon </td>
 	</tr>
 	<thead>
 		<tr>
@@ -33,7 +33,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Colossus/texColossusIcon.png" alt="Colossus"></td>
 		<td>Colossus</td>
 		<td>The one and only.</td>
-		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Abyssal Depths, Bob-omb Battlefield, Fogbound Lagoon</td>
+		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, Bob-omb Battlefield, Fogbound Lagoon</td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
@@ -77,6 +77,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Majority of sounds come from RoR, RoRR and WoW
 * Super natural explosion - https://pixabay.com/sound-effects/supernatural-explosion-104295/
 * Monster breathing - https://pixabay.com/sound-effects/animal-breathing-monster-78392/
+* hit sound(video game type) - https://pixabay.com/sound-effects/hit-soundvideo-game-type-230510/
 </details>
 - Special thanks to 
 
