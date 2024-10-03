@@ -40,7 +40,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static string muzzleString = "MuzzleMouth";
 
-        public static string overrideFootstepString = "Play_parent_step";
+        public static string overrideFootstepString = "Play_titanboss_step";
 
         private static float turnSmoothTime = 0.01f;
 
