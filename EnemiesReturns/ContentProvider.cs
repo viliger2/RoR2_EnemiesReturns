@@ -232,6 +232,9 @@ namespace EnemiesReturns
                 IfritFactory.Skills.FlameCharge = ifritFactory.CreateFlameChargeSkill();
                 IfritFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("IfritUtilityFamily", IfritFactory.Skills.FlameCharge);
 
+                IfritFactory.Skills.Smash = ifritFactory.CreateSmashSkill();
+                IfritFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("IfritPrimaryFamily", IfritFactory.Skills.Smash);
+
                 var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);
 
@@ -276,6 +279,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeEnd));
+                stateList.Add(typeof(Junk.ModdedEntityStates.Ifrit.Smash));
             }
         }
 

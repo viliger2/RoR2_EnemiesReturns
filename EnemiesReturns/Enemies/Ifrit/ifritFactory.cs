@@ -33,10 +33,14 @@ namespace EnemiesReturns.Enemies.Ifrit
             public static SkillDef Hellzone;
 
             public static SkillDef FlameCharge;
+
+            public static SkillDef Smash;
         }
 
         public struct SkillFamilies
         {
+            public static SkillFamily Primary;
+
             public static SkillFamily Special;
 
             public static SkillFamily Secondary;
@@ -190,10 +194,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region GenericSkills
 
             #region Primary
-            //var gsPrimary = bodyPrefab.AddComponent<GenericSkill>();
-            //gsPrimary._skillFamily = SkillFamilies.Primary;
-            //gsPrimary.skillName = "Stomp";
-            //gsPrimary.hideInCharacterSelect = false;
+            var gsPrimary = bodyPrefab.AddComponent<GenericSkill>();
+            gsPrimary._skillFamily = SkillFamilies.Primary;
+            gsPrimary.skillName = "Smash";
+            gsPrimary.hideInCharacterSelect = false;
             #endregion
 
             #region Secondary
@@ -225,7 +229,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 skillLocator = bodyPrefab.AddComponent<SkillLocator>();
             }
-            //skillLocator.primary = gsPrimary;
+            skillLocator.primary = gsPrimary;
             skillLocator.secondary = gsSecondary;
             skillLocator.utility = gsUtility;
             skillLocator.special = gsSpecial;
@@ -376,6 +380,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var flameHitBox = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/Neck/Head/Jaw/FlameChargeHitbox").gameObject.AddComponent<HitBox>();
             var chargeHitbox = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/ChargeHitbox").gameObject.AddComponent<HitBox>();
+            var smashHitbox = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/SmashHitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
             #region mdlIfrit
@@ -507,6 +512,12 @@ namespace EnemiesReturns.Enemies.Ifrit
                     hideOnDeath = false,
                 });
             }
+            #endregion
+
+            #region HitBoxGroupSmash
+            var hbgBite = mdlIfrit.AddComponent<HitBoxGroup>();
+            hbgBite.groupName = "Smash";
+            hbgBite.hitBoxes = new HitBox[] { smashHitbox };
             #endregion
 
             #region HitBoxFlameBreath
@@ -1119,11 +1130,11 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_DESCRIPTION";
-            //var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
-            //if (loaderGroundSlam)
-            //{
-            //    skillDef.icon = loaderGroundSlam.icon;
-            //}
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC1/Railgunner/RailgunnerBodyChargeSnipeSuper.asset").WaitForCompletion();
+            if (iconSource)
+            {
+                skillDef.icon = iconSource.icon;
+            }
 
             skillDef.activationStateMachineName = "Body";
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.SummonPylon));
@@ -1159,11 +1170,11 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_HELLZONE_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION";
-            //var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
-            //if (loaderGroundSlam)
-            //{
-            //    skillDef.icon = loaderGroundSlam.icon;
-            //}
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CallAirstrikeAlt.asset").WaitForCompletion();
+            if (iconSource)
+            {
+                skillDef.icon = iconSource.icon;
+            }
 
             skillDef.activationStateMachineName = "Body";
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
@@ -1199,17 +1210,57 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME";
             skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION";
-            //var loaderGroundSlam = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Loader/GroundSlam.asset").WaitForCompletion();
-            //if (loaderGroundSlam)
-            //{
-            //    skillDef.icon = loaderGroundSlam.icon;
-            //}
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/Chef/ChefSear.asset").WaitForCompletion();
+            if (iconSource)
+            {
+                skillDef.icon = iconSource.icon;
+            }
 
             skillDef.activationStateMachineName = "Body";
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
             skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.FlameChargeCooldown.Value;
+            skillDef.baseMaxStock = 1;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.dontAllowPastMaxStocks = false;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+
+            skillDef.cancelSprintingOnActivation = true;
+            skillDef.forceSprintDuringState = false;
+            skillDef.canceledFromSprinting = false;
+
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = false;
+
+            return skillDef;
+        }
+
+        internal SkillDef CreateSmashSkill()
+        {
+            var skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            (skillDef as ScriptableObject).name = "IfritWeaponSmash";
+            skillDef.skillName = "Smash";
+
+            skillDef.skillNameToken = "ENEMIES_RETURNS_IFRIT_SMASH_NAME";
+            skillDef.skillDescriptionToken = "ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION";
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/FalseSon/FalseSonClubSlam.asset").WaitForCompletion();
+            if (iconSource)
+            {
+                skillDef.icon = iconSource.icon;
+            }
+
+            skillDef.activationStateMachineName = "Weapon";
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(Junk.ModdedEntityStates.Ifrit.Smash));
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+
+            skillDef.baseRechargeInterval = 0f;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
