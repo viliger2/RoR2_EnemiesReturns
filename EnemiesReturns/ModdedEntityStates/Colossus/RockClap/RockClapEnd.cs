@@ -2,7 +2,10 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
+using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {
@@ -25,6 +28,12 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
         public static float clapForce => EnemiesReturnsConfiguration.Colossus.RockClapForce.Value;
 
         public static float clapRadius => EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
+
+        public static SpawnCard golemSpawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Golem/cscGolem.asset").WaitForCompletion();
+
+        public static SpawnCard jellyfishSpawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Jellyfish/cscJellyfish.asset").WaitForCompletion();
+
+        public static SpawnCard wispSpawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Wisp/cscLesserWisp.asset").WaitForCompletion();
 
         public static GameObject projectilePrefab;
 
@@ -84,6 +93,10 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
                         attack.Fire();
 
                     }
+                    if(NetworkServer.active && EnemiesReturnsConfiguration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
+                    {
+                        SummonHelp();
+                    }
                     UnityEngine.Object.Instantiate(clapEffect, clapTransform.position, clapTransform.rotation);
                     rockController.enabled = false;
                 }
@@ -93,6 +106,59 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
+            }
+        }
+
+        private void SummonHelp()
+        {
+            int monsterSpawnCount = 1;
+            SpawnCard monsterSpawnCard;
+            if (characterBody.isElite)
+            {
+                if (characterBody.HasBuff(RoR2Content.Buffs.AffixRed))
+                {
+                    monsterSpawnCount = 6;
+                    monsterSpawnCard = wispSpawnCard;
+                }
+                else if (characterBody.HasBuff(RoR2Content.Buffs.AffixBlue))
+                {
+                    monsterSpawnCount = 6;
+                    monsterSpawnCard = jellyfishSpawnCard;
+                }
+                else
+                {
+                    monsterSpawnCount = 2;
+                    monsterSpawnCard = golemSpawnCard;
+                }
+            }
+            else
+            {
+                monsterSpawnCard = golemSpawnCard;
+                monsterSpawnCount = 1;
+            }
+
+            for (int i = 0; i < monsterSpawnCount; i++)
+            {
+                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(monsterSpawnCard, new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.Approximate,
+                    minDistance = 3f,
+                    maxDistance = 20f,
+                    spawnOnTarget = transform
+                }, RoR2Application.rng);
+                directorSpawnRequest.summonerBodyObject = base.gameObject;
+                directorSpawnRequest.onSpawnedServer = (Action<SpawnCard.SpawnResult>)Delegate.Combine(directorSpawnRequest.onSpawnedServer, (Action<SpawnCard.SpawnResult>)delegate (SpawnCard.SpawnResult spawnResult)
+                {
+                    if (spawnResult.success && (bool)spawnResult.spawnedInstance && (bool)base.characterBody)
+                    {
+                        Inventory component = spawnResult.spawnedInstance.GetComponent<Inventory>();
+                        if ((bool)component)
+                        {
+                            component.CopyEquipmentFrom(base.characterBody.inventory);
+                        }
+                    }
+                });
+                DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
             }
         }
 

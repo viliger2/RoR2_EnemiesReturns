@@ -18,7 +18,7 @@ namespace EnemiesReturns.Helpers
 
         public ProjectileController controller;
 
-        public string childToRotateTo; // TODO: its empty, that's why it probably doesn't work
+        public string childToRotateTo;
 
         private void OnEnable()
         {
@@ -40,7 +40,6 @@ namespace EnemiesReturns.Helpers
             {
                 overlapAttack.enabled = false;
             }
-            // TODO: Figure out turning
             EnableShard();
             RpcEnableShard();
         }
