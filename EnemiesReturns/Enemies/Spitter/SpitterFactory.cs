@@ -540,7 +540,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterLakes"],
+                    material = ContentProvider.MaterialCache["matSpitterLakesTeeth"],
                     ignoreOverlays = true
                 }
             };
@@ -563,7 +563,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterSulfur"],
+                    material = ContentProvider.MaterialCache["matSpitterSulfurTeeth"],
                     ignoreOverlays = true
                 }
             };
@@ -586,7 +586,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 new RenderInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterDepths"],
+                    material = ContentProvider.MaterialCache["matSpitterDepthsTeeth"],
                     ignoreOverlays = true
                 }
 };
@@ -866,10 +866,13 @@ namespace EnemiesReturns.Enemies.Spitter
         public GameObject CreateBiteEffect()
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBiteTrail.prefab").WaitForCompletion().InstantiateClone("SpitterBiteEffect", false);
+
             var particleSystem = clonedEffect.GetComponentInChildren<ParticleSystem>();
             var main = particleSystem.main;
             main.startRotationX = new ParticleSystem.MinMaxCurve(0f, 0f);
             main.startRotationY = new ParticleSystem.MinMaxCurve(140f, 140f);
+
+            particleSystem.gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
 
             return clonedEffect;
         }

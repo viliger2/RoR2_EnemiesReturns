@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmTex:
-        m_Texture: {fileID: 2800000, guid: 222bcf5adc2e8f2488fb3d8289cf542a, type: 3}
+        m_Texture: {fileID: 2800000, guid: ae9ffadc63d5b9247ac2f2470c5d4e71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: caf4c824d8d5d3c4b9921108067613f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 81a561cefdb109b41a75a3fa7d03cc75, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -90,7 +90,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6cdf6dd23dd179944a6f49adac425065, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -154,7 +154,7 @@ Material:
     - _LimbRemovalOn: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 2.17
+    - _NormalStrength: 1.164
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -170,7 +170,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularExponent: 0.85
     - _SpecularHighlights: 1
-    - _SpecularStrength: 0.142
+    - _SpecularStrength: 0.134
     - _SplatmapOn: 0
     - _SplatmapTileScale: 1
     - _SrcBlend: 1
