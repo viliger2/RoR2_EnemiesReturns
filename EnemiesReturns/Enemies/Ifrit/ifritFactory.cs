@@ -452,6 +452,15 @@ namespace EnemiesReturns.Enemies.Ifrit
             mdlIfrit.AddComponent<DestroyOnUnseen>().cull = false;
             #endregion
 
+            #region FixFireShader
+            var particles = mdlIfrit.gameObject.GetComponentsInChildren<ParticleSystemRenderer>();
+            var material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", CreateManeFiresMaterial);
+            foreach (var particleComponent in particles)
+            {
+                particleComponent.material = material;
+            }
+            #endregion
+
             #region CharacterModel
             //modelRenderer.material = skinsLookup["matIfrit"];
             //headRenderer.material = skinsLookup["matColossus"];
@@ -482,11 +491,22 @@ namespace EnemiesReturns.Enemies.Ifrit
                 {
                     renderer = beardRenderer,
                     defaultMaterial = beardRenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     ignoreOverlays = true,
                     hideOnDeath = false
                 }
             };
+            foreach (var particleComponent in particles)
+            {
+                ArrayUtils.ArrayAppend(ref characterModel.baseRendererInfos, new CharacterModel.RendererInfo
+                {
+                    renderer = particleComponent,
+                    defaultMaterial = particleComponent.material,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    hideOnDeath = false,
+                });
+            }
             #endregion
 
             #region HitBoxFlameBreath
@@ -522,15 +542,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #endregion
 
             #region SkinDefs
-            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-            {
-                renderer = (SkinnedMeshRenderer)item.renderer,
-                material = item.defaultMaterial,
-                ignoreOverlays = item.ignoreOverlays
-
-            });
-
-            SkinDefs.Default = CreateSkinDef("skinIfritDefault", mdlIfrit, defaultRender);
+            SkinDefs.Default = CreateSkinDef("skinIfritDefault", mdlIfrit, characterModel.baseRendererInfos);
 
             var modelSkinController = mdlIfrit.AddComponent<ModelSkinController>();
             modelSkinController.skins = new SkinDef[]
@@ -544,15 +556,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             rbc.animator = animator;
             rbc.blinkTriggers = new string[] { "BlinkEye" };
             rbc.blinkChancePerUpdate = 10f;
-            #endregion
-
-            #region FixFireShader
-            var particles = mdlIfrit.gameObject.GetComponentsInChildren<ParticleSystem>();
-            var material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", CreateManeFiresMaterial);
-            foreach (var particleComponent in particles)
-            {
-                particleComponent.GetComponent<Renderer>().material = material;
-            }
             #endregion
 
             #region BisonSprintEffect

@@ -76,6 +76,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public const float MAX_EYE_LIGHT_RANGE = 15f;
 
+        public const float MAX_SPOT_LIGHT_RANGE = 70f;
+
         #endregion
 
         public static float normalEyeLightRange = 6f; // we have to save it somewhere so we don't lose it when we change it in laser barrage
@@ -98,6 +100,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus").gameObject.GetComponent<SkinnedMeshRenderer>();
             var headRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Head").gameObject.GetComponent<SkinnedMeshRenderer>();
             var eyeRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Colossus Eye").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var particleRenderer = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/ParticleSystem").gameObject.GetComponent<ParticleSystemRenderer>();
             var eyeLight = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/Light").gameObject.GetComponent<Light>();
 
             var flagObject = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/mdlFlag").gameObject;
@@ -520,6 +523,14 @@ namespace EnemiesReturns.Enemies.Colossus
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = true,
                     hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = particleRenderer.material,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    hideOnDeath = true // only for items, what a waste of time
                 }
             };
             characterModel.baseLightInfos = new CharacterModel.LightInfo[]
@@ -569,128 +580,191 @@ namespace EnemiesReturns.Enemies.Colossus
             #endregion
 
             #region SkinDefs
-            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
-            {
-                renderer = (SkinnedMeshRenderer)item.renderer,
-                material = item.defaultMaterial,
-                ignoreOverlays = item.ignoreOverlays
+            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlColossus, characterModel.baseRendererInfos);
 
-            });
-            SkinDefs.Default = CreateSkinDef("skinColossusDefault", mdlColossus, defaultRender);
-
-            RenderInfo[] snowyRenderer = new RenderInfo[]
+            CharacterModel.RendererInfo[] snowyRenderer = new CharacterModel.RendererInfo[]
             {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSnowy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSnowy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = headRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSnowy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSnowy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = eyeRenderer,
-                    material = ContentProvider.MaterialCache["matColossusEye"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusEye"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = true
                 }
             };
             SkinDefs.Snowy = CreateSkinDef("skinColossusSnowy", mdlColossus, snowyRenderer, SkinDefs.Default);
 
-            RenderInfo[] sandyRenderer = new RenderInfo[]
+            CharacterModel.RendererInfo[] sandyRenderer = new CharacterModel.RendererInfo[]
             {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSandy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSandy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = headRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSandy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSandy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = eyeRenderer,
-                    material = ContentProvider.MaterialCache["matColossusEye"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusEye"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = true
                 }
             };
             SkinDefs.Sandy = CreateSkinDef("skinColossusSandy", mdlColossus, sandyRenderer, SkinDefs.Default);
 
-            RenderInfo[] grassyRenderer = new RenderInfo[]
-{
-                new RenderInfo
+            CharacterModel.RendererInfo[] grassyRenderer = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matColossusGrassy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusGrassy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = headRenderer,
-                    material = ContentProvider.MaterialCache["matColossusGrassy"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusGrassy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = eyeRenderer,
-                    material = ContentProvider.MaterialCache["matColossusEye"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusEye"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = true
                 }
-};
+            };
             SkinDefs.Grassy = CreateSkinDef("skinColossusGrassy", mdlColossus, grassyRenderer, SkinDefs.Default);
 
-            RenderInfo[] skyMeadowRenderer = new RenderInfo[]
+            CharacterModel.RendererInfo[] skyMeadowRenderer = new CharacterModel.RendererInfo[]
 {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSkyMeadow"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSkyMeadow"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = headRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSkyMeadow"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSkyMeadow"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = eyeRenderer,
-                    material = ContentProvider.MaterialCache["matColossusEye"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusEye"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = true
                 }
-};
+            };
             SkinDefs.SkyMeadow = CreateSkinDef("skinColossusSkyMeadow", mdlColossus, skyMeadowRenderer, SkinDefs.Default);
 
-            RenderInfo[] castleRenderer = new RenderInfo[]
-{
-                new RenderInfo
+            CharacterModel.RendererInfo[] castleRenderer = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSMBBody"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSMBBody"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = headRenderer,
-                    material = ContentProvider.MaterialCache["matColossusSMBHead"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSMBHead"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = eyeRenderer,
-                    material = ContentProvider.MaterialCache["matColossusEye"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusEye"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = particleRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matColossusSMBBody"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = true
                 }
-};
+            };
             SkinDefs.Castle = CreateSkinDef("skinColossusCastle", mdlColossus, castleRenderer, SkinDefs.Default, new GameObject[] { flagObject });
 
             var modelSkinController = mdlColossus.AddComponent<ModelSkinController>();
@@ -711,6 +785,14 @@ namespace EnemiesReturns.Enemies.Colossus
 
             #region FloatingRocksController
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
+            #endregion
+
+            #region SettingParticleMaterials
+            var trails = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/LaserChargeParticles/Trails");
+            trails.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matColossusLaserBarrageChargeTrails", CreateLaserBarrageChargeTrailsMaterial);
+
+            var distortion = bodyPrefab.transform.Find("ModelBase/mdlColossus/Armature/root/root_pelvis_control/spine/spine.001/head/LaserChargeParticles/Distortion");
+            distortion.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matInverseDistortion.mat").WaitForCompletion();
             #endregion
 
             #endregion
@@ -1325,6 +1407,16 @@ namespace EnemiesReturns.Enemies.Colossus
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matGlowItemPickup.mat").WaitForCompletion());
             material.name = "matColossusLaserBarrageShardPulse";
             material.SetColor("_TintColor", Color.red); // I mean
+
+            return material;
+        }
+
+        public Material CreateLaserBarrageChargeTrailsMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpDust.mat").WaitForCompletion());
+            material.name = "matColossusLaserBarrageChargeTrails";
+            material.SetColor("_TintColor", new Color(1f, 0f, 0f));
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampImp2.png").WaitForCompletion());
 
             return material;
         }

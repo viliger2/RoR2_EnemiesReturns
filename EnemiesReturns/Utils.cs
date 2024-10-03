@@ -8,14 +8,7 @@ namespace EnemiesReturns
 {
     public static class Utils
     {
-        public class RenderInfo
-        {
-            public Material material;
-            public SkinnedMeshRenderer renderer;
-            public bool ignoreOverlays;
-        }
-
-        public static SkinDef CreateSkinDef(string name, GameObject model, RenderInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
+        public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
         {
             //var skinDef = ScriptableObject.CreateInstance<SkinDef>();
             // fuck me
@@ -40,14 +33,7 @@ namespace EnemiesReturns
                 skinDef.baseSkins = new SkinDef[] { baseSkin };
             }
             skinDef.rootObject = model;
-            skinDef.rendererInfos = Array.ConvertAll(renderInfo, item => new CharacterModel.RendererInfo
-            {
-                renderer = item.renderer,
-                defaultMaterial = item.material,
-                defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                ignoreOverlays = item.ignoreOverlays,
-                hideOnDeath = false
-            });
+            skinDef.rendererInfos = renderInfo;
             if (gameObjectActivations != null)
             {
                 skinDef.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDef.GameObjectActivation

@@ -15,11 +15,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         public static float initialEmmision = 0f;
 
-        public static float finalEmmision = ColossusFactory.MAX_BARRAGE_EMISSION;
+        public static float finalEmmision => ColossusFactory.MAX_BARRAGE_EMISSION;
 
         public static float initialLightRange = 0f;
 
-        public static float finalLightRange = ColossusFactory.MAX_EYE_LIGHT_RANGE;
+        public static float finalLightRange => ColossusFactory.MAX_EYE_LIGHT_RANGE;
+
+        public static float initialSpotlightRange = 0f;
+
+        public static float finalSpotlightRange => ColossusFactory.MAX_SPOT_LIGHT_RANGE;
 
         private float duration;
 
@@ -36,6 +40,10 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
         private MaterialPropertyBlock eyePropertyBlock;
 
         private Light headLight;
+
+        private Light spotlight;
+
+        private Transform laserChargeParticles;
 
         private float _initialLightRange;
 
@@ -70,6 +78,19 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
                 initialLightRange = headLight.range;
             }
 
+            laserChargeParticles = childLocator.FindChild("LaserChargeParticles");
+            if(laserChargeParticles)
+            {
+                laserChargeParticles.gameObject.SetActive(true);
+            }
+
+            var spotlight = childLocator.FindChild("LaserChargeSpotlight");
+            if(spotlight)
+            {
+                this.spotlight = spotlight.GetComponent<Light>();
+                spotlight.gameObject.SetActive(true);
+            }
+
             duration = baseDuration / attackSpeedStat;
             chargeEffectDuration = baseDuration / attackSpeedStat;
             PlayCrossfade("Body", "LaserBeamStart", "Laser.playbackrate", duration, 0.1f);
@@ -89,8 +110,23 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             {
                 eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(_initialEmission, finalEmmision, age / chargeEffectDuration));
                 eyeRenderer.SetPropertyBlock(eyePropertyBlock);
+                if (headLight)
+                {
+                    headLight.range = Mathf.Lerp(_initialLightRange, finalLightRange, age / chargeEffectDuration);
+                }
+                if (spotlight)
+                {
+                    spotlight.range = Mathf.Lerp(initialSpotlightRange, finalSpotlightRange, age / chargeEffectDuration);
+                }
+            }
+        }
 
-                headLight.range = Mathf.Lerp(_initialLightRange, finalLightRange, age / chargeEffectDuration);
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (laserChargeParticles)
+            {
+                laserChargeParticles.gameObject.SetActive(false);
             }
         }
 

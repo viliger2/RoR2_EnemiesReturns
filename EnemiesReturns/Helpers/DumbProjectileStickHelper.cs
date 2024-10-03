@@ -57,12 +57,12 @@ namespace EnemiesReturns.Helpers
                     {
                         return;
                     }
-                    var modelTransform = modelLocator.transform;
+                    var modelTransform = modelLocator.modelTransform;
                     if (!modelTransform)
                     {
                         return;
                     }
-                    var childLocator = transform.gameObject.GetComponent<ChildLocator>();
+                    var childLocator = modelTransform.gameObject.GetComponent<ChildLocator>();
                     if (!childLocator)
                     {
                         return;

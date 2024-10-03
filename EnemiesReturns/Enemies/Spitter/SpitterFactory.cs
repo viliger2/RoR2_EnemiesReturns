@@ -471,7 +471,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 {
                     renderer = gumsRenderer,
                     defaultMaterial = gumsRenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     ignoreOverlays = true,
                     hideOnDeath = false
                 },
@@ -479,7 +479,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 {
                     renderer = teethenderer,
                     defaultMaterial = teethenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     ignoreOverlays = true,
                     hideOnDeath = false
                 }
@@ -513,81 +513,91 @@ namespace EnemiesReturns.Enemies.Spitter
             #endregion
 
             #region SkinDefs
+            SkinDefs.Default = CreateSkinDef("skinSpitterDefault", mdlSpitter, characterModel.baseRendererInfos);
 
-            RenderInfo[] defaultRender = Array.ConvertAll(characterModel.baseRendererInfos, item => new RenderInfo
+            CharacterModel.RendererInfo[] lakesRender = new CharacterModel.RendererInfo[]
             {
-                renderer = (SkinnedMeshRenderer)item.renderer,
-                material = item.defaultMaterial,
-                ignoreOverlays = item.ignoreOverlays
-
-            });
-            SkinDefs.Default = CreateSkinDef("skinSpitterDefault", mdlSpitter, defaultRender);
-
-            RenderInfo[] lakesRender = new RenderInfo[]
-            {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterLakes"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterLakes"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = gumsRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterGutsLakes"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterGutsLakes"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterLakesTeeth"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterLakesTeeth"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 }
             };
             SkinDefs.Lakes = CreateSkinDef("skinSpitterLakes", mdlSpitter, lakesRender, SkinDefs.Default);
 
-            RenderInfo[] sulfurRender = new RenderInfo[]
+            CharacterModel.RendererInfo[] sulfurRender = new CharacterModel.RendererInfo[]
             {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterSulfur"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterSulfur"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = gumsRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterGutsSulfur"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterGutsSulfur"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterSulfurTeeth"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterSulfurTeeth"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 }
             };
             SkinDefs.Sulfur = CreateSkinDef("skinSpitterSulfur", mdlSpitter, sulfurRender, SkinDefs.Default);
 
-            RenderInfo[] depthsRender = new RenderInfo[]
+            CharacterModel.RendererInfo[] depthsRender = new CharacterModel.RendererInfo[]
 {
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterDepths"],
-                    ignoreOverlays = false
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterDepths"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = gumsRenderer,
-                    material = ContentProvider.MaterialCache["matSpitterGutsDepths"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterGutsDepths"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 },
-                new RenderInfo
+                new CharacterModel.RendererInfo
                 {
                     renderer = teethenderer,
-                    material = ContentProvider.MaterialCache["matSpitterDepthsTeeth"],
-                    ignoreOverlays = true
+                    defaultMaterial = ContentProvider.MaterialCache["matSpitterDepthsTeeth"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 }
 };
             SkinDefs.Depths = CreateSkinDef("skinSpitterDepths", mdlSpitter, depthsRender, SkinDefs.Default);

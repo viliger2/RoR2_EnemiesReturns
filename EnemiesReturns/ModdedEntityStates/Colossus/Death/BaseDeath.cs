@@ -45,6 +45,18 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 
             headLight = childLocator.FindChildComponent<Light>("HeadLight");
             initialRange = headLight.range;
+
+            var stoneParticles = childLocator.FindChild("StoneParticles");
+            if (stoneParticles)
+            {
+                stoneParticles.gameObject.SetActive(false);
+            }
+
+            var spotlight = childLocator.FindChild("LaserChargeSpotlight");
+            if(spotlight)
+            {
+                spotlight.gameObject.SetActive(false);
+            }
         }
 
         public override void Update()
