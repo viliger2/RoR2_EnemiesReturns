@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using R2API;
 using UnityEngine;
 
 namespace EnemiesReturns
@@ -16,6 +17,11 @@ namespace EnemiesReturns
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
             public static ConfigEntry<bool> HelminthroostReplaceMushrum;
+
+            public static ConfigEntry<string> DefaultStageList;
+            public static ConfigEntry<string> DepthStageList;
+            public static ConfigEntry<string> LakesStageList;
+            public static ConfigEntry<string> SulfurStageList;
 
             public static ConfigEntry<float> BaseMaxHealth;
             public static ConfigEntry<float> BaseMoveSpeed;
@@ -48,6 +54,13 @@ namespace EnemiesReturns
             public static ConfigEntry<int> DirectorCost;
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
+
+            public static ConfigEntry<string> DefaultStageList;
+            public static ConfigEntry<string> SkyMeadowStageList;
+            public static ConfigEntry<string> GrassyStageList;
+            public static ConfigEntry<string> CastleStageList;
+            public static ConfigEntry<string> SandyStageList;
+            public static ConfigEntry<string> SnowyStageList;
 
             public static ConfigEntry<float> BaseMaxHealth;
             public static ConfigEntry<float> BaseMoveSpeed;
@@ -129,6 +142,8 @@ namespace EnemiesReturns
             public static ConfigEntry<int> SelectionWeight;
             public static ConfigEntry<int> MinimumStageCompletion;
 
+            public static ConfigEntry<string> DefaultStageList;
+
             public static ConfigEntry<float> BaseMaxHealth;
             public static ConfigEntry<float> BaseMoveSpeed;
             public static ConfigEntry<float> BaseJumpPower;
@@ -193,12 +208,45 @@ namespace EnemiesReturns
             testconfig = config.Bind("test", "test", 5f, "test");
 
             #region Spitter
-
             Spitter.Enabled = config.Bind("Spitter Director", "Enable Spitter", true, "Enables Spitter.");
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");
             Spitter.HelminthroostReplaceMushrum = config.Bind("Spitter Director", "Replace Mini Mushrum On Helminth Hatchery", true, "Spitter replaces Mini Mushrum on Helminth Hatchery");
+
+            Spitter.DefaultStageList = config.Bind("Spitter Director", "Default Variant Stage List",
+                string.Join
+                (
+                    ",", 
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.WetlandAspect),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
+                    "FBLScene"
+                ),
+                "Stages that Default Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Spitter.LakesStageList = config.Bind("Spitter Director", "Lakes Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VerdantFalls)
+                ),
+                "Stages that Lakes Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Spitter.SulfurStageList = config.Bind("Spitter Director", "Sulfur Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SulfurPools)
+                ),
+                "Stages that Sulfur Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Spitter.DepthStageList = config.Bind("Spitter Director", "Depth Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepths),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepthsSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery)
+                ),
+                "Stages that Depth Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             Spitter.BaseMaxHealth = config.Bind("Spitter Character Stats", "Base Max Health", 300f, "Spitter's base health.");
             Spitter.BaseMoveSpeed = config.Bind("Spitter Character Stats", "Base Movement Speed", 7f, "Spitter's base movement speed.");
@@ -228,11 +276,56 @@ namespace EnemiesReturns
             #endregion
 
             #region Colossus
-
             Colossus.Enabled = config.Bind("Colossus Director", "Enable Colossus", true, "Enables Colossus.");
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1150, "Director cost of Colossus.");
+
+            Colossus.DefaultStageList = config.Bind("Colossus Director", "Default Variant Stage List",
+                string.Join(
+                    ",",
+                    ""
+                ),
+                "Stages that Default Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Colossus.SkyMeadowStageList = config.Bind("Colossus Director", "Sky Meadow Variant Stage List", 
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
+                ), 
+                "Stages that Sky Meadow Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Colossus.GrassyStageList = config.Bind("Colossus Director", "Grassy Variant Stage List",
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlains),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlainsSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact),
+                    "FBLScene"
+                ),
+                "Stages that Grassy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Colossus.CastleStageList = config.Bind("Colossus Director", "Castle Variant Stage List",
+                string.Join(
+                    ",",
+                    "sm64_bbf_SM64_BBF"
+                ),
+                "Stages that Castle Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Colossus.SandyStageList = config.Bind("Colossus Director", "Sandy Variant Stage List",
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueduct),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueductSimulacrum)
+                ),
+                "Stages that Sandy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            Colossus.SnowyStageList = config.Bind("Colossus Director", "Snowy Variant Stage List",
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SiphonedForest),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum)
+                ),
+                "Stages that Snowy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             Colossus.BaseMaxHealth = config.Bind("Colossus Character Stats", "Base Max Health", 7000f, "Colossus' base health.");
             Colossus.BaseMoveSpeed = config.Bind("Colossus Character Stats", "Base Movement Speed", 8f, "Colossus' base movement speed.");
@@ -312,6 +405,21 @@ namespace EnemiesReturns
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
             Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 2, "Minimum stages players need to complete before monster starts spawning.");
             Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 800, "Director cost of Ifrit.");
+
+            Ifrit.DefaultStageList = config.Bind("Ifrit Director", "Default Variant Stage List", 
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepths),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepthsSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SiphonedForest),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    "catacombs_DS1_Catacombs",
+                    "snowtime_gephyrophobia"
+                    ), 
+                "Stages that Default Ifrit appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 2800f, "Ifrit' base health.");
             Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 13f, "Ifrit' base movement speed.");

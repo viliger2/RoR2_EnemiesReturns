@@ -1,13 +1,26 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using RoR2.Skills;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static R2API.DirectorAPI;
 
 namespace EnemiesReturns
 {
     public static class Utils
     {
+        public static void AddMonsterToStage(string stageList, DirectorCardHolder directorCard)
+        {
+            var defaultStages = stageList.Split(",");
+            foreach (var stageString in defaultStages)
+            {
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+                var stage = DirectorAPI.ParseInternalStageName(cleanStageString);
+                DirectorAPI.Helpers.AddNewMonsterToStage(directorCard, false, stage, stageString);
+            }
+        }
+
         public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
         {
             //var skinDef = ScriptableObject.CreateInstance<SkinDef>();
