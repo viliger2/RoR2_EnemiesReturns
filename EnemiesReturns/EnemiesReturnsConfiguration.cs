@@ -423,7 +423,7 @@ namespace EnemiesReturns
 
             Ifrit.BaseMaxHealth = config.Bind("Ifrit Character Stats", "Base Max Health", 2800f, "Ifrit' base health.");
             Ifrit.BaseMoveSpeed = config.Bind("Ifrit Character Stats", "Base Movement Speed", 13f, "Ifrit' base movement speed.");
-            Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 30f, "Ifrit' base jump power.");
+            Ifrit.BaseJumpPower = config.Bind("Ifrit Character Stats", "Base Jump Power", 15f, "Ifrit' base jump power.");
             Ifrit.BaseDamage = config.Bind("Ifrit Character Stats", "Base Damage", 16f, "Ifrit' base damage.");
             Ifrit.BaseArmor = config.Bind("Ifrit Character Stats", "Base Armor", 20f, "Ifrit' base armor.");
             Ifrit.TurnSpeed = config.Bind("Ifrit Character Stats", "Turn Speed", 300f, "Ifrit's turn speed.");

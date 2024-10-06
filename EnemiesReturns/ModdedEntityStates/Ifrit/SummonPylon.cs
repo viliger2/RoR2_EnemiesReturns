@@ -101,6 +101,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                     if (inventory)
                     {
                         inventory.CopyEquipmentFrom(base.characterBody.inventory);
+                        if (this.characterBody.isPlayerControlled)
+                        {
+                            inventory.CopyItemsFrom(base.characterBody.inventory);
+                        }
                     }
 
                     if (spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))

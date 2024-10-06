@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
         public override void Update()
         {
             base.Update();
-            if (base.isAuthority && base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
                 if (Input.GetKeyDown(EnemiesReturnsConfiguration.Spitter.EmoteKey.Value))
                 {

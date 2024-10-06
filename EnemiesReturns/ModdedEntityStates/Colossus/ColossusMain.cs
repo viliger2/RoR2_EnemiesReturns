@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
         public override void Update()
         {
             base.Update();
-            if (base.isAuthority && base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
                 if (Input.GetKeyDown(EnemiesReturnsConfiguration.Colossus.EmoteKey.Value))
                 {
