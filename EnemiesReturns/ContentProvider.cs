@@ -261,15 +261,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Ifrit.DefaultStageList.Value, dchIfritDefault);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepths);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.SiphonedForest);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDelta);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.HelminthHatchery);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.Custom, "catacombs_DS1_Catacombs");
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.Custom, "snowtime_gephyrophobia");
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchIfritDefault, false, DirectorAPI.Stage.VoidCell);
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
@@ -518,8 +509,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadow);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSkyMeadow, false, DirectorAPI.Stage.SkyMeadowSimulacrum);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
                 DirectorCard dcColossusGrassy = new DirectorCard
@@ -537,12 +526,6 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.GrassyStageList.Value, dchColossusGrassy);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlains);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.TitanicPlainsSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.VoidCell);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.ShatteredAbodes);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.DisturbedImpact);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusGrassy, false, DirectorAPI.Stage.Custom, "FBLScene");
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle = colossusFactory.CreateCard("cscColossusCastle", colossusMaster, ColossusFactory.SkinDefs.Castle, colossusBody);
                 DirectorCard dcColossusCastle = new DirectorCard
@@ -559,7 +542,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.CastleStageList.Value, dchColossusCastle);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusCastle, false, DirectorAPI.Stage.Custom, "sm64_bbf_SM64_BBF");
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy = colossusFactory.CreateCard("cscColossusSandy", colossusMaster, ColossusFactory.SkinDefs.Sandy, colossusBody);
                 DirectorCard dcColossusSandy = new DirectorCard
@@ -570,15 +552,13 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-                Utils.AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
                 DirectorAPI.DirectorCardHolder dchColossusSandy = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcColossusSandy,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
+                Utils.AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SandyStageList.Value, dchColossusSandy);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueduct);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSandy, false, DirectorAPI.Stage.AbandonedAqueductSimulacrum);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy = colossusFactory.CreateCard("cscColossusSnowy", colossusMaster, ColossusFactory.SkinDefs.Snowy, colossusBody);
                 DirectorCard dcColossusSnowy = new DirectorCard
@@ -589,16 +569,13 @@ namespace EnemiesReturns
                     preventOverhead = true,
                     minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
                 };
-                Utils.AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
                 DirectorAPI.DirectorCardHolder dchColossusSnowy = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcColossusSnowy,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
+                Utils.AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SnowyStageList.Value, dchColossusSnowy);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.SiphonedForest);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDelta);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchColossusSnowy, false, DirectorAPI.Stage.RallypointDeltaSimulacrum);
             }
         }
 
@@ -702,10 +679,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.DefaultStageList.Value, dchSpitterDefault);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.WetlandAspect);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.Custom, "FBLScene");
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.VoidCell);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDefault, false, DirectorAPI.Stage.ArtifactReliquary);
 
                 SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SpitterFactory.SkinDefs.Lakes, spitterBody);
                 var dcSpitterLakes = new DirectorCard
@@ -722,7 +695,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.LakesStageList.Value, dchSpitterLakes);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterLakes, false, DirectorAPI.Stage.VerdantFalls);
 
                 SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SpitterFactory.SkinDefs.Sulfur, spitterBody);
                 var dcSpitterSulfur = new DirectorCard
@@ -739,7 +711,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterSulfur, false, DirectorAPI.Stage.SulfurPools);
 
                 SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                 var dcSpitterDepth = new DirectorCard
@@ -756,9 +727,6 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
                 Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.DepthStageList.Value, dchSpitterDepths);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.AbyssalDepths);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.AbyssalDepthsSimulacrum);
-                //DirectorAPI.Helpers.AddNewMonsterToStage(dchSpitterDepths, false, DirectorAPI.Stage.HelminthHatchery);
                 if (EnemiesReturnsConfiguration.Spitter.HelminthroostReplaceMushrum.Value)
                 {
                     DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.MiniMushrum, DirectorAPI.Stage.HelminthHatchery);

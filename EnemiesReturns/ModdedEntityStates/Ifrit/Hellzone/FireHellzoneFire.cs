@@ -4,6 +4,7 @@ using RoR2.Projectile;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
@@ -48,6 +49,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         private Transform fireballAimHelper;
 
+        private Vector3 defaultSpawnPosition;
+        
         public override void OnEnter()
         {
             base.OnEnter();
@@ -70,16 +73,19 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
                 }
             }
 
-            if (!hasFired && isAuthority && fixedAge >= chargeTime)
+            if (isAuthority)
             {
-                FireProjectile();
-                hasFired = true;
-            }
+                if (!hasFired && fixedAge >= chargeTime)
+                {
+                    FireProjectile();
+                    hasFired = true;
+                }
 
-            if(!hasSpawnedDoTZone && isAuthority && fixedAge >= spawnDoTZoneTime)
-            {
-                FireDoTZone();
-                hasSpawnedDoTZone = true;
+                if (!hasSpawnedDoTZone && fixedAge >= spawnDoTZoneTime)
+                {
+                    FireDoTZone();
+                    hasSpawnedDoTZone = true;
+                }
             }
 
             if (fixedAge >= duration && isAuthority)
@@ -92,6 +98,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         {
             var rotation = Quaternion.LookRotation(fireballAimHelper.position - muzzleMouth.position, Vector3.up);
             ProjectileManager.instance.FireProjectile(projectilePrefab, muzzleMouth.position, rotation, gameObject, damageStat * damageCoefficient, force, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
+            
+            if (Physics.Raycast(muzzleMouth.position, muzzleMouth.TransformDirection(Vector3.forward), out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+            {
+                defaultSpawnPosition = result.point;
+            }
         }
 
         private void FireDoTZone()
@@ -99,10 +110,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             var position = predictedTargetPosition;
             if (position == Vector3.zero)
             {
-                if (Physics.Raycast(muzzleMouth.position, muzzleMouth.forward, out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                {
-                    position = result.point;
-                }
+                position = defaultSpawnPosition;
             }
 
             var projectileInfo = new FireProjectileInfo();
