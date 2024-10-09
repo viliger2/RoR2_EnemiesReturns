@@ -442,6 +442,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_IFrit_Portal_Spawn_Play" ID="{2EEF34C0-3A5D-4561-A744-B65BBE19E010}">
+									<ChildrenList>
+										<Action Name="" ID="{E47B63B1-A5E0-4BB8-8F1B-8AACAFC57C9F}" ShortID="529026677">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Portal_Spawn" ID="{B30459E9-51FC-40F2-BE8C-BBB9A7283ACF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

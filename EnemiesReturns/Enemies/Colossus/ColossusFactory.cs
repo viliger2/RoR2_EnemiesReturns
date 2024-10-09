@@ -321,7 +321,7 @@ namespace EnemiesReturns.Enemies.Colossus
             #region SfxLocator
             var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
             sfxLocator.deathSound = ""; // each death will have its own sound in animator
-            sfxLocator.barkSound = ""; // TODO
+            sfxLocator.barkSound = ""; // barks are shit because it just plays both randomly and on getting hit
             #endregion
 
             #region KinematicCharacterMotor

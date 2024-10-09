@@ -98,7 +98,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         {
             var rotation = Quaternion.LookRotation(fireballAimHelper.position - muzzleMouth.position, Vector3.up);
             ProjectileManager.instance.FireProjectile(projectilePrefab, muzzleMouth.position, rotation, gameObject, damageStat * damageCoefficient, force, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
-            
             if (Physics.Raycast(muzzleMouth.position, muzzleMouth.TransformDirection(Vector3.forward), out var result, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
             {
                 defaultSpawnPosition = result.point;

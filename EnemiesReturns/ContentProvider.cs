@@ -195,7 +195,6 @@ namespace EnemiesReturns
 
             if (EnemiesReturnsConfiguration.Ifrit.Enabled.Value)
             {
-
                 var ifritFactory = new IfritFactory();
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
                 ifritManePrefab.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", ifritFactory.CreateManeFiresMaterial);
@@ -205,6 +204,10 @@ namespace EnemiesReturns
 
                 var nsedHellzoneRockFire = Utils.CreateNetworkSoundDef("ER_Ifrit_Hellzone_Rock_Play");
                 nseList.Add(nsedHellzoneRockFire);
+
+                var ifritSpawnEffect = assets.First(effect => effect.name == "IfritSpawnPortal");
+                ModdedEntityStates.Ifrit.SpawnState.spawnEffect = ifritFactory.CreateSpawnEffect(ifritSpawnEffect, acdLookup["acdPortalPP"]);
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SpawnState.spawnEffect));
 
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
@@ -239,7 +242,7 @@ namespace EnemiesReturns
                 unlockablesList.Add(ifritLog);
 
                 var ifritBody = assets.First(body => body.name == "IfritBody");
-                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, dtIfrit); // TODO: sprite
+                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, dtIfrit);
                 bodyList.Add(IfritFactory.IfritBody);
 
                 var ifritMaster = assets.First(master => master.name == "IfritMaster");
@@ -617,7 +620,6 @@ namespace EnemiesReturns
         {
             if (EnemiesReturnsConfiguration.Spitter.Enabled.Value)
             {
-                // TODO: bite effect broke
                 var spitterFactory = new SpitterFactory();
 
                 var biteEffectPrefab = spitterFactory.CreateBiteEffect();

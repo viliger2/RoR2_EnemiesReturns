@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
     {
         public static float baseDuration = 1.8f;
 
-        public static float maxSearchDistance = 60f; // TODO
+        public static float maxSearchDistance = 60f;
 
         public static string attackString = "ER_Ifrit_BreathIn_Fireball_Play";
 

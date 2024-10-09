@@ -29,6 +29,9 @@
 	  <Reference Include="Grumpy">
 	    <HintPath>libs\Grumpy.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Unity.Postprocessing.Runtime">
+	    <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -44,7 +47,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Grumpy.dll" />
+	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Grumpy.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll" />
 	</Target>
 
 </Project>

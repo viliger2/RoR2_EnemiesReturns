@@ -18,6 +18,7 @@ using ThreeEyedGames;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UIElements;
 using static EnemiesReturns.Utils;
 using static RoR2.ItemDisplayRuleSet;
@@ -877,7 +878,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
 
             var scale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
-            gameObject.transform.Find("TeamAreaIndicator, GroundOnly").transform.localScale = new Vector3(scale, scale, scale); // TODO: check if its correct
+            gameObject.transform.Find("TeamAreaIndicator, GroundOnly").transform.localScale = new Vector3(scale, scale, scale);
 
             var beetleQueen = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion();
             var beetleQueenDecal = beetleQueen.transform.Find("FX/Decal");
@@ -886,7 +887,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             decalGameObject.SetActive(true);
             decalGameObject.transform.parent = gameObject.transform;
             decalGameObject.transform.localPosition = Vector3.zero;
-            decalGameObject.transform.localRotation = Quaternion.identity; // TODO
+            decalGameObject.transform.localRotation = Quaternion.identity;
             decalGameObject.transform.localScale = new Vector3(20f, 20f, 20f);
 
             var decal = decalGameObject.GetComponent<Decal>();
@@ -899,7 +900,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             impactExplosion.fireChildren = true;
             impactExplosion.childrenProjectilePrefab = dotZone;
-            impactExplosion.childrenDamageCoefficient = 1f; // TODO
+            impactExplosion.childrenDamageCoefficient = 1f;
             impactExplosion.minAngleOffset = Vector3.zero;
             impactExplosion.maxAngleOffset = Vector3.zero;
 
@@ -1115,6 +1116,76 @@ namespace EnemiesReturns.Enemies.Ifrit
             }
 
             return gameObject;
+        }
+
+        public GameObject CreateSpawnEffect(GameObject gameObject, AnimationCurveDef ppCurve)
+        {
+            var effectComponent = gameObject.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = true;
+            effectComponent.soundName = "ER_IFrit_Portal_Spawn_Play";
+
+            var vfxAttributes = gameObject.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.DoNotPool = true; // it breaks alligment on another spawn
+
+            var destroyOnEnd = gameObject.AddComponent<DestroyOnParticleEnd>();
+
+            var allignToNormal = gameObject.AddComponent<AlignToNormal>();
+            allignToNormal.maxDistance = 15f;
+            allignToNormal.offsetDistance = 3f;
+
+            gameObject.transform.Find("Billboard").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matIfritSpawnBillboard", CreateSpawnBillboardMaterial);
+            gameObject.transform.Find("NoiseTrails").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matIfritSpawnTrails", CreateSpawnTrailsMaterial);
+
+            var worm = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/MagmaWorm/MagmaWormBody.prefab").WaitForCompletion();
+            var ppvolume = worm.transform.Find("ModelBase/mdlMagmaWorm/WormArmature/Head/PPVolume").gameObject.InstantiateClone("PPVolume", false);
+            ppvolume.transform.parent = effectComponent.transform;
+            ppvolume.transform.localScale = Vector3.one;
+            ppvolume.transform.position = Vector3.zero;
+            ppvolume.transform.rotation = Quaternion.identity;
+            ppvolume.layer = LayerIndex.postProcess.intVal;
+
+            ppvolume.gameObject.GetComponent<PostProcessVolume>().blendDistance = 30f;
+
+            var components = ppvolume.GetComponents<PostProcessDuration>();
+            for(int i = components.Length; i > 0; i--)
+            {
+                var component = components[i - 1];
+                if (!component.enabled)
+                {
+                    UnityEngine.GameObject.Destroy(component);
+                    continue;
+                }
+
+                component.ppWeightCurve = ppCurve.curve;
+                component.maxDuration = 2f;
+            }
+
+            return gameObject;
+        }
+
+        public Material CreateSpawnBillboardMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpPortalEffect.mat").WaitForCompletion());
+            material.name = "matIfritSpawnBillboard";
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaserTypeB.png").WaitForCompletion());
+            material.SetColor("_TintColor", new Color(255f / 255f, 150f / 255f, 0));
+            material.SetFloat("_InvFade", 1.260021f);
+            material.SetFloat("_Boost", 3.98255f);
+            material.SetFloat("_AlphaBoost", 3.790471f);
+            material.SetFloat("_AlphaBias", 0.0766565f);
+
+            return material;
+        }
+
+        public Material CreateSpawnTrailsMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpDust.mat").WaitForCompletion());
+            material.name = "matIfritSpawnTrails";
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaserTypeB.png").WaitForCompletion());
+
+            return material;
         }
 
         #endregion
