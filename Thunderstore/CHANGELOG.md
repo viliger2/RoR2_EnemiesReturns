@@ -1,4 +1,19 @@
 <details>
+<summary>0.2.6</summary>
+
+* Exposed stage list to the config. If enemy has multiple variants, each variant gets its own config.
+* Ifrit:
+	* Added new spawning animation.
+	* Made Ifrit about 15% larger. Size increase comes with adjusted hitboxes for his Flame Charge, they are scalled proportionally.
+		* _Some people wanted him Colossus big, since he is about the size of Colossus in 1 and Returns. This is not happening, but with this I think we can reach a compromise._
+	* Lowered jump power.
+		* _No more silly airborne Ifrit for you._
+	* Fixed Infernal Lantern's icon appearing huge when scraping.
+	* Added dynamic bones to tail.
+	* Fixed Hellzone sometimes spawning at 0.0.0 when Ifrit has no target while using the ability.
+	* Added Gephyrophobia as possible stage.
+</details>
+<details>
 <summary>0.2.5 (Visual Polish Update)</summary>
 
 * Colossus:

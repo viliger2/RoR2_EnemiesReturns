@@ -19,7 +19,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, Fogbound Lagoon </td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a> </td>
 	</tr>
 	<thead>
 		<tr>
@@ -33,13 +33,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Colossus/texColossusIcon.png" alt="Colossus"></td>
 		<td>Colossus</td>
 		<td>The one and only.</td>
-		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, Bob-omb Battlefield, Fogbound Lagoon</td>
+		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a></td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
 		<td>Ifrit</td>
 		<td>Fiery spawn of Hell. He will burn you with every attack.</td>
-		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, Catacombs</td>
+		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, <a href="https://thunderstore.io/package/viliger/Catacombs/">Catacombs</a>, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Gephyrophobia</a></td>
 	</tr>	
 </table>
 
