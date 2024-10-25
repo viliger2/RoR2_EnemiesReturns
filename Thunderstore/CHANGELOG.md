@@ -1,4 +1,11 @@
 <details>
+<summary>0.2.7</summary>
+
+* Made some asset optimizations.
+	* _The mod is now 3mbs lighter and should consume less video memory._
+* Fixed nullref spam on void death for Ifrit and Colossus.
+</details>
+<details>
 <summary>0.2.6</summary>
 
 * Exposed stage list to the config. If enemy has multiple variants, each variant gets its own config.
