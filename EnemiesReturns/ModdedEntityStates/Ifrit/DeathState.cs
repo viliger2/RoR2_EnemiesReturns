@@ -31,6 +31,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             bodyPreservationDuration = 2f;
             base.OnEnter();
 
+            if(isVoidDeath)
+            {
+                return;
+            }
+
             modelTransform = GetModelTransform();
             if (modelTransform && modelTransform.gameObject.TryGetComponent<TransformScaler>(out var transformScaler))
             {
@@ -41,16 +46,27 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
             var maneTransform = childLocator.FindChild("Mane");
             maneRenderer = maneTransform.GetComponent<Renderer>();
-            manePropertyBlock = SetupPropertyBlock(maneRenderer, out initialEmission);
+            if (maneRenderer)
+            {
+                manePropertyBlock = SetupPropertyBlock(maneRenderer, out initialEmission);
+            }
 
             var bodyTransform = childLocator.FindChild("MainBody");
             bodyRenderer = bodyTransform.GetComponent<Renderer>();
-            bodyPropertyBlock = SetupPropertyBlock(bodyRenderer, out initialEmission);
+            if (bodyRenderer)
+            {
+                bodyPropertyBlock = SetupPropertyBlock(bodyRenderer, out initialEmission);
+            }
         }
 
         public override void Update()
         {
             base.Update();
+            if (isVoidDeath)
+            {
+                return;
+            }
+
             if (age <= effectDuration)
             {
                 SetPropertyBlock(maneRenderer, manePropertyBlock, initialEmission, age);
@@ -61,6 +77,10 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if(isVoidDeath)
+            {
+                return;
+            }
             if(fixedAge >= fallEffectTime && !effectSpawned)
             {
                 EffectManager.SpawnEffect(deathEffect, new EffectData { origin = modelTransform.position }, false);
@@ -70,8 +90,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         private void SetPropertyBlock(Renderer renderer, MaterialPropertyBlock block, float initialEmission, float age)
         {
-            block.SetFloat("_EmPower", Mathf.Lerp(initialEmission, 0f, age / effectDuration));
-            renderer.SetPropertyBlock(block);
+            if (renderer && block != null)
+            {
+                block.SetFloat("_EmPower", Mathf.Lerp(initialEmission, 0f, age / effectDuration));
+                renderer.SetPropertyBlock(block);
+            }
         }
 
         private MaterialPropertyBlock SetupPropertyBlock(Renderer renderer, out float initialEmission)

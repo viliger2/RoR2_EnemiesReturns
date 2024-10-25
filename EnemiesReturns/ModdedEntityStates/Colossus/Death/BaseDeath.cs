@@ -33,6 +33,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             bodyPreservationDuration = 5f; // just to be sure
             base.OnEnter();
 
+            if(isVoidDeath)
+            {
+                return;
+            }
+
             var childLocator = GetModelChildLocator();
 
             eyeRenderer = childLocator.FindChildComponent<Renderer>("EyeModel");
@@ -53,7 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             }
 
             var spotlight = childLocator.FindChild("LaserChargeSpotlight");
-            if(spotlight)
+            if (spotlight)
             {
                 spotlight.gameObject.SetActive(false);
             }
@@ -62,6 +67,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void Update()
         {
             base.Update();
+            if(isVoidDeath)
+            {
+                return;
+            }
+
             if (age <= duration)
             {
                 eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmmision, 0f, age / duration));
@@ -73,6 +83,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if(isVoidDeath)
+            {
+                return;
+            }
+
             if (fixedAge >= fallEffectSpawnTime && !fallEffectSpawned)
             {
                 EffectManager.SpawnEffect(fallEffect, new EffectData { origin = fallTransform.position }, true);
