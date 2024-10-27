@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
@@ -94,7 +95,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             #region CharacterDirection
             var characterDirection = bodyPrefab.AddComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBase;
-            characterDirection.turnSpeed = EnemiesReturnsConfiguration.Ifrit.TurnSpeed.Value;
+            characterDirection.turnSpeed = EnemiesReturns.Configuration.Ifrit.TurnSpeed.Value;
             characterDirection.modelAnimator = animator;
             #endregion
 
@@ -124,24 +125,24 @@ namespace EnemiesReturns.Enemies.Ifrit
             characterBody.rootMotionInMainState = false;
             characterBody.mainRootSpeed = 33f;
 
-            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Ifrit.BaseMaxHealth.Value;
+            characterBody.baseMaxHealth = EnemiesReturns.Configuration.Ifrit.BaseMaxHealth.Value;
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
-            characterBody.baseMoveSpeed = EnemiesReturnsConfiguration.Ifrit.BaseMoveSpeed.Value;
+            characterBody.baseMoveSpeed = EnemiesReturns.Configuration.Ifrit.BaseMoveSpeed.Value;
             characterBody.baseAcceleration = 60f;
-            characterBody.baseJumpPower = EnemiesReturnsConfiguration.Ifrit.BaseJumpPower.Value;
-            characterBody.baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value;
+            characterBody.baseJumpPower = EnemiesReturns.Configuration.Ifrit.BaseJumpPower.Value;
+            characterBody.baseDamage = EnemiesReturns.Configuration.Ifrit.BaseDamage.Value;
             characterBody.baseAttackSpeed = 1f;
             characterBody.baseCrit = 0f;
-            characterBody.baseArmor = EnemiesReturnsConfiguration.Ifrit.BaseArmor.Value;
+            characterBody.baseArmor = EnemiesReturns.Configuration.Ifrit.BaseArmor.Value;
             characterBody.baseVisionDistance = float.PositiveInfinity;
             characterBody.baseJumpCount = 1;
             characterBody.sprintingSpeedMultiplier = 1.45f;
 
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Ifrit.LevelMaxHealth.Value;
-            characterBody.levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value;
-            characterBody.levelArmor = EnemiesReturnsConfiguration.Ifrit.LevelArmor.Value;
+            characterBody.levelMaxHealth = EnemiesReturns.Configuration.Ifrit.LevelMaxHealth.Value;
+            characterBody.levelDamage = EnemiesReturns.Configuration.Ifrit.LevelDamage.Value;
+            characterBody.levelArmor = EnemiesReturns.Configuration.Ifrit.LevelArmor.Value;
 
             characterBody.wasLucky = false;
             characterBody.spreadBloomDecayTime = 0.45f;
@@ -862,7 +863,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             {
                 component.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/OmniExplosionVFXLemurianBruiserFireballImpact.prefab").WaitForCompletion();
                 component.fireChildren = false;
-                component.blastRadius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+                component.blastRadius = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
                 component.blastDamageCoefficient = 1f; // leave it at 1 so projectile itself deals full damage
             }
 
@@ -877,7 +878,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.ghostPrefab = null;
             controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
 
-            var scale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            var scale = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
             gameObject.transform.Find("TeamAreaIndicator, GroundOnly").transform.localScale = new Vector3(scale, scale, scale);
 
             var beetleQueen = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion();
@@ -911,8 +912,8 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
 
-            var lifetime = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneLifetime.Value
-                + EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value * EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
+            var lifetime = EnemiesReturns.Configuration.Ifrit.HellzoneDoTZoneLifetime.Value
+                + EnemiesReturns.Configuration.Ifrit.HellzonePillarCount.Value * EnemiesReturns.Configuration.Ifrit.HellzonePillarDelay.Value;
             gameObject.GetComponent<ProjectileDotZone>().lifetime = lifetime;
 
             var controller = gameObject.GetComponent<ProjectileController>();
@@ -922,7 +923,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
 
             var fxTransform = gameObject.transform.Find("FX");
-            var fxScale = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            var fxScale = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
             fxTransform.localScale = new Vector3(fxScale, fxScale, fxScale);
             fxTransform.localRotation = Quaternion.identity;
 
@@ -934,7 +935,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             light.localPosition = new Vector3(0f, 0.1f, 0f);
 
             var lightComponent = light.GetComponent<Light>();
-            lightComponent.range = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
+            lightComponent.range = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
             lightComponent.color = new Color(1f, 0.54f, 0.172f);
 
             gameObject.transform.Find("FX/Hitbox").transform.localScale = new Vector3(1.5f, 0.33f, 1.5f);
@@ -961,10 +962,10 @@ namespace EnemiesReturns.Enemies.Ifrit
             particleRenderer.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Scorchling/matScorchlingBreachPile.mat").WaitForCompletion();
 
             var spawnChildrenComponent = gameObject.AddComponent<ProjectileSpawnChildrenInRowsWithDelay>();
-            spawnChildrenComponent.radius = EnemiesReturnsConfiguration.Ifrit.HellzoneRadius.Value;
-            spawnChildrenComponent.numberOfRows = EnemiesReturnsConfiguration.Ifrit.HellzonePillarCount.Value;
-            spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDamage.Value;
-            spawnChildrenComponent.delayEachRow = EnemiesReturnsConfiguration.Ifrit.HellzonePillarDelay.Value;
+            spawnChildrenComponent.radius = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
+            spawnChildrenComponent.numberOfRows = EnemiesReturns.Configuration.Ifrit.HellzonePillarCount.Value;
+            spawnChildrenComponent.childrenDamageCoefficient = EnemiesReturns.Configuration.Ifrit.HellzonePillarDamage.Value;
+            spawnChildrenComponent.delayEachRow = EnemiesReturns.Configuration.Ifrit.HellzonePillarDelay.Value;
             spawnChildrenComponent.childPrefab = pillarPrefab;
             spawnChildrenComponent.soundEventDef = nsedChildSpawnSound;
 
@@ -1010,7 +1011,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             var projectileOverlapAttack = gameObject.AddComponent<ProjectileOverlapAttack>();
             projectileOverlapAttack.damageCoefficient = 1f;
             projectileOverlapAttack.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
-            projectileOverlapAttack.forceVector = new Vector3(0f, EnemiesReturnsConfiguration.Ifrit.HellzonePillarForce.Value, 0f);
+            projectileOverlapAttack.forceVector = new Vector3(0f, EnemiesReturns.Configuration.Ifrit.HellzonePillarForce.Value, 0f);
             projectileOverlapAttack.overlapProcCoefficient = 1f;
             projectileOverlapAttack.maximumOverlapTargets = 100;
             projectileOverlapAttack.fireFrequency = 0.001f;
@@ -1211,7 +1212,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.SummonPylon));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.PillarCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Ifrit.PillarCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1251,7 +1252,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.HellzoneCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Ifrit.HellzoneCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1291,7 +1292,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Ifrit.FlameChargeCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Ifrit.FlameChargeCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1364,7 +1365,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             card.requiredFlags = RoR2.Navigation.NodeFlags.None;
             card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn;
-            card.directorCreditCost = EnemiesReturnsConfiguration.Ifrit.DirectorCost.Value;
+            card.directorCreditCost = EnemiesReturns.Configuration.Ifrit.DirectorCost.Value;
             card.occupyPosition = true;
             card.eliteRules = SpawnCard.EliteRules.Default;
             card.noElites = false;
@@ -1707,7 +1708,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)
         {
-            return EnemiesReturnsConfiguration.Ifrit.PillarMaxInstances.Value;
+            return EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
         }
 
         private void Renamer(GameObject object1)

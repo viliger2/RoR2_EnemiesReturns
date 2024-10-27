@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -11,23 +12,23 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {
     public class RockClapEnd : BaseState
     {
-        public static float projectileDamageCoefficient => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDamage.Value;
+        public static float projectileDamageCoefficient => EnemiesReturns.Configuration.Colossus.RockClapProjectileDamage.Value;
 
-        public static float projectileForce => EnemiesReturnsConfiguration.Colossus.RockClapProjectileForce.Value;
+        public static float projectileForce => EnemiesReturns.Configuration.Colossus.RockClapProjectileForce.Value;
 
-        public static float projectileSpeed => EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeed.Value;
+        public static float projectileSpeed => EnemiesReturns.Configuration.Colossus.RockClapProjectileSpeed.Value;
 
-        public static float projectileSpeedDelta => EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpeedDelta.Value;
+        public static float projectileSpeedDelta => EnemiesReturns.Configuration.Colossus.RockClapProjectileSpeedDelta.Value;
 
-        public static float projectileDistanceFraction => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFraction.Value;
+        public static float projectileDistanceFraction => EnemiesReturns.Configuration.Colossus.RockClapProjectileDistanceFraction.Value;
 
-        public static float projectileDistanceFractionDelta => EnemiesReturnsConfiguration.Colossus.RockClapProjectileDistanceFractionDelta.Value;
+        public static float projectileDistanceFractionDelta => EnemiesReturns.Configuration.Colossus.RockClapProjectileDistanceFractionDelta.Value;
 
-        public static float clapDamageCoefficient => EnemiesReturnsConfiguration.Colossus.RockClapDamage.Value;
+        public static float clapDamageCoefficient => EnemiesReturns.Configuration.Colossus.RockClapDamage.Value;
 
-        public static float clapForce => EnemiesReturnsConfiguration.Colossus.RockClapForce.Value;
+        public static float clapForce => EnemiesReturns.Configuration.Colossus.RockClapForce.Value;
 
-        public static float clapRadius => EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
+        public static float clapRadius => EnemiesReturns.Configuration.Colossus.RockClapRadius.Value;
 
         public static SpawnCard golemSpawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Golem/cscGolem.asset").WaitForCompletion();
 
@@ -93,7 +94,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
                         attack.Fire();
 
                     }
-                    if(NetworkServer.active && EnemiesReturnsConfiguration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
+                    if(NetworkServer.active && EnemiesReturns.Configuration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
                     {
                         SummonHelp();
                     }

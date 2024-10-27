@@ -1,8 +1,10 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
+﻿using EnemiesReturns.Configuration;
+
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
     public class ChargingExplosion : BaseChargingExplosion
     {
-        public override float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
+        public override float duration => EnemiesReturns.Configuration.Ifrit.PillarExplosionChargeDuration.Value;
 
         public override void FixedUpdate()
         {

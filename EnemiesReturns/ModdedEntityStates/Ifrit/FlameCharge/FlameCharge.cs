@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -14,29 +15,29 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static GameObject flameImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
 
-        public static float chargeDuration => EnemiesReturnsConfiguration.Ifrit.FlameChargeDuration.Value;
+        public static float chargeDuration => EnemiesReturns.Configuration.Ifrit.FlameChargeDuration.Value;
 
-        public static float turnSpeed => EnemiesReturnsConfiguration.Ifrit.TurnSpeed.Value;
+        public static float turnSpeed => EnemiesReturns.Configuration.Ifrit.TurnSpeed.Value;
 
-        public static float chargeMovementSpeedCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeSpeedCoefficient.Value;
+        public static float chargeMovementSpeedCoefficient => EnemiesReturns.Configuration.Ifrit.FlameChargeSpeedCoefficient.Value;
 
-        public static float chargeDamageCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeDamage.Value;
+        public static float chargeDamageCoefficient => EnemiesReturns.Configuration.Ifrit.FlameChargeDamage.Value;
 
-        public static float chargeForce => EnemiesReturnsConfiguration.Ifrit.FlameChargeForce.Value;
+        public static float chargeForce => EnemiesReturns.Configuration.Ifrit.FlameChargeForce.Value;
 
-        public static float chargeProcCoef => EnemiesReturnsConfiguration.Ifrit.FlameChargeProcCoefficient.Value;
+        public static float chargeProcCoef => EnemiesReturns.Configuration.Ifrit.FlameChargeProcCoefficient.Value;
 
-        public static float flameTickFrequency => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameTickFrequency.Value;
+        public static float flameTickFrequency => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameTickFrequency.Value;
 
-        public static float flameDamageCoefficient => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameDamage.Value;
+        public static float flameDamageCoefficient => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameDamage.Value;
 
-        public static float flameIgnitePercentChance => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameIgniteChance.Value;
+        public static float flameIgnitePercentChance => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameIgniteChance.Value;
 
-        public static float flameForce => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameForce.Value;
+        public static float flameForce => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameForce.Value;
 
-        public static float flameProcCoef => EnemiesReturnsConfiguration.Ifrit.FlameChargeFlameProcCoefficient.Value;
+        public static float flameProcCoef => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameProcCoefficient.Value;
 
-        public static float heighCheck => EnemiesReturnsConfiguration.Ifrit.FlameChargeHeighCheck.Value;
+        public static float heighCheck => EnemiesReturns.Configuration.Ifrit.FlameChargeHeighCheck.Value;
 
         public static string muzzleString = "MuzzleMouth";
 

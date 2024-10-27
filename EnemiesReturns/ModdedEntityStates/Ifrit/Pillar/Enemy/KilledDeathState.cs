@@ -1,4 +1,5 @@
-﻿using HG;
+﻿using EnemiesReturns.Configuration;
+using HG;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
     {
         public static float explosionDelay = 0.5f;
 
-        public static float damage => EnemiesReturnsConfiguration.Ifrit.PillarExplosionDamage.Value;
+        public static float damage => EnemiesReturns.Configuration.Ifrit.PillarExplosionDamage.Value;
 
-        public static float radius => EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value;
+        public static float radius => EnemiesReturns.Configuration.Ifrit.PillarExplosionRadius.Value;
 
-        public static float force => EnemiesReturnsConfiguration.Ifrit.PillarExplosionForce.Value;
+        public static float force => EnemiesReturns.Configuration.Ifrit.PillarExplosionForce.Value;
 
-        public static bool ignoresLoS => EnemiesReturnsConfiguration.Ifrit.PillarExplosionIgnoesLoS.Value;
+        public static bool ignoresLoS => EnemiesReturns.Configuration.Ifrit.PillarExplosionIgnoesLoS.Value;
 
         public static AnimationCurve fireballYCurve;
 

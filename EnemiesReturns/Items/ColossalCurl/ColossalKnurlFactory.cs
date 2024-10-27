@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.PrefabAPICompat;
 using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileController.cannotBeDeleted = true; // why would you allow captain to delete stone fist, that's just inapropriate
             projectileController.canImpactOnTrigger = false;
             projectileController.allowPrediction = true;
-            projectileController.procCoefficient = EnemiesReturnsConfiguration.Colossus.KnurlProcCoefficient.Value;
+            projectileController.procCoefficient = EnemiesReturns.Configuration.Colossus.KnurlProcCoefficient.Value;
             projectileController.startSound = "ER_Knurl_Fist_Spawn_Play";
 
             var projectileDamage = fistPrefab.AddComponent<ProjectileDamage>();
@@ -73,7 +74,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.falloffModel = BlastAttack.FalloffModel.None;
             projectileImpactExplosion.blastRadius = 6f;
             projectileImpactExplosion.blastDamageCoefficient = 1f;
-            projectileImpactExplosion.blastProcCoefficient = EnemiesReturnsConfiguration.Colossus.KnurlProcCoefficient.Value;
+            projectileImpactExplosion.blastProcCoefficient = EnemiesReturns.Configuration.Colossus.KnurlProcCoefficient.Value;
             projectileImpactExplosion.blastAttackerFiltering = AttackerFiltering.Default;
             projectileImpactExplosion.canRejectForce = true;
 
@@ -97,7 +98,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
             var itemCount = attackerBody.inventory.GetItemCount(itemDef);
-            if (itemCount > 0 && Util.CheckRoll(EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
+            if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
             {
                 bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath
                 if (victim.TryGetComponent<CharacterBody>(out var victimBody))
@@ -111,7 +112,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                     position = hitInfo.point;
                 }
 
-                float damageCoef = EnemiesReturnsConfiguration.Colossus.KnurlDamage.Value + EnemiesReturnsConfiguration.Colossus.KnurlDamagePerStack.Value * (itemCount - 1);
+                float damageCoef = EnemiesReturns.Configuration.Colossus.KnurlDamage.Value + EnemiesReturns.Configuration.Colossus.KnurlDamagePerStack.Value * (itemCount - 1);
 
                 var fireProjectileInfo = default(FireProjectileInfo);
                 fireProjectileInfo.projectilePrefab = projectilePrefab;
@@ -119,7 +120,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                 fireProjectileInfo.rotation = Quaternion.identity;
                 fireProjectileInfo.owner = attackerBody.gameObject;
                 fireProjectileInfo.damage = damageInfo.damage * damageCoef;
-                fireProjectileInfo.force = EnemiesReturnsConfiguration.Colossus.KnurlForce.Value;
+                fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
                 fireProjectileInfo.crit = damageInfo.crit;
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
@@ -132,9 +133,9 @@ namespace EnemiesReturns.Items.ColossalKnurl
             {
                 string description = string.Format(
                     keyPair.Value,
-                    (EnemiesReturnsConfiguration.Colossus.KnurlProcChance.Value / 100f).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlDamage.Value).ToString("###%"),
-                    (EnemiesReturnsConfiguration.Colossus.KnurlDamagePerStack.Value).ToString("###%")
+                    (EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value / 100f).ToString("###%"),
+                    (EnemiesReturns.Configuration.Colossus.KnurlDamage.Value).ToString("###%"),
+                    (EnemiesReturns.Configuration.Colossus.KnurlDamagePerStack.Value).ToString("###%")
                     );
                 language.SetStringByToken("ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION", description);
             }

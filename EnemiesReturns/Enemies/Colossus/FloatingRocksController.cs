@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.PrefabAPICompat;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,9 @@ namespace EnemiesReturns.Enemies.Colossus
 {
     public class FloatingRocksController : MonoBehaviour
     {
-        public static float distance = EnemiesReturnsConfiguration.Colossus.RockClapProjectileSpawnDistance.Value;
+        public static float distance = EnemiesReturns.Configuration.Colossus.RockClapProjectileSpawnDistance.Value;
 
-        public static int rockCount = EnemiesReturnsConfiguration.Colossus.RockClapProjectileCount.Value;
+        public static int rockCount = EnemiesReturns.Configuration.Colossus.RockClapProjectileCount.Value;
 
         public static GameObject flyingRockPrefab;
 

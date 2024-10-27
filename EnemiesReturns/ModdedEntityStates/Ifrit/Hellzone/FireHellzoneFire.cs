@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -21,13 +22,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         public static GameObject projectilePrefab;
 
-        public static float projectileSpeed = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballProjectileSpeed.Value;
+        public static float projectileSpeed = EnemiesReturns.Configuration.Ifrit.HellzoneFireballProjectileSpeed.Value;
 
-        public static float damageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballDamage.Value;
+        public static float damageCoefficient = EnemiesReturns.Configuration.Ifrit.HellzoneFireballDamage.Value;
 
-        public static float dotZoneDamageCoefficient = EnemiesReturnsConfiguration.Ifrit.HellzoneDoTZoneDamage.Value;
+        public static float dotZoneDamageCoefficient = EnemiesReturns.Configuration.Ifrit.HellzoneDoTZoneDamage.Value;
 
-        public static float force = EnemiesReturnsConfiguration.Ifrit.HellzoneFireballForce.Value;
+        public static float force = EnemiesReturns.Configuration.Ifrit.HellzoneFireballForce.Value;
 
         public static GameObject dotZoneProjectile;
 

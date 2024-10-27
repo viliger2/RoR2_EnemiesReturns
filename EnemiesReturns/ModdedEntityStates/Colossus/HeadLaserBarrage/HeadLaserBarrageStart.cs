@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         public static float baseChargeEffectDuration = 4f;
 
-        public static float targetPitch => EnemiesReturnsConfiguration.Colossus.LaserBarrageHeadPitch.Value;
+        public static float targetPitch => EnemiesReturns.Configuration.Colossus.LaserBarrageHeadPitch.Value;
 
         public static float initialEmmision = 0f;
 

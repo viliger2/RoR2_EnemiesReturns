@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -193,7 +194,7 @@ namespace EnemiesReturns
             CreateIfritPillar(assets, iconLookup, acdLookup);
             ExplicitPickupDropTable dtIfrit = CreateIfritItem(assets, iconLookup);
 
-            if (EnemiesReturnsConfiguration.Ifrit.Enabled.Value)
+            if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
             {
                 var ifritFactory = new IfritFactory();
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
@@ -253,17 +254,17 @@ namespace EnemiesReturns
                 var dcIfritDefault = new DirectorCard
                 {
                     spawnCard = IfritFactory.SpawnCards.cscIfritDefault,
-                    selectionWeight = EnemiesReturnsConfiguration.Ifrit.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Ifrit.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Ifrit.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Ifrit.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchIfritDefault = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcIfritDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Ifrit.DefaultStageList.Value, dchIfritDefault);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchIfritDefault);
 
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
@@ -281,7 +282,7 @@ namespace EnemiesReturns
         private ExplicitPickupDropTable CreateIfritItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             ExplicitPickupDropTable dtIfrit = null;
-            if (EnemiesReturnsConfiguration.Ifrit.ItemEnabled.Value)
+            if (EnemiesReturns.Configuration.Ifrit.ItemEnabled.Value)
             {
                 var pillarItemFactory = new SpawnPillarOnChampionKillFactory();
 
@@ -306,7 +307,7 @@ namespace EnemiesReturns
 
         private void CreateIfritPillar(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            if (EnemiesReturnsConfiguration.Ifrit.ItemEnabled.Value || EnemiesReturnsConfiguration.Ifrit.Enabled.Value)
+            if (EnemiesReturns.Configuration.Ifrit.ItemEnabled.Value || EnemiesReturns.Configuration.Ifrit.Enabled.Value)
             {
                 var ifritPylonFactory = new IfritPillarFactory();
 
@@ -326,18 +327,18 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState.fireballYCurve = acdLookup["acdFireballFallCurve"].curve;
 
-                if (EnemiesReturnsConfiguration.Ifrit.Enabled.Value)
+                if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
                 {
                     var pillarEnemyBodyInformation = new IfritPillarFactory.BodyInformation
                     {
                         bodyPrefab = pylonBody.InstantiateClone("IfritPylonEnemyBody", false),
                         sprite = iconLookup["texIconPillarEnemy"],
-                        baseDamage = EnemiesReturnsConfiguration.Ifrit.BaseDamage.Value,
-                        levelDamage = EnemiesReturnsConfiguration.Ifrit.LevelDamage.Value,
+                        baseDamage = EnemiesReturns.Configuration.Ifrit.BaseDamage.Value,
+                        levelDamage = EnemiesReturns.Configuration.Ifrit.LevelDamage.Value,
                         mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion)),
                         deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState)),
                         enableLineRenderer = true,
-                        explosionRadius = EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value
+                        explosionRadius = EnemiesReturns.Configuration.Ifrit.PillarExplosionRadius.Value
                     };
 
                     IfritPillarFactory.Enemy.IfritPillarBody = ifritPylonFactory.CreateBody(pillarEnemyBodyInformation, acdLookup);
@@ -354,18 +355,18 @@ namespace EnemiesReturns
                     stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState));
                 }
 
-                if (EnemiesReturnsConfiguration.Ifrit.ItemEnabled.Value)
+                if (EnemiesReturns.Configuration.Ifrit.ItemEnabled.Value)
                 {
                     var pillarPlayerBodyInformation = new IfritPillarFactory.BodyInformation
                     {
                         bodyPrefab = pylonBody.InstantiateClone("IfritPylonPlayerBody", false),
                         sprite = iconLookup["texIconPillarAlly"],
-                        baseDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyBaseDamage.Value,
-                        levelDamage = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillBodyLevelDamage.Value,
+                        baseDamage = EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillBodyBaseDamage.Value,
+                        levelDamage = EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillBodyLevelDamage.Value,
                         mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion)),
                         deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.SuicideDeathState)),
                         enableLineRenderer = false,
-                        explosionRadius = EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillRadius.Value
+                        explosionRadius = EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillRadius.Value
                     };
 
                     IfritPillarFactory.Player.IfritPillarBody = ifritPylonFactory.CreateBody(pillarPlayerBodyInformation, acdLookup);
@@ -387,7 +388,7 @@ namespace EnemiesReturns
         {
             ExplicitPickupDropTable dtColossus = CreateColossusItem(assets, iconLookup);
 
-            if (EnemiesReturnsConfiguration.Colossus.Enabled.Value)
+            if (EnemiesReturns.Configuration.Colossus.Enabled.Value)
             {
                 var colossusFactory = new ColossusFactory();
 
@@ -484,10 +485,10 @@ namespace EnemiesReturns
                 DirectorCard dcColossusDefault = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusDefault = new DirectorAPI.DirectorCardHolder
                 {
@@ -495,32 +496,32 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusDefault, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.DefaultStageList.Value, dchColossusDefault);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.DefaultStageList.Value, dchColossusDefault);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow = colossusFactory.CreateCard("cscColossusSkyMeadow", colossusMaster, ColossusFactory.SkinDefs.SkyMeadow, colossusBody);
                 DirectorCard dcColossusSkyMeadow = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusSkyMeadow,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusSkyMeadow = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcColossusSkyMeadow,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
                 DirectorCard dcColossusGrassy = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusGrassy,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusGrassy = new DirectorAPI.DirectorCardHolder
                 {
@@ -528,32 +529,32 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.GrassyStageList.Value, dchColossusGrassy);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle = colossusFactory.CreateCard("cscColossusCastle", colossusMaster, ColossusFactory.SkinDefs.Castle, colossusBody);
                 DirectorCard dcColossusCastle = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusCastle,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusCastle = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcColossusCastle,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.CastleStageList.Value, dchColossusCastle);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.CastleStageList.Value, dchColossusCastle);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy = colossusFactory.CreateCard("cscColossusSandy", colossusMaster, ColossusFactory.SkinDefs.Sandy, colossusBody);
                 DirectorCard dcColossusSandy = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusSandy,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusSandy = new DirectorAPI.DirectorCardHolder
                 {
@@ -561,16 +562,16 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SandyStageList.Value, dchColossusSandy);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SandyStageList.Value, dchColossusSandy);
 
                 Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy = colossusFactory.CreateCard("cscColossusSnowy", colossusMaster, ColossusFactory.SkinDefs.Snowy, colossusBody);
                 DirectorCard dcColossusSnowy = new DirectorCard
                 {
                     spawnCard = ColossusFactory.SpawnCards.cscColossusSnowy,
-                    selectionWeight = EnemiesReturnsConfiguration.Colossus.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Colossus.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Colossus.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchColossusSnowy = new DirectorAPI.DirectorCardHolder
                 {
@@ -578,14 +579,14 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Colossus.SnowyStageList.Value, dchColossusSnowy);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SnowyStageList.Value, dchColossusSnowy);
             }
         }
 
         private ExplicitPickupDropTable CreateColossusItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             ExplicitPickupDropTable dtColossus = null;
-            if (EnemiesReturnsConfiguration.Colossus.ItemEnabled.Value)
+            if (EnemiesReturns.Configuration.Colossus.ItemEnabled.Value)
             {
                 var knurlFactory = new ColossalKnurlFactory();
 
@@ -618,7 +619,7 @@ namespace EnemiesReturns
 
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
-            if (EnemiesReturnsConfiguration.Spitter.Enabled.Value)
+            if (EnemiesReturns.Configuration.Spitter.Enabled.Value)
             {
                 var spitterFactory = new SpitterFactory();
 
@@ -670,66 +671,66 @@ namespace EnemiesReturns
                 var dcSpitterDefault = new DirectorCard
                 {
                     spawnCard = SpitterFactory.SpawnCards.cscSpitterDefault,
-                    selectionWeight = EnemiesReturnsConfiguration.Spitter.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchSpitterDefault = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.DefaultStageList.Value, dchSpitterDefault);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.DefaultStageList.Value, dchSpitterDefault);
 
                 SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SpitterFactory.SkinDefs.Lakes, spitterBody);
                 var dcSpitterLakes = new DirectorCard
                 {
                     spawnCard = SpitterFactory.SpawnCards.cscSpitterLakes,
-                    selectionWeight = EnemiesReturnsConfiguration.Spitter.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchSpitterLakes = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterLakes,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.LakesStageList.Value, dchSpitterLakes);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.LakesStageList.Value, dchSpitterLakes);
 
                 SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SpitterFactory.SkinDefs.Sulfur, spitterBody);
                 var dcSpitterSulfur = new DirectorCard
                 {
                     spawnCard = SpitterFactory.SpawnCards.cscSpitterSulfur,
-                    selectionWeight = EnemiesReturnsConfiguration.Spitter.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchSpitterSulfur = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterSulfur,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
 
                 SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
                 var dcSpitterDepth = new DirectorCard
                 {
                     spawnCard = SpitterFactory.SpawnCards.cscSpitterDepths,
-                    selectionWeight = EnemiesReturnsConfiguration.Spitter.SelectionWeight.Value,
+                    selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturnsConfiguration.Spitter.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchSpitterDepths = new DirectorAPI.DirectorCardHolder
                 {
                     Card = dcSpitterDepth,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturnsConfiguration.Spitter.DepthStageList.Value, dchSpitterDepths);
-                if (EnemiesReturnsConfiguration.Spitter.HelminthroostReplaceMushrum.Value)
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.DepthStageList.Value, dchSpitterDepths);
+                if (EnemiesReturns.Configuration.Spitter.HelminthroostReplaceMushrum.Value)
                 {
                     DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.MiniMushrum, DirectorAPI.Stage.HelminthHatchery);
                 }

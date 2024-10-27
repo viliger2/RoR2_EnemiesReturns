@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
@@ -153,24 +154,24 @@ namespace EnemiesReturns.Enemies.Colossus
             characterBody.rootMotionInMainState = false;
             characterBody.mainRootSpeed = 7.5f;
 
-            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Colossus.BaseMaxHealth.Value;
+            characterBody.baseMaxHealth = EnemiesReturns.Configuration.Colossus.BaseMaxHealth.Value;
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
-            characterBody.baseMoveSpeed = EnemiesReturnsConfiguration.Colossus.BaseMoveSpeed.Value;
+            characterBody.baseMoveSpeed = EnemiesReturns.Configuration.Colossus.BaseMoveSpeed.Value;
             characterBody.baseAcceleration = 20f;
-            characterBody.baseJumpPower = EnemiesReturnsConfiguration.Colossus.BaseJumpPower.Value;
-            characterBody.baseDamage = EnemiesReturnsConfiguration.Colossus.BaseDamage.Value;
+            characterBody.baseJumpPower = EnemiesReturns.Configuration.Colossus.BaseJumpPower.Value;
+            characterBody.baseDamage = EnemiesReturns.Configuration.Colossus.BaseDamage.Value;
             characterBody.baseAttackSpeed = 1f;
             characterBody.baseCrit = 0f;
-            characterBody.baseArmor = EnemiesReturnsConfiguration.Colossus.BaseArmor.Value;
+            characterBody.baseArmor = EnemiesReturns.Configuration.Colossus.BaseArmor.Value;
             characterBody.baseVisionDistance = float.PositiveInfinity;
             characterBody.baseJumpCount = 1;
             characterBody.sprintingSpeedMultiplier = 1.45f;
 
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Colossus.LevelMaxHealth.Value;
-            characterBody.levelDamage = EnemiesReturnsConfiguration.Colossus.LevelDamage.Value;
-            characterBody.levelArmor = EnemiesReturnsConfiguration.Colossus.LevelArmor.Value;
+            characterBody.levelMaxHealth = EnemiesReturns.Configuration.Colossus.LevelMaxHealth.Value;
+            characterBody.levelDamage = EnemiesReturns.Configuration.Colossus.LevelDamage.Value;
+            characterBody.levelArmor = EnemiesReturns.Configuration.Colossus.LevelArmor.Value;
 
             characterBody.wasLucky = false;
             characterBody.spreadBloomDecayTime = 0.45f;
@@ -198,7 +199,7 @@ namespace EnemiesReturns.Enemies.Colossus
             modelLocator.dontDetatchFromParent = false;
 
             modelLocator.noCorpse = false;
-            modelLocator.dontReleaseModelOnDeath = EnemiesReturnsConfiguration.Colossus.DestroyModelOnDeath.Value;
+            modelLocator.dontReleaseModelOnDeath = EnemiesReturns.Configuration.Colossus.DestroyModelOnDeath.Value;
             modelLocator.preserveModel = false;
 
             modelLocator.normalizeToFloor = false;
@@ -1179,7 +1180,7 @@ namespace EnemiesReturns.Enemies.Colossus
             // scaling size of default values
             // 4f is default effect scale (actually not, this is the value due to separated bulletattacks)
             // 12f is default damage radius scale
-            var radius = 4f / 12f * EnemiesReturnsConfiguration.Colossus.RockClapRadius.Value;
+            var radius = 4f / 12f * EnemiesReturns.Configuration.Colossus.RockClapRadius.Value;
 
             clapEffect.transform.localScale = new Vector3(radius, radius, radius);
             return clapEffect;
@@ -1197,7 +1198,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            clonedEffect.GetComponent<ProjectileCharacterController>().lifetime = EnemiesReturnsConfiguration.Colossus.StompProjectileLifetime.Value;
+            clonedEffect.GetComponent<ProjectileCharacterController>().lifetime = EnemiesReturns.Configuration.Colossus.StompProjectileLifetime.Value;
 
             var shakeEmiiter = clonedEffectGhost.GetComponent<ShakeEmitter>();
             shakeEmiiter.radius = 30;
@@ -1220,7 +1221,7 @@ namespace EnemiesReturns.Enemies.Colossus
             hitbox.transform.localScale = new Vector3(1f, 1.2f, 1.5f);
             hitbox.transform.localPosition = new Vector3(0f, 0.1f, 0f);
 
-            var scale = EnemiesReturnsConfiguration.Colossus.StompProjectileScale.Value;
+            var scale = EnemiesReturns.Configuration.Colossus.StompProjectileScale.Value;
 
             clonedEffect.transform.localScale = new Vector3(scale, scale, scale);
             clonedEffectGhost.transform.localScale = new Vector3(scale, scale, scale);
@@ -1249,12 +1250,12 @@ namespace EnemiesReturns.Enemies.Colossus
             projectileSimple.updateAfterFiring = false;
             projectileSimple.lifetime = 5f;
 
-            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturnsConfiguration.Colossus.RockClapProjectileBlastRadius.Value;
+            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturns.Configuration.Colossus.RockClapProjectileBlastRadius.Value;
 
             clonedEffect.AddComponent<ProjectileTargetComponent>();
 
             var targetFinder = clonedEffect.AddComponent<ProjectileSphereTargetFinder>();
-            targetFinder.lookRange = EnemiesReturnsConfiguration.Colossus.RockClapHomingRange.Value;
+            targetFinder.lookRange = EnemiesReturns.Configuration.Colossus.RockClapHomingRange.Value;
             targetFinder.targetSearchInterval = 0.25f;
             targetFinder.onlySearchIfNoTarget = true;
             targetFinder.allowTargetLoss = false;
@@ -1263,7 +1264,7 @@ namespace EnemiesReturns.Enemies.Colossus
             targetFinder.flierAltitudeTolerance = float.PositiveInfinity;
 
             var projectileMover = clonedEffect.AddComponent<ProjectileMoveTowardsTarget>();
-            projectileMover.speed = EnemiesReturnsConfiguration.Colossus.RockClapHomingSpeed.Value;
+            projectileMover.speed = EnemiesReturns.Configuration.Colossus.RockClapHomingSpeed.Value;
 
             var networkTransform = clonedEffect.AddComponent<ProjectileNetworkTransform>();
             networkTransform.positionTransmitInterval = 0.033f;
@@ -1327,8 +1328,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var impactExplosion = clonedEffect.GetComponent<ProjectileImpactExplosion>();
             impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value;
-            impactExplosion.blastDamageCoefficient = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionDamage.Value;
+            impactExplosion.blastRadius = EnemiesReturns.Configuration.Colossus.LaserBarrageExplosionRadius.Value;
+            impactExplosion.blastDamageCoefficient = EnemiesReturns.Configuration.Colossus.LaserBarrageExplosionDamage.Value;
             impactExplosion.blastProcCoefficient = 1f;
             impactExplosion.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             impactExplosion.canRejectForce = true;
@@ -1339,7 +1340,7 @@ namespace EnemiesReturns.Enemies.Colossus
             impactExplosion.impactOnWorld = true;
             impactExplosion.timerAfterImpact = true;
             impactExplosion.lifetime = 15f;
-            impactExplosion.lifetimeAfterImpact = EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionDelay.Value;
+            impactExplosion.lifetimeAfterImpact = EnemiesReturns.Configuration.Colossus.LaserBarrageExplosionDelay.Value;
             impactExplosion.transformSpace = ProjectileImpactExplosion.TransformSpace.World;
 
             var dumbHelper = clonedEffect.AddComponent<DumbProjectileStickHelper>();
@@ -1363,7 +1364,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            var scale = 2f * (EnemiesReturnsConfiguration.Colossus.LaserBarrageExplosionRadius.Value / 5f); // 5f is the value it was scaled to
+            var scale = 2f * (EnemiesReturns.Configuration.Colossus.LaserBarrageExplosionRadius.Value / 5f); // 5f is the value it was scaled to
             explosionEffect.transform.localScale = new Vector3(scale, scale, scale);
 
             return explosionEffect;
@@ -1501,7 +1502,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.StompCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Colossus.StompCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1542,7 +1543,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.RockClapCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Colossus.RockClapCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1583,7 +1584,7 @@ namespace EnemiesReturns.Enemies.Colossus
             skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
             skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            skillDef.baseRechargeInterval = EnemiesReturnsConfiguration.Colossus.LaserBarrageCooldown.Value;
+            skillDef.baseRechargeInterval = EnemiesReturns.Configuration.Colossus.LaserBarrageCooldown.Value;
             skillDef.baseMaxStock = 1;
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 1;
@@ -1657,7 +1658,7 @@ namespace EnemiesReturns.Enemies.Colossus
             card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             card.requiredFlags = RoR2.Navigation.NodeFlags.None;
             card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn;
-            card.directorCreditCost = EnemiesReturnsConfiguration.Colossus.DirectorCost.Value;
+            card.directorCreditCost = EnemiesReturns.Configuration.Colossus.DirectorCost.Value;
             card.occupyPosition = true;
             card.eliteRules = SpawnCard.EliteRules.Default;
             card.noElites = false;

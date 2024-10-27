@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus
@@ -10,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
-                if (Input.GetKeyDown(EnemiesReturnsConfiguration.Colossus.EmoteKey.Value))
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.Colossus.EmoteKey.Value))
                 {
                     this.outer.SetInterruptState(new DancePlayer(), InterruptPriority.Any);
                 }

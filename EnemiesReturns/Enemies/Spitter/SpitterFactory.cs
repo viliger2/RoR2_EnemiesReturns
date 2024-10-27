@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
@@ -117,24 +118,24 @@ namespace EnemiesReturns.Enemies.Spitter
             characterBody.rootMotionInMainState = false;
             characterBody.mainRootSpeed = 33f;
 
-            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Spitter.BaseMaxHealth.Value;
+            characterBody.baseMaxHealth = EnemiesReturns.Configuration.Spitter.BaseMaxHealth.Value;
             characterBody.baseRegen = 0f;
             characterBody.baseMaxShield = 0f;
-            characterBody.baseMoveSpeed = EnemiesReturnsConfiguration.Spitter.BaseMoveSpeed.Value;
+            characterBody.baseMoveSpeed = EnemiesReturns.Configuration.Spitter.BaseMoveSpeed.Value;
             characterBody.baseAcceleration = 40f;
-            characterBody.baseJumpPower = EnemiesReturnsConfiguration.Spitter.BaseJumpPower.Value;
-            characterBody.baseDamage = EnemiesReturnsConfiguration.Spitter.BaseDamage.Value;
+            characterBody.baseJumpPower = EnemiesReturns.Configuration.Spitter.BaseJumpPower.Value;
+            characterBody.baseDamage = EnemiesReturns.Configuration.Spitter.BaseDamage.Value;
             characterBody.baseAttackSpeed = 1f;
             characterBody.baseCrit = 0f;
-            characterBody.baseArmor = EnemiesReturnsConfiguration.Spitter.BaseArmor.Value;
+            characterBody.baseArmor = EnemiesReturns.Configuration.Spitter.BaseArmor.Value;
             characterBody.baseVisionDistance = float.PositiveInfinity;
             characterBody.baseJumpCount = 1;
             characterBody.sprintingSpeedMultiplier = 1.45f;
 
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Spitter.LevelMaxHealth.Value;
-            characterBody.levelDamage = EnemiesReturnsConfiguration.Spitter.LevelDamage.Value;
-            characterBody.levelArmor = EnemiesReturnsConfiguration.Spitter.LevelArmor.Value;
+            characterBody.levelMaxHealth = EnemiesReturns.Configuration.Spitter.LevelMaxHealth.Value;
+            characterBody.levelDamage = EnemiesReturns.Configuration.Spitter.LevelDamage.Value;
+            characterBody.levelArmor = EnemiesReturns.Configuration.Spitter.LevelArmor.Value;
 
             characterBody.wasLucky = false;
             characterBody.spreadBloomDecayTime = 0.45f;
@@ -916,7 +917,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosionWithChildrenArray>();
             explosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            explosion.blastRadius = 6.5f * EnemiesReturnsConfiguration.Spitter.ChargedProjectileLargeDoTZoneScale.Value;
+            explosion.blastRadius = 6.5f * EnemiesReturns.Configuration.Spitter.ChargedProjectileLargeDoTZoneScale.Value;
             explosion.blastDamageCoefficient = 1f;
             explosion.blastProcCoefficient = 1f;
             explosion.blastAttackerFiltering = AttackerFiltering.Default;
@@ -982,7 +983,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosion>();
             explosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            explosion.blastRadius = 6.5f * EnemiesReturnsConfiguration.Spitter.ChargedProjectileSmallDoTZoneScale.Value;
+            explosion.blastRadius = 6.5f * EnemiesReturns.Configuration.Spitter.ChargedProjectileSmallDoTZoneScale.Value;
             explosion.blastDamageCoefficient = 1f;
             explosion.blastProcCoefficient = 1f;
             explosion.blastAttackerFiltering = AttackerFiltering.Default;
@@ -1021,9 +1022,9 @@ namespace EnemiesReturns.Enemies.Spitter
         {
             var child = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/MiniMushroom/SporeGrenadeProjectileDotZone.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitDoTZone", true);
             var dotZone = child.GetComponent<ProjectileDotZone>();
-            dotZone.damageCoefficient = EnemiesReturnsConfiguration.Spitter.ChargedProjectileLargeDoTZoneDamage.Value;
+            dotZone.damageCoefficient = EnemiesReturns.Configuration.Spitter.ChargedProjectileLargeDoTZoneDamage.Value;
 
-            var value = EnemiesReturnsConfiguration.Spitter.ChargedProjectileLargeDoTZoneScale.Value;
+            var value = EnemiesReturns.Configuration.Spitter.ChargedProjectileLargeDoTZoneScale.Value;
 
             var projectileDamage = child.GetComponent<ProjectileDamage>();
             projectileDamage.damageType = DamageType.Generic;
@@ -1043,9 +1044,9 @@ namespace EnemiesReturns.Enemies.Spitter
         {
             var child = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/MiniMushroom/SporeGrenadeProjectileDotZone.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSmallDoTZone", true);
             var dotZone = child.GetComponent<ProjectileDotZone>();
-            dotZone.damageCoefficient = EnemiesReturnsConfiguration.Spitter.ChargedProjectileSmallDoTZoneDamage.Value;
+            dotZone.damageCoefficient = EnemiesReturns.Configuration.Spitter.ChargedProjectileSmallDoTZoneDamage.Value;
 
-            var value = EnemiesReturnsConfiguration.Spitter.ChargedProjectileSmallDoTZoneScale.Value;
+            var value = EnemiesReturns.Configuration.Spitter.ChargedProjectileSmallDoTZoneScale.Value;
 
             var projectileDamage = child.GetComponent<ProjectileDamage>();
             projectileDamage.damageType = DamageType.Generic;
@@ -1119,7 +1120,7 @@ namespace EnemiesReturns.Enemies.Spitter
             bite.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.Bite));
             bite.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            bite.baseRechargeInterval = EnemiesReturnsConfiguration.Spitter.BiteCooldown.Value;
+            bite.baseRechargeInterval = EnemiesReturns.Configuration.Spitter.BiteCooldown.Value;
             bite.baseMaxStock = 1;
             bite.rechargeStock = 1;
             bite.requiredStock = 1;
@@ -1197,7 +1198,7 @@ namespace EnemiesReturns.Enemies.Spitter
             chargedSpit.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
             chargedSpit.interruptPriority = EntityStates.InterruptPriority.Any; // not sure
 
-            chargedSpit.baseRechargeInterval = EnemiesReturnsConfiguration.Spitter.ChargedProjectileCooldown.Value;
+            chargedSpit.baseRechargeInterval = EnemiesReturns.Configuration.Spitter.ChargedProjectileCooldown.Value;
             chargedSpit.baseMaxStock = 1;
             chargedSpit.rechargeStock = 1;
             chargedSpit.requiredStock = 1;
@@ -1230,7 +1231,7 @@ namespace EnemiesReturns.Enemies.Spitter
             card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             card.requiredFlags = RoR2.Navigation.NodeFlags.None;
             card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn;
-            card.directorCreditCost = EnemiesReturnsConfiguration.Spitter.DirectorCost.Value;
+            card.directorCreditCost = EnemiesReturns.Configuration.Spitter.DirectorCost.Value;
             card.occupyPosition = false;
             card.eliteRules = SpawnCard.EliteRules.Default;
             card.noElites = false;

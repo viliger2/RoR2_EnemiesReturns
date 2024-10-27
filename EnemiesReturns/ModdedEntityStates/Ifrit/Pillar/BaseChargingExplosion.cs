@@ -6,7 +6,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 {
     public abstract class BaseChargingExplosion : BaseState
     {
-        //public static float duration => EnemiesReturnsConfiguration.Ifrit.PillarExplosionChargeDuration.Value;
+        //public static float duration => EnemiesReturns.Configuration.Ifrit.PillarExplosionChargeDuration.Value;
         public abstract float duration { get; }
 
         public static Vector3 fireballFinishScale = new Vector3(2.5f, 2.5f, 2.5f);

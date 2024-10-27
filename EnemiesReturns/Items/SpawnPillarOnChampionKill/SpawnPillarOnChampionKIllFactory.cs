@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Configuration;
+using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -73,11 +74,11 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             {
                 string description = string.Format(
                     keyPair.Value,
-                    EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillChargeTime.Value,
-                    EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillDamage.Value.ToString("###%"),
-                    EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillDamagePerStack.Value.ToString("###%"),
-                    EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillRadius.Value,
-                    (EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value / 100f).ToString("###%")
+                    EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillChargeTime.Value,
+                    EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamage.Value.ToString("###%"),
+                    EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamagePerStack.Value.ToString("###%"),
+                    EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillRadius.Value,
+                    (EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value / 100f).ToString("###%")
                     );
                 language.SetStringByToken("ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION", description);
             }

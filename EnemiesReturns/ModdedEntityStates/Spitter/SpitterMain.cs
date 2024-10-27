@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
@@ -10,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
-                if (Input.GetKeyDown(EnemiesReturnsConfiguration.Spitter.EmoteKey.Value))
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.Spitter.EmoteKey.Value))
                 {
                     this.outer.SetInterruptState(new DeathDancePlayer(), InterruptPriority.Any);
                 }

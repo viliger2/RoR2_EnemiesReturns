@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
 using HG;
@@ -88,12 +89,12 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             }
             characterBody.baseNameToken = "ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME";
             characterBody.bodyFlags = CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.HasBackstabImmunity;
-            characterBody.baseMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyBaseMaxHealth.Value;
+            characterBody.baseMaxHealth = EnemiesReturns.Configuration.Ifrit.PillarBodyBaseMaxHealth.Value;
             characterBody.baseDamage = bodyInformation.baseDamage;
             characterBody.baseArmor = 0f;
             characterBody.levelArmor = 0f;
             characterBody.autoCalculateLevelStats = true;
-            characterBody.levelMaxHealth = EnemiesReturnsConfiguration.Ifrit.PillarBodyLevelMaxHealth.Value;
+            characterBody.levelMaxHealth = EnemiesReturns.Configuration.Ifrit.PillarBodyLevelMaxHealth.Value;
             characterBody.levelDamage = bodyInformation.levelDamage;
             characterBody.baseMoveSpeed = 0f;
             characterBody.levelMoveSpeed = 0f;
@@ -297,7 +298,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
             var fireLightIntencityCurve = fireLightTransform.gameObject.AddComponent<LightIntensityCurve>();
             fireLightIntencityCurve.curve = acdLookup["adcIfritPylonLightIntencityCurve"].curve;
-            fireLightIntencityCurve.timeMax = EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value;
+            fireLightIntencityCurve.timeMax = EnemiesReturns.Configuration.Ifrit.PillarExplosionRadius.Value;
             #endregion
 
             #region AimAssist
@@ -414,7 +415,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ClayBoss/ClayBossDeath.prefab").WaitForCompletion().InstantiateClone("IfritPylonExplosionEffectAlt", false);
             gameObject.GetComponent<EffectComponent>().applyScale = true;
 
-            var scale = gameObject.transform.localScale.x * (EnemiesReturnsConfiguration.Ifrit.PillarExplosionRadius.Value / 30f);
+            var scale = gameObject.transform.localScale.x * (EnemiesReturns.Configuration.Ifrit.PillarExplosionRadius.Value / 30f);
             gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
             UnityEngine.Object.DestroyImmediate(gameObject.GetComponent<AwakeEvent>());

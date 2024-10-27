@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Configuration;
+using RoR2;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,9 +8,9 @@ namespace EnemiesReturns.Enemies.Colossus
 {
     public class ColossusFootstepHandler : FootstepHandler
     {
-        private static float maxDistance => EnemiesReturnsConfiguration.Colossus.FootstepShockwaveDistance.Value;
+        private static float maxDistance => EnemiesReturns.Configuration.Colossus.FootstepShockwaveDistance.Value;
 
-        private static float force => EnemiesReturnsConfiguration.Colossus.FootstepShockwaveForce.Value;
+        private static float force => EnemiesReturns.Configuration.Colossus.FootstepShockwaveForce.Value;
 
         public new void Footstep(AnimationEvent animationEvent)
         {

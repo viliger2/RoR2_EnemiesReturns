@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -9,9 +10,9 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
     public class Bite : BaseState
     {
-        public static float damageCoefficient => EnemiesReturnsConfiguration.Spitter.BiteDamageModifier.Value;
+        public static float damageCoefficient => EnemiesReturns.Configuration.Spitter.BiteDamageModifier.Value;
 
-        public static float forceMagnitude => EnemiesReturnsConfiguration.Spitter.BiteDamageForce.Value;
+        public static float forceMagnitude => EnemiesReturns.Configuration.Spitter.BiteDamageForce.Value;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 

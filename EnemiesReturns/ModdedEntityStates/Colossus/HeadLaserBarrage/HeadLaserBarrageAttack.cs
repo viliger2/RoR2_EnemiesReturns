@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2.Projectile;
 using UnityEngine;
@@ -7,21 +8,21 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
     public class HeadLaserBarrageAttack : BaseState
     {
-        public static float baseDuration => EnemiesReturnsConfiguration.Colossus.LaserBarrageDuration.Value;
+        public static float baseDuration => EnemiesReturns.Configuration.Colossus.LaserBarrageDuration.Value;
 
-        public static float projectileSpeed => EnemiesReturnsConfiguration.Colossus.LaserBarrageProjectileSpeed.Value;
+        public static float projectileSpeed => EnemiesReturns.Configuration.Colossus.LaserBarrageProjectileSpeed.Value;
 
-        public static float baseFireFrequency => EnemiesReturnsConfiguration.Colossus.LaserBarrageFrequency.Value;
+        public static float baseFireFrequency => EnemiesReturns.Configuration.Colossus.LaserBarrageFrequency.Value;
 
-        public static int projectilesPerShot => EnemiesReturnsConfiguration.Colossus.LaserBarrageProjectileCount.Value;
+        public static int projectilesPerShot => EnemiesReturns.Configuration.Colossus.LaserBarrageProjectileCount.Value;
 
-        public static float damageCoefficient => EnemiesReturnsConfiguration.Colossus.LaserBarrageDamage.Value;
+        public static float damageCoefficient => EnemiesReturns.Configuration.Colossus.LaserBarrageDamage.Value;
 
-        public static float forceMagnitude => EnemiesReturnsConfiguration.Colossus.LaserBarrageForce.Value;
+        public static float forceMagnitude => EnemiesReturns.Configuration.Colossus.LaserBarrageForce.Value;
 
-        public static float pitch => EnemiesReturnsConfiguration.Colossus.LaserBarrageHeadPitch.Value;
+        public static float pitch => EnemiesReturns.Configuration.Colossus.LaserBarrageHeadPitch.Value;
 
-        public static float spread => EnemiesReturnsConfiguration.Colossus.LaserBarrageSpread.Value;
+        public static float spread => EnemiesReturns.Configuration.Colossus.LaserBarrageSpread.Value;
 
         public static float desiredEmission = ColossusFactory.MAX_BARRAGE_EMISSION; // max total emmision, we jump from 3.5 to 7 with intencityGraph
 

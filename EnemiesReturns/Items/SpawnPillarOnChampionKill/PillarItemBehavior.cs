@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using RoR2;
 using RoR2.CharacterAI;
 using static RoR2.CharacterBody;
@@ -15,7 +16,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 spawn = damageReport.victimBody.isChampion;
                 if (!spawn && damageReport.victimBody.isElite)
                 {
-                    spawn = Util.CheckRoll(EnemiesReturnsConfiguration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
+                    spawn = Util.CheckRoll(EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
                 }
             }
             if (spawn)

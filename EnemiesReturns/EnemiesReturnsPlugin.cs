@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -29,22 +30,34 @@ namespace EnemiesReturns
 #if DEBUG == true
             On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 #endif
-            var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
+            var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Each enemy gets their own config file. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
 
             Log.Init(Logger);
 
             if (UseConfigFile.Value)
             {
-                EnemiesReturnsConfiguration.PopulateConfig(Config);
+                EnemiesReturns.Configuration.General.PopulateConfig(Config);
+
+                var spitterConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Spitter"), true);
+                EnemiesReturns.Configuration.Spitter.PopulateConfig(spitterConfig);
+
+                var colossusConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Colossus"), true);
+                EnemiesReturns.Configuration.Colossus.PopulateConfig(colossusConfig);
+
+                var ifritConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Ifrit"), true);
+                EnemiesReturns.Configuration.Ifrit.PopulateConfig(ifritConfig);
             }
             else
             {
-                var spitterConfigFile = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "Config"), false)
+                var notSavedConfigFile = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "Config"), false)
                 {
                     SaveOnConfigSet = false,
                 };
 
-                EnemiesReturnsConfiguration.PopulateConfig(spitterConfigFile);
+                EnemiesReturns.Configuration.General.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.Spitter.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
             }
 
             Hooks();

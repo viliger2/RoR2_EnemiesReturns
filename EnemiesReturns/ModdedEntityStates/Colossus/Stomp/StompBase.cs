@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Configuration;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -12,17 +13,17 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
     {
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
-        public static float projectileDamageCoefficient => EnemiesReturnsConfiguration.Colossus.StompProjectileDamage.Value;
+        public static float projectileDamageCoefficient => EnemiesReturns.Configuration.Colossus.StompProjectileDamage.Value;
 
-        public static float stompDamageCoefficient => EnemiesReturnsConfiguration.Colossus.StompOverlapAttackDamage.Value;
+        public static float stompDamageCoefficient => EnemiesReturns.Configuration.Colossus.StompOverlapAttackDamage.Value;
 
-        public static int projectilesCount => EnemiesReturnsConfiguration.Colossus.StompProjectileCount.Value;
+        public static int projectilesCount => EnemiesReturns.Configuration.Colossus.StompProjectileCount.Value;
 
-        public static float projectileForceMagnitude => EnemiesReturnsConfiguration.Colossus.StompProjectileForce.Value;
+        public static float projectileForceMagnitude => EnemiesReturns.Configuration.Colossus.StompProjectileForce.Value;
 
-        public static float stompForceMagnitude => EnemiesReturnsConfiguration.Colossus.StompOverlapAttackForce.Value;
+        public static float stompForceMagnitude => EnemiesReturns.Configuration.Colossus.StompOverlapAttackForce.Value;
 
-        public static float speed => EnemiesReturnsConfiguration.Colossus.StompProjectileSpeed.Value;
+        public static float speed => EnemiesReturns.Configuration.Colossus.StompProjectileSpeed.Value;
 
         public static float baseDuration = 4.5f;
 

@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -17,11 +18,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         public static SpawnCard scPylon => IfritPillarFactory.Enemy.scIfritPillar;
 
-        public static float minSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMinSpawnDistance.Value;
+        public static float minSpawnDistance => EnemiesReturns.Configuration.Ifrit.PillarMinSpawnDistance.Value;
 
-        public static float maxSpawnDistance => EnemiesReturnsConfiguration.Ifrit.PillarMaxSpawnDistance.Value;
+        public static float maxSpawnDistance => EnemiesReturns.Configuration.Ifrit.PillarMaxSpawnDistance.Value;
 
-        public static int pillarCount => EnemiesReturnsConfiguration.Ifrit.PillarMaxInstances.Value;
+        public static int pillarCount => EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
 
         private float duration;
 

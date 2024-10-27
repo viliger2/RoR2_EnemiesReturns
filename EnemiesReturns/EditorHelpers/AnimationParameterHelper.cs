@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EnemiesReturns.Configuration;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemiesReturns.EditorHelpers
@@ -29,7 +30,7 @@ namespace EnemiesReturns.EditorHelpers
             {
                 if (thing.Equals("walkSpeedDebug"))
                 {
-                    animator.SetFloat(animationParametersHashes[thing], EnemiesReturnsConfiguration.DebugWalkSpeedValue.Value);
+                    animator.SetFloat(animationParametersHashes[thing], EnemiesReturns.Configuration.General.DebugWalkSpeedValue.Value);
                 }
             }
 
