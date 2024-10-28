@@ -739,7 +739,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LightImpact
-  m_Speed: 2
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5783779999444667718}
@@ -752,7 +752,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: -7490047922032694140, guid: c67a7976c3e30e54a90d8ed3161da5a2,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1252,9 +1253,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.19068757
+  m_TransitionDuration: 0.32988003
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 0.0000000067593215
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1640,9 +1641,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.19465251
+  m_TransitionDuration: 0.16869706
   m_TransitionOffset: 0
-  m_ExitTime: 0.008231979
+  m_ExitTime: 0.000000004179313
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1813,9 +1814,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.10833976
+  m_TransitionDuration: 0.108339764
   m_TransitionOffset: 0
-  m_ExitTime: 0.02365416
+  m_ExitTime: 0.023126049
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1986,7 +1987,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 40, y: -270, z: 0}
-  m_EntryPosition: {x: 310, y: -140, z: 0}
+  m_EntryPosition: {x: 290, y: -190, z: 0}
   m_ExitPosition: {x: 40, y: -320, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2498546272312054547}

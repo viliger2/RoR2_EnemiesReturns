@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Helpers
 {
+    // there is actually hopoo script for that, but at this point who cares
     public class DeployableLineRendererToOwner : MonoBehaviour
     {
         public string childOriginName;

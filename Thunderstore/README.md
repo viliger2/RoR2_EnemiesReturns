@@ -81,8 +81,9 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 </details>
 - Special thanks to 
 
-* [Moffein](https://thunderstore.io/package/Moffein/) for balance and design help
+* [Moffein](https://thunderstore.io/package/Moffein/) - balance and design help
 * [rob](https://thunderstore.io/package/rob_gaming/) - the fun guy
-* /vm/ for telling me to fix my (viliger's) shit.
+* [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/) - explaining how to make landing animation work
+* /vm/ - telling me to fix my (viliger's) shit.
 * Translations:
 	* pt-BR by [Kauzok](https://github.com/Kauzok)

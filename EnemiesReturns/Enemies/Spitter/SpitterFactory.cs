@@ -142,7 +142,10 @@ namespace EnemiesReturns.Enemies.Spitter
             characterBody._defaultCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
             characterBody.aimOriginTransform = aimOrigin;
             characterBody.hullClassification = HullClassification.Golem;
-            characterBody.portraitIcon = sprite.texture;
+            if (sprite)
+            {
+                characterBody.portraitIcon = sprite.texture;
+            }
             characterBody.bodyColor = new Color(0.737f, 0.682f, 0.588f);
             characterBody.isChampion = false;
             characterBody.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));

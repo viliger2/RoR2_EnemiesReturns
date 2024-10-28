@@ -584,9 +584,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "SprintEffect", transform = sprintEffectCopy.transform });
             #endregion
 
-            #region RemoveJitterBones
-            var fixBones = mdlIfrit.AddComponent<RemoveJitterBones>();
-            #endregion
             //mdlIfrit.AddComponent<DunnoRaycasterOrSomething>();
 
             //var helper = mdlIfrit.AddComponent<AnimationParameterHelper>();
