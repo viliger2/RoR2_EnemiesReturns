@@ -510,7 +510,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                     renderer = particleComponent,
                     defaultMaterial = particleComponent.material,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
-                    ignoreOverlays = false,
+                    ignoreOverlays = true,
                     hideOnDeath = false,
                 });
             }
