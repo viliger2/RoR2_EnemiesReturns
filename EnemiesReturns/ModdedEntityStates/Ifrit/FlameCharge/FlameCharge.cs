@@ -160,7 +160,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                     bulletAttackStopwatch -= 1f / flameTickFrequency;
                     flameAttack.Fire();
 
-                    if (ledgeHandling)
+                    if (ledgeHandling && !characterBody.isPlayerControlled)
                     {
                         var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
                         if (!result || hitinfo.distance > heighCheck)
