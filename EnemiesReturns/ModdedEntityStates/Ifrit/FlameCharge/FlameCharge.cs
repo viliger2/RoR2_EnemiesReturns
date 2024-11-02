@@ -37,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static float flameProcCoef => EnemiesReturns.Configuration.Ifrit.FlameChargeFlameProcCoefficient.Value;
 
-        public static float heighCheck => EnemiesReturns.Configuration.Ifrit.FlameChargeHeighCheck.Value;
+        public static float heightCheck => EnemiesReturns.Configuration.Ifrit.FlameChargeHeighCheck.Value;
 
         public static string muzzleString = "MuzzleMouth";
 
@@ -163,7 +163,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                     if (ledgeHandling && !characterBody.isPlayerControlled)
                     {
                         var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
-                        if (!result || hitinfo.distance > heighCheck)
+                        if (!result || hitinfo.distance > heightCheck)
                         {
                             outer.SetNextState(new FlameChargeEnd());
                         }

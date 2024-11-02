@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskMechanicalSpiderGun
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: MechanicalSpider
+    m_Weight: 0
+  - m_Path: SpiderArmature
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg1.IK
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg1.IK/Leg1.IK_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg2.IK
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg2.IK/Leg2.IK_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg3.IK
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg3.IK/Leg3.IK_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg4.IK
+    m_Weight: 0
+  - m_Path: SpiderArmature/Leg4.IK/Leg4.IK_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/BackHatch
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/BackHatch/BackHatch_end
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/FrontHatch
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/FrontHatch/FrontHatch_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Gun
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/Gun.002
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Gun/Gun.002/Gun.002_end
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderL
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderL/HingeL
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderL/HingeL/HingeL_end
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderR
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderR/HingeR
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Gun/GunCylinderR/HingeR/HingeR_end
+    m_Weight: 1
+  - m_Path: SpiderArmature/Root/Leg1.1
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg1.1/Leg1.2
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg1.1/Leg1.2/Leg1.3
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg1.1/Leg1.2/Leg1.3/Leg1.3_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg2.1
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg2.1/Leg2.2
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg2.1/Leg2.2/Leg2.3
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg2.1/Leg2.2/Leg2.3/Leg2.3_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg3.1
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg3.1/Leg3.2
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg3.1/Leg3.2/Leg3.3
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg3.1/Leg3.2/Leg3.3/Leg3.3_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg4.1
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg4.1/Leg4.2
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg4.1/Leg4.2/Leg4.3
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/Leg4.1/Leg4.2/Leg4.3/Leg4.3_end
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/UpperBody
+    m_Weight: 0
+  - m_Path: SpiderArmature/Root/UpperBody/UpperBody_end
+    m_Weight: 0

@@ -22,7 +22,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.2.7";
+        public const string Version = "0.3.0";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
@@ -37,15 +37,10 @@ namespace EnemiesReturns
             if (UseConfigFile.Value)
             {
                 EnemiesReturns.Configuration.General.PopulateConfig(Config);
-
-                var spitterConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Spitter"), true);
-                EnemiesReturns.Configuration.Spitter.PopulateConfig(spitterConfig);
-
-                var colossusConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Colossus"), true);
-                EnemiesReturns.Configuration.Colossus.PopulateConfig(colossusConfig);
-
-                var ifritConfig = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "com.Viliger.EnemiesReturns.Ifrit"), true);
-                EnemiesReturns.Configuration.Ifrit.PopulateConfig(ifritConfig);
+                EnemiesReturns.Configuration.Spitter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Spitter.cfg"), true));
+                EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
+                EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
+                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.MechanicalSpider.cfg"), true));
             }
             else
             {
@@ -58,6 +53,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.Spitter.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
             }
 
             Hooks();

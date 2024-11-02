@@ -3,6 +3,7 @@ using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -166,6 +167,8 @@ namespace EnemiesReturns
                 CreateColossus(assets, iconLookup, acdLookup);
 
                 CreateIfrit(assets, iconLookup, texLavaCrackRound, acdLookup);
+
+                CreateMechanicalSpider(assets, iconLookup, acdLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -743,6 +746,46 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDance));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.SpitterMain));
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDancePlayer));
+            }
+        }
+        
+        private void CreateMechanicalSpider(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            if (EnemiesReturns.Configuration.MechanicalSpider.Enabled.Value)
+            {
+                var spiderFactory = new MechanicalSpiderFactory();
+
+                var spiderLog = Utils.CreateUnlockableDef("Logs.MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
+                unlockablesList.Add(spiderLog);
+
+                MechanicalSpiderFactory.Skills.DoubleShot = spiderFactory.CreateDoubleShotSkill();
+                MechanicalSpiderFactory.Skills.Dash = spiderFactory.CreateDashSkill();
+
+                ModdedEntityStates.MechanicalSpider.Dash.forwardSpeedCoefficientCurve = acdLookup["acdSpiderDash"].curve;
+
+                sdList.Add(MechanicalSpiderFactory.Skills.DoubleShot);
+                sdList.Add(MechanicalSpiderFactory.Skills.Dash);
+
+                MechanicalSpiderFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderPrimaryFamily", MechanicalSpiderFactory.Skills.DoubleShot);
+                MechanicalSpiderFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("MechanicalSpiderUtilityFamily", MechanicalSpiderFactory.Skills.Dash);
+
+                sfList.Add(MechanicalSpiderFactory.SkillFamilies.Primary);
+                sfList.Add(MechanicalSpiderFactory.SkillFamilies.Utility);
+
+                var spiderBody = assets.First(body => body.name == "MechanicalSpiderBody");
+                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateBody(spiderBody, null, spiderLog); // TODO: icon
+                bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
+
+                var spiderMaster = assets.First(master => master.name == "MechanicalSpiderMaster");
+                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateMaster(spiderMaster, MechanicalSpiderFactory.MechanicalSpiderBody);
+                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
+
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.CloseHatch));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash));
             }
         }
         #endregion
