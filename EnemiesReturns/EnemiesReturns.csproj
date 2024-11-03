@@ -23,6 +23,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="AdvPrediction">
+	    <HintPath>libs\AdvPrediction.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Decalicious">
 	    <HintPath>libs\Decalicious.dll</HintPath>
 	  </Reference>

@@ -16,6 +16,7 @@ namespace EnemiesReturns
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(R2API.DeployableAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin

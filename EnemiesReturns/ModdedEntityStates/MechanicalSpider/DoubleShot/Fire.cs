@@ -95,6 +95,10 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             {
                 Ray aimRay = GetAimRay();
                 aimRay.direction = Util.ApplySpread(aimRay.direction, minSpread, maxSpread, 1f, 1f, 0f, projectilePitchBonus);
+                if (ModCompats.AdvancedPredictionCompat.enabled)
+                {
+                    aimRay = ModCompats.AdvancedPredictionCompat.GetPredictAimRay(aimRay, characterBody, projectilePrefab);
+                }
                 ProjectileManager.instance.FireProjectile(projectilePrefab, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, damageStat * damageCoefficient, force, Util.CheckRoll(critStat, base.characterBody.master));
             }
             Util.PlayAttackSpeedSound(soundString, gameObject, attackSpeedStat);
