@@ -758,10 +758,18 @@ namespace EnemiesReturns
                 var spiderLog = Utils.CreateUnlockableDef("Logs.MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
                 unlockablesList.Add(spiderLog);
 
+                var doubleShotEffect = spiderFactory.CreateDoubleShotImpactEffect();
+                effectsList.Add(new EffectDef(doubleShotEffect));
+
+                ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab = spiderFactory.CreateDoubleShotProjectilePrefab(doubleShotEffect);
+                projectilesList.Add(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab);
+
+                ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire.effectPrefab = spiderFactory.CreateDoubleShotChargeEffect();
+
                 MechanicalSpiderFactory.Skills.DoubleShot = spiderFactory.CreateDoubleShotSkill();
                 MechanicalSpiderFactory.Skills.Dash = spiderFactory.CreateDashSkill();
 
-                ModdedEntityStates.MechanicalSpider.Dash.forwardSpeedCoefficientCurve = acdLookup["acdSpiderDash"].curve;
+                ModdedEntityStates.MechanicalSpider.Dash.Dash.forwardSpeedCoefficientCurve = acdLookup["acdSpiderDash"].curve;
 
                 sdList.Add(MechanicalSpiderFactory.Skills.DoubleShot);
                 sdList.Add(MechanicalSpiderFactory.Skills.Dash);
@@ -780,12 +788,38 @@ namespace EnemiesReturns
                 MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateMaster(spiderMaster, MechanicalSpiderFactory.MechanicalSpiderBody);
                 masterList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
 
+                var spiderInteractable = assets.First(interactable => interactable.name == "MechanicalSpiderBroken");
+                spiderFactory.CreateInteractable(spiderInteractable, spiderMaster); // TODO: create separate body and master for ally
+
+                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpeiderDefault", spiderMaster);
+                var dcMechanicalSpiderDefault = new DirectorCard
+                {
+                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault,
+                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchMechanicalSpiderDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcMechanicalSpiderDefault,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
+
+                MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken = spiderFactory.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", spiderInteractable);
+
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.CloseHatch));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.DashStart));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.Dash));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.DashStop));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathInitial));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathDrone));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathNormal));
             }
         }
         #endregion

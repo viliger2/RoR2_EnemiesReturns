@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
     {
         public static int numberOfShots => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotShots.Value;
 
-        public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitProjectile.prefab").WaitForCompletion(); // TODO
+        public static GameObject projectilePrefab;
 
         public static string soundString = ""; // TODO
 
