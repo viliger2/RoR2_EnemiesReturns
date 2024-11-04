@@ -14,8 +14,12 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
         public override void OnEnter()
         {
             base.OnEnter();
-
-            if(NetworkServer.active)
+            if(isVoidDeath)
+            {
+                return;
+            }
+            Util.PlaySound("ER_Spider_Death_Drone_Play", gameObject);
+            if (NetworkServer.active)
             {
                 SpawnDrone();
             }

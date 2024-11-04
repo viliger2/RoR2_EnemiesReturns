@@ -785,11 +785,19 @@ namespace EnemiesReturns
                 bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
 
                 var spiderMaster = assets.First(master => master.name == "MechanicalSpiderMaster");
-                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateMaster(spiderMaster, MechanicalSpiderFactory.MechanicalSpiderBody);
-                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
+                MechanicalSpiderFactory.MechanicalSpiderMaster = spiderFactory.CreateMaster(spiderMaster, MechanicalSpiderFactory.MechanicalSpiderBody);
+                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderMaster);
+
+                var spiderDroneBody = assets.First(body => body.name == "MechanicalSpiderDroneBody");
+                MechanicalSpiderFactory.MechanicalSpiderDroneBody = spiderFactory.CreateDroneBody(spiderDroneBody, null); // TODO: icon
+                bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneBody);
+
+                var spiderDroneMaster = assets.First(master => master.name == "MechanicalSpiderDroneMaster");
+                MechanicalSpiderFactory.MechanicalSpiderDroneMaster = spiderFactory.CreateDroneMaster(spiderDroneMaster, MechanicalSpiderFactory.MechanicalSpiderDroneBody);
+                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
 
                 var spiderInteractable = assets.First(interactable => interactable.name == "MechanicalSpiderBroken");
-                spiderFactory.CreateInteractable(spiderInteractable, spiderMaster); // TODO: create separate body and master for ally
+                spiderFactory.CreateInteractable(spiderInteractable, MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
 
                 MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpeiderDefault", spiderMaster);
                 var dcMechanicalSpiderDefault = new DirectorCard
@@ -810,6 +818,7 @@ namespace EnemiesReturns
                 MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken = spiderFactory.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", spiderInteractable);
 
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));

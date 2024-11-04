@@ -455,6 +455,159 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Mechanical Spider" ID="{021F3C91-7AC7-4725-90A1-856829F169AC}" ShortID="241006506">
+							<ChildrenList>
+								<Event Name="ER_Spider_Spawn_Play" ID="{F1FAE8B6-3F1B-4612-A087-DB622FD88222}">
+									<ChildrenList>
+										<Action Name="" ID="{663AEB14-55DF-4418-9E03-8D7C85F6CECC}" ShortID="225456849">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Spawn" ID="{B2757885-0BFC-4E88-A8C7-FC156579A0D7}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Death_Drone_Play" ID="{53C0A4C2-352D-4523-8548-A91AFE158C83}">
+									<ChildrenList>
+										<Action Name="" ID="{D2D83405-C584-4C9C-B302-C77F330AC43C}" ShortID="33846351">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Death_Drone" ID="{ACDC6A29-EA2F-4D06-86DF-A91D367891C2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Dash_Play" ID="{3104FDB4-2088-4BB2-931E-E56021EB8195}">
+									<ChildrenList>
+										<Action Name="" ID="{FDF048EA-2E17-472A-9351-2B8CB70C0FD3}" ShortID="74489560">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Dash" ID="{B5531BF2-9747-4FE2-8642-23B9DBE44210}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Fire_Charge_Play" ID="{CE74CB63-0346-4FC8-8176-1397C9F39E75}">
+									<ChildrenList>
+										<Action Name="" ID="{6FFE7692-8CC4-4510-9529-F01280F2F054}" ShortID="569009891">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Fire_Charge" ID="{6440DC88-D172-40F6-8E1D-7744BC7C1600}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Fire_Play" ID="{916FC774-DB2C-4F92-B748-6D208CB62AB7}">
+									<ChildrenList>
+										<Action Name="" ID="{68BB1740-260B-4CC6-96A8-7DCCB49BBFC4}" ShortID="531574845">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Shoot" ID="{40AEA352-2E9A-47E1-8444-A58A511F068D}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Projectile_Loop_Play" ID="{7C09C865-80B2-4019-A151-FFBB1A07BFB7}">
+									<ChildrenList>
+										<Action Name="" ID="{4559FEC0-9EA0-4DD9-BE00-199C7B126812}" ShortID="789392772">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Projectile_Loop_Stop" ID="{10384E9E-3F73-4BB4-8BA4-5646E6989FF0}">
+									<ChildrenList>
+										<Action Name="" ID="{F3069B8E-1C2F-4997-A81D-FE5C73B44455}" ShortID="568577704">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Hatch_Open_Play" ID="{A2DD8CD4-05A2-4BA3-A0F2-84684F60EF35}">
+									<ChildrenList>
+										<Action Name="" ID="{794D40C3-5137-4B9B-BEE7-79E4C1DC9629}" ShortID="1001525589">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Open_Hatch" ID="{1C845AFC-ADCC-46EF-ABEB-3C92EF86BB4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Hatch_Close_Play" ID="{9B5636ED-A278-4828-9E16-96ADB859579D}">
+									<ChildrenList>
+										<Action Name="" ID="{780DD196-E17F-4F4A-B47A-955C298722EC}" ShortID="26820445">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Close_Hatch" ID="{FC9E576D-081E-4CDD-B8D5-AA98D2E08BE9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Death_Normal_Play" ID="{49A6C05B-5082-43AF-8818-AA138C0FC96E}">
+									<ChildrenList>
+										<Action Name="" ID="{AE4F1E7F-7B1A-49DC-80D0-7B319D4803C2}" ShortID="911084355">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Death_Normal" ID="{535C63B8-6531-476A-852B-979F74F2ADE5}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Alive_Loop_Play" ID="{A4F5DA4E-B46B-4DB0-A609-B50440A4D0F8}">
+									<ChildrenList>
+										<Action Name="" ID="{38066340-23E3-4B4F-AE93-677ECE27357E}" ShortID="1004882017">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Alive_Loop" ID="{086737A3-1C20-4CBD-8A6E-A517C7B38B89}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Alive_Loop_Stop" ID="{977C4BEE-6D15-45E6-9F92-1332B32D8710}">
+									<ChildrenList>
+										<Action Name="" ID="{1FA17E76-08A9-4BA4-AA1E-A9726614EC76}" ShortID="342126152">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Alive_Loop" ID="{086737A3-1C20-4CBD-8A6E-A517C7B38B89}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Spider_Projectile_Hit_Play" ID="{E2D7FC00-38D5-45E0-A226-56FE595FBA5D}">
+									<ChildrenList>
+										<Action Name="" ID="{D31933B5-80EC-4791-9892-C3029CCE93DA}" ShortID="98473655">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Spider_Projectile_Hit" ID="{CDD8F726-F58A-43D5-9698-7330B81D0706}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

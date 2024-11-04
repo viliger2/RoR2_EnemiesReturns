@@ -25,6 +25,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             duration = baseDuration / attackSpeedStat;
             SpawnEffect(FindModelChild("GunNozzle"));
             PlayAnimation("Gesture, Additive", "ChargeFire", "Fire.playbackRate", duration);
+            Util.PlaySound("ER_Spider_Fire_Charge_Play", base.gameObject);
         }
 
         public override void FixedUpdate()

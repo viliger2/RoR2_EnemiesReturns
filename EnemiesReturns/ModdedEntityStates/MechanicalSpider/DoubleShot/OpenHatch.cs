@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             duration = baseDuration / attackSpeedStat;
             PlayAnimation("Hatch", "OpenHatch", "Fire.playbackRate", duration);
             GetModelAnimator().SetBool("hatchOpen", true);
+            Util.PlaySound("ER_Spider_Hatch_Open_Play", base.gameObject);
             //PlayAnimation("Hatch", "OpenHatch");
         }
 

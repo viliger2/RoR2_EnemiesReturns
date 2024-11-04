@@ -39,6 +39,8 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DroneSpawnChance;
         public static ConfigEntry<int> DroneCost;
         public static ConfigEntry<float> DroneEliteConstMultiplier;
+        public static ConfigEntry<float> DroneBaseRegen;
+        public static ConfigEntry<float> DroneLevelRegen;
 
         public static void PopulateConfig(ConfigFile config)
         {
@@ -75,12 +77,14 @@ namespace EnemiesReturns.Configuration
             DoubleShotDelayBetween = config.Bind("Mechanical Spider Double Shot", "Double Shot Delay Between Shots", 0.15f, "Mechanical Spider's Double Shot delay between shots. First shot always comes out instantly after charging state is done, each one after comes out with this delay.");
 
             DashCooldown = config.Bind("Mechanical Spider Dash", "Dash Cooldown", 5f, "Mechanical Spider's Dash cooldown.");
-            DashDuration = config.Bind("Mechanical Spider Dash", "Dash Duration", 0.5f, "Mechanical Spider's Dash duration. Basically controls how far it will go.");
+            DashDuration = config.Bind("Mechanical Spider Dash", "Dash Duration", 0.75f, "Mechanical Spider's Dash duration. Basically controls how far it will go.");
             DashHeightCheck = config.Bind("Mechanical Spider Dash", "Dash Height Check", 50f, "Checks for falls in front of Mechanical Spider and stops his so it wouldn't yeet itself off cliffs. Set it above 1000 to basically disable the functionality.");
 
             DroneSpawnChance = config.Bind("Mechanical Spider Drone", "Chance to Spawn Drone", 30f, "Chance to spawn purchasable Mechanical Spider on death.");
             DroneCost = config.Bind("Mechanical Spider Drone", "Drone Cost", 60, "Cost to repair broken Mechanical Spider.");
             DroneEliteConstMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
+            DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 5f, "Base health regeneration of allied Mechanical Spider.");
+            DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
         }
     }
 }

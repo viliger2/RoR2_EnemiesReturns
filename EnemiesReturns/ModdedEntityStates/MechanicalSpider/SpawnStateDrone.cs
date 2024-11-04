@@ -5,12 +5,11 @@ using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
 {
-    public class SpawnState : GenericCharacterSpawnState
+    public class SpawnStateDrone : GenericCharacterSpawnState
     {
         public override void OnEnter()
         {
-            duration = 1.667f;
-            spawnSoundString = "ER_Spider_Spawn_Play";
+            duration = 0.1f;
 
             base.OnEnter();
         }

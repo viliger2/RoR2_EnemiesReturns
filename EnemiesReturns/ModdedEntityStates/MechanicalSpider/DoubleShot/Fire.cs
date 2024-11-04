@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         public static GameObject projectilePrefab;
 
-        public static string soundString = ""; // TODO
+        public static string soundString = "ER_Spider_Fire_Play";
 
         public static float damageCoefficient => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotDamage.Value;
 

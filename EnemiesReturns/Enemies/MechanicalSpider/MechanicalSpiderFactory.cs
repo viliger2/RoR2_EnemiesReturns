@@ -21,6 +21,7 @@ using EnemiesReturns.Configuration;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
 using RoR2.Hologram;
+using RoR2.Audio;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
@@ -31,8 +32,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             public static SkillDef DoubleShot;
 
             public static SkillDef Dash;
-
-            //public static SkillDef ChargedSpit;
         }
 
         public struct SkillFamilies
@@ -40,10 +39,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             public static SkillFamily Primary;
 
             public static SkillFamily Utility;
-
-            //public static SkillFamily Secondary;
-
-            //public static SkillFamily Special;
         }
 
         public struct SkinDefs
@@ -67,7 +62,404 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public static GameObject MechanicalSpiderMaster;
 
+        public static GameObject MechanicalSpiderDroneBody;
+
+        public static GameObject MechanicalSpiderDroneMaster;
+
+        public static LoopSoundDef ProjectileFlightSoundLoop;
+
         public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            AddMainBodyComponents(bodyPrefab, sprite, log);
+
+            bodyPrefab.RegisterNetworkPrefab();
+
+            return bodyPrefab;
+        }
+
+        public GameObject CreateDroneBody(GameObject bodyPrefab, Sprite sprite)
+        {
+            AddMainBodyComponents(bodyPrefab, sprite, null);
+
+            var esms = bodyPrefab.GetComponents<EntityStateMachine>();
+            foreach(var esm in esms)
+            {
+                if(esm.customName == "Body")
+                {
+                    esm.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
+                    break;
+                }
+            }
+
+            var body = bodyPrefab.GetComponent<CharacterBody>();
+            body.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;
+            body.levelRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneLevelRegen.Value;
+
+            var sfxLocator = bodyPrefab.GetComponent<SfxLocator>();
+            sfxLocator.aliveLoopStart = "";
+            sfxLocator.aliveLoopStop = "";
+
+            bodyPrefab.RegisterNetworkPrefab();
+
+            return bodyPrefab;
+        }
+
+        public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        {
+            AddMainMasterComponents(masterPrefab, bodyPrefab);
+           
+            #region AISkillDriver_StrafeAndShoot
+            var asdStrafeAndShoot = masterPrefab.AddComponent<AISkillDriver>();
+            asdStrafeAndShoot.customName = "StrafeAndShoot";
+            asdStrafeAndShoot.skillSlot = SkillSlot.Primary;
+
+            asdStrafeAndShoot.requiredSkill = null;
+            asdStrafeAndShoot.requireSkillReady = false;
+            asdStrafeAndShoot.requireEquipmentReady = false;
+            asdStrafeAndShoot.minUserHealthFraction = float.NegativeInfinity;
+            asdStrafeAndShoot.maxUserHealthFraction = float.PositiveInfinity;
+            asdStrafeAndShoot.minTargetHealthFraction = float.NegativeInfinity;
+            asdStrafeAndShoot.maxTargetHealthFraction = float.PositiveInfinity;
+            asdStrafeAndShoot.minDistance = 0f;
+            asdStrafeAndShoot.maxDistance = 60f;
+            asdStrafeAndShoot.selectionRequiresTargetLoS = true;
+            asdStrafeAndShoot.selectionRequiresOnGround = false;
+            asdStrafeAndShoot.selectionRequiresAimTarget = false;
+            asdStrafeAndShoot.maxTimesSelected = -1;
+
+            asdStrafeAndShoot.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdStrafeAndShoot.activationRequiresTargetLoS = true;
+            asdStrafeAndShoot.activationRequiresAimTargetLoS = false;
+            asdStrafeAndShoot.activationRequiresAimConfirmation = true;
+            asdStrafeAndShoot.movementType = AISkillDriver.MovementType.StrafeMovetarget;
+            asdStrafeAndShoot.moveInputScale = 1;
+            asdStrafeAndShoot.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdStrafeAndShoot.ignoreNodeGraph = false;
+            asdStrafeAndShoot.shouldSprint = false;
+            asdStrafeAndShoot.shouldFireEquipment = false;
+            asdStrafeAndShoot.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdStrafeAndShoot.driverUpdateTimerOverride = -1;
+            asdStrafeAndShoot.resetCurrentEnemyOnNextDriverSelection = false;
+            asdStrafeAndShoot.noRepeat = false;
+            asdStrafeAndShoot.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_ChaseOffNodeGraph
+            var asdChaseOffNodeGraph = masterPrefab.AddComponent<AISkillDriver>();
+            asdChaseOffNodeGraph.customName = "ChaseOffNodegraph";
+            asdChaseOffNodeGraph.skillSlot = SkillSlot.None;
+
+            asdChaseOffNodeGraph.requiredSkill = null;
+            asdChaseOffNodeGraph.requireSkillReady = false;
+            asdChaseOffNodeGraph.requireEquipmentReady = false;
+            asdChaseOffNodeGraph.minUserHealthFraction = float.NegativeInfinity;
+            asdChaseOffNodeGraph.maxUserHealthFraction = float.PositiveInfinity;
+            asdChaseOffNodeGraph.minTargetHealthFraction = float.NegativeInfinity;
+            asdChaseOffNodeGraph.maxTargetHealthFraction = float.PositiveInfinity;
+            asdChaseOffNodeGraph.minDistance = 0f;
+            asdChaseOffNodeGraph.maxDistance = 7f;
+            asdChaseOffNodeGraph.selectionRequiresTargetLoS = true;
+            asdChaseOffNodeGraph.selectionRequiresOnGround = false;
+            asdChaseOffNodeGraph.selectionRequiresAimTarget = false;
+            asdChaseOffNodeGraph.maxTimesSelected = -1;
+
+            asdChaseOffNodeGraph.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdChaseOffNodeGraph.activationRequiresTargetLoS = false;
+            asdChaseOffNodeGraph.activationRequiresAimTargetLoS = false;
+            asdChaseOffNodeGraph.activationRequiresAimConfirmation = false;
+            asdChaseOffNodeGraph.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdChaseOffNodeGraph.moveInputScale = 1;
+            asdChaseOffNodeGraph.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdChaseOffNodeGraph.ignoreNodeGraph = true;
+            asdChaseOffNodeGraph.shouldSprint = false;
+            asdChaseOffNodeGraph.shouldFireEquipment = false;
+            asdChaseOffNodeGraph.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdChaseOffNodeGraph.driverUpdateTimerOverride = -1;
+            asdChaseOffNodeGraph.resetCurrentEnemyOnNextDriverSelection = false;
+            asdChaseOffNodeGraph.noRepeat = false;
+            asdChaseOffNodeGraph.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_DashToTraverse
+            var asdDashToTraverse = masterPrefab.AddComponent<AISkillDriver>();
+            asdDashToTraverse.customName = "DashToTraverse";
+            asdDashToTraverse.skillSlot = SkillSlot.Utility;
+
+            asdDashToTraverse.requiredSkill = null;
+            asdDashToTraverse.requireSkillReady = true;
+            asdDashToTraverse.requireEquipmentReady = false;
+            asdDashToTraverse.minUserHealthFraction = float.NegativeInfinity;
+            asdDashToTraverse.maxUserHealthFraction = float.PositiveInfinity;
+            asdDashToTraverse.minTargetHealthFraction = float.NegativeInfinity;
+            asdDashToTraverse.maxTargetHealthFraction = float.PositiveInfinity;
+            asdDashToTraverse.minDistance = 50f;
+            asdDashToTraverse.maxDistance = float.PositiveInfinity;
+            asdDashToTraverse.selectionRequiresTargetLoS = false;
+            asdDashToTraverse.selectionRequiresOnGround = false;
+            asdDashToTraverse.selectionRequiresAimTarget = false;
+            asdDashToTraverse.maxTimesSelected = -1;
+
+            asdDashToTraverse.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdDashToTraverse.activationRequiresTargetLoS = true;
+            asdDashToTraverse.activationRequiresAimTargetLoS = false;
+            asdDashToTraverse.activationRequiresAimConfirmation = false;
+            asdDashToTraverse.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdDashToTraverse.moveInputScale = 1;
+            asdDashToTraverse.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdDashToTraverse.ignoreNodeGraph = false;
+            asdDashToTraverse.shouldSprint = false;
+            asdDashToTraverse.shouldFireEquipment = false;
+            asdDashToTraverse.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdDashToTraverse.driverUpdateTimerOverride = -1;
+            asdDashToTraverse.resetCurrentEnemyOnNextDriverSelection = false;
+            asdDashToTraverse.noRepeat = false;
+            asdDashToTraverse.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_PathFromAfar
+            var asdPathFromAfar = masterPrefab.AddComponent<AISkillDriver>();
+            asdPathFromAfar.customName = "PathFromAfar";
+            asdPathFromAfar.skillSlot = SkillSlot.None;
+
+            asdPathFromAfar.requiredSkill = null;
+            asdPathFromAfar.requireSkillReady = false;
+            asdPathFromAfar.requireEquipmentReady = false;
+            asdPathFromAfar.minUserHealthFraction = float.NegativeInfinity;
+            asdPathFromAfar.maxUserHealthFraction = float.PositiveInfinity;
+            asdPathFromAfar.minTargetHealthFraction = float.NegativeInfinity;
+            asdPathFromAfar.maxTargetHealthFraction = float.PositiveInfinity;
+            asdPathFromAfar.minDistance = 0f;
+            asdPathFromAfar.maxDistance = float.PositiveInfinity;
+            asdPathFromAfar.selectionRequiresTargetLoS = false;
+            asdPathFromAfar.selectionRequiresOnGround = false;
+            asdPathFromAfar.selectionRequiresAimTarget = false;
+            asdPathFromAfar.maxTimesSelected = -1;
+
+            asdPathFromAfar.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdPathFromAfar.activationRequiresTargetLoS = false;
+            asdPathFromAfar.activationRequiresAimTargetLoS = false;
+            asdPathFromAfar.activationRequiresAimConfirmation = false;
+            asdPathFromAfar.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdPathFromAfar.moveInputScale = 1;
+            asdPathFromAfar.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdPathFromAfar.ignoreNodeGraph = false;
+            asdPathFromAfar.shouldSprint = false;
+            asdPathFromAfar.shouldFireEquipment = false;
+            asdPathFromAfar.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdPathFromAfar.driverUpdateTimerOverride = -1;
+            asdPathFromAfar.resetCurrentEnemyOnNextDriverSelection = false;
+            asdPathFromAfar.noRepeat = false;
+            asdPathFromAfar.nextHighPriorityOverride = null;
+            #endregion
+
+            masterPrefab.RegisterNetworkPrefab();
+
+            return masterPrefab;
+        }
+
+        public GameObject CreateDroneMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        {
+            AddMainMasterComponents(masterPrefab, bodyPrefab);
+
+            #region AIOwnership
+            masterPrefab.AddComponent<AIOwnership>();
+            #endregion
+
+            #region AISkillDriver_HardLeashToLeader
+            var asdHardLeashToLeader = masterPrefab.AddComponent<AISkillDriver>();
+            asdHardLeashToLeader.customName = "HardLeashToLeader";
+            asdHardLeashToLeader.skillSlot = SkillSlot.None;
+
+            asdHardLeashToLeader.requiredSkill = null;
+            asdHardLeashToLeader.requireSkillReady = false;
+            asdHardLeashToLeader.requireEquipmentReady = false;
+            asdHardLeashToLeader.minUserHealthFraction = float.NegativeInfinity;
+            asdHardLeashToLeader.maxUserHealthFraction = float.PositiveInfinity;
+            asdHardLeashToLeader.minTargetHealthFraction = float.NegativeInfinity;
+            asdHardLeashToLeader.maxTargetHealthFraction = float.PositiveInfinity;
+            asdHardLeashToLeader.minDistance = 60f;
+            asdHardLeashToLeader.maxDistance = float.PositiveInfinity;
+            asdHardLeashToLeader.selectionRequiresTargetLoS = false;
+            asdHardLeashToLeader.selectionRequiresOnGround = false;
+            asdHardLeashToLeader.selectionRequiresAimTarget = false;
+            asdHardLeashToLeader.maxTimesSelected = -1;
+
+            asdHardLeashToLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
+            asdHardLeashToLeader.activationRequiresTargetLoS = false;
+            asdHardLeashToLeader.activationRequiresAimTargetLoS = false;
+            asdHardLeashToLeader.activationRequiresAimConfirmation = false;
+            asdHardLeashToLeader.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdHardLeashToLeader.moveInputScale = 1;
+            asdHardLeashToLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdHardLeashToLeader.ignoreNodeGraph = false;
+            asdHardLeashToLeader.shouldSprint = false;
+            asdHardLeashToLeader.shouldFireEquipment = false;
+            asdHardLeashToLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdHardLeashToLeader.driverUpdateTimerOverride = 3;
+            asdHardLeashToLeader.resetCurrentEnemyOnNextDriverSelection = true;
+            asdHardLeashToLeader.noRepeat = false;
+            asdHardLeashToLeader.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_SoftLeashToLeader
+            var asdSoftLeashToLeader = masterPrefab.AddComponent<AISkillDriver>();
+            asdSoftLeashToLeader.customName = "SoftLeashToLeader";
+            asdSoftLeashToLeader.skillSlot = SkillSlot.None;
+
+            asdSoftLeashToLeader.requiredSkill = null;
+            asdSoftLeashToLeader.requireSkillReady = false;
+            asdSoftLeashToLeader.requireEquipmentReady = false;
+            asdSoftLeashToLeader.minUserHealthFraction = float.NegativeInfinity;
+            asdSoftLeashToLeader.maxUserHealthFraction = float.PositiveInfinity;
+            asdSoftLeashToLeader.minTargetHealthFraction = float.NegativeInfinity;
+            asdSoftLeashToLeader.maxTargetHealthFraction = float.PositiveInfinity;
+            asdSoftLeashToLeader.minDistance = 20f;
+            asdSoftLeashToLeader.maxDistance = float.PositiveInfinity;
+            asdSoftLeashToLeader.selectionRequiresTargetLoS = false;
+            asdSoftLeashToLeader.selectionRequiresOnGround = false;
+            asdSoftLeashToLeader.selectionRequiresAimTarget = false;
+            asdSoftLeashToLeader.maxTimesSelected = -1;
+
+            asdSoftLeashToLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
+            asdSoftLeashToLeader.activationRequiresTargetLoS = false;
+            asdSoftLeashToLeader.activationRequiresAimTargetLoS = false;
+            asdSoftLeashToLeader.activationRequiresAimConfirmation = false;
+            asdSoftLeashToLeader.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            asdSoftLeashToLeader.moveInputScale = 1;
+            asdSoftLeashToLeader.aimType = AISkillDriver.AimType.AtCurrentEnemy;
+            asdSoftLeashToLeader.ignoreNodeGraph = false;
+            asdSoftLeashToLeader.shouldSprint = false;
+            asdSoftLeashToLeader.shouldFireEquipment = false;
+            asdSoftLeashToLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdSoftLeashToLeader.driverUpdateTimerOverride = 0.05f;
+            asdSoftLeashToLeader.resetCurrentEnemyOnNextDriverSelection = true;
+            asdSoftLeashToLeader.noRepeat = false;
+            asdSoftLeashToLeader.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_StrafeAndShoot
+            var asdStrafeAndShoot = masterPrefab.AddComponent<AISkillDriver>();
+            asdStrafeAndShoot.customName = "StrafeAndShoot";
+            asdStrafeAndShoot.skillSlot = SkillSlot.Primary;
+
+            asdStrafeAndShoot.requiredSkill = null;
+            asdStrafeAndShoot.requireSkillReady = true;
+            asdStrafeAndShoot.requireEquipmentReady = false;
+            asdStrafeAndShoot.minUserHealthFraction = float.NegativeInfinity;
+            asdStrafeAndShoot.maxUserHealthFraction = float.PositiveInfinity;
+            asdStrafeAndShoot.minTargetHealthFraction = float.NegativeInfinity;
+            asdStrafeAndShoot.maxTargetHealthFraction = float.PositiveInfinity;
+            asdStrafeAndShoot.minDistance = 0f;
+            asdStrafeAndShoot.maxDistance = 60f;
+            asdStrafeAndShoot.selectionRequiresTargetLoS = true;
+            asdStrafeAndShoot.selectionRequiresOnGround = false;
+            asdStrafeAndShoot.selectionRequiresAimTarget = false;
+            asdStrafeAndShoot.maxTimesSelected = -1;
+
+            asdStrafeAndShoot.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
+            asdStrafeAndShoot.activationRequiresTargetLoS = true;
+            asdStrafeAndShoot.activationRequiresAimTargetLoS = false;
+            asdStrafeAndShoot.activationRequiresAimConfirmation = true;
+            asdStrafeAndShoot.movementType = AISkillDriver.MovementType.StrafeMovetarget;
+            asdStrafeAndShoot.moveInputScale = 1;
+            asdStrafeAndShoot.aimType = AISkillDriver.AimType.AtCurrentEnemy;
+            asdStrafeAndShoot.ignoreNodeGraph = false;
+            asdStrafeAndShoot.shouldSprint = false;
+            asdStrafeAndShoot.shouldFireEquipment = false;
+            asdStrafeAndShoot.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdStrafeAndShoot.driverUpdateTimerOverride = -1;
+            asdStrafeAndShoot.resetCurrentEnemyOnNextDriverSelection = false;
+            asdStrafeAndShoot.noRepeat = false;
+            asdStrafeAndShoot.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_IdleNearLeader
+            var asdIdleNearLeader = masterPrefab.AddComponent<AISkillDriver>();
+            asdIdleNearLeader.customName = "IdleNearLeader";
+            asdIdleNearLeader.skillSlot = SkillSlot.None;
+
+            asdIdleNearLeader.requiredSkill = null;
+            asdIdleNearLeader.requireSkillReady = false;
+            asdIdleNearLeader.requireEquipmentReady = false;
+            asdIdleNearLeader.minUserHealthFraction = float.NegativeInfinity;
+            asdIdleNearLeader.maxUserHealthFraction = float.PositiveInfinity;
+            asdIdleNearLeader.minTargetHealthFraction = float.NegativeInfinity;
+            asdIdleNearLeader.maxTargetHealthFraction = float.PositiveInfinity;
+            asdIdleNearLeader.minDistance = 0f;
+            asdIdleNearLeader.maxDistance = 20f;
+            asdIdleNearLeader.selectionRequiresTargetLoS = false;
+            asdIdleNearLeader.selectionRequiresOnGround = false;
+            asdIdleNearLeader.selectionRequiresAimTarget = false;
+            asdIdleNearLeader.maxTimesSelected = -1;
+
+            asdIdleNearLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
+            asdIdleNearLeader.activationRequiresTargetLoS = false;
+            asdIdleNearLeader.activationRequiresAimTargetLoS = false;
+            asdIdleNearLeader.activationRequiresAimConfirmation = false;
+            asdIdleNearLeader.movementType = AISkillDriver.MovementType.StrafeMovetarget;
+            asdIdleNearLeader.moveInputScale = 1;
+            asdIdleNearLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdIdleNearLeader.ignoreNodeGraph = false;
+            asdIdleNearLeader.shouldSprint = false;
+            asdIdleNearLeader.shouldFireEquipment = false;
+            asdIdleNearLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdIdleNearLeader.driverUpdateTimerOverride = -1f;
+            asdIdleNearLeader.resetCurrentEnemyOnNextDriverSelection = false;
+            asdIdleNearLeader.noRepeat = false;
+            asdIdleNearLeader.nextHighPriorityOverride = null;
+            #endregion
+
+            #region AISkillDriver_ReturnToLeader
+            var asdReturnToLeader = masterPrefab.AddComponent<AISkillDriver>();
+            asdReturnToLeader.customName = "ReturnToLeaderWhenNoEnemies";
+            asdReturnToLeader.skillSlot = SkillSlot.None;
+
+            asdReturnToLeader.requiredSkill = null;
+            asdReturnToLeader.requireSkillReady = false;
+            asdReturnToLeader.requireEquipmentReady = false;
+            asdReturnToLeader.minUserHealthFraction = float.NegativeInfinity;
+            asdReturnToLeader.maxUserHealthFraction = float.PositiveInfinity;
+            asdReturnToLeader.minTargetHealthFraction = float.NegativeInfinity;
+            asdReturnToLeader.maxTargetHealthFraction = float.PositiveInfinity;
+            asdReturnToLeader.minDistance = 10f;
+            asdReturnToLeader.maxDistance = float.PositiveInfinity;
+            asdReturnToLeader.selectionRequiresTargetLoS = false;
+            asdReturnToLeader.selectionRequiresOnGround = false;
+            asdReturnToLeader.selectionRequiresAimTarget = false;
+            asdReturnToLeader.maxTimesSelected = -1;
+
+            asdReturnToLeader.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
+            asdReturnToLeader.activationRequiresTargetLoS = false;
+            asdReturnToLeader.activationRequiresAimTargetLoS = false;
+            asdReturnToLeader.activationRequiresAimConfirmation = false;
+            asdReturnToLeader.movementType = AISkillDriver.MovementType.StrafeMovetarget;
+            asdReturnToLeader.moveInputScale = 1;
+            asdReturnToLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdReturnToLeader.ignoreNodeGraph = false;
+            asdReturnToLeader.shouldSprint = false;
+            asdReturnToLeader.shouldFireEquipment = false;
+            asdReturnToLeader.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            asdReturnToLeader.driverUpdateTimerOverride = 0.05f;
+            asdReturnToLeader.resetCurrentEnemyOnNextDriverSelection = true;
+            asdReturnToLeader.noRepeat = false;
+            asdReturnToLeader.nextHighPriorityOverride = null;
+            #endregion
+
+            masterPrefab.RegisterNetworkPrefab();
+
+            return masterPrefab;
+        }
+
+        private void AddMainBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
@@ -223,13 +615,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             gsUtility.hideInCharacterSelect = false;
             #endregion
 
-            #region Special
-            //var gsSpecial = bodyPrefab.AddComponent<GenericSkill>();
-            //gsSpecial._skillFamily = SkillFamilies.Special;
-            //gsSpecial.skillName = "ChargedSpit";
-            //gsSpecial.hideInCharacterSelect = false;
-            #endregion
-
             #endregion
 
             #region SkillLocator
@@ -270,7 +655,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #region CharacterDeathBehavior
             var characterDeathBehavior = bodyPrefab.AddComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = esmBody;
-            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathInitial)); // TODO: spawn interactable on death that you can use
+            characterDeathBehavior.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathInitial));
             characterDeathBehavior.idleStateMachine = new EntityStateMachine[] { esmWeapon, esmSlide };
             #endregion
 
@@ -282,7 +667,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #region NetworkStateMachine
             var networkStateMachine = bodyPrefab.AddComponent<NetworkStateMachine>();
-            networkStateMachine.stateMachines = new EntityStateMachine[] { esmBody, esmWeapon };
+            networkStateMachine.stateMachines = new EntityStateMachine[] { esmBody, esmWeapon, esmSlide };
             #endregion
 
             #region DeathRewards
@@ -295,8 +680,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #region SfxLocator
             var sfxLocator = bodyPrefab.AddComponent<SfxLocator>();
-            sfxLocator.deathSound = ""; // TODO
-            sfxLocator.barkSound = "";
+            sfxLocator.deathSound = ""; // each death state has its own sound
+            sfxLocator.aliveLoopStart = "ER_Spider_Alive_Loop_Play";
+            sfxLocator.aliveLoopStop = "ER_Spider_Alive_Loop_Stop";
             #endregion
 
             #region KinematicCharacterMotor
@@ -347,7 +733,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #region SetStateOnHurt
             var setStateOnHurt = bodyPrefab.AddComponent<SetStateOnHurt>();
             setStateOnHurt.targetStateMachine = esmBody;
-            setStateOnHurt.idleStateMachine = new EntityStateMachine[] { esmWeapon };
+            setStateOnHurt.idleStateMachine = new EntityStateMachine[] { esmWeapon, esmSlide };
             setStateOnHurt.hurtState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState));
             setStateOnHurt.hitThreshold = 0.3f;
             setStateOnHurt.canBeHitStunned = true;
@@ -404,7 +790,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             //var hitBox = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
-            // TODO: add sparks and smoke on low hp, gradual enabling of effects
             #region mdlMechanicalSpider
             var mdlMechanicalSpider = modelTransform.gameObject;
 
@@ -585,13 +970,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             aimAssistTarget.healthComponent = healthComponent;
             aimAssistTarget.teamComponent = teamComponent;
             #endregion
-
-            bodyPrefab.RegisterNetworkPrefab();
-
-            return bodyPrefab;
         }
 
-        public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        private void AddMainMasterComponents(GameObject masterPrefab, GameObject bodyPrefab)
         {
             #region NetworkIdentity
             masterPrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
@@ -638,195 +1019,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 masterPrefab.AddComponent<MinionOwnership>();
             }
             #endregion
-
-            //#region AISkillDriver_DashBecauseClose
-            //var asdDashWhenClose = masterPrefab.AddComponent<AISkillDriver>();
-            //asdDashWhenClose.customName = "DashWhenClose";
-            //asdDashWhenClose.skillSlot = SkillSlot.Utility;
-
-            //asdDashWhenClose.requiredSkill = null;
-            //asdDashWhenClose.requireSkillReady = true;
-            //asdDashWhenClose.requireEquipmentReady = false;
-            //asdDashWhenClose.minUserHealthFraction = float.NegativeInfinity;
-            //asdDashWhenClose.maxUserHealthFraction = float.PositiveInfinity;
-            //asdDashWhenClose.minTargetHealthFraction = float.NegativeInfinity;
-            //asdDashWhenClose.maxTargetHealthFraction = float.PositiveInfinity;
-            //asdDashWhenClose.minDistance = 0f;
-            //asdDashWhenClose.maxDistance = 60f;
-            //asdDashWhenClose.selectionRequiresTargetLoS = false;
-            //asdDashWhenClose.selectionRequiresOnGround = false;
-            //asdDashWhenClose.selectionRequiresAimTarget = false;
-            //asdDashWhenClose.maxTimesSelected = -1;
-
-            //asdDashWhenClose.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            //asdDashWhenClose.activationRequiresTargetLoS = false;
-            //asdDashWhenClose.activationRequiresAimTargetLoS = false;
-            //asdDashWhenClose.activationRequiresAimConfirmation = false;
-            //asdDashWhenClose.movementType = AISkillDriver.MovementType.StrafeMovetarget;
-            //asdDashWhenClose.moveInputScale = 1;
-            //asdDashWhenClose.aimType = AISkillDriver.AimType.AtMoveTarget;
-            //asdDashWhenClose.ignoreNodeGraph = true;
-            //asdDashWhenClose.shouldSprint = false;
-            //asdDashWhenClose.shouldFireEquipment = false;
-            //asdDashWhenClose.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            //asdDashWhenClose.driverUpdateTimerOverride = -1;
-            //asdDashWhenClose.resetCurrentEnemyOnNextDriverSelection = false;
-            //asdDashWhenClose.noRepeat = false;
-            //asdDashWhenClose.nextHighPriorityOverride = null;
-            //#endregion
-
-            #region AISkillDriver_StrafeAndShoot
-            var asdStrafeAndShoot = masterPrefab.AddComponent<AISkillDriver>();
-            asdStrafeAndShoot.customName = "StrafeAndShoot";
-            asdStrafeAndShoot.skillSlot = SkillSlot.Primary;
-
-            asdStrafeAndShoot.requiredSkill = null;
-            asdStrafeAndShoot.requireSkillReady = false;
-            asdStrafeAndShoot.requireEquipmentReady = false;
-            asdStrafeAndShoot.minUserHealthFraction = float.NegativeInfinity;
-            asdStrafeAndShoot.maxUserHealthFraction = float.PositiveInfinity;
-            asdStrafeAndShoot.minTargetHealthFraction = float.NegativeInfinity;
-            asdStrafeAndShoot.maxTargetHealthFraction = float.PositiveInfinity;
-            asdStrafeAndShoot.minDistance = 0f;
-            asdStrafeAndShoot.maxDistance = 60f;
-            asdStrafeAndShoot.selectionRequiresTargetLoS = true;
-            asdStrafeAndShoot.selectionRequiresOnGround = false;
-            asdStrafeAndShoot.selectionRequiresAimTarget = false;
-            asdStrafeAndShoot.maxTimesSelected = -1;
-
-            asdStrafeAndShoot.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdStrafeAndShoot.activationRequiresTargetLoS = true;
-            asdStrafeAndShoot.activationRequiresAimTargetLoS = false;
-            asdStrafeAndShoot.activationRequiresAimConfirmation = true;
-            asdStrafeAndShoot.movementType = AISkillDriver.MovementType.StrafeMovetarget;
-            asdStrafeAndShoot.moveInputScale = 1;
-            asdStrafeAndShoot.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdStrafeAndShoot.ignoreNodeGraph = true;
-            asdStrafeAndShoot.shouldSprint = false;
-            asdStrafeAndShoot.shouldFireEquipment = false;
-            asdStrafeAndShoot.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdStrafeAndShoot.driverUpdateTimerOverride = -1;
-            asdStrafeAndShoot.resetCurrentEnemyOnNextDriverSelection = false;
-            asdStrafeAndShoot.noRepeat = false;
-            asdStrafeAndShoot.nextHighPriorityOverride = null;
-            #endregion
-
-            #region AISkillDriver_ChaseOffNodeGraph
-            var asdChaseOffNodeGraph = masterPrefab.AddComponent<AISkillDriver>();
-            asdChaseOffNodeGraph.customName = "ChaseOffNodegraph";
-            asdChaseOffNodeGraph.skillSlot = SkillSlot.None;
-
-            asdChaseOffNodeGraph.requiredSkill = null;
-            asdChaseOffNodeGraph.requireSkillReady = false;
-            asdChaseOffNodeGraph.requireEquipmentReady = false;
-            asdChaseOffNodeGraph.minUserHealthFraction = float.NegativeInfinity;
-            asdChaseOffNodeGraph.maxUserHealthFraction = float.PositiveInfinity;
-            asdChaseOffNodeGraph.minTargetHealthFraction = float.NegativeInfinity;
-            asdChaseOffNodeGraph.maxTargetHealthFraction = float.PositiveInfinity;
-            asdChaseOffNodeGraph.minDistance = 0f;
-            asdChaseOffNodeGraph.maxDistance = 7f;
-            asdChaseOffNodeGraph.selectionRequiresTargetLoS = true;
-            asdChaseOffNodeGraph.selectionRequiresOnGround = false;
-            asdChaseOffNodeGraph.selectionRequiresAimTarget = false;
-            asdChaseOffNodeGraph.maxTimesSelected = -1;
-
-            asdChaseOffNodeGraph.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdChaseOffNodeGraph.activationRequiresTargetLoS = false;
-            asdChaseOffNodeGraph.activationRequiresAimTargetLoS = false;
-            asdChaseOffNodeGraph.activationRequiresAimConfirmation = false;
-            asdChaseOffNodeGraph.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            asdChaseOffNodeGraph.moveInputScale = 1;
-            asdChaseOffNodeGraph.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdChaseOffNodeGraph.ignoreNodeGraph = true;
-            asdChaseOffNodeGraph.shouldSprint = false;
-            asdChaseOffNodeGraph.shouldFireEquipment = false;
-            asdChaseOffNodeGraph.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdChaseOffNodeGraph.driverUpdateTimerOverride = -1;
-            asdChaseOffNodeGraph.resetCurrentEnemyOnNextDriverSelection = false;
-            asdChaseOffNodeGraph.noRepeat = false;
-            asdChaseOffNodeGraph.nextHighPriorityOverride = null;
-            #endregion
-
-            #region AISkillDriver_DashToTraverse
-            var asdDashToTraverse = masterPrefab.AddComponent<AISkillDriver>();
-            asdDashToTraverse.customName = "DashToTraverse";
-            asdDashToTraverse.skillSlot = SkillSlot.Utility;
-
-            asdDashToTraverse.requiredSkill = null;
-            asdDashToTraverse.requireSkillReady = true;
-            asdDashToTraverse.requireEquipmentReady = false;
-            asdDashToTraverse.minUserHealthFraction = float.NegativeInfinity;
-            asdDashToTraverse.maxUserHealthFraction = float.PositiveInfinity;
-            asdDashToTraverse.minTargetHealthFraction = float.NegativeInfinity;
-            asdDashToTraverse.maxTargetHealthFraction = float.PositiveInfinity;
-            asdDashToTraverse.minDistance = 50f;
-            asdDashToTraverse.maxDistance = float.PositiveInfinity;
-            asdDashToTraverse.selectionRequiresTargetLoS = false;
-            asdDashToTraverse.selectionRequiresOnGround = false;
-            asdDashToTraverse.selectionRequiresAimTarget = false;
-            asdDashToTraverse.maxTimesSelected = -1;
-
-            asdDashToTraverse.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdDashToTraverse.activationRequiresTargetLoS = true;
-            asdDashToTraverse.activationRequiresAimTargetLoS = false;
-            asdDashToTraverse.activationRequiresAimConfirmation = false;
-            asdDashToTraverse.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            asdDashToTraverse.moveInputScale = 1;
-            asdDashToTraverse.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdDashToTraverse.ignoreNodeGraph = true;
-            asdDashToTraverse.shouldSprint = false;
-            asdDashToTraverse.shouldFireEquipment = false;
-            asdDashToTraverse.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdDashToTraverse.driverUpdateTimerOverride = -1;
-            asdDashToTraverse.resetCurrentEnemyOnNextDriverSelection = false;
-            asdDashToTraverse.noRepeat = false;
-            asdDashToTraverse.nextHighPriorityOverride = null;
-            #endregion
-
-            #region AISkillDriver_PathFromAfar
-            var asdPathFromAfar = masterPrefab.AddComponent<AISkillDriver>();
-            asdPathFromAfar.customName = "PathFromAfar";
-            asdPathFromAfar.skillSlot = SkillSlot.None;
-
-            asdPathFromAfar.requiredSkill = null;
-            asdPathFromAfar.requireSkillReady = false;
-            asdPathFromAfar.requireEquipmentReady = false;
-            asdPathFromAfar.minUserHealthFraction = float.NegativeInfinity;
-            asdPathFromAfar.maxUserHealthFraction = float.PositiveInfinity;
-            asdPathFromAfar.minTargetHealthFraction = float.NegativeInfinity;
-            asdPathFromAfar.maxTargetHealthFraction = float.PositiveInfinity;
-            asdPathFromAfar.minDistance = 0f;
-            asdPathFromAfar.maxDistance = float.PositiveInfinity;
-            asdPathFromAfar.selectionRequiresTargetLoS = false;
-            asdPathFromAfar.selectionRequiresOnGround = false;
-            asdPathFromAfar.selectionRequiresAimTarget = false;
-            asdPathFromAfar.maxTimesSelected = -1;
-
-            asdPathFromAfar.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
-            asdPathFromAfar.activationRequiresTargetLoS = false;
-            asdPathFromAfar.activationRequiresAimTargetLoS = false;
-            asdPathFromAfar.activationRequiresAimConfirmation = false;
-            asdPathFromAfar.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            asdPathFromAfar.moveInputScale = 1;
-            asdPathFromAfar.aimType = AISkillDriver.AimType.AtMoveTarget;
-            asdPathFromAfar.ignoreNodeGraph = false;
-            asdPathFromAfar.shouldSprint = false;
-            asdPathFromAfar.shouldFireEquipment = false;
-            asdPathFromAfar.buttonPressType = AISkillDriver.ButtonPressType.Hold;
-
-            asdPathFromAfar.driverUpdateTimerOverride = -1;
-            asdPathFromAfar.resetCurrentEnemyOnNextDriverSelection = false;
-            asdPathFromAfar.noRepeat = false;
-            asdPathFromAfar.nextHighPriorityOverride = null;
-            #endregion
-
-            masterPrefab.RegisterNetworkPrefab();
-
-            return masterPrefab;
         }
 
         public GameObject CreateInteractable(GameObject interactablePrefab, GameObject masterPrefab)
@@ -876,7 +1068,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             purchaseInteraction.saleStarCompatible = false;
             purchaseInteraction.requiredExpansion = null;
             purchaseInteraction.requiredUnlockable = null;
-            //purchaseInteraction.onPurchase // TODO: probably need a separate component for that, as usual
             #endregion
 
             #region EventFunctions
@@ -1049,45 +1240,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return spit;
         }
 
-        //internal SkillDef CreateChargedSpitSkill()
-        //{
-        //    var chargedSpit = ScriptableObject.CreateInstance<SkillDef>();
-        //    (chargedSpit as ScriptableObject).name = "SpitterBodyChargedSpit";
-        //    chargedSpit.skillName = "Bite";
-
-        //    chargedSpit.skillNameToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME";
-        //    chargedSpit.skillDescriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION";
-        //    var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
-        //    if (acridEpidemic)
-        //    {
-        //        chargedSpit.icon = acridEpidemic.icon;
-        //    }
-
-        //    chargedSpit.activationStateMachineName = "Body";
-        //    chargedSpit.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.ChargeChargedSpit));
-        //    chargedSpit.interruptPriority = EntityStates.InterruptPriority.Any; // not sure
-
-        //    chargedSpit.baseRechargeInterval = EnemiesReturns.Configuration.MechanicalSpider.ChargedProjectileCooldown.Value;
-        //    chargedSpit.baseMaxStock = 1;
-        //    chargedSpit.rechargeStock = 1;
-        //    chargedSpit.requiredStock = 1;
-        //    chargedSpit.stockToConsume = 1;
-
-        //    chargedSpit.resetCooldownTimerOnUse = false;
-        //    chargedSpit.fullRestockOnAssign = true;
-        //    chargedSpit.dontAllowPastMaxStocks = false;
-        //    chargedSpit.beginSkillCooldownOnSkillEnd = false;
-
-        //    chargedSpit.cancelSprintingOnActivation = true;
-        //    chargedSpit.forceSprintDuringState = false;
-        //    chargedSpit.canceledFromSprinting = false;
-
-        //    chargedSpit.isCombatSkill = true;
-        //    chargedSpit.mustKeyPress = false;
-
-        //    return chargedSpit;
-        //}
-
         #endregion
 
         public InteractableSpawnCard CreateInteractableSpawnCard(string name, GameObject prefab)
@@ -1160,6 +1312,10 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             light.color = new Color(0.8490566f, 0.6350543f, 0.1321645f);
 
             var glow = chargeEffect.transform.Find("Particles/Glow").gameObject.GetComponent<ParticleSystem>();
+
+            var glowMain = glow.main;
+            glowMain.simulationSpeed = 2f;
+
             var colorOverLifetime = glow.colorOverLifetime;
 
             var gradient = new Gradient();
@@ -1178,6 +1334,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             };
 
             colorOverLifetime.color = new ParticleSystem.MinMaxGradient(gradient);
+
+            chargeEffect.transform.Find("Particles/Glow").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderChargeGlow", CreateChargeGlowMaterial);
 
             var sparks = chargeEffect.transform.Find("Particles/Sparks").gameObject.GetComponent<ParticleSystem>();
             var colorOverLifetime2 = sparks.colorOverLifetime;
@@ -1198,6 +1356,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             colorOverLifetime2.color = new ParticleSystem.MinMaxGradient(gradient2);
 
+            particleDuration.particleSystems = new ParticleSystem[] { glow };
+
             // adding stuff so it becomes an effect
             var vfxAttributes = chargeEffect.AddComponent<VFXAttributes>();
             vfxAttributes.DoNotPool = false;
@@ -1212,13 +1372,22 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return chargeEffect;
         }
 
+        public Material CreateChargeGlowMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matArcaneCircleProvi.mat").WaitForCompletion());
+            material.name = "matMechanicalSpiderChargeGlow";
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/UI/texCrosshairCircle.png").WaitForCompletion());
+
+            return material;
+        }
+
         public GameObject CreateDoubleShotProjectilePrefab(GameObject impactEffect)
         {
             var projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitProjectile.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectile", true);
 
             var projectileController = projectilePrefab.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = CreateDoubleShotGhostPrefab();
-            projectileController.flightSoundLoop = null; // TODO
+            projectileController.flightSoundLoop = CreateProjectileLoopSoundDef();
 
             var projectileSingleTargetImpact = projectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
             projectileSingleTargetImpact.impactEffect = impactEffect;
@@ -1226,12 +1395,24 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return projectilePrefab;
         }
 
+        private LoopSoundDef CreateProjectileLoopSoundDef()
+        {
+            var projectileFlightSoundLoop = ScriptableObject.CreateInstance<LoopSoundDef>();
+            (projectileFlightSoundLoop as ScriptableObject).name = "lsdMechanicalSpiderProjectileFlight";
+            projectileFlightSoundLoop.startSoundName = "ER_Spider_Projectile_Loop_Play";
+            projectileFlightSoundLoop.startSoundName = "ER_Spider_Projectile_Loop_Stop";
+
+            ProjectileFlightSoundLoop = projectileFlightSoundLoop;
+
+            return projectileFlightSoundLoop;
+        }
+
         public GameObject CreateDoubleShotImpactEffect()
         {
             var projectileEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitImpactEffect.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotImpactEffect", false);
 
             var effectComponent = projectileEffect.GetComponent<EffectComponent>();
-            effectComponent.soundName = ""; // TODO
+            effectComponent.soundName = "ER_Spider_Projectile_Hit_Play";
 
             UnityEngine.GameObject.DestroyImmediate(projectileEffect.transform.Find("Goo").gameObject);
 
@@ -1540,6 +1721,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         private void Renamer(GameObject object1)
         {
+
         }
     }
 }

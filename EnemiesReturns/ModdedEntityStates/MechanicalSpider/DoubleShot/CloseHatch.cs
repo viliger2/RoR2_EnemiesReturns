@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,12 +18,13 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             duration = baseDuration / attackSpeedStat;
             //PlayAnimation("Hatch", "CloseHatch", "Fire.playbackRate", duration);
             GetModelAnimator().SetBool("hatchOpen", false);
+            Util.PlaySound("ER_Spider_Hatch_Close_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= baseDuration)
+            if(fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

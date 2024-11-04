@@ -42,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
                 characterMotor.velocity = velocity;
             }
             PlayCrossfade("Body", "Dash", 0.2f);
-
+            Util.PlaySound("ER_Spider_Dash_Play", base.gameObject);
             ledgeHandling = FindModelChild("LedgeHandling");
         }
 
