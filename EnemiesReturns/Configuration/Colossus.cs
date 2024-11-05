@@ -83,6 +83,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> KnurlForce;
 
         public static ConfigEntry<KeyCode> EmoteKey;
+        public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
         //public static ConfigEntry<int> KnurlGolemAllyDamageModifier;
         //public static ConfigEntry<int> KnurlGolemAllyDamageModifierPerStack;
@@ -209,6 +210,7 @@ namespace EnemiesReturns.Configuration
             Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
 
             Colossus.EmoteKey = config.Bind("Colossus Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
+            AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts' Artifact of Origin", false, "Add monster to Artifact of Origin.");
             //Colossus.KnurlArmor = config.Bind("Colossal Knurl", "Colossal Knurl Armor", 20, "How much armor Colossal Knurl grants.");
             //Colossus.KnurlArmorPerStack = config.Bind("Colossal Knurl", "Colossal Knurl Armor Per Stack", 20, "How much armor Colossal Knurl grants per stack.");
             //Colossus.KnurlGolemAllyDamageModifier = config.Bind("Colossal Knurl", "Colossal Knurl Golem Ally Damage Modifier", 30, "Additiona damage modifier for ally golem, 10% each.");

@@ -279,6 +279,11 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
                 stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeEnd));
                 stateList.Add(typeof(Junk.ModdedEntityStates.Ifrit.Smash));
+
+                if (EnemiesReturns.Configuration.Ifrit.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
+                {
+                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(IfritFactory.SpawnCards.cscIfritDefault, 2);
+                }
             }
         }
 
@@ -583,6 +588,11 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SnowyStageList.Value, dchColossusSnowy);
+
+                if (EnemiesReturns.Configuration.Colossus.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
+                {
+                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(ColossusFactory.SpawnCards.cscColossusGrassy, 3);
+                }
             }
         }
 

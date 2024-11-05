@@ -32,6 +32,9 @@
 	  <Reference Include="Grumpy">
 	    <HintPath>libs\Grumpy.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Risky_Artifacts">
+	    <HintPath>libs\Risky_Artifacts.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Unity.Postprocessing.Runtime">
 	    <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
 	  </Reference>
