@@ -1,4 +1,21 @@
 <details>
+<summary>0.3.3</summary>
+
+* Added new Small-tier monster: Mechanical Spider.
+* Split configuration files. Now each enemy has their own configuration file. This obviously results in config wipe.
+* Added [AdvancedPrediction](https://thunderstore.io/package/score/AdvancedPrediction/) support.
+* Added [Risky_Artifacts](https://thunderstore.io/package/Moffein/Risky_Artifacts/)' Artifact of Origin support. Ifrit is marked as Tier 2 boss, Colossus is marked as Tier 3 (Colossus is disabled by default).
+* Added 3D Spatialization for sound effects and lowered attenuation range to 180m (was 200m).
+	* _This should hopefully improve sound effects, making them less of a "100 volume at 90m range, 0 at 100m range"._
+* Ifrit:
+	* Restored jittery animation on having Malachite elite aspect.
+	* Fixed fire particles becoming golden blocks on having Gilded elite aspect.
+	* Fixed impact (or landing) animation.
+* Colossus:
+	* Fixed impact (or landing) animation.
+
+</details>
+<details>
 <summary>0.2.7</summary>
 
 * Made some asset optimizations.

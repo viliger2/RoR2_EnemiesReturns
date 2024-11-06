@@ -9,6 +9,20 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 <table>
 	<thead>
 		<tr>
+			<th>Small Enemies</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Stages</th>
+		</tr>
+	</thead>
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/MechanicalSpider/texMechanicalSpiderEnemyIcon.png" alt="Spitter"></td>
+		<td>Mechanical Spider</td>
+		<td>Re-programmable malware of the modern age. They will harass you at range and dash away from your attacks.</td>
+		<td>Verdant Falls, Viscous Falls, Rallypoint Delta, Sirens Call</td>
+	</tr>	
+	<thead>
+		<tr>
 			<th>Medium Enemies</th>
 			<th>Name</th>
 			<th>Description</th>
@@ -78,6 +92,18 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Super natural explosion - https://pixabay.com/sound-effects/supernatural-explosion-104295/
 * Monster breathing - https://pixabay.com/sound-effects/animal-breathing-monster-78392/
 * hit sound(video game type) - https://pixabay.com/sound-effects/hit-soundvideo-game-type-230510/
+</details>
+<details>
+<summary>Mechanical Spider</summary>
+
+* Model, rigging and animation by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from Resident Evil 1, RoR and RoRR
+* 07024 space laser charging.wav - https://freesound.org/people/Robinhood76/sounds/414293/
+* Static Idle Loop Finished - https://pixabay.com/sound-effects/static-idle-loop-finished-40043/
+* SciFi Door Opening - https://pixabay.com/sound-effects/scifi-door-opening-36171/
+* Sci-Fi Weapon - Mechanism - Robotic Morph Medium Duration - https://pixabay.com/sound-effects/sci-fi-weapon-mechanism-robotic-morph-medium-duration-233840/
+* Old Fan With Start Sound - https://pixabay.com/sound-effects/old-fan-with-start-sound-247598/
 </details>
 - Special thanks to 
 
