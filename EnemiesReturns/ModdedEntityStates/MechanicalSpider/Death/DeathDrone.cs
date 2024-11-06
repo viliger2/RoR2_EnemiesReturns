@@ -6,11 +6,19 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.Networking;
 using System.Linq;
+using static EntityStates.Drone.DeathState;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
     internal class DeathDrone : GenericCharacterDeath
     {
+        public static float deathDuration = 4f;
+
+        private bool startedGrounded = true;
+
+        private bool droneSpawned = false;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -18,31 +26,68 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             {
                 return;
             }
-            Util.PlaySound("ER_Spider_Death_Drone_Play", gameObject);
-            if (NetworkServer.active)
+            if (characterMotor)
             {
-                SpawnDrone();
+                if (characterMotor.isGrounded)
+                {
+                    if (NetworkServer.active)
+                    {
+                        SpawnDrone(base.characterBody.footPosition);
+                        Explode();
+                    }
+                    DestroyModel();
+                }
+                else
+                {
+                    startedGrounded = false;
+                }
             }
+            
+            Util.PlaySound("ER_Spider_Death_Drone_Play", gameObject);
+        }
 
-            DestroyModel();
-            if (NetworkServer.active)
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (!startedGrounded && characterMotor && characterMotor.isGrounded)
             {
-                DestroyBodyAsapServer();
+                if (NetworkServer.active && !droneSpawned)
+                {
+                    SpawnDrone(base.characterBody.footPosition);
+                    Explode();
+                    droneSpawned = true;
+                }
+                DestroyModel();
+            }
+            if (fixedAge >= deathDuration && NetworkServer.active)
+            {
+                Explode();
             }
         }
 
-        private void SpawnDrone()
+        public void Explode()
+        {
+            EntityState.Destroy(base.gameObject);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            Explode();
+            DestroyModel();
+        }
+
+        private void SpawnDrone(Vector3 spawnPosition)
         {
             var placementRule = new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Direct,
-                position = characterBody.footPosition
+                position = spawnPosition
             };
 
             var result = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(EnemiesReturns.Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken, placementRule, Run.instance.spawnRng));
             if (result)
             {
-                // TODO: add inventory copy to some component so spawned monster has elite equips and such
                 var inventory = result.GetComponent<Inventory>();
                 if (inventory && characterBody.inventory)
                 {
@@ -52,7 +97,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
                 {
-                    setEliteRamp.SetEliteRampIndex(inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef?.shaderEliteRampIndex ?? -1); // surely, SURELY it won't break
+                    setEliteRamp.SetEliteRampIndex(inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef?.shaderEliteRampIndex ?? -1, inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef?.eliteIndex ?? EliteIndex.None); // surely, SURELY it won't break
                 }
                 var purchaseInteraction = result.GetComponent<PurchaseInteraction>();
                 if (purchaseInteraction && purchaseInteraction.costType == CostTypeIndex.Money && inventory)

@@ -66,6 +66,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public static GameObject MechanicalSpiderDroneMaster;
 
+        public static GameObject MechanicalSpiderBrokenInteractable;
+
         public static LoopSoundDef ProjectileFlightSoundLoop;
 
         public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
@@ -98,6 +100,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var sfxLocator = bodyPrefab.GetComponent<SfxLocator>();
             sfxLocator.aliveLoopStart = "";
             sfxLocator.aliveLoopStop = "";
+
+            bodyPrefab.AddComponent<SpiderVictoryDanceController>().body = body;
 
             bodyPrefab.RegisterNetworkPrefab();
 
@@ -752,7 +756,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #region SetupBoxes
 
-            var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/RoboBallBoss/sdRoboBall.asset").WaitForCompletion(); // TODO: maybe make my own
+            var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/RoboBallBoss/sdRoboBall.asset").WaitForCompletion();
 
             var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
@@ -786,8 +790,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             hurtBoxes.Add(mainHurtBox);
 
             mainHurtboxTransform.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
-
-            //var hitBox = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
             #endregion
 
             #region mdlMechanicalSpider
@@ -935,6 +937,12 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             //helper.animator = modelTransform.gameObject.GetComponent<Animator>();
             //helper.animationParameters = new string[] { "walkSpeedDebug" };
 
+            #region RemoveJitterBones
+            mdlMechanicalSpider.AddComponent<RemoveJitterBones>();
+            #endregion
+
+            #endregion
+
             #region ParticleEffects
             var rightFrontLeg = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg1.1/SparkRightFrontLeg");
             var backLeftLeg = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg3.1/SparkBackLeftLeg");
@@ -958,8 +966,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             smokeCenter.transform.parent = smoke;
             smokeCenter.transform.localPosition = Vector3.zero;
             smokeCenter.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            #endregion
-
             #endregion
 
             #region AimAssist
@@ -1057,7 +1063,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             purchaseInteraction.costType = CostTypeIndex.Money;
             purchaseInteraction.cost = EnemiesReturns.Configuration.MechanicalSpider.DroneCost.Value;
             purchaseInteraction.solitudeCost = 0;
-            purchaseInteraction.automaticallyScaleCostWithDifficulty = false; // TODO: maybe?
+            purchaseInteraction.automaticallyScaleCostWithDifficulty = false;
             purchaseInteraction.requiredUnlockable = "";
             purchaseInteraction.ignoreSpherecastForInteractability = false;
             purchaseInteraction.purchaseStatNames = new string[] { "totalDronesPurchased" };
@@ -1107,7 +1113,18 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #endregion
 
             #region GenericInspectInfoProvider
-            interactablePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = null; // TODO
+            var inspectDef = ScriptableObject.CreateInstance<InspectDef>();
+            (inspectDef as ScriptableObject).name = "idBrokenMechanicalSpider";
+            inspectDef.Info = new RoR2.UI.InspectInfo
+            {
+                Visual = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texDroneIconOutlined.png").WaitForCompletion(),
+                TitleToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME",
+                DescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION",
+                FlavorToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE",
+                TitleColor = Color.white,
+                isConsumedItem = false
+            };
+            interactablePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef; // TODO
             #endregion
 
             #region Inventory
@@ -1252,7 +1269,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             card.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             card.requiredFlags = RoR2.Navigation.NodeFlags.None;
             card.forbiddenFlags = RoR2.Navigation.NodeFlags.NoChestSpawn;
-            card.directorCreditCost = 0; // TODO: does it even matter?
+            card.directorCreditCost = 0; // does it even matter?
             card.occupyPosition = true;
             card.eliteRules = SpawnCard.EliteRules.Default;
             card.orientToFloor = true;

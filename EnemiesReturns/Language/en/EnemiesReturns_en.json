@@ -32,20 +32,31 @@
     "ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE": "Scion of the Infernal King",
     "ENEMIES_RETURNS_IFRIT_BODY_LORE": "Field Notes:\n\nCould this be..? Tales I never believed recounted a horrible beast, fire incarnate. Scourder of another solar system, the Ifrit nearly wiped out an entire space colony before being chained and launched into the great black void. Supposedly the flaming jets that accompanied his roars could be seen for days as he drifted outwards.\n\nGreat towers, what must have been the containment structure, prevented his escape even on this forsaken plane. The only explanation I have for my surviving this legendary encounter is his many years drifting in space and having been fettered in this unforgiving, frozen wasteland.",
     "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_NAME": "Summon Pillars",
-    "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_DESCRIPTION": "Summons multiple pillars in nearby locations. Pillars take some time to charge and once fully charged deal devastating damage to surrounding enemies and burning them.",
+    "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_DESCRIPTION": "Summon multiple pillars in nearby locations. Pillars take some time to charge and once fully charged deal devastating damage to surrounding enemies and burning them.",
     "ENEMIES_RETURNS_IFRIT_HELLZONE_NAME": "Hellzone",
-    "ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION": "Fires a giant fireball that leaves a crater on impact. After a few moments molten rocks shoot into the sky that burn enemies.",
+    "ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION": "Fire a giant fireball that leaves a crater on impact. After a few moments molten rocks shoot into the sky that burn enemies.",
     "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME": "Flame Charge",
-    "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION": "Charges forward, burning everything in its path, leaving burn trail behind.",
+    "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION": "Charge forward, burning everything in its path, leaving burn trail behind.",
     "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT": "Monster Log: Ifrit",
     "ENEMIES_RETURNS_IFRIT_SMASH_NAME": "Smash",
-    "ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION": "Smashes in front dealing damage and knocking enemies back.",
+    "ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION": "Smash in front dealing damage and knocking enemies back.",
 
     "ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "Fiery Pillar",
 
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Infernal Lantern",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "Upon large or elite monster kill summon a fiery pillar.",
     "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius. <style=cIsDamage>Killing elite monsters</style> has <style=cIsDamage>{4}</style> chance to cause the same effect.",
-    "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destination: Lot Z, Auction House, Unknown\n\nDate: 4/10/2056\n\nWhen I finally took the beast down, I tore the lantern off the tower it summoned, hoping for it to help on this journey. I've felt a strange power since obtaining it... while I feel stronger, I feel like I am no longer alone."
+    "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destination: Lot Z, Auction House, Unknown\n\nDate: 4/10/2056\n\nWhen I finally took the beast down, I tore the lantern off the tower it summoned, hoping for it to help on this journey. I've felt a strange power since obtaining it... while I feel stronger, I feel like I am no longer alone.",
+
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "Field Notes:\n\nThe malware of our age! These mechanical parasites were probably lurking on the ship before the crash. Pirates will use these bugs to collect especially valuable cargo, redirect transmission signals, or even hijack ships. Spiders can be programmed with all kinds of malicious objectives. \n\nIn general they are quite difficult to find and eradicate on large vessels, but now that they're loose they seem to be able to operate outside their software. They have retained their defense capabilities, and are risky to engage. Though, I wonder, how long will they continue to run without access to an electrical grid?",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME": "Mechanical Spider",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER": "Monster Log: Mechanical Spider",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME": "Broken Mechanical Spider",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION": "A broken mechanical spider. With a few know-hows and gold it will switch sides and help the survivor.",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_CONTEXT": "Repair Mechanical Spider",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "Double Shot",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "Open a hatch, charge the gun and shoot two fast projectiles.",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Dash",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Dash a short distance."
   }
 }

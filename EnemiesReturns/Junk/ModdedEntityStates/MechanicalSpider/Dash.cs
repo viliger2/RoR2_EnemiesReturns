@@ -9,7 +9,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.MechanicalSpider
 {
     public class Dash : BaseState
     {
-        public static float dashDistance = 20f; // TODO: config, taken from Imp
+        public static float dashDistance = 20f; 
 
         public static float duration = 1f;
 

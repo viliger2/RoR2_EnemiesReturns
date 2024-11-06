@@ -46,6 +46,7 @@ namespace EnemiesReturns
         private readonly List<UnlockableDef> unlockablesList = new List<UnlockableDef>();
         private readonly List<ItemDef> itemList = new List<ItemDef>();
         private readonly List<NetworkSoundEventDef> nseList = new List<NetworkSoundEventDef>();
+        private readonly List<GameObject> nopList = new List<GameObject>();
 
         public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -160,7 +161,7 @@ namespace EnemiesReturns
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                stateList.Add(typeof(ModdedEntityStates.BaseEmoteState)); // dunno if I need it, but just in case
+                stateList.Add(typeof(ModdedEntityStates.BasePlayerEmoteState)); // dunno if I need it, but just in case
 
                 CreateSpitter(assets, iconLookup);
 
@@ -184,6 +185,7 @@ namespace EnemiesReturns
             _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
             _contentPack.itemDefs.Add(itemList.ToArray());
             _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
+            _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
 
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
@@ -791,7 +793,7 @@ namespace EnemiesReturns
                 sfList.Add(MechanicalSpiderFactory.SkillFamilies.Utility);
 
                 var spiderBody = assets.First(body => body.name == "MechanicalSpiderBody");
-                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateBody(spiderBody, null, spiderLog); // TODO: icon
+                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateBody(spiderBody, iconLookup["texMechanicalSpiderEnemyIcon"], spiderLog);
                 bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
 
                 var spiderMaster = assets.First(master => master.name == "MechanicalSpiderMaster");
@@ -799,7 +801,7 @@ namespace EnemiesReturns
                 masterList.Add(MechanicalSpiderFactory.MechanicalSpiderMaster);
 
                 var spiderDroneBody = assets.First(body => body.name == "MechanicalSpiderDroneBody");
-                MechanicalSpiderFactory.MechanicalSpiderDroneBody = spiderFactory.CreateDroneBody(spiderDroneBody, null); // TODO: icon
+                MechanicalSpiderFactory.MechanicalSpiderDroneBody = spiderFactory.CreateDroneBody(spiderDroneBody, iconLookup["texMechanicalSpiderAllyIcon"]);
                 bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneBody);
 
                 var spiderDroneMaster = assets.First(master => master.name == "MechanicalSpiderDroneMaster");
@@ -807,7 +809,8 @@ namespace EnemiesReturns
                 masterList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
 
                 var spiderInteractable = assets.First(interactable => interactable.name == "MechanicalSpiderBroken");
-                spiderFactory.CreateInteractable(spiderInteractable, MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
+                MechanicalSpiderFactory.MechanicalSpiderBrokenInteractable = spiderFactory.CreateInteractable(spiderInteractable, MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
+                nopList.Add(MechanicalSpiderFactory.MechanicalSpiderBrokenInteractable);
 
                 MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpeiderDefault", spiderMaster);
                 var dcMechanicalSpiderDefault = new DirectorCard
@@ -827,8 +830,10 @@ namespace EnemiesReturns
 
                 MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken = spiderFactory.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", spiderInteractable);
 
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.MainState));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.VictoryDance));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));

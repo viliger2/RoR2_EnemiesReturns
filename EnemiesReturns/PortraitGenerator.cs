@@ -12,13 +12,14 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using UnityEngine;
 using RoR2.UI;
+using EnemiesReturns.Enemies.MechanicalSpider;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
     public class PortraitGenerator
     {
-        [ConCommand(commandName = "returns_body_generate_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all EnemiesReturns bodies.")]
+        [ConCommand(commandName = "returns_render_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all EnemiesReturns bodies.")]
         private static void CCBodyGeneratePortraits(ConCommandArgs args)
         {
             var addressable = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/IconGenerator.prefab").WaitForCompletion();
@@ -52,6 +53,7 @@ namespace EnemiesReturns
             yield return GeneratePortrait(modelPanel, ColossusFactory.ColossusBody);
             yield return GeneratePortrait(modelPanel, IfritFactory.IfritBody);
             yield return GeneratePortrait(modelPanel, IfritPillarFactory.Enemy.IfritPillarBody);
+            yield return GeneratePortrait(modelPanel, MechanicalSpiderFactory.MechanicalSpiderBody);
             yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());
             UnityEngine.Object.Destroy(modelPanel.transform.root.gameObject);
             Debug.Log("Portrait generation complete.");

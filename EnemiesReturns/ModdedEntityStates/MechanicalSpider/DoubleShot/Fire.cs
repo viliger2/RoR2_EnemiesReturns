@@ -27,13 +27,15 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         public static float baseDelay => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotDelayBetween.Value;
 
-        public static float minSpread = 0f;
+        public static float minSpread => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotMinSpread.Value;
 
-        public static float maxSpread = 0f;
+        public static float maxSpread => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotMaxSpread.Value;
 
         public static float projectilePitchBonus = -1f;
 
         public static float distanceToTarget = 65f; // distance check to current target so we can continue firing instead of closing the hatch, 5m more than AI state check
+
+        public static float projectileSpeed => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotProjectileSpeed.Value;
 
         private float delay;
 
@@ -63,10 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             if (delayStopwatch >= delay && numberOfShots > shotsFired)
             {
                 PlayAnimation("Gesture, Additive", "Fire", "Fire.playbackRate", duration);
-                if (isAuthority)
-                {
-                    FireProjectile();
-                }
+                FireProjectile();
                 delayStopwatch -= delay;
                 shotsFired++;
             }
@@ -99,7 +98,17 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                 {
                     aimRay = ModCompats.AdvancedPredictionCompat.GetPredictAimRay(aimRay, characterBody, projectilePrefab);
                 }
-                ProjectileManager.instance.FireProjectile(projectilePrefab, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, damageStat * damageCoefficient, force, Util.CheckRoll(critStat, base.characterBody.master));
+                ProjectileManager.instance.FireProjectile(
+                    projectilePrefab, 
+                    aimRay.origin, 
+                    Util.QuaternionSafeLookRotation(aimRay.direction), 
+                    base.gameObject, 
+                    damageStat * damageCoefficient, 
+                    force, 
+                    Util.CheckRoll(critStat, base.characterBody.master), 
+                    DamageColorIndex.Default, 
+                    null,
+                    projectileSpeed);
             }
             Util.PlayAttackSpeedSound(soundString, gameObject, attackSpeedStat);
         }

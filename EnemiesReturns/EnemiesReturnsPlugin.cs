@@ -20,6 +20,7 @@ namespace EnemiesReturns
     [BepInDependency("com.Moffein.RiskyArtifacts", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(R2API.DeployableAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
+    [BepInDependency(R2API.EliteAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
@@ -70,6 +71,7 @@ namespace EnemiesReturns
             ColossalKnurlFactory.Hooks();
             IfritFactory.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
+            Enemies.MechanicalSpider.SpiderVictoryDanceController.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }

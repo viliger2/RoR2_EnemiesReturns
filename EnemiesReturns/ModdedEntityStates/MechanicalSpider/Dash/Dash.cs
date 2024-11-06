@@ -58,7 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
                 }
                 if (characterMotor)
                 {
-                    var num2 = !startedStateGrounded ? forwardSpeedCoefficientCurve.Evaluate(fixedAge / duration) : forwardSpeedCoefficientCurve.Evaluate(fixedAge / duration); // TODO: maybe separate
+                    var num2 = !startedStateGrounded ? forwardSpeedCoefficientCurve.Evaluate(fixedAge / duration) : forwardSpeedCoefficientCurve.Evaluate(fixedAge / duration); // maybe separate?
                     characterMotor.rootMotion += num2 * moveSpeedStat * forwardDirection * GetDeltaTime();
 #if DEBUG || NOWEAVER
                     if (ledgeHandling)

@@ -1,6 +1,6 @@
 ﻿namespace EnemiesReturns.ModdedEntityStates.Colossus
 {
-    public class DancePlayer : BaseEmoteState
+    public class DancePlayer : BasePlayerEmoteState
     {
         public override float duration => 0;
 

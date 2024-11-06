@@ -2,7 +2,7 @@
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
-    public class DeathDancePlayer : BaseEmoteState
+    public class DeathDancePlayer : BasePlayerEmoteState
     {
         public override float duration => 20f;
 

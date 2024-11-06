@@ -34,10 +34,5 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
         {
             return InterruptPriority.PrioritySkill;
         }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-        }
     }
 }

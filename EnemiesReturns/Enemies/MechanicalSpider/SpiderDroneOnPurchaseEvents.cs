@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
@@ -49,6 +50,11 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             purchaseInteraction.SetAvailable(false);
 
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
             if (summonMasterBehavior)
             {
                 var master = summonMasterBehavior.OpenSummonReturnMaster(activator);
@@ -56,6 +62,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 {
                     master.inventory.CopyEquipmentFrom(inventory);
                     master.inventory.CopyItemsFrom(inventory);
+                    master.inventory.GiveItem(RoR2Content.Items.MinionLeash);
                 }
             }
 

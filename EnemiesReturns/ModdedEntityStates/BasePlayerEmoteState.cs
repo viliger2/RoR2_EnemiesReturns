@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates
 {
-    public abstract class BaseEmoteState : BaseState
+    public abstract class BasePlayerEmoteState : BaseState
     {
         public abstract float duration { get; }
 

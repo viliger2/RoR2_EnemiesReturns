@@ -46,7 +46,17 @@
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Адовый фонарь",
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "При убистве большого или элитного монстра призывает пылающую колонну.",
 		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>Убийство большого монстра</style> призывает <style=cIsDamage>пылающую колонну</style>. Через <style=cIsUtility>{0}с</style> колонна <style=cIsDamage>взрывается</style> нанося <style=cIsDamage>{1}</style><style=cStack>(+{2} за штуку)</style> базового урона в <style=cIsDamage>{3}м</style> вокруг. <style=cIsDamage>Убийство элитного монстра</style> имеет <style=cIsDamage>{4}</style> шанс вызвать этот эффект.",
-		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Направление: Площадка Z, Аукционный дом, Неизвестно\n\nDate: 10.04.2056\n\nУбив зверя, я оторвал фонарь с башни которую он призвал, надеясь, что он поможет мне в пути. С тех пор я постоянно ощущаю некую силу... Я чувствую себя сильнее, но в то же время ощущаю рядом некое присутствие..."
+		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Направление: Площадка Z, Аукционный дом, Неизвестно\n\nDate: 10.04.2056\n\nУбив зверя, я оторвал фонарь с башни которую он призвал, надеясь, что он поможет мне в пути. С тех пор я постоянно ощущаю некую силу... Я чувствую себя сильнее, но в то же время ощущаю рядом некое присутствие...",
 
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "Полевые заметки:\n\nНастоящий вирус нашей эпохи! Эти механические паразиты, вероятно, прятались на корабле ещё до крушения. Пираты используют этих созданий для сбора особо ценных грузов, перенаправления сигналов или даже захвата кораблей. Пауков можно запрограммировать на множество вредоносных задач.\n\nНа больших судах их довольно трудно обнаружить и истребить. Но, похоже, оказавшись в новых условиях, они вышли за рамки стандартных алгоритмов. Они сохранили свои оборонительные функции, и сражаться с ними рискованно. Только вот интересно, как долго они будут работать без доступа к электросети?",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME": "Механический паук",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER": "Запись о монстре: Механический паук",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME": "Сломанный механический паук",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION": "Сломанный механический паук. При помощи нехитрых приспособлений и золота он сменит сторону и поможет выжившему.",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_CONTEXT": "Починить механического паука",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "Двойной выстрел",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "Открывает люк, заряжает оружие и выстреливает два быстрых заряда.",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Рывок",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Перемещает на короткую дистанцию."
 	}
 }
