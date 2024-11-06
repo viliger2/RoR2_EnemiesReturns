@@ -154,7 +154,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 2.4f, "Infernal Lantern pillar damage per level. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("Infernal Lantern", "Infernal Lantern Elite Kill Spawn Chance", 20f, "Infernal Lantern chance to spawn on elite kill.");
 
-            AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts' Artifact of Origin", true, "Add monster to Artifact of Origin.");
+            AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
         }
     }
 }

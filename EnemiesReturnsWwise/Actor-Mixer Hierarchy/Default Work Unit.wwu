@@ -4,6 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}" PersistMode="Standalone">
 			<ChildrenList>
 				<ActorMixer Name="Master Mixer" ID="{3160E7DA-6C82-46A8-B27F-DB48223CE56D}" ShortID="1013550545">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
 							<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
@@ -1733,6 +1736,7 @@
 												</Sound>
 												<Sound Name="Spider_Open_Hatch" ID="{1C845AFC-ADCC-46EF-ABEB-3C92EF86BB4C}" ShortID="497821616">
 													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1783,6 +1787,7 @@
 												</Sound>
 												<Sound Name="Spider_Close_Hatch" ID="{FC9E576D-081E-4CDD-B8D5-AA98D2E08BE9}" ShortID="668614114">
 													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1830,6 +1835,7 @@
 												</Sound>
 												<Sound Name="Spider_Projectile_Hit" ID="{CDD8F726-F58A-43D5-9698-7330B81D0706}" ShortID="839787027">
 													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -2011,6 +2017,7 @@
 										</Sound>
 										<Sound Name="Spider_Alive_Loop" ID="{086737A3-1C20-4CBD-8A6E-A517C7B38B89}" ShortID="851598170">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">

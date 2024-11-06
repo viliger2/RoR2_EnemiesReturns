@@ -38,8 +38,6 @@ namespace EnemiesReturns.ModCompats
                 case 3:
                     Risky_Artifacts.Artifacts.Origin.AddSpawnCard(spawnCard, Risky_Artifacts.Artifacts.Origin.BossTier.t3);
                     break;
-
-
             }
         }
     }
