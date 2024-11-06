@@ -112,7 +112,7 @@ namespace EnemiesReturns.Configuration
             Spitter.ChargedProjectileSmallDoTZoneDamage = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Damage", 0.15f, "Spitter's Charged Large DoT zone damage off projectile's damage.");
             Spitter.ChargedProjectileSmallDoTZoneScale = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Scale", 0.3f, "Spitter's Charged Large DoT Zone scale off Mini Mushrim's DoT zone (since it was used as basis). Also controls projectile's blast radius.");
 
-            Spitter.EmoteKey = config.Bind("Colossus Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
+            Spitter.EmoteKey = config.Bind("Spitter Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             #endregion
 
         }

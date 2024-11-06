@@ -45,6 +45,8 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DroneBaseRegen;
         public static ConfigEntry<float> DroneLevelRegen;
 
+        public static ConfigEntry<KeyCode> EmoteKey;
+
         public static void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Mechanical Spider Director", "Enable Mechanical Spider", true, "Enables Mechanical Spider.");
@@ -106,6 +108,8 @@ namespace EnemiesReturns.Configuration
             DroneEliteConstMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
             DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 5f, "Base health regeneration of allied Mechanical Spider.");
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
+
+            EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }
     }
 }

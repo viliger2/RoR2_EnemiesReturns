@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
     {
         public override float duration => 20f;
 
-        public override string soundEventPlayName => ""; // TODO?
+        public override string soundEventPlayName => "";
 
         public override string soundEventStopName => "";
 

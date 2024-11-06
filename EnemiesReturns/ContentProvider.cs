@@ -866,6 +866,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.VictoryDance));
+                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.VictoryDancePlayer));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));

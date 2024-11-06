@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.ModdedEntityStates.Spitter;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -33,6 +32,18 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
             if (smokeTransform)
             {
                 smoke = smokeTransform.gameObject;
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
+            {
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.MechanicalSpider.EmoteKey.Value))
+                {
+                    this.outer.SetInterruptState(new VictoryDancePlayer(), InterruptPriority.Any);
+                }
             }
         }
 

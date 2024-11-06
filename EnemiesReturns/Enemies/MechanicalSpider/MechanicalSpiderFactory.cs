@@ -1209,80 +1209,80 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         internal SkillDef CreateDoubleShotSkill()
         {
-            var bite = ScriptableObject.CreateInstance<SkillDef>();
-            (bite as ScriptableObject).name = "MechanicalSpiderWeaponDoubleShot";
-            bite.skillName = "DoubleShot";
+            var doubleShot = ScriptableObject.CreateInstance<SkillDef>();
+            (doubleShot as ScriptableObject).name = "MechanicalSpiderWeaponDoubleShot";
+            doubleShot.skillName = "DoubleShot";
 
-            bite.skillNameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME";
-            bite.skillDescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION";
-            //var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
-            //if (acridBite)
-            //{
-            //    bite.icon = acridBite.icon;
-            //}
+            doubleShot.skillNameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME";
+            doubleShot.skillDescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION";
+            var tazer = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainTazer.asset").WaitForCompletion();
+            if (tazer)
+            {
+                doubleShot.icon = tazer.icon;
+            }
 
-            bite.activationStateMachineName = "Weapon";
-            bite.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
-            bite.interruptPriority = EntityStates.InterruptPriority.Skill;
+            doubleShot.activationStateMachineName = "Weapon";
+            doubleShot.activationState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
+            doubleShot.interruptPriority = EntityStates.InterruptPriority.Skill;
 
-            bite.baseRechargeInterval = EnemiesReturns.Configuration.MechanicalSpider.DoubleShotCooldown.Value;
-            bite.baseMaxStock = 1;
-            bite.rechargeStock = 1;
-            bite.requiredStock = 1;
-            bite.stockToConsume = 1;
+            doubleShot.baseRechargeInterval = EnemiesReturns.Configuration.MechanicalSpider.DoubleShotCooldown.Value;
+            doubleShot.baseMaxStock = 1;
+            doubleShot.rechargeStock = 1;
+            doubleShot.requiredStock = 1;
+            doubleShot.stockToConsume = 1;
 
-            bite.resetCooldownTimerOnUse = false;
-            bite.fullRestockOnAssign = true;
-            bite.dontAllowPastMaxStocks = false;
-            bite.beginSkillCooldownOnSkillEnd = false;
+            doubleShot.resetCooldownTimerOnUse = false;
+            doubleShot.fullRestockOnAssign = true;
+            doubleShot.dontAllowPastMaxStocks = false;
+            doubleShot.beginSkillCooldownOnSkillEnd = false;
 
-            bite.cancelSprintingOnActivation = true;
-            bite.forceSprintDuringState = false;
-            bite.canceledFromSprinting = false;
+            doubleShot.cancelSprintingOnActivation = true;
+            doubleShot.forceSprintDuringState = false;
+            doubleShot.canceledFromSprinting = false;
 
-            bite.isCombatSkill = true;
-            bite.mustKeyPress = false;
+            doubleShot.isCombatSkill = true;
+            doubleShot.mustKeyPress = false;
 
-            return bite;
+            return doubleShot;
         }
 
         internal SkillDef CreateDashSkill()
         {
-            var spit = ScriptableObject.CreateInstance<SkillDef>();
-            (spit as ScriptableObject).name = "MechanicalSpiderBodyDash";
-            spit.skillName = "Dash";
+            var dash = ScriptableObject.CreateInstance<SkillDef>();
+            (dash as ScriptableObject).name = "MechanicalSpiderBodyDash";
+            dash.skillName = "Dash";
 
-            spit.skillNameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME";
-            spit.skillDescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION";
-            //var crocoSpit = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoSpit.asset").WaitForCompletion();
-            //if (crocoSpit)
-            //{
-            //    spit.icon = crocoSpit.icon;
-            //}
+            dash.skillNameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME";
+            dash.skillDescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION";
+            var bodyRoll = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyRoll.asset").WaitForCompletion();
+            if (bodyRoll)
+            {
+                dash.icon = bodyRoll.icon;
+            }
 
-            spit.activationStateMachineName = "Slide";
-            spit.activationState = new EntityStates.SerializableEntityStateType(typeof(DashStart));
-            spit.interruptPriority = EntityStates.InterruptPriority.Any;
+            dash.activationStateMachineName = "Slide";
+            dash.activationState = new EntityStates.SerializableEntityStateType(typeof(DashStart));
+            dash.interruptPriority = EntityStates.InterruptPriority.Any;
 
-            spit.baseRechargeInterval = EnemiesReturns.Configuration.MechanicalSpider.DashCooldown.Value;
-            spit.baseMaxStock = 1;
-            spit.rechargeStock = 1;
-            spit.requiredStock = 1;
-            spit.stockToConsume = 1;
+            dash.baseRechargeInterval = EnemiesReturns.Configuration.MechanicalSpider.DashCooldown.Value;
+            dash.baseMaxStock = 1;
+            dash.rechargeStock = 1;
+            dash.requiredStock = 1;
+            dash.stockToConsume = 1;
 
-            spit.resetCooldownTimerOnUse = false;
-            spit.fullRestockOnAssign = true;
-            spit.dontAllowPastMaxStocks = false;
-            spit.beginSkillCooldownOnSkillEnd = false;
+            dash.resetCooldownTimerOnUse = false;
+            dash.fullRestockOnAssign = true;
+            dash.dontAllowPastMaxStocks = false;
+            dash.beginSkillCooldownOnSkillEnd = false;
 
-            spit.cancelSprintingOnActivation = true;
-            spit.forceSprintDuringState = false;
-            spit.canceledFromSprinting = false;
+            dash.cancelSprintingOnActivation = true;
+            dash.forceSprintDuringState = false;
+            dash.canceledFromSprinting = false;
 
-            spit.isCombatSkill = true;
-            spit.mustKeyPress = false;
+            dash.isCombatSkill = true;
+            dash.mustKeyPress = false;
 
-            return spit;
+            return dash;
         }
 
         #endregion
