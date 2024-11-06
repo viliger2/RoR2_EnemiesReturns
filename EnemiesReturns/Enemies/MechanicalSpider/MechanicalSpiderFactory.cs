@@ -44,18 +44,16 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         public struct SkinDefs
         {
             public static SkinDef Default;
-            //public static SkinDef Lakes;
-            //public static SkinDef Sulfur;
-            //public static SkinDef Depths;
+            public static SkinDef Grassy;
+            public static SkinDef Snowy;
         }
 
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscMechanicalSpiderDefault;
+            public static CharacterSpawnCard cscMechanicalSpiderGrassy;
+            public static CharacterSpawnCard cscMechanicalSpiderSnowy;
             public static InteractableSpawnCard iscMechanicalSpiderBroken;
-            //public static CharacterSpawnCard cscSpitterLakes;
-            //public static CharacterSpawnCard cscSpitterSulfur;
-            //public static CharacterSpawnCard cscSpitterDepths;
         }
 
         public static GameObject MechanicalSpiderBody;
@@ -73,6 +71,48 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             AddMainBodyComponents(bodyPrefab, sprite, log);
+
+            #region SkinDefs
+            var mdlMechanicalSpider = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider").gameObject;
+            var characterModel = mdlMechanicalSpider.GetComponent<CharacterModel>();
+            var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/MechanicalSpider").gameObject.GetComponent<SkinnedMeshRenderer>();
+
+            SkinDefs.Default = CreateSkinDef("skinMechanicalSpiderDefault", mdlMechanicalSpider, characterModel.baseRendererInfos);
+            
+            CharacterModel.RendererInfo[] snowyRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = modelRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matMechanicalSpiderSnowy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+            };
+            SkinDefs.Snowy = CreateSkinDef("skinMechanicalSpiderSnowy", mdlMechanicalSpider, snowyRender, SkinDefs.Default);
+
+            CharacterModel.RendererInfo[] grassyRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = modelRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matMechanicalSpiderGrassy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+            };
+            SkinDefs.Grassy = CreateSkinDef("skinMechanicalSpiderGrassy", mdlMechanicalSpider, grassyRender, SkinDefs.Default);
+
+            var modelSkinController = mdlMechanicalSpider.AddComponent<ModelSkinController>();
+            modelSkinController.skins = new SkinDef[]
+            {
+                SkinDefs.Default,
+                SkinDefs.Grassy,
+                SkinDefs.Snowy,
+            };
+            #endregion
 
             bodyPrefab.RegisterNetworkPrefab();
 
@@ -102,6 +142,13 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             sfxLocator.aliveLoopStop = "";
 
             bodyPrefab.AddComponent<SpiderVictoryDanceController>().body = body;
+
+            var mdlMechanicalSpider = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider").gameObject;
+            var modelSkinController = mdlMechanicalSpider.AddComponent<ModelSkinController>();
+            modelSkinController.skins = new SkinDef[]
+            {
+                SkinDefs.Default
+            };
 
             bodyPrefab.RegisterNetworkPrefab();
 
@@ -874,6 +921,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #endregion
 
             #region CharacterModel
+            // same shit as colossus
+            modelRenderer.material = ContentProvider.MaterialCache["matMechanicalSpider"];
+
             var characterModel = mdlMechanicalSpider.AddComponent<CharacterModel>();
             characterModel.body = characterBody;
             characterModel.itemDisplayRuleSet = CreateItemDisplayRuleSet();
@@ -909,28 +959,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             modelPanelParameters.modelRotation = new Quaternion(0, 0, 0, 1);
             modelPanelParameters.minDistance = 1.5f;
             modelPanelParameters.maxDistance = 6f;
-            #endregion
-
-            #region SkinDefs
-            SkinDefs.Default = CreateSkinDef("skinMechanicalSpiderDefault", mdlMechanicalSpider, characterModel.baseRendererInfos);
-
-            CharacterModel.RendererInfo[] lakesRender = new CharacterModel.RendererInfo[]
-            {
-                new CharacterModel.RendererInfo
-                {
-                    renderer = modelRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matMechanicalSpider"],
-                    ignoreOverlays = false,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    hideOnDeath = false
-                },
-            };
-
-            var modelSkinController = mdlMechanicalSpider.AddComponent<ModelSkinController>();
-            modelSkinController.skins = new SkinDef[]
-            {
-                SkinDefs.Default
-            };
             #endregion
 
             //var helper = mdlMechanicalSpider.AddComponent<AnimationParameterHelper>();

@@ -819,7 +819,7 @@ namespace EnemiesReturns
                     selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturns.Configuration.Spitter.MinimumStageCompletion.Value
+                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
                 };
                 DirectorAPI.DirectorCardHolder dchMechanicalSpiderDefault = new DirectorAPI.DirectorCardHolder
                 {
@@ -827,6 +827,38 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
+
+                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpiderGrassy", spiderMaster, MechanicalSpiderFactory.SkinDefs.Grassy, MechanicalSpiderFactory.MechanicalSpiderBody);
+                var dcMechanicalSpiderGrassy = new DirectorCard
+                {
+                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy,
+                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchMechanicalSpiderGrassy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcMechanicalSpiderGrassy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
+
+                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpiderSnowy", spiderMaster, MechanicalSpiderFactory.SkinDefs.Snowy, MechanicalSpiderFactory.MechanicalSpiderBody);
+                var dcMechanicalSpiderSnowy = new DirectorCard
+                {
+                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy,
+                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchMechanicalSpiderSnowy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcMechanicalSpiderSnowy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
 
                 MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken = spiderFactory.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", spiderInteractable);
 

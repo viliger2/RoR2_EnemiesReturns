@@ -133,6 +133,17 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
+        [ConCommand(commandName = "returns_spawn_spiders", flags = ConVarFlags.None, helpText = "Spawns all Mechanical Spider variants")]
+        private static void CCPocketSpiders(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
         private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)
         {
             var spawnRequest = new DirectorSpawnRequest(

@@ -15,6 +15,8 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> MinimumStageCompletion;
 
         public static ConfigEntry<string> DefaultStageList;
+        public static ConfigEntry<string> GrassyStageList;
+        public static ConfigEntry<string> SnowyStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -56,11 +58,26 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VerdantFalls),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ViscousFalls),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                 ),
                 "Stages that Default Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+            
+            SnowyStageList = config.Bind("Mechanical Spider Director", "Snowy Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum)
+                ),
+                "Stages that Snowy Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            GrassyStageList = config.Bind("Mechanical Spider Director", "Grassy Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall)
+                ),
+                "Stages that Grassy Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Mechanical Spider Character Stats", "Base Max Health", 140f, "Mechanical Spider's base health.");
             BaseMoveSpeed = config.Bind("Mechanical Spider Character Stats", "Base Movement Speed", 9f, "Mechanical Spider's base movement speed.");
