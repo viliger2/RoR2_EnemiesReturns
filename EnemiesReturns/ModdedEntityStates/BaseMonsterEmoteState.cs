@@ -42,7 +42,6 @@ namespace EnemiesReturns.ModdedEntityStates
             {
                 GlobalEventManager.onServerDamageDealt -= GlobalEventManager_onServerDamageDealt;
             }
-
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport report)

@@ -19,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         public static string soundString = "ER_Spider_Fire_Play";
 
+        public static string soundStringMinion = "ER_Spider_Fire_Drone_Play";
+
         public static float damageCoefficient => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotDamage.Value;
 
         public static float force = 0f;
@@ -47,6 +49,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         private int shotsFired;
 
+        private bool isMinion = false;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -54,6 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             duration = baseDuration / attackSpeedStat;
             totalDuration = duration + delay * (numberOfShots - 1);
             PlayAnimation("Gesture, Additive", "Fire", "Fire.playbackRate", duration);
+            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
             FireProjectile();
             shotsFired = 1;
         }
@@ -110,7 +115,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                     null,
                     projectileSpeed);
             }
-            Util.PlayAttackSpeedSound(soundString, gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound(isMinion ? soundStringMinion : soundString, gameObject, attackSpeedStat);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

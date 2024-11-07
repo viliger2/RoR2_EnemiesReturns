@@ -16,11 +16,17 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
 
         public static float duration => Configuration.MechanicalSpider.DashDuration.Value;
 
+        public static string soundString = "ER_Spider_Dash_Play";
+
+        public static string soundStringMinion = "ER_Spider_Dash_Drone_Play";
+
         private bool startedStateGrounded;
 
         private Vector3 forwardDirection;
 
         private Transform ledgeHandling;
+
+        private bool isMinion = false;
 
         public override void OnEnter()
         {
@@ -42,7 +48,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
                 characterMotor.velocity = velocity;
             }
             PlayCrossfade("Body", "Dash", 0.2f);
-            Util.PlaySound("ER_Spider_Dash_Play", base.gameObject);
+            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
+            Util.PlaySound(isMinion ? soundStringMinion : soundString, base.gameObject);
             ledgeHandling = FindModelChild("LedgeHandling");
         }
 

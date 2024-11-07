@@ -13,11 +13,17 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         public static float baseDuration = 0.5f;
 
+        public static string soundString = "ER_Spider_Fire_Charge_Play";
+
+        public static string soundStringMinion = "ER_Spider_Fire_Charge_Drone_Play";
+
         private float duration;
 
         private GameObject chargeEffect;
 
         protected EffectManagerHelper _efh_Charge;
+
+        private bool isMinion = false;
 
         public override void OnEnter()
         {
@@ -25,7 +31,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             duration = baseDuration / attackSpeedStat;
             SpawnEffect(FindModelChild("GunNozzle"));
             PlayAnimation("Gesture, Additive", "ChargeFire", "Fire.playbackRate", duration);
-            Util.PlaySound("ER_Spider_Fire_Charge_Play", base.gameObject);
+            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
+            Util.PlaySound(isMinion ? soundStringMinion : soundString, base.gameObject);
         }
 
         public override void FixedUpdate()
