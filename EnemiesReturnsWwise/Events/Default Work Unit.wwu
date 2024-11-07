@@ -617,6 +617,43 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Folder Name="Drone" ID="{8B994910-40A1-4C7E-A0F8-7E70002560AB}" ShortID="77402318">
+									<ChildrenList>
+										<Event Name="ER_Spider_Dash_Drone_Play" ID="{D5A79C98-BD4E-4333-8071-134C09EA701B}">
+											<ChildrenList>
+												<Action Name="" ID="{64D863D1-C705-4E35-B042-63AFBEA1FF43}" ShortID="326533934">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Spider_Dash_Drone" ID="{0ED67475-32F3-4259-A870-CB60CEC42C92}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Spider_Fire_Drone_Play" ID="{7E4F4248-0FA4-4DDC-9B51-6960643B0F44}">
+											<ChildrenList>
+												<Action Name="" ID="{9780688D-8F19-466C-9451-8E5462D561BB}" ShortID="370701698">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Spider_Shoot_Drone" ID="{705C5AB8-B808-43CA-85BF-78ACDF1E023A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Spider_Fire_Charge_Drone_Play" ID="{7379B184-5724-4FB2-8BDD-BE93F9D8051B}">
+											<ChildrenList>
+												<Action Name="" ID="{922DA902-6C67-45FE-8C38-AEA98F7EF0CA}" ShortID="570730738">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Spider_Fire_Charge_Drone" ID="{23EA7D28-7669-4384-99E8-210D956A4C1F}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

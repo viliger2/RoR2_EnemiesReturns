@@ -1957,6 +1957,94 @@
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
+												<Sound Name="Spider_Shoot_Drone" ID="{705C5AB8-B808-43CA-85BF-78ACDF1E023A}" ShortID="409467725">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="Highpass" Type="int16">
+															<ValueList>
+																<Value>41</Value>
+															</ValueList>
+														</Property>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>800</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wPlasma" ID="{E0FC0F9B-C878-45B8-BE71-E89A182FA0EB}">
+															<Language>SFX</Language>
+															<AudioFile>MechanicalSpider\wPlasma.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="670225552"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wPlasma" ID="{E0FC0F9B-C878-45B8-BE71-E89A182FA0EB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Spider_Dash_Drone" ID="{0ED67475-32F3-4259-A870-CB60CEC42C92}" ShortID="186392746">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="Highpass" Type="int16">
+															<ValueList>
+																<Value>40</Value>
+															</ValueList>
+														</Property>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>800</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wCommandoSlide" ID="{407CC93E-BBE3-41AD-BA34-43EA31FEF896}">
+															<Language>SFX</Language>
+															<AudioFile>MechanicalSpider\wCommandoSlide.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="922813275"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wCommandoSlide" ID="{407CC93E-BBE3-41AD-BA34-43EA31FEF896}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</ActorMixer>
 										<Sound Name="Spider_Spawn" ID="{B2757885-0BFC-4E88-A8C7-FC156579A0D7}" ShortID="898731203">
@@ -2021,7 +2109,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-8</Value>
+														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2138,6 +2226,50 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="alive_loop" ID="{701FFA61-0AAB-441A-BD63-0C06763F1DA3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Spider_Fire_Charge_Drone" ID="{23EA7D28-7669-4384-99E8-210D956A4C1F}" ShortID="814321574">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>40</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>800</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="charge" ID="{89DA17FE-34D0-401F-9257-B0BCEC469D16}">
+													<Language>SFX</Language>
+													<AudioFile>MechanicalSpider\charge.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="316040690"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="charge" ID="{89DA17FE-34D0-401F-9257-B0BCEC469D16}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

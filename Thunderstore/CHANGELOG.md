@@ -1,4 +1,18 @@
 <details>
+<summary>0.3.4</summary>
+
+* Updated pt-BR translation.
+* Mechanical Spider:
+	* Added 20 BoostHP items to drone, which boosts drone health by 200% of normal. Value can be configured in the config.
+	* Added [RiskyMod](https://thunderstore.io/package/Risky_Lives/RiskyMod/) minion items to drone.
+	* Drone now persists through stages. 
+	* Lowered chance of drone interactable spawn to 2% (was 20%).
+	* Slightly lowered volume of gun charging sound.
+	* Added "new" sounds and visuals to drone. Lowered drone sound range.
+	* Drone spiders now always spawn drone interactable on death.
+	* Improved drone's AI, now it shouldn't shoot at player as its first shot.
+</details>
+<details>
 <summary>0.3.3</summary>
 
 * Added new Small-tier monster: Mechanical Spider.
