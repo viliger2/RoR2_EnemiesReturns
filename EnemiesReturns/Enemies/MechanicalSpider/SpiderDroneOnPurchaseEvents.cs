@@ -62,13 +62,25 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 {
                     master.inventory.CopyEquipmentFrom(inventory);
                     master.inventory.CopyItemsFrom(inventory);
-                    master.inventory.GiveItem(RoR2Content.Items.MinionLeash);
+                    GiveMinionItems(master.inventory);
                 }
             }
 
             if(eventFunctions)
             {
                 eventFunctions.DestroySelf();
+            }
+        }
+
+        private void GiveMinionItems(Inventory inventory)
+        {
+            inventory.GiveItem(RoR2Content.Items.MinionLeash, 1);
+            inventory.GiveItem(RoR2Content.Items.BoostHp, EnemiesReturns.Configuration.MechanicalSpider.DroneBonusHP.Value);
+            if (ModCompats.RiskyModCompat.enabled)
+            {
+                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);
+                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyScaling, 1);
+                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyRegen, 40);
             }
         }
 

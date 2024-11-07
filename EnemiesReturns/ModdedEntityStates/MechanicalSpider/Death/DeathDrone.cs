@@ -79,6 +79,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 
         private void SpawnDrone(Vector3 spawnPosition)
         {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
             var placementRule = new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Direct,
@@ -93,6 +98,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 {
                     inventory.CopyEquipmentFrom(characterBody.inventory);
                     inventory.CopyItemsFrom(characterBody.inventory);
+                    DeleteMinionItems(inventory);
                 }
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
@@ -111,6 +117,28 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     }
                     purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier));
                 }
+            }
+        }
+
+        private void DeleteMinionItems(Inventory inventory)
+        {
+            // this entire thing so we don't remove elite bonus stats from the body
+            int bonusHpToRemove = EnemiesReturns.Configuration.MechanicalSpider.DroneBonusHP.Value;
+            var equipment = inventory.GetEquipment(0).equipmentDef;
+            if (equipment && equipment.passiveBuffDef && equipment.passiveBuffDef.eliteDef)
+            {
+                var num = equipment.passiveBuffDef.eliteDef.healthBoostCoefficient;
+                var num2 = Mathf.RoundToInt((num - 1f) * 10f);
+                bonusHpToRemove = Mathf.Min(inventory.GetItemCount(RoR2Content.Items.BoostHp) - num2, 0);
+            }
+
+            inventory.RemoveItem(RoR2Content.Items.MinionLeash, inventory.GetItemCount(RoR2Content.Items.MinionLeash));
+            inventory.RemoveItem(RoR2Content.Items.BoostHp, bonusHpToRemove);
+            if (ModCompats.RiskyModCompat.enabled)
+            {
+                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyScaling, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyScaling));
+                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyMarker));
+                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyRegen, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyRegen));
             }
         }
     }
