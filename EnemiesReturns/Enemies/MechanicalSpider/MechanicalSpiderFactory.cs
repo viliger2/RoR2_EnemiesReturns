@@ -46,6 +46,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             public static SkinDef Default;
             public static SkinDef Grassy;
             public static SkinDef Snowy;
+            public static SkinDef Minion;
         }
 
         public struct SpawnCards
@@ -123,6 +124,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             AddMainBodyComponents(bodyPrefab, sprite, null);
 
+            #region EntityStateMachine_Body
             var esms = bodyPrefab.GetComponents<EntityStateMachine>();
             foreach(var esm in esms)
             {
@@ -132,23 +134,56 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                     break;
                 }
             }
+            #endregion
 
+            #region CharacterBody
             var body = bodyPrefab.GetComponent<CharacterBody>();
             body.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;
             body.levelRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneLevelRegen.Value;
+            #endregion
 
+            #region SfxLocator
             var sfxLocator = bodyPrefab.GetComponent<SfxLocator>();
             sfxLocator.aliveLoopStart = "";
             sfxLocator.aliveLoopStop = "";
+            #endregion
 
+            #region SpiderVictoryDanceController
             bodyPrefab.AddComponent<SpiderVictoryDanceController>().body = body;
+            #endregion
+
+            #region CharacterDeathBehavior
+            bodyPrefab.GetComponent<CharacterDeathBehavior>().deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathDrone));
+            #endregion
+
+            #region CharacterModel
+            var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/MechanicalSpider").gameObject.GetComponent<SkinnedMeshRenderer>();
+            modelRenderer.material = ContentProvider.MaterialCache["matMechanicalSpiderMinion"];
 
             var mdlMechanicalSpider = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider").gameObject;
+            var characterModel = mdlMechanicalSpider.GetComponent<CharacterModel>();
+            characterModel.baseRendererInfos = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = modelRenderer,
+                    defaultMaterial = modelRenderer.material,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    ignoreOverlays = false,
+                    hideOnDeath = false
+                }
+            };
+            #endregion
+
+            #region ModelSkinController
+            SkinDefs.Minion = CreateSkinDef("skinMechanicalSpiderMinion", mdlMechanicalSpider, characterModel.baseRendererInfos);
+
             var modelSkinController = mdlMechanicalSpider.AddComponent<ModelSkinController>();
             modelSkinController.skins = new SkinDef[]
             {
-                SkinDefs.Default
+                SkinDefs.Minion
             };
+            #endregion
 
             bodyPrefab.RegisterNetworkPrefab();
 
@@ -503,6 +538,10 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             asdReturnToLeader.resetCurrentEnemyOnNextDriverSelection = true;
             asdReturnToLeader.noRepeat = false;
             asdReturnToLeader.nextHighPriorityOverride = null;
+            #endregion
+
+            #region SetDontDestroyOnLoad
+            masterPrefab.AddComponent<SetDontDestroyOnLoad>();
             #endregion
 
             masterPrefab.RegisterNetworkPrefab();
@@ -1152,7 +1191,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 TitleColor = Color.white,
                 isConsumedItem = false
             };
-            interactablePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef; // TODO
+            interactablePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef;
             #endregion
 
             #region Inventory
