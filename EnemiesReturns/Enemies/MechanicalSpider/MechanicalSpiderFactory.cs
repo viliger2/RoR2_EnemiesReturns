@@ -380,7 +380,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             asdHardLeashToLeader.activationRequiresAimConfirmation = false;
             asdHardLeashToLeader.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
             asdHardLeashToLeader.moveInputScale = 1;
-            asdHardLeashToLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdHardLeashToLeader.aimType = AISkillDriver.AimType.AtCurrentEnemy;
             asdHardLeashToLeader.ignoreNodeGraph = false;
             asdHardLeashToLeader.shouldSprint = false;
             asdHardLeashToLeader.shouldFireEquipment = false;
@@ -460,7 +460,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             asdStrafeAndShoot.shouldFireEquipment = false;
             asdStrafeAndShoot.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            asdStrafeAndShoot.driverUpdateTimerOverride = -1;
+            asdStrafeAndShoot.driverUpdateTimerOverride = -1f;
             asdStrafeAndShoot.resetCurrentEnemyOnNextDriverSelection = false;
             asdStrafeAndShoot.noRepeat = false;
             asdStrafeAndShoot.nextHighPriorityOverride = null;
@@ -528,7 +528,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             asdReturnToLeader.activationRequiresAimConfirmation = false;
             asdReturnToLeader.movementType = AISkillDriver.MovementType.StrafeMovetarget;
             asdReturnToLeader.moveInputScale = 1;
-            asdReturnToLeader.aimType = AISkillDriver.AimType.AtMoveTarget;
+            asdReturnToLeader.aimType = AISkillDriver.AimType.AtCurrentEnemy;
             asdReturnToLeader.ignoreNodeGraph = false;
             asdReturnToLeader.shouldSprint = false;
             asdReturnToLeader.shouldFireEquipment = false;
