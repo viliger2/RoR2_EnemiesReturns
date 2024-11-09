@@ -1505,17 +1505,70 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             main.startColor = new Color(0.8490566f, 0.6350543f, 0.1321645f);
 
             projectileEffect.transform.Find("Point Light").gameObject.GetComponent<Light>().color = new Color(0.8490566f, 0.6350543f, 0.1321645f);
-            projectileEffect.transform.Find("Ring, Mesh").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileMaterial);
+            projectileEffect.transform.Find("Ring, Mesh").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileImpactMaterial);
 
             return projectileEffect;
         }
 
         public GameObject CreateDoubleShotGhostPrefab()
         {
-            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitGhost.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectileGhost", false);
-            projectileGhost.transform.Find("Goo, WS").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileMaterial);
-            projectileGhost.transform.Find("Goo, Directional").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileMaterial);
-            projectileGhost.transform.Find("Trail").gameObject.GetComponent<TrailRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotTrail", CreateDoubleShotTrailMaterial);
+            // TODO: maybe scale
+            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/FMJRampingGhost.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectileGhost", false);
+
+            var flames = projectileGhost.transform.Find("Flames").gameObject;
+            flames.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectileFlames", CreateDoubleShotProjectileFlamesMaterial);
+            var flamesCoL = flames.GetComponent<ParticleSystem>().colorOverLifetime;
+            var flameGradient = new Gradient();
+            flameGradient.mode = GradientMode.Blend;
+            flameGradient.alphaKeys = new GradientAlphaKey[]
+            {
+                new GradientAlphaKey{alpha = 0f, time = 0f },
+                new GradientAlphaKey{alpha = 255f, time = 0.138f },
+                new GradientAlphaKey{alpha = 0f, time = 1f}
+            };
+            flameGradient.colorKeys = new GradientColorKey[]
+            {
+                new GradientColorKey{color = new Color(1f, 0.969696f, 0.6196f), time = 0f},
+                new GradientColorKey{color = new Color(0.9137f, 0.5220f, 0.0039f), time = 0.418f},
+            };
+            flamesCoL.color = new ParticleSystem.MinMaxGradient(flameGradient);
+
+            projectileGhost.transform.Find("BurstVFX").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectileBurst", CreateDoubleShotProjectileBurstMaterial);
+
+            var trail = projectileGhost.transform.Find("Trail").gameObject;
+            var trailTrail = trail.GetComponent<TrailRenderer>();
+            var trailGradient = new Gradient();
+            trailGradient.mode = GradientMode.Blend;
+            trailGradient.alphaKeys = new GradientAlphaKey[]
+            {
+                new GradientAlphaKey{alpha = 255f, time = 0.421f },
+                new GradientAlphaKey{alpha = 4f, time = 1f}
+            };
+            trailGradient.colorKeys = new GradientColorKey[]
+            {
+                new GradientColorKey{color = new Color(1f, 1f, 1f), time = 0f},
+                new GradientColorKey{color = new Color(0.4705f, 0.8840f, 09f), time = 0.038f},
+                new GradientColorKey{color = new Color(0.4235f, 0.6274f, 0.9058f), time = 0.156f},
+                new GradientColorKey{color = new Color(0.2666f, 0.2196f, 0.0941f), time = 1f},
+            };
+            trailTrail.colorGradient = trailGradient;
+            trailTrail.material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectileTrail", CreateDoubleShotProjectileTrailMaterial);
+
+            var core = projectileGhost.transform.Find("Core").gameObject;
+            var coreCoL = core.GetComponent<ParticleSystem>().colorOverLifetime;
+            coreCoL.color = new ParticleSystem.MinMaxGradient(flameGradient);
+
+            projectileGhost.transform.Find("Point Light").gameObject.GetComponent<Light>().color = new Color(0.8490566f, 0.6350543f, 0.1321645f);
+
+            return projectileGhost;
+        }
+
+        public GameObject CreateDoubleShotGhostPrefabOld()
+        {
+            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitGhost.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectileGhostOld", false);
+            projectileGhost.transform.Find("Goo, WS").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileImpactMaterial);
+            projectileGhost.transform.Find("Goo, Directional").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotProjectile", CreateDoubleShotProjectileImpactMaterial);
+            projectileGhost.transform.Find("Trail").gameObject.GetComponent<TrailRenderer>().material = ContentProvider.GetOrCreateMaterial("matMechanicalSpiderDoubleShotTrail", CreateDoubleShotTrailOldMaterial);
 
             projectileGhost.transform.Find("Point light").gameObject.GetComponent<Light>().color = new Color(0.8490566f, 0.6350543f, 0.1321645f);
 
@@ -1524,7 +1577,34 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return projectileGhost;
         }
 
-        public Material CreateDoubleShotProjectileMaterial()
+        public Material CreateDoubleShotProjectileTrailMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Commando/matCommandoShotgunTracerCore.mat").WaitForCompletion());
+            material.name = "matMechanicalSpiderDoubleShotProjectileTrail";
+            material.SetColor("_TintColor", new Color(1f, 0.6540f, 0f, 1f));
+
+            return material;
+        }
+
+        public Material CreateDoubleShotProjectileFlamesMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Commando/matCommandoFmjSweetSpotGlow.mat").WaitForCompletion());
+            material.name = "matMechanicalSpiderDoubleShotProjectileFlames";
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public Material CreateDoubleShotProjectileBurstMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Commando/matCommandoFmjSweetSpotBurst.mat").WaitForCompletion());
+            material.name = "matMechanicalSpiderDoubleShotProjectileBurst";
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/DLC1/Common/ColorRamps/texRampConstructLaser.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public Material CreateDoubleShotProjectileImpactMaterial()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/FlyingVermin/matVerminGooSmall.mat").WaitForCompletion());
             material.name = "matMechanicalSpiderDoubleShotProjectile";
@@ -1541,7 +1621,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return material;
         }
 
-        public Material CreateDoubleShotTrailMaterial()
+        public Material CreateDoubleShotTrailOldMaterial()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/FlyingVermin/matVerminGooTrail.mat").WaitForCompletion());
             material.name = "matMechanicalSpiderDoubleShotTrail";
