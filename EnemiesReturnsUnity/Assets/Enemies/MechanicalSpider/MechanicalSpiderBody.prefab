@@ -2244,6 +2244,16 @@ MonoBehaviour:
     transform: {fileID: 858246957448313346}
   - name: Smoke
     transform: {fileID: 6530823596440963617}
+  - name: FrontRightLeg
+    transform: {fileID: 8311696577124596876}
+  - name: FrontLeftLeg
+    transform: {fileID: 3019135980583665572}
+  - name: BackRightLeg
+    transform: {fileID: 4160541338555424133}
+  - name: BackLeftLeg
+    transform: {fileID: 5644970951542343668}
+  - name: Root
+    transform: {fileID: 4632532354404372284}
 --- !u!114 &4338243821544047986
 MonoBehaviour:
   m_ObjectHideFlags: 0
