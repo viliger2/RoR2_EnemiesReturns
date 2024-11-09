@@ -13,8 +13,10 @@ namespace EnemiesReturns.Configuration
 
         public static void PopulateConfig(ConfigFile config)
         {
+#if DEBUG || NOWEAVER
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
             testconfig = config.Bind("test", "test", 5f, "test");
+#endif
         }
     }
 }

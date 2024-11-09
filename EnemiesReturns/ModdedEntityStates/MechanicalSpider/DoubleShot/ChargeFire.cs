@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
     {
         public static GameObject effectPrefab;
 
-        public static float baseDuration = 0.5f;
+        public static float baseDuration => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotChargeDuration.Value;
 
         public static string soundString = "ER_Spider_Fire_Charge_Play";
 

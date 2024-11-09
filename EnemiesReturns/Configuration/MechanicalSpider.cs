@@ -29,6 +29,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<float> DoubleShotCooldown;
         public static ConfigEntry<float> DoubleShotDamage;
+        public static ConfigEntry<float> DoubleShotChargeDuration;
         public static ConfigEntry<int> DoubleShotShots;
         public static ConfigEntry<float> DoubleShotProjectileSpeed;
         public static ConfigEntry<float> DoubleShotDelayBetween;
@@ -97,8 +98,9 @@ namespace EnemiesReturns.Configuration
             DoubleShotShots = config.Bind("Mechanical Spider Double Shot", "Double Shot Shots", 2, "Mechanical Spider's Double Shot number of shots, making it, surprisingly, not double.");
             DoubleShotDelayBetween = config.Bind("Mechanical Spider Double Shot", "Double Shot Delay Between Shots", 0.15f, "Mechanical Spider's Double Shot delay between shots. First shot always comes out instantly after charging state is done, each one after comes out with this delay.");
             DoubleShotProjectileSpeed = config.Bind("Mechanical Spider Double Shot", "Double Shot Projectile Speed", 100f, "Mechanical Spider's Double Shot projectile speed.");
-            DoubleShotMinSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Minimal Spread", 0f, "Mechanical Spider's minimal spread.");
-            DoubleShotMaxSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Maximum Spread", 0f, "Mechanical Spider's maximum spread.");
+            DoubleShotMinSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Minimal Spread", 0f, "Mechanical Spider's Double Shot minimal spread.");
+            DoubleShotMaxSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Maximum Spread", 0f, "Mechanical Spider's Double Shot maximum spread.");
+            DoubleShotChargeDuration = config.Bind("Mechanical Spider Double Shot", "Double Shot Charge Duration", 0.5f, "Mechanical Spider's Double Shot charge duration.");
 
             DashCooldown = config.Bind("Mechanical Spider Dash", "Dash Cooldown", 5f, "Mechanical Spider's Dash cooldown.");
             DashDuration = config.Bind("Mechanical Spider Dash", "Dash Duration", 0.75f, "Mechanical Spider's Dash duration. Basically controls how far it will go.");

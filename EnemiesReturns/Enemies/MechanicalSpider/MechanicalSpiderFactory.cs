@@ -1390,7 +1390,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             var particleDuration = chargeEffect.GetComponent<ScaleParticleSystemDuration>();
             particleDuration.initialDuration = 3f; // same as charge state duration
-            particleDuration._newDuration = 0.5f; // same as charge state duration
+            particleDuration._newDuration = EnemiesReturns.Configuration.MechanicalSpider.DoubleShotChargeDuration.Value; // same as charge state duration
 
             var light = chargeEffect.transform.Find("Point light").gameObject.GetComponent<Light>();
             light.color = new Color(0.8490566f, 0.6350543f, 0.1321645f);
