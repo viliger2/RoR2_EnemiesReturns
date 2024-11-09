@@ -46,6 +46,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DroneBaseRegen;
         public static ConfigEntry<float> DroneLevelRegen;
         public static ConfigEntry<int> DroneBonusHP;
+        public static ConfigEntry<int> DroneBonusDamage;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -112,6 +113,7 @@ namespace EnemiesReturns.Configuration
             DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 5f, "Base health regeneration of allied Mechanical Spider.");
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
             DroneBonusHP = config.Bind("Mechanical Spider Drone", "Bonus HP Boost", 20, "Bonus health boost from base stats (the same as normal spider), boosts by 10% for each value.");
+            DroneBonusDamage = config.Bind("Mechanical Spider Drone", "Bonus Damage Boost", 10, "Bonus damage boost from base stats (the same as normal spider), boosts by 10% for each value.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }
