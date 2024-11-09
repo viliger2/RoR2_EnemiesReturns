@@ -61,7 +61,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 if (master && master.inventory && inventory)
                 {
                     master.inventory.CopyEquipmentFrom(inventory);
-                    master.inventory.CopyItemsFrom(inventory);
+                    master.inventory.AddItemsFrom(inventory);
                     GiveMinionItems(master.inventory);
                 }
             }
