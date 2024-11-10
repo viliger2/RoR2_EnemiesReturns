@@ -1,4 +1,20 @@
 <details>
+<summary>0.3.5</summary>
+
+* Additional assets optimization.
+	* _This time it is sounds. Mod now should be about 2 mbs lighter compared to previous version._
+* Mechanical Spider:
+	* Added elite + Spare Drone Parts displays.
+	* Fixed drone not getting UseAmbientLevel item.
+		* _For those who don't know - basically it meant drone spiders were not leveling up during stage together with the rest of the survivors. Their stats would adjust in next stage tho, so they weren't stuck on the level you bought then._
+	* Added 10 DamageBoost items to drone, which boosts drone's damage by 100% of normal. Value can be configured in the config.
+	* Double Shot:
+		* Exposed charge duration to config.
+		* New projectile visuals. Projectile behaviour is unchanged.
+	* Spawn sound is limited to two instances globally.
+		* _Since the director has tendency to spawn spiders in groups of at least 3 or more, spawn sounds can get layered on top of each other and result in very grating experience. Instead of replacing or adjusting it, I decided to just limit it, since the sound itself comes straight from RoRR, so I don't want to touch it for legacy reasons._
+</details>
+<details>
 <summary>0.3.4</summary>
 
 * Updated pt-BR translation.
