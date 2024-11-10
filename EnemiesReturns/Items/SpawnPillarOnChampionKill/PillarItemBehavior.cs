@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using R2API;
 using RoR2;
 using RoR2.CharacterAI;
 using static RoR2.CharacterBody;
@@ -10,36 +11,39 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
     {
         public void OnKilledOtherServer(DamageReport damageReport)
         {
-            bool spawn = false;
-            if (damageReport.victimBody)
+            if (!damageReport.damageInfo.procChainMask.HasModdedProc(Enemies.Ifrit.Pillar.IfritPillarFactory.PillarExplosion))
             {
-                spawn = damageReport.victimBody.isChampion;
-                if (!spawn && damageReport.victimBody.isElite)
+                bool spawn = false;
+                if (damageReport.victimBody)
                 {
-                    spawn = Util.CheckRoll(EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
-                }
-            }
-            if (spawn)
-            {
-                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
-                {
-                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
-                    position = damageReport.victimBody.transform.position
-                }, RoR2Application.rng);
-                directorSpawnRequest.summonerBodyObject = base.gameObject;
-                directorSpawnRequest.ignoreTeamMemberLimit = true;
-                directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
-                {
-                    if (spawnResult.success && spawnResult.spawnedInstance)
+                    spawn = damageReport.victimBody.isChampion;
+                    if (!spawn && damageReport.victimBody.isElite)
                     {
-                        var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
-                        if (aiownership)
-                        {
-                            aiownership.ownerMaster = this.body.master;
-                        }
+                        spawn = Util.CheckRoll(EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
                     }
-                };
-                DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
+                }
+                if (spawn)
+                {
+                    DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
+                    {
+                        placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
+                        position = damageReport.victimBody.transform.position
+                    }, RoR2Application.rng);
+                    directorSpawnRequest.summonerBodyObject = base.gameObject;
+                    directorSpawnRequest.ignoreTeamMemberLimit = true;
+                    directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
+                    {
+                        if (spawnResult.success && spawnResult.spawnedInstance)
+                        {
+                            var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
+                            if (aiownership)
+                            {
+                                aiownership.ownerMaster = this.body.master;
+                            }
+                        }
+                    };
+                    DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
+                }
             }
         }
     }

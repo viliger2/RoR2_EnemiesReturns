@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Configuration;
 using EnemiesReturns.PrefabAPICompat;
+using R2API;
 using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace EnemiesReturns.Items.ColossalKnurl
         public static ItemDef itemDef;
 
         public static GameObject projectilePrefab;
+
+        public static R2API.ModdedProcType ColossalFist;
 
         public ItemDef CreateItem(GameObject prefab, Sprite icon)
         {
@@ -85,7 +88,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.lifetime = 0.65f; // matches with animation and sound, DO NOT TOUCH
             projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion();
 
-            fistPrefab.RegisterNetworkPrefab();
+            MyPrefabAPI.RegisterNetworkPrefab(fistPrefab);
 
             return fistPrefab;
         }
@@ -97,32 +100,37 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
-            var itemCount = attackerBody.inventory.GetItemCount(itemDef);
-            if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
+            if (!damageInfo.procChainMask.HasModdedProc(ColossalFist))
             {
-                bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath
-                if (victim.TryGetComponent<CharacterBody>(out var victimBody))
+                var itemCount = attackerBody.inventory.GetItemCount(itemDef);
+                if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
                 {
-                    isFlying = victimBody.isFlying;
+                    bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath
+                    if (victim.TryGetComponent<CharacterBody>(out var victimBody))
+                    {
+                        isFlying = victimBody.isFlying;
+                    }
+
+                    var position = damageInfo.position;
+                    if (!isFlying && Physics.Raycast(new Ray(damageInfo.position, Vector3.down), out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                    {
+                        position = hitInfo.point;
+                    }
+
+                    float damageCoef = EnemiesReturns.Configuration.Colossus.KnurlDamage.Value + EnemiesReturns.Configuration.Colossus.KnurlDamagePerStack.Value * (itemCount - 1);
+
+                    var fireProjectileInfo = default(FireProjectileInfo);
+                    fireProjectileInfo.projectilePrefab = projectilePrefab;
+                    fireProjectileInfo.position = position;
+                    fireProjectileInfo.rotation = Quaternion.identity;
+                    fireProjectileInfo.owner = attackerBody.gameObject;
+                    fireProjectileInfo.damage = damageInfo.damage * damageCoef;
+                    fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
+                    fireProjectileInfo.crit = damageInfo.crit;
+                    fireProjectileInfo.procChainMask = damageInfo.procChainMask;
+                    fireProjectileInfo.procChainMask.AddModdedProc(ColossalFist);
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
-
-                var position = damageInfo.position;
-                if (!isFlying && Physics.Raycast(new Ray(damageInfo.position, Vector3.down), out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                {
-                    position = hitInfo.point;
-                }
-
-                float damageCoef = EnemiesReturns.Configuration.Colossus.KnurlDamage.Value + EnemiesReturns.Configuration.Colossus.KnurlDamagePerStack.Value * (itemCount - 1);
-
-                var fireProjectileInfo = default(FireProjectileInfo);
-                fireProjectileInfo.projectilePrefab = projectilePrefab;
-                fireProjectileInfo.position = position;
-                fireProjectileInfo.rotation = Quaternion.identity;
-                fireProjectileInfo.owner = attackerBody.gameObject;
-                fireProjectileInfo.damage = damageInfo.damage * damageCoef;
-                fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
-                fireProjectileInfo.crit = damageInfo.crit;
-                ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
         }
 

@@ -337,6 +337,8 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState.fireballYCurve = acdLookup["acdFireballFallCurve"].curve;
 
+                IfritPillarFactory.PillarExplosion = ProcTypeAPI.ReserveProcType();
+
                 if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
                 {
                     var pillarEnemyBodyInformation = new IfritPillarFactory.BodyInformation
@@ -603,6 +605,8 @@ namespace EnemiesReturns
             ExplicitPickupDropTable dtColossus = null;
             if (EnemiesReturns.Configuration.Colossus.ItemEnabled.Value)
             {
+                Items.ColossalKnurl.ColossalKnurlFactory.ColossalFist = ProcTypeAPI.ReserveProcType();
+
                 var knurlFactory = new ColossalKnurlFactory();
 
                 ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);

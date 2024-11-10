@@ -46,6 +46,8 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             public float explosionRadius;
         }
 
+        public static R2API.ModdedProcType PillarExplosion;
+
         public GameObject CreateBody(BodyInformation bodyInformation, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             var bodyPrefab = bodyInformation.bodyPrefab;
