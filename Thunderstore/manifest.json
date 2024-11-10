@@ -1,6 +1,6 @@
 {
     "name": "EnemiesReturns",
-    "version_number": "0.3.5",
+    "version_number": "0.3.6",
     "website_url": "https://github.com/viliger2/RoR2_EnemiesReturns",
     "description": "Brings back a few guys lost on the way here.",
     "dependencies": [
@@ -9,6 +9,7 @@
 	"viliger-RestoreGrandparentRock-1.0.0",
 	"RiskofThunder-R2API_Deployable-1.0.1",
 	"RiskofThunder-R2API_Director-2.3.1",
-	"RiskofThunder-R2API_Elites-1.0.6"
+	"RiskofThunder-R2API_Elites-1.0.6",
+	"RiskofThunder-R2API_ProcType-1.0.1"	
     ]
 }

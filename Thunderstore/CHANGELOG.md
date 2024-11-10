@@ -1,4 +1,10 @@
 <details>
+<summary>0.3.6</summary>
+
+* ProcTypeAPI support.
+	* _This just means that Colossal Fist and Infernal Lantern can't proc themselves._
+</details>
+<details>
 <summary>0.3.5</summary>
 
 * Additional assets optimization.
