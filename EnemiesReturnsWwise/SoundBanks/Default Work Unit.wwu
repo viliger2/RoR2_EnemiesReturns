@@ -7,7 +7,9 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Default Work Unit" ID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
-					<ObjectExclusionList/>
+					<ObjectExclusionList>
+						<ObjectRef Name="Pillar_Lava" ID="{AC296BFF-8368-4B38-8A47-F8E73CEB9A4C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+					</ObjectExclusionList>
 					<GameSyncExclusionList/>
 				</SoundBank>
 			</ChildrenList>
