@@ -1,8 +1,4 @@
-﻿using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
@@ -17,7 +13,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         private void Awake()
         {
-            if(!characterBody)
+            if (!characterBody)
             {
                 characterBody = GetComponent<CharacterBody>();
             }
@@ -30,7 +26,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
-            if(!characterBody || characterBody.isPlayerControlled || !characterBody.hasEffectiveAuthority)
+            if (!characterBody || characterBody.isPlayerControlled || !characterBody.hasEffectiveAuthority)
             {
                 this.enabled = false;
                 return;
@@ -43,7 +39,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 return;
             }
 
-            if(mainStateMachine.IsInMainState() && characterBody.healthComponent.alive)
+            if (mainStateMachine.IsInMainState() && characterBody.healthComponent.alive)
             {
                 skillToExecute.ExecuteIfReady();
             }

@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -78,7 +77,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             var childLocator = GetModelChildLocator();
             animator = GetModelAnimator();
             footstepHandler = animator.GetComponent<FootstepHandler>();
-            if(footstepHandler)
+            if (footstepHandler)
             {
                 baseFootstepString = footstepHandler.baseFootstepString;
                 footstepHandler.baseFootstepString = overrideFootstepString;

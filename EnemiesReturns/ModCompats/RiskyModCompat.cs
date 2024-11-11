@@ -1,7 +1,5 @@
 ﻿using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns.ModCompats
@@ -16,7 +14,7 @@ namespace EnemiesReturns.ModCompats
 
         public static bool enabled;
 
-        [SystemInitializer(new Type[] {typeof(ItemCatalog)})]
+        [SystemInitializer(new Type[] { typeof(ItemCatalog) })]
         private static void Init()
         {
             if (!RoR2.ItemCatalog.availability.available)
@@ -27,7 +25,7 @@ namespace EnemiesReturns.ModCompats
             RiskyModAllyMarker = ItemCatalog.FindItemIndex("RiskyModAllyMarkerItem");
             RiskyModAllyScaling = ItemCatalog.FindItemIndex("RiskyModAllyScalingItem");
             RiskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
-            if(RiskyModAllyMarker != ItemIndex.None)
+            if (RiskyModAllyMarker != ItemIndex.None)
             {
                 enabled = true;
             }

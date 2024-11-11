@@ -1,7 +1,4 @@
-﻿using EntityStates;
-using Mono.Cecil;
-using RoR2;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {

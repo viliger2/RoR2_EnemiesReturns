@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿using UnityEngine;
 
 namespace EnemiesReturns.Helpers
 {
@@ -20,14 +16,15 @@ namespace EnemiesReturns.Helpers
         private void FixedUpdate()
         {
             time += Time.deltaTime;
-            if(animator)
+            if (animator)
             {
-                for(int i = 0; i < animator.layerCount; i++)
+                for (int i = 0; i < animator.layerCount; i++)
                 {
                     var clipInfo = animator.GetCurrentAnimatorClipInfo(i);
-                    foreach (var clipInfo2 in clipInfo) {
+                    foreach (var clipInfo2 in clipInfo)
+                    {
                         Log.Info($"{time} Layer {animator.GetLayerName(i)} is playing clip {clipInfo2.clip}");
-                            }
+                    }
 
                 }
             }

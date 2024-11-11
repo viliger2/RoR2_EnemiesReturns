@@ -1,8 +1,4 @@
 ﻿using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
 {
@@ -19,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isAuthority && fixedAge >= duration)
+            if (isAuthority && fixedAge >= duration)
             {
                 outer.SetNextState(new Dash());
             }

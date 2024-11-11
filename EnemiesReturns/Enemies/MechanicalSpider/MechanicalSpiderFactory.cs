@@ -1,27 +1,24 @@
-﻿using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Helpers;
+using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
+using EnemiesReturns.PrefabAPICompat;
 using HG;
+using KinematicCharacterController;
 using RoR2;
+using RoR2.Audio;
 using RoR2.CharacterAI;
+using RoR2.Hologram;
+using RoR2.Networking;
 using RoR2.Projectile;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using static RoR2.ItemDisplayRuleSet;
 using static EnemiesReturns.Utils;
-using RoR2.Networking;
-using KinematicCharacterController;
-using System.Linq;
-using EnemiesReturns.EditorHelpers;
-using ThreeEyedGames;
-using EnemiesReturns.Configuration;
-using EnemiesReturns.Helpers;
-using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
-using RoR2.Hologram;
-using RoR2.Audio;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
@@ -79,7 +76,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlMechanicalSpider/MechanicalSpider").gameObject.GetComponent<SkinnedMeshRenderer>();
 
             SkinDefs.Default = CreateSkinDef("skinMechanicalSpiderDefault", mdlMechanicalSpider, characterModel.baseRendererInfos);
-            
+
             CharacterModel.RendererInfo[] snowyRender = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
@@ -126,9 +123,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #region EntityStateMachine_Body
             var esms = bodyPrefab.GetComponents<EntityStateMachine>();
-            foreach(var esm in esms)
+            foreach (var esm in esms)
             {
-                if(esm.customName == "Body")
+                if (esm.customName == "Body")
                 {
                     esm.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
                     break;
@@ -193,7 +190,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
         {
             AddMainMasterComponents(masterPrefab, bodyPrefab);
-           
+
             #region AISkillDriver_StrafeAndShoot
             var asdStrafeAndShoot = masterPrefab.AddComponent<AISkillDriver>();
             asdStrafeAndShoot.customName = "StrafeAndShoot";
@@ -1634,7 +1631,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsMechanicalSpider";
-            
+
             #region FireElite
             var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
 

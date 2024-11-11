@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using RoR2;
+﻿using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

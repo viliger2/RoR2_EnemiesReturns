@@ -1,8 +1,5 @@
 ﻿using BepInEx.Configuration;
 using R2API;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration
@@ -66,7 +63,7 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                 ),
                 "Stages that Default Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
-            
+
             SnowyStageList = config.Bind("Mechanical Spider Director", "Snowy Variant Stage List",
                 string.Join
                 (

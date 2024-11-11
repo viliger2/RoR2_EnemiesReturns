@@ -2,12 +2,9 @@
 using EntityStates;
 using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.Networking;
 using System.Linq;
-using static EntityStates.Drone.DeathState;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
@@ -22,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
         public override void OnEnter()
         {
             base.OnEnter();
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }
@@ -42,7 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     startedGrounded = false;
                 }
             }
-            
+
             Util.PlaySound("ER_Spider_Death_Drone_Play", gameObject);
         }
 

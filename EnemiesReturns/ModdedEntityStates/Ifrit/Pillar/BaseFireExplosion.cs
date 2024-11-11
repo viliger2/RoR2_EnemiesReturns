@@ -66,7 +66,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                 };
                 blastAttack.damageType.damageType = DamageType.IgniteOnHit;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
-                blastAttack.procChainMask.AddModdedProc(Enemies.Ifrit.Pillar.IfritPillarFactory.PillarExplosion); 
+                blastAttack.procChainMask.AddModdedProc(Enemies.Ifrit.Pillar.IfritPillarFactory.PillarExplosion);
                 blastAttack.Fire();
             }
             if (fireball)

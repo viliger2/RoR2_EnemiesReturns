@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates
 {
@@ -27,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates
             base.OnEnter();
             PlayAnimation(layerName, animationName);
             Util.PlaySound(soundEventPlayName, base.gameObject);
-            if(stopOnDamage)
+            if (stopOnDamage)
             {
                 GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             }
@@ -58,9 +55,9 @@ namespace EnemiesReturns.ModdedEntityStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(duration > 0)
+            if (duration > 0)
             {
-                if(fixedAge >= duration && isAuthority)
+                if (fixedAge >= duration && isAuthority)
                 {
                     outer.SetNextStateToMain();
                 }

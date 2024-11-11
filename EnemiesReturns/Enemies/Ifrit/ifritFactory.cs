@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Helpers;
+﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
 using HG;
@@ -20,7 +18,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.UIElements;
 using static EnemiesReturns.Utils;
 using static RoR2.ItemDisplayRuleSet;
 
@@ -174,7 +171,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             modelLocator.dontDetatchFromParent = false;
             modelLocator.preserveModel = false;
 
-            modelLocator.normalizeToFloor = true; 
+            modelLocator.normalizeToFloor = true;
             modelLocator.normalSmoothdampTime = 0.5f;
             modelLocator.normalMaxAngleDelta = 35f;
             #endregion
@@ -1147,7 +1144,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             ppvolume.gameObject.GetComponent<PostProcessVolume>().blendDistance = 30f;
 
             var components = ppvolume.GetComponents<PostProcessDuration>();
-            for(int i = components.Length; i > 0; i--)
+            for (int i = components.Length; i > 0; i--)
             {
                 var component = components[i - 1];
                 if (!component.enabled)

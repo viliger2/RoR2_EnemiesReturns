@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
+﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
     public class SuicideDeathState : BaseDeathState
-    { 
+    {
         public override void OnEnter()
         {
             var childLocator = GetModelChildLocator();

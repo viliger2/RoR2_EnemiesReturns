@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2.Projectile;
 using UnityEngine;

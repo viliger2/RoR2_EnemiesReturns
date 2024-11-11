@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
 using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;

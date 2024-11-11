@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -9,18 +8,15 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
 using Rewired.Utils.Classes.Utility;
-using Rewired.Utils.Interfaces;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Skills;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static R2API.DirectorAPI;
 
 namespace EnemiesReturns
 {
@@ -764,7 +760,7 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDancePlayer));
             }
         }
-        
+
         private void CreateMechanicalSpider(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             if (EnemiesReturns.Configuration.MechanicalSpider.Enabled.Value)
@@ -884,7 +880,7 @@ namespace EnemiesReturns
             }
         }
         #endregion
-        
+
         private IEnumerator LoadAssetBundle(string assetBundleFullPath, IProgress<float> progress, Action<AssetBundle> onAssetBundleLoaded)
         {
             Stopwatch stopwatch = new Stopwatch();

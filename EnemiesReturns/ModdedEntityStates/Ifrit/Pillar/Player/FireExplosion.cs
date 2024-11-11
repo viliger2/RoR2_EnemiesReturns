@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using RoR2.CharacterAI;
+﻿using RoR2.CharacterAI;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player

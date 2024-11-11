@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -28,7 +25,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 }
             }
 
-            if(!summonMasterBehavior)
+            if (!summonMasterBehavior)
             {
                 summonMasterBehavior = GetComponent<SummonMasterBehavior>();
             }
@@ -38,7 +35,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 eventFunctions = GetComponent<EventFunctions>();
             }
 
-            if(!inventory)
+            if (!inventory)
             {
                 inventory = GetComponent<Inventory>();
             }
@@ -66,7 +63,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 }
             }
 
-            if(eventFunctions)
+            if (eventFunctions)
             {
                 eventFunctions.DestroySelf();
             }

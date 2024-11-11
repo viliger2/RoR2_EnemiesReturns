@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-
-namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
+﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
     public class ChargingExplosion : BaseChargingExplosion
     {

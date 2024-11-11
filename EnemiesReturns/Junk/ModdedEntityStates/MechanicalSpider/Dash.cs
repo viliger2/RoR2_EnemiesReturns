@@ -1,15 +1,12 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.MechanicalSpider
 {
     public class Dash : BaseState
     {
-        public static float dashDistance = 20f; 
+        public static float dashDistance = 20f;
 
         public static float duration = 1f;
 
@@ -31,7 +28,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.MechanicalSpider
         {
             base.OnEnter();
 
-            if(characterMotor)
+            if (characterMotor)
             {
                 characterMotor.enabled = false;
             }
@@ -75,12 +72,12 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.MechanicalSpider
         {
             base.FixedUpdate();
             Log.Info($"dashForward: {modelAnimator.GetFloat(dashForward)}, dashRight: {modelAnimator.GetFloat(dashRight)}");
-            if(characterMotor)
+            if (characterMotor)
             {
                 characterMotor.velocity = Vector3.zero; // not sure why its needed
             }
             SetPosition(Vector3.Lerp(dashStart, dashDestination, fixedAge / duration));
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -101,7 +98,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.MechanicalSpider
             {
                 characterMotor.enabled = true;
             }
-            if(modelAnimator)
+            if (modelAnimator)
             {
                 PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
             }

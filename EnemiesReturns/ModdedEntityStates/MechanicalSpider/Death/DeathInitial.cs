@@ -1,7 +1,4 @@
 ﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
@@ -33,10 +30,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 outer.SetNextState(new DeathDrone());
 #else
                 var chance = RoR2.Run.instance.spawnRng.RangeFloat(0f, 100f);
-                if(chance < spawnChance)
+                if (chance < spawnChance)
                 {
                     outer.SetNextState(new DeathDrone());
-                } else
+                }
+                else
                 {
                     outer.SetNextState(new DeathNormal());
                 }

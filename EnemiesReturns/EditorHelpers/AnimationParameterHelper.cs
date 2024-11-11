@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemiesReturns.EditorHelpers

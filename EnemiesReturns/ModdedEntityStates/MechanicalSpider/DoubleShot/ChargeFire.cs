@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
@@ -38,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isAuthority && fixedAge > duration)
+            if (isAuthority && fixedAge > duration)
             {
                 outer.SetNextState(new Fire());
             }

@@ -1,8 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Ifrit
@@ -46,10 +44,11 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Ifrit
                 attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Smash");
             }
             var result = UnityEngine.Random.Range(0, 100);
-            if(result > 50) 
+            if (result > 50)
             {
                 PlayAnimation("Gesture, Additive", "SmashL", "Smash.playbackRate", duration);
-            } else
+            }
+            else
             {
                 PlayAnimation("Gesture, Additive", "SmashR", "Smash.playbackRate", duration);
             }
@@ -58,7 +57,8 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Ifrit
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (isAuthority) {
+            if (isAuthority)
+            {
                 if (fixedAge >= attackTime && fixedAge < attackStop)
                 {
                     attack.forceVector = base.transform.forward * forceMagnitude;

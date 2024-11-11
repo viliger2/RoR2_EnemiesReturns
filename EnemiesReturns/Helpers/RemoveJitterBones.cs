@@ -1,8 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Helpers
@@ -29,7 +25,7 @@ namespace EnemiesReturns.Helpers
         private void RemoveBones()
         {
             var jitterBones = base.transform.GetComponentsInChildren<JitterBones>();
-            for(int i = jitterBones.Length; i != 0; i--)
+            for (int i = jitterBones.Length; i != 0; i--)
             {
                 UnityEngine.GameObject.Destroy(jitterBones[i - 1]);
             }

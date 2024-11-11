@@ -1,18 +1,16 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
+using RoR2.UI;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
-using UnityEngine;
-using RoR2.UI;
-using EnemiesReturns.Enemies.MechanicalSpider;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns

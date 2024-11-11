@@ -31,7 +31,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             bodyPreservationDuration = 2f;
             base.OnEnter();
 
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }
@@ -77,11 +77,11 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }
-            if(fixedAge >= fallEffectTime && !effectSpawned)
+            if (fixedAge >= fallEffectTime && !effectSpawned)
             {
                 EffectManager.SpawnEffect(deathEffect, new EffectData { origin = modelTransform.position }, false);
                 effectSpawned = true;

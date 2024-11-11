@@ -1,11 +1,7 @@
-﻿using EnemiesReturns.Configuration;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
@@ -51,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
         private Transform fireballAimHelper;
 
         private Vector3 defaultSpawnPosition;
-        
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -67,7 +63,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             base.FixedUpdate();
             if (fixedAge <= spawnDoTZoneTime)
             {
-                if(predictor!= null)
+                if (predictor != null)
                 {
                     predictor.Update();
                     predictor.GetPredictedTargetPosition(baseDuration - baseChargeTime, out predictedTargetPosition);

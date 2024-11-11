@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -94,7 +93,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
                         attack.Fire();
 
                     }
-                    if(NetworkServer.active && EnemiesReturns.Configuration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
+                    if (NetworkServer.active && EnemiesReturns.Configuration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
                     {
                         SummonHelp();
                     }

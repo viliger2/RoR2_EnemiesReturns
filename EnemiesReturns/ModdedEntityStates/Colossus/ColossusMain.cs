@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EntityStates;
+﻿using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus

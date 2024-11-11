@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.PrefabAPICompat;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,13 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.CharacterAI;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
@@ -75,13 +69,13 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                 shotsFired++;
             }
 
-            if(fixedAge >= totalDuration && isAuthority)
+            if (fixedAge >= totalDuration && isAuthority)
             {
-                foreach(var ai in characterBody.master.aiComponents)
+                foreach (var ai in characterBody.master.aiComponents)
                 {
-                    if(ai.currentEnemy.characterBody)
+                    if (ai.currentEnemy.characterBody)
                     {
-                        if(Vector3.Distance(ai.currentEnemy.characterBody.transform.position, base.transform.position) <= distanceToTarget)
+                        if (Vector3.Distance(ai.currentEnemy.characterBody.transform.position, base.transform.position) <= distanceToTarget)
                         {
                             outer.SetNextState(new ChargeFire());
                             return;
@@ -104,14 +98,14 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                     aimRay = ModCompats.AdvancedPredictionCompat.GetPredictAimRay(aimRay, characterBody, projectilePrefab);
                 }
                 ProjectileManager.instance.FireProjectile(
-                    projectilePrefab, 
-                    aimRay.origin, 
-                    Util.QuaternionSafeLookRotation(aimRay.direction), 
-                    base.gameObject, 
-                    damageStat * damageCoefficient, 
-                    force, 
-                    Util.CheckRoll(critStat, base.characterBody.master), 
-                    DamageColorIndex.Default, 
+                    projectilePrefab,
+                    aimRay.origin,
+                    Util.QuaternionSafeLookRotation(aimRay.direction),
+                    base.gameObject,
+                    damageStat * damageCoefficient,
+                    force,
+                    Util.CheckRoll(critStat, base.characterBody.master),
+                    DamageColorIndex.Default,
                     null,
                     projectileSpeed);
             }

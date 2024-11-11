@@ -33,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             bodyPreservationDuration = 5f; // just to be sure
             base.OnEnter();
 
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }
@@ -67,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void Update()
         {
             base.Update();
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }
@@ -83,7 +83,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isVoidDeath)
+            if (isVoidDeath)
             {
                 return;
             }

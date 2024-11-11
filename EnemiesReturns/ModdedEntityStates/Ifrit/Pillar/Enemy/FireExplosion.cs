@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using RoR2;
+﻿using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
@@ -18,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
         public override void Suicide()
         {
             var cdb = characterBody.gameObject.GetComponent<CharacterDeathBehavior>();
-            if(cdb)
+            if (cdb)
             {
                 cdb.deathState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.SuicideDeathState));
             }

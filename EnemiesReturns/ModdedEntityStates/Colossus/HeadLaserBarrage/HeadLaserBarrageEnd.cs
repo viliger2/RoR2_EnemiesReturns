@@ -79,11 +79,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
                 modelAnimator.SetFloat(MissingAnimationParameters.aimYawCycle, Mathf.Clamp(Mathf.Lerp(startYaw, 0.5f, age / duration), 0f, 0.99f));
                 modelAnimator.SetFloat(MissingAnimationParameters.aimPitchCycle, Mathf.Clamp(Mathf.Lerp(startPitch, 0.5f, age / duration), 0f, 0.99f));
             }
-            if (headLight) 
+            if (headLight)
             {
                 headLight.range = Mathf.Lerp(initialLightRange, finalLightRange, age / duration);
             }
-            if (spotlight) 
+            if (spotlight)
             {
                 spotlight.range = Mathf.Lerp(initialSpotlightRange, finalSpotlightRange, age / duration);
             }
@@ -109,7 +109,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             eyeRenderer.SetPropertyBlock(eyePropertyBlock);
             var childLocator = GetModelChildLocator();
             var spotlight = childLocator.FindChild("LaserChargeSpotlight");
-            if(spotlight)
+            if (spotlight)
             {
                 spotlight.gameObject.SetActive(false);
             }

@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
 using RoR2;
 using UnityEngine;
@@ -80,13 +79,13 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             }
 
             laserChargeParticles = childLocator.FindChild("LaserChargeParticles");
-            if(laserChargeParticles)
+            if (laserChargeParticles)
             {
                 laserChargeParticles.gameObject.SetActive(true);
             }
 
             var spotlight = childLocator.FindChild("LaserChargeSpotlight");
-            if(spotlight)
+            if (spotlight)
             {
                 this.spotlight = spotlight.GetComponent<Light>();
                 spotlight.gameObject.SetActive(true);

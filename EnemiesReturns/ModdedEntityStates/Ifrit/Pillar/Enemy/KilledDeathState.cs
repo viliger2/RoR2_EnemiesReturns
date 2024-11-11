@@ -1,11 +1,5 @@
-﻿using EnemiesReturns.Configuration;
-using HG;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
@@ -47,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
                     initialFireballX = fireball.transform.position.x;
                     initialFireballY = fireball.transform.position.y;
                     finalFireballY = initialFireballY - 25.5f; // magic number from editor
-                    if(Physics.Raycast(fireball.transform.position, Vector3.down, out var result, 100f, LayerIndex.world.intVal, QueryTriggerInteraction.Ignore))
+                    if (Physics.Raycast(fireball.transform.position, Vector3.down, out var result, 100f, LayerIndex.world.intVal, QueryTriggerInteraction.Ignore))
                     {
                         finalFireballY = result.point.y;
                     }
@@ -59,7 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 
         public override void FixedUpdate()
         {
-            if(fixedAge >= explosionDelay && !hasExploded)
+            if (fixedAge >= explosionDelay && !hasExploded)
             {
                 if (isAuthority)
                 {
@@ -95,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 
         public override void Update()
         {
-            if(fireball && !hasExploded)
+            if (fireball && !hasExploded)
             {
                 float y = initialFireballY - (Mathf.Abs(finalFireballY - initialFireballY) * fireballYCurve.Evaluate(age / explosionDelay));
                 float x = Mathf.Lerp(initialFireballX, initialFireballX + 10f, age / explosionDelay);

@@ -29,20 +29,20 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
             {
                 BullseyeSearch search = new BullseyeSearch();
                 search.teamMaskFilter = TeamMask.allButNeutral;
-                if(teamComponent)
+                if (teamComponent)
                 {
                     search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
                 }
                 search.maxDistanceFilter = maxSearchDistance;
                 search.maxAngleFilter = 90f;
                 var aimRay = GetAimRay();
-                search.searchOrigin= aimRay.origin;
+                search.searchOrigin = aimRay.origin;
                 search.searchDirection = aimRay.direction;
                 search.filterByLoS = false;
                 search.sortMode = BullseyeSearch.SortMode.Angle;
                 search.RefreshCandidates();
                 var hurtBox = search.GetResults().FirstOrDefault();
-                if(hurtBox)
+                if (hurtBox)
                 {
                     predictor = new Predictor(base.transform);
                     predictor.SetTargetTransform(hurtBox.transform);

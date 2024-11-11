@@ -1,10 +1,4 @@
-﻿using AdvancedPrediction.Prediction;
-using EntityStates.Croco;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using RoR2;
 
 namespace EnemiesReturns.ModCompats
 {

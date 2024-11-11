@@ -1,8 +1,4 @@
 ﻿using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
@@ -60,7 +56,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
 
         private void CheckGameObject(GameObject gameObject, float healthFraction)
         {
-            if(gameObject && !gameObject.activeSelf && (healthComponent.health / healthComponent.fullHealth) < healthFraction)
+            if (gameObject && !gameObject.activeSelf && (healthComponent.health / healthComponent.fullHealth) < healthFraction)
             {
                 gameObject.SetActive(true);
             }
