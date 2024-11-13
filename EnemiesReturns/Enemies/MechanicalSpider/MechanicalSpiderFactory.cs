@@ -137,6 +137,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var body = bodyPrefab.GetComponent<CharacterBody>();
             body.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;
             body.levelRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneLevelRegen.Value;
+            body.bodyFlags |= CharacterBody.BodyFlags.ImmuneToLava;
             #endregion
 
             #region SfxLocator
