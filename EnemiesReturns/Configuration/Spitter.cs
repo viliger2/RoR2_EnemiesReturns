@@ -43,7 +43,6 @@ namespace EnemiesReturns.Configuration
 
         public static void PopulateConfig(ConfigFile config)
         {
-            #region Spitter
             Spitter.Enabled = config.Bind("Spitter Director", "Enable Spitter", true, "Enables Spitter.");
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
@@ -110,8 +109,6 @@ namespace EnemiesReturns.Configuration
             Spitter.ChargedProjectileSmallDoTZoneScale = config.Bind("Spitter Charged Spit", "Charged Spit Small DoT Zone Scale", 0.3f, "Spitter's Charged Large DoT Zone scale off Mini Mushrim's DoT zone (since it was used as basis). Also controls projectile's blast radius.");
 
             Spitter.EmoteKey = config.Bind("Spitter Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
-            #endregion
-
         }
 
     }

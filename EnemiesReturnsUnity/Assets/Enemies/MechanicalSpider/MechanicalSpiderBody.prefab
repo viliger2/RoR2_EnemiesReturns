@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2596361105635730634}
   - component: {fileID: 5445139140533896684}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 9196318722311722072}
   - component: {fileID: 1398457013557107158}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 5464334723580596021}
   - component: {fileID: 1876159746842718012}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 5164301420279468406}
   - component: {fileID: 2304749450558891999}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 1497162734664010253}
   - component: {fileID: 4490885199798088343}
   m_Layer: 12
-  m_Name: SniperHurtbox
+  m_Name: SniperHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 3681863143554421738}
   - component: {fileID: 35702643703152693}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 2884171674633266341}
   - component: {fileID: 4876899687326603319}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 1126931566114880645}
   - component: {fileID: 8979587148207927635}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 3273667032492131207}
   - component: {fileID: 5041910306806998664}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 1967011152263217624}
   - component: {fileID: 2507322874544215523}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 927669922989640377}
   - component: {fileID: 4945619012277974081}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 3172065323672655649}
   - component: {fileID: 2913492680277844020}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 1177863013705806145}
   - component: {fileID: 2165641992742965860}
   m_Layer: 12
-  m_Name: Hurtbox
+  m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 1914806295049235873}
   - component: {fileID: 7634184707421249051}
   m_Layer: 12
-  m_Name: MainHurtbox
+  m_Name: MainHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

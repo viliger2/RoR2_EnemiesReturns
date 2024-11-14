@@ -164,8 +164,9 @@ namespace EnemiesReturns.Enemies.Spitter
             modelLocator.dontDetatchFromParent = false;
 
             modelLocator.noCorpse = false;
-            modelLocator.dontDetatchFromParent = false;
+            modelLocator.dontReleaseModelOnDeath = false;
             modelLocator.preserveModel = false;
+            modelLocator.forceCulled = false;
 
             modelLocator.normalizeToFloor = false;
             modelLocator.normalSmoothdampTime = 0.1f;
@@ -344,7 +345,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
 
-            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
+            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "HurtBox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
             foreach (Transform t in hurtBoxesTransform)
             {
@@ -356,7 +357,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
+            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtBox").ToArray();
             foreach (Transform t in sniperHurtBoxes)
             {
                 var hurtBox = t.gameObject.AddComponent<HurtBox>();
@@ -368,7 +369,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/MainHurtbox");
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/MainHurtBox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
@@ -620,6 +621,7 @@ namespace EnemiesReturns.Enemies.Spitter
             //helper.animationParameters = new string[] { "walkSpeedDebug" };
 
             #endregion
+
 
             #region AimAssist
             var aimAssistTarget = bodyPrefab.transform.Find("ModelBase/mdlSpitter/AimAssist").gameObject.AddComponent<AimAssistTarget>();
@@ -1146,7 +1148,7 @@ namespace EnemiesReturns.Enemies.Spitter
         internal SkillDef CreateNormalSpitSkill()
         {
             var spit = ScriptableObject.CreateInstance<SkillDef>();
-            (spit as ScriptableObject).name = "SpitterBodyNormalSpit";
+            (spit as ScriptableObject).name = "SpitterWeaponNormalSpit";
             spit.skillName = "NormalSpit";
 
             spit.skillNameToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME";
