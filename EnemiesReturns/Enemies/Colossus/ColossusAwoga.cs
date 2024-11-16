@@ -9,7 +9,7 @@ namespace EnemiesReturns.Enemies.Colossus
         public bool boing = false;
 
         // league and anime survivors can go fuck themselves
-        public HashSet<string> dames = new HashSet<string>()
+        public static HashSet<string> dames = new HashSet<string>()
         {
             //"commandobody", // what a hot dame
             "hereticbody",
@@ -21,16 +21,20 @@ namespace EnemiesReturns.Enemies.Colossus
             "seamstressbody",
             "submarinerbody",
             "asteriabody",
-            "railgunnerbody"
+            "railgunnerbody",
+            "seekerbody"
         };
 
         public void OnKilledServer(DamageReport damageReport)
         {
-            string bodyName = damageReport?.attacker?.name ?? "";
-            bodyName = bodyName.Replace("(Clone)", "");
-            if (dames.Contains(bodyName.Trim().ToLower()))
+            if (damageReport != null && damageReport.attacker)
             {
-                boing = true;
+                string bodyName = damageReport.attacker.name ?? "";
+                bodyName = bodyName.Replace("(Clone)", "");
+                if (dames.Contains(bodyName.Trim().ToLower()))
+                {
+                    boing = true;
+                }
             }
         }
     }
