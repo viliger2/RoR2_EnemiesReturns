@@ -84,11 +84,11 @@ namespace EnemiesReturns.Configuration
             BaseMaxHealth = config.Bind("Mechanical Spider Character Stats", "Base Max Health", 140f, "Mechanical Spider's base health.");
             BaseMoveSpeed = config.Bind("Mechanical Spider Character Stats", "Base Movement Speed", 9f, "Mechanical Spider's base movement speed.");
             BaseJumpPower = config.Bind("Mechanical Spider Character Stats", "Base Jump Power", 20f, "Mechanical Spider's base jump power.");
-            BaseDamage = config.Bind("Mechanical Spider Character Stats", "Base Damage", 15f, "Mechanical Spider's base damage.");
+            BaseDamage = config.Bind("Mechanical Spider Character Stats", "Base Damage", 12f, "Mechanical Spider's base damage.");
             BaseArmor = config.Bind("Mechanical Spider Character Stats", "Base Armor", 0f, "Mechanical Spider's base armor.");
 
             LevelMaxHealth = config.Bind("Mechanical Spider Character Stats", "Health per Level", 42f, "Mechanical Spider's health increase per level.");
-            LevelDamage = config.Bind("Mechanical Spider Character Stats", "Damage per Level", 3f, "Mechanical Spider's damage increase per level.");
+            LevelDamage = config.Bind("Mechanical Spider Character Stats", "Damage per Level", 2.4f, "Mechanical Spider's damage increase per level.");
             LevelArmor = config.Bind("Mechanical Spider Character Stats", "Armor per Level", 0f, "Mechanical Spider's armor increase per level.");
 
             DoubleShotCooldown = config.Bind("Mechanical Spider Double Shot", "Double Shot Cooldown", 2f, "Mechanical Spider's Double Shot cooldown.");
@@ -98,7 +98,7 @@ namespace EnemiesReturns.Configuration
             DoubleShotProjectileSpeed = config.Bind("Mechanical Spider Double Shot", "Double Shot Projectile Speed", 100f, "Mechanical Spider's Double Shot projectile speed.");
             DoubleShotMinSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Minimal Spread", 0f, "Mechanical Spider's Double Shot minimal spread.");
             DoubleShotMaxSpread = config.Bind("Mechanical Spider Double Shot", "Double Shot Maximum Spread", 0f, "Mechanical Spider's Double Shot maximum spread.");
-            DoubleShotChargeDuration = config.Bind("Mechanical Spider Double Shot", "Double Shot Charge Duration", 0.5f, "Mechanical Spider's Double Shot charge duration.");
+            DoubleShotChargeDuration = config.Bind("Mechanical Spider Double Shot", "Double Shot Charge Duration", 0.75f, "Mechanical Spider's Double Shot charge duration.");
 
             DashCooldown = config.Bind("Mechanical Spider Dash", "Dash Cooldown", 5f, "Mechanical Spider's Dash cooldown.");
             DashDuration = config.Bind("Mechanical Spider Dash", "Dash Duration", 0.75f, "Mechanical Spider's Dash duration. Basically controls how far it will go.");
