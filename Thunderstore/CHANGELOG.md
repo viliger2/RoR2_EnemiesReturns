@@ -1,4 +1,15 @@
 <details>
+<summary>0.3.7</summary>
+
+* Mechanical Spider:
+	* Drone Spider now takes lava damage every second instead of the usual 0.2 seconds.
+	* Base damage nerfed to 12(+2.4) from 15(+3).
+	* Fixed a potential NRE on Spider's death.
+	* Dual Shot:
+		* Charge duration nerfed to 0.75 seconds from 0.5 seconds.
+			* _While I don't entirely agree with this and base damage nerf, the fact that director can just spawn 5 spiders around you and they all relentlessly shoot you can lead to losing a run right on the spot. Something had to be done, I think with this spiders will be less of a nuisance._
+</details>
+<details>
 <summary>0.3.6</summary>
 
 * ProcTypeAPI support.
