@@ -69,7 +69,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                 shotsFired++;
             }
 
-            if (fixedAge >= totalDuration && isAuthority)
+            if (fixedAge >= totalDuration && isAuthority && characterBody && characterBody.master && characterBody.master.aiComponents != null)
             {
                 foreach (var ai in characterBody.master.aiComponents)
                 {
