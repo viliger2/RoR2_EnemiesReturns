@@ -61,6 +61,10 @@ namespace EnemiesReturns
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?
 
+        public static ItemRelationshipProvider ModdedContagiousItemProvider;
+
+        public static ItemDef VoidMegaCrabItem = Addressables.LoadAssetAsync<ItemDef>("RoR2/DLC1/VoidMegaCrabItem.asset").WaitForCompletion();
+
         public struct MonsterCategories
         {
             public const string Champions = "Champions";
@@ -88,6 +92,11 @@ namespace EnemiesReturns
             totalStopwatch.Start();
 
             _contentPack.identifier = identifier;
+
+            ModdedContagiousItemProvider = ScriptableObject.CreateInstance<ItemRelationshipProvider>();
+            (ModdedContagiousItemProvider as ScriptableObject).name = "EnemiesReturnsContagiousItemProvider";
+            ModdedContagiousItemProvider.relationshipType = Addressables.LoadAssetAsync<ItemRelationshipType>("RoR2/DLC1/Common/ContagiousItem.asset").WaitForCompletion();
+            ModdedContagiousItemProvider.relationships = Array.Empty<ItemDef.Pair>();
 
             Stopwatch segmentStopWatch = new Stopwatch();
             segmentStopWatch.Start();
@@ -182,7 +191,7 @@ namespace EnemiesReturns
             _contentPack.itemDefs.Add(itemList.ToArray());
             _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
             _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
-
+            _contentPack.itemRelationshipProviders.Add(new[] { ModdedContagiousItemProvider });
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
@@ -292,8 +301,8 @@ namespace EnemiesReturns
             {
                 var pillarItemFactory = new SpawnPillarOnChampionKillFactory();
 
-                SpawnPillarOnChampionKillFactory.itemDef = pillarItemFactory.CreateItem(assets.First(item => item.name == "IfritItem"), iconLookup["texIconIfritItem"]);
-                itemList.Add(SpawnPillarOnChampionKillFactory.itemDef);
+                SpawnPillarOnChampionKillFactory.ItemDef = pillarItemFactory.CreateItem(assets.First(item => item.name == "IfritItem"), iconLookup["texIconIfritItem"]);
+                itemList.Add(SpawnPillarOnChampionKillFactory.ItemDef);
 
                 dtIfrit = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtIfrit as ScriptableObject).name = "epdtIfrit";
@@ -303,9 +312,10 @@ namespace EnemiesReturns
                         new ExplicitPickupDropTable.PickupDefEntry
                         {
                             pickupWeight = 1,
-                            pickupDef = SpawnPillarOnChampionKillFactory.itemDef
+                            pickupDef = SpawnPillarOnChampionKillFactory.ItemDef
                         }
                 };
+                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = SpawnPillarOnChampionKillFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
             }
 
             return dtIfrit;
@@ -605,8 +615,8 @@ namespace EnemiesReturns
 
                 var knurlFactory = new ColossalKnurlFactory();
 
-                ColossalKnurlFactory.itemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
-                itemList.Add(ColossalKnurlFactory.itemDef);
+                ColossalKnurlFactory.ItemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
+                itemList.Add(ColossalKnurlFactory.ItemDef);
 
                 dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtColossus as ScriptableObject).name = "epdtColossus";
@@ -616,7 +626,7 @@ namespace EnemiesReturns
                         new ExplicitPickupDropTable.PickupDefEntry
                         {
                             pickupWeight = 1,
-                            pickupDef = ColossalKnurlFactory.itemDef
+                            pickupDef = ColossalKnurlFactory.ItemDef
                         }
                 };
 
@@ -627,6 +637,8 @@ namespace EnemiesReturns
                 ColossalKnurlFactory.projectilePrefab = knurlFactory.CreateFistProjectile(knurlProjectile, knurlProjectileGhost);
 
                 projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
+
+                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = ColossalKnurlFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
             }
 
             return dtColossus;

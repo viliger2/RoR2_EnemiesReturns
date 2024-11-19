@@ -11,7 +11,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 {
     public class ColossalKnurlFactory
     {
-        public static ItemDef itemDef;
+        public static ItemDef ItemDef;
 
         public static GameObject projectilePrefab;
 
@@ -101,7 +101,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
         {
             if (!damageInfo.procChainMask.HasModdedProc(ColossalFist))
             {
-                var itemCount = attackerBody.inventory.GetItemCount(itemDef);
+                var itemCount = attackerBody.inventory.GetItemCount(ItemDef);
                 if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
                 {
                     bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath

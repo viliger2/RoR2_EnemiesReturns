@@ -7,7 +7,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 {
     internal class SpawnPillarOnChampionKillFactory
     {
-        public static ItemDef itemDef;
+        public static ItemDef ItemDef;
 
         public ItemDef CreateItem(GameObject prefab, Sprite icon)
         {
@@ -61,7 +61,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 var body = master.GetBody();
                 if (body)
                 {
-                    body.AddItemBehavior<PillarItemBehavior>(inventory.GetItemCount(itemDef));
+                    body.AddItemBehavior<PillarItemBehavior>(inventory.GetItemCount(ItemDef));
                 }
             }
         }
