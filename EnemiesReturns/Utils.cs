@@ -103,6 +103,16 @@ namespace EnemiesReturns
             }
         }
 
+        public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+        {
+            T component;
+            if (!gameObject.TryGetComponent<T>(out component))
+            {
+                component = gameObject.AddComponent<T>();
+            }
+            return component;
+        }
+
         public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
         {
             if (dcs == null)
