@@ -13,6 +13,20 @@ namespace EnemiesReturns.Enemies
 {
     public interface IBodyFactory
     {
+
+        internal class NetworkIdentityParams
+        {
+            public bool serverOnly = false;
+            public bool localPlayerAuthority = true;
+        }
+
+
+        public bool AddNetworkIdentity();
+
+        internal NetworkIdentityParams GetNetworkIdentityParams();
+
+
+
         internal class CharacterMotorParams
         {
             public CharacterMotorParams(CharacterDirection direction)
@@ -407,11 +421,15 @@ namespace EnemiesReturns.Enemies
 
         #region Body
 
-        internal NetworkIdentity AddNetworkIdentity(GameObject bodyPrefab, bool serverOnly = false, bool localAuthority = true)
+        internal NetworkIdentity AddNetworkIdentity(GameObject bodyPrefab, NetworkIdentityParams neworkParams)
         {
-            var networkIdentity = bodyPrefab.GetOrAddComponent<NetworkIdentity>();
-            networkIdentity.serverOnly = serverOnly;
-            networkIdentity.localPlayerAuthority = localAuthority;
+            NetworkIdentity networkIdentity = null;
+            if (AddNetworkIdentity())
+            {
+                networkIdentity = bodyPrefab.GetOrAddComponent<NetworkIdentity>();
+                networkIdentity.serverOnly = neworkParams.serverOnly;
+                networkIdentity.localPlayerAuthority = neworkParams.localPlayerAuthority;
+            }
 
             return networkIdentity;
         }
@@ -753,6 +771,9 @@ namespace EnemiesReturns.Enemies
             return aimAssist;
         }
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log);
+        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            AddNetworkIdentity(bodyPrefab, GetNetworkIdentityParams());
+        }
     }
 }

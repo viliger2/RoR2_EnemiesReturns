@@ -15,6 +15,10 @@ namespace EnemiesReturns.Enemies.TEST
 {
     public class SpitterNewFactory : IBodyFactory, IMasterFactory, ISkillsFactory
     {
+        bool IBodyFactory.AddNetworkIdentity() => true;
+
+        IBodyFactory.NetworkIdentityParams IBodyFactory.GetNetworkIdentityParams() => new IBodyFactory.NetworkIdentityParams();
+
         public struct SkillFamilies
         {
             public static SkillFamily Primary;
@@ -35,6 +39,14 @@ namespace EnemiesReturns.Enemies.TEST
             public static SkillDef NormalSpit;
             public static SkillDef Bite;
             public static SkillDef ChargedSpit;
+        }
+
+        public struct SpawnCards
+        {
+            public static CharacterSpawnCard cscSpitterDefault;
+            public static CharacterSpawnCard cscSpitterLakes;
+            public static CharacterSpawnCard cscSpitterSulfur;
+            public static CharacterSpawnCard cscSpitterDepths;
         }
 
         public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
@@ -637,5 +649,12 @@ namespace EnemiesReturns.Enemies.TEST
 
             return idrs;
         }
+
+        GameObject IBodyFactory.CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
