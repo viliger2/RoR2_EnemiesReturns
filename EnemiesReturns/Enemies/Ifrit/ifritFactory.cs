@@ -344,7 +344,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdLemurian.asset").WaitForCompletion();
 
-            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "Hurtbox").ToArray();
+            var hurtBoxesTransform = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "HurtBox").ToArray();
             List<HurtBox> hurtBoxes = new List<HurtBox>();
             foreach (Transform t in hurtBoxesTransform)
             {
@@ -356,7 +356,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtbox").ToArray();
+            var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtBox").ToArray();
             foreach (Transform t in sniperHurtBoxes)
             {
                 var hurtBox = t.gameObject.AddComponent<HurtBox>();
@@ -368,7 +368,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 t.gameObject.AddComponent<SurfaceDefProvider>().surfaceDef = surfaceDef;
             }
 
-            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/MainHurtbox");
+            var mainHurtboxTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit/Armature/Root/Root_Pelvis_Control/Spine/Spine.001/MainHurtBox");
             var mainHurtBox = mainHurtboxTransform.gameObject.AddComponent<HurtBox>();
             mainHurtBox.healthComponent = healthComponent;
             mainHurtBox.damageModifier = HurtBox.DamageModifier.Normal;

@@ -1,23 +1,28 @@
-﻿using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
-using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.Components;
+using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.Skills;
+using EnemiesReturns.Components.GeneralComponents;
+using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
+using EnemiesReturns.ModdedEntityStates.Spitter;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 using static RoR2.ItemDisplayRuleSet;
 
-namespace EnemiesReturns.Enemies.TEST
+namespace EnemiesReturns.Enemies.Spitter
 {
-    public class SpitterNewFactory : IBodyFactory, IMasterFactory, ISkillsFactory
+    public class SpitterBody : BodyBase
     {
-        bool IBodyFactory.AddNetworkIdentity() => true;
-
-        IBodyFactory.NetworkIdentityParams IBodyFactory.GetNetworkIdentityParams() => new IBodyFactory.NetworkIdentityParams();
+        public struct Skills
+        {
+            public static SkillDef NormalSpit;
+            public static SkillDef Bite;
+            public static SkillDef ChargedSpit;
+        }
 
         public struct SkillFamilies
         {
@@ -34,13 +39,6 @@ namespace EnemiesReturns.Enemies.TEST
             public static SkinDef Depths;
         }
 
-        public struct Skills
-        {
-            public static SkillDef NormalSpit;
-            public static SkillDef Bite;
-            public static SkillDef ChargedSpit;
-        }
-
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscSpitterDefault;
@@ -49,28 +47,76 @@ namespace EnemiesReturns.Enemies.TEST
             public static CharacterSpawnCard cscSpitterDepths;
         }
 
-        public GameObject CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        public static GameObject BodyPrefab;
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null)
         {
-            var modelBase = bodyPrefab.transform.Find("ModelBase");
-            var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter");
-            var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
-            var capsuleCollider = bodyPrefab.GetComponent<CapsuleCollider>();
-            var rigidBody = bodyPrefab.GetComponent<Rigidbody>();
+            var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
 
-            var animator = modelTransform.gameObject.GetComponent<Animator>();
+            var danceController = body.AddComponent<SpitterDeathDanceController>();
+            danceController.body = body.GetComponent<CharacterBody>();
+            danceController.modelLocator = body.GetComponent<ModelLocator>();
 
-            #region Body
-            var crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
-            var cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandardTall.asset").WaitForCompletion();
+            return body;
+        }
 
-            (this as IBodyFactory).AddNetworkIdentity(bodyPrefab);
-            var direction = (this as IBodyFactory).AddCharacterDirection(bodyPrefab, modelBase, animator, 120f);
-            var characterMotor = (this as IBodyFactory).AddCharacterMotor(bodyPrefab, new IBodyFactory.CharacterMotorParams(direction)
+        public SkillDef CreateChargedSpitSkill()
+        {
+            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("SpitterBodyChargedSpit", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit)))
             {
-                mass = 100f
+                nameToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME",
+                descriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION",
+                icon = acridEpidemic.icon,
+                activationStateMachine = "Body",
+                baseRechargeInterval = Configuration.Spitter.ChargedProjectileCooldown.Value
             });
-            var inputBank = (this as IBodyFactory).AddInputBankTest(bodyPrefab);
-            var characterBody = (this as IBodyFactory).AddCharacterBody(bodyPrefab, new IBodyFactory.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", crosshair, aimOrigin, sprite.texture, new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized)))
+        }
+
+        public SkillDef CreateNormalSpitSkill()
+        {
+            var crocoSpit = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoSpit.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("SpitterBodyNormalSpit", new EntityStates.SerializableEntityStateType(typeof(NormalSpit)))
+            {
+                nameToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME",
+                descriptionToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION",
+                icon = crocoSpit.icon,
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = 0f
+            });
+        }
+
+        public SkillDef CreateBiteSkill()
+        {
+            var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("SpitterBodyBite", new EntityStates.SerializableEntityStateType(typeof(Bite)))
+            {
+                nameToken = "ENEMIES_RETURNS_SPITTER_BITE_NAME",
+                descriptionToken = "ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION",
+                icon = acridBite.icon,
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = Configuration.Spitter.BiteCooldown.Value
+            });
+        }
+
+        public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
+        {
+            return CreateCard(new SpawnCardParams(name, master, Configuration.Spitter.DirectorCost.Value)
+            {
+                skinDef = skin,
+                bodyPrefab = bodyPrefab,
+            });
+        }
+
+        protected override string ModelName() => "mdlSpitter";
+
+        protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
+
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        {
+            var crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
+            var initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", crosshair, aimOrigin, icon, initialState)
             {
                 mainRootSpeed = 33f,
                 baseMaxHealth = Configuration.Spitter.BaseMaxHealth.Value,
@@ -79,235 +125,137 @@ namespace EnemiesReturns.Enemies.TEST
                 baseJumpPower = Configuration.Spitter.BaseJumpPower.Value,
                 baseDamage = Configuration.Spitter.BaseDamage.Value,
                 baseArmor = Configuration.Spitter.BaseArmor.Value,
-
-                levelMaxHealth = Configuration.Spitter.LevelMaxHealth.Value,
-                levelDamage = Configuration.Spitter.LevelDamage.Value,
-                levelArmor = Configuration.Spitter.LevelArmor.Value,
-
                 hullClassification = HullClassification.Golem,
-                bodyColor = new Color(0.737f, 0.682f, 0.588f)
-            });
-            (this as IBodyFactory).AddCameraTargetParams(bodyPrefab, cameraParams);
-            (this as IBodyFactory).AddModelLocator(bodyPrefab, new IBodyFactory.ModelLocatorParams(modelTransform, modelBase));
-            var esmBody = (this as IBodyFactory).AddEntityStateMachine(bodyPrefab, "Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState)), new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpitterMain)));
-            var esmWeapon = (this as IBodyFactory).AddEntityStateMachine(bodyPrefab, "Weapon", new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle)), new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle)));
-            var primarySkill = (this as IBodyFactory).AddGenericSkill(bodyPrefab, SkillFamilies.Primary, "NormalSpit", false);
-            var secondarySkill = (this as IBodyFactory).AddGenericSkill(bodyPrefab, SkillFamilies.Secondary, "Bite", false);
-            var specialSkill = (this as IBodyFactory).AddGenericSkill(bodyPrefab, SkillFamilies.Special, "ChargedSpit", false);
-            (this as IBodyFactory).AddSkillLocator(bodyPrefab, primarySkill, secondarySkill, null, specialSkill);
-            var teamComponent = (this as IBodyFactory).AddTeamComponent(bodyPrefab);
-            var healthComponent = (this as IBodyFactory).AddHealthComponent(bodyPrefab);
-            (this as IBodyFactory).AddInteractor(bodyPrefab, 3f);
-            (this as IBodyFactory).AddInteractionDriver(bodyPrefab);
-            (this as IBodyFactory).AddCharacterDeathBehavior(bodyPrefab, esmBody, new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterDeath)), esmWeapon);
-            (this as IBodyFactory).AddCharacterNetworkTransform(bodyPrefab);
-            (this as IBodyFactory).AddNetworkStateMachine(bodyPrefab, esmBody, esmWeapon);
-            (this as IBodyFactory).AddDeathRewards(bodyPrefab, log);
-            (this as IBodyFactory).AddEquipmentSlot(bodyPrefab);
-            (this as IBodyFactory).AddKinematicCharacterMotor(bodyPrefab, new IBodyFactory.KinemacitCharacterMotorParams(capsuleCollider, rigidBody, characterMotor));
-            (this as IBodyFactory).AddSetStateOnHurt(bodyPrefab, new IBodyFactory.SetStateOnHurtParams(esmBody, new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState)), esmWeapon));
-            #endregion
+                bodyColor = new Color(0.737f, 0.682f, 0.588f),
+                isChampion = false,
+                autoCalculateStats = true,
+            };
+        }
 
-            var hurtBoxes = (this as IBodyFactory).SetupHurtboxes(bodyPrefab, Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion(), healthComponent);
+        protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
+        {
+            var modelRenderer = modelPrefab.transform.Find("Spitter").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var gumsRenderer = modelPrefab.transform.Find("Spitter Gums").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var teethRenderer = modelPrefab.transform.Find("Spitter Teeth").gameObject.GetComponent<SkinnedMeshRenderer>();
 
-            #region Model
-            var mdlSpitter = modelTransform.gameObject;
-
-            var focusPoint = bodyPrefab.transform.Find("ModelBase/mdlSpitter/LogBookTarget");
-            var cameraPosition = bodyPrefab.transform.Find("ModelBase/mdlSpitter/LogBookTarget/LogBookCamera");
-
-            var modelRenderer = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Spitter").gameObject.GetComponent<SkinnedMeshRenderer>();
-            var gumsRenderer = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Spitter Gums").gameObject.GetComponent<SkinnedMeshRenderer>();
-            var teethRenderer = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Spitter Teeth").gameObject.GetComponent<SkinnedMeshRenderer>();
-
-            var renderInfos = new CharacterModel.RendererInfo[]
+            CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
                     defaultMaterial = modelRenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 },
                 new CharacterModel.RendererInfo
                 {
                     renderer = gumsRenderer,
                     defaultMaterial = gumsRenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = false
                 },
                 new CharacterModel.RendererInfo
                 {
                     renderer = teethRenderer,
                     defaultMaterial = teethRenderer.material,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = false
                 }
             };
 
-            var hitBoxBite = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox").gameObject.AddComponent<HitBox>();
-
-            (this as IBodyFactory).AddAimAnimator(mdlSpitter, new IBodyFactory.AimAnimatorParams(inputBank, direction)
+            return new ICharacterModel.CharacterModelParams()
             {
-                pitchRangeMin = -65f,
-                pitchRangeMax = 65f,
+                autoPopulateLightInfos = true,
+                renderInfos = defaultRender
+            };
+        }
 
-                yawRangeMin = -60f,
-                yawRangeMax = 60f,
-
-                pitchGiveUpRange = 40f,
-                yawGiveUpRange = 20f,
-
-                giveUpDuration = 3f
-            });
-            (this as IBodyFactory).AddChildLocator(mdlSpitter);
-            (this as IBodyFactory).AddHurtBoxGroup(mdlSpitter, hurtBoxes);
-            (this as IBodyFactory).AddAnimationEvents(mdlSpitter);
-            (this as IBodyFactory).AddDestroyOnUnseen(mdlSpitter);
-            var characterModel = (this as IBodyFactory).AddCharacterModel(mdlSpitter, characterBody, CreateItemDisplayRuleSet(), renderInfos);
-            CreateSkinDefs(mdlSpitter, renderInfos, modelRenderer, gumsRenderer, teethRenderer);
-            (this as IBodyFactory).AddHitBoxGroup(mdlSpitter, "Bite", hitBoxBite);
-            (this as IBodyFactory).AddModelPanelParameters(mdlSpitter, focusPoint, cameraPosition, new Quaternion(0, 0, 0, 1f));
-            (this as IBodyFactory).AddFootstepHandler(mdlSpitter, new IBodyFactory.FootstepHandlerParams
+        protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()
+        {
+            return new IEntityStateMachine.EntityStateMachineParams[]
             {
-                baseFootstepString = "Play_lemurian_step",
+                new IEntityStateMachine.EntityStateMachineParams
+                {
+                    name = "Body",
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpitterMain)),
+                },
+                new IEntityStateMachine.EntityStateMachineParams
+                {
+                    name = "Weapon",
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle))
+                }
+            };
+        }
+
+        protected override IFootStepHandler.FootstepHandlerParams FootstepHandlerParams()
+        {
+            return new IFootStepHandler.FootstepHandlerParams
+            {
                 enableFootstepDust = true,
-                footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion(),
-            });
-            (this as IBodyFactory).AddModelSkinController(mdlSpitter, new SkinDef[]
-            {
-                SkinDefs.Default,
-                SkinDefs.Sulfur,
-                SkinDefs.Lakes,
-                SkinDefs.Lakes
-            });
-            #endregion
-
-            var aimAssist = bodyPrefab.transform.Find("ModelBase/mdlSpitter/AimAssist").gameObject;
-
-            var headTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head");
-            var rootTransform = bodyPrefab.transform.Find("ModelBase/mdlSpitter/Armature/Root");
-
-            (this as IBodyFactory).AddAimAssist(aimAssist, headTransform, rootTransform, healthComponent, teamComponent);
-
-            bodyPrefab.RegisterNetworkPrefab();
-
-            return bodyPrefab;
+                baseFootstepString = "Play_lemurian_step",
+                footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion()
+            };
         }
 
-        public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
+        protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
         {
-            (this as IBodyFactory).AddNetworkIdentity(masterPrefab);
-            (this as IMasterFactory).AddCharacterMaster(masterPrefab, new IMasterFactory.CharacterMasterParams(bodyPrefab)
+            return new IGenericSkill.GenericSkillParams[]
             {
-                teamIndex = TeamIndex.Monster
-            });
-            (this as IMasterFactory).AddInventory(masterPrefab);
-            var esmAI = (this as IBodyFactory).AddEntityStateMachine(masterPrefab, "AI", new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Wander)), new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Wander)));
-            (this as IMasterFactory).AddBaseAI(masterPrefab, new IMasterFactory.BaseAIParams(RoR2.Navigation.MapNodeGroup.GraphType.Ground, esmAI, new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Wander))));
-            (this as IMasterFactory).AddMinionOwnership(masterPrefab);
-            (this as IMasterFactory).AddAISkillDriver(masterPrefab, new IMasterFactory.AISkillDriverParams("ChaseAndBiteOffNodegraphWhileSlowingDown")
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "NormalSpit", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "Bite", SkillSlot.Secondary),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "ChargedSpit", SkillSlot.Special),
+            };
+        }
+
+        protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
+        {
+            return new IModelPanelParameters.ModelPanelParams()
             {
-                skillSlot = SkillSlot.Secondary,
-                minDistance = 0f,
-                maxDistance = 3f,
-                selectionRequiresTargetLoS = true,
-                moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                moveInputScale = 0.4f,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                ignoreNodeGraph = true,
-                driverUpdateTimerOverride = 0.5f
-            });
-            (this as IMasterFactory).AddAISkillDriver(masterPrefab, new IMasterFactory.AISkillDriverParams("ChaseAndBiteOffNodegraph")
-            {
-                skillSlot = SkillSlot.Secondary,
-                minDistance = 0f,
                 maxDistance = 6f,
-                selectionRequiresTargetLoS = true,
-                moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                ignoreNodeGraph = true,
-                driverUpdateTimerOverride = 0.5f
-            });
-            (this as IMasterFactory).AddAISkillDriver(masterPrefab, new IMasterFactory.AISkillDriverParams("StrafeAndShootChargedSpit")
-            {
-                skillSlot = SkillSlot.Special,
-                minDistance = 15f,
-                maxDistance = 60f,
-                selectionRequiresTargetLoS = true,
-                moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                activationRequiresAimConfirmation = true,
-                movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
-                moveInputScale = 0.7f,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
-            });
-            (this as IMasterFactory).AddAISkillDriver(masterPrefab, new IMasterFactory.AISkillDriverParams("ChaseOffNodegraph")
-            {
-                skillSlot = SkillSlot.None,
-                minDistance = 0f,
-                maxDistance = 7f,
-                selectionRequiresTargetLoS = true,
-                moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                ignoreNodeGraph = true
-            });
-            (this as IMasterFactory).AddAISkillDriver(masterPrefab, new IMasterFactory.AISkillDriverParams("PathFromAfar")
-            {
-                skillSlot = SkillSlot.None,
-                minDistance = 0f,
-                maxDistance = float.PositiveInfinity,
-                moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
-            });
-
-            return masterPrefab;
+                minDistance = 1.5f,
+                modelRotation = new Quaternion(0, 0, 0, 1)
+            };
         }
 
-        public void CreateSkills()
+        protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
         {
-            var crocoSpit = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoSpit.asset").WaitForCompletion();
-            Skills.NormalSpit = (this as ISkillsFactory).CreateSkill(new ISkillsFactory.SkillParams("SpitterBodyNormalSpit", new EntityStates.SerializableEntityStateType(typeof(NormalSpit)))
-            {
-                nameToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME",
-                descriptionToken = "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION",
-                activationStateMachine = "Weapon",
-                icon = crocoSpit.icon,
-                interruptPriority = EntityStates.InterruptPriority.Any,
-                baseRechargeInterval = 0f
-            });
+            var modelRenderer = modelPrefab.transform.Find("Spitter").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var gumsRenderer = modelPrefab.transform.Find("Spitter Gums").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var teethRenderer = modelPrefab.transform.Find("Spitter Teeth").gameObject.GetComponent<SkinnedMeshRenderer>();
 
-            var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
-            Skills.Bite = (this as ISkillsFactory).CreateSkill(new ISkillsFactory.SkillParams("SpitterBodyBite", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.Bite)))
+            CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
-                nameToken = "ENEMIES_RETURNS_SPITTER_BITE_NAME",
-                descriptionToken = "ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION",
-                activationStateMachine = "Weapon",
-                icon = acridBite.icon,
-                baseRechargeInterval = EnemiesReturns.Configuration.Spitter.BiteCooldown.Value,
-            });
-
-            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
-            Skills.ChargedSpit = (this as ISkillsFactory).CreateSkill(new ISkillsFactory.SkillParams("SpitterBodyChargedSpit", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit)))
-            {
-                nameToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME",
-                descriptionToken = "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION",
-                activationStateMachine = "Body",
-                icon = acridEpidemic.icon,
-                interruptPriority = EntityStates.InterruptPriority.Any,
-                baseRechargeInterval = EnemiesReturns.Configuration.Spitter.ChargedProjectileCooldown.Value
-            });
-        }
-
-        private void CreateSkinDefs(GameObject mdlSpitter, CharacterModel.RendererInfo[] baseRendererInfos, SkinnedMeshRenderer modelRenderer, SkinnedMeshRenderer gumsRenderer, SkinnedMeshRenderer teethRenderer)
-        {
-            SkinDefs.Default = Utils.CreateSkinDef("skinSpitterDefault", mdlSpitter, baseRendererInfos);
+                new CharacterModel.RendererInfo
+                {
+                    renderer = modelRenderer,
+                    defaultMaterial = modelRenderer.material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = gumsRenderer,
+                    defaultMaterial = gumsRenderer.material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = teethRenderer,
+                    defaultMaterial = teethRenderer.material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                }
+            };
+            SkinDefs.Default = Utils.CreateSkinDef("skinSpitterDefault", modelPrefab, defaultRender);
 
             CharacterModel.RendererInfo[] lakesRender = new CharacterModel.RendererInfo[]
             {
@@ -336,7 +284,7 @@ namespace EnemiesReturns.Enemies.TEST
                     hideOnDeath = false
                 }
             };
-            SkinDefs.Lakes = Utils.CreateSkinDef("skinSpitterLakes", mdlSpitter, lakesRender, SkinDefs.Default);
+            SkinDefs.Lakes = Utils.CreateSkinDef("skinSpitterLakes", modelPrefab, lakesRender, SkinDefs.Default);
 
             CharacterModel.RendererInfo[] sulfurRender = new CharacterModel.RendererInfo[]
             {
@@ -365,7 +313,7 @@ namespace EnemiesReturns.Enemies.TEST
                     hideOnDeath = false
                 }
             };
-            SkinDefs.Sulfur = Utils.CreateSkinDef("skinSpitterSulfur", mdlSpitter, sulfurRender, SkinDefs.Default);
+            SkinDefs.Sulfur = Utils.CreateSkinDef("skinSpitterSulfur", modelPrefab, sulfurRender, SkinDefs.Default);
 
             CharacterModel.RendererInfo[] depthsRender = new CharacterModel.RendererInfo[]
 {
@@ -394,10 +342,32 @@ namespace EnemiesReturns.Enemies.TEST
                     hideOnDeath = false
                 }
 };
-            SkinDefs.Depths = Utils.CreateSkinDef("skinSpitterDepths", mdlSpitter, depthsRender, SkinDefs.Default);
+            SkinDefs.Depths = Utils.CreateSkinDef("skinSpitterDepths", modelPrefab, depthsRender, SkinDefs.Default);
+
+            return new SkinDef[] { SkinDefs.Default, SkinDefs.Lakes, SkinDefs.Sulfur, SkinDefs.Depths };
         }
 
-        private ItemDisplayRuleSet CreateItemDisplayRuleSet()
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_Spitter_Death_Play"
+            };
+        }
+
+        protected override IHitboxes.HitBoxesParams[] HitBoxesParams()
+        {
+            return new IHitboxes.HitBoxesParams[]
+            {
+                new IHitboxes.HitBoxesParams
+                {
+                    groupName = "Bite",
+                    pathsToTransforms = new string[] {"Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head/Hitbox" }
+                }
+            };
+        }
+
+        protected override ItemDisplayRuleSet ItemDisplayRuleSet()
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsSpitter";
@@ -645,16 +615,7 @@ namespace EnemiesReturns.Enemies.TEST
             });
             #endregion
 
-
-
             return idrs;
         }
-
-        GameObject IBodyFactory.CreateBody(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
-        {
-            throw new NotImplementedException();
-        }
-
-
     }
 }

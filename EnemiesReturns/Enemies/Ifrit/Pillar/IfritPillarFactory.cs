@@ -52,7 +52,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             var bodyPrefab = bodyInformation.bodyPrefab;
             Transform modelBase = bodyPrefab.transform.Find("ModelBase");
             Transform modelTransform = bodyPrefab.transform.Find("ModelBase/IfritPillar");
-            Transform hurtboxTransform = bodyPrefab.transform.Find("ModelBase/IfritPillar/IfritPillarArmture/Hurtbox");
+            Transform hurtboxTransform = bodyPrefab.transform.Find("ModelBase/IfritPillar/IfritPillarArmture/HurtBox");
             Transform fireball = bodyPrefab.transform.Find("ModelBase/IfritPillar/Fireball");
 
             var focusPoint = bodyPrefab.transform.Find("ModelBase/IfritPillar/LogBookTarget");

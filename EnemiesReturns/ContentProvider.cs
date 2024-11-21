@@ -636,56 +636,55 @@ namespace EnemiesReturns
         {
             if (EnemiesReturns.Configuration.Spitter.Enabled.Value)
             {
-                var spitterFactory = new SpitterFactory();
+                var spitterStuff = new SpitterStuff();
+                ModdedEntityStates.Spitter.Bite.biteEffectPrefab = spitterStuff.CreateBiteEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Spitter.Bite.biteEffectPrefab));
 
-                var biteEffectPrefab = spitterFactory.CreateBiteEffect();
-                ModdedEntityStates.Spitter.Bite.biteEffectPrefab = biteEffectPrefab;
-                effectsList.Add(new EffectDef(biteEffectPrefab));
-
-                var chargedSpitSmallDoTZone = spitterFactory.CreatedChargedSpitSmallDoTZone();
-                var chargedSpitDoTZone = spitterFactory.CreateChargedSpitDoTZone();
-                var chargedSpitChunkProjectile = spitterFactory.CreateChargedSpitSplitProjectile(chargedSpitSmallDoTZone);
-                var chargedSpitProjectile = spitterFactory.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile); ;
+                var chargedSpitSmallDoTZone = spitterStuff.CreatedChargedSpitSmallDoTZone();
+                var chargedSpitDoTZone = spitterStuff.CreateChargedSpitDoTZone();
+                var chargedSpitChunkProjectile = spitterStuff.CreateChargedSpitSplitProjectile(chargedSpitSmallDoTZone);
+                var chargedSpitProjectile = spitterStuff.CreateChargedSpitProjectile(chargedSpitDoTZone, chargedSpitChunkProjectile); ;
                 ModdedEntityStates.Spitter.FireChargedSpit.projectilePrefab = chargedSpitProjectile;
                 projectilesList.Add(chargedSpitProjectile);
                 projectilesList.Add(chargedSpitSmallDoTZone);
                 projectilesList.Add(chargedSpitDoTZone);
                 projectilesList.Add(chargedSpitChunkProjectile);
 
-                Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile = spitterFactory.CreateNormalSpitProjectile();
+                Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile = spitterStuff.CreateNormalSpitProjectile();
                 projectilesList.Add(Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile);
 
                 var spitterLog = Utils.CreateUnlockableDef("Logs.SpitterBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER");
                 unlockablesList.Add(spitterLog);
 
-                SpitterFactory.Skills.NormalSpit = spitterFactory.CreateNormalSpitSkill();
-                SpitterFactory.Skills.Bite = spitterFactory.CreateBiteSkill();
-                SpitterFactory.Skills.ChargedSpit = spitterFactory.CreateChargedSpitSkill();
+                var spitterBody = new SpitterBody();
+                SpitterBody.Skills.NormalSpit = spitterBody.CreateNormalSpitSkill();
+                SpitterBody.Skills.ChargedSpit = spitterBody.CreateChargedSpitSkill();
+                SpitterBody.Skills.Bite = spitterBody.CreateBiteSkill();
 
-                sdList.Add(SpitterFactory.Skills.NormalSpit);
-                sdList.Add(SpitterFactory.Skills.Bite);
-                sdList.Add(SpitterFactory.Skills.ChargedSpit);
+                sdList.Add(SpitterBody.Skills.NormalSpit);
+                sdList.Add(SpitterBody.Skills.Bite);
+                sdList.Add(SpitterBody.Skills.ChargedSpit);
 
-                SpitterFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("SpitterPrimaryFamily", SpitterFactory.Skills.NormalSpit);
-                SpitterFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("SpitterSecondaryFamily", SpitterFactory.Skills.Bite);
-                SpitterFactory.SkillFamilies.Special = Utils.CreateSkillFamily("SpitterSpecialFamily", SpitterFactory.Skills.ChargedSpit);
+                SpitterBody.SkillFamilies.Primary = Utils.CreateSkillFamily("SpitterPrimaryFamily", SpitterBody.Skills.NormalSpit);
+                SpitterBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("SpitterSecondaryFamily", SpitterBody.Skills.Bite);
+                SpitterBody.SkillFamilies.Special = Utils.CreateSkillFamily("SpitterSpecialFamily", SpitterBody.Skills.ChargedSpit);
 
-                sfList.Add(SpitterFactory.SkillFamilies.Primary);
-                sfList.Add(SpitterFactory.SkillFamilies.Secondary);
-                sfList.Add(SpitterFactory.SkillFamilies.Special);
+                sfList.Add(SpitterBody.SkillFamilies.Primary);
+                sfList.Add(SpitterBody.SkillFamilies.Secondary);
+                sfList.Add(SpitterBody.SkillFamilies.Special);
 
-                var spitterBody = assets.First(body => body.name == "SpitterBody");
-                SpitterFactory.SpitterBody = spitterFactory.CreateBody(spitterBody, iconLookup["texSpitterIcon"], spitterLog);
-                bodyList.Add(SpitterFactory.SpitterBody);
+                var spitterBodyPrefab = assets.First(body => body.name == "SpitterBody");
+                SpitterBody.BodyPrefab = spitterBody.AddBodyComponents(spitterBodyPrefab, iconLookup["texSpitterIcon"], spitterLog);
+                bodyList.Add(SpitterBody.BodyPrefab);
 
-                var spitterMaster = assets.First(master => master.name == "SpitterMaster");
-                SpitterFactory.SpitterMaster = spitterFactory.CreateMaster(spitterMaster, spitterBody);
-                masterList.Add(SpitterFactory.SpitterMaster);
+                var spitterMasterPrefab = assets.First(master => master.name == "SpitterMaster");
+                SpitterMaster.MasterPrefab = new SpitterMaster().AddMasterComponents(spitterMasterPrefab, SpitterBody.BodyPrefab);
+                masterList.Add(SpitterMaster.MasterPrefab);
 
-                SpitterFactory.SpawnCards.cscSpitterDefault = spitterFactory.CreateCard("cscSpitterDefault", spitterMaster, SpitterFactory.SkinDefs.Default, spitterBody);
+                SpitterBody.SpawnCards.cscSpitterDefault = spitterBody.CreateCard("cscSpitterDefault", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Default, SpitterBody.BodyPrefab);
                 var dcSpitterDefault = new DirectorCard
                 {
-                    spawnCard = SpitterFactory.SpawnCards.cscSpitterDefault,
+                    spawnCard = SpitterBody.SpawnCards.cscSpitterDefault,
                     selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -698,10 +697,10 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.DefaultStageList.Value, dchSpitterDefault);
 
-                SpitterFactory.SpawnCards.cscSpitterLakes = spitterFactory.CreateCard("cscSpitterLakes", spitterMaster, SpitterFactory.SkinDefs.Lakes, spitterBody);
+                SpitterBody.SpawnCards.cscSpitterLakes = spitterBody.CreateCard("cscSpitterLakes", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Lakes, SpitterBody.BodyPrefab);
                 var dcSpitterLakes = new DirectorCard
                 {
-                    spawnCard = SpitterFactory.SpawnCards.cscSpitterLakes,
+                    spawnCard = SpitterBody.SpawnCards.cscSpitterLakes,
                     selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -714,10 +713,10 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.LakesStageList.Value, dchSpitterLakes);
 
-                SpitterFactory.SpawnCards.cscSpitterSulfur = spitterFactory.CreateCard("cscSpitterSulfur", spitterMaster, SpitterFactory.SkinDefs.Sulfur, spitterBody);
+                SpitterBody.SpawnCards.cscSpitterSulfur = spitterBody.CreateCard("cscSpitterSulfur", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Sulfur, SpitterBody.BodyPrefab);
                 var dcSpitterSulfur = new DirectorCard
                 {
-                    spawnCard = SpitterFactory.SpawnCards.cscSpitterSulfur,
+                    spawnCard = SpitterBody.SpawnCards.cscSpitterSulfur,
                     selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -730,10 +729,10 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
 
-                SpitterFactory.SpawnCards.cscSpitterDepths = spitterFactory.CreateCard("cscSpitterDepths", spitterMaster, SpitterFactory.SkinDefs.Depths, spitterBody);
+                SpitterBody.SpawnCards.cscSpitterDepths = spitterBody.CreateCard("cscSpitterDepths", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Depths, SpitterBody.BodyPrefab);
                 var dcSpitterDepth = new DirectorCard
                 {
-                    spawnCard = SpitterFactory.SpawnCards.cscSpitterDepths,
+                    spawnCard = SpitterBody.SpawnCards.cscSpitterDepths,
                     selectionWeight = EnemiesReturns.Configuration.Spitter.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,

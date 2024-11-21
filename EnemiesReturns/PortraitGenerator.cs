@@ -47,7 +47,7 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
-            yield return GeneratePortrait(modelPanel, SpitterFactory.SpitterBody);
+            yield return GeneratePortrait(modelPanel, SpitterBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, ColossusFactory.ColossusBody);
             yield return GeneratePortrait(modelPanel, IfritFactory.IfritBody);
             yield return GeneratePortrait(modelPanel, IfritPillarFactory.Enemy.IfritPillarBody);

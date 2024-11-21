@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using RoR2;
@@ -113,10 +114,10 @@ namespace EnemiesReturns
             var localPlayers = LocalUserManager.readOnlyLocalUsersList;
             var localPlayer = localPlayers[0].cachedBody;
 
-            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDefault, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterLakes, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterDepths, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Spitter.SpitterFactory.SpawnCards.cscSpitterSulfur, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(SpitterBody.SpawnCards.cscSpitterDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(SpitterBody.SpawnCards.cscSpitterLakes, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(SpitterBody.SpawnCards.cscSpitterDepths, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(SpitterBody.SpawnCards.cscSpitterSulfur, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         [ConCommand(commandName = "returns_spawn_colossi", flags = ConVarFlags.None, helpText = "Spawns all Colossus variants")]
