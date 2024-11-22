@@ -8,11 +8,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
     {
         public static float baseDuration = 3.5f;
 
-        public static float initialEmission = ColossusFactory.MAX_BARRAGE_EMISSION;
+        public static float initialEmission = ColossusBody.MAX_BARRAGE_EMISSION;
 
-        public static float finalLightRange = ColossusFactory.normalEyeLightRange;
+        public static float finalLightRange = ColossusBody.NORMAL_EYE_LIGHT_RANGE;
 
-        public static float initialSpotlightRange = ColossusFactory.MAX_SPOT_LIGHT_RANGE;
+        public static float initialSpotlightRange = ColossusBody.MAX_SPOT_LIGHT_RANGE;
 
         public static float finalSpotlightRange = 0f;
 

@@ -1,5 +1,4 @@
 ﻿using RoR2;
-using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.Components.ModelComponents.Hurtboxes

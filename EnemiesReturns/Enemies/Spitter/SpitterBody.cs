@@ -6,6 +6,7 @@ using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.Junk.ModdedEntityStates.Spitter;
 using EnemiesReturns.ModdedEntityStates.Spitter;
+using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
@@ -48,6 +49,8 @@ namespace EnemiesReturns.Enemies.Spitter
         }
 
         public static GameObject BodyPrefab;
+
+        protected override bool AddHitBoxes => true;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null)
         {
@@ -114,9 +117,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
         {
-            var crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
-            var initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
-            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", crosshair, aimOrigin, icon, initialState)
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f,
                 baseMaxHealth = Configuration.Spitter.BaseMaxHealth.Value,
@@ -129,6 +130,9 @@ namespace EnemiesReturns.Enemies.Spitter
                 bodyColor = new Color(0.737f, 0.682f, 0.588f),
                 isChampion = false,
                 autoCalculateStats = true,
+                levelMaxHealth = EnemiesReturns.Configuration.Spitter.LevelMaxHealth.Value,
+                levelDamage = EnemiesReturns.Configuration.Spitter.LevelDamage.Value,
+                levelArmor = EnemiesReturns.Configuration.Spitter.LevelArmor.Value
             };
         }
 
@@ -616,6 +620,16 @@ namespace EnemiesReturns.Enemies.Spitter
             #endregion
 
             return idrs;
+        }
+
+        protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
+        {
+            return new IAimAssist.AimAssistTargetParams()
+            {
+                assistScale = 2f,
+                pathToPoint0 = "ModelBase/mdlSpitter/Armature/Root/Root_Pelvis_Control/Bone.001/Bone.002/Bone.003/Head",
+                pathToPoint1 = "ModelBase/mdlSpitter/Armature/Root"
+            };
         }
     }
 }

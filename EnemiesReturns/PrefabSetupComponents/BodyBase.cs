@@ -7,6 +7,7 @@ using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.Components.ModelComponents.Hurtboxes;
 using EnemiesReturns.Components.ModelComponents.Skins;
+using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using RoR2.Navigation;
 using RoR2.Skills;
@@ -38,6 +39,8 @@ namespace EnemiesReturns.Components
 
         protected abstract IModelPanelParameters.ModelPanelParams ModelPanelParams();
 
+        protected abstract IAimAssist.AimAssistTargetParams AimAssistTargetParams();
+
         public abstract GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null);
 
         protected virtual bool AddAimAnimator => true;
@@ -57,7 +60,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddFootstepHandler => true;
         protected virtual bool AddSkills => true;
         protected virtual bool AddHealthComponent => true;
-        protected virtual bool AddHitBoxes => true;
+        protected virtual bool AddHitBoxes => false;
         protected virtual bool AddHurtBoxes => true;
         protected virtual bool AddInputBankTest => true;
         protected virtual bool AddInteractionDriver => true;
@@ -69,6 +72,9 @@ namespace EnemiesReturns.Components
         protected virtual bool AddSetStateOnHurt => true;
         protected virtual bool AddTeamComponent => true;
         protected virtual bool AddSfxLocator => true;
+        protected virtual bool AddAimAssistScale => true;
+        protected virtual bool AddCrouchMecanim => false;
+
         protected class SkillParams
         {
             public SkillParams(string name, EntityStates.SerializableEntityStateType activationState)
@@ -194,6 +200,16 @@ namespace EnemiesReturns.Components
             return card;
         }
 
+        protected virtual GameObject GetCrosshair()
+        {
+            return Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
+        }
+
+        protected virtual EntityStates.SerializableEntityStateType GetInitialBodyState()
+        {
+            return new EntityStates.SerializableEntityStateType(typeof(EntityStates.Uninitialized));
+        }
+
         protected virtual IAimAnimator.AimAnimatorParams AimAnimatorParams()
         {
             return new IAimAnimator.AimAnimatorParams
@@ -292,6 +308,15 @@ namespace EnemiesReturns.Components
 
         protected virtual float CharacterDirectionTurnSpeed => 720f;
 
+        protected virtual ICrouchMecanim.CrouchMecanimParams CrouchMecanimParams()
+        {
+            return new ICrouchMecanim.CrouchMecanimParams()
+            {
+                duckHeight = 25f,
+                initialverticalOffset = 0f,
+                smoothdamp = 0.1f
+            };
+        }
 
         string IBody.ModelName() => ModelName();
 
@@ -343,6 +368,9 @@ namespace EnemiesReturns.Components
 
         ItemDisplayRuleSet ICharacterModel.GetItemDisplayRuleSet() => ItemDisplayRuleSet();
 
+        IAimAssist.AimAssistTargetParams IAimAssist.GetAimAssistTargetParams() => AimAssistTargetParams();
+
+        ICrouchMecanim.CrouchMecanimParams ICrouchMecanim.GetCrouchMecanimParams() => CrouchMecanimParams();
 
         bool IAimAnimator.NeedToAddAimAnimator() => AddAimAnimator;
         bool IAnimationEvents.NeedToAddAnimationEvents() => AddAnimationEvents;
@@ -380,6 +408,9 @@ namespace EnemiesReturns.Components
 
         bool ISfxLocator.NeedToAddSfxLocator() => AddSfxLocator;
 
+        bool IAimAssist.NeedToAddAimAssistTarget() => AddAimAssistScale;
+
+        bool ICrouchMecanim.NeedToAddCrouchMecanim() => AddCrouchMecanim;
 
     }
 }

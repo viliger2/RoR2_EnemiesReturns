@@ -1,12 +1,13 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator
+    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator, IAimAssist, ICrouchMecanim
     {
         public string ModelName();
 
@@ -20,10 +21,10 @@ namespace EnemiesReturns.Components
             AddMotor(body, direction);
             var inputNank = AddInputBankTest(body);
             var characterBody = AddCharacterBody(body, GetCharacterBodyParams(GetAimOrigin(body), sprite.texture));
-            AddCameraTargetParams(body, GetCharacterCameraParams());
+            AddCameraTargetParams(body, GetCameraPivot(body), GetCharacterCameraParams());
             AddModelLocator(body, modelBase, modelTransform, GetModelLocatorParams());
             AddSkills(body);
-            AddTeamComponent(body, GetTeamIndex());
+            var teamComponent = AddTeamComponent(body, GetTeamIndex());
             var healthComponent = AddHealthComponent(body, GetHealthComponentParams());
             AddInteractor(body, GetInteractionDistance());
             AddInteractionDriver(body);
@@ -35,12 +36,44 @@ namespace EnemiesReturns.Components
 
             SetupModel(modelTransform.gameObject, direction, inputNank, healthComponent, characterBody);
 
+            AddAimAssistTarget(modelTransform, body, GetAimAssistTargetParams(), healthComponent, teamComponent);
+            AddCrouchMecanim(GetCrouchMechanimObject(modelBase), GetAnimator(body), GetCrouchMecanimParams());
+
             if (NeedToAddNetworkIdentity())
             {
                 body.RegisterNetworkPrefab();
             }
 
             return body;
+        }
+
+        private Transform GetCameraPivot(GameObject bodyPrefab)
+        {
+            var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
+#if DEBUG || NOWEAVER
+            if (!cameraPivot)
+            {
+                Log.Warning($"Couldn't find CameraPivot for body {bodyPrefab}");
+            }
+#endif
+            return cameraPivot;
+        }
+
+        private GameObject GetCrouchMechanimObject(Transform modelBase)
+        {
+            if (NeedToAddCrouchMecanim())
+            {
+                var crouch = modelBase.Find("CrouchController");
+                if (!crouch)
+                {
+#if DEBUG || NOWEAVER
+                    Log.Warning($"Couldn't find CrouchController for {modelBase.parent}");
+#endif
+                    return null;
+                }
+                return crouch.gameObject;
+            }
+            return null;
         }
 
         private Transform GetModelTransform(Transform modelBase)

@@ -8,9 +8,9 @@ namespace EnemiesReturns.Enemies.Colossus
 {
     public class FloatingRocksController : MonoBehaviour
     {
-        public static float distance = EnemiesReturns.Configuration.Colossus.RockClapProjectileSpawnDistance.Value;
+        public static float distance = Configuration.Colossus.RockClapProjectileSpawnDistance.Value;
 
-        public static int rockCount = EnemiesReturns.Configuration.Colossus.RockClapProjectileCount.Value;
+        public static int rockCount = Configuration.Colossus.RockClapProjectileCount.Value;
 
         public static GameObject flyingRockPrefab;
 
@@ -25,12 +25,12 @@ namespace EnemiesReturns.Enemies.Colossus
             // creating a point to attach to
             rockThing = new GameObject();
             rockThing.name = "RockThing";
-            rockThing.transform.parent = this.transform;
+            rockThing.transform.parent = transform;
             rockThing.transform.localPosition = new Vector3(0, 0f, 0);
             rockThing.transform.rotation = Quaternion.identity;
 
             GameObject modelPrefab = flyingRockPrefab.InstantiateClone("RockFloater", false);
-            UnityEngine.Object.Destroy(modelPrefab.GetComponent<ProjectileGhostController>());
+            Destroy(modelPrefab.GetComponent<ProjectileGhostController>());
 
             List<GameObject> floatingRocks = new List<GameObject>();
 
@@ -41,7 +41,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 var x = distance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
                 var z = distance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
 
-                var newRock = UnityEngine.Object.Instantiate(modelPrefab);
+                var newRock = Instantiate(modelPrefab);
                 newRock.transform.parent = rockThing.transform;
                 //newRock.transform.position = rockThing.transform.position + new Vector3(x, Random.Range(-2f, 2f), z);
                 newRock.transform.localPosition = new Vector3(x, Random.Range(-2f, 2f), z);
@@ -50,7 +50,7 @@ namespace EnemiesReturns.Enemies.Colossus
             }
             this.floatingRocks = floatingRocks.ToArray();
 
-            this.enabled = false;
+            enabled = false;
         }
 
         private void OnEnable()

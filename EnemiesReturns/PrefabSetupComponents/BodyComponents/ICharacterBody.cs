@@ -17,6 +17,7 @@ namespace EnemiesReturns.Components.BodyComponents
             }
 
             public string nameToken;
+            public string subtitleNameToken = "";
             public CharacterBody.BodyFlags bodyFlags = CharacterBody.BodyFlags.None;
             public bool rootMotionInMainState = false;
             public float mainRootSpeed = 33f;
@@ -95,6 +96,7 @@ namespace EnemiesReturns.Components.BodyComponents
                 body = bodyPrefab.GetOrAddComponent<CharacterBody>();
 
                 body.baseNameToken = bodyParams.nameToken;
+                body.subtitleNameToken = bodyParams.subtitleNameToken;
                 body.bodyFlags = bodyParams.bodyFlags;
                 body.rootMotionInMainState = bodyParams.rootMotionInMainState;
                 body.mainRootSpeed = bodyParams.mainRootSpeed;

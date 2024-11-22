@@ -9,13 +9,14 @@ namespace EnemiesReturns.Components.BodyComponents
 
         protected CharacterCameraParams GetCharacterCameraParams();
 
-        protected CameraTargetParams AddCameraTargetParams(GameObject bodyPrefab, CharacterCameraParams cameraParams)
+        protected CameraTargetParams AddCameraTargetParams(GameObject bodyPrefab, Transform pivotTransform, CharacterCameraParams cameraParams)
         {
             CameraTargetParams cameraTargetParams = null;
             if (NeedToAddCameraTargetParams())
             {
                 cameraTargetParams = bodyPrefab.GetOrAddComponent<CameraTargetParams>();
                 cameraTargetParams.cameraParams = cameraParams;
+                cameraTargetParams.cameraPivotTransform = pivotTransform;
             }
 
             return cameraTargetParams;

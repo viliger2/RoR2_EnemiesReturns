@@ -398,38 +398,38 @@ namespace EnemiesReturns
 
             if (EnemiesReturns.Configuration.Colossus.Enabled.Value)
             {
-                var colossusFactory = new ColossusFactory();
+                var colossusStuff = new ColossusStuff();
 
-                var stompEffect = colossusFactory.CreateStompEffect();
+                var stompEffect = colossusStuff.CreateStompEffect();
                 ModdedEntityStates.Colossus.Stomp.StompBase.stompEffectPrefab = stompEffect;
                 effectsList.Add(new EffectDef(stompEffect));
 
-                var stompProjectile = colossusFactory.CreateStompProjectile();
+                var stompProjectile = colossusStuff.CreateStompProjectile();
                 ModdedEntityStates.Colossus.Stomp.StompBase.projectilePrefab = stompProjectile;
                 projectilesList.Add(stompProjectile);
 
-                var deathFallEffect = colossusFactory.CreateDeathFallEffect();
+                var deathFallEffect = colossusStuff.CreateDeathFallEffect();
                 effectsList.Add(new EffectDef(deathFallEffect));
                 ModdedEntityStates.Colossus.Death.Death2.fallEffect = deathFallEffect;
 
-                var death2Effect = colossusFactory.CreateDeath2Effect();
+                var death2Effect = colossusStuff.CreateDeath2Effect();
                 effectsList.Add(new EffectDef(death2Effect));
                 ModdedEntityStates.Colossus.Death.Death2.deathEffect = death2Effect;
 
-                var clapEffect = colossusFactory.CreateClapEffect();
+                var clapEffect = colossusStuff.CreateClapEffect();
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
 
-                var flyingRockGhost = colossusFactory.CreateFlyingRocksGhost();
-                Enemies.Colossus.FloatingRocksController.flyingRockPrefab = flyingRockGhost;
-                var flyingRockProjectile = colossusFactory.CreateFlyingRockProjectile(flyingRockGhost);
+                var flyingRockGhost = colossusStuff.CreateFlyingRocksGhost();
+                FloatingRocksController.flyingRockPrefab = flyingRockGhost;
+                var flyingRockProjectile = colossusStuff.CreateFlyingRockProjectile(flyingRockGhost);
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.projectilePrefab = flyingRockProjectile;
                 projectilesList.Add(flyingRockProjectile);
 
-                var laserBarrageProjectile = colossusFactory.CreateLaserBarrageProjectile();
+                var laserBarrageProjectile = colossusStuff.CreateLaserBarrageProjectile();
                 ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.projectilePrefab = laserBarrageProjectile;
                 projectilesList.Add(laserBarrageProjectile);
 
-                var spawnEffect = colossusFactory.CreateSpawnEffect();
+                var spawnEffect = colossusStuff.CreateSpawnEffect();
                 ModdedEntityStates.Colossus.SpawnState.burrowPrefab = spawnEffect;
                 effectsList.Add(new EffectDef(spawnEffect));
 
@@ -438,34 +438,36 @@ namespace EnemiesReturns
                 var colossusLog = Utils.CreateUnlockableDef("Logs.ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
                 unlockablesList.Add(colossusLog);
 
-                var laserEffect = colossusFactory.CreateLaserEffect();
+                var laserEffect = colossusStuff.CreateLaserEffect();
                 Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
-                ColossusFactory.Skills.Stomp = colossusFactory.CreateStompSkill();
-                ColossusFactory.Skills.StoneClap = colossusFactory.CreateStoneClapSkill();
-                ColossusFactory.Skills.LaserBarrage = colossusFactory.CreateLaserBarrageSkill();
-                ColossusFactory.Skills.HeadLaser = colossusFactory.CreateHeadLaserSkill();
-                sdList.Add(ColossusFactory.Skills.Stomp);
-                sdList.Add(ColossusFactory.Skills.StoneClap);
-                sdList.Add(ColossusFactory.Skills.LaserBarrage);
-                sdList.Add(ColossusFactory.Skills.HeadLaser);
+                var colossusBody = new ColossusBody();
+                ColossusBody.Skills.Stomp = colossusBody.CreateStompSkill();
+                ColossusBody.Skills.StoneClap = colossusBody.CreateStoneClapSkill();
+                ColossusBody.Skills.LaserBarrage = colossusBody.CreateLaserBarrageSkill();
+                ColossusBody.Skills.HeadLaser = colossusBody.CreateHeadLaserSkill();
+                sdList.Add(ColossusBody.Skills.Stomp);
+                sdList.Add(ColossusBody.Skills.StoneClap);
+                sdList.Add(ColossusBody.Skills.LaserBarrage);
+                sdList.Add(ColossusBody.Skills.HeadLaser);
 
-                ColossusFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("ColossusPrimaryFamily", ColossusFactory.Skills.Stomp);
-                ColossusFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("ColossusSecondaryFamily", ColossusFactory.Skills.StoneClap);
-                ColossusFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusFactory.Skills.LaserBarrage);
-                ColossusFactory.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusFactory.Skills.HeadLaser);
-                sfList.Add(ColossusFactory.SkillFamilies.Primary);
-                sfList.Add(ColossusFactory.SkillFamilies.Secondary);
-                sfList.Add(ColossusFactory.SkillFamilies.Utility);
-                sfList.Add(ColossusFactory.SkillFamilies.Special);
+                ColossusBody.SkillFamilies.Primary = Utils.CreateSkillFamily("ColossusPrimaryFamily", ColossusBody.Skills.Stomp);
+                ColossusBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("ColossusSecondaryFamily", ColossusBody.Skills.StoneClap);
+                ColossusBody.SkillFamilies.Utility = Utils.CreateSkillFamily("ColossusUtilityFamily", ColossusBody.Skills.LaserBarrage);
+                ColossusBody.SkillFamilies.Special = Utils.CreateSkillFamily("ColossusSpecialFamily", ColossusBody.Skills.HeadLaser);
+                sfList.Add(ColossusBody.SkillFamilies.Primary);
+                sfList.Add(ColossusBody.SkillFamilies.Secondary);
+                sfList.Add(ColossusBody.SkillFamilies.Utility);
+                sfList.Add(ColossusBody.SkillFamilies.Special);
 
-                var colossusBody = assets.First(body => body.name == "ColossusBody");
-                ColossusFactory.ColossusBody = colossusFactory.CreateBody(colossusBody, iconLookup["texColossusIcon"], colossusLog, dtColossus);
-                bodyList.Add(ColossusFactory.ColossusBody);
+                var colossusBodyPrefab = assets.First(body => body.name == "ColossusBody");
+                ColossusBody.BodyPrefab = colossusBody.AddBodyComponents(colossusBodyPrefab, iconLookup["texColossusIcon"], colossusLog, dtColossus);
+                bodyList.Add(ColossusBody.BodyPrefab);
 
-                var colossusMaster = assets.First(master => master.name == "ColossusMaster");
-                ColossusFactory.ColossusMaster = colossusFactory.CreateMaster(colossusMaster, colossusBody);
-                masterList.Add(ColossusFactory.ColossusMaster);
+                var colossusMaster = new ColossusMaster();
+                var colossusMasterPrefab = assets.First(master => master.name == "ColossusMaster");
+                ColossusMaster.MasterPrefab = colossusMaster.AddMasterComponents(colossusMasterPrefab, ColossusBody.BodyPrefab);
+                masterList.Add(ColossusMaster.MasterPrefab);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.ColossusMain));
                 stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
@@ -489,10 +491,10 @@ namespace EnemiesReturns
                 stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack));
                 stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserEnd));
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault = colossusFactory.CreateCard("cscColossusDefault", colossusMaster, ColossusFactory.SkinDefs.Default, colossusBody);
+                ColossusBody.SpawnCards.cscColossusDefault = colossusBody.CreateCard("cscColossusDefault", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Default, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusDefault = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusDefault,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusDefault,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -506,10 +508,10 @@ namespace EnemiesReturns
                 Utils.AddMonsterToCardCategory(dcColossusDefault, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.DefaultStageList.Value, dchColossusDefault);
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow = colossusFactory.CreateCard("cscColossusSkyMeadow", colossusMaster, ColossusFactory.SkinDefs.SkyMeadow, colossusBody);
+                ColossusBody.SpawnCards.cscColossusSkyMeadow = colossusBody.CreateCard("cscColossusSkyMeadow", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.SkyMeadow, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSkyMeadow = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusSkyMeadow,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusSkyMeadow,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -522,10 +524,10 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy = colossusFactory.CreateCard("cscColossusGrassy", colossusMaster, ColossusFactory.SkinDefs.Grassy, colossusBody);
+                ColossusBody.SpawnCards.cscColossusGrassy = colossusBody.CreateCard("cscColossusGrassy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Grassy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusGrassy = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusGrassy,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusGrassy,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -539,10 +541,10 @@ namespace EnemiesReturns
                 Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle = colossusFactory.CreateCard("cscColossusCastle", colossusMaster, ColossusFactory.SkinDefs.Castle, colossusBody);
+                ColossusBody.SpawnCards.cscColossusCastle = colossusBody.CreateCard("cscColossusCastle", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Castle, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusCastle = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusCastle,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusCastle,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -555,10 +557,10 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.CastleStageList.Value, dchColossusCastle);
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy = colossusFactory.CreateCard("cscColossusSandy", colossusMaster, ColossusFactory.SkinDefs.Sandy, colossusBody);
+                ColossusBody.SpawnCards.cscColossusSandy = colossusBody.CreateCard("cscColossusSandy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Sandy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSandy = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusSandy,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusSandy,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -572,10 +574,10 @@ namespace EnemiesReturns
                 Utils.AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SandyStageList.Value, dchColossusSandy);
 
-                Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy = colossusFactory.CreateCard("cscColossusSnowy", colossusMaster, ColossusFactory.SkinDefs.Snowy, colossusBody);
+                ColossusBody.SpawnCards.cscColossusSnowy = colossusBody.CreateCard("cscColossusSnowy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Snowy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSnowy = new DirectorCard
                 {
-                    spawnCard = ColossusFactory.SpawnCards.cscColossusSnowy,
+                    spawnCard = ColossusBody.SpawnCards.cscColossusSnowy,
                     selectionWeight = EnemiesReturns.Configuration.Colossus.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -591,7 +593,7 @@ namespace EnemiesReturns
 
                 if (EnemiesReturns.Configuration.Colossus.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
                 {
-                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(ColossusFactory.SpawnCards.cscColossusGrassy, 3);
+                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(ColossusBody.SpawnCards.cscColossusGrassy, 3);
                 }
             }
         }

@@ -23,9 +23,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         public static float spread => EnemiesReturns.Configuration.Colossus.LaserBarrageSpread.Value;
 
-        public static float desiredEmission = ColossusFactory.MAX_BARRAGE_EMISSION; // max total emmision, we jump from 3.5 to 7 with intencityGraph
+        public static float desiredEmission = ColossusBody.MAX_BARRAGE_EMISSION; // max total emmision, we jump from 3.5 to 7 with intencityGraph
 
-        public static float desiredLightRange = ColossusFactory.MAX_EYE_LIGHT_RANGE;
+        public static float desiredLightRange = ColossusBody.MAX_EYE_LIGHT_RANGE;
 
         public static AnimationCurve intencityGraph;
 
@@ -55,7 +55,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         private Light headLight;
 
-        private float initialLightRange = ColossusFactory.normalEyeLightRange;
+        private float initialLightRange = ColossusBody.NORMAL_EYE_LIGHT_RANGE;
 
         public override void OnEnter()
         {

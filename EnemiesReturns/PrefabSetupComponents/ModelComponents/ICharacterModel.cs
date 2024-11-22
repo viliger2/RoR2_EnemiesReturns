@@ -17,6 +17,7 @@ namespace EnemiesReturns.Components.ModelComponents
         protected class CharacterModelParams
         {
             public CharacterModel.RendererInfo[] renderInfos;
+            public CharacterModel.LightInfo[] lightInfos;
             public bool autoPopulateLightInfos = true;
         }
 
@@ -37,6 +38,7 @@ namespace EnemiesReturns.Components.ModelComponents
                 characterModel.itemDisplayRuleSet = idrs;
                 characterModel.autoPopulateLightInfos = characterModelParams.autoPopulateLightInfos;
                 characterModel.baseRendererInfos = characterModelParams.renderInfos;
+                characterModel.baseLightInfos = characterModelParams.lightInfos;
             }
 
             return characterModel;

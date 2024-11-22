@@ -7,9 +7,9 @@ namespace EnemiesReturns.Enemies.Colossus
 {
     public class ColossusFootstepHandler : FootstepHandler
     {
-        private static float maxDistance => EnemiesReturns.Configuration.Colossus.FootstepShockwaveDistance.Value;
+        private static float maxDistance => Configuration.Colossus.FootstepShockwaveDistance.Value;
 
-        private static float force => EnemiesReturns.Configuration.Colossus.FootstepShockwaveForce.Value;
+        private static float force => Configuration.Colossus.FootstepShockwaveForce.Value;
 
         public new void Footstep(AnimationEvent animationEvent)
         {
@@ -31,15 +31,15 @@ namespace EnemiesReturns.Enemies.Colossus
                     teamMaskFilter = TeamMask.GetEnemyTeams(body.teamComponent.teamIndex),
                     filterByLoS = false,
                     searchOrigin = transform.position,
-                    searchDirection = UnityEngine.Random.onUnitSphere,
+                    searchDirection = Random.onUnitSphere,
                     sortMode = BullseyeSearch.SortMode.Distance,
                     maxDistanceFilter = maxDistance,
                     maxAngleFilter = 360f
                 };
                 bullseyeSearch.RefreshCandidates();
-                bullseyeSearch.FilterOutGameObject(base.gameObject);
+                bullseyeSearch.FilterOutGameObject(gameObject);
 
-                var result = bullseyeSearch.GetResults().ToArray<HurtBox>();
+                var result = bullseyeSearch.GetResults().ToArray();
                 List<HealthComponent> targets = new List<HealthComponent>();
                 foreach (var hurtbox in result)
                 {
@@ -54,7 +54,7 @@ namespace EnemiesReturns.Enemies.Colossus
                         continue;
                     }
 
-                    var forceScaled = Vector3.up * force * (1 - (Vector3.Distance(transform.position, hurtbox.transform.position) / maxDistance));
+                    var forceScaled = Vector3.up * force * (1 - Vector3.Distance(transform.position, hurtbox.transform.position) / maxDistance);
                     if (hurtbox.healthComponent.TryGetComponent<CharacterMotor>(out var motor))
                     {
                         motor.ApplyForce(forceScaled, true, false);

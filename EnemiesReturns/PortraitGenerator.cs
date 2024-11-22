@@ -48,7 +48,7 @@ namespace EnemiesReturns
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
             yield return GeneratePortrait(modelPanel, SpitterBody.BodyPrefab);
-            yield return GeneratePortrait(modelPanel, ColossusFactory.ColossusBody);
+            yield return GeneratePortrait(modelPanel, ColossusBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, IfritFactory.IfritBody);
             yield return GeneratePortrait(modelPanel, IfritPillarFactory.Enemy.IfritPillarBody);
             yield return GeneratePortrait(modelPanel, MechanicalSpiderFactory.MechanicalSpiderBody);

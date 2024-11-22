@@ -1,13 +1,10 @@
-﻿using EnemiesReturns.Projectiles;
+﻿using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.Projectiles;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using ThreeEyedGames;
-using UnityEngine.AddressableAssets;
-using UnityEngine;
 using RoR2.Projectile;
-using EnemiesReturns.PrefabAPICompat;
+using ThreeEyedGames;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Enemies.Spitter
 {

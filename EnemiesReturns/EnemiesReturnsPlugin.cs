@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -126,12 +127,12 @@ namespace EnemiesReturns
             var localPlayers = LocalUserManager.readOnlyLocalUsersList;
             var localPlayer = localPlayers[0].cachedBody;
 
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusDefault, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusGrassy, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSnowy, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSandy, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusSkyMeadow, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.Colossus.ColossusFactory.SpawnCards.cscColossusCastle, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusSnowy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusSandy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusSkyMeadow, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(ColossusBody.SpawnCards.cscColossusCastle, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         [ConCommand(commandName = "returns_spawn_spiders", flags = ConVarFlags.None, helpText = "Spawns all Mechanical Spider variants")]

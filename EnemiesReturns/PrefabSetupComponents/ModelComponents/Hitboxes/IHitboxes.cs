@@ -22,7 +22,7 @@ namespace EnemiesReturns.Components.ModelComponents.Hitboxes
             if (NeedToAddHitBoxes())
             {
 #if DEBUG || NOWEAVER
-                if(hitBoxesParams.Length == 0)
+                if (hitBoxesParams.Length == 0)
                 {
                     Log.Warning($"No hitbox params for {modelPrefab} despite needing to add them!");
                 }
