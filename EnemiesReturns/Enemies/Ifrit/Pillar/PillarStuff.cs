@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.PrefabAPICompat;
+﻿using EnemiesReturns.ModCompats.PrefabAPICompat;
 using RoR2;
 using RoR2.EntityLogic;
 using UnityEngine;

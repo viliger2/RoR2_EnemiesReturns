@@ -1,6 +1,6 @@
 ﻿using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.MasterComponents;
-using EnemiesReturns.PrefabAPICompat;
+using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.PrefabSetupComponents.MasterComponents;
 using Rewired.Utils;
 using System.Linq;

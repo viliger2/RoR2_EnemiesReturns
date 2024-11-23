@@ -1,7 +1,7 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Helpers;
+using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
-using EnemiesReturns.PrefabAPICompat;
 using HG;
 using KinematicCharacterController;
 using RoR2;
