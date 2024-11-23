@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.IfritNew;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -113,7 +114,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                         if (body && body.gameObject.TryGetComponent<Deployable>(out var deployable))
                         {
                             deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
-                            characterBody.master.AddDeployable(deployable, Enemies.Ifrit.IfritFactory.PylonDeployable);
+                            characterBody.master.AddDeployable(deployable, IfritStuff.PylonDeployable);
                         }
                     }
                 }

@@ -2,6 +2,7 @@
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.IfritNew;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -190,6 +191,7 @@ namespace EnemiesReturns
         }
 
         #region Content
+
         private void CreateIfrit(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Texture2D texLavaCrackRound, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             CreateIfritPillar(assets, iconLookup, acdLookup);
@@ -197,64 +199,68 @@ namespace EnemiesReturns
 
             if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
             {
-                var ifritFactory = new IfritFactory();
-                var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
-                ifritManePrefab.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", ifritFactory.CreateManeFiresMaterial);
+                var ifritStuff = new IfritStuff();
 
-                ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritFactory.CreateBreathParticle();
+                ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritStuff.CreateBreathParticle();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
 
                 var nsedHellzoneRockFire = Utils.CreateNetworkSoundDef("ER_Ifrit_Hellzone_Rock_Play");
                 nseList.Add(nsedHellzoneRockFire);
 
                 var ifritSpawnEffect = assets.First(effect => effect.name == "IfritSpawnPortal");
-                ModdedEntityStates.Ifrit.SpawnState.spawnEffect = ifritFactory.CreateSpawnEffect(ifritSpawnEffect, acdLookup["acdPortalPP"]);
+                ModdedEntityStates.Ifrit.SpawnState.spawnEffect = ifritStuff.CreateSpawnEffect(ifritSpawnEffect, acdLookup["acdPortalPP"]);
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SpawnState.spawnEffect));
 
                 var ifritHellzonePillarProjectile = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectile");
                 var ifritHellzonePillarProjectileGhost = assets.First(projectile => projectile.name == "IfritHellzonePillarProjectileGhost");
                 var IfritHellzoneVolcanoEffect = assets.First(projectile => projectile.name == "IfritHellzoneVolcanoEffect");
-                var pillarProjectile = ifritFactory.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
-                var dotZoneProjectile = ifritFactory.CreateHellfireDotZoneProjectile(pillarProjectile, IfritHellzoneVolcanoEffect, texLavaCrackRound, nsedHellzoneRockFire);
-                var hellzoneProjectile = ifritFactory.CreateHellzoneProjectile();
-                var preProjectile = ifritFactory.CreateHellzonePredictionProjectile(dotZoneProjectile, texLavaCrackRound);
+                var pillarProjectile = ifritStuff.CreateHellzonePillarProjectile(ifritHellzonePillarProjectile, ifritHellzonePillarProjectileGhost);
+                var dotZoneProjectile = ifritStuff.CreateHellfireDotZoneProjectile(pillarProjectile, IfritHellzoneVolcanoEffect, texLavaCrackRound, nsedHellzoneRockFire);
+                var hellzoneProjectile = ifritStuff.CreateHellzoneProjectile();
+                var preProjectile = ifritStuff.CreateHellzonePredictionProjectile(dotZoneProjectile, texLavaCrackRound);
 
                 projectilesList.Add(dotZoneProjectile);
                 projectilesList.Add(hellzoneProjectile);
                 projectilesList.Add(pillarProjectile);
                 projectilesList.Add(preProjectile);
 
-                ModdedEntityStates.Ifrit.FlameCharge.FlameCharge.flamethrowerEffectPrefab = ifritFactory.CreateFlameBreath();
+                ModdedEntityStates.Ifrit.FlameCharge.FlameCharge.flamethrowerEffectPrefab = ifritStuff.CreateFlameBreath();
                 ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.projectilePrefab = hellzoneProjectile;
                 ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire.dotZoneProjectile = preProjectile;
 
-                IfritFactory.Skills.Hellzone = ifritFactory.CreateHellzoneSkill();
-                IfritFactory.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritFactory.Skills.Hellzone);
+                var ifritBody = new IfritBody();
 
-                IfritFactory.Skills.SummonPylon = ifritFactory.CreateSummonPylonSkill();
-                IfritFactory.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritFactory.Skills.SummonPylon);
+                IfritBody.Skills.Hellzone = ifritBody.CreateHellzoneSkill();
+                IfritBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritBody.Skills.Hellzone);
 
-                IfritFactory.Skills.FlameCharge = ifritFactory.CreateFlameChargeSkill();
-                IfritFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("IfritUtilityFamily", IfritFactory.Skills.FlameCharge);
+                IfritBody.Skills.SummonPylon = ifritBody.CreateSummonPylonSkill();
+                IfritBody.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritBody.Skills.SummonPylon);
 
-                IfritFactory.Skills.Smash = ifritFactory.CreateSmashSkill();
-                IfritFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("IfritPrimaryFamily", IfritFactory.Skills.Smash);
+                IfritBody.Skills.FlameCharge = ifritBody.CreateFlameChargeSkill();
+                IfritBody.SkillFamilies.Utility = Utils.CreateSkillFamily("IfritUtilityFamily", IfritBody.Skills.FlameCharge);
+
+                IfritBody.Skills.Smash = ifritBody.CreateSmashSkill();
+                IfritBody.SkillFamilies.Primary = Utils.CreateSkillFamily("IfritPrimaryFamily", IfritBody.Skills.Smash);
 
                 var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);
 
-                var ifritBody = assets.First(body => body.name == "IfritBody");
-                IfritFactory.IfritBody = ifritFactory.CreateBody(ifritBody, iconLookup["texIconIfritBody"], ifritLog, dtIfrit);
-                bodyList.Add(IfritFactory.IfritBody);
+                var ifritBodyPrefab = assets.First(body => body.name == "IfritBody");
+                IfritBody.BodyPrefab = ifritBody.AddBodyComponents(ifritBodyPrefab, iconLookup["texIconIfritBody"], ifritLog, dtIfrit);
+                bodyList.Add(IfritBody.BodyPrefab);
 
-                var ifritMaster = assets.First(master => master.name == "IfritMaster");
-                IfritFactory.IfritMaster = ifritFactory.CreateMaster(ifritMaster, IfritFactory.IfritBody);
-                masterList.Add(IfritFactory.IfritMaster);
+                var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
+                ifritManePrefab.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", ifritBody.CreateManeFiresMaterial);
 
-                IfritFactory.SpawnCards.cscIfritDefault = ifritFactory.CreateCard("cscIfritDefault", ifritMaster, IfritFactory.SkinDefs.Default, ifritBody);
+                var ifritMaster = new IfritMaster();
+                var ifritMasterPrefab = assets.First(master => master.name == "IfritMaster");
+                IfritMaster.MasterPrefab = ifritMaster.AddMasterComponents(ifritMasterPrefab, IfritBody.BodyPrefab);
+                masterList.Add(IfritMaster.MasterPrefab);
+
+                IfritBody.SpawnCards.cscIfritDefault = ifritBody.CreateCard("cscIfritDefault", IfritMaster.MasterPrefab, IfritBody.SkinDefs.Default, IfritBody.BodyPrefab);
                 var dcIfritDefault = new DirectorCard
                 {
-                    spawnCard = IfritFactory.SpawnCards.cscIfritDefault,
+                    spawnCard = IfritBody.SpawnCards.cscIfritDefault,
                     selectionWeight = EnemiesReturns.Configuration.Ifrit.SelectionWeight.Value,
                     spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                     preventOverhead = true,
@@ -280,7 +286,7 @@ namespace EnemiesReturns
 
                 if (EnemiesReturns.Configuration.Ifrit.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
                 {
-                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(IfritFactory.SpawnCards.cscIfritDefault, 2);
+                    ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(IfritBody.SpawnCards.cscIfritDefault, 2);
                 }
             }
         }

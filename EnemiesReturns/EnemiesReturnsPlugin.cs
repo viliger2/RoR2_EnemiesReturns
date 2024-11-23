@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.IfritNew;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -71,7 +72,7 @@ namespace EnemiesReturns
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             ColossalKnurlFactory.Hooks();
-            IfritFactory.Hooks();
+            IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             Enemies.MechanicalSpider.SpiderVictoryDanceController.Hooks();
             // using single R2API recalcstats hook for the sake of performance

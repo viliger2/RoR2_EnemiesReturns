@@ -8,6 +8,7 @@ using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.Components.ModelComponents.Hurtboxes;
 using EnemiesReturns.Components.ModelComponents.Skins;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
+using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using RoR2;
 using RoR2.Navigation;
 using RoR2.Skills;
@@ -74,6 +75,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddSfxLocator => true;
         protected virtual bool AddAimAssistScale => true;
         protected virtual bool AddCrouchMecanim => false;
+        protected virtual bool AddRandomBlinks => false;
 
         protected class SkillParams
         {
@@ -318,6 +320,14 @@ namespace EnemiesReturns.Components
             };
         }
 
+        protected virtual IRandomBlinkController.RandomBlinkParams RandomBlinkParams()
+        {
+            return new IRandomBlinkController.RandomBlinkParams(new string[] { "BlinkEye" })
+            {
+                blinkChancePerUpdate = 10f
+            };
+        }
+
         string IBody.ModelName() => ModelName();
 
         SurfaceDef ISetupHurtboxes.GetSurfaceDef() => SurfaceDef();
@@ -371,6 +381,8 @@ namespace EnemiesReturns.Components
         IAimAssist.AimAssistTargetParams IAimAssist.GetAimAssistTargetParams() => AimAssistTargetParams();
 
         ICrouchMecanim.CrouchMecanimParams ICrouchMecanim.GetCrouchMecanimParams() => CrouchMecanimParams();
+        
+        IRandomBlinkController.RandomBlinkParams IRandomBlinkController.GetRandomBlinkParams() => RandomBlinkParams();
 
         bool IAimAnimator.NeedToAddAimAnimator() => AddAimAnimator;
         bool IAnimationEvents.NeedToAddAnimationEvents() => AddAnimationEvents;
@@ -405,12 +417,9 @@ namespace EnemiesReturns.Components
         bool ISkillLocator.NeedToAddSkillLocator() => AddSkills;
         bool ITeamComponent.NeedToAddTeamComponent() => AddTeamComponent;
         bool ISetupHurtboxes.NeedToSetupHurtboxes() => AddHurtBoxes;
-
         bool ISfxLocator.NeedToAddSfxLocator() => AddSfxLocator;
-
         bool IAimAssist.NeedToAddAimAssistTarget() => AddAimAssistScale;
-
         bool ICrouchMecanim.NeedToAddCrouchMecanim() => AddCrouchMecanim;
-
+        bool IRandomBlinkController.NeedToAddRandomBlinkController() => AddRandomBlinks;
     }
 }

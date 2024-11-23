@@ -1,10 +1,11 @@
 ﻿using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IModel : IAimAnimator, IChildLocator, IHurtboxes, IAnimationEvents, IDestroyOnUnseen, ICharacterModel, IAddHitboxes, IModelPanelParameters, IFootStepHandler, ISkins
+    public interface IModel : IAimAnimator, IChildLocator, IHurtboxes, IAnimationEvents, IDestroyOnUnseen, ICharacterModel, IAddHitboxes, IModelPanelParameters, IFootStepHandler, ISkins, IRandomBlinkController
     {
         public void SetupModel(GameObject modelPrefab, CharacterDirection direction, InputBankTest inputBank, HealthComponent healthComponent, CharacterBody characterBody)
         {
@@ -18,6 +19,7 @@ namespace EnemiesReturns.Components
             AddModelPanelParameters(modelPrefab, GetFocusPoint(modelPrefab), GetCameraPosition(modelPrefab), GetModelPanelParams());
             AddFootstepHandler(modelPrefab, GetFootstepHandlerParams());
             AddSkins(modelPrefab);
+            AddRandomBlinkController(modelPrefab, GetAnimator(modelPrefab), GetRandomBlinkParams());
         }
 
         private Transform GetFocusPoint(GameObject modelPrefab)
@@ -42,6 +44,18 @@ namespace EnemiesReturns.Components
             }
 #endif
             return transform;
+        }
+
+        private Animator GetAnimator(GameObject model)
+        {
+            var animator = model.GetComponent<Animator>();
+#if DEBUG || NOWEAVER
+            if (!animator)
+            {
+                Log.Warning($"Body {model} doesn't have animator!");
+            }
+#endif
+            return animator;
         }
     }
 }

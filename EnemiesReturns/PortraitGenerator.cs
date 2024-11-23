@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.IfritNew;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
@@ -49,7 +50,7 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             yield return GeneratePortrait(modelPanel, SpitterBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, ColossusBody.BodyPrefab);
-            yield return GeneratePortrait(modelPanel, IfritFactory.IfritBody);
+            yield return GeneratePortrait(modelPanel, IfritBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, IfritPillarFactory.Enemy.IfritPillarBody);
             yield return GeneratePortrait(modelPanel, MechanicalSpiderFactory.MechanicalSpiderBody);
             yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());

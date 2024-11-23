@@ -206,6 +206,36 @@ namespace EnemiesReturns.Enemies.Colossus
             };
         }
 
+        protected override IAimAnimator.AimAnimatorParams AimAnimatorParams()
+        {
+            return new IAimAnimator.AimAnimatorParams()
+            {
+                pitchRangeMin = -70f,
+                pitchRangeMax = 70f,
+
+                yawRangeMin = -135f,
+                yawRangeMax = 135f,
+
+                pitchGiveUpRange = 50f,
+                yawGiveUpRange = 50f,
+
+                giveUpDuration = 5f,
+
+                raisedApproachSpeed = 180f,
+                loweredApproachSpeed = 180f,
+                smoothTime = 0.3f,
+            };
+        }
+
+        protected override IKinematicCharacterMotor.KinemacitCharacterMotorParams KinemacitCharacterMotorParams()
+        {
+            return new IKinematicCharacterMotor.KinemacitCharacterMotorParams
+            {
+                StableGroundLayers = LayerIndex.world.mask,
+                MaxStepHeight = 1f
+            };
+        }
+
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_COLOSSUS_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
