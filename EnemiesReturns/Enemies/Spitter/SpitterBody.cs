@@ -52,9 +52,9 @@ namespace EnemiesReturns.Enemies.Spitter
 
         protected override bool AddHitBoxes => true;
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null)
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
-            var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
+            var body = base.AddBodyComponents(bodyPrefab, sprite, log);
 
             var danceController = body.AddComponent<SpitterDeathDanceController>();
             danceController.body = body.GetComponent<CharacterBody>();

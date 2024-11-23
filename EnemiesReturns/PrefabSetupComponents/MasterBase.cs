@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.MasterComponents;
+using EnemiesReturns.PrefabSetupComponents.MasterComponents;
 using UnityEngine;
 
 namespace EnemiesReturns.Components
@@ -46,6 +47,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddInventory => true;
         protected virtual bool AddEntityStateMachine => true;
         protected virtual bool AddMinionOwnership => true;
+        protected virtual bool AddAIOwnership => false;
 
 
         IAISkillDriver.AISkillDriverParams[] IAISkillDriver.GetAISkillDriverParams() => AISkillDriverParams();
@@ -61,5 +63,7 @@ namespace EnemiesReturns.Components
         bool IInventory.NeedToAddInventory() => AddInventory;
         bool IMinionOwnership.NeedToAddMinionOwnership() => AddMinionOwnership;
         bool INetworkIdentity.NeedToAddNetworkIdentity() => AddNetworkIdentity;
+
+        bool IAIOwnership.NeedToAddAIOwnership() => AddAIOwnership;
     }
 }

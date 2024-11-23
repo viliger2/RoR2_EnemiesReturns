@@ -136,9 +136,9 @@ namespace EnemiesReturns.Enemies.Colossus
             });
         }
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null)
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
         {
-            var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
+            var body = base.AddBodyComponents(bodyPrefab, sprite, log, droptable);
 
             body.AddComponent<ColossusAwooga>();
 

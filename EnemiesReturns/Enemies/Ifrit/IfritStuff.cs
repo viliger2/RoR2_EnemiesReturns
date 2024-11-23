@@ -1,23 +1,22 @@
 ﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RoR2.Audio;
+using RoR2.Projectile;
 using ThreeEyedGames;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine;
-using RoR2.Projectile;
-using RoR2.Audio;
-using EnemiesReturns.PrefabAPICompat;
 
-namespace EnemiesReturns.Enemies.IfritNew
+namespace EnemiesReturns.Enemies.Ifrit
 {
     public class IfritStuff
     {
         public static DeployableSlot PylonDeployable;
+
+        public static R2API.ModdedProcType PillarExplosion;
 
         public static void Hooks()
         {

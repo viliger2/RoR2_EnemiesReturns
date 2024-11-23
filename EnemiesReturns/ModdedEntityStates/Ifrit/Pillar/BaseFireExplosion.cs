@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EntityStates;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
@@ -66,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                 };
                 blastAttack.damageType.damageType = DamageType.IgniteOnHit;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
-                blastAttack.procChainMask.AddModdedProc(Enemies.Ifrit.Pillar.IfritPillarFactory.PillarExplosion);
+                blastAttack.procChainMask.AddModdedProc(PillarStuff.PillarExplosion);
                 blastAttack.Fire();
             }
             if (fireball)

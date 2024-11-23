@@ -1,5 +1,5 @@
-﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
-using EnemiesReturns.Enemies.IfritNew;
+﻿using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         public static GameObject screamPrefab;
 
-        public static SpawnCard scPylon => IfritPillarFactory.Enemy.scIfritPillar;
+        public static SpawnCard scPylon => PillarEnemyBody.SpawnCard;
 
         public static float minSpawnDistance => EnemiesReturns.Configuration.Ifrit.PillarMinSpawnDistance.Value;
 

@@ -7,12 +7,14 @@ using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.Components.ModelComponents.Hurtboxes;
 using EnemiesReturns.Components.ModelComponents.Skins;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using RoR2;
 using RoR2.Navigation;
 using RoR2.Skills;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -42,7 +44,36 @@ namespace EnemiesReturns.Components
 
         protected abstract IAimAssist.AimAssistTargetParams AimAssistTargetParams();
 
-        public abstract GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null);
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab)
+        {
+            return AddBodyComponents(bodyPrefab, null, null, null, null);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
+        {
+            return AddBodyComponents(bodyPrefab, sprite, null, null, null);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            return AddBodyComponents(bodyPrefab, sprite, log, null, null);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
+        {
+            return AddBodyComponents(bodyPrefab, sprite, log, droptable, null);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            return AddBodyComponents(bodyPrefab, sprite, null, null, acdLookup);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null, Dictionary<string, AnimationCurveDef> acdLookup = null)
+        {
+            var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
+            return body;
+        }
 
         protected virtual bool AddAimAnimator => true;
         protected virtual bool AddAnimationEvents => true;
@@ -76,6 +107,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddAimAssistScale => true;
         protected virtual bool AddCrouchMecanim => false;
         protected virtual bool AddRandomBlinks => false;
+        protected virtual bool AddDeployable => false;
 
         protected class SkillParams
         {
@@ -381,7 +413,7 @@ namespace EnemiesReturns.Components
         IAimAssist.AimAssistTargetParams IAimAssist.GetAimAssistTargetParams() => AimAssistTargetParams();
 
         ICrouchMecanim.CrouchMecanimParams ICrouchMecanim.GetCrouchMecanimParams() => CrouchMecanimParams();
-        
+
         IRandomBlinkController.RandomBlinkParams IRandomBlinkController.GetRandomBlinkParams() => RandomBlinkParams();
 
         bool IAimAnimator.NeedToAddAimAnimator() => AddAimAnimator;
@@ -421,5 +453,6 @@ namespace EnemiesReturns.Components
         bool IAimAssist.NeedToAddAimAssistTarget() => AddAimAssistScale;
         bool ICrouchMecanim.NeedToAddCrouchMecanim() => AddCrouchMecanim;
         bool IRandomBlinkController.NeedToAddRandomBlinkController() => AddRandomBlinks;
+        bool IDeployable.NeedToAddDeployable() => AddDeployable;
     }
 }

@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
+﻿using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
@@ -10,7 +11,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
     {
         public void OnKilledOtherServer(DamageReport damageReport)
         {
-            if (!damageReport.damageInfo.procChainMask.HasModdedProc(Enemies.Ifrit.Pillar.IfritPillarFactory.PillarExplosion))
+            if (!damageReport.damageInfo.procChainMask.HasModdedProc(IfritStuff.PillarExplosion))
             {
                 bool spawn = false;
                 if (damageReport.victimBody)
@@ -23,7 +24,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 }
                 if (spawn)
                 {
-                    DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(IfritPillarFactory.Player.scIfritPillar, new DirectorPlacementRule
+                    DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(PillarAllyBody.SpawnCard, new DirectorPlacementRule
                     {
                         placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
                         position = damageReport.victimBody.transform.position

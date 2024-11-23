@@ -11,14 +11,11 @@ using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
 
-namespace EnemiesReturns.Enemies.IfritNew
+namespace EnemiesReturns.Enemies.Ifrit
 {
     public class IfritBody : BodyBase
     {
@@ -56,9 +53,9 @@ namespace EnemiesReturns.Enemies.IfritNew
 
         protected override bool AddSetStateOnHurt => false;
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null)
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
         {
-            var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
+            var body = base.AddBodyComponents(bodyPrefab, sprite, log, droptable);
 
             var modelTransform = bodyPrefab.transform.Find("ModelBase/mdlIfrit");
             var mdlIfrit = modelTransform.gameObject;
@@ -140,7 +137,7 @@ namespace EnemiesReturns.Enemies.IfritNew
                 forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn,
                 occupyPosition = true,
                 forbiddenAsBoss = false,
-                skinDef= skin,
+                skinDef = skin,
                 bodyPrefab = bodyPrefab
             });
         }

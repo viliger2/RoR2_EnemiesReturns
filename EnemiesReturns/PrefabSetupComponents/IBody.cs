@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator, IAimAssist, ICrouchMecanim
+    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator, IAimAssist, ICrouchMecanim, IDeployable
     {
         public string ModelName();
 
@@ -33,6 +33,7 @@ namespace EnemiesReturns.Components
             AddDeathRewards(body, log, droptable);
             AddEquipmentSlot(body);
             AddSfxLocator(body, GetSfxLocatorParams());
+            AddDeployable(body);
 
             SetupModel(modelTransform.gameObject, direction, inputNank, healthComponent, characterBody);
 
