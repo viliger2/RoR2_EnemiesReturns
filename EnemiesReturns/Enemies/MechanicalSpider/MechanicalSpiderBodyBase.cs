@@ -4,7 +4,7 @@ using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.Helpers;
+using EnemiesReturns.Behaviors;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
@@ -179,7 +179,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             return new ICharacterMotor.CharacterMotorParams()
             {
-                mass = 100f
+                mass = 150f
             };
         }
 

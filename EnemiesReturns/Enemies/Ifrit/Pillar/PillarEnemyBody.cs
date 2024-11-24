@@ -2,7 +2,7 @@
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Helpers;
+using EnemiesReturns.Behaviors;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;

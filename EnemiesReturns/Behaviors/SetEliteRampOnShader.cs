@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Helpers
+namespace EnemiesReturns.Behaviors
 {
     public class SetEliteRampOnShader : NetworkBehaviour
     {

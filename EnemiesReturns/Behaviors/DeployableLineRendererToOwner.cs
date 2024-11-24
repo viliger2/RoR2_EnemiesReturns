@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Helpers
+namespace EnemiesReturns.Behaviors
 {
     // there is actually hopoo script for that, but at this point who cares
     public class DeployableLineRendererToOwner : MonoBehaviour

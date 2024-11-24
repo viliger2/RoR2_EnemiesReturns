@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.Helpers;
+﻿using EnemiesReturns.Behaviors;
 using EntityStates;
 using RoR2;
 using UnityEngine;

@@ -3,7 +3,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Helpers
+namespace EnemiesReturns.Behaviors
 {
     // I love doing this stupid shit because I refuse to use thunderkit
     // and unity doesn't keep events through scenes or whatever

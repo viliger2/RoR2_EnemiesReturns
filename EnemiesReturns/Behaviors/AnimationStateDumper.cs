@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EnemiesReturns.Helpers
+namespace EnemiesReturns.Behaviors
 {
     public class AnimationStateDumper : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.Helpers;
+﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
 using RoR2;
