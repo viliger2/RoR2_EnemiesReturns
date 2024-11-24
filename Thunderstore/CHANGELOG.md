@@ -1,4 +1,15 @@
 <details>
+<summary>0.3.8</summary>
+
+* Major rewrite of how body and master prefabs are created.
+	* _While this is something that users should not care or even know about, I've decided to push the update before next batch of enemies, mainly so all the issues can be ironed out. There shouldn't be any major differences between this and previous versions, but if you notice something has changed, please let me know. ~~Yes, I am essentially pushing out untested mod so you can beta test for free.~~_
+* Implemented ItemRelationshipProvider, so now current and all future boss item will be converted into Newly Hatched Zoea.
+* Mechanical Spider:
+	* Drone AI improvement, mainly now it shoots at enemies as it tries to pathfind back to its owner.
+
+</details>
+
+<details>
 <summary>0.3.7</summary>
 
 * Mechanical Spider:
