@@ -180,7 +180,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             return new ICharacterMotor.CharacterMotorParams()
             {
-                mass = 500f
+                mass = 1500f
             };
         }
 

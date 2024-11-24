@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -100,6 +101,14 @@ namespace EnemiesReturns.Enemies.Spitter
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = Configuration.Spitter.BiteCooldown.Value
             });
+        }
+
+        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        {
+            return new ICharacterMotor.CharacterMotorParams()
+            {
+                mass = 200f
+            };
         }
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
