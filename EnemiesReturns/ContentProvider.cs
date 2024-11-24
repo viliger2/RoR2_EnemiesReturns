@@ -253,16 +253,14 @@ namespace EnemiesReturns
                 var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);
 
-                var ifritBodyPrefab = assets.First(body => body.name == "IfritBody");
-                IfritBody.BodyPrefab = ifritBody.AddBodyComponents(ifritBodyPrefab, iconLookup["texIconIfritBody"], ifritLog, dtIfrit);
+                IfritBody.BodyPrefab = ifritBody.AddBodyComponents(assets.First(body => body.name == "IfritBody"), iconLookup["texIconIfritBody"], ifritLog, dtIfrit);
                 bodyList.Add(IfritBody.BodyPrefab);
 
                 var ifritManePrefab = assets.First(mane => mane.name == "IfritManeFireParticle");
                 ifritManePrefab.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritManeFire", ifritBody.CreateManeFiresMaterial);
 
                 var ifritMaster = new IfritMaster();
-                var ifritMasterPrefab = assets.First(master => master.name == "IfritMaster");
-                IfritMaster.MasterPrefab = ifritMaster.AddMasterComponents(ifritMasterPrefab, IfritBody.BodyPrefab);
+                IfritMaster.MasterPrefab = ifritMaster.AddMasterComponents(assets.First(master => master.name == "IfritMaster"), IfritBody.BodyPrefab);
                 masterList.Add(IfritMaster.MasterPrefab);
 
                 IfritBody.SpawnCards.cscIfritDefault = ifritBody.CreateCard("cscIfritDefault", IfritMaster.MasterPrefab, IfritBody.SkinDefs.Default, IfritBody.BodyPrefab);
@@ -354,9 +352,8 @@ namespace EnemiesReturns
 
                 if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
                 {
-                    var bodyPrefab = pylonBody.InstantiateClone("IfritPylonEnemyBody", false);
                     var pillarEnemyBody = new PillarEnemyBody();
-                    PillarEnemyBody.BodyPrefab = pillarEnemyBody.AddBodyComponents(bodyPrefab, iconLookup["texIconPillarEnemy"], acdLookup);
+                    PillarEnemyBody.BodyPrefab = pillarEnemyBody.AddBodyComponents(pylonBody.InstantiateClone("IfritPylonEnemyBody", false), iconLookup["texIconPillarEnemy"], acdLookup);
                     bodyList.Add(PillarEnemyBody.BodyPrefab);
 
                     PillarMaster.EnemyMasterPrefab = pillarMaster.AddMasterComponents(pylonMaster.InstantiateClone("IfritPylonEnemyMaster", false), PillarEnemyBody.BodyPrefab);
@@ -371,10 +368,9 @@ namespace EnemiesReturns
 
                 if (EnemiesReturns.Configuration.Ifrit.ItemEnabled.Value)
                 {
-                    var bodyPrefab = pylonBody.InstantiateClone("IfritPylonPlayerBody", false);
                     var pillarAllyBody = new PillarAllyBody();
 
-                    PillarAllyBody.BodyPrefab = pillarAllyBody.AddBodyComponents(bodyPrefab, iconLookup["texIconPillarAlly"], acdLookup);
+                    PillarAllyBody.BodyPrefab = pillarAllyBody.AddBodyComponents(pylonBody.InstantiateClone("IfritPylonPlayerBody", false), iconLookup["texIconPillarAlly"], acdLookup);
                     bodyList.Add(PillarAllyBody.BodyPrefab);
 
                     PillarMaster.AllyMasterPrefab = pillarMaster.AddMasterComponents(pylonMaster.InstantiateClone("IfritPylonPlayerMaster", false), PillarAllyBody.BodyPrefab);
@@ -459,13 +455,11 @@ namespace EnemiesReturns
                 sfList.Add(ColossusBody.SkillFamilies.Utility);
                 sfList.Add(ColossusBody.SkillFamilies.Special);
 
-                var colossusBodyPrefab = assets.First(body => body.name == "ColossusBody");
-                ColossusBody.BodyPrefab = colossusBody.AddBodyComponents(colossusBodyPrefab, iconLookup["texColossusIcon"], colossusLog, dtColossus);
+                ColossusBody.BodyPrefab = colossusBody.AddBodyComponents(assets.First(body => body.name == "ColossusBody"), iconLookup["texColossusIcon"], colossusLog, dtColossus);
                 bodyList.Add(ColossusBody.BodyPrefab);
 
                 var colossusMaster = new ColossusMaster();
-                var colossusMasterPrefab = assets.First(master => master.name == "ColossusMaster");
-                ColossusMaster.MasterPrefab = colossusMaster.AddMasterComponents(colossusMasterPrefab, ColossusBody.BodyPrefab);
+                ColossusMaster.MasterPrefab = colossusMaster.AddMasterComponents(assets.First(master => master.name == "ColossusMaster"), ColossusBody.BodyPrefab);
                 masterList.Add(ColossusMaster.MasterPrefab);
 
                 stateList.Add(typeof(ModdedEntityStates.Colossus.ColossusMain));
@@ -676,12 +670,10 @@ namespace EnemiesReturns
                 sfList.Add(SpitterBody.SkillFamilies.Secondary);
                 sfList.Add(SpitterBody.SkillFamilies.Special);
 
-                var spitterBodyPrefab = assets.First(body => body.name == "SpitterBody");
-                SpitterBody.BodyPrefab = spitterBody.AddBodyComponents(spitterBodyPrefab, iconLookup["texSpitterIcon"], spitterLog);
+                SpitterBody.BodyPrefab = spitterBody.AddBodyComponents(assets.First(body => body.name == "SpitterBody"), iconLookup["texSpitterIcon"], spitterLog);
                 bodyList.Add(SpitterBody.BodyPrefab);
 
-                var spitterMasterPrefab = assets.First(master => master.name == "SpitterMaster");
-                SpitterMaster.MasterPrefab = new SpitterMaster().AddMasterComponents(spitterMasterPrefab, SpitterBody.BodyPrefab);
+                SpitterMaster.MasterPrefab = new SpitterMaster().AddMasterComponents(assets.First(master => master.name == "SpitterMaster"), SpitterBody.BodyPrefab);
                 masterList.Add(SpitterMaster.MasterPrefab);
 
                 SpitterBody.SpawnCards.cscSpitterDefault = spitterBody.CreateCard("cscSpitterDefault", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Default, SpitterBody.BodyPrefab);

@@ -98,15 +98,15 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     inventory.CopyItemsFrom(characterBody.inventory);
                     DeleteMinionItems(inventory);
                 }
+                var eliteDef = inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
                 {
-                    setEliteRamp.SetEliteRampIndex(inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef?.shaderEliteRampIndex ?? -1, inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef?.eliteIndex ?? EliteIndex.None); // surely, SURELY it won't break
+                    setEliteRamp.SetEliteRampIndex(eliteDef?.shaderEliteRampIndex ?? -1, eliteDef?.eliteIndex ?? EliteIndex.None); // surely, SURELY it won't break
                 }
                 var purchaseInteraction = result.GetComponent<PurchaseInteraction>();
                 if (purchaseInteraction && purchaseInteraction.costType == CostTypeIndex.Money && inventory)
                 {
-                    var eliteDef = inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
                     float eliteModifier = 1f;
                     if (eliteDef)
                     {
