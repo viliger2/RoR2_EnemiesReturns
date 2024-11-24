@@ -8,13 +8,6 @@ namespace EnemiesReturns.Enemies.Colossus
     {
         public static GameObject MasterPrefab;
 
-        public override GameObject AddMasterComponents(GameObject masterPrefab, GameObject bodyPrefab)
-        {
-            var master = (this as IMaster).CreateMaster(masterPrefab, bodyPrefab);
-
-            return master;
-        }
-
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return new IAISkillDriver.AISkillDriverParams[]

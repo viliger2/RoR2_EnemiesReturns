@@ -108,6 +108,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddCrouchMecanim => false;
         protected virtual bool AddRandomBlinks => false;
         protected virtual bool AddDeployable => false;
+        protected virtual bool AddExecuteSkillOnDamage => false;
 
         protected class SkillParams
         {
@@ -360,6 +361,15 @@ namespace EnemiesReturns.Components
             };
         }
 
+        protected virtual IExecuteSkillOnDamage.ExecuteSkillOnDamageParams ExecuteSkillOnDamage()
+        {
+            return new IExecuteSkillOnDamage.ExecuteSkillOnDamageParams()
+            {
+                mainStateMachineName = "Body",
+                skillToExecute = SkillSlot.Primary
+            };
+        }
+
         string IBody.ModelName() => ModelName();
 
         SurfaceDef ISetupHurtboxes.GetSurfaceDef() => SurfaceDef();
@@ -416,6 +426,9 @@ namespace EnemiesReturns.Components
 
         IRandomBlinkController.RandomBlinkParams IRandomBlinkController.GetRandomBlinkParams() => RandomBlinkParams();
 
+        IExecuteSkillOnDamage.ExecuteSkillOnDamageParams IExecuteSkillOnDamage.GetExecuteSkillOnDamageParams() => ExecuteSkillOnDamage();
+
+
         bool IAimAnimator.NeedToAddAimAnimator() => AddAimAnimator;
         bool IAnimationEvents.NeedToAddAnimationEvents() => AddAnimationEvents;
         bool ICameraTargetParams.NeedToAddCameraTargetParams() => AddCameraTargetParams;
@@ -454,5 +467,6 @@ namespace EnemiesReturns.Components
         bool ICrouchMecanim.NeedToAddCrouchMecanim() => AddCrouchMecanim;
         bool IRandomBlinkController.NeedToAddRandomBlinkController() => AddRandomBlinks;
         bool IDeployable.NeedToAddDeployable() => AddDeployable;
+        bool IExecuteSkillOnDamage.NeedToAddExecuteSkillOnDamage() => AddExecuteSkillOnDamage;
     }
 }

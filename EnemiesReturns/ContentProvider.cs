@@ -767,102 +767,37 @@ namespace EnemiesReturns
         {
             if (EnemiesReturns.Configuration.MechanicalSpider.Enabled.Value)
             {
-                var spiderFactory = new MechanicalSpiderFactory();
-
                 var spiderLog = Utils.CreateUnlockableDef("Logs.MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
                 unlockablesList.Add(spiderLog);
 
-                var doubleShotEffect = spiderFactory.CreateDoubleShotImpactEffect();
+                var spiderStuff = new MechanicalSpiderStuff();
+
+                var doubleShotEffect = spiderStuff.CreateDoubleShotImpactEffect();
                 effectsList.Add(new EffectDef(doubleShotEffect));
 
-                ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab = spiderFactory.CreateDoubleShotProjectilePrefab(doubleShotEffect);
+                ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab = spiderStuff.CreateDoubleShotProjectilePrefab(doubleShotEffect);
                 projectilesList.Add(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab);
 
-                ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire.effectPrefab = spiderFactory.CreateDoubleShotChargeEffect();
+                ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire.effectPrefab = spiderStuff.CreateDoubleShotChargeEffect();
 
-                MechanicalSpiderFactory.Skills.DoubleShot = spiderFactory.CreateDoubleShotSkill();
-                MechanicalSpiderFactory.Skills.Dash = spiderFactory.CreateDashSkill();
+                var spiderEnemyBody = new MechanicalSpiderEnemyBody();
+                MechanicalSpiderEnemyBody.Skills.DoubleShot = spiderEnemyBody.CreateDoubleShotSkill();
+                MechanicalSpiderEnemyBody.Skills.Dash = spiderEnemyBody.CreateDashSkill();
 
                 ModdedEntityStates.MechanicalSpider.Dash.Dash.forwardSpeedCoefficientCurve = acdLookup["acdSpiderDash"].curve;
 
-                sdList.Add(MechanicalSpiderFactory.Skills.DoubleShot);
-                sdList.Add(MechanicalSpiderFactory.Skills.Dash);
+                sdList.Add(MechanicalSpiderEnemyBody.Skills.DoubleShot);
+                sdList.Add(MechanicalSpiderEnemyBody.Skills.Dash);
 
-                MechanicalSpiderFactory.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderPrimaryFamily", MechanicalSpiderFactory.Skills.DoubleShot);
-                MechanicalSpiderFactory.SkillFamilies.Utility = Utils.CreateSkillFamily("MechanicalSpiderUtilityFamily", MechanicalSpiderFactory.Skills.Dash);
+                MechanicalSpiderEnemyBody.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderPrimaryFamily", MechanicalSpiderEnemyBody.Skills.DoubleShot);
+                MechanicalSpiderEnemyBody.SkillFamilies.Utility = Utils.CreateSkillFamily("MechanicalSpiderUtilityFamily", MechanicalSpiderEnemyBody.Skills.Dash);
 
-                sfList.Add(MechanicalSpiderFactory.SkillFamilies.Primary);
-                sfList.Add(MechanicalSpiderFactory.SkillFamilies.Utility);
+                sfList.Add(MechanicalSpiderEnemyBody.SkillFamilies.Primary);
+                sfList.Add(MechanicalSpiderEnemyBody.SkillFamilies.Utility);
 
-                var spiderBody = assets.First(body => body.name == "MechanicalSpiderBody");
-                MechanicalSpiderFactory.MechanicalSpiderBody = spiderFactory.CreateBody(spiderBody, iconLookup["texMechanicalSpiderEnemyIcon"], spiderLog);
-                bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderBody);
+                CreateMechanicalSpiderEnemy(assets, iconLookup, spiderLog, spiderEnemyBody);
 
-                var spiderMaster = assets.First(master => master.name == "MechanicalSpiderMaster");
-                MechanicalSpiderFactory.MechanicalSpiderMaster = spiderFactory.CreateMaster(spiderMaster, MechanicalSpiderFactory.MechanicalSpiderBody);
-                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderMaster);
-
-                var spiderDroneBody = assets.First(body => body.name == "MechanicalSpiderDroneBody");
-                MechanicalSpiderFactory.MechanicalSpiderDroneBody = spiderFactory.CreateDroneBody(spiderDroneBody, iconLookup["texMechanicalSpiderAllyIcon"]);
-                bodyList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneBody);
-
-                var spiderDroneMaster = assets.First(master => master.name == "MechanicalSpiderDroneMaster");
-                MechanicalSpiderFactory.MechanicalSpiderDroneMaster = spiderFactory.CreateDroneMaster(spiderDroneMaster, MechanicalSpiderFactory.MechanicalSpiderDroneBody);
-                masterList.Add(MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
-
-                var spiderInteractable = assets.First(interactable => interactable.name == "MechanicalSpiderBroken");
-                MechanicalSpiderFactory.MechanicalSpiderBrokenInteractable = spiderFactory.CreateInteractable(spiderInteractable, MechanicalSpiderFactory.MechanicalSpiderDroneMaster);
-                nopList.Add(MechanicalSpiderFactory.MechanicalSpiderBrokenInteractable);
-
-                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpeiderDefault", spiderMaster);
-                var dcMechanicalSpiderDefault = new DirectorCard
-                {
-                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault,
-                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
-                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                    preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
-                };
-                DirectorAPI.DirectorCardHolder dchMechanicalSpiderDefault = new DirectorAPI.DirectorCardHolder
-                {
-                    Card = dcMechanicalSpiderDefault,
-                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
-                };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
-
-                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpiderGrassy", spiderMaster, MechanicalSpiderFactory.SkinDefs.Grassy, MechanicalSpiderFactory.MechanicalSpiderBody);
-                var dcMechanicalSpiderGrassy = new DirectorCard
-                {
-                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy,
-                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
-                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                    preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
-                };
-                DirectorAPI.DirectorCardHolder dchMechanicalSpiderGrassy = new DirectorAPI.DirectorCardHolder
-                {
-                    Card = dcMechanicalSpiderGrassy,
-                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
-                };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
-
-                MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy = spiderFactory.CreateCharacterSpawnCard("cscMechanicalSpiderSnowy", spiderMaster, MechanicalSpiderFactory.SkinDefs.Snowy, MechanicalSpiderFactory.MechanicalSpiderBody);
-                var dcMechanicalSpiderSnowy = new DirectorCard
-                {
-                    spawnCard = MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy,
-                    selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
-                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                    preventOverhead = true,
-                    minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
-                };
-                DirectorAPI.DirectorCardHolder dchMechanicalSpiderSnowy = new DirectorAPI.DirectorCardHolder
-                {
-                    Card = dcMechanicalSpiderSnowy,
-                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
-                };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
-
-                MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken = spiderFactory.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", spiderInteractable);
+                CreateMechanichalSpiderDrone(assets, iconLookup, spiderStuff);
 
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.MainState));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
@@ -880,6 +815,80 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathDrone));
                 stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathNormal));
             }
+        }
+
+        private void CreateMechanichalSpiderDrone(GameObject[] assets, Dictionary<string, Sprite> iconLookup, MechanicalSpiderStuff spiderStuff)
+        {
+            var spiderAllyBody = new MechanicalSpiderDroneBody();
+            MechanicalSpiderDroneBody.BodyPrefab = spiderAllyBody.AddBodyComponents(assets.First(body => body.name == "MechanicalSpiderDroneBody"), iconLookup["texMechanicalSpiderAllyIcon"]);
+            bodyList.Add(MechanicalSpiderDroneBody.BodyPrefab);
+
+            var spiderAllyMaster = new MechanicalSpiderDroneMaster();
+            MechanicalSpiderDroneMaster.MasterPrefab = spiderAllyMaster.AddMasterComponents(assets.First(master => master.name == "MechanicalSpiderDroneMaster"), MechanicalSpiderDroneBody.BodyPrefab);
+            masterList.Add(MechanicalSpiderDroneMaster.MasterPrefab);
+
+            MechanicalSpiderStuff.InteractablePrefab = spiderStuff.CreateInteractable(assets.First(interactable => interactable.name == "MechanicalSpiderBroken"), MechanicalSpiderDroneMaster.MasterPrefab);
+            nopList.Add(MechanicalSpiderStuff.InteractablePrefab);
+
+            MechanicalSpiderStuff.SpawnCards.iscMechanicalSpiderBroken = spiderStuff.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", MechanicalSpiderStuff.InteractablePrefab);
+        }
+
+        private void CreateMechanicalSpiderEnemy(GameObject[] assets, Dictionary<string, Sprite> iconLookup, UnlockableDef spiderLog, MechanicalSpiderEnemyBody spiderEnemyBody)
+        {
+            MechanicalSpiderEnemyBody.BodyPrefab = spiderEnemyBody.AddBodyComponents(assets.First(body => body.name == "MechanicalSpiderBody"), iconLookup["texMechanicalSpiderEnemyIcon"], spiderLog);
+            bodyList.Add(MechanicalSpiderEnemyBody.BodyPrefab);
+
+            var spiderEnemyMaster = new MechanicalSpiderEnemyMaster();
+            MechanicalSpiderEnemyMaster.MasterPrefab = spiderEnemyMaster.AddMasterComponents(assets.First(master => master.name == "MechanicalSpiderMaster"), MechanicalSpiderEnemyBody.BodyPrefab);
+            masterList.Add(MechanicalSpiderEnemyMaster.MasterPrefab);
+
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault = spiderEnemyBody.CreateCard("cscMechanicalSpeiderDefault", MechanicalSpiderEnemyMaster.MasterPrefab);
+            var dcMechanicalSpiderDefault = new DirectorCard
+            {
+                spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault,
+                selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchMechanicalSpiderDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dcMechanicalSpiderDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
+
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy = spiderEnemyBody.CreateCard("cscMechanicalSpiderGrassy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Grassy, MechanicalSpiderEnemyMaster.MasterPrefab);
+            var dcMechanicalSpiderGrassy = new DirectorCard
+            {
+                spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy,
+                selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchMechanicalSpiderGrassy = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dcMechanicalSpiderGrassy,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
+
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy = spiderEnemyBody.CreateCard("cscMechanicalSpiderSnowy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Snowy, MechanicalSpiderEnemyMaster.MasterPrefab);
+            var dcMechanicalSpiderSnowy = new DirectorCard
+            {
+                spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy,
+                selectionWeight = EnemiesReturns.Configuration.MechanicalSpider.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.MechanicalSpider.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchMechanicalSpiderSnowy = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dcMechanicalSpiderSnowy,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
         #endregion
 

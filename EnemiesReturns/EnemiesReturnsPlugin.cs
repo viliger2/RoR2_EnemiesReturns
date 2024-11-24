@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -73,7 +74,7 @@ namespace EnemiesReturns
             ColossalKnurlFactory.Hooks();
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
-            Enemies.MechanicalSpider.SpiderVictoryDanceController.Hooks();
+            MechanicalSpiderVictoryDanceController.Hooks();
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
@@ -141,9 +142,9 @@ namespace EnemiesReturns
             var localPlayers = LocalUserManager.readOnlyLocalUsersList;
             var localPlayer = localPlayers[0].cachedBody;
 
-            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderSnowy, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderDefault, localPlayer.modelLocator.modelBaseTransform.position);
-            SpawnMonster(Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.cscMechanicalSpiderGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)

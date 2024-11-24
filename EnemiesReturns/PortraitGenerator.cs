@@ -51,7 +51,7 @@ namespace EnemiesReturns
             yield return GeneratePortrait(modelPanel, ColossusBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, IfritBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, PillarEnemyBody.BodyPrefab);
-            yield return GeneratePortrait(modelPanel, MechanicalSpiderFactory.MechanicalSpiderBody);
+            yield return GeneratePortrait(modelPanel, MechanicalSpiderEnemyBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());
             UnityEngine.Object.Destroy(modelPanel.transform.root.gameObject);
             Debug.Log("Portrait generation complete.");

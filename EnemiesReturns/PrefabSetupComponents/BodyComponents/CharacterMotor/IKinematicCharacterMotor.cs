@@ -56,7 +56,7 @@ namespace EnemiesReturns.Components.BodyComponents.CharacterMotor
                 };
                 if (capsule.height < 1.82f)
                 {
-                    Log.Warning($"CapsuleCollider {capsule} has heigh less than a beetle (1.82f), this WILL result in pathfinding issues for AIs.");
+                    Log.Warning($"CapsuleCollider {capsule} has height less than a beetle (1.82f), this WILL result in pathfinding issues for AIs.");
                 };
                 if (capsule.center != Vector3.zero)
                 {

@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
-    public class SpiderDroneOnPurchaseEvents : MonoBehaviour
+    public class MechanicalSpiderDroneOnPurchaseEvents : MonoBehaviour
     {
         public PurchaseInteraction purchaseInteraction;
 
@@ -72,8 +72,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         private void GiveMinionItems(Inventory inventory)
         {
             inventory.GiveItem(RoR2Content.Items.MinionLeash, 1);
-            inventory.GiveItem(RoR2Content.Items.BoostHp, EnemiesReturns.Configuration.MechanicalSpider.DroneBonusHP.Value);
-            inventory.GiveItem(RoR2Content.Items.BoostDamage, EnemiesReturns.Configuration.MechanicalSpider.DroneBonusDamage.Value);
+            inventory.GiveItem(RoR2Content.Items.BoostHp, Configuration.MechanicalSpider.DroneBonusHP.Value);
+            inventory.GiveItem(RoR2Content.Items.BoostDamage, Configuration.MechanicalSpider.DroneBonusDamage.Value);
             if (ModCompats.RiskyModCompat.enabled)
             {
                 inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);

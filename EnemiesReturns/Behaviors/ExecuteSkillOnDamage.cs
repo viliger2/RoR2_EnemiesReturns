@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Behaviors
 {
     public class ExecuteSkillOnDamage : MonoBehaviour, IOnTakeDamageServerReceiver
     {
@@ -28,14 +28,14 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             if (!characterBody || characterBody.isPlayerControlled || !characterBody.hasEffectiveAuthority)
             {
-                this.enabled = false;
+                enabled = false;
                 return;
             }
 
             if (!skillToExecute)
             {
                 // no skill - no reason to do anything
-                this.enabled = false;
+                enabled = false;
                 return;
             }
 

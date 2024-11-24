@@ -1,11 +1,10 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.MasterComponents;
-using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Enemies.Spitter
+namespace EnemiesReturns.Enemies.MechanicalSpider
 {
-    public class SpitterMaster : MasterBase
+    public class MechanicalSpiderEnemyMaster : MasterBase
     {
         public static GameObject MasterPrefab;
 
@@ -13,46 +12,21 @@ namespace EnemiesReturns.Enemies.Spitter
         {
             return new IAISkillDriver.AISkillDriverParams[]
             {
-                new IAISkillDriver.AISkillDriverParams("ChaseAndBiteOffNodegraphWhileSlowingDown")
+                new IAISkillDriver.AISkillDriverParams("StrafeAndShoot")
                 {
-                    skillSlot = SkillSlot.Secondary,
+                    skillSlot = RoR2.SkillSlot.Primary,
                     minDistance = 0f,
-                    maxDistance = 3f,
-                    selectionRequiresTargetLoS = true,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                    moveInputScale = 0.4f,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    ignoreNodeGraph = true,
-                    driverUpdateTimerOverride = 0.5f
-                },
-                new IAISkillDriver.AISkillDriverParams("ChaseAndBiteOffNodegraph")
-                {
-                    skillSlot = SkillSlot.Secondary,
-                    minDistance = 0f,
-                    maxDistance = 6f,
-                    selectionRequiresTargetLoS = true,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    ignoreNodeGraph = true,
-                    driverUpdateTimerOverride = 0.5f
-                },
-                new IAISkillDriver.AISkillDriverParams("StrafeAndShootChargedSpit")
-                {
-                    skillSlot = SkillSlot.Special,
-                    minDistance = 15f,
                     maxDistance = 60f,
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                    activationRequiresTargetLoS = true,
                     activationRequiresAimConfirmation = true,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
-                    moveInputScale = 0.7f,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
                 },
                 new IAISkillDriver.AISkillDriverParams("ChaseOffNodegraph")
                 {
-                    skillSlot = SkillSlot.None,
+                    skillSlot = RoR2.SkillSlot.None,
                     minDistance = 0f,
                     maxDistance = 7f,
                     selectionRequiresTargetLoS = true,
@@ -61,11 +35,18 @@ namespace EnemiesReturns.Enemies.Spitter
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
                     ignoreNodeGraph = true
                 },
+                new IAISkillDriver.AISkillDriverParams("DashToTraverse")
+                {
+                    skillSlot = RoR2.SkillSlot.Utility,
+                    requireSkillReady = true,
+                    minDistance = 50f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
+                },
                 new IAISkillDriver.AISkillDriverParams("PathFromAfar")
                 {
-                    skillSlot = SkillSlot.None,
                     minDistance = 0f,
-                    maxDistance = float.PositiveInfinity,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget

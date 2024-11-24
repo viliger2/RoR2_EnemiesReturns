@@ -30,19 +30,17 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
             }
 
             var point0 = bodyPrefab.transform.Find(aimAssistTargetParams.pathToPoint0);
-#if DEBUG || NOWEAVER
             if (!point0)
             {
-                Log.Warning($"For body {bodyPrefab} couldn't find point0 for AimAssistTarget at path {aimAssistTargetParams.pathToPoint0}");
+                Log.Warning($"For body {bodyPrefab} couldn't find point0 for AimAssistTarget at path {aimAssistTargetParams.pathToPoint0}. This WILL result in stuck camera on {modelTransform} spawn!");
             }
-#endif
+
             var point1 = bodyPrefab.transform.Find(aimAssistTargetParams.pathToPoint1);
-#if DEBUG || NOWEAVER
             if (!point1)
             {
-                Log.Warning($"For body {bodyPrefab} couldn't find point1 for AimAssistTarget at path {aimAssistTargetParams.pathToPoint1}");
+                Log.Warning($"For body {bodyPrefab} couldn't find point1 for AimAssistTarget at path {aimAssistTargetParams.pathToPoint1}. This WILL result in stuck camera on {modelTransform} spawn!");
             }
-#endif
+
             AimAssistTarget aimAssist = aimAssistObject.GetOrAddComponent<AimAssistTarget>();
             aimAssist.point0 = point0;
             aimAssist.point1 = point1;

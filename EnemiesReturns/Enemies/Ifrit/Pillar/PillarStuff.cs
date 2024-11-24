@@ -10,30 +10,6 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
     {
         public static R2API.ModdedProcType PillarExplosion;
 
-        public Material CreateLanternFireMaterial()
-        {
-            Material material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/helminthroost/Assets/matHRFireStaticRedLArge.mat").WaitForCompletion());
-            material.name = "matIfritLanternFire";
-            material.SetFloat("_DepthOffset", -10f);
-
-            return material;
-        }
-
-        public Material CreateLineRendererMaterial()
-        {
-            var lineMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Captain/matCaptainAirstrikeAltLaser.mat").WaitForCompletion());
-            lineMaterial.name = "matIfritPylonLine";
-            lineMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampCaptainAirstrike.png").WaitForCompletion());
-            lineMaterial.SetColor("_TintColor", new Color(255f / 255f, 53f / 255f, 0f));
-            lineMaterial.SetFloat("_Boost", 7.315614f);
-            lineMaterial.SetFloat("_AlphaBoost", 5.603551f);
-            lineMaterial.SetFloat("_AlphaBias", 0f);
-            lineMaterial.SetFloat("_DistortionStrength", 1f);
-            lineMaterial.SetVector("_CutoffScroll", new Vector4(5f, 0f, 0f, 0f));
-
-            return lineMaterial;
-        }
-
         public GameObject CreateExplosionEffect()
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/RoboBallBoss/OmniExplosionVFXRoboBallBossDeath.prefab").WaitForCompletion().InstantiateClone("IfritPylonExplosionEffect", false);

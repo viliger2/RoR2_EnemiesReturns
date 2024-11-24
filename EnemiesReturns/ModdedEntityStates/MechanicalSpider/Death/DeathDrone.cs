@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Helpers;
+﻿using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Helpers;
 using EntityStates;
 using RoR2;
 using System;
@@ -87,7 +88,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 position = spawnPosition
             };
 
-            var result = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(EnemiesReturns.Enemies.MechanicalSpider.MechanicalSpiderFactory.SpawnCards.iscMechanicalSpiderBroken, placementRule, Run.instance.spawnRng));
+            var result = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(MechanicalSpiderStuff.SpawnCards.iscMechanicalSpiderBroken, placementRule, Run.instance.spawnRng));
             if (result)
             {
                 var inventory = result.GetComponent<Inventory>();

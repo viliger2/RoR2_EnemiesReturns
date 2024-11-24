@@ -47,6 +47,7 @@ namespace EnemiesReturns.Components.BodyComponents
             public float levelArmor = 0f;
 
             public float spreadBloomDecayTime = 0.45f;
+            public float lavaCooldown = 0.2f;
             public GameObject defaultCrosshairPrefab;
             public Transform aimOrigin;
             public HullClassification hullClassification = HullClassification.Human;
@@ -125,6 +126,7 @@ namespace EnemiesReturns.Components.BodyComponents
                 body.levelCrit = bodyParams.levelCrit;
                 body.levelArmor = bodyParams.levelArmor;
 
+                body.lavaCooldown = bodyParams.lavaCooldown;
                 body.spreadBloomDecayTime = bodyParams.spreadBloomDecayTime;
                 body._defaultCrosshairPrefab = bodyParams.defaultCrosshairPrefab;
                 body.aimOriginTransform = bodyParams.aimOrigin;

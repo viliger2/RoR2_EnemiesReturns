@@ -12,12 +12,6 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
         protected override bool AddAIOwnership => true;
 
-        public override GameObject AddMasterComponents(GameObject masterPrefab, GameObject bodyPrefab)
-        {
-            var master = (this as IMaster).CreateMaster(masterPrefab, bodyPrefab);
-            return master;
-        }
-
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return Array.Empty<IAISkillDriver.AISkillDriverParams>();

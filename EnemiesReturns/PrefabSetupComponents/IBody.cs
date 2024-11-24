@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator, IAimAssist, ICrouchMecanim, IDeployable
+    public interface IBody : INetworkIdentity, ICharacterDirection, IMotor, IInputBankTest, ICharacterBody, ICameraTargetParams, IModelLocator, ITeamComponent, IHealthComponent, IInteractor, IInteractionDriver, IBodyStateMachines, ISkills, ICharacterNetworkTransform, IDeathRewards, IEquipmentSlot, IModel, ISfxLocator, IAimAssist, ICrouchMecanim, IDeployable, IExecuteSkillOnDamage
     {
         public string ModelName();
 
@@ -23,17 +23,18 @@ namespace EnemiesReturns.Components
             var characterBody = AddCharacterBody(body, GetCharacterBodyParams(GetAimOrigin(body), sprite.texture));
             AddCameraTargetParams(body, GetCameraPivot(body), GetCharacterCameraParams());
             AddModelLocator(body, modelBase, modelTransform, GetModelLocatorParams());
-            AddSkills(body);
+            var skills = AddSkills(body);
             var teamComponent = AddTeamComponent(body, GetTeamIndex());
             var healthComponent = AddHealthComponent(body, GetHealthComponentParams());
             AddInteractor(body, GetInteractionDistance());
             AddInteractionDriver(body);
             AddCharacterNetworkTransform(body, GetCharacterNetworkTransformParams());
-            AddBodyStateMachines(body);
+            var esms = AddBodyStateMachines(body);
             AddDeathRewards(body, log, droptable);
             AddEquipmentSlot(body);
             AddSfxLocator(body, GetSfxLocatorParams());
             AddDeployable(body);
+            AddExecuteSkillOnDamage(body, characterBody, esms, skills, GetExecuteSkillOnDamageParams());
 
             SetupModel(modelTransform.gameObject, direction, inputNank, healthComponent, characterBody);
 
@@ -122,6 +123,11 @@ namespace EnemiesReturns.Components
 
         }
 
+        // FIXING IMPACT\LIGHTIMPACT\LANDING ISSUES:
+        // first of all, animation should not have "landing" by itself in it, only the impact of landing
+        // second, add a reference pose to animation at the time of where animation reaches its resting position
+        // third, if your animation doesn't do the first rule then just clip it so it has minimal body movement
+        // and only has the impact of landing 
         private Animator GetAnimator(GameObject body)
         {
             var animator = body.GetComponentInChildren<Animator>();
@@ -133,6 +139,5 @@ namespace EnemiesReturns.Components
 #endif
             return animator;
         }
-
     }
 }

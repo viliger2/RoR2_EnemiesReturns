@@ -7,6 +7,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
         public override void OnEnter()
         {
             duration = 0.1f;
+            spawnSoundString = "Play_drone_repair";
 
             base.OnEnter();
         }

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
-    public class SpiderVictoryDanceController : MonoBehaviour
+    public class MechanicalSpiderVictoryDanceController : MonoBehaviour
     {
         public CharacterBody body;
 

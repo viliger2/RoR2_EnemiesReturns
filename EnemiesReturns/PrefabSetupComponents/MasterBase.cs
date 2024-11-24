@@ -38,7 +38,11 @@ namespace EnemiesReturns.Components
             return new INetworkIdentity.NetworkIdentityParams();
         }
 
-        public abstract GameObject AddMasterComponents(GameObject masterPrefab, GameObject bodyPrefab);
+        public virtual GameObject AddMasterComponents(GameObject masterPrefab, GameObject bodyPrefab)
+        {
+            var master = (this as IMaster).CreateMaster(masterPrefab, bodyPrefab);
+            return master;
+        }
 
         protected virtual bool AddNetworkIdentity => true;
         protected virtual bool AddAISkillDriver => true;
@@ -48,6 +52,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddEntityStateMachine => true;
         protected virtual bool AddMinionOwnership => true;
         protected virtual bool AddAIOwnership => false;
+        protected virtual bool AddSetDontDestoyOnLoad => false;
 
 
         IAISkillDriver.AISkillDriverParams[] IAISkillDriver.GetAISkillDriverParams() => AISkillDriverParams();
@@ -63,7 +68,7 @@ namespace EnemiesReturns.Components
         bool IInventory.NeedToAddInventory() => AddInventory;
         bool IMinionOwnership.NeedToAddMinionOwnership() => AddMinionOwnership;
         bool INetworkIdentity.NeedToAddNetworkIdentity() => AddNetworkIdentity;
-
         bool IAIOwnership.NeedToAddAIOwnership() => AddAIOwnership;
+        bool ISetDontDestroyOnLoad.NeedToAddSetDontDestroyOnLoad() => AddSetDontDestoyOnLoad;
     }
 }
