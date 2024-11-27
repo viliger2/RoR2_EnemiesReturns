@@ -249,7 +249,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_IFRIT_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

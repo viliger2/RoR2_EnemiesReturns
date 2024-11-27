@@ -124,7 +124,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

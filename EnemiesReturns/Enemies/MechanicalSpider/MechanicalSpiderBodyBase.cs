@@ -149,7 +149,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

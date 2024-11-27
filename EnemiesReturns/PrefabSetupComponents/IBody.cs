@@ -20,7 +20,7 @@ namespace EnemiesReturns.Components
             var direction = AddCharacterDirection(body, modelBase, GetAnimator(body), GetCharacterDirectionTurnSpeed());
             AddMotor(body, direction);
             var inputNank = AddInputBankTest(body);
-            var characterBody = AddCharacterBody(body, GetCharacterBodyParams(GetAimOrigin(body), sprite.texture));
+            var characterBody = AddCharacterBody(body, GetCharacterBodyParams(GetAimOrigin(body), sprite));
             AddCameraTargetParams(body, GetCameraPivot(body), GetCharacterCameraParams());
             AddModelLocator(body, modelBase, modelTransform, GetModelLocatorParams());
             var skills = AddSkills(body);

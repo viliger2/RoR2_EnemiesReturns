@@ -95,7 +95,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathDrone)));
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             var bodyParams = base.CharacterBodyParams(aimOrigin, icon);
             bodyParams.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;

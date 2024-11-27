@@ -35,7 +35,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             return body;
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             var bodyParams = base.CharacterBodyParams(aimOrigin, icon);
             bodyParams.baseDamage = EnemiesReturns.Configuration.Ifrit.BaseDamage.Value;

@@ -7,7 +7,7 @@ namespace EnemiesReturns.Components.BodyComponents
     {
         protected class CharacterBodyParams
         {
-            public CharacterBodyParams(string nameToken, GameObject crosshair, Transform aimOrigin, Texture icon, EntityStates.SerializableEntityStateType initialState)
+            public CharacterBodyParams(string nameToken, GameObject crosshair, Transform aimOrigin, Sprite icon, EntityStates.SerializableEntityStateType initialState)
             {
                 this.nameToken = nameToken;
                 this.defaultCrosshairPrefab = crosshair;
@@ -51,7 +51,7 @@ namespace EnemiesReturns.Components.BodyComponents
             public GameObject defaultCrosshairPrefab;
             public Transform aimOrigin;
             public HullClassification hullClassification = HullClassification.Human;
-            public Texture portraitIcon;
+            public Sprite portraitIcon;
             public Color bodyColor = Color.red;
             public bool isChampion = false;
             public EntityStates.SerializableEntityStateType preferredInitialStateType;
@@ -87,7 +87,7 @@ namespace EnemiesReturns.Components.BodyComponents
 
         protected bool NeedToAddCharacterBody();
 
-        protected CharacterBodyParams GetCharacterBodyParams(Transform aimOrigin, Texture icon);
+        protected CharacterBodyParams GetCharacterBodyParams(Transform aimOrigin, Sprite icon);
 
         protected CharacterBody AddCharacterBody(GameObject bodyPrefab, CharacterBodyParams bodyParams)
         {
@@ -131,7 +131,10 @@ namespace EnemiesReturns.Components.BodyComponents
                 body._defaultCrosshairPrefab = bodyParams.defaultCrosshairPrefab;
                 body.aimOriginTransform = bodyParams.aimOrigin;
                 body.hullClassification = bodyParams.hullClassification;
-                body.portraitIcon = bodyParams.portraitIcon;
+                if (bodyParams.portraitIcon != null)
+                {
+                    body.portraitIcon = bodyParams.portraitIcon.texture;
+                }
                 body.bodyColor = bodyParams.bodyColor;
                 body.isChampion = bodyParams.isChampion;
                 body.preferredInitialStateType = bodyParams.preferredInitialStateType;
