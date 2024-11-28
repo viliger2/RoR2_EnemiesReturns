@@ -2,6 +2,8 @@
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.LynxTribe.Shaman;
+using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -175,6 +177,8 @@ namespace EnemiesReturns
                 CreateIfrit(assets, iconLookup, texLavaCrackRound, acdLookup);
 
                 CreateMechanicalSpider(assets, iconLookup, acdLookup);
+
+                CreateLynxTribe(assets, iconLookup, acdLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -881,6 +885,61 @@ namespace EnemiesReturns
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
+        }
+        
+        private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            // TODO: config
+            CreateLynxStorm(assets, acdLookup);
+            CreateLynxShaman(assets, iconLookup);
+        }
+
+        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var shamanLog = Utils.CreateUnlockableDef("Logs.LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
+            unlockablesList.Add(shamanLog);
+
+            var shamanBody = new ShamanBody();
+            ShamanBody.Skills.Teleport = shamanBody.CreateTeleportSkill();
+            ShamanBody.Skills.SummonStorm = shamanBody.CreateSummonStormSkill();
+
+            sdList.Add(ShamanBody.Skills.Teleport);
+            sdList.Add(ShamanBody.Skills.SummonStorm);
+
+            ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
+
+            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
+            ShamanBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxShamanaSpecialSkillFamily", ShamanBody.Skills.SummonStorm);
+
+            sfList.Add(ShamanBody.SkillFamilies.Utility);
+            sfList.Add(ShamanBody.SkillFamilies.Special);
+
+            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody")); // TODO: sprite
+            bodyList.Add(ShamanBody.BodyPrefab);
+            ShamanMaster.MasterPrefab = new ShamanMaster().AddMasterComponents(assets.First(master => master.name == "LynxShamanMaster"), ShamanBody.BodyPrefab);
+            masterList.Add(ShamanMaster.MasterPrefab);
+
+            ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
+        }
+
+        private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            var stormBody = new LynxStormBody();
+            LynxStormBody.BodyPrefab = stormBody.AddBodyComponents(assets.First(body => body.name == "StormBody"), acdLookup);
+            bodyList.Add(LynxStormBody.BodyPrefab);
+
+            LynxStormMaster.MasterPrefab = new LynxStormMaster().AddMasterComponents(assets.First(master => master.name == "StormMaster"), LynxStormBody.BodyPrefab);
+            masterList.Add(LynxStormMaster.MasterPrefab);
+
+            LynxStormBody.cscLynxStorm = stormBody.CreateCard("cscLynxStorm", LynxStormMaster.MasterPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.MainState));
         }
         #endregion
 

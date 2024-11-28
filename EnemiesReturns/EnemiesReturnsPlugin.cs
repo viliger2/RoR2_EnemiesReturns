@@ -24,11 +24,12 @@ namespace EnemiesReturns
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
     [BepInDependency(R2API.EliteAPI.PluginGUID)]
     [BepInDependency(R2API.ProcTypeAPI.PluginGUID)]
+    [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.3.8";
+        public const string Version = "0.4.0";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
@@ -47,6 +48,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
                 EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.MechanicalSpider.cfg"), true));
+                EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxShaman.cfg"), true));
             }
             else
             {
@@ -60,6 +62,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(notSavedConfigFile);
             }
 
             Hooks();

@@ -15,6 +15,7 @@
 		<PackageReference Include="R2API.Deployable" Version="1.0.1" />
 		<PackageReference Include="R2API.Director" Version="2.3.1" />
 		<PackageReference Include="R2API.Elites" Version="1.0.6" />
+		<PackageReference Include="R2API.Networking" Version="1.0.2" />
 		<PackageReference Include="R2API.Prefab" Version="1.0.4" />
 		<PackageReference Include="R2API.ProcType" Version="1.0.1" />
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />

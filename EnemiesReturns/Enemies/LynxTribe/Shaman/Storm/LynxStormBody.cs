@@ -1,0 +1,186 @@
+﻿using EnemiesReturns.Components;
+using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.CharacterMotor;
+using EnemiesReturns.Components.BodyComponents.Skills;
+using EnemiesReturns.Components.GeneralComponents;
+using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.ModCompats.PrefabAPICompat;
+using EnemiesReturns.PrefabSetupComponents.BodyComponents;
+using EntityStates.Fauna;
+using HG;
+using KinematicCharacterController;
+using RoR2;
+using RoR2.CharacterAI;
+using RoR2.Networking;
+using RoR2.Skills;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
+
+namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
+{
+    public class LynxStormBody : BodyBase
+    {
+        public static GameObject BodyPrefab;
+
+        public static CharacterSpawnCard cscLynxStorm;
+
+        protected override bool AddAimAssistScale => false;
+        protected override bool AddModelSkinController => false;
+        protected override bool AddInteractor => false;
+        protected override bool AddInteractionDriver => false;
+        protected override bool AddFootstepHandler => false;
+        protected override bool AddSkills => false;
+        protected override bool AddDeathRewards => false;
+        protected override bool AddSetStateOnHurt => false;
+        protected override bool AddAimAnimator => false;
+        protected override bool AddHurtBoxes => false;
+        protected override bool AddHitBoxes => false;
+        protected override bool AddAnimationEvents => false;
+        //protected override bool AddDeployable => true; // TODO
+
+        public CharacterSpawnCard CreateCard(string name, GameObject master)
+        {
+            return CreateCard(new SpawnCardParams(name, master, 0) 
+            { 
+                hullSize = HullClassification.Human,
+                occupyPosition = true
+            });
+        }
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            var body = base.AddBodyComponents(bodyPrefab, acdLookup);
+
+            #region TeamIndicator
+
+            var teamComponent = body.GetComponent<TeamComponent>();
+            var childLocator = body.GetComponentInChildren<ChildLocator>();
+
+            var scaledTransform = body.transform.Find("ModelBase/mdlStorm/ScaleOnInit");
+            var osc = scaledTransform.gameObject.AddComponent<ObjectScaleCurve>();
+            osc.useOverallCurveOnly = false;
+            osc.resetOnAwake = true;
+            osc.useUnscaledTime = false;
+            osc.timeMax = Mathf.Max(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value, 1f);
+            osc.curveX = acdLookup["acdLinearCurve"].curve;
+            osc.curveY = acdLookup["acdLinearCurve"].curve;
+            osc.curveZ = acdLookup["acdLinearCurve"].curve;
+            osc.overallCurve = acdLookup["acdTeamIndicatorOverallCurve"].curve;
+
+            // TODO: replace with ground only
+            var indicatorObject = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, GroundOnly.prefab").WaitForCompletion());
+            indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
+            indicatorObject.transform.parent = scaledTransform;
+            var teamIndicatorScale = 18.75f * (EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormRadius.Value / 20f);
+            indicatorObject.transform.localScale = new Vector3(teamIndicatorScale, teamIndicatorScale, teamIndicatorScale); // 18.75 is equal to 30 explosion radius after rescaling the model
+            indicatorObject.transform.localPosition = Vector3.zero;
+            indicatorObject.transform.localRotation = Quaternion.identity;
+
+            ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "TeamAreaIndicator", transform = indicatorObject.transform });
+            #endregion
+
+            return body;
+        }
+
+        protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
+        {
+            return new IAimAssist.AimAssistTargetParams();
+        }
+
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
+        {
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_STORM_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
+            {
+                baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormStormMoveSpeed.Value, 
+                baseJumpCount = 0,
+                baseJumpPower = 0f,
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.IgnoreKnockback | CharacterBody.BodyFlags.ImmuneToLava
+            };
+        }
+
+        protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
+        {
+            var meshRenderer = modelPrefab.GetComponent<MeshRenderer>(); // TODO: probably can remove it completely
+            CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = meshRenderer,
+                    defaultMaterial = meshRenderer.material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+            };
+            return new ICharacterModel.CharacterModelParams()
+            {
+                autoPopulateLightInfos = true,
+                renderInfos = defaultRender
+            };
+        }
+
+        protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
+        {
+            return Array.Empty<SkinDef>();
+        }
+
+        protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()
+        {
+            return new IEntityStateMachine.EntityStateMachineParams[]
+            {
+                new IEntityStateMachine.EntityStateMachineParams
+                {
+                    name = "Body",
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Storm.SpawnState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Storm.MainState))
+                }
+            };
+        }
+
+        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        {
+            return new ICharacterMotor.CharacterMotorParams()
+            {
+                mass = 200f
+            };
+        }
+
+        protected override IFootStepHandler.FootstepHandlerParams FootstepHandlerParams()
+        {
+            return new IFootStepHandler.FootstepHandlerParams();
+        }
+
+        protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
+        {
+            return Array.Empty<IGenericSkill.GenericSkillParams>();
+        }
+
+        protected override ItemDisplayRuleSet ItemDisplayRuleSet()
+        {
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            (idrs as ScriptableObject).name = "idrsLynxStorm";
+            return idrs;
+        }
+
+        protected override string ModelName() => "mdlStorm";
+
+        protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
+        {
+            return new IModelPanelParameters.ModelPanelParams();
+        }
+
+        protected override SurfaceDef SurfaceDef() => null;
+
+        protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
+        {
+            return new IModelLocator.ModelLocatorParams()
+            {
+                dontReleaseModelOnDeath = true
+            };
+        }
+    }
+}
