@@ -8,11 +8,11 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
 {
     public interface IExecuteSkillOnDamage
     {
-
         protected class ExecuteSkillOnDamageParams
         {
             public string mainStateMachineName;
             public SkillSlot skillToExecute;
+            public bool checkForMainState = true;
         }
 
         protected ExecuteSkillOnDamageParams GetExecuteSkillOnDamageParams();
@@ -28,7 +28,7 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
                 if (!mainStateMachine)
                 {
 #if DEBUG || NOWEAVER
-                    Log.Warning($"Couldn't find ESM {skillOnDamageParams.mainStateMachineName} on body {bodyPrefab}");
+                    Log.Warning($"ExecuteSkillOnDamage: Couldn't find ESM {skillOnDamageParams.mainStateMachineName} on body {bodyPrefab}");
 #endif
                     return null;
                 }
@@ -36,7 +36,7 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
                 if (!skill)
                 {
 #if DEBUG || NOWEAVER
-                    Log.Warning($"Couldn't find GenericSkill {skillOnDamageParams.skillToExecute} on body {bodyPrefab}");
+                    Log.Warning($"ExecuteSkillOnDamage: Couldn't find GenericSkill {skillOnDamageParams.skillToExecute} on body {bodyPrefab}");
 #endif
                     return null;
                 }
@@ -45,6 +45,7 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
                 skillOnDamage.characterBody = characterBody;
                 skillOnDamage.mainStateMachine = mainStateMachine;
                 skillOnDamage.skillToExecute = skill;
+                skillOnDamage.checkForMainState = skillOnDamageParams.checkForMainState;
             }
             return skillOnDamage;
         }

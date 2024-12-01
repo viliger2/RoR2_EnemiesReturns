@@ -86,7 +86,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return new IExecuteSkillOnDamage.ExecuteSkillOnDamageParams()
             {
                 mainStateMachineName = "Body",
-                skillToExecute = SkillSlot.Utility
+                skillToExecute = SkillSlot.Utility,
+                checkForMainState = false
             };
         }
 

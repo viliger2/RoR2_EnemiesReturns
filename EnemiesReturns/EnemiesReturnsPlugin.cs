@@ -6,11 +6,13 @@ using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
+using R2API.Networking;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns

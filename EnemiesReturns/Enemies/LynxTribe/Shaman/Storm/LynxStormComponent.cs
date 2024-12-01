@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
@@ -73,7 +74,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
                 return;
             }
 
-            if (timer > baseDuration)
+            if (timer > duration)
             {
                 if (characterMotor)
                 {
