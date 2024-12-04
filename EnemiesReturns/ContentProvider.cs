@@ -896,6 +896,10 @@ namespace EnemiesReturns
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
+            var shamanStuff = new ShamanStuff();
+            ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
+            ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
+
             var shamanLog = Utils.CreateUnlockableDef("Logs.LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
             unlockablesList.Add(shamanLog);
 

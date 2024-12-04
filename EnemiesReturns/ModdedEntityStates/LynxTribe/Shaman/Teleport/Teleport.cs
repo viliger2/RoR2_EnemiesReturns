@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Behaviors;
+using EntityStates;
 using KinematicCharacterController;
 using RoR2;
 using RoR2.Navigation;
@@ -14,14 +15,37 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
         public static int maxSearchIterations => 3;
         public static float searchRangeDeviation => 5f;
         public static float baseDuration => 1f;
+        public static float maskFlyDuration => 1.5f;
 
+        public static GameObject ghostMaskPrefab;
+
+        private CharacterModel characterModel;
         private float duration;
+        private Vector3 originalPosition;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
+            var modelTransform = GetModelTransform();
+            if (modelLocator)
+            {
+                characterModel = modelTransform.GetComponent<CharacterModel>();
+            }
+            if (characterModel)
+            {
+                characterModel.invisibilityCount++;
+            }
+
+            originalPosition = transform.position;
+            var ghostMask = UnityEngine.Object.Instantiate(ghostMaskPrefab, transform.position, transform.rotation);
             TeleportAway();
+
+            var moveTowardsMask = ghostMask.GetComponent<MoveTowardsTargetAndDestroyItself>();
+            moveTowardsMask.target = transform;
+            moveTowardsMask.duration = maskFlyDuration;
+
+            Log.Info($"originalPosition: {originalPosition}, new position: {transform}");
         }
 
         private void TeleportAway()
@@ -58,7 +82,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
             NodeGraph.NodeIndex node = nodeList[UnityEngine.Random.Range(0, nodeList.Count)];
             if (nodeGraph.GetNodePosition(node, out var position))
             {
-                return position;
+                // give it a bit on Y axis since shaman sometimes falls through the ground
+                return new Vector3(position.x, position.y + 1f, position.z);
             }
 
             return null;
@@ -67,10 +92,22 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+            if(fixedAge > maskFlyDuration)
+            {
+                // TODO: play animation
+                if (characterModel)
+                {
+                    characterModel.invisibilityCount--;
+                }
+            }
+            if(fixedAge > maskFlyDuration + duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
+            //if(fixedAge > duration && isAuthority)
+            //{
+            //    outer.SetNextStateToMain();
+            //}
         }
 
         public override void OnExit()

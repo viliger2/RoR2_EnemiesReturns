@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -71,7 +72,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             osc.curveZ = acdLookup["acdLinearCurve"].curve;
             osc.overallCurve = acdLookup["acdTeamIndicatorOverallCurve"].curve;
 
-            // TODO: replace with ground only
             var indicatorObject = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, GroundOnly.prefab").WaitForCompletion());
             indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
             indicatorObject.transform.parent = scaledTransform;
@@ -82,6 +82,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
             ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "TeamAreaIndicator", transform = indicatorObject.transform });
             #endregion
+
+            var particlesTransform = body.transform.Find("ModelBase/mdlStorm/StormParticles");
+            particlesTransform.Find("StormOutside").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            particlesTransform.Find("StormMiddle").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            particlesTransform.Find("StormInside").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", CreateTreebotTreeLeaf2Material);
+            particlesTransform.Find("TornadoMeshLow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            particlesTransform.Find("TornadoMeshMiddle").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            particlesTransform.Find("TornadoMeshUp").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            particlesTransform.Find("SummonParticles").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/PassiveHealing/matWoodSpriteFlare.mat").WaitForCompletion();
+            particlesTransform.Find("SummonParticles").GetComponent<ParticleSystemRenderer>().trailMaterial = Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoDiseaseTrail.mat").WaitForCompletion();
 
             return body;
         }
@@ -174,6 +184,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
         }
 
         protected override SurfaceDef SurfaceDef() => null;
+
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Storm.DeathState)));
+        }
+
+        public Material CreateTreebotTreeLeaf2Material()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion());
+            material.name = "matTreebotTreeLeaf2";
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Treebot/texTreebotLeafDiffuse.png").WaitForCompletion());
+
+            return material;
+        }
 
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {

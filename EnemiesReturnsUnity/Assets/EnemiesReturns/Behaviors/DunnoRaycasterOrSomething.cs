@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using RoR2;
 
-namespace EnemiesReturns.Helpers
+namespace EnemiesReturns.Behaviors
 {
     public class DunnoRaycasterOrSomething : MonoBehaviour
     {

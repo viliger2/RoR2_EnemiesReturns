@@ -23,14 +23,18 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                     maxDistance = 120f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresTargetLoS = true,
+                    activationRequiresAimConfirmation = true,
+                    activationRequiresAimTargetLoS = true,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
+                    selectionRequiresTargetLoS = true,
+                    selectionRequiresAimTarget = true,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },
                 new IAISkillDriver.AISkillDriverParams("WalkAway")
                 {
                     skillSlot = RoR2.SkillSlot.None,
                     minDistance = 0f,
-                    maxDistance = 30f,
+                    maxDistance = 50f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
@@ -40,7 +44,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 {
                     skillSlot = RoR2.SkillSlot.None,
                     requireSkillReady = false, 
-                    minDistance = 30f,
+                    minDistance = 50f,
                     maxDistance = 120f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresTargetLoS = true,

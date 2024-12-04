@@ -87,7 +87,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
                         rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     }
                 }
-                R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Bleed, 5f);
+                R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Bleed, 5f); // TODO
                 Destroy(this);
                 return;
             }
@@ -107,17 +107,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         private GameObject GetAttacker()
         {
-            var stormBody = storm.GetComponent<CharacterBody>();
-
-            if (stormBody.master)
+            if (storm)
             {
-                var aiOwnership = stormBody.master.gameObject.GetComponent<AIOwnership>();
-                if (aiOwnership && aiOwnership.ownerMaster)
+                var stormBody = storm.GetComponent<CharacterBody>();
+
+                if (stormBody.master)
                 {
-                    var body = aiOwnership.ownerMaster.GetBody();
-                    if (body)
+                    var aiOwnership = stormBody.master.gameObject.GetComponent<AIOwnership>();
+                    if (aiOwnership && aiOwnership.ownerMaster)
                     {
-                        return body.gameObject;
+                        var body = aiOwnership.ownerMaster.GetBody();
+                        if (body)
+                        {
+                            return body.gameObject;
+                        }
                     }
                 }
             }

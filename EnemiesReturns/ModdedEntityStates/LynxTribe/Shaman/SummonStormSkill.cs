@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Ifrit;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Enemies.Ifrit;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -19,10 +20,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public static float rechargeOnFailure => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormRechargeOnFailure.Value;
         public static CharacterSpawnCard cscStorm;
         public static int stormCount => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCount.Value;
+        public static float baseSkillRechargeTime => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value;
+        public static float effectSpawn => 0.2f;
+        public static GameObject summonEffectPrefab;
 
         private float duration;
+        private float effectTimer;
 
         private GameObject[] storms = Array.Empty<GameObject>();
+        private Transform effectSpawnPoint;
 
         public override void OnEnter()
         {
@@ -30,6 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             duration = baseDuration / attackSpeedStat;
             PlayCrossfade("Gesture, Override", "SummonStorm", "SummonStorm.playbackRate", duration, 0.1f);
             SummonStorms();
+            effectSpawnPoint = transform; // TODO: replace with child whatever
         }
 
         private void SummonStorms()
@@ -98,6 +105,25 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             }
         }
 
+        public override void Update()
+        {
+            base.Update();
+            effectTimer += Time.deltaTime;
+            if(effectTimer > effectSpawn && summonEffectPrefab)
+            {
+                for(int i = 0; i < storms.Length; i++)
+                {
+                    var stormChildLocator = GetChildLocator(storms[i]);
+                    if (stormChildLocator) 
+                    {
+                        var neweffect = UnityEngine.Object.Instantiate(summonEffectPrefab, effectSpawnPoint.position, effectSpawnPoint.rotation);
+                        neweffect.GetComponent<MoveTowardsTargetAndDestroyItself>().target = stormChildLocator.FindChild("EffectPoint" + UnityEngine.Random.Range(1, 9));
+                    }
+                }
+                effectTimer -= effectSpawn;
+            }
+        }
+
         public override void ModifyNextState(EntityState nextState)
         {
             base.ModifyNextState(nextState);
@@ -113,8 +139,21 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                         }
                     }
                 }
-                skillLocator.special.RunRecharge(30f * rechargeOnFailure); // TODO: config
+                skillLocator.special.RunRecharge(baseSkillRechargeTime * rechargeOnFailure);
             }
+        }
+
+        private ChildLocator GetChildLocator(GameObject masterGameObject)
+        {
+            if(masterGameObject && masterGameObject.TryGetComponent<CharacterMaster>(out var master))
+            {
+                var body = master.GetBody();
+                if(body && body.modelLocator && body.modelLocator.modelTransform)
+                {
+                    return body.modelLocator.modelTransform.GetComponent<ChildLocator>();
+                }
+            }
+            return null;
         }
 
         public override void OnExit()
