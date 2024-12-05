@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
@@ -29,7 +30,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 #if DEBUG || NOWEAVER
                 outer.SetNextState(new DeathDrone());
 #else
-                var chance = RoR2.Run.instance.spawnRng.RangeFloat(0f, 100f);
+                var chance = RoR2Application.rng.RangeFloat(0f, 100f);
                 if (chance < spawnChance)
                 {
                     outer.SetNextState(new DeathDrone());
