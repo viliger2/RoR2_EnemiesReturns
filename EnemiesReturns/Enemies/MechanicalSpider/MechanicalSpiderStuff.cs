@@ -165,6 +165,30 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #endregion
 
+            var flickerEmission = interactablePrefab.AddComponent<FlickerEmission>();
+            flickerEmission.renderer = meshRenderer;
+            flickerEmission.sinWaves = new Wave[]
+            {
+                new Wave()
+                {
+                    amplitude = 0.12f,
+                    frequency = 3.25f,
+                    cycleOffset = 1.2f,
+                },
+                new Wave()
+                {
+                    amplitude = 0.1f,
+                    frequency = 8.9f,
+                    cycleOffset = 0f,
+                },
+                new Wave()
+                {
+                    amplitude = 0.12f,
+                    frequency = 1f,
+                    cycleOffset = 2f,
+                }
+            };
+
             meshRendererTransform.gameObject.AddComponent<EntityLocator>().entity = interactablePrefab;
 
             interactablePrefab.RegisterNetworkPrefab();
