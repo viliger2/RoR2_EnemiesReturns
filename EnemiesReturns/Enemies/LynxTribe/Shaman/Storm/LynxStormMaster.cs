@@ -14,6 +14,13 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         protected override bool AddAIOwnership => true;
 
+        protected override IBaseAI.BaseAIParams BaseAIParams()
+        {
+            var aiparams = base.BaseAIParams();
+            aiparams.fullVision = true;
+            return aiparams;
+        }
+
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return new IAISkillDriver.AISkillDriverParams[]

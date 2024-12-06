@@ -155,7 +155,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
         {
             return new ICharacterMotor.CharacterMotorParams()
             {
-                mass = 200f
+                mass = 200f,
+                doNotTriggerJumpVolumes = true
             };
         }
 
