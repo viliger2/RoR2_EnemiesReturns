@@ -45,6 +45,7 @@ namespace EnemiesReturns
         private readonly List<ItemDef> itemList = new List<ItemDef>();
         private readonly List<NetworkSoundEventDef> nseList = new List<NetworkSoundEventDef>();
         private readonly List<GameObject> nopList = new List<GameObject>();
+        private readonly List<BuffDef> bdList = new List<BuffDef>();
 
         public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -196,6 +197,7 @@ namespace EnemiesReturns
             _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
             _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
             _contentPack.itemRelationshipProviders.Add(new[] { ModdedContagiousItemProvider });
+            _contentPack.buffDefs.Add(bdList.ToArray());
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
@@ -933,6 +935,10 @@ namespace EnemiesReturns
 
         private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)
         {
+            var stormStuff = new LynxStormStuff();
+            LynxStormStuff.StormImmunity = stormStuff.CreateStormImmunityBuff();
+            bdList.Add(LynxStormStuff.StormImmunity);
+
             var stormBody = new LynxStormBody();
             LynxStormBody.BodyPrefab = stormBody.AddBodyComponents(assets.First(body => body.name == "StormBody"), acdLookup);
             bodyList.Add(LynxStormBody.BodyPrefab);

@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.CharacterAI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -12,17 +13,24 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 {
     public class LynxStormComponent : MonoBehaviour
     {
+        // TODO: write logic so if we collide with anything on world we get thrown the oppisite direction of what we collided with
         public static float baseDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabDuration.Value;
 
         // magic numbers are used in logariphmic spiral calculation
         // so grabbed targets stay approximately within storm's default radius 
-        public static float baseA = 0.7f; // magic number 1
+        public static float baseA = 0.9f; // magic number 1
 
-        public static float baseB = 0.2f; // magic number 2
+        public static float baseB = 0.3f; // magic number 2
 
         public static float baseForce => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormThrowForce.Value;
 
+        public static float pullStr = 10f;
+
+        public static float velocitySpeed = 10f;
+
         public float yHeight = 8f;
+
+        public float immunityDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormImmunityDuration.Value;
 
         public GameObject storm;
 
@@ -33,7 +41,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
         private float a;
         private float b;
 
-        private KinematicCharacterMotor kinematicCharacterMotor;
         private CharacterMotor characterMotor;
         private CharacterBody characterBody;
         private Rigidbody rigidbody;
@@ -48,16 +55,29 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             b = baseB + UnityEngine.Random.Range(-0.05f, 0.05f);
 
             characterBody = GetComponent<CharacterBody>();
-            kinematicCharacterMotor = GetComponent<KinematicCharacterMotor>();
+            if(!characterBody || !characterBody.hasEffectiveAuthority)
+            {
+                UnityEngine.Object.Destroy(this);
+                return;
+            }
             characterMotor = GetComponent<CharacterMotor>();
+            if (!characterMotor)
+            {
+                UnityEngine.Object.Destroy(this);
+                return;
+            }
             rigidbody = GetComponent<Rigidbody>();
+            characterMotor.Motor.ForceUnground();
             characterMotor.useGravity = false;
+            characterMotor.disableAirControlUntilCollision = true;
             moveTarget = new GameObject();
             if (storm)
             {
                 moveTarget.transform.parent = storm.transform;
                 moveTarget.transform.localPosition = Vector3.zero;
             }
+            characterMotor.velocity = Vector3.zero;
+            Log.Info("grabbed");
         }
 
         public void SetStormTransform(GameObject storm)
@@ -67,12 +87,31 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             moveTarget.transform.localPosition = Vector3.zero;
         }
 
+        private void Update()
+        {
+            //Log.Info($"velocity: {characterMotor.velocity}, combined velocity: {characterMotor.velocity.sqrMagnitude}, root motion: {characterMotor.rootMotion}");
+            //Log.Info($"distance: {Vector3.Distance(storm.transform.position, characterMotor.Motor.transform.position)}");
+        }
+
         private void FixedUpdate()
         {
             if (!characterBody.hasEffectiveAuthority)
             {
                 return;
             }
+
+            if (!storm)
+            {
+                // just release without anything for now
+                Destroy(this);
+                return;
+            }
+
+            //if (Vector3.Distance() > )
+            //{
+            //    Destroy(this);
+            //    return;
+            //}
 
             if (timer > duration)
             {
@@ -92,17 +131,24 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
                 return;
             }
 
-            if (!kinematicCharacterMotor || !characterBody || !characterMotor)
-            {
-                return;
-            }
-
             previousPosition = characterMotor.previousPosition;
             timer += Time.fixedDeltaTime;
             var angle = Mathf.PI * timer;
             var r = a * Mathf.Pow((float)Math.E, b * angle);
             moveTarget.transform.localPosition = new Vector3(r * Mathf.Cos(angle), 2f + yHeight * (timer / baseDuration), r * Mathf.Sin(angle));
-            kinematicCharacterMotor.SetPosition(moveTarget.transform.position, false);
+            var target = (moveTarget.transform.position - characterMotor.previousPosition).normalized;
+            characterMotor.disableAirControlUntilCollision = true;
+
+            if (EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.SetVelocity)
+            {
+                characterMotor.velocity = target * velocitySpeed;
+            } else if (EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.AddDisplacement)
+            {
+                characterMotor.AddDisplacement(target * pullStr * Time.fixedDeltaTime);
+            } else if(EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.SetPosition)
+            {
+                characterMotor.Motor.SetPosition(moveTarget.transform.position, false);
+            }
         }
 
         private GameObject GetAttacker()
@@ -132,6 +178,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             if (characterMotor)
             {
                 characterMotor.useGravity = true;
+                characterMotor.disableAirControlUntilCollision = false;
+            }
+            if (characterBody)
+            {
+                R2API.Networking.NetworkingHelpers.ApplyBuff(characterBody, LynxStormStuff.StormImmunity.buffIndex, 1, immunityDuration);
             }
         }
     }

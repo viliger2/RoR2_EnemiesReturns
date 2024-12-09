@@ -11,6 +11,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 {
     public class LynxStormStuff
     {
+        public static BuffDef StormImmunity;
 
+        public BuffDef CreateStormImmunityBuff()
+        {
+            BuffDef defBuff = ScriptableObject.CreateInstance<BuffDef>();
+            (defBuff as ScriptableObject).name = "bdLynxStormImmunity";
+            defBuff.isDebuff = false;
+            defBuff.canStack = false;
+            defBuff.isCooldown = true;
+            defBuff.isDOT = false;
+            defBuff.isHidden = true;
+            defBuff.buffColor = Color.green;
+
+            return defBuff;
+        }
     }
 }

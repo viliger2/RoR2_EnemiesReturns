@@ -41,6 +41,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonStormGrabRange;
         public static ConfigEntry<float> SummonStormGrabDuration;
         public static ConfigEntry<float> SummonStormThrowForce;
+        public static ConfigEntry<float> SummonStormImmunityDuration;
 
         public static void PopulateConfig(ConfigFile config)
         {
@@ -77,7 +78,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SummmonStormLifetime = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Lifetime", 30f, "Lynx Shaman's summoned storms lifetime.");
             SummonStormGrabRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Grab Range", 3f, "Lynx Shaman's summoned storms grab range.");
             SummonStormGrabDuration = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Grab Duration", 4f, "Lynx Shaman's summoned storms grab duration. Basically for how long target stays in the air.");
-            SummonStormThrowForce = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Throw Force", 5000f, "Lynx Shaman's summoned storms throw force at the end of the grab.");
+            SummonStormThrowForce = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Throw Force", 7500f, "Lynx Shaman's summoned storms throw force at the end of the grab.");
+            SummonStormImmunityDuration = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Immunity Duration", 5f, "For how long players are immune to getting succed by a storm after they got throwned out by it.");
         }
 
     }
