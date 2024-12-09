@@ -114,6 +114,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddRandomBlinks => false;
         protected virtual bool AddDeployable => false;
         protected virtual bool AddExecuteSkillOnDamage => false;
+        protected virtual bool AddRemoveJitterBones => false;
 
         protected class SkillParams
         {
@@ -473,5 +474,7 @@ namespace EnemiesReturns.Components
         bool IRandomBlinkController.NeedToAddRandomBlinkController() => AddRandomBlinks;
         bool IDeployable.NeedToAddDeployable() => AddDeployable;
         bool IExecuteSkillOnDamage.NeedToAddExecuteSkillOnDamage() => AddExecuteSkillOnDamage;
+        bool IRemoveJitterBones.NeedToAddRemoveJitterBones() => AddRemoveJitterBones;
+
     }
 }

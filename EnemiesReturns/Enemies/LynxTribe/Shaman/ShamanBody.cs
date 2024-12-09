@@ -40,6 +40,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         }
 
         protected override bool AddExecuteSkillOnDamage => true;
+        protected override bool AddRemoveJitterBones => true;
 
         public static GameObject BodyPrefab;
 

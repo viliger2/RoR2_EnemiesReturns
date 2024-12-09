@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IModel : IAimAnimator, IChildLocator, IHurtboxes, IAnimationEvents, IDestroyOnUnseen, ICharacterModel, IAddHitboxes, IModelPanelParameters, IFootStepHandler, ISkins, IRandomBlinkController
+    public interface IModel : IAimAnimator, IChildLocator, IHurtboxes, IAnimationEvents, IDestroyOnUnseen, ICharacterModel, IAddHitboxes, IModelPanelParameters, IFootStepHandler, ISkins, IRandomBlinkController, IRemoveJitterBones
     {
         public void SetupModel(GameObject modelPrefab, CharacterDirection direction, InputBankTest inputBank, HealthComponent healthComponent, CharacterBody characterBody)
         {
@@ -20,6 +20,7 @@ namespace EnemiesReturns.Components
             AddFootstepHandler(modelPrefab, GetFootstepHandlerParams());
             AddSkins(modelPrefab);
             AddRandomBlinkController(modelPrefab, GetAnimator(modelPrefab), GetRandomBlinkParams());
+            AddRemoveJitterBones(modelPrefab);
         }
 
         private Transform GetFocusPoint(GameObject modelPrefab)

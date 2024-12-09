@@ -12,6 +12,7 @@ namespace EnemiesReturns.Components.BodyComponents.CharacterMotor
             public float airControl = 0.25f;
             public bool disableAirControl = false;
             public bool generateParametersOnAwake = true;
+            public bool doNotTriggerJumpVolumes = false;
         }
 
         protected bool NeedToAddCharacterMotor();
@@ -30,6 +31,7 @@ namespace EnemiesReturns.Components.BodyComponents.CharacterMotor
                 motor.airControl = parameters.airControl;
                 motor.disableAirControlUntilCollision = parameters.disableAirControl;
                 motor.generateParametersOnAwake = parameters.generateParametersOnAwake;
+                motor.doNotTriggerJumpVolumes = parameters.doNotTriggerJumpVolumes;
             }
 
             return motor;

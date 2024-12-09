@@ -32,12 +32,11 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         }
 
         protected override bool AddExecuteSkillOnDamage => true;
+        protected override bool AddRemoveJitterBones => true;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             var body = base.AddBodyComponents(bodyPrefab, sprite, log);
-            var model = body.transform.Find("ModelBase/mdlMechanicalSpider").gameObject;
-            model.AddComponent<RemoveJitterBones>(); // TODO: in the future move it to IModel
 
             #region ParticleEffects
             var rightFrontLeg = body.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg1.1/SparkRightFrontLeg");
