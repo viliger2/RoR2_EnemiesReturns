@@ -19,12 +19,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
     {
         public struct SkillFamilies
         {
+            public static SkillFamily Primary;
             public static SkillFamily Utility;
             public static SkillFamily Special;
         }
 
         public struct Skills
         {
+            public static SkillDef SummonProjectiles;
             public static SkillDef SummonStorm;
             public static SkillDef Teleport;
         }
@@ -39,7 +41,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             public static CharacterSpawnCard cscLynxShamanDefault;
         }
 
-        protected override bool AddExecuteSkillOnDamage => true;
+        protected override bool AddExecuteSkillOnDamage => false; // TODO: probably remove
         protected override bool AddRemoveJitterBones => true;
 
         public static GameObject BodyPrefab;
@@ -72,6 +74,32 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
+        public SkillDef CreateSummonProjectilesSkill()
+        {
+            // TODO: icon
+            EntityStates.SerializableEntityStateType state;
+#if DEBUG || NOWEAVER
+            if (EnemiesReturns.Configuration.General.ShamanSummonProjectileType.Value == Configuration.General.SummonProjectileType.Shotgun)
+            {
+                state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
+            }
+            else
+            {
+                state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
+            }
+#else
+            state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
+#endif
+            //return CreateSkill(new SkillParams("LynxShamanWeaponSummonProjectiles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire)))
+            return CreateSkill(new SkillParams("LynxShamanWeaponSummonProjectiles", state)
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION",
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesCooldown.Value,
+            });
+        }
+
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
@@ -82,6 +110,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
+        // TODO: probably remove
         protected override IExecuteSkillOnDamage.ExecuteSkillOnDamageParams ExecuteSkillOnDamage()
         {
             return new IExecuteSkillOnDamage.ExecuteSkillOnDamageParams()
@@ -237,7 +266,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return new IGenericSkill.GenericSkillParams[]
             {
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorm", SkillSlot.Special)
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorm", SkillSlot.Special),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonProjectiles", SkillSlot.Primary)
             };
         }
 
@@ -261,6 +291,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             };
         }
 
+        // TOOD: probably revert to normal
         protected override ISetStateOnHurt.SetStateOnHurtParams SetStateOnHurtParams()
         {
             return new ISetStateOnHurt.SetStateOnHurtParams("Body", new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState)))

@@ -1,12 +1,18 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using Newtonsoft.Json.Utilities;
 using R2API.Networking;
+using RewiredConsts;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
@@ -27,11 +33,12 @@ namespace EnemiesReturns
     [BepInDependency(R2API.EliteAPI.PluginGUID)]
     [BepInDependency(R2API.ProcTypeAPI.PluginGUID)]
     [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
+    [BepInDependency(R2API.DamageAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.4.0";
+        public const string Version = "0.4.1";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
@@ -45,7 +52,6 @@ namespace EnemiesReturns
 
             if (UseConfigFile.Value)
             {
-                EnemiesReturns.Configuration.General.PopulateConfig(Config);
                 EnemiesReturns.Configuration.Spitter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Spitter.cfg"), true));
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
@@ -59,13 +65,13 @@ namespace EnemiesReturns
                     SaveOnConfigSet = false,
                 };
 
-                EnemiesReturns.Configuration.General.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Spitter.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(notSavedConfigFile);
             }
+            EnemiesReturns.Configuration.General.PopulateConfig(Config);
 
             Hooks();
         }
@@ -80,6 +86,7 @@ namespace EnemiesReturns
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             MechanicalSpiderVictoryDanceController.Hooks();
+            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
@@ -100,6 +107,7 @@ namespace EnemiesReturns
             }
 
             ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
+            ShamanStuff.OnHitEnemy(damageInfo, attackerBody, victim);
         }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]

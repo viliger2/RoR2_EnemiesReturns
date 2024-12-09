@@ -22,6 +22,17 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> LevelDamage;
         public static ConfigEntry<float> LevelArmor;
 
+        public static ConfigEntry<float> SummonProjectilesCooldown;
+        public static ConfigEntry<float> SummonProjectilesDamage;
+        public static ConfigEntry<float> SummonProjectileProcCoefficient;
+        public static ConfigEntry<float> SummonProjectilesDelay;
+        public static ConfigEntry<int> SummonProjectilesCount;
+        public static ConfigEntry<float> SummonProjectilesDebuffDuration;
+        public static ConfigEntry<float> SummonProjectilesHealingFraction;
+        public static ConfigEntry<float> SummonProjectilesLifetime;
+        public static ConfigEntry<float> SummonProjectilesSpeed;
+        public static ConfigEntry<float> SummonProjectilesTurnSpeed;
+
         public static ConfigEntry<float> TeleportCooldown;
         public static ConfigEntry<float> TeleportCastTime;
         public static ConfigEntry<float> TeleportMinRange;
@@ -53,13 +64,25 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
             BaseMaxHealth = config.Bind("Lynx Shaman Character Stats", "Base Max Health", 300f, "Lynx Shaman' base health.");
             BaseMoveSpeed = config.Bind("Lynx Shaman Character Stats", "Base Movement Speed", 6f, "Lynx Shaman' base movement speed.");
-            BaseJumpPower = config.Bind("Lynx Shaman Character Stats", "Base Jump Power", 20f, "Lynx Shaman' base jump power.");
+            BaseJumpPower = config.Bind("Lynx Shaman Character Stats", "Base Jump Power", 12f, "Lynx Shaman' base jump power.");
             BaseDamage = config.Bind("Lynx Shaman Character Stats", "Base Damage", 20f, "Lynx Shaman' base damage.");
             BaseArmor = config.Bind("Lynx Shaman Character Stats", "Base Armor", 0f, "Lynx Shaman' base armor.");
 
             LevelMaxHealth = config.Bind("Lynx Shaman Character Stats", "Health per Level", 90f, "Lynx Shaman' health increase per level.");
             LevelDamage = config.Bind("Lynx Shaman Character Stats", "Damage per Level", 4f, "Lynx Shaman' damage increase per level.");
             LevelArmor = config.Bind("Lynx Shaman Character Stats", "Armor per Level", 0f, "Lynx Shaman' armor increase per level.");
+
+            SummonProjectilesCooldown = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Cooldown", 8f, "Lynx Shaman's Summon Projectiles cooldown.");
+            SummonProjectilesDamage = config.Bind("Lynx Shaman Summon Projectiles", "Lunx Shaman Summon Projectiles Damage", 1f, "Lynx Shaman's Summon Projectiles damage coefficient.");
+            SummonProjectileProcCoefficient = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Proc Coefficient", 1f, "Lynx Shaman's Summon Projectiles proc coefficient.");
+            SummonProjectilesDelay = config.Bind("Lynx Shaman Summon Projectiles", "Lunx Shaman Summon Projectiles Delay", 2.8f, "Lynx Shaman's Summon Projectiles initial delay between starting the skill and firing projectiles. Scales with attack speed.");
+            SummonProjectilesCount = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Count", 5, "Lynx Shaman's Summon Projectiles count.");
+            SummonProjectilesDebuffDuration = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Debuff Duration", 5f, "Lynx Shaman's Summon Projectiles minus healing debuff duration.");
+            SummonProjectilesHealingFraction = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Healing Debuff Fraction", 0.5f, "Lynx Shaman's Summon Projectiles healing reduction.");
+            SummonProjectilesLifetime = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Lifetime", 15f, "Lynx Shaman's Summon Projectiles lifetime of projectiles.");
+            SummonProjectilesSpeed = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Speed", 12f, "Lynx Shaman's Summon Projectiles speed of projectiles.");
+            SummonProjectilesTurnSpeed = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Turn Speed", 100f, "Lynx Shaman's Summon Projectiles turn speed of projectiles.");
+
 
             TeleportCooldown = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Cooldown", 60f, "Lynx Shaman's Teleport cooldown.");
             TeleportCastTime = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Cast Time", 3f, "How long it takes for Lynx Shaman to teleport away.");
