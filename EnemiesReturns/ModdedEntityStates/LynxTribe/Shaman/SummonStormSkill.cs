@@ -23,6 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public static float baseSkillRechargeTime => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value;
         public static float effectSpawn => 0.2f;
         public static GameObject summonEffectPrefab;
+        public static float playableMaxDistance = 1000f;
 
         private float duration;
         private float effectTimer;
@@ -36,30 +37,54 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             duration = baseDuration / attackSpeedStat;
             PlayCrossfade("Gesture, Override", "SummonStorm", "SummonStorm.playbackRate", duration, 0.1f);
             SummonStorms();
-            effectSpawnPoint = transform; // TODO: replace with child whatever
+            effectSpawnPoint = FindModelChild("StaffUpperPoint");
+            if (!effectSpawnPoint)
+            {
+                effectSpawnPoint = transform;
+            }
         }
 
         private void SummonStorms()
         {
-            if (NetworkServer.active)
+            if (isAuthority)
             {
-                storms = new GameObject[stormCount];
-                for(int i = 0; i < stormCount; i++)
+                if (characterBody.isPlayerControlled)
                 {
-                    foreach (var ai in characterBody.master.aiComponents)
+                    if(Physics.Raycast(GetAimRay(), out var hitInfo, playableMaxDistance, LayerIndex.world.mask))
                     {
-                        if (!ai.currentEnemy.characterBody)
+                        SummonStormPlayer(hitInfo.point);
+                    }
+                } else
+                {
+                    if (NetworkServer.active)
+                    {
+                        storms = new GameObject[stormCount];
+                        for (int i = 0; i < stormCount; i++)
                         {
-                            continue;
-                        }
+                            foreach (var ai in characterBody.master.aiComponents)
+                            {
+                                if (!ai.currentEnemy.characterBody)
+                                {
+                                    continue;
+                                }
 
-                        storms[i] = SummonStorm(ai.currentEnemy.characterBody.transform);
+                                storms[i] = SummonStormAI(ai.currentEnemy.characterBody.transform);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        private GameObject SummonStorm(Transform transform)
+        private void SummonStormPlayer(Vector3 position)
+        {
+            if (characterBody)
+            {
+                characterBody.SendConstructTurret(characterBody, position, Quaternion.identity, MasterCatalog.FindMasterIndex(cscStorm.prefab));
+            }
+        }
+
+        private GameObject SummonStormAI(Transform transform)
         {
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscStorm, new DirectorPlacementRule
             {
@@ -75,7 +100,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             {
                 if (!spawnResult.success)
                 {
-                    SummonStorm(transform); // surely this won't break anything
+                    SummonStormAI(transform); // surely this won't break anything
                     return;
                 }
                 if (spawnResult.spawnedInstance && base.characterBody)
@@ -159,6 +184,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void OnExit()
         {
             base.OnExit();
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             storms = null;
         }
 
