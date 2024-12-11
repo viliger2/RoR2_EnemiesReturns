@@ -20,6 +20,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         public struct SkillFamilies
         {
             public static SkillFamily Primary;
+            public static SkillFamily Secondary;
             public static SkillFamily Utility;
             public static SkillFamily Special;
         }
@@ -27,6 +28,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         public struct Skills
         {
             public static SkillDef SummonProjectiles;
+            public static SkillDef TeleportFriend;
             public static SkillDef SummonStorm;
             public static SkillDef Teleport;
         }
@@ -100,6 +102,17 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
+        public SkillDef CreateTeleportFriendSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodyTeleportFriend", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 15f, // TODO: config
+            });
+        }
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
@@ -268,6 +281,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorm", SkillSlot.Special),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonProjectiles", SkillSlot.Primary)
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "TeleportFriend", SkillSlot.Secondary)
             };
         }
 

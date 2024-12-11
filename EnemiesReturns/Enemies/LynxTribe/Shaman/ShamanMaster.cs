@@ -30,6 +30,21 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                     selectionRequiresTargetLoS = true,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },
+                new IAISkillDriver.AISkillDriverParams("TeleportFriend")
+                {
+                    skillSlot = RoR2.SkillSlot.Secondary,
+                    requireSkillReady = true,
+                    minDistance = 0f,
+                    maxDistance = 45f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.NearestFriendlyInSkillRange,
+                    activationRequiresAimConfirmation = true,
+                    activationRequiresAimTargetLoS = true,
+                    activationRequiresTargetLoS = true,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
+                    selectionRequiresAimTarget = true,
+                    selectionRequiresTargetLoS = true,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
+                },
                 //new IAISkillDriver.AISkillDriverParams("SummonStorm")
                 //{
                 //    skillSlot = RoR2.SkillSlot.Special,
@@ -45,22 +60,22 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 //    selectionRequiresAimTarget = true,
                 //    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 //},
-                //new IAISkillDriver.AISkillDriverParams("WalkAway")
-                //{
-                //    skillSlot = RoR2.SkillSlot.None,
-                //    minDistance = 0f,
-                //    maxDistance = 50f,
-                //    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                //    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
-                //    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                //    driverUpdateTimerOverride = 3f
-                //},
+                new IAISkillDriver.AISkillDriverParams("WalkAway")
+                {
+                    skillSlot = RoR2.SkillSlot.None,
+                    minDistance = 0f,
+                    maxDistance = 15f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
+                    driverUpdateTimerOverride = 3f
+                },
                 new IAISkillDriver.AISkillDriverParams("StrafeAtDistance")
                 {
                     skillSlot = RoR2.SkillSlot.None,
                     requireSkillReady = false, 
-                    minDistance = 40f,
-                    maxDistance = 60f,
+                    minDistance = 15f,
+                    maxDistance = 35f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresTargetLoS = true,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,

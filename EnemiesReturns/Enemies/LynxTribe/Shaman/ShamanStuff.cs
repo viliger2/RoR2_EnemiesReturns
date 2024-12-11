@@ -180,17 +180,52 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             effectComponent.positionAtReferencedTransform = false;
             effectComponent.parentToReferencedTransform = false;
             effectComponent.applyScale = true;
-            effectComponent.soundName = "";
+            effectComponent.soundName = ""; // TODO
             effectComponent.disregardZScale = false;
 
-            prefab.AddComponent<DestroyOnTimer>().duration = 1f;
+            prefab.AddComponent<DestroyOnTimer>().duration = 0.75f;
 
             var lightTransform = prefab.transform.Find("Light");
             var lightIntencityCurve = lightTransform.gameObject.AddComponent<LightIntensityCurve>();
             lightIntencityCurve.timeMax = 0.5f;
-
+            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f); // TODO
 
             vfxAttributes.optionalLights = new Light[] { lightTransform.GetComponent<Light>() };
+
+            foreach(var component in prefab.GetComponentsInChildren<ParticleSystemRenderer>())
+            {
+                component.material = ContentProvider.GetOrCreateMaterial("matLynxShamanTeleport", CreateTeleportEffectMaterial);
+            }
+
+            return prefab;
+        }
+
+        public GameObject CreateShamanTeleportIn(GameObject prefab)
+        {
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = false;
+            effectComponent.parentToReferencedTransform = false;
+            effectComponent.applyScale = true;
+            effectComponent.soundName = ""; // TODO
+            effectComponent.disregardZScale = false;
+
+            prefab.AddComponent<DestroyOnTimer>().duration = 0.75f;
+
+            var lightTransform = prefab.transform.Find("Light");
+            var lightIntencityCurve = lightTransform.gameObject.AddComponent<LightIntensityCurve>();
+            lightIntencityCurve.timeMax = 0.5f;
+            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f); // TODO
+
+            vfxAttributes.optionalLights = new Light[] { lightTransform.GetComponent<Light>() };
+
+            foreach (var component in prefab.GetComponentsInChildren<ParticleSystemRenderer>())
+            {
+                component.material = ContentProvider.GetOrCreateMaterial("matLynxShamanTeleport", CreateTeleportEffectMaterial);
+            }
 
             return prefab;
         }
