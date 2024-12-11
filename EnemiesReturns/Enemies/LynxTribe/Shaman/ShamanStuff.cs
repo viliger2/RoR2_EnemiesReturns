@@ -147,6 +147,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
             projectileDamage.damageType.damageType = DamageType.Generic;
+            projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
 
             prefab.AddComponent<ProjectileTargetComponent>();
 
@@ -161,9 +162,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             var steerTowards = prefab.AddComponent<ProjectileSteerTowardTarget>();
             steerTowards.rotationSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesTurnSpeed.Value;
-
-            var moddedDamage = prefab.AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>();
-            moddedDamage.Add(ApplyReducedHealing);
 
             prefab.AddComponent<TeamFilter>();
 

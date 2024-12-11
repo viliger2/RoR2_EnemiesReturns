@@ -36,13 +36,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                     requireSkillReady = true,
                     minDistance = 0f,
                     maxDistance = 45f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.NearestFriendlyInSkillRange,
-                    activationRequiresAimConfirmation = true,
-                    activationRequiresAimTargetLoS = true,
-                    activationRequiresTargetLoS = true,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
                     selectionRequiresAimTarget = true,
-                    selectionRequiresTargetLoS = true,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },
                 new IAISkillDriver.AISkillDriverParams("SummonLightning")
