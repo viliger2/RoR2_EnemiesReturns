@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
-    public class SummonTrackingProjectilesShotgun : BaseState
+    public class SummonTrackingProjectilesShotgun : GenericCharacterMain
     {
         public static GameObject trackingProjectilePrefab;
 

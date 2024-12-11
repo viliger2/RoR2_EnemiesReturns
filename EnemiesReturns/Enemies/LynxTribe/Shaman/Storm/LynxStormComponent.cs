@@ -13,7 +13,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 {
     public class LynxStormComponent : MonoBehaviour
     {
-        // TODO: write logic so if we collide with anything on world we get thrown the oppisite direction of what we collided with
         public static float baseDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabDuration.Value;
 
         // magic numbers are used in logariphmic spiral calculation

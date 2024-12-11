@@ -9,7 +9,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
     {
         public override void OnEnter()
         {
-            // TODO: write something with particles to indicate that storm is starting
             duration = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value;
             base.OnEnter();
         }

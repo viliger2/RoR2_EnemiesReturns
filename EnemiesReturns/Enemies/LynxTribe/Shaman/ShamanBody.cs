@@ -80,25 +80,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         public SkillDef CreateSummonProjectilesSkill()
         {
             // TODO: icon
-            EntityStates.SerializableEntityStateType state;
-#if DEBUG || NOWEAVER
-            if (EnemiesReturns.Configuration.General.ShamanSummonProjectileType.Value == Configuration.General.SummonProjectileType.Shotgun)
-            {
-                state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
-            }
-            else
-            {
-                state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
-            }
-#else
-            state = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
-#endif
-            //return CreateSkill(new SkillParams("LynxShamanWeaponSummonProjectiles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire)))
-            return CreateSkill(new SkillParams("LynxShamanWeaponSummonProjectiles", state)
+            return CreateSkill(new SkillParams("LynxShamanBodySummonProjectiles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION",
-                activationStateMachine = "Weapon",
+                activationStateMachine = "Body",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesCooldown.Value,
             });
         }

@@ -165,6 +165,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             #endregion
 
+            // TODO: add sounds of Fluorescent Lights Flickering to imitate lights going in and out
             var flickerEmission = interactablePrefab.AddComponent<FlickerEmission>();
             flickerEmission.renderer = meshRenderer;
             flickerEmission.sinWaves = new Wave[]
