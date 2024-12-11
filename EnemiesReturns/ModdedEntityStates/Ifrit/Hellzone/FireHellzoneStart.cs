@@ -1,8 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.Projectile;
 using System.Linq;
 using UnityEngine.Networking;
-using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
