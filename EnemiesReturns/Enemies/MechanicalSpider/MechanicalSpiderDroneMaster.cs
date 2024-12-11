@@ -16,9 +16,21 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         {
             return new IAISkillDriver.AISkillDriverParams[]
             {
-                new IAISkillDriver.AISkillDriverParams("HardLeashToLeader")
+                new IAISkillDriver.AISkillDriverParams("HardLeashToLeaderWhileShooting")
                 {
                     skillSlot = RoR2.SkillSlot.Primary,
+                    minDistance = 60f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentLeader,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
+                    selectionRequiresAimTarget = true,
+                    selectionRequiresTargetLoS = true,
+                    activationRequiresAimConfirmation = true,
+                    driverUpdateTimerOverride = 3f,
+                    resetCurrentEnemyOnNextDriverSelection = true
+                },
+                new IAISkillDriver.AISkillDriverParams("HardLeashToLeader")
+                {
                     minDistance = 60f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentLeader,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
@@ -26,9 +38,21 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                     driverUpdateTimerOverride = 3f,
                     resetCurrentEnemyOnNextDriverSelection = true
                 },
-                new IAISkillDriver.AISkillDriverParams("SoftLeashToLeader")
+                new IAISkillDriver.AISkillDriverParams("SoftLeashToLeaderWhileShooting")
                 {
                     skillSlot = RoR2.SkillSlot.Primary,
+                    minDistance = 20f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentLeader,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
+                    selectionRequiresAimTarget = true,
+                    selectionRequiresTargetLoS = true,
+                    activationRequiresAimConfirmation = true,
+                    driverUpdateTimerOverride = 0.05f,
+                    resetCurrentEnemyOnNextDriverSelection = true
+                },
+                new IAISkillDriver.AISkillDriverParams("SoftLeashToLeader")
+                {
                     minDistance = 20f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentLeader,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,

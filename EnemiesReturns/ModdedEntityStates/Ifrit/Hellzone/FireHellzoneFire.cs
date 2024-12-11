@@ -2,7 +2,6 @@
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
-using static EntityStates.TitanMonster.FireFist;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
