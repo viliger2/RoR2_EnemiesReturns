@@ -31,6 +31,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             public static SkillDef TeleportFriend;
             public static SkillDef SummonStorm;
             public static SkillDef Teleport;
+            public static SkillDef SummonLightning;
         }
 
         public struct SkinDefs
@@ -113,6 +114,19 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 baseRechargeInterval = 15f, // TODO: config
             });
         }
+
+        public SkillDef CreateSummonLightningSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodySummonLightning", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonLightning)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 15f, // TODO: config
+            });
+        }
+
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
@@ -278,9 +292,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
+                //new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "SummonLightning", SkillSlot.Utility),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorm", SkillSlot.Special),
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonProjectiles", SkillSlot.Primary)
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonProjectiles", SkillSlot.Primary),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "TeleportFriend", SkillSlot.Secondary)
             };
         }

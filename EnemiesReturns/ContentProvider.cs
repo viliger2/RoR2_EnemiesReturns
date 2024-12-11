@@ -626,6 +626,7 @@ namespace EnemiesReturns
 
                 var knurlProjectile = assets.First(item => item.name == "ColossalKnurlFistProjectile");
                 ColossalKnurlFactory.projectilePrefab = knurlFactory.CreateFistProjectile(knurlProjectile, knurlProjectileGhost);
+                ModdedEntityStates.LynxTribe.Shaman.SummonLightning.projectilePrefab = ColossalKnurlFactory.projectilePrefab; // TODO: REMOVE
 
                 projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
 
@@ -923,15 +924,18 @@ namespace EnemiesReturns
             ShamanBody.Skills.SummonStorm = shamanBody.CreateSummonStormSkill();
             ShamanBody.Skills.SummonProjectiles = shamanBody.CreateSummonProjectilesSkill();
             ShamanBody.Skills.TeleportFriend = shamanBody.CreateTeleportFriendSkill();
+            ShamanBody.Skills.SummonLightning = shamanBody.CreateSummonLightningSkill();
 
             sdList.Add(ShamanBody.Skills.Teleport);
             sdList.Add(ShamanBody.Skills.SummonStorm);
             sdList.Add(ShamanBody.Skills.SummonProjectiles);
             sdList.Add(ShamanBody.Skills.TeleportFriend);
+            sdList.Add(ShamanBody.Skills.SummonLightning);
 
             ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
 
-            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
+            //ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
+            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
             ShamanBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxShamanSpecialSkillFamily", ShamanBody.Skills.SummonStorm);
             ShamanBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxShamanPrimarySkillFamily", ShamanBody.Skills.SummonProjectiles);
             ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.TeleportFriend);
@@ -939,6 +943,7 @@ namespace EnemiesReturns
             sfList.Add(ShamanBody.SkillFamilies.Utility);
             sfList.Add(ShamanBody.SkillFamilies.Special);
             sfList.Add(ShamanBody.SkillFamilies.Primary);
+            sfList.Add(ShamanBody.SkillFamilies.Secondary);
 
             ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody")); // TODO: sprite
             bodyList.Add(ShamanBody.BodyPrefab);
@@ -952,6 +957,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonLightning));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
         }
