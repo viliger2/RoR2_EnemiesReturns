@@ -1,0 +1,106 @@
+﻿using EnemiesReturns.Behaviors;
+using RoR2;
+using RoR2.Audio;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+using static Rewired.ComponentControls.Effects.RotateAroundAxis;
+
+namespace EnemiesReturns.Enemies.LynxTribe
+{
+    // TODO: add network identity since we will be spawning it from server anyway
+    // just do everything on server, who cares
+    public class LynxTribeTrap : MonoBehaviour
+    {
+        public float checkInterval = 0.25f;
+
+        public float spawnAfterTriggerInterval = 0.5f;
+
+        public LynxTribeSpawner spawner;
+
+        public DestroyOnTimerNetwork destroyOnTimer;
+
+        public Transform hitBox;
+
+        public TeamMask teamFilter;
+
+        public NetworkSoundEventDef initialTriggerSound;
+
+        private float timer;
+
+        private bool triggered;
+
+        private bool spawned;
+
+        private void Awake()
+        {
+            if (!NetworkServer.active)
+            {
+                this.enabled = false;
+            }
+
+            if (!hitBox)
+            {
+                Log.Warning($"LynxTribeTrap on {gameObject} doesn't have hitBox! Destroying itself.");
+                NetworkServer.Destroy(this.gameObject);
+                return;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            timer += Time.fixedDeltaTime;
+            if(timer > checkInterval && !triggered)
+            {
+                var position = hitBox.position;
+                var halfExtends = hitBox.lossyScale * 0.5f;
+                var rotation = transform.rotation;
+
+                Collider[] colliders;
+                int num = HGPhysics.OverlapBox(out colliders, position, halfExtends, rotation, LayerIndex.entityPrecise.mask);
+                for(int i = 0; i < num; i++)
+                {
+                    if (!colliders[i])
+                    {
+                        continue;
+                    }
+
+                    var hurtBox = colliders[i].GetComponent<HurtBox>();
+                    if(!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body)
+                    {
+                        continue;
+                    }
+
+                    if (teamFilter.HasTeam(hurtBox.healthComponent.body.teamComponent.teamIndex))
+                    {
+                        if (initialTriggerSound)
+                        {
+                            PointSoundManager.EmitSoundServer(initialTriggerSound.index, base.transform.position);
+                        }
+                        // TODO: play networked sound
+                        triggered = true;
+                        break;
+                    }
+                }
+                HGPhysics.ReturnResults(colliders);
+                // resetting the timer so we can spawn cards on new timer
+                timer = triggered ? 0 : timer - checkInterval;
+            }
+
+            if(timer > spawnAfterTriggerInterval && !spawned)
+            {
+                if (spawner)
+                {
+                    spawner.SpawnLynxTribesmen(transform);
+                }
+                spawned = true;
+                if (destroyOnTimer)
+                {
+                    destroyOnTimer.enabled = true;
+                }
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.LynxTribe;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
@@ -895,6 +896,44 @@ namespace EnemiesReturns
             // TODO: config
             CreateLynxStorm(assets, acdLookup);
             CreateLynxShaman(assets, iconLookup);
+            CreateLynxTotem(assets, iconLookup);
+        }
+
+        private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var lynxStuff = new LynxTribeStuff();
+            var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
+
+            // TODO: do better
+            var spawnCard = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCard as ScriptableObject).name = "iscLynxTrap";
+            spawnCard.prefab = lynxTrap;
+            spawnCard.sendOverNetwork = true;
+            spawnCard.hullSize = HullClassification.Human; // TODO?
+            spawnCard.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCard.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCard.directorCreditCost = 2; // TODO
+            spawnCard.occupyPosition = true;
+            spawnCard.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCard.orientToFloor = true;
+            spawnCard.maxSpawnsPerStage = 3; // TODO
+
+            var dcLynxTrap = new DirectorCard
+            {
+                spawnCard = spawnCard,
+                selectionWeight = 8, // TODO: slightly lower than barrels but still enough to appear on stages it should appear
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = false
+            };
+
+            var holder = new DirectorAPI.DirectorCardHolder();
+            holder.Card = dcLynxTrap;
+            holder.InteractableCategory = DirectorAPI.InteractableCategory.Barrels;
+
+            DirectorAPI.Helpers.AddNewInteractable(holder);
+
+            nopList.Add(lynxTrap);
         }
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
