@@ -10,7 +10,6 @@ using static Rewired.ComponentControls.Effects.RotateAroundAxis;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    // TODO: add network identity since we will be spawning it from server anyway
     // just do everything on server, who cares
     public class LynxTribeTrap : MonoBehaviour
     {
@@ -26,7 +25,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public TeamMask teamFilter;
 
-        public NetworkSoundEventDef initialTriggerSound;
+        public string initialTriggerSound;
 
         private float timer;
 
@@ -75,11 +74,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
                     if (teamFilter.HasTeam(hurtBox.healthComponent.body.teamComponent.teamIndex))
                     {
-                        if (initialTriggerSound)
+                        if (!string.IsNullOrEmpty(initialTriggerSound))
                         {
-                            PointSoundManager.EmitSoundServer(initialTriggerSound.index, base.transform.position);
+                            EntitySoundManager.EmitSoundServer((AkEventIdArg)initialTriggerSound, base.gameObject);
                         }
-                        // TODO: play networked sound
                         triggered = true;
                         break;
                     }

@@ -905,35 +905,66 @@ namespace EnemiesReturns
             var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
 
             // TODO: do better
-            var spawnCard = ScriptableObject.CreateInstance<InteractableSpawnCard>();
-            (spawnCard as ScriptableObject).name = "iscLynxTrap";
-            spawnCard.prefab = lynxTrap;
-            spawnCard.sendOverNetwork = true;
-            spawnCard.hullSize = HullClassification.Human; // TODO?
-            spawnCard.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            spawnCard.requiredFlags = RoR2.Navigation.NodeFlags.None;
-            spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
-            spawnCard.directorCreditCost = 2; // TODO
-            spawnCard.occupyPosition = true;
-            spawnCard.eliteRules = SpawnCard.EliteRules.Default;
-            spawnCard.orientToFloor = true;
-            spawnCard.maxSpawnsPerStage = 3; // TODO
+            var spawnCardTrap = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardTrap as ScriptableObject).name = "iscLynxTrap";
+            spawnCardTrap.prefab = lynxTrap;
+            spawnCardTrap.sendOverNetwork = true;
+            spawnCardTrap.hullSize = HullClassification.Human; // TODO?
+            spawnCardTrap.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardTrap.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardTrap.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardTrap.directorCreditCost = 2; // TODO
+            spawnCardTrap.occupyPosition = true;
+            spawnCardTrap.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardTrap.orientToFloor = true;
+            spawnCardTrap.maxSpawnsPerStage = 3; // TODO
 
             var dcLynxTrap = new DirectorCard
             {
-                spawnCard = spawnCard,
+                spawnCard = spawnCardTrap,
                 selectionWeight = 8, // TODO: slightly lower than barrels but still enough to appear on stages it should appear
                 spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                 preventOverhead = false
             };
 
-            var holder = new DirectorAPI.DirectorCardHolder();
-            holder.Card = dcLynxTrap;
-            holder.InteractableCategory = DirectorAPI.InteractableCategory.Barrels;
+            var holderTrap = new DirectorAPI.DirectorCardHolder();
+            holderTrap.Card = dcLynxTrap;
+            holderTrap.InteractableCategory = DirectorAPI.InteractableCategory.Barrels;
 
-            DirectorAPI.Helpers.AddNewInteractable(holder);
+            DirectorAPI.Helpers.AddNewInteractable(holderTrap);
+
+            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
+
+            var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardShrine as ScriptableObject).name = "iscLynxShrine";
+            spawnCardShrine.prefab = lynxShrine;
+            spawnCardShrine.sendOverNetwork = true;
+            spawnCardShrine.hullSize = HullClassification.Human; // TODO?
+            spawnCardShrine.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardShrine.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardShrine.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardShrine.directorCreditCost = 2; // TODO
+            spawnCardShrine.occupyPosition = true;
+            spawnCardShrine.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardShrine.orientToFloor = false;
+            spawnCardShrine.maxSpawnsPerStage = 3; // TODO
+
+            var dcLynxShrine = new DirectorCard
+            {
+                spawnCard = spawnCardShrine,
+                selectionWeight = 2, // TODO: in line with boss and combat
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = false
+            };
+
+            var holderShrine = new DirectorAPI.DirectorCardHolder();
+            holderShrine.Card = dcLynxShrine;
+            holderShrine.InteractableCategory = DirectorAPI.InteractableCategory.Shrines;
+
+            DirectorAPI.Helpers.AddNewInteractable(holderShrine);
 
             nopList.Add(lynxTrap);
+            nopList.Add(lynxShrine);
         }
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup)

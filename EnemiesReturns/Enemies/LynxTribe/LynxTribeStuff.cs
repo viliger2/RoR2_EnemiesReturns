@@ -49,5 +49,86 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return trapPrefab;
         }
 
+        public GameObject CreateShrinePrefab(GameObject shrinePrefab)
+        {
+            shrinePrefab.AddComponent<NetworkIdentity>();
+
+            var hightLightMesh = shrinePrefab.AddComponent<Highlight>();
+            hightLightMesh.strength = 1f;
+            hightLightMesh.targetRenderer = shrinePrefab.GetComponentInChildren<Renderer>(); // TODO
+            hightLightMesh.highlightColor = Highlight.HighlightColor.interactive;
+
+            var modelLocator = shrinePrefab.AddComponent<ModelLocator>();
+            modelLocator.modelTransform = shrinePrefab.transform.Find("Base/Cube"); // TODO
+            modelLocator.modelBaseTransform = shrinePrefab.transform.Find("Base");
+            modelLocator.autoUpdateModelTransform = false;
+            modelLocator.dontDetatchFromParent = true;
+            modelLocator.noCorpse = false;
+            modelLocator.dontReleaseModelOnDeath = false;
+            modelLocator.preserveModel = false;
+            modelLocator.normalizeToFloor = false;
+
+            var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
+            spawner.eliteBias = 1f;
+            spawner.spawnCards = new RoR2.SpawnCard[]
+            {
+                Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Lemurian/cscLemurian.asset").WaitForCompletion() // TODO: replace with lynx tribe cards
+            };
+            spawner.minSpawnCount = 3;
+            spawner.maxSpawnCount = 5;
+            spawner.assignRewards = false;
+            spawner.spawnDistance = 5f;
+            spawner.retrySpawnCount = 3;
+            spawner.teamIndex = TeamIndex.Monster;
+
+            var shrine = shrinePrefab.AddComponent<LynxTribeShrine>();
+            shrine.dropTable = CreateLynxShrineDropTable();
+            shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
+            shrine.spawner = spawner;
+
+            var cubeObject = shrinePrefab.transform.Find("Base/Cube").gameObject;
+            cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;
+
+
+            var baseObject = shrinePrefab.transform.Find("Base").gameObject;
+            baseObject.AddComponent<EntityLocator>().entity = shrinePrefab;
+
+            var pickupDisplayObject = shrinePrefab.transform.Find("Base/PickupDisplay").gameObject;
+
+            var highlightPickup = pickupDisplayObject.AddComponent<Highlight>();
+            highlightPickup.strength = 1f;
+            highlightPickup.highlightColor = Highlight.HighlightColor.pickup;
+
+            var pickupDisplay = pickupDisplayObject.AddComponent<PickupDisplay>();
+            pickupDisplay.verticalWave = new Wave()
+            {
+                amplitude = 0.2f,
+                frequency = 0.25f,
+                cycleOffset = 0f
+            };
+            pickupDisplay.dontInstantiatePickupModel = false;
+            pickupDisplay.spinSpeed = 75f;
+            pickupDisplay.highlight = highlightPickup;
+
+            shrine.pickupDisplay = pickupDisplay;
+
+            shrinePrefab.RegisterNetworkPrefab();
+
+            return shrinePrefab;
+        }
+
+        // TODO: config values
+        private BasicPickupDropTable CreateLynxShrineDropTable()
+        {
+            var dropTable = ScriptableObject.CreateInstance<BasicPickupDropTable>();
+            (dropTable as ScriptableObject).name = "dtLynxShrine";
+            dropTable.tier1Weight = 0.55f;
+            dropTable.tier2Weight = 0.3f;
+            dropTable.tier3Weight = 0.05f;
+            dropTable.bossWeight = 0.1f;
+
+            return dropTable;
+        }
+
     }
 }

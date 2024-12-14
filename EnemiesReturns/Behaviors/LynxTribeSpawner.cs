@@ -36,8 +36,6 @@ namespace EnemiesReturns.Behaviors
 
         public int retrySpawnCount = 3;
 
-        public NetworkSoundEventDef initialTriggerSound;
-
         public TeamIndex teamIndex = TeamIndex.Monster;
 
         private int spawnCount;
