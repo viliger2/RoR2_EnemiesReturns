@@ -316,6 +316,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             };
         }
 
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "" // TODO
+            };
+        }
+
         // TODO: separate mask and body surface defs
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
     }

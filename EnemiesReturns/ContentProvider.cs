@@ -902,6 +902,7 @@ namespace EnemiesReturns
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             var lynxStuff = new LynxTribeStuff();
+
             var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
 
             // TODO: do better
@@ -974,6 +975,9 @@ namespace EnemiesReturns
             var shamanStuff = new ShamanStuff();
             ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
             ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
+
+            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect));
 
             ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect));

@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
 using RoR2;
 using System;
@@ -12,6 +13,25 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     public class LynxTribeStuff
     {
+        public GameObject CreateSpawnEffect(GameObject prefab)
+        {
+            var spawnEffect = prefab.InstantiateClone("LynxTribeSpawnEffect", false);
+
+            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
+
+            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
+
+            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
+            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            spawnEffect.AddComponent<DestroyOnParticleEnd>();
+
+            return spawnEffect;
+        }
+
         // TODO: config this shit
         public GameObject CreateTrapPrefab(GameObject trapPrefab)
         {

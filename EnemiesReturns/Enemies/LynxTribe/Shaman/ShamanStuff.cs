@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModCompats.PrefabAPICompat;
+﻿using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
+using EnemiesReturns.ModCompats.PrefabAPICompat;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
@@ -73,6 +74,25 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             buff.buffColor = new Color(90/255, 211/255, 74/255);
 
             return buff;
+        }
+
+        public GameObject CreateSpawnEffect(GameObject prefab)
+        {
+            var spawnEffect = MyPrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
+
+            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
+
+            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
+
+            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
+            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            spawnEffect.AddComponent<DestroyOnParticleEnd>();
+
+            return spawnEffect;
         }
 
         public GameObject CreateSummonStormParticles(GameObject prefab)

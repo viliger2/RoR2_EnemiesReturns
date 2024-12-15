@@ -191,7 +191,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Storm.DeathState)));
         }
 
-        public Material CreateTreebotTreeLeaf2Material()
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                aliveLoopStart = "", // TODO
+                aliveLoopStop = "",
+            };
+        }
+
+        public static Material CreateTreebotTreeLeaf2Material()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion());
             material.name = "matTreebotTreeLeaf2";
