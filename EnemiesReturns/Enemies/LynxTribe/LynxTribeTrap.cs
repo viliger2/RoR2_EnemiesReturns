@@ -23,6 +23,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public Transform hitBox;
 
+        public Transform leaves;
+
+        public Transform branches;
+
         public TeamMask teamFilter;
 
         public string initialTriggerSound;
@@ -37,7 +41,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             if (!NetworkServer.active)
             {
-                this.enabled = false;
+                return;
             }
 
             if (!hitBox)
@@ -45,6 +49,27 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 Log.Warning($"LynxTribeTrap on {gameObject} doesn't have hitBox! Destroying itself.");
                 NetworkServer.Destroy(this.gameObject);
                 return;
+            }
+        }
+
+        private void Start()
+        {
+            if (leaves)
+            {
+                foreach(Transform child in leaves)
+                {
+                    child.rotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
+                }
+            }
+
+            if (branches)
+            {
+                branches.rotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
+            }
+
+            if (!NetworkServer.active)
+            {
+                this.enabled = false;
             }
         }
 

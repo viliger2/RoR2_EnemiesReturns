@@ -63,6 +63,25 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var teamMask = new TeamMask();
             teamMask.AddTeam(TeamIndex.Player);
             trap.teamFilter = teamMask;
+            trap.initialTriggerSound = ""; // TODO
+
+            var leaves = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/lemuriantemple/Assets/LTFallenLeaf.spm").WaitForCompletion();
+            var leavesTransform = trapPrefab.transform.Find("Leaves").transform;
+            foreach (Transform child in leavesTransform)
+            {
+                var leavesClone = UnityEngine.Object.Instantiate(leaves);
+                leavesClone.transform.parent = child;
+                leavesClone.transform.localPosition = Vector3.zero;
+            }
+            trap.leaves = leavesTransform;
+
+            var branchMaterial = Addressables.LoadAssetAsync<Material>("RoR2/Base/foggyswamp/matFSRootBundle.mat").WaitForCompletion();
+            var branchTransform = trapPrefab.transform.Find("Branches");
+            foreach (var renderer in branchTransform.GetComponentsInChildren<MeshRenderer>())
+            {
+                renderer.material = branchMaterial;
+            }
+            trap.branches = branchTransform;
 
             trapPrefab.RegisterNetworkPrefab();
 
