@@ -28,6 +28,20 @@ namespace EnemiesReturns.Enemies.Ifrit
             return EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
         }
 
+        public GameObject CreateDeathEffect()
+        {
+            var effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion().InstantiateClone("IfritDeathEffect", false);
+            effect.GetComponent<EffectComponent>().applyScale = true;
+
+            foreach(var system in effect.GetComponentsInChildren<ParticleSystem>())
+            {
+                var main = system.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            return effect;
+        }
+
         public GameObject CreateHellzoneProjectile()
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);

@@ -12,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         public static float fallEffectTime = 1.75f;
 
-        public static GameObject deathEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion();
+        public static GameObject deathEffect;
 
         private Renderer maneRenderer;
         private Renderer bodyRenderer;
@@ -23,6 +23,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
         private MaterialPropertyBlock bodyPropertyBlock;
 
         private bool effectSpawned;
+
+        private Transform effectSpawnTransform;
 
         private Transform modelTransform;
 
@@ -50,6 +52,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             {
                 manePropertyBlock = SetupPropertyBlock(maneRenderer, out initialEmission);
             }
+
+            effectSpawnTransform = childLocator.FindChild("Chest");
 
             var bodyTransform = childLocator.FindChild("MainBody");
             bodyRenderer = bodyTransform.GetComponent<Renderer>();
@@ -81,9 +85,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             {
                 return;
             }
-            if (fixedAge >= fallEffectTime && !effectSpawned)
+            if (fixedAge >= fallEffectTime && !effectSpawned && effectSpawnTransform && deathEffect)
             {
-                EffectManager.SpawnEffect(deathEffect, new EffectData { origin = modelTransform.position }, false);
+                EffectManager.SpawnEffect(deathEffect, new EffectData { origin = modelTransform.position, scale = 3.0f }, false);
                 effectSpawned = true;
             }
         }

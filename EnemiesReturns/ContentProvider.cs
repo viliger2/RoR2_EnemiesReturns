@@ -216,6 +216,9 @@ namespace EnemiesReturns
             {
                 var ifritStuff = new IfritStuff();
 
+                ModdedEntityStates.Ifrit.DeathState.deathEffect = ifritStuff.CreateDeathEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.DeathState.deathEffect));
+
                 ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritStuff.CreateBreathParticle();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
 
