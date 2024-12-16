@@ -652,6 +652,17 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Spider_Light_Flicker_Play" ID="{0891CDBE-75A7-4509-A933-E68E5DF39580}">
+											<ChildrenList>
+												<Action Name="" ID="{CAC27F39-F71B-428E-8DD4-80E498BF9139}" ShortID="207429861">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Spider_Light_Flicker" ID="{37DA9079-E779-400E-AAB4-01502BC88CF7}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

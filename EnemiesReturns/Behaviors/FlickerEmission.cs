@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RoR2;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -11,11 +12,19 @@ namespace EnemiesReturns.Behaviors
 
         public Wave[] sinWaves;
 
+        public string soundName;
+
+        public float soundRepeatThreshold = 0.25f; // controls how frequently the sound can play
+
+        public float soundEmissionValue = 6.5f;
+
         private float initialEmissionPower;
 
         private float workingEmissionPower;
 
         private float stopwatch;
+
+        private float soundTimer;
 
         private MaterialPropertyBlock propertyBlock;
 
@@ -45,13 +54,22 @@ namespace EnemiesReturns.Behaviors
         private void Update()
         {
             stopwatch += Time.deltaTime;
-            float num = workingEmissionPower;
-            for (int i = 0; i < sinWaves.Length; i++)
+            soundTimer += Time.deltaTime;
+            if (renderer)
             {
-                num *= 1f + sinWaves[i].Evaluate(stopwatch);
+                float num = workingEmissionPower;
+                for (int i = 0; i < sinWaves.Length; i++)
+                {
+                    num *= 1f + sinWaves[i].Evaluate(stopwatch);
+                }
+                propertyBlock.SetFloat("_EmPower", num);
+                renderer.SetPropertyBlock(propertyBlock);
+                if (num > soundEmissionValue && soundRepeatThreshold < soundTimer)
+                {
+                    Util.PlaySound(soundName, this.gameObject);
+                    soundTimer = 0f;
+                }
             }
-            propertyBlock.SetFloat("_EmPower", num);
-            renderer.SetPropertyBlock(propertyBlock);
         }
     }
 }

@@ -168,6 +168,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             // TODO: add sounds of Fluorescent Lights Flickering to imitate lights going in and out
             var flickerEmission = interactablePrefab.AddComponent<FlickerEmission>();
             flickerEmission.renderer = meshRenderer;
+            flickerEmission.soundRepeatThreshold = 0.2f; // play sound every 0.25 seconds at max
+            flickerEmission.soundEmissionValue = 6.5f;
+            flickerEmission.soundName = "ER_Spider_Light_Flicker_Play"; // TODO
             flickerEmission.sinWaves = new Wave[]
             {
                 new Wave()

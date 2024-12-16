@@ -2046,6 +2046,172 @@
 														<ActiveSource Name="wCommandoSlide" ID="{407CC93E-BBE3-41AD-BA34-43EA31FEF896}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<RandomSequenceContainer Name="Spider_Light_Flicker" ID="{37DA9079-E779-400E-AAB4-01502BC88CF7}" ShortID="183790470">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="MaxSoundPerInstance" Type="int16">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="UseMaxSoundPerInstance" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="one" ID="{6C8173EB-729D-4BAC-9723-50C37B563BA7}" ShortID="951020062">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_4" ID="{232C2A13-8480-4D54-B584-04670EFC5FBC}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_4.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="503777156"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_4" ID="{232C2A13-8480-4D54-B584-04670EFC5FBC}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="two" ID="{C664655D-24AC-45C5-9DA5-6A1038D3B9DB}" ShortID="35153902">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_1" ID="{CDC78EA0-066A-4822-94FE-08F51AA235F0}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="970849178"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_1" ID="{CDC78EA0-066A-4822-94FE-08F51AA235F0}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="three" ID="{1F396AB4-5967-408E-A54B-203B88BEAA26}" ShortID="147180247">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_2" ID="{35714B37-2975-4552-ABD8-AD171E4C078F}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="322597722"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_2" ID="{35714B37-2975-4552-ABD8-AD171E4C078F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="four" ID="{7877B597-D4C0-4696-B590-A9A674F02296}" ShortID="660854429">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_5" ID="{3530CCC8-0403-4C33-879B-08751D856574}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_5.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="24122210"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_5" ID="{3530CCC8-0403-4C33-879B-08751D856574}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="five" ID="{C5C5AF3F-5A0C-4E7D-91D7-1B7A04E68D78}" ShortID="769080659">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_6" ID="{3DE6AFB1-BFB0-440F-B0F7-4008DC8404D4}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_6.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="994954310"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_6" ID="{3DE6AFB1-BFB0-440F-B0F7-4008DC8404D4}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="six" ID="{1C5149A4-B1D9-46BE-AFB3-994A6DA36BC8}" ShortID="1044158022">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="light_3" ID="{D3B86AD1-2B98-476E-9848-045998E71CAF}">
+																	<Language>SFX</Language>
+																	<AudioFile>MechanicalSpider\Light\light_3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="865931013"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="light_3" ID="{D3B86AD1-2B98-476E-9848-045998E71CAF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</ActorMixer>
 										<Sound Name="Spider_Spawn" ID="{B2757885-0BFC-4E88-A8C7-FC156579A0D7}" ShortID="898731203">
