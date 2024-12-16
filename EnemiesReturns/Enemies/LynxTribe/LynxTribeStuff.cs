@@ -72,6 +72,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 var leavesClone = UnityEngine.Object.Instantiate(leaves);
                 leavesClone.transform.parent = child;
                 leavesClone.transform.localPosition = Vector3.zero;
+                leavesClone.transform.localRotation = Quaternion.identity;
             }
             trap.leaves = leavesTransform;
 
