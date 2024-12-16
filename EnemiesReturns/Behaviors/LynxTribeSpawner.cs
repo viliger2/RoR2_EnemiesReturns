@@ -49,11 +49,16 @@ namespace EnemiesReturns.Behaviors
                 return;
             }
 
+            CreateSpawnInfo();
+        }
+
+        public void CreateSpawnInfo()
+        {
             spawnCount = RoR2Application.rng.RangeInt(minSpawnCount, maxSpawnCount + 1);
             spawnInfos = new SpawnInfo[spawnCount];
 
             // first pass - we select cards to spawn from array and set their scaled "cost" so we have a pool for elites
-            for(int i = 0; i < spawnCount; i++)
+            for (int i = 0; i < spawnCount; i++)
             {
                 spawnInfos[i].card = spawnCards[RoR2Application.rng.RangeInt(0, spawnCards.Length)];
                 spawnInfos[i].directorCreditsScaled = spawnInfos[i].card.directorCreditCost * Stage.instance.entryDifficultyCoefficient;
@@ -65,10 +70,10 @@ namespace EnemiesReturns.Behaviors
             // if we don't then we send the remaining credits to the next monster
             // TODO: maybe do one last pass on first monster with remaining credits from all monsters in case first monster is not elite?
             float remainingCredits = 0f;
-            for(int i = 0; i < spawnCount; i++)
+            for (int i = 0; i < spawnCount; i++)
             {
                 float currentRemainingCredits = 0f;
-                for(int j = 0; j < RoR2.CombatDirector.eliteTiers.Length; j++)
+                for (int j = 0; j < RoR2.CombatDirector.eliteTiers.Length; j++)
                 {
                     var eliteTierDef = RoR2.CombatDirector.eliteTiers[j];
                     if (!eliteTierDef.CanSelect(spawnInfos[i].card.eliteRules))
@@ -77,7 +82,7 @@ namespace EnemiesReturns.Behaviors
                     }
 
                     float costWithElites = spawnInfos[i].card.directorCreditCost * eliteTierDef.costMultiplier * eliteBias;
-                    if(costWithElites < (spawnInfos[i].directorCreditsScaled + remainingCredits))
+                    if (costWithElites < (spawnInfos[i].directorCreditsScaled + remainingCredits))
                     {
                         spawnInfos[i].elite = eliteTierDef.GetRandomAvailableEliteDef(RoR2Application.rng);
                         spawnInfos[i].eliteCostMultiplier = eliteTierDef.costMultiplier;

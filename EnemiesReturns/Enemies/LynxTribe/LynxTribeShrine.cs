@@ -43,6 +43,30 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 {
                     pickupDisplay.SetPickupIndex(pickupIndex);
                 }
+                switch (pickupIndex.pickupDef.itemTier) // TODO: config
+                {
+                    case ItemTier.Tier1:
+                        spawner.minSpawnCount = 2;
+                        spawner.maxSpawnCount = 3;
+                        spawner.eliteBias = 1f;
+                        break;
+                    case ItemTier.Tier2:
+                        spawner.minSpawnCount = 3;
+                        spawner.maxSpawnCount = 4;
+                        spawner.eliteBias = 0.75f;
+                        break;
+                    case ItemTier.Tier3:
+                        spawner.minSpawnCount = 5;
+                        spawner.maxSpawnCount = 6;
+                        spawner.eliteBias = 0.4f;
+                        break;
+                    case ItemTier.Boss:
+                        spawner.minSpawnCount = 4;
+                        spawner.maxSpawnCount = 5;
+                        spawner.eliteBias = 0.5f;
+                        break;
+                }
+                spawner.CreateSpawnInfo();
             }
         }
 
