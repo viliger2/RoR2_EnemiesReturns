@@ -15,11 +15,22 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             return new IAISkillDriver.AISkillDriverParams[]
             {
+                new IAISkillDriver.AISkillDriverParams("PushBack")
+                {
+                    skillSlot = RoR2.SkillSlot.Secondary,
+                    requireSkillReady = true,
+                    minDistance = 0f,
+                    maxDistance = 10f,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                    activationRequiresAimConfirmation = true,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
+                },
                 new IAISkillDriver.AISkillDriverParams("SummonProjectiles")
                 {
                     skillSlot = RoR2.SkillSlot.Primary,
                     requireSkillReady = true,
-                    minDistance = 20f,
+                    minDistance = 10f,
                     maxDistance = 45f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresAimConfirmation = true,
@@ -30,31 +41,31 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                     selectionRequiresTargetLoS = true,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },
-                new IAISkillDriver.AISkillDriverParams("TeleportFriend")
-                {
-                    skillSlot = RoR2.SkillSlot.Secondary,
-                    requireSkillReady = true,
-                    minDistance = 0f,
-                    maxDistance = 45f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
-                    selectionRequiresAimTarget = true,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
-                },
-                new IAISkillDriver.AISkillDriverParams("SummonLightning")
-                {
-                    skillSlot = RoR2.SkillSlot.Utility,
-                    requireSkillReady = true,
-                    minDistance = 0f,
-                    maxDistance = 45f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    activationRequiresAimConfirmation = true,
-                    activationRequiresAimTargetLoS = true,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
-                    selectionRequiresAimTarget = true,
-                    selectionRequiresTargetLoS = true,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
-                },
+                //new IAISkillDriver.AISkillDriverParams("TeleportFriend")
+                //{
+                //    skillSlot = RoR2.SkillSlot.Secondary,
+                //    requireSkillReady = true,
+                //    minDistance = 0f,
+                //    maxDistance = 45f,
+                //    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                //    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
+                //    selectionRequiresAimTarget = true,
+                //    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
+                //},
+                //new IAISkillDriver.AISkillDriverParams("SummonLightning")
+                //{
+                //    skillSlot = RoR2.SkillSlot.Utility,
+                //    requireSkillReady = true,
+                //    minDistance = 0f,
+                //    maxDistance = 45f,
+                //    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                //    activationRequiresAimConfirmation = true,
+                //    activationRequiresAimTargetLoS = true,
+                //    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
+                //    selectionRequiresAimTarget = true,
+                //    selectionRequiresTargetLoS = true,
+                //    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
+                //},
                 //new IAISkillDriver.AISkillDriverParams("SummonStorm")
                 //{
                 //    skillSlot = RoR2.SkillSlot.Special,
@@ -70,21 +81,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 //    selectionRequiresAimTarget = true,
                 //    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 //},
-                new IAISkillDriver.AISkillDriverParams("WalkAway")
-                {
-                    skillSlot = RoR2.SkillSlot.None,
-                    minDistance = 0f,
-                    maxDistance = 15f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    driverUpdateTimerOverride = 3f
-                },
                 new IAISkillDriver.AISkillDriverParams("StrafeAtDistance")
                 {
                     skillSlot = RoR2.SkillSlot.None,
                     requireSkillReady = false, 
-                    minDistance = 15f,
+                    minDistance = 0f,
                     maxDistance = 35f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresTargetLoS = true,

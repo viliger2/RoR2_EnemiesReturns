@@ -1002,12 +1002,14 @@ namespace EnemiesReturns
             ShamanBody.Skills.SummonProjectiles = shamanBody.CreateSummonProjectilesSkill();
             ShamanBody.Skills.TeleportFriend = shamanBody.CreateTeleportFriendSkill();
             ShamanBody.Skills.SummonLightning = shamanBody.CreateSummonLightningSkill();
+            ShamanBody.Skills.PushBack = shamanBody.CreatePushBackSkill();
 
             sdList.Add(ShamanBody.Skills.Teleport);
             sdList.Add(ShamanBody.Skills.SummonStorm);
             sdList.Add(ShamanBody.Skills.SummonProjectiles);
             sdList.Add(ShamanBody.Skills.TeleportFriend);
             sdList.Add(ShamanBody.Skills.SummonLightning);
+            sdList.Add(ShamanBody.Skills.PushBack);
 
             ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
 
@@ -1015,7 +1017,8 @@ namespace EnemiesReturns
             ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
             ShamanBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxShamanSpecialSkillFamily", ShamanBody.Skills.SummonStorm);
             ShamanBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxShamanPrimarySkillFamily", ShamanBody.Skills.SummonProjectiles);
-            ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.TeleportFriend);
+            //ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.TeleportFriend);
+            ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.PushBack);
 
             sfList.Add(ShamanBody.SkillFamilies.Utility);
             sfList.Add(ShamanBody.SkillFamilies.Special);
@@ -1035,6 +1038,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonLightning));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
         }

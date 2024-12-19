@@ -32,6 +32,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             public static SkillDef SummonStorm;
             public static SkillDef Teleport;
             public static SkillDef SummonLightning;
+            public static SkillDef PushBack;
         }
 
         public struct SkinDefs
@@ -113,25 +114,26 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
+        public SkillDef CreatePushBackSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodyPushBack", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 4f, // TODO: config
+            });
+        }
+
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
             {
-                hullSize = HullClassification.Golem,
+                hullSize = HullClassification.Human,
                 occupyPosition = false,
                 forbiddenAsBoss = EnemiesReturns.Configuration.LynxTribe.LynxShaman.ForbiddenAsBoss.Value
             });
-        }
-
-        // TODO: probably remove
-        protected override IExecuteSkillOnDamage.ExecuteSkillOnDamageParams ExecuteSkillOnDamage()
-        {
-            return new IExecuteSkillOnDamage.ExecuteSkillOnDamageParams()
-            {
-                mainStateMachineName = "Body",
-                skillToExecute = SkillSlot.Utility,
-                checkForMainState = false
-            };
         }
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
