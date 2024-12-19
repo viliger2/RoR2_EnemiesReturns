@@ -39,7 +39,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<float> DroneSpawnChance;
         public static ConfigEntry<int> DroneCost;
-        public static ConfigEntry<float> DroneEliteConstMultiplier;
+        public static ConfigEntry<float> DroneEliteCostMultiplier;
         public static ConfigEntry<float> DroneBaseRegen;
         public static ConfigEntry<float> DroneLevelRegen;
         public static ConfigEntry<int> DroneBonusHP;
@@ -106,7 +106,7 @@ namespace EnemiesReturns.Configuration
 
             DroneSpawnChance = config.Bind("Mechanical Spider Drone", "Chance to Spawn Drone", 2f, "Chance to spawn purchasable Mechanical Spider on death.");
             DroneCost = config.Bind("Mechanical Spider Drone", "Drone Cost", 60, "Cost to repair broken Mechanical Spider.");
-            DroneEliteConstMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
+            DroneEliteCostMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
             DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 5f, "Base health regeneration of allied Mechanical Spider.");
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
             DroneBonusHP = config.Bind("Mechanical Spider Drone", "Bonus HP Boost", 20, "Bonus health boost from base stats (the same as normal spider), boosts by 10% for each value.");
