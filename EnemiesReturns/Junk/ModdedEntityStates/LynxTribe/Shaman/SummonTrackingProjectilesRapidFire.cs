@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
     public class SummonTrackingProjectilesRapidFire : BaseState
     {

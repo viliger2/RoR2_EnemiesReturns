@@ -5,7 +5,7 @@ using RoR2;
 using RoR2.Navigation;
 using UnityEngine;
 
-namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
 {
     // TODO: add animation from teleport to idle
     public class Teleport : BaseState

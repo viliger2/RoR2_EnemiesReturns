@@ -8,7 +8,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
     public class SummonLightning : BaseState
     {

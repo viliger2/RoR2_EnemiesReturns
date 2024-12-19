@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
 {
     public class TeleportStart : BaseState
     {

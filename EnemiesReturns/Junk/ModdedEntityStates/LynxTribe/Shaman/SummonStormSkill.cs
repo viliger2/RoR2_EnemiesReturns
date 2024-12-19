@@ -10,7 +10,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
     public class SummonStormSkill : BaseState
     {
