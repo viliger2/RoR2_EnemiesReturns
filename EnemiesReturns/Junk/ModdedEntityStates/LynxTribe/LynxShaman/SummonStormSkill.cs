@@ -10,17 +10,17 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
 {
     public class SummonStormSkill : BaseState
     {
-        public static float baseDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value;
-        public static float minDistance => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormMinRange.Value;
-        public static float maxDistance => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormMaxRange.Value;
-        public static float rechargeOnFailure => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormRechargeOnFailure.Value;
+        public static float baseDuration => Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value;
+        public static float minDistance => Configuration.LynxTribe.LynxShaman.SummonStormMinRange.Value;
+        public static float maxDistance => Configuration.LynxTribe.LynxShaman.SummonStormMaxRange.Value;
+        public static float rechargeOnFailure => Configuration.LynxTribe.LynxShaman.SummonStormRechargeOnFailure.Value;
         public static CharacterSpawnCard cscStorm;
-        public static int stormCount => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCount.Value;
-        public static float baseSkillRechargeTime => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value;
+        public static int stormCount => Configuration.LynxTribe.LynxShaman.SummonStormCount.Value;
+        public static float baseSkillRechargeTime => Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value;
         public static float effectSpawn => 0.2f;
         public static GameObject summonEffectPrefab;
         public static float playableMaxDistance = 1000f;
@@ -50,11 +50,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             {
                 if (characterBody.isPlayerControlled)
                 {
-                    if(Physics.Raycast(GetAimRay(), out var hitInfo, playableMaxDistance, LayerIndex.world.mask))
+                    if (Physics.Raycast(GetAimRay(), out var hitInfo, playableMaxDistance, LayerIndex.world.mask))
                     {
                         SummonStormPlayer(hitInfo.point);
                     }
-                } else
+                }
+                else
                 {
                     if (NetworkServer.active)
                     {
@@ -94,27 +95,27 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 spawnOnTarget = transform
             }, RoR2Application.rng);
 
-            directorSpawnRequest.summonerBodyObject = base.gameObject;
+            directorSpawnRequest.summonerBodyObject = gameObject;
             directorSpawnRequest.ignoreTeamMemberLimit = true;
-            directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
+            directorSpawnRequest.onSpawnedServer = (spawnResult) =>
             {
                 if (!spawnResult.success)
                 {
                     SummonStormAI(transform); // surely this won't break anything
                     return;
                 }
-                if (spawnResult.spawnedInstance && base.characterBody)
+                if (spawnResult.spawnedInstance && characterBody)
                 {
                     var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
                     if (aiownership)
                     {
-                        aiownership.ownerMaster = this.characterBody.master;
+                        aiownership.ownerMaster = characterBody.master;
                     }
                     var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {
-                        inventory.CopyEquipmentFrom(base.characterBody.inventory);
-                        inventory.CopyItemsFrom(base.characterBody.inventory);
+                        inventory.CopyEquipmentFrom(characterBody.inventory);
+                        inventory.CopyItemsFrom(characterBody.inventory);
                     }
                 }
             };
@@ -124,7 +125,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -134,12 +135,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             base.Update();
             effectTimer += Time.deltaTime;
-            if(effectTimer > effectSpawn && summonEffectPrefab)
+            if (effectTimer > effectSpawn && summonEffectPrefab)
             {
-                for(int i = 0; i < storms.Length; i++)
+                for (int i = 0; i < storms.Length; i++)
                 {
                     var stormChildLocator = GetChildLocator(storms[i]);
-                    if (stormChildLocator) 
+                    if (stormChildLocator)
                     {
                         var neweffect = UnityEngine.Object.Instantiate(summonEffectPrefab, effectSpawnPoint.position, effectSpawnPoint.rotation);
                         neweffect.GetComponent<MoveTowardsTargetAndDestroyItself>().target = stormChildLocator.FindChild("EffectPoint" + UnityEngine.Random.Range(1, 9));
@@ -152,7 +153,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void ModifyNextState(EntityState nextState)
         {
             base.ModifyNextState(nextState);
-            if(!(nextState is EntityStates.GenericCharacterMain))
+            if (!(nextState is GenericCharacterMain))
             {
                 if (NetworkServer.active)
                 {
@@ -170,10 +171,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         private ChildLocator GetChildLocator(GameObject masterGameObject)
         {
-            if(masterGameObject && masterGameObject.TryGetComponent<CharacterMaster>(out var master))
+            if (masterGameObject && masterGameObject.TryGetComponent<CharacterMaster>(out var master))
             {
                 var body = master.GetBody();
-                if(body && body.modelLocator && body.modelLocator.modelTransform)
+                if (body && body.modelLocator && body.modelLocator.modelTransform)
                 {
                     return body.modelLocator.modelTransform.GetComponent<ChildLocator>();
                 }

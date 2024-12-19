@@ -15,11 +15,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public static float baseAttackDelay = 1f;
 
-        public static float radius = 6f;
+        public static float radius => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackRadius.Value;
 
-        public static float damage = 1f;
+        public static float damage => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackDamage.Value;
 
-        public static float force = 1200f;
+        public static float force => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackForce.Value;
+
+        public static float procCoef => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackProcCoefficient.Value;
 
         private float duration;
 
@@ -29,12 +31,19 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         private bool isAttackFired;
 
+        private Transform attackOrigin;
+
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             attackDelay = baseAttackDelay / attackSpeedStat;
             PrepareAttack();
+            attackOrigin = FindModelChild("StaffLowerPoint");
+            if (!attackOrigin)
+            {
+                attackOrigin = base.transform;
+            }
             PlayCrossfade("Gesture, Override", "CastTeleportFull", "CastTeleport.playbackRate", duration, 0.1f);
         }
 
@@ -43,12 +52,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             base.FixedUpdate();
             if(fixedAge > attackDelay && !isAttackFired && NetworkServer.active)
             {
-                blastAttack.position = base.transform.position;
+                blastAttack.position = attackOrigin.position;
                 var result = blastAttack.Fire();
-                for (int i = 0; i < result.hitPoints.Length; i++)
+                if (force > 0f)
                 {
-                    Vector3 direction = (result.hitPoints[i].hitPosition - transform.position) * force;
-                    result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
+                    for (int i = 0; i < result.hitPoints.Length; i++)
+                    {
+                        Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position) * force;
+                        result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
+                    }
                 }
 
                 isAttackFired = true;
@@ -70,14 +82,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             blastAttack = new BlastAttack();
             blastAttack.radius = radius;
-            blastAttack.procCoefficient = 0f;
+            blastAttack.procCoefficient = procCoef;
             blastAttack.attacker = characterBody.gameObject;
             blastAttack.crit = RollCrit();
             blastAttack.baseDamage = damage * damageStat;
-            blastAttack.canRejectForce = false;
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            //blastAttack.baseForce = force;
-            //blastAttack.bonusForce = force;
             blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
             blastAttack.Fire();

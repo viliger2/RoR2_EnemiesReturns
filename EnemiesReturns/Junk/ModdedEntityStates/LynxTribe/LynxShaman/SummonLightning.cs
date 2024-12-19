@@ -8,7 +8,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
 {
     public class SummonLightning : BaseState
     {
@@ -64,16 +64,16 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             base.FixedUpdate();
             timer += GetDeltaTime();
-            if(timer > spawnDelay && spawnedZonesCount < strikesCount)
+            if (timer > spawnDelay && spawnedZonesCount < strikesCount)
             {
                 spawnZones[spawnedZonesCount] = SpawnZone();
                 spawnedZonesCount++;
                 timer -= spawnDelay;
             }
 
-            if(fixedAge > particleSpawnTime && isAuthority && !projectilesSpawned)
+            if (fixedAge > particleSpawnTime && isAuthority && !projectilesSpawned)
             {
-                for(int i = spawnZones.Length - 1; i >= 0; i--)
+                for (int i = spawnZones.Length - 1; i >= 0; i--)
                 {
                     var fireProjectileInfo = default(FireProjectileInfo);
                     fireProjectileInfo.projectilePrefab = projectilePrefab;
@@ -90,7 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 projectilesSpawned = true;
             }
 
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -119,9 +119,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             BullseyeSearch bullseyeSearch = new BullseyeSearch();
             bullseyeSearch.teamMaskFilter = TeamMask.allButNeutral;
-            if ((bool)base.teamComponent)
+            if ((bool)teamComponent)
             {
-                bullseyeSearch.teamMaskFilter.RemoveTeam(base.teamComponent.teamIndex);
+                bullseyeSearch.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
             }
             bullseyeSearch.maxDistanceFilter = maxDistance;
             bullseyeSearch.maxAngleFilter = 90f;

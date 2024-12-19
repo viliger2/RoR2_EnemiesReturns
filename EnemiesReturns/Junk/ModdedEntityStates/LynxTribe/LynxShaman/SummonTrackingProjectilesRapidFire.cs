@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
 {
     public class SummonTrackingProjectilesRapidFire : BaseState
     {
@@ -13,11 +13,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public static float baseDuration = 3.3f;
 
-        public static int projectileCount => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesCount.Value;
+        public static int projectileCount => Configuration.LynxTribe.LynxShaman.SummonProjectilesCount.Value;
 
         public static float baseBetweenDelay = 0.5f;
 
-        public static float damageCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDamage.Value;
+        public static float damageCoefficient => Configuration.LynxTribe.LynxShaman.SummonProjectilesDamage.Value;
 
         public static float baseInitialDelay = 1f;
 
@@ -58,13 +58,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             {
                 return;
             }
-            if(delayTimer > initialDelay && isAuthority && projectilesShot < projectileCount)
+            if (delayTimer > initialDelay && isAuthority && projectilesShot < projectileCount)
             {
                 ProjectileManager.instance.FireProjectile(trackingProjectilePrefab, spawnPoint.position, Quaternion.Euler(spawnDirection), gameObject, damageStat * damageCoefficient, 0f, RollCrit(), RoR2.DamageColorIndex.Poison);
                 delayTimer -= betweenDelay;
                 projectilesShot++;
             }
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

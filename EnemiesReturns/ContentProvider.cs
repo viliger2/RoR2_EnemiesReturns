@@ -9,6 +9,8 @@ using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
+using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman;
+using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport;
 using R2API;
 using Rewired.Utils.Classes.Utility;
 using RoR2;
@@ -630,7 +632,6 @@ namespace EnemiesReturns
 
                 var knurlProjectile = assets.First(item => item.name == "ColossalKnurlFistProjectile");
                 ColossalKnurlFactory.projectilePrefab = knurlFactory.CreateFistProjectile(knurlProjectile, knurlProjectileGhost);
-                ModdedEntityStates.LynxTribe.Shaman.SummonLightning.projectilePrefab = ColossalKnurlFactory.projectilePrefab; // TODO: REMOVE
 
                 projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
 
@@ -935,7 +936,7 @@ namespace EnemiesReturns
             holderTrap.Card = dcLynxTrap;
             holderTrap.InteractableCategory = DirectorAPI.InteractableCategory.Barrels;
 
-            DirectorAPI.Helpers.AddNewInteractable(holderTrap);
+            DirectorAPI.Helpers.AddNewInteractable(holderTrap); // TODO: stage list
 
             var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
 
@@ -965,7 +966,7 @@ namespace EnemiesReturns
             holderShrine.Card = dcLynxShrine;
             holderShrine.InteractableCategory = DirectorAPI.InteractableCategory.Shrines;
 
-            DirectorAPI.Helpers.AddNewInteractable(holderShrine);
+            DirectorAPI.Helpers.AddNewInteractable(holderShrine); // TODO: stage list
 
             nopList.Add(lynxTrap);
             nopList.Add(lynxShrine);
@@ -976,20 +977,20 @@ namespace EnemiesReturns
             ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
 
             var shamanStuff = new ShamanStuff();
-            ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
-            ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
+            SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
+            Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
 
             ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect));
 
-            ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect));
+            TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
+            effectsList.Add(new EffectDef(TeleportFriend.teleportEffect));
 
             ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(Addressables.LoadAssetAsync<Sprite>("RoR2/Base/ElitePoison/texBuffHealingDisabledIcon.tif").WaitForCompletion()); // TODO: sprite
             bdList.Add(ShamanStuff.ReduceHealing);
 
             var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(assets.First(prefab => prefab.name == "ShamanTrackingProjectile"), shamanStuff.CreateShamanTrackingProjectileGhost());
-            ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
+            SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
             ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.trackingProjectilePrefab = skullProjectile;
             projectilesList.Add(skullProjectile);
 
@@ -1011,7 +1012,7 @@ namespace EnemiesReturns
             sdList.Add(ShamanBody.Skills.SummonLightning);
             sdList.Add(ShamanBody.Skills.PushBack);
 
-            ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
+            SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
 
             //ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
             ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
@@ -1033,14 +1034,14 @@ namespace EnemiesReturns
             ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
+            stateList.Add(typeof(SummonStormSkill));
+            stateList.Add(typeof(SummonTrackingProjectilesRapidFire));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonLightning));
+            stateList.Add(typeof(TeleportFriend));
+            stateList.Add(typeof(SummonLightning));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
+            stateList.Add(typeof(Teleport));
+            stateList.Add(typeof(TeleportStart));
         }
 
         private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)

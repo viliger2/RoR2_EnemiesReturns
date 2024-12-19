@@ -33,10 +33,11 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonProjectilesSpeed;
         public static ConfigEntry<float> SummonProjectilesTurnSpeed;
 
-        public static ConfigEntry<float> TeleportCooldown;
-        public static ConfigEntry<float> TeleportCastTime;
-        public static ConfigEntry<float> TeleportMinRange;
-        public static ConfigEntry<float> TeleportMaxRange;
+        public static ConfigEntry<float> PushBackCooldown;
+        public static ConfigEntry<float> PushBackDamage;
+        public static ConfigEntry<float> PushBackProcCoefficient;
+        public static ConfigEntry<float> PushBackForce;
+        public static ConfigEntry<float> PushBackRadius;
 
         public static ConfigEntry<float> SummonStormCooldown;
         public static ConfigEntry<float> SummonStormCastTime;
@@ -59,12 +60,11 @@ namespace EnemiesReturns.Configuration.LynxTribe
             Enabled = config.Bind("Lynx Shaman Director", "Enable Lynx Shaman", true, "Enables Lynx Shaman.");
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");
             MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
-            DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 30, "Director cost of Lynx Shaman.");
-            ForbiddenAsBoss = config.Bind("Lynx Shaman Director", "Forbidden as Boss", false, "Disable Horde on Many spawn for Lynx Shaman.");
+            DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 40, "Director cost of Lynx Shaman.");
 
             BaseMaxHealth = config.Bind("Lynx Shaman Character Stats", "Base Max Health", 300f, "Lynx Shaman' base health.");
             BaseMoveSpeed = config.Bind("Lynx Shaman Character Stats", "Base Movement Speed", 6f, "Lynx Shaman' base movement speed.");
-            BaseJumpPower = config.Bind("Lynx Shaman Character Stats", "Base Jump Power", 12f, "Lynx Shaman' base jump power.");
+            BaseJumpPower = config.Bind("Lynx Shaman Character Stats", "Base Jump Power", 14f, "Lynx Shaman' base jump power.");
             BaseDamage = config.Bind("Lynx Shaman Character Stats", "Base Damage", 20f, "Lynx Shaman' base damage.");
             BaseArmor = config.Bind("Lynx Shaman Character Stats", "Base Armor", 0f, "Lynx Shaman' base armor.");
 
@@ -83,11 +83,18 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SummonProjectilesSpeed = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Speed", 12f, "Lynx Shaman's Summon Projectiles speed of projectiles.");
             SummonProjectilesTurnSpeed = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Turn Speed", 100f, "Lynx Shaman's Summon Projectiles turn speed of projectiles.");
 
+            PushBackCooldown = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Cooldown", 4f, "Lynx Shaman's Push Back Cooldown.");
+            PushBackDamage = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Damage", 1f, "Lynx Shaman's Push Back damage coefficient.");
+            PushBackProcCoefficient = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Proc Coefficient", 1f, "Lynx Shaman's Push Back proc coefficient.");
+            PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 1100f, "Lynx Shaman's Push Back force.");
+            PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 6f, "Lynx Shaman's Push Back attack radius.");
 
-            TeleportCooldown = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Cooldown", 60f, "Lynx Shaman's Teleport cooldown.");
-            TeleportCastTime = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Cast Time", 3f, "How long it takes for Lynx Shaman to teleport away.");
-            TeleportMinRange = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Minimum Range", 60f, "Lynx Shaman's Teleport's minimum range.");
-            TeleportMaxRange = config.Bind("Lynx Shaman Teleport", "Lynx Shaman Teleport Maximum Range", float.MaxValue, "Lynx Shaman's Teleport's maximum range.");
+
+
+
+
+
+
 
             SummonStormCooldown = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Cooldown", 30f, "Lynx Shaman's Summon Storm Cooldown.");
             SummonStormStormMoveSpeed = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summoned Storm Movement Speed", 8f, "Lynx Shaman's Summoned Storm movement speed.");

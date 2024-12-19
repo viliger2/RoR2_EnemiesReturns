@@ -5,13 +5,13 @@ using RoR2;
 using RoR2.Navigation;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport
 {
     // TODO: add animation from teleport to idle
     public class Teleport : BaseState
     {
-        public static float minSearchRange => EnemiesReturns.Configuration.LynxTribe.LynxShaman.TeleportMinRange.Value;
-        public static float maxSearchrange => EnemiesReturns.Configuration.LynxTribe.LynxShaman.TeleportMaxRange.Value;
+        public static float minSearchRange => 60f;
+        public static float maxSearchrange => float.MaxValue;
         public static int maxSearchIterations => 3;
         public static float searchRangeDeviation => 5f;
         public static float baseDuration => 1f;
@@ -38,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
             }
 
             originalPosition = transform.position;
-            var ghostMask = UnityEngine.Object.Instantiate(ghostMaskPrefab, transform.position, transform.rotation);
+            var ghostMask = Object.Instantiate(ghostMaskPrefab, transform.position, transform.rotation);
             TeleportAway();
 
             var moveTowardsMask = ghostMask.GetComponent<MoveTowardsTargetAndDestroyItself>();
@@ -63,12 +63,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
                 searchIteration++;
             }
             // if we still somehow haven't found a position, then I guess do nothing
-            if(!position.HasValue)
+            if (!position.HasValue)
             {
                 return;
             }
 
-            if(characterBody.gameObject.TryGetComponent<KinematicCharacterMotor>(out var motor))
+            if (characterBody.gameObject.TryGetComponent<KinematicCharacterMotor>(out var motor))
             {
                 motor.SetPosition(position.Value, true);
             }
@@ -76,10 +76,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
 
         private Vector3? PickRandomReachablePosition(float minSearchRange, float maxSearchRange)
         {
-            var nodeGraph = SceneInfo.instance.GetNodeGraph(characterBody.isFlying ? RoR2.Navigation.MapNodeGroup.GraphType.Air : RoR2.Navigation.MapNodeGroup.GraphType.Ground);
+            var nodeGraph = SceneInfo.instance.GetNodeGraph(characterBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
             var nodeList = nodeGraph.FindNodesInRange(characterBody.transform.position, minSearchRange, maxSearchRange, (HullMask)(1 << (int)characterBody.hullClassification));
 
-            NodeGraph.NodeIndex node = nodeList[UnityEngine.Random.Range(0, nodeList.Count)];
+            NodeGraph.NodeIndex node = nodeList[Random.Range(0, nodeList.Count)];
             if (nodeGraph.GetNodePosition(node, out var position))
             {
                 // give it a bit on Y axis since shaman sometimes falls through the ground
@@ -92,7 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > maskFlyDuration)
+            if (fixedAge > maskFlyDuration)
             {
                 // TODO: play animation
                 if (characterModel)
@@ -100,7 +100,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
                     characterModel.invisibilityCount--;
                 }
             }
-            if(fixedAge > maskFlyDuration + duration && isAuthority)
+            if (fixedAge > maskFlyDuration + duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

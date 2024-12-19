@@ -166,7 +166,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             //projectileSingleTarget.hitSoundString = TODO
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType.damageType = DamageType.Generic;
             projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
 
             prefab.AddComponent<ProjectileTargetComponent>();

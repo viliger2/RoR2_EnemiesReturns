@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport
 {
     public class TeleportStart : BaseState
     {
-        public static float baseDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.TeleportCastTime.Value;
+        public static float baseDuration => 2f;
         private float duration;
 
         public override void OnEnter()
@@ -20,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman.Teleport
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Teleport());
             }

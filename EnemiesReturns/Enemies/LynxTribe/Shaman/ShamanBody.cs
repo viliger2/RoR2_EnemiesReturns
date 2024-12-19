@@ -4,6 +4,8 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman;
+using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman.Teleport;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using RoR2.Skills;
@@ -45,38 +47,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             public static CharacterSpawnCard cscLynxShamanDefault;
         }
 
-        protected override bool AddExecuteSkillOnDamage => false; // TODO: probably remove
         protected override bool AddRemoveJitterBones => true;
 
         public static GameObject BodyPrefab;
-
-        public SkillDef CreateTeleportSkill()
-        {
-            // TODO: icon
-            return CreateSkill(new SkillParams("LynxShamanBodyTeleport", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart)))
-            {
-                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME",
-                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_DESCRIPTION",
-                activationStateMachine = "Body",
-                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.TeleportCooldown.Value,
-                baseMaxStock = 1,
-                fullRestockOnAssign = true,
-                stockToConsume = 1,
-                interruptPriority = EntityStates.InterruptPriority.PrioritySkill
-            });
-        }
-
-        public SkillDef CreateSummonStormSkill()
-        {
-            // TODO: icon
-            return CreateSkill(new SkillParams("LynxShamanBodySummonStorm", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill)))
-            {
-                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME",
-                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION",
-                activationStateMachine = "Body",
-                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value,
-            });
-        }
 
         public SkillDef CreateSummonProjectilesSkill()
         {
@@ -90,30 +63,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
-        public SkillDef CreateTeleportFriendSkill()
-        {
-            // TODO: icon
-            return CreateSkill(new SkillParams("LynxShamanBodyTeleportFriend", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.TeleportFriend)))
-            {
-                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_NAME",
-                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_DESCRIPTION",
-                activationStateMachine = "Body",
-                baseRechargeInterval = 15f, // TODO: config
-            });
-        }
-
-        public SkillDef CreateSummonLightningSkill()
-        {
-            // TODO: icon
-            return CreateSkill(new SkillParams("LynxShamanBodySummonLightning", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonLightning)))
-            {
-                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_NAME",
-                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_DESCRIPTION",
-                activationStateMachine = "Body",
-                baseRechargeInterval = 15f, // TODO: config
-            });
-        }
-
         public SkillDef CreatePushBackSkill()
         {
             // TODO: icon
@@ -122,7 +71,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION",
                 activationStateMachine = "Body",
-                baseRechargeInterval = 4f, // TODO: config
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackCooldown.Value,
             });
         }
 
@@ -157,7 +106,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 baseJumpPower = EnemiesReturns.Configuration.LynxTribe.LynxShaman.BaseJumpPower.Value,
                 baseDamage = EnemiesReturns.Configuration.LynxTribe.LynxShaman.BaseDamage.Value,
                 baseArmor = EnemiesReturns.Configuration.LynxTribe.LynxShaman.BaseArmor.Value,
-                hullClassification = HullClassification.Golem,
+                hullClassification = HullClassification.Human,
                 bodyColor = new Color(72 / 255, 73 / 255, 109 / 255),
                 isChampion = false, 
                 autoCalculateStats = true,
@@ -280,11 +229,12 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                //new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "SummonLightning", SkillSlot.Utility),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Teleport", SkillSlot.Utility),
+                //new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "SummonLightning", SkillSlot.Utility),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorm", SkillSlot.Special),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonProjectiles", SkillSlot.Primary),
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "TeleportFriend", SkillSlot.Secondary)
+                //new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "TeleportFriend", SkillSlot.Secondary)
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "PushBack", SkillSlot.Secondary)
             };
         }
 
@@ -308,16 +258,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             };
         }
 
-        // TOOD: probably revert to normal
-        protected override ISetStateOnHurt.SetStateOnHurtParams SetStateOnHurtParams()
-        {
-            return new ISetStateOnHurt.SetStateOnHurtParams("Body", new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState)))
-            {
-                canBeHitStunned = false, // so we couldn't interupt him by just damaging hard enough
-                hitThreshold = 1f
-            };
-        }
-
         protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
         {
             return new ISfxLocator.SfxLocatorParams()
@@ -328,5 +268,58 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         // TODO: separate mask and body surface defs
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
+
+        public SkillDef CreateTeleportSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodyTeleport", new EntityStates.SerializableEntityStateType(typeof(TeleportStart)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 15f,
+                baseMaxStock = 1,
+                fullRestockOnAssign = true,
+                stockToConsume = 1,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill
+            });
+        }
+
+        public SkillDef CreateSummonStormSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodySummonStorm", new EntityStates.SerializableEntityStateType(typeof(SummonStormSkill)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value,
+            });
+        }
+
+        public SkillDef CreateTeleportFriendSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodyTeleportFriend", new EntityStates.SerializableEntityStateType(typeof(TeleportFriend)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 15f,
+            });
+        }
+
+        public SkillDef CreateSummonLightningSkill()
+        {
+            // TODO: icon
+            return CreateSkill(new SkillParams("LynxShamanBodySummonLightning", new EntityStates.SerializableEntityStateType(typeof(SummonLightning)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_DESCRIPTION",
+                activationStateMachine = "Body",
+                baseRechargeInterval = 15f,
+            });
+        }
+
     }
 }

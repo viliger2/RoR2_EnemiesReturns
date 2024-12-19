@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.LynxShaman
 {
     public class TeleportFriend : BaseState
     {
@@ -82,16 +82,16 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             base.FixedUpdate();
 
-            if((!teleportee || !target) && isAuthority)
+            if ((!teleportee || !target) && isAuthority)
             {
                 RefundAndExit();
                 return;
             }
 
-            if(fixedAge > effectSpawnDelay && !effectSpawned)
+            if (fixedAge > effectSpawnDelay && !effectSpawned)
             {
-                var teleportTarget = target.transform.position + (target.GetComponent<InputBankTest>().aimDirection * spawnRange);
-                var nodeGraph = SceneInfo.instance.GetNodeGraph(teleporteeCharacterBody.isFlying ? RoR2.Navigation.MapNodeGroup.GraphType.Air : RoR2.Navigation.MapNodeGroup.GraphType.Ground);
+                var teleportTarget = target.transform.position + target.GetComponent<InputBankTest>().aimDirection * spawnRange;
+                var nodeGraph = SceneInfo.instance.GetNodeGraph(teleporteeCharacterBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
                 var node = nodeGraph.FindClosestNode(teleportTarget, teleporteeCharacterBody.hullClassification);
                 nodeGraph.GetNodePosition(node, out this.teleportTarget);
                 // TODO: spawn effect on target
@@ -112,7 +112,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                         motor.Motor.SetPositionAndRotation(new Vector3(teleportTarget.x, teleportTarget.y + motor.capsuleRadius, teleportTarget.z), Quaternion.Euler(rotation));
                         EffectManager.SimpleEffect(teleportEffect, motor.Motor.transform.position, Quaternion.identity, true);
                     }
-                    else if(teleportee.TryGetComponent<Rigidbody>(out var rigidbody))
+                    else if (teleportee.TryGetComponent<Rigidbody>(out var rigidbody))
                     {
                         rigidbody.position = teleportTarget;
                         EffectManager.SimpleEffect(teleportEffect, rigidbody.position, Quaternion.identity, true);
@@ -155,9 +155,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             sphereSearch.FilterCandidatesByHurtBoxTeam(team);
             sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
             var hurtboxes = sphereSearch.GetHurtBoxes();
-            foreach(var hurtbox in hurtboxes)
+            foreach (var hurtbox in hurtboxes)
             {
-                if(hurtbox.healthComponent == healthComponent)
+                if (hurtbox.healthComponent == healthComponent)
                 {
                     continue;
                 }
