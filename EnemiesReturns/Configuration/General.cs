@@ -22,9 +22,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<float> testconfig;
 
-        public static ConfigEntry<ShamanTornadoBehavior> ShamanTornado;
-
-        public static ConfigEntry<SummonProjectileType> ShamanSummonProjectileType;
+        public static ConfigEntry<bool> ShamanVoices;
 #endif
 
         public static void PopulateConfig(ConfigFile config)
@@ -32,8 +30,7 @@ namespace EnemiesReturns.Configuration
 #if DEBUG || NOWEAVER
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
             testconfig = config.Bind("test", "test", 5f, "test");
-            ShamanTornado = config.Bind("Shaman Tornado Debug", "Shaman Tornado Type", ShamanTornadoBehavior.SetVelocity, "Type of tornado behavior");
-            ShamanSummonProjectileType = config.Bind("Shaman Summon Projectile Debug", "Shaman Summon Projectile Type", SummonProjectileType.Shotgun, "Type of summon projectile behavior");
+            ShamanVoices = config.Bind("Shaman Voices", "Shaman has a voice", false, "Crash Bandicoot");
 #endif
         }
     }

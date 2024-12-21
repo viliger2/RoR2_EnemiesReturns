@@ -137,17 +137,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             moveTarget.transform.localPosition = new Vector3(r * Mathf.Cos(angle), 2f + yHeight * (timer / baseDuration), r * Mathf.Sin(angle));
             var target = (moveTarget.transform.position - characterMotor.previousPosition).normalized;
             characterMotor.disableAirControlUntilCollision = true;
-
-            if (EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.SetVelocity)
-            {
-                characterMotor.velocity = target * velocitySpeed;
-            } else if (EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.AddDisplacement)
-            {
-                characterMotor.AddDisplacement(target * pullStr * Time.fixedDeltaTime);
-            } else if(EnemiesReturns.Configuration.General.ShamanTornado.Value == Configuration.General.ShamanTornadoBehavior.SetPosition)
-            {
-                characterMotor.Motor.SetPosition(moveTarget.transform.position, false);
-            }
+            characterMotor.velocity = target * velocitySpeed;
         }
 
         private GameObject GetAttacker()

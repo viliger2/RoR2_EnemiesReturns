@@ -11,7 +11,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
-        public static ConfigEntry<bool> ForbiddenAsBoss;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -25,7 +24,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonProjectilesCooldown;
         public static ConfigEntry<float> SummonProjectilesDamage;
         public static ConfigEntry<float> SummonProjectileProcCoefficient;
-        public static ConfigEntry<float> SummonProjectilesDelay;
         public static ConfigEntry<int> SummonProjectilesCount;
         public static ConfigEntry<float> SummonProjectilesDebuffDuration;
         public static ConfigEntry<float> SummonProjectilesHealingFraction;
@@ -75,7 +73,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SummonProjectilesCooldown = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Cooldown", 8f, "Lynx Shaman's Summon Projectiles cooldown.");
             SummonProjectilesDamage = config.Bind("Lynx Shaman Summon Projectiles", "Lunx Shaman Summon Projectiles Damage", 1f, "Lynx Shaman's Summon Projectiles damage coefficient.");
             SummonProjectileProcCoefficient = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Proc Coefficient", 1f, "Lynx Shaman's Summon Projectiles proc coefficient.");
-            SummonProjectilesDelay = config.Bind("Lynx Shaman Summon Projectiles", "Lunx Shaman Summon Projectiles Delay", 2.8f, "Lynx Shaman's Summon Projectiles initial delay between starting the skill and firing projectiles. Scales with attack speed.");
             SummonProjectilesCount = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Count", 5, "Lynx Shaman's Summon Projectiles count.");
             SummonProjectilesDebuffDuration = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Debuff Duration", 5f, "Lynx Shaman's Summon Projectiles minus healing debuff duration.");
             SummonProjectilesHealingFraction = config.Bind("Lynx Shaman Summon Projectiles", "Lynx Shaman Summon Projectiles Healing Debuff Fraction", 0.5f, "Lynx Shaman's Summon Projectiles healing reduction.");
@@ -86,7 +83,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             PushBackCooldown = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Cooldown", 4f, "Lynx Shaman's Push Back Cooldown.");
             PushBackDamage = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Damage", 1f, "Lynx Shaman's Push Back damage coefficient.");
             PushBackProcCoefficient = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Proc Coefficient", 1f, "Lynx Shaman's Push Back proc coefficient.");
-            PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 1100f, "Lynx Shaman's Push Back force.");
+            PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 2000f, "Lynx Shaman's Push Back force.");
             PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 6f, "Lynx Shaman's Push Back attack radius.");
 
 

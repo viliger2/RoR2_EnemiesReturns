@@ -667,6 +667,141 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="LynxTribe" ID="{BD73F2DB-E6E3-4B59-8E19-99AE356CE857}" ShortID="224646586">
+							<ChildrenList>
+								<Folder Name="Shaman" ID="{0F19CD4A-1C20-4844-A2AE-6687A7CC9FCA}" ShortID="998289755">
+									<ChildrenList>
+										<Event Name="ER_Shaman_Spawn_Play" ID="{4CCFA38F-066F-4076-9C77-2E2175FA1D93}">
+											<ChildrenList>
+												<Action Name="" ID="{D24BEDD6-1FE6-4D22-8CFE-70FCAF68DF0D}" ShortID="471572264">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Spawn" ID="{CF590810-7746-42BE-B191-076904413E14}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_Spawn_No_Voice_Play" ID="{586DE244-1198-4116-B9A7-C1E059FAFF09}">
+											<ChildrenList>
+												<Action Name="" ID="{5013ECF7-4D0C-46B0-9AA1-3E27F0785E61}" ShortID="522722245">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SpawnNoVoice" ID="{AB72E8B1-CB0C-4227-AAC0-8D68BAA0A6D9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_SummonProjectiles_Play" ID="{136621DE-5C8D-408C-BC8F-790CB37A08A6}">
+											<ChildrenList>
+												<Action Name="" ID="{CF0F603C-1D4E-4C91-9FAC-A77911C36630}" ShortID="801965974">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_SummonProjectiles_No_Voice_Play" ID="{7961F31B-8944-46A2-8D3C-CED0023D87F0}">
+											<ChildrenList>
+												<Action Name="" ID="{3F7F8066-1CC1-49FE-894D-2242AD69A66B}" ShortID="321601479">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonProjectilesNoVoice" ID="{E7C4087C-C4CE-4972-AF48-A5DF9DCB66EC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_SummonPushBack_Play" ID="{C17BFB99-0E0E-4633-A330-378349409ED5}">
+											<ChildrenList>
+												<Action Name="" ID="{3A2C2445-B0A5-4B8B-90B3-D6957BD07B42}" ShortID="216600403">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonPushBack" ID="{AE8A7159-F675-4725-8EDF-FC0AC95EC0C0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_SummonPushBack_No_Voice_Play" ID="{1D07E7CA-8BA1-4837-813F-8BFE6E00FDF0}">
+											<ChildrenList>
+												<Action Name="" ID="{8A9386F3-EB49-4670-999C-51E4E63383C1}" ShortID="701035119">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonPushBackNoVoice" ID="{67059634-BCA3-45AC-9B66-99BD7ED2E982}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_FireProjectiles_Play" ID="{130D9A52-54CB-48DF-B6C0-EC85FE7EEEB6}">
+											<ChildrenList>
+												<Action Name="" ID="{30DCA228-5671-4AB5-9E08-E383037C491E}" ShortID="49901426">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_FireProjectiles" ID="{573F86BD-35F7-4B7F-A3E2-E60B321F5A9E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_FirePushBack_Play" ID="{310E7928-4357-44BA-AB49-521C44643E65}">
+											<ChildrenList>
+												<Action Name="" ID="{AA6712B3-D19C-4C6E-9D32-F0DF88C81B49}" ShortID="48009275">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_FirePushBack" ID="{B1BFE6A2-F068-408A-8B77-72FA60388F6A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_SummonProjectiles_Stop" ID="{EFAFB8CC-1138-42DD-89BF-855283AE9458}">
+											<ChildrenList>
+												<Action Name="" ID="{E7CF1AC4-AC6E-467B-903B-0A795C514C47}" ShortID="106724392">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{778F2F2B-1B49-4FD0-AA1A-0FBE5172D36E}" ShortID="405666964">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_SummonProjectilesNoVoice" ID="{E7C4087C-C4CE-4972-AF48-A5DF9DCB66EC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Trap" ID="{3C10CC59-F610-40F0-946D-DE584D8E54E3}" ShortID="1036338829">
+									<ChildrenList>
+										<Event Name="ER_LynxTrap_SnapTwig_Play" ID="{77AB2ADC-C835-475C-AF9C-F114D8991F06}">
+											<ChildrenList>
+												<Action Name="" ID="{6D48D646-4038-4F4C-A258-17C8F11647A7}" ShortID="636469219">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Trap_SnapTwig" ID="{8F38EF25-A5CD-40A2-896D-5226636F7D79}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

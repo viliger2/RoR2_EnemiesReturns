@@ -23,6 +23,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public static float procCoef => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackProcCoefficient.Value;
 
+        public static GameObject summonPrefab;
+
+        public static GameObject explosionPrefab;
+
         private float duration;
 
         private float attackDelay;
@@ -45,24 +49,50 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 attackOrigin = base.transform;
             }
             PlayCrossfade("Gesture, Override", "CastTeleportFull", "CastTeleport.playbackRate", duration, 0.1f);
+            Util.PlayAttackSpeedSound(EnemiesReturns.Configuration.General.ShamanVoices.Value ? "ER_Shaman_SummonPushBack_Play" : "ER_Shaman_SummonPushBack_No_Voice_Play", base.gameObject, attackSpeedStat);
+            if (summonPrefab)
+            {
+                var summonEffectOrigin = FindModelChild("Base");
+                if(!summonEffectOrigin)
+                {
+                    summonEffectOrigin = base.transform;
+                }
+
+                EffectManager.SpawnEffect(summonPrefab, new EffectData
+                {
+                    origin = summonEffectOrigin.position + Vector3.up * 0.75f,
+                    scale = 2.5f
+                }, false);
+            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > attackDelay && !isAttackFired && NetworkServer.active)
+            if(fixedAge > attackDelay && !isAttackFired)
             {
-                blastAttack.position = attackOrigin.position;
-                var result = blastAttack.Fire();
-                if (force > 0f)
+                if (NetworkServer.active)
                 {
-                    for (int i = 0; i < result.hitPoints.Length; i++)
+                    blastAttack.position = attackOrigin.position;
+                    var result = blastAttack.Fire();
+                    if (force > 0f)
                     {
-                        Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position) * force;
-                        result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
+                        for (int i = 0; i < result.hitPoints.Length; i++)
+                        {
+                            Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position).normalized * force;
+                            result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
+                        }
                     }
                 }
-
+                if (explosionPrefab)
+                {
+                    EffectManager.SpawnEffect(explosionPrefab, new EffectData
+                    {
+                        origin = attackOrigin.position,
+                        scale = 4f
+                    }, false);
+                }
+                Util.PlaySound("ER_Shaman_FirePushBack_Play", base.gameObject);
                 isAttackFired = true;
             }
 
@@ -89,7 +119,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
-            blastAttack.Fire();
         }
     }
 }

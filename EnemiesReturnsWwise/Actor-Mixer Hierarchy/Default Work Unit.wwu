@@ -1202,6 +1202,13 @@
 										</Folder>
 										<Sound Name="Ifrit_Spawn" ID="{62ADAEFC-25F4-4A4C-AEF4-6E6DE4468FFD}" ShortID="545513826">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7A828296-EB1B-4BF7-99FD-A2B0B9DE675E}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-3</Value>
@@ -2451,6 +2458,387 @@
 												<ActiveSource Name="charge" ID="{89DA17FE-34D0-401F-9257-B0BCEC469D16}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="LynxTribe" ID="{A0C1E000-89F6-49CD-AC4E-D576F19C7C06}" ShortID="13830507">
+									<ChildrenList>
+										<Folder Name="Shaman" ID="{EE1E49E2-1B4D-4785-9AC5-51A3AF2BA0DC}" ShortID="30591707">
+											<ChildrenList>
+												<ActorMixer Name="Random Pitch" ID="{347CA9B4-52D8-4F85-B8FE-964115E8C49E}" ShortID="958040702">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{35683EF1-4DCB-497C-8816-FFC1E458DAC4}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Shaman_FirePushBack" ID="{B1BFE6A2-F068-408A-8B77-72FA60388F6A}" ShortID="1034879649">
+															<PropertyList>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{041442DB-A82E-4819-8C48-52363F49CFF1}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LightningBoltImpact" ID="{087F5FFE-04D6-49D1-AD51-DE890091681A}">
+																	<PropertyList>
+																		<Property Name="FadeOutDuration" Type="Real64" Value="0.843632286019118"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="1.47033055563332"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>LynxTribe\Shaman\LightningBoltImpact.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="825382782"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LightningBoltImpact" ID="{087F5FFE-04D6-49D1-AD51-DE890091681A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Shaman_FireProjectiles" ID="{573F86BD-35F7-4B7F-A3E2-E60B321F5A9E}" ShortID="285118927">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="NatureImpact" ID="{92602A4C-01F9-4593-9611-FC92655BE78B}">
+																	<Language>SFX</Language>
+																	<AudioFile>LynxTribe\Shaman\NatureImpact.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="644961460"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="NatureImpact" ID="{92602A4C-01F9-4593-9611-FC92655BE78B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</ActorMixer>
+												<Sound Name="Shaman_SummonProjectilesNoVoice" ID="{E7C4087C-C4CE-4972-AF48-A5DF9DCB66EC}" ShortID="345148098">
+													<PropertyList>
+														<Property Name="OverrideEffect" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PreCastNatureMagicHigh" ID="{F9F606AD-653C-4F0A-86F1-50BBC38D5C02}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\PreCastNatureMagicHigh.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="932924990"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="shaman_summon_projectile_no_voice" ID="{0043E0E1-21F4-48E2-8A12-F1F4567A6E99}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile_no_voice.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="78227651"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_summon_projectile_no_voice" ID="{0043E0E1-21F4-48E2-8A12-F1F4567A6E99}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_SummonPushBack" ID="{AE8A7159-F675-4725-8EDF-FC0AC95EC0C0}" ShortID="14008625">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shaman_summon_pushback" ID="{0EBCA396-2D2C-468E-8C92-9937A435950F}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_summon_pushback.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="692101215"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_summon_pushback" ID="{0EBCA396-2D2C-468E-8C92-9937A435950F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_SummonPushBackNoVoice" ID="{67059634-BCA3-45AC-9B66-99BD7ED2E982}" ShortID="996695356">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shaman_summon_pushback_no_voice" ID="{AF6FFEAA-B107-4725-9985-8E305976FCB7}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_summon_pushback_no_voice.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="343903326"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_summon_pushback_no_voice" ID="{AF6FFEAA-B107-4725-9985-8E305976FCB7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" ShortID="552322679">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverrideEffect" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PreCastNatureMagicHigh" ID="{CAD90A48-C5BF-49A1-BFF4-625316485187}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\PreCastNatureMagicHigh.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="452208602"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="shaman_summon_projectile_no_voice" ID="{21CF6E58-123F-4B59-9D0A-234834B7F01C}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile_no_voice.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="796358268"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="shaman_summon_projectile" ID="{121C2BB9-3956-4021-B020-52E9D35E3259}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="484670"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_summon_projectile" ID="{121C2BB9-3956-4021-B020-52E9D35E3259}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_Spawn" ID="{CF590810-7746-42BE-B191-076904413E14}" ShortID="539292512">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shaman_spawn_no_voice" ID="{15C56385-0A7F-4BFB-A9C5-3CC3994610F3}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_spawn_no_voice.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="884217374"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="shsman_spawn" ID="{5FB17510-54B9-4BB3-AE08-65EDB685FC9D}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shsman_spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="920029613"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shsman_spawn" ID="{5FB17510-54B9-4BB3-AE08-65EDB685FC9D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_SpawnNoVoice" ID="{AB72E8B1-CB0C-4227-AAC0-8D68BAA0A6D9}" ShortID="820794674">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shaman_spawn_no_voice" ID="{CD15AA2F-8226-4E11-BFB6-AC2F6BF08BD1}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_spawn_no_voice.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="884217374"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_spawn_no_voice" ID="{CD15AA2F-8226-4E11-BFB6-AC2F6BF08BD1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Trap" ID="{793BD293-FFFF-40C7-81FA-CC15FE54631F}" ShortID="609972709">
+											<ChildrenList>
+												<ActorMixer Name="Random Pitch" ID="{8160395F-8809-42F4-BDD4-B7DD76675644}" ShortID="194063642">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F0779904-EAD0-47F7-B5C0-5E9D8DA97692}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Trap_SnapTwig" ID="{8F38EF25-A5CD-40A2-896D-5226636F7D79}" ShortID="504317499">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>2</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="452570__kyles__branch-breaking-forest-twig-snap-crunch" ID="{E15A5E84-8196-44AC-BC75-C5D713887615}">
+																	<Language>SFX</Language>
+																	<AudioFile>LynxTribe\Trap\452570__kyles__branch-breaking-forest-twig-snap-crunch.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="684460965"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="452570__kyles__branch-breaking-forest-twig-snap-crunch" ID="{E15A5E84-8196-44AC-BC75-C5D713887615}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</ActorMixer>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

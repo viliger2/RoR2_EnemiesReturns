@@ -80,8 +80,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
-                occupyPosition = false,
-                forbiddenAsBoss = EnemiesReturns.Configuration.LynxTribe.LynxShaman.ForbiddenAsBoss.Value
+                occupyPosition = false
             });
         }
 

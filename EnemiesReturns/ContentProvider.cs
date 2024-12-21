@@ -11,6 +11,7 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman;
 using EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport;
+using EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman;
 using R2API;
 using Rewired.Utils.Classes.Utility;
 using RoR2;
@@ -899,7 +900,7 @@ namespace EnemiesReturns
         {
             // TODO: config
             CreateLynxStorm(assets, acdLookup);
-            CreateLynxShaman(assets, iconLookup);
+            CreateLynxShaman(assets, iconLookup, acdLookup);
             CreateLynxTotem(assets, iconLookup);
         }
 
@@ -975,7 +976,7 @@ namespace EnemiesReturns
             nopList.Add(lynxShrine);
         }
 
-        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
 
@@ -989,6 +990,12 @@ namespace EnemiesReturns
             TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
             effectsList.Add(new EffectDef(TeleportFriend.teleportEffect));
 
+            ModdedEntityStates.LynxTribe.Shaman.PushBack.summonPrefab = shamanStuff.CreateShamanPushBackSummonEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackSummon"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.summonPrefab));
+
+            ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab = shamanStuff.CreateShamanPushBackExplosionEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackExplosion"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab));
+
             ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(Addressables.LoadAssetAsync<Sprite>("RoR2/Base/ElitePoison/texBuffHealingDisabledIcon.tif").WaitForCompletion()); // TODO: sprite
             bdList.Add(ShamanStuff.ReduceHealing);
 
@@ -996,6 +1003,10 @@ namespace EnemiesReturns
             SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
             ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.trackingProjectilePrefab = skullProjectile;
             projectilesList.Add(skullProjectile);
+
+            var projectilesSummonEffect = shamanStuff.CreateShamanTrackingProjectileSummonEffect(acdLookup["acdShamanSummonProjectilesScaling"]);
+            SummonTrackingProjectilesShotgun.summonEffect = projectilesSummonEffect;
+            effectsList.Add(new EffectDef(projectilesSummonEffect));
 
             var shamanLog = Utils.CreateUnlockableDef("Logs.LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
             unlockablesList.Add(shamanLog);
@@ -1017,8 +1028,8 @@ namespace EnemiesReturns
 
             SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
 
-            //ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
-            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
+            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
+            //ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
             ShamanBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxShamanSpecialSkillFamily", ShamanBody.Skills.SummonStorm);
             ShamanBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxShamanPrimarySkillFamily", ShamanBody.Skills.SummonProjectiles);
             //ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.TeleportFriend);

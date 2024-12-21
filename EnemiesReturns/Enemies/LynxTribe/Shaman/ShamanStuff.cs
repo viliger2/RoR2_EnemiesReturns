@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
+﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -76,6 +77,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return buff;
         }
 
+        // TODO: with two leafs for other tribe members
         public GameObject CreateSpawnEffect(GameObject prefab)
         {
             var spawnEffect = MyPrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
@@ -135,6 +137,128 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 UnityEngine.Object.DestroyImmediate(effectComponent);
             }
             prefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = false;
+
+            return prefab;
+        }
+
+        public GameObject CreateShamanPushBackSummonEffect(GameObject prefab)
+        {
+            prefab.AddComponent<EffectComponent>().applyScale = true;
+
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            prefab.AddComponent<DestroyOnParticleEnd>();
+
+            prefab.transform.Find("TornadoMeshLow").gameObject.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Junk/Assassin/matAssassinSwingTrail.mat").WaitForCompletion();
+            var lic = prefab.transform.Find("Light").gameObject.AddComponent<LightIntensityCurve>();
+            lic.timeMax = 1f;
+            //lic.curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+            lic.curve = new AnimationCurve(new Keyframe[]
+            {
+                new Keyframe
+                {
+                    time = 0f,
+                    value = 0f
+                },
+                new Keyframe
+                {
+                    time = 0.95f,
+                    value = 1f,
+                },
+                new Keyframe
+                {
+                    time = 1f,
+                    value = 0f
+                }
+            });
+
+            vfxAttributes.optionalLights = prefab.GetComponentsInChildren<Light>();
+
+            return prefab;
+        }
+
+        public GameObject CreateShamanPushBackExplosionEffect(GameObject prefab)
+        {
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.applyScale = true;
+            effectComponent.soundName = ""; // TODO
+
+            var shakeEmmiter = prefab.AddComponent<ShakeEmitter>();
+            shakeEmmiter.shakeOnStart = true;
+            shakeEmmiter.wave = new Wave
+            {
+                amplitude = 1f,
+                frequency = 120f,
+                cycleOffset = 0f
+            };
+            shakeEmmiter.duration = 0.2f;
+            shakeEmmiter.radius = 30f;
+            shakeEmmiter.amplitudeTimeDecay = true;
+
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxAttributes.optionalLights = prefab.GetComponentsInChildren<Light>();
+
+            prefab.AddComponent<DestroyOnParticleEnd>();
+
+            var lic = prefab.transform.Find("Point Light").gameObject.AddComponent<LightIntensityCurve>();
+            lic.timeMax = 0.3f;
+            lic.curve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+
+            prefab.transform.Find("SparksOut").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/EliteEarth/matAffixEarthTargetBillboard.mat").WaitForCompletion();
+            prefab.transform.Find("Flash, Colored").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matGlow1Soft.mat").WaitForCompletion();
+            prefab.transform.Find("Flash, White").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxShamanExplosionFlash", CreatePushBackExplosionFlashWhiteMaterial);
+            prefab.transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/Railgunner/matRailgunnerMineDistortion.mat").WaitForCompletion();
+            prefab.transform.Find("Core").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/TPHealingNova/matGlowFlowerRings.mat").WaitForCompletion();
+            prefab.transform.Find("Sphere, Color").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxShamanExplosionAreaIndicator", CreatePushBackExplosionAreaIndicatorMaterial);
+
+            return prefab;
+        }
+
+        public GameObject CreateShamanTrackingProjectileSummonEffect(AnimationCurveDef acd)
+        {
+            var prefab = MyPrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileEffect", false);
+            if (prefab.TryGetComponent<OrbEffect>(out var orbEffect))
+            {
+                UnityEngine.Object.DestroyImmediate(orbEffect);
+            }
+            if (prefab.TryGetComponent<Rigidbody>(out var rigidbody))
+            {
+                UnityEngine.Object.DestroyImmediate(rigidbody);
+            }
+            var akComponents = prefab.GetComponents<AkEvent>();
+            for (int i = akComponents.Length - 1; i >= 0; i--)
+            {
+                UnityEngine.Object.DestroyImmediate(akComponents[i]);
+            }
+            if (prefab.TryGetComponent<AkGameObj>(out var akGameObj))
+            {
+                UnityEngine.Object.DestroyImmediate(akGameObj);
+            }
+            if(prefab.TryGetComponent<LODGroup>(out var lodGroup))
+            {
+                UnityEngine.Object.DestroyImmediate(lodGroup);
+            }
+
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("mdlDevilOrb").gameObject);
+
+            prefab.GetComponentInChildren<LightIntensityCurve>().timeMax = 3f;
+
+            var effectComponent = prefab.GetComponent<EffectComponent>();
+            effectComponent.parentToReferencedTransform = true;
+            effectComponent.positionAtReferencedTransform = true;
+            //effectComponent.applyScale = true;
+
+            var objectScaleCurve = prefab.AddComponent<ObjectScaleCurve>();
+            objectScaleCurve.useOverallCurveOnly = true;
+            objectScaleCurve.overallCurve = acd.curve;
+            objectScaleCurve.timeMax = 2.3f;
+
+            prefab.AddComponent<DestroyOnTimer>().duration = 2.3f;
 
             return prefab;
         }
@@ -249,7 +373,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public Material CreateTeleportEffectMaterial()
         {
-            var material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matHealingCross.mat").WaitForCompletion();
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matHealingCross.mat").WaitForCompletion());
             material.name = "matLynxShamanTeleport";
 
             var banditExplosionMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Bandit2/matBandit2Explosion.mat").WaitForCompletion();
@@ -259,6 +383,26 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             material.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/texCloudOrganicNormal.png").WaitForCompletion());
             material.SetTextureScale("_Cloud1Tex", new Vector2(0.5f, 0.5f));
             material.SetVector("_CutoffScroll", new Vector4(1f, 1f, 0f, 0f));
+
+            return material;
+        }
+
+        public Material CreatePushBackExplosionFlashWhiteMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matTracerBright.mat").WaitForCompletion());
+            material.name = "matLynxShamanExplosionFlash";
+
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampHealing.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public Material CreatePushBackExplosionAreaIndicatorMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/Railgunner/matRailgunnerMineAreaIndicator.mat").WaitForCompletion());
+            material.name = "matLynxShamanExplosionAreaIndicator";
+
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampBeetleQueen.png").WaitForCompletion());
 
             return material;
         }
