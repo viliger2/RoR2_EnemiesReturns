@@ -112,7 +112,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 timer = triggered ? 0 : timer - checkInterval;
             }
 
-            if(timer > spawnAfterTriggerInterval && !spawned)
+            if(timer > spawnAfterTriggerInterval && triggered && !spawned)
             {
                 if (spawner)
                 {

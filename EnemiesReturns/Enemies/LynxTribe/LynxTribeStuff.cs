@@ -63,7 +63,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var teamMask = new TeamMask();
             teamMask.AddTeam(TeamIndex.Player);
             trap.teamFilter = teamMask;
-            trap.initialTriggerSound = ""; // TODO
+            trap.initialTriggerSound = "ER_LynxTrap_SnapTwig_Play"; // TODO
 
             var leaves = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/lemuriantemple/Assets/LTFallenLeaf.spm").WaitForCompletion();
             var leavesTransform = trapPrefab.transform.Find("Leaves").transform;

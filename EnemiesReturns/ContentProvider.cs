@@ -907,6 +907,9 @@ namespace EnemiesReturns
         {
             var lynxStuff = new LynxTribeStuff();
 
+            var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
+            nseList.Add(nseLynxTribeTrapTwigSnap);
+
             var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
 
             // TODO: do better
