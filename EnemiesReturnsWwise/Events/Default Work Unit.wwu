@@ -783,6 +783,42 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Shaman_Projectile_Impact_Play" ID="{4E013838-3CCA-4522-8735-507A4238367F}">
+											<ChildrenList>
+												<Action Name="" ID="{DC9D84B0-8B23-42A3-A130-DD4A38D0629F}" ShortID="287424513">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Projectile_Impact" ID="{11B2296F-B58B-4E05-85A9-4CF1284084F7}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_Projectile_Flight_Loop_Play" ID="{2611152C-D2A3-4C24-8AE6-21907EF63B97}">
+											<ChildrenList>
+												<Action Name="" ID="{3C818AD9-1D90-4639-B301-31D3972FA6EC}" ShortID="46684690">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Projectile_FlightLoop" ID="{9C7EF24F-E692-4336-B168-603EC405EB54}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_Projectile_Flight_Loop_Stop" ID="{BD6361E2-B32A-42C8-861A-00E917879F08}">
+											<ChildrenList>
+												<Action Name="" ID="{68852AFF-723D-432F-BF87-549B5E25AB99}" ShortID="484538567">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Projectile_FlightLoop" ID="{9C7EF24F-E692-4336-B168-603EC405EB54}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Trap" ID="{3C10CC59-F610-40F0-946D-DE584D8E54E3}" ShortID="1036338829">

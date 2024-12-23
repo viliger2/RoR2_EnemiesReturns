@@ -34,6 +34,7 @@ namespace EnemiesReturns
     [BepInDependency(R2API.ProcTypeAPI.PluginGUID)]
     [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
     [BepInDependency(R2API.DamageAPI.PluginGUID)]
+    [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";

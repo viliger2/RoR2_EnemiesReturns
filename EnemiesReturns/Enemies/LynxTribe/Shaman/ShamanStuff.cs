@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
+using RoR2.Audio;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
@@ -59,6 +60,19 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             }
         }
 
+        public GameObject CreateReduceHealingVisualEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/HealingDisabledEffect.prefab").WaitForCompletion();
+
+            UnityEngine.Object.DestroyImmediate(prefab.GetComponent<LocalCameraEffect>());
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("CameraEffect").gameObject);
+
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Visual/Mesh").gameObject);
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Visual/Mesh").gameObject);
+
+            return prefab;
+        }
+
         public BuffDef CreateReduceHealingBuff(Sprite sprite)
         {
             BuffDef buff = ScriptableObject.CreateInstance<BuffDef>();
@@ -72,7 +86,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             buff.isCooldown = false;
             buff.isDOT = false;
             buff.isHidden = false;
-            buff.buffColor = new Color(90/255, 211/255, 74/255);
+            buff.buffColor = Color.white;
 
             return buff;
         }
@@ -184,7 +198,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             var effectComponent = prefab.AddComponent<EffectComponent>();
             effectComponent.applyScale = true;
-            effectComponent.soundName = ""; // TODO
+            effectComponent.soundName = "ER_Shaman_FirePushBack_Play"; // TODO
 
             var shakeEmmiter = prefab.AddComponent<ShakeEmitter>();
             shakeEmmiter.shakeOnStart = true;
@@ -263,13 +277,60 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return prefab;
         }
 
-        public GameObject CreateShamanTrackingProjectile(GameObject prefab, GameObject ghost)
+        public GameObject CreateShamanProjectileImpactEffect(GameObject prefab, Texture2D texRamp)
+        {
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Low;
+
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+
+            prefab.AddComponent<DestroyOnTimer>().duration = 0.55f;
+
+            prefab.transform.Find("Nova Sphere").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxShamanProjectileImpactNova", CreateShamanProjectileImpactNovaMaterial);
+            prefab.transform.Find("Sparks").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxShamanProjectileImpactSparks", CreateShamanProjectileImpactSparksMaterial, texRamp);
+            prefab.transform.Find("Flares").gameObject.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxShamanProjectileImpactFlares", CreateShamanProjectileImpactFlaresMaterial);
+
+            return prefab;
+        }
+        
+        public Material CreateShamanProjectileImpactFlaresMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
+            material.name = "matLynxShamanProjectileImpactFlares";
+
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampHealing.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public Material CreateShamanProjectileImpactSparksMaterial(Texture2D texRamp)
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
+            material.name = "matLynxShamanProjectileImpactSparks";
+
+            material.SetTexture("_RemapTex", texRamp);
+
+            return material;
+        }
+
+        public Material CreateShamanProjectileImpactNovaMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabTripleBeamSphere2.mat").WaitForCompletion());
+            material.name = "matLynxShamanProjectileImpactNova";
+
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampHealingVariant.png").WaitForCompletion());
+
+            return material;
+        }
+
+        public GameObject CreateShamanTrackingProjectile(GameObject prefab, GameObject ghost, GameObject impact, LoopSoundDef loopSound)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = ghost;
-            //projectileController.flightSoundLoop = ; TODO
+            projectileController.flightSoundLoop = loopSound;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectileProcCoefficient.Value;
 
@@ -286,8 +347,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             var projectileSingleTarget = prefab.AddComponent<ProjectileSingleTargetImpact>();
             projectileSingleTarget.destroyWhenNotAlive = true;
             projectileSingleTarget.destroyOnWorld = true;
-            //projectileSingleTarget.impactEffect =  TODO
-            //projectileSingleTarget.hitSoundString = TODO
+            projectileSingleTarget.impactEffect = impact;
+            projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play";
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
             projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
@@ -309,6 +370,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             prefab.AddComponent<TeamFilter>();
 
             return prefab;
+        }
+
+        public LoopSoundDef CreateProjectileFlightSoundLoop()
+        {
+            var loopSound = ScriptableObject.CreateInstance<LoopSoundDef>();
+            (loopSound as ScriptableObject).name = "lsdShamanProjectile";
+            loopSound.startSoundName = "ER_Shaman_Projectile_Flight_Loop_Play";
+            loopSound.stopSoundName = "ER_Shaman_Projectile_Flight_Loop_Stop";
+
+            return loopSound;
         }
 
         public GameObject CreateShamanTeleportOut(GameObject prefab)

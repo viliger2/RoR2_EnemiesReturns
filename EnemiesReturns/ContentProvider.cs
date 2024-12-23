@@ -147,10 +147,12 @@ namespace EnemiesReturns
 
             Dictionary<string, Sprite> iconLookup = new Dictionary<string, Sprite>();
 
+            Dictionary<string, Texture2D> rampLookups = new Dictionary<string, Texture2D>();
             Texture2D texLavaCrackRound = null;
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
             {
                 texLavaCrackRound = textures.First(texture => texture.name == "texLavaCrackRound");
+                rampLookups = textures.Where(texture => texture.name.StartsWith("texRamp")).ToDictionary(texture => texture.name, texture => texture);
             }));
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Sprite[]>)((assets) =>
@@ -183,7 +185,7 @@ namespace EnemiesReturns
 
                 CreateMechanicalSpider(assets, iconLookup, acdLookup);
 
-                CreateLynxTribe(assets, iconLookup, acdLookup);
+                CreateLynxTribe(assets, iconLookup, acdLookup, rampLookups);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -896,11 +898,11 @@ namespace EnemiesReturns
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
         
-        private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
+        private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
             // TODO: config
             CreateLynxStorm(assets, acdLookup);
-            CreateLynxShaman(assets, iconLookup, acdLookup);
+            CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
             CreateLynxTotem(assets, iconLookup);
         }
 
@@ -976,7 +978,7 @@ namespace EnemiesReturns
             nopList.Add(lynxShrine);
         }
 
-        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
+        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
             ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
 
@@ -996,10 +998,20 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab = shamanStuff.CreateShamanPushBackExplosionEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackExplosion"));
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab));
 
-            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(Addressables.LoadAssetAsync<Sprite>("RoR2/Base/ElitePoison/texBuffHealingDisabledIcon.tif").WaitForCompletion()); // TODO: sprite
+            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
             bdList.Add(ShamanStuff.ReduceHealing);
 
-            var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(assets.First(prefab => prefab.name == "ShamanTrackingProjectile"), shamanStuff.CreateShamanTrackingProjectileGhost());
+            TempVisualEffectAPI.AddTemporaryVisualEffect(shamanStuff.CreateReduceHealingVisualEffect(), (body) => { return body.HasBuff(ShamanStuff.ReduceHealing); });
+
+            var projectileImpactEffect = shamanStuff.CreateShamanProjectileImpactEffect(assets.First(prefab => prefab.name == "LynxShamanProjectileImpactEffect"), rampLookups["texRampLynxShamanProjectileImpact"]);
+            effectsList.Add(new EffectDef(projectileImpactEffect));
+
+            var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(
+                assets.First(prefab => prefab.name == "ShamanTrackingProjectile"), 
+                shamanStuff.CreateShamanTrackingProjectileGhost(),
+                projectileImpactEffect,
+                shamanStuff.CreateProjectileFlightSoundLoop()
+            );
             SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
             ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.trackingProjectilePrefab = skullProjectile;
             projectilesList.Add(skullProjectile);

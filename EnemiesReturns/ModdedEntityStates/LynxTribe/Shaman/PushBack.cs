@@ -92,7 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                         scale = 4f
                     }, false);
                 }
-                Util.PlaySound("ER_Shaman_FirePushBack_Play", base.gameObject);
+                //Util.PlaySound("ER_Shaman_FirePushBack_Play", base.gameObject);
                 isAttackFired = true;
             }
 

@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using System;
+using UnityEngine.AddressableAssets;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns.ModCompats
