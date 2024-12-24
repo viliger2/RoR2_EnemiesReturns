@@ -97,6 +97,8 @@ namespace EnemiesReturns
             var damageInfo = obj.damageInfo;
             var victim = obj.victim.gameObject;
 
+            ShamanStuff.OnHitEnemy(damageInfo, null, victim);
+
             if (!damageInfo.attacker || !damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
             {
                 return;
@@ -108,7 +110,6 @@ namespace EnemiesReturns
             }
 
             ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
-            ShamanStuff.OnHitEnemy(damageInfo, attackerBody, victim);
         }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]

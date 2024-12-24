@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<ActorMixer Name="Master Mixer" ID="{3160E7DA-6C82-46A8-B27F-DB48223CE56D}" ShortID="1013550545">
 					<PropertyList>
-						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
@@ -1744,7 +1744,7 @@
 												</Sound>
 												<Sound Name="Spider_Open_Hatch" ID="{1C845AFC-ADCC-46EF-ABEB-3C92EF86BB4C}" ShortID="497821616">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1795,7 +1795,7 @@
 												</Sound>
 												<Sound Name="Spider_Close_Hatch" ID="{FC9E576D-081E-4CDD-B8D5-AA98D2E08BE9}" ShortID="668614114">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1843,7 +1843,7 @@
 												</Sound>
 												<Sound Name="Spider_Projectile_Hit" ID="{CDD8F726-F58A-43D5-9698-7330B81D0706}" ShortID="839787027">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1877,7 +1877,7 @@
 												</Sound>
 												<RandomSequenceContainer Name="Spider_Squeaky" ID="{79D28CFF-033B-4FF8-A68C-78D71EC9FC76}" ShortID="356672014">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
@@ -1967,7 +1967,7 @@
 												</RandomSequenceContainer>
 												<Sound Name="Spider_Shoot_Drone" ID="{705C5AB8-B808-43CA-85BF-78ACDF1E023A}" ShortID="409467725">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="Highpass" Type="int16">
 															<ValueList>
 																<Value>41</Value>
@@ -2011,7 +2011,7 @@
 												</Sound>
 												<Sound Name="Spider_Dash_Drone" ID="{0ED67475-32F3-4259-A870-CB60CEC42C92}" ShortID="186392746">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="Highpass" Type="int16">
 															<ValueList>
 																<Value>40</Value>
@@ -2055,7 +2055,7 @@
 												</Sound>
 												<RandomSequenceContainer Name="Spider_Light_Flicker" ID="{37DA9079-E779-400E-AAB4-01502BC88CF7}" ShortID="183790470">
 													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="MaxSoundPerInstance" Type="int16">
 															<ValueList>
 																<Value>3</Value>
@@ -2381,7 +2381,7 @@
 										</Sound>
 										<Sound Name="Spider_Alive_Loop" ID="{086737A3-1C20-4CBD-8A6E-A517C7B38B89}" ShortID="851598170">
 											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
@@ -2416,7 +2416,7 @@
 										</Sound>
 										<Sound Name="Spider_Fire_Charge_Drone" ID="{23EA7D28-7669-4384-99E8-210D956A4C1F}" ShortID="814321574">
 											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="Highpass" Type="int16">
 													<ValueList>
 														<Value>40</Value>
@@ -2500,7 +2500,7 @@
 																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-4</Value>
+																		<Value>-5</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2595,12 +2595,12 @@
 														</Sound>
 														<RandomSequenceContainer Name="Shaman_Projectile_Impact" ID="{11B2296F-B58B-4E05-85A9-4CF1284084F7}" ShortID="544873469">
 															<PropertyList>
-																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Attenuation">
-																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
 																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -2698,6 +2698,14 @@
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
+															<PositioningInfo>
+																<Panner Name="" ID="{7187E996-1353-432B-940B-14A5B74E0D86}">
+																	<PropertyList>
+																		<Property Name="PanX" Type="Real64" Value="-1.68918918918919"/>
+																		<Property Name="PanY" Type="Real64" Value="1.44927536231883"/>
+																	</PropertyList>
+																</Panner>
+															</PositioningInfo>
 														</RandomSequenceContainer>
 													</ChildrenList>
 												</ActorMixer>
@@ -2909,6 +2917,81 @@
 														<ActiveSource Name="shaman_spawn_no_voice" ID="{CD15AA2F-8226-4E11-BFB6-AC2F6BF08BD1}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Shaman_Death" ID="{5F174EE4-0494-4D05-AC06-55E98EA1DC4E}" ShortID="488088731">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shaman_death" ID="{B4F6CA85-8081-4462-9FD7-77ADEB035774}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_death.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="129875282"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_death" ID="{B4F6CA85-8081-4462-9FD7-77ADEB035774}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="New Random Container" ID="{C5A40551-D11C-4639-9A44-D2D3125721D2}" ShortID="231392423">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="New Sound SFX" ID="{22FFD042-3EFB-42B8-BA99-5ABA0D8F7B54}" ShortID="206975944">
+															<PropertyList>
+																<Property Name="Weight" Type="Real64">
+																	<ValueList>
+																		<Value>0.5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+														</Sound>
+														<Sound Name="New Sound SFX_01" ID="{7ACADEB3-DF5D-450F-8B44-EE4A54BBEBE3}" ShortID="503158677">
+															<PropertyList>
+																<Property Name="Weight" Type="Real64">
+																	<ValueList>
+																		<Value>99.5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Trap" ID="{793BD293-FFFF-40C7-81FA-CC15FE54631F}" ShortID="609972709">

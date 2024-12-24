@@ -819,6 +819,17 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Shaman_Death_Play" ID="{0305EA48-9C89-4977-8E6B-A6A9110283B1}">
+											<ChildrenList>
+												<Action Name="" ID="{C4437A2C-9AFE-4A3A-A4D0-1878FC24C0E7}" ShortID="614477615">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Death" ID="{5F174EE4-0494-4D05-AC06-55E98EA1DC4E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Trap" ID="{3C10CC59-F610-40F0-946D-DE584D8E54E3}" ShortID="1036338829">
