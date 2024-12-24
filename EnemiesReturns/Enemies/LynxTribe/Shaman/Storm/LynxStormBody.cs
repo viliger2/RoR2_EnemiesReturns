@@ -80,16 +80,42 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             indicatorObject.transform.localPosition = Vector3.zero;
             indicatorObject.transform.localRotation = Quaternion.identity;
 
+            var sphereIndicator = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
+            sphereIndicator.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
+            sphereIndicator.transform.parent = scaledTransform;
+            teamIndicatorScale = 3f * (EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabRange.Value / 3f);
+            sphereIndicator.transform.localScale = new Vector3(teamIndicatorScale, teamIndicatorScale, teamIndicatorScale);
+            sphereIndicator.transform.localPosition = Vector3.zero;
+            sphereIndicator.transform.localRotation = Quaternion.identity;
+
             ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "TeamAreaIndicator", transform = indicatorObject.transform });
             #endregion
 
             var particlesTransform = body.transform.Find("ModelBase/mdlStorm/StormParticles");
-            particlesTransform.Find("StormOutside").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
-            particlesTransform.Find("StormMiddle").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
-            particlesTransform.Find("StormInside").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", CreateTreebotTreeLeaf2Material);
-            particlesTransform.Find("TornadoMeshLow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
-            particlesTransform.Find("TornadoMeshMiddle").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
-            particlesTransform.Find("TornadoMeshUp").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            var stormOutside = particlesTransform.Find("StormOutside");
+            stormOutside.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = stormOutside.GetComponent<ParticleSystem>();
+
+            var stormMiddle = particlesTransform.Find("StormMiddle");
+            stormMiddle.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = stormMiddle.GetComponent<ParticleSystem>();
+
+            var stormImside = particlesTransform.Find("StormInside");
+            stormImside.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", CreateTreebotTreeLeaf2Material);
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = stormImside.GetComponent<ParticleSystem>();
+
+            var tornadoLow = particlesTransform.Find("TornadoMeshLow");
+            tornadoLow.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoLow.GetComponent<ParticleSystem>();
+
+            var tornadoMiddle = particlesTransform.Find("TornadoMeshMiddle");
+            tornadoMiddle.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoMiddle.GetComponent<ParticleSystem>();
+
+            var tornadoUp = particlesTransform.Find("TornadoMeshUp");
+            tornadoUp.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoUp.GetComponent<ParticleSystem>();
+
             particlesTransform.Find("SummonParticles").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/PassiveHealing/matWoodSpriteFlare.mat").WaitForCompletion();
             particlesTransform.Find("SummonParticles").GetComponent<ParticleSystemRenderer>().trailMaterial = Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoDiseaseTrail.mat").WaitForCompletion();
 
@@ -114,22 +140,21 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
-            var meshRenderer = modelPrefab.GetComponent<MeshRenderer>(); // TODO: probably can remove it completely
-            CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
-            {
-                new CharacterModel.RendererInfo
-                {
-                    renderer = meshRenderer,
-                    defaultMaterial = meshRenderer.material,
-                    ignoreOverlays = false,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    hideOnDeath = false
-                },
-            };
+            //var meshRenderer = modelPrefab.GetComponent<MeshRenderer>(); // TODO: probably can remove it completely
+            //CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
+            //{
+            //    new CharacterModel.RendererInfo
+            //    {
+            //        renderer = meshRenderer,
+            //        defaultMaterial = meshRenderer.material,
+            //        ignoreOverlays = false,
+            //        defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+            //        hideOnDeath = false
+            //    },
+            //};
             return new ICharacterModel.CharacterModelParams()
             {
-                autoPopulateLightInfos = true,
-                renderInfos = defaultRender
+                autoPopulateLightInfos = true
             };
         }
 

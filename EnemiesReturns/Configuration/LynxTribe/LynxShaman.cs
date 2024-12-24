@@ -94,7 +94,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
 
             SummonStormCooldown = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Cooldown", 30f, "Lynx Shaman's Summon Storm Cooldown.");
-            SummonStormStormMoveSpeed = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summoned Storm Movement Speed", 8f, "Lynx Shaman's Summoned Storm movement speed.");
+            SummonStormStormMoveSpeed = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summoned Storm Movement Speed", 8.5f, "Lynx Shaman's Summoned Storm movement speed.");
             SummonStormCastTime = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Cast Time", 4f, "Lynx Shaman's Summon Storm cast time.");
             SummonStormMinRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Minimum Range", 10f, "Lynx Shaman's Summon Storm's minimum range of spawning from target.");
             SummonStormMaxRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Maximum Range", 20f, "Lynx Shaman's Summon Storm's maximum range of spawning from target.");

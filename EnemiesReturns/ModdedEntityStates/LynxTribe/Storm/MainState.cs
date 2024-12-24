@@ -19,10 +19,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
         private SphereSearch pullSphereSearch;
 
+        private Transform cachedModelTransform;
+
         public override void OnEnter()
         {
             base.OnEnter();
             pullSphereSearch = new SphereSearch();
+            cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
         }
 
         public override void FixedUpdate()
@@ -50,9 +53,39 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                 }
             }
 
-            if(fixedAge >= lifetime && isAuthority)
+            if(fixedAge >= lifetime)
             {
-                healthComponent.Suicide();
+                DestroyModel();
+                if (NetworkServer.active)
+                {
+                    DestroyMaster();
+                    DestroyBody();
+                }
+            }
+        }
+
+        private void DestroyBody()
+        {
+            if (base.gameObject)
+            {
+                NetworkServer.Destroy(base.gameObject);
+            }
+        }
+
+        private void DestroyMaster()
+        {
+            if (base.characterBody && base.characterBody.master)
+            {
+                NetworkServer.Destroy(base.characterBody.masterObject);
+            }
+        }
+
+        private void DestroyModel()
+        {
+            if ((bool)cachedModelTransform)
+            {
+                EntityState.Destroy(cachedModelTransform.gameObject);
+                cachedModelTransform = null;
             }
         }
 
