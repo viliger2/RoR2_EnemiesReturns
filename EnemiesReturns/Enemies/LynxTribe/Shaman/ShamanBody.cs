@@ -136,16 +136,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 {
                     renderer = maskRenderer,
                     defaultMaterial = maskRenderer.material,
-                    ignoreOverlays = true,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 },
                 new CharacterModel.RendererInfo
                 {
                     renderer = weaponRenderer,
                     defaultMaterial = weaponRenderer.material,
-                    ignoreOverlays = true,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 }
             };
@@ -177,16 +177,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 {
                     renderer = maskRenderer,
                     defaultMaterial = maskRenderer.material,
-                    ignoreOverlays = true,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 },
                 new CharacterModel.RendererInfo
                 {
                     renderer = weaponRenderer,
                     defaultMaterial = weaponRenderer.material,
-                    ignoreOverlays = true,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 }
             };
