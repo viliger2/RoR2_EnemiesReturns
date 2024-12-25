@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
@@ -53,6 +54,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonStormThrowForce;
         public static ConfigEntry<float> SummonStormImmunityDuration;
 
+        public static ConfigEntry<KeyCode> EmoteKey;
+
         public static void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Lynx Shaman Director", "Enable Lynx Shaman", true, "Enables Lynx Shaman.");
@@ -86,6 +89,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 2000f, "Lynx Shaman's Push Back force.");
             PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 6f, "Lynx Shaman's Push Back attack radius.");
 
+            EmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha1, "Key used to Nope.");
 
 
 

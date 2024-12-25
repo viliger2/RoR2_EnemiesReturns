@@ -23,6 +23,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public static BuffDef ReduceHealing;
 
+        // TODO: use ProjectileInflictTimedBuff instead
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
             if (damageInfo.HasModdedDamageType(ApplyReducedHealing))

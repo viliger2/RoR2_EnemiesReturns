@@ -830,6 +830,28 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Shaman_Emote_Slide_Whistle_Play" ID="{F65902F5-4F07-441B-ADAA-C281247B6E92}">
+											<ChildrenList>
+												<Action Name="" ID="{CD8905BE-9B7E-4983-97EA-4712EB82C828}" ShortID="166403058">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_Slide_Whistle" ID="{6162EDEF-A39B-405E-93AD-5A92662E7ED9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Shaman_Emote_NOPE" ID="{F5D0A5FB-0075-4A66-801B-CEA5A5A117A2}">
+											<ChildrenList>
+												<Action Name="" ID="{E4B8C327-4136-4F4F-B091-C7B1FB78ADF1}" ShortID="604050671">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shaman_NOPE" ID="{6AF6C25A-BB41-42CD-9425-6F75C045EB72}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Trap" ID="{3C10CC59-F610-40F0-946D-DE584D8E54E3}" ShortID="1036338829">

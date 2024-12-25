@@ -2946,7 +2946,14 @@
 														<ActiveSource Name="shaman_death" ID="{B4F6CA85-8081-4462-9FD7-77ADEB035774}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<RandomSequenceContainer Name="New Random Container" ID="{C5A40551-D11C-4639-9A44-D2D3125721D2}" ShortID="231392423">
+												<Sound Name="Shaman_Slide_Whistle" ID="{6162EDEF-A39B-405E-93AD-5A92662E7ED9}" ShortID="4999929">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -2956,42 +2963,47 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<Sound Name="New Sound SFX" ID="{22FFD042-3EFB-42B8-BA99-5ABA0D8F7B54}" ShortID="206975944">
-															<PropertyList>
-																<Property Name="Weight" Type="Real64">
-																	<ValueList>
-																		<Value>0.5</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-														</Sound>
-														<Sound Name="New Sound SFX_01" ID="{7ACADEB3-DF5D-450F-8B44-EE4A54BBEBE3}" ShortID="503158677">
-															<PropertyList>
-																<Property Name="Weight" Type="Real64">
-																	<ValueList>
-																		<Value>99.5</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-														</Sound>
+														<AudioFileSource Name="shaman_slide_whistle" ID="{91C8F653-F252-49AB-A9AB-FBA17E0B6C65}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\shaman_slide_whistle.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="870425413"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
-												</RandomSequenceContainer>
+													<ActiveSourceList>
+														<ActiveSource Name="shaman_slide_whistle" ID="{91C8F653-F252-49AB-A9AB-FBA17E0B6C65}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Shaman_NOPE" ID="{6AF6C25A-BB41-42CD-9425-6F75C045EB72}" ShortID="556576979">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Engineer_no01" ID="{8D349CB7-7F1A-4C90-B24E-74D28040804D}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Shaman\Engineer_no01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="108281566"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Engineer_no01" ID="{8D349CB7-7F1A-4C90-B24E-74D28040804D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Trap" ID="{793BD293-FFFF-40C7-81FA-CC15FE54631F}" ShortID="609972709">

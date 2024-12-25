@@ -204,7 +204,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 {
                     name = "Body",
                     initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain)), // TODO?
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {
