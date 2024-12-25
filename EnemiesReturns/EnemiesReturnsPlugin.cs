@@ -97,7 +97,7 @@ namespace EnemiesReturns
             var damageInfo = obj.damageInfo;
             var victim = obj.victim.gameObject;
 
-            ShamanStuff.OnHitEnemy(damageInfo, null, victim);
+            //ShamanStuff.OnHitEnemy(damageInfo, null, victim);
 
             if (!damageInfo.attacker || !damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
             {

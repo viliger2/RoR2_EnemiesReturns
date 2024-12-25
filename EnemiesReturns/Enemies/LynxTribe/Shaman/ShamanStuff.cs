@@ -23,7 +23,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public static BuffDef ReduceHealing;
 
-        // TODO: use ProjectileInflictTimedBuff instead
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
             if (damageInfo.HasModdedDamageType(ApplyReducedHealing))
@@ -352,7 +351,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play";
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
+            //projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
 
             prefab.AddComponent<ProjectileTargetComponent>();
 
@@ -367,6 +366,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             var steerTowards = prefab.AddComponent<ProjectileSteerTowardTarget>();
             steerTowards.rotationSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesTurnSpeed.Value;
+
+            var applyDebuff = prefab.AddComponent<ProjectileInflictTimedBuff>();
+            applyDebuff.buffDef = ReduceHealing;
+            applyDebuff.duration = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value;
 
             prefab.AddComponent<TeamFilter>();
 

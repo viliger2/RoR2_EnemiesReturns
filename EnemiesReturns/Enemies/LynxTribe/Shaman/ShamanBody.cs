@@ -90,7 +90,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return new IAimAssist.AimAssistTargetParams()
             {
                 assistScale = 2f,
-                pathToPoint0 = "ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/Chest/Neck/Head/Head_end",
+                pathToPoint0 = "ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/Chest/Neck/Head",
                 pathToPoint1 = "ModelBase/mdlLynxShaman/LynxArmature/Base"
             };
         }

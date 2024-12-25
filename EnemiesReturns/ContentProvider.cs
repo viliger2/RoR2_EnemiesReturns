@@ -980,6 +980,10 @@ namespace EnemiesReturns
             ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
 
             var shamanStuff = new ShamanStuff();
+
+            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
+            bdList.Add(ShamanStuff.ReduceHealing);
+
             Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
             Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
 
@@ -994,9 +998,6 @@ namespace EnemiesReturns
 
             ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab = shamanStuff.CreateShamanPushBackExplosionEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackExplosion"));
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab));
-
-            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
-            bdList.Add(ShamanStuff.ReduceHealing);
 
             TempVisualEffectAPI.AddTemporaryVisualEffect(shamanStuff.CreateReduceHealingVisualEffect(), (body) => { return body.HasBuff(ShamanStuff.ReduceHealing); });
 
