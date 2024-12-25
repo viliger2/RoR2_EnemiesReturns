@@ -54,7 +54,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonStormThrowForce;
         public static ConfigEntry<float> SummonStormImmunityDuration;
 
-        public static ConfigEntry<KeyCode> EmoteKey;
+        public static ConfigEntry<KeyCode> NopeEmoteKey;
+        public static ConfigEntry<KeyCode> SingEmoteKey;
 
         public static void PopulateConfig(ConfigFile config)
         {
@@ -89,8 +90,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 2000f, "Lynx Shaman's Push Back force.");
             PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 6f, "Lynx Shaman's Push Back attack radius.");
 
-            EmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha1, "Key used to Nope.");
-
+            NopeEmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha1, "Key used to Nope.");
+            SingEmoteKey = config.Bind("Lynx Shaman Emotes", "Sing Emote", KeyCode.Alpha2, "Key used to Sing.");
 
 
 

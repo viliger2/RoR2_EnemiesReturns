@@ -14,9 +14,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
-                if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.EmoteKey.Value))
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.NopeEmoteKey.Value))
                 {
-                    this.outer.SetInterruptState(new NopePlayer(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new NopeEmotePlayer(), InterruptPriority.Any);
+                } else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
+                {
+                    this.outer.SetInterruptState(new SingEmotePlayer(), InterruptPriority.Any);
                 }
             }
         }

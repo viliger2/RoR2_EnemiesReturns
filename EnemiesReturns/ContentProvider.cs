@@ -1061,7 +1061,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
 
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));

@@ -852,6 +852,31 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_ShamanTookTheDrug_Play" ID="{E9C22DE8-C1F2-4C41-831C-97E25CCF656A}">
+											<ChildrenList>
+												<Action Name="" ID="{ABB40E75-674E-4B2C-90D5-EC5F0D3D2AF6}" ShortID="738463642">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="ShamanTookTheDrug" ID="{4707980D-815C-401B-A533-F6D76172D64B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_ShamanTookTheDrug_Stop" ID="{298AF0D8-E63E-471C-AC28-DDAD09F00C3E}">
+											<ChildrenList>
+												<Action Name="" ID="{82B309D3-4A55-4EA3-9B89-3AC4F086EAB2}" ShortID="307027102">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="ShamanTookTheDrug" ID="{4707980D-815C-401B-A533-F6D76172D64B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Trap" ID="{3C10CC59-F610-40F0-946D-DE584D8E54E3}" ShortID="1036338829">

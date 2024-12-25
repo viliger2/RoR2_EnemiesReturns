@@ -3004,6 +3004,36 @@
 														<ActiveSource Name="Engineer_no01" ID="{8D349CB7-7F1A-4C90-B24E-74D28040804D}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="ShamanTookTheDrug" ID="{4707980D-815C-401B-A533-F6D76172D64B}" ShortID="992278961">
+													<PropertyList>
+														<Property Name="OverrideConversion" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-21</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="you_shall_not_pass" ID="{32FB5BBE-F9FB-4E73-A649-4CE50D039BF4}">
+															<Language>SFX</Language>
+															<AudioFile>you_shall_not_pass.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="63293688"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="you_shall_not_pass" ID="{32FB5BBE-F9FB-4E73-A649-4CE50D039BF4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Trap" ID="{793BD293-FFFF-40C7-81FA-CC15FE54631F}" ShortID="609972709">
