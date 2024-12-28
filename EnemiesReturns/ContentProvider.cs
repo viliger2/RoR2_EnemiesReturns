@@ -594,6 +594,7 @@ namespace EnemiesReturns
         private ExplicitPickupDropTable CreateColossusItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             ExplicitPickupDropTable dtColossus = null;
+
             if (EnemiesReturns.Configuration.Colossus.ItemEnabled.Value)
             {
                 Items.ColossalKnurl.ColossalKnurlFactory.ColossalFist = ProcTypeAPI.ReserveProcType();

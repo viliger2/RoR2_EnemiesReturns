@@ -93,8 +93,10 @@ namespace EnemiesReturns
             {
                 return;
             }
-
-            ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
+            if (EnemiesReturns.Configuration.Colossus.ItemEnabled.Value)
+            {
+                ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
+            }
         }
 
         [ConCommand(commandName = "returns_spawn_titans", flags = ConVarFlags.None, helpText = "Spawns all Titan variants")]
