@@ -1,9 +1,15 @@
 <details>
+<summary>0.3.10</summary>
+
+* Fixed a potential ArgumentOutOfRangeException on dealing damage if Colossal Fist is disabled.
+
+</details>
+<details>
 <summary>0.3.9</summary>
 
 * Fixed bodies mass being inconsistent (you will no longer throw Spitter around as Loader with just basic attacks).
 * Update to new game patch.
-	*_New system for DamageSource is not implemented yet. Will be implemented with next batch of enemies, so mod's enemies could take advantage of items that trigger of specific abilities or DoTs._
+	* _New system for DamageSource is not implemented yet. Will be implemented with next batch of enemies, so mod's enemies could take advantage of items that trigger of specific abilities or DoTs._
 * Mechanical Spider
 	* Fixed Spider trying to attack owner when there are no enemies nearby.
 	* Some additional visual polish.
