@@ -3,8 +3,9 @@ using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe;
+using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
-using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -899,9 +900,36 @@ namespace EnemiesReturns
         private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
             // TODO: config
-            CreateLynxStorm(assets, acdLookup);
+            // TODO: child entities other than shaman to totem
+            CreateLynxStorm(assets, acdLookup); // TODO: storm should check either totem or shaman
             CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
             CreateLynxTotem(assets, iconLookup);
+            CreateLynxScout(assets, iconLookup);
+        }
+
+        public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var scoutBody = new ScoutBody();
+            ScoutBody.Skills.DoubleSlash = scoutBody.CreateDoubleSlashSkill();
+
+            sdList.Add(ScoutBody.Skills.DoubleSlash);
+
+            ScoutBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxScoutPrimarySkillFamily", ScoutBody.Skills.DoubleSlash);
+
+            sfList.Add(ScoutBody.SkillFamilies.Primary);
+
+            ScoutBody.BodyPrefab = scoutBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutBody"), sprite: null); // TODO: icon
+            bodyList.Add(ScoutBody.BodyPrefab);
+
+            var scoutMaster = new ScoutMaster();
+            ScoutMaster.MasterPrefab = scoutMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxScoutMaster"), ScoutBody.BodyPrefab);
+            masterList.Add(ScoutMaster.MasterPrefab);
+
+            ScoutBody.SpawnCards.cscLynxScoutDefault = scoutBody.CreateCard("cscLynxScoutDefault", ScoutMaster.MasterPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
         }
 
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
