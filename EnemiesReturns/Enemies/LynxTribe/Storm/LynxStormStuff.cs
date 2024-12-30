@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
+namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
     public class LynxStormStuff
     {

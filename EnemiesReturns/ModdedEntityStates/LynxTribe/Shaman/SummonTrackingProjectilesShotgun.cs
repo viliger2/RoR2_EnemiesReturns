@@ -51,7 +51,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             PlayCrossfade("Gesture", "SummonStorm", "SummonStorm.playbackRate", duration, 0.1f);
             childLocator = GetModelChildLocator();
             spawnPoint = childLocator.FindChild("StaffUpperPoint");
-            Util.PlayAttackSpeedSound(EnemiesReturns.Configuration.General.ShamanVoices.Value ? "ER_Shaman_SummonProjectiles_Play" : "ER_Shaman_SummonProjectiles_No_Voice_Play", base.gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound(EnemiesReturns.Configuration.General.LynxVoices.Value ? "ER_Shaman_SummonProjectiles_Play" : "ER_Shaman_SummonProjectiles_No_Voice_Play", base.gameObject, attackSpeedStat);
             if (!spawnPoint)
             {
                 spawnPoint = transform;

@@ -9,11 +9,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
-namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
+namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
     public class LynxStormComponent : MonoBehaviour
     {
-        public static float baseDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabDuration.Value;
+        public static float baseDuration => Configuration.LynxTribe.LynxShaman.SummonStormGrabDuration.Value;
 
         // magic numbers are used in logariphmic spiral calculation
         // so grabbed targets stay approximately within storm's default radius 
@@ -21,7 +21,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         public static float baseB = 0.3f; // magic number 2
 
-        public static float baseForce => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormThrowForce.Value;
+        public static float baseForce => Configuration.LynxTribe.LynxShaman.SummonStormThrowForce.Value;
 
         public static float pullStr = 10f;
 
@@ -29,7 +29,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         public float yHeight = 8f;
 
-        public float immunityDuration => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormImmunityDuration.Value;
+        public float immunityDuration => Configuration.LynxTribe.LynxShaman.SummonStormImmunityDuration.Value;
 
         public GameObject storm;
 
@@ -54,15 +54,15 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             b = baseB + UnityEngine.Random.Range(-0.05f, 0.05f);
 
             characterBody = GetComponent<CharacterBody>();
-            if(!characterBody || !characterBody.hasEffectiveAuthority)
+            if (!characterBody || !characterBody.hasEffectiveAuthority)
             {
-                UnityEngine.Object.Destroy(this);
+                Destroy(this);
                 return;
             }
             characterMotor = GetComponent<CharacterMotor>();
             if (!characterMotor)
             {
-                UnityEngine.Object.Destroy(this);
+                Destroy(this);
                 return;
             }
             rigidbody = GetComponent<Rigidbody>();

@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
 using RoR2.Audio;
 using Mono.Cecil.Cil;
@@ -372,6 +371,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             applyDebuff.duration = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value;
 
             prefab.AddComponent<TeamFilter>();
+
+            MyPrefabAPI.RegisterNetworkPrefab(prefab);
 
             return prefab;
         }

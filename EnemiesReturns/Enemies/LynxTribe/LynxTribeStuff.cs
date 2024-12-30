@@ -1,5 +1,5 @@
 ﻿using EnemiesReturns.Behaviors;
-using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.ModCompats.PrefabAPICompat;
 using RoR2;
 using System;

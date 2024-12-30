@@ -1051,7 +1051,7 @@ namespace EnemiesReturns
             sfList.Add(ShamanBody.SkillFamilies.Primary);
             sfList.Add(ShamanBody.SkillFamilies.Secondary);
 
-            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody")); // TODO: sprite
+            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody"), null, shamanLog); // TODO: sprite
             bodyList.Add(ShamanBody.BodyPrefab);
             ShamanMaster.MasterPrefab = new ShamanMaster().AddMasterComponents(assets.First(master => master.name == "LynxShamanMaster"), ShamanBody.BodyPrefab);
             masterList.Add(ShamanMaster.MasterPrefab);

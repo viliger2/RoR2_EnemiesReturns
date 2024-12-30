@@ -21,7 +21,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
+namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
     public class LynxStormBody : BodyBase
     {
@@ -45,8 +45,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
 
         public CharacterSpawnCard CreateCard(string name, GameObject master)
         {
-            return CreateCard(new SpawnCardParams(name, master, 0) 
-            { 
+            return CreateCard(new SpawnCardParams(name, master, 0)
+            {
                 hullSize = HullClassification.Human,
                 occupyPosition = true
             });
@@ -66,7 +66,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             osc.useOverallCurveOnly = false;
             osc.resetOnAwake = true;
             osc.useUnscaledTime = false;
-            osc.timeMax = Mathf.Max(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value, 1f);
+            osc.timeMax = Mathf.Max(Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value, 1f);
             osc.curveX = acdLookup["acdLinearCurve"].curve;
             osc.curveY = acdLookup["acdLinearCurve"].curve;
             osc.curveZ = acdLookup["acdLinearCurve"].curve;
@@ -75,7 +75,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             var indicatorObject = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, GroundOnly.prefab").WaitForCompletion());
             indicatorObject.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
             indicatorObject.transform.parent = scaledTransform;
-            var teamIndicatorScale = 18.75f * (EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormRadius.Value / 20f);
+            var teamIndicatorScale = 18.75f * (Configuration.LynxTribe.LynxShaman.SummonStormRadius.Value / 20f);
             indicatorObject.transform.localScale = new Vector3(teamIndicatorScale, teamIndicatorScale, teamIndicatorScale); // 18.75 is equal to 30 explosion radius after rescaling the model
             indicatorObject.transform.localPosition = Vector3.zero;
             indicatorObject.transform.localRotation = Quaternion.identity;
@@ -83,7 +83,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
             var sphereIndicator = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/TeamAreaIndicator, FullSphere.prefab").WaitForCompletion());
             sphereIndicator.GetComponent<TeamAreaIndicator>().teamComponent = teamComponent;
             sphereIndicator.transform.parent = scaledTransform;
-            teamIndicatorScale = 3f * (EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabRange.Value / 3f);
+            teamIndicatorScale = 3f * (Configuration.LynxTribe.LynxShaman.SummonStormGrabRange.Value / 3f);
             sphereIndicator.transform.localScale = new Vector3(teamIndicatorScale, teamIndicatorScale, teamIndicatorScale);
             sphereIndicator.transform.localPosition = Vector3.zero;
             sphereIndicator.transform.localRotation = Quaternion.identity;
@@ -131,7 +131,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman.Storm
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_STORM_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormStormMoveSpeed.Value, 
+                baseMoveSpeed = Configuration.LynxTribe.LynxShaman.SummonStormStormMoveSpeed.Value,
                 baseJumpCount = 0,
                 baseJumpPower = 0f,
                 bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.IgnoreKnockback | CharacterBody.BodyFlags.ImmuneToLava

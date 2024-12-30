@@ -22,7 +22,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<float> testconfig;
 
-        public static ConfigEntry<bool> ShamanVoices;
+        public static ConfigEntry<bool> LynxVoices;
 #endif
 
         public static void PopulateConfig(ConfigFile config)
@@ -30,7 +30,7 @@ namespace EnemiesReturns.Configuration
 #if DEBUG || NOWEAVER
             DebugWalkSpeedValue = config.Bind("Debug", "walkSpeed value", 1f, "Value speed for walkSpeed animation. For debugging.");
             testconfig = config.Bind("test", "test", 5f, "test");
-            ShamanVoices = config.Bind("Shaman Voices", "Shaman has a voice", false, "Crash Bandicoot");
+            LynxVoices = config.Bind("Lynx Voices", "Catmonkeythings have a voice", false, "Crash Bandicoot");
 #endif
         }
     }

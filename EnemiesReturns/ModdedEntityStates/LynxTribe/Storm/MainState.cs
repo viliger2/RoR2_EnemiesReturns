@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.Enemies.LynxTribe.Shaman.Storm;
+﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EntityStates;
 using RoR2;
 using System.Collections.Generic;

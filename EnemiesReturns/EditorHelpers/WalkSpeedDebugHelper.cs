@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.EditorHelpers
 {
-    public class AnimationParameterHelper : MonoBehaviour
+    public class WalkSpeedDebugHelper : MonoBehaviour
     {
         public Animator animator;
 
