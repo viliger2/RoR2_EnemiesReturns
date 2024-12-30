@@ -1,6 +1,6 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
+using R2API;
 using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;

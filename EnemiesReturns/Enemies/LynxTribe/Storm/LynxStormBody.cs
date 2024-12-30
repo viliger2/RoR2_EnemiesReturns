@@ -6,7 +6,6 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using EntityStates.Fauna;
 using HG;

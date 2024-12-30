@@ -1,7 +1,7 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.GeneralComponents;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
+using R2API;
 using RoR2;
 using UnityEngine;
 

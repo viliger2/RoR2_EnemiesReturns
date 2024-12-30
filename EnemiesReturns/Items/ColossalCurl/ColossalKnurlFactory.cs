@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.ModCompats.PrefabAPICompat;
-using R2API;
+﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
@@ -87,7 +86,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.lifetime = 0.65f; // matches with animation and sound, DO NOT TOUCH
             projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion();
 
-            MyPrefabAPI.RegisterNetworkPrefab(fistPrefab);
+            PrefabAPI.RegisterNetworkPrefab(fistPrefab);
 
             return fistPrefab;
         }

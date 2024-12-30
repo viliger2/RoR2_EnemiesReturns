@@ -1,6 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
+using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;

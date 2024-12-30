@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.ModCompats.PrefabAPICompat;
-using EntityStates.VoidRaidCrab.Leg;
+﻿using EntityStates.VoidRaidCrab.Leg;
 using RoR2;
 using System;
 using System.Collections.Generic;

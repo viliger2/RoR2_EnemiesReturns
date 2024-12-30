@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using RoR2.Audio;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -93,7 +92,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         // TODO: with two leafs for other tribe members
         public GameObject CreateSpawnEffect(GameObject prefab)
         {
-            var spawnEffect = MyPrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
+            var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
 
             spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
             spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
@@ -126,7 +125,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public GameObject CreateShamanTrackingProjectileGhost()
         {
-            var prefab = MyPrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileGhost", false);
+            var prefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileGhost", false);
 
             if(prefab.TryGetComponent<OrbEffect>(out var orbEffect))
             {
@@ -234,7 +233,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public GameObject CreateShamanTrackingProjectileSummonEffect(AnimationCurveDef acd)
         {
-            var prefab = MyPrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileEffect", false);
+            var prefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileEffect", false);
             if (prefab.TryGetComponent<OrbEffect>(out var orbEffect))
             {
                 UnityEngine.Object.DestroyImmediate(orbEffect);
@@ -372,7 +371,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             prefab.AddComponent<TeamFilter>();
 
-            MyPrefabAPI.RegisterNetworkPrefab(prefab);
+            PrefabAPI.RegisterNetworkPrefab(prefab);
 
             return prefab;
         }

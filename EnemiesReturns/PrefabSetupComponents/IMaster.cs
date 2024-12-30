@@ -1,7 +1,7 @@
 ﻿using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.MasterComponents;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.PrefabSetupComponents.MasterComponents;
+using R2API;
 using Rewired.Utils;
 using System.Linq;
 using UnityEngine;
