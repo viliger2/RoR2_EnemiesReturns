@@ -909,6 +909,18 @@ namespace EnemiesReturns
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
+            var scoutStuff = new ScoutStuff();
+
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectLeft = scoutStuff.CreateDoubleSlashClawEffect(assets.First(prefab => prefab.name == "LynxScoutClawEffectLeft"));
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectRight = scoutStuff.CreateDoubleSlashClawEffect(assets.First(prefab => prefab.name == "LynxScoutClawEffectRight"));
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectLeft = scoutStuff.CreateDoubleSlashLeftHandSwingTrail();
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectRight = scoutStuff.CreateDoubleSlashRightHandSwingTrail();
+
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectLeft));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectRight));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectLeft));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectRight));
+
             var scoutBody = new ScoutBody();
             ScoutBody.Skills.DoubleSlash = scoutBody.CreateDoubleSlashSkill();
 
@@ -925,7 +937,7 @@ namespace EnemiesReturns
             ScoutMaster.MasterPrefab = scoutMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxScoutMaster"), ScoutBody.BodyPrefab);
             masterList.Add(ScoutMaster.MasterPrefab);
 
-            ScoutBody.SpawnCards.cscLynxScoutDefault = scoutBody.CreateCard("cscLynxScoutDefault", ScoutMaster.MasterPrefab);
+            ScoutBody.SpawnCards.cscLynxScoutDefault = scoutBody.CreateCard("cscLynxScoutDefault", ScoutMaster.MasterPrefab, ScoutBody.SkinDefs.Default, ScoutBody.BodyPrefab);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
@@ -940,6 +952,10 @@ namespace EnemiesReturns
             nseList.Add(nseLynxTribeTrapTwigSnap);
 
             var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
+
+            var spawnEffect = lynxStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
+            effectsList.Add(new EffectDef(spawnEffect));
 
             // TODO: do better
             var spawnCardTrap = ScriptableObject.CreateInstance<InteractableSpawnCard>();
@@ -1084,7 +1100,7 @@ namespace EnemiesReturns
             ShamanMaster.MasterPrefab = new ShamanMaster().AddMasterComponents(assets.First(master => master.name == "LynxShamanMaster"), ShamanBody.BodyPrefab);
             masterList.Add(ShamanMaster.MasterPrefab);
 
-            ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab);
+            ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab, ShamanBody.SkinDefs.Default, ShamanBody.BodyPrefab);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));

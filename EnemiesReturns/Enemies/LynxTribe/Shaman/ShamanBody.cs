@@ -81,7 +81,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxShaman.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
-                occupyPosition = false
+                occupyPosition = false,
+                skinDef = skin,
+                bodyPrefab = bodyGameObject
             });
         }
 

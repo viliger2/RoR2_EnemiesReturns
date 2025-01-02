@@ -4,6 +4,7 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
@@ -38,6 +39,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             public static CharacterSpawnCard cscLynxScoutDefault;
         }
 
+        protected override bool AddHitBoxes => true;
+
         public static GameObject BodyPrefab;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
@@ -55,7 +58,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
         {
             return new ISetStateOnHurt.SetStateOnHurtParams("Body", new EntityStates.SerializableEntityStateType(typeof(EntityStates.HurtState)))
             {
-                hitThreshold = 0.15f
+                hitThreshold = 0.2f
             };
         }
 
@@ -77,7 +80,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
                 nameToken = "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 0f,
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxScout.DoubleSlashCooldown.Value,
             });
         }
 
@@ -86,18 +89,18 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SCOUT_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f, // TODO: config
-                baseMaxHealth = 80f,
-                baseMoveSpeed = 9f,
+                baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseMaxHealth.Value,
+                baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseMoveSpeed.Value,
                 baseAcceleration = 30f,
-                baseJumpPower = 18f,
-                baseDamage = 12f,
+                baseJumpPower = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseJumpPower.Value,
+                baseDamage = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseDamage.Value,
                 baseArmor = 0f,
                 hullClassification = HullClassification.Human,
                 bodyColor = new Color(72 / 255, 73 / 255, 109 / 255),
                 isChampion = false,
                 autoCalculateStats = true,
-                levelMaxHealth = 24f,
-                levelDamage = 2.4f,
+                levelMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxScout.LevelMaxHealth.Value,
+                levelDamage = EnemiesReturns.Configuration.LynxTribe.LynxScout.LevelDamage.Value,
                 levelArmor = 0f
             };
         }
@@ -145,10 +148,12 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, 0) // TODO
+            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxScout.DirectorCost.Value) // TODO: director cost
             {
                 hullSize = HullClassification.Human,
-                occupyPosition = false
+                occupyPosition = false,
+                skinDef = skin,
+                bodyPrefab = bodyGameObject,
             });
         }
 
@@ -245,6 +250,23 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
                 minDistance = 1.5f,
                 maxDistance = 6f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
+            };
+        }
+
+        protected override IHitboxes.HitBoxesParams[] HitBoxesParams()
+        {
+            return new IHitboxes.HitBoxesParams[]
+            {
+                new IHitboxes.HitBoxesParams
+                {
+                    groupName = "LeftSlash",
+                    pathsToTransforms = new string[] { "LynxScout/ROOT/LeftSlashHitbox" }
+                },
+                new IHitboxes.HitBoxesParams
+                {
+                    groupName = "RightSlash",
+                    pathsToTransforms = new string[] { "LynxScout/ROOT/RightSlashHitbox" }
+                },
             };
         }
 

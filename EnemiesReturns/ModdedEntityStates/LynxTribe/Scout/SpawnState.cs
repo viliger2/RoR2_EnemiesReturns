@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
         {
             spawnSoundString = EnemiesReturns.Configuration.General.LynxVoices.Value ? "" : ""; // TODO
             duration = 1.2f;
-            //EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
+            EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();
         }
 

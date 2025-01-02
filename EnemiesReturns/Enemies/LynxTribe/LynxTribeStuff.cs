@@ -19,7 +19,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
             //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
-            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material);
 
             spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
 
@@ -30,6 +30,61 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawnEffect.AddComponent<DestroyOnParticleEnd>();
 
             return spawnEffect;
+        }
+
+        public FamilyDirectorCardCategorySelection CreateLynxTribeFamily()
+        {
+            var dccsFamily = ScriptableObject.CreateInstance<FamilyDirectorCardCategorySelection>();
+            (dccsFamily as ScriptableObject).name = "dccsLynxTribeFamily";
+
+            dccsFamily.selectionChatString = "ENEMIES_RETURNS_FAMILY_LYNX_TRIBE";
+            dccsFamily.minimumStageCompletion = 1;
+            dccsFamily.maximumStageCompletion = int.MaxValue;
+
+            // TODO: add totem
+            var champions = new FamilyDirectorCardCategorySelection.Category
+            {
+                name = ContentProvider.MonsterCategories.Champions,
+                selectionWeight = 2f
+            };
+
+            // TODO: add the rest
+            var basicMonsters = new FamilyDirectorCardCategorySelection.Category
+            {
+                name = ContentProvider.MonsterCategories.BasicMonsters,
+                selectionWeight = 4f,
+                cards = new DirectorCard[]
+                {
+                    // Scout
+                    new DirectorCard
+                    {
+                        spawnCard = Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
+                        selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxScout.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Close,
+                        preventOverhead = false
+                    }
+                }
+            };
+            // adding shaman separately since he can spawn on his own and has his own enabled flag
+            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                HG.ArrayUtils.ArrayAppend(ref basicMonsters.cards, new DirectorCard
+                {
+                    spawnCard = Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault,
+                    selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = false
+                }
+                );
+            }
+
+            dccsFamily.categories = new DirectorCardCategorySelection.Category[]
+            {
+                champions,
+                basicMonsters
+            };
+
+            return dccsFamily;
         }
 
         // TODO: config this shit
@@ -43,9 +98,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             var spawner = trapPrefab.AddComponent<LynxTribeSpawner>();
             spawner.eliteBias = 1f;
-            spawner.spawnCards = new RoR2.SpawnCard[]
+            spawner.spawnCards = new SpawnCard[]
             {
-                Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Lemurian/cscLemurian.asset").WaitForCompletion() // TODO: replace with lynx tribe cards
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, // TODO: other card
             };
             spawner.minSpawnCount = 3;
             spawner.maxSpawnCount = 5;
@@ -89,6 +144,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return trapPrefab;
         }
 
+        // TODO: lodsofconfig
         public GameObject CreateShrinePrefab(GameObject shrinePrefab)
         {
             shrinePrefab.AddComponent<NetworkIdentity>();
@@ -110,9 +166,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
             spawner.eliteBias = 1f;
-            spawner.spawnCards = new RoR2.SpawnCard[]
+            spawner.spawnCards = new SpawnCard[]
             {
-                Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/Lemurian/cscLemurian.asset").WaitForCompletion() // TODO: replace with lynx tribe cards
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, // TODO: other card
             };
             spawner.minSpawnCount = 3;
             spawner.maxSpawnCount = 5;
