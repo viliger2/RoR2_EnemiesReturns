@@ -3,6 +3,7 @@ using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe;
+using EnemiesReturns.Enemies.LynxTribe.Hunter;
 using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
@@ -905,6 +906,37 @@ namespace EnemiesReturns
             CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
             CreateLynxTotem(assets, iconLookup);
             CreateLynxScout(assets, iconLookup);
+            CreateLynxHunter(assets, iconLookup);
+        }
+
+        public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var hunterStuff = new HunterStuff();
+            ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = hunterStuff.CreateHunterAttackEffect(assets.First(prefab => prefab.name == "LynxHunterAttackEffect"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect));
+
+            ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = hunterStuff.CreateHunterAttackSpearTipEffect(assets.First(prefab => prefab.name == "LynxHunterSpearTipEffect"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect));
+
+            var hunterBody = new HunterBody();
+            HunterBody.Skills.Stab = hunterBody.CreateStabSkill();
+            sdList.Add(HunterBody.Skills.Stab);
+
+            HunterBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxHunterPrimarySkillFamily", HunterBody.Skills.Stab);
+            sfList.Add(HunterBody.SkillFamilies.Primary);
+
+            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: null);
+            bodyList.Add(HunterBody.BodyPrefab);
+
+            var hunterMaster = new HunterMaster();
+            HunterMaster.MasterPrefab = hunterMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxHunterMaster"), HunterBody.BodyPrefab);
+            masterList.Add(HunterMaster.MasterPrefab);
+
+            HunterBody.SpawnCards.cscLynxHunterDefault = hunterBody.CreateCard("cscLynxHunterDefault", HunterMaster.MasterPrefab, HunterBody.SkinDefs.Default, HunterBody.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Stab));
         }
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -955,6 +987,7 @@ namespace EnemiesReturns
 
             var spawnEffect = lynxStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
             ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Hunter.SpawnState.spawnEffect = spawnEffect;
             effectsList.Add(new EffectDef(spawnEffect));
 
             // TODO: do better
