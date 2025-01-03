@@ -86,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                         EffectManager.SpawnEffect(clawEffectLeft, new EffectData
                         {
                             rootObject = base.gameObject,
-                            modelChildIndex = (short)GetModelChildLocator().FindChildIndex("HandL")
+                            modelChildIndex = (short)childLocator.FindChildIndex("HandL")
                         }, false);
                     }
 
@@ -111,7 +111,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                         EffectManager.SpawnEffect(clawEffectRight, new EffectData
                         {
                             rootObject = base.gameObject,
-                            modelChildIndex = (short)GetModelChildLocator().FindChildIndex("HandR")
+                            modelChildIndex = (short)childLocator.FindChildIndex("HandR")
                         }, false);
                         spawnedEffectRight = true;
                     }

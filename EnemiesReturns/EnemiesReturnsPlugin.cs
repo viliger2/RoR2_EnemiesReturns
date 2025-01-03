@@ -58,6 +58,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
                 EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.MechanicalSpider.cfg"), true));
                 EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxShaman.cfg"), true));
+                EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxScout.cfg"), true));
             }
             else
             {
@@ -71,6 +72,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(notSavedConfigFile);
             }
             EnemiesReturns.Configuration.General.PopulateConfig(Config);
 

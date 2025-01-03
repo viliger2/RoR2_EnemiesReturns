@@ -88,7 +88,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SCOUT_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                mainRootSpeed = 33f, // TODO: config
+                mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseMaxHealth.Value,
                 baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseMoveSpeed.Value,
                 baseAcceleration = 30f,
@@ -148,7 +148,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxScout.DirectorCost.Value) // TODO: director cost
+            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxScout.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
                 occupyPosition = false,

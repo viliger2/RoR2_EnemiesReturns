@@ -119,5 +119,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
         }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
     }
 }
