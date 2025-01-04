@@ -78,6 +78,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.blastProcCoefficient = EnemiesReturns.Configuration.Colossus.KnurlProcCoefficient.Value;
             projectileImpactExplosion.blastAttackerFiltering = AttackerFiltering.Default;
             projectileImpactExplosion.canRejectForce = true;
+            projectileImpactExplosion.bonusBlastForce = Vector3.down * EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
 
             projectileImpactExplosion.fireChildren = false;
             projectileImpactExplosion.applyDot = false;
@@ -123,7 +124,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                     fireProjectileInfo.rotation = Quaternion.identity;
                     fireProjectileInfo.owner = attackerBody.gameObject;
                     fireProjectileInfo.damage = damageInfo.damage * damageCoef;
-                    fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
+                    //fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
                     fireProjectileInfo.crit = damageInfo.crit;
                     fireProjectileInfo.procChainMask = damageInfo.procChainMask;
                     fireProjectileInfo.procChainMask.AddModdedProc(ColossalFist);
