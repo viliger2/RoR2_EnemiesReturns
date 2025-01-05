@@ -15,7 +15,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
         public bool available;
 
         [SyncVar(hook = "OnPickupChanged")]
-        private PickupIndex pickupIndex;
+        public int pickupValue;
+
+        public PickupIndex pickupIndex;
 
         public PickupDropTable dropTable;
 
@@ -39,6 +41,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             {
                 var rng = new Xoroshiro128Plus(Run.instance.treasureRng.nextUlong);
                 pickupIndex = dropTable.GenerateDrop(rng);
+                pickupValue = pickupIndex.value;
                 if (pickupDisplay)
                 {
                     pickupDisplay.SetPickupIndex(pickupIndex);
@@ -70,9 +73,11 @@ namespace EnemiesReturns.Enemies.LynxTribe
             }
         }
 
-        public void OnPickupChanged(PickupIndex newPickupIndex)
+        public void OnPickupChanged(int newPickupValue)
         {
-            this.pickupIndex = newPickupIndex;
+            this.pickupValue = newPickupValue;
+            this.pickupIndex = new PickupIndex(this.pickupValue);
+
             if (pickupDisplay)
             {
                 pickupDisplay.SetPickupIndex(pickupIndex);
