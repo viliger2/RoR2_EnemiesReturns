@@ -10,7 +10,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
     {
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
-        public static ConfigEntry<int> MinimumStageCompletion;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -30,7 +29,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static void PopulateConfig(ConfigFile config)
         {
             SelectionWeight = config.Bind("Lynx Hunter Director", "Selection Weight", 1, "Selection weight of Lynx Hunter.");
-            MinimumStageCompletion = config.Bind("Lynx Hunter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Hunter Director", "Director Cost", 28, "Director cost of Lynx Hunter.");
 
             BaseMaxHealth = config.Bind("Lynx Hunter Character Stats", "Base Max Health", 140f, "Lynx Hunter' base health.");
@@ -44,7 +42,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LevelArmor = config.Bind("Lynx Hunter Character Stats", "Armor per Level", 0f, "Lynx Hunter' armor increase per level.");
 
             StabCooldown = config.Bind("Lynx Hunter Stab", "Stab Cooldown", 0f, "Lynx Hunter's Stab cooldown.");
-            StabDamage = config.Bind("Lynx Hunter Stab", "Stab Damage", 3f, "Lynx Hunter's Stab damage of each slash.");
+            StabDamage = config.Bind("Lynx Hunter Stab", "Stab Damage", 3f, "Lynx Hunter's Stab damage.");
             StabProcCoefficient = config.Bind("Lynx Hunter Stab", "Stab Proc Coefficient", 1f, "Lynx Hunter's Stab proc coefficient.");
 
             SingEmoteKey = config.Bind("Lynx Hunter Emotes", "Sing Emote", KeyCode.Alpha1, "Key used to Sing.");

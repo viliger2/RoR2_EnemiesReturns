@@ -3,6 +3,7 @@ using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe;
+using EnemiesReturns.Enemies.LynxTribe.Archer;
 using EnemiesReturns.Enemies.LynxTribe.Hunter;
 using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
@@ -907,6 +908,39 @@ namespace EnemiesReturns
             CreateLynxTotem(assets, iconLookup);
             CreateLynxScout(assets, iconLookup);
             CreateLynxHunter(assets, iconLookup);
+            CreateLynxArcher(assets, iconLookup, rampLookups);
+        }
+
+        public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)
+        {
+            var archerStuff = new ArcherStuff();
+            var material = GetOrCreateMaterial("matLynxArcherArrow", archerStuff.CreateArcherArrowMaterial);
+
+            ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab = archerStuff.CreateArrowProjectile(
+                assets.First(prefab => prefab.name == "ArrowProjectile"), 
+                archerStuff.CreateArrowProjectileGhost(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
+                archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material));
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab);
+
+            var archerBody = new ArcherBody();
+            ArcherBody.Skills.Shot = archerBody.CreateShotSkill();
+            sdList.Add(ArcherBody.Skills.Shot);
+
+            ArcherBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxArcherPrimarySkillFamily", ArcherBody.Skills.Shot);
+            sfList.Add(ArcherBody.SkillFamilies.Primary);
+
+            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: null);
+            bodyList.Add(ArcherBody.BodyPrefab);
+
+            var archerMaster = new ArcherMaster();
+            ArcherMaster.MasterPrefab = archerMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxArcherMaster"), ArcherBody.BodyPrefab);
+            masterList.Add(ArcherMaster.MasterPrefab);
+
+            ArcherBody.SpawnCards.cscLynxArcherDefault = archerBody.CreateCard("cscLynxArcherDefault", ArcherMaster.MasterPrefab, ArcherBody.SkinDefs.Default, ArcherBody.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow));
         }
 
         public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -988,6 +1022,7 @@ namespace EnemiesReturns
             var spawnEffect = lynxStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
             ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
             ModdedEntityStates.LynxTribe.Hunter.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Archer.SpawnState.spawnEffect = spawnEffect;
             effectsList.Add(new EffectDef(spawnEffect));
 
             // TODO: do better
@@ -1207,6 +1242,7 @@ namespace EnemiesReturns
             if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc();
+                ContentProvider.MaterialCache.Add(materialName, material);
             }
             return material;
         }
@@ -1216,6 +1252,7 @@ namespace EnemiesReturns
             if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc(texture);
+                ContentProvider.MaterialCache.Add(materialName, material);
             }
             return material;
         }
