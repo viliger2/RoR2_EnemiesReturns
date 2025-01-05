@@ -53,6 +53,7 @@ namespace EnemiesReturns
 
             if (UseConfigFile.Value)
             {
+                // TODO: better way to do this, probably with reflection
                 EnemiesReturns.Configuration.Spitter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Spitter.cfg"), true));
                 EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
                 EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
@@ -60,6 +61,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxShaman.cfg"), true));
                 EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxScout.cfg"), true));
                 EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxHunter.cfg"), true));
+                EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxArcher.cfg"), true));
             }
             else
             {
@@ -75,6 +77,7 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(notSavedConfigFile);
             }
             EnemiesReturns.Configuration.General.PopulateConfig(Config);
 

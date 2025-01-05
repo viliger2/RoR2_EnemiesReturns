@@ -905,10 +905,10 @@ namespace EnemiesReturns
             // TODO: child entities other than shaman to totem
             CreateLynxStorm(assets, acdLookup); // TODO: storm should check either totem or shaman
             CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
-            CreateLynxTotem(assets, iconLookup);
             CreateLynxScout(assets, iconLookup);
             CreateLynxHunter(assets, iconLookup);
             CreateLynxArcher(assets, iconLookup, rampLookups);
+            CreateLynxTotem(assets, iconLookup);
         }
 
         public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)

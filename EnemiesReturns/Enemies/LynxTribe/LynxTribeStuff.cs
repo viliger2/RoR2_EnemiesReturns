@@ -48,19 +48,31 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 selectionWeight = 2f
             };
 
-            // TODO: add the rest
             var basicMonsters = new FamilyDirectorCardCategorySelection.Category
             {
                 name = ContentProvider.MonsterCategories.BasicMonsters,
                 selectionWeight = 4f,
                 cards = new DirectorCard[]
                 {
-                    // Scout
                     new DirectorCard
                     {
                         spawnCard = Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
                         selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxScout.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = false
+                    },
+                    new DirectorCard
+                    {
+                        spawnCard = Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
+                        selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxHunter.SelectionWeight.Value,
                         spawnDistance = DirectorCore.MonsterSpawnDistance.Close,
+                        preventOverhead = false
+                    },
+                    new DirectorCard
+                    {
+                        spawnCard = Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
+                        selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxArcher.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Far,
                         preventOverhead = false
                     }
                 }
@@ -100,7 +112,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawner.eliteBias = 1f;
             spawner.spawnCards = new SpawnCard[]
             {
-                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, // TODO: other card
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
+                Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault, 
+                Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault, 
+                Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
             spawner.minSpawnCount = 3;
             spawner.maxSpawnCount = 5;
@@ -168,7 +183,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawner.eliteBias = 1f;
             spawner.spawnCards = new SpawnCard[]
             {
-                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, // TODO: other card
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
+                Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault,
+                Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
+                Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
             spawner.minSpawnCount = 3;
             spawner.maxSpawnCount = 5;

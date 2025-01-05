@@ -49,6 +49,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             prefab.transform.Find("Arrow/ArrowQuads/Quad1").GetComponent<MeshRenderer>().material = material;
             prefab.transform.Find("Arrow/ArrowQuads/Quad2").GetComponent<MeshRenderer>().material = material;
 
+            UnityEngine.Object.DestroyImmediate(prefab.GetComponent<Rigidbody>());
+
             var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
             destroyOnTimer.duration = 2f;
 
