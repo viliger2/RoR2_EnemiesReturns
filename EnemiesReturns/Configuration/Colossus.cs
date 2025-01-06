@@ -184,7 +184,7 @@ namespace EnemiesReturns.Configuration
             Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
             Colossus.RockClapHomingSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Homing Speed", 15f, "Colossus' Rock Clap homing speed. Rocks home onto target by x and z axis (basically parallel to the ground, without homing up or down).");
             Colossus.RockClapHomingRange = config.Bind("Colossus Rock Clap", "Rock Clap Homing Range", 100f, "Colossus' Rock Clap homing range. How far rocks look for a targer.");
-            Colossus.RockClapPostLoopSpawns = config.Bind("Colossus Rock Clap", "Rock Clap Post Loop Spawns", false, "Colossus' Rock Clap spawns enemies post loop, similar to how he does it in RoR1.");
+            Colossus.RockClapPostLoopSpawns = config.Bind("Colossus Rock Clap", "Rock Clap Post Loop Spawns", true, "Colossus' Rock Clap spawns enemies post loop, similar to how he does it in RoR1.");
 
             Colossus.LaserBarrageCooldown = config.Bind("Colossus Laser Barrage", "Laser Barrage Cooldown", 45f, "Colossus' Laser Barrage cooldown.");
             Colossus.LaserBarrageDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Damage", 0.5f, "Colossus' Laser Barrage damage.");
