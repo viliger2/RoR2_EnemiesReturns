@@ -94,7 +94,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
-            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_ARCHER_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_ARCHER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f, // TODO: config
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxArcher.BaseMaxHealth.Value,

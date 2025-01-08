@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -56,7 +57,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
         public SkillDef CreateStabSkill()
         {
             // TODO: icon
-            return CreateSkill(new SkillParams("LynxHunterWeaponStab", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Hunter.Stab)))
+            return CreateSkill(new SkillParams("LynxHunterWeaponStab", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_HUNTER_STAB_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_HUNTER_STAB_DESCRIPTION",
@@ -96,7 +97,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
-            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_HUNTER_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_HUNTER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f, // TODO: config
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxHunter.BaseMaxHealth.Value,

@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
@@ -107,7 +108,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
-            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SHAMAN_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SHAMAN_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxShaman.BaseMaxHealth.Value,
