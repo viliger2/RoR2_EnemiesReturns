@@ -8,6 +8,7 @@ using EnemiesReturns.Enemies.LynxTribe.Hunter;
 using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
+using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -908,7 +909,7 @@ namespace EnemiesReturns
             CreateLynxScout(assets, iconLookup);
             CreateLynxHunter(assets, iconLookup);
             CreateLynxArcher(assets, iconLookup, rampLookups);
-            CreateLynxTotem(assets, iconLookup);
+            CreateLynxTotem(assets, iconLookup, acdLookup);
         }
 
         public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)
@@ -929,7 +930,7 @@ namespace EnemiesReturns
             ArcherBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxArcherPrimarySkillFamily", ArcherBody.Skills.Shot);
             sfList.Add(ArcherBody.SkillFamilies.Primary);
 
-            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: null);
+            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: null); // TODO: icon
             bodyList.Add(ArcherBody.BodyPrefab);
 
             var archerMaster = new ArcherMaster();
@@ -937,6 +938,8 @@ namespace EnemiesReturns
             masterList.Add(ArcherMaster.MasterPrefab);
 
             ArcherBody.SpawnCards.cscLynxArcherDefault = archerBody.CreateCard("cscLynxArcherDefault", ArcherMaster.MasterPrefab, ArcherBody.SkinDefs.Default, ArcherBody.BodyPrefab);
+
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
@@ -963,7 +966,7 @@ namespace EnemiesReturns
             HunterBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxHunterPrimarySkillFamily", HunterBody.Skills.Stab);
             sfList.Add(HunterBody.SkillFamilies.Primary);
 
-            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: null);
+            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: null); // TODO: icon
             bodyList.Add(HunterBody.BodyPrefab);
 
             var hunterMaster = new HunterMaster();
@@ -971,6 +974,8 @@ namespace EnemiesReturns
             masterList.Add(HunterMaster.MasterPrefab);
 
             HunterBody.SpawnCards.cscLynxHunterDefault = hunterBody.CreateCard("cscLynxHunterDefault", HunterMaster.MasterPrefab, HunterBody.SkinDefs.Default, HunterBody.BodyPrefab);
+
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
@@ -1011,13 +1016,58 @@ namespace EnemiesReturns
 
             ScoutBody.SpawnCards.cscLynxScoutDefault = scoutBody.CreateCard("cscLynxScoutDefault", ScoutMaster.MasterPrefab, ScoutBody.SkinDefs.Default, ScoutBody.BodyPrefab);
 
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
+
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
         }
 
-        private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
+            var totemStuff = new TotemStuff();
+            ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
+
+            var totemBody = new TotemBody();
+            TotemBody.Skills.Burrow = totemBody.CreateBurrowSkill();
+            TotemBody.Skills.SummonStorms = totemBody.CreateSummonStormsSkill();
+            TotemBody.Skills.SummonTribe = totemBody.CreateSummonTribeSkill();
+            TotemBody.Skills.SummonFirewall = totemBody.CreateSummonFirewallSkill();
+            sdList.Add(TotemBody.Skills.Burrow);
+            sdList.Add(TotemBody.Skills.SummonStorms);
+            sdList.Add(TotemBody.Skills.SummonTribe);
+            sdList.Add(TotemBody.Skills.SummonFirewall);
+
+            TotemBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxTotemPrimarySkillFamily", TotemBody.Skills.SummonFirewall);
+            TotemBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxTotemSecondarySkillFamily", TotemBody.Skills.SummonTribe);
+            TotemBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxTotemUtilitySkillFamily", TotemBody.Skills.Burrow);
+            TotemBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxTotemSpecialSkillFamily", TotemBody.Skills.SummonStorms);
+            sfList.Add(TotemBody.SkillFamilies.Primary);
+            sfList.Add(TotemBody.SkillFamilies.Secondary);
+            sfList.Add(TotemBody.SkillFamilies.Utility);
+            sfList.Add(TotemBody.SkillFamilies.Special);
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.cscStorm = LynxStormBody.cscLynxStorm;
+
+            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody")); // TODO: icon
+            bodyList.Add(TotemBody.BodyPrefab);
+
+            var totemMaster = new TotemMaster();
+            TotemMaster.MasterPrefab = totemMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxTotemMaster"), TotemBody.BodyPrefab);
+            masterList.Add(TotemMaster.MasterPrefab);
+
+            TotemBody.SpawnCards.cscLynxTotemDefault = totemBody.CreateCard("cscLynxTotemDefault", TotemMaster.MasterPrefab, TotemBody.SkinDefs.Default, TotemBody.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonFirewall));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
+
             var lynxStuff = new LynxTribeStuff();
 
             var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
