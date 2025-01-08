@@ -157,6 +157,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-7673944560433332669
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LungeFire
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -3027756873265233569, guid: 140b071b6837a2140b0c68c8782b698b,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: Attack.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-7518042914175024562
 AnimatorState:
   serializedVersion: 6
@@ -724,6 +751,12 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 827362877755049}
     m_Position: {x: 470, y: 270, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2831635623302139914}
+    m_Position: {x: 470, y: 330, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7673944560433332669}
+    m_Position: {x: 470, y: 390, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1214,6 +1247,33 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1102 &1565937899292455206
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LungeFire
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -3027756873265233569, guid: 140b071b6837a2140b0c68c8782b698b,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: Attack.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &2088452130873859752
 AnimatorState:
   serializedVersion: 6
@@ -1363,6 +1423,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &2831635623302139914
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LungePrepare
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 786603461111711405, guid: 140b071b6837a2140b0c68c8782b698b, type: 3}
+  m_Tag: 
+  m_SpeedParameter: Attack.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &3364887809332399572
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1378,6 +1464,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 5030567279330711369}
     m_Position: {x: 610, y: 280, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1565937899292455206}
+    m_Position: {x: 610, y: 340, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

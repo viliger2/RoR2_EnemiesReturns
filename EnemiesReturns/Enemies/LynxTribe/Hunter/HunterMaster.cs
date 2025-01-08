@@ -20,7 +20,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
                 {
                     skillSlot = SkillSlot.Primary,
                     minDistance = 0f,
-                    maxDistance = 3f,
+                    maxDistance = 10f,
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
@@ -33,7 +33,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
                 {
                     skillSlot = SkillSlot.Primary,
                     minDistance = 0f,
-                    maxDistance = 8f,
+                    maxDistance = 20f,
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,

@@ -946,11 +946,15 @@ namespace EnemiesReturns
         public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             var hunterStuff = new HunterStuff();
-            ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = hunterStuff.CreateHunterAttackEffect(assets.First(prefab => prefab.name == "LynxHunterAttackEffect"));
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect));
+            var wooshEffect = hunterStuff.CreateHunterAttackEffect(assets.First(prefab => prefab.name == "LynxHunterAttackEffect"));
+            ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = wooshEffect;
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.wooshEffect = wooshEffect;
+            effectsList.Add(new EffectDef(wooshEffect));
 
-            ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = hunterStuff.CreateHunterAttackSpearTipEffect(assets.First(prefab => prefab.name == "LynxHunterSpearTipEffect"));
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect));
+            var coneEffect = hunterStuff.CreateHunterAttackSpearTipEffect(assets.First(prefab => prefab.name == "LynxHunterSpearTipEffect"));
+            ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = coneEffect;
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.coneEffect = coneEffect;
+            effectsList.Add(new EffectDef(coneEffect));
 
             var hunterBody = new HunterBody();
             HunterBody.Skills.Stab = hunterBody.CreateStabSkill();
@@ -971,6 +975,8 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Stab));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
         }
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
