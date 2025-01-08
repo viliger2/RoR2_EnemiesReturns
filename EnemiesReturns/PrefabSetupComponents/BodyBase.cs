@@ -296,7 +296,6 @@ namespace EnemiesReturns.Components
                 airControl = 0.25f,
                 disableAirControl = false,
                 generateParametersOnAwake = true,
-                //mass = 100f,
                 muteWalkMotion = false
             };
         }

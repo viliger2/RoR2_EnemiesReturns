@@ -103,14 +103,6 @@ namespace EnemiesReturns.Enemies.Spitter
             });
         }
 
-        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        //{
-        //    return new ICharacterMotor.CharacterMotorParams()
-        //    {
-        //        mass = 200f
-        //    };
-        //}
-
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
         {
             return CreateCard(new SpawnCardParams(name, master, Configuration.Spitter.DirectorCost.Value)

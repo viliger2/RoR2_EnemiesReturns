@@ -176,14 +176,6 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         protected override float CharacterDirectionTurnSpeed => EnemiesReturns.Configuration.Ifrit.TurnSpeed.Value;
 
-        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        //{
-        //    return new ICharacterMotor.CharacterMotorParams()
-        //    {
-        //        mass = 1500f
-        //    };
-        //}
-
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {
             return new IModelLocator.ModelLocatorParams()

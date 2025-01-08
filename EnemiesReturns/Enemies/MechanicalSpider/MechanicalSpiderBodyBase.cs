@@ -174,14 +174,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return new ICharacterModel.CharacterModelParams();
         }
 
-        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        //{
-        //    return new ICharacterMotor.CharacterMotorParams()
-        //    {
-        //        mass = 150f
-        //    };
-        //}
-
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {
             return new IModelLocator.ModelLocatorParams()
