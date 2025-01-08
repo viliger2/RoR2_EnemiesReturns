@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -72,6 +73,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
                 bodyPrefab = bodyGameObject,
             });
         }
+
+        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        //{
+        //    return new ICharacterMotor.CharacterMotorParams()
+        //    {
+        //        mass = 200f
+        //    };
+        //}
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {

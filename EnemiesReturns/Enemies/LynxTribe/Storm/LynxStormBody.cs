@@ -179,7 +179,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         {
             return new ICharacterMotor.CharacterMotorParams()
             {
-                mass = 200f,
+                //mass = 200f,
                 doNotTriggerJumpVolumes = true
             };
         }

@@ -8,8 +8,9 @@ namespace EnemiesReturns.Components.BodyComponents
     {
         public void AddMotor(GameObject bodyPrefab, CharacterDirection direction)
         {
-            var motor = AddCharacterMotor(bodyPrefab, direction, GetCharacterMotorParams());
-            AddKinematicCharacterMotor(bodyPrefab, GetCapsuleCollider(bodyPrefab), GetRigidbody(bodyPrefab), motor, GetKinematicCharacterMotorParams());
+            var rigidBody = GetRigidbody(bodyPrefab);
+            var motor = AddCharacterMotor(bodyPrefab, direction, GetCharacterMotorParams(), rigidBody ? rigidBody.mass : 100f);
+            AddKinematicCharacterMotor(bodyPrefab, GetCapsuleCollider(bodyPrefab), rigidBody, motor, GetKinematicCharacterMotorParams());
         }
 
         private CapsuleCollider GetCapsuleCollider(GameObject bodyPrefab)

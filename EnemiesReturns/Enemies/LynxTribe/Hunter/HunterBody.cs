@@ -76,6 +76,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             });
         }
 
+        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        //{
+        //    return new ICharacterMotor.CharacterMotorParams()
+        //    {
+        //        mass = 200f
+        //    };
+        //}
+
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
             return new IAimAssist.AimAssistTargetParams()

@@ -84,9 +84,17 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             });
         }
 
+        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        //{
+        //    return new ICharacterMotor.CharacterMotorParams()
+        //    {
+        //        mass = 200f
+        //    };
+        //}
+
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
-            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SCOUT_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
+            return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxScout.BaseMaxHealth.Value,

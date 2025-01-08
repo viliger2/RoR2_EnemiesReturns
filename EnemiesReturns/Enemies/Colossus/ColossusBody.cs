@@ -186,10 +186,10 @@ namespace EnemiesReturns.Enemies.Colossus
 
         protected override float CharacterDirectionTurnSpeed => 90f;
 
-        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        {
-            return new ICharacterMotor.CharacterMotorParams() { mass = 8000f };
-        }
+        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        //{
+        //    return new ICharacterMotor.CharacterMotorParams() { mass = 8000f };
+        //}
 
         protected override float MaxInteractionDistance => 8f;
 

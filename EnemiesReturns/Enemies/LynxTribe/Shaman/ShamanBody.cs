@@ -87,6 +87,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
         }
 
+        //protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
+        //{
+        //    return new ICharacterMotor.CharacterMotorParams()
+        //    {
+        //        mass = 200f
+        //    };
+        //}
+
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
             return new IAimAssist.AimAssistTargetParams()
