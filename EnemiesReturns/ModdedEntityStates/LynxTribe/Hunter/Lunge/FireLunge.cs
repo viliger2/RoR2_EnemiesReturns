@@ -25,9 +25,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static float baseAttackDuration = 0.42f;
 
-        public static float maxLungeSpeedCoefficient = 10f;
+        public static float maxLungeSpeedCoefficient = 5f;
 
-        public static float maxLungeDistance = 17f;
+        public static float maxLungeDistance = 20f;
 
         public static float turnSmoothTime = 0.1f;
 
@@ -57,7 +57,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             if (baseAi)
             {
                 float sqrMagnitude = (characterBody.master.GetComponent<BaseAI>().currentEnemy.characterBody.corePosition - characterBody.corePosition).sqrMagnitude;
-                calculatedLungeSpeed = Util.Remap(sqrMagnitude, 0f, maxLungeDistance * maxLungeDistance, 0f, maxLungeSpeedCoefficient);
+                calculatedLungeSpeed = Util.Remap(Mathf.Clamp(sqrMagnitude, 0, maxLungeDistance * maxLungeDistance), 0f, maxLungeDistance * maxLungeDistance, 0f, maxLungeSpeedCoefficient);
             } else
             {
                 calculatedLungeSpeed = maxLungeSpeedCoefficient;

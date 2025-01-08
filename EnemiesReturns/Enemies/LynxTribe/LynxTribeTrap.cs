@@ -19,7 +19,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public LynxTribeSpawner spawner;
 
-        public DestroyOnTimerNetwork destroyOnTimer;
+        public DestroyOnTimer destroyOnTimer;
 
         public Transform hitBox;
 

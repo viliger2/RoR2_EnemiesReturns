@@ -104,7 +104,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             trapPrefab.AddComponent<NetworkIdentity>();
 
-            var disabler = trapPrefab.AddComponent<DestroyOnTimerNetwork>();
+            var disabler = trapPrefab.AddComponent<DestroyOnTimer>();
             disabler.duration = 15f;
             disabler.enabled = false;
 
