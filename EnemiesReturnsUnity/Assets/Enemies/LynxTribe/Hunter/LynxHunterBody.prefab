@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 4432909341850386934}
   m_Father: {fileID: 8036314911187942236}
-  m_RootOrder: 12
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176117969542282235
 GameObject:
@@ -61,38 +61,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8036314911187942236}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1445855283582871488
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 336064347114655890}
-  m_Layer: 0
-  m_Name: SpearTip
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &336064347114655890
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445855283582871488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 6.12, z: -1.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7605222451300418359}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2370380435508812429
 GameObject:
@@ -219,7 +188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8036314911187942236}
-  m_RootOrder: 10
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3936390947682565257
 Rigidbody:
@@ -282,6 +251,37 @@ Transform:
   m_Father: {fileID: 111541380074916264}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4285855584213621869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7660226344083171656}
+  m_Layer: 0
+  m_Name: SpearTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7660226344083171656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285855584213621869}
+  m_LocalRotation: {x: -0.101442635, y: 0.0000000037252907, z: 0.00000004563481, w: 0.9948414}
+  m_LocalPosition: {x: 0, y: 6.98, z: -1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5936853063318775517}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -11.645, y: 0, z: 0}
 --- !u!1 &4359870321691596294
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +493,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &7489568799515291570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5786587014445695805}
+  m_Layer: 0
+  m_Name: SlideEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5786587014445695805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7489568799515291570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8036314911187942236}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &434315022280306243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,9 +1192,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformPairs:
   - name: Weapon
-    transform: {fileID: 7605222451300418359}
+    transform: {fileID: 5936853063318775517}
   - name: SpearTip
-    transform: {fileID: 336064347114655890}
+    transform: {fileID: 7660226344083171656}
+  - name: Base
+    transform: {fileID: 3515583279716799862}
+  - name: SlideEffect
+    transform: {fileID: 5786587014445695805}
 --- !u!114 &5597690052543809219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,9 +1211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e033f306031bd44eac5298049bea03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7605222451300418359 stripped
+--- !u!4 &5936853063318775517 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8038312564762111348, guid: 140b071b6837a2140b0c68c8782b698b,
+  m_CorrespondingSourceObject: {fileID: -3142088267857655650, guid: 140b071b6837a2140b0c68c8782b698b,
     type: 3}
   m_PrefabInstance: {fileID: 434315022280306243}
   m_PrefabAsset: {fileID: 0}

@@ -82,8 +82,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             return new IAimAssist.AimAssistTargetParams()
             {
                 assistScale = 2f,
-                pathToPoint0 = "ModelBase/mdlLynxHunter/LynxHunter/Pelvis/Stomach/Chest/Neck/Head",
-                pathToPoint1 = "ModelBase/mdlLynxHunter/LynxHunter/Base"
+                pathToPoint0 = "ModelBase/mdlLynxHunter/LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head",
+                pathToPoint1 = "ModelBase/mdlLynxHunter/LynxHunter/ROOT/Base"
             };
         }
 

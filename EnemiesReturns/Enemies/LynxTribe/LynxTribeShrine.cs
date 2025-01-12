@@ -35,6 +35,16 @@ namespace EnemiesReturns.Enemies.LynxTribe
             networkIdentity = GetComponent<NetworkIdentity>();
         }
 
+        private void OnEnable()
+        {
+            InstanceTracker.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            InstanceTracker.Remove(this);
+        }
+
         private void Start()
         {
             if (NetworkServer.active)
@@ -125,7 +135,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             {
                 networkIdentity.isPingable = false;
             }
-            enabled = false;
+            available = false;
         }
 
         public bool ShouldIgnoreSpherecastForInteractibility([NotNull] Interactor activator)

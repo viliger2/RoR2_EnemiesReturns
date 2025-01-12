@@ -32,6 +32,25 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return spawnEffect;
         }
 
+        public GameObject CreateShamanSpawnEffect(GameObject prefab)
+        {
+            var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
+
+            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
+
+            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
+
+            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
+            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            spawnEffect.AddComponent<DestroyOnParticleEnd>();
+
+            return spawnEffect;
+        }
+
         public FamilyDirectorCardCategorySelection CreateLynxTribeFamily()
         {
             var dccsFamily = ScriptableObject.CreateInstance<FamilyDirectorCardCategorySelection>();
@@ -170,14 +189,22 @@ namespace EnemiesReturns.Enemies.LynxTribe
             hightLightMesh.highlightColor = Highlight.HighlightColor.interactive;
 
             var modelLocator = shrinePrefab.AddComponent<ModelLocator>();
-            modelLocator.modelTransform = shrinePrefab.transform.Find("Base/Cube"); // TODO
+            modelLocator.modelTransform = shrinePrefab.transform.Find("Base/LynxTotemPole"); // TODO
             modelLocator.modelBaseTransform = shrinePrefab.transform.Find("Base");
-            modelLocator.autoUpdateModelTransform = false;
-            modelLocator.dontDetatchFromParent = true;
+            modelLocator.autoUpdateModelTransform = true;
+            modelLocator.dontDetatchFromParent = false;
             modelLocator.noCorpse = false;
             modelLocator.dontReleaseModelOnDeath = false;
             modelLocator.preserveModel = false;
             modelLocator.normalizeToFloor = false;
+
+            var genericInspecInfo = shrinePrefab.AddComponent<GenericInspectInfoProvider>(); // TODO
+
+            var genericNameInfoProvider = shrinePrefab.AddComponent<GenericDisplayNameProvider>();
+            genericNameInfoProvider.displayToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME"; // TODO
+
+            var pingInfoProvider = shrinePrefab.AddComponent<PingInfoProvider>();
+            pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
 
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
             spawner.eliteBias = 1f;
@@ -200,9 +227,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
 
-            var cubeObject = shrinePrefab.transform.Find("Base/Cube").gameObject;
+            var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;
-
 
             var baseObject = shrinePrefab.transform.Find("Base").gameObject;
             baseObject.AddComponent<EntityLocator>().entity = shrinePrefab;

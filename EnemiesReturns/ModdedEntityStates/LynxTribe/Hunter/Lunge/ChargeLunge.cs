@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayCrossfade("Gesture", "LungePrepare", "Attack.playbackRate", duration, 0.1f);
+            PlayCrossfade("Gesture, Mask", "LungePrepare", "Attack.playbackRate", duration, 0.1f);
             if (characterDirection)
             {
                 characterDirection.moveVector = GetAimRay().direction;
@@ -38,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+            PlayCrossfade("Gesture, Mask", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

@@ -19,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion(); // TODO: fine for now
 
+        public static GameObject slideEffectPrefab;
+
         public static GameObject wooshEffect;
 
         public static GameObject coneEffect;
@@ -44,8 +46,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         private Vector3 targetMoveVector;
 
         private Vector3 targetMoveVectorVelocity;
-
-        private Animator modelAnimator;
 
         public override void OnEnter()
         {
@@ -78,8 +78,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             overlapAttack.procCoefficient = procCoefficient;
             overlapAttack.damageType = DamageType.Generic;
 
-            modelAnimator = GetModelAnimator();
-
             PlayAnimation("Gesture, Override", "LungeFire", "Attack.playbackRate", duration);
 
             EffectManager.SpawnEffect(wooshEffect, new EffectData
@@ -92,6 +90,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             {
                 rootObject = base.gameObject,
                 modelChildIndex = (short)GetModelChildLocator().FindChildIndex("SpearTip")
+            }, false);
+
+            EffectManager.SpawnEffect(slideEffectPrefab, new EffectData
+            {
+                rootObject = base.gameObject,
+                modelChildIndex = (short)GetModelChildLocator().FindChildIndex("SlideEffect")
             }, false);
         }
 

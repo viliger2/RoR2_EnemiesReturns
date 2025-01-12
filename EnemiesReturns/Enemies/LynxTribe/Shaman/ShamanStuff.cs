@@ -89,26 +89,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return buff;
         }
 
-        // TODO: with two leafs for other tribe members
-        public GameObject CreateSpawnEffect(GameObject prefab)
-        {
-            var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
-
-            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
-            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
-            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
-
-            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
-
-            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
-            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
-            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
-
-            spawnEffect.AddComponent<DestroyOnParticleEnd>();
-
-            return spawnEffect;
-        }
-
         public GameObject CreateSummonStormParticles(GameObject prefab)
         {
             prefab.GetComponentInChildren<TrailRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoDiseaseTrail.mat").WaitForCompletion();

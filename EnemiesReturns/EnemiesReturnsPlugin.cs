@@ -3,7 +3,9 @@ using BepInEx.Configuration;
 using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.LynxTribe;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
@@ -35,6 +37,7 @@ namespace EnemiesReturns
     [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
     [BepInDependency(R2API.DamageAPI.PluginGUID)]
     [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
+    [BepInDependency(R2API.OrbAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
@@ -81,7 +84,14 @@ namespace EnemiesReturns
             }
             EnemiesReturns.Configuration.General.PopulateConfig(Config);
 
+            RegisterStuff();
+
             Hooks();
+        }
+
+        private void RegisterStuff()
+        {
+            R2API.OrbAPI.AddOrb(typeof(LynxStormOrb));
         }
 
         private void Hooks()

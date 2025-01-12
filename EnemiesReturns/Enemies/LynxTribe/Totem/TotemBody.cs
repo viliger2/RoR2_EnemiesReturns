@@ -1,9 +1,11 @@
-﻿using EnemiesReturns.Components;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using RoR2.Skills;
@@ -31,6 +33,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             public static SkillDef SummonStorms;
             public static SkillDef SummonFirewall;
             public static SkillDef Burrow;
+            public static SkillDef Groundpound;
         }
 
         public struct SkinDefs
@@ -46,6 +49,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         public static GameObject BodyPrefab;
 
         protected override bool AddSetStateOnHurt => false;
+
+        protected override bool AddHitBoxes => true;
 
         public SkillDef CreateSummonTribeSkill()
         {
@@ -74,10 +79,22 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         public SkillDef CreateSummonFirewallSkill()
         {
             // TODO: icon
-            return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonFirewall", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.SummonFirewall)))
+            return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonFirewall", new EntityStates.SerializableEntityStateType(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_FIREWALL_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_FIREWALL_DESCRIPTION",
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = 15f,
+            });
+        }
+
+        public SkillDef CreateGroundpoundSkill()
+        {
+            // TODO: icon
+            return CreateTotemSkill(new SkillParams("LynxTotemWeaponGroundpound", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.Groundpound)))
+            {
+                nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME",
+                descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = 15f,
             });
@@ -361,7 +378,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "SummonFirewall", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "Groundpound", SkillSlot.Primary),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "SummonTribe", SkillSlot.Secondary),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Burrow", SkillSlot.Utility),
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Special, "SummonStorms", SkillSlot.Special),
@@ -386,6 +403,18 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 maxDistance = 6f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
             }; 
+        }
+
+        protected override IHitboxes.HitBoxesParams[] HitBoxesParams()
+        {
+            return new IHitboxes.HitBoxesParams[]
+            {
+                new IHitboxes.HitBoxesParams
+                {
+                    groupName = "Groundpound",
+                    pathsToTransforms = new string[] { "LynxTotem/ROOT/GroundpoundHitbox" }
+                }
+            };
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdGolem.asset").WaitForCompletion();

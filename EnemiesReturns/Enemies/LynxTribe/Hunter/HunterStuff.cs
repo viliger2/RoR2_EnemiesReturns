@@ -1,4 +1,6 @@
-﻿using RoR2;
+﻿using R2API;
+using Rewired.Demos;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,34 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 {
     public class HunterStuff
     {
+        public GameObject CreateLungeSlideEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoSlideVFX.prefab").WaitForCompletion().InstantiateClone("LynxHunterLungeSlideEffect", false);
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = true;
+            effectComponent.parentToReferencedTransform = true;
+
+            var vfxAttributes = prefab.GetComponent<VFXAttributes>();
+            if (vfxAttributes) 
+            { 
+                vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+                vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            }
+
+            var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
+            destroyOnTimer.duration = 0.8f;
+
+            var particleSystem = prefab.transform.Find("Debris").GetComponent<ParticleSystem>();
+            var main = particleSystem.main;
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+
+            var particleSystem2 = prefab.transform.Find("Dust").GetComponent<ParticleSystem>();
+            var main2 = particleSystem.main;
+            main2.scalingMode = ParticleSystemScalingMode.Hierarchy;
+
+            return prefab;
+        }
+
         public GameObject CreateHunterAttackEffect(GameObject prefab)
         {
             var effectComponent = prefab.AddComponent<EffectComponent>();

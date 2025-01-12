@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
     {
         public static float baseDuration = 1.6f;
 
-        public static float baseSummonDuration = 1f;
+        public static float baseSummonDuration = 0.916f;
 
         public static float summonDistance = 4f; // distance from body for summon
 
@@ -19,7 +19,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static int retryCount = 3;
 
-        public static SpawnCard[] spawnCards = Array.Empty<SpawnCard>();
+        public static SpawnCard[] spawnCards = Array.Empty<SpawnCard>(); // TODO: spawn all cards as long as summonCount is more than spawnCards.lengh
+
+        public static GameObject summonEffect;
 
         private float duration;
 
@@ -27,12 +29,17 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         private bool tribeSummoned;
 
+        private Transform summonEffectTransform;
+
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
-            PlayAnimation("Gesture", "SummonTribe", "summonTribe.playbackDuration", duration);
+            summonEffectTransform = FindModelChild("SummonTribeSpawnEffect");
+                 
+
+            PlayAnimation("Gesture, Override", "SummonTribe", "summonTribe.playbackDuration", duration);
             if(spawnCards.Length == 0)
             {
                 outer.SetNextStateToMain();
@@ -63,6 +70,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         }
                     }
                 }
+                if (summonEffect && summonEffectTransform) 
+                {
+                    EffectManager.SimpleEffect(summonEffect, summonEffectTransform.position, Quaternion.identity, false);
+                }
                 tribeSummoned = true;
             }
 
@@ -75,6 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void OnExit()
         {
             base.OnExit();
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
         private bool SummonTribesman(Vector3 approximateSpawnPosition, int retryCount)

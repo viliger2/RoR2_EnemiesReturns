@@ -950,12 +950,15 @@ namespace EnemiesReturns
         {
             var hunterStuff = new HunterStuff();
             var wooshEffect = hunterStuff.CreateHunterAttackEffect(assets.First(prefab => prefab.name == "LynxHunterAttackEffect"));
-            ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = wooshEffect;
+            Junk.ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = wooshEffect;
             ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.wooshEffect = wooshEffect;
             effectsList.Add(new EffectDef(wooshEffect));
 
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.slideEffectPrefab = hunterStuff.CreateLungeSlideEffect();
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.slideEffectPrefab));
+
             var coneEffect = hunterStuff.CreateHunterAttackSpearTipEffect(assets.First(prefab => prefab.name == "LynxHunterSpearTipEffect"));
-            ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = coneEffect;
+            Junk.ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = coneEffect;
             ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.coneEffect = coneEffect;
             effectsList.Add(new EffectDef(coneEffect));
 
@@ -979,7 +982,7 @@ namespace EnemiesReturns
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Stab));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Hunter.Stab));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
         }
@@ -1026,20 +1029,35 @@ namespace EnemiesReturns
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             var totemStuff = new TotemStuff();
-            ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
-            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
+            Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
+            projectilesList.Add(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
+
+            ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = totemStuff.CreateGroundpoundPoundEffect();
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect));
+
+            Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
+            effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect));
+
+            var totemLog = Utils.CreateUnlockableDef("Logs.LynxTotemBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM");
+            unlockablesList.Add(totemLog);
+
 
             var totemBody = new TotemBody();
             TotemBody.Skills.Burrow = totemBody.CreateBurrowSkill();
             TotemBody.Skills.SummonStorms = totemBody.CreateSummonStormsSkill();
             TotemBody.Skills.SummonTribe = totemBody.CreateSummonTribeSkill();
             TotemBody.Skills.SummonFirewall = totemBody.CreateSummonFirewallSkill();
+            TotemBody.Skills.Groundpound = totemBody.CreateGroundpoundSkill();
             sdList.Add(TotemBody.Skills.Burrow);
             sdList.Add(TotemBody.Skills.SummonStorms);
             sdList.Add(TotemBody.Skills.SummonTribe);
             sdList.Add(TotemBody.Skills.SummonFirewall);
+            sdList.Add(TotemBody.Skills.Groundpound);
 
-            TotemBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxTotemPrimarySkillFamily", TotemBody.Skills.SummonFirewall);
+            TotemBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxTotemPrimarySkillFamily", TotemBody.Skills.Groundpound);
             TotemBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxTotemSecondarySkillFamily", TotemBody.Skills.SummonTribe);
             TotemBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxTotemUtilitySkillFamily", TotemBody.Skills.Burrow);
             TotemBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxTotemSpecialSkillFamily", TotemBody.Skills.SummonStorms);
@@ -1050,7 +1068,7 @@ namespace EnemiesReturns
 
             ModdedEntityStates.LynxTribe.Totem.SummonStorm.cscStorm = LynxStormBody.cscLynxStorm;
 
-            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody")); // TODO: icon
+            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody"), sprite: null, totemLog, null); // TODO: icon
             bodyList.Add(TotemBody.BodyPrefab);
 
             var totemMaster = new TotemMaster();
@@ -1063,12 +1081,18 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonFirewall));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Groundpound));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
 
             var lynxStuff = new LynxTribeStuff();
+
+            var shamanSpawnEffect = lynxStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanSpawnEffect;
+            effectsList.Add(new EffectDef(shamanSpawnEffect));
 
             var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
             nseList.Add(nseLynxTribeTrapTwigSnap);
@@ -1155,9 +1179,6 @@ namespace EnemiesReturns
 
             Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
             Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
-
-            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect));
 
             Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
             effectsList.Add(new EffectDef(Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect));
