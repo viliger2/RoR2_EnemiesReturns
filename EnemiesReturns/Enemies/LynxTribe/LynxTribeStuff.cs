@@ -2,9 +2,11 @@
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using R2API;
 using RoR2;
+using RoR2.Hologram;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -13,6 +15,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     public class LynxTribeStuff
     {
+        public static GameObject CustomHologramContent;
+
         public GameObject CreateSpawnEffect(GameObject prefab)
         {
             var spawnEffect = prefab.InstantiateClone("LynxTribeSpawnEffect", false);
@@ -118,6 +122,17 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return dccsFamily;
         }
 
+        public GameObject CustomCostHologramContentPrefab()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/CostHologramContent.prefab").WaitForCompletion().InstantiateClone("CustomCostHologramContentPrefab", false);
+
+            UnityEngine.Object.DestroyImmediate(prefab.GetComponent<CostHologramContent>());
+            var hologramContent = prefab.AddComponent<CustomCostHologramContent>();
+            hologramContent.targetTextMesh = prefab.transform.Find("Text").GetComponent<TextMeshPro>();    
+
+            return prefab;
+        }
+
         // TODO: config this shit
         public GameObject CreateTrapPrefab(GameObject trapPrefab)
         {
@@ -206,6 +221,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var pingInfoProvider = shrinePrefab.AddComponent<PingInfoProvider>();
             pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
 
+            var combatSquad = shrinePrefab.AddComponent<CombatSquad>();
+            combatSquad.grantBonusHealthInMultiplayer = true;
+
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
             spawner.eliteBias = 1f;
             spawner.spawnCards = new SpawnCard[]
@@ -221,11 +239,13 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawner.spawnDistance = 5f;
             spawner.retrySpawnCount = 3;
             spawner.teamIndex = TeamIndex.Monster;
+            spawner.combatSquad = combatSquad;
 
             var shrine = shrinePrefab.AddComponent<LynxTribeShrine>();
             shrine.dropTable = CreateLynxShrineDropTable();
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
+            shrine.escapeDuration = 10f; // TODO
 
             var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;
@@ -251,6 +271,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
             pickupDisplay.highlight = highlightPickup;
 
             shrine.pickupDisplay = pickupDisplay;
+
+            var hologramProjector = shrinePrefab.AddComponent<HologramProjector>();
+            hologramProjector.displayDistance = 45f;
+            hologramProjector.hologramPivot = shrinePrefab.transform.Find("Base/Hologram");
 
             shrinePrefab.RegisterNetworkPrefab();
 

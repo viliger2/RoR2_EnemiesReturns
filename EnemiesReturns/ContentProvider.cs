@@ -1044,7 +1044,6 @@ namespace EnemiesReturns
             var totemLog = Utils.CreateUnlockableDef("Logs.LynxTotemBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM");
             unlockablesList.Add(totemLog);
 
-
             var totemBody = new TotemBody();
             TotemBody.Skills.Burrow = totemBody.CreateBurrowSkill();
             TotemBody.Skills.SummonStorms = totemBody.CreateSummonStormsSkill();
@@ -1134,6 +1133,8 @@ namespace EnemiesReturns
 
             DirectorAPI.Helpers.AddNewInteractable(holderTrap); // TODO: stage list
 
+            LynxTribeStuff.CustomHologramContent = lynxStuff.CustomCostHologramContentPrefab();
+
             var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
 
             var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
@@ -1163,6 +1164,8 @@ namespace EnemiesReturns
             holderShrine.InteractableCategory = DirectorAPI.InteractableCategory.Shrines;
 
             DirectorAPI.Helpers.AddNewInteractable(holderShrine); // TODO: stage list
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
 
             nopList.Add(lynxTrap);
             nopList.Add(lynxShrine);

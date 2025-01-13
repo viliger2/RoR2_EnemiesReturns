@@ -20,6 +20,8 @@ namespace EnemiesReturns.Behaviors
 
         public float eliteBias = 1f;
 
+        public CombatSquad combatSquad;
+
         public SpawnCard[] spawnCards;
 
         public float expRewardCoefficient = 0.2f; // that's default value of combat director
@@ -130,6 +132,18 @@ namespace EnemiesReturns.Behaviors
             }
         }
 
+        public void Escape()
+        {
+            foreach(var master in combatSquad.membersList)
+            {
+                if (master && master.GetBody())
+                {
+                    var bodyEsm = EntityStateMachine.FindByCustomName(master.GetBodyObject(), "Body");
+                    bodyEsm.SetNextState(new ModdedEntityStates.LynxTribe.Retreat());
+                }
+            }
+        }
+
         private bool Spawn(SpawnCard card, EliteDef eliteDef, Vector3 position, float minDistance, float maxDistance, float eliteCostMultiplier)
         {
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(card, new DirectorPlacementRule
@@ -162,12 +176,21 @@ namespace EnemiesReturns.Behaviors
                     {
                         characterBody.cost = card.directorCreditCost * eliteCostMultiplier;
                     }
+                    if (combatSquad)
+                    {
+                        combatSquad.AddMember(master);
+                    }
                     var healthBoost = eliteDef?.healthBoostCoefficient ?? 1f;
                     var damageBoost = eliteDef?.damageBoostCoefficient ?? 1f;
                     EquipmentIndex equipmentIndex = eliteDef?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
                     if (equipmentIndex != EquipmentIndex.None)
                     {
                         master.inventory.SetEquipmentIndex(equipmentIndex);
+                    }
+                    if(combatSquad && combatSquad.grantBonusHealthInMultiplayer)
+                    {
+                        int livingPlayerCount = Run.instance.livingPlayerCount;
+                        healthBoost *= Mathf.Pow(livingPlayerCount, 1f);
                     }
                     master.inventory.GiveItem(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1f) * 10f));
                     master.inventory.GiveItem(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1f) * 10f));

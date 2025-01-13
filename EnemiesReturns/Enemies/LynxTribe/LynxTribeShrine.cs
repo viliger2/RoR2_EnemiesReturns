@@ -9,13 +9,18 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    public class LynxTribeShrine : NetworkBehaviour, IInteractable
+    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider
     {
         [SyncVar]
         public bool available;
 
         [SyncVar(hook = "OnPickupChanged")]
         public int pickupValue;
+
+        [SyncVar]
+        public bool activated = false;
+
+        public float escapeDuration = 60f;
 
         public PickupIndex pickupIndex;
 
@@ -29,10 +34,34 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private NetworkIdentity networkIdentity;
 
+        private float escapeTimer;
+
         private void Awake()
         {
             available = true;
             networkIdentity = GetComponent<NetworkIdentity>();
+            if (spawner && spawner.combatSquad)
+            {
+                spawner.combatSquad.onDefeatedServer += CombatSquad_onDefeatedServer;
+            }
+        }
+
+        private void CombatSquad_onDefeatedServer()
+        {
+            if (pickupIndex != PickupIndex.none)
+            {
+                PickupDropletController.CreatePickupDroplet(pickupIndex, pickupDisplay.transform.position, pickupDisplay.transform.rotation * localEjectionVelocity);
+            }
+            activated = false;
+            DisableItemDisplay();
+            pickupValue = pickupIndex.value;
+        }
+
+        private void DisableItemDisplay()
+        {
+            pickupDisplay.SetPickupIndex(PickupIndex.none);
+            pickupDisplay.enabled = false;
+            pickupIndex = PickupIndex.none;
         }
 
         private void OnEnable()
@@ -120,22 +149,42 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 return;
             }
 
-            if(pickupIndex != PickupIndex.none)
-            {
-                PickupDropletController.CreatePickupDroplet(pickupIndex, pickupDisplay.transform.position, pickupDisplay.transform.rotation * localEjectionVelocity);
-            }
-
             spawner.SpawnLynxTribesmen(activator.transform);
-
-            pickupDisplay.SetPickupIndex(PickupIndex.none);
-            pickupDisplay.enabled = false;
-            pickupIndex = PickupIndex.none;
-
+            activated = true;
             if (networkIdentity)
             {
                 networkIdentity.isPingable = false;
             }
             available = false;
+        }
+
+        private void FixedUpdate()
+        {
+            if (activated)
+            {
+                if(escapeTimer > escapeDuration)
+                {
+                    if (spawner && spawner.combatSquad)
+                    {
+                        spawner.combatSquad.onDefeatedServer -= CombatSquad_onDefeatedServer;
+                    }
+                    if (NetworkServer.active)
+                    {
+                        spawner.Escape();
+                        if (spawner.combatSquad && spawner.combatSquad.memberCount > 0)
+                        {
+                            var bodyObject = spawner.combatSquad.membersList[0].GetBodyObject();
+                            if (bodyObject) 
+                            {
+                                ScrapperController.CreateItemTakenOrb(pickupDisplay.transform.position, bodyObject, pickupIndex.pickupDef.itemIndex);
+                            }
+                        }
+                    }
+                    DisableItemDisplay();
+                    activated = false;
+                }
+                escapeTimer += Time.fixedDeltaTime;
+            }
         }
 
         public bool ShouldIgnoreSpherecastForInteractibility([NotNull] Interactor activator)
@@ -151,6 +200,25 @@ namespace EnemiesReturns.Enemies.LynxTribe
         public bool ShouldShowOnScanner()
         {
             return true;
+        }
+
+        public bool ShouldDisplayHologram(GameObject viewer)
+        {
+            return activated;
+        }
+
+        public GameObject GetHologramContentPrefab()
+        {
+            return LynxTribeStuff.CustomHologramContent;
+        }
+
+        public void UpdateHologramContent(GameObject hologramContentObject, Transform viewerBody)
+        {
+            var component = hologramContentObject.GetComponent<CustomCostHologramContent>();
+            if (component)
+            {
+                component.displayValue = escapeDuration - escapeTimer;
+            }
         }
     }
 }
