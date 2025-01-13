@@ -13,6 +13,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
     {
         public static GameObject orbEffect;
 
+        public GameObject targetObject;
+
         public float scale = 1f;
 
         public override void Begin()
@@ -26,7 +28,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                     origin = origin,
                     genericFloat = base.duration
                 };
-                effectData.SetHurtBoxReference(target);
+                effectData.SetNetworkedObjectReference(targetObject);
                 EffectManager.SpawnEffect(orbEffect, effectData, transmit: true);
             }
         }

@@ -26,10 +26,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
             base.OnEnter();
             pullSphereSearch = new SphereSearch();
             cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
-            if (NetworkServer.active)
-            {
-                characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
-            }
         }
 
         public override void FixedUpdate()

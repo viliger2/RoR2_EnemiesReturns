@@ -38,6 +38,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         protected override bool AddSetStateOnHurt => false;
         protected override bool AddAimAnimator => false;
         protected override bool AddHitBoxes => false;
+        protected override bool AddHurtBoxes => false;
         protected override bool AddAnimationEvents => false;
         //protected override bool AddDeployable => true; // TODO
 

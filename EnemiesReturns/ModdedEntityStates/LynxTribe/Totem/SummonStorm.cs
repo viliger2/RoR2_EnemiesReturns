@@ -53,15 +53,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             {
                 for(int i = 0; i < storms.Length; i++)
                 {
-                    var hurtbox = GetStormHurtbox(storms[i]);
-                    if (hurtbox)
-                    {
-                        var orb = new LynxStormOrb();
-                        orb.origin = orbOrigin.position;
-                        orb.target = hurtbox;
-                        orb.duration = 0.4f;
-                        OrbManager.instance.AddOrb(orb);
-                    }
+                    var orb = new LynxStormOrb();
+                    orb.origin = orbOrigin.position;
+                    orb.targetObject = storms[i];
+                    orb.duration = 0.4f;
+                    OrbManager.instance.AddOrb(orb);
                 }
                 effectTimer -= effectSpawn;
             }
