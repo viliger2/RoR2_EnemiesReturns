@@ -58,13 +58,17 @@ namespace EnemiesReturns.Enemies.LynxTribe
             {
                 foreach(Transform child in leaves)
                 {
-                    child.rotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
+                    foreach (Transform child2 in child)
+                    {
+                        //Vector3 oldRotation = child.localRotation.eulerAngles;
+                        child2.localRotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
+                    }
                 }
             }
 
             if (branches)
             {
-                branches.rotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
+                branches.localRotation = Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f));
             }
 
             if (!NetworkServer.active)
