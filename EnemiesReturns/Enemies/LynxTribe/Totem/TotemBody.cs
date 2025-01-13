@@ -60,7 +60,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 30f,
+                baseRechargeInterval = 25f,
             });
         }
 
@@ -96,7 +96,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 15f,
+                baseRechargeInterval = 10f,
             });
         }
 

@@ -37,7 +37,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
             summonEffectTransform = FindModelChild("SummonTribeSpawnEffect");
-                 
 
             PlayAnimation("Gesture, Override", "SummonTribe", "summonTribe.playbackDuration", duration);
             if(spawnCards.Length == 0)
@@ -62,7 +61,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         var z = summonDistance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
                         while(currentRetryCount < retryCount) 
                         {
-                            if(SummonTribesman(base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), retryCount))
+                            if(SummonTribesman(i, base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), retryCount))
                             {
                                 break;
                             }
@@ -89,9 +88,17 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
-        private bool SummonTribesman(Vector3 approximateSpawnPosition, int retryCount)
+        private bool SummonTribesman(int bodyNum, Vector3 approximateSpawnPosition, int retryCount)
         {
-            var spawnCard = spawnCards[RoR2Application.rng.RangeInt(0, spawnCards.Length)];
+            SpawnCard spawnCard;
+            if (bodyNum + 1 <= summonCount - (summonCount % spawnCards.Length))
+            {
+                spawnCard = spawnCards[bodyNum % spawnCards.Length];
+            }
+            else
+            {
+                spawnCard = spawnCards[RoR2Application.rng.RangeInt(0, spawnCards.Length)];
+            }
             var directorSpawnRequest = new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
