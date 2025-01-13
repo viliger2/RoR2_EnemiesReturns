@@ -1035,8 +1035,10 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect));
 
-            ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = totemStuff.CreateGroundpoundPoundEffect();
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect));
+            var poundEffect = totemStuff.CreateGroundpoundPoundEffect();
+            ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = poundEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnState.poundEffect = poundEffect;
+            effectsList.Add(new EffectDef(poundEffect));
 
             Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
             effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect));
@@ -1091,7 +1093,11 @@ namespace EnemiesReturns
             var shamanSpawnEffect = lynxStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
             ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
             ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanSpawnEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnState.leavesSpawnEffect = shamanSpawnEffect;
             effectsList.Add(new EffectDef(shamanSpawnEffect));
+
+            ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab = lynxStuff.CreateRetreatEffect(assets.First(prefab => prefab.name == "LynxTribeRetreatEffect"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab));
 
             var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
             nseList.Add(nseLynxTribeTrapTwigSnap);

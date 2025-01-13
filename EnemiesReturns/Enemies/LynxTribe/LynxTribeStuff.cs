@@ -122,6 +122,24 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return dccsFamily;
         }
 
+        public GameObject CreateRetreatEffect(GameObject prefab)
+        {
+            prefab.AddComponent<EffectComponent>();
+
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Low;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+
+            prefab.AddComponent<DestroyOnParticleEnd>();
+
+            prefab.transform.Find("ParticleLoop/Sparks").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matTracerBright.mat").WaitForCompletion();
+            prefab.transform.Find("ParticleLoop/Debris, 3D").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/Props/matDetailRock.mat").WaitForCompletion();
+            prefab.transform.Find("ParticleLoop/Magma, Billboard").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matOpaqueDustLarge.mat").WaitForCompletion();
+            prefab.transform.Find("ParticleLoop/Dust, Billboard").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matOpaqueDustLarge.mat").WaitForCompletion();
+
+            return prefab;
+        }
+
         public GameObject CustomCostHologramContentPrefab()
         {
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/CostHologramContent.prefab").WaitForCompletion().InstantiateClone("CustomCostHologramContentPrefab", false);

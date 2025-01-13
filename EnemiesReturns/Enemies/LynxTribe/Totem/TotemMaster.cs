@@ -27,12 +27,12 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                     moveInputScale = 0f,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
                 },
-                new IAISkillDriver.AISkillDriverParams("SummonFirewall")
+                new IAISkillDriver.AISkillDriverParams("Groundpound")
                 {
                     skillSlot = SkillSlot.Primary,
                     requireSkillReady = true,
                     minDistance = 0f,
-                    maxDistance = 120f,
+                    maxDistance = 20f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.Stop,
                     moveInputScale = 0f,

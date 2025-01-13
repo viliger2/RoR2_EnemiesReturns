@@ -6,6 +6,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using RoR2.Skills;
@@ -51,6 +52,17 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         protected override bool AddSetStateOnHurt => false;
 
         protected override bool AddHitBoxes => true;
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
+        {
+            var prefab = base.AddBodyComponents(bodyPrefab, sprite, log, droptable);
+
+            var walkSpeed = prefab.AddComponent<WalkSpeedDebugHelper>();
+            walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
+            walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
+
+            return prefab;
+        }
 
         public SkillDef CreateSummonTribeSkill()
         {

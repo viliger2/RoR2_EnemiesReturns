@@ -30,7 +30,7 @@ namespace EnemiesReturns.Components.ModelComponents.Hurtboxes
 
                 var sniperHurtBoxes = bodyPrefab.GetComponentsInChildren<Transform>().Where(t => t.name == "SniperHurtBox").ToArray();
 #if NOWEAVER || DEBUG
-                if(sniperHurtBoxes.Length > 0)
+                if(sniperHurtBoxes.Length == 0)
                 {
                     Log.Warning($"{bodyPrefab} doesn't have SniperHurtBox!");
                 }

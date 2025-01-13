@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,12 +12,25 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe
     {
         public static float duraion = 2.5f;
 
+        public static float effectSpawnDuration = 1f;
+
+        public static GameObject retreatEffectPrefab;
+
         private Transform cachedModelTransform;
+
+        private bool effectSpawned;
+
+        private Transform effectTransform;
 
         public override void OnEnter()
         {
             base.OnEnter();
             cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
+            effectTransform = FindModelChild("RetreatEffectOrigin");
+            if (!effectTransform)
+            {
+                effectTransform = transform;
+            }
             PlayAnimation("Body", "Retreat");
             if (NetworkServer.active)
             {
@@ -27,6 +41,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if(fixedAge > effectSpawnDuration && !effectSpawned)
+            {
+                EffectManager.SimpleEffect(retreatEffectPrefab, effectTransform.position, Quaternion.identity, false);
+                effectSpawned = true;
+            }
+
             if(fixedAge > duraion)
             {
                 DestroyModel();
