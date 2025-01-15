@@ -296,7 +296,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION",
                 activationStateMachine = "Body",
-                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value,
+                baseRechargeInterval = 30f,
             });
         }
 

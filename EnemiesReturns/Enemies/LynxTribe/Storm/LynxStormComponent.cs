@@ -13,7 +13,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
     public class LynxStormComponent : MonoBehaviour
     {
-        public static float baseDuration => Configuration.LynxTribe.LynxShaman.SummonStormGrabDuration.Value;
+        public static float baseDuration => Configuration.LynxTribe.LynxTotem.SummonStormGrabDuration.Value;
 
         // magic numbers are used in logariphmic spiral calculation
         // so grabbed targets stay approximately within storm's default radius 
@@ -21,7 +21,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 
         public static float baseB = 0.3f; // magic number 2
 
-        public static float baseForce => Configuration.LynxTribe.LynxShaman.SummonStormThrowForce.Value;
+        public static float baseForce => Configuration.LynxTribe.LynxTotem.SummonStormThrowForce.Value;
 
         public static float pullStr = 10f;
 
@@ -29,7 +29,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 
         public float yHeight = 8f;
 
-        public float immunityDuration => Configuration.LynxTribe.LynxShaman.SummonStormImmunityDuration.Value;
+        public float immunityDuration => Configuration.LynxTribe.LynxTotem.SummonStormImmunityDuration.Value;
 
         public GameObject storm;
 
@@ -86,12 +86,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             moveTarget.transform.localPosition = Vector3.zero;
         }
 
-        private void Update()
-        {
-            //Log.Info($"velocity: {characterMotor.velocity}, combined velocity: {characterMotor.velocity.sqrMagnitude}, root motion: {characterMotor.rootMotion}");
-            //Log.Info($"distance: {Vector3.Distance(storm.transform.position, characterMotor.Motor.transform.position)}");
-        }
-
         private void FixedUpdate()
         {
             if (!characterBody.hasEffectiveAuthority)
@@ -105,12 +99,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 Destroy(this);
                 return;
             }
-
-            //if (Vector3.Distance() > )
-            //{
-            //    Destroy(this);
-            //    return;
-            //}
 
             if (timer > duration)
             {

@@ -14,13 +14,13 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
     public class SummonStormSkill : BaseState
     {
-        public static float baseDuration => Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value;
-        public static float minDistance => Configuration.LynxTribe.LynxShaman.SummonStormMinRange.Value;
-        public static float maxDistance => Configuration.LynxTribe.LynxShaman.SummonStormMaxRange.Value;
-        public static float rechargeOnFailure => Configuration.LynxTribe.LynxShaman.SummonStormRechargeOnFailure.Value;
+        public static float baseDuration = 4f;
+        public static float minDistance => Configuration.LynxTribe.LynxTotem.SummonStormMinRange.Value;
+        public static float maxDistance => Configuration.LynxTribe.LynxTotem.SummonStormMaxRange.Value;
+        public static float rechargeOnFailure = 0.75f;
         public static CharacterSpawnCard cscStorm;
-        public static int stormCount => Configuration.LynxTribe.LynxShaman.SummonStormCount.Value;
-        public static float baseSkillRechargeTime => Configuration.LynxTribe.LynxShaman.SummonStormCooldown.Value;
+        public static int stormCount = 1;
+        public static float baseSkillRechargeTime => Configuration.LynxTribe.LynxTotem.SummonStormCooldown.Value;
         public static float effectSpawn => 0.2f;
         public static GameObject summonEffectPrefab;
         public static float playableMaxDistance = 1000f;

@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
     {
         public override void OnEnter()
         {
-            duration = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormCastTime.Value;
+            duration = 4f;
             base.OnEnter();
             if (NetworkServer.active)
             {

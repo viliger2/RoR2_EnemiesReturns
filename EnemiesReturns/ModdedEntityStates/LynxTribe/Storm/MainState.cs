@@ -9,13 +9,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 {
     public class MainState : GenericCharacterMain
     {
-        public static float stormRadius => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormRadius.Value;
+        public static float stormRadius => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormRadius.Value;
 
-        public static float pullStrength => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormPullStrength.Value;
+        public static float pullStrength => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPullStrength.Value;
 
-        public static float lifetime => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummmonStormLifetime.Value;
+        public static float lifetime => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummmonStormLifetime.Value;
 
-        public static float stormGrabRange => EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonStormGrabRange.Value;
+        public static float stormGrabRange => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormGrabRange.Value;
 
         private SphereSearch pullSphereSearch;
 
@@ -45,7 +45,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                         {
                             component.AddDisplacement((position - targetBody.transform.position).normalized * pullStrength * GetDeltaTime());
                         }
-                        if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: CHECK NETWORKING!!!
+                        if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: CHECK NETWORKING, also fix for larger bodies, probably by adding body size or something!!!
                         {
                             targetBody.gameObject.AddComponent<LynxStormComponent>().SetStormTransform(this.gameObject);
                         }

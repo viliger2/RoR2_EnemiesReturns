@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
 using R2API;
 using RoR2;
 using RoR2.Orbs;
@@ -15,6 +16,44 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 {
     public class TotemStuff
     {
+        public GameObject CreateShamanTotemSpawnEffect(GameObject prefab)
+        {
+            var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanTotemSpawnEffect", false);
+
+            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
+
+            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
+
+            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
+            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            spawnEffect.AddComponent<DestroyOnParticleEnd>();
+
+            return spawnEffect;
+        }
+
+        public GameObject CreateTribesmenSpawnEffect(GameObject prefab)
+        {
+            var spawnEffect = prefab.InstantiateClone("LynxTribeSpawnEffect", false);
+
+            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
+            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
+            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material);
+
+            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
+
+            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
+            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
+            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            spawnEffect.AddComponent<DestroyOnParticleEnd>();
+
+            return spawnEffect;
+        }
+
         public GameObject CreateFirewallProjectile(GameObject prefab, AnimationCurveDef curveDef)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
@@ -25,21 +64,19 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.allowPrediction = true;
-            projectileController.procCoefficient = 1f; // TODO: config
-            //projectileController.flightSoundLoop = // TODO:
+            projectileController.procCoefficient = 1f; 
             projectileController.cannotBeDeleted = true;
-            //projectileController.startSound = // TODO
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType = DamageType.IgniteOnHit; // TODO: should we?
+            projectileDamage.damageType = DamageType.IgniteOnHit; 
 
             var objectScaleCurve = prefab.AddComponent<ObjectScaleCurve>();
             objectScaleCurve.useOverallCurveOnly = true;
             objectScaleCurve.overallCurve = curveDef.curve;
-            objectScaleCurve.timeMax = 5f; // TODO
+            objectScaleCurve.timeMax = 5f; 
 
             var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
-            destroyOnTimer.duration = 5f; // TODO
+            destroyOnTimer.duration = 5f;
 
             var firefall = prefab.transform.Find("Firewall").gameObject;
             var firewallAttack = firefall.AddComponent<FirewallAttack>();
@@ -92,7 +129,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            clonedEffect.transform.localScale = new Vector3(5.5f, 5.5f, 5.5f);
+            var scale = 5.5f * (EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundRadius.Value / 25f);
+            clonedEffect.transform.localScale = new Vector3(scale, scale, scale);
 
             return clonedEffect;
         }
@@ -113,6 +151,5 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             prefab.GetComponentInChildren<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/PassiveHealing/matWoodSpriteFlare.mat").WaitForCompletion();
             return prefab;
         }
-
     }
 }

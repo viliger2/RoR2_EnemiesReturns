@@ -5,23 +5,8 @@ namespace EnemiesReturns.Configuration
     public static class General
     {
 #if DEBUG || NOWEAVER
-        public enum ShamanTornadoBehavior
-        {
-            SetPosition,
-            AddDisplacement,
-            SetVelocity
-        }
-
-        public enum SummonProjectileType
-        {
-            Shotgun,
-            RapidFire
-        }
-
         public static ConfigEntry<float> DebugWalkSpeedValue;
-
         public static ConfigEntry<float> testconfig;
-
         public static ConfigEntry<bool> LynxVoices;
 #endif
 

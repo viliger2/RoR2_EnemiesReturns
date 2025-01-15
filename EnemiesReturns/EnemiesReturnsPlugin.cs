@@ -65,6 +65,8 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxScout.cfg"), true));
                 EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxHunter.cfg"), true));
                 EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxArcher.cfg"), true));
+                EnemiesReturns.Configuration.LynxTribe.LynxTotem.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxTotem.cfg"), true));
+                EnemiesReturns.Configuration.LynxTribe.LynxStuff.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxStuff.cfg"), true));
             }
             else
             {
@@ -81,6 +83,8 @@ namespace EnemiesReturns
                 EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(notSavedConfigFile);
                 EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.LynxTribe.LynxTotem.PopulateConfig(notSavedConfigFile);
+                EnemiesReturns.Configuration.LynxTribe.LynxStuff.PopulateConfig(notSavedConfigFile);
             }
             EnemiesReturns.Configuration.General.PopulateConfig(Config);
 

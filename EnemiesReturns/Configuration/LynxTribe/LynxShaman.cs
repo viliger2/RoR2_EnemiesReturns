@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using R2API;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
+        public static ConfigEntry<string> DefaultStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -38,22 +40,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> PushBackForce;
         public static ConfigEntry<float> PushBackRadius;
 
-        public static ConfigEntry<float> SummonStormCooldown;
-        public static ConfigEntry<float> SummonStormCastTime;
-        public static ConfigEntry<float> SummonStormMinRange;
-        public static ConfigEntry<float> SummonStormMaxRange;
-        public static ConfigEntry<float> SummonStormRechargeOnFailure;
-
-        public static ConfigEntry<float> SummonStormStormMoveSpeed;
-        public static ConfigEntry<int> SummonStormCount;
-        public static ConfigEntry<float> SummonStormRadius;
-        public static ConfigEntry<float> SummonStormPullStrength;
-        public static ConfigEntry<float> SummmonStormLifetime;
-        public static ConfigEntry<float> SummonStormGrabRange;
-        public static ConfigEntry<float> SummonStormGrabDuration;
-        public static ConfigEntry<float> SummonStormThrowForce;
-        public static ConfigEntry<float> SummonStormImmunityDuration;
-
         public static ConfigEntry<KeyCode> NopeEmoteKey;
         public static ConfigEntry<KeyCode> SingEmoteKey;
 
@@ -63,6 +49,22 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");
             MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 40, "Director cost of Lynx Shaman.");
+            DefaultStageList = config.Bind("Lynx Totem Director", "Default Variant Stage List",
+                string.Join(",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlains),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DistantRoost),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.WetlandAspect),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TreebornColony),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
+
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlainsSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
+                ),
+                "Stages that Default Lynx Totem appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Lynx Shaman Character Stats", "Base Max Health", 300f, "Lynx Shaman' base health.");
             BaseMoveSpeed = config.Bind("Lynx Shaman Character Stats", "Base Movement Speed", 6f, "Lynx Shaman' base movement speed.");
@@ -92,27 +94,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
             NopeEmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha2, "Key used to Nope.");
             SingEmoteKey = config.Bind("Lynx Shaman Emotes", "Sing Emote", KeyCode.Alpha1, "Key used to Sing.");
-
-
-
-
-
-
-            SummonStormCooldown = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Cooldown", 30f, "Lynx Shaman's Summon Storm Cooldown.");
-            SummonStormStormMoveSpeed = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summoned Storm Movement Speed", 8.5f, "Lynx Shaman's Summoned Storm movement speed.");
-            SummonStormCastTime = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Cast Time", 4f, "Lynx Shaman's Summon Storm cast time.");
-            SummonStormMinRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Minimum Range", 10f, "Lynx Shaman's Summon Storm's minimum range of spawning from target.");
-            SummonStormMaxRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Maximum Range", 20f, "Lynx Shaman's Summon Storm's maximum range of spawning from target.");
-            SummonStormCount = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Count", 1, "Lynx Shaman's number of summoned storms in one cast.");
-            SummonStormRechargeOnFailure = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Refund on Failure", 0.75f, "Portion of Lynx Shaman's Summon Storm skill cooldown that will be refunded on summon failure.");
-            SummonStormRadius = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Radius", 20f, "Lynx Shaman's radius of summoned storms.");
-            SummonStormPullStrength = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Pull Strength", 5f, "Lynx Shaman's summoned storms pull streigth.");
-            SummmonStormLifetime = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Lifetime", 30f, "Lynx Shaman's summoned storms lifetime.");
-            SummonStormGrabRange = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Grab Range", 3f, "Lynx Shaman's summoned storms grab range.");
-            SummonStormGrabDuration = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Grab Duration", 4f, "Lynx Shaman's summoned storms grab duration. Basically for how long target stays in the air.");
-            SummonStormThrowForce = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Throw Force", 7500f, "Lynx Shaman's summoned storms throw force at the end of the grab.");
-            SummonStormImmunityDuration = config.Bind("Lynx Shaman Summon Storm", "Lynx Shaman Summon Storm Immunity Duration", 5f, "For how long players are immune to getting succed by a storm after they got throwned out by it.");
         }
-
     }
 }

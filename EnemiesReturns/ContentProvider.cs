@@ -14,6 +14,7 @@ using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
+using Rewired.HID.Drivers;
 using Rewired.Utils.Classes.Utility;
 using RoR2;
 using RoR2.ContentManagement;
@@ -24,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UIElements;
 
 namespace EnemiesReturns
 {
@@ -902,14 +904,146 @@ namespace EnemiesReturns
         
         private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
-            // TODO: config
-            // TODO: child entities other than shaman to totem
-            CreateLynxStorm(assets, acdLookup); // TODO: storm should check either totem or shaman
-            CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
-            CreateLynxScout(assets, iconLookup);
-            CreateLynxHunter(assets, iconLookup);
-            CreateLynxArcher(assets, iconLookup, rampLookups);
-            CreateLynxTotem(assets, iconLookup, acdLookup);
+            if(EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value
+                || EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                CreateLynxStorm(assets, acdLookup);
+            }
+            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
+            }
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value)
+            {
+                CreateLynxScout(assets, iconLookup);
+                CreateLynxHunter(assets, iconLookup);
+                CreateLynxArcher(assets, iconLookup, rampLookups);
+                CreateLynxTotem(assets, iconLookup, acdLookup);
+                Utils.AddMonsterFamilyToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, new LynxTribeStuff().CreateLynxTribeFamily());
+                if (EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineEnabled.Value)
+                {
+                    CreateLynxShrine(assets);
+                }
+                if (EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapEnabled.Value)
+                {
+                    CreateLynxTrap(assets);
+                }
+            }
+        }
+
+        public void CreateLynxTrap(GameObject[] assets)
+        {
+            var lynxStuff = new LynxTribeStuff();
+
+            var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
+            nseList.Add(nseLynxTribeTrapTwigSnap);
+
+            var leavesPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/lemuriantemple/Assets/LTFallenLeaf.spm").WaitForCompletion();
+            var material = leavesPrefab.transform.Find("LTFallenLeaf_LOD0").GetComponent<MeshRenderer>().material;
+            var lynxTrapPrefab = assets.First(prefab => prefab.name == "LynxTrapPrefab");
+
+            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
+            foreach (var stageString in defaultStages)
+            {
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+                GameObject lynxTrap = lynxTrapPrefab.InstantiateClone(lynxTrapPrefab.name + cleanStageString, false);
+                switch (cleanStageString)
+                {
+                    case "blackbeach":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("SkyMeadowLeaves_LOD0", lynxStuff.CreateBlackBeachLeavesMaterialLOD0, material));
+                        break;
+                    case "skymeadow":
+                    case "itskymeadow":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("SkyMeadowLeaves_LOD0", lynxStuff.CreateSkyMeadowLeavesMaterialLOD0, material));
+                        break;
+                    case "village":
+                    case "villagenight":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("ShatteredAbodesLeaves_LOD0", lynxStuff.CreateShatteredAbodesLeavesMaterialLOD0, material));
+                        break;
+                    case "golemplains":
+                    case "itgolemplains":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("TitanicPlainsLeaves_LOD0", lynxStuff.CreateTitanicPlanesLeavesMaterialLOD0, material));
+                        break;
+                    case "foggyswamp":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("WetlandsLeaves_LOD0", lynxStuff.CreateWetlandsLeavesMaterialLOD0, material));
+                        break;
+                    case "habitatfall":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("GoldenDiebackLeaves_LOD0", lynxStuff.CreateGoldemDiebackLeavesMaterialLOD0, material));
+                        break;
+                    default:
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, material);
+                        break;
+                }
+                InteractableSpawnCard spawnCardTrap = lynxStuff.CreateLynxTrapSpawnCard(lynxTrap, cleanStageString);
+
+                var dcLynxTrap = new DirectorCard
+                {
+                    spawnCard = spawnCardTrap,
+                    selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapSelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = false
+                };
+
+                var holderTrap = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcLynxTrap,
+                    InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapSpawnCategory.Value
+                };
+
+                DirectorAPI.Helpers.AddNewInteractableToStage(holderTrap, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
+
+                nopList.Add(lynxTrap);
+            }
+        }
+
+
+        public void CreateLynxShrine(GameObject[] assets)
+        {
+            var lynxStuff = new LynxTribeStuff();
+
+            ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab = lynxStuff.CreateRetreatEffect(assets.First(prefab => prefab.name == "LynxTribeRetreatEffect"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab));
+
+            LynxTribeStuff.CustomHologramContent = lynxStuff.CustomCostHologramContentPrefab();
+
+            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
+
+            var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardShrine as ScriptableObject).name = "iscLynxShrine";
+            spawnCardShrine.prefab = lynxShrine;
+            spawnCardShrine.sendOverNetwork = true;
+            spawnCardShrine.hullSize = HullClassification.Golem;
+            spawnCardShrine.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardShrine.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardShrine.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardShrine.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value; // TODO
+            spawnCardShrine.occupyPosition = true;
+            spawnCardShrine.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardShrine.orientToFloor = false;
+
+            var dcLynxShrine = new DirectorCard
+            {
+                spawnCard = spawnCardShrine,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = false
+            };
+
+            var holderShrine = new DirectorAPI.DirectorCardHolder();
+            holderShrine.Card = dcLynxShrine;
+            holderShrine.InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSpawnCategory.Value;
+
+            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
+            foreach (var stageString in defaultStages)
+            {
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+
+                DirectorAPI.Helpers.AddNewInteractableToStage(holderShrine, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
+
+            }
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
+
+            nopList.Add(lynxShrine);
         }
 
         public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)
@@ -1029,6 +1163,18 @@ namespace EnemiesReturns
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             var totemStuff = new TotemStuff();
+
+            var shamanTotemSpawnEffect = totemStuff.CreateShamanTotemSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanTotemSpawnEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnState.leavesSpawnEffect = shamanTotemSpawnEffect;
+            effectsList.Add(new EffectDef(shamanTotemSpawnEffect));
+
+            var spawnEffect = totemStuff.CreateTribesmenSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Hunter.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Archer.SpawnState.spawnEffect = spawnEffect;
+            effectsList.Add(new EffectDef(spawnEffect));
+
             Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
             projectilesList.Add(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
 
@@ -1078,6 +1224,21 @@ namespace EnemiesReturns
 
             TotemBody.SpawnCards.cscLynxTotemDefault = totemBody.CreateCard("cscLynxTotemDefault", TotemMaster.MasterPrefab, TotemBody.SkinDefs.Default, TotemBody.BodyPrefab);
 
+            var dhLynxTotemDefault = new DirectorCard
+            {
+                spawnCard = TotemBody.SpawnCards.cscLynxTotemDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.LynxTribe.LynxTotem.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchLynxTotemDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxTotemDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
+
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
@@ -1087,101 +1248,16 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
-
-            var lynxStuff = new LynxTribeStuff();
-
-            var shamanSpawnEffect = lynxStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
-            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
-            ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanSpawnEffect;
-            ModdedEntityStates.LynxTribe.Totem.SpawnState.leavesSpawnEffect = shamanSpawnEffect;
-            effectsList.Add(new EffectDef(shamanSpawnEffect));
-
-            ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab = lynxStuff.CreateRetreatEffect(assets.First(prefab => prefab.name == "LynxTribeRetreatEffect"));
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab));
-
-            var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
-            nseList.Add(nseLynxTribeTrapTwigSnap);
-
-            var lynxTrap = lynxStuff.CreateTrapPrefab(assets.First(prefab => prefab.name == "LynxTrapPrefab"));
-
-            var spawnEffect = lynxStuff.CreateSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
-            ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
-            ModdedEntityStates.LynxTribe.Hunter.SpawnState.spawnEffect = spawnEffect;
-            ModdedEntityStates.LynxTribe.Archer.SpawnState.spawnEffect = spawnEffect;
-            effectsList.Add(new EffectDef(spawnEffect));
-
-            // TODO: do better
-            var spawnCardTrap = ScriptableObject.CreateInstance<InteractableSpawnCard>();
-            (spawnCardTrap as ScriptableObject).name = "iscLynxTrap";
-            spawnCardTrap.prefab = lynxTrap;
-            spawnCardTrap.sendOverNetwork = true;
-            spawnCardTrap.hullSize = HullClassification.Human; // TODO?
-            spawnCardTrap.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            spawnCardTrap.requiredFlags = RoR2.Navigation.NodeFlags.None;
-            spawnCardTrap.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
-            spawnCardTrap.directorCreditCost = 2; // TODO
-            spawnCardTrap.occupyPosition = true;
-            spawnCardTrap.eliteRules = SpawnCard.EliteRules.Default;
-            spawnCardTrap.orientToFloor = true;
-            spawnCardTrap.maxSpawnsPerStage = 3; // TODO
-
-            var dcLynxTrap = new DirectorCard
-            {
-                spawnCard = spawnCardTrap,
-                selectionWeight = 8, // TODO: slightly lower than barrels but still enough to appear on stages it should appear
-                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                preventOverhead = false
-            };
-
-            var holderTrap = new DirectorAPI.DirectorCardHolder();
-            holderTrap.Card = dcLynxTrap;
-            holderTrap.InteractableCategory = DirectorAPI.InteractableCategory.Barrels;
-
-            DirectorAPI.Helpers.AddNewInteractable(holderTrap); // TODO: stage list
-
-            LynxTribeStuff.CustomHologramContent = lynxStuff.CustomCostHologramContentPrefab();
-
-            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
-
-            var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
-            (spawnCardShrine as ScriptableObject).name = "iscLynxShrine";
-            spawnCardShrine.prefab = lynxShrine;
-            spawnCardShrine.sendOverNetwork = true;
-            spawnCardShrine.hullSize = HullClassification.Human; // TODO?
-            spawnCardShrine.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            spawnCardShrine.requiredFlags = RoR2.Navigation.NodeFlags.None;
-            spawnCardShrine.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
-            spawnCardShrine.directorCreditCost = 2; // TODO
-            spawnCardShrine.occupyPosition = true;
-            spawnCardShrine.eliteRules = SpawnCard.EliteRules.Default;
-            spawnCardShrine.orientToFloor = false;
-            spawnCardShrine.maxSpawnsPerStage = 3; // TODO
-
-            var dcLynxShrine = new DirectorCard
-            {
-                spawnCard = spawnCardShrine,
-                selectionWeight = 2, // TODO: in line with boss and combat
-                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                preventOverhead = false
-            };
-
-            var holderShrine = new DirectorAPI.DirectorCardHolder();
-            holderShrine.Card = dcLynxShrine;
-            holderShrine.InteractableCategory = DirectorAPI.InteractableCategory.Shrines;
-
-            DirectorAPI.Helpers.AddNewInteractable(holderShrine); // TODO: stage list
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
-
-            nopList.Add(lynxTrap);
-            nopList.Add(lynxShrine);
         }
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
             ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
-
             var shamanStuff = new ShamanStuff();
+
+            var shamanSpawnEffect = shamanStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
+            effectsList.Add(new EffectDef(shamanSpawnEffect));
 
             ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
             bdList.Add(ShamanStuff.ReduceHealing);
@@ -1255,6 +1331,21 @@ namespace EnemiesReturns
             masterList.Add(ShamanMaster.MasterPrefab);
 
             ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab, ShamanBody.SkinDefs.Default, ShamanBody.BodyPrefab);
+
+            var dhLynxShamanDefault = new DirectorCard
+            {
+                spawnCard = ShamanBody.SpawnCards.cscLynxShamanDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.LynxTribe.LynxShaman.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchLynxShamanDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxShamanDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
@@ -1340,6 +1431,17 @@ namespace EnemiesReturns
                 material = materialCreateFunc(texture);
                 ContentProvider.MaterialCache.Add(materialName, material);
             }
+            return material;
+        }
+
+        public static Material GetOrCreateMaterial(string materialName, Func<Material, Material> materialCreateFunc, Material materialOrig)
+        {
+            if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
+            {
+                material = materialCreateFunc(materialOrig);
+                ContentProvider.MaterialCache.Add(materialName, material);
+            }
+
             return material;
         }
 

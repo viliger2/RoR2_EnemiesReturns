@@ -21,7 +21,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
                 {
                     skillSlot = SkillSlot.Primary,
                     requireSkillReady = true,
-                    minDistance = 35f,
+                    minDistance = 15f,
                     maxDistance = 60f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresTargetLoS = true,
@@ -32,30 +32,22 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
                 new IAISkillDriver.AISkillDriverParams("Flee")
                 {
                     minDistance = 0f,
-                    maxDistance = 35f,
+                    maxDistance = 15f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
                     shouldSprint = true,
-                    driverUpdateTimerOverride = 3f,
+                    driverUpdateTimerOverride = 2f,
                     noRepeat = true
                 },
                 new IAISkillDriver.AISkillDriverParams("Path")
                 {
-                    minDistance = 30f,
+                    minDistance = 50f,
                     maxDistance = float.PositiveInfinity,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
                 },
-                new IAISkillDriver.AISkillDriverParams("PathStrafe")
-                {
-                    minDistance = 0f,
-                    maxDistance = 30f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
-                }
             };
         }
     }

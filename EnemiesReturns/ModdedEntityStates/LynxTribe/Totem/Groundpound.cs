@@ -15,11 +15,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float baseAttackDuration = 1.7f;
 
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundDamage.Value;
 
-        public static float procCoefficient = 1f;
+        public static float procCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundProcCoefficient.Value;
 
-        public static float force = 1500f;
+        public static float force => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundForce.Value;
 
         public static GameObject shakeEffect;
 

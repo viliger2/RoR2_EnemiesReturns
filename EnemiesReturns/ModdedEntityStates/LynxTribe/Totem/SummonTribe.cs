@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float summonDistance = 4f; // distance from body for summon
 
-        public static int summonCount = 4;
+        public static int summonCount => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeSummonCount.Value;
 
         public static int retryCount = 3;
 

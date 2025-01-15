@@ -17,44 +17,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
     {
         public static GameObject CustomHologramContent;
 
-        public GameObject CreateSpawnEffect(GameObject prefab)
-        {
-            var spawnEffect = prefab.InstantiateClone("LynxTribeSpawnEffect", false);
-
-            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
-            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
-            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material);
-
-            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
-
-            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
-            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
-            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
-
-            spawnEffect.AddComponent<DestroyOnParticleEnd>();
-
-            return spawnEffect;
-        }
-
-        public GameObject CreateShamanSpawnEffect(GameObject prefab)
-        {
-            var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
-
-            spawnEffect.transform.Find("PurpleLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeaf.mat").WaitForCompletion();
-            spawnEffect.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Treebot/matTreebotTreeLeafAlt.mat").WaitForCompletion();
-            //prefab.transform.Find("YellowLeaves").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matTreebotTreeLeaf2", LynxStormBody.CreateTreebotTreeLeaf2Material); ;
-
-            spawnEffect.AddComponent<EffectComponent>().positionAtReferencedTransform = true;
-
-            var vfxattributes = spawnEffect.AddComponent<VFXAttributes>();
-            vfxattributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
-            vfxattributes.vfxIntensity = VFXAttributes.VFXIntensity.High;
-
-            spawnEffect.AddComponent<DestroyOnParticleEnd>();
-
-            return spawnEffect;
-        }
-
         public FamilyDirectorCardCategorySelection CreateLynxTribeFamily()
         {
             var dccsFamily = ScriptableObject.CreateInstance<FamilyDirectorCardCategorySelection>();
@@ -64,11 +26,20 @@ namespace EnemiesReturns.Enemies.LynxTribe
             dccsFamily.minimumStageCompletion = 1;
             dccsFamily.maximumStageCompletion = int.MaxValue;
 
-            // TODO: add totem
             var champions = new FamilyDirectorCardCategorySelection.Category
             {
                 name = ContentProvider.MonsterCategories.Champions,
-                selectionWeight = 2f
+                selectionWeight = 2f,
+                cards = new DirectorCard[]
+                {
+                    new DirectorCard
+                    {
+                        spawnCard = Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault,
+                        selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = false
+                    }
+                }
             };
 
             var basicMonsters = new FamilyDirectorCardCategorySelection.Category
@@ -100,6 +71,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                     }
                 }
             };
+
             // adding shaman separately since he can spawn on his own and has his own enabled flag
             if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
             {
@@ -151,8 +123,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return prefab;
         }
 
-        // TODO: config this shit
-        public GameObject CreateTrapPrefab(GameObject trapPrefab)
+        public GameObject CreateTrapPrefab(GameObject trapPrefab, GameObject leavesPrefab, Material material)
         {
             trapPrefab.AddComponent<NetworkIdentity>();
 
@@ -161,23 +132,26 @@ namespace EnemiesReturns.Enemies.LynxTribe
             disabler.enabled = false;
 
             var spawner = trapPrefab.AddComponent<LynxTribeSpawner>();
-            spawner.eliteBias = 1f;
+            spawner.eliteBias = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapEliteBias.Value;
             spawner.spawnCards = new SpawnCard[]
             {
-                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
-                Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault, 
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, 
                 Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault, 
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
-            spawner.minSpawnCount = 3;
-            spawner.maxSpawnCount = 5;
-            spawner.assignRewards = true;
+            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                HG.ArrayUtils.ArrayAppend(ref spawner.spawnCards, Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault);
+            }
+            spawner.minSpawnCount = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapMinSpawnCount.Value;
+            spawner.maxSpawnCount = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapMaxSpawnCount.Value;
+            spawner.assignRewards = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapAssignRewards.Value;
             spawner.spawnDistance = 5f;
             spawner.retrySpawnCount = 3;
             spawner.teamIndex = TeamIndex.Monster;
 
-            var trap = trapPrefab.AddComponent<LynxTribeTrap>(); // TODO: add sound effects
-            trap.checkInterval = 0.25f;
+            var trap = trapPrefab.AddComponent<LynxTribeTrap>();
+            trap.checkInterval = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapCheckInterval.Value;
             trap.spawnAfterTriggerInterval = 0.5f;
             trap.spawner = spawner;
             trap.destroyOnTimer = disabler;
@@ -185,16 +159,17 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var teamMask = new TeamMask();
             teamMask.AddTeam(TeamIndex.Player);
             trap.teamFilter = teamMask;
-            trap.initialTriggerSound = "ER_LynxTrap_SnapTwig_Play"; // TODO
+            trap.initialTriggerSound = "ER_LynxTrap_SnapTwig_Play";
 
-            var leaves = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/lemuriantemple/Assets/LTFallenLeaf.spm").WaitForCompletion();
             var leavesTransform = trapPrefab.transform.Find("Leaves").transform;
             foreach (Transform child in leavesTransform)
             {
-                var leavesClone = UnityEngine.Object.Instantiate(leaves);
+                var leavesClone = UnityEngine.Object.Instantiate(leavesPrefab);
                 leavesClone.transform.parent = child;
                 leavesClone.transform.localPosition = Vector3.zero;
                 leavesClone.transform.localRotation = Quaternion.identity;
+                leavesClone.transform.Find("LTFallenLeaf_LOD0").GetComponent<MeshRenderer>().material = material;
+                leavesClone.transform.Find("LTFallenLeaf_LOD1").GetComponent<MeshRenderer>().material = material;
             }
             trap.leaves = leavesTransform;
 
@@ -211,6 +186,24 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return trapPrefab;
         }
 
+        public InteractableSpawnCard CreateLynxTrapSpawnCard(GameObject lynxTrap, string stageName)
+        {
+            var spawnCardTrap = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardTrap as ScriptableObject).name = "iscLynxTrap" + stageName;
+            spawnCardTrap.prefab = lynxTrap;
+            spawnCardTrap.sendOverNetwork = true;
+            spawnCardTrap.hullSize = HullClassification.Human;
+            spawnCardTrap.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardTrap.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardTrap.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardTrap.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapDirectorCost.Value;
+            spawnCardTrap.occupyPosition = true;
+            spawnCardTrap.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardTrap.orientToFloor = true;
+            spawnCardTrap.maxSpawnsPerStage = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapMaxSpawnPerStage.Value;
+            return spawnCardTrap;
+        }
+
         // TODO: lodsofconfig
         public GameObject CreateShrinePrefab(GameObject shrinePrefab)
         {
@@ -218,11 +211,11 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             var hightLightMesh = shrinePrefab.AddComponent<Highlight>();
             hightLightMesh.strength = 1f;
-            hightLightMesh.targetRenderer = shrinePrefab.GetComponentInChildren<Renderer>(); // TODO
+            hightLightMesh.targetRenderer = shrinePrefab.transform.Find("Base/LynxTotemPole/Pole").GetComponent<Renderer>();
             hightLightMesh.highlightColor = Highlight.HighlightColor.interactive;
 
             var modelLocator = shrinePrefab.AddComponent<ModelLocator>();
-            modelLocator.modelTransform = shrinePrefab.transform.Find("Base/LynxTotemPole"); // TODO
+            modelLocator.modelTransform = shrinePrefab.transform.Find("Base/LynxTotemPole");
             modelLocator.modelBaseTransform = shrinePrefab.transform.Find("Base");
             modelLocator.autoUpdateModelTransform = true;
             modelLocator.dontDetatchFromParent = false;
@@ -234,7 +227,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var genericInspecInfo = shrinePrefab.AddComponent<GenericInspectInfoProvider>(); // TODO
 
             var genericNameInfoProvider = shrinePrefab.AddComponent<GenericDisplayNameProvider>();
-            genericNameInfoProvider.displayToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME"; // TODO
+            genericNameInfoProvider.displayToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME";
 
             var pingInfoProvider = shrinePrefab.AddComponent<PingInfoProvider>();
             pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
@@ -243,16 +236,16 @@ namespace EnemiesReturns.Enemies.LynxTribe
             combatSquad.grantBonusHealthInMultiplayer = true;
 
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
-            spawner.eliteBias = 1f;
             spawner.spawnCards = new SpawnCard[]
             {
                 Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
-                Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault,
                 Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
-            spawner.minSpawnCount = 3;
-            spawner.maxSpawnCount = 5;
+            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                HG.ArrayUtils.ArrayAppend(ref spawner.spawnCards, Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault);
+            }
             spawner.assignRewards = false;
             spawner.spawnDistance = 5f;
             spawner.retrySpawnCount = 3;
@@ -263,7 +256,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.dropTable = CreateLynxShrineDropTable();
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
-            shrine.escapeDuration = 10f; // TODO
+            shrine.escapeDuration = 25f; // TODO
 
             var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;
@@ -308,8 +301,79 @@ namespace EnemiesReturns.Enemies.LynxTribe
             dropTable.tier2Weight = 0.3f;
             dropTable.tier3Weight = 0.05f;
             dropTable.bossWeight = 0.1f;
-
             return dropTable;
+        }
+
+        public Material CreateShatteredAbodesLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "ShatteredAbodesLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(0.9098f, 0.81568f, 0.03921f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
+        }
+
+        public Material CreateTitanicPlanesLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "TitanicPlainsLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(0.77254f, 0.69411f, 0.1647f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
+        }
+
+        public Material CreateWetlandsLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "WetlandsLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(0.9098f, 0.0745f, 0.1058f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
+        }
+
+        public Material CreateGoldemDiebackLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "GoldenDiebackLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(1f, 0f, 0.6509f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
+        }
+
+        public Material CreateSkyMeadowLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "SkyMeadowLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(0.7411f, 0.2745f, 1f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
+        }
+
+        public Material CreateBlackBeachLeavesMaterialLOD0(Material originalMaterial)
+        {
+            var material = UnityEngine.Object.Instantiate(originalMaterial);
+
+            material.name = "BlackBeachLeaves_LOD0";
+
+            material.SetColor("_Color", new Color(0.2588f, 0.3882f, 0.2235f));
+            material.SetInt("_WindQuality", 0);
+
+            return material;
         }
 
     }

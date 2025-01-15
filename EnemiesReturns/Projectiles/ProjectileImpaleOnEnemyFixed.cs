@@ -14,15 +14,9 @@ namespace EnemiesReturns.Projectiles
 
         public GameObject impalePrefab;
 
-        private Rigidbody rigidbody;
-
         private bool spawned;
 
-        private void Awake()
-        {
-            rigidbody = GetComponent<Rigidbody>();
-        }
-
+        // TODO: do not attach to allies
         public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
         {
             if (spawned)
@@ -44,7 +38,6 @@ namespace EnemiesReturns.Projectiles
                 if (controller && controller.ghost)
                 {
                     obj.transform.rotation = controller.ghost.transform.rotation;
-                    //obj.transform.localRotation = controller.ghost.transform.rotation;
                 }
                 obj.transform.parent = component.transform;
                 spawned = true;

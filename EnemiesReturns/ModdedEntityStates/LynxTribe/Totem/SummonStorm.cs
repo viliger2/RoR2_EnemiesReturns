@@ -15,14 +15,14 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
     {
         public static float baseDuration => 4f;
 
-        public static float minDistance => Configuration.LynxTribe.LynxShaman.SummonStormMinRange.Value;
-        public static float maxDistance => Configuration.LynxTribe.LynxShaman.SummonStormMaxRange.Value;
+        public static float minDistance => Configuration.LynxTribe.LynxTotem.SummonStormMinRange.Value;
+        public static float maxDistance => Configuration.LynxTribe.LynxTotem.SummonStormMaxRange.Value;
 
-        public static int maxStormCount = 16;
+        public static int maxStormCount => Configuration.LynxTribe.LynxTotem.SummonStormMaxCount.Value;
 
         public static float playableMaxDistance = 1000f;
 
-        public static float stormAttentionDuration = 30f; // same as lifetime
+        public static float stormAttentionDuration => Configuration.LynxTribe.LynxTotem.SummmonStormLifetime.Value; // same as lifetime
 
         public static float effectSpawn = 0.35f;
 
@@ -155,19 +155,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             };
 
             return DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
-        }
-
-        private HurtBox GetStormHurtbox(GameObject masterGameObject)
-        {
-            if (masterGameObject && masterGameObject.TryGetComponent<CharacterMaster>(out var master))
-            {
-                var body = master.GetBody();
-                if (body && body.modelLocator && body.modelLocator.modelTransform)
-                {
-                    return body.mainHurtBox;
-                }
-            }
-            return null;
         }
 
         private void SummonStormPlayer(Vector3 position)

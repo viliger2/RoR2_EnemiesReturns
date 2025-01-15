@@ -57,9 +57,13 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             var prefab = base.AddBodyComponents(bodyPrefab, sprite, log, droptable);
 
-            var walkSpeed = prefab.AddComponent<WalkSpeedDebugHelper>();
-            walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
-            walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
+            var groundpoundHitbox = prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/GroundpoundHitbox");
+            var scale = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundRadius.Value;
+            groundpoundHitbox.transform.localScale = new Vector3(scale, groundpoundHitbox.transform.localScale.y, scale);
+
+            //var walkSpeed = prefab.AddComponent<WalkSpeedDebugHelper>();
+            //walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
+            //walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
 
             return prefab;
         }
@@ -72,7 +76,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 25f,
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeCooldown.Value,
             });
         }
 
@@ -84,7 +88,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 40f,
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormCooldown.Value,
             });
         }
 
@@ -108,7 +112,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundCooldown.Value,
             });
         }
 
@@ -126,7 +130,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, 800) // TODO: config
+            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxTotem.DirectorCost.Value)
             {
                 hullSize = HullClassification.Golem,
                 occupyPosition = true,
@@ -151,21 +155,21 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             {
                 subtitleNameToken = "ENEMIES_RETURNS_LYNX_TITEM_BODY_SUBTITLE",
                 bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage,
-                mainRootSpeed = 7.5f, // TODO: config
+                mainRootSpeed = 7.5f,
 
-                baseMaxHealth = 2800f,
-                baseMoveSpeed = 7f,
+                baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseMaxHealth.Value,
+                baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseMoveSpeed.Value,
                 baseAcceleration = 30f,
-                baseJumpPower = 10f,
-                baseDamage = 13f,
-                baseArmor = 15f,
+                baseJumpPower = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseJumpPower.Value,
+                baseDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseDamage.Value,
+                baseArmor = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseArmor.Value,
                 hullClassification = HullClassification.BeetleQueen,
                 bodyColor = new Color(64 / 255, 58 / 255, 48 / 255),
                 isChampion = true,
                 autoCalculateStats = true,
-                levelMaxHealth = 840f,
-                levelDamage = 2.6f,
-                levelArmor = 0f
+                levelMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LevelMaxHealth.Value,
+                levelDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LevelDamage.Value,
+                levelArmor = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LevelArmor.Value
             };
         }
 
