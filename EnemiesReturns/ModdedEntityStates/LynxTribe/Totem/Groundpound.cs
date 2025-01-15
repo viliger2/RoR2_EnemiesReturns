@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    // TODO: some stones flying to shaking
     public class Groundpound : BaseState
     {
         public static float baseDuration = 4.1f;

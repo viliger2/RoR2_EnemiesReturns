@@ -60,6 +60,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
 
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlainsSimulacrum),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)

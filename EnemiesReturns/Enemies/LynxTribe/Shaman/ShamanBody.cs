@@ -19,6 +19,7 @@ using UnityEngine.AddressableAssets;
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     // TODO: maybe visual effects on death, like splinters flying off the mask and ground impact
+    // TODO: post loop transformation into totem
     public class ShamanBody : BodyBase
     {
         public struct SkillFamilies

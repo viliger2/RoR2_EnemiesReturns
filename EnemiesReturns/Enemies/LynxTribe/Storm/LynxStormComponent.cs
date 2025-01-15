@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
+    // TODO: getting out with movement abilities?
     public class LynxStormComponent : MonoBehaviour
     {
         public static float baseDuration => Configuration.LynxTribe.LynxTotem.SummonStormGrabDuration.Value;

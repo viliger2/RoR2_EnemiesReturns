@@ -297,10 +297,17 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             var dropTable = ScriptableObject.CreateInstance<BasicPickupDropTable>();
             (dropTable as ScriptableObject).name = "dtLynxShrine";
+#if DEBUG || NOWEAVER
+            dropTable.tier1Weight = 0.25f;
+            dropTable.tier2Weight = 0.25f;
+            dropTable.tier3Weight = 0.25f;
+            dropTable.bossWeight = 0.25f;
+#else
             dropTable.tier1Weight = 0.55f;
             dropTable.tier2Weight = 0.3f;
             dropTable.tier3Weight = 0.05f;
             dropTable.bossWeight = 0.1f;
+#endif
             return dropTable;
         }
 
