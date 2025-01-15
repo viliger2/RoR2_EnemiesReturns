@@ -113,7 +113,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                         rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     }
                 }
-                R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Bleed, 5f); // TODO
+                R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Poison, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonDuration.Value, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonCoefficient.Value);
                 Destroy(this);
                 return;
             }

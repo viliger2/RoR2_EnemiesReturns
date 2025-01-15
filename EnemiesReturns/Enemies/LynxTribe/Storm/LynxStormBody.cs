@@ -40,7 +40,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         protected override bool AddHitBoxes => false;
         protected override bool AddHurtBoxes => false;
         protected override bool AddAnimationEvents => false;
-        //protected override bool AddDeployable => true; // TODO
 
         public CharacterSpawnCard CreateCard(string name, GameObject master)
         {
@@ -133,6 +132,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 baseMoveSpeed = Configuration.LynxTribe.LynxTotem.SummonStormStormMoveSpeed.Value,
                 baseJumpCount = 0,
                 baseJumpPower = 0f,
+                baseDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseDamage.Value,
+                levelDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LevelDamage.Value,
                 bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.IgnoreKnockback | CharacterBody.BodyFlags.ImmuneToLava
             };
         }

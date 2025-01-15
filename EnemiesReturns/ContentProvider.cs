@@ -1016,7 +1016,7 @@ namespace EnemiesReturns
             spawnCardShrine.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             spawnCardShrine.requiredFlags = RoR2.Navigation.NodeFlags.None;
             spawnCardShrine.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
-            spawnCardShrine.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value; // TODO
+            spawnCardShrine.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value;
             spawnCardShrine.occupyPosition = true;
             spawnCardShrine.eliteRules = SpawnCard.EliteRules.Default;
             spawnCardShrine.orientToFloor = false;

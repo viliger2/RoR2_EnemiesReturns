@@ -195,7 +195,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             var effectComponent = prefab.AddComponent<EffectComponent>();
             effectComponent.applyScale = true;
-            effectComponent.soundName = "ER_Shaman_FirePushBack_Play"; // TODO
+            effectComponent.soundName = "ER_Shaman_FirePushBack_Play";
 
             var shakeEmmiter = prefab.AddComponent<ShakeEmitter>();
             shakeEmmiter.shakeOnStart = true;
@@ -395,7 +395,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             effectComponent.positionAtReferencedTransform = false;
             effectComponent.parentToReferencedTransform = false;
             effectComponent.applyScale = true;
-            effectComponent.soundName = ""; // TODO
+            effectComponent.soundName = "";
             effectComponent.disregardZScale = false;
 
             prefab.AddComponent<DestroyOnTimer>().duration = 0.75f;
@@ -403,7 +403,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             var lightTransform = prefab.transform.Find("Light");
             var lightIntencityCurve = lightTransform.gameObject.AddComponent<LightIntensityCurve>();
             lightIntencityCurve.timeMax = 0.5f;
-            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f); // TODO
+            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
 
             vfxAttributes.optionalLights = new Light[] { lightTransform.GetComponent<Light>() };
 
@@ -425,7 +425,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             effectComponent.positionAtReferencedTransform = false;
             effectComponent.parentToReferencedTransform = false;
             effectComponent.applyScale = true;
-            effectComponent.soundName = ""; // TODO
+            effectComponent.soundName = ""; 
             effectComponent.disregardZScale = false;
 
             prefab.AddComponent<DestroyOnTimer>().duration = 0.75f;
@@ -433,7 +433,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             var lightTransform = prefab.transform.Find("Light");
             var lightIntencityCurve = lightTransform.gameObject.AddComponent<LightIntensityCurve>();
             lightIntencityCurve.timeMax = 0.5f;
-            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f); // TODO
+            lightIntencityCurve.curve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
 
             vfxAttributes.optionalLights = new Light[] { lightTransform.GetComponent<Light>() };
 

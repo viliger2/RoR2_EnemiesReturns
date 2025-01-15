@@ -68,7 +68,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxHunter.DirectorCost.Value) // TODO: director cost
+            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxHunter.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
                 occupyPosition = false,
@@ -91,7 +91,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_HUNTER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                mainRootSpeed = 33f, // TODO: config
+                mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxHunter.BaseMaxHealth.Value,
                 baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxHunter.BaseMoveSpeed.Value,
                 baseAcceleration = 30f,

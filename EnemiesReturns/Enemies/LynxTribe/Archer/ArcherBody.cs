@@ -59,13 +59,13 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
                 nameToken = "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowCooldown.Value, // TODO
+                baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowCooldown.Value,
             });
         }
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxArcher.DirectorCost.Value) // TODO: director cost config
+            return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxArcher.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
                 occupyPosition = false,
@@ -88,7 +88,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_ARCHER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                mainRootSpeed = 33f, // TODO: config
+                mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxArcher.BaseMaxHealth.Value,
                 baseMoveSpeed = EnemiesReturns.Configuration.LynxTribe.LynxArcher.BaseMoveSpeed.Value,
                 baseAcceleration = 30f,

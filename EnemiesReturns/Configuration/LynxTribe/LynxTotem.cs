@@ -39,6 +39,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> SummonStormGrabDuration;
         public static ConfigEntry<float> SummonStormThrowForce;
         public static ConfigEntry<float> SummonStormImmunityDuration;
+        public static ConfigEntry<float> SummonStormPoisonDuration;
+        public static ConfigEntry<float> SummonStormPoisonCoefficient;
 
         public static ConfigEntry<float> GroundpoundCooldown;
         public static ConfigEntry<float> GroundpoundDamage;
@@ -93,8 +95,10 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SummmonStormLifetime = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Lifetime", 30f, "Lynx Totem's summoned storms lifetime.");
             SummonStormGrabRange = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Grab Range", 3f, "Lynx Totem's summoned storms grab range.");
             SummonStormGrabDuration = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Grab Duration", 4f, "Lynx Totem's summoned storms grab duration. Basically for how long target stays in the air.");
-            SummonStormThrowForce = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Throw Force", 2500f, "Lynx Totem's summoned storms throw force at the end of the grab.");
+            SummonStormThrowForce = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Throw Force", 3500f, "Lynx Totem's summoned storms throw force at the end of the grab.");
             SummonStormImmunityDuration = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Immunity Duration", 5f, "For how long players are immune to getting succed by a storm after they got throwned out by it.");
+            SummonStormPoisonDuration = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Posion Duration", 5f, "For how long posion DoT is applied. Since posion deals static damage every tick it directly affect total damage dealt.");
+            SummonStormPoisonCoefficient = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Posion Damage Coefficient", 0.6f, "Poison damage coefficient. While poison should deal % health damage, players would realistically never get enough health to overshadow initial calculation of damage off base damage, so you can use this value to adjust poison damage directly. Poison deals 33% of base damage every 0.33 seconds before this coefficient.");
 
             GroundpoundCooldown = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Cooldown", 10f, "Lynx Totem's Groundpound's cooldown.");
             GroundpoundDamage = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Damage", 3f, "Lynx Totem's Groundpound's damage coefficient.");
