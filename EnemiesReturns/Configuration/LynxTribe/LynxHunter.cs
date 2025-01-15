@@ -31,13 +31,13 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SelectionWeight = config.Bind("Lynx Hunter Director", "Selection Weight", 1, "Selection weight of Lynx Hunter.");
             DirectorCost = config.Bind("Lynx Hunter Director", "Director Cost", 28, "Director cost of Lynx Hunter.");
 
-            BaseMaxHealth = config.Bind("Lynx Hunter Character Stats", "Base Max Health", 140f, "Lynx Hunter' base health.");
+            BaseMaxHealth = config.Bind("Lynx Hunter Character Stats", "Base Max Health", 180f, "Lynx Hunter' base health.");
             BaseMoveSpeed = config.Bind("Lynx Hunter Character Stats", "Base Movement Speed", 7f, "Lynx Hunter' base movement speed.");
             BaseJumpPower = config.Bind("Lynx Hunter Character Stats", "Base Jump Power", 18f, "Lynx Hunter' base jump power.");
             BaseDamage = config.Bind("Lynx Hunter Character Stats", "Base Damage", 12f, "Lynx Hunter' base damage.");
             BaseArmor = config.Bind("Lynx Hunter Character Stats", "Base Armor", 0f, "Lynx Hunter' base armor.");
 
-            LevelMaxHealth = config.Bind("Lynx Hunter Character Stats", "Health per Level", 42f, "Lynx Hunter' health increase per level.");
+            LevelMaxHealth = config.Bind("Lynx Hunter Character Stats", "Health per Level", 54f, "Lynx Hunter' health increase per level.");
             LevelDamage = config.Bind("Lynx Hunter Character Stats", "Damage per Level", 2.4f, "Lynx Hunter' damage increase per level.");
             LevelArmor = config.Bind("Lynx Hunter Character Stats", "Armor per Level", 0f, "Lynx Hunter' armor increase per level.");
 
