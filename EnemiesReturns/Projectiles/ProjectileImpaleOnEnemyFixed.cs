@@ -12,11 +12,17 @@ namespace EnemiesReturns.Projectiles
     {
         public ProjectileController controller;
 
+        public TeamFilter teamFilter;
+
         public GameObject impalePrefab;
 
         private bool spawned;
 
-        // TODO: do not attach to allies
+        private void Awake()
+        {
+            teamFilter = GetComponent<TeamFilter>();
+        }
+
         public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
         {
             if (spawned)
@@ -31,6 +37,14 @@ namespace EnemiesReturns.Projectiles
             HurtBox component = collider.GetComponent<HurtBox>();
             if (component)
             {
+                // do not attach to allies
+                if (teamFilter && component.healthComponent && component.healthComponent.body && component.healthComponent.body.teamComponent)
+                { 
+                    if(teamFilter.teamIndex == component.healthComponent.body.teamComponent.teamIndex)
+                    {
+                        return;
+                    }
+                }
                 Vector3 estimatedPointOfImpact = impactInfo.estimatedPointOfImpact;
                 GameObject obj = UnityEngine.Object.Instantiate(impalePrefab);
                 obj.transform.position = estimatedPointOfImpact;
