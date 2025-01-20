@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 {
     public class DoubleSlash : BaseState
     {
-        public static float baseDuration => 2f;
+        public static float baseDuration => 1.8f;
 
         public static float damageCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxScout.DoubleSlashDamage.Value;
 

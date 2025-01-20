@@ -55,7 +55,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
             colorOverLifetime.color = new ParticleSystem.MinMaxGradient(gradient);
 
-            effect.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            effect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 
             return effect;
         }
@@ -70,7 +70,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             swingTrail.localScale = new Vector3(1f, 0.25f, 1f);
             swingTrail.rotation = new Quaternion(0.535170257f, -0.455337405f, -0.461647362f, -0.541426361f);
 
-            effect.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            effect.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
 
             return effect;
         }
