@@ -51,6 +51,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
         private float aimCurrentVelocity;
 
+        private Predictor predictor;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -67,6 +69,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
             muzzleTransform = FindModelChild(targetMuzzle);
             arrowTransform = FindModelChild("Arrow");
+
+            predictor = new Predictor(characterBody.transform);
 
             if (!muzzleTransform)
             {
@@ -86,8 +90,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             if (timer > animationAimUpdate && !hasFired)
             {
                 aimTarget = 1 - Mathf.Clamp01(Util.Remap(GetAimAngle(), 45f, 100f, 0f, 1f)); // 45 and 100 are aproximate angles of aim animation
-                //aimTarget = Mathf.Clamp01(GetAimAngle() / 60f);
-                //animator.SetFloat("Shot.aimPitchCycle", Mathf.Clamp01(GetAimAngle() / 60f));
                 timer -= animationAimUpdate;
             }
             animator.SetFloat("Shot.aimPitchCycle", Mathf.SmoothDamp(animator.GetFloat("Shot.aimPitchCycle"), aimTarget, ref aimCurrentVelocity, 0.1f, 360f, Time.deltaTime)); // magic numbers from AimAnimator
@@ -96,7 +98,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            //FireProjectile();
+            if (predictor != null)
+            {
+                predictor.Update();
+            }
             if(fixedAge >= shoot && !hasFired)
             {
                 if (isAuthority)
@@ -128,47 +133,48 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
         private void FireProjectile()
         {
-            // getting aim ray to find where creature is looking
             Ray aimRay = GetAimRay();
-            // I have no idea what's the purpose of this ray
             Ray ray = new Ray(aimRay.origin, Vector3.up);
-            // getting position of projectile's initial point
             if (muzzleTransform)
             {
                 ray.origin = muzzleTransform.position;
             }
 
-            // bullseyesearch is a cone by default
-            BullseyeSearch search = new BullseyeSearch()
-            {
-                searchOrigin = aimRay.origin,
-                searchDirection = aimRay.direction,
-                filterByLoS = false,
-                teamMaskFilter = TeamMask.allButNeutral,
-                sortMode = BullseyeSearch.SortMode.Angle
-            };
-            if (teamComponent)
-            {
-                search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
-            }
-            search.RefreshCandidates();
-
-            // getting first hitbox that we found
-            var hurtBox = search.GetResults().FirstOrDefault();
-
-            // flag for direction, or something
+            Vector3 vector;
             bool flag = false;
+            if (!predictor.hasTargetTransform)
+            {
+                BullseyeSearch search = new BullseyeSearch()
+                {
+                    searchOrigin = aimRay.origin,
+                    searchDirection = aimRay.direction,
+                    filterByLoS = false,
+                    teamMaskFilter = TeamMask.allButNeutral,
+                    sortMode = BullseyeSearch.SortMode.Angle
+                };
+                if (teamComponent)
+                {
+                    search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
+                }
+                search.RefreshCandidates();
 
-            // checking if it exists and if it doesn't just shooting a ray from creature to target
-            Vector3 vector = Vector3.zero;
-            if (hurtBox)
-            {
-                vector = hurtBox.transform.position;
-                flag = true;
+                var hurtBox = search.GetResults().FirstOrDefault();
+
+                if (hurtBox)
+                {
+                    predictor.SetTargetTransform(hurtBox.transform);
+                    vector = predictor.GetTargetTransform().position;
+                    flag = true;
+                }
+                else
+                {
+                    vector = aimRay.origin + aimRay.direction * 1000f;
+                    flag = true;
+                }
             }
-            else if (Physics.Raycast(aimRay, out var hitInfo, 1000f, LayerIndex.world.mask | LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore))
+            else
             {
-                vector = hitInfo.point;
+                predictor.GetPredictedTargetPosition(timeToTarget, out vector);
                 flag = true;
             }
 
@@ -214,30 +220,36 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 ray.origin = muzzleTransform.position;
             }
 
-            BullseyeSearch search = new BullseyeSearch()
-            {
-                searchOrigin = aimRay.origin,
-                searchDirection = aimRay.direction,
-                filterByLoS = false,
-                teamMaskFilter = TeamMask.allButNeutral,
-                sortMode = BullseyeSearch.SortMode.Angle
-            };
-            if (teamComponent)
-            {
-                search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
-            }
-            search.RefreshCandidates();
-
-            var hurtBox = search.GetResults().FirstOrDefault();
-
             Vector3 vector;
-            if (hurtBox)
+            if (!predictor.hasTargetTransform)
             {
-                vector = hurtBox.transform.position;
-            }
-            else
+                BullseyeSearch search = new BullseyeSearch()
+                {
+                    searchOrigin = aimRay.origin,
+                    searchDirection = aimRay.direction,
+                    filterByLoS = false,
+                    teamMaskFilter = TeamMask.allButNeutral,
+                    sortMode = BullseyeSearch.SortMode.Angle
+                };
+                if (teamComponent)
+                {
+                    search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
+                }
+                search.RefreshCandidates();
+
+                var hurtBox = search.GetResults().FirstOrDefault();
+
+                if (hurtBox)
+                {
+                    predictor.SetTargetTransform(hurtBox.transform);
+                    vector = predictor.GetTargetTransform().position;
+                } else
+                {
+                    vector = aimRay.origin + aimRay.direction * 1000f;
+                }
+            } else
             {
-                vector = aimRay.origin + aimRay.direction * 1000f;
+                predictor.GetPredictedTargetPosition(shoot, out vector);
             }
 
             Vector3 vectorToTarget = vector - ray.origin;

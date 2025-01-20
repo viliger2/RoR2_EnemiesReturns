@@ -41,7 +41,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LevelDamage = config.Bind("Lynx Hunter Character Stats", "Damage per Level", 2.4f, "Lynx Hunter' damage increase per level.");
             LevelArmor = config.Bind("Lynx Hunter Character Stats", "Armor per Level", 0f, "Lynx Hunter' armor increase per level.");
 
-            StabCooldown = config.Bind("Lynx Hunter Stab", "Stab Cooldown", 0f, "Lynx Hunter's Stab cooldown.");
+            StabCooldown = config.Bind("Lynx Hunter Stab", "Stab Cooldown", 3f, "Lynx Hunter's Stab cooldown.");
             StabDamage = config.Bind("Lynx Hunter Stab", "Stab Damage", 3f, "Lynx Hunter's Stab damage.");
             StabProcCoefficient = config.Bind("Lynx Hunter Stab", "Stab Proc Coefficient", 1f, "Lynx Hunter's Stab proc coefficient.");
 

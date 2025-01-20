@@ -25,15 +25,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static GameObject coneEffect;
 
-        public static float baseAttackDuration = 0.42f;
+        public static float baseAttackDuration = 0.7f;
 
-        public static float maxLungeSpeedCoefficient = 5f;
+        public static float maxLungeSpeedCoefficient = 3f;
 
         public static float maxLungeDistance = 20f;
 
         public static float turnSmoothTime = 0.1f;
 
-        public static float turnSpeed = 150f;
+        public static float turnSpeed = 40f;
 
         private float duration;
 
@@ -54,14 +54,14 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             attackDuration = baseAttackDuration / attackSpeedStat;
 
             var baseAi = characterBody.master.GetComponent<BaseAI>();
-            if (baseAi)
-            {
-                float sqrMagnitude = (characterBody.master.GetComponent<BaseAI>().currentEnemy.characterBody.corePosition - characterBody.corePosition).sqrMagnitude;
-                calculatedLungeSpeed = Util.Remap(Mathf.Clamp(sqrMagnitude, 0, maxLungeDistance * maxLungeDistance), 0f, maxLungeDistance * maxLungeDistance, 0f, maxLungeSpeedCoefficient);
-            } else
-            {
+            //if (baseAi)
+            //{
+            //    float sqrMagnitude = (characterBody.master.GetComponent<BaseAI>().currentEnemy.characterBody.corePosition - characterBody.corePosition).sqrMagnitude;
+            //    calculatedLungeSpeed = Util.Remap(Mathf.Clamp(sqrMagnitude, 0, maxLungeDistance * maxLungeDistance), 0f, maxLungeDistance * maxLungeDistance, 0f, maxLungeSpeedCoefficient);
+            //} else
+            //{
                 calculatedLungeSpeed = maxLungeSpeedCoefficient;
-            }
+            //}
 
             var modelTransform = GetModelTransform();
             var hitboxes = modelTransform.GetComponents<HitBoxGroup>();

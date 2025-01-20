@@ -47,12 +47,10 @@ namespace EnemiesReturns.Configuration.LynxTribe
         {
             Enabled = config.Bind("Lynx Shaman Director", "Enable Lynx Shaman", true, "Enables Lynx Shaman.");
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");
-            MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 40, "Director cost of Lynx Shaman.");
             DefaultStageList = config.Bind("Lynx Totem Director", "Default Variant Stage List",
                 string.Join(",",
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlains),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DistantRoost),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.WetlandAspect),
@@ -62,7 +60,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
 
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlainsSimulacrum),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
                 ),
                 "Stages that Default Lynx Totem appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");

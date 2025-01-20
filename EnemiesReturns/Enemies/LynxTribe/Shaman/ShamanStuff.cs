@@ -143,7 +143,12 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 UnityEngine.Object.DestroyImmediate(akGameObj);
             }
-            if(prefab.TryGetComponent<EffectComponent>(out var effectComponent))
+            if (prefab.TryGetComponent<LODGroup>(out var lodGroup))
+            {
+                UnityEngine.Object.DestroyImmediate(lodGroup);
+            }
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("mdlDevilOrb").gameObject);
+            if (prefab.TryGetComponent<EffectComponent>(out var effectComponent))
             {
                 UnityEngine.Object.DestroyImmediate(effectComponent);
             }

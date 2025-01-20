@@ -242,10 +242,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
-            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
-            {
-                HG.ArrayUtils.ArrayAppend(ref spawner.spawnCards, Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault);
-            }
+
             spawner.assignRewards = false;
             spawner.spawnDistance = 5f;
             spawner.retrySpawnCount = 3;
