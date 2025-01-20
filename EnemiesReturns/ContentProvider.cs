@@ -996,7 +996,6 @@ namespace EnemiesReturns
             }
         }
 
-
         public void CreateLynxShrine(GameObject[] assets)
         {
             var lynxStuff = new LynxTribeStuff();
@@ -1178,13 +1177,19 @@ namespace EnemiesReturns
             Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
             projectilesList.Add(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
 
-            ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
-            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect));
+            var shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
+            Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = shakeEffect;
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.shakeEffect = shakeEffect;
+            effectsList.Add(new EffectDef(shakeEffect));
 
             var poundEffect = totemStuff.CreateGroundpoundPoundEffect();
-            ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = poundEffect;
+            Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = poundEffect;
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.poundEffect = poundEffect;
             ModdedEntityStates.LynxTribe.Totem.SpawnState.poundEffect = poundEffect;
             effectsList.Add(new EffectDef(poundEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile = totemStuff.CreateGroundpoundProjectile(assets.First(prefab => prefab.name == "LynxTotemGroundpoundProjectile"));
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile);
 
             Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
             effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect));
@@ -1244,7 +1249,8 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Groundpound));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));

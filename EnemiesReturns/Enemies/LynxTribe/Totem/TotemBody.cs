@@ -107,7 +107,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         public SkillDef CreateGroundpoundSkill()
         {
             // TODO: icon
-            return CreateTotemSkill(new SkillParams("LynxTotemWeaponGroundpound", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.Groundpound)))
+            return CreateTotemSkill(new SkillParams("LynxTotemWeaponGroundpound", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION",

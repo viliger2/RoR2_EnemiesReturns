@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Behaviors;
 using EntityStates;
 using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
     // TODO: some stones flying to shaking
-    public class Groundpound : BaseState
+    public class GroundpoundProjectile : BaseState
     {
         public static float baseDuration = 4.1f;
 
@@ -22,6 +23,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float force => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundForce.Value;
 
+        public static GameObject groundpoundProjectile;
+
         public static GameObject shakeEffect;
 
         public static GameObject poundEffect;
@@ -31,8 +34,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         private float duration;
 
         private float attackDuration;
-
-        private OverlapAttack attack;
 
         private bool hasFired;
 
@@ -55,18 +56,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
             var modelTransform = GetModelTransform();
             var hitboxes = modelTransform.GetComponents<HitBoxGroup>();
-
-            attack = new OverlapAttack();
-            attack.attacker = base.gameObject;
-            attack.inflictor = base.gameObject;
-            attack.teamIndex = GetTeam();
-            attack.damage = damageCoefficient * damageStat;
-            attack.isCrit = RollCrit();
-            attack.hitBoxGroup = Array.Find(hitboxes, (HitBoxGroup element) => element.groupName == hitboxGroupName);
-            attack.forceVector = Vector3.up * force;
-            //attack.hitEffectPrefab = hitEffectPrefab; // TODO
-            attack.procCoefficient = procCoefficient;
-            attack.damageType = DamageType.SlowOnHit;
         }
 
         public override void FixedUpdate()
@@ -75,12 +64,21 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
             if(fixedAge > attackDuration && !hasFired)
             {
-                if (isAuthority)
-                {
-                    attack.Fire();
-                }
                 if (shakeEffectTransform && poundEffect)
                 {
+                    if (isAuthority)
+                    {
+                        var projectileInfo = new FireProjectileInfo
+                        {
+                            damage = damageCoefficient * damageStat,
+                            crit = RollCrit(),
+                            projectilePrefab = groundpoundProjectile,
+                            position = shakeEffectTransform.position,
+                            rotation = shakeEffectTransform.rotation,
+                            owner = gameObject
+                        };
+                        ProjectileManager.instance.FireProjectile(projectileInfo);
+                    };
                     EffectManager.SimpleEffect(poundEffect, shakeEffectTransform.position, shakeEffectTransform.rotation, false);
                 }
                 hasFired = true;

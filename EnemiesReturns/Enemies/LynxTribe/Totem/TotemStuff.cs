@@ -54,6 +54,31 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             return spawnEffect;
         }
 
+        public GameObject CreateGroundpoundProjectile(GameObject prefab)
+        {
+            prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
+
+            prefab.AddComponent<TeamFilter>();
+
+            var projectileController = prefab.AddComponent<ProjectileController>();
+            projectileController.allowPrediction = true;
+            projectileController.procCoefficient = 1f;
+            projectileController.cannotBeDeleted = true;
+
+            var projectileDamage = prefab.AddComponent<ProjectileDamage>();
+
+            var groundpountHitbox = prefab.transform.Find("GroundpoundHitbox").gameObject;
+            var hitboxAttack = groundpountHitbox.AddComponent<HitboxAttackClientside>();
+            hitboxAttack.projectileController = projectileController;
+            hitboxAttack.projectileDamage = projectileDamage;
+            hitboxAttack.force = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundForce.Value;
+
+            var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
+            destroyOnTimer.duration = 0.25f;
+
+            return prefab;
+        }
+
         public GameObject CreateFirewallProjectile(GameObject prefab, AnimationCurveDef curveDef)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
