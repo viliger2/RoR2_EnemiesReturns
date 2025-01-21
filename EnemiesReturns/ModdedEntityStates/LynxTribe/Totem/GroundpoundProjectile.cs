@@ -10,7 +10,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
-    // TODO: some stones flying to shaking
     public class GroundpoundProjectile : BaseState
     {
         public static float baseDuration = 4.1f;
@@ -19,11 +18,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float damageCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundDamage.Value;
 
-        public static float procCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundProcCoefficient.Value;
-
-        public static float force => EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundForce.Value;
+        public static GameObject eyeEffect;
 
         public static GameObject groundpoundProjectile;
+
+        public static GameObject stoneParticlesEffect;
 
         public static GameObject shakeEffect;
 
@@ -48,14 +47,32 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
             PlayAnimation("Gesture, Override", "Groundpound", "groundpound.playbackDuration", duration);
 
-            shakeEffectTransform = FindModelChild("ShakeEffect");
+            var childLocator = GetModelChildLocator();
+            shakeEffectTransform = childLocator.FindChild("ShakeEffect");
             if (shakeEffectTransform && shakeEffect)
             {
                 EffectManager.SimpleEffect(shakeEffect, shakeEffectTransform.position, shakeEffectTransform.rotation, false);
             }
 
-            var modelTransform = GetModelTransform();
-            var hitboxes = modelTransform.GetComponents<HitBoxGroup>();
+            var stoneParticlesOrigin = childLocator.FindChild("ShakeStoneParticlesOrigin");
+            if(stoneParticlesOrigin && stoneParticlesEffect)
+            {
+                EffectManager.SimpleEffect(stoneParticlesEffect, stoneParticlesOrigin.position, stoneParticlesOrigin.rotation, false);
+            }
+
+            if (eyeEffect)
+            {
+                EffectManager.SpawnEffect(eyeEffect, new EffectData()
+                {
+                    rootObject = base.gameObject,
+                    modelChildIndex = (short)childLocator.FindChildIndex("StoneEyeL")
+                }, false);
+                EffectManager.SpawnEffect(eyeEffect, new EffectData()
+                {
+                    rootObject = base.gameObject,
+                    modelChildIndex = (short)childLocator.FindChildIndex("StoneEyeR")
+                }, false);
+            }
         }
 
         public override void FixedUpdate()

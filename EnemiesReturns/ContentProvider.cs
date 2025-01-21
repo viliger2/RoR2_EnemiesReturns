@@ -1180,6 +1180,7 @@ namespace EnemiesReturns
             var shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
             Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = shakeEffect;
             ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.shakeEffect = shakeEffect;
+            ModdedEntityStates.LynxTribe.Totem.DeathState.shakeEffect = shakeEffect;
             effectsList.Add(new EffectDef(shakeEffect));
 
             var poundEffect = totemStuff.CreateGroundpoundPoundEffect();
@@ -1187,6 +1188,26 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.poundEffect = poundEffect;
             ModdedEntityStates.LynxTribe.Totem.SpawnState.poundEffect = poundEffect;
             effectsList.Add(new EffectDef(poundEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.stoneParticlesEffect = totemStuff.CreateStoneParticlesEffect(assets.First(prefab => prefab.name == "TotemShakeParticles"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.stoneParticlesEffect));
+
+            var singleStoneEffect = totemStuff.CreateStoneParticlesEffect(assets.First(prefab => prefab.name == "TotemSingleStoneParticle"));
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.stoneEffectPrefab = singleStoneEffect;
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.stoneEffectPrefab = singleStoneEffect;
+            effectsList.Add(new EffectDef(singleStoneEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowSummonTribe"), acdLookup["acdLynxTotemEyeGlowSummonTribe"], 1f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonTribe.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowSummonStorm"), acdLookup["acdLynxTotemEyeGlowSummonStorm"], 3.3f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonStorm.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowGroundpound"), acdLookup["acdLynxTotemEyeGlowGroundpound"], 1.8f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect = totemStuff.CreateSummonStormsStaffParticle(acdLookup["acdLynxTotemSummonStormStaffEffectScale"]);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect));
 
             ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile = totemStuff.CreateGroundpoundProjectile(assets.First(prefab => prefab.name == "LynxTotemGroundpoundProjectile"));
             projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile);
@@ -1254,6 +1275,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState));
         }
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)

@@ -23,11 +23,17 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static GameObject summonEffect;
 
+        public static GameObject stoneEffectPrefab;
+
+        public static GameObject eyeEffect;
+
         private float duration;
 
         private float summonDuration;
 
         private bool tribeSummoned;
+
+        private Transform stoneParticlesOrigin;
 
         private Transform summonEffectTransform;
 
@@ -36,7 +42,24 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
-            summonEffectTransform = FindModelChild("SummonTribeSpawnEffect");
+
+            var childLocator = GetModelChildLocator();
+            summonEffectTransform = childLocator.FindChild("SummonTribeSpawnEffect");
+            stoneParticlesOrigin = childLocator.FindChild("SummonTribeStoneParticlesOrigin");
+
+            if (eyeEffect)
+            {
+                EffectManager.SpawnEffect(eyeEffect, new EffectData()
+                {
+                    rootObject = base.gameObject,
+                    modelChildIndex = (short)childLocator.FindChildIndex("StoneEyeL")
+                }, false);
+                EffectManager.SpawnEffect(eyeEffect, new EffectData()
+                {
+                    rootObject = base.gameObject,
+                    modelChildIndex = (short)childLocator.FindChildIndex("StoneEyeR")
+                }, false);
+            }
 
             PlayAnimation("Gesture, Override", "SummonTribe", "summonTribe.playbackDuration", duration);
             if(spawnCards.Length == 0)
@@ -72,6 +95,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 if (summonEffect && summonEffectTransform) 
                 {
                     EffectManager.SimpleEffect(summonEffect, summonEffectTransform.position, Quaternion.identity, false);
+                }
+                if (stoneEffectPrefab && stoneParticlesOrigin)
+                {
+                    EffectManager.SimpleEffect(stoneEffectPrefab, stoneParticlesOrigin.position, stoneParticlesOrigin.rotation, false);
                 }
                 tribeSummoned = true;
             }

@@ -76,6 +76,32 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
             destroyOnTimer.duration = 0.25f;
 
+            prefab.RegisterNetworkPrefab();
+
+            return prefab;
+        }
+
+        public GameObject CreateEyeGlowEffect(GameObject prefabOriginal, AnimationCurveDef curveDef, float duration)
+        {
+            var prefab = prefabOriginal.InstantiateClone("TotemEyeGlow" + duration, false);
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.parentToReferencedTransform = true;
+            effectComponent.positionAtReferencedTransform = true;
+
+            var vfxComponent = prefab.AddComponent<VFXAttributes>();
+            vfxComponent.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxComponent.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+
+            var lic = prefab.transform.Find("Light").gameObject.AddComponent<LightIntensityCurve>();
+            lic.curve = curveDef.curve;
+            lic.timeMax = duration;
+            lic.loop = false;
+            lic.randomStart = false;
+            lic.enableNegativeLights = false;
+
+            var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
+            destroyOnTimer.duration = duration + 0.1f;
+
             return prefab;
         }
 
@@ -109,6 +135,68 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             firewallAttack.projectileDamage = projectileDamage;
 
             prefab.RegisterNetworkPrefab();
+
+            return prefab;
+        }
+
+        public GameObject CreateStoneParticlesEffect(GameObject prefab)
+        {
+            prefab.AddComponent<EffectComponent>();
+
+            var material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matDebris1.mat").WaitForCompletion();
+            prefab.transform.Find("Particles/Debris").GetComponent<ParticleSystemRenderer>().material = material;
+            prefab.transform.Find("Particles/Debris (1)").GetComponent<ParticleSystemRenderer>().material = material;
+            prefab.transform.Find("Particles/Debris (2)").GetComponent<ParticleSystemRenderer>().material = material;
+
+            var vfxComponent = prefab.AddComponent<VFXAttributes>();
+            vfxComponent.vfxPriority = VFXAttributes.VFXPriority.Low;
+            vfxComponent.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+
+            prefab.AddComponent<DestroyOnParticleEnd>();
+
+            return prefab;
+        }
+
+        public GameObject CreateSummonStormsStaffParticle(AnimationCurveDef acd)
+        {
+            var prefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxTotemSummonStormStaffEffect", false);
+            if (prefab.TryGetComponent<OrbEffect>(out var orbEffect))
+            {
+                UnityEngine.Object.DestroyImmediate(orbEffect);
+            }
+            if (prefab.TryGetComponent<Rigidbody>(out var rigidbody))
+            {
+                UnityEngine.Object.DestroyImmediate(rigidbody);
+            }
+            var akComponents = prefab.GetComponents<AkEvent>();
+            for (int i = akComponents.Length - 1; i >= 0; i--)
+            {
+                UnityEngine.Object.DestroyImmediate(akComponents[i]);
+            }
+            if (prefab.TryGetComponent<AkGameObj>(out var akGameObj))
+            {
+                UnityEngine.Object.DestroyImmediate(akGameObj);
+            }
+            if (prefab.TryGetComponent<LODGroup>(out var lodGroup))
+            {
+                UnityEngine.Object.DestroyImmediate(lodGroup);
+            }
+
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("mdlDevilOrb").gameObject);
+
+            prefab.GetComponentInChildren<LightIntensityCurve>().timeMax = 3f;
+
+            var effectComponent = prefab.GetComponent<EffectComponent>();
+            effectComponent.parentToReferencedTransform = true;
+            effectComponent.positionAtReferencedTransform = true;
+            //effectComponent.applyScale = true;
+
+            var objectScaleCurve = prefab.AddComponent<ObjectScaleCurve>();
+            objectScaleCurve.useOverallCurveOnly = true;
+            objectScaleCurve.overallCurve = acd.curve;
+            objectScaleCurve.timeMax = 2.6f;
+
+            prefab.AddComponent<DestroyOnTimer>().duration = 2.6f;
 
             return prefab;
         }

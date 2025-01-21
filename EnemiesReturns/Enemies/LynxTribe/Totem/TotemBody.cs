@@ -2,6 +2,7 @@
 using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -147,6 +148,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 pathToPoint0 = "ModelBase/mdlLynxTotem/LynxTotem/ROOT",
                 pathToPoint1 = "ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head"
             };
+        }
+
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState)));
         }
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
