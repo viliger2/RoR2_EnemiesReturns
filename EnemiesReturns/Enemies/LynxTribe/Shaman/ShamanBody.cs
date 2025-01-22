@@ -101,7 +101,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
         {
-            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState)));
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.InitialDeathState)));
         }
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
@@ -271,7 +271,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             return new ISfxLocator.SfxLocatorParams()
             {
-                deathSound = "ER_Shaman_Death_Play"
+                deathSound = ""
             };
         }
 

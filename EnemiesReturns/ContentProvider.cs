@@ -1182,7 +1182,7 @@ namespace EnemiesReturns
             var shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
             Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = shakeEffect;
             ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.shakeEffect = shakeEffect;
-            ModdedEntityStates.LynxTribe.Totem.DeathState.shakeEffect = shakeEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman.shakeEffect = shakeEffect;
             effectsList.Add(new EffectDef(shakeEffect));
 
             var poundEffect = totemStuff.CreateGroundpoundPoundEffect();
@@ -1278,6 +1278,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman));
         }
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
@@ -1383,6 +1384,8 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.InitialDeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTotemDeath));
 
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));

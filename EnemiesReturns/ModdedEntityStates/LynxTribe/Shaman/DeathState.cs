@@ -22,6 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             bodyPreservationDuration = 1f;
             base.OnEnter();
+            Util.PlaySound("ER_Shaman_Death_Play", base.gameObject);
             if (isVoidDeath)
             {
                 return;
