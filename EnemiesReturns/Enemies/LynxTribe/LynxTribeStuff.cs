@@ -254,6 +254,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
             shrine.escapeDuration = 25f; // TODO
+            shrine.shrineUseEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ShrineUseEffect.prefab").WaitForCompletion(); // TODO: at least swap the sound effect
 
             var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;

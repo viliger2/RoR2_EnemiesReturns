@@ -11,6 +11,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider
     {
+        public GameObject shrineUseEffect;
+
         [SyncVar]
         public bool available;
 
@@ -149,6 +151,16 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 return;
             }
 
+            if (shrineUseEffect)
+            {
+                EffectManager.SpawnEffect(shrineUseEffect, new EffectData
+                {
+                    origin = base.transform.position,
+                    rotation = Quaternion.identity,
+                    scale = 1f,
+                    color = Color.yellow
+                }, transmit: true);
+            }
             spawner.SpawnLynxTribesmen(activator.transform);
             activated = true;
             if (networkIdentity)

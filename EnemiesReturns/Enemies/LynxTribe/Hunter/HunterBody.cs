@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -85,6 +86,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
                 pathToPoint0 = "ModelBase/mdlLynxHunter/LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head",
                 pathToPoint1 = "ModelBase/mdlLynxHunter/LynxHunter/ROOT/Base"
             };
+        }
+
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState)));
         }
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)

@@ -85,6 +85,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             });
         }
 
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState)));
+        }
+
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())

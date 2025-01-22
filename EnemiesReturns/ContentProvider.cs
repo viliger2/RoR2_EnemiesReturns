@@ -1038,7 +1038,6 @@ namespace EnemiesReturns
                 string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
 
                 DirectorAPI.Helpers.AddNewInteractableToStage(holderShrine, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
-
             }
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
 
@@ -1077,6 +1076,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.DeathState));
         }
 
         public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1118,6 +1118,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Hunter.Stab));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState));
         }
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1157,6 +1158,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
         }
 
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
@@ -1380,6 +1382,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState));
 
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
