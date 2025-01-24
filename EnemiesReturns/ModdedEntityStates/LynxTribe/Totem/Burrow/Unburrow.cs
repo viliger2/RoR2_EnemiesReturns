@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
         {
             base.OnEnter();
             PlayAnimation("Body", "Unburrow");
+            Util.PlaySound("ER_Totem_Unburrow_Play", gameObject);
         }
 
         public override void FixedUpdate()

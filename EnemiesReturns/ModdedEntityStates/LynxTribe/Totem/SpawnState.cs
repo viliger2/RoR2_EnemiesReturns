@@ -26,8 +26,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public override void OnEnter()
         {
-            //spawnSoundString = EnemiesReturns.Configuration.General.LynxVoices.Value ? "" : ""; // TODO
-            duration = 3.1f;
+            spawnSoundString = "ER_Totem_Spawn_Play";
+            duration = 2f;
             EffectManager.SimpleEffect(leavesSpawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();
         }

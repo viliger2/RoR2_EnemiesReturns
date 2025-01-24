@@ -46,7 +46,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             attackDuration = baseAttackDuration / attackSpeedStat;
 
             PlayAnimation("Gesture, Override", "Groundpound", "groundpound.playbackDuration", duration);
-
+            Util.PlayAttackSpeedSound("ER_Totem_Groundpound_Play", gameObject, attackSpeedStat);
             var childLocator = GetModelChildLocator();
             shakeEffectTransform = childLocator.FindChild("ShakeEffect");
             if (shakeEffectTransform && shakeEffect)

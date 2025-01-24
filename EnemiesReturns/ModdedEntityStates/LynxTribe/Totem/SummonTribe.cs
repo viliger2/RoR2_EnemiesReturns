@@ -43,6 +43,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
 
+            Util.PlayAttackSpeedSound("ER_Totem_SummonTribe_Play", gameObject, attackSpeedStat);
+
             var childLocator = GetModelChildLocator();
             summonEffectTransform = childLocator.FindChild("SummonTribeSpawnEffect");
             stoneParticlesOrigin = childLocator.FindChild("SummonTribeStoneParticlesOrigin");

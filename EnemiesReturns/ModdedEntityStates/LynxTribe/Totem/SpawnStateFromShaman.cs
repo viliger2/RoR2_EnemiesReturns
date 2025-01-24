@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("", base.gameObject); // TODO
+            Util.PlaySound("ER_Totem_ShamanSpawn_Play", base.gameObject); // TODO
             PlayAnimation("Body", "SpawnFromShaman");
             effectOrigin = FindModelChild("SpawnFromShamanEffectOrigin");
             if (!effectOrigin)

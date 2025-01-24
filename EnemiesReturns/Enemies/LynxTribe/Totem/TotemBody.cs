@@ -396,6 +396,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             };
         }
 
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_Totem_Death_Play"
+            };
+        }
+
         protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
         {
             return new IGenericSkill.GenericSkillParams[]

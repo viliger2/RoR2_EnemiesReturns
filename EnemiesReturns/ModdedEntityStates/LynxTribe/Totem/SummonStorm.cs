@@ -65,6 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             stoneEffectDuration = baseStoneEffectDuration / attackSpeedStat;
             staffEffectDuration = baseStaffEffectDuration / attackSpeedStat;
             PlayAnimation("Gesture, Override", "SummonTornados", "summonTornados.playbackDuration", duration);
+            Util.PlayAttackSpeedSound("ER_Totem_SummonStorms_Play", gameObject, attackSpeedStat);
 
             childLocator = GetModelChildLocator();
             orbOrigin = childLocator.FindChild("SummonStormsOrbOrigin");
