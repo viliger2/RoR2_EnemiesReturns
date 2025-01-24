@@ -1401,6 +1401,9 @@ namespace EnemiesReturns
             LynxStormStuff.StormImmunity = stormStuff.CreateStormImmunityBuff();
             bdList.Add(LynxStormStuff.StormImmunity);
 
+            Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect = stormStuff.CreateStormThrowEffect();
+            effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect));
+
             var stormBody = new LynxStormBody();
             LynxStormBody.BodyPrefab = stormBody.AddBodyComponents(assets.First(body => body.name == "StormBody"), acdLookup);
             bodyList.Add(LynxStormBody.BodyPrefab);

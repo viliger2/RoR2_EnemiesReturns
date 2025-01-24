@@ -48,7 +48,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             FireArrowCooldown = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Cooldown", 0f, "Lynx Archer's Fire Arrow cooldown.");
             FireArrowDamage = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Damage", 1f, "Lynx Archer's Fire Arrow damage.");
             FireArrowProcCoefficient = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Proc Coefficient", 1f, "Lynx Archer's Fire Arrow proc coefficient.");
-            FireArrowTimeToTarget = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Time To Target", 1f, "Lynx Archer's Fire Arrow how long it takes for projectile to reach the target in seconds, basically controls how fast the projectile.");
+            FireArrowTimeToTarget = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Time To Target", 0.8f, "Lynx Archer's Fire Arrow how long it takes for projectile to reach the target in seconds, basically controls how fast the projectile.");
             FireArrowForce = config.Bind("Lynx Archer Fire Arrow", "Fire Arrow Projectile Force", 100f, "Lynx Archer's Fire Arrow force.");
 
 

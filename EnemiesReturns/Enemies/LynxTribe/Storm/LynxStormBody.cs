@@ -103,15 +103,15 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = stormImside.GetComponent<ParticleSystem>();
 
             var tornadoLow = particlesTransform.Find("TornadoMeshLow");
-            tornadoLow.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            tornadoLow.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxStormTornadoGreen", CreateStormGreenMaterial);
             bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoLow.GetComponent<ParticleSystem>();
 
             var tornadoMiddle = particlesTransform.Find("TornadoMeshMiddle");
-            tornadoMiddle.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            tornadoMiddle.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxStormTornadoGreen", CreateStormGreenMaterial);
             bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoMiddle.GetComponent<ParticleSystem>();
 
             var tornadoUp = particlesTransform.Find("TornadoMeshUp");
-            tornadoUp.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion();
+            tornadoUp.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matLynxStormTornadoGreen", CreateStormGreenMaterial);
             bodyPrefab.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = tornadoUp.GetComponent<ParticleSystem>();
 
             particlesTransform.Find("SummonParticles").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/PassiveHealing/matWoodSpriteFlare.mat").WaitForCompletion();
@@ -221,6 +221,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             return material;
         }
 
+        public static Material CreateStormGreenMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion());
+            material.name = "matLynxStormTornadoGreen";
+            material.SetColor("_TintColor", new Color(10f / 255f, 115f / 255f, 0f));
+
+            return material;
+        }
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {
             return new IModelLocator.ModelLocatorParams()

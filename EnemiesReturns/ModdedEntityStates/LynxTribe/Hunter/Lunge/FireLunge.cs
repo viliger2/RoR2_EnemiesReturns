@@ -25,7 +25,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static GameObject coneEffect;
 
-        public static float baseAttackDuration = 0.7f;
+        public static float baseAttackDuration = 0.333f;
 
         public static float maxLungeSpeedCoefficient = 3f;
 

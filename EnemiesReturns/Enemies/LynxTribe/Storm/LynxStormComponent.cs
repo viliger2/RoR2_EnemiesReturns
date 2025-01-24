@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
@@ -27,6 +28,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         public static float pullStr = 10f;
 
         public static float velocitySpeed = 10f;
+
+        public static GameObject dotEffect;
 
         public float yHeight = 8f;
 
@@ -77,7 +80,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 moveTarget.transform.localPosition = Vector3.zero;
             }
             characterMotor.velocity = Vector3.zero;
-            Log.Info("grabbed");
+            //Log.Info("grabbed");
         }
 
         public void SetStormTransform(GameObject storm)
@@ -115,6 +118,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                     }
                 }
                 R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Poison, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonDuration.Value, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonCoefficient.Value);
+                if (dotEffect)
+                {
+                    EffectData effectData = new EffectData
+                    {
+                        rootObject = characterBody.gameObject,
+                    };
+                    EffectManager.SpawnEffect(dotEffect, effectData, transmit: true);
+                }
                 Destroy(this);
                 return;
             }
