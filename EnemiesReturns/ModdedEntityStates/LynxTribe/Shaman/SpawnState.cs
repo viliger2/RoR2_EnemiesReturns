@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public override void OnEnter()
         {
-            spawnSoundString = EnemiesReturns.Configuration.General.LynxVoices.Value ? "ER_Shaman_Spawn_Play" : "ER_Shaman_Spawn_No_Voice_Play"; // TODO
+            spawnSoundString = "ER_Shaman_Spawn_No_Voice_Play";
             duration = 1.2f;
             EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();

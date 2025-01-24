@@ -2,6 +2,7 @@
 using EnemiesReturns.Projectiles;
 using R2API;
 using RoR2;
+using RoR2.Audio;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
@@ -59,13 +60,23 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             return prefab;
         }
 
-        public GameObject CreateArrowProjectile(GameObject prefab, GameObject ghost, GameObject impalePrefab)
+        public LoopSoundDef CreateArrowLoopSoundDef()
+        {
+            var loopSound = ScriptableObject.CreateInstance<LoopSoundDef>();
+            (loopSound as ScriptableObject).name = "lsdLynxArcherArrow";
+            loopSound.startSoundName = "ER_Archer_Arrow_FlightLoop_Play";
+            loopSound.stopSoundName = "ER_Archer_Arrow_FlightLoop_Stop";
+
+            return loopSound;
+        }
+
+        public GameObject CreateArrowProjectile(GameObject prefab, GameObject ghost, GameObject impalePrefab, LoopSoundDef lsd)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = ghost;
-            //projectileController.flightSoundLoop = loopSound; // TODO
+            projectileController.flightSoundLoop = lsd;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowProcCoefficient.Value;
 
@@ -83,7 +94,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             projectileSingleTarget.destroyWhenNotAlive = true;
             projectileSingleTarget.destroyOnWorld = true;
             //projectileSingleTarget.impactEffect = impact; // I don't think we need it with impale thing
-            //projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play";
+            projectileSingleTarget.hitSoundString = "ER_Archer_ArrowImpact_Play";
 
             prefab.AddComponent<ProjectileDamage>();
 

@@ -49,7 +49,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 attackOrigin = base.transform;
             }
             PlayCrossfade("Gesture, Override", "CastTeleportFull", "CastTeleport.playbackRate", duration, 0.1f);
-            Util.PlayAttackSpeedSound(EnemiesReturns.Configuration.General.LynxVoices.Value ? "ER_Shaman_SummonPushBack_Play" : "ER_Shaman_SummonPushBack_No_Voice_Play", base.gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound("ER_Shaman_SummonPushBack_No_Voice_Play", base.gameObject, attackSpeedStat);
             if (summonPrefab)
             {
                 var summonEffectOrigin = FindModelChild("Base");

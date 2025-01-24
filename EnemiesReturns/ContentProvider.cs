@@ -1052,7 +1052,8 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab = archerStuff.CreateArrowProjectile(
                 assets.First(prefab => prefab.name == "ArrowProjectile"), 
                 archerStuff.CreateArrowProjectileGhost(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
-                archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material));
+                archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
+                archerStuff.CreateArrowLoopSoundDef());
             projectilesList.Add(ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab);
 
             var archerBody = new ArcherBody();

@@ -60,6 +60,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             duration = baseDuration / attackSpeedStat;
             shoot = baseShoot / attackSpeedStat;
             PlayCrossfade("Gesture", "ShotFull", "Shot.playbackRate", duration, 0.1f);
+            Util.PlayAttackSpeedSound("ER_Archer_PrepareArrow_Play", gameObject, attackSpeedStat);
 
             animator = GetModelAnimator();
             animator.SetLayerWeight(animator.GetLayerIndex("AttackPitch"), 1f);
@@ -112,6 +113,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 {
                     arrowTransform.gameObject.SetActive(false);
                 }
+                Util.PlayAttackSpeedSound("ER_Archer_FireArrow_Play", gameObject, attackSpeedStat);
                 hasFired = true;
             }
             if (fixedAge >= duration && isAuthority)

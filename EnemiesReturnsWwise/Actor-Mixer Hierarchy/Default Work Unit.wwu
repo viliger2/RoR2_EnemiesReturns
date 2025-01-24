@@ -2751,35 +2751,6 @@
 														<ActiveSource Name="shaman_summon_projectile_no_voice" ID="{0043E0E1-21F4-48E2-8A12-F1F4567A6E99}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="Shaman_SummonPushBack" ID="{AE8A7159-F675-4725-8EDF-FC0AC95EC0C0}" ShortID="14008625">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-6</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="shaman_summon_pushback" ID="{0EBCA396-2D2C-468E-8C92-9937A435950F}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\shaman_summon_pushback.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="692101215"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="shaman_summon_pushback" ID="{0EBCA396-2D2C-468E-8C92-9937A435950F}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Sound Name="Shaman_SummonPushBackNoVoice" ID="{67059634-BCA3-45AC-9B66-99BD7ED2E982}" ShortID="996695356">
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
@@ -2807,90 +2778,6 @@
 													</ChildrenList>
 													<ActiveSourceList>
 														<ActiveSource Name="shaman_summon_pushback_no_voice" ID="{AF6FFEAA-B107-4725-9985-8E305976FCB7}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" ShortID="552322679">
-													<PropertyList>
-														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-														<Property Name="OverrideEffect" Type="bool" Value="True"/>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-3</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="PreCastNatureMagicHigh" ID="{CAD90A48-C5BF-49A1-BFF4-625316485187}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\PreCastNatureMagicHigh.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="452208602"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="shaman_summon_projectile_no_voice" ID="{21CF6E58-123F-4B59-9D0A-234834B7F01C}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile_no_voice.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="796358268"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="shaman_summon_projectile" ID="{121C2BB9-3956-4021-B020-52E9D35E3259}">
-															<PropertyList>
-																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-															</PropertyList>
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="484670"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="shaman_summon_projectile" ID="{121C2BB9-3956-4021-B020-52E9D35E3259}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="Shaman_Spawn" ID="{CF590810-7746-42BE-B191-076904413E14}" ShortID="539292512">
-													<PropertyList>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-3</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="shaman_spawn_no_voice" ID="{15C56385-0A7F-4BFB-A9C5-3CC3994610F3}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\shaman_spawn_no_voice.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="884217374"/>
-															</MediaIDList>
-														</AudioFileSource>
-														<AudioFileSource Name="shsman_spawn" ID="{5FB17510-54B9-4BB3-AE08-65EDB685FC9D}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\shsman_spawn.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="920029613"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="shsman_spawn" ID="{5FB17510-54B9-4BB3-AE08-65EDB685FC9D}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="Shaman_SpawnNoVoice" ID="{AB72E8B1-CB0C-4227-AAC0-8D68BAA0A6D9}" ShortID="820794674">
@@ -3101,6 +2988,294 @@
 																<ActiveSource Name="452570__kyles__branch-breaking-forest-twig-snap-crunch" ID="{E15A5E84-8196-44AC-BC75-C5D713887615}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
+													</ChildrenList>
+												</ActorMixer>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Archer" ID="{9884A48B-1EF9-468F-8194-A008D3A5E871}" ShortID="609476221">
+											<ChildrenList>
+												<Sound Name="Archer_Spawn" ID="{083DA722-ACD0-4585-90E0-624C3CE07399}" ShortID="174651703">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="spawn" ID="{0B3FC45C-A6FF-4E1A-97EE-2C37048765BB}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.20236341139816"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Archer\spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="980764921"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="spawn" ID="{0B3FC45C-A6FF-4E1A-97EE-2C37048765BB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Archer_Death" ID="{286975E4-B0AB-411A-AC1B-F549B0F4D31E}" ShortID="470277563">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="death" ID="{2EC3DB42-4A7D-4988-A74E-4162BE69B61C}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Archer\death.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="631139128"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="death" ID="{2EC3DB42-4A7D-4988-A74E-4162BE69B61C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Archer_PrepareArrow" ID="{83D8C85F-3607-40ED-AC90-0054A32ABC41}" ShortID="394319945">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="preparearrow" ID="{F7EE0D38-BA6A-44E9-8101-80B36D145409}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Archer\preparearrow.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="247038726"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="preparearrow" ID="{F7EE0D38-BA6A-44E9-8101-80B36D145409}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Archer_FireArrow" ID="{7FB54E82-A2A0-41BF-8261-69830E250550}" ShortID="1011860492">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="firearrow" ID="{DB8CBE38-9E24-4425-A2CA-B9155C2AC297}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Archer\firearrow.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1027150312"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="firearrow" ID="{DB8CBE38-9E24-4425-A2CA-B9155C2AC297}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Archer_ArrowLoop" ID="{2C3B262C-66CC-4B69-BD4A-D411EDF569BB}" ShortID="955199952">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="arrowflightloop" ID="{ACF8EC1C-2F2B-4FB0-A0BB-C57B4F2EE88D}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Archer\arrowflightloop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="498316796"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{B812A3C2-8E19-4511-8BD5-4AFF539E5A53}"/>
+													</PositioningInfo>
+													<ActiveSourceList>
+														<ActiveSource Name="arrowflightloop" ID="{ACF8EC1C-2F2B-4FB0-A0BB-C57B4F2EE88D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<ActorMixer Name="Random Pitch" ID="{7FA54A20-63FE-471C-A9AF-D90A2DA20463}" ShortID="299919030">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{673AF7E1-B804-41AD-9FB8-5272CB8DFFB1}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<RandomSequenceContainer Name="Archer_ArrowImpact" ID="{96B6B7D8-5EC6-4726-ABDB-F507FA22F55B}" ShortID="560977599">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="ArrowImpact1" ID="{03707E25-36AA-4B8E-9E5A-915C2C4A2919}" ShortID="100676421">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-2</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="ArrowHitA" ID="{FCA5E3F2-9CB7-4E68-9A39-7F37F2E166F0}">
+																			<Language>SFX</Language>
+																			<AudioFile>LynxTribe\Archer\ArrowHitA.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="1053352509"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="ArrowHitA" ID="{FCA5E3F2-9CB7-4E68-9A39-7F37F2E166F0}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="ArrowImpact2" ID="{E78BADD0-6A4D-4D37-9C49-CE627DF5F46C}" ShortID="397018832">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-6</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="ArrowHitB" ID="{17B484C7-C704-428E-9DC7-64950788930C}">
+																			<Language>SFX</Language>
+																			<AudioFile>LynxTribe\Archer\ArrowHitB.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="147474012"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="ArrowHitB" ID="{17B484C7-C704-428E-9DC7-64950788930C}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="ArrowImpact3" ID="{5F78F38F-3681-4421-9E0E-06B40EDBD7C9}" ShortID="1071080212">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-8</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="ArrowHitC" ID="{A3624465-8A23-4931-9EE8-400F520FBDC8}">
+																			<Language>SFX</Language>
+																			<AudioFile>LynxTribe\Archer\ArrowHitC.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="171166393"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="ArrowHitC" ID="{A3624465-8A23-4931-9EE8-400F520FBDC8}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
 													</ChildrenList>
 												</ActorMixer>
 											</ChildrenList>

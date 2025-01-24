@@ -52,6 +52,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             return result;
         }
 
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_Archer_Death_Play"
+            };
+        }
+
         public SkillDef CreateShotSkill()
         {
             // TODO: icon

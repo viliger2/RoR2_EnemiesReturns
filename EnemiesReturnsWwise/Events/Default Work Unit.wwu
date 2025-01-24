@@ -671,17 +671,6 @@
 							<ChildrenList>
 								<Folder Name="Shaman" ID="{0F19CD4A-1C20-4844-A2AE-6687A7CC9FCA}" ShortID="998289755">
 									<ChildrenList>
-										<Event Name="ER_Shaman_Spawn_Play" ID="{4CCFA38F-066F-4076-9C77-2E2175FA1D93}">
-											<ChildrenList>
-												<Action Name="" ID="{D24BEDD6-1FE6-4D22-8CFE-70FCAF68DF0D}" ShortID="471572264">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Shaman_Spawn" ID="{CF590810-7746-42BE-B191-076904413E14}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Event Name="ER_Shaman_Spawn_No_Voice_Play" ID="{586DE244-1198-4116-B9A7-C1E059FAFF09}">
 											<ChildrenList>
 												<Action Name="" ID="{5013ECF7-4D0C-46B0-9AA1-3E27F0785E61}" ShortID="522722245">
@@ -693,34 +682,12 @@
 												</Action>
 											</ChildrenList>
 										</Event>
-										<Event Name="ER_Shaman_SummonProjectiles_Play" ID="{136621DE-5C8D-408C-BC8F-790CB37A08A6}">
-											<ChildrenList>
-												<Action Name="" ID="{CF0F603C-1D4E-4C91-9FAC-A77911C36630}" ShortID="801965974">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Event Name="ER_Shaman_SummonProjectiles_No_Voice_Play" ID="{7961F31B-8944-46A2-8D3C-CED0023D87F0}">
 											<ChildrenList>
 												<Action Name="" ID="{3F7F8066-1CC1-49FE-894D-2242AD69A66B}" ShortID="321601479">
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="Shaman_SummonProjectilesNoVoice" ID="{E7C4087C-C4CE-4972-AF48-A5DF9DCB66EC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
-										<Event Name="ER_Shaman_SummonPushBack_Play" ID="{C17BFB99-0E0E-4633-A330-378349409ED5}">
-											<ChildrenList>
-												<Action Name="" ID="{3A2C2445-B0A5-4B8B-90B3-D6957BD07B42}" ShortID="216600403">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Shaman_SummonPushBack" ID="{AE8A7159-F675-4725-8EDF-FC0AC95EC0C0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>
@@ -761,16 +728,6 @@
 										</Event>
 										<Event Name="ER_Shaman_SummonProjectiles_Stop" ID="{EFAFB8CC-1138-42DD-89BF-855283AE9458}">
 											<ChildrenList>
-												<Action Name="" ID="{E7CF1AC4-AC6E-467B-903B-0A795C514C47}" ShortID="106724392">
-													<PropertyList>
-														<Property Name="ActionType" Type="int16" Value="2"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Shaman_SummonProjectiles" ID="{01215CD6-9007-4F73-AFFF-1CEAB201691A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
 												<Action Name="" ID="{778F2F2B-1B49-4FD0-AA1A-0FBE5172D36E}" ShortID="405666964">
 													<PropertyList>
 														<Property Name="ActionType" Type="int16" Value="2"/>
@@ -887,6 +844,100 @@
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="Trap_SnapTwig" ID="{8F38EF25-A5CD-40A2-896D-5226636F7D79}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Archer" ID="{5B86A0C3-2593-4E62-925E-70748D14F3E4}" ShortID="5729713">
+									<ChildrenList>
+										<Event Name="ER_Archer_Spawn_Play" ID="{C98BA769-DF0C-4611-A316-E7BC2F06976B}">
+											<ChildrenList>
+												<Action Name="" ID="{90DD7F17-AF32-4108-8D59-7E2DD0DA6C0F}" ShortID="917850801">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_Spawn" ID="{083DA722-ACD0-4585-90E0-624C3CE07399}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_Death_Play" ID="{230FEA6E-FEE5-4445-A912-72CEEFC765A5}">
+											<ChildrenList>
+												<Action Name="" ID="{EE60A16D-5567-4B29-99C7-88F1827EC4DD}" ShortID="400739276">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_Death" ID="{286975E4-B0AB-411A-AC1B-F549B0F4D31E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_Arrow_FlightLoop_Play" ID="{931C42EB-8CDB-48A0-AA12-36C6DD98EB18}">
+											<ChildrenList>
+												<Action Name="" ID="{1D31832A-9B11-4431-B2DF-8DF83639EAD0}" ShortID="860744351">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_ArrowLoop" ID="{2C3B262C-66CC-4B69-BD4A-D411EDF569BB}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_Arrow_FlightLoop_Stop" ID="{FFA45BFE-E97C-42B2-8447-77C0DEE1BF5B}">
+											<ChildrenList>
+												<Action Name="" ID="{158A7822-EAFA-4903-8017-65988F6B5E18}" ShortID="304748056">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_ArrowLoop" ID="{2C3B262C-66CC-4B69-BD4A-D411EDF569BB}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_PrepareArrow_Play" ID="{802A082A-3885-4D2E-8994-74D14D680D0D}">
+											<ChildrenList>
+												<Action Name="" ID="{E3313349-8934-48CB-9E8E-8F45FD4C3F48}" ShortID="967581655">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_PrepareArrow" ID="{83D8C85F-3607-40ED-AC90-0054A32ABC41}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_FireArrow_Play" ID="{A1B74126-0B07-49CD-8633-B1D2078D0E98}">
+											<ChildrenList>
+												<Action Name="" ID="{A111F7B4-D2F4-46A2-865C-80E6880491F1}" ShortID="1067724605">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_FireArrow" ID="{7FB54E82-A2A0-41BF-8261-69830E250550}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{206CBAD9-3AE3-4071-88AB-297CC7DF7C90}" ShortID="441327485">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_PrepareArrow" ID="{83D8C85F-3607-40ED-AC90-0054A32ABC41}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Archer_ArrowImpact_Play" ID="{8DD3D5B5-FE59-4627-8C37-AAE674B2DBCD}">
+											<ChildrenList>
+												<Action Name="" ID="{F5EF3A4F-8B96-4A72-97D9-9C471EDAECCA}" ShortID="669357770">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Archer_ArrowImpact" ID="{96B6B7D8-5EC6-4726-ABDB-F507FA22F55B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>

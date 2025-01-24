@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
         public override void OnEnter()
         {
-            spawnSoundString = EnemiesReturns.Configuration.General.LynxVoices.Value ? "" : ""; // TODO
+            spawnSoundString = "ER_Archer_Spawn_Play";
             duration = 1.2f;
             EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();
