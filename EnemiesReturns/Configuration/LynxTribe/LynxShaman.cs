@@ -15,6 +15,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<int> MinimumStageCompletion;
         public static ConfigEntry<string> DefaultStageList;
 
+        public static ConfigEntry<float> PostLoopTotemSummon;
+
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
         public static ConfigEntry<float> BaseJumpPower;
@@ -89,6 +91,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             PushBackProcCoefficient = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Proc Coefficient", 1f, "Lynx Shaman's Push Back proc coefficient.");
             PushBackForce = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Force", 2000f, "Lynx Shaman's Push Back force.");
             PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 6f, "Lynx Shaman's Push Back attack radius.");
+
+            PostLoopTotemSummon = config.Bind("Lynx Shaman Director", "Post Loop Totem Summon Chance", 5f, "Chance for Shaman to summon Totem post loop. This value is multiplied by loop count.");
 
             NopeEmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha2, "Key used to Nope.");
             SingEmoteKey = config.Bind("Lynx Shaman Emotes", "Sing Emote", KeyCode.Alpha1, "Key used to Sing.");

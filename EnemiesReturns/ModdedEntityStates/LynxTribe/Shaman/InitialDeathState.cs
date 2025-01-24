@@ -8,14 +8,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
     public class InitialDeathState : BaseState
     {
-        public static float spawnChancePerLoop = 5f; // TODO: config
+        public static float spawnChancePerLoop => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PostLoopTotemSummon.Value;
 
         public override void OnEnter()
         {
             base.OnEnter();
-#if DEBUG || NOWEAVER
-            outer.SetNextState(new SummonTotemDeath());
-#else
             if (isAuthority)
             {
                 var totalChance = spawnChancePerLoop * (int)(RoR2.Run.instance.stageClearCount % 5);
@@ -28,7 +25,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     outer.SetNextState(new DeathState());
                 }
             }
-#endif
         }
     }
 }
