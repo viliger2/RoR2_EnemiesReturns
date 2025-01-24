@@ -1211,8 +1211,8 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect = totemStuff.CreateSummonStormsStaffParticle(acdLookup["acdLynxTotemSummonStormStaffEffectScale"]);
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect));
 
-            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile = totemStuff.CreateGroundpoundProjectile(assets.First(prefab => prefab.name == "LynxTotemGroundpoundProjectile"));
-            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectile);
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectilePrefab = totemStuff.CreateGroundpoundProjectile(assets.First(prefab => prefab.name == "LynxTotemGroundpoundProjectile"));
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectilePrefab);
 
             Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
             effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect));

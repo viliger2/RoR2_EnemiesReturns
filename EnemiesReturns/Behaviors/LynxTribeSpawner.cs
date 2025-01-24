@@ -136,10 +136,26 @@ namespace EnemiesReturns.Behaviors
         {
             foreach(var master in combatSquad.membersList)
             {
-                if (master && master.GetBody())
+                if (!master)
                 {
-                    var bodyEsm = EntityStateMachine.FindByCustomName(master.GetBodyObject(), "Body");
-                    bodyEsm.SetNextState(new ModdedEntityStates.LynxTribe.Retreat());
+                    continue;
+                }
+
+                var masterBOdyObject = master.GetBodyObject();
+
+                if (masterBOdyObject)
+                {
+                    var esms = masterBOdyObject.GetComponents<EntityStateMachine>();
+                    foreach (var esm in esms)
+                    {
+                        if(string.Compare(esm.customName, "Body") == 0)
+                        {
+                            esm.SetNextState(new ModdedEntityStates.LynxTribe.Retreat());
+                        } else
+                        {
+                            esm.SetNextState(new EntityStates.Idle());
+                        }
+                    }
                 }
             }
         }

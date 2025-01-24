@@ -178,7 +178,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                             return;
                         }
 
-                        stormList.Add(SummonStormAI(playerCharacterMaster.body.gameObject.transform, playerCharacterMaster.body));
+                        stormList.Add(SummonStormAI(playerCharacterMaster));
                         stormCount++;
                     }
                     storms = stormList.ToArray();
@@ -186,14 +186,25 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             }
         }
 
-        private GameObject SummonStormAI(Transform transform, CharacterBody target)
+        private GameObject SummonStormAI(PlayerCharacterMasterController playerMasterController)
         {
+            if (!playerMasterController.master)
+            {
+                return null;
+            }
+
+            var body = playerMasterController.master.GetBody();
+            if (!body)
+            {
+                return null;
+            }
+
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscStorm, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
                 minDistance = minDistance,
                 maxDistance = maxDistance,
-                spawnOnTarget = transform
+                spawnOnTarget = body.transform
             }, RoR2Application.rng);
             directorSpawnRequest.summonerBodyObject = gameObject;
             directorSpawnRequest.ignoreTeamMemberLimit = true;
@@ -216,7 +227,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     if (baseAI)
                     {
                         baseAI.enemyAttentionDuration = stormAttentionDuration;
-                        baseAI.currentEnemy.gameObject = target.gameObject;
+                        baseAI.currentEnemy.gameObject = body.gameObject;
                     }
                 }
             };

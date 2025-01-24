@@ -20,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static GameObject eyeEffect;
 
-        public static GameObject groundpoundProjectile;
+        public static GameObject groundpoundProjectilePrefab;
 
         public static GameObject stoneParticlesEffect;
 
@@ -89,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         {
                             damage = damageCoefficient * damageStat,
                             crit = RollCrit(),
-                            projectilePrefab = groundpoundProjectile,
+                            projectilePrefab = groundpoundProjectilePrefab,
                             position = shakeEffectTransform.position,
                             rotation = shakeEffectTransform.rotation,
                             owner = gameObject

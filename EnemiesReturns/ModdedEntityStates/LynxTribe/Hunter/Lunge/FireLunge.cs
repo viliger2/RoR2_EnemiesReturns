@@ -25,7 +25,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static GameObject coneEffect;
 
-        public static float baseAttackDuration = 0.333f;
+        public static float baseForceDuration = 0.7f;
+
+        public static float baseAttackDuration = 0.4f;
 
         public static float maxLungeSpeedCoefficient = 3f;
 
@@ -41,6 +43,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         private float calculatedLungeSpeed;
 
+        private float forceDuration;
+
         private OverlapAttack overlapAttack;
 
         private Vector3 targetMoveVector;
@@ -52,16 +56,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             attackDuration = baseAttackDuration / attackSpeedStat;
-
-            var baseAi = characterBody.master.GetComponent<BaseAI>();
-            //if (baseAi)
-            //{
-            //    float sqrMagnitude = (characterBody.master.GetComponent<BaseAI>().currentEnemy.characterBody.corePosition - characterBody.corePosition).sqrMagnitude;
-            //    calculatedLungeSpeed = Util.Remap(Mathf.Clamp(sqrMagnitude, 0, maxLungeDistance * maxLungeDistance), 0f, maxLungeDistance * maxLungeDistance, 0f, maxLungeSpeedCoefficient);
-            //} else
-            //{
-                calculatedLungeSpeed = maxLungeSpeedCoefficient;
-            //}
+            forceDuration = baseForceDuration / attackSpeedStat;
+            calculatedLungeSpeed = maxLungeSpeedCoefficient;
 
             var modelTransform = GetModelTransform();
             var hitboxes = modelTransform.GetComponents<HitBoxGroup>();
@@ -102,17 +98,24 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge < attackDuration && isAuthority)
-            {
-                targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
-                base.characterDirection.moveVector = targetMoveVector;
-                base.characterMotor.rootMotion += calculatedLungeSpeed * moveSpeedStat * base.characterDirection.forward * GetDeltaTime();
+            if (isAuthority) {
 
-                overlapAttack.Fire();
-            }
-            if(fixedAge > duration && isAuthority)
-            {
-                outer.SetNextStateToMain();
+                if(fixedAge < forceDuration)
+                {
+                    targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
+                    base.characterDirection.moveVector = targetMoveVector;
+                    base.characterMotor.rootMotion += calculatedLungeSpeed * moveSpeedStat * base.characterDirection.forward * GetDeltaTime();
+                }
+
+                if (fixedAge < attackDuration)
+                {
+                    overlapAttack.Fire();
+                }
+
+                if (fixedAge > duration)
+                {
+                    outer.SetNextStateToMain();
+                }
             }
         }
 
