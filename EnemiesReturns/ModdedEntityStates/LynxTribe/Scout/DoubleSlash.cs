@@ -57,6 +57,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
             animator = GetModelAnimator();
             var modelTransform = GetModelTransform();
             var hitboxes = modelTransform.GetComponents<HitBoxGroup>();
+            Util.PlayAttackSpeedSound("ER_Scout_Attack_Play", gameObject, attackSpeedStat);
 
             lefOverlapAttack = SetupAttack(Array.Find(hitboxes, (HitBoxGroup element) => element.groupName == LeftHitbox));
             rightOverlapAttack = SetupAttack(Array.Find(hitboxes, (HitBoxGroup element) => element.groupName == RightHitbox));

@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 
         public override void OnEnter()
         {
-            spawnSoundString = ""; // TODO
+            spawnSoundString = "ER_Scout_Spawn_Play"; // TODO
             duration = 1.2f;
             EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();

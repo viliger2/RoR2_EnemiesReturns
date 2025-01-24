@@ -993,6 +993,43 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Scout" ID="{9B2901CD-402B-452C-AA64-D809A487E041}" ShortID="644191567">
+									<ChildrenList>
+										<Event Name="ER_Scout_Spawn_Play" ID="{0266C146-CBB4-4505-B684-27F7169AE9BB}">
+											<ChildrenList>
+												<Action Name="" ID="{EFB47301-E0DA-4851-9D36-5884B6A54060}" ShortID="151818357">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Scout_Spawn" ID="{D0F393DD-F10D-4AF3-A959-7BA2199E6E50}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Scout_Death_Play" ID="{E0589EB1-1B7A-4715-9001-3F40BBDED7BE}">
+											<ChildrenList>
+												<Action Name="" ID="{1498ADBE-586E-4821-AA86-ABA8F6BDB3FA}" ShortID="1000908981">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Scout_Death" ID="{C9575172-9577-4C33-83E2-28CE06C2DBDF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Scout_Attack_Play" ID="{27F43E6F-B21B-4057-9C50-391A73D67921}">
+											<ChildrenList>
+												<Action Name="" ID="{E4EAD32A-F36A-4B89-874E-F4AB339C42D1}" ShortID="378119733">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Scout_Attack" ID="{0B518D23-44F0-4458-8577-7AA4A805E515}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>
