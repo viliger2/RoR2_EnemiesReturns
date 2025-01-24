@@ -67,6 +67,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             });
         }
 
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_Hunter_Death_Play"
+            };
+        }
+
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyGameObject = null)
         {
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.LynxTribe.LynxHunter.DirectorCost.Value)

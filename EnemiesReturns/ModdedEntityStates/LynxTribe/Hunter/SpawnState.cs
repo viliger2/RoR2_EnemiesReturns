@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter
 
         public override void OnEnter()
         {
-            spawnSoundString = ""; // TODO
+            spawnSoundString = "ER_Hunter_Spawn_Play"; // TODO
             duration = 1.2f;
             EffectManager.SimpleEffect(spawnEffect, transform.position, Quaternion.identity, false);
             base.OnEnter();

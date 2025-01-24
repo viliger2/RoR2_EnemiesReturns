@@ -3280,6 +3280,141 @@
 												</ActorMixer>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="Hunter" ID="{18C40A84-BC5E-46D5-8A48-2FA11A882CD9}" ShortID="679946079">
+											<ChildrenList>
+												<Sound Name="Hunter_Spawn" ID="{3A86F193-AA8C-4EC7-A743-5672E1318237}" ShortID="946939928">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="spawn" ID="{2687A757-3338-48D8-AB2C-6002C1FA50EA}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.204542146076538"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Hunter\spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="581936619"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="spawn" ID="{2687A757-3338-48D8-AB2C-6002C1FA50EA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Hunter_Death" ID="{2E0C9AF7-E0F5-477D-85F3-1F7A30177D01}" ShortID="626338273">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="death" ID="{F32D881C-05FB-46AC-86BF-3987B8C25544}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.602972170120906"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Hunter\death.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="786800572"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="death" ID="{F32D881C-05FB-46AC-86BF-3987B8C25544}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Hunter_PrepareLunge" ID="{DD15F3D2-CD33-4968-85E3-2B0995C1AB63}" ShortID="17260168">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="mWooshMedium2" ID="{6D9EAE7A-4CA6-4B60-8E9C-06D8BC4D4080}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.31754247352703"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Hunter\mWooshMedium2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="637072144"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="mWooshMedium2" ID="{6D9EAE7A-4CA6-4B60-8E9C-06D8BC4D4080}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Hunter_FireLunge" ID="{B156E673-52F2-473E-9882-047F33FDD31B}" ShortID="299043879">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ExecuteTarget" ID="{FF186F12-A2AC-433F-A460-1831DB1DB8D8}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Hunter\ExecuteTarget.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="692839050"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="ExecuteTarget" ID="{FF186F12-A2AC-433F-A460-1831DB1DB8D8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

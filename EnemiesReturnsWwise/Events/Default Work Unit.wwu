@@ -945,6 +945,54 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Hunter" ID="{4F9BC0DD-165D-42E9-9EC5-85AF80C995B3}" ShortID="930920517">
+									<ChildrenList>
+										<Event Name="ER_Hunter_Spawn_Play" ID="{F0F94BDE-5BCA-44E9-BF1F-5077F0E8C391}">
+											<ChildrenList>
+												<Action Name="" ID="{22775B0B-9382-4389-B723-D04F78CC642F}" ShortID="748794634">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Hunter_Spawn" ID="{3A86F193-AA8C-4EC7-A743-5672E1318237}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Hunter_Death_Play" ID="{97099100-B7C5-4827-BFFA-7F6E4101FAEE}">
+											<ChildrenList>
+												<Action Name="" ID="{8730004D-2A2C-48E0-A549-B9BC3FDCEDAD}" ShortID="674666878">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Hunter_Death" ID="{2E0C9AF7-E0F5-477D-85F3-1F7A30177D01}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Hunter_PrepareLunge_Play" ID="{11A535F0-C142-4D78-B659-7364182497C0}">
+											<ChildrenList>
+												<Action Name="" ID="{3FD144A9-BC0E-4375-8E45-5CB8DA57AF1B}" ShortID="334099961">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Hunter_PrepareLunge" ID="{DD15F3D2-CD33-4968-85E3-2B0995C1AB63}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Hunter_FireLunge_Play" ID="{8558CB2C-FFE4-421F-9157-B568BA7FBBC2}">
+											<ChildrenList>
+												<Action Name="" ID="{2A8F1826-BFBE-43DC-93D1-BD8A72CD43D3}" ShortID="577744008">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Hunter_FireLunge" ID="{B156E673-52F2-473E-9882-047F33FDD31B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

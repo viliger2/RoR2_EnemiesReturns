@@ -76,6 +76,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
             PlayAnimation("Gesture, Override", "LungeFire", "Attack.playbackRate", duration);
 
+            Util.PlayAttackSpeedSound("ER_Hunter_FireLunge_Play", gameObject, attackSpeedStat);
+
             EffectManager.SpawnEffect(wooshEffect, new EffectData
             {
                 rootObject = base.gameObject,

@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             PlayCrossfade("Gesture, Mask", "LungePrepare", "Attack.playbackRate", duration, 0.1f);
+            Util.PlayAttackSpeedSound("ER_Hunter_PrepareLunge_Play", gameObject, attackSpeedStat);
             if (characterDirection)
             {
                 characterDirection.moveVector = GetAimRay().direction;
