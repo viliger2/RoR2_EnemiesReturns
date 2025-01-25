@@ -25,6 +25,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 
         public static float baseForce => Configuration.LynxTribe.LynxTotem.SummonStormThrowForce.Value;
 
+        //public static float escapeDistance => 16f;
+        public static float escapeDistance => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormRadius.Value * 0.8f;
+
         public static float pullStr = 10f;
 
         public static float velocitySpeed = 10f;
@@ -104,6 +107,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 return;
             }
 
+            var distance = Vector3.Distance(storm.transform.position, characterMotor.transform.position);
+            if(distance > escapeDistance)
+            {
+                Destroy(this);
+                return;
+            }
+
+            if(characterBody.hurtBoxGroup.hurtBoxesDeactivatorCounter > 0)
+            {
+                characterMotor.disableAirControlUntilCollision = false;
+                timer = 0f; // resetting the timer so it starts again if the poor sap didn't escape in time
+                return;
+            }
+
             if (timer > duration)
             {
                 if (characterMotor)
@@ -134,10 +151,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             timer += Time.fixedDeltaTime;
             var angle = Mathf.PI * timer;
             var r = a * Mathf.Pow((float)Math.E, b * angle);
-            moveTarget.transform.localPosition = new Vector3(r * Mathf.Cos(angle), 2f + yHeight * (timer / baseDuration), r * Mathf.Sin(angle));
-            var target = (moveTarget.transform.position - characterMotor.previousPosition).normalized;
-            characterMotor.disableAirControlUntilCollision = true;
-            characterMotor.velocity = target * velocitySpeed;
+            moveTarget.transform.localPosition = new Vector3(r * Mathf.Cos(angle), 2f + yHeight * (timer / duration), r * Mathf.Sin(angle));
+            if (characterMotor.velocity.sqrMagnitude <= (velocitySpeed * velocitySpeed) + 1) // plus one just to be safe
+            {
+                if (!characterMotor.Motor.MustUnground())
+                {
+                    characterMotor.Motor.ForceUnground();
+                }
+                var target = (moveTarget.transform.position - characterMotor.previousPosition).normalized;
+                characterMotor.disableAirControlUntilCollision = true;
+                characterMotor.velocity = target * velocitySpeed;
+            } else
+            {
+                characterMotor.disableAirControlUntilCollision = false;
+            }
         }
 
         private GameObject GetAttacker()
@@ -172,6 +199,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             if (characterBody)
             {
                 R2API.Networking.NetworkingHelpers.ApplyBuff(characterBody, LynxStormStuff.StormImmunity.buffIndex, 1, immunityDuration);
+            }
+            if (moveTarget)
+            {
+                UnityEngine.Object.Destroy(moveTarget);
             }
         }
     }

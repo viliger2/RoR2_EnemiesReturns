@@ -3548,6 +3548,240 @@
 												</ActorMixer>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="Totem" ID="{BD9D5540-9EF9-4D7B-BE1A-9EC4760BD95B}" ShortID="225771329">
+											<ChildrenList>
+												<Sound Name="Totem_Spawn" ID="{5631EBAA-6C16-4FCA-AF66-B9DCBADE1C7A}" ShortID="265547165">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="spawn" ID="{EA0614AB-8C8C-4EE4-8DEC-157798654728}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="941453457"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="spawn" ID="{EA0614AB-8C8C-4EE4-8DEC-157798654728}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Death" ID="{C4148B70-8A17-405C-BAD6-357D533AAFAF}" ShortID="1007056869">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="death" ID="{5CAA342E-CB98-4371-B209-10802BECA685}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\death.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="838090976"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="death" ID="{5CAA342E-CB98-4371-B209-10802BECA685}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Shaman_Summon" ID="{E13B4DE6-C7A0-448F-878A-8EF2A55FBBD0}" ShortID="178296002">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="shamansummon" ID="{FE1FC0AE-571E-49BF-ACF1-F695D3EDFD0D}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.401686087632034"/>
+																<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\shamansummon.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="645895879"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="shamansummon" ID="{FE1FC0AE-571E-49BF-ACF1-F695D3EDFD0D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Groundpound" ID="{77B38B4D-064A-499A-A66C-A5BF3658809E}" ShortID="418784794">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="groundpound" ID="{26AD75F7-2E0C-49F5-9BC3-5ED322125993}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\groundpound.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="616738106"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="groundpound" ID="{26AD75F7-2E0C-49F5-9BC3-5ED322125993}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_SummonTribe" ID="{25F46E9B-C577-4A48-B2B2-3F372E0AB6DE}" ShortID="16582665">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="summontribe" ID="{526C9BB2-11DA-47B9-BD00-061BFB706403}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\summontribe.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="520764054"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="summontribe" ID="{526C9BB2-11DA-47B9-BD00-061BFB706403}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_SummonStorm" ID="{9C49D315-6B57-40D9-95C1-C760DAEB2820}" ShortID="359887736">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="summonstorms" ID="{F40C42BA-E327-42EB-9EDC-209F7B0D9E6B}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\summonstorms.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="654962324"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="summonstorms" ID="{F40C42BA-E327-42EB-9EDC-209F7B0D9E6B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Burrow" ID="{B34A9F1E-566E-44BD-8FDA-4701EECDEA9B}" ShortID="630839863">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="mElementalEarthAggroA" ID="{6939BE4E-384C-4A9B-B1A7-820BA1F52764}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\mElementalEarthAggroA.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="717345710"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="mElementalEarthAggroA" ID="{6939BE4E-384C-4A9B-B1A7-820BA1F52764}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Unburrow" ID="{3EFA81EA-40B4-4709-B863-97846A100433}" ShortID="406365817">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="unburrow" ID="{180FFB59-8DA5-472C-9546-F74375A43902}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\unburrow.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1054836079"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="unburrow" ID="{180FFB59-8DA5-472C-9546-F74375A43902}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

@@ -225,7 +225,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC2/Halcyonite/matWhirlWindHalcyoniteGhost1.mat").WaitForCompletion());
             material.name = "matLynxStormTornadoGreen";
-            material.SetColor("_TintColor", new Color(10f / 255f, 115f / 255f, 0f));
+            material.SetColor("_TintColor", new Color(43f / 255f, 99f / 255f, 38f / 255f));
 
             return material;
         }
