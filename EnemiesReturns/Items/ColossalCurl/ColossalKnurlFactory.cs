@@ -37,7 +37,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.pickupModelPrefab = prefab;
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage };
 
             return itemDef;
         }
