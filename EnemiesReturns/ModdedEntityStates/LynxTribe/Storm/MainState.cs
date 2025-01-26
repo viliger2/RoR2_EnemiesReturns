@@ -17,15 +17,22 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
         public static float stormGrabRange => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormGrabRange.Value;
 
+        public static float outerRangeCoeff = 0.5f;
+
+        public static float maxPullDistanceCoefficient = 0.66f;
+
         private SphereSearch pullSphereSearch;
 
         private Transform cachedModelTransform;
+
+        private float maxPullDistance;
 
         public override void OnEnter()
         {
             base.OnEnter();
             pullSphereSearch = new SphereSearch();
             cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
+            maxPullDistance = stormRadius * maxPullDistanceCoefficient;
         }
 
         public override void FixedUpdate()
@@ -43,7 +50,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                         var component = targetBody.GetComponent<IDisplacementReceiver>();
                         if (component != null)
                         {
-                            component.AddDisplacement((position - targetBody.transform.position).normalized * pullStrength * GetDeltaTime());
+                            var pullCoeff = Vector3.Distance(position, targetBody.transform.position) > maxPullDistance ? outerRangeCoeff : 1f;
+                            component.AddDisplacement((position - targetBody.transform.position).normalized * pullStrength * pullCoeff * GetDeltaTime());
                         }
                         if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: CHECK NETWORKING, also fix for larger bodies, probably by adding body size or something!!!
                         {

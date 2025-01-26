@@ -31,8 +31,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SelectionWeight = config.Bind("Lynx Scout Director", "Selection Weight", 1, "Selection weight of Lynx Scout.");
             DirectorCost = config.Bind("Lynx Scout Director", "Director Cost", 28, "Director cost of Lynx Scout.");
 
-            BaseMaxHealth = config.Bind("Lynx Scout Character Stats", "Base Max Health", 180f, "Lynx Scout' base health.");
-            BaseMoveSpeed = config.Bind("Lynx Scout Character Stats", "Base Movement Speed", 10f, "Lynx Scout' base movement speed.");
+            BaseMaxHealth = config.Bind("Lynx Scout Character Stats", "Base Max Health", 210f, "Lynx Scout' base health.");
+            BaseMoveSpeed = config.Bind("Lynx Scout Character Stats", "Base Movement Speed", 12f, "Lynx Scout' base movement speed.");
             BaseJumpPower = config.Bind("Lynx Scout Character Stats", "Base Jump Power", 18f, "Lynx Scout' base jump power.");
             BaseDamage = config.Bind("Lynx Scout Character Stats", "Base Damage", 12f, "Lynx Scout' base damage.");
             BaseArmor = config.Bind("Lynx Scout Character Stats", "Base Armor", 0f, "Lynx Scout' base armor.");

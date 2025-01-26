@@ -85,12 +85,12 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SummonTribeCooldown = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe Cooldown", 25f, "Lynx Totem's Summon Tribe cooldown.");
             SummonTribeSummonCount = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe summon cooldown", 4, "Lynx Totem's Summon Tribe number of summoned tribesmen.");
 
-            SummonStormCooldown = config.Bind("Lynx Totem Summon Storm", "Summon Storm Cooldown", 30f, "Lynx Totem's Summon Storm cooldown.");
+            SummonStormCooldown = config.Bind("Lynx Totem Summon Storm", "Summon Storm Cooldown", 35f, "Lynx Totem's Summon Storm cooldown.");
             SummonStormMinRange = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Minimum Range", 10f, "Lynx Totem's Summon Storm's minimum range of spawning from target.");
             SummonStormMaxRange = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Maximum Range", 20f, "Lynx Totem's Summon Storm's maximum range of spawning from target.");
             SummonStormMaxCount = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Max Count", 16, "Lynx Totem's Summon Storm's max count. It summons one storm for each player, this config is for limiting number of storms for modded lobies.");
 
-            SummonStormStormMoveSpeed = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summoned Storm Movement Speed", 8.5f, "Lynx Totem's Summoned Storm movement speed.");
+            SummonStormStormMoveSpeed = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summoned Storm Movement Speed", 8f, "Lynx Totem's Summoned Storm movement speed.");
             SummonStormRadius = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Radius", 20f, "Lynx Totem's radius of summoned storms.");
             SummonStormPullStrength = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Pull Strength", 5f, "Lynx Totem's summoned storms pull streigth.");
             SummmonStormLifetime = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Lifetime", 20f, "Lynx Totem's summoned storms lifetime.");
