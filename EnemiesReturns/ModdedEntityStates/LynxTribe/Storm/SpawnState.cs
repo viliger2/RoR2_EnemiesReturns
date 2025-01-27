@@ -11,6 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
     {
         public override void OnEnter()
         {
+            spawnSoundString = "ER_Lynx_Storm_Spawn_Play";
             duration = 4f;
             base.OnEnter();
             if (NetworkServer.active)

@@ -1007,7 +1007,16 @@ namespace EnemiesReturns
 
             LynxTribeStuff.CustomHologramContent = lynxStuff.CustomCostHologramContentPrefab();
 
-            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"));
+            var shrineEffect = lynxStuff.CreateShrineUseEffect();
+            effectsList.Add(new EffectDef(shrineEffect));
+
+            var nsedLynxShrineFailure = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Failure_Play");
+            nseList.Add(nsedLynxShrineFailure);
+
+            var nsedLynxShrineSuccess = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Success_Play");
+            nseList.Add(nsedLynxShrineSuccess);
+
+            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
 
             var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
             (spawnCardShrine as ScriptableObject).name = "iscLynxShrine";

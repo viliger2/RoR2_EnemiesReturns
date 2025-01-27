@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Behaviors;
 using JetBrains.Annotations;
 using RoR2;
+using RoR2.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +33,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public LynxTribeSpawner spawner;
 
+        public NetworkSoundEventDef failureSound;
+
+        public NetworkSoundEventDef successSound;
+
         public PickupDisplay pickupDisplay;
 
         private NetworkIdentity networkIdentity;
@@ -57,6 +62,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             activated = false;
             DisableItemDisplay();
             pickupValue = pickupIndex.value;
+            PointSoundManager.EmitSoundServer(successSound.index, base.transform.position);
         }
 
         private void DisableItemDisplay()
@@ -191,7 +197,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
                                 ScrapperController.CreateItemTakenOrb(pickupDisplay.transform.position, bodyObject, pickupIndex.pickupDef.itemIndex);
                             }
                         }
+                        PointSoundManager.EmitSoundServer(failureSound.index, base.transform.position);
                     }
+
                     DisableItemDisplay();
                     activated = false;
                 }

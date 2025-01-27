@@ -71,15 +71,15 @@
 						</Property>
 						<Property Name="SampleRate" Type="int32">
 							<ValueList>
-								<Value Platform="Windows">44100</Value>
+								<Value Platform="Windows">48000</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ConversionPluginInfoList>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{9AD6E63B-1205-4514-B213-1982D0BAED57}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+							<ConversionPlugin Name="" ID="{F68D2B4D-F241-4991-9494-9D26BCE83AAA}" PluginName="Vorbis" CompanyID="0" PluginID="4">
 								<PropertyList>
-									<Property Name="QualityFactor" Type="Real32" Value="0"/>
+									<Property Name="QualityFactor" Type="Real32" Value="1"/>
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>

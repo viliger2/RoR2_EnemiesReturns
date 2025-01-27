@@ -133,7 +133,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxFetishHunterArmorBuff = config.Bind("Lynx Fetish", "Spawned Hunter Armor Buff Value", 20f, "Armor buff value of spawned Hunter.");
             LynxFetishScoutSpeedBuff = config.Bind("Lynx Fetish", "Spawned Scout Attack and Movement Speed Buff Value", 15f, "Attack and Movement speed buff value of spawned Scout in percent.");
             LynxFetishShamanSpecialBuff = config.Bind("Lynx Fetish", "Spawned Shaman Special Ability Damage Buff Value", 30f, "Damage buff of special ability value of spawned Shaman in percent.");
-
         }
     }
 }

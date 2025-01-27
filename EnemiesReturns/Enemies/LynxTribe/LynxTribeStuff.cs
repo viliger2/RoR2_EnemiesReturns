@@ -96,7 +96,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public GameObject CreateRetreatEffect(GameObject prefab)
         {
-            prefab.AddComponent<EffectComponent>();
+            var effect = prefab.AddComponent<EffectComponent>();
+            effect.soundName = "ER_Lynx_Escape_Effect_Play";
 
             var vfxAttributes = prefab.AddComponent<VFXAttributes>();
             vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Low;
@@ -205,7 +206,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         }
 
         // TODO: lodsofconfig
-        public GameObject CreateShrinePrefab(GameObject shrinePrefab)
+        public GameObject CreateShrinePrefab(GameObject shrinePrefab, GameObject shrineEffect, NetworkSoundEventDef nsedFailure, NetworkSoundEventDef nsedSuccess)
         {
             shrinePrefab.AddComponent<NetworkIdentity>();
 
@@ -254,7 +255,9 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
             shrine.escapeDuration = 25f; // TODO
-            shrine.shrineUseEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ShrineUseEffect.prefab").WaitForCompletion(); // TODO: at least swap the sound effect
+            shrine.shrineUseEffect = shrineEffect;
+            shrine.failureSound = nsedFailure;
+            shrine.successSound = nsedSuccess;
 
             var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;
@@ -288,6 +291,14 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrinePrefab.RegisterNetworkPrefab();
 
             return shrinePrefab;
+        }
+
+        public GameObject CreateShrineUseEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/ShrineUseEffect.prefab").WaitForCompletion().InstantiateClone("LynxShrineUseEffect", false);
+            prefab.GetComponent<EffectComponent>().soundName = "ER_Lynx_Shrine_Use_Play";
+
+            return prefab;
         }
 
         // TODO: config values

@@ -1132,6 +1132,96 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Storm" ID="{617719D0-D24F-4667-94D0-A629FE1E4076}" ShortID="913043713">
+									<ChildrenList>
+										<Event Name="ER_Lynx_Storm_Spawn_Play" ID="{027346FF-C7B6-4AC2-9F65-CB0F933D1E53}">
+											<ChildrenList>
+												<Action Name="" ID="{379019BD-02ED-497C-BF20-9414629D68C2}" ShortID="681892105">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Storm_Spawn" ID="{640F4620-26E7-42E9-BF6D-8FCF916FEB96}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Lynx_Storm_Alive_Loop_Play" ID="{9426FECE-ACDE-4E05-BD3E-4438F07F4806}">
+											<ChildrenList>
+												<Action Name="" ID="{AFA7DCE4-DCDC-4037-BEA7-8FE142BCBD7F}" ShortID="1018484634">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Storm_Alive_Loop" ID="{B515DF29-C785-4B08-AE0B-3AAC07913AA5}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Lynx_Storm_Alive_Loop_Stop" ID="{FC055F93-7433-4614-BEF9-054C61ABC070}">
+											<ChildrenList>
+												<Action Name="" ID="{342D385F-4B19-4FDC-BCE9-2D28229DB4EB}" ShortID="376361025">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+														<Property Name="FadeOutCurve" Type="int16" Value="1"/>
+														<Property Name="FadeTime" Type="Real64" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Storm_Alive_Loop" ID="{B515DF29-C785-4B08-AE0B-3AAC07913AA5}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Shrine" ID="{D344C1BC-D52D-4A83-B80A-3FE764F56CB4}" ShortID="348008247">
+									<ChildrenList>
+										<Event Name="ER_Lynx_Shrine_Use_Play" ID="{E2F5482E-939D-455C-B4AB-CEACBF2FF9C1}">
+											<ChildrenList>
+												<Action Name="" ID="{35710F75-EB75-48A9-912F-B04904DFBA75}" ShortID="778953882">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shrine_Use" ID="{1634166C-AE72-4291-9160-B7832759D149}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Lynx_Shrine_Success_Play" ID="{DCB3D514-BB54-4AEB-9B78-48CA6B03456D}">
+											<ChildrenList>
+												<Action Name="" ID="{B8023845-6B8A-4F9E-96C2-6F78F7491559}" ShortID="340954287">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shrine_Success" ID="{C57B6117-425E-4AB3-8C9C-E93C3B5C1876}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Lynx_Shrine_Failure_Play" ID="{ABDCA2F5-488E-4B71-A6F6-124FD6DBB0F1}">
+											<ChildrenList>
+												<Action Name="" ID="{B57720E6-F95F-4CEC-BDAB-3190AC619269}" ShortID="719998308">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Shrine_Failure" ID="{DEB6AA70-36E4-4353-9B99-FE25FB7E0942}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Lynx_Escape_Effect_Play" ID="{7CA07821-3A98-4699-A75E-34712ECE6299}">
+											<ChildrenList>
+												<Action Name="" ID="{6486AA4D-92EB-4121-BDFB-2BE828ED13CA}" ShortID="649784528">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Lynx_Retreat" ID="{3B64BD93-827D-4C3F-8832-C02EC5D37C47}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

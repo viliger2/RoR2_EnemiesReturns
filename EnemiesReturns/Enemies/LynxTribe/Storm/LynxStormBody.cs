@@ -207,8 +207,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         {
             return new ISfxLocator.SfxLocatorParams()
             {
-                aliveLoopStart = "", // TODO
-                aliveLoopStop = "",
+                aliveLoopStart = "ER_Lynx_Storm_Alive_Loop_Play",
+                aliveLoopStop = "ER_Lynx_Storm_Alive_Loop_Stop",
             };
         }
 
