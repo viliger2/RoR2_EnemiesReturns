@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Scout
 {
-    internal class ScoutMaster : MasterBase
+    public class ScoutMaster : MasterBase
     {
         public static GameObject MasterPrefab;
 

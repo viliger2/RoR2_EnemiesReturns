@@ -48,6 +48,19 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> GroundpoundRadius;
         public static ConfigEntry<float> GroundpoundForce;
 
+        public static ConfigEntry<bool> ItemEnabled;
+        public static ConfigEntry<int> LynxFetishBonusHP;
+        public static ConfigEntry<int> LynxFetishBonusDamage;
+        public static ConfigEntry<int> LynxFetishBonusHPPerStack;
+        public static ConfigEntry<int> LynxFetishBonusDamagePerStack;
+        public static ConfigEntry<float> LynxFetishBuffWardRadius;
+        public static ConfigEntry<float> LynxFetishBuffWardBuffDuration;
+        public static ConfigEntry<float> LynxFetishBuffWardBuffRefreshTimer;
+        public static ConfigEntry<float> LynxFetishArcherDamageBuff;
+        public static ConfigEntry<float> LynxFetishHunterArmorBuff;
+        public static ConfigEntry<float> LynxFetishScoutSpeedBuff;
+        public static ConfigEntry<float> LynxFetishShamanSpecialBuff;
+
         public static void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Lynx Totem Director", "Enable Lynx Totem", true, "Enables Lynx Totem.");
@@ -106,6 +119,21 @@ namespace EnemiesReturns.Configuration.LynxTribe
             GroundpoundProcCoefficient = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Proc Coefficient", 1f, "Lynx Totem's Groundpound's proc coefficient.");
             GroundpoundForce = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Force", 1500f, "Lynx Totem's Groundpound's upwards force.");
             GroundpoundRadius = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Radius", 25f, "Lynx Totem's Groundpound's radius.");
+
+            ItemEnabled = config.Bind("Lynx Fetish", "Enable Lynx Fetish", true, "Enables Lynx Fetish to drop from Lynx Totem and appear in printers. Item cannot be enabled without Totem.");
+            LynxFetishBonusDamage = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Damage", 10, "Bonus damage boost from base stats (the same as normal lynx tribesman), boosts by 10% for each value.");
+            LynxFetishBonusHP = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Health", 10, "Bonus health boost from base stats (the same as normal lynx tribesman), boosts by 10% for each value.");
+            LynxFetishBonusDamagePerStack = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Damage Per Stack", 3, "Bonus damage boost from base stats per stack after 4th (the same as normal lynx tribesman), boosts by 10% for each value.");
+            LynxFetishBonusHPPerStack = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Health Per Stack", 2, "Bonus health boost from base stats per stack after 4th (the same as normal lynx tribesman), boosts by 10% for each value.");
+            LynxFetishBuffWardRadius = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Radius", 60f, "Buff ward radius of spawned tribesmen. By default equal to teleporter hold out zone radius.");
+            LynxFetishBuffWardBuffDuration = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Buff Duration", 5f, "Buff ward applied buff duration of spawned tribesmen.");
+            LynxFetishBuffWardBuffRefreshTimer = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Buff Refresh Timer", 4f, "Buff ward refresh timer of buff application of spawned tribesmen.");
+
+            LynxFetishArcherDamageBuff = config.Bind("Lynx Fetish", "Spawned Archer Damage Buff Value", 15f, "Damage buff value of spawned Archer in percent.");
+            LynxFetishHunterArmorBuff = config.Bind("Lynx Fetish", "Spawned Hunter Armor Buff Value", 20f, "Armor buff value of spawned Hunter.");
+            LynxFetishScoutSpeedBuff = config.Bind("Lynx Fetish", "Spawned Scout Attack and Movement Speed Buff Value", 15f, "Attack and Movement speed buff value of spawned Scout in percent.");
+            LynxFetishShamanSpecialBuff = config.Bind("Lynx Fetish", "Spawned Shaman Special Ability Damage Buff Value", 30f, "Damage buff of special ability value of spawned Shaman in percent.");
+
         }
     }
 }

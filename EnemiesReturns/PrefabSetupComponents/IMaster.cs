@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Components
 {
-    public interface IMaster : INetworkIdentity, ICharacterMaster, IInventory, IEntityStateMachine, IBaseAI, IMinionOwnership, IAISkillDriver, IAIOwnership, ISetDontDestroyOnLoad
+    public interface IMaster : INetworkIdentity, ICharacterMaster, IInventory, IEntityStateMachine, IBaseAI, IMinionOwnership, IAISkillDriver, IAIOwnership, ISetDontDestroyOnLoad, IDeployable
     {
         public GameObject CreateMaster(GameObject masterPrefab, GameObject bodyPrefab)
         {
@@ -21,6 +21,7 @@ namespace EnemiesReturns.Components
             AddAISkillDrivers(masterPrefab, GetAISkillDriverParams());
             AddAIOwnership(masterPrefab);
             AddSetDontDestroyOnLoad(masterPrefab);
+            AddDeployable(masterPrefab);
 
             if ((this as INetworkIdentity).NeedToAddNetworkIdentity())
             {

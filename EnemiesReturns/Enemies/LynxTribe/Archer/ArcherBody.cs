@@ -45,10 +45,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
 
-            //var walkSpeed = result.AddComponent<WalkSpeedDebugHelper>();
-            //walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
-            //walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
-
             return result;
         }
 

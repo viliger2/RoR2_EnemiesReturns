@@ -94,7 +94,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
         public static void Hooks()
         {
-            Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
         }
 
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)

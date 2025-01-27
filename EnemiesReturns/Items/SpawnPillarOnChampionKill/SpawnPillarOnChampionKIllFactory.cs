@@ -49,7 +49,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 
         public static void Hooks()
         {
-            Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
             RoR2.Inventory.onInventoryChangedGlobal += Inventory_onInventoryChangedGlobal;
         }
 

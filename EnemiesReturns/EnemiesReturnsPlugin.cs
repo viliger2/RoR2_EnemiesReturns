@@ -9,6 +9,7 @@ using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -21,6 +22,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+
+// TODO: write Content class and put everything there
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -38,6 +41,7 @@ namespace EnemiesReturns
     [BepInDependency(R2API.DamageAPI.PluginGUID)]
     [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
     [BepInDependency(R2API.OrbAPI.PluginGUID)]
+    [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
@@ -104,13 +108,23 @@ namespace EnemiesReturns
             RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             ColossalKnurlFactory.Hooks();
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             MechanicalSpiderVictoryDanceController.Hooks();
+            LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            {
+                LynxFetishFactory.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            }
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)

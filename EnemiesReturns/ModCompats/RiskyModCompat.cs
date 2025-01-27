@@ -13,6 +13,10 @@ namespace EnemiesReturns.ModCompats
 
         public static ItemIndex RiskyModAllyRegen;
 
+        public static ItemIndex RiskyModAllyAllowVoidDeath;
+
+        public static ItemIndex RiskyModAllyAllowOverheatDeath;
+
         public static bool enabled;
 
         [SystemInitializer(new Type[] { typeof(ItemCatalog) })]
@@ -26,6 +30,9 @@ namespace EnemiesReturns.ModCompats
             RiskyModAllyMarker = ItemCatalog.FindItemIndex("RiskyModAllyMarkerItem");
             RiskyModAllyScaling = ItemCatalog.FindItemIndex("RiskyModAllyScalingItem");
             RiskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
+            RiskyModAllyAllowVoidDeath = ItemCatalog.FindItemIndex("RiskyModAllyAllowVoidDeathItem");
+            RiskyModAllyAllowOverheatDeath = ItemCatalog.FindItemIndex("RiskyModAllyAllowOverheatDeathItem");
+
             if (RiskyModAllyMarker != ItemIndex.None)
             {
                 enabled = true;
