@@ -1016,43 +1016,75 @@ namespace EnemiesReturns
             var nsedLynxShrineSuccess = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Success_Play");
             nseList.Add(nsedLynxShrineSuccess);
 
-            var lynxShrine = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            var lynxShrine1 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            var lynxShrine2 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab2"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            var lynxShrine3 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab3"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
 
-            var spawnCardShrine = ScriptableObject.CreateInstance<InteractableSpawnCard>();
-            (spawnCardShrine as ScriptableObject).name = "iscLynxShrine";
-            spawnCardShrine.prefab = lynxShrine;
-            spawnCardShrine.sendOverNetwork = true;
-            spawnCardShrine.hullSize = HullClassification.Golem;
-            spawnCardShrine.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            spawnCardShrine.requiredFlags = RoR2.Navigation.NodeFlags.None;
-            spawnCardShrine.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
-            spawnCardShrine.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value;
-            spawnCardShrine.occupyPosition = true;
-            spawnCardShrine.eliteRules = SpawnCard.EliteRules.Default;
-            spawnCardShrine.orientToFloor = false;
+            DirectorAPI.DirectorCardHolder holderShrine1 = CreateCardHolderLynxShrine(lynxShrine1, "1");
+            DirectorAPI.DirectorCardHolder holderShrine2 = CreateCardHolderLynxShrine(lynxShrine2, "2");
+            DirectorAPI.DirectorCardHolder holderShrine3 = CreateCardHolderLynxShrine(lynxShrine3, "3");
 
-            var dcLynxShrine = new DirectorCard
+            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
+            foreach (var stageString in defaultStages)
             {
-                spawnCard = spawnCardShrine,
+                DirectorAPI.DirectorCardHolder shrineToSpawn;
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+                switch (cleanStageString)
+                {
+                    case "blackbeach":
+                    case "skymeadow":
+                    case "itskymeadow":
+                        shrineToSpawn = holderShrine1;
+                        break;
+                    case "village":
+                    case "villagenight":
+                    case "golemplains":
+                    case "itgolemplains":
+                        shrineToSpawn = holderShrine2;
+                        break;
+                    case "foggyswamp":
+                    case "habitatfall":
+                    default:
+                        shrineToSpawn = holderShrine3;
+                        break;
+                }
+
+                DirectorAPI.Helpers.AddNewInteractableToStage(shrineToSpawn, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
+            }
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
+
+            nopList.Add(lynxShrine1);
+            nopList.Add(lynxShrine2);
+            nopList.Add(lynxShrine3);
+        }
+
+        private DirectorAPI.DirectorCardHolder CreateCardHolderLynxShrine(GameObject lynxShrine1, string suffix)
+        {
+            var spawnCardShrine1 = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardShrine1 as ScriptableObject).name = "iscLynxShrine" + suffix;
+            spawnCardShrine1.prefab = lynxShrine1;
+            spawnCardShrine1.sendOverNetwork = true;
+            spawnCardShrine1.hullSize = HullClassification.Golem;
+            spawnCardShrine1.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardShrine1.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardShrine1.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardShrine1.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value;
+            spawnCardShrine1.occupyPosition = true;
+            spawnCardShrine1.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardShrine1.orientToFloor = false;
+
+            var dcLynxShrine1 = new DirectorCard
+            {
+                spawnCard = spawnCardShrine1,
                 selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSelectionWeight.Value,
                 spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                 preventOverhead = false
             };
 
-            var holderShrine = new DirectorAPI.DirectorCardHolder();
-            holderShrine.Card = dcLynxShrine;
-            holderShrine.InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSpawnCategory.Value;
-
-            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
-            foreach (var stageString in defaultStages)
-            {
-                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
-
-                DirectorAPI.Helpers.AddNewInteractableToStage(holderShrine, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
-            }
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
-
-            nopList.Add(lynxShrine);
+            var holderShrine1 = new DirectorAPI.DirectorCardHolder();
+            holderShrine1.Card = dcLynxShrine1;
+            holderShrine1.InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSpawnCategory.Value;
+            return holderShrine1;
         }
 
         public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)
