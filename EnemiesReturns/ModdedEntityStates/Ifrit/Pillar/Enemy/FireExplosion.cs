@@ -14,6 +14,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 
         public override float damagePerStack => 0f;
 
+        public override DamageTypeCombo damageType => new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.Special);
+
         public override void Suicide()
         {
             var cdb = characterBody.gameObject.GetComponent<CharacterDeathBehavior>();

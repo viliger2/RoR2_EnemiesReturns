@@ -40,6 +40,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             attack.damage = damageCoefficient * damageStat;
             attack.hitEffectPrefab = hitEffectPrefab;
             attack.isCrit = RollCrit();
+            attack.damageType = DamageSource.Secondary;
             Util.PlayAttackSpeedSound("ER_Spitter_Bite_Play", base.gameObject, attackSpeedStat);
             if ((bool)modelTransform)
             {

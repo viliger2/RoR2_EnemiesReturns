@@ -118,6 +118,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
+            blastAttack.damageType = DamageSource.Secondary;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

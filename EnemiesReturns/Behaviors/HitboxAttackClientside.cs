@@ -90,7 +90,6 @@ namespace EnemiesReturns.Behaviors
 
         private void PerformDamage(CharacterBody body, HurtBox hurtBox)
         {
-            Log.Info($"projectile damage {projectileDamage.damage}");
             var damageInfo = new DamageInfo
             {
                 damage = totalDamage,
@@ -99,7 +98,7 @@ namespace EnemiesReturns.Behaviors
                 attacker = projectileController.owner ? projectileController.owner.gameObject : null,
                 position = body.footPosition,
                 canRejectForce = true,
-                damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Secondary),
+                damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary), // here since client and all
                 force = Vector3.up * force,
                 procCoefficient = procCoefficient,
             };

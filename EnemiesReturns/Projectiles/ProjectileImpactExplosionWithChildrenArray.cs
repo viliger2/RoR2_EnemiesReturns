@@ -291,6 +291,7 @@ namespace EnemiesReturns.Projectiles
                     component2.crit = projectileDamage.crit;
                     component2.force = projectileDamage.force;
                     component2.damageColorIndex = projectileDamage.damageColorIndex;
+                    component2.damageType = projectileDamage.damageType;
                 }
                 NetworkServer.Spawn(obj);
             }
@@ -337,6 +338,7 @@ namespace EnemiesReturns.Projectiles
                 component2.crit = projectileDamage.crit;
                 component2.force = projectileDamage.force;
                 component2.damageColorIndex = projectileDamage.damageColorIndex;
+                component2.damageType = projectileDamage.damageType;
             }
             NetworkServer.Spawn(obj);
         }
@@ -424,6 +426,7 @@ namespace EnemiesReturns.Projectiles
                 damageInfo.force = projectileDamage.force * base.transform.forward;
                 damageInfo.procChainMask = projectileController.procChainMask;
                 damageInfo.procCoefficient = projectileController.procCoefficient;
+                damageInfo.damageType = projectileDamage.damageType;
             }
             else
             {

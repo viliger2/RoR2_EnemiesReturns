@@ -344,7 +344,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             var projectileSimple = prefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesLifetime.Value;
             projectileSimple.desiredForwardSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesSpeed.Value;
-            projectileSimple.updateAfterFiring = true; // maybe? so it won't fall down
+            projectileSimple.updateAfterFiring = true;
 
             var projectileSingleTarget = prefab.AddComponent<ProjectileSingleTargetImpact>();
             projectileSingleTarget.destroyWhenNotAlive = true;
@@ -352,9 +352,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileSingleTarget.impactEffect = impact;
             projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play";
 
-            var projectileDamage = prefab.AddComponent<ProjectileDamage>();
-            //projectileDamage.damageType.AddModdedDamageType(ApplyReducedHealing);
-
+            prefab.AddComponent<ProjectileDamage>();
             prefab.AddComponent<ProjectileTargetComponent>();
 
             var targetFinder = prefab.AddComponent<ProjectileDirectionalTargetFinder>();

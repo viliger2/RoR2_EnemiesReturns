@@ -72,7 +72,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
             overlapAttack.hitBoxGroup = spearHitbox;
             overlapAttack.hitEffectPrefab = hitEffectPrefab;
             overlapAttack.procCoefficient = procCoefficient;
-            overlapAttack.damageType = DamageType.Generic;
+            overlapAttack.damageType = DamageSource.Primary;
 
             PlayAnimation("Gesture, Override", "LungeFire", "Attack.playbackRate", duration);
 

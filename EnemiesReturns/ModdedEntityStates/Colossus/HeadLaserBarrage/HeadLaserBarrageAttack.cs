@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EntityStates;
+using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
@@ -122,7 +123,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
                 {
                     bulletSpawnHelperPoint.localPosition = new Vector3(UnityEngine.Random.Range(-spread, spread), UnityEngine.Random.Range(-spread, spread), 0.2f);
                     var rotation = Quaternion.LookRotation(bulletSpawnHelperPoint.position - projectilesSpawnPoint.position, Vector3.up);
-                    ProjectileManager.instance.FireProjectile(projectilePrefab, projectilesSpawnPoint.position, rotation, base.gameObject, damageStat * damageCoefficient, forceMagnitude, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed);
+                    ProjectileManager.instance.FireProjectile(projectilePrefab, projectilesSpawnPoint.position, rotation, base.gameObject, damageStat * damageCoefficient, forceMagnitude, RollCrit(), RoR2.DamageColorIndex.Default, null, projectileSpeed, DamageSource.Utility);
                 }
             }
         }

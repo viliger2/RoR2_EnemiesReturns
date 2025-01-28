@@ -39,6 +39,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Ifrit
             attack.teamIndex = TeamComponent.GetObjectTeam(attack.attacker);
             attack.damage = damageCoefficient * damageStat;
             attack.isCrit = RollCrit();
+            attack.damageType = DamageSource.Primary;
             if ((bool)modelTransform)
             {
                 attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Smash");

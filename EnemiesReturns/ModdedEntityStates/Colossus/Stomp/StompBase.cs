@@ -61,6 +61,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
             attack.damage = stompDamageCoefficient * damageStat;
             attack.hitEffectPrefab = hitEffectPrefab;
             attack.forceVector = Vector3.up * stompForceMagnitude;
+            attack.damageType = DamageSource.Primary;
 
             projectileStart = FindModelChild(targetMuzzle);
             duration = baseDuration / attackSpeedStat;
@@ -100,7 +101,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                     for (int i = 0; i < projectilesCount; i++)
                     {
                         var forward = Quaternion.AngleAxis(angle * i, Vector3.up);
-                        ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed);
+                        ProjectileManager.instance.FireProjectile(projectilePrefab, projectileStart.position, forward, gameObject, damageStat * projectileDamageCoefficient, projectileForceMagnitude, RollCrit(), DamageColorIndex.Default, null, speed, DamageSource.Primary);
                     }
                     EffectManager.SimpleMuzzleFlash(stompEffectPrefab, base.gameObject, targetMuzzle, transmit: true);
                 }

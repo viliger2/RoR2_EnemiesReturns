@@ -147,7 +147,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
             attack.hitBoxGroup = hitBoxGroup;
             attack.hitEffectPrefab = hitEffectPrefab;
             attack.procCoefficient = procCoefficient;
-            attack.damageType = DamageType.Generic;
+            attack.damageType = DamageSource.Primary;
 
             return attack;
         }

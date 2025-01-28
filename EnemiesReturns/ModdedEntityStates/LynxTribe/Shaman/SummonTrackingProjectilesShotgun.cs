@@ -81,7 +81,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     for (int i = 0; i < projectileCount; i++)
                     {
                         var spawnDirection = new Vector3(0f, (360f / projectileCount) * i, 0);
-                        ProjectileManager.instance.FireProjectile(trackingProjectilePrefab, spawnPoint.position, Quaternion.Euler(spawnDirection), gameObject, damageStat * damageCoefficient, 0f, RollCrit(), RoR2.DamageColorIndex.Poison);
+                        ProjectileManager.instance.FireProjectile(trackingProjectilePrefab, spawnPoint.position, Quaternion.Euler(spawnDirection), gameObject, damageStat * damageCoefficient, 0f, RollCrit(), RoR2.DamageColorIndex.Poison, damageType: DamageSource.Primary);
                     }
                 }
                 //Util.PlaySound("ER_Shaman_SummonProjectiles_Stop", base.gameObject);

@@ -180,13 +180,16 @@ namespace EnemiesReturns.Enemies.Colossus
             projectileController.ghostPrefab = rockGhost;
             projectileController.allowPrediction = true;
             projectileController.flightSoundLoop = null;
+
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
             var projectileSimple = clonedEffect.GetComponent<ProjectileSimple>();
             projectileSimple.updateAfterFiring = false;
             projectileSimple.lifetime = 5f;
 
-            clonedEffect.GetComponent<ProjectileImpactExplosion>().blastRadius = EnemiesReturns.Configuration.Colossus.RockClapProjectileBlastRadius.Value;
+            var impactExplosion = clonedEffect.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius = EnemiesReturns.Configuration.Colossus.RockClapProjectileBlastRadius.Value;
+            impactExplosion.childrenInheritDamageType = true;
 
             clonedEffect.AddComponent<ProjectileTargetComponent>();
 
@@ -262,6 +265,7 @@ namespace EnemiesReturns.Enemies.Colossus
             impactExplosion.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             impactExplosion.canRejectForce = true;
             impactExplosion.explosionEffect = CreateLaserBarrageExplosion();
+            impactExplosion.childrenInheritDamageType = true;
 
             impactExplosion.destroyOnEnemy = false;
             impactExplosion.destroyOnWorld = false;

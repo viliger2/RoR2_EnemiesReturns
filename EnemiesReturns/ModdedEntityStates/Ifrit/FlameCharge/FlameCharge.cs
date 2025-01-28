@@ -121,7 +121,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             chargeAttack.forceVector = Vector3.forward * chargeForce;
             chargeAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "BodyCharge");
             chargeAttack.procCoefficient = chargeProcCoef;
-            chargeAttack.damageType = DamageType.Generic;
+            chargeAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
             chargeAttack.retriggerTimeout = 0.5f;
         }
 
@@ -137,7 +137,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             flameAttack.forceVector = Vector3.forward * flameForce;
             flameAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "FlameCharge");
             flameAttack.procCoefficient = flameProcCoef;
-            flameAttack.damageType.damageType = (Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic);
             flameAttack.retriggerTimeout = (1 / flameTickFrequency) * 2;
         }
 
@@ -158,6 +157,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
                 if (bulletAttackStopwatch > 1f / flameTickFrequency)
                 {
                     bulletAttackStopwatch -= 1f / flameTickFrequency;
+                    flameAttack.damageType = new DamageTypeCombo((Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic), DamageTypeExtended.Generic, DamageSource.Utility);
                     flameAttack.Fire();
 
                     if (ledgeHandling && !characterBody.isPlayerControlled)

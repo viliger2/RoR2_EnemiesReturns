@@ -144,7 +144,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
             bulletAttack.isCrit = false;
             bulletAttack.radius = laserRadius;
             bulletAttack.smartCollision = false;
-            bulletAttack.damageType = DamageType.Generic;
+            bulletAttack.damageType = DamageSource.Special;
             bulletAttack.maxDistance = laserMaxDistance;
             bulletAttack.procChainMask = default;
             bulletAttack.damageColorIndex = DamageColorIndex.Default;

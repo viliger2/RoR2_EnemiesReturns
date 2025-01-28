@@ -92,7 +92,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                             projectilePrefab = groundpoundProjectilePrefab,
                             position = shakeEffectTransform.position,
                             rotation = shakeEffectTransform.rotation,
-                            owner = gameObject
+                            owner = gameObject,
+                            damageTypeOverride = DamageSource.Primary
                         };
                         ProjectileManager.instance.FireProjectile(projectileInfo);
                     };

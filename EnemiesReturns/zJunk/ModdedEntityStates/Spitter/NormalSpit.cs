@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -35,6 +36,11 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.Spitter
             {
                 characterBody.SetAimTimer(3f);
             }
+        }
+
+        public override void ModifyProjectileInfo(ref FireProjectileInfo fireProjectileInfo)
+        {
+            fireProjectileInfo.damageTypeOverride = DamageSource.Primary;
         }
 
         public override void PlayAnimation(float duration)

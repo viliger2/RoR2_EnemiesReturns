@@ -107,7 +107,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                     Util.CheckRoll(critStat, base.characterBody.master),
                     DamageColorIndex.Default,
                     null,
-                    projectileSpeed);
+                    projectileSpeed,
+                    DamageSource.Primary);
             }
             Util.PlayAttackSpeedSound(isMinion ? soundStringMinion : soundString, gameObject, attackSpeedStat);
         }
