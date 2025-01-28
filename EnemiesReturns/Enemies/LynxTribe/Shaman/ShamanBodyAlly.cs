@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return buff;
         }
 
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState)));
+        }
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
