@@ -108,6 +108,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             }
         }
 
+        // TODO: force to Ifrit's size instead of world forward or whatever it is
         private void SetupChargeAttack(Transform modelTransform, bool isCrit)
         {
             chargeAttack = new OverlapAttack();

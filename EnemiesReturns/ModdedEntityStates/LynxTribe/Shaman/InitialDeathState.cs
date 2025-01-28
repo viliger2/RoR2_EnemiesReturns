@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             base.OnEnter();
             if (isAuthority)
             {
-                var totalChance = spawnChancePerLoop * (int)(RoR2.Run.instance.stageClearCount % 5);
+                var totalChance = spawnChancePerLoop * (int)(RoR2.Run.instance.stageClearCount / 5);
                 var roll = RoR2Application.rng.RangeFloat(0f, 100f);
                 if(roll < totalChance)
                 {

@@ -66,7 +66,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             Enabled = config.Bind("Lynx Totem Director", "Enable Lynx Totem", true, "Enables Lynx Totem.");
             SelectionWeight = config.Bind("Lynx Totem Director", "Selection Weight", 1, "Selection weight of Lynx Totem.");
             MinimumStageCompletion = config.Bind("Lynx Totem Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
-            DirectorCost = config.Bind("Lynx Totem Director", "Director Cost", 800, "Director cost of Lynx Totem.");
+            DirectorCost = config.Bind("Lynx Totem Director", "Director Cost", 600, "Director cost of Lynx Totem.");
             DefaultStageList = config.Bind("Lynx Totem Director", "Default Variant Stage List",
                 string.Join(",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlains),
@@ -85,13 +85,13 @@ namespace EnemiesReturns.Configuration.LynxTribe
                 ),
                 "Stages that Default Lynx Totem appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
-            BaseMaxHealth = config.Bind("Lynx Totem Character Stats", "Base Max Health", 2800f, "Lynx Totem' base health.");
+            BaseMaxHealth = config.Bind("Lynx Totem Character Stats", "Base Max Health", 2100f, "Lynx Totem' base health.");
             BaseMoveSpeed = config.Bind("Lynx Totem Character Stats", "Base Movement Speed", 7f, "Lynx Totem' base movement speed.");
             BaseJumpPower = config.Bind("Lynx Totem Character Stats", "Base Jump Power", 10f, "Lynx Totem' base jump power.");
             BaseDamage = config.Bind("Lynx Totem Character Stats", "Base Damage", 16f, "Lynx Totem' base damage.");
             BaseArmor = config.Bind("Lynx Totem Character Stats", "Base Armor", 20f, "Lynx Totem' base armor.");
 
-            LevelMaxHealth = config.Bind("Lynx Totem Character Stats", "Health per Level", 840f, "Lynx Totem' health increase per level.");
+            LevelMaxHealth = config.Bind("Lynx Totem Character Stats", "Health per Level", 630f, "Lynx Totem' health increase per level.");
             LevelDamage = config.Bind("Lynx Totem Character Stats", "Damage per Level", 3.2f, "Lynx Totem' damage increase per level.");
             LevelArmor = config.Bind("Lynx Totem Character Stats", "Armor per Level", 0f, "Lynx Totem' armor increase per level.");
 

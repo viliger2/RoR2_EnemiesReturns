@@ -24,6 +24,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 // TODO: write Content class and put everything there
+// TODO: remember to add DamageSource
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -46,7 +47,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.4.7";
+        public const string Version = "0.4.8";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
