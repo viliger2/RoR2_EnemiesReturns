@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider
+    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
     {
         public GameObject shrineUseEffect;
 
@@ -239,6 +239,11 @@ namespace EnemiesReturns.Enemies.LynxTribe
             {
                 component.displayValue = escapeDuration - escapeTimer;
             }
+        }
+
+        public IInspectInfoProvider GetInspectInfoProvider()
+        {
+            return GetComponent<IInspectInfoProvider>();
         }
     }
 }

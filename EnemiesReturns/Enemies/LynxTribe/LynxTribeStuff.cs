@@ -225,7 +225,18 @@ namespace EnemiesReturns.Enemies.LynxTribe
             modelLocator.preserveModel = false;
             modelLocator.normalizeToFloor = false;
 
-            var genericInspecInfo = shrinePrefab.AddComponent<GenericInspectInfoProvider>(); // TODO
+            var inspectDef = ScriptableObject.CreateInstance<InspectDef>();
+            (inspectDef as ScriptableObject).name = "idLynxShrine";
+            inspectDef.Info = new RoR2.UI.InspectInfo
+            {
+                Visual = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion(),
+                TitleToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME",
+                DescriptionToken = "ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION",
+                FlavorToken = "ENEMIES_RETURNS_LYNX_SHRINE_LORE",
+                TitleColor = Color.white,
+                isConsumedItem = false
+            };
+            shrinePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef;
 
             var genericNameInfoProvider = shrinePrefab.AddComponent<GenericDisplayNameProvider>();
             genericNameInfoProvider.displayToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME";
