@@ -53,7 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                             var pullCoeff = Vector3.Distance(position, targetBody.transform.position) > maxPullDistance ? outerRangeCoeff : 1f;
                             component.AddDisplacement((position - targetBody.transform.position).normalized * pullStrength * pullCoeff * GetDeltaTime());
                         }
-                        if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: also fix for larger bodies, probably by adding body size or something!!!
+                        if (Vector3.Distance(position, targetBody.transform.position) < (stormGrabRange - 1) + targetBody.radius) // -1 is because it was tested on commando before adding body radius and commando is about 1 unity stones in radius
                         {
                             targetBody.gameObject.AddComponent<LynxStormComponent>().SetStormTransform(this.gameObject);
                         }
