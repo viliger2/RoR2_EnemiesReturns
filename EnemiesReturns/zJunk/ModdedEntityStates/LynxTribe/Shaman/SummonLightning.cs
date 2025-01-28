@@ -82,7 +82,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
                     fireProjectileInfo.owner = gameObject;
                     fireProjectileInfo.damage = damageStat * damageCoef;
                     fireProjectileInfo.force = force;
-                    fireProjectileInfo.damageTypeOverride = new DamageTypeCombo(DamageTypeCombo.Generic, DamageTypeExtended.Generic, DamageSource.Utility); // TODO: source
+                    fireProjectileInfo.damageTypeOverride = new DamageTypeCombo(DamageTypeCombo.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
                     fireProjectileInfo.crit = RollCrit();
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                     UnityEngine.Object.Destroy(spawnZones[i]);
@@ -140,7 +140,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
             return null;
         }
 
-        private GameObject SpawnZone() // TODO: replace with effect that lasts for a while
+        private GameObject SpawnZone()
         {
             var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.position = targetTransform.position;

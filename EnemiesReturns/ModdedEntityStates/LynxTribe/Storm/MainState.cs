@@ -53,7 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                             var pullCoeff = Vector3.Distance(position, targetBody.transform.position) > maxPullDistance ? outerRangeCoeff : 1f;
                             component.AddDisplacement((position - targetBody.transform.position).normalized * pullStrength * pullCoeff * GetDeltaTime());
                         }
-                        if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: CHECK NETWORKING, also fix for larger bodies, probably by adding body size or something!!!
+                        if (Vector3.Distance(position, targetBody.transform.position) < stormGrabRange) // TODO: also fix for larger bodies, probably by adding body size or something!!!
                         {
                             targetBody.gameObject.AddComponent<LynxStormComponent>().SetStormTransform(this.gameObject);
                         }

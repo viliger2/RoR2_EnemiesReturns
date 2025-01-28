@@ -1172,6 +1172,17 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Lynx_Storm_Release" ID="{68C29171-51A5-4889-8B3D-DAB8F0D1312A}">
+											<ChildrenList>
+												<Action Name="" ID="{D69E4A72-9D2A-4827-97FB-B513349C15C0}" ShortID="512508283">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Storm_Release" ID="{4B08D694-7071-493C-8C52-E4CCEEECD1D8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Shrine" ID="{D344C1BC-D52D-4A83-B80A-3FE764F56CB4}" ShortID="348008247">

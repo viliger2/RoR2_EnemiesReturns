@@ -48,9 +48,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
 
-            //var walkSpeed = result.AddComponent<WalkSpeedDebugHelper>();
-            //walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
-            //walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
+            result.transform.Find("ModelBase/mdlLynxHunter/LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
             return result;
         }
@@ -271,7 +269,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             };
         }
 
-        // TODO: separate mask and body surface defs
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
     }
 }

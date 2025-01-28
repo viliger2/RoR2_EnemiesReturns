@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace EnemiesReturns.Components.BodyComponents.CharacterMotor
 {
-
-    // TODO: rewrite this so it grabs mass from Rigidbody
     public interface ICharacterMotor
     {
         protected class CharacterMotorParams

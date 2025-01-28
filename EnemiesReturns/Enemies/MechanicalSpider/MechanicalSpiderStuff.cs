@@ -352,7 +352,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public GameObject CreateDoubleShotGhostPrefab()
         {
-            // TODO: maybe scale
             var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/FMJRampingGhost.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectileGhost", false);
 
             var flames = projectileGhost.transform.Find("Flames").gameObject;

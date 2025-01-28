@@ -16,7 +16,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Hunter
 
         public static float procCoefficient => Configuration.LynxTribe.LynxHunter.StabProcCoefficient.Value;
 
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion(); // TODO: fine for now
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion();
 
         public static GameObject wooshEffect;
 

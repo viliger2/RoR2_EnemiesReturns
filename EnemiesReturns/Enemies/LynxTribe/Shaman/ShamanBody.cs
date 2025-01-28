@@ -19,7 +19,6 @@ using UnityEngine.AddressableAssets;
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     // TODO: maybe visual effects on death, like splinters flying off the mask and ground impact
-    // TODO: post loop transformation into totem
     public class ShamanBody : BodyBase
     {
         public struct SkillFamilies
@@ -53,6 +52,15 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         protected override bool AddRemoveJitterBones => true;
 
         public static GameObject BodyPrefab;
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            var prefab = base.AddBodyComponents(bodyPrefab, sprite, log);
+
+            prefab.transform.Find("ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
+
+            return prefab;
+        }
 
         public SkillDef CreateSummonProjectilesSkill()
         {
@@ -275,7 +283,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             };
         }
 
-        // TODO: separate mask and body surface defs
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
 
         public SkillDef CreateTeleportSkill()

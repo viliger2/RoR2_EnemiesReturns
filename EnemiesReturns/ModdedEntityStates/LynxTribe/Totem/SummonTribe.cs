@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static int retryCount = 3;
 
-        public static SpawnCard[] spawnCards = Array.Empty<SpawnCard>(); // TODO: spawn all cards as long as summonCount is more than spawnCards.lengh
+        public static SpawnCard[] spawnCards = Array.Empty<SpawnCard>();
 
         public static GameObject summonEffect;
 

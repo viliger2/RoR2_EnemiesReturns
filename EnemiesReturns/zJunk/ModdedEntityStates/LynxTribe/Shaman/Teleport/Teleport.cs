@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
 {
-    // TODO: add animation from teleport to idle
     public class Teleport : BaseState
     {
         public static float minSearchRange => 60f;
@@ -94,7 +93,6 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
             base.FixedUpdate();
             if (fixedAge > maskFlyDuration)
             {
-                // TODO: play animation
                 if (characterModel)
                 {
                     characterModel.invisibilityCount--;

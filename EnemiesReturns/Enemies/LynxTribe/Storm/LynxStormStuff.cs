@@ -33,9 +33,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion().InstantiateClone("LynxStormThrowEffect", false);
 
             var effectComponent = prefab.GetComponent<EffectComponent>();
-            effectComponent.soundName = ""; // TODO
+            effectComponent.soundName = "ER_Lynx_Storm_Release";
             effectComponent.positionAtReferencedTransform = true;
-            effectComponent.parentToReferencedTransform = true; // TODO: ?
+            effectComponent.parentToReferencedTransform = true;
 
             return prefab;
         }

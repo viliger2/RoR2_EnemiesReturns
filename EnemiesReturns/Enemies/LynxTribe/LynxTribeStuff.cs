@@ -254,7 +254,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.dropTable = CreateLynxShrineDropTable();
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
-            shrine.escapeDuration = 25f; // TODO
+            shrine.escapeDuration = 25f; // TODO: config, fine for now
             shrine.shrineUseEffect = shrineEffect;
             shrine.failureSound = nsedFailure;
             shrine.successSound = nsedSuccess;

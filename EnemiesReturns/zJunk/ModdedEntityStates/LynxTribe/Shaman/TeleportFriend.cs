@@ -94,7 +94,6 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
                 var nodeGraph = SceneInfo.instance.GetNodeGraph(teleporteeCharacterBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
                 var node = nodeGraph.FindClosestNode(teleportTarget, teleporteeCharacterBody.hullClassification);
                 nodeGraph.GetNodePosition(node, out this.teleportTarget);
-                // TODO: spawn effect on target
                 EffectManager.SimpleEffect(teleportEffect, this.teleportTarget, Quaternion.identity, false);
                 effectSpawned = true;
             }
@@ -170,7 +169,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
             return null;
         }
 
-        private GameObject FindCurentTarget() // TODO: rewrite to bullseyesearch
+        private GameObject FindCurentTarget()
         {
             foreach (var ai in characterBody.master.aiComponents)
             {

@@ -12,7 +12,6 @@ using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
-    // TODO: getting out with movement abilities?
     public class LynxStormComponent : MonoBehaviour
     {
         public static float baseDuration => Configuration.LynxTribe.LynxTotem.SummonStormGrabDuration.Value;
@@ -83,7 +82,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 moveTarget.transform.localPosition = Vector3.zero;
             }
             characterMotor.velocity = Vector3.zero;
-            //Log.Info("grabbed");
         }
 
         public void SetStormTransform(GameObject storm)
@@ -140,6 +138,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                     EffectData effectData = new EffectData
                     {
                         rootObject = characterBody.gameObject,
+                        origin = characterBody.transform.position,
                     };
                     EffectManager.SpawnEffect(dotEffect, effectData, transmit: true);
                 }

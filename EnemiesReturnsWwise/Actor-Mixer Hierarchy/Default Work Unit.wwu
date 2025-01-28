@@ -3848,6 +3848,39 @@
 														<ActiveSource Name="KrakkenWhirlwind" ID="{E7419888-1647-4031-8E0A-61C9ABB2C1EE}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Storm_Release" ID="{4B08D694-7071-493C-8C52-E4CCEEECD1D8}" ShortID="146911046">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="storm_release" ID="{6E831738-7538-4499-AEA2-332F3FF150FB}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Storm\storm_release.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="634819283"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="storm_release" ID="{6E831738-7538-4499-AEA2-332F3FF150FB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Shrine" ID="{F425DCE7-986A-4A5B-A344-59A8D509A0F4}" ShortID="981132181">

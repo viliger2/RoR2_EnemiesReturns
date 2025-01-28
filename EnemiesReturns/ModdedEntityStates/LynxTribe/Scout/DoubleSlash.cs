@@ -20,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 
         public static string RightHitbox = "RightSlash";
 
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion(); // TODO: fine for now
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
         public static GameObject clawEffectLeft;
 
@@ -142,7 +142,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
             attack.attacker = base.gameObject;
             attack.inflictor = base.gameObject;
             attack.teamIndex = GetTeam();
-            attack.damage = damageCoefficient * damageStat; // TODO: maybe separate damage for slashes?
+            attack.damage = damageCoefficient * damageStat;
             attack.isCrit = RollCrit();
             attack.hitBoxGroup = hitBoxGroup;
             attack.hitEffectPrefab = hitEffectPrefab;

@@ -24,7 +24,6 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 // TODO: write Content class and put everything there
-// TODO: remember to add DamageSource
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns

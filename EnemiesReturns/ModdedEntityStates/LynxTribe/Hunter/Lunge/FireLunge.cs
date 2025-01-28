@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 
         public static float procCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxHunter.StabProcCoefficient.Value;
 
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion(); // TODO: fine for now
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion();
 
         public static GameObject slideEffectPrefab;
 

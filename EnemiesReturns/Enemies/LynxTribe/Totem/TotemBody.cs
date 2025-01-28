@@ -62,9 +62,13 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             var scale = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundRadius.Value;
             groundpoundHitbox.transform.localScale = new Vector3(scale, groundpoundHitbox.transform.localScale.y, scale);
 
-            //var walkSpeed = prefab.AddComponent<WalkSpeedDebugHelper>();
-            //walkSpeed.animator = bodyPrefab.GetComponentInChildren<Animator>();
-            //walkSpeed.animationParameters = new string[] { "walkSpeedDebug" };
+            var components = prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1").gameObject.GetComponentsInChildren<SurfaceDefProvider>();
+            foreach(var component in components)
+            {
+                component.surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
+            }
+
+            prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
             return prefab;
         }

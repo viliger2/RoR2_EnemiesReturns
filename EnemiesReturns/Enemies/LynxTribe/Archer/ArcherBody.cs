@@ -45,6 +45,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
 
+            result.transform.Find("ModelBase/mdlLynxArcher/LynxArcher/Root/Base/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
+
             return result;
         }
 

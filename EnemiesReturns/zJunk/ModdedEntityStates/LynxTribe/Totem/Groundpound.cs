@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Totem
 {
-    // TODO: some stones flying to shaking
     public class Groundpound : BaseState
     {
         public static float baseDuration = 4.1f;
@@ -64,7 +63,6 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Totem
             attack.isCrit = RollCrit();
             attack.hitBoxGroup = Array.Find(hitboxes, (element) => element.groupName == hitboxGroupName);
             attack.forceVector = Vector3.up * force;
-            //attack.hitEffectPrefab = hitEffectPrefab; // TODO
             attack.procCoefficient = procCoefficient;
             attack.damageType = DamageType.SlowOnHit;
         }

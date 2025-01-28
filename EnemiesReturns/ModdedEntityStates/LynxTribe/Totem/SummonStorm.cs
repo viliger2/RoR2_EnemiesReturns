@@ -159,7 +159,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     }
                 } else
                 {
-                    if (!NetworkServer.active) // TODO: networking visuals somehow
+                    if (!NetworkServer.active)
                     {
                         return;
                     }
