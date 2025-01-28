@@ -59,6 +59,55 @@
     "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Dash",
     "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Dash a short distance.",
 
-    "ENEMIES_RETURNS_LYNX_SHAMAN_NAME": "Lynx Shaman"
+    "ENEMIES_RETURNS_FAMILY_LYNX_TRIBE": "<style=cWorldEvent>[WARNING] You feel like you are being watched..</style>",
+
+    "ENEMIES_RETURNS_LYNX_ARCHER_BODY_NAME": "Lynx Archer",
+    "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_NAME": "Shot",
+    "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_DESCRIPTION": "Shoot a single arrow.",
+
+    "ENEMIES_RETURNS_LYNX_HUNTER_BODY_NAME": "Lynx Hunter",
+    "ENEMIES_RETURNS_LYNX_HUNTER_STAB_NAME": "Lunge",
+    "ENEMIES_RETURNS_LYNX_HUNTER_STAB_DESCRIPTION": "Lunge forward after charging the attack for a few moments.",
+
+    "ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT": "Steal the item",
+    "ENEMIES_RETURNS_LYNX_SHRINE_NAME": "Lynx Shrine",
+    "ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION": "Attempt to steal sacred Lynx Tribe item. However Lynx Tribe won't give it without a fight and will try to take it back.'",
+    "ENEMIES_RETURNS_LYNX_SHRINE_LORE": "LORE",
+
+    "ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME": "Lynx Scout",
+    "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME": "Double Slash",
+    "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION": "Attack with two sequential slashes.",
+
+    "ENEMIES_RETURNS_LYNX_SHAMAN_BODY_NAME": "Lynx Shaman",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_BODY_LORE": "<style=cMono>\r\n$ Transcribing image... done.\r\n$ Resolving... done.\r\n$ Outputting text strings... done.\r\nComplete!\r\n</style>\r\n\r\nThis is the logbook entry of D. Furthen, naturalist for the UES [Redacted] in conjunction with the UES Research and Documentation of Outer Life. I am joined by my good friend Tharson, who is keeping me safe through this journey.\r\n\r\n---------------------\r\n\r\nWhile conducting research on the local fauna and plantlife, Tharson overhead distant chanting. After approaching the source of the commotion we discovered that a tribe of cat-like creatures were preforming what appeared to be a ritual.\r\nAs we watched their prayers, a larger creature appeared, sporting a larger mask and wielding a Staff.\r\nWith a wave of the Staff, fire erupted from the ground as the chanting got louder. A group of other creatures appeared, carrying a Worker Beetle.\r\nWhen they carried the Beetle towards a statue which held several masks, the larger creature once again waved the Staff and the Beetle let out a screech before laying still.\r\nA firey orb appeared in front of the Beetle and flew towards the larger creature's staff before being absorbed.\r\n\r\nTaking this as a sign to leave, Tharson and I left quietly before returning to our expedition.\r\n\r\nI will describe its properties below. I have assigned their common name as \u2018Lynx Shaman\u2019.\r\n\r\n\u2022 Sporting a larger body, it is presumed the Shaman is a leader of this tribe, although the tribe does follow a loose hierarchy.\r\n\r\n\u2022 The staff it carries appears to have magical properties. I will attempt to gather a sample at a later date.\r\n\r\n\u2022 Its mask is unique compared to the other tribe members, further adding to the theory it may be a leader of sort.\r\n\r\n\u2022 Tharson has been advised not to engage with a tribe, even if a member appears to be alone.",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN": "Monster Log: Lynx Shaman",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME": "N'kuhana's Wrath'",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION": "Summon 5 seeking projectile that apply healing debuff on hit.",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME": "Push Back",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION": "Push away enemies in close range.",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME": "Teleport",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_DESCRIPTION": "Teleport to a random location.",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME": "Summon Tornado",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION": "Summon a tornado that chases targets around.",
+
+    "ENEMIES_RETURNS_LYNX_STORM_BODY_NAME": "Lynx Tornado",
+
+    "ENEMIES_RETURNS_LYNX_TOTEM_BODY_NAME": "Lynx Totem",
+    "ENEMIES_RETURNS_LYNX_TITEM_BODY_SUBTITLE": "N'Kuhana's Faithful",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BODY_LORE": "Field Notes:\n\nTravelling through the fungal caverns, I kept seeing out of place rubble that trailed to nowhere. With no buildings in sight, I was shocked to see a brick wall in the distance.\n\nLittle cat-like creatures with masks and weaponry danced around the structure, and I could hear them laugh with one another. They appeared to be practicing some kind of worship, though the structure looked unlike anything I've seen on this planet.\n\nMore of them crawled out from the dirt nearby, but strangely I haven't seen any evidence of them resting or hiding in the soil prior to that. Luckily they were distracted - I don't know that I could take on a horde of that size, no matter how small they were.",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM": "Monster Log: Lynx Totem",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME": "Summon Tribe",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION": "Summon Lynx Tribesmen to fight.",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_NAME": "Summon Tornados",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_DESCRIPTION": "Summon multiple tornados to chase targets around.",
+    "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME": "Groundpound",
+    "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION": "Smash into the ground, attacking nearby enemies and knocking them up.",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_NAME": "Burrow",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_DESCRIPTION": "Burrow into the ground, enabling the use of other skills.",
+
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME": "Lynx Fetish",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_PICKUP": "Recruit Lynx Tribe members.",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Every 15 seconds <style=cIsUtility>summon Lynx Tribesman</style> with bonus <style=cIsDamage>{0}<style=cStack>(+{1} after 4th stack)</style> damage</style> and <style=cIsHealth>{2}<style=cStack>(+{3} after 4th stack)</style> health</style>. Can have up to <style=cIsUtility>1<style=cStack>(+1 per stack, up to 4)</style></style>. Each <style=cIsUtility>Lynx Tribesman</style> provides unique <style=cIsUtility>buff</style> in <style=cIsUtility>{4}</style> around them.\r\n<style=cIsDamage>Lynx Archer</style> increases <style=cIsDamage>damage by {5}</style>.\r\n<style=cIsHealing>Lynx Hunter</style> increases <style=cIsHealing>armor by {6}</style>.\r\n<style=cIsUtility>Lynx Scout</style> increases <style=cIsUtility>attack and movement speed by {7}</style>.\r\n<style=cIsHealth>Lynx Shaman</style> increases <style=cIsHealth>damage done by special abilities by {8}</style>.",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": ""
   }
 }

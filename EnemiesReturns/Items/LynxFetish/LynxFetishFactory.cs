@@ -121,8 +121,8 @@ namespace EnemiesReturns.Items.LynxFetish
             modelPanelParameters.focusPointTransform = prefab.transform.Find("FocusPoint");
             modelPanelParameters.cameraPositionTransform = prefab.transform.Find("CameraPosition");
             modelPanelParameters.modelRotation = Quaternion.identity;
-            modelPanelParameters.minDistance = 1f;
-            modelPanelParameters.maxDistance = 3f;
+            modelPanelParameters.minDistance = 5f;
+            modelPanelParameters.maxDistance = 9f;
 
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
             (itemDef as ScriptableObject).name = "LynxFetish";
@@ -148,20 +148,22 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
         {
-            // TODO: language stuff
-            //var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION");
-            //if (!keyPair.Equals(default(KeyValuePair<string, string>)))
-            //{
-            //    string description = string.Format(
-            //        keyPair.Value,
-            //        EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillChargeTime.Value,
-            //        EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamage.Value.ToString("###%"),
-            //        EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamagePerStack.Value.ToString("###%"),
-            //        EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillRadius.Value,
-            //        (EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value / 100f).ToString("###%")
-            //        );
-            //    language.SetStringByToken("ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION", description);
-            //}
+            var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION");
+            if (!keyPair.Equals(default(KeyValuePair<string, string>)))
+            {
+                string description = string.Format(
+                    keyPair.Value,
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamage.Value / 10f).ToString("###%"),
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamagePerStack.Value / 10f).ToString("###%"),
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHP.Value / 10f).ToString("###%"),
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHPPerStack.Value / 10f).ToString("###%"),
+                    EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardRadius.Value,
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishArcherDamageBuff.Value / 100f).ToString("###%"),
+                    EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishHunterArmorBuff.Value,
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishScoutSpeedBuff.Value / 100f).ToString("###%"),
+                    (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishShamanSpecialBuff.Value / 100f).ToString("###%"));
+                language.SetStringByToken("ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION", description);
+            }
         }
     }
 }
