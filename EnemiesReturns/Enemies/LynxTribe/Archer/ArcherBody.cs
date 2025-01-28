@@ -60,13 +60,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         public SkillDef CreateShotSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<HuntressTrackingSkillDef>("RoR2/Base/Huntress/HuntressBodyFireSeekingArrow.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxArcherWeaponShot", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowCooldown.Value,
+                icon = iconSource.icon
             });
         }
 

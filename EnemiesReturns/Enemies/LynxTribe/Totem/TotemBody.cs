@@ -75,31 +75,32 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         public SkillDef CreateSummonTribeSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoPassivePoison.asset").WaitForCompletion();
             return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonTribe", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreateSummonStormsSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/Chef/ChefRolyPolyBoosted.asset").WaitForCompletion();
             return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonStorms", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreateSummonFirewallSkill()
         {
-            // TODO: icon
             return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonFirewall", new EntityStates.SerializableEntityStateType(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_FIREWALL_NAME",
@@ -111,25 +112,27 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         public SkillDef CreateGroundpoundSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CallAirstrike.asset").WaitForCompletion();
             return CreateTotemSkill(new SkillParams("LynxTotemWeaponGroundpound", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreateBurrowSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Toolbot/ToolbotBodySwap.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxTotemBodyBurrow", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_DESCRIPTION",
                 activationStateMachine = "Body",
-                baseRechargeInterval = 0f
+                baseRechargeInterval = 0f,
+                icon = iconSource.icon
             });
         }
 

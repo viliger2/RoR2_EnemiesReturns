@@ -73,13 +73,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
         public SkillDef CreateDoubleSlashSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SteppedSkillDef>("RoR2/Base/Croco/CrocoSlash.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxScoutWeaponDoubleSlash", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxScout.DoubleSlashCooldown.Value,
+                icon = iconSource.icon
             });
         }
 

@@ -64,25 +64,27 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public SkillDef CreateSummonProjectilesSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<VoidSurvivorSkillDef>("RoR2/DLC1/VoidSurvivor/CrushCorruption.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxShamanBodySummonProjectiles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION",
                 activationStateMachine = "Body",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreatePushBackSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Treebot/TreebotBodyAimMortar2.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxShamanBodyPushBack", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION",
                 activationStateMachine = "Body",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
@@ -287,7 +289,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public SkillDef CreateTeleportSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Mage/MageBodyFlyUp.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxShamanBodyTeleport", new EntityStates.SerializableEntityStateType(typeof(TeleportStart)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME",
@@ -297,25 +299,26 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 baseMaxStock = 1,
                 fullRestockOnAssign = true,
                 stockToConsume = 1,
-                interruptPriority = EntityStates.InterruptPriority.PrioritySkill
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreateSummonStormSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/Chef/ChefRolyPolyBoosted.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxShamanBodySummonStorm", new EntityStates.SerializableEntityStateType(typeof(SummonStormSkill)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION",
                 activationStateMachine = "Body",
                 baseRechargeInterval = 30f,
+                icon = iconSource.icon
             });
         }
 
         public SkillDef CreateTeleportFriendSkill()
         {
-            // TODO: icon
             return CreateSkill(new SkillParams("LynxShamanBodyTeleportFriend", new EntityStates.SerializableEntityStateType(typeof(TeleportFriend)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_FRIEND_NAME",
@@ -327,7 +330,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public SkillDef CreateSummonLightningSkill()
         {
-            // TODO: icon
             return CreateSkill(new SkillParams("LynxShamanBodySummonLightning", new EntityStates.SerializableEntityStateType(typeof(SummonLightning)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_LIGHTNING_NAME",

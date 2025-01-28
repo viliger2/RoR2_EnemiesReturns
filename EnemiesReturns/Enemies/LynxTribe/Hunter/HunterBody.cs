@@ -55,13 +55,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 
         public SkillDef CreateStabSkill()
         {
-            // TODO: icon
+            var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Bandit2/Bandit2SerratedShivs.asset").WaitForCompletion();
             return CreateSkill(new SkillParams("LynxHunterWeaponStab", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_HUNTER_STAB_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_HUNTER_STAB_DESCRIPTION",
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = EnemiesReturns.Configuration.LynxTribe.LynxHunter.StabCooldown.Value,
+                icon = iconSource.icon
             });
         }
 
