@@ -1,6 +1,11 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.LynxTribe.Archer;
+using EnemiesReturns.Enemies.LynxTribe.Hunter;
+using EnemiesReturns.Enemies.LynxTribe.Scout;
+using EnemiesReturns.Enemies.LynxTribe.Shaman;
+using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
@@ -36,7 +41,8 @@ namespace EnemiesReturns
         private static IEnumerator GeneratePortraits(bool forceRegeneration)
         {
             Debug.Log("Starting portrait generation.");
-            ModelPanel modelPanel = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/UI/IconGenerator")).GetComponentInChildren<ModelPanel>();
+            var iconGenerator = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/UI/IconGenerator"));
+            ModelPanel modelPanel = iconGenerator.GetComponentInChildren<ModelPanel>();
             modelPanel.renderSettings = new RenderSettingsState
             {
                 ambientIntensity = 1f,
@@ -52,6 +58,18 @@ namespace EnemiesReturns
             yield return GeneratePortrait(modelPanel, IfritBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, PillarEnemyBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, MechanicalSpiderEnemyBody.BodyPrefab);
+            modelPanel.lights[0].transform.rotation = Quaternion.Euler(0f, 126f, 0);
+            yield return GeneratePortrait(modelPanel, ArcherBody.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, ArcherBodyAlly.BodyPrefab);
+            modelPanel.lights[0].transform.rotation = Quaternion.Euler(0f, 180f, 0);
+            yield return GeneratePortrait(modelPanel, HunterBody.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, HunterBodyAlly.BodyPrefab);
+            modelPanel.lights[0].transform.rotation = Quaternion.Euler(24.6338f, 143.193f, -0.0001f);
+            yield return GeneratePortrait(modelPanel, ScoutBody.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, ScoutBodyAlly.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, ShamanBody.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, ShamanBodyAlly.BodyPrefab);
+            yield return GeneratePortrait(modelPanel, TotemBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBody.prefab").WaitForCompletion());
             UnityEngine.Object.Destroy(modelPanel.transform.root.gameObject);
             Debug.Log("Portrait generation complete.");

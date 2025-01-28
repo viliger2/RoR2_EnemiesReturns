@@ -1106,7 +1106,7 @@ namespace EnemiesReturns
             ArcherBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxArcherPrimarySkillFamily", ArcherBody.Skills.Shot);
             sfList.Add(ArcherBody.SkillFamilies.Primary);
 
-            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: null); // TODO: icon
+            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: iconLookup["texLynxArcherIcon"]);
             bodyList.Add(ArcherBody.BodyPrefab);
 
             var archerMaster = new ArcherMaster();
@@ -1118,10 +1118,10 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
 
             var archerBodyAlly = new ArcherBodyAlly();
-            ArcherBodyAlly.LynxArcherDamage = archerBodyAlly.CreateDamageBuffDef(iconLookup["texLynxArcherBuff"]); // TODO: sprite
+            ArcherBodyAlly.LynxArcherDamage = archerBodyAlly.CreateDamageBuffDef(iconLookup["texLynxArcherBuff"]);
             bdList.Add(ArcherBodyAlly.LynxArcherDamage);
 
-            ArcherBodyAlly.BodyPrefab = archerBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherAllyBody"), sprite: null); // TODO: icon
+            ArcherBodyAlly.BodyPrefab = archerBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherAllyBody"), sprite: iconLookup["texArcherAllyIcon"]);
             bodyList.Add(ArcherBodyAlly.BodyPrefab);
             
             var archerMasterAlly = new ArcherMasterAlly();
@@ -1159,7 +1159,7 @@ namespace EnemiesReturns
             HunterBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxHunterPrimarySkillFamily", HunterBody.Skills.Stab);
             sfList.Add(HunterBody.SkillFamilies.Primary);
 
-            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: null); // TODO: icon
+            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: iconLookup["texLynxHunterIcon"]);
             bodyList.Add(HunterBody.BodyPrefab);
 
             var hunterMaster = new HunterMaster();
@@ -1171,10 +1171,10 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
 
             var hunterBodyAlly = new HunterBodyAlly();
-            HunterBodyAlly.LynxHunterArmor = hunterBodyAlly.CreateArmorBuffDef(iconLookup["texLynxHunterBuff"]); // TODO
+            HunterBodyAlly.LynxHunterArmor = hunterBodyAlly.CreateArmorBuffDef(iconLookup["texLynxHunterBuff"]);
             bdList.Add(HunterBodyAlly.LynxHunterArmor);
 
-            HunterBodyAlly.BodyPrefab = hunterBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterAllyBody"), sprite: null); // TODO: icon
+            HunterBodyAlly.BodyPrefab = hunterBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterAllyBody"), sprite: iconLookup["texLynxHunterAllyIcon"]);
             bodyList.Add(HunterBodyAlly.BodyPrefab);
 
             var hunterMasterAlly = new HunterMasterAlly();
@@ -1214,7 +1214,7 @@ namespace EnemiesReturns
 
             sfList.Add(ScoutBody.SkillFamilies.Primary);
 
-            ScoutBody.BodyPrefab = scoutBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutBody"), sprite: null); // TODO: icon
+            ScoutBody.BodyPrefab = scoutBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutBody"), sprite: iconLookup["texLynxScoutIcon"]);
             bodyList.Add(ScoutBody.BodyPrefab);
 
             var scoutMaster = new ScoutMaster();
@@ -1226,10 +1226,10 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
 
             var scoutBodyAlly = new ScoutBodyAlly();
-            ScoutBodyAlly.LynxScoutSpeed = scoutBodyAlly.CreateSpeedBuffDef(iconLookup["texLynxScoutBuff"]); // TODO: buff
+            ScoutBodyAlly.LynxScoutSpeed = scoutBodyAlly.CreateSpeedBuffDef(iconLookup["texLynxScoutBuff"]);
             bdList.Add(ScoutBodyAlly.LynxScoutSpeed);
 
-            ScoutBodyAlly.BodyPrefab = scoutBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutAllyBody"), sprite: null); // TODO: icon
+            ScoutBodyAlly.BodyPrefab = scoutBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutAllyBody"), sprite: iconLookup["texLynxScoutAllyIcon"]);
             bodyList.Add(ScoutBodyAlly.BodyPrefab);
 
             var scoutMasterAlly = new ScoutMasterAlly();
@@ -1327,7 +1327,7 @@ namespace EnemiesReturns
 
             ModdedEntityStates.LynxTribe.Totem.SummonStorm.cscStorm = LynxStormBody.cscLynxStorm;
 
-            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody"), sprite: null, totemLog, dtLynxTotem); // TODO: icon
+            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody"), sprite: iconLookup["texLynxTotemIcon"], totemLog, dtLynxTotem);
             bodyList.Add(TotemBody.BodyPrefab);
 
             var totemMaster = new TotemMaster();
@@ -1469,7 +1469,7 @@ namespace EnemiesReturns
             sfList.Add(ShamanBody.SkillFamilies.Primary);
             sfList.Add(ShamanBody.SkillFamilies.Secondary);
 
-            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody"), null, shamanLog); // TODO: sprite
+            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody"), iconLookup["texLynxShamanIcon"], shamanLog);
             bodyList.Add(ShamanBody.BodyPrefab);
             ShamanMaster.MasterPrefab = new ShamanMaster().AddMasterComponents(assets.First(master => master.name == "LynxShamanMaster"), ShamanBody.BodyPrefab);
             masterList.Add(ShamanMaster.MasterPrefab);
@@ -1492,10 +1492,10 @@ namespace EnemiesReturns
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
 
             var shamanBodyAlly = new ShamanBodyAlly();
-            ShamanBodyAlly.LynxShamanSpecial = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]); // TODO: sprite
+            ShamanBodyAlly.LynxShamanSpecial = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]);
             bdList.Add(ShamanBodyAlly.LynxShamanSpecial);
 
-            ShamanBodyAlly.BodyPrefab = shamanBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxShamanAllyBody"), sprite: null, log: null); // TODO: sprite
+            ShamanBodyAlly.BodyPrefab = shamanBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxShamanAllyBody"), sprite: iconLookup["texLynxShamanAllyIcon"], log: null);
             bodyList.Add(ShamanBodyAlly.BodyPrefab);
 
             ShamanMasterAlly.MasterPrefab = new ShamanMasterAlly().AddMasterComponents(assets.First(prefab => prefab.name == "LynxShamanAllyMaster"), ShamanBodyAlly.BodyPrefab);

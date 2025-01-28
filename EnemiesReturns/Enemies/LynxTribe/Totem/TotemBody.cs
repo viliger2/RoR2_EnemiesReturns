@@ -436,8 +436,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             return new IModelPanelParameters.ModelPanelParams() // TODO
             {
-                minDistance = 1.5f,
-                maxDistance = 6f,
+                minDistance = 7.5f,
+                maxDistance = 22f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
             }; 
         }
