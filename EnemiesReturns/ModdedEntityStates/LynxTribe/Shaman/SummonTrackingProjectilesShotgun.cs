@@ -84,7 +84,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                         ProjectileManager.instance.FireProjectile(trackingProjectilePrefab, spawnPoint.position, Quaternion.Euler(spawnDirection), gameObject, damageStat * damageCoefficient, 0f, RollCrit(), RoR2.DamageColorIndex.Poison, damageType: DamageSource.Primary);
                     }
                 }
-                //Util.PlaySound("ER_Shaman_SummonProjectiles_Stop", base.gameObject);
                 Util.PlaySound("ER_Shaman_FireProjectiles_Play", base.gameObject);
                 isShot = true;
             }
@@ -97,6 +96,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void OnExit()
         {
             base.OnExit();
+            Util.PlaySound("ER_Shaman_SummonProjectiles_Stop", base.gameObject);
             PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
         }
 
