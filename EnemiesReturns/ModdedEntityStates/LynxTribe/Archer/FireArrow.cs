@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
@@ -32,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
         public static float projectileForce => EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowForce.Value;
 
         public static GameObject projectilePrefab;
-        
+
         private float duration;
 
         private Animator animator;
@@ -103,7 +100,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             {
                 predictor.Update();
             }
-            if(fixedAge >= shoot && !hasFired)
+            if (fixedAge >= shoot && !hasFired)
             {
                 if (isAuthority)
                 {
@@ -245,11 +242,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 {
                     predictor.SetTargetTransform(hurtBox.transform);
                     vector = predictor.GetTargetTransform().position;
-                } else
+                }
+                else
                 {
                     vector = aimRay.origin + aimRay.direction * 1000f;
                 }
-            } else
+            }
+            else
             {
                 predictor.GetPredictedTargetPosition(shoot, out vector);
             }

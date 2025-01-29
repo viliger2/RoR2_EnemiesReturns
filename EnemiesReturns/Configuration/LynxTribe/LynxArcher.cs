@@ -1,8 +1,4 @@
 ﻿using BepInEx.Configuration;
-using EnemiesReturns.ModdedEntityStates.LynxTribe.Archer;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe

@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.MasterComponents;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Totem

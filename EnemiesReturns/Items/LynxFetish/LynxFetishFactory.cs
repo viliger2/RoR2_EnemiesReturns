@@ -1,13 +1,9 @@
-﻿using EnemiesReturns.Items.SpawnPillarOnChampionKill;
-using Mono.Cecil.Cil;
+﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using RoR2;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace EnemiesReturns.Items.LynxFetish
 {
@@ -66,9 +62,9 @@ namespace EnemiesReturns.Items.LynxFetish
 
         public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(sender)
+            if (sender)
             {
-                if(sender.HasBuff(Enemies.LynxTribe.Hunter.HunterBodyAlly.LynxHunterArmor)) args.armorAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishHunterArmorBuff.Value;
+                if (sender.HasBuff(Enemies.LynxTribe.Hunter.HunterBodyAlly.LynxHunterArmor)) args.armorAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishHunterArmorBuff.Value;
                 if (sender.HasBuff(Enemies.LynxTribe.Archer.ArcherBodyAlly.LynxArcherDamage)) args.damageMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishArcherDamageBuff.Value / 100f;
                 if (sender.HasBuff(Enemies.LynxTribe.Scout.ScoutBodyAlly.LynxScoutSpeed))
                 {
@@ -91,7 +87,7 @@ namespace EnemiesReturns.Items.LynxFetish
             }
         }
 
-        [SystemInitializer(new Type[] { typeof(BodyCatalog)})]
+        [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
         public static void Init()
         {
             if (!RoR2.BodyCatalog.availability.available)

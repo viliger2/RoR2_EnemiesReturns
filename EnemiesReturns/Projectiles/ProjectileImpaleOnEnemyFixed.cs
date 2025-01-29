@@ -1,8 +1,5 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Projectiles
@@ -39,8 +36,8 @@ namespace EnemiesReturns.Projectiles
             {
                 // do not attach to allies
                 if (teamFilter && component.healthComponent && component.healthComponent.body && component.healthComponent.body.teamComponent)
-                { 
-                    if(teamFilter.teamIndex == component.healthComponent.body.teamComponent.teamIndex)
+                {
+                    if (teamFilter.teamIndex == component.healthComponent.body.teamComponent.teamIndex)
                     {
                         return;
                     }

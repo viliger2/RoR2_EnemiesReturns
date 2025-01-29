@@ -1,5 +1,5 @@
-﻿using EnemiesReturns.Enemies.MechanicalSpider;
-using EnemiesReturns.Behaviors;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Enemies.MechanicalSpider;
 using EntityStates;
 using RoR2;
 using System;

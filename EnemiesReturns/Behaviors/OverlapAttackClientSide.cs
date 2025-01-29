@@ -1,8 +1,5 @@
-﻿using EnemiesReturns.Components;
-using RoR2;
-using System;
+﻿using RoR2;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -41,7 +38,7 @@ namespace EnemiesReturns.Behaviors
         private void OnTriggerEnter(Collider collider)
         {
             CharacterBody body = collider.GetComponent<CharacterBody>();
-            if(body && body.hasEffectiveAuthority)
+            if (body && body.hasEffectiveAuthority)
             {
                 affectedBodies.Add(body);
             }
@@ -50,7 +47,7 @@ namespace EnemiesReturns.Behaviors
         private void OnTriggerExit(Collider collider)
         {
             CharacterBody body = collider.GetComponent<CharacterBody>();
-            if(body && affectedBodies.Contains(body))
+            if (body && affectedBodies.Contains(body))
             {
                 affectedBodies.Remove(body);
             }
@@ -58,7 +55,7 @@ namespace EnemiesReturns.Behaviors
 
         public void DealDamage()
         {
-            foreach(var charBody in affectedBodies)
+            foreach (var charBody in affectedBodies)
             {
                 if (!charBody.hasEffectiveAuthority)
                 {

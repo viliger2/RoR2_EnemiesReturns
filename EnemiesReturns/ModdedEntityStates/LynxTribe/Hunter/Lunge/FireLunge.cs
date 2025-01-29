@@ -1,9 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.CharacterAI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -12,7 +9,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
     public class FireLunge : BaseState
     {
         public static float baseDuration = 0.8f;
-        
+
         public static float damageCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxHunter.StabDamage.Value;
 
         public static float procCoefficient => EnemiesReturns.Configuration.LynxTribe.LynxHunter.StabProcCoefficient.Value;
@@ -100,9 +97,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (isAuthority) {
+            if (isAuthority)
+            {
 
-                if(fixedAge < forceDuration)
+                if (fixedAge < forceDuration)
                 {
                     targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
                     base.characterDirection.moveVector = targetMoveVector;

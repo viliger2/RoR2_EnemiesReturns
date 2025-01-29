@@ -4,7 +4,6 @@ using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.Behaviors;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;

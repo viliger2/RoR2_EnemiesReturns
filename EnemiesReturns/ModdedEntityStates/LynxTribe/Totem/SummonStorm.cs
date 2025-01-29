@@ -5,7 +5,6 @@ using RoR2.CharacterAI;
 using RoR2.Orbs;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -106,7 +105,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 }
             }
 
-            if(fixedAge >= staffEffectDuration && !staffEffectSpawned)
+            if (fixedAge >= staffEffectDuration && !staffEffectSpawned)
             {
                 if (staffEffect && orbOrigin)
                 {
@@ -121,7 +120,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 staffEffectSpawned = true;
             }
 
-            if(fixedAge >= stoneEffectDuration && !stonesSpawned)
+            if (fixedAge >= stoneEffectDuration && !stonesSpawned)
             {
                 if (stoneParticlesOrigin && stoneEffectPrefab)
                 {
@@ -130,7 +129,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 stonesSpawned = true;
             }
 
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -157,7 +156,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     {
                         SummonStormPlayer(hitInfo.point);
                     }
-                } else
+                }
+                else
                 {
                     if (!NetworkServer.active)
                     {

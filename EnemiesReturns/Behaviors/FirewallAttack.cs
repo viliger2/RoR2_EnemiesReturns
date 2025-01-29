@@ -1,8 +1,6 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -19,10 +17,10 @@ namespace EnemiesReturns.Behaviors
         private void OnTriggerEnter(Collider collider)
         {
             CharacterBody body = collider.GetComponent<CharacterBody>();
-            if(body && body.hasEffectiveAuthority && body.characterMotor && body.characterMotor.isGrounded)
+            if (body && body.hasEffectiveAuthority && body.characterMotor && body.characterMotor.isGrounded)
             {
                 PerformDamage(body);
-            } 
+            }
         }
 
         private void OnTriggetExit(Collider collider)
@@ -60,7 +58,7 @@ namespace EnemiesReturns.Behaviors
         {
             if (body.healthComponent && !hitTargets.Contains(body.healthComponent))
             {
-                if(FriendlyFireManager.ShouldDirectHitProceed(body.healthComponent, projectileController.teamFilter.teamIndex))
+                if (FriendlyFireManager.ShouldDirectHitProceed(body.healthComponent, projectileController.teamFilter.teamIndex))
                 {
                     var damageInfo = new DamageInfo
                     {

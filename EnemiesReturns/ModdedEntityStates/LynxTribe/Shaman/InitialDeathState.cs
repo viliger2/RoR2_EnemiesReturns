@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
@@ -17,10 +14,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             {
                 var totalChance = spawnChancePerLoop * Run.instance.loopClearCount;
                 var roll = RoR2Application.rng.RangeFloat(0f, 100f);
-                if(roll < totalChance)
+                if (roll < totalChance)
                 {
                     outer.SetNextState(new SummonTotemDeath());
-                } else
+                }
+                else
                 {
                     outer.SetNextState(new DeathState());
                 }

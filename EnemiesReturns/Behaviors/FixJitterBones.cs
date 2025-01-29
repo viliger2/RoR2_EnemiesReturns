@@ -1,10 +1,7 @@
 ﻿using RoR2;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -38,7 +35,7 @@ namespace EnemiesReturns.Behaviors
         private void ApplyFix()
         {
             var jitterBones = base.transform.GetComponentsInChildren<JitterBones>();
-            if(jitterBones.Length > 0)
+            if (jitterBones.Length > 0)
             {
                 bonesFixed = true;
                 for (int i = jitterBones.Length; i != 0; i--)
@@ -46,7 +43,7 @@ namespace EnemiesReturns.Behaviors
                     for (int k = 0; k < jitterBones[i - 1].bones.Length; k++)
                     {
                         var bone = jitterBones[i - 1].bones[k];
-                        if (bonesToFix.Contains(bone.transform.name)) 
+                        if (bonesToFix.Contains(bone.transform.name))
                         {
                             jitterBones[i - 1].bones[k] = new JitterBones.BoneInfo
                             {

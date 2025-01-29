@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -39,7 +36,7 @@ namespace EnemiesReturns.Behaviors
                 renderer.SetPropertyBlock(propertyBlock);
 
                 var randomPhase = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
-                for(int i = 0; i < sinWaves.Length; i++)
+                for (int i = 0; i < sinWaves.Length; i++)
                 {
                     sinWaves[i].cycleOffset += randomPhase;
                 }

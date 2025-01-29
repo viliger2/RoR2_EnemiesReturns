@@ -1,11 +1,6 @@
 ﻿using RoR2;
 using RoR2.Orbs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Rewired.ComponentControls.Effects.RotateAroundAxis;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {

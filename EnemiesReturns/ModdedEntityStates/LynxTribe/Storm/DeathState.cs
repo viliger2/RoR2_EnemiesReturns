@@ -1,7 +1,4 @@
 ﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
@@ -12,7 +9,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
         {
             base.OnEnter();
             var particles = modelLocator.modelTransform.GetComponentsInChildren<ParticleSystem>();
-            foreach(var particle in particles)
+            foreach (var particle in particles)
             {
                 particle.Stop();
             }

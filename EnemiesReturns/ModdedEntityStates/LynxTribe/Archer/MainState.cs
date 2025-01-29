@@ -1,8 +1,4 @@
-﻿using EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman;
-using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer

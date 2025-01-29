@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Utilities;
-using R2API;
+﻿using R2API;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -60,11 +59,11 @@ namespace EnemiesReturns
             foreach (var stageString in defaultStages)
             {
                 string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
-                if(StageDccsPoolLookUp.TryGetValue(cleanStageString, out var dpStageAddress))
+                if (StageDccsPoolLookUp.TryGetValue(cleanStageString, out var dpStageAddress))
                 {
                     var dpStage = Addressables.LoadAssetAsync<DccsPool>(dpStageAddress).WaitForCompletion();
                     var poolCat = dpStage.poolCategories.FirstOrDefault(poolCat => poolCat.name == "Family");
-                    if(!(poolCat == default || poolCat == null))
+                    if (!(poolCat == default || poolCat == null))
                     {
                         HG.ArrayUtils.ArrayAppend(ref poolCat.includedIfConditionsMet, new DccsPool.ConditionalPoolEntry()
                         {
@@ -96,7 +95,7 @@ namespace EnemiesReturns
             (skinDef as ScriptableObject).name = name;
             skinDef.baseSkins = Array.Empty<SkinDef>();
             skinDef.icon = null;
-            skinDef.nameToken ="";
+            skinDef.nameToken = "";
             skinDef.unlockableDef = null;
             skinDef.rootObject = null;
             skinDef.rendererInfos = Array.Empty<CharacterModel.RendererInfo>();

@@ -1,12 +1,7 @@
-﻿using EnemiesReturns.Behaviors;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
@@ -55,7 +50,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             }
 
             var stoneParticlesOrigin = childLocator.FindChild("ShakeStoneParticlesOrigin");
-            if(stoneParticlesOrigin && stoneParticlesEffect)
+            if (stoneParticlesOrigin && stoneParticlesEffect)
             {
                 EffectManager.SimpleEffect(stoneParticlesEffect, stoneParticlesOrigin.position, stoneParticlesOrigin.rotation, false);
             }
@@ -79,7 +74,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         {
             base.FixedUpdate();
 
-            if(fixedAge > attackDuration && !hasFired)
+            if (fixedAge > attackDuration && !hasFired)
             {
                 if (shakeEffectTransform && poundEffect)
                 {
@@ -102,7 +97,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 hasFired = true;
             }
 
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

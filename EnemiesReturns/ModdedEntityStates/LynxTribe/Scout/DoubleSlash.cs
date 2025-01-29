@@ -1,8 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -75,7 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(animator && animator.GetFloat(LeftSlashHash) > 0.1f)
+            if (animator && animator.GetFloat(LeftSlashHash) > 0.1f)
             {
                 if (isAuthority)
                 {
@@ -83,7 +81,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                 }
                 if (!spawnedEffectLeft)
                 {
-                    if (clawEffectLeft) {
+                    if (clawEffectLeft)
+                    {
                         EffectManager.SpawnEffect(clawEffectLeft, new EffectData
                         {
                             rootObject = base.gameObject,
@@ -91,7 +90,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                         }, false);
                     }
 
-                    if (slashEffectLeft) {
+                    if (slashEffectLeft)
+                    {
                         EffectManager.SimpleMuzzleFlash(slashEffectLeft, base.gameObject, "LeftSwingEffect", false);
                     }
 
@@ -99,9 +99,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                 }
             }
 
-            if(animator && animator.GetFloat(RightSlashHash) > 0.1f)
+            if (animator && animator.GetFloat(RightSlashHash) > 0.1f)
             {
-                if(isAuthority)
+                if (isAuthority)
                 {
                     rightOverlapAttack.Fire();
                 }
@@ -124,7 +124,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
                 }
             }
 
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

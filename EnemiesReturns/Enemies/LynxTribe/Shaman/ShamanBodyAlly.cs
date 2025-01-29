@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman

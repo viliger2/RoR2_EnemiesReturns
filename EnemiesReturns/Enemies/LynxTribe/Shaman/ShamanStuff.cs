@@ -1,14 +1,11 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using RoR2.Audio;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using RoR2;
+using RoR2.Audio;
 using RoR2.Orbs;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -44,7 +41,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             if (damageInfo.HasModdedDamageType(ApplyReducedHealing))
             {
-                if(victim.TryGetComponent<CharacterBody>(out var victimBody))
+                if (victim.TryGetComponent<CharacterBody>(out var victimBody))
                 {
                     victimBody.AddTimedBuff(ReduceHealing, EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value);
                 }
@@ -52,7 +49,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         }
 
         public static void HealthComponent_Heal(MonoMod.Cil.ILContext il)
-        { 
+        {
             ILCursor c = new ILCursor(il);
             if (c.TryGotoNext(MoveType.After,
                 x => x.MatchLdarg(out _),
@@ -126,16 +123,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
         {
             var prefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/NovaOnHeal/DevilOrbEffect.prefab").WaitForCompletion(), "LynxShamanTrackingProjectileGhost", false);
 
-            if(prefab.TryGetComponent<OrbEffect>(out var orbEffect))
+            if (prefab.TryGetComponent<OrbEffect>(out var orbEffect))
             {
                 UnityEngine.Object.DestroyImmediate(orbEffect);
             }
-            if(prefab.TryGetComponent<Rigidbody>(out var rigidbody))
+            if (prefab.TryGetComponent<Rigidbody>(out var rigidbody))
             {
                 UnityEngine.Object.DestroyImmediate(rigidbody);
             }
             var akComponents = prefab.GetComponents<AkEvent>();
-            for(int i = akComponents.Length - 1; i >= 0; i--)
+            for (int i = akComponents.Length - 1; i >= 0; i--)
             {
                 UnityEngine.Object.DestroyImmediate(akComponents[i]);
             }
@@ -255,7 +252,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 UnityEngine.Object.DestroyImmediate(akGameObj);
             }
-            if(prefab.TryGetComponent<LODGroup>(out var lodGroup))
+            if (prefab.TryGetComponent<LODGroup>(out var lodGroup))
             {
                 UnityEngine.Object.DestroyImmediate(lodGroup);
             }
@@ -295,7 +292,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             return prefab;
         }
-        
+
         public Material CreateShamanProjectileImpactFlaresMaterial()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
@@ -340,7 +337,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileNetworkTransform.positionTransmitInterval = 0.03333334f;
             projectileNetworkTransform.interpolationFactor = 1f;
             projectileNetworkTransform.allowClientsideCollision = false;
-            
+
             var projectileSimple = prefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesLifetime.Value;
             projectileSimple.desiredForwardSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesSpeed.Value;
@@ -410,7 +407,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             vfxAttributes.optionalLights = new Light[] { lightTransform.GetComponent<Light>() };
 
-            foreach(var component in prefab.GetComponentsInChildren<ParticleSystemRenderer>())
+            foreach (var component in prefab.GetComponentsInChildren<ParticleSystemRenderer>())
             {
                 component.material = ContentProvider.GetOrCreateMaterial("matLynxShamanTeleport", CreateTeleportEffectMaterial);
             }
@@ -428,7 +425,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             effectComponent.positionAtReferencedTransform = false;
             effectComponent.parentToReferencedTransform = false;
             effectComponent.applyScale = true;
-            effectComponent.soundName = ""; 
+            effectComponent.soundName = "";
             effectComponent.disregardZScale = false;
 
             prefab.AddComponent<DestroyOnTimer>().duration = 0.75f;

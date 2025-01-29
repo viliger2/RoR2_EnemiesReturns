@@ -1,11 +1,4 @@
-﻿using IL.RoR2.Gamecore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using UnityEngine.Networking;
-
-namespace EnemiesReturns.Behaviors
+﻿namespace EnemiesReturns.Behaviors
 {
     //public class DestroyOnTimerNetwork : MonoBehaviour
     //{

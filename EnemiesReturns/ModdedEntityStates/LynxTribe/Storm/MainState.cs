@@ -1,7 +1,6 @@
 ﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EntityStates;
 using RoR2;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -61,7 +60,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                 }
             }
 
-            if(fixedAge >= lifetime)
+            if (fixedAge >= lifetime)
             {
                 DestroyModel();
                 if (NetworkServer.active)

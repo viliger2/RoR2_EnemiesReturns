@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
+﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 {
     public class DrumEmote : BasePlayerEmoteState
     {

@@ -1,8 +1,4 @@
-﻿using EnemiesReturns.ModdedEntityStates.Spitter;
-using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
@@ -17,7 +13,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.NopeEmoteKey.Value))
                 {
                     this.outer.SetInterruptState(new NopeEmotePlayer(), InterruptPriority.Any);
-                } else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
+                }
+                else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
                 {
                     this.outer.SetInterruptState(new SingEmotePlayer(), InterruptPriority.Any);
                 }

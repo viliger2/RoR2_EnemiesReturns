@@ -7,18 +7,12 @@ using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
-using EntityStates.Fauna;
 using HG;
-using KinematicCharacterController;
 using RoR2;
-using RoR2.CharacterAI;
-using RoR2.Networking;
-using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {

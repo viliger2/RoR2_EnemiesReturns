@@ -6,8 +6,6 @@ using RoR2;
 using RoR2.Orbs;
 using RoR2.Projectile;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -117,16 +115,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.allowPrediction = true;
-            projectileController.procCoefficient = 1f; 
+            projectileController.procCoefficient = 1f;
             projectileController.cannotBeDeleted = true;
 
             var projectileDamage = prefab.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType = DamageType.IgniteOnHit; 
+            projectileDamage.damageType = DamageType.IgniteOnHit;
 
             var objectScaleCurve = prefab.AddComponent<ObjectScaleCurve>();
             objectScaleCurve.useOverallCurveOnly = true;
             objectScaleCurve.overallCurve = curveDef.curve;
-            objectScaleCurve.timeMax = 5f; 
+            objectScaleCurve.timeMax = 5f;
 
             var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
             destroyOnTimer.duration = 5f;

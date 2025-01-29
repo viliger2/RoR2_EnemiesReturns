@@ -1,12 +1,9 @@
 ﻿using BepInEx.Configuration;
 using R2API;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
-    public class LynxStuff 
+    public class LynxStuff
     {
         public static ConfigEntry<bool> LynxShrineEnabled;
 

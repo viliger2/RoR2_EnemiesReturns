@@ -1,7 +1,4 @@
 ﻿using EnemiesReturns.Components.MasterComponents;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Archer
@@ -14,7 +11,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
-            var aiParams =  base.AISkillDriverParams();
+            var aiParams = base.AISkillDriverParams();
 
             HG.ArrayUtils.ArrayAppend(ref aiParams,
                 new IAISkillDriver.AISkillDriverParams("IdleNearLeaderWhenNoEnemies")

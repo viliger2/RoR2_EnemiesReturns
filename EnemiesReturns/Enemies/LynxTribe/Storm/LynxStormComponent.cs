@@ -1,14 +1,7 @@
-﻿using KinematicCharacterController;
-using RoR2;
+﻿using RoR2;
 using RoR2.CharacterAI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
@@ -106,13 +99,13 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             }
 
             var distance = Vector3.Distance(storm.transform.position, characterMotor.transform.position);
-            if(distance > escapeDistance)
+            if (distance > escapeDistance)
             {
                 Destroy(this);
                 return;
             }
 
-            if(characterBody.hurtBoxGroup.hurtBoxesDeactivatorCounter > 0)
+            if (characterBody.hurtBoxGroup.hurtBoxesDeactivatorCounter > 0)
             {
                 characterMotor.disableAirControlUntilCollision = false;
                 timer = 0f; // resetting the timer so it starts again if the poor sap didn't escape in time
@@ -160,7 +153,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 var target = (moveTarget.transform.position - characterMotor.previousPosition).normalized;
                 characterMotor.disableAirControlUntilCollision = true;
                 characterMotor.velocity = target * velocitySpeed;
-            } else
+            }
+            else
             {
                 characterMotor.disableAirControlUntilCollision = false;
             }

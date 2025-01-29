@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -35,12 +32,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > debrisSpawnDuration && !debrisSpawned)
+            if (fixedAge > debrisSpawnDuration && !debrisSpawned)
             {
                 EffectManager.SimpleEffect(debrisSpawnEffect, transform.position, Quaternion.identity, false);
                 debrisSpawned = true;
             }
-            if(fixedAge > poundSpawnDuration && !poundSpawned)
+            if (fixedAge > poundSpawnDuration && !poundSpawned)
             {
                 EffectManager.SimpleEffect(poundEffect, transform.position, Quaternion.identity, false);
                 poundSpawned = true;

@@ -1,8 +1,6 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Archer

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -38,7 +35,7 @@ namespace EnemiesReturns.Behaviors
 
         private void DestroyGameObject()
         {
-            UnityEngine.Object.Destroy(this.gameObject);  
+            UnityEngine.Object.Destroy(this.gameObject);
         }
     }
 }

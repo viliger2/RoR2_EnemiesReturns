@@ -1,19 +1,15 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
-using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -522,7 +518,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
-        
-        
+
+
     }
 }

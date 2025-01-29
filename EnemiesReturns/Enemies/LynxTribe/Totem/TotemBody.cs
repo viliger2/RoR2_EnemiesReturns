@@ -1,20 +1,15 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
-using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
-using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -65,7 +60,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             groundpoundHitbox.transform.localScale = new Vector3(scale, groundpoundHitbox.transform.localScale.y, scale);
 
             var components = prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1").gameObject.GetComponentsInChildren<SurfaceDefProvider>();
-            foreach(var component in components)
+            foreach (var component in components)
             {
                 component.surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
             }
@@ -154,8 +149,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
-            return new IAimAssist.AimAssistTargetParams() 
-            { 
+            return new IAimAssist.AimAssistTargetParams()
+            {
                 assistScale = 4f,
                 pathToPoint0 = "ModelBase/mdlLynxTotem/LynxTotem/ROOT",
                 pathToPoint1 = "ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head"
@@ -795,7 +790,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 minDistance = 7.5f,
                 maxDistance = 22f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
-            }; 
+            };
         }
 
         protected override IHitboxes.HitBoxesParams[] HitBoxesParams()

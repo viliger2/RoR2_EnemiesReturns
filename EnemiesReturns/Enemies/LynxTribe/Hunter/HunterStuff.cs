@@ -1,9 +1,5 @@
 ﻿using R2API;
-using Rewired.Demos;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -19,8 +15,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             effectComponent.parentToReferencedTransform = true;
 
             var vfxAttributes = prefab.GetComponent<VFXAttributes>();
-            if (vfxAttributes) 
-            { 
+            if (vfxAttributes)
+            {
                 vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
                 vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
             }

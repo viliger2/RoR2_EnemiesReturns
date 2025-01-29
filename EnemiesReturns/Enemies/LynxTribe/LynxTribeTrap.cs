@@ -1,12 +1,8 @@
 ﻿using EnemiesReturns.Behaviors;
 using RoR2;
 using RoR2.Audio;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using static Rewired.ComponentControls.Effects.RotateAroundAxis;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
@@ -56,7 +52,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             if (leaves)
             {
-                foreach(Transform child in leaves)
+                foreach (Transform child in leaves)
                 {
                     foreach (Transform child2 in child)
                     {
@@ -80,7 +76,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         private void FixedUpdate()
         {
             timer += Time.fixedDeltaTime;
-            if(timer > checkInterval && !triggered)
+            if (timer > checkInterval && !triggered)
             {
                 var position = hitBox.position;
                 var halfExtends = hitBox.lossyScale * 0.5f;
@@ -88,7 +84,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
                 Collider[] colliders;
                 int num = HGPhysics.OverlapBox(out colliders, position, halfExtends, rotation, LayerIndex.entityPrecise.mask);
-                for(int i = 0; i < num; i++)
+                for (int i = 0; i < num; i++)
                 {
                     if (!colliders[i])
                     {
@@ -96,7 +92,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                     }
 
                     var hurtBox = colliders[i].GetComponent<HurtBox>();
-                    if(!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body)
+                    if (!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body)
                     {
                         continue;
                     }
@@ -116,7 +112,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 timer = triggered ? 0 : timer - checkInterval;
             }
 
-            if(timer > spawnAfterTriggerInterval && triggered && !spawned)
+            if (timer > spawnAfterTriggerInterval && triggered && !spawned)
             {
                 if (spawner)
                 {

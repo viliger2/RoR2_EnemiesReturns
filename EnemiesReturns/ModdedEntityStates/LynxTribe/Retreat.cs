@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -41,13 +38,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > effectSpawnDuration && !effectSpawned)
+            if (fixedAge > effectSpawnDuration && !effectSpawned)
             {
                 EffectManager.SimpleEffect(retreatEffectPrefab, effectTransform.position, Quaternion.identity, false);
                 effectSpawned = true;
             }
 
-            if(fixedAge > duraion)
+            if (fixedAge > duraion)
             {
                 DestroyModel();
                 if (NetworkServer.active)

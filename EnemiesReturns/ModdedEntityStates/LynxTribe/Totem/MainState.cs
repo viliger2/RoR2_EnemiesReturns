@@ -1,9 +1,4 @@
-﻿using EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman;
-using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using EntityStates;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {

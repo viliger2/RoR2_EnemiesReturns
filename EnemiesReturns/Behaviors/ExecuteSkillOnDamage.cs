@@ -41,7 +41,7 @@ namespace EnemiesReturns.Behaviors
                 return;
             }
 
-            if(checkForMainState && !mainStateMachine.IsInMainState())
+            if (checkForMainState && !mainStateMachine.IsInMainState())
             {
                 return;
             }

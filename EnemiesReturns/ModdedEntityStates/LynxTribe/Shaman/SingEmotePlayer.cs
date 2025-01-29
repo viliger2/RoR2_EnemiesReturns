@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
     internal class SingEmotePlayer : BasePlayerEmoteState
     {
@@ -25,7 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > slapEmoteDuration && !animSwitched)
+            if (fixedAge > slapEmoteDuration && !animSwitched)
             {
                 PlayCrossfade("Gesture, Override", "ISingForYou", 0.5f);
                 animSwitched = true;

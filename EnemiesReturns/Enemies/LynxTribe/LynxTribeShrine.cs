@@ -2,9 +2,6 @@
 using JetBrains.Annotations;
 using RoR2;
 using RoR2.Audio;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -128,7 +125,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             if (pickupDisplay)
             {
                 pickupDisplay.SetPickupIndex(pickupIndex);
-                if(pickupIndex == PickupIndex.none)
+                if (pickupIndex == PickupIndex.none)
                 {
                     pickupDisplay.enabled = false;
                 }
@@ -180,7 +177,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             if (activated)
             {
-                if(escapeTimer > escapeDuration)
+                if (escapeTimer > escapeDuration)
                 {
                     if (spawner && spawner.combatSquad)
                     {
@@ -192,7 +189,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                         if (spawner.combatSquad && spawner.combatSquad.memberCount > 0)
                         {
                             var bodyObject = spawner.combatSquad.membersList[0].GetBodyObject();
-                            if (bodyObject) 
+                            if (bodyObject)
                             {
                                 ScrapperController.CreateItemTakenOrb(pickupDisplay.transform.position, bodyObject, pickupIndex.pickupDef.itemIndex);
                             }

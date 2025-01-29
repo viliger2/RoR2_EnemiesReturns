@@ -1,8 +1,6 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -45,7 +43,7 @@ namespace EnemiesReturns.Behaviors
             var rotation = transform.rotation;
 
             totalDamage = damage;
-            if(projectileController && projectileController.owner)
+            if (projectileController && projectileController.owner)
             {
                 var ownerBody = projectileController.owner.GetComponent<CharacterBody>();
                 if (ownerBody)
@@ -66,19 +64,19 @@ namespace EnemiesReturns.Behaviors
                 }
 
                 var hurtBox = colliders[i].GetComponent<HurtBox>();
-                if(!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body || hitTargets.Contains(hurtBox.healthComponent))
+                if (!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body || hitTargets.Contains(hurtBox.healthComponent))
                 {
                     continue;
                 }
 
                 var body = hurtBox.healthComponent.body;
-                if(!FriendlyFireManager.ShouldDirectHitProceed(body.healthComponent, projectileController.teamFilter.teamIndex))
+                if (!FriendlyFireManager.ShouldDirectHitProceed(body.healthComponent, projectileController.teamFilter.teamIndex))
                 {
                     hitTargets.Add(body.healthComponent);
                     continue;
                 }
 
-                if(body.hasEffectiveAuthority && body.characterMotor && body.characterMotor.isGrounded)
+                if (body.hasEffectiveAuthority && body.characterMotor && body.characterMotor.isGrounded)
                 {
                     PerformDamage(body, hurtBox);
                     hitTargets.Add(body.healthComponent);

@@ -1,8 +1,8 @@
-﻿using EnemiesReturns.Components.BodyComponents;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Behaviors;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;

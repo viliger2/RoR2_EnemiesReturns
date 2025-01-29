@@ -1,9 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
-using EnemiesReturns.Enemies.LynxTribe;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
@@ -11,17 +9,11 @@ using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using Newtonsoft.Json.Utilities;
-using R2API.Networking;
-using RewiredConsts;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 // TODO: write Content class and put everything there
 

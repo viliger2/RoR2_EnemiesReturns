@@ -1,8 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -103,14 +99,14 @@ namespace EnemiesReturns.Behaviors
                 return;
             }
 
-            if(spawnInfos == null)
+            if (spawnInfos == null)
             {
                 Log.Warning("spawnInfos in LynxTribeSpawner is null! Spawning nothing...");
                 return;
             }
 
             float angle = 360f / spawnCount;
-            for(int i = 0; i < spawnCount; i++)
+            for (int i = 0; i < spawnCount; i++)
             {
                 int currentRetrySpawnCount = 0;
                 var x = spawnDistance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
@@ -120,7 +116,7 @@ namespace EnemiesReturns.Behaviors
                 if (!Spawn(spawnInfos[i].card, spawnInfos[i].elite, spawnPosition, 0f, 0f, spawnInfos[i].eliteCostMultiplier))
                 {
                     currentRetrySpawnCount++;
-                    while(currentRetrySpawnCount < retrySpawnCount)
+                    while (currentRetrySpawnCount < retrySpawnCount)
                     {
                         if (Spawn(spawnInfos[i].card, spawnInfos[i].elite, spawnPosition, 0f, currentRetrySpawnCount * 10f, spawnInfos[i].eliteCostMultiplier))
                         {
@@ -134,7 +130,7 @@ namespace EnemiesReturns.Behaviors
 
         public void Escape()
         {
-            foreach(var master in combatSquad.membersList)
+            foreach (var master in combatSquad.membersList)
             {
                 if (!master)
                 {
@@ -148,10 +144,11 @@ namespace EnemiesReturns.Behaviors
                     var esms = masterBOdyObject.GetComponents<EntityStateMachine>();
                     foreach (var esm in esms)
                     {
-                        if(string.Compare(esm.customName, "Body") == 0)
+                        if (string.Compare(esm.customName, "Body") == 0)
                         {
                             esm.SetNextState(new ModdedEntityStates.LynxTribe.Retreat());
-                        } else
+                        }
+                        else
                         {
                             esm.SetNextState(new EntityStates.Idle());
                         }
@@ -203,7 +200,7 @@ namespace EnemiesReturns.Behaviors
                     {
                         master.inventory.SetEquipmentIndex(equipmentIndex);
                     }
-                    if(combatSquad && combatSquad.grantBonusHealthInMultiplayer)
+                    if (combatSquad && combatSquad.grantBonusHealthInMultiplayer)
                     {
                         int livingPlayerCount = Run.instance.livingPlayerCount;
                         healthBoost *= Mathf.Pow(livingPlayerCount, 1f);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
     public class NopeEmotePlayer : BasePlayerEmoteState
     {

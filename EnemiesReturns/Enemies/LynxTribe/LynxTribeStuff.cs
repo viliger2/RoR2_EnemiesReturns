@@ -1,11 +1,7 @@
 ﻿using EnemiesReturns.Behaviors;
-using EnemiesReturns.Enemies.LynxTribe.Storm;
 using R2API;
 using RoR2;
 using RoR2.Hologram;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -119,7 +115,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             UnityEngine.Object.DestroyImmediate(prefab.GetComponent<CostHologramContent>());
             var hologramContent = prefab.AddComponent<CustomCostHologramContent>();
-            hologramContent.targetTextMesh = prefab.transform.Find("Text").GetComponent<TextMeshPro>();    
+            hologramContent.targetTextMesh = prefab.transform.Find("Text").GetComponent<TextMeshPro>();
 
             return prefab;
         }
@@ -136,8 +132,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawner.eliteBias = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapEliteBias.Value;
             spawner.spawnCards = new SpawnCard[]
             {
-                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, 
-                Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault, 
+                Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault,
+                Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
             if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)

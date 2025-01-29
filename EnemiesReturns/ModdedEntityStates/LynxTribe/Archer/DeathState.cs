@@ -1,10 +1,7 @@
 ﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.AddressableAssets;
-using UnityEngine;
 using RoR2;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 {
@@ -38,9 +35,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 return;
             }
 
-            if(fixedAge > deathEffectDuration && !spawnedDeathEffect)
+            if (fixedAge > deathEffectDuration && !spawnedDeathEffect)
             {
-                if(deathEffectOrigin && characterLandImpactEffect)
+                if (deathEffectOrigin && characterLandImpactEffect)
                 {
                     EffectManager.SpawnEffect(characterLandImpactEffect, new EffectData
                     {

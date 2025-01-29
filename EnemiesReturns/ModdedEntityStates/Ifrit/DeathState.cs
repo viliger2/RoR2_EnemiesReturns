@@ -2,7 +2,6 @@
 using EntityStates;
 using RoR2;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
 {

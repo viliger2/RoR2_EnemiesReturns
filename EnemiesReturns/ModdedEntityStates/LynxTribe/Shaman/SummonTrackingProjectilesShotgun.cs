@@ -1,9 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
@@ -62,7 +59,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > effectSpawnTime && !isEffectSpawned)
+            if (fixedAge > effectSpawnTime && !isEffectSpawned)
             {
                 var effectData = new EffectData()
                 {
@@ -87,7 +84,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 Util.PlaySound("ER_Shaman_FireProjectiles_Play", base.gameObject);
                 isShot = true;
             }
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

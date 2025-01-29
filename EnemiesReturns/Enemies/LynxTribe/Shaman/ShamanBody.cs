@@ -1,7 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
-using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
@@ -12,9 +11,6 @@ using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -131,7 +127,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 baseArmor = EnemiesReturns.Configuration.LynxTribe.LynxShaman.BaseArmor.Value,
                 hullClassification = HullClassification.Human,
                 bodyColor = new Color(72 / 255, 73 / 255, 109 / 255),
-                isChampion = false, 
+                isChampion = false,
                 autoCalculateStats = true,
                 levelMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxShaman.LevelMaxHealth.Value,
                 levelDamage = EnemiesReturns.Configuration.LynxTribe.LynxShaman.LevelDamage.Value,

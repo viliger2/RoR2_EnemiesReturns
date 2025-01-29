@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.MasterComponents;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
@@ -84,7 +81,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 new IAISkillDriver.AISkillDriverParams("StrafeAtDistance")
                 {
                     skillSlot = RoR2.SkillSlot.None,
-                    requireSkillReady = false, 
+                    requireSkillReady = false,
                     minDistance = 0f,
                     maxDistance = 35f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,

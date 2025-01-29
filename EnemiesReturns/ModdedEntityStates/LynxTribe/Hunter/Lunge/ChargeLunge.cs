@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 {
@@ -10,7 +7,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
     {
         public static float baseDuration = 1f;
 
-        private float duration; 
+        private float duration;
 
         public override void OnEnter()
         {
@@ -31,7 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextState(new FireLunge());
             }

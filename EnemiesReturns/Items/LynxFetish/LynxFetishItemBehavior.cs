@@ -1,11 +1,6 @@
-﻿using EnemiesReturns.Enemies.Ifrit;
-using Newtonsoft.Json.Utilities;
-using RoR2;
+﻿using RoR2;
 using RoR2.CharacterAI;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
 using static RoR2.CharacterBody;
 
@@ -61,7 +56,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private void OnMasterSpawned(SpawnCard.SpawnResult spawnResult)
         {
-            if(!spawnResult.success)
+            if (!spawnResult.success)
             {
                 return;
             }
@@ -92,7 +87,7 @@ namespace EnemiesReturns.Items.LynxFetish
             }
 
             var deployable = spawnResult.spawnedInstance.GetComponent<Deployable>();
-            if(deployable)
+            if (deployable)
             {
                 deployable.onUndeploy.AddListener(summonedMaster.TrueKill);
                 body.master.AddDeployable(deployable, LynxFetishFactory.LynxFetishDeployable);
@@ -133,7 +128,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
             // step 2. iterating over IndexToCards array, so we can figure out what is not spawned yet
             List<CharacterSpawnCard> list = new List<CharacterSpawnCard>();
-            for(int i = 0; i < LynxFetishFactory.spawnCards.Length; i++)
+            for (int i = 0; i < LynxFetishFactory.spawnCards.Length; i++)
             {
                 if (!deployedList.Contains(LynxFetishFactory.spawnCards[i].bodyIndex))
                 {

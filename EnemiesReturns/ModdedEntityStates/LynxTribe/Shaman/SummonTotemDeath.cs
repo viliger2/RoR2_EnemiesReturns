@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -34,7 +31,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                         DestroyBody();
                     }
                     DestroyModel();
-                } else
+                }
+                else
                 {
                     startedGrounded = false;
                 }
@@ -44,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(!startedGrounded && characterMotor && characterMotor.isGrounded)
+            if (!startedGrounded && characterMotor && characterMotor.isGrounded)
             {
                 if (NetworkServer.active && !totemSpawned)
                 {
@@ -54,7 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 }
                 DestroyModel();
             }
-            if(fixedAge >= deathDuration && NetworkServer.active)
+            if (fixedAge >= deathDuration && NetworkServer.active)
             {
                 DestroyBody();
             }
@@ -90,7 +88,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             if (result)
             {
                 var inventory = result.GetComponent<Inventory>();
-                if(inventory && characterBody.inventory)
+                if (inventory && characterBody.inventory)
                 {
                     inventory.CopyEquipmentFrom(characterBody.inventory);
                     inventory.CopyItemsFrom(characterBody.inventory);
@@ -103,7 +101,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     if (!body)
                     {
                         master.onBodyStart += OnBodyStart;
-                    } else
+                    }
+                    else
                     {
                         OnBodyStart(body.GetComponent<CharacterBody>());
                     }
@@ -113,7 +112,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public static void OnBodyStart(CharacterBody body)
         {
-            if (body && NetworkServer.active) 
+            if (body && NetworkServer.active)
             {
                 EntityStateMachine.FindByCustomName(body.gameObject, "Body")?.SetState(new ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman());
             }

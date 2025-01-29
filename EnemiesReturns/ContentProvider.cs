@@ -15,7 +15,6 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
-using Rewired.HID.Drivers;
 using Rewired.Utils.Classes.Utility;
 using RoR2;
 using RoR2.ContentManagement;
@@ -26,7 +25,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns
 {
@@ -902,10 +900,10 @@ namespace EnemiesReturns
             };
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
-        
+
         private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
-            if(EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value
                 || EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
             {
                 CreateLynxStorm(assets, acdLookup);
@@ -1093,7 +1091,7 @@ namespace EnemiesReturns
             var material = GetOrCreateMaterial("matLynxArcherArrow", archerStuff.CreateArcherArrowMaterial);
 
             ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab = archerStuff.CreateArrowProjectile(
-                assets.First(prefab => prefab.name == "ArrowProjectile"), 
+                assets.First(prefab => prefab.name == "ArrowProjectile"),
                 archerStuff.CreateArrowProjectileGhost(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
                 archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
                 archerStuff.CreateArrowLoopSoundDef());
@@ -1138,7 +1136,7 @@ namespace EnemiesReturns
 
             ArcherBodyAlly.BodyPrefab = archerBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherAllyBody"), sprite: iconLookup["texArcherAllyIcon"]);
             bodyList.Add(ArcherBodyAlly.BodyPrefab);
-            
+
             var archerMasterAlly = new ArcherMasterAlly();
             ArcherMasterAlly.MasterPrefab = archerMasterAlly.AddMasterComponents(assets.First(prefab => prefab.name == "LynxArcherAllyMaster"), ArcherBodyAlly.BodyPrefab);
             masterList.Add(ArcherMasterAlly.MasterPrefab);
@@ -1420,7 +1418,7 @@ namespace EnemiesReturns
 
                 LynxFetishFactory.ItemDef = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), iconLookup["texLynxFetishIcon"]);
                 itemList.Add(LynxFetishFactory.ItemDef);
-                
+
                 dtLynxTotem = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtLynxTotem as ScriptableObject).name = "epdtLynxTotem";
                 dtLynxTotem.canDropBeReplaced = true;
@@ -1469,7 +1467,7 @@ namespace EnemiesReturns
             effectsList.Add(new EffectDef(projectileImpactEffect));
 
             var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(
-                assets.First(prefab => prefab.name == "ShamanTrackingProjectile"), 
+                assets.First(prefab => prefab.name == "ShamanTrackingProjectile"),
                 shamanStuff.CreateShamanTrackingProjectileGhost(),
                 projectileImpactEffect,
                 shamanStuff.CreateProjectileFlightSoundLoop()

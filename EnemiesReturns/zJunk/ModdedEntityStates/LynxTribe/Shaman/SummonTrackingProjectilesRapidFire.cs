@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman

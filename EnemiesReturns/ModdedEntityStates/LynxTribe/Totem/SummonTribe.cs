@@ -1,7 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
 using System;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -64,7 +63,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             }
 
             PlayAnimation("Gesture, Override", "SummonTribe", "summonTribe.playbackDuration", duration);
-            if(spawnCards.Length == 0)
+            if (spawnCards.Length == 0)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -74,7 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > summonDuration && !tribeSummoned)
+            if (fixedAge > summonDuration && !tribeSummoned)
             {
                 if (NetworkServer.active)
                 {
@@ -84,9 +83,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         var currentRetryCount = 0;
                         var x = summonDistance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
                         var z = summonDistance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
-                        while(currentRetryCount < retryCount) 
+                        while (currentRetryCount < retryCount)
                         {
-                            if(SummonTribesman(i, base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), retryCount))
+                            if (SummonTribesman(i, base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), retryCount))
                             {
                                 break;
                             }
@@ -94,7 +93,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         }
                     }
                 }
-                if (summonEffect && summonEffectTransform) 
+                if (summonEffect && summonEffectTransform)
                 {
                     EffectManager.SimpleEffect(summonEffect, summonEffectTransform.position, Quaternion.identity, false);
                 }
@@ -105,7 +104,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                 tribeSummoned = true;
             }
 
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -143,13 +142,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
             void OnCardSpawned(SpawnCard.SpawnResult result)
             {
-                if(result.success && result.spawnedInstance && characterBody)
+                if (result.success && result.spawnedInstance && characterBody)
                 {
                     var inventory = result.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {
                         inventory.CopyEquipmentFrom(base.characterBody.inventory);
-                        if(characterBody.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
+                        if (characterBody.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
                         {
                             inventory.GiveItem(RoR2Content.Items.Ghost);
                             inventory.GiveItem(RoR2Content.Items.HealthDecay, 30);

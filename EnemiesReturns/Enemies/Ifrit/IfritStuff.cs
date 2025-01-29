@@ -33,7 +33,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             var effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion().InstantiateClone("IfritDeathEffect", false);
             effect.GetComponent<EffectComponent>().applyScale = true;
 
-            foreach(var system in effect.GetComponentsInChildren<ParticleSystem>())
+            foreach (var system in effect.GetComponentsInChildren<ParticleSystem>())
             {
                 var main = system.main;
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;

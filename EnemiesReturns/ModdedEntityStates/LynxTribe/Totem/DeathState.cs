@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -62,7 +59,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             {
                 return;
             }
-            if(fixedAge > shamanDeath && !shamanDeathSpawned)
+            if (fixedAge > shamanDeath && !shamanDeathSpawned)
             {
                 if (characterLandImpactEffect && shamanPosition)
                 {

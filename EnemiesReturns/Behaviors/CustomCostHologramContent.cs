@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +14,7 @@ namespace EnemiesReturns.Behaviors
 
         private void FixedUpdate()
         {
-            if(targetTextMesh && (displayValue != oldDisplayValue))
+            if (targetTextMesh && (displayValue != oldDisplayValue))
             {
                 oldDisplayValue = displayValue;
                 var duration = TimeSpan.FromSeconds(displayValue);

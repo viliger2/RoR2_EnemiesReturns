@@ -1,7 +1,4 @@
 ﻿using EnemiesReturns.Components.MasterComponents;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
