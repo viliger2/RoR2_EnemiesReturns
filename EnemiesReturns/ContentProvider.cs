@@ -1134,6 +1134,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.GuitarEmotePlayer));
         }
 
         public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1188,6 +1189,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.HarmonicaEmote));
         }
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1241,6 +1243,7 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DrumEmote));
         }
 
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, ExplicitPickupDropTable dtLynxTotem)

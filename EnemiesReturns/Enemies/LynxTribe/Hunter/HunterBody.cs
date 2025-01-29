@@ -242,7 +242,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 
         protected override ItemDisplayRuleSet ItemDisplayRuleSet()
         {
-            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>(); // TODO
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsLynxHunter";
             #region FireElite
             var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();

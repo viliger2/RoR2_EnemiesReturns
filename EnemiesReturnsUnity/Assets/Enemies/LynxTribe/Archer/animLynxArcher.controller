@@ -273,7 +273,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.8454021
+  m_TransitionDuration: 0.051102195
   m_TransitionOffset: 0
   m_ExitTime: 0.0007882078
   m_HasExitTime: 0
@@ -1573,6 +1573,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 5030567279330711369}
     m_Position: {x: 610, y: 280, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 3895771443763109476}
+    m_Position: {x: 369.25745, y: 331.03607, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1606,6 +1609,32 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: 7bf904438822c5344b4bfc1310326b71, type: 2}
   m_Tag: 
   m_SpeedParameter: Shot.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &3895771443763109476
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SickGuitarSolo
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 607731189324876743, guid: a2f15e877de0a4941bb7e5775836721e, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

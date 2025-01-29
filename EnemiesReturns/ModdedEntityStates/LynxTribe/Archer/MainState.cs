@@ -14,14 +14,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
-                //if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.NopeEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new NopeEmotePlayer(), InterruptPriority.Any);
-                //}
-                //else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new SingEmotePlayer(), InterruptPriority.Any);
-                //}
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxArcher.SingEmoteKey.Value))
+                {
+                    this.outer.SetInterruptState(new GuitarEmotePlayer(), InterruptPriority.Any);
+                }
             }
         }
     }

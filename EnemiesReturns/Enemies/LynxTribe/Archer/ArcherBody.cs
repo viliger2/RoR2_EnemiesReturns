@@ -18,8 +18,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
 
-// TODO: adjust materials for all lynx bodies!
-
 namespace EnemiesReturns.Enemies.LynxTribe.Archer
 {
     public class ArcherBody : BodyBase
@@ -283,7 +281,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         protected override ItemDisplayRuleSet ItemDisplayRuleSet()
         {
-            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>(); // TODO
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsLynxArcher";
             #region FireElite
             var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();

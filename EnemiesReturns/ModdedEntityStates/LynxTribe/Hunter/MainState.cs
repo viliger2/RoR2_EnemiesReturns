@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman;
+﻿using EnemiesReturns.ModdedEntityStates.LynxTribe.Archer;
+using EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman;
 using EntityStates;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter
         {
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
-            {
-                //if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.NopeEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new NopeEmotePlayer(), InterruptPriority.Any);
-                //}
-                //else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new SingEmotePlayer(), InterruptPriority.Any);
-                //}
+                {
+                    if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxHunter.SingEmoteKey.Value))
+                {
+                    this.outer.SetInterruptState(new HarmonicaEmote(), InterruptPriority.Any);
+                }
             }
         }
     }
