@@ -136,7 +136,7 @@ namespace EnemiesReturns.Items.LynxFetish
             itemDef.pickupModelPrefab = prefab;
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy };
+            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.AIBlacklist };
 
             return itemDef;
         }

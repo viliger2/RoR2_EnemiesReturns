@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Components;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
@@ -51,6 +52,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             var result = base.AddBodyComponents(bodyPrefab, sprite);
 
             result.transform.Find("ModelBase/mdlScout/LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
+
+            var fixer = result.transform.Find("ModelBase/mdlScout").gameObject.AddComponent<FixJitterBones>();
+            fixer.bonesToFix = new string[] { "Mask" };
 
             return result;
         }

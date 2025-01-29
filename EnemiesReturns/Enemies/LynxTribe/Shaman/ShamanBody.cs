@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Components;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
@@ -51,8 +52,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             public static CharacterSpawnCard cscLynxShamanDefault;
         }
 
-        protected override bool AddRemoveJitterBones => true;
-
         public static GameObject BodyPrefab;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
@@ -60,6 +59,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             var prefab = base.AddBodyComponents(bodyPrefab, sprite, log);
 
             prefab.transform.Find("ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
+
+            var fixer = prefab.transform.Find("ModelBase/mdlLynxShaman").gameObject.AddComponent<FixJitterBones>();
+            fixer.bonesToFix = new string[] { "Mask" };
 
             return prefab;
         }
@@ -432,8 +434,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                childName = "Mask",
-                localPos = new Vector3(0F, 0F, 0F),
+                childName = "Head",
+                localPos = new Vector3(0F, -0.5623F, 0.5377F),
                 localAngles = new Vector3(0F, 0F, 0F),
                 localScale = new Vector3(0.5F, 0.5F, 0.5F),
                 limbMask = LimbFlags.None

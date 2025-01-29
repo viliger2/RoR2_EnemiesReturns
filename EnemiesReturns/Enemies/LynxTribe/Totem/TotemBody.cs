@@ -72,6 +72,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
+            var fixer = prefab.transform.Find("ModelBase/mdlLynxTotem").gameObject.AddComponent<FixJitterBones>();
+            fixer.bonesToFix = new string[] { "Mask" };
+
             return prefab;
         }
 
@@ -787,7 +790,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
         {
-            return new IModelPanelParameters.ModelPanelParams() // TODO
+            return new IModelPanelParameters.ModelPanelParams()
             {
                 minDistance = 7.5f,
                 maxDistance = 22f,
