@@ -1,4 +1,26 @@
 <details>
+<summary>0.4.9</summary>
+
+* Added new Small-tier monster: Lynx Shaman.
+* Added new Boss-tier monster: Lynx Totem.
+* Implemented DamageSource for all enemies.
+  * _This means that all enemies can benefit from items and effects that check if damage was made with specific ability, assuming the enemy has said ability of course._
+* Colossal fist
+  * Added downwards force, so flying enemies are slammed into the ground on projectile impact.
+* Colossus
+  * Config to spawn additional enemies on Clap post-loop is now enabled by default.
+    * _This and some things with Lynx Tribe are made to incentivise looping while having zero effect on players who prefer one loop gameplay._
+* Mechanical Spider
+  * Broken spider now has new visual effects and sounds. 
+
+</details>
+<details>
+<summary>0.3.10</summary>
+
+* Fixed a potential ArgumentOutOfRangeException on dealing damage if Colossal Fist is disabled.
+
+</details>
+<details>
 <summary>0.3.9</summary>
 
 * Fixed bodies mass being inconsistent (you will no longer throw Spitter around as Loader with just basic attacks).

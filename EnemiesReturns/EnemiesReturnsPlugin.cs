@@ -29,10 +29,10 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     [BepInPlugin(GUID, ModName, Version)]
-    [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.RiskyArtifacts", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency(R2API.DeployableAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
     [BepInDependency(R2API.EliteAPI.PluginGUID)]
@@ -46,7 +46,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.4.8";
+        public const string Version = "0.4.9";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()

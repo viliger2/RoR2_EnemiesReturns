@@ -24,7 +24,8 @@ namespace EnemiesReturns.EditorHelpers
             // check the thing
             //Log.Info("walkSpeed: " + animator.GetFloat(AnimationParameters.walkSpeed));
 
-            //set the thing
+#if DEBUG || NOWEAVER
+            //set the t1hing
             foreach (var thing in animationParametersHashes.Keys)
             {
                 if (thing.Equals("walkSpeedDebug"))
@@ -32,7 +33,7 @@ namespace EnemiesReturns.EditorHelpers
                     animator.SetFloat(animationParametersHashes[thing], EnemiesReturns.Configuration.General.DebugWalkSpeedValue.Value);
                 }
             }
-
+#endif
         }
 
 
