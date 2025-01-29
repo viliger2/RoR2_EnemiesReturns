@@ -57,6 +57,57 @@
 		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "Двойной выстрел",
 		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "Открывает люк, заряжает оружие и выстреливает два быстрых заряда.",
 		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Рывок",
-		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Перемещает на короткую дистанцию."
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Перемещает на короткую дистанцию.",
+
+		"ENEMIES_RETURNS_FAMILY_LYNX_TRIBE": "<style=cWorldEvent>[ВНИМАНИЕ] Вы чувствуете что за вами следят..</style>",
+
+		"ENEMIES_RETURNS_LYNX_ARCHER_BODY_NAME": "Лучник рыси",
+		"ENEMIES_RETURNS_LYNX_ARCHER_SHOT_NAME": "Выстрел",
+		"ENEMIES_RETURNS_LYNX_ARCHER_SHOT_DESCRIPTION": "Выпускает одну стрелу.",
+
+		"ENEMIES_RETURNS_LYNX_HUNTER_BODY_NAME": "Охотник рыси",
+		"ENEMIES_RETURNS_LYNX_HUNTER_STAB_NAME": "Выпад",
+		"ENEMIES_RETURNS_LYNX_HUNTER_STAB_DESCRIPTION": "После небольшой подготовки атакует вперед.",
+
+		"ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT": "Украсть предмет",
+		"ENEMIES_RETURNS_LYNX_SHRINE_NAME": "Святилище рыси",
+		"ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION": "Попытаться украсть предмет у Племени рыси. Но Племя рыси не отдаст предмет без боя и попытается забрать его.'",
+		"ENEMIES_RETURNS_LYNX_SHRINE_LORE": "LORE",
+
+		"ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME": "Следопыт рыси",
+		"ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME": "Двойной порез",
+		"ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION": "Атакует двумя порезами один за другим.",
+
+		"ENEMIES_RETURNS_LYNX_SHAMAN_BODY_NAME": "Шаман рыси",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_BODY_LORE": "<style=cMono>\r\n$ Расшифровка изображения... завершено.\r\n$ Подведение итогов... завершено.\r\n$ Вывод текстовых строк... завершено.\r\nУспешно!\r\n</style>\r\n\r\nЭто запись в журнале Д. Фёртена, натуралиста UES [Удалено] в сотрудничестве с центром исследования и документации внеземной жизни UES. Ко мне присоединился друг Тарсон, обеспечивающий мою безопасность во время путешествия.\r\n\r\n---------------------\r\n\r\nВ процессе исследования местной флоры и фауны, Тарсон услышал удаленное пение. Подойдя к источнику шума мы увидели племя кошкоподобных существ которые проводили что-то похожее на ритуал.\r\nЧерез некоторое время появилось существо большего размера, с большой маской и носящее Посох.\r\nВзмахнув Посохом, существо призвало огонь из земли, а пение стало громче. Вышла группа других существ, неся на себе жука-работника.\r\nКак только они поднесли жука к статуе, на которой было несколько масок, большее существо опять взмахнуло Посохом и жук издал крик, после чего перестал шевелиться.\r\nОгненый шан появился перед жуком и полетел к Посоху перед тем как пропал в нем.\r\nПолучив это как сигнал уйти, Тарсон и я тихонько покинули их ритуал и вернулись к нашему путешествию.\r\n\r\nЯ дал им название \u2018Шаман рыси\u2019. Далее следует его подробное описание.\r\n\r\n\u2022 Обладая большим телом, предполагаю что шаман - лидер племени, хотя племя все же имеет какую-то простую иерархию.\r\n\r\n\u2022 Посох обладает магическими свойствами. В будущем я попробую собрать его образец.\r\n\r\n\u2022 Маска шамана уникальная, по сравнению с масками других членов племени. Это подтверждает теорию что шаман является лидером или чем-то подобным.\r\n\r\n\u2022 Тарсону было указано не вступать в контакт с племенем, даже если он встретит одинокого, с виду, члена племени.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN": "Запись о монстре: Шаман рыси",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME": "Гнев Н'куханы'",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION": "Призывает 5 снарядов, которые самонаводятся на врагов и уменьшают входящее лечение при попадании.",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME": "Растолкать",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION": "Отталкивает рядом находящихся врагов.",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME": "Телепорт",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_DESCRIPTION": "Телепортирует на случайную позицию.",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME": "Призвать торнадо",
+		"ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION": "Призывает торнадо которое преследует врагов.",
+
+		"ENEMIES_RETURNS_LYNX_STORM_BODY_NAME": "Торнадо племени рыси",
+
+		"ENEMIES_RETURNS_LYNX_TOTEM_BODY_NAME": "Тотем рыси",
+		"ENEMIES_RETURNS_LYNX_TITEM_BODY_SUBTITLE": "Адепт Н'куханы",
+		"ENEMIES_RETURNS_LYNX_TOTEM_BODY_LORE": "Полевые заметки:\n\nПутешествуя по грибным пещерам, я то и дело натыкался на разбросанные камни, которые вели в никуда. Никаких построек рядом не было, поэтому я сильно удивился, когда увидел вдалеке кирпичную стену.\n\nВокруг неё плясали похожие на кошек мелкие существа с оружием и в масках. Я слышал, как они смеются. По всей видимости, они кому-то поклонялись, но на этой планете мне ещё не встречались подобные строения.\n\nВнезапно из-под земли начали выползать новые зверьки, хотя до этого я не замечал никаких следов того, что они скрываются под ногами. К счастью, в тот момент им было не до меня: сомневаюсь, что я бы справился с такой ордой, какими бы мелкими ни были эти создания.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM": "Запись о монстре: Тотем рыси",
+		"ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME": "Призвать племя",
+		"ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION": "Призывает членов Племени рыси в битву.",
+		"ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_NAME": "Призвать торнадо",
+		"ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_DESCRIPTION": "Призывает несколько торнадо которые преследуют врагов.",
+		"ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME": "Удар по земле",
+		"ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION": "Ударяет по земле, атакуя рядомнаходящихся врагов, подкидывая их в воздух.",
+		"ENEMIES_RETURNS_LYNX_TOTEM_BURROW_NAME": "Закопаться",
+		"ENEMIES_RETURNS_LYNX_TOTEM_BURROW_DESCRIPTION": "Закапывает в землю, позволяя использовать другие навыки. Используйте еще раз для того чтобы выкопаться.",
+
+		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME": "Фетиш рыси",
+		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_PICKUP": "Призывает членов Племени рыси.",
+		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Каждые 15 секунд <style=cIsUtility>призывает члена Племени рыси</style> с дополнительным <style=cIsDamage>{0}<style=cStack>(+{1} после 4 штук)</style> урона</style> и <style=cIsHealth>{2}<style=cStack>(+{3} после 4 штук)</style> здоровья</style>. Одновременно можно призвать <style=cIsUtility>1<style=cStack>(+1 за штуку, до 4 включительно)</style></style>. Каждый <style=cIsUtility>член Племени рыси</style> предоставляет уникальный <style=cIsUtility>бафф</style> в <style=cIsUtility>{4}м</style> вокруг их.\r\n<style=cIsDamage>Лучник рыси</style> увеличивает <style=cIsDamage>урон на {5}</style>.\r\n<style=cIsHealing>Охотник рыси</style> увеличивает <style=cIsHealing>броню на {6}</style>.\r\n<style=cIsUtility>Следопыт рыси</style> увеличивает <style=cIsUtility>скорость передвижения и атаки на {7}</style>.\r\n<style=cIsHealth>Шаман рыси</style> увеличивает <style=cIsHealth>урон наносимый специальными способностями на {8}</style>.",
+		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>Преобразователь звука в текст «FIELDTECH» (версия v1.6.8a)\r\n# Ожидание ввода... завершено.\r\n# Считывание звука... завершено.\r\n# Расшифровка данных... завершено.\r\n# Перевод звука... завершено. [найдено 6 несоответствий]\r\nУспешно: отображение результатов.</style>\r\n\r\nМы отдаем этой Реликвии уважение, раньше их было много, теперь их нет.\r\nМы поклонялись балансу [Удалено] приносило миру. Когда [Удалено] звало, мы отвечали на зов.\r\nМы приносили [Удалено] дань, реликвии нашего племени. Кто-то приносил оружие, кто-то приносил еду, кто-то приносил игрушки, из ниток и ткани.\r\nВ один момент, появился другой. [Герой] говорил быстро, ведя нас в здание сделанное из камня и искр.\r\nМы потеряли связь с [Удалено], потеряли дома, потеряли реликвии, потеряли наш жизненный путь.\r\nИ по этой причине мы отдаем уважение этой Реликвии.\r\n\r\n<style=cMono>Ошибки перевода:</style>\r\n# [Герой] — не может быть полностью переведено.\r\n# Информация по [Удалено] доступна только членам экипажа с уровнем доступа Красный и выше."
 	}
 }
