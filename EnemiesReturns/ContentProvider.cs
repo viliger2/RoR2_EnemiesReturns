@@ -1185,7 +1185,6 @@ namespace EnemiesReturns
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Hunter.Stab));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState));
@@ -1237,7 +1236,6 @@ namespace EnemiesReturns
             masterList.Add(ScoutMasterAlly.MasterPrefab);
 
             ScoutBodyAlly.SpawnCards.cscLynxScoutAlly = scoutBodyAlly.CreateCard("cscLynxScoutAlly", ScoutMasterAlly.MasterPrefab, ScoutBodyAlly.SkinDefs.Ally, ScoutBodyAlly.BodyPrefab);
-
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
@@ -1351,18 +1349,17 @@ namespace EnemiesReturns
             };
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
 
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
+
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
         }
 
         private ExplicitPickupDropTable CreateLynxTotemItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1373,7 +1370,7 @@ namespace EnemiesReturns
             {
                 var fetishFactory = new LynxFetishFactory();
 
-                LynxFetishFactory.ItemDef = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), null); // TODO: icon
+                LynxFetishFactory.ItemDef = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), iconLookup["texLynxFetishIcon"]);
                 itemList.Add(LynxFetishFactory.ItemDef);
                 
                 dtLynxTotem = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
@@ -1503,14 +1500,15 @@ namespace EnemiesReturns
 
             ShamanBodyAlly.SpawnCards.cscLynxShamanAlly = shamanBodyAlly.CreateCard("cscLynxShamanAlly", ShamanMasterAlly.MasterPrefab, ShamanBodyAlly.SkinDefs.Ally, ShamanBodyAlly.BodyPrefab);
 
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.InitialDeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SingEmotePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTotemDeath));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
 
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
             stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
@@ -1540,6 +1538,7 @@ namespace EnemiesReturns
 
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.SpawnState));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
         }
         #endregion
 
