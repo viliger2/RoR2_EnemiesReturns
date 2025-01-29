@@ -9,6 +9,7 @@ using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
+using HG;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Totem
 {
@@ -426,6 +428,357 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>(); // TODO
             (idrs as ScriptableObject).name = "idrsLynxTotem";
+            #region FireElite
+            var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
+
+            var displayRuleGroupFire = new DisplayRuleGroup();
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = fireEquipDisplay,
+                childName = "BodyTop",
+                localPos = new Vector3(0.76329F, 0.62547F, 0.00056F),
+                localAngles = new Vector3(359.9644F, 344.8509F, 359.742F),
+                localScale = new Vector3(0.6F, 0.6F, 0.6F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = fireEquipDisplay,
+                childName = "BodyTop",
+                localPos = new Vector3(-0.82379F, 0.43643F, 0.00621F),
+                localAngles = new Vector3(-0.00311F, 11.37079F, 0.04467F),
+                localScale = new Vector3(-0.6F, 0.6F, 0.6F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = fireEquipDisplay,
+                childName = "ShamanHead",
+                localPos = new Vector3(0.07161F, 0.00957F, 0.11201F),
+                localAngles = new Vector3(12.68712F, 343.7514F, 356.4883F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = fireEquipDisplay,
+                childName = "ShamanHead",
+                localPos = new Vector3(-0.23389F, 0.00073F, 0.17249F),
+                localAngles = new Vector3(12.92738F, 29.19057F, 6.99305F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteFire/EliteFireEquipment.asset").WaitForCompletion(),
+                displayRuleGroup = displayRuleGroupFire,
+            });
+            #endregion
+
+            #region HauntedElite
+            var displayRuleGroupHaunted = new DisplayRuleGroup();
+            displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                childName = "BodyMiddle2",
+                localPos = new Vector3(0F, 0F, 0F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.62069F, 0.43975F, 0.43975F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                childName = "ShamanChest",
+                localPos = new Vector3(0F, 0.75248F, 0.04488F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupHaunted,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region IceElite
+            var displayRuleGroupIce = new DisplayRuleGroup();
+            displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(0F, 2.79952F, -0.43159F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                childName = "ShamanHead",
+                localPos = new Vector3(0F, 0.47267F, 0.00298F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupIce,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteIce/EliteIceEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region LightningElite
+            var displayRuleGroupLightning = new DisplayRuleGroup();
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(1.99687F, 0.75009F, 0.00357F),
+                localAngles = new Vector3(0F, 90F, 0F),
+                localScale = new Vector3(1.15579F, 1.15579F, 1.15579F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(-1.95838F, 0.86168F, 0.00179F),
+                localAngles = new Vector3(0F, 270F, 0F),
+                localScale = new Vector3(1.15F, 1.15F, 1.15F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(1.29815F, 0.25205F, 0.00479F),
+                localAngles = new Vector3(0F, 90F, 0F),
+                localScale = new Vector3(1.45F, 1.45F, 1.45F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(-1.28672F, 0.20786F, 0.00435F),
+                localAngles = new Vector3(0F, 270F, 0F),
+                localScale = new Vector3(1.45F, 1.45F, 1.45F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyMiddle2",
+                localPos = new Vector3(1.1576F, -0.00002F, 0F),
+                localAngles = new Vector3(0F, 90F, 0F),
+                localScale = new Vector3(1.45F, 1.45F, 1.45F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                childName = "BodyMiddle2",
+                localPos = new Vector3(-1.21847F, -0.00001F, 0F),
+                localAngles = new Vector3(0F, 270F, 0F),
+                localScale = new Vector3(1.45F, 1.45F, 1.45F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupLightning,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLightning/EliteLightningEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region LunarElite
+            var displayRuleGroupLunar = new DisplayRuleGroup();
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(0F, 1.19209F, -1.54352F),
+                localAngles = new Vector3(-0.00001F, 180F, 180F),
+                localScale = new Vector3(0.8F, 0.8F, 0.8F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupLunar,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLunar/EliteLunarEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region PoisonElite
+            var displayRuleGroupPoison = new DisplayRuleGroup();
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(0F, 1.97459F, 0.53381F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                childName = "ShamanMask",
+                localPos = new Vector3(0F, -0.24309F, -0.00397F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.15F, 0.15F, 0.15F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupPoison,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/ElitePoison/ElitePoisonEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region EliteEarth
+            var displayRuleGroupEarth = new DisplayRuleGroup();
+            displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(0F, 0F, 0F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(7.13422F, 7.13422F, 7.13422F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                childName = "ShamanHead",
+                localPos = new Vector3(0.00093F, 0.14427F, 0.04535F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(2F, 2F, 2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupEarth,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region VoidElite
+            var displayRuleGroupVoid = new DisplayRuleGroup();
+            displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(0F, 0.54748F, 0.55694F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(0.84412F, 0.84412F, 0.84412F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupVoid,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region BeadElite
+            var displayRuleGroupBead = new DisplayRuleGroup();
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(-2.27061F, 0.63286F, -0.12408F),
+                localAngles = new Vector3(0.00868F, 0.06395F, 63.83193F),
+                localScale = new Vector3(0.14951F, 0.08494F, 0.1116F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(2.39226F, 0.50044F, 0.00747F),
+                localAngles = new Vector3(0.18867F, 359.4086F, 306.608F),
+                localScale = new Vector3(0.14951F, 0.08494F, 0.1116F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                childName = "ShamanMask",
+                localPos = new Vector3(0F, -0.1428F, -0.00477F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(0.07196F, 0.05F, 0.06047F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupBead,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+            });
+            #endregion
+
+            #region GoldElite
+            var displayRuleGroupGold = new DisplayRuleGroup();
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                childName = "BodyLow",
+                localPos = new Vector3(-0.08902F, 0.78706F, 1.13371F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(4.38704F, 3.40115F, 3.40115F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                childName = "ShamanMask",
+                localPos = new Vector3(-0.00864F, -0.33865F, 0.26125F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupGold,
+                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+            });
+            #endregion
 
             return idrs;
         }
