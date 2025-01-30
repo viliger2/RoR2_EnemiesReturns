@@ -3,6 +3,8 @@
 
 * Added new Small-tier monster: Lynx Shaman.
 * Added new Boss-tier monster: Lynx Totem.
+* Fixed an issue where Infernal Lantern wouldn't work after stage transition until player picks up a new item.
+* Fixed an issue where Infernal Lantern proc type wouldn't work.
 * Implemented DamageSource for all enemies.
   * _This means that all enemies can benefit from items and effects that check if damage was made with specific ability, assuming the enemy has said ability of course._
 * Colossal fist
