@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 {
@@ -50,18 +51,16 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
-            RoR2.Inventory.onInventoryChangedGlobal += Inventory_onInventoryChangedGlobal;
+            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
         }
 
-        private static void Inventory_onInventoryChangedGlobal(Inventory inventory)
+        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            var master = inventory.GetComponent<CharacterMaster>();
-            if (master)
+            if (NetworkServer.active)
             {
-                var body = master.GetBody();
-                if (body)
+                if(body && body.inventory)
                 {
-                    body.AddItemBehavior<PillarItemBehavior>(inventory.GetItemCount(ItemDef));
+                    body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCount(ItemDef));
                 }
             }
         }

@@ -4,6 +4,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.Items.LynxFetish
 {
@@ -24,9 +25,20 @@ namespace EnemiesReturns.Items.LynxFetish
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
-            RoR2.Inventory.onInventoryChangedGlobal += Inventory_onInventoryChangedGlobal;
+            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
             LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLyxTribeCount);
             IL.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
+        }
+
+        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
+        {
+            if (NetworkServer.active)
+            {
+                if (body && body.inventory)
+                {
+                    body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(ItemDef));
+                }
+            }
         }
 
         private static void HealthComponent_TakeDamageProcess(MonoMod.Cil.ILContext il)
@@ -70,19 +82,6 @@ namespace EnemiesReturns.Items.LynxFetish
                 {
                     args.moveSpeedMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishScoutSpeedBuff.Value / 100f;
                     args.attackSpeedMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishScoutSpeedBuff.Value / 100f;
-                }
-            }
-        }
-
-        private static void Inventory_onInventoryChangedGlobal(Inventory inventory)
-        {
-            var master = inventory.GetComponent<CharacterMaster>();
-            if (master)
-            {
-                var body = master.GetBody();
-                if (body)
-                {
-                    body.AddItemBehavior<LynxFetishItemBehavior>(inventory.GetItemCount(ItemDef));
                 }
             }
         }

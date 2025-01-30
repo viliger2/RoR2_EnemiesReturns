@@ -21,6 +21,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         public static void Hooks()
         {
             PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
+            PillarExplosion = R2API.ProcTypeAPI.ReserveProcType();
         }
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)
