@@ -279,6 +279,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = fireEquipDisplay,
                 childName = "Head",
                 localPos = new Vector3(-0.31792F, 0.59662F, 0.01843F),
                 localAngles = new Vector3(13.20294F, 20.47717F, 358.386F),
@@ -395,7 +396,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 localScale = new Vector3(0.6F, 0.6F, 0.6F),
                 limbMask = LimbFlags.None
             });
-
 
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
