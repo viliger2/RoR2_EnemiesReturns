@@ -1,8 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Components;
+using EnemiesReturns.Items.LynxFetish;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using static RoR2.SpawnCard;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
@@ -14,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float summonDistance = 4f; // distance from body for summon
 
-        public static int summonCount => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeSummonCount.Value;
+        public static int summonCountBase => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeSummonCountPerCast.Value;
 
         public static int retryCount = 3;
 
@@ -32,6 +35,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         private bool tribeSummoned;
 
+        private int summonCount;
+
         private Transform stoneParticlesOrigin;
 
         private Transform summonEffectTransform;
@@ -39,6 +44,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void OnEnter()
         {
             base.OnEnter();
+
+            summonCount = summonCountBase;
+            var currentDeployableCount = characterBody.master.GetDeployableCount(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+            var deployableLimit = characterBody.master.GetDeployableSameSlotLimit(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+            if(deployableLimit > currentDeployableCount)
+            {
+                summonCount = Mathf.Min(deployableLimit - currentDeployableCount, summonCountBase);
+            }
+
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
 
@@ -154,6 +168,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                             inventory.GiveItem(RoR2Content.Items.HealthDecay, 30);
                             inventory.GiveItem(RoR2Content.Items.BoostDamage, 150);
                         }
+                    }
+
+                    var deployable = result.spawnedInstance.GetComponent<Deployable>();
+                    if (deployable)
+                    {
+                        var summonedMaster = result.spawnedInstance.GetComponent<CharacterMaster>();
+                        characterBody.master.AddDeployable(deployable, Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
                     }
                 }
             }

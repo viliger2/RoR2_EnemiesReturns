@@ -10,13 +10,15 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         protected class InstanceData : BaseSkillInstanceData
         {
             public EntityStateMachine bodyStateMachine;
+            public CharacterBody characterBody;
         }
 
         public override BaseSkillInstanceData OnAssigned([NotNull] GenericSkill skillSlot)
         {
             return new InstanceData
             {
-                bodyStateMachine = EntityStateMachine.FindByCustomName(skillSlot.gameObject, "Body")
+                bodyStateMachine = EntityStateMachine.FindByCustomName(skillSlot.gameObject, "Body"),
+                characterBody = skillSlot.gameObject.GetComponent<CharacterBody>()
             };
         }
 
@@ -24,16 +26,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             return (((InstanceData)skillSlot.skillInstanceData).bodyStateMachine.state is Burrowed);
         }
-
-        //public override bool CanExecute([NotNull] GenericSkill skillSlot)
-        //{
-        //    if (IsBurrowed(skillSlot))
-        //    {
-        //        return base.CanExecute(skillSlot);
-        //    }
-
-        //    return false;
-        //}
 
         public override bool IsReady([NotNull] GenericSkill skillSlot)
         {

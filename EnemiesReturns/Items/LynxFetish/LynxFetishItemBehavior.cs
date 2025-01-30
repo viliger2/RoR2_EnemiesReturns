@@ -67,8 +67,6 @@ namespace EnemiesReturns.Items.LynxFetish
                 return;
             }
 
-
-
             summonedMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamage.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamagePerStack.Value * Mathf.Max(0, stack - 4));
             summonedMaster.inventory.GiveItem(RoR2Content.Items.BoostHp, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHP.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHPPerStack.Value * Mathf.Max(0, stack - 4));
             if (ModCompats.RiskyModCompat.enabled)

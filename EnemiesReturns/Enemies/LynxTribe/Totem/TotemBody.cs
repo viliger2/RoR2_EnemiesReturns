@@ -76,7 +76,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         public SkillDef CreateSummonTribeSkill()
         {
             var iconSource = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoPassivePoison.asset").WaitForCompletion();
-            return CreateTotemSkill(new SkillParams("LynxTotemWeaponSummonTribe", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe)))
+            return CreateSummonTribeSkill(new SkillParams("LynxTotemWeaponSummonTribe", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe)))
             {
                 nameToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME",
                 descriptionToken = "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION",
@@ -806,6 +806,41 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdGolem.asset").WaitForCompletion();
+
+        protected SkillDef CreateSummonTribeSkill(SkillParams skillParams)
+        {
+            var skill = ScriptableObject.CreateInstance<SummonTribeSkillDef>();
+            (skill as ScriptableObject).name = skillParams.name;
+            skill.skillName = skillParams.name;
+
+            skill.skillNameToken = skillParams.nameToken;
+            skill.skillDescriptionToken = skillParams.descriptionToken;
+            skill.icon = skillParams.icon;
+
+            skill.activationStateMachineName = skillParams.activationStateMachine;
+            skill.activationState = skillParams.activationState;
+            skill.interruptPriority = skillParams.interruptPriority;
+
+            skill.baseRechargeInterval = skillParams.baseRechargeInterval;
+            skill.baseMaxStock = skillParams.baseMaxStock;
+            skill.rechargeStock = skillParams.rechargeStock;
+            skill.requiredStock = skillParams.requiredStock;
+            skill.stockToConsume = skillParams.stockToConsume;
+
+            skill.resetCooldownTimerOnUse = skillParams.resetCooldownTimerOnUse;
+            skill.fullRestockOnAssign = skillParams.fullRestockOnAssign;
+            skill.dontAllowPastMaxStocks = skillParams.dontAllowPAstMaxStocks;
+            skill.beginSkillCooldownOnSkillEnd = skillParams.beginSkillCooldownOnSkillEnd;
+
+            skill.canceledFromSprinting = skillParams.canceledFromSprinting;
+            skill.forceSprintDuringState = skillParams.forceSprintDuringState;
+            skill.canceledFromSprinting = skillParams.canceledFromSprinting;
+
+            skill.isCombatSkill = skillParams.isCombatSkill;
+            skill.mustKeyPress = skillParams.mustKeyPress;
+
+            return skill;
+        }
 
         protected SkillDef CreateTotemSkill(SkillParams skillParams)
         {

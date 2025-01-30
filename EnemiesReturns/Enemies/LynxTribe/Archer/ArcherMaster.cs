@@ -10,6 +10,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         public static GameObject MasterPrefab;
 
+        protected override bool AddDeployable => true;
+
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return new IAISkillDriver.AISkillDriverParams[]

@@ -9,6 +9,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
     {
         public static GameObject MasterPrefab;
 
+        protected override bool AddDeployable => true;
+
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return new IAISkillDriver.AISkillDriverParams[]

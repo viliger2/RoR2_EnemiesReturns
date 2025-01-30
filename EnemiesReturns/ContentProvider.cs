@@ -1293,6 +1293,8 @@ namespace EnemiesReturns
         {
             var totemStuff = new TotemStuff();
 
+            totemStuff.RegisterDeployableSlot();
+
             var shamanTotemSpawnEffect = totemStuff.CreateShamanTotemSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
             ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanTotemSpawnEffect;
             ModdedEntityStates.LynxTribe.Totem.SpawnState.leavesSpawnEffect = shamanTotemSpawnEffect;

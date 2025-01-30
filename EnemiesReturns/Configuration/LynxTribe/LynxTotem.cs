@@ -21,7 +21,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> LevelArmor;
 
         public static ConfigEntry<float> SummonTribeCooldown;
-        public static ConfigEntry<int> SummonTribeSummonCount;
+        public static ConfigEntry<int> SummonTribeSummonCountPerCast;
+        public static ConfigEntry<int> SummonTribeMaxCount;
 
         public static ConfigEntry<float> SummonStormCooldown;
         public static ConfigEntry<float> SummonStormMinRange;
@@ -92,7 +93,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LevelArmor = config.Bind("Lynx Totem Character Stats", "Armor per Level", 0f, "Lynx Totem' armor increase per level.");
 
             SummonTribeCooldown = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe Cooldown", 25f, "Lynx Totem's Summon Tribe cooldown.");
-            SummonTribeSummonCount = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe summon cooldown", 4, "Lynx Totem's Summon Tribe number of summoned tribesmen.");
+            SummonTribeSummonCountPerCast = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe Summon Count Per Use", 4, "Lynx Totem's Summon Tribe number of summoned tribesmen per ability use.");
+            SummonTribeMaxCount = config.Bind("Lynx Totem Summon Tribe", "Summon Tribe Summon Cap", 12, "Lynx Totem's Summon Tribe capacity. Once Totem reaches capacity it stops summoning tribesmen until at least one is dead.");
 
             SummonStormCooldown = config.Bind("Lynx Totem Summon Storm", "Summon Storm Cooldown", 35f, "Lynx Totem's Summon Storm cooldown.");
             SummonStormMinRange = config.Bind("Lynx Totem Summon Storm", "Lynx Totem Summon Storm Minimum Range", 10f, "Lynx Totem's Summon Storm's minimum range of spawning from target.");
