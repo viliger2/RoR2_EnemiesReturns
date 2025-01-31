@@ -37,9 +37,15 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private void TrySummonTribesmen()
         {
-            if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer > 15f)
+            if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer >= 15f)
             {
-                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(GetNextSpawnCard(), placementRule, RoR2Application.rng);
+                var nextSpawnCard = GetNextSpawnCard();
+                if(nextSpawnCard == null)
+                {
+                    spawnTimer = 0f;
+                    return;
+                }
+                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(nextSpawnCard, placementRule, RoR2Application.rng);
                 directorSpawnRequest.summonerBodyObject = base.gameObject;
                 directorSpawnRequest.onSpawnedServer = OnMasterSpawned;
                 DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
@@ -132,6 +138,11 @@ namespace EnemiesReturns.Items.LynxFetish
                 {
                     list.Add(LynxFetishFactory.spawnCards[i].spawnCard);
                 }
+            }
+
+            if(list.Count == 0)
+            {
+                return null;
             }
 
             // step 3. returning random spawn card
