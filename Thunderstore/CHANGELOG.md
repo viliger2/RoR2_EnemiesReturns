@@ -1,4 +1,11 @@
 <details>
+<summary>0.4.10</summary>
+
+* Lynx Fetish
+  * Fixed potential ArgumentOutOfRangeException.
+
+</details>
+<details>
 <summary>0.4.9</summary>
 
 * Added new Small-tier monster: Lynx Shaman.
