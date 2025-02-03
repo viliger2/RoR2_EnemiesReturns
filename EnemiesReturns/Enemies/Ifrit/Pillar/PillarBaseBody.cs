@@ -31,7 +31,6 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
         protected override bool AddSfxLocator => false;
         protected override bool AddSetStateOnHurt => false;
         protected override bool AddAimAnimator => false;
-        protected override bool AddDeployable => true;
         protected override string ModelName() => "IfritPillar";
 
         protected abstract float explosionRadius { get; }

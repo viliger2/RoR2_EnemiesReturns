@@ -26,7 +26,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)
         {
-            return EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
+            return EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillMaxPillarCount.Value;
         }
 
         public GameObject CreateDeathEffect()

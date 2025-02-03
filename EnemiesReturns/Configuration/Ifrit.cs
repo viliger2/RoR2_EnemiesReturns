@@ -68,6 +68,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> SpawnPillarOnChampionKillBodyBaseDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillBodyLevelDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillEliteChance;
+        public static ConfigEntry<int> SpawnPillarOnChampionKillMaxPillarCount;
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
@@ -150,6 +151,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.SpawnPillarOnChampionKillBodyBaseDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 12f, "Infernal Lantern pillar base damage. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 2.4f, "Infernal Lantern pillar damage per level. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("Infernal Lantern", "Infernal Lantern Elite Kill Spawn Chance", 20f, "Infernal Lantern chance to spawn on elite kill.");
+            Ifrit.SpawnPillarOnChampionKillMaxPillarCount = config.Bind("Infernal Lantern", "Infernal Lantern Max Pillar Count", 2, "Max summoned pillars count. When limit is reached new pillars won't be spawned until old ones despawn.");
 
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
         }

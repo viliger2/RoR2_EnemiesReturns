@@ -12,6 +12,8 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
         protected override bool AddAIOwnership => true;
 
+        protected override bool AddDeployable => true;
+
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             return Array.Empty<IAISkillDriver.AISkillDriverParams>();

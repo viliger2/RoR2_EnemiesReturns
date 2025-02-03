@@ -110,8 +110,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
                     if (spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))
                     {
-                        var body = deployableMaster.GetBody();
-                        if (body && body.gameObject.TryGetComponent<Deployable>(out var deployable)) // TODO: I think I fucked up with where deployable is supposed to be, but not gonna touch it for now
+                        var deployable = deployableMaster.GetComponent<Deployable>();
+                        if (deployable)
                         {
                             deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
                             characterBody.master.AddDeployable(deployable, IfritStuff.PylonDeployable);
