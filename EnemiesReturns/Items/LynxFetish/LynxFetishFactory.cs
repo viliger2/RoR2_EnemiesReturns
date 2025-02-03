@@ -3,6 +3,7 @@ using MonoMod.Cil;
 using RoR2;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,6 +23,8 @@ namespace EnemiesReturns.Items.LynxFetish
 
         public static IndexToCards[] spawnCards;
 
+        private static BodyIndex[] bodiesToIgnore;
+
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
@@ -34,8 +37,9 @@ namespace EnemiesReturns.Items.LynxFetish
         {
             if (NetworkServer.active)
             {
-                if (body && body.inventory)
-                {
+                // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
+                if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
+                { 
                     body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(ItemDef));
                 }
             }
@@ -96,16 +100,24 @@ namespace EnemiesReturns.Items.LynxFetish
 
             if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value && EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
             {
+                var archerIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Archer.ArcherBodyAlly.BodyPrefab);
+                var hunterIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Hunter.HunterBodyAlly.BodyPrefab);
+                var scoutIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Scout.ScoutBodyAlly.BodyPrefab);
+
                 spawnCards = new IndexToCards[]
                 {
-                    new IndexToCards{ bodyIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Archer.ArcherBodyAlly.BodyPrefab), spawnCard = Enemies.LynxTribe.Archer.ArcherBodyAlly.SpawnCards.cscLynxArcherAlly},
-                    new IndexToCards{ bodyIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Hunter.HunterBodyAlly.BodyPrefab), spawnCard = Enemies.LynxTribe.Hunter.HunterBodyAlly.SpawnCards.cscLynxHunterAlly},
-                    new IndexToCards{ bodyIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Scout.ScoutBodyAlly.BodyPrefab), spawnCard = Enemies.LynxTribe.Scout.ScoutBodyAlly.SpawnCards.cscLynxScoutAlly}
+                    new IndexToCards{ bodyIndex = archerIndex, spawnCard = Enemies.LynxTribe.Archer.ArcherBodyAlly.SpawnCards.cscLynxArcherAlly},
+                    new IndexToCards{ bodyIndex = hunterIndex, spawnCard = Enemies.LynxTribe.Hunter.HunterBodyAlly.SpawnCards.cscLynxHunterAlly},
+                    new IndexToCards{ bodyIndex = scoutIndex, spawnCard = Enemies.LynxTribe.Scout.ScoutBodyAlly.SpawnCards.cscLynxScoutAlly}
                 };
+
+                bodiesToIgnore = new BodyIndex[] { archerIndex, hunterIndex, scoutIndex };
 
                 if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
                 {
-                    HG.ArrayUtils.ArrayAppend(ref spawnCards, new IndexToCards { bodyIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Shaman.ShamanBodyAlly.BodyPrefab), spawnCard = Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly });
+                    var shamanIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Shaman.ShamanBodyAlly.BodyPrefab);
+                    HG.ArrayUtils.ArrayAppend(ref spawnCards, new IndexToCards { bodyIndex = shamanIndex, spawnCard = Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly });
+                    HG.ArrayUtils.ArrayAppend(ref bodiesToIgnore, shamanIndex);
                 }
             }
         }
@@ -131,7 +143,7 @@ namespace EnemiesReturns.Items.LynxFetish
             itemDef.pickupModelPrefab = prefab;
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.AIBlacklist };
+            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy };
 
             return itemDef;
         }

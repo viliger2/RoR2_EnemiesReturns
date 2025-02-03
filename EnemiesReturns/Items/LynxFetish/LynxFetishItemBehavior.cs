@@ -37,25 +37,28 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private void TrySummonTribesmen()
         {
-            if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer >= 15f)
+            if (body && body.master)
             {
-                var nextSpawnCard = GetNextSpawnCard();
-                if(nextSpawnCard == null)
+                if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer >= 15f)
                 {
-                    spawnTimer = 0f;
-                    return;
-                }
-                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(nextSpawnCard, placementRule, RoR2Application.rng);
-                directorSpawnRequest.summonerBodyObject = base.gameObject;
-                directorSpawnRequest.onSpawnedServer = OnMasterSpawned;
-                DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
-                if (body.master.GetDeployableCount(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) < body.master.GetDeployableSameSlotLimit(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable))
-                {
-                    spawnTimer = 14f;
-                }
-                else
-                {
-                    spawnTimer = 0f;
+                    var nextSpawnCard = GetNextSpawnCard();
+                    if (nextSpawnCard == null)
+                    {
+                        spawnTimer = 0f;
+                        return;
+                    }
+                    DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(nextSpawnCard, placementRule, RoR2Application.rng);
+                    directorSpawnRequest.summonerBodyObject = base.gameObject;
+                    directorSpawnRequest.onSpawnedServer = OnMasterSpawned;
+                    DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
+                    if (body.master.GetDeployableCount(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) < body.master.GetDeployableSameSlotLimit(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable))
+                    {
+                        spawnTimer = 14f;
+                    }
+                    else
+                    {
+                        spawnTimer = 0f;
+                    }
                 }
             }
         }
@@ -71,6 +74,15 @@ namespace EnemiesReturns.Items.LynxFetish
             if (!summonedMaster)
             {
                 return;
+            }
+
+            var bodyObject = summonedMaster.GetBodyObject();
+            if (bodyObject)
+            {
+                SetTeamFilter(bodyObject);
+            } else
+            {
+                summonedMaster.onBodyStart += SummonedMaster_onBodyStart;
             }
 
             summonedMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamage.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamagePerStack.Value * Mathf.Max(0, stack - 4));
@@ -95,6 +107,21 @@ namespace EnemiesReturns.Items.LynxFetish
             {
                 deployable.onUndeploy.AddListener(summonedMaster.TrueKill);
                 body.master.AddDeployable(deployable, LynxFetishFactory.LynxFetishDeployable);
+            }
+        }
+
+        private void SummonedMaster_onBodyStart(CharacterBody body)
+        {
+            SetTeamFilter(body.gameObject);
+            body.master.onBodyStart -= SummonedMaster_onBodyStart;
+        }
+
+        private void SetTeamFilter(GameObject bodyObject)
+        {
+            var teamFilter = bodyObject.GetComponent<TeamFilter>();
+            if (teamFilter)
+            {
+                teamFilter.teamIndex = this.body.teamComponent.teamIndex;
             }
         }
 

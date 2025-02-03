@@ -24,7 +24,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
 
-            result.AddComponent<TeamFilter>().defaultTeam = TeamIndex.Player;
+            result.AddComponent<TeamFilter>().defaultTeam = TeamIndex.None;
 
             var buffWard = result.AddComponent<BuffWard>();
             buffWard.shape = BuffWard.BuffWardShape.VerticalTube;
