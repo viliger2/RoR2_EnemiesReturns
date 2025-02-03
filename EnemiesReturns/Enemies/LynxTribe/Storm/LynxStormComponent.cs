@@ -79,9 +79,12 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 
         public void SetStormTransform(GameObject storm)
         {
-            this.storm = storm;
-            moveTarget.transform.parent = storm.transform;
-            moveTarget.transform.localPosition = Vector3.zero;
+            if (storm && moveTarget)
+            {
+                this.storm = storm;
+                moveTarget.transform.parent = storm.transform;
+                moveTarget.transform.localPosition = Vector3.zero;
+            }
         }
 
         private void FixedUpdate()
