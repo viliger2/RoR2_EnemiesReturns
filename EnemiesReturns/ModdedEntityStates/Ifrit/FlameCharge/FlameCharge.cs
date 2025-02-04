@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -62,13 +63,13 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private OverlapAttack chargeAttack;
 
-        private float bulletAttackStopwatch;
-
         private DamageTrail fireTrail;
 
         private FootstepHandler footstepHandler;
 
         private string baseFootstepString;
+
+        private List<HurtBox> hits = new List<HurtBox>();
 
         public override void OnEnter()
         {
@@ -108,7 +109,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             }
         }
 
-        // TODO: force to Ifrit's size instead of world forward or whatever it is
         private void SetupChargeAttack(Transform modelTransform, bool isCrit)
         {
             chargeAttack = new OverlapAttack();
@@ -118,7 +118,6 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             chargeAttack.damage = chargeDamageCoefficient * damageStat;
             chargeAttack.hitEffectPrefab = bodyImpactEffect;
             chargeAttack.isCrit = isCrit;
-            chargeAttack.forceVector = Vector3.forward * chargeForce;
             chargeAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "BodyCharge");
             chargeAttack.procCoefficient = chargeProcCoef;
             chargeAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
@@ -134,10 +133,9 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             flameAttack.damage = flameDamageCoefficient * damageStat;
             flameAttack.hitEffectPrefab = flameImpactEffect;
             flameAttack.isCrit = isCrit;
-            flameAttack.forceVector = Vector3.forward * flameForce;
             flameAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "FlameCharge");
             flameAttack.procCoefficient = flameProcCoef;
-            flameAttack.retriggerTimeout = (1 / flameTickFrequency) * 2;
+            flameAttack.retriggerTimeout = (1 / flameTickFrequency);
         }
 
         public override void FixedUpdate()
@@ -152,21 +150,21 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             animator.SetFloat(AnimationParameters.forwardSpeed, value);
             if (isAuthority)
             {
-                chargeAttack.Fire();
-                bulletAttackStopwatch += Time.fixedDeltaTime;
-                if (bulletAttackStopwatch > 1f / flameTickFrequency)
-                {
-                    bulletAttackStopwatch -= 1f / flameTickFrequency;
-                    flameAttack.damageType = new DamageTypeCombo((Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic), DamageTypeExtended.Generic, DamageSource.Utility);
-                    flameAttack.Fire();
+                chargeAttack.Fire(hits);
+                ProccessForceHits(hits, characterDirection.targetTransform, chargeForce);
+                hits.Clear();
 
-                    if (ledgeHandling && !characterBody.isPlayerControlled)
+                flameAttack.damageType = new DamageTypeCombo((Util.CheckRoll(flameIgnitePercentChance, base.characterBody.master) ? DamageType.IgniteOnHit : DamageType.Generic), DamageTypeExtended.Generic, DamageSource.Utility);
+                flameAttack.Fire(hits);
+                ProccessForceHits(hits, characterDirection.targetTransform, flameForce);
+                hits.Clear();
+
+                if (ledgeHandling && !characterBody.isPlayerControlled)
+                {
+                    var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
+                    if (!result || hitinfo.distance > heightCheck)
                     {
-                        var result = Physics.Raycast(ledgeHandling.position, Vector3.down, out var hitinfo, Mathf.Infinity, LayerIndex.world.mask);
-                        if (!result || hitinfo.distance > heightCheck)
-                        {
-                            outer.SetNextState(new FlameChargeEnd());
-                        }
+                        outer.SetNextState(new FlameChargeEnd());
                     }
                 }
             }
@@ -177,6 +175,22 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             }
 
             base.FixedUpdate();
+        }
+
+        private void ProccessForceHits(List<HurtBox> hits, Transform sourceTransform, float force)
+        {
+            foreach(var hit in hits)
+            {
+                var distanceFromRight = Vector3.Distance(hit.healthComponent.transform.position, sourceTransform.position + sourceTransform.right);
+                var distanceFromLeft = Vector3.Distance(hit.healthComponent.transform.position, sourceTransform.position - sourceTransform.right);
+                if(distanceFromLeft > distanceFromRight)
+                {
+                    hit.healthComponent.TakeDamageForce(sourceTransform.right * force);
+                } else
+                {
+                    hit.healthComponent.TakeDamageForce(-sourceTransform.right * force);
+                }
+            }
         }
 
         private void SpawnEffect()
