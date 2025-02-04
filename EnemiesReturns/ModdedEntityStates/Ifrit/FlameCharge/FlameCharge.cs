@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         public static float chargeDuration => EnemiesReturns.Configuration.Ifrit.FlameChargeDuration.Value;
 
-        public static float turnSpeed => EnemiesReturns.Configuration.Ifrit.TurnSpeed.Value;
+        public static float turnSpeed => EnemiesReturns.Configuration.Ifrit.FlameChargeTurnSpeed.Value;
 
         public static float chargeMovementSpeedCoefficient => EnemiesReturns.Configuration.Ifrit.FlameChargeSpeedCoefficient.Value;
 
