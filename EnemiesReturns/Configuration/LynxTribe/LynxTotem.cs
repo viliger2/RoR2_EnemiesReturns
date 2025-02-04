@@ -59,6 +59,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> LynxFetishScoutSpeedBuff;
         public static ConfigEntry<float> LynxFetishShamanSpecialBuff;
 
+        public static ConfigEntry<bool> AddToArtifactOfOrigin;
+
         public static void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Lynx Totem Director", "Enable Lynx Totem", true, "Enables Lynx Totem.");
@@ -131,6 +133,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxFetishHunterArmorBuff = config.Bind("Lynx Fetish", "Spawned Hunter Armor Buff Value", 20f, "Armor buff value of spawned Hunter.");
             LynxFetishScoutSpeedBuff = config.Bind("Lynx Fetish", "Spawned Scout Attack and Movement Speed Buff Value", 15f, "Attack and Movement speed buff value of spawned Scout in percent.");
             LynxFetishShamanSpecialBuff = config.Bind("Lynx Fetish", "Spawned Shaman Special Ability Damage Buff Value", 30f, "Damage buff of special ability value of spawned Shaman in percent.");
+
+            AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
         }
     }
 }
