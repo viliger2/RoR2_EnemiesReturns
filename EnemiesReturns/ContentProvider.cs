@@ -1408,6 +1408,11 @@ namespace EnemiesReturns
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
             stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
+
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
+            {
+                ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault, 1);
+            }
         }
 
         private ExplicitPickupDropTable CreateLynxTotemItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
