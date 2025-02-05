@@ -6,6 +6,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using R2API;
@@ -154,6 +155,10 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var mdlColossus = body.transform.Find("ModelBase/" + ModelName()).gameObject;
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
+
+            //var helper = body.AddComponent<WalkSpeedDebugHelper>();
+            //helper.animator = body.transform.Find("ModelBase/mdlColossus").GetComponent<Animator>();
+            //helper.animationParameters = new string[] { "walkSpeedDebug" };
 
             return body;
         }

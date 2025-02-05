@@ -66,11 +66,11 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> LaserBarrageProjectileSpeed;
         public static ConfigEntry<float> LaserBarrageForce;
         public static ConfigEntry<float> LaserBarrageSpread;
-        public static ConfigEntry<float> LaserBarrageHeadPitch;
         public static ConfigEntry<int> LaserBarrageProjectileCount;
         public static ConfigEntry<float> LaserBarrageExplosionRadius;
         public static ConfigEntry<float> LaserBarrageExplosionDamage;
         public static ConfigEntry<float> LaserBarrageExplosionDelay;
+        public static ConfigEntry<float> LaserBarrageMoveSpeedMultiplier;
 
         public static ConfigEntry<bool> ItemEnabled;
         public static ConfigEntry<float> KnurlDamage;
@@ -188,16 +188,16 @@ namespace EnemiesReturns.Configuration
 
             Colossus.LaserBarrageCooldown = config.Bind("Colossus Laser Barrage", "Laser Barrage Cooldown", 45f, "Colossus' Laser Barrage cooldown.");
             Colossus.LaserBarrageDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Damage", 0.5f, "Colossus' Laser Barrage damage.");
-            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 5f, "Colossus' Laser Barrage duration.");
+            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 10f, "Colossus' Laser Barrage duration.");
             Colossus.LaserBarrageProjectileSpeed = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectile Speed", 50f, "Colossus' Laser Barrage projectile speed.");
             Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.2f, "Colossus' Laser Barrage fire frequency.");
             Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.15f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
-            Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.05f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
             Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");
             Colossus.LaserBarrageProjectileCount = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectiles per Shot", 8, "Colossus' Laser Barrage projectiles per shot count.");
             Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 10f, "Colossus' Laser Barrage explosion radius.");
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
+            LaserBarrageMoveSpeedMultiplier = config.Bind("Colossus Laser Barrage", "Laser Barrage Movespeed Multiplier", 0.5f, "Colossus' Laser Barrage movespeed multiplier of normal movespeed.");
 
             Colossus.ItemEnabled = config.Bind("Colossal Fist", "Enable Colossal Fist", true, "Enables Colossal Fist to drop from Colossus and appear in printers.");
             Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 5f, "Colossal Fist' damage");
