@@ -236,7 +236,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         public GameObject CreateGroundpoundPoundEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("LynxTotemGroundpoundEffect", false);
 
             var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
             shakeEmitter.duration = 0.5f;
@@ -254,7 +254,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 main.scalingMode = ParticleSystemScalingMode.Hierarchy;
             }
 
-            var scale = 5.5f * (EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundRadius.Value / 25f);
+            var scale = 4.0f * (EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundRadius.Value / 25f);
             clonedEffect.transform.localScale = new Vector3(scale, scale, scale);
 
             return clonedEffect;
