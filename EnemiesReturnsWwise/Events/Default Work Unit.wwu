@@ -241,6 +241,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Colossus_Landing_Play" ID="{93DA65A1-39D6-4B4E-BA0A-CDAC76C14678}">
+									<ChildrenList>
+										<Action Name="" ID="{2472199F-1E1A-42B9-AA35-D9990F4F5CBF}" ShortID="340086872">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Land" ID="{CF758CA5-A1B4-411B-B848-E861C9F508C3}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Ifrit" ID="{84F2140A-F343-4030-A929-0BBC9690A422}" ShortID="981367310">
@@ -448,6 +459,17 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="Ifrit_Portal_Spawn" ID="{B30459E9-51FC-40F2-BE8C-BBB9A7283ACF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Ifrit_Landing_Play" ID="{830C3869-6A56-4A9A-8A59-86ED05312C57}">
+									<ChildrenList>
+										<Action Name="" ID="{BF0F0F1E-20C9-4F22-AD85-D190B4E7B841}" ShortID="416289187">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Ifrit_Land" ID="{09DA6377-60A8-4D01-A2F3-BE8B5CDBC85A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -1125,6 +1147,17 @@
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="Totem_Unburrow" ID="{3EFA81EA-40B4-4709-B863-97846A100433}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Totem_Landing_PLay" ID="{6C99A322-F73D-4D62-B53D-7FE0A7B0A2A0}">
+											<ChildrenList>
+												<Action Name="" ID="{24EB2AFB-4925-4C38-8525-5ECECBDBA3C4}" ShortID="485877233">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Totem_Land" ID="{0F677885-E277-499C-B527-15606CBC186A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>

@@ -917,6 +917,35 @@
 												</Sound>
 											</ChildrenList>
 										</ActorMixer>
+										<Sound Name="Colossus_Land" ID="{CF758CA5-A1B4-411B-B848-E861C9F508C3}" ShortID="469035156">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="mDeathImpactGiantSnowA" ID="{97BA65E2-8166-4A75-ADD4-0BECEAD7DDD3}">
+													<Language>SFX</Language>
+													<AudioFile>Colossus\mDeathImpactGiantSnowA.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="50837913"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="mDeathImpactGiantSnowA" ID="{97BA65E2-8166-4A75-ADD4-0BECEAD7DDD3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Ifrit" ID="{133CFACA-5D3B-49CB-B50F-C11B6F3E6689}" ShortID="821048277">
@@ -1284,6 +1313,8 @@
 										</Sound>
 										<Sound Name="Ifrit_Summon_Pillar" ID="{D85BFF2A-26FB-4509-9993-14EBEA011752}" ShortID="45952534">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-2</Value>
@@ -1291,6 +1322,9 @@
 												</Property>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="LongerThanNormal" ID="{4F242143-B2BC-48DF-8250-AE7C902E9B46}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 												</Reference>
@@ -1653,6 +1687,35 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="GO_CreatureSpellPortalLarge_Stand_01" ID="{98C97EEE-717D-4547-A921-A665FB7390C5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Ifrit_Land" ID="{09DA6377-60A8-4D01-A2F3-BE8B5CDBC85A}" ShortID="94184953">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="mDeathImpactGiantGrassA" ID="{C6412C43-1F0A-4DEB-8E14-746F0A99AF2A}">
+													<Language>SFX</Language>
+													<AudioFile>Ifrit\mDeathImpactGiantGrassA.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="776462330"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="mDeathImpactGiantGrassA" ID="{C6412C43-1F0A-4DEB-8E14-746F0A99AF2A}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -3778,6 +3841,35 @@
 													</ChildrenList>
 													<ActiveSourceList>
 														<ActiveSource Name="unburrow" ID="{180FFB59-8DA5-472C-9546-F74375A43902}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Totem_Land" ID="{0F677885-E277-499C-B527-15606CBC186A}" ShortID="906498100">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="mDeathImpactGiantDirtA" ID="{B0918F44-4DFC-4886-9B14-B867C0137315}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\mDeathImpactGiantDirtA.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="408531612"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="mDeathImpactGiantDirtA" ID="{B0918F44-4DFC-4886-9B14-B867C0137315}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
