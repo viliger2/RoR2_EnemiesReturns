@@ -98,7 +98,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                         var orb = new LynxStormOrb();
                         orb.origin = orbOrigin.position;
                         orb.targetObject = storms[i];
-                        orb.duration = 0.4f;
+                        orb.duration = 2f;
                         OrbManager.instance.AddOrb(orb);
                     }
                     effectTimer -= effectSpawn;
@@ -166,40 +166,82 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
                     List<GameObject> stormList = new List<GameObject>();
 
-                    var stormCount = 0;
-                    foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+                    if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormOldBehavior.Value)
                     {
-                        if (!playerCharacterMaster.isConnected)
+                        var stormCount = 0;
+                        foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
                         {
-                            continue;
+                            if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                            {
+                                continue;
+                            }
+
+                            var body = playerCharacterMaster.master.GetBody();
+                            if (!body || !body.healthComponent || !body.healthComponent.alive)
+                            {
+                                continue;
+                            }
+
+                            if (maxStormCount >= 0 && stormCount >= maxStormCount)
+                            {
+                                return;
+                            }
+
+                            stormList.Add(SummonStormAI(body));
+                            stormCount++;
+                        }
+                    }
+                    else
+                    {
+                        bool stormSummoned = false;
+                        foreach (var ai in characterBody.master.aiComponents)
+                        {
+                            if (!ai.currentEnemy.characterBody)
+                            {
+                                continue;
+                            }
+
+                            stormList.Add(SummonStormAI(ai.currentEnemy.characterBody));
+                            stormSummoned = true;
                         }
 
-                        if (maxStormCount >= 0 && stormCount >= maxStormCount)
+                        if (!stormSummoned)
                         {
-                            return;
-                        }
+                            CharacterBody targetBody = null;
+                            float distance = float.MaxValue;
+                            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+                            {
+                                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                                {
+                                    continue;
+                                }
 
-                        stormList.Add(SummonStormAI(playerCharacterMaster));
-                        stormCount++;
+                                var body = playerCharacterMaster.master.GetBody();
+                                if (!body || !body.healthComponent || !body.healthComponent.alive)
+                                {
+                                    continue;
+                                }
+
+                                var distanceToCurrentBody = Vector3.Distance(base.transform.position, body.transform.position);
+                                if(distanceToCurrentBody < distance)
+                                {
+                                    distance = distanceToCurrentBody;
+                                    targetBody = body;
+                                }
+                            }
+                            if (targetBody)
+                            {
+                                stormList.Add(SummonStormAI(targetBody));
+                            }
+                        }
                     }
                     storms = stormList.ToArray();
                 }
             }
         }
 
-        private GameObject SummonStormAI(PlayerCharacterMasterController playerMasterController)
+        private GameObject SummonStormAI(CharacterBody body)
         {
-            if (!playerMasterController.master)
-            {
-                return null;
-            }
-
-            var body = playerMasterController.master.GetBody();
-            if (!body)
-            {
-                return null;
-            }
-
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscStorm, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,

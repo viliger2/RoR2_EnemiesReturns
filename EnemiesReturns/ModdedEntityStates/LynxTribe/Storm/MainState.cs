@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterAI;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -26,17 +27,42 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
         private float maxPullDistance;
 
+        private CharacterMaster owner;
+
         public override void OnEnter()
         {
             base.OnEnter();
             pullSphereSearch = new SphereSearch();
             cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
             maxPullDistance = stormRadius * maxPullDistanceCoefficient;
+            var aiOwnership = characterBody.master.GetComponent<AIOwnership>();
+            if (aiOwnership)
+            {
+                owner = aiOwnership.ownerMaster;
+            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (NetworkServer.active) 
+            {
+                if (owner)
+                {
+                    var ownerBody = owner.GetBody();
+                    if (!ownerBody)
+                    {
+                        // if we have master, but master has no body, means the owner is dead\doesn't exist in game space
+                        fixedAge += lifetime;
+                    }
+
+                    if(ownerBody.healthComponent && !ownerBody.healthComponent.alive)
+                    {
+                        fixedAge += lifetime; 
+                    }
+                }
+            }
+
             var position = transform.position;
             var hurtBoxes = SearchForTargets();
             foreach (var hurtbox in hurtBoxes)
@@ -60,39 +86,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                 }
             }
 
-            if (fixedAge >= lifetime)
+            if (fixedAge >= lifetime && NetworkServer.active)
             {
-                DestroyModel();
-                if (NetworkServer.active)
-                {
-                    DestroyMaster();
-                    DestroyBody();
-                }
-            }
-        }
-
-        private void DestroyBody()
-        {
-            if (base.gameObject)
-            {
-                NetworkServer.Destroy(base.gameObject);
-            }
-        }
-
-        private void DestroyMaster()
-        {
-            if (base.characterBody && base.characterBody.master)
-            {
-                NetworkServer.Destroy(base.characterBody.masterObject);
-            }
-        }
-
-        private void DestroyModel()
-        {
-            if ((bool)cachedModelTransform)
-            {
-                EntityState.Destroy(cachedModelTransform.gameObject);
-                cachedModelTransform = null;
+                characterBody.healthComponent.Suicide();
             }
         }
 
