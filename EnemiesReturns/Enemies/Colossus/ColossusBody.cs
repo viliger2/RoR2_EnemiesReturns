@@ -262,6 +262,14 @@ namespace EnemiesReturns.Enemies.Colossus
             };
         }
 
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                landingSound = "ER_Colossus_Landing_Play",
+            };
+        }
+
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
             var modelRenderer = modelPrefab.transform.Find("Colossus").gameObject.GetComponent<SkinnedMeshRenderer>();

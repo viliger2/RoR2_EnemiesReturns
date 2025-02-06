@@ -407,7 +407,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
         {
             return new ISfxLocator.SfxLocatorParams()
             {
-                deathSound = "ER_Totem_Death_Play"
+                deathSound = "ER_Totem_Death_Play",
+                landingSound = "ER_Totem_Landing_PLay"
             };
         }
 

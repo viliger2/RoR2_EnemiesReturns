@@ -193,6 +193,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             return new ISfxLocator.SfxLocatorParams()
             {
+                landingSound = "ER_Ifrit_Landing_Play",
                 deathSound = "ER_Ifrit_Death_Play"
             };
         }
