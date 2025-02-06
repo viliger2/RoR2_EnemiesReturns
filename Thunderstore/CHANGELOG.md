@@ -1,4 +1,40 @@
 <details>
+<summary>0.4.11</summary>
+
+* Ifrit
+  * Patched up some holes in Ifrit's face. Thanks [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)!
+  * Added landing sound.
+  * Infernal Lantern
+    * Summoned pillars are now limited to 2. This can be changed in the config.
+  * Summon Pillars
+    * Added material overlay similar to Ocular HUD.
+	* Extended sound range Ifrit's roar on pillar summon to 250m (was 180m).
+	  * _These changes are intended to provide better visibility to pillars, a bit too many times I've seen people just die to pillars they didn't know were there._
+  * Charge
+    * Now pushes targets left or right from Ifrit, depending on their position relative to Ifrit's centre.   
+	* Lowered turn speed to 200 (was 300). Now uses a separate config value.
+  * Hellzone
+    * Now uses current AI target's position if initial bullseye search fails to find a target.
+* Lynx Totem
+  * Added to Artifact of Origin.
+  * Added landing sound.
+  * Lynx Fetish
+    * Fixed an issue where Lynx tribesmen summoned by the item would always provide buffs to player team instead of team that summoned them.
+  * Summon Storms
+    * Fixed potential NullReferenceException on storm grabbing the target.
+	* Behavior changed: now always summons one storm on AI's current target or if it doesn't have a target, then at player that is closest to it. Old behavior can be enabled in the config.
+	* Storms now die when Totem dies.
+  * Groundpound
+    * Scalled VFX down to match hitbox more closely.  
+* Spitter
+  * Patched up some holes in Spitter's guts. Thanks [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)!
+* Colossus
+  * Added landing sound.
+  * Laser Barrage
+    * Colossus now slowly moves forward and actively aims at his current target instead of standing still and sweeping from left to right (or was it right to left?).
+	* Duration extended to 10s (was 5s).
+</details>
+<details>
 <summary>0.4.10</summary>
 
 * Lynx Fetish
