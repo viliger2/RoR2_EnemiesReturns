@@ -173,7 +173,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     var deployable = result.spawnedInstance.GetComponent<Deployable>();
                     if (deployable)
                     {
-                        var summonedMaster = result.spawnedInstance.GetComponent<CharacterMaster>();
                         characterBody.master.AddDeployable(deployable, Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
                     }
                 }

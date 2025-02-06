@@ -148,6 +148,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
             float value = moveSpeedStat * chargeMovementSpeedCoefficient;
             base.characterMotor.moveDirection = forward * chargeMovementSpeedCoefficient;
             animator.SetFloat(AnimationParameters.forwardSpeed, value);
+
             if (isAuthority)
             {
                 chargeAttack.Fire(hits);

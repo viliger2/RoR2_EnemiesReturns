@@ -66,7 +66,6 @@ namespace EnemiesReturns.Behaviors
             // second pass - we try to add elites to evert spawn card
             // we do this by checking if we have enough credits to spawn current card as elite,
             // if we don't then we send the remaining credits to the next monster
-            // TODO: maybe do one last pass on first monster with remaining credits from all monsters in case first monster is not elite?
             float remainingCredits = 0f;
             for (int i = 0; i < spawnCount; i++)
             {

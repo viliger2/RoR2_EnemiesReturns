@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
-    // TODO: grab current AI target instead of finding one through bullseyesearch
     public class FireHellzoneStart : BaseState
     {
         public static float baseDuration = 1.8f;
@@ -59,9 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
                         predictor = new Predictor(base.transform);
                         predictor.SetTargetTransform(ai.currentEnemy.characterBody.transform);
                     }
-
                 }
-
             }
         }
 
