@@ -44,6 +44,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DroneLevelRegen;
         public static ConfigEntry<int> DroneBonusHP;
         public static ConfigEntry<int> DroneBonusDamage;
+        public static ConfigEntry<bool> DroneUseInitialStageCostCoef;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -111,6 +112,7 @@ namespace EnemiesReturns.Configuration
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
             DroneBonusHP = config.Bind("Mechanical Spider Drone", "Bonus HP Boost", 20, "Bonus health boost from base stats (the same as normal spider), boosts by 10% for each value.");
             DroneBonusDamage = config.Bind("Mechanical Spider Drone", "Bonus Damage Boost", 10, "Bonus damage boost from base stats (the same as normal spider), boosts by 10% for each value.");
+            DroneUseInitialStageCostCoef = config.Bind("Mechanical Spider Drone", "Use Initial Stage Cost Coefficient", false, "Use initial stage coefficient for price. Basically it means that the cost of spider drone won't scale with time on current stage, using the same price coefficient that was used when initial interactables were spawned. So if spider drone spawns the moment you enter a stage or 5 minutes into it price will be the same.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }

@@ -113,7 +113,14 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                         var eliteTier = CombatDirector.eliteTiers.First(tier => tier.eliteTypes.Contains(eliteDef));
                         eliteModifier = eliteTier.costMultiplier * EnemiesReturns.Configuration.MechanicalSpider.DroneEliteCostMultiplier.Value;
                     }
-                    purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier));
+                    if (EnemiesReturns.Configuration.MechanicalSpider.DroneUseInitialStageCostCoef.Value)
+                    {
+                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier), Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.initialStageDifficultyCoefficient);
+                    }
+                    else
+                    {
+                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier));
+                    }
                 }
             }
         }

@@ -105,6 +105,7 @@ namespace EnemiesReturns
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             MechanicalSpiderVictoryDanceController.Hooks();
+            Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             // using single R2API recalcstats hook for the sake of performance
