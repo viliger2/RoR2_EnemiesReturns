@@ -50,6 +50,7 @@ namespace EnemiesReturns.Items.LynxFetish
                     DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(nextSpawnCard, placementRule, RoR2Application.rng);
                     directorSpawnRequest.summonerBodyObject = base.gameObject;
                     directorSpawnRequest.onSpawnedServer = OnMasterSpawned;
+                    directorSpawnRequest.ignoreTeamMemberLimit = true;
                     DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
                     if (body.master.GetDeployableCount(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) < body.master.GetDeployableSameSlotLimit(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable))
                     {
