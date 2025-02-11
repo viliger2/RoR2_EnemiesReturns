@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
-    public class LynxArcher
+    public class LynxArcher : IConfiguration
     {
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
@@ -26,7 +26,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
         public static ConfigEntry<KeyCode> SingEmoteKey;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             SelectionWeight = config.Bind("Lynx Archer Director", "Selection Weight", 1, "Selection weight of Lynx Archer.");
             DirectorCost = config.Bind("Lynx Archer Director", "Director Cost", 28, "Director cost of Lynx Archer.");

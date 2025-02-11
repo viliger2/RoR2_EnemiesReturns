@@ -3,7 +3,7 @@ using R2API;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class Ifrit
+    public class Ifrit : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -73,7 +73,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Ifrit.Enabled = config.Bind("Ifrit Director", "Enable Ifrit", true, "Enables Ifrit.");
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");

@@ -102,15 +102,6 @@ namespace EnemiesReturns.Behaviors
             };
 
             R2API.Networking.NetworkingHelpers.DealDamage(damageInfo, hurtBox, true, true, true); // wow I really hate this
-
-            //if (NetworkServer.active)
-            //{
-            //    PerformDamageServer(body);
-            //}
-            //else
-            //{
-            //    CmdPerformDamage(body.netId.Value);
-            //}
         }
 
         [Command]

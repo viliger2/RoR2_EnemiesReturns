@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
-    public static class LynxShaman
+    public class LynxShaman : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -42,7 +42,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<KeyCode> NopeEmoteKey;
         public static ConfigEntry<KeyCode> SingEmoteKey;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Lynx Shaman Director", "Enable Lynx Shaman", true, "Enables Lynx Shaman.");
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");

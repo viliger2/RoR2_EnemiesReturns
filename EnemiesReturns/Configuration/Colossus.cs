@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class Colossus
+    public class Colossus : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -91,7 +91,7 @@ namespace EnemiesReturns.Configuration
         //public static ConfigEntry<int> KnurlArmor;
         //public static ConfigEntry<int> KnurlArmorPerStack;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Colossus.Enabled = config.Bind("Colossus Director", "Enable Colossus", true, "Enables Colossus.");
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");

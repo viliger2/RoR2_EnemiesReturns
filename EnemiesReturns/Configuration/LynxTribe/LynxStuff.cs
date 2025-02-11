@@ -3,7 +3,7 @@ using R2API;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
-    public class LynxStuff
+    public class LynxStuff : IConfiguration
     {
         public static ConfigEntry<bool> LynxShrineEnabled;
 
@@ -24,7 +24,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<bool> LynxTrapAssignRewards;
         public static ConfigEntry<float> LynxTrapCheckInterval;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             LynxShrineEnabled = config.Bind("Lynx Shrine Spawn", "Enable Lynx Shrine", true, "Enables Lynx Shrine. Has no effect if Lynx Totem is disabled.");
             LynxShrineDirectorCost = config.Bind("Lynx Shrine Spawn", "Lynx Shrine Director Cost", 20, "Lynx Shrine's director cost. The same as other shrines by default.");

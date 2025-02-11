@@ -3,7 +3,7 @@ using R2API;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
-    public class LynxTotem
+    public class LynxTotem : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -62,7 +62,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Lynx Totem Director", "Enable Lynx Totem", true, "Enables Lynx Totem.");
             SelectionWeight = config.Bind("Lynx Totem Director", "Selection Weight", 1, "Selection weight of Lynx Totem.");

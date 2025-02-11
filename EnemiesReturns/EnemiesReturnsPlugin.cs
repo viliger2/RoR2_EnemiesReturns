@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
@@ -12,6 +13,8 @@ using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -50,19 +53,15 @@ namespace EnemiesReturns
 
             Log.Init(Logger);
 
+            var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
+
             if (UseConfigFile.Value)
             {
-                // TODO: better way to do this, probably with reflection
-                EnemiesReturns.Configuration.Spitter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Spitter.cfg"), true));
-                EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
-                EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
-                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.MechanicalSpider.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxShaman.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxScout.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxHunter.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxArcher.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxTotem.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxTotem.cfg"), true));
-                EnemiesReturns.Configuration.LynxTribe.LynxStuff.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.LynxStuff.cfg"), true));
+                foreach(var configType in configs)
+                {
+                    var config = (IConfiguration)System.Activator.CreateInstance(configType);
+                    config.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.{config.GetType().Name}.cfg"), true));
+                }
             }
             else
             {
@@ -71,16 +70,11 @@ namespace EnemiesReturns
                     SaveOnConfigSet = false,
                 };
 
-                EnemiesReturns.Configuration.Spitter.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxShaman.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxScout.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxHunter.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxArcher.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxTotem.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.LynxTribe.LynxStuff.PopulateConfig(notSavedConfigFile);
+                foreach (var configType in configs)
+                {
+                    var config = (IConfiguration)System.Activator.CreateInstance(configType);
+                    config.PopulateConfig(notSavedConfigFile);
+                }
             }
             EnemiesReturns.Configuration.General.PopulateConfig(Config);
 
@@ -190,6 +184,27 @@ namespace EnemiesReturns
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
+        [ConCommand(commandName = "returns_spawn_lynx", flags = ConVarFlags.None, helpText = "Spawns all Lynx Tribe enemies (including allies)")]
+        private static void CCSpawnLynx(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Archer.ArcherBodyAlly.SpawnCards.cscLynxArcherAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Scout.ScoutBodyAlly.SpawnCards.cscLynxScoutAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Hunter.HunterBodyAlly.SpawnCards.cscLynxHunterAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)
