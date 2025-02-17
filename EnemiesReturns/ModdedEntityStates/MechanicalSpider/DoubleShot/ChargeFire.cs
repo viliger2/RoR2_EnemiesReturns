@@ -25,11 +25,17 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
         public override void OnEnter()
         {
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
+            if (teamComponent.teamIndex == TeamIndex.Player)
+            {
+                duration = baseDuration / attackSpeedStat;
+            } else
+            {
+                duration = baseDuration;
+            }
             SpawnEffect(FindModelChild("GunNozzle"));
             PlayAnimation("Gesture, Additive", "ChargeFire", "Fire.playbackRate", duration);
             isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
-            Util.PlaySound(isMinion ? soundStringMinion : soundString, base.gameObject);
+            Util.PlayAttackSpeedSound(isMinion ? soundStringMinion : soundString, base.gameObject, attackSpeedStat);
         }
 
         public override void FixedUpdate()
