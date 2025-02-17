@@ -54,12 +54,35 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             if (pickupIndex != PickupIndex.none)
             {
-                PickupDropletController.CreatePickupDroplet(pickupIndex, pickupDisplay.transform.position, pickupDisplay.transform.rotation * localEjectionVelocity);
+                DropItems();
             }
             activated = false;
             DisableItemDisplay();
             pickupValue = pickupIndex.value;
             PointSoundManager.EmitSoundServer(successSound.index, base.transform.position);
+        }
+
+        private void DropItems()
+        {
+            if (Run.instance)
+            {
+                int participatingPlayerCount = Run.instance.participatingPlayerCount;
+                if (participatingPlayerCount == 0)
+                {
+                    return;
+                }
+
+                var angle = 180f / (participatingPlayerCount + 1); // plus 1 so we split into equal parts and spawn between each
+                var quaternion = UnityEngine.Quaternion.AngleAxis(angle, Vector3.up);
+                var vector = quaternion * pickupDisplay.transform.rotation * localEjectionVelocity;
+                int spawnedCount = 0;
+                while (spawnedCount < participatingPlayerCount)
+                {
+                    PickupDropletController.CreatePickupDroplet(pickupIndex, pickupDisplay.transform.position, vector);
+                    spawnedCount++;
+                    vector = quaternion * vector;
+                }
+            }
         }
 
         private void DisableItemDisplay()
