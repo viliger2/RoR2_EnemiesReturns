@@ -77,6 +77,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Rigging and animation by Sentinel 
 * Code by [viliger](https://thunderstore.io/package/viliger/)
 * Additional animations and sounds by [rob](https://thunderstore.io/package/rob_gaming/)
+* Model fixes by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
 * Majority of sounds come from RoR and RoRR
 </details>
 
@@ -99,7 +100,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Model by Jinazler
 * Rigging and animation by Sentinel 
 * Code by [viliger](https://thunderstore.io/package/viliger/)
-* Item pickup model and texture, pillar model, texture and animations by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
+* Ifrit model fixes, item pickup model and texture, pillar model, texture and animations by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
 * Majority of sounds come from RoR, RoRR and WoW
 * Super natural explosion - https://pixabay.com/sound-effects/supernatural-explosion-104295/
 * Monster breathing - https://pixabay.com/sound-effects/animal-breathing-monster-78392/
@@ -145,3 +146,4 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * /vm/ - telling me to fix my (viliger's) shit.
 * Translations:
 	* pt-BR by [Kauzok](https://github.com/Kauzok)
+	* es-ES by Manuerth

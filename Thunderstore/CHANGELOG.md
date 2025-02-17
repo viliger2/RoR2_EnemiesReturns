@@ -1,4 +1,22 @@
 <details>
+<summary>0.4.12</summary>
+
+* Added Spanish translation by Manuerth.
+* Config files are now generated via reflection.
+  * _This is not something end users should care about, but some config files might be wiped. I am sorry for the inconvenience._
+* Mechanical spider
+  * Added option for drones to use initial stage price coefficient, disabled by default.
+  * Removed attack speed scaling on "charge attack" state.
+    * _Basically, if mechanical spider still has a target nearby instead of going through the full cycle of the skill (open hatch, charge attack, fire two times, close hatch) it goes back to "charge attack" state and cycles so until target is either dead or gets far enough for skill to end. This resulted in spiders turning the game into bullethell if you were to encounter SS2 Storm on a stage where they are present. By removing attack speed scaling we make them more manageable during storms specifically, while having zero effect on balance normally._
+* Lynx Tribe
+  * Friendly tribesmen summoned by Lynx Fetish now ignore team member limit.
+  * Lynx Shrine now drops item for each player in game instead of only one.
+* Ifrit
+  * Fixed Flame Charge's body attack using wrong hitbox.
+    * _Attack should be a lot more manageable now and easier to dodge either via movement abilities or circle strafing._
+
+</details>
+<details>
 <summary>0.4.11</summary>
 
 * Ifrit
