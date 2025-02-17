@@ -159,7 +159,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 new IAddHitboxes.HitBoxesParams
                 {
                     groupName = "BodyCharge",
-                    pathsToTransforms = new string[] { "Armature/Root/Root_Pelvis_Control/SmashHitbox" }
+                    pathsToTransforms = new string[] { "Armature/Root/Root_Pelvis_Control/ChargeHitbox" }
                 }
             };
         }
