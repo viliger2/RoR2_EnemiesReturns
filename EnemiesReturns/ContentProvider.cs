@@ -34,7 +34,9 @@ namespace EnemiesReturns
 
         private readonly ContentPack _contentPack = new ContentPack();
 
-        public const string AssetBundleName = "EnemiesReturns";
+        public const string AssetBundleName = "enemiesreturns";
+        public const string AssetBundleStagesName = "enemiesreturnsstagesscenes";
+        public const string AssetBundleStagesAssetsName = "enemiesreturnsstagesassets";
         public const string AssetBundleFolder = "AssetBundles";
 
         public const string SoundbankFolder = "Soundbanks";
@@ -119,6 +121,17 @@ namespace EnemiesReturns
 
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
+
+            AssetBundle assetBundleStagesAssets = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
+            {
+                _contentPack.sceneDefs.Add(assets);
+            }));
+
+            AssetBundle assetBundleStages = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
