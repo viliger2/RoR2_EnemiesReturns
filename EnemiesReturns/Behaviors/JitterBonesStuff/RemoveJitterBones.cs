@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Behaviors
+namespace EnemiesReturns.Behaviors.JitterBonesStuff
 {
     public class RemoveJitterBones : MonoBehaviour
     {
@@ -9,25 +9,25 @@ namespace EnemiesReturns.Behaviors
 
         private void Awake()
         {
-            childrenCountPrev = base.transform.childCount;
+            childrenCountPrev = transform.childCount;
             RemoveBones();
         }
 
         private void FixedUpdate()
         {
-            if (childrenCountPrev != base.transform.childCount)
+            if (childrenCountPrev != transform.childCount)
             {
                 RemoveBones();
-                childrenCountPrev = base.transform.childCount;
+                childrenCountPrev = transform.childCount;
             }
         }
 
         private void RemoveBones()
         {
-            var jitterBones = base.transform.GetComponentsInChildren<JitterBones>();
+            var jitterBones = transform.GetComponentsInChildren<JitterBones>();
             for (int i = jitterBones.Length; i != 0; i--)
             {
-                UnityEngine.GameObject.Destroy(jitterBones[i - 1]);
+                GameObject.Destroy(jitterBones[i - 1]);
             }
         }
     }

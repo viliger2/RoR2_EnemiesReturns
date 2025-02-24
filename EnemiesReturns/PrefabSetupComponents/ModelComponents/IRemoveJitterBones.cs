@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.Behaviors;
+﻿using EnemiesReturns.Behaviors.JitterBones;
 using UnityEngine;
 
 namespace EnemiesReturns.PrefabSetupComponents.ModelComponents

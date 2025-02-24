@@ -1,4 +1,4 @@
-﻿using EnemiesReturns.Behaviors;
+﻿using EnemiesReturns.Behaviors.JitterBones;
 using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;

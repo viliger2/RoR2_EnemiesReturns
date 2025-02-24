@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Behaviors
+namespace EnemiesReturns.Behaviors.Garbage
 {
     public class DunnoRaycasterOrSomething : MonoBehaviour
     {

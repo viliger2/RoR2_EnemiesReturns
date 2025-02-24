@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.Behaviors
+namespace EnemiesReturns.Behaviors.Garbage
 {
     public class IdleSoundPlayback : MonoBehaviour
     {
@@ -29,7 +29,7 @@ namespace EnemiesReturns.Behaviors
                 master.onBodyStart += Master_onBodyStart;
                 master.onBodyDeath.AddListener(OnBodyDeath);
             }
-            Util.PlaySound(soundEventPlay, this.gameObject);
+            Util.PlaySound(soundEventPlay, gameObject);
         }
 
         private void OnDisable()
@@ -39,17 +39,17 @@ namespace EnemiesReturns.Behaviors
                 master.onBodyStart -= Master_onBodyStart;
                 master.onBodyDeath.RemoveListener(OnBodyDeath);
             }
-            Util.PlaySound(soundEventStop, this.gameObject);
+            Util.PlaySound(soundEventStop, gameObject);
         }
 
         public void OnBodyDeath()
         {
-            Util.PlaySound(soundEventStop, this.gameObject);
+            Util.PlaySound(soundEventStop, gameObject);
         }
 
         private void Master_onBodyStart(CharacterBody obj)
         {
-            Util.PlaySound(soundEventPlay, this.gameObject);
+            Util.PlaySound(soundEventPlay, gameObject);
         }
     }
 }
