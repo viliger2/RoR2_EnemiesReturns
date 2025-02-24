@@ -14,6 +14,10 @@ namespace EnemiesReturns
             public static ItemDef SpawnPillarOnChampionKill;
 
             public static ItemDef LynxFetish;
+
+            public static ItemDef TradableRock;
+
+            public static ItemDef LunarFlower;
         }
 
         public static class ItemRelationshipProviders
@@ -23,6 +27,7 @@ namespace EnemiesReturns
 
         public static class Equipment
         {
+            public static EquipmentDef MithrixHammer;
         }
 
         public static class Buffs

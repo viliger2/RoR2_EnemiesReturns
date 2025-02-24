@@ -1,4 +1,6 @@
-﻿using EnemiesReturns.EditorHelpers;
+﻿using EnemiesReturns.Behaviors.Judgement;
+using EnemiesReturns.Behaviors.Judgement.BrokenTeleporter;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -120,42 +122,9 @@ namespace EnemiesReturns
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
-            AssetBundle assetBundleStagesAssets = null;
-            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
-            {
-                _contentPack.sceneDefs.Add(assets);
-            }));
-
-            AssetBundle assetBundleStages = null;
-            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
-
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-
-                var materials = assets;
-
-                if (materials != null)
-                {
-                    foreach (Material material in materials)
-                    {
-                        var replacementShader = Addressables.LoadAssetAsync<Shader>(ShaderLookup[material.shader.name.ToLower()]).WaitForCompletion();
-                        if (replacementShader)
-                        {
-                            material.shader = replacementShader;
-                        }
-                        else
-                        {
-                            Log.Info("Couldn't find replacement shader for " + material.shader.name.ToLower());
-                        }
-                        MaterialCache.Add(material.name, material);
-                    }
-                }
-                stopwatch.Stop();
-                Log.Info("Materials swapped in " + stopwatch.elapsedSeconds);
+                SwapMaterial(assets);
             }));
 
             Dictionary<string, Sprite> iconLookup = new Dictionary<string, Sprite>();
@@ -204,6 +173,53 @@ namespace EnemiesReturns
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
 
+            AssetBundle assetBundleStagesAssets = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
+            {
+                _contentPack.sceneDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
+            {
+                SwapMaterial(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
+            {
+                var interactable = assets.First(asset => asset.name == "JudgementInteractable");
+                nopList.Add(interactable);
+
+                SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
+                nopList.Add(SetupJudgementPath.PileOfDirt);
+
+                SetupJudgementPath.BrokenTeleporter = assets.First(asset => asset.name == "BrokenTeleporterInteractable");
+                SetupJudgementPath.BrokenTeleporter.AddComponent<EnableInteractionOnPhase>().teleporterInteraction = SetupJudgementPath.BrokenTeleporter.GetComponent<BrokenTeleporterInteraction>();
+                nopList.Add(SetupJudgementPath.BrokenTeleporter);
+
+                var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
+                nopList.Add(judgementTeleporter);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
+            {
+                Content.Items.TradableRock = assets.First(item => item.name == "idTradableRock");
+                Content.Items.LunarFlower = assets.First(item => item.name == "idLunarFlower");
+                _contentPack.itemDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
+            {
+                Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "edMithrixHammer");
+                _contentPack.equipmentDefs.Add(assets);
+            }));
+
+            AssetBundle assetBundleStages = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
+
+            CreateJudgement();
+
             _contentPack.bodyPrefabs.Add(bodyList.ToArray());
             _contentPack.masterPrefabs.Add(masterList.ToArray());
             _contentPack.skillDefs.Add(sdList.ToArray());
@@ -221,6 +237,33 @@ namespace EnemiesReturns
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
             yield break;
+
+            void SwapMaterial(Material[] assets)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
+                var materials = assets;
+
+                if (materials != null)
+                {
+                    foreach (Material material in materials)
+                    {
+                        var replacementShader = Addressables.LoadAssetAsync<Shader>(ShaderLookup[material.shader.name.ToLower()]).WaitForCompletion();
+                        if (replacementShader)
+                        {
+                            material.shader = replacementShader;
+                        }
+                        else
+                        {
+                            Log.Info("Couldn't find replacement shader for " + material.shader.name.ToLower());
+                        }
+                        MaterialCache.Add(material.name, material);
+                    }
+                }
+                stopwatch.Stop();
+                Log.Info("Materials swapped in " + stopwatch.elapsedSeconds);
+            }
         }
 
         #region Content
@@ -1065,6 +1108,21 @@ namespace EnemiesReturns
             nopList.Add(lynxShrine1);
             nopList.Add(lynxShrine2);
             nopList.Add(lynxShrine3);
+        }
+
+        private void CreateJudgement()
+        {
+            if (Configuration.Judgement.Enabled.Value)
+            {
+                RoR2.SceneDirector.onPostPopulateSceneServer += SetupJudgementPath.SpawnObjects;
+                SetupJudgementPath.AddInteractabilityToNewt();
+                SetupJudgementPath.AddWeaponDropToMithrix();
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.BaseJudgementIntaractable));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.Inactive));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.WaveActive));
+            }
         }
 
         private DirectorAPI.DirectorCardHolder CreateCardHolderLynxShrine(GameObject lynxShrine1, string suffix)
