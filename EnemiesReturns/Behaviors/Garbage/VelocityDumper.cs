@@ -1,7 +1,7 @@
 ﻿using KinematicCharacterController;
 using UnityEngine;
 
-namespace EnemiesReturns.Behaviors
+namespace EnemiesReturns.Behaviors.Garbage
 {
     public class VelocityDumper : MonoBehaviour
     {

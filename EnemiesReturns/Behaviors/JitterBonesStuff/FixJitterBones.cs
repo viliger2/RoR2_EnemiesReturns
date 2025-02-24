@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace EnemiesReturns.Behaviors
+namespace EnemiesReturns.Behaviors.JitterBonesStuff
 {
     // I hate JitterBones so much its an entire engine
     public class FixJitterBones : MonoBehaviour
@@ -16,7 +16,7 @@ namespace EnemiesReturns.Behaviors
 
         private void Awake()
         {
-            childrenCountPrev = base.transform.childCount;
+            childrenCountPrev = transform.childCount;
             ApplyFix();
         }
 
@@ -24,17 +24,17 @@ namespace EnemiesReturns.Behaviors
         {
             if (!bonesFixed)
             {
-                if (childrenCountPrev != base.transform.childCount)
+                if (childrenCountPrev != transform.childCount)
                 {
                     ApplyFix();
-                    childrenCountPrev = base.transform.childCount;
+                    childrenCountPrev = transform.childCount;
                 }
             }
         }
 
         private void ApplyFix()
         {
-            var jitterBones = base.transform.GetComponentsInChildren<JitterBones>();
+            var jitterBones = transform.GetComponentsInChildren<JitterBones>();
             if (jitterBones.Length > 0)
             {
                 bonesFixed = true;
@@ -54,7 +54,7 @@ namespace EnemiesReturns.Behaviors
                         }
                     }
                 }
-                this.enabled = false;
+                enabled = false;
             }
         }
     }
