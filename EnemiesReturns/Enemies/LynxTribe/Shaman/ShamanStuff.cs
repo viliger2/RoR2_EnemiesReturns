@@ -16,8 +16,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
     {
         public static R2API.DamageAPI.ModdedDamageType ApplyReducedHealing;
 
-        public static BuffDef ReduceHealing;
-
         public GameObject CreateShamanSpawnEffect(GameObject prefab)
         {
             var spawnEffect = PrefabAPI.InstantiateClone(prefab, "LynxShamanSpawnEffect", false);
@@ -43,7 +41,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 if (victim.TryGetComponent<CharacterBody>(out var victimBody))
                 {
-                    victimBody.AddTimedBuff(ReduceHealing, EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value);
+                    victimBody.AddTimedBuff(Content.Buffs.ReduceHealing, EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value);
                 }
             }
         }
@@ -59,7 +57,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
                 c.Emit(OpCodes.Ldarg_0); // self
                 c.EmitDelegate<System.Func<float, RoR2.HealthComponent, float>>((amount, self) =>
                 {
-                    if (self.body && self.body.HasBuff(ShamanStuff.ReduceHealing))
+                    if (self.body && self.body.HasBuff(Content.Buffs.ReduceHealing))
                     {
                         amount *= (1f - EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesHealingFraction.Value);
                     }
@@ -365,7 +363,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             steerTowards.rotationSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesTurnSpeed.Value;
 
             var applyDebuff = prefab.AddComponent<ProjectileInflictTimedBuff>();
-            applyDebuff.buffDef = ReduceHealing;
+            applyDebuff.buffDef = Content.Buffs.ReduceHealing;
             applyDebuff.duration = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value;
 
             prefab.AddComponent<TeamFilter>();

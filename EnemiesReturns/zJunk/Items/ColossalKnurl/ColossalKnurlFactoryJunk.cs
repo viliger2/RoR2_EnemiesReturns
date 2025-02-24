@@ -232,7 +232,7 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
         {
             if (body && body.inventory)
             {
-                body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCount(EnemiesReturns.Items.ColossalKnurl.ColossalKnurlFactory.ItemDef));
+                body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCount(EnemiesReturns.Content.Items.ColossalCurl));
             }
         }
 

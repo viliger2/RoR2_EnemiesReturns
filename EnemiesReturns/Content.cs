@@ -1,0 +1,44 @@
+﻿using RoR2;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EnemiesReturns
+{
+    public static class Content
+    {
+        public static class Items
+        {
+            public static ItemDef ColossalCurl;
+
+            public static ItemDef SpawnPillarOnChampionKill;
+
+            public static ItemDef LynxFetish;
+        }
+
+        public static class ItemRelationshipProviders
+        {
+            public static ItemRelationshipProvider ModdedContagiousItemProvider;
+        }
+
+        public static class Equipment
+        {
+        }
+
+        public static class Buffs
+        {
+            public static BuffDef LynxArcherDamage;
+
+            public static BuffDef LynxHunterArmor;
+
+            public static BuffDef LynxScoutSpeed;
+
+            public static BuffDef LynxShamanSpecialDamage;
+
+            public static BuffDef ReduceHealing;
+
+            public static BuffDef LynxStormImmunity;
+
+        }
+    }
+}

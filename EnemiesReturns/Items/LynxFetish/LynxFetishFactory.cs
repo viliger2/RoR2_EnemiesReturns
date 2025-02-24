@@ -11,8 +11,6 @@ namespace EnemiesReturns.Items.LynxFetish
 {
     public class LynxFetishFactory
     {
-        public static ItemDef ItemDef;
-
         public static DeployableSlot LynxFetishDeployable;
 
         public struct IndexToCards
@@ -40,7 +38,7 @@ namespace EnemiesReturns.Items.LynxFetish
                 // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
                 if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
                 { 
-                    body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(ItemDef));
+                    body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(Content.Items.LynxFetish));
                 }
             }
         }
@@ -61,7 +59,7 @@ namespace EnemiesReturns.Items.LynxFetish
                         CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                         if (attackerBody)
                         {
-                            if ((damageInfo.damageType & DamageSource.Special) == DamageSource.Special && attackerBody.HasBuff(Enemies.LynxTribe.Shaman.ShamanBodyAlly.LynxShamanSpecial))
+                            if ((damageInfo.damageType & DamageSource.Special) == DamageSource.Special && attackerBody.HasBuff(Content.Buffs.LynxShamanSpecialDamage))
                             {
                                 newDamage *= 1 + (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishShamanSpecialBuff.Value / 100f);
                             }
@@ -80,9 +78,9 @@ namespace EnemiesReturns.Items.LynxFetish
         {
             if (sender)
             {
-                if (sender.HasBuff(Enemies.LynxTribe.Hunter.HunterBodyAlly.LynxHunterArmor)) args.armorAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishHunterArmorBuff.Value;
-                if (sender.HasBuff(Enemies.LynxTribe.Archer.ArcherBodyAlly.LynxArcherDamage)) args.damageMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishArcherDamageBuff.Value / 100f;
-                if (sender.HasBuff(Enemies.LynxTribe.Scout.ScoutBodyAlly.LynxScoutSpeed))
+                if (sender.HasBuff(Content.Buffs.LynxHunterArmor)) args.armorAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishHunterArmorBuff.Value;
+                if (sender.HasBuff(Content.Buffs.LynxArcherDamage)) args.damageMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishArcherDamageBuff.Value / 100f;
+                if (sender.HasBuff(Content.Buffs.LynxScoutSpeed))
                 {
                     args.moveSpeedMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishScoutSpeedBuff.Value / 100f;
                     args.attackSpeedMultAdd += EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishScoutSpeedBuff.Value / 100f;
@@ -150,7 +148,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private static int GetFriendlyLyxTribeCount(CharacterMaster master, int countMultiplier)
         {
-            return Mathf.Min(master.inventory.GetItemCount(ItemDef), 4);
+            return Mathf.Min(master.inventory.GetItemCount(Content.Items.LynxFetish), 4);
         }
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
