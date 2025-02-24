@@ -18,8 +18,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
 
         public new static GameObject BodyPrefab;
 
-        public static BuffDef LynxHunterArmor;
-
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
@@ -31,7 +29,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             buffWard.radius = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardRadius.Value;
             buffWard.interval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffRefreshTimer.Value;
             buffWard.rangeIndicator = null;
-            buffWard.buffDef = LynxHunterArmor;
+            buffWard.buffDef = Content.Buffs.LynxHunterArmor;
             buffWard.buffDuration = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffDuration.Value;
             buffWard.floorWard = false;
             buffWard.expires = false;

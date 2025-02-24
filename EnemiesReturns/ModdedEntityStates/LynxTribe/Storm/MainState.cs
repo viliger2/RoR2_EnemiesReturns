@@ -70,7 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                 if (hurtbox && hurtbox.healthComponent && hurtbox.healthComponent.body)
                 {
                     var targetBody = hurtbox.healthComponent.body;
-                    if (targetBody.hasEffectiveAuthority && !targetBody.HasBuff(LynxStormStuff.StormImmunity) && !targetBody.gameObject.GetComponent<LynxStormComponent>())
+                    if (targetBody.hasEffectiveAuthority && !targetBody.HasBuff(Content.Buffs.LynxStormImmunity) && !targetBody.gameObject.GetComponent<LynxStormComponent>())
                     {
                         var component = targetBody.GetComponent<IDisplacementReceiver>();
                         if (component != null)

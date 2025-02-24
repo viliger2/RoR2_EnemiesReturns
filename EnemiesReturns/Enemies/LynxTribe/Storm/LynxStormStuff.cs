@@ -7,8 +7,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
     public class LynxStormStuff
     {
-        public static BuffDef StormImmunity;
-
         public BuffDef CreateStormImmunityBuff()
         {
             BuffDef defBuff = ScriptableObject.CreateInstance<BuffDef>();

@@ -18,8 +18,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
         public new static GameObject BodyPrefab;
 
-        public static BuffDef LynxScoutSpeed;
-
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
@@ -31,7 +29,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             buffWard.radius = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardRadius.Value;
             buffWard.interval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffRefreshTimer.Value;
             buffWard.rangeIndicator = null;
-            buffWard.buffDef = LynxScoutSpeed;
+            buffWard.buffDef = Content.Buffs.LynxScoutSpeed;
             buffWard.buffDuration = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffDuration.Value;
             buffWard.floorWard = false;
             buffWard.expires = false;

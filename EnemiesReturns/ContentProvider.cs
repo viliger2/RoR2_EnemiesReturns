@@ -70,8 +70,6 @@ namespace EnemiesReturns
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?
 
-        public static ItemRelationshipProvider ModdedContagiousItemProvider;
-
         public static ItemDef VoidMegaCrabItem = Addressables.LoadAssetAsync<ItemDef>("RoR2/DLC1/VoidMegaCrabItem.asset").WaitForCompletion();
 
         public struct MonsterCategories
@@ -102,10 +100,10 @@ namespace EnemiesReturns
 
             _contentPack.identifier = identifier;
 
-            ModdedContagiousItemProvider = ScriptableObject.CreateInstance<ItemRelationshipProvider>();
-            (ModdedContagiousItemProvider as ScriptableObject).name = "EnemiesReturnsContagiousItemProvider";
-            ModdedContagiousItemProvider.relationshipType = Addressables.LoadAssetAsync<ItemRelationshipType>("RoR2/DLC1/Common/ContagiousItem.asset").WaitForCompletion();
-            ModdedContagiousItemProvider.relationships = Array.Empty<ItemDef.Pair>();
+            Content.ItemRelationshipProviders.ModdedContagiousItemProvider = ScriptableObject.CreateInstance<ItemRelationshipProvider>();
+            (Content.ItemRelationshipProviders.ModdedContagiousItemProvider as ScriptableObject).name = "EnemiesReturnsContagiousItemProvider";
+            Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationshipType = Addressables.LoadAssetAsync<ItemRelationshipType>("RoR2/DLC1/Common/ContagiousItem.asset").WaitForCompletion();
+            Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships = Array.Empty<ItemDef.Pair>();
 
             Stopwatch segmentStopWatch = new Stopwatch();
             segmentStopWatch.Start();
@@ -204,7 +202,7 @@ namespace EnemiesReturns
             _contentPack.itemDefs.Add(itemList.ToArray());
             _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
             _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
-            _contentPack.itemRelationshipProviders.Add(new[] { ModdedContagiousItemProvider });
+            _contentPack.itemRelationshipProviders.Add(new[] { Content.ItemRelationshipProviders.ModdedContagiousItemProvider });
             _contentPack.buffDefs.Add(bdList.ToArray());
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
@@ -321,8 +319,8 @@ namespace EnemiesReturns
             {
                 var pillarItemFactory = new SpawnPillarOnChampionKillFactory();
 
-                SpawnPillarOnChampionKillFactory.ItemDef = pillarItemFactory.CreateItem(assets.First(item => item.name == "IfritItem"), iconLookup["texIconIfritItem"]);
-                itemList.Add(SpawnPillarOnChampionKillFactory.ItemDef);
+                Content.Items.SpawnPillarOnChampionKill = pillarItemFactory.CreateItem(assets.First(item => item.name == "IfritItem"), iconLookup["texIconIfritItem"]);
+                itemList.Add(Content.Items.SpawnPillarOnChampionKill);
 
                 dtIfrit = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtIfrit as ScriptableObject).name = "epdtIfrit";
@@ -332,10 +330,10 @@ namespace EnemiesReturns
                         new ExplicitPickupDropTable.PickupDefEntry
                         {
                             pickupWeight = 1,
-                            pickupDef = SpawnPillarOnChampionKillFactory.ItemDef
+                            pickupDef = Content.Items.SpawnPillarOnChampionKill
                         }
                 };
-                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = SpawnPillarOnChampionKillFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
+                HG.ArrayUtils.ArrayAppend(ref Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = Content.Items.SpawnPillarOnChampionKill, itemDef2 = VoidMegaCrabItem });
             }
 
             return dtIfrit;
@@ -618,8 +616,8 @@ namespace EnemiesReturns
 
                 var knurlFactory = new ColossalKnurlFactory();
 
-                ColossalKnurlFactory.ItemDef = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
-                itemList.Add(ColossalKnurlFactory.ItemDef);
+                EnemiesReturns.Content.Items.ColossalCurl = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);
+                itemList.Add(EnemiesReturns.Content.Items.ColossalCurl);
 
                 dtColossus = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtColossus as ScriptableObject).name = "epdtColossus";
@@ -629,7 +627,7 @@ namespace EnemiesReturns
                         new ExplicitPickupDropTable.PickupDefEntry
                         {
                             pickupWeight = 1,
-                            pickupDef = ColossalKnurlFactory.ItemDef
+                            pickupDef = EnemiesReturns.Content.Items.ColossalCurl
                         }
                 };
 
@@ -641,7 +639,7 @@ namespace EnemiesReturns
 
                 projectilesList.Add(ColossalKnurlFactory.projectilePrefab);
 
-                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = ColossalKnurlFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
+                HG.ArrayUtils.ArrayAppend(ref Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = EnemiesReturns.Content.Items.ColossalCurl, itemDef2 = VoidMegaCrabItem });
             }
 
             return dtColossus;
@@ -1131,8 +1129,8 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
 
             var archerBodyAlly = new ArcherBodyAlly();
-            ArcherBodyAlly.LynxArcherDamage = archerBodyAlly.CreateDamageBuffDef(iconLookup["texLynxArcherBuff"]);
-            bdList.Add(ArcherBodyAlly.LynxArcherDamage);
+            Content.Buffs.LynxArcherDamage = archerBodyAlly.CreateDamageBuffDef(iconLookup["texLynxArcherBuff"]);
+            bdList.Add(Content.Buffs.LynxArcherDamage);
 
             ArcherBodyAlly.BodyPrefab = archerBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherAllyBody"), sprite: iconLookup["texArcherAllyIcon"]);
             bodyList.Add(ArcherBodyAlly.BodyPrefab);
@@ -1200,8 +1198,8 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
 
             var hunterBodyAlly = new HunterBodyAlly();
-            HunterBodyAlly.LynxHunterArmor = hunterBodyAlly.CreateArmorBuffDef(iconLookup["texLynxHunterBuff"]);
-            bdList.Add(HunterBodyAlly.LynxHunterArmor);
+            Content.Buffs.LynxHunterArmor = hunterBodyAlly.CreateArmorBuffDef(iconLookup["texLynxHunterBuff"]);
+            bdList.Add(Content.Buffs.LynxHunterArmor);
 
             HunterBodyAlly.BodyPrefab = hunterBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterAllyBody"), sprite: iconLookup["texLynxHunterAllyIcon"]);
             bodyList.Add(HunterBodyAlly.BodyPrefab);
@@ -1270,8 +1268,8 @@ namespace EnemiesReturns
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
 
             var scoutBodyAlly = new ScoutBodyAlly();
-            ScoutBodyAlly.LynxScoutSpeed = scoutBodyAlly.CreateSpeedBuffDef(iconLookup["texLynxScoutBuff"]);
-            bdList.Add(ScoutBodyAlly.LynxScoutSpeed);
+            Content.Buffs.LynxScoutSpeed = scoutBodyAlly.CreateSpeedBuffDef(iconLookup["texLynxScoutBuff"]);
+            bdList.Add(Content.Buffs.LynxScoutSpeed);
 
             ScoutBodyAlly.BodyPrefab = scoutBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutAllyBody"), sprite: iconLookup["texLynxScoutAllyIcon"]);
             bodyList.Add(ScoutBodyAlly.BodyPrefab);
@@ -1423,8 +1421,8 @@ namespace EnemiesReturns
             {
                 var fetishFactory = new LynxFetishFactory();
 
-                LynxFetishFactory.ItemDef = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), iconLookup["texLynxFetishIcon"]);
-                itemList.Add(LynxFetishFactory.ItemDef);
+                Content.Items.LynxFetish = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), iconLookup["texLynxFetishIcon"]);
+                itemList.Add(Content.Items.LynxFetish);
 
                 dtLynxTotem = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
                 (dtLynxTotem as ScriptableObject).name = "epdtLynxTotem";
@@ -1434,11 +1432,11 @@ namespace EnemiesReturns
                     new ExplicitPickupDropTable.PickupDefEntry
                     {
                         pickupWeight = 1,
-                        pickupDef = LynxFetishFactory.ItemDef
+                        pickupDef = Content.Items.LynxFetish
                     }
                 };
 
-                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = LynxFetishFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
+                HG.ArrayUtils.ArrayAppend(ref Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = Content.Items.LynxFetish, itemDef2 = VoidMegaCrabItem });
             }
 
             return dtLynxTotem;
@@ -1453,8 +1451,8 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
             effectsList.Add(new EffectDef(shamanSpawnEffect));
 
-            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
-            bdList.Add(ShamanStuff.ReduceHealing);
+            Content.Buffs.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
+            bdList.Add(Content.Buffs.ReduceHealing);
 
             Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
             Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
@@ -1468,7 +1466,7 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab = shamanStuff.CreateShamanPushBackExplosionEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackExplosion"));
             effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab));
 
-            TempVisualEffectAPI.AddTemporaryVisualEffect(shamanStuff.CreateReduceHealingVisualEffect(), (body) => { return body.HasBuff(ShamanStuff.ReduceHealing); });
+            TempVisualEffectAPI.AddTemporaryVisualEffect(shamanStuff.CreateReduceHealingVisualEffect(), (body) => { return body.HasBuff(Content.Buffs.ReduceHealing); });
 
             var projectileImpactEffect = shamanStuff.CreateShamanProjectileImpactEffect(assets.First(prefab => prefab.name == "LynxShamanProjectileImpactEffect"), rampLookups["texRampLynxShamanProjectileImpact"]);
             effectsList.Add(new EffectDef(projectileImpactEffect));
@@ -1542,8 +1540,8 @@ namespace EnemiesReturns
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
 
             var shamanBodyAlly = new ShamanBodyAlly();
-            ShamanBodyAlly.LynxShamanSpecial = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]);
-            bdList.Add(ShamanBodyAlly.LynxShamanSpecial);
+            Content.Buffs.LynxShamanSpecialDamage = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]);
+            bdList.Add(Content.Buffs.LynxShamanSpecialDamage);
 
             ShamanBodyAlly.BodyPrefab = shamanBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxShamanAllyBody"), sprite: iconLookup["texLynxShamanAllyIcon"], log: null);
             bodyList.Add(ShamanBodyAlly.BodyPrefab);
@@ -1574,8 +1572,8 @@ namespace EnemiesReturns
         private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)
         {
             var stormStuff = new LynxStormStuff();
-            LynxStormStuff.StormImmunity = stormStuff.CreateStormImmunityBuff();
-            bdList.Add(LynxStormStuff.StormImmunity);
+            Content.Buffs.LynxStormImmunity = stormStuff.CreateStormImmunityBuff();
+            bdList.Add(Content.Buffs.LynxStormImmunity);
 
             Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect = stormStuff.CreateStormThrowEffect();
             effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect));

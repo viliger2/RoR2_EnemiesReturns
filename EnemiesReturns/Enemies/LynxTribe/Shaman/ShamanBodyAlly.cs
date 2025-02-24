@@ -14,8 +14,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public new static GameObject BodyPrefab;
 
-        public static BuffDef LynxShamanSpecial;
-
         public new struct SkinDefs
         {
             public static SkinDef Ally;
@@ -32,7 +30,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             buffWard.radius = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardRadius.Value;
             buffWard.interval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffRefreshTimer.Value;
             buffWard.rangeIndicator = null;
-            buffWard.buffDef = LynxShamanSpecial;
+            buffWard.buffDef = Content.Buffs.LynxShamanSpecialDamage;
             buffWard.buffDuration = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffDuration.Value;
             buffWard.floorWard = false;
             buffWard.expires = false;

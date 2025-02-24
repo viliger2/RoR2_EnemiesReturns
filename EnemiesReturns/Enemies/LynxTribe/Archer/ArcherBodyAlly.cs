@@ -19,8 +19,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
         public new static GameObject BodyPrefab;
 
-        public static BuffDef LynxArcherDamage;
-
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
         {
             var result = base.AddBodyComponents(bodyPrefab, sprite);
@@ -32,7 +30,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             buffWard.radius = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardRadius.Value;
             buffWard.interval = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffRefreshTimer.Value;
             buffWard.rangeIndicator = null;
-            buffWard.buffDef = LynxArcherDamage;
+            buffWard.buffDef = Content.Buffs.LynxArcherDamage;
             buffWard.buffDuration = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBuffWardBuffDuration.Value;
             buffWard.floorWard = false;
             buffWard.expires = false;

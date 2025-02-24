@@ -194,7 +194,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             }
             if (characterBody)
             {
-                R2API.Networking.NetworkingHelpers.ApplyBuff(characterBody, LynxStormStuff.StormImmunity.buffIndex, 1, immunityDuration);
+                R2API.Networking.NetworkingHelpers.ApplyBuff(characterBody, Content.Buffs.LynxStormImmunity.buffIndex, 1, immunityDuration);
             }
             if (moveTarget)
             {
