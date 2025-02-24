@@ -84,6 +84,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             hitboxAttack.force = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundForce.Value;
             hitboxAttack.damage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundDamage.Value;
             hitboxAttack.procCoefficient = EnemiesReturns.Configuration.LynxTribe.LynxTotem.GroundpoundProcCoefficient.Value;
+            hitboxAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary);
 
             var destroyOnTimer = prefab.AddComponent<DestroyOnTimer>();
             destroyOnTimer.duration = 0.25f;

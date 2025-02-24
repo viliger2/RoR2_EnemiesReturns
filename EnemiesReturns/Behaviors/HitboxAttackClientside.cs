@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors
 {
+    // TODO: tidy it up
     // this is awful and I am sorry
     public class HitboxAttackClientside : NetworkBehaviour
     {
@@ -22,6 +23,8 @@ namespace EnemiesReturns.Behaviors
         public float procCoefficient;
 
         private float totalDamage;
+
+        public DamageType damageType;
 
         private void Awake()
         {
@@ -96,7 +99,7 @@ namespace EnemiesReturns.Behaviors
                 attacker = projectileController.owner ? projectileController.owner.gameObject : null,
                 position = body.footPosition,
                 canRejectForce = true,
-                damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary), // here since client and all
+                damageType = damageType,
                 force = Vector3.up * force,
                 procCoefficient = procCoefficient,
             };
