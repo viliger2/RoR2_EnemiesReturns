@@ -28,6 +28,8 @@ namespace EnemiesReturns
         public static class Equipment
         {
             public static EquipmentDef MithrixHammer;
+
+            public static EquipmentDef EliteAeonian;
         }
 
         public static class Buffs
@@ -44,6 +46,12 @@ namespace EnemiesReturns
 
             public static BuffDef LynxStormImmunity;
 
+            public static BuffDef AffixAeoninan;
+        }
+
+        public static class Elites
+        {
+            public static EliteDef Aeonian;
         }
     }
 }

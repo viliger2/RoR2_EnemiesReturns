@@ -32,7 +32,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public float spawnDistanceMultiplier = 2f;
 
-        private EliteDef eliteDef => DLC2Content.Elites.Bead;
+        public EliteDef eliteDef;
 
         public int currentRound { private set; get; } = 0;
 

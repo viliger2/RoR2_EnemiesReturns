@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 6775184117332728485}
   - component: {fileID: 7206689321853086127}
   - component: {fileID: 7711582799461632673}
+  - component: {fileID: 1896830497123341578}
   - component: {fileID: 4431812050407972114}
   - component: {fileID: 62948362020492359}
-  - component: {fileID: 1896830497123341578}
+  - component: {fileID: 6901127484365222981}
+  - component: {fileID: 3144661129749043747}
   m_Layer: 0
   m_Name: JudgementInteractable
   m_TagString: Untagged
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupIndex:
     value: 0
-  targetRenderer: {fileID: 0}
+  targetRenderer: {fileID: 5952651389291304636}
   strength: 1
   highlightColor: 0
   CustomColor: {r: 1, g: 0, b: 1, a: 1}
@@ -151,10 +153,34 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4431812050407972114}
-        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.Judgement.JudgementSelectionController,
+        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.Judgement.WaveInteractable.JudgementSelectionController,
           EnemiesReturns
         m_MethodName: GiveItemsToMonsters
-        m_Mode: 3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7206689321853086127}
+        m_TargetAssemblyTypeName: RoR2.NetworkUIPromptController, RoR2
+        m_MethodName: ClearParticipant
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3144661129749043747}
+        m_TargetAssemblyTypeName: RoR2.EntityStateMachine, RoR2
+        m_MethodName: SetNextStateToMain
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -167,13 +193,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4431812050407972114}
-        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.Judgement.JudgementSelectionController,
+        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.Judgement.WaveInteractable.JudgementSelectionController,
           EnemiesReturns
         m_MethodName: SetOptionsForMonsters
-        m_Mode: 2
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: RoR2.Interactor, RoR2
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -187,6 +213,19 @@ MonoBehaviour:
   isRebirthChoice: 0
   chestGeneratedFrom: {fileID: 0}
   multiOptionsAvailable: 0
+--- !u!114 &1896830497123341578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234055060497005250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayToken: ENEMIES_RETURNS_JUDGEMENT_INTERACTABLE_NAME
 --- !u!114 &4431812050407972114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +257,7 @@ MonoBehaviour:
   address: RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab
   targetComponent: {fileID: 7711582799461632673}
   targetMemberInfoName: (PickupPickerController) panelPrefab
---- !u!114 &1896830497123341578
+--- !u!114 &6901127484365222981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,10 +266,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 234055060497005250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: ENEMIES_RETURNS_JUDGEMENT_INTERACTABLE_NAME
+  stateMachines:
+  - {fileID: 3144661129749043747}
+--- !u!114 &3144661129749043747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234055060497005250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: Interactable
+  initialStateType:
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  mainStateType:
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable.WaveActive,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  debug: 0
 --- !u!1 &607795352906357997
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +456,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7404497879140793294, guid: 395d07fff9e4f5b45b7230954ce14b86, type: 3}
+--- !u!23 &5952651389291304636 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3254799923119953931, guid: 395d07fff9e4f5b45b7230954ce14b86, type: 3}
+  m_PrefabInstance: {fileID: 9202911978655911607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5973908454487206082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3265349122404689525, guid: 395d07fff9e4f5b45b7230954ce14b86, type: 3}

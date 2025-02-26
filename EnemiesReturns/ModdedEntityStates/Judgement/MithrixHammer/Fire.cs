@@ -39,8 +39,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
             bodyInputBank = bodyGameObject.GetComponent<InputBankTest>();
 
-            hitBoxObject = new GameObject("HammerHitBoxObject");
-            hitBoxObject.layer = LayerIndex.defaultLayer.intVal;
+            hitBoxObject = new GameObject("HammerHitBoxObject")
+            {
+                layer = LayerIndex.defaultLayer.intVal
+            };
             hitBoxObject.transform.localScale = new Vector3(6.5999999f, 1.5f, 5f);
 
             var hitBox = hitBoxObject.AddComponent<HitBox>();

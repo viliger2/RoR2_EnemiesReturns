@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Behaviors.Judgement;
 using EnemiesReturns.Behaviors.Judgement.BrokenTeleporter;
 using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Elites.Aeonian;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -141,7 +142,10 @@ namespace EnemiesReturns
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-                iconLookup = assets.ToDictionary(item => item.name, item => item);
+                foreach (var asset in assets)
+                {
+                    iconLookup.Add(asset.name, asset);
+                }
                 stopwatch.Stop();
                 Log.Info("Icons loaded in " + stopwatch.elapsedSeconds);
             }));
@@ -175,6 +179,38 @@ namespace EnemiesReturns
 
             AssetBundle assetBundleStagesAssets = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                foreach (var asset in assets)
+                {
+                    iconLookup.Add(asset.name, asset);
+                }
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
+            {
+                var thisbundleramps = textures.Where(texture => texture.name.StartsWith("texRamp")).ToDictionary(texture => texture.name, texture => texture);
+                foreach(var ramps in thisbundleramps)
+                {
+                    rampLookups.Add(ramps.Key, ramps.Value);
+                }
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EliteDef[]>)((assets) =>
+            {
+                Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
+
+                // setting up buff def here because I dont fucking know whete to put it because thunderkit is shit and hangs up on adding BuffDef
+                var eliteFactory = new Elites.Aeonian.AeonianFactory();
+                Content.Buffs.AffixAeoninan = eliteFactory.CreateAeoninanBuff(iconLookup["texBuffAffixAeonian"], Content.Elites.Aeonian);
+                bdList.Add(Content.Buffs.AffixAeoninan);
+
+                R2API.EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
+
+                _contentPack.eliteDefs.Add(assets);
+            }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
             {
@@ -219,6 +255,9 @@ namespace EnemiesReturns
             {
                 Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "edMithrixHammer");
                 Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
+
+                Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "edAeonian");
+                Content.Equipment.EliteAeonian.passiveBuffDef = Content.Buffs.AffixAeoninan;
                 _contentPack.equipmentDefs.Add(assets);
             }));
 
