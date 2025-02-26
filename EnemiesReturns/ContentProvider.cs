@@ -200,6 +200,12 @@ namespace EnemiesReturns
 
                 var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
                 nopList.Add(judgementTeleporter);
+
+                Equipment.MithrixHammer.MithrixHammer.MithrixHammerController = assets.First(asset => asset.name == "MithrixHammerController");
+                nopList.Add(Equipment.MithrixHammer.MithrixHammer.MithrixHammerController);
+
+                ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
+                ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -212,6 +218,7 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
             {
                 Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "edMithrixHammer");
+                Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
                 _contentPack.equipmentDefs.Add(assets);
             }));
 
