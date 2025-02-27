@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Behaviors.Judgement
+namespace EnemiesReturns.Enemies.Judgement
 {
     public static class SetupJudgementPath
     {
@@ -28,12 +28,12 @@ namespace EnemiesReturns.Behaviors.Judgement
                 return;
             }
 
-            if(SceneInfo.instance.sceneDef.baseSceneName == "arena"
+            if (SceneInfo.instance.sceneDef.baseSceneName == "arena"
                 && PileOfDirt)
             {
                 var newPile = UnityEngine.Object.Instantiate(PileOfDirt);
-                newPile.transform.position = new Vector3(136.779999f, 18.2870007f, 300.329987f);
-                newPile.transform.rotation = Quaternion.identity;
+                newPile.transform.position = new Vector3(136.0311f, 17.9943f, 300.33f);
+                newPile.transform.rotation = Quaternion.Euler(39.434f, 355.6797f, 13.5983f);
                 NetworkServer.Spawn(newPile);
             }
 
@@ -70,6 +70,22 @@ namespace EnemiesReturns.Behaviors.Judgement
             var dropEquipment = mithrixHurtBody.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.LunarFlower;
             dropEquipment.equipmentToDrop = Content.Equipment.MithrixHammer;
+        }
+
+        public static GameObject SetupLunarFlower(GameObject prefab)
+        {
+            prefab.transform.Find("itemJudgeAccess/Sphere").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantOrb.mat").WaitForCompletion();
+            prefab.transform.Find("itemJudgeAccess/MoonGhostPlant1").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantPlant.mat").WaitForCompletion();
+
+            return prefab;
+        }
+
+        public static GameObject SetupLunarKey(GameObject prefab)
+        {
+            prefab.transform.Find("lunarKey/LunarExploderCoreMesh").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarExploder/matLunarExploderCore.mat").WaitForCompletion();
+            prefab.transform.Find("lunarKey/meshLunarKeyGlass").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherStib.mat").WaitForCompletion();
+
+            return prefab;
         }
 
     }

@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
+    // TODO: disable smoke and sparks on death, people think they are interactable
     public class DeathNormal : GenericCharacterDeath
     {
         public static GameObject smokeBombPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXCommandoGrenade.prefab").WaitForCompletion();

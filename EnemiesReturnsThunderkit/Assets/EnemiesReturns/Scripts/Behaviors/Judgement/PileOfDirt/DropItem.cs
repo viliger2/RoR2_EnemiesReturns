@@ -11,6 +11,8 @@ namespace EnemiesReturns.Behaviors.Judgement.PileOfDirt
     {
         public ItemDef itemToDrop;
 
+        public Transform dropletOrigin;
+
         public void DropAndDestroySelf()
         {
             if (!NetworkServer.active)
@@ -23,8 +25,14 @@ namespace EnemiesReturns.Behaviors.Judgement.PileOfDirt
                 return;
             }
 
+            var spawnPoint = dropletOrigin;
+            if (!spawnPoint)
+            {
+                spawnPoint = transform;
+            }
+
             var vector = Vector3.up * 20f + transform.forward * 2f;
-            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(itemToDrop.itemIndex), transform.position, vector);
+            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(itemToDrop.itemIndex), spawnPoint.position, vector);
             NetworkServer.Destroy(this.gameObject);
         }
 

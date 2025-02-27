@@ -7,6 +7,10 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
+    // TODO:
+    // 1. Add chat messages on interacting, failing and successiding the shrine
+    // 2. Add either boss icons (red dots) or if it impossible to add them separately - boss group
+    // 3. Try to make timer text larger and maybe make distance infinite so it is always visible
     public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
     {
         public GameObject shrineUseEffect;

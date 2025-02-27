@@ -1,9 +1,9 @@
-﻿using EnemiesReturns.Behaviors.Judgement;
-using EnemiesReturns.Behaviors.Judgement.BrokenTeleporter;
+﻿using EnemiesReturns.Behaviors.Judgement.BrokenTeleporter;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.Judgement;
 using EnemiesReturns.Enemies.LynxTribe;
 using EnemiesReturns.Enemies.LynxTribe.Archer;
 using EnemiesReturns.Enemies.LynxTribe.Hunter;
@@ -229,6 +229,7 @@ namespace EnemiesReturns
                 nopList.Add(interactable);
 
                 SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
+                SetupJudgementPath.PileOfDirt = SetupJudgementPath.SetupLunarKey(SetupJudgementPath.PileOfDirt);
                 nopList.Add(SetupJudgementPath.PileOfDirt);
 
                 SetupJudgementPath.BrokenTeleporter = assets.First(asset => asset.name == "BrokenTeleporterInteractable");
@@ -248,7 +249,11 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
             {
                 Content.Items.TradableRock = assets.First(item => item.name == "idTradableRock");
+                Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
+
                 Content.Items.LunarFlower = assets.First(item => item.name == "idLunarFlower");
+                Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
+
                 _contentPack.itemDefs.Add(assets);
             }));
 
