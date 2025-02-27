@@ -1,7 +1,6 @@
 ﻿using EnemiesReturns.Behaviors.Judgement;
 using EnemiesReturns.Behaviors.Judgement.BrokenTeleporter;
 using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Elites.Aeonian;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -202,11 +201,6 @@ namespace EnemiesReturns
             {
                 Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
 
-                // setting up buff def here because I dont fucking know whete to put it because thunderkit is shit and hangs up on adding BuffDef
-                var eliteFactory = new Elites.Aeonian.AeonianFactory();
-                Content.Buffs.AffixAeoninan = eliteFactory.CreateAeoninanBuff(iconLookup["texBuffAffixAeonian"], Content.Elites.Aeonian);
-                bdList.Add(Content.Buffs.AffixAeoninan);
-
                 R2API.EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
 
                 _contentPack.eliteDefs.Add(assets);
@@ -215,6 +209,13 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
             {
                 _contentPack.sceneDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
+            {
+                Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
+
+                _contentPack.buffDefs.Add(assets);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
@@ -257,7 +258,6 @@ namespace EnemiesReturns
                 Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
 
                 Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "edAeonian");
-                Content.Equipment.EliteAeonian.passiveBuffDef = Content.Buffs.AffixAeoninan;
                 _contentPack.equipmentDefs.Add(assets);
             }));
 
