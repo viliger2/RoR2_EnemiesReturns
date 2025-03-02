@@ -21,6 +21,13 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
 
         public GameObject portalPrefab;
 
+        private ChildLocator childLocator;
+
+        private void Awake()
+        {
+            childLocator = GetComponent<ChildLocator>();
+        }
+
         public string GetContextString([NotNull] Interactor activator)
         {
             return contextString;
@@ -75,9 +82,45 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
 
             characterBody.inventory.RemoveItem(requiredItem, characterBody.inventory.GetItemCount(requiredItem));
             ScrapperController.CreateItemTakenOrb(characterBody.transform.position, this.gameObject, requiredItem.itemIndex);
-            Invoke("SpawnPortal", 1.5f);
+            Invoke("EnableVisuals", 1.5f);
 
             available = false;
+        }
+
+        public void EnableVisuals()
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            EnableProngsAndFlower();
+            RcpEnableProngsAndFlower();
+
+            Invoke("SpawnPortal", 6f);
+        }
+
+        [ClientRpc]
+        public void RcpEnableProngsAndFlower()
+        {
+            EnableProngsAndFlower();
+        }
+
+        private void EnableProngsAndFlower()
+        {
+            if (childLocator)
+            {
+                var flower = childLocator.FindChild("Flower");
+                if (flower)
+                {
+                    flower.gameObject.SetActive(true);
+                }
+                var prongs = childLocator.FindChild("Prongs");
+                if (prongs)
+                {
+                    prongs.gameObject.SetActive(true);
+                }
+            }
         }
 
         public void SpawnPortal()

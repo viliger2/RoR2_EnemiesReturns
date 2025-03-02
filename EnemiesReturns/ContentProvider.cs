@@ -233,7 +233,7 @@ namespace EnemiesReturns
                 nopList.Add(SetupJudgementPath.PileOfDirt);
 
                 SetupJudgementPath.BrokenTeleporter = assets.First(asset => asset.name == "BrokenTeleporterInteractable");
-                SetupJudgementPath.BrokenTeleporter.AddComponent<EnableInteractionOnPhase>().teleporterInteraction = SetupJudgementPath.BrokenTeleporter.GetComponent<BrokenTeleporterInteraction>();
+                SetupJudgementPath.BrokenTeleporter = SetupJudgementPath.SetupBrokenTeleporter(SetupJudgementPath.BrokenTeleporter);
                 nopList.Add(SetupJudgementPath.BrokenTeleporter);
 
                 var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
@@ -248,10 +248,10 @@ namespace EnemiesReturns
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
             {
-                Content.Items.TradableRock = assets.First(item => item.name == "idTradableRock");
+                Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
                 Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
 
-                Content.Items.LunarFlower = assets.First(item => item.name == "idLunarFlower");
+                Content.Items.LunarFlower = assets.First(item => item.name == "LunarFlower");
                 Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
 
                 _contentPack.itemDefs.Add(assets);
@@ -1170,9 +1170,11 @@ namespace EnemiesReturns
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.BaseJudgementIntaractable));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.Inactive));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.WaveActive));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Fire));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Idle));
             }
         }
 

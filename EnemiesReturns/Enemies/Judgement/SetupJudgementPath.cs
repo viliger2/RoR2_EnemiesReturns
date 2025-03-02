@@ -15,6 +15,57 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject BrokenTeleporter;
 
+        public static void Hooks()
+        {
+            On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += BossDeath_OnEnter;
+        }
+
+        private static void BossDeath_OnEnter(On.EntityStates.Missions.BrotherEncounter.BossDeath.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.BossDeath self)
+        {
+            orig(self);
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if (!self.childLocator)
+            {
+                return;                
+            }
+
+            var center = self.childLocator.FindChild("CenterOfArena");
+            if (!center)
+            {
+                return;
+            }
+
+            var itemFound = false;
+            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            {
+                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                {
+                    continue;
+                }
+
+                if (!playerCharacterMaster.master.inventory)
+                {
+                    continue;
+                }
+
+                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.LunarFlower) > 0)
+                {
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (itemFound)
+            {
+                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, center.position, Quaternion.identity);
+                NetworkServer.Spawn(newTeleporter);
+            }
+        }
+
         public static void SpawnObjects(SceneDirector sceneDirector)
         {
             if (!NetworkServer.active)
@@ -32,18 +83,9 @@ namespace EnemiesReturns.Enemies.Judgement
                 && PileOfDirt)
             {
                 var newPile = UnityEngine.Object.Instantiate(PileOfDirt);
-                newPile.transform.position = new Vector3(136.0311f, 17.9943f, 300.33f);
+                newPile.transform.position = new Vector3(113.1104f, 37.679f, 272.3562f);
                 newPile.transform.rotation = Quaternion.Euler(39.434f, 355.6797f, 13.5983f);
                 NetworkServer.Spawn(newPile);
-            }
-
-            if (SceneInfo.instance.sceneDef.baseSceneName == "moon2"
-                && BrokenTeleporter)
-            {
-                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter);
-                newTeleporter.transform.position = new Vector3(-236.809998f, 489.529999f, -89.0899963f);
-                newTeleporter.transform.rotation = Quaternion.identity;
-                NetworkServer.Spawn(newTeleporter);
             }
         }
 
@@ -70,6 +112,17 @@ namespace EnemiesReturns.Enemies.Judgement
             var dropEquipment = mithrixHurtBody.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.LunarFlower;
             dropEquipment.equipmentToDrop = Content.Equipment.MithrixHammer;
+        }
+
+        public static GameObject SetupBrokenTeleporter(GameObject prefab)
+        {
+            prefab.transform.Find("MegaTeleporterPrefab/MegaLunarTeleporter(Clone)/MegaLunarTeleporter").GetComponent<SkinnedMeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Teleporters/matLunarTeleporter.mat").WaitForCompletion();
+            prefab.transform.Find("MegaTeleporterPrefab/TeleporterVessel(Clone)/MegaLunarTeleporter").GetComponent<SkinnedMeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Teleporters/matLunarTeleporter.mat").WaitForCompletion();
+
+            prefab.transform.Find("MegaTeleporterPrefab/TeleporterVessel(Clone)/PickupLunarFlower/itemJudgeAccess/Sphere").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantOrb.mat").WaitForCompletion();
+            prefab.transform.Find("MegaTeleporterPrefab/TeleporterVessel(Clone)/PickupLunarFlower/itemJudgeAccess/MoonGhostPlant1").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantPlant.mat").WaitForCompletion();
+
+            return prefab;
         }
 
         public static GameObject SetupLunarFlower(GameObject prefab)

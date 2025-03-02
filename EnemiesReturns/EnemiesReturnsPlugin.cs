@@ -103,9 +103,9 @@ namespace EnemiesReturns
             Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
+
             Equipment.MithrixHammer.MithrixHammer.Hooks();
-            // using single R2API recalcstats hook for the sake of performance
-            //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            Enemies.Judgement.SetupJudgementPath.Hooks();
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
