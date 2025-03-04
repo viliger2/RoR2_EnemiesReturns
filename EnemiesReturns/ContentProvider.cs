@@ -244,6 +244,12 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
+
+                Enemies.Judgement.Arraign.ArraignStuff.BodyPrefab = assets.First(asset => asset.name == "ArraignP1Body");
+                bodyList.Add(Enemies.Judgement.Arraign.ArraignStuff.BodyPrefab);
+
+                Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab = assets.First(asset => asset.name == "ArraignP1Master");
+                masterList.Add(Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -259,10 +265,10 @@ namespace EnemiesReturns
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
             {
-                Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "edMithrixHammer");
+                Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
                 Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
 
-                Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "edAeonian");
+                Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
                 _contentPack.equipmentDefs.Add(assets);
             }));
 

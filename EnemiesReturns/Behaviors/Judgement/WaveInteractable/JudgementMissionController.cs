@@ -2,8 +2,10 @@
 using RoR2.CharacterAI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
@@ -46,6 +48,20 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         {
             instance = SingletonHelper.Assign(instance, this);
             playerDifficultyCoefficient = 0.7f + Run.instance.participatingPlayerCount * 0.3f;
+            // adding hermit crab just to be safe
+            var hermitCrab = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/HermitCrab/cscHermitCrab.asset").WaitForCompletion();
+            if (ClassicStageInfo.instance.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard == hermitCrab).ToArray().Length == 0)
+            {
+                ClassicStageInfo.instance.monsterSelection.AddChoice(
+                    new DirectorCard()
+                    {
+                        spawnCard = hermitCrab,
+                        selectionWeight = 1,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Far,
+                        preventOverhead = false
+                    },
+                    1);
+            }
         }
 
         private void OnDisable()
@@ -121,6 +137,11 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             for (int i = 0; i < monsterSelection.Count; i++)
             {
                 var card = monsterSelection.choices[i].value;
+                if (card == null) 
+                {
+                    continue;
+                }
+
                 if (card.cost >= information.minCreditCost && card.cost <= information.maxCreditCost)
                 {
                     cardSelection.AddChoice(card, 1);
@@ -135,11 +156,15 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 var combatDirector = combatDirectors[i];
                 combatDirector.monsterCredit += information.totalAvailableCredits * playerDifficultyCoefficient;
                 var card = cardSelection.Evaluate(RoR2Application.rng.nextNormalizedFloat);
-                while (selectedCard.Contains(card))
+                // failsafe in case of monster count being less than director count, like in cases of not having dlcs
+                if (cardSelection.Count >= combatDirectors.Length)
                 {
-                    card = cardSelection.Evaluate(RoR2Application.rng.nextNormalizedFloat);
+                    while (selectedCard.Contains(card))
+                    {
+                        card = cardSelection.Evaluate(RoR2Application.rng.nextNormalizedFloat);
+                    }
+                    selectedCard.Add(card);
                 }
-                selectedCard.Add(card);
                 combatDirector.OverrideCurrentMonsterCard(card);
                 combatDirector.monsterSpawnTimer = 0f;
                 combatDirector.gameObject.SetActive(true);
