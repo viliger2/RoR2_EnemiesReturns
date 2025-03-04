@@ -53,7 +53,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddMinionOwnership => true;
         protected virtual bool AddAIOwnership => false;
         protected virtual bool AddSetDontDestoyOnLoad => false;
-
+        protected virtual bool AddDeployable => false;
 
         IAISkillDriver.AISkillDriverParams[] IAISkillDriver.GetAISkillDriverParams() => AISkillDriverParams();
         IBaseAI.BaseAIParams IBaseAI.GetBaseAIParams() => BaseAIParams();
@@ -70,5 +70,7 @@ namespace EnemiesReturns.Components
         bool INetworkIdentity.NeedToAddNetworkIdentity() => AddNetworkIdentity;
         bool IAIOwnership.NeedToAddAIOwnership() => AddAIOwnership;
         bool ISetDontDestroyOnLoad.NeedToAddSetDontDestroyOnLoad() => AddSetDontDestoyOnLoad;
+        bool IDeployable.NeedtoAddDeployable() => AddDeployable;
+
     }
 }

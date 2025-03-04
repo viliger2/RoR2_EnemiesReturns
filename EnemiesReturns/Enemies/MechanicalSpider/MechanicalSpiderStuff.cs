@@ -1,5 +1,5 @@
 ﻿using EnemiesReturns.Behaviors;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
+using R2API;
 using RoR2;
 using RoR2.Audio;
 using RoR2.Hologram;
@@ -167,6 +167,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             var flickerEmission = interactablePrefab.AddComponent<FlickerEmission>();
             flickerEmission.renderer = meshRenderer;
+            flickerEmission.soundRepeatThreshold = 0.2f;
+            flickerEmission.soundEmissionValue = 6.5f;
+            flickerEmission.soundName = "ER_Spider_Light_Flicker_Play";
             flickerEmission.sinWaves = new Wave[]
             {
                 new Wave()
@@ -349,7 +352,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public GameObject CreateDoubleShotGhostPrefab()
         {
-            // TODO: maybe scale
             var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/FMJRampingGhost.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectileGhost", false);
 
             var flames = projectileGhost.transform.Find("Flames").gameObject;

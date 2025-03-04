@@ -14,6 +14,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public Inventory inventory;
 
+        public static float initialStageDifficultyCoefficient { get; private set; } // this should be in purchase component but that thing is ror2 so we just gonna put it here
+
         private void Awake()
         {
             if (!purchaseInteraction)
@@ -82,5 +84,14 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             }
         }
 
+        public static void Hooks()
+        {
+            RoR2.SceneDirector.onPostPopulateSceneServer += SceneDirector_onPostPopulateSceneServer;
+        }
+
+        private static void SceneDirector_onPostPopulateSceneServer(SceneDirector obj)
+        {
+            initialStageDifficultyCoefficient = RoR2.Run.instance.difficultyCoefficient;
+        }
     }
 }

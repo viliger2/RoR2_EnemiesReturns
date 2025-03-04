@@ -11,8 +11,6 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         public static float baseChargeEffectDuration = 4f;
 
-        public static float targetPitch => EnemiesReturns.Configuration.Colossus.LaserBarrageHeadPitch.Value;
-
         public static float initialEmmision = 0f;
 
         public static float finalEmmision => ColossusBody.MAX_BARRAGE_EMISSION;
@@ -102,8 +100,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             base.Update();
             if (modelAnimator)
             {
-                modelAnimator.SetFloat(MissingAnimationParameters.aimYawCycle, Mathf.Clamp(Mathf.Lerp(startYaw, 0f, age / duration), 0f, 0.99f));
-                modelAnimator.SetFloat(MissingAnimationParameters.aimPitchCycle, Mathf.Clamp(Mathf.Lerp(startPitch, targetPitch, age / duration), 0f, 0.99f));
+                modelAnimator.SetFloat(MissingAnimationParameters.aimYawCycle, Mathf.Clamp(Mathf.Lerp(startYaw, 0.5f, age / duration), 0f, 0.99f));
+                modelAnimator.SetFloat(MissingAnimationParameters.aimPitchCycle, Mathf.Clamp(Mathf.Lerp(startPitch, 0.5f, age / duration), 0f, 0.99f));
             }
 
             if (age <= chargeEffectDuration)

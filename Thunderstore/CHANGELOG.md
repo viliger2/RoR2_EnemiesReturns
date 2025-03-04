@@ -1,4 +1,83 @@
 <details>
+<summary>0.4.12</summary>
+
+* Added Spanish translation by Manuerth.
+* Config files are now generated via reflection.
+  * _This is not something end users should care about, but some config files might be wiped. I am sorry for the inconvenience._
+* Mechanical spider
+  * Added option for drones to use initial stage price coefficient, disabled by default.
+  * Removed attack speed scaling on "charge attack" state.
+    * _Basically, if mechanical spider still has a target nearby instead of going through the full cycle of the skill (open hatch, charge attack, fire two times, close hatch) it goes back to "charge attack" state and cycles so until target is either dead or gets far enough for skill to end. This resulted in spiders turning the game into bullethell if you were to encounter SS2 Storm on a stage where they are present. By removing attack speed scaling we make them more manageable during storms specifically, while having zero effect on balance normally._
+* Lynx Tribe
+  * Friendly tribesmen summoned by Lynx Fetish now ignore team member limit.
+  * Lynx Shrine now drops item for each player in game instead of only one.
+* Ifrit
+  * Fixed Flame Charge's body attack using wrong hitbox.
+    * _Attack should be a lot more manageable now and easier to dodge either via movement abilities or circle strafing._
+
+</details>
+<details>
+<summary>0.4.11</summary>
+
+* Ifrit
+  * Patched up some holes in Ifrit's face. Thanks [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)!
+  * Added landing sound.
+  * Infernal Lantern
+    * Summoned pillars are now limited to 2. This can be changed in the config.
+  * Summon Pillars
+    * Added material overlay similar to Ocular HUD.
+	* Extended sound range Ifrit's roar on pillar summon to 250m (was 180m).
+	  * _These changes are intended to provide better visibility to pillars, a bit too many times I've seen people just die to pillars they didn't know were there._
+  * Charge
+    * Now pushes targets left or right from Ifrit, depending on their position relative to Ifrit's centre.   
+	* Lowered turn speed to 200 (was 300). Now uses a separate config value.
+  * Hellzone
+    * Now uses current AI target's position if initial bullseye search fails to find a target.
+* Lynx Totem
+  * Added to Artifact of Origin.
+  * Added landing sound.
+  * Lynx Fetish
+    * Fixed an issue where Lynx tribesmen summoned by the item would always provide buffs to player team instead of team that summoned them.
+  * Summon Storms
+    * Fixed potential NullReferenceException on storm grabbing the target.
+	* Behavior changed: now always summons one storm on AI's current target or if it doesn't have a target, then at player that is closest to it. Old behavior can be enabled in the config.
+	* Storms now die when Totem dies.
+  * Groundpound
+    * Scalled VFX down to match hitbox more closely.  
+* Spitter
+  * Patched up some holes in Spitter's guts. Thanks [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)!
+* Colossus
+  * Added landing sound.
+  * Laser Barrage
+    * Colossus now slowly moves forward and actively aims at his current target instead of standing still and sweeping from left to right (or was it right to left?).
+	* Duration extended to 10s (was 5s).
+</details>
+<details>
+<summary>0.4.10</summary>
+
+* Lynx Fetish
+  * Fixed potential ArgumentOutOfRangeException.
+
+</details>
+<details>
+<summary>0.4.9</summary>
+
+* Added new Small-tier monster: Lynx Shaman.
+* Added new Boss-tier monster: Lynx Totem.
+* Fixed an issue where Infernal Lantern wouldn't work after stage transition until player picks up a new item.
+* Fixed an issue where Infernal Lantern proc type wouldn't work.
+* Implemented DamageSource for all enemies.
+  * _This means that all enemies can benefit from items and effects that check if damage was made with specific ability, assuming the enemy has said ability of course._
+* Colossal fist
+  * Added downwards force, so flying enemies are slammed into the ground on projectile impact.
+* Colossus
+  * Config to spawn additional enemies on Clap post-loop is now enabled by default.
+    * _This and some things with Lynx Tribe are made to incentivise looping while having zero effect on players who prefer one loop gameplay._
+* Mechanical Spider
+  * Broken spider now has new visual effects and sounds. 
+
+</details>
+<details>
 <summary>0.3.10</summary>
 
 * Fixed a potential ArgumentOutOfRangeException on dealing damage if Colossal Fist is disabled.

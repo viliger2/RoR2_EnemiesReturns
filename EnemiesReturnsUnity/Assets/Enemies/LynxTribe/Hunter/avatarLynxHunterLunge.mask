@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: avatarLynxHunterLunge
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Lynx
+    m_Weight: 0
+  - m_Path: LynxHunter
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_L/Calf_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_L/Calf_L/Calf_L_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_R/Calf_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Pelvis/Thigh_R/Calf_R/Calf_R_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Base/Stomach
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Neck
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head/Mask
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Neck/Head/Mask/Mask_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger1.1_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger1.1_L/Finger1.2_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger1.1_L/Finger1.2_L/Finger1.2_L_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger2.1_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger2.1_L/Finger2.2_L
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_L/UpperArm_L/LowerArm_L/Hand_L/Finger2.1_L/Finger2.2_L/Finger2.2_L_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger1.1_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger1.1_R/Finger1.2_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger1.1_R/Finger1.2_R/Finger1.2_R_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger2.1_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger2.1_R/Finger2.2_R
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Finger2.1_R/Finger2.2_R/Finger2.2_R_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Weapon
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Base/Stomach/Chest/Shoulder_R/UpperArm_R/LowerArm_R/Hand_R/Weapon/Weapon_end
+    m_Weight: 1
+  - m_Path: LynxHunter/ROOT/Foot_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Foot_L/Toe_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Foot_L/Toe_L/Toe_L_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Foot_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Foot_R/Toe_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/Foot_R/Toe_R/Toe_R_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_L/KneeIK_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_L/KneeIK_L/KneeIK_L_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_R/KneeIK_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKCalf_R/KneeIK_R/KneeIK_R_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_L/ElbowIK_L
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_L/ElbowIK_L/ElbowIK_L_end
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_R/ElbowIK_R
+    m_Weight: 0
+  - m_Path: LynxHunter/ROOT/IKLowerArm_R/ElbowIK_R/ElbowIK_R_end
+    m_Weight: 0
+  - m_Path: LynxHunterSpear
+    m_Weight: 0
+  - m_Path: LynxShamanHunterMask
+    m_Weight: 0

@@ -1,6 +1,6 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
 using EnemiesReturns.Projectiles;
+using R2API;
 using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
@@ -21,11 +21,26 @@ namespace EnemiesReturns.Enemies.Ifrit
         public static void Hooks()
         {
             PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
+            PillarExplosion = R2API.ProcTypeAPI.ReserveProcType();
         }
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)
         {
-            return EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
+            return EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillMaxPillarCount.Value;
+        }
+
+        public GameObject CreateDeathEffect()
+        {
+            var effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion().InstantiateClone("IfritDeathEffect", false);
+            effect.GetComponent<EffectComponent>().applyScale = true;
+
+            foreach (var system in effect.GetComponentsInChildren<ParticleSystem>())
+            {
+                var main = system.main;
+                main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            }
+
+            return effect;
         }
 
         public GameObject CreateHellzoneProjectile()
@@ -37,7 +52,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.startSound = "Play_lemurianBruiser_m1_shoot";
             controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
 
-            gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
+            gameObject.GetComponent<ProjectileDamage>().damageType = new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.Secondary);
 
             if (gameObject.TryGetComponent<ProjectileImpactExplosion>(out var component))
             {
@@ -100,7 +115,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             controller.ghostPrefab = null;
             controller.startSound = "ER_Ifrit_Volcano_Play";
 
-            gameObject.GetComponent<ProjectileDamage>().damageType.damageType = DamageType.IgniteOnHit;
+            gameObject.GetComponent<ProjectileDamage>().damageType = new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.Secondary);
 
             var fxTransform = gameObject.transform.Find("FX");
             var fxScale = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
@@ -179,7 +194,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             networkTransform.allowClientsideCollision = false;
 
             var projectileDamage = gameObject.AddComponent<ProjectileDamage>();
-            projectileDamage.damageType.damageType = DamageType.IgniteOnHit;
+            projectileDamage.damageType = new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.Secondary);
             projectileDamage.useDotMaxStacksFromAttacker = false;
 
             gameObject.AddComponent<TeamFilter>();

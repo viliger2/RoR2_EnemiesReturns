@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskLynxScoutAttack
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Lynx
+    m_Weight: 0
+  - m_Path: LynxScout
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/ArmIK.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/ArmIK.L/ArmIK.L_end
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/ArmIK.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/ArmIK.R/ArmIK.R_end
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.L/Calf.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.L/Calf.L/Foot.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.L/Calf.L/Foot.L/Toe.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.L/Calf.L/Foot.L/Toe.L/Toe.L_end
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.R/Calf.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.R/Calf.R/Foot.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.R/Calf.R/Foot.R/Toe.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Pelvis/Thigh.R/Calf.R/Foot.R/Toe.R/Toe.R_end
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/Base/Spine2
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/Neck
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head/Mask
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head/Mask/Mask_end
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.L
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.L/LowerArm.L
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.L/LowerArm.L/Hand.L
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.R
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.R/LowerArm.R
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.R/LowerArm.R/Hand.R
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/Base/Spine2/Spine3/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+    m_Weight: 1
+  - m_Path: LynxScout/ROOT/LegIK.L
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/LegIK.L/LegIK.L_end
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/LegIK.R
+    m_Weight: 0
+  - m_Path: LynxScout/ROOT/LegIK.R/LegIK.R_end
+    m_Weight: 0
+  - m_Path: LynxScoutClaws
+    m_Weight: 0
+  - m_Path: LynxScoutMask
+    m_Weight: 0

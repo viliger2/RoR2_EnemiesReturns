@@ -1,6 +1,5 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
-using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -103,14 +102,6 @@ namespace EnemiesReturns.Enemies.Spitter
             });
         }
 
-        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        {
-            return new ICharacterMotor.CharacterMotorParams()
-            {
-                mass = 200f
-            };
-        }
-
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
         {
             return CreateCard(new SpawnCardParams(name, master, Configuration.Spitter.DirectorCost.Value)
@@ -124,7 +115,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Lemurian/sdLemurian.asset").WaitForCompletion();
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SPITTER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

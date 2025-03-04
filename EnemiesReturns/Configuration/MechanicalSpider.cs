@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class MechanicalSpider
+    public class MechanicalSpider : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -39,15 +39,16 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<float> DroneSpawnChance;
         public static ConfigEntry<int> DroneCost;
-        public static ConfigEntry<float> DroneEliteConstMultiplier;
+        public static ConfigEntry<float> DroneEliteCostMultiplier;
         public static ConfigEntry<float> DroneBaseRegen;
         public static ConfigEntry<float> DroneLevelRegen;
         public static ConfigEntry<int> DroneBonusHP;
         public static ConfigEntry<int> DroneBonusDamage;
+        public static ConfigEntry<bool> DroneUseInitialStageCostCoef;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Mechanical Spider Director", "Enable Mechanical Spider", true, "Enables Mechanical Spider.");
             SelectionWeight = config.Bind("Mechanical Spider Director", "Selection Weight", 1, "Selection weight of Mechanical Spider.");
@@ -106,11 +107,12 @@ namespace EnemiesReturns.Configuration
 
             DroneSpawnChance = config.Bind("Mechanical Spider Drone", "Chance to Spawn Drone", 2f, "Chance to spawn purchasable Mechanical Spider on death.");
             DroneCost = config.Bind("Mechanical Spider Drone", "Drone Cost", 60, "Cost to repair broken Mechanical Spider.");
-            DroneEliteConstMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
+            DroneEliteCostMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
             DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 5f, "Base health regeneration of allied Mechanical Spider.");
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 1f, "Per level health regeneration of allied Mechanical Spider.");
             DroneBonusHP = config.Bind("Mechanical Spider Drone", "Bonus HP Boost", 20, "Bonus health boost from base stats (the same as normal spider), boosts by 10% for each value.");
             DroneBonusDamage = config.Bind("Mechanical Spider Drone", "Bonus Damage Boost", 10, "Bonus damage boost from base stats (the same as normal spider), boosts by 10% for each value.");
+            DroneUseInitialStageCostCoef = config.Bind("Mechanical Spider Drone", "Use Initial Stage Cost Coefficient", false, "Use initial stage coefficient for price. Basically it means that the cost of spider drone won't scale with time on current stage, using the same price coefficient that was used when initial interactables were spawned. So if spider drone spawns the moment you enter a stage or 5 minutes into it price will be the same.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }

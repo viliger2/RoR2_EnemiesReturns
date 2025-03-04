@@ -25,7 +25,7 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             base.FixedUpdate();
             if (target)
             {
-                StartAimMode(new Ray(target.position, target.forward), 0.16f, false); // TODO: forgot to bring it over
+                StartAimMode(new Ray(target.position, target.forward), 0.16f, false);
             }
         }
     }

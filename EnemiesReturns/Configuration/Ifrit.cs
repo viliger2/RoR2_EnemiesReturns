@@ -3,7 +3,7 @@ using R2API;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class Ifrit
+    public class Ifrit : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -33,6 +33,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> FlameChargeFlameForce;
         public static ConfigEntry<float> FlameChargeFlameTickFrequency;
         public static ConfigEntry<float> FlameChargeFlameProcCoefficient;
+        public static ConfigEntry<float> FlameChargeTurnSpeed;
         public static ConfigEntry<float> FlameChargeHeighCheck;
 
         public static ConfigEntry<float> HellzoneCooldown;
@@ -68,10 +69,11 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> SpawnPillarOnChampionKillBodyBaseDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillBodyLevelDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillEliteChance;
+        public static ConfigEntry<int> SpawnPillarOnChampionKillMaxPillarCount;
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Ifrit.Enabled = config.Bind("Ifrit Director", "Enable Ifrit", true, "Enables Ifrit.");
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
@@ -113,9 +115,10 @@ namespace EnemiesReturns.Configuration
             Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.4f, "Ifrit's Flame Charge flame damage.");
             Ifrit.FlameChargeFlameIgniteChance = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Ignite Chance", 100f, "Ifrit's Flame Charge flame ignite chance.");
             Ifrit.FlameChargeFlameForce = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Force", 0f, "Ifrit's Flame Charge flame force.");
-            Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 8f, "How many times per second Ifrit's Flame Charge flame deal damage.");
+            Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 4f, "How many times per second Ifrit's Flame Charge flame deal damage.");
             Ifrit.FlameChargeFlameProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Proc Coefficient", 0.2f, "Ifrit's Flame Charge flame proc coefficient.");
             Ifrit.FlameChargeHeighCheck = config.Bind("Ifrit Flame Charge", "Flame Charge Height Check", 50f, "Checks for falls in front of Ifrit and stops his so he wouldn't yeet himself off cliffs. Set it above 1000 to basically disable the functionality.");
+            FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 200f, "Ifrit's Flame Charge turn speed.");
 
             Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
             Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 9f, "Ifrit's Hellzone radius.");
@@ -150,6 +153,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.SpawnPillarOnChampionKillBodyBaseDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 12f, "Infernal Lantern pillar base damage. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 2.4f, "Infernal Lantern pillar damage per level. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("Infernal Lantern", "Infernal Lantern Elite Kill Spawn Chance", 20f, "Infernal Lantern chance to spawn on elite kill.");
+            Ifrit.SpawnPillarOnChampionKillMaxPillarCount = config.Bind("Infernal Lantern", "Infernal Lantern Max Pillar Count", 2, "Max summoned pillars count. When limit is reached new pillars won't be spawned until old ones despawn.");
 
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
         }

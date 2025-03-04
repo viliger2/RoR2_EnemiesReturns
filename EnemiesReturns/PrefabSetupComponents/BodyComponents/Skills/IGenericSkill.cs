@@ -33,6 +33,13 @@ namespace EnemiesReturns.Components.BodyComponents.Skills
             {
                 foreach (var skillParam in genericSkillParams)
                 {
+                    if (!skillParam.family)
+                    {
+#if DEBUG || NOWEAVER
+                        Log.Warning($"SkillFamily for skillName {skillParam.skillName} is null! This WILL result in being stuck at 99%!");
+#endif
+                        continue;
+                    }
                     var skill = bodyPrefab.AddComponent<GenericSkill>();
                     skill._skillFamily = skillParam.family;
                     skill.skillName = skillParam.skillName;

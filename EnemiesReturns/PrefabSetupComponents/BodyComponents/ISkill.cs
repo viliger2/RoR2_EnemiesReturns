@@ -13,5 +13,7 @@ namespace EnemiesReturns.Components.BodyComponents
             AddSkillLocator(body, skillDictionary);
             return skillDictionary;
         }
+
+        //CharacterSpawnCard CreateCard(string name, GameObject master);
     }
 }

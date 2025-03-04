@@ -34,7 +34,7 @@ namespace EnemiesReturns.Components
 
         protected abstract ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab);
 
-        protected abstract ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon);
+        protected abstract ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon);
 
         protected abstract IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams();
 
@@ -52,6 +52,11 @@ namespace EnemiesReturns.Components
         public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
         {
             return AddBodyComponents(bodyPrefab, sprite, null, null, null);
+        }
+
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            return AddBodyComponents(bodyPrefab, null, null, null, acdLookup);
         }
 
         public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
@@ -109,6 +114,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddRandomBlinks => false;
         protected virtual bool AddDeployable => false;
         protected virtual bool AddExecuteSkillOnDamage => false;
+        protected virtual bool AddRemoveJitterBones => false;
 
         protected class SkillParams
         {
@@ -290,7 +296,6 @@ namespace EnemiesReturns.Components
                 airControl = 0.25f,
                 disableAirControl = false,
                 generateParametersOnAwake = true,
-                mass = 100f,
                 muteWalkMotion = false
             };
         }
@@ -382,7 +387,7 @@ namespace EnemiesReturns.Components
 
         IAimAnimator.AimAnimatorParams IAimAnimator.GetAimAnimatorParams() => AimAnimatorParams();
 
-        ICharacterBody.CharacterBodyParams ICharacterBody.GetCharacterBodyParams(Transform aimOrigin, Texture icon) => CharacterBodyParams(aimOrigin, icon);
+        ICharacterBody.CharacterBodyParams ICharacterBody.GetCharacterBodyParams(Transform aimOrigin, Sprite icon) => CharacterBodyParams(aimOrigin, icon);
 
         CharacterCameraParams ICameraTargetParams.GetCharacterCameraParams() => CharacterCameraParams();
 
@@ -468,5 +473,7 @@ namespace EnemiesReturns.Components
         bool IRandomBlinkController.NeedToAddRandomBlinkController() => AddRandomBlinks;
         bool IDeployable.NeedToAddDeployable() => AddDeployable;
         bool IExecuteSkillOnDamage.NeedToAddExecuteSkillOnDamage() => AddExecuteSkillOnDamage;
+        bool IRemoveJitterBones.NeedToAddRemoveJitterBones() => AddRemoveJitterBones;
+
     }
 }

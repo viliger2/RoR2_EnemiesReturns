@@ -22,6 +22,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
 
         public abstract float damagePerStack { get; }
 
+        public abstract DamageTypeCombo damageType { get; }
+
         public static GameObject explosionPrefab;
 
         private int stackCount = 1;
@@ -65,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                     losType = ignoresLoS ? BlastAttack.LoSType.None : BlastAttack.LoSType.NearestHit,
                     teamIndex = characterBody.teamComponent.teamIndex
                 };
-                blastAttack.damageType.damageType = DamageType.IgniteOnHit;
+                blastAttack.damageType = damageType;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.procChainMask.AddModdedProc(PillarStuff.PillarExplosion);
                 blastAttack.Fire();

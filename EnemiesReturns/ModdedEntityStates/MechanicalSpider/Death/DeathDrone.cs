@@ -1,5 +1,5 @@
-﻿using EnemiesReturns.Enemies.MechanicalSpider;
-using EnemiesReturns.Behaviors;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Enemies.MechanicalSpider;
 using EntityStates;
 using RoR2;
 using System;
@@ -88,7 +88,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 position = spawnPosition
             };
 
-            var result = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(MechanicalSpiderStuff.SpawnCards.iscMechanicalSpiderBroken, placementRule, Run.instance.spawnRng));
+            var result = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(MechanicalSpiderStuff.SpawnCards.iscMechanicalSpiderBroken, placementRule, RoR2Application.rng));
             if (result)
             {
                 var inventory = result.GetComponent<Inventory>();
@@ -111,9 +111,16 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     if (eliteDef)
                     {
                         var eliteTier = CombatDirector.eliteTiers.First(tier => tier.eliteTypes.Contains(eliteDef));
-                        eliteModifier = eliteTier.costMultiplier * EnemiesReturns.Configuration.MechanicalSpider.DroneEliteConstMultiplier.Value;
+                        eliteModifier = eliteTier.costMultiplier * EnemiesReturns.Configuration.MechanicalSpider.DroneEliteCostMultiplier.Value;
                     }
-                    purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier));
+                    if (EnemiesReturns.Configuration.MechanicalSpider.DroneUseInitialStageCostCoef.Value)
+                    {
+                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier), Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.initialStageDifficultyCoefficient);
+                    }
+                    else
+                    {
+                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier));
+                    }
                 }
             }
         }

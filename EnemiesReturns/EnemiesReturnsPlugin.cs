@@ -1,34 +1,47 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.LynxTribe.Shaman;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+
+// TODO: write Content class and put everything there
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
     [BepInPlugin(GUID, ModName, Version)]
-    [BepInDependency(R2API.PrefabAPI.PluginGUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.RiskyArtifacts", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency(R2API.DeployableAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
     [BepInDependency(R2API.EliteAPI.PluginGUID)]
     [BepInDependency(R2API.ProcTypeAPI.PluginGUID)]
+    [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
+    [BepInDependency(R2API.DamageAPI.PluginGUID)]
+    [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
+    [BepInDependency(R2API.OrbAPI.PluginGUID)]
+    [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.3.10";
+        public const string Version = "0.4.12";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
@@ -40,13 +53,15 @@ namespace EnemiesReturns
 
             Log.Init(Logger);
 
+            var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
+
             if (UseConfigFile.Value)
             {
-                EnemiesReturns.Configuration.General.PopulateConfig(Config);
-                EnemiesReturns.Configuration.Spitter.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Spitter.cfg"), true));
-                EnemiesReturns.Configuration.Colossus.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Colossus.cfg"), true));
-                EnemiesReturns.Configuration.Ifrit.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.Ifrit.cfg"), true));
-                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.MechanicalSpider.cfg"), true));
+                foreach(var configType in configs)
+                {
+                    var config = (IConfiguration)System.Activator.CreateInstance(configType);
+                    config.PopulateConfig(new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, $"com.{Author}.{ModName}.{config.GetType().Name}.cfg"), true));
+                }
             }
             else
             {
@@ -55,14 +70,22 @@ namespace EnemiesReturns
                     SaveOnConfigSet = false,
                 };
 
-                EnemiesReturns.Configuration.General.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.Spitter.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.Colossus.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.Ifrit.PopulateConfig(notSavedConfigFile);
-                EnemiesReturns.Configuration.MechanicalSpider.PopulateConfig(notSavedConfigFile);
+                foreach (var configType in configs)
+                {
+                    var config = (IConfiguration)System.Activator.CreateInstance(configType);
+                    config.PopulateConfig(notSavedConfigFile);
+                }
             }
+            EnemiesReturns.Configuration.General.PopulateConfig(Config);
+
+            RegisterStuff();
 
             Hooks();
+        }
+
+        private void RegisterStuff()
+        {
+            R2API.OrbAPI.AddOrb(typeof(LynxStormOrb));
         }
 
         private void Hooks()
@@ -71,18 +94,32 @@ namespace EnemiesReturns
             RoR2.Language.collectLanguageRootFolders += CollectLanguageRootFolders;
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             ColossalKnurlFactory.Hooks();
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             MechanicalSpiderVictoryDanceController.Hooks();
+            Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
+            LynxFetishFactory.Hooks();
+            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             // using single R2API recalcstats hook for the sake of performance
             //R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            {
+                LynxFetishFactory.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            }
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)
         {
             var damageInfo = obj.damageInfo;
             var victim = obj.victim.gameObject;
+
+            //ShamanStuff.OnHitEnemy(damageInfo, null, victim);
 
             if (!damageInfo.attacker || !damageInfo.attacker.TryGetComponent<CharacterBody>(out var attackerBody))
             {
@@ -147,6 +184,27 @@ namespace EnemiesReturns
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
+        [ConCommand(commandName = "returns_spawn_lynx", flags = ConVarFlags.None, helpText = "Spawns all Lynx Tribe enemies (including allies)")]
+        private static void CCSpawnLynx(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Archer.ArcherBodyAlly.SpawnCards.cscLynxArcherAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Scout.ScoutBodyAlly.SpawnCards.cscLynxScoutAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Hunter.HunterBodyAlly.SpawnCards.cscLynxHunterAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly, localPlayer.modelLocator.modelBaseTransform.position);
+
+            SpawnMonster(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         private static void SpawnMonster(CharacterSpawnCard card, Vector3 position)

@@ -4,9 +4,10 @@ namespace EnemiesReturns.Configuration
 {
     public static class General
     {
+#if DEBUG || NOWEAVER
         public static ConfigEntry<float> DebugWalkSpeedValue;
-
         public static ConfigEntry<float> testconfig;
+#endif
 
         public static void PopulateConfig(ConfigFile config)
         {

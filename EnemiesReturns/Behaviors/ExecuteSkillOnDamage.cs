@@ -11,6 +11,8 @@ namespace EnemiesReturns.Behaviors
 
         public EntityStateMachine mainStateMachine;
 
+        public bool checkForMainState = true;
+
         private void Awake()
         {
             if (!characterBody)
@@ -39,7 +41,12 @@ namespace EnemiesReturns.Behaviors
                 return;
             }
 
-            if (mainStateMachine.IsInMainState() && characterBody.healthComponent.alive)
+            if (checkForMainState && !mainStateMachine.IsInMainState())
+            {
+                return;
+            }
+
+            if (characterBody.healthComponent.alive)
             {
                 skillToExecute.ExecuteIfReady();
             }

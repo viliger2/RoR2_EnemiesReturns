@@ -4,7 +4,6 @@ using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.Behaviors;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
@@ -32,12 +31,11 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         }
 
         protected override bool AddExecuteSkillOnDamage => true;
+        protected override bool AddRemoveJitterBones => true;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             var body = base.AddBodyComponents(bodyPrefab, sprite, log);
-            var model = body.transform.Find("ModelBase/mdlMechanicalSpider").gameObject;
-            model.AddComponent<RemoveJitterBones>(); // TODO: in the future move it to IModel
 
             #region ParticleEffects
             var rightFrontLeg = body.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg1.1/SparkRightFrontLeg");
@@ -149,7 +147,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
@@ -173,14 +171,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
             return new ICharacterModel.CharacterModelParams();
-        }
-
-        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        {
-            return new ICharacterMotor.CharacterMotorParams()
-            {
-                mass = 150f
-            };
         }
 
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()

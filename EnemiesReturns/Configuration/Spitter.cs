@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class Spitter
+    public class Spitter : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -41,7 +41,7 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Spitter.Enabled = config.Bind("Spitter Director", "Enable Spitter", true, "Enables Spitter.");
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");

@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.ModCompats.PrefabAPICompat;
-using R2API;
+﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
@@ -38,7 +37,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.pickupModelPrefab = prefab;
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage };
 
             return itemDef;
         }
@@ -79,6 +78,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.blastProcCoefficient = EnemiesReturns.Configuration.Colossus.KnurlProcCoefficient.Value;
             projectileImpactExplosion.blastAttackerFiltering = AttackerFiltering.Default;
             projectileImpactExplosion.canRejectForce = true;
+            projectileImpactExplosion.bonusBlastForce = Vector3.down * EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
 
             projectileImpactExplosion.fireChildren = false;
             projectileImpactExplosion.applyDot = false;
@@ -87,14 +87,14 @@ namespace EnemiesReturns.Items.ColossalKnurl
             projectileImpactExplosion.lifetime = 0.65f; // matches with animation and sound, DO NOT TOUCH
             projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion();
 
-            MyPrefabAPI.RegisterNetworkPrefab(fistPrefab);
+            PrefabAPI.RegisterNetworkPrefab(fistPrefab);
 
             return fistPrefab;
         }
 
         public static void Hooks()
         {
-            Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
         }
 
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
@@ -124,7 +124,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                     fireProjectileInfo.rotation = Quaternion.identity;
                     fireProjectileInfo.owner = attackerBody.gameObject;
                     fireProjectileInfo.damage = damageInfo.damage * damageCoef;
-                    fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
+                    //fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
                     fireProjectileInfo.crit = damageInfo.crit;
                     fireProjectileInfo.procChainMask = damageInfo.procChainMask;
                     fireProjectileInfo.procChainMask.AddModdedProc(ColossalFist);

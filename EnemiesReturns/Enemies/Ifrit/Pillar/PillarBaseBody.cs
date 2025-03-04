@@ -31,7 +31,6 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
         protected override bool AddSfxLocator => false;
         protected override bool AddSetStateOnHurt => false;
         protected override bool AddAimAnimator => false;
-        protected override bool AddDeployable => true;
         protected override string ModelName() => "IfritPillar";
 
         protected abstract float explosionRadius { get; }
@@ -126,7 +125,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

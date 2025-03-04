@@ -159,7 +159,7 @@ namespace EnemiesReturns.Enemies.Ifrit
                 new IAddHitboxes.HitBoxesParams
                 {
                     groupName = "BodyCharge",
-                    pathsToTransforms = new string[] { "Armature/Root/Root_Pelvis_Control/SmashHitbox" }
+                    pathsToTransforms = new string[] { "Armature/Root/Root_Pelvis_Control/ChargeHitbox" }
                 }
             };
         }
@@ -175,14 +175,6 @@ namespace EnemiesReturns.Enemies.Ifrit
         }
 
         protected override float CharacterDirectionTurnSpeed => EnemiesReturns.Configuration.Ifrit.TurnSpeed.Value;
-
-        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        {
-            return new ICharacterMotor.CharacterMotorParams()
-            {
-                mass = 1500f
-            };
-        }
 
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {
@@ -201,6 +193,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             return new ISfxLocator.SfxLocatorParams()
             {
+                landingSound = "ER_Ifrit_Landing_Play",
                 deathSound = "ER_Ifrit_Death_Play"
             };
         }
@@ -249,7 +242,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_IFRIT_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {

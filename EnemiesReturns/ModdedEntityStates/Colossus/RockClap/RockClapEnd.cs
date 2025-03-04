@@ -78,7 +78,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 
                             //var position = rock.transform.position - new Vector3(0f, 5f, 0f);
                             var rotation = Quaternion.LookRotation(rock.transform.position - position, Vector3.up);
-                            ProjectileManager.instance.FireProjectile(projectilePrefab, rock.transform.position, rotation, gameObject, damageStat * projectileDamageCoefficient, projectileForce, RollCrit(), RoR2.DamageColorIndex.Default, null, UnityEngine.Random.Range(projectileSpeed - projectileSpeedDelta, projectileSpeed + projectileSpeedDelta));
+                            ProjectileManager.instance.FireProjectile(projectilePrefab, rock.transform.position, rotation, gameObject, damageStat * projectileDamageCoefficient, projectileForce, RollCrit(), RoR2.DamageColorIndex.Default, null, UnityEngine.Random.Range(projectileSpeed - projectileSpeedDelta, projectileSpeed + projectileSpeedDelta), DamageSource.Secondary);
                         }
                         var attack = new BlastAttack();
                         attack.attacker = gameObject;
@@ -90,6 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
                         attack.radius = clapRadius;
                         attack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                         attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+                        attack.damageType = DamageSource.Secondary;
                         attack.Fire();
 
                     }

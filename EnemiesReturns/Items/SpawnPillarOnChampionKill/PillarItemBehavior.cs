@@ -13,6 +13,10 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
         {
             if (!damageReport.damageInfo.procChainMask.HasModdedProc(IfritStuff.PillarExplosion))
             {
+                if (base.body.master.IsDeployableLimited(IfritStuff.PylonDeployable))
+                {
+                    return;
+                }
                 bool spawn = false;
                 if (damageReport.victimBody)
                 {
@@ -39,6 +43,16 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                             if (aiownership)
                             {
                                 aiownership.ownerMaster = this.body.master;
+                            }
+
+                            if (spawnResult.spawnedInstance.TryGetComponent<CharacterMaster>(out var deployableMaster))
+                            {
+                                var deployable = deployableMaster.GetComponent<Deployable>();
+                                if (deployable)
+                                {
+                                    //deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
+                                    base.body.master.AddDeployable(deployable, IfritStuff.PylonDeployable);
+                                }
                             }
                         }
                     };

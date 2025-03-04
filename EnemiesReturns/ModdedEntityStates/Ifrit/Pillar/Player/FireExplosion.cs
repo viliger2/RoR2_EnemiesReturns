@@ -1,4 +1,5 @@
-﻿using RoR2.CharacterAI;
+﻿using RoR2;
+using RoR2.CharacterAI;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
@@ -14,6 +15,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
         public override bool ignoresLoS => EnemiesReturns.Configuration.Ifrit.PillarExplosionIgnoesLoS.Value;
 
         public override float damagePerStack => EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamagePerStack.Value;
+
+        public override DamageTypeCombo damageType => new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.NoneSpecified);
 
         public override GameObject GetAttacker()
         {

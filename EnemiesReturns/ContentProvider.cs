@@ -2,9 +2,17 @@
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Enemies.LynxTribe;
+using EnemiesReturns.Enemies.LynxTribe.Archer;
+using EnemiesReturns.Enemies.LynxTribe.Hunter;
+using EnemiesReturns.Enemies.LynxTribe.Scout;
+using EnemiesReturns.Enemies.LynxTribe.Shaman;
+using EnemiesReturns.Enemies.LynxTribe.Storm;
+using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
+using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
 using Rewired.Utils.Classes.Utility;
@@ -43,6 +51,7 @@ namespace EnemiesReturns
         private readonly List<ItemDef> itemList = new List<ItemDef>();
         private readonly List<NetworkSoundEventDef> nseList = new List<NetworkSoundEventDef>();
         private readonly List<GameObject> nopList = new List<GameObject>();
+        private readonly List<BuffDef> bdList = new List<BuffDef>();
 
         public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -140,10 +149,12 @@ namespace EnemiesReturns
 
             Dictionary<string, Sprite> iconLookup = new Dictionary<string, Sprite>();
 
+            Dictionary<string, Texture2D> rampLookups = new Dictionary<string, Texture2D>();
             Texture2D texLavaCrackRound = null;
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
             {
                 texLavaCrackRound = textures.First(texture => texture.name == "texLavaCrackRound");
+                rampLookups = textures.Where(texture => texture.name.StartsWith("texRamp")).ToDictionary(texture => texture.name, texture => texture);
             }));
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<Sprite[]>)((assets) =>
@@ -176,6 +187,8 @@ namespace EnemiesReturns
 
                 CreateMechanicalSpider(assets, iconLookup, acdLookup);
 
+                CreateLynxTribe(assets, iconLookup, acdLookup, rampLookups);
+
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
@@ -192,6 +205,7 @@ namespace EnemiesReturns
             _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
             _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
             _contentPack.itemRelationshipProviders.Add(new[] { ModdedContagiousItemProvider });
+            _contentPack.buffDefs.Add(bdList.ToArray());
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
@@ -208,6 +222,9 @@ namespace EnemiesReturns
             if (EnemiesReturns.Configuration.Ifrit.Enabled.Value)
             {
                 var ifritStuff = new IfritStuff();
+
+                ModdedEntityStates.Ifrit.DeathState.deathEffect = ifritStuff.CreateDeathEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.DeathState.deathEffect));
 
                 ModdedEntityStates.Ifrit.SummonPylon.screamPrefab = ifritStuff.CreateBreathParticle();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Ifrit.SummonPylon.screamPrefab));
@@ -883,6 +900,699 @@ namespace EnemiesReturns
             };
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
+
+        private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
+        {
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value
+                || EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                CreateLynxStorm(assets, acdLookup);
+            }
+            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            {
+                CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
+            }
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value)
+            {
+                var dtLynxTotem = CreateLynxTotemItem(assets, iconLookup);
+                CreateLynxScout(assets, iconLookup);
+                CreateLynxHunter(assets, iconLookup);
+                CreateLynxArcher(assets, iconLookup, rampLookups);
+                CreateLynxTotem(assets, iconLookup, acdLookup, dtLynxTotem);
+                Utils.AddMonsterFamilyToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, new LynxTribeStuff().CreateLynxTribeFamily());
+                if (EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineEnabled.Value)
+                {
+                    CreateLynxShrine(assets);
+                }
+                if (EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapEnabled.Value)
+                {
+                    CreateLynxTrap(assets);
+                }
+            }
+        }
+
+        public void CreateLynxTrap(GameObject[] assets)
+        {
+            var lynxStuff = new LynxTribeStuff();
+
+            var nseLynxTribeTrapTwigSnap = Utils.CreateNetworkSoundDef("ER_LynxTrap_SnapTwig_Play");
+            nseList.Add(nseLynxTribeTrapTwigSnap);
+
+            var leavesPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/lemuriantemple/Assets/LTFallenLeaf.spm").WaitForCompletion();
+            var material = leavesPrefab.transform.Find("LTFallenLeaf_LOD0").GetComponent<MeshRenderer>().material;
+            var lynxTrapPrefab = assets.First(prefab => prefab.name == "LynxTrapPrefab");
+
+            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
+            foreach (var stageString in defaultStages)
+            {
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+                GameObject lynxTrap = lynxTrapPrefab.InstantiateClone(lynxTrapPrefab.name + cleanStageString, false);
+                switch (cleanStageString)
+                {
+                    case "blackbeach":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("SkyMeadowLeaves_LOD0", lynxStuff.CreateBlackBeachLeavesMaterialLOD0, material));
+                        break;
+                    case "skymeadow":
+                    case "itskymeadow":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("SkyMeadowLeaves_LOD0", lynxStuff.CreateSkyMeadowLeavesMaterialLOD0, material));
+                        break;
+                    case "village":
+                    case "villagenight":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("ShatteredAbodesLeaves_LOD0", lynxStuff.CreateShatteredAbodesLeavesMaterialLOD0, material));
+                        break;
+                    case "golemplains":
+                    case "itgolemplains":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("TitanicPlainsLeaves_LOD0", lynxStuff.CreateTitanicPlanesLeavesMaterialLOD0, material));
+                        break;
+                    case "foggyswamp":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("WetlandsLeaves_LOD0", lynxStuff.CreateWetlandsLeavesMaterialLOD0, material));
+                        break;
+                    case "habitatfall":
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, ContentProvider.GetOrCreateMaterial("GoldenDiebackLeaves_LOD0", lynxStuff.CreateGoldemDiebackLeavesMaterialLOD0, material));
+                        break;
+                    default:
+                        lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, material);
+                        break;
+                }
+                InteractableSpawnCard spawnCardTrap = lynxStuff.CreateLynxTrapSpawnCard(lynxTrap, cleanStageString);
+
+                var dcLynxTrap = new DirectorCard
+                {
+                    spawnCard = spawnCardTrap,
+                    selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapSelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = false
+                };
+
+                var holderTrap = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcLynxTrap,
+                    InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxTrapSpawnCategory.Value
+                };
+
+                DirectorAPI.Helpers.AddNewInteractableToStage(holderTrap, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
+
+                nopList.Add(lynxTrap);
+            }
+        }
+
+        public void CreateLynxShrine(GameObject[] assets)
+        {
+            var lynxStuff = new LynxTribeStuff();
+
+            ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab = lynxStuff.CreateRetreatEffect(assets.First(prefab => prefab.name == "LynxTribeRetreatEffect"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Retreat.retreatEffectPrefab));
+
+            LynxTribeStuff.CustomHologramContent = lynxStuff.CustomCostHologramContentPrefab();
+
+            var shrineEffect = lynxStuff.CreateShrineUseEffect();
+            effectsList.Add(new EffectDef(shrineEffect));
+
+            var nsedLynxShrineFailure = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Failure_Play");
+            nseList.Add(nsedLynxShrineFailure);
+
+            var nsedLynxShrineSuccess = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Success_Play");
+            nseList.Add(nsedLynxShrineSuccess);
+
+            var lynxShrine1 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            var lynxShrine2 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab2"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            var lynxShrine3 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab3"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+
+            DirectorAPI.DirectorCardHolder holderShrine1 = CreateCardHolderLynxShrine(lynxShrine1, "1");
+            DirectorAPI.DirectorCardHolder holderShrine2 = CreateCardHolderLynxShrine(lynxShrine2, "2");
+            DirectorAPI.DirectorCardHolder holderShrine3 = CreateCardHolderLynxShrine(lynxShrine3, "3");
+
+            var defaultStages = EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
+            foreach (var stageString in defaultStages)
+            {
+                DirectorAPI.DirectorCardHolder shrineToSpawn;
+                string cleanStageString = string.Join("", stageString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+                switch (cleanStageString)
+                {
+                    case "blackbeach":
+                    case "skymeadow":
+                    case "itskymeadow":
+                        shrineToSpawn = holderShrine1;
+                        break;
+                    case "village":
+                    case "villagenight":
+                    case "golemplains":
+                    case "itgolemplains":
+                        shrineToSpawn = holderShrine2;
+                        break;
+                    case "foggyswamp":
+                    case "habitatfall":
+                    default:
+                        shrineToSpawn = holderShrine3;
+                        break;
+                }
+
+                DirectorAPI.Helpers.AddNewInteractableToStage(shrineToSpawn, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
+            }
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
+
+            nopList.Add(lynxShrine1);
+            nopList.Add(lynxShrine2);
+            nopList.Add(lynxShrine3);
+        }
+
+        private DirectorAPI.DirectorCardHolder CreateCardHolderLynxShrine(GameObject lynxShrine1, string suffix)
+        {
+            var spawnCardShrine1 = ScriptableObject.CreateInstance<InteractableSpawnCard>();
+            (spawnCardShrine1 as ScriptableObject).name = "iscLynxShrine" + suffix;
+            spawnCardShrine1.prefab = lynxShrine1;
+            spawnCardShrine1.sendOverNetwork = true;
+            spawnCardShrine1.hullSize = HullClassification.Golem;
+            spawnCardShrine1.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCardShrine1.requiredFlags = RoR2.Navigation.NodeFlags.None;
+            spawnCardShrine1.forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn | RoR2.Navigation.NodeFlags.NoShrineSpawn;
+            spawnCardShrine1.directorCreditCost = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineDirectorCost.Value;
+            spawnCardShrine1.occupyPosition = true;
+            spawnCardShrine1.eliteRules = SpawnCard.EliteRules.Default;
+            spawnCardShrine1.orientToFloor = false;
+
+            var dcLynxShrine1 = new DirectorCard
+            {
+                spawnCard = spawnCardShrine1,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = false
+            };
+
+            var holderShrine1 = new DirectorAPI.DirectorCardHolder();
+            holderShrine1.Card = dcLynxShrine1;
+            holderShrine1.InteractableCategory = EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineSpawnCategory.Value;
+            return holderShrine1;
+        }
+
+        public void CreateLynxArcher(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups)
+        {
+            var archerStuff = new ArcherStuff();
+            var material = GetOrCreateMaterial("matLynxArcherArrow", archerStuff.CreateArcherArrowMaterial);
+
+            ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab = archerStuff.CreateArrowProjectile(
+                assets.First(prefab => prefab.name == "ArrowProjectile"),
+                archerStuff.CreateArrowProjectileGhost(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
+                archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
+                archerStuff.CreateArrowLoopSoundDef());
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab);
+
+            var archerBody = new ArcherBody();
+            ArcherBody.Skills.Shot = archerBody.CreateShotSkill();
+            sdList.Add(ArcherBody.Skills.Shot);
+
+            ArcherBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxArcherPrimarySkillFamily", ArcherBody.Skills.Shot);
+            sfList.Add(ArcherBody.SkillFamilies.Primary);
+
+            ArcherBody.BodyPrefab = archerBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherBody"), sprite: iconLookup["texLynxArcherIcon"]);
+            bodyList.Add(ArcherBody.BodyPrefab);
+
+            var archerMaster = new ArcherMaster();
+            ArcherMaster.MasterPrefab = archerMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxArcherMaster"), ArcherBody.BodyPrefab);
+            masterList.Add(ArcherMaster.MasterPrefab);
+
+            ArcherBody.SpawnCards.cscLynxArcherDefault = archerBody.CreateCard("cscLynxArcherDefault", ArcherMaster.MasterPrefab, ArcherBody.SkinDefs.Default, ArcherBody.BodyPrefab);
+
+            var dhLynxArcherDefault = new DirectorCard
+            {
+                spawnCard = ArcherBody.SpawnCards.cscLynxArcherDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxArcher.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = 0
+            };
+            DirectorAPI.DirectorCardHolder dchLynxArcherDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxArcherDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxArcherDefault);
+
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
+
+            var archerBodyAlly = new ArcherBodyAlly();
+            ArcherBodyAlly.LynxArcherDamage = archerBodyAlly.CreateDamageBuffDef(iconLookup["texLynxArcherBuff"]);
+            bdList.Add(ArcherBodyAlly.LynxArcherDamage);
+
+            ArcherBodyAlly.BodyPrefab = archerBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxArcherAllyBody"), sprite: iconLookup["texArcherAllyIcon"]);
+            bodyList.Add(ArcherBodyAlly.BodyPrefab);
+
+            var archerMasterAlly = new ArcherMasterAlly();
+            ArcherMasterAlly.MasterPrefab = archerMasterAlly.AddMasterComponents(assets.First(prefab => prefab.name == "LynxArcherAllyMaster"), ArcherBodyAlly.BodyPrefab);
+            masterList.Add(ArcherMasterAlly.MasterPrefab);
+
+            ArcherBodyAlly.SpawnCards.cscLynxArcherAlly = archerBodyAlly.CreateCard("cscLynxArcherAlly", ArcherMasterAlly.MasterPrefab, ArcherBodyAlly.SkinDefs.Ally, ArcherBodyAlly.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.GuitarEmotePlayer));
+        }
+
+        public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var hunterStuff = new HunterStuff();
+            var wooshEffect = hunterStuff.CreateHunterAttackEffect(assets.First(prefab => prefab.name == "LynxHunterAttackEffect"));
+            Junk.ModdedEntityStates.LynxTribe.Hunter.Stab.wooshEffect = wooshEffect;
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.wooshEffect = wooshEffect;
+            effectsList.Add(new EffectDef(wooshEffect));
+
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.slideEffectPrefab = hunterStuff.CreateLungeSlideEffect();
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.slideEffectPrefab));
+
+            var coneEffect = hunterStuff.CreateHunterAttackSpearTipEffect(assets.First(prefab => prefab.name == "LynxHunterSpearTipEffect"));
+            Junk.ModdedEntityStates.LynxTribe.Hunter.Stab.coneEffect = coneEffect;
+            ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge.coneEffect = coneEffect;
+            effectsList.Add(new EffectDef(coneEffect));
+
+            var hunterBody = new HunterBody();
+            HunterBody.Skills.Stab = hunterBody.CreateStabSkill();
+            sdList.Add(HunterBody.Skills.Stab);
+
+            HunterBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxHunterPrimarySkillFamily", HunterBody.Skills.Stab);
+            sfList.Add(HunterBody.SkillFamilies.Primary);
+
+            HunterBody.BodyPrefab = hunterBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterBody"), sprite: iconLookup["texLynxHunterIcon"]);
+            bodyList.Add(HunterBody.BodyPrefab);
+
+            var hunterMaster = new HunterMaster();
+            HunterMaster.MasterPrefab = hunterMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxHunterMaster"), HunterBody.BodyPrefab);
+            masterList.Add(HunterMaster.MasterPrefab);
+
+            HunterBody.SpawnCards.cscLynxHunterDefault = hunterBody.CreateCard("cscLynxHunterDefault", HunterMaster.MasterPrefab, HunterBody.SkinDefs.Default, HunterBody.BodyPrefab);
+
+            var dhLynxHunterDefault = new DirectorCard
+            {
+                spawnCard = HunterBody.SpawnCards.cscLynxHunterDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxHunter.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = 0
+            };
+            DirectorAPI.DirectorCardHolder dchLynxHunterDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxHunterDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxHunterDefault);
+
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
+
+            var hunterBodyAlly = new HunterBodyAlly();
+            HunterBodyAlly.LynxHunterArmor = hunterBodyAlly.CreateArmorBuffDef(iconLookup["texLynxHunterBuff"]);
+            bdList.Add(HunterBodyAlly.LynxHunterArmor);
+
+            HunterBodyAlly.BodyPrefab = hunterBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxHunterAllyBody"), sprite: iconLookup["texLynxHunterAllyIcon"]);
+            bodyList.Add(HunterBodyAlly.BodyPrefab);
+
+            var hunterMasterAlly = new HunterMasterAlly();
+            HunterMasterAlly.MasterPrefab = hunterMasterAlly.AddMasterComponents(assets.First(prefab => prefab.name == "LynxHunterAllyMaster"), HunterBodyAlly.BodyPrefab);
+            masterList.Add(HunterMasterAlly.MasterPrefab);
+
+            HunterBodyAlly.SpawnCards.cscLynxHunterAlly = hunterBodyAlly.CreateCard("cscLynxHunterAlly", HunterMasterAlly.MasterPrefab, HunterBodyAlly.SkinDefs.Ally, HunterBodyAlly.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.HarmonicaEmote));
+        }
+
+        public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var scoutStuff = new ScoutStuff();
+
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectLeft = scoutStuff.CreateDoubleSlashClawEffect(assets.First(prefab => prefab.name == "LynxScoutClawEffectLeft"));
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectRight = scoutStuff.CreateDoubleSlashClawEffect(assets.First(prefab => prefab.name == "LynxScoutClawEffectRight"));
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectLeft = scoutStuff.CreateDoubleSlashLeftHandSwingTrail();
+            ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectRight = scoutStuff.CreateDoubleSlashRightHandSwingTrail();
+
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectLeft));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.clawEffectRight));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectLeft));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Scout.DoubleSlash.slashEffectRight));
+
+            var scoutBody = new ScoutBody();
+            ScoutBody.Skills.DoubleSlash = scoutBody.CreateDoubleSlashSkill();
+
+            sdList.Add(ScoutBody.Skills.DoubleSlash);
+
+            ScoutBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxScoutPrimarySkillFamily", ScoutBody.Skills.DoubleSlash);
+
+            sfList.Add(ScoutBody.SkillFamilies.Primary);
+
+            ScoutBody.BodyPrefab = scoutBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutBody"), sprite: iconLookup["texLynxScoutIcon"]);
+            bodyList.Add(ScoutBody.BodyPrefab);
+
+            var scoutMaster = new ScoutMaster();
+            ScoutMaster.MasterPrefab = scoutMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxScoutMaster"), ScoutBody.BodyPrefab);
+            masterList.Add(ScoutMaster.MasterPrefab);
+
+            ScoutBody.SpawnCards.cscLynxScoutDefault = scoutBody.CreateCard("cscLynxScoutDefault", ScoutMaster.MasterPrefab, ScoutBody.SkinDefs.Default, ScoutBody.BodyPrefab);
+
+            var dhLynxScoutDefault = new DirectorCard
+            {
+                spawnCard = ScoutBody.SpawnCards.cscLynxScoutDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxScout.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = 0
+            };
+            DirectorAPI.DirectorCardHolder dchLynxScoutDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxScoutDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxScoutDefault);
+
+            HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
+
+            var scoutBodyAlly = new ScoutBodyAlly();
+            ScoutBodyAlly.LynxScoutSpeed = scoutBodyAlly.CreateSpeedBuffDef(iconLookup["texLynxScoutBuff"]);
+            bdList.Add(ScoutBodyAlly.LynxScoutSpeed);
+
+            ScoutBodyAlly.BodyPrefab = scoutBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxScoutAllyBody"), sprite: iconLookup["texLynxScoutAllyIcon"]);
+            bodyList.Add(ScoutBodyAlly.BodyPrefab);
+
+            var scoutMasterAlly = new ScoutMasterAlly();
+            ScoutMasterAlly.MasterPrefab = scoutMasterAlly.AddMasterComponents(assets.First(prefab => prefab.name == "LynxScoutAllyMaster"), ScoutBodyAlly.BodyPrefab);
+            masterList.Add(ScoutMasterAlly.MasterPrefab);
+
+            ScoutBodyAlly.SpawnCards.cscLynxScoutAlly = scoutBodyAlly.CreateCard("cscLynxScoutAlly", ScoutMasterAlly.MasterPrefab, ScoutBodyAlly.SkinDefs.Ally, ScoutBodyAlly.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DrumEmote));
+        }
+
+        private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, ExplicitPickupDropTable dtLynxTotem)
+        {
+            var totemStuff = new TotemStuff();
+
+            totemStuff.RegisterDeployableSlot();
+
+            var shamanTotemSpawnEffect = totemStuff.CreateShamanTotemSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.summonEffect = shamanTotemSpawnEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnState.leavesSpawnEffect = shamanTotemSpawnEffect;
+            effectsList.Add(new EffectDef(shamanTotemSpawnEffect));
+
+            var spawnEffect = totemStuff.CreateTribesmenSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Scout.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Hunter.SpawnState.spawnEffect = spawnEffect;
+            ModdedEntityStates.LynxTribe.Archer.SpawnState.spawnEffect = spawnEffect;
+            effectsList.Add(new EffectDef(spawnEffect));
+
+            Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab = totemStuff.CreateFirewallProjectile(assets.First(prefab => prefab.name == "LynxTotemFireWallProjectile"), acdLookup["acdLynxTotemFirewall"]);
+            projectilesList.Add(Junk.ModdedEntityStates.LynxTribe.Totem.SummonFirewall.projectilePrefab);
+
+            var shakeEffect = totemStuff.CreateGroundpoundShakeEffect();
+            Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.shakeEffect = shakeEffect;
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.shakeEffect = shakeEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman.shakeEffect = shakeEffect;
+            effectsList.Add(new EffectDef(shakeEffect));
+
+            var poundEffect = totemStuff.CreateGroundpoundPoundEffect();
+            Junk.ModdedEntityStates.LynxTribe.Totem.Groundpound.poundEffect = poundEffect;
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.poundEffect = poundEffect;
+            ModdedEntityStates.LynxTribe.Totem.SpawnState.poundEffect = poundEffect;
+            effectsList.Add(new EffectDef(poundEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.stoneParticlesEffect = totemStuff.CreateStoneParticlesEffect(assets.First(prefab => prefab.name == "TotemShakeParticles"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.stoneParticlesEffect));
+
+            var singleStoneEffect = totemStuff.CreateStoneParticlesEffect(assets.First(prefab => prefab.name == "TotemSingleStoneParticle"));
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.stoneEffectPrefab = singleStoneEffect;
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.stoneEffectPrefab = singleStoneEffect;
+            effectsList.Add(new EffectDef(singleStoneEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonTribe.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowSummonTribe"), acdLookup["acdLynxTotemEyeGlowSummonTribe"], 1f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonTribe.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowSummonStorm"), acdLookup["acdLynxTotemEyeGlowSummonStorm"], 3.3f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonStorm.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.eyeEffect = totemStuff.CreateEyeGlowEffect(assets.First(prefab => prefab.name == "TotemEyeGlowGroundpound"), acdLookup["acdLynxTotemEyeGlowGroundpound"], 1.8f);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.eyeEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect = totemStuff.CreateSummonStormsStaffParticle(acdLookup["acdLynxTotemSummonStormStaffEffectScale"]);
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Totem.SummonStorm.staffEffect));
+
+            ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectilePrefab = totemStuff.CreateGroundpoundProjectile(assets.First(prefab => prefab.name == "LynxTotemGroundpoundProjectile"));
+            projectilesList.Add(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile.groundpoundProjectilePrefab);
+
+            Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
+            effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormOrb.orbEffect));
+
+            var totemLog = Utils.CreateUnlockableDef("Logs.LynxTotemBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM");
+            unlockablesList.Add(totemLog);
+
+            var totemBody = new TotemBody();
+            TotemBody.Skills.Burrow = totemBody.CreateBurrowSkill();
+            TotemBody.Skills.SummonStorms = totemBody.CreateSummonStormsSkill();
+            TotemBody.Skills.SummonTribe = totemBody.CreateSummonTribeSkill();
+            TotemBody.Skills.SummonFirewall = totemBody.CreateSummonFirewallSkill();
+            TotemBody.Skills.Groundpound = totemBody.CreateGroundpoundSkill();
+            sdList.Add(TotemBody.Skills.Burrow);
+            sdList.Add(TotemBody.Skills.SummonStorms);
+            sdList.Add(TotemBody.Skills.SummonTribe);
+            sdList.Add(TotemBody.Skills.SummonFirewall);
+            sdList.Add(TotemBody.Skills.Groundpound);
+
+            TotemBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxTotemPrimarySkillFamily", TotemBody.Skills.Groundpound);
+            TotemBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxTotemSecondarySkillFamily", TotemBody.Skills.SummonTribe);
+            TotemBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxTotemUtilitySkillFamily", TotemBody.Skills.Burrow);
+            TotemBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxTotemSpecialSkillFamily", TotemBody.Skills.SummonStorms);
+            sfList.Add(TotemBody.SkillFamilies.Primary);
+            sfList.Add(TotemBody.SkillFamilies.Secondary);
+            sfList.Add(TotemBody.SkillFamilies.Utility);
+            sfList.Add(TotemBody.SkillFamilies.Special);
+
+            ModdedEntityStates.LynxTribe.Totem.SummonStorm.cscStorm = LynxStormBody.cscLynxStorm;
+
+            TotemBody.BodyPrefab = totemBody.AddBodyComponents(assets.First(prefab => prefab.name == "LynxTotemBody"), sprite: iconLookup["texLynxTotemIcon"], totemLog, dtLynxTotem);
+            bodyList.Add(TotemBody.BodyPrefab);
+
+            var totemMaster = new TotemMaster();
+            TotemMaster.MasterPrefab = totemMaster.AddMasterComponents(assets.First(prefab => prefab.name == "LynxTotemMaster"), TotemBody.BodyPrefab);
+            masterList.Add(TotemMaster.MasterPrefab);
+
+            TotemBody.SpawnCards.cscLynxTotemDefault = totemBody.CreateCard("cscLynxTotemDefault", TotemMaster.MasterPrefab, TotemBody.SkinDefs.Default, TotemBody.BodyPrefab);
+
+            var dhLynxTotemDefault = new DirectorCard
+            {
+                spawnCard = TotemBody.SpawnCards.cscLynxTotemDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxTotem.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.LynxTribe.LynxTotem.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchLynxTotemDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxTotemDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.Champions,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
+
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
+            {
+                ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault, 1);
+            }
+        }
+
+        private ExplicitPickupDropTable CreateLynxTotemItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            ExplicitPickupDropTable dtLynxTotem = null;
+
+            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            {
+                var fetishFactory = new LynxFetishFactory();
+
+                LynxFetishFactory.ItemDef = fetishFactory.CreateItem(assets.First(item => item.name == "PickupLynxFetish"), iconLookup["texLynxFetishIcon"]);
+                itemList.Add(LynxFetishFactory.ItemDef);
+
+                dtLynxTotem = ScriptableObject.CreateInstance<ExplicitPickupDropTable>();
+                (dtLynxTotem as ScriptableObject).name = "epdtLynxTotem";
+                dtLynxTotem.canDropBeReplaced = true;
+                dtLynxTotem.pickupEntries = new ExplicitPickupDropTable.PickupDefEntry[]
+                {
+                    new ExplicitPickupDropTable.PickupDefEntry
+                    {
+                        pickupWeight = 1,
+                        pickupDef = LynxFetishFactory.ItemDef
+                    }
+                };
+
+                HG.ArrayUtils.ArrayAppend(ref ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = LynxFetishFactory.ItemDef, itemDef2 = VoidMegaCrabItem });
+            }
+
+            return dtLynxTotem;
+        }
+
+        private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
+        {
+            ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
+            var shamanStuff = new ShamanStuff();
+
+            var shamanSpawnEffect = shamanStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));
+            ModdedEntityStates.LynxTribe.Shaman.SpawnState.spawnEffect = shamanSpawnEffect;
+            effectsList.Add(new EffectDef(shamanSpawnEffect));
+
+            ShamanStuff.ReduceHealing = shamanStuff.CreateReduceHealingBuff(iconLookup["texReducedHealingBuffColored"]);
+            bdList.Add(ShamanStuff.ReduceHealing);
+
+            Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.summonEffectPrefab = shamanStuff.CreateSummonStormParticles(assets.First(prefab => prefab.name == "ShamanSummonStormParticle"));
+            Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport.ghostMaskPrefab = shamanStuff.SetupShamanMaskMaterials(assets.First(prefab => prefab.name == "ShamanMask"));
+
+            Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect = shamanStuff.CreateShamanTeleportOut(assets.First(prefab => prefab.name == "ShamanTeleportEffectOut"));
+            effectsList.Add(new EffectDef(Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend.teleportEffect));
+
+            ModdedEntityStates.LynxTribe.Shaman.PushBack.summonPrefab = shamanStuff.CreateShamanPushBackSummonEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackSummon"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.summonPrefab));
+
+            ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab = shamanStuff.CreateShamanPushBackExplosionEffect(assets.First(prefab => prefab.name == "LynxShamanPushBackExplosion"));
+            effectsList.Add(new EffectDef(ModdedEntityStates.LynxTribe.Shaman.PushBack.explosionPrefab));
+
+            TempVisualEffectAPI.AddTemporaryVisualEffect(shamanStuff.CreateReduceHealingVisualEffect(), (body) => { return body.HasBuff(ShamanStuff.ReduceHealing); });
+
+            var projectileImpactEffect = shamanStuff.CreateShamanProjectileImpactEffect(assets.First(prefab => prefab.name == "LynxShamanProjectileImpactEffect"), rampLookups["texRampLynxShamanProjectileImpact"]);
+            effectsList.Add(new EffectDef(projectileImpactEffect));
+
+            var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(
+                assets.First(prefab => prefab.name == "ShamanTrackingProjectile"),
+                shamanStuff.CreateShamanTrackingProjectileGhost(),
+                projectileImpactEffect,
+                shamanStuff.CreateProjectileFlightSoundLoop()
+            );
+            Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
+            ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.trackingProjectilePrefab = skullProjectile;
+            projectilesList.Add(skullProjectile);
+
+            var projectilesSummonEffect = shamanStuff.CreateShamanTrackingProjectileSummonEffect(acdLookup["acdShamanSummonProjectilesScaling"]);
+            ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.summonEffect = projectilesSummonEffect;
+            effectsList.Add(new EffectDef(projectilesSummonEffect));
+
+            var shamanLog = Utils.CreateUnlockableDef("Logs.LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
+            unlockablesList.Add(shamanLog);
+
+            var shamanBody = new ShamanBody();
+            ShamanBody.Skills.Teleport = shamanBody.CreateTeleportSkill();
+            ShamanBody.Skills.SummonStorm = shamanBody.CreateSummonStormSkill();
+            ShamanBody.Skills.SummonProjectiles = shamanBody.CreateSummonProjectilesSkill();
+            ShamanBody.Skills.TeleportFriend = shamanBody.CreateTeleportFriendSkill();
+            ShamanBody.Skills.SummonLightning = shamanBody.CreateSummonLightningSkill();
+            ShamanBody.Skills.PushBack = shamanBody.CreatePushBackSkill();
+
+            sdList.Add(ShamanBody.Skills.Teleport);
+            sdList.Add(ShamanBody.Skills.SummonStorm);
+            sdList.Add(ShamanBody.Skills.SummonProjectiles);
+            sdList.Add(ShamanBody.Skills.TeleportFriend);
+            sdList.Add(ShamanBody.Skills.SummonLightning);
+            sdList.Add(ShamanBody.Skills.PushBack);
+
+            Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill.cscStorm = LynxStormBody.cscLynxStorm;
+
+            ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.Teleport);
+            //ShamanBody.SkillFamilies.Utility = Utils.CreateSkillFamily("LynxShamanUtilitySkillFamily", ShamanBody.Skills.SummonLightning);
+            ShamanBody.SkillFamilies.Special = Utils.CreateSkillFamily("LynxShamanSpecialSkillFamily", ShamanBody.Skills.SummonStorm);
+            ShamanBody.SkillFamilies.Primary = Utils.CreateSkillFamily("LynxShamanPrimarySkillFamily", ShamanBody.Skills.SummonProjectiles);
+            //ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.TeleportFriend);
+            ShamanBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("LynxShamanSecondarySkillFamily", ShamanBody.Skills.PushBack);
+
+            sfList.Add(ShamanBody.SkillFamilies.Utility);
+            sfList.Add(ShamanBody.SkillFamilies.Special);
+            sfList.Add(ShamanBody.SkillFamilies.Primary);
+            sfList.Add(ShamanBody.SkillFamilies.Secondary);
+
+            ShamanBody.BodyPrefab = shamanBody.AddBodyComponents(assets.First(body => body.name == "LynxShamanBody"), iconLookup["texLynxShamanIcon"], shamanLog);
+            bodyList.Add(ShamanBody.BodyPrefab);
+            ShamanMaster.MasterPrefab = new ShamanMaster().AddMasterComponents(assets.First(master => master.name == "LynxShamanMaster"), ShamanBody.BodyPrefab);
+            masterList.Add(ShamanMaster.MasterPrefab);
+
+            ShamanBody.SpawnCards.cscLynxShamanDefault = shamanBody.CreateCard("cscLynxShamanDefault", ShamanMaster.MasterPrefab, ShamanBody.SkinDefs.Default, ShamanBody.BodyPrefab);
+
+            var dhLynxShamanDefault = new DirectorCard
+            {
+                spawnCard = ShamanBody.SpawnCards.cscLynxShamanDefault,
+                selectionWeight = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SelectionWeight.Value,
+                spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                preventOverhead = true,
+                minimumStageCompletions = EnemiesReturns.Configuration.LynxTribe.LynxShaman.MinimumStageCompletion.Value
+            };
+            DirectorAPI.DirectorCardHolder dchLynxShamanDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dhLynxShamanDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
+
+            var shamanBodyAlly = new ShamanBodyAlly();
+            ShamanBodyAlly.LynxShamanSpecial = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]);
+            bdList.Add(ShamanBodyAlly.LynxShamanSpecial);
+
+            ShamanBodyAlly.BodyPrefab = shamanBodyAlly.AddBodyComponents(assets.First(prefab => prefab.name == "LynxShamanAllyBody"), sprite: iconLookup["texLynxShamanAllyIcon"], log: null);
+            bodyList.Add(ShamanBodyAlly.BodyPrefab);
+
+            ShamanMasterAlly.MasterPrefab = new ShamanMasterAlly().AddMasterComponents(assets.First(prefab => prefab.name == "LynxShamanAllyMaster"), ShamanBodyAlly.BodyPrefab);
+            masterList.Add(ShamanMasterAlly.MasterPrefab);
+
+            ShamanBodyAlly.SpawnCards.cscLynxShamanAlly = shamanBodyAlly.CreateCard("cscLynxShamanAlly", ShamanMasterAlly.MasterPrefab, ShamanBodyAlly.SkinDefs.Ally, ShamanBodyAlly.BodyPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.InitialDeathState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SingEmotePlayer));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTotemDeath));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
+
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonLightning));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
+            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
+        }
+
+        private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            var stormStuff = new LynxStormStuff();
+            LynxStormStuff.StormImmunity = stormStuff.CreateStormImmunityBuff();
+            bdList.Add(LynxStormStuff.StormImmunity);
+
+            Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect = stormStuff.CreateStormThrowEffect();
+            effectsList.Add(new EffectDef(Enemies.LynxTribe.Storm.LynxStormComponent.dotEffect));
+
+            var stormBody = new LynxStormBody();
+            LynxStormBody.BodyPrefab = stormBody.AddBodyComponents(assets.First(body => body.name == "StormBody"), acdLookup);
+            bodyList.Add(LynxStormBody.BodyPrefab);
+
+            LynxStormMaster.MasterPrefab = new LynxStormMaster().AddMasterComponents(assets.First(master => master.name == "StormMaster"), LynxStormBody.BodyPrefab);
+            masterList.Add(LynxStormMaster.MasterPrefab);
+
+            LynxStormBody.cscLynxStorm = stormBody.CreateCard("cscLynxStorm", LynxStormMaster.MasterPrefab);
+
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.SpawnState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.MainState));
+            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
+        }
         #endregion
 
         private IEnumerator LoadAssetBundle(string assetBundleFullPath, IProgress<float> progress, Action<AssetBundle> onAssetBundleLoaded)
@@ -923,6 +1633,7 @@ namespace EnemiesReturns
             if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc();
+                ContentProvider.MaterialCache.Add(materialName, material);
             }
             return material;
         }
@@ -932,7 +1643,19 @@ namespace EnemiesReturns
             if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
             {
                 material = materialCreateFunc(texture);
+                ContentProvider.MaterialCache.Add(materialName, material);
             }
+            return material;
+        }
+
+        public static Material GetOrCreateMaterial(string materialName, Func<Material, Material> materialCreateFunc, Material materialOrig)
+        {
+            if (!ContentProvider.MaterialCache.TryGetValue(materialName, out var material))
+            {
+                material = materialCreateFunc(materialOrig);
+                ContentProvider.MaterialCache.Add(materialName, material);
+            }
+
             return material;
         }
 

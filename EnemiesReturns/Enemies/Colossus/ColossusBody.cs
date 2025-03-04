@@ -6,9 +6,10 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
-using EnemiesReturns.ModCompats.PrefabAPICompat;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
+using R2API;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
@@ -155,6 +156,10 @@ namespace EnemiesReturns.Enemies.Colossus
             var mdlColossus = body.transform.Find("ModelBase/" + ModelName()).gameObject;
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
 
+            //var helper = body.AddComponent<WalkSpeedDebugHelper>();
+            //helper.animator = body.transform.Find("ModelBase/mdlColossus").GetComponent<Animator>();
+            //helper.animationParameters = new string[] { "walkSpeedDebug" };
+
             return body;
         }
 
@@ -185,11 +190,6 @@ namespace EnemiesReturns.Enemies.Colossus
         protected override string ModelName() => "mdlColossus";
 
         protected override float CharacterDirectionTurnSpeed => 90f;
-
-        protected override ICharacterMotor.CharacterMotorParams CharacterMotorParams()
-        {
-            return new ICharacterMotor.CharacterMotorParams() { mass = 8000f };
-        }
 
         protected override float MaxInteractionDistance => 8f;
 
@@ -236,7 +236,7 @@ namespace EnemiesReturns.Enemies.Colossus
             };
         }
 
-        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Texture icon)
+        protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_COLOSSUS_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
@@ -259,6 +259,14 @@ namespace EnemiesReturns.Enemies.Colossus
                 hullClassification = HullClassification.BeetleQueen,
                 bodyColor = new Color(0.36f, 0.36f, 0.44f),
                 isChampion = true
+            };
+        }
+
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                landingSound = "ER_Colossus_Landing_Play",
             };
         }
 

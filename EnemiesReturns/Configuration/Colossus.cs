@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
-    public static class Colossus
+    public class Colossus : IConfiguration
     {
         public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
@@ -66,11 +66,11 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> LaserBarrageProjectileSpeed;
         public static ConfigEntry<float> LaserBarrageForce;
         public static ConfigEntry<float> LaserBarrageSpread;
-        public static ConfigEntry<float> LaserBarrageHeadPitch;
         public static ConfigEntry<int> LaserBarrageProjectileCount;
         public static ConfigEntry<float> LaserBarrageExplosionRadius;
         public static ConfigEntry<float> LaserBarrageExplosionDamage;
         public static ConfigEntry<float> LaserBarrageExplosionDelay;
+        public static ConfigEntry<float> LaserBarrageMoveSpeedMultiplier;
 
         public static ConfigEntry<bool> ItemEnabled;
         public static ConfigEntry<float> KnurlDamage;
@@ -91,7 +91,7 @@ namespace EnemiesReturns.Configuration
         //public static ConfigEntry<int> KnurlArmor;
         //public static ConfigEntry<int> KnurlArmorPerStack;
 
-        public static void PopulateConfig(ConfigFile config)
+        public void PopulateConfig(ConfigFile config)
         {
             Colossus.Enabled = config.Bind("Colossus Director", "Enable Colossus", true, "Enables Colossus.");
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
@@ -184,27 +184,27 @@ namespace EnemiesReturns.Configuration
             Colossus.RockClapRadius = config.Bind("Colossus Rock Clap", "Rock Clap Radius", 16f, "Colossus' Rock Clap radius.");
             Colossus.RockClapHomingSpeed = config.Bind("Colossus Rock Clap", "Rock Clap Homing Speed", 15f, "Colossus' Rock Clap homing speed. Rocks home onto target by x and z axis (basically parallel to the ground, without homing up or down).");
             Colossus.RockClapHomingRange = config.Bind("Colossus Rock Clap", "Rock Clap Homing Range", 100f, "Colossus' Rock Clap homing range. How far rocks look for a targer.");
-            Colossus.RockClapPostLoopSpawns = config.Bind("Colossus Rock Clap", "Rock Clap Post Loop Spawns", false, "Colossus' Rock Clap spawns enemies post loop, similar to how he does it in RoR1.");
+            Colossus.RockClapPostLoopSpawns = config.Bind("Colossus Rock Clap", "Rock Clap Post Loop Spawns", true, "Colossus' Rock Clap spawns enemies post loop, similar to how he does it in RoR1.");
 
             Colossus.LaserBarrageCooldown = config.Bind("Colossus Laser Barrage", "Laser Barrage Cooldown", 45f, "Colossus' Laser Barrage cooldown.");
             Colossus.LaserBarrageDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Damage", 0.5f, "Colossus' Laser Barrage damage.");
-            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 5f, "Colossus' Laser Barrage duration.");
+            Colossus.LaserBarrageDuration = config.Bind("Colossus Laser Barrage", "Laser Barrage Duration", 10f, "Colossus' Laser Barrage duration.");
             Colossus.LaserBarrageProjectileSpeed = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectile Speed", 50f, "Colossus' Laser Barrage projectile speed.");
             Colossus.LaserBarrageFrequency = config.Bind("Colossus Laser Barrage", "Laser Barrage Fire Frequency", 0.2f, "Colossus' Laser Barrage fire frequency.");
             Colossus.LaserBarrageSpread = config.Bind("Colossus Laser Barrage", "Laser Barrage Spread", 0.15f, "Colossus' Laser Barrage spread. The lower the value, more tight each cluster of shots will be.");
-            Colossus.LaserBarrageHeadPitch = config.Bind("Colossus Laser Barrage", "Laser Barrage Head Pitch", 0.05f, "Colossus' Laser Barrage head pitch. 1 is all the way up, 0 is all the way down.");
             Colossus.LaserBarrageForce = config.Bind("Colossus Laser Barrage", "Laser Barrage Force", 0f, "Colossus' Laser Barrage force.");
             Colossus.LaserBarrageProjectileCount = config.Bind("Colossus Laser Barrage", "Laser Barrage Projectiles per Shot", 8, "Colossus' Laser Barrage projectiles per shot count.");
             Colossus.LaserBarrageExplosionRadius = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Radius", 10f, "Colossus' Laser Barrage explosion radius.");
             Colossus.LaserBarrageExplosionDamage = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Damage", 1.25f, "Colossus' Laser Barrage explosion damage, fraction of projectile damage.");
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
+            LaserBarrageMoveSpeedMultiplier = config.Bind("Colossus Laser Barrage", "Laser Barrage Movespeed Multiplier", 0.5f, "Colossus' Laser Barrage movespeed multiplier of normal movespeed.");
 
             Colossus.ItemEnabled = config.Bind("Colossal Fist", "Enable Colossal Fist", true, "Enables Colossal Fist to drop from Colossus and appear in printers.");
             Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 5f, "Colossal Fist' damage");
             Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 5f, "Colossal Fist' damage per stack");
             Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");
             Colossus.KnurlProcChance = config.Bind("Colossal Fist", "Colossal Fist Proc Chance", 8f, "Colossal Fist proc chance.");
-            Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 0f, "Colossal Fist force.");
+            Colossus.KnurlForce = config.Bind("Colossal Fist", "Colossal Fist Force", 1000f, "Colossal Fist force.");
 
             Colossus.EmoteKey = config.Bind("Colossus Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", false, "Add monster to Artifact of Origin.");
