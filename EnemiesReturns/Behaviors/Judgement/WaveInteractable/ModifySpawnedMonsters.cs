@@ -1,0 +1,74 @@
+﻿using RoR2;
+using RoR2.CharacterAI;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+
+namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
+{
+    public class ModifySpawnedMonsters : MonoBehaviour
+    {
+        public CombatDirector combatDirector;
+
+        public Inventory inventory;
+
+        public EliteDef eliteType;
+
+        private void Awake()
+        {
+            if (!combatDirector)
+            {
+                combatDirector = GetComponent<CombatDirector>();
+            }
+        }
+
+        private void OnEnable()
+        {
+            combatDirector.onSpawnedServer.AddListener(Modify);
+        }
+
+        private void OnDisable()
+        {
+            combatDirector.onSpawnedServer.RemoveListener(Modify);
+        }
+
+        public void Modify(GameObject spawnedMonster)
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            CharacterMaster component = spawnedMonster.GetComponent<CharacterMaster>();
+            BaseAI ai = component.GetComponent<BaseAI>();
+            if ((bool)ai)
+            {
+                ai.onBodyDiscovered += OnBodyDiscovered;
+            }
+            if (inventory)
+            {
+                component.inventory.AddItemsFrom(inventory);
+            }
+
+            var healthBoost = eliteType?.healthBoostCoefficient ?? 1f;
+            var damageBoost = eliteType?.damageBoostCoefficient ?? 1f;
+
+            var equipmentIndex = eliteType?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
+            if (equipmentIndex != EquipmentIndex.None)
+            {
+                component.inventory.SetEquipmentIndex(equipmentIndex);
+            }
+
+            component.inventory.GiveItem(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1) * 10f));
+            component.inventory.GiveItem(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1) * 10f));
+
+            void OnBodyDiscovered(CharacterBody newBody)
+            {
+                ai.ForceAcquireNearestEnemyIfNoCurrentEnemy();
+                ai.onBodyDiscovered -= OnBodyDiscovered;
+            }
+        }
+    }
+}

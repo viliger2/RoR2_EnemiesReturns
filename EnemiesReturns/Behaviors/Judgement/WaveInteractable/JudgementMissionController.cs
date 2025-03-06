@@ -36,6 +36,8 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public EliteDef eliteDef;
 
+        public bool missionClear { private set; get; }
+
         public int currentRound { private set; get; } = 0;
 
         private float playerDifficultyCoefficient;
@@ -43,6 +45,14 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         public static JudgementMissionController instance;
 
         private bool roundActive;
+
+        private void Start()
+        {
+            if (NetworkServer.active)
+            {
+                InitCombatDirectors();
+            }
+        }
 
         private void OnEnable()
         {
@@ -100,10 +110,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 return;
             }
 
-            if (currentRound >= wavesInformation.Length)
-            {
-                return;
-            }
+            missionClear = currentRound >= wavesInformation.Length;
         }
 
         [Server]
@@ -180,15 +187,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentRound++;
         }
 
-        [Server]
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-            InitCombatDireactors();
-        }
-
-        [Server]
-        private void InitCombatDireactors()
+        private void InitCombatDirectors()
         {
             if (!NetworkServer.active)
             {
@@ -200,7 +199,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 var combatDirector = combatDirectors[i];
                 combatDirector.maximumNumberToSpawnBeforeSkipping = maximumNumberToSpawnBeforeSkipping;
                 combatDirector.spawnDistanceMultiplier = spawnDistanceMultiplier;
-                combatDirector.eliteBias = 99f; // adding insane elite bias so elites are never chosen, we'll set elites ourselves
+                combatDirector.eliteBias = 999f; // adding insane elite bias so elites are never chosen, we'll set elites ourselves
                 combatDirector.onSpawnedServer.AddListener(ModifySpawnedMonsters);
             }
 
