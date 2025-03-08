@@ -250,6 +250,11 @@ namespace EnemiesReturns
 
                 Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab = assets.First(asset => asset.name == "ArraignP1Master");
                 masterList.Add(Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab);
+
+                var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
+                ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
+                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
