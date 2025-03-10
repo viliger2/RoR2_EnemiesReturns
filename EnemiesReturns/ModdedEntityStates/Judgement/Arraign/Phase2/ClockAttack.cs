@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
             public float damageStat;
 
-            public bool finished { get; private set; }
+            public bool Finished { get; private set; }
 
             private float timer;
 
@@ -49,7 +49,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 var position = firstProjectileOrigin.transform.localPosition;
                 for (int i = 1; i < projectileCountPerRow; i++)
                 {
-                    position = position + Vector3.right * projectileSize;
+                    position += Vector3.right * projectileSize;
                     var projectileOrigin = new GameObject();
                     projectileOrigin.name = "Projectile" + i;
                     projectileOrigin.transform.parent = currentPointGameObject.transform;
@@ -72,7 +72,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
                 if(Vector3.Distance(targetPoint, currentPointGameObject.transform.position) < projectileSize / 2)
                 {
-                    finished = true;
+                    Finished = true;
                     return;
                 }
 
@@ -193,7 +193,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 foreach (var firingLine in lines)
                 {
                     firingLine.FixedUpdate(GetDeltaTime());
-                    finished = finished && firingLine.finished;
+                    finished = finished && firingLine.Finished;
                 }
 
                 if (finished)
