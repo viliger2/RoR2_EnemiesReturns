@@ -194,5 +194,27 @@ namespace EnemiesReturns
             return -1;
         }
 
+        public static GameObject GetRandomAlivePlayer()
+        {
+            List<CharacterBody> playerBodies = new List<CharacterBody>();
+            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            {
+                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                {
+                    continue;
+                }
+
+                var body = playerCharacterMaster.master.GetBody();
+                if (!body || !body.healthComponent || !body.healthComponent.alive)
+                {
+                    continue;
+                }
+
+                playerBodies.Add(body);
+            }
+
+            return playerBodies[UnityEngine.Random.Range(0, playerBodies.Count)].gameObject;
+        }
+
     }
 }

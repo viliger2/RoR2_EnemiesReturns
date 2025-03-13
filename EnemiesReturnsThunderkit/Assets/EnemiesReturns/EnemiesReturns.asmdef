@@ -10,7 +10,8 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "RoR2.dll",
-        "HGCSharpUtils.dll"
+        "HGCSharpUtils.dll",
+        "KinematicCharacterController.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

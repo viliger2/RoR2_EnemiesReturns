@@ -255,6 +255,9 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
                 projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab);
+
+                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
+                effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab));
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
