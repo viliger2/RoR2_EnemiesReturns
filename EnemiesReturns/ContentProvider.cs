@@ -850,7 +850,7 @@ namespace EnemiesReturns
             MechanicalSpiderEnemyMaster.MasterPrefab = spiderEnemyMaster.AddMasterComponents(assets.First(master => master.name == "MechanicalSpiderMaster"), MechanicalSpiderEnemyBody.BodyPrefab);
             masterList.Add(MechanicalSpiderEnemyMaster.MasterPrefab);
 
-            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault = spiderEnemyBody.CreateCard("cscMechanicalSpeiderDefault", MechanicalSpiderEnemyMaster.MasterPrefab);
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault = spiderEnemyBody.CreateCard("cscMechanicalSpiderDefault", MechanicalSpiderEnemyMaster.MasterPrefab);
             var dcMechanicalSpiderDefault = new DirectorCard
             {
                 spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault,
