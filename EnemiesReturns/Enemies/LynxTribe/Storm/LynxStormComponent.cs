@@ -75,6 +75,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 moveTarget.transform.localPosition = Vector3.zero;
             }
             characterMotor.velocity = Vector3.zero;
+            if (Configuration.LynxTribe.LynxTotem.SummonStormZeroJumps.Value)
+            {
+                characterMotor.jumpCount = 999;
+            }
         }
 
         public void SetStormTransform(GameObject storm)
