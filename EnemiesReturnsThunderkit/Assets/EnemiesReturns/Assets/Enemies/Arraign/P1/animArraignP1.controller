@@ -413,6 +413,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-5147777712423039709
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ThrowSword
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 6972643943113209638, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-5032184144571507826
 AnimatorState:
   serializedVersion: 6
@@ -1089,6 +1115,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Throw.playbackRate
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Body
@@ -1406,7 +1438,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -837918294200278700, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Motion: {fileID: -1099503684625364791, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Tag: 
   m_SpeedParameter: SkyLeap.playbackRate
   m_MirrorParameter: 
@@ -1433,6 +1465,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 4910106094272947100}
     m_Position: {x: 200, y: 360, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5147777712423039709}
+    m_Position: {x: 440, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1517,7 +1552,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1480031674983516905, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Motion: {fileID: -2130683439287591859, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Tag: 
   m_SpeedParameter: SkyLeap.playbackRate
   m_MirrorParameter: 

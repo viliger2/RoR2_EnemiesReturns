@@ -196,6 +196,13 @@ namespace EnemiesReturns
 
         public static GameObject GetRandomAlivePlayer()
         {
+            List<CharacterBody> playerBodies = GetActiveAndAlivePlayerBodies();
+
+            return playerBodies[UnityEngine.Random.Range(0, playerBodies.Count)].gameObject;
+        }
+
+        public static List<CharacterBody> GetActiveAndAlivePlayerBodies()
+        {
             List<CharacterBody> playerBodies = new List<CharacterBody>();
             foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
             {
@@ -213,8 +220,9 @@ namespace EnemiesReturns
                 playerBodies.Add(body);
             }
 
-            return playerBodies[UnityEngine.Random.Range(0, playerBodies.Count)].gameObject;
+            return playerBodies;
         }
+
 
     }
 }

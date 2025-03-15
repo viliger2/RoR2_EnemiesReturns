@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 7857249970222787618}
   - component: {fileID: 8601560084771612059}
   - component: {fileID: 6724450056998293890}
+  - component: {fileID: -1594220585500839535}
+  - component: {fileID: 6533914390430200171}
   m_Layer: 0
   m_Name: ArraignP1Body
   m_TagString: Untagged
@@ -682,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFamily: {fileID: 11400000, guid: 5cd0dd9b3dd2f5649a710803b461038e, type: 2}
-  skillName: Primary
+  skillName: 3HitCombo
   hideInCharacterSelect: 0
   baseStock: 1
   baseRechargeStopwatch: 0
@@ -700,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFamily: {fileID: 11400000, guid: f37b41b6e11cde84a8fd2fc8da4dce6f, type: 2}
-  skillName: Secondary
+  skillName: LightningStrikes
   hideInCharacterSelect: 0
   baseStock: 1
   baseRechargeStopwatch: 0
@@ -718,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFamily: {fileID: 11400000, guid: 19ffbf7cd8352574cbfd52844805c1c7, type: 2}
-  skillName: Utility
+  skillName: DashAttack
   hideInCharacterSelect: 0
   baseStock: 1
   baseRechargeStopwatch: 0
@@ -736,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFamily: {fileID: 11400000, guid: 79f24c87087cfdc448e4f073cf448e8c, type: 2}
-  skillName: Special
+  skillName: SkyLeap
   hideInCharacterSelect: 0
   baseStock: 1
   baseRechargeStopwatch: 0
@@ -774,6 +776,39 @@ MonoBehaviour:
   mainStateType:
     _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   debug: 0
+--- !u!114 &-1594220585500839535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillFamily: {fileID: 11400000, guid: 949cee83393defc4c89a75ac7eed6987, type: 2}
+  skillName: WeaponThrow
+  hideInCharacterSelect: 0
+  baseStock: 1
+  baseRechargeStopwatch: 0
+  hasExecutedSuccessfully: 0
+--- !u!114 &6533914390430200171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6a0891d35d765469760af863212b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkTimer: 0.25
+  antiAirSkill: {fileID: -1594220585500839535}
+  body: {fileID: 2963873619053843280}
 --- !u!1 &6291839687705409160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,12 +1181,20 @@ PrefabInstance:
       value: 0.000000059604645
       objectReference: {fileID: 0}
     - target: {fileID: -5981588115795156362, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.94698894
+      objectReference: {fileID: 0}
+    - target: {fileID: -5981588115795156362, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.33147928
+      value: -0.3139072
       objectReference: {fileID: 0}
     - target: {fileID: -5981588115795156362, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07219514
+      value: -0.068368
+      objectReference: {fileID: 0}
+    - target: {fileID: -5981588115795156362, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 2.392734e-15
       objectReference: {fileID: 0}
     - target: {fileID: -5981588115795156362, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1634,8 +1677,20 @@ PrefabInstance:
       value: -0.00000008940697
       objectReference: {fileID: 0}
     - target: {fileID: 2898738308117723256, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99362355
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898738308117723256, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.11347201
+      value: -0.11274846
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898738308117723256, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 2.6475444e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898738308117723256, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 2.5105627e-15
       objectReference: {fileID: 0}
     - target: {fileID: 2898738308117723256, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1710,12 +1765,20 @@ PrefabInstance:
       value: -0.000000008381903
       objectReference: {fileID: 0}
     - target: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9868601
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13900663
+      value: 0.1371801
       objectReference: {fileID: 0}
     - target: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.086511366
+      value: 0.085374616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 2.4934755e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2114,9 +2177,9 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4824442635563639251, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_PrefabInstance: {fileID: 3389015307498071864}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1888374499555602391 stripped
+--- !u!4 &1733079717790552586 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3836198188157651183, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_CorrespondingSourceObject: {fileID: -5258777588047825614, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_PrefabInstance: {fileID: 3389015307498071864}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2578691932834601577 stripped
@@ -2330,7 +2393,7 @@ MonoBehaviour:
   m_Script: {fileID: -960361785, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Root: {fileID: 1888374499555602391}
+  m_Root: {fileID: 1733079717790552586}
   m_UpdateRate: 60
   m_UpdateMode: 0
   m_Damping: 0.344

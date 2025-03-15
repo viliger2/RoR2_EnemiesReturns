@@ -258,6 +258,10 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
                 effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab));
+
+                ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
+                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab);
+                projectilesList.Add(assets.First(asset => asset.name == "ArraignSwordProjectileDoTZone"));
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
