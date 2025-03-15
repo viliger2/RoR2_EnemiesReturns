@@ -5,17 +5,24 @@ namespace EnemiesReturns.Components.BodyComponents
 {
     public interface ITeamComponent
     {
-        protected TeamIndex GetTeamIndex();
+        protected class TeamComponentParams
+        {
+            public bool hideAllyCardDisplay = false;
+            public TeamIndex teamIndex = TeamIndex.None;
+        }
+
+        protected TeamComponentParams GetTeamComponentParams();
 
         protected bool NeedToAddTeamComponent();
 
-        internal TeamComponent AddTeamComponent(GameObject bodyPrefab, TeamIndex teamIndex = TeamIndex.None)
+        protected TeamComponent AddTeamComponent(GameObject bodyPrefab, TeamComponentParams teamComponentParams)
         {
             TeamComponent teamComponent = null;
             if (NeedToAddTeamComponent())
             {
                 teamComponent = bodyPrefab.GetOrAddComponent<TeamComponent>();
-                teamComponent.teamIndex = teamIndex;
+                teamComponent.teamIndex = teamComponentParams.teamIndex;
+                teamComponent.hideAllyCardDisplay = teamComponentParams.hideAllyCardDisplay;
             }
 
             return teamComponent;
