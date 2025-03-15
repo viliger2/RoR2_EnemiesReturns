@@ -24,7 +24,7 @@ namespace EnemiesReturns.Components
             AddCameraTargetParams(body, GetCameraPivot(body), GetCharacterCameraParams());
             AddModelLocator(body, modelBase, modelTransform, GetModelLocatorParams());
             var skills = AddSkills(body);
-            var teamComponent = AddTeamComponent(body, GetTeamIndex());
+            var teamComponent = AddTeamComponent(body, GetTeamComponentParams());
             var healthComponent = AddHealthComponent(body, GetHealthComponentParams());
             AddInteractor(body, GetInteractionDistance());
             AddInteractionDriver(body);

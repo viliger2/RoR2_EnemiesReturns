@@ -277,7 +277,14 @@ namespace EnemiesReturns.Components
             };
         }
 
-        protected virtual TeamIndex TeamIndex => RoR2.TeamIndex.None;
+        protected virtual ITeamComponent.TeamComponentParams TeamComponentParams()
+        {
+            return new ITeamComponent.TeamComponentParams
+            {
+                hideAllyCardDisplay = false,
+                teamIndex = TeamIndex.None
+            };
+        }
 
         protected virtual ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
         {
@@ -379,7 +386,7 @@ namespace EnemiesReturns.Components
 
         SurfaceDef ISetupHurtboxes.GetSurfaceDef() => SurfaceDef();
 
-        TeamIndex ITeamComponent.GetTeamIndex() => TeamIndex;
+        ITeamComponent.TeamComponentParams ITeamComponent.GetTeamComponentParams() => TeamComponentParams();
 
         ICharacterDeathBehavior.CharacterDeathBehaviorParams ICharacterDeathBehavior.GetCharacterDeathBehaviorParams() => CharacterDeathBehaviorParams();
 

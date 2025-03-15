@@ -119,6 +119,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             return new IAimAssist.AimAssistTargetParams();
         }
 
+        protected override ITeamComponent.TeamComponentParams TeamComponentParams()
+        {
+            return new ITeamComponent.TeamComponentParams
+            {
+                hideAllyCardDisplay = true
+            };
+        }
+
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_STORM_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
