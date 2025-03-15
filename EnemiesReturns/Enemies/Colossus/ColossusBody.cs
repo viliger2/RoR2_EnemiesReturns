@@ -241,7 +241,7 @@ namespace EnemiesReturns.Enemies.Colossus
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_COLOSSUS_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 subtitleNameToken = "ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE",
-                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage,
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.IgnoreKnockback,
                 mainRootSpeed = 7.5f,
 
                 baseMaxHealth = EnemiesReturns.Configuration.Colossus.BaseMaxHealth.Value,
