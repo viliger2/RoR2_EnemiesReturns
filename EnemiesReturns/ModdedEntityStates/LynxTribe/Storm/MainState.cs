@@ -23,8 +23,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
         private SphereSearch pullSphereSearch;
 
-        private Transform cachedModelTransform;
-
         private float maxPullDistance;
 
         private CharacterMaster owner;
@@ -33,7 +31,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
         {
             base.OnEnter();
             pullSphereSearch = new SphereSearch();
-            cachedModelTransform = (base.modelLocator ? base.modelLocator.modelTransform : null);
             maxPullDistance = stormRadius * maxPullDistanceCoefficient;
             var aiOwnership = characterBody.master.GetComponent<AIOwnership>();
             if (aiOwnership)

@@ -197,6 +197,15 @@ namespace EnemiesReturns
                 }
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
+            {
+                ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
+                foreach(var acd in assets)
+                {
+                    acdLookup.Add(acd.name, acd);
+                }
+            }));
+
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EliteDef[]>)((assets) =>
             {
                 Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
@@ -254,6 +263,7 @@ namespace EnemiesReturns
                 var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
+                ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
                 projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab);
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");

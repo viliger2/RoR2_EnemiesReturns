@@ -21,7 +21,7 @@ MonoBehaviour:
   activationState:
     _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  interruptPriority: 2
+  interruptPriority: 1
   baseRechargeInterval: 15
   baseMaxStock: 1
   rechargeStock: 1
