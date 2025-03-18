@@ -272,6 +272,9 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
                 projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab);
                 projectilesList.Add(assets.First(asset => asset.name == "ArraignSwordProjectileDoTZone"));
+
+                ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.projectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
+                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.projectilePrefab);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

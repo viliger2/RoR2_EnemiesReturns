@@ -164,7 +164,7 @@ MonoBehaviour:
   lifetime: 10
   lifetimeExpiredEffect: {fileID: 0}
   desiredForwardSpeed: 120
-  updateAfterFiring: 0
+  updateAfterFiring: 1
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
     serializedVersion: 2
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
-  rotationSpeed: 180
+  rotationSpeed: 45
 --- !u!1001 &6907458231192868029
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: sdArraignP1Primary
   m_EditorClassIdentifier: 
-  skillName: ClockAttack
+  skillName: TrippleAttackP1
   skillNameToken: ENEMIES_RETURNS_ARRAIGNP1_PRIMARY_NAME
   skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP1_PRIMARY_DESC
   keywordTokens: []
   icon: {fileID: 0}
-  activationStateMachineName: Special
+  activationStateMachineName: Weapon
   activationState:
-    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack,
-      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _typeName: 
   interruptPriority: 2
   baseRechargeInterval: 30
   baseMaxStock: 1

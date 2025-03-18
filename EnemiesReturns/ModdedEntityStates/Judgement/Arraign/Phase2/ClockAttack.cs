@@ -46,6 +46,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 {
                     firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize * (projectileCountPerRow / 2 - 1));
                 }
+
                 var position = firstProjectileOrigin.transform.localPosition;
                 for (int i = 1; i < projectileCountPerRow; i++)
                 {
