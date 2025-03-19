@@ -85,6 +85,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
             if (fixedAge >= lifetime && NetworkServer.active)
             {
+                characterBody.healthComponent.godMode = false;
                 characterBody.healthComponent.Suicide();
             }
         }
