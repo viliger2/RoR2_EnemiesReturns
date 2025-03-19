@@ -21,6 +21,7 @@ using Rewired.Utils.Classes.Utility;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Skills;
+using RoR2.Projectile;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -234,6 +235,10 @@ namespace EnemiesReturns
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
+                _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+
                 var interactable = assets.First(asset => asset.name == "JudgementInteractable");
                 nopList.Add(interactable);
 
@@ -254,27 +259,17 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
 
-                Enemies.Judgement.Arraign.ArraignStuff.BodyPrefab = assets.First(asset => asset.name == "ArraignP1Body");
-                bodyList.Add(Enemies.Judgement.Arraign.ArraignStuff.BodyPrefab);
-
-                Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab = assets.First(asset => asset.name == "ArraignP1Master");
-                masterList.Add(Enemies.Judgement.Arraign.ArraignStuff.MasterPrefab);
-
                 var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
-                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab);
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
                 effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab));
 
-                ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
-                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.projectilePrefab);
-                projectilesList.Add(assets.First(asset => asset.name == "ArraignSwordProjectileDoTZone"));
+                ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
 
-                ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.projectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
-                projectilesList.Add(ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.projectilePrefab);
+                ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -295,6 +290,11 @@ namespace EnemiesReturns
 
                 Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
                 _contentPack.equipmentDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
+            {
+                ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers.cscSkyLaser = assets.First(asset => asset.name == "cscSkyLaser");
             }));
 
             AssetBundle assetBundleStages = null;
@@ -1200,12 +1200,37 @@ namespace EnemiesReturns
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.Inactive));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.WaveActive));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.EnterSkyLeap));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SlashDashPhase1));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Spawn));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Ending));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Idle));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase1));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase2));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase3));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.PrePhase2));
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Fire));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Idle));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.SkyLaser.SpawnState));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.SkyLaser.MainState));
+
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.Inactive));
+                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.WaveActive));
             }
         }
 

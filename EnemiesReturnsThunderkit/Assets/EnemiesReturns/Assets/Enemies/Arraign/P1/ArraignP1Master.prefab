@@ -156,7 +156,8 @@ MonoBehaviour:
   desiredSpawnNodeGraphType: 0
   stateMachine: {fileID: 5484369707126407281}
   scanState:
-    _typeName: 
+    _typeName: EntityStates.AI.Walker.Wander, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   isHealer: 0
   enemyAttention: 0
   prioritizePlayers: 0

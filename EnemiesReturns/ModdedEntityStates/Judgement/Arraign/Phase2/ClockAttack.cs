@@ -136,7 +136,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 }
             }
 
-            if (isAuthority)
+            if (isAuthority && clockChildLocator)
             {
                 var staringIndex = UnityEngine.Random.Range(0, clockChildLocator.Count);
 
@@ -201,6 +201,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 {
                     outer.SetNextStateToMain();
                 }
+            }
+
+            if(isAuthority && lines.Length == 0)
+            {
+                outer.SetNextStateToMain();
             }
         }
 

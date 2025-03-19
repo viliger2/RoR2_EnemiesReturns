@@ -19,7 +19,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Body
   activationState:
-    _typeName: 
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 30
   baseMaxStock: 1

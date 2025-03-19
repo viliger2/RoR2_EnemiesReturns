@@ -677,7 +677,7 @@ MonoBehaviour:
   KillVelocityWhenExceedMaxMovementIterations: 1
   KillRemainingMovementWhenExceedMaxMovementIterations: 1
   timeUntilUpdate: 0
-  playerCharacter: 0
+  playerCharacter: 1
 --- !u!114 &2859791027360040491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,25 +1253,6 @@ MonoBehaviour:
   oldHeal: 0
   oldFade: 0
   forceUpdate: 0
---- !u!114 &8302232124597500845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2578691932834601577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseFootstepString: 
-  baseFootliftString: 
-  sprintFootstepOverrideString: 
-  sprintFootliftOverrideString: 
-  enableFootstepDust: 0
-  footstepDustPrefab: {fileID: 0}
-  inLava: 0
 --- !u!114 &7271613160712221740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1314,25 @@ MonoBehaviour:
   m_ReferenceObject: {fileID: 0}
   m_DistanceToObject: 20
   neverOptimize: 0
+--- !u!114 &8302232124597500845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578691932834601577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseFootstepString: 
+  baseFootliftString: 
+  sprintFootstepOverrideString: 
+  sprintFootliftOverrideString: 
+  enableFootstepDust: 0
+  footstepDustPrefab: {fileID: 0}
+  inLava: 0
 --- !u!4 &2812961023823909223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 576907508992685663, guid: 67c305371ac7cb44084b35e759877b65, type: 3}

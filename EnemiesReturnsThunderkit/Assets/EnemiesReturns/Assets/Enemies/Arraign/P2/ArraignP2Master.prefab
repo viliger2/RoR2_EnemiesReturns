@@ -156,7 +156,8 @@ MonoBehaviour:
   desiredSpawnNodeGraphType: 0
   stateMachine: {fileID: 5484369707126407281}
   scanState:
-    _typeName: 
+    _typeName: EntityStates.AI.Walker.Wander, RoR2, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   isHealer: 0
   enemyAttention: 0
   prioritizePlayers: 0
@@ -236,12 +237,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: EnterSkyLeap
+  customName: SummonSkyLasers
   skillSlot: 3
   requiredSkill: {fileID: 0}
   requireSkillReady: 1
@@ -252,13 +253,13 @@ MonoBehaviour:
   maxTargetHealthFraction: Infinity
   minDistance: 0
   maxDistance: Infinity
-  selectionRequiresTargetLoS: 1
+  selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
   maxTimesSelected: -1
   moveTargetType: 0
-  activationRequiresTargetLoS: 1
-  activationRequiresAimTargetLoS: 1
+  activationRequiresTargetLoS: 0
+  activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 0
   movementType: 0
   moveInputScale: 1
