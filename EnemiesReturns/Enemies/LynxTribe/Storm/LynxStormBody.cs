@@ -238,5 +238,14 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 dontReleaseModelOnDeath = true
             };
         }
+
+        protected override IHealthComponent.HealthComponentParams HealthComponentParams()
+        {
+            return new IHealthComponent.HealthComponentParams()
+            {
+                dontShowHealthbar = true,
+                isDefaultGodMod = true
+            };
+        }
     }
 }

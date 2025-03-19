@@ -9,6 +9,7 @@ namespace EnemiesReturns.Components.BodyComponents
         {
             public bool dontShowHealthbar = false;
             public float globalDeathEventChance = 1f;
+            public bool isDefaultGodMod = false;
         }
 
         protected HealthComponentParams GetHealthComponentParams();
@@ -24,6 +25,7 @@ namespace EnemiesReturns.Components.BodyComponents
 
                 healthComponent.dontShowHealthbar = healthComponentParams.dontShowHealthbar;
                 healthComponent.globalDeathEventChanceCoefficient = healthComponentParams.globalDeathEventChance;
+                healthComponent.isDefaultGodMode = healthComponentParams.isDefaultGodMod;
             }
 
             return healthComponent;
