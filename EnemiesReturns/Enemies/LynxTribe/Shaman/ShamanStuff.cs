@@ -13,8 +13,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     public class ShamanStuff
-    {
-        public static R2API.DamageAPI.ModdedDamageType ApplyReducedHealing;
+    { 
 
         public GameObject CreateShamanSpawnEffect(GameObject prefab)
         {
@@ -37,7 +36,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
-            if (damageInfo.HasModdedDamageType(ApplyReducedHealing))
+            if (damageInfo.HasModdedDamageType(Content.DamageTypes.ApplyReducedHealing))
             {
                 if (victim.TryGetComponent<CharacterBody>(out var victimBody))
                 {

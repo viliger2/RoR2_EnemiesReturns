@@ -70,7 +70,8 @@ namespace EnemiesReturns
             {"stubbedcalm water/calmwater - dx11 - doublesided", "Calm Water/CalmWater - DX11 - DoubleSided.shader" },
             {"stubbedcalm water/calmwater - dx11", "Calm Water/CalmWater - DX11.shader" },
             {"stubbednature/speedtree", "RoR2/Base/Shaders/SpeedTreeCustom.shader"},
-            {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" }
+            {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" },
+            {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" }
         };
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?
@@ -226,6 +227,8 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
             {
                 Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
+                Content.Buffs.ImmuneToHammer = assets.First(buff => buff.name == "bdImmuneToHammer");
+                Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
 
                 _contentPack.buffDefs.Add(assets);
             }));
@@ -1202,6 +1205,8 @@ namespace EnemiesReturns
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
+                Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
+
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.EnterSkyLeap));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap));
@@ -1626,7 +1631,7 @@ namespace EnemiesReturns
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
-            ShamanStuff.ApplyReducedHealing = DamageAPI.ReserveDamageType();
+            Content.DamageTypes.ApplyReducedHealing = DamageAPI.ReserveDamageType();
             var shamanStuff = new ShamanStuff();
 
             var shamanSpawnEffect = shamanStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));

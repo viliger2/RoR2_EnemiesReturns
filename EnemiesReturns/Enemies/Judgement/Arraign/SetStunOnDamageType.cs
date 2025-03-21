@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using static R2API.DamageAPI;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
@@ -25,7 +26,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public float buffDuration = -1f;
 
-        public static R2API.DamageAPI.ModdedDamageType damageType;
+        public ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
 
         private bool hasEffectiveAuthority = true;
 

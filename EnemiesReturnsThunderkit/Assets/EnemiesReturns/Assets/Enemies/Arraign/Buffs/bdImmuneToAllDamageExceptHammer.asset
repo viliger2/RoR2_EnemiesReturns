@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bdImmuneToAllDamageExceptHammer
   m_EditorClassIdentifier: 
   iconPath: Textures/ItemIcons/texNullIcon
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: 21300000, guid: e46eb3325d14ff048b1103261c55af9b, type: 3}
   buffColor: {r: 1, g: 1, b: 1, a: 1}
   canStack: 0
   eliteDef: {fileID: 0}

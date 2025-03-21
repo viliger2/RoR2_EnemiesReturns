@@ -1,12 +1,6 @@
-﻿using EnemiesReturns.Components;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.Equipment.MithrixHammer
 {

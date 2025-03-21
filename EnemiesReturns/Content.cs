@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static R2API.DamageAPI;
 
 namespace EnemiesReturns
 {
@@ -47,11 +48,22 @@ namespace EnemiesReturns
             public static BuffDef LynxStormImmunity;
 
             public static BuffDef AffixAeoninan;
+
+            public static BuffDef ImmuneToAllDamageExceptHammer;
+
+            public static BuffDef ImmuneToHammer;
         }
 
         public static class Elites
         {
             public static EliteDef Aeonian;
+        }
+
+        public static class DamageTypes
+        {
+            public static ModdedDamageType ApplyReducedHealing;
+
+            public static ModdedDamageType EndGameBossWeapon;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static R2API.DamageAPI;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 {
@@ -20,6 +21,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
         public static GameObject swingEffect;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
+
+        public static ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
 
         private OverlapAttack attack;
 
@@ -92,10 +95,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
         private OverlapAttack SetupAttack(HitBoxGroup hitbox)
         {
-            return new OverlapAttack()
+            var overlap =  new OverlapAttack()
             {
                 attacker = bodyGameObject,
-                damage = 2000000f,
+                damage = 2000f,
                 damageColorIndex = DamageColorIndex.Fragile,
                 hitBoxGroup = hitbox,
                 isCrit = false,
@@ -106,6 +109,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 hitEffectPrefab = hitEffectPrefab
                 //damageType = // TODO
             };
+
+            overlap.damageType.AddModdedDamageType(damageType);
+
+            return overlap;
         }
 
         public override void OnExit()
