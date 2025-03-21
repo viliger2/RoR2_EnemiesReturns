@@ -201,7 +201,9 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
             {
                 ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
-                foreach(var acd in assets)
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                foreach (var acd in assets)
                 {
                     acdLookup.Add(acd.name, acd);
                 }

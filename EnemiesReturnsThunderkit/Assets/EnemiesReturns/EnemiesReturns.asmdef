@@ -11,7 +11,9 @@
     "precompiledReferences": [
         "RoR2.dll",
         "HGCSharpUtils.dll",
-        "KinematicCharacterController.dll"
+        "KinematicCharacterController.dll",
+        "R2API.DamageType.dll",
+        "R2API.Core.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

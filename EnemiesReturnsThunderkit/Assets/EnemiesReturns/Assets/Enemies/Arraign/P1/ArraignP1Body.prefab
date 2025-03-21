@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 8601560084771612059}
   - component: {fileID: -1594220585500839535}
   - component: {fileID: 6533914390430200171}
+  - component: {fileID: 4418322593500643424}
   m_Layer: 0
   m_Name: ArraignP1Body
   m_TagString: Untagged
@@ -834,6 +835,27 @@ MonoBehaviour:
   checkTimer: 0.25
   antiAirSkill: {fileID: -1594220585500839535}
   body: {fileID: 2963873619053843280}
+--- !u!114 &4418322593500643424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d680e1a4e5b2fa4688b34024f0c50f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetStateMachine: {fileID: 2859791027360040491}
+  idleStateMachines:
+  - {fileID: 8228178633749228936}
+  stunState:
+    _typeName: EntityStates.StunState, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  stunDuration: 2
+  applyBuff: 1
+  buff: {fileID: 11400000, guid: 0e911e7301c5d7647a78819a0ff662a6, type: 2}
+  buffDuration: 7
 --- !u!1 &6291839687705409160
 GameObject:
   m_ObjectHideFlags: 0
