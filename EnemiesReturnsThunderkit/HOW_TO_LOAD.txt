@@ -1,0 +1,7 @@
+1. Create new Unity project and integrate Thunderkit into it. (or use existing, whatever). You can follow the guide here on creating one https://risk-of-thunder.github.io/R2Wiki/Mod-Creation/ThunderKit/Crash-Course-and-Getting-Started/
+2. Add LocationsOfPrecipitation to your Unity project via Package Manager. https://github.com/JaceDaDorito/jace-locationsofprecipitation/tree/main
+3. BuffDefs are known to make Thunderkit projects hang, so you would need to either delete all BuffDefs from the project (indicated by "bd" prefix) OR did RoR2.dll edit to remove any calls from OnValidate in BuffDef class. Do note that deleting BuffDefs would result in broken links and some aspects of the project not working.
+3. After everything is imported, copy contents of Assets folder into your Unity project's Assets folder. Wait for everything to import.
+4. Navigate to EnemiesReturns\Scenes and open enemiesreturns_outoftime. It should load.
+5. Click on Director and scroll through components, if there are no missing scripts then everything has been imported correctly.
+6. To build asset bundle find EnemiesReturnsPipeline in Assets\\EnemiesReturns and click Execute.
