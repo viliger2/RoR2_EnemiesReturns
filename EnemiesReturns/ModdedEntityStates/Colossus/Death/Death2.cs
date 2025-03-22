@@ -16,6 +16,10 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void OnEnter()
         {
             base.OnEnter();
+            if (base.isVoidDeath)
+            {
+                return;
+            }
             PlayAnimation("Death, Override", "Death2");
             Util.PlaySound("ER_Colossus_Death2_Play", gameObject);
             EffectManager.SpawnEffect(deathEffect, new EffectData { origin = FindModelChild("Chest").transform.position }, true);

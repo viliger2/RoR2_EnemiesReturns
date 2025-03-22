@@ -23,6 +23,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
         {
             bodyPreservationDuration = 1f;
             base.OnEnter();
+            if (isVoidDeath)
+            {
+                return;
+            }
+            DisableEffects();
             Util.PlaySound("ER_Spider_Death_Normal_Play", base.gameObject);
 
             var childLocator = GetModelChildLocator();
@@ -39,6 +44,10 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
         public override void Update()
         {
             base.Update();
+            if (isVoidDeath)
+            {
+                return;
+            }
             if (modelRenderer)
             {
                 propertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmission, 0, age / (bodyPreservationDuration - 0.1f)));
@@ -57,6 +66,25 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             {
                 EffectManager.SimpleMuzzleFlash(smokeBombPrefab, characterBody.gameObject, "Body", false);
                 effectSpawned = true;
+            }
+        }
+
+        private void DisableEffects()
+        {
+            var rightSparkTransform = FindModelChild("SparkRightFrontLeg");
+            if (rightSparkTransform)
+            {
+                rightSparkTransform.gameObject.SetActive(false);
+            }
+            var leftSparkTransform = FindModelChild("SparkLeftBackLeg");
+            if (leftSparkTransform)
+            {
+                leftSparkTransform.gameObject.SetActive(false);
+            }
+            var smokeTransform = FindModelChild("Smoke");
+            if (smokeTransform)
+            {
+                smokeTransform.gameObject.SetActive(false);
             }
         }
     }
