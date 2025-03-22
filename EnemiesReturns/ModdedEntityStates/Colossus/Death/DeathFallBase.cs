@@ -24,6 +24,10 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void OnEnter()
         {
             base.OnEnter();
+            if (base.isVoidDeath)
+            {
+                return;
+            }
             Util.PlaySound("ER_Colossus_Death1_Play", gameObject);
             PlayAnimation("Death, Override", fallAnimation);
         }
@@ -31,19 +35,27 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (base.isVoidDeath)
+            {
+                return;
+            }
+            if (!fallTransform)
+            {
+                return;
+            }
             if (NetworkServer.active && fixedAge >= fallEffectSpawnTime && !hasFiredAttack)
             {
                 BlastAttack blastAttack = new BlastAttack();
                 blastAttack.radius = fallBlastAttackRadius;
                 blastAttack.procCoefficient = 0f;
                 blastAttack.position = fallTransform.position;
-                blastAttack.attacker = characterBody.gameObject;
+                blastAttack.attacker = base.gameObject;
                 blastAttack.crit = false;
                 blastAttack.baseDamage = fallBlastAttackDamage * damageStat;
                 blastAttack.canRejectForce = false;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                 blastAttack.baseForce = fallBlastAttackForce;
-                blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
+                blastAttack.teamIndex = teamComponent.teamIndex;
                 blastAttack.damageType = DamageType.NonLethal;
                 blastAttack.attackerFiltering = AttackerFiltering.Default;
                 blastAttack.Fire();

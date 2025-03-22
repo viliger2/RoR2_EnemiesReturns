@@ -9,6 +9,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
         public override void OnEnter()
         {
             base.OnEnter();
+            if (isVoidDeath)
+            {
+                return;
+            }
             var particles = modelLocator.modelTransform.GetComponentsInChildren<ParticleSystem>();
             foreach (var particle in particles)
             {
