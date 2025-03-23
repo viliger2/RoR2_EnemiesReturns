@@ -38,6 +38,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override void OnEnter()
         {
             base.OnEnter();
+            PlayCrossfade("Gesture", "Thundercall", 0.1f);
+
             spawnDistance = maxSpawnDistance - minSpawnDistance;
             if (isAuthority)
             {
@@ -107,6 +109,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 value += value > 0f ? minSpawnDistance : -minSpawnDistance;
                 return value;
             }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

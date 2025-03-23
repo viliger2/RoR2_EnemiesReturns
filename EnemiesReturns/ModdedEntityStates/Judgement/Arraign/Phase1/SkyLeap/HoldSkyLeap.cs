@@ -107,7 +107,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                 {
                     originalPosition = base.transform.position;
                 }
-                if(Physics.Raycast(originalPosition, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                if(Physics.Raycast(originalPosition + Vector3.up * 2f, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                 {
                     dropPosition = raycastInfo.point;
                 } else
@@ -115,7 +115,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                     dropPosition = originalPosition;
                 }
 
-                base.characterMotor.Motor.SetPositionAndRotation(dropPosition, Quaternion.identity);
+                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 10f, Quaternion.identity);
 
                 EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
 

@@ -21,7 +21,7 @@ MonoBehaviour:
   activationState:
     _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.EnterSkyLeap,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  interruptPriority: 2
+  interruptPriority: 1
   baseRechargeInterval: 30
   baseMaxStock: 1
   rechargeStock: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
   attackSpeedBuffsRestockSpeed: 0
   attackSpeedBuffsRestockSpeed_Multiplier: 1
   resetCooldownTimerOnUse: 0
-  fullRestockOnAssign: 1
+  fullRestockOnAssign: 0
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
   cancelSprintingOnActivation: 1

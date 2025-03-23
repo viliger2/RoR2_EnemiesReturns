@@ -67,6 +67,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
             }
         }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+        }
+
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Stun;

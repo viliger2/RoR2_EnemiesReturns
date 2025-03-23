@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿//using EnemiesReturns.Components;
+using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
 using System;
@@ -10,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
     public class SummonSkyLasers : BaseState
     {
-        public static float baseDuration = 4f;
+        public static float baseDuration = 6.8f;
 
         public static CharacterSpawnCard cscSkyLaser;
 
@@ -34,6 +35,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
             duration = baseDuration / attackSpeedStat;
 
+            PlayCrossfade("Gesture, Override", "SummonSkyLaser", "SkyLaser.playbackRate", duration, 0.1f);
+
             // var bodies = Utils.GetActiveAndAlivePlayerBodies();
             // if(bodies.Count == 0)
             // {
@@ -41,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             //     return;
             // }
 
-            // totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
+            //totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
 
             var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
             if (sceneChildLocator)
@@ -83,17 +86,25 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             return InterruptPriority.PrioritySkill;
         }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+        }
+
         private GameObject SummonSkyLaser(Transform transform)
         {
             var placementRule = new DirectorPlacementRule();
             if (transform)
             {
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Direct;
+                placementRule.spawnOnTarget = transform;
             } else
             {
-                placementRule.placementMode = DirectorPlacementRule.PlacementMode.Random;
+                placementRule.placementMode = DirectorPlacementRule.PlacementMode.Approximate;
                 placementRule.minDistance = minDistance;
                 placementRule.maxDistance = maxDistance;
+                placementRule.spawnOnTarget = this.transform;
             }
 
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscSkyLaser, placementRule, RoR2Application.rng);
@@ -110,7 +121,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                     }
 
                     var baseAI = spawnResult.spawnedInstance.GetComponent<BaseAI>();
-                    if (baseAI)
+                    if (baseAI && baseAI.body)
                     {
                         baseAI.ForceAcquireNearestEnemyIfNoCurrentEnemy();
                     }

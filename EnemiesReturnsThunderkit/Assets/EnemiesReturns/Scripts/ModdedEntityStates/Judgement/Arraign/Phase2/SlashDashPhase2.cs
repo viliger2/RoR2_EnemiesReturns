@@ -8,15 +8,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
     public class SlashDashPhase2 : BaseSlashDash
     {
-        public override float baseDuration => 0.5f;
+        public override float baseDuration => 1f;
 
         public override float damageCoefficient => 3f;
 
         public override float procCoefficient => 1f;
 
         public override float turnSpeed => 150f;
-
-        public override float dashMoveSpeedCoefficient => 3.5f;
 
         public override string layerName => "Gesture, Override";
 
@@ -50,7 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 {
                     crit = RollCrit(),
                     owner = base.gameObject,
-                    position = transform.position,
+                    position = characterBody.footPosition,
                     projectilePrefab = projectilePrefab,
                     rotation = Quaternion.identity,
                     damage = damageStat * damageCoefficient

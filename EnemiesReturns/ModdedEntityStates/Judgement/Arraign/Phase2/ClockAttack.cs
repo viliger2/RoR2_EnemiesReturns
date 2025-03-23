@@ -121,7 +121,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void OnEnter()
         {
             base.OnEnter();
-            if(isAuthority && projectileCountPerRow == 0)
+            PlayCrossfade("Gesture", "Thundercall", 0.1f);
+            if (isAuthority && projectileCountPerRow == 0)
             {
                 outer.SetNextStateToMain();
             }
@@ -212,11 +213,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void OnExit()
         {
             base.OnExit();
-            for(int i = lines.Length - 1; i >= 0; i--)
+            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+            if (isAuthority)
             {
-                lines[i] = null;
+                for (int i = lines.Length - 1; i >= 0; i--)
+                {
+                    lines[i] = null;
+                }
+                lines = null;
             }
-            lines = null;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

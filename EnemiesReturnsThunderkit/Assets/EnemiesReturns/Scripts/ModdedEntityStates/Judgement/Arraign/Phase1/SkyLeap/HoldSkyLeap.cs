@@ -83,7 +83,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                     var targetBody = target.GetComponent<CharacterBody>();
                     // TODO: merc expose for now
                     var effectGameObject = UnityEngine.Object.Instantiate(RoR2.CharacterBody.AssetReferences.mercExposeEffectPrefab, targetBody.corePosition, Quaternion.identity);
-                    tempEffect = gameObject.GetComponent<TemporaryVisualEffect>();
+                    tempEffect = effectGameObject.GetComponent<TemporaryVisualEffect>();
                     tempEffect.parentTransform = targetBody.coreTransform;
                     tempEffect.visualState = TemporaryVisualEffect.VisualState.Enter;
                     tempEffect.healthComponent = targetBody.healthComponent;

@@ -204,6 +204,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash1 = assets.First(acd => acd.name == "acdSlash3").curve;
                 foreach (var acd in assets)
                 {
                     acdLookup.Add(acd.name, acd);
@@ -268,6 +269,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
+                ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.projectilePrefab = lightningProjectile;
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
                 effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab));

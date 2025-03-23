@@ -13,15 +13,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
     {
         public static float baseDuration = 2.5f;
 
-        public static float baseInitialDelay = 0.5f;
+        public static float baseInitialDelay = 0f;
 
         public static GameObject projectilePrefab;
 
-        public static int projectileCount = 15;
+        public static int projectileCount = 20;
 
         public static float delayBetweenSpawns = 0.1f;
 
-        public static float maxSpawnDistance = 10f;
+        public static float maxSpawnDistance = 20f;
 
         public static float minSpawnDistance = 2f;
 
@@ -38,6 +38,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override void OnEnter()
         {
             base.OnEnter();
+            PlayCrossfade("Gesture", "Thundercall", 0.1f);
+
             spawnDistance = maxSpawnDistance - minSpawnDistance;
             if (isAuthority)
             {
@@ -107,6 +109,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 value += value > 0f ? minSpawnDistance : -minSpawnDistance;
                 return value;
             }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

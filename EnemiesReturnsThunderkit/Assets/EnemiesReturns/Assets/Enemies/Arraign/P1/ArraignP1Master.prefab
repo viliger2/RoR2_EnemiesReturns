@@ -194,7 +194,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
@@ -202,14 +202,14 @@ MonoBehaviour:
   customName: DashAttack
   skillSlot: 2
   requiredSkill: {fileID: 0}
-  requireSkillReady: 0
+  requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 0
-  maxDistance: 50
+  minDistance: 30
+  maxDistance: 60
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 1
   selectionRequiresAimTarget: 0
@@ -218,10 +218,10 @@ MonoBehaviour:
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 1
-  movementType: 1
+  movementType: 0
   moveInputScale: 1
-  aimType: 1
-  ignoreNodeGraph: 0
+  aimType: 2
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
@@ -270,7 +270,7 @@ MonoBehaviour:
   shouldTapButton: 0
   buttonPressType: 0
   driverUpdateTimerOverride: -1
-  resetCurrentEnemyOnNextDriverSelection: 0
+  resetCurrentEnemyOnNextDriverSelection: 1
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &6433454316342385121
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
@@ -294,7 +294,7 @@ MonoBehaviour:
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 0
+  minDistance: 10
   maxDistance: Infinity
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 1
   activationRequiresAimConfirmation: 0
-  movementType: 0
+  movementType: 1
   moveInputScale: 1
   aimType: 2
   ignoreNodeGraph: 0
@@ -312,9 +312,9 @@ MonoBehaviour:
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: -1
+  driverUpdateTimerOverride: 4
   resetCurrentEnemyOnNextDriverSelection: 0
-  noRepeat: 0
+  noRepeat: 1
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &-2133748247399528627
 MonoBehaviour:
@@ -338,7 +338,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: Infinity
+  maxDistance: 20
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0

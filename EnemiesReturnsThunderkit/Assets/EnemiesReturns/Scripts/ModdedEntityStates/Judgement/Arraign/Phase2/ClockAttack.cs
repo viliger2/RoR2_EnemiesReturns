@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
             public float damageStat;
 
-            public bool finished { get; private set; }
+            public bool Finished { get; private set; }
 
             private float timer;
 
@@ -41,18 +41,21 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
                 if(projectileCountPerRow % 2 == 0)
                 {
-                    firstProjectileOrigin.transform.position = -Vector3.right * (projectileSize / 2 + projectileSize * (projectileCountPerRow / 2 - 1));
+                    firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize / 2 + projectileSize * (projectileCountPerRow / 2 - 1));
                 } else
                 {
-                    firstProjectileOrigin.transform.position = -Vector3.right * (projectileSize * (projectileCountPerRow / 2 - 1));
+                    firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize * (projectileCountPerRow / 2 - 1));
                 }
-                for(int i = 0; i < projectileCountPerRow - 1; i++)
+
+                var position = firstProjectileOrigin.transform.localPosition;
+                for (int i = 1; i < projectileCountPerRow; i++)
                 {
+                    position += Vector3.right * projectileSize;
                     var projectileOrigin = new GameObject();
-                    projectileOrigin.name = "Projectile" + (i + 1).ToString();
-                    firstProjectileOrigin.transform.parent = currentPointGameObject.transform;
-                    firstProjectileOrigin.transform.localPosition = firstProjectileOrigin.transform.position + Vector3.right * projectileSize;
-                    firstProjectileOrigin.transform.localRotation = Quaternion.identity;
+                    projectileOrigin.name = "Projectile" + i;
+                    projectileOrigin.transform.parent = currentPointGameObject.transform;
+                    projectileOrigin.transform.localPosition = position;
+                    projectileOrigin.transform.localRotation = Quaternion.identity;
                 }
             }
 
@@ -70,7 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
                 if(Vector3.Distance(targetPoint, currentPointGameObject.transform.position) < projectileSize / 2)
                 {
-                    finished = true;
+                    Finished = true;
                     return;
                 }
 
@@ -118,7 +121,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void OnEnter()
         {
             base.OnEnter();
-            if(isAuthority && projectileCountPerRow == 0)
+            PlayCrossfade("Gesture", "Thundercall", 0.1f);
+            if (isAuthority && projectileCountPerRow == 0)
             {
                 outer.SetNextStateToMain();
             }
@@ -133,7 +137,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 }
             }
 
-            if (isAuthority)
+            if (isAuthority && clockChildLocator)
             {
                 var staringIndex = UnityEngine.Random.Range(0, clockChildLocator.Count);
 
@@ -191,7 +195,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 foreach (var firingLine in lines)
                 {
                     firingLine.FixedUpdate(GetDeltaTime());
-                    finished = finished && firingLine.finished;
+                    finished = finished && firingLine.Finished;
                 }
 
                 if (finished)
@@ -199,16 +203,25 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                     outer.SetNextStateToMain();
                 }
             }
+
+            if(isAuthority && lines.Length == 0)
+            {
+                outer.SetNextStateToMain();
+            }
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            for(int i = lines.Length - 1; i >= 0; i--)
+            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+            if (isAuthority)
             {
-                lines[i] = null;
+                for (int i = lines.Length - 1; i >= 0; i--)
+                {
+                    lines[i] = null;
+                }
+                lines = null;
             }
-            lines = null;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

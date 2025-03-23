@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,9 +11,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
     {
         public static AnimationCurve acdSlash1;
 
+        public static float searchRadius = 10f;
+
+        private Vector3 desiredDirection;
+
         public override void OnEnter()
         {
-            this.baseDuration = 4f;
+            this.baseDuration = 0.64f;
             base.damageCoefficient = 2f;
             base.hitBoxGroupName = "Sword";
             //base.hitEffectPrefab = 
@@ -31,10 +36,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
             base.OnEnter();
 
-            if (characterDirection)
-            {
-                characterDirection.forward = inputBank.aimDirection;
-            }
+            desiredDirection = inputBank.aimDirection;
+
+            //if (characterDirection)
+            //{
+            //    characterDirection.forward = inputBank.aimDirection;
+            //}
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            Vector3 targetMoveVelocity = Vector3.zero;
+            characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 45f);
         }
 
         public override void PlayAnimation()
@@ -50,7 +64,31 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
-            outer.SetNextState(new Slash2());
+            var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
+            if(hitboxes.Count > 0)
+            {
+                outer.SetNextState(new Slash2());
+            } else
+            {
+                outer.SetNextState(new FireHomingProjectiles());
+            }
+        }
+
+        private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)
+        {
+            List<HurtBox> result = new List<HurtBox>();
+            sphereSearch.mask = LayerIndex.entityPrecise.mask;
+            sphereSearch.origin = origin;
+            sphereSearch.radius = searchRadius;
+            sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
+            sphereSearch.RefreshCandidates();
+            sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(teamComponent.teamIndex));
+            sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
+            //sphereSearch.FilterByPlayers();
+            sphereSearch.GetHurtBoxes(result);
+            sphereSearch.ClearCandidates();
+
+            return result;
         }
     }
 }

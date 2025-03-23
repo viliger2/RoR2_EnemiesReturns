@@ -10,89 +10,24 @@ using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
-    public class WeaponThrow : BaseState
+    public class WeaponThrow : BaseWeaponThrow
     {
-        public static GameObject projectilePrefab;
+        public static GameObject staticProjectilePrefab;
 
-        public static float baseDuration = 5.6f;
+        public override GameObject projectilePrefab => staticProjectilePrefab;
 
-        public static float baseAttack = 3f;
+        public override float baseDuration => 5.6f;
 
-        public static float damageCoefficient = 3f;
+        public override float baseAttack => 3f;
 
-        public static float force = 0f;
+        public override float damageCoefficient => 3f;
 
-        private float duration;
+        public override float force => 0f;
 
-        private float attack;
+        public override string layerName => "Gesture, Override";
 
-        private bool hasAttacked;
+        public override string animName => "ThrowSword";
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
-            attack = baseAttack / attackSpeedStat;
-            if (NetworkServer.active)
-            {
-                // CharacterBody target = null;
-                // var bodies = Utils.GetActiveAndAlivePlayerBodies();
-                // foreach (var body in bodies)
-                // {
-                //     if (body && body.characterMotor && !body.characterMotor.isGrounded)
-                //     {
-                //         target = body;
-                //     }
-                // }
-                // if (target)
-                // {
-                //     foreach(var ai in characterBody.master.aiComponents)
-                //     {
-                //         ai.currentEnemy.gameObject = target.gameObject;
-                //         ai.enemyAttention = duration;
-                //     }
-                // }
-                // inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
-            }
-            PlayAnimation("Gesture, Override", "ThrowSword", "Throw.playbackRate", duration);
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if(fixedAge > attack && isAuthority && !hasAttacked)
-            {
-                FireProjectile();
-                hasAttacked = true;
-            }
-
-            if(fixedAge > duration && isAuthority)
-            {
-                outer.SetNextStateToMain();
-            }
-        }
-
-        private void FireProjectile()
-        {
-            if (isAuthority)
-            {
-                var aimRay = GetAimRay();
-
-                var info = new FireProjectileInfo
-                {
-                    crit = RollCrit(),
-                    damage = damageStat * damageCoefficient,
-                    force = force,
-                    owner = base.gameObject,
-                    position = aimRay.origin,
-                    rotation = Quaternion.Euler(aimRay.direction),
-                    projectilePrefab = projectilePrefab,
-                    damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary)
-                };
-
-                ProjectileManager.instance.FireProjectile(info);
-            }
-        }
-
+        public override string playbackRateParamName => "Throw.playbackRate";
     }
 }

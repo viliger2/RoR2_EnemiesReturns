@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Body
   activationState:
-    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2,
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 10
@@ -30,7 +30,7 @@ MonoBehaviour:
   attackSpeedBuffsRestockSpeed: 0
   attackSpeedBuffsRestockSpeed_Multiplier: 1
   resetCooldownTimerOnUse: 0
-  fullRestockOnAssign: 1
+  fullRestockOnAssign: 0
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
   cancelSprintingOnActivation: 1

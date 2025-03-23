@@ -9,6 +9,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public abstract class BaseSlashDash : BaseState
     {
+        public static AnimationCurve speedCoefficientCurve;
+
         public abstract float baseDuration { get; }
 
         public abstract float damageCoefficient { get; }
@@ -16,8 +18,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public abstract float procCoefficient { get; }
 
         public abstract float turnSpeed { get; }
-
-        public abstract float dashMoveSpeedCoefficient { get; }
 
         public abstract string layerName { get; }
 
@@ -49,15 +49,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float value = moveSpeedStat * dashMoveSpeedCoefficient;
-            animator.SetFloat(AnimationParameters.forwardSpeed, value);
 
             characterBody.outOfCombatStopwatch = 0f;
             Vector3 targetMoveVelocity = Vector3.zero;
             targetMoveVector = Vector3.ProjectOnPlane(Vector3.SmoothDamp(targetMoveVector, inputBank.aimDirection, ref targetMoveVelocity, turnSmoothTime, turnSpeed), Vector3.up).normalized;
             characterDirection.moveVector = targetMoveVector;
             Vector3 forward = characterDirection.forward;
-            characterMotor.moveDirection = forward * dashMoveSpeedCoefficient;
+            base.characterMotor.rootMotion += (speedCoefficientCurve.Evaluate(base.fixedAge / duration) * moveSpeedStat * targetMoveVector * GetDeltaTime());
 
             if (isAuthority)
             {

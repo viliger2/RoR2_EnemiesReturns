@@ -256,7 +256,7 @@ MonoBehaviour:
   inLava: 0
   baseNameToken: ENEMIES_RETURNS_ARRAIGNP2_BODY_NAME
   subtitleNameToken: ENEMIES_RETURNS_ARRAIGNP2_BODY_SUBTITLE
-  bodyFlags: 2048
+  bodyFlags: 2065
   lavaCooldown: 0.2
   rootMotionInMainState: 0
   mainRootSpeed: 33
@@ -749,7 +749,7 @@ MonoBehaviour:
   _skillFamily: {fileID: 11400000, guid: 46aa0b7053ddaea41a27909b40f6aae9, type: 2}
   skillName: ClockAttack
   hideInCharacterSelect: 0
-  baseStock: 1
+  baseStock: 0
   baseRechargeStopwatch: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &3353883869141247821
@@ -767,7 +767,7 @@ MonoBehaviour:
   _skillFamily: {fileID: 11400000, guid: 12e9243ee1b491d42917ff853acba7b0, type: 2}
   skillName: DashAttackP2
   hideInCharacterSelect: 0
-  baseStock: 1
+  baseStock: 0
   baseRechargeStopwatch: 0
   hasExecutedSuccessfully: 0
 --- !u!114 &7857249970222787618
@@ -957,6 +957,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5003907910950348235}
     m_Modifications:
+    - target: {fileID: -9177657636474258275, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8803070779676423147, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1013,9 +1021,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5819949877966041738, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4824442635563639251, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4365032011688619915, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2061640337918337373, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_Name
       value: mdlArraignP2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1766077561428416892, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470073172968902300, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079652394893446329, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
@@ -1071,7 +1107,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Controller: {fileID: 9100000, guid: 172cdefaca3eb574091cbdcaee4c0c56, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

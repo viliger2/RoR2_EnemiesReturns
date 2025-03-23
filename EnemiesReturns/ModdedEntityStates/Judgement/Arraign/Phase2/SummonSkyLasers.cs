@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
     public class SummonSkyLasers : BaseState
     {
-        public static float baseDuration = 2.6f;
+        public static float baseDuration = 6.8f;
 
         public static CharacterSpawnCard cscSkyLaser;
 
