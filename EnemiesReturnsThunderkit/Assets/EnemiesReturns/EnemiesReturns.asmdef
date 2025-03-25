@@ -13,7 +13,9 @@
         "HGCSharpUtils.dll",
         "KinematicCharacterController.dll",
         "R2API.DamageType.dll",
-        "R2API.Core.dll"
+        "R2API.Core.dll",
+        "MMHOOK_KinematicCharacterController.dll",
+        "MMHOOK_RoR2.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
