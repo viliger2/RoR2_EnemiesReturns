@@ -29,5 +29,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override string animName => "ThrowSword";
 
         public override string playbackRateParamName => "Throw.playbackRate";
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
     }
 }

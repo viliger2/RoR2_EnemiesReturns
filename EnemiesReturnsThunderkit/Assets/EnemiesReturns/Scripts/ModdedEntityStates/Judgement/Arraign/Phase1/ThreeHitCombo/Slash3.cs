@@ -53,5 +53,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
         }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
     }
 }

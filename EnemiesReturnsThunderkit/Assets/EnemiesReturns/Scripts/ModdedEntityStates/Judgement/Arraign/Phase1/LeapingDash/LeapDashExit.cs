@@ -33,5 +33,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
     }
 }

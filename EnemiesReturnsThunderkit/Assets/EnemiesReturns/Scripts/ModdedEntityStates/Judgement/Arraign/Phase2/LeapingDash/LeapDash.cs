@@ -54,6 +54,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!liftedOff)
+            {
+                return;
+            }
             timer += GetDeltaTime();
             if (isAuthority && timer >= projectileSpawnTime)
             {

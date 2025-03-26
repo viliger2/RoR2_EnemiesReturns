@@ -14,6 +14,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public CharacterBody body;
 
+        public EntityStateMachine[] esms;
+
         private float timer;
 
         private void FixedUpdate()
@@ -26,7 +28,13 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             timer += Time.fixedDeltaTime;
             if(timer > checkTimer)
             {
-                if (antiAirSkill.IsReady())
+                bool emssFree = true;
+                foreach(var esm in esms)
+                {
+                    emssFree = emssFree && esm.IsInMainState();
+                }
+
+                if (antiAirSkill.IsReady() && emssFree)
                 {
                     var bodies = Utils.GetActiveAndAlivePlayerBodies();
                     foreach (var body in bodies)

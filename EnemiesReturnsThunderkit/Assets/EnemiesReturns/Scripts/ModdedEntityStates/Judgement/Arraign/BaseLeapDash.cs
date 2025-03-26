@@ -104,17 +104,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public virtual void DoImpactAuthority()
         {
             DetonateAuthority();
-            //if ((bool)landingSound)
-            //{
-            //    EffectManager.SimpleSoundEffect(landingSound.index, base.characterBody.footPosition, transmit: true);
-            //}
-            //base.healthComponent.TakeDamage(new DamageInfo
-            //{
-            //    damage = base.healthComponent.fullCombinedHealth * detonateSelfDamageFraction,
-            //    attacker = base.characterBody.gameObject,
-            //    position = base.characterBody.corePosition,
-            //    damageType = DamageType.Generic
-            //});
         }
 
         public BlastAttack.Result DetonateAuthority()

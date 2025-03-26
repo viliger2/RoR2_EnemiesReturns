@@ -71,6 +71,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             } else
             {
                 outer.SetNextState(new FireHomingProjectiles());
+                //EntityStateMachine.FindByCustomName(gameObject, "Weapon").SetNextState(new FireHomingProjectiles());
+                //outer.SetNextStateToMain();
             }
         }
 

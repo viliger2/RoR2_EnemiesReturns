@@ -40,30 +40,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             attack = baseAttack / attackSpeedStat;
-            // if (NetworkServer.active && isAuthority)
-            // {
-            //     var bodies = Utils.GetActiveAndAlivePlayerBodies();
-            //     foreach (var body in bodies)
-            //     {
-            //         if (body && body.characterMotor && !body.characterMotor.isGrounded)
-            //         {
-            //             target = body;
-            //         }
-            //     }
-            //     if (target)
-            //     {
-            //         foreach (var ai in characterBody.master.aiComponents)
-            //         {
-            //             ai.currentEnemy.gameObject = target.gameObject;
-            //             ai.enemyAttention = duration + 1f;
-            //         }
-            //         inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
-            //     }
-            //     if (characterDirection)
-            //     {
-            //         characterDirection.moveVector = inputBank.aimDirection;
-            //     }
-            // }
+            if (NetworkServer.active && isAuthority)
+            {
+                // var bodies = Utils.GetActiveAndAlivePlayerBodies();
+                // foreach (var body in bodies)
+                // {
+                //     if (body && body.characterMotor && !body.characterMotor.isGrounded)
+                //     {
+                //         target = body;
+                //     }
+                // }
+                // if (target)
+                // {
+                //     foreach (var ai in characterBody.master.aiComponents)
+                //     {
+                //         ai.currentEnemy.gameObject = target.gameObject;
+                //         ai.enemyAttention = duration + 1f;
+                //     }
+                //     inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
+                // }
+                // if (characterDirection)
+                // {
+                //     characterDirection.moveVector = inputBank.aimDirection;
+                // }
+            }
             PlayAnimation(layerName, animName, playbackRateParamName, duration);
         }
 

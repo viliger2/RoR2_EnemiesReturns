@@ -201,10 +201,13 @@ namespace EnemiesReturns
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
             {
-                ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
+                zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash1 = assets.First(acd => acd.name == "acdSlash3").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.acdSlash1 = assets.First(acd => acd.name == "acdSlash3").curve;
                 foreach (var acd in assets)
                 {
                     acdLookup.Add(acd.name, acd);
@@ -268,7 +271,7 @@ namespace EnemiesReturns
                 var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
-                ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
+                zJunk.ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.projectilePrefab = lightningProjectile;
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
@@ -1214,15 +1217,16 @@ namespace EnemiesReturns
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap));
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SlashDashPhase1));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow));
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers));
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Spawn));
+
+                stateList.Add(typeof(zJunk.ModdedEntityStates.Judgement.Arraign.Phase1.SlashDashPhase1));
+                stateList.Add(typeof(zJunk.ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2));
 
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Ending));
                 stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Idle));

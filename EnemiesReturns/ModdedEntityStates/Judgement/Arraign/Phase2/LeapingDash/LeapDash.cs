@@ -9,12 +9,11 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 {
-
     public class LeapDash : BaseLeapDash
     {
         public override float damageCoefficient => 2f;
 
-        public override float liftOffTimer => 1.7f / 1f; // 1 is animation speed
+        public override float liftOffTimer => 0.2083f / 1f; // 1 is animation speed
 
         public override float force => 0f;
 

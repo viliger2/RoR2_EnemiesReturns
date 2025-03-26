@@ -10,15 +10,13 @@ using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
-    public class FireHomingProjectiles : GenericCharacterMain
+    public class FireHomingProjectiles : BaseState
     {
-        public static float baseDuration = 2f;
-
         public static float baseInitialDelay = 0.68f;
 
-        public static float baseFireDuration = 0.64f;
+        public static float baseDuration = 1.5f;
 
-        public static int orbCount = 3;
+        public static float baseFireRate = 0.25f;
 
         //public static GameObject projectilePrefab => Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LunarWisp/LunarWispTrackingBomb.prefab").WaitForCompletion();
 
@@ -26,80 +24,73 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         private Transform origin;
 
+        private Transform fireRotationHelper;
+
+        private float fireRate;
+
         private float duration;
 
         private float initialDelay;
-
-        private float fireDuration;
-
-        private int orbsFired;
-
-        private int leftOrbCount;
-
-        private int forwardOrbCount;
-
-        private int rightOrbCount;
 
         private float timer;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
             initialDelay = baseInitialDelay / attackSpeedStat;
-            fireDuration = baseFireDuration / attackSpeedStat;
-
-            var remainder = orbCount % 3;
-            if(remainder != 0)
-            {
-                leftOrbCount = orbCount / 3;
-                forwardOrbCount = orbCount / 3 + remainder;
-                rightOrbCount = orbCount / 3;
-            } else
-            {
-                leftOrbCount = orbCount / 3;
-                forwardOrbCount = orbCount / 3;
-                rightOrbCount = orbCount / 3;
-            }
+            fireRate = baseFireRate / attackSpeedStat;
+            duration = baseDuration + initialDelay;
 
             origin = FindModelChild("HandR");
             if (!origin)
             {
                 origin = base.transform;
             }
-
-            PlayCrossfade("Gesture", "OrbEnterRight", "orb.playbackRate", initialDelay, 0.1f);
+            fireRotationHelper = FindModelChild("OrbFireRotationHelper");
+            PlayCrossfade("HomingOrbs", "EnterFireOrb", "orb.playbackRate", initialDelay, 0.1f);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            timer += GetDeltaTime();
-
-            if(fixedAge < initialDelay)
+            if (fixedAge < initialDelay)
             {
                 return;
             }
 
-            if(timer >= fireDuration)
+            timer += GetDeltaTime();
+
+            if (timer >= fireRate)
             {
-                if(orbsFired < rightOrbCount)
+                PlayCrossfade("FireHomingOrbs", "FireHomingOrb", 0.1f);
+                if (isAuthority)
                 {
-                    FireOrb("OrbFireRight");
-                } else if(orbsFired < rightOrbCount + forwardOrbCount)
-                {
-                    FireOrb("OrbFireForward");
+                    // Quaternion lookRotation;
+                    // if (fireRotationHelper)
+                    // {
+                    //     lookRotation = Util.QuaternionSafeLookRotation(fireRotationHelper.position - origin.position, Vector3.up);
+                    // } else
+                    // {
+                    //     lookRotation = Util.QuaternionSafeLookRotation(origin.forward);
+                    // }
+                    // var info = new FireProjectileInfo
+                    // {
+                    //     crit = RollCrit(),
+                    //     damage = damageStat * damageCoefficient,
+                    //     force = 0f,
+                    //     owner = base.gameObject,
+                    //     position = origin.position,
+                    //     rotation = lookRotation,
+                    //     projectilePrefab = projectilePrefab,
+                    //     damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
+                    // };
+                    // ProjectileManager.instance.FireProjectile(info);
                 }
-                else if(orbsFired < rightOrbCount + forwardOrbCount + leftOrbCount)
-                {
-                    FireOrb("OrbFireLeft");
-                }
-                orbsFired++;
-                timer = 0f;
+                timer -= fireRate;
             }
 
-            if(fixedAge > duration && isAuthority && orbsFired >= orbCount)
+            if(fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
@@ -108,27 +99,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("Gesture", "OrbExitLeft", 0.1f);
+            PlayAnimation("FireHomingOrbs", "BufferEmpty");
+            PlayCrossfade("HomingOrbs", "ExitHomingOrb", 0.1f);
         }
 
-        private void FireOrb(string animation)
+        public override InterruptPriority GetMinimumInterruptPriority()
         {
-            PlayCrossfade("Gesture", animation, "orb.playbackRate", fireDuration, 0.1f);
-            if (isAuthority)
-            {
-                var info = new FireProjectileInfo
-                {
-                    crit = RollCrit(),
-                    damage = damageStat * damageCoefficient,
-                    force = 0f,
-                    owner = base.gameObject,
-                    position = origin.position,
-                    rotation = Util.QuaternionSafeLookRotation(origin.forward),
-                    //projectilePrefab = projectilePrefab,
-                    damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
-                };
-                ProjectileManager.instance.FireProjectile(info);
-            }
+            return InterruptPriority.PrioritySkill;
         }
 
     }

@@ -70,7 +70,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
                 outer.SetNextState(new Slash2());
             } else
             {
-                outer.SetNextState(new FireHomingProjectiles());
+                //outer.SetNextState(new FireHomingProjectiles());
+                EntityStateMachine.FindByCustomName(gameObject, "Weapon").SetNextState(new FireHomingProjectiles());
+                outer.SetNextStateToMain();
             }
         }
 
@@ -89,6 +91,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             sphereSearch.ClearCandidates();
 
             return result;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

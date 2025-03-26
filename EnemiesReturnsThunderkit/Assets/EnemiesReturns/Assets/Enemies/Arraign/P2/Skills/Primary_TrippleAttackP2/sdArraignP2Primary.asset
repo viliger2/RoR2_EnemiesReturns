@@ -17,11 +17,12 @@ MonoBehaviour:
   skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP2_PRIMARY_DESC
   keywordTokens: []
   icon: {fileID: 0}
-  activationStateMachineName: Weapon
+  activationStateMachineName: Body
   activationState:
-    _typeName: 
-  interruptPriority: 2
-  baseRechargeInterval: 5
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  interruptPriority: 1
+  baseRechargeInterval: 7
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
