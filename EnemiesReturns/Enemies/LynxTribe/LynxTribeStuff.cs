@@ -116,6 +116,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             UnityEngine.Object.DestroyImmediate(prefab.GetComponent<CostHologramContent>());
             var hologramContent = prefab.AddComponent<CustomCostHologramContent>();
             hologramContent.targetTextMesh = prefab.transform.Find("Text").GetComponent<TextMeshPro>();
+            hologramContent.targetTextMesh.fontSize = 10f;
 
             return prefab;
         }
@@ -256,6 +257,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             spawner.retrySpawnCount = 3;
             spawner.teamIndex = TeamIndex.Monster;
             spawner.combatSquad = combatSquad;
+            spawner.isBoss = true;
 
             var shrine = shrinePrefab.AddComponent<LynxTribeShrine>();
             shrine.dropTable = CreateLynxShrineDropTable();
@@ -292,7 +294,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.pickupDisplay = pickupDisplay;
 
             var hologramProjector = shrinePrefab.AddComponent<HologramProjector>();
-            hologramProjector.displayDistance = 45f;
+            hologramProjector.displayDistance = 100f;
             hologramProjector.hologramPivot = shrinePrefab.transform.Find("Base/Hologram");
 
             shrinePrefab.RegisterNetworkPrefab();

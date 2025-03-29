@@ -95,13 +95,13 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
             }
 
             EnableProngsAndFlower();
-            RcpEnableProngsAndFlower();
+            RpcEnableProngsAndFlower();
 
             Invoke("SpawnPortal", 6f);
         }
 
         [ClientRpc]
-        public void RcpEnableProngsAndFlower()
+        public void RpcEnableProngsAndFlower()
         {
             EnableProngsAndFlower();
         }

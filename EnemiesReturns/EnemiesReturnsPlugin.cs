@@ -105,6 +105,7 @@ namespace EnemiesReturns
             LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             Behaviors.BossGroupHealthColorOverride.Hooks(); // TODO
+            Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
 
             Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();

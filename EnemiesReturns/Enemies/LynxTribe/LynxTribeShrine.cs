@@ -44,6 +44,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private float escapeTimer;
 
+        private CharacterBody interactor;
+
         private void Awake()
         {
             available = true;
@@ -59,6 +61,15 @@ namespace EnemiesReturns.Enemies.LynxTribe
             if (pickupIndex != PickupIndex.none)
             {
                 DropItems();
+                var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+                Chat.SendBroadcastChat(new LynxShrineChatMessage
+                {
+                    subjectAsCharacterBody = this.interactor,
+                    baseToken = "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_SUCCESS",
+                    pickupToken = pickupDef?.nameToken ?? PickupCatalog.invalidPickupToken,
+                    pickupColor = pickupDef?.baseColor ?? Color.black,
+                    pickupQuantity = 0
+                });
             }
             activated = false;
             DisableItemDisplay();
@@ -197,6 +208,16 @@ namespace EnemiesReturns.Enemies.LynxTribe
             {
                 networkIdentity.isPingable = false;
             }
+            var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+            this.interactor = activator.GetComponent<CharacterBody>();
+            Chat.SendBroadcastChat(new LynxShrineChatMessage
+            {
+                subjectAsCharacterBody = this.interactor,
+                baseToken = "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT",
+                pickupToken = pickupDef?.nameToken ?? PickupCatalog.invalidPickupToken,
+                pickupColor = pickupDef?.baseColor ?? Color.black,
+                pickupQuantity = 0
+            });
             available = false;
         }
 
@@ -213,6 +234,15 @@ namespace EnemiesReturns.Enemies.LynxTribe
                     if (NetworkServer.active)
                     {
                         spawner.Escape();
+                        var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+                        Chat.SendBroadcastChat(new LynxShrineChatMessage
+                        {
+                            subjectAsCharacterBody = this.interactor,
+                            baseToken = "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_FAILURE",
+                            pickupToken = pickupDef?.nameToken ?? PickupCatalog.invalidPickupToken,
+                            pickupColor = pickupDef?.baseColor ?? Color.black,
+                            pickupQuantity = 0
+                        });
                         if (spawner.combatSquad && spawner.combatSquad.memberCount > 0)
                         {
                             var bodyObject = spawner.combatSquad.membersList[0].GetBodyObject();

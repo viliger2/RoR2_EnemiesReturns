@@ -36,18 +36,33 @@ namespace EnemiesReturns.Behaviors
 
         public TeamIndex teamIndex = TeamIndex.Monster;
 
+        public bool isBoss;
+
         private int spawnCount;
 
         private SpawnInfo[] spawnInfos;
 
         private void Awake()
         {
+            combatSquad.onMemberDiscovered += CombatSquad_onMemberDiscovered;
+            combatSquad.onMemberLost += CombatSquad_onMemberLost;
+
             if (!NetworkServer.active)
             {
                 return;
             }
 
             CreateSpawnInfo();
+        }
+
+        private void CombatSquad_onMemberLost(CharacterMaster obj)
+        {
+            obj.isBoss = false;
+        }
+
+        private void CombatSquad_onMemberDiscovered(CharacterMaster obj)
+        {
+            obj.isBoss = this.isBoss;
         }
 
         public void CreateSpawnInfo()
@@ -204,6 +219,7 @@ namespace EnemiesReturns.Behaviors
                         int livingPlayerCount = Run.instance.livingPlayerCount;
                         healthBoost *= Mathf.Pow(livingPlayerCount, 1f);
                     }
+                    //master.isBoss = this.isBoss;
                     master.inventory.GiveItem(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1f) * 10f));
                     master.inventory.GiveItem(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1f) * 10f));
                     if (assignRewards && bodyObject.TryGetComponent<DeathRewards>(out var deathRewards))

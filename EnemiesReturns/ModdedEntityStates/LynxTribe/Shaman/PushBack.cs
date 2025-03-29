@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
+    // TODO: increase range, it is comically bad atm
     public class PushBack : BaseState
     {
         public static float baseDuration = 1.5f;
