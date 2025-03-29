@@ -10,6 +10,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
     {
         public float checkTimer = 0.25f;
 
+        public float distanceToGround = 20f;
+
         public GenericSkill antiAirSkill;
 
         public CharacterBody body;
@@ -41,7 +43,13 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                     {
                         if (body && body.characterMotor && !body.characterMotor.isGrounded)
                         {
-                            antiAirSkill.ExecuteIfReady();
+                            if (Physics.Raycast(body.corePosition, Vector3.down, out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                            {
+                                if (hitInfo.distance > distanceToGround)
+                                {
+                                    antiAirSkill.ExecuteIfReady();
+                                }
+                            }
                         }
                     }
                 }

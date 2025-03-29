@@ -82,11 +82,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 var xOffest = GetRandomOffset();
                 var zOffest = GetRandomOffset();
 
+                var position = target.position + Vector3.forward * zOffest + Vector3.right * xOffest;
+                if(Physics.Raycast(position, Vector3.down, out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                {
+                    position = hitInfo.point + Vector3.up;
+                }
+
                 var projectileInfo = new FireProjectileInfo()
                 {
                     crit = RollCrit(),
                     owner = base.gameObject,
-                    position = target.position + Vector3.forward * zOffest + Vector3.right * xOffest,
+                    position = position,
                     projectilePrefab = projectilePrefab,
                     rotation = Quaternion.identity,
                     damage = damageStat * damageCoefficient

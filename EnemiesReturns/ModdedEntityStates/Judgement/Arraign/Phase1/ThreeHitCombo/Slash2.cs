@@ -9,9 +9,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 {
     public class Slash2 : BasicMeleeAttack
     {
-        public static AnimationCurve acdSlash1;
+        public static AnimationCurve acdSlash2;
 
-        public static float searchRadius = 10f;
+        public static float searchRadius = 20f;
 
         private Vector3 desiredDirection;
 
@@ -30,7 +30,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.shorthopVelocityFromHit = 0f;
             //base.impactSound = "";
             base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = acdSlash1;
+            base.forwardVelocityCurve = acdSlash2;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
 
@@ -64,6 +64,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
+            //outer.SetNextState(new Slash3());
             var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
             if (hitboxes.Count > 0)
             {
@@ -71,7 +72,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             }
             else
             {
-                outer.SetNextState(new FireHomingProjectiles());
+                outer.SetNextState(new FireHomingProjectiles()); //TODO: restore
             }
         }
 

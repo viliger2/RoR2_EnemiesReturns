@@ -115,7 +115,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                     dropPosition = originalPosition;
                 }
 
-                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 10f, Quaternion.identity);
+                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
 
                 EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
 
@@ -152,7 +152,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Stun;
+            return InterruptPriority.Frozen;
         }
     }
 }

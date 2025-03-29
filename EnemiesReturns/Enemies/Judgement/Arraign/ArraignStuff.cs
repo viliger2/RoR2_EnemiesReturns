@@ -12,9 +12,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
     public class ArraignStuff
     {
-        public static GameObject BodyPrefab;
+        public static GameObject P1BodyPrefab;
 
-        public static GameObject MasterPrefab;
+        public static GameObject P1MasterPrefab;
 
         public static GameObject SetupLightningStrikePrefab(GameObject projectilePrefab)
         {

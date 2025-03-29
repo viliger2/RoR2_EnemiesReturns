@@ -30,8 +30,8 @@ MonoBehaviour:
   attackSpeedBuffsRestockSpeed: 0
   attackSpeedBuffsRestockSpeed_Multiplier: 1
   resetCooldownTimerOnUse: 0
-  fullRestockOnAssign: 0
-  dontAllowPastMaxStocks: 0
+  fullRestockOnAssign: 1
+  dontAllowPastMaxStocks: 1
   beginSkillCooldownOnSkillEnd: 0
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0

@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
     {
         public static AnimationCurve acdSlash1;
 
-        public static float searchRadius = 10f;
+        public static float searchRadius = 20f;
 
         private Vector3 desiredDirection;
 
@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.hitBoxGroupName = "Sword";
             //base.hitEffectPrefab = 
             base.procCoefficient = 1f;
-            base.pushAwayForce = 6000f;
+            base.pushAwayForce = 600f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             //base.swingEffectMuzzleString = "";
@@ -33,6 +33,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.forwardVelocityCurve = acdSlash1;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
+
+            base.duration = base.baseDuration / attackSpeedStat;
 
             base.OnEnter();
 
@@ -53,7 +55,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void PlayAnimation()
         {
-            PlayCrossfade("Gesture, Override", "Slash1", "combo1.playbackRate", duration, 0.05f);
+            PlayCrossfade("Gesture, Override", "Slash1", "combo.playbackRate", duration, 0.05f);
         }
 
         public override void OnExit()
@@ -64,15 +66,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
+            //outer.SetNextState(new Slash2());
             var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
-            if(hitboxes.Count > 0)
+            if (hitboxes.Count > 0)
             {
                 outer.SetNextState(new Slash2());
-            } else
+            }
+            else
             {
-                outer.SetNextState(new FireHomingProjectiles());
-                //EntityStateMachine.FindByCustomName(gameObject, "Weapon").SetNextState(new FireHomingProjectiles());
-                //outer.SetNextStateToMain();
+                outer.SetNextState(new FireHomingProjectiles()); // TODO: restore
             }
         }
 

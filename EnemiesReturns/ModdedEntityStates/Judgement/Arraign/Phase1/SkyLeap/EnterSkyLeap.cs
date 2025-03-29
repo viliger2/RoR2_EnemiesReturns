@@ -39,7 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Stun;
+            return InterruptPriority.Frozen;
         }
     }
 }

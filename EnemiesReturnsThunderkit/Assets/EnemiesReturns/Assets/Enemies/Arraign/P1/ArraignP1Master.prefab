@@ -205,7 +205,7 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
+  maxUserHealthFraction: 0.98
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 30
@@ -248,7 +248,7 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
+  maxUserHealthFraction: 0.95
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
+  maxUserHealthFraction: 0.98
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 10
@@ -307,7 +307,7 @@ MonoBehaviour:
   movementType: 1
   moveInputScale: 1
   aimType: 2
-  ignoreNodeGraph: 0
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 15
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   movementType: 1
   moveInputScale: 1
   aimType: 2
-  ignoreNodeGraph: 0
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0

@@ -19,8 +19,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using R2API;
-
-// TODO: write Content class and put everything there
+using RoR2.Skills;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -43,7 +42,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.4.12";
+        public const string Version = "0.5.0";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()

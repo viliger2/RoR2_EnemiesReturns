@@ -203,8 +203,9 @@ namespace EnemiesReturns
             {
                 zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash1 = assets.First(acd => acd.name == "acdSlash3").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3").curve;
+
                 ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.acdSlash1 = assets.First(acd => acd.name == "acdSlash3").curve;
@@ -247,6 +248,7 @@ namespace EnemiesReturns
                 _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
                 _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
                 _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
                 var interactable = assets.First(asset => asset.name == "JudgementInteractable");
                 nopList.Add(interactable);
@@ -268,17 +270,19 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
                 ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
 
-                var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
+                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.firstAttackEffect = assets.First(asset => asset.name == "ArraignDashImpactEffect");
+                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.secondAttackEffect = assets.First(asset => asset.name == "ArraignDashSecondExplosionEffect");
+
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.waveProjectile = assets.First(asset => asset.name == "ArraignSlash3Wave");
+
+                //var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
+                var lightningProjectile = assets.First(asset => asset.name == "ArraignPreLightningProjectile");
                 ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = lightningProjectile;
-                zJunk.ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2.projectilePrefab = lightningProjectile;
                 ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.projectilePrefab = lightningProjectile;
 
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
-                effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab));
-
                 ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
-
                 ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
             }));
 

@@ -204,7 +204,6 @@ GameObject:
   - component: {fileID: 514137157348643012}
   - component: {fileID: 3353883869141247821}
   - component: {fileID: 7857249970222787618}
-  - component: {fileID: 8601560084771612059}
   - component: {fileID: -1594220585500839535}
   - component: {fileID: 6533914390430200171}
   - component: {fileID: 4418322593500643424}
@@ -295,7 +294,7 @@ MonoBehaviour:
   baseMaxHealth: 100000
   baseRegen: 0
   baseMaxShield: 0
-  baseMoveSpeed: 7
+  baseMoveSpeed: 10
   baseAcceleration: 45
   baseJumpPower: 25
   baseDamage: 16
@@ -304,7 +303,7 @@ MonoBehaviour:
   baseArmor: 20
   baseVisionDistance: Infinity
   baseJumpCount: 0
-  sprintingSpeedMultiplier: 1.4
+  sprintingSpeedMultiplier: 2
   autoCalculateLevelStats: 0
   levelMaxHealth: 0
   levelRegen: 0
@@ -411,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: -1067940895, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraParams: {fileID: 0}
+  cameraParams: {fileID: 11400000, guid: b3f8324fa214cf844b27ca43025e6ff1, type: 2}
   cameraPivotTransform: {fileID: 3638246409601014157}
   fovOverride: 0
   recoil: {x: 0, y: 0}
@@ -431,7 +430,7 @@ MonoBehaviour:
   _modelTransform: {fileID: 2919047284504510675}
   modelVisibility: {fileID: 0}
   modelBaseTransform: {fileID: 5003907910950348235}
-  modelScaleCompensation: 6
+  modelScaleCompensation: 3.5
   autoUpdateModelTransform: 1
   dontDetatchFromParent: 0
   noCorpse: 1
@@ -819,21 +818,6 @@ MonoBehaviour:
   baseStock: 0
   baseRechargeStopwatch: 0
   hasExecutedSuccessfully: 0
---- !u!114 &8601560084771612059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916704582772687778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bbfee4d9ab2a2744b203e7e08720110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  address: RoR2/Base/Common/ccpStandardTall.asset
-  targetComponent: {fileID: 2926387423036908476}
-  targetMemberInfoName: 
 --- !u!114 &-1594220585500839535
 MonoBehaviour:
   m_ObjectHideFlags: 0

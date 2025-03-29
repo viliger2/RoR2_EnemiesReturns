@@ -100,7 +100,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
         {
             if (targetStateMachine)
             {
-                targetStateMachine.SetInterruptState(EntityStateCatalog.InstantiateState(ref stunState), InterruptPriority.Stun);
+                var newStunState = EntityStateCatalog.InstantiateState(ref stunState);
+                (newStunState as StunState).stunDuration = duration;
+                targetStateMachine.SetInterruptState(newStunState, InterruptPriority.Stun);
             }
             foreach(var machine in idleStateMachines)
             {
