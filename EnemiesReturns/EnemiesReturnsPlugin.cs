@@ -38,11 +38,12 @@ namespace EnemiesReturns
     [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
     [BepInDependency(R2API.OrbAPI.PluginGUID)]
     [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
+    [BepInDependency("JaceDaDorito.LocationsOfPrecipitation")]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.5.0";
+        public const string Version = "0.5.1";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()

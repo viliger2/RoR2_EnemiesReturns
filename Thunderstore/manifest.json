@@ -1,6 +1,6 @@
 {
     "name": "EnemiesReturns",
-    "version_number": "0.4.12",
+    "version_number": "0.5.1",
     "website_url": "https://github.com/viliger2/RoR2_EnemiesReturns",
     "description": "Brings back a few guys lost on the way here.",
     "dependencies": [
@@ -16,6 +16,7 @@
 	"RiskofThunder-R2API_DamageType-1.1.7",
 	"RiskofThunder-R2API_TempVisualEffect-1.0.3",
 	"RiskofThunder-R2API_Orb-1.0.1",
-	"RiskofThunder-R2API_RecalculateStats-1.5.0"
+	"RiskofThunder-R2API_RecalculateStats-1.5.0",
+	"JaceDaDorito-LocationsOfPrecipitation-1.1.2",
     ]
 }

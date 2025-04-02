@@ -64,16 +64,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
-            //outer.SetNextState(new Slash3());
-            var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
-            if (hitboxes.Count > 0)
-            {
-                outer.SetNextState(new Slash3());
-            }
-            else
-            {
-                outer.SetNextState(new FireHomingProjectiles()); //TODO: restore
-            }
+            outer.SetNextState(new Slash3());
+            //var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
+            //if (hitboxes.Count > 0)
+            //{
+            //    outer.SetNextState(new Slash3());
+            //}
+            //else
+            //{
+            //    outer.SetNextState(new FireHomingProjectiles()); //TODO: restore
+            //}
         }
 
         private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)

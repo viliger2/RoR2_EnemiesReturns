@@ -56,6 +56,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             characterMotor.airControl = previousAirControl;
             characterMotor.onMovementHit -= OnMovementHit;
             characterMotor.moveDirection = Vector3.zero;
+            characterMotor.velocity = Vector3.zero;
+            characterDirection.moveVector = Vector3.zero;
             PlayCrossfade(layerName, "BufferEmpty", 0.1f);
             base.OnExit();
         }
@@ -70,9 +72,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
             if (liftedOff)
             {
+                Vector3 direction = GetAimRay().direction;
+                characterMotor.velocity += new Vector3(direction.x * aimVelocity, 0f, direction.z * aimVelocity);
                 characterMotor.moveDirection = inputBank.moveVector;
                 characterDirection.moveVector = characterMotor.velocity;
-                characterMotor.disableAirControlUntilCollision = characterMotor.velocity.y < 0f;
+                characterMotor.disableAirControlUntilCollision = false;
                 characterMotor.velocity.y += additionalGravity * GetDeltaTime();
                 if (detonateNextFrame || characterMotor.Motor.GroundingStatus.IsStableOnGround && !characterMotor.Motor.LastGroundingStatus.IsStableOnGround)
                 {
@@ -88,11 +92,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 {
                     characterBody.isSprinting = true;
                     direction.y = Mathf.Max(direction.y, minimumY);
-                    Vector3 vector = direction.normalized * aimVelocity * moveSpeedStat;
+                    //Vector3 vector = direction.normalized * aimVelocity * moveSpeedStat;
                     Vector3 vector2 = Vector3.up * upwardVelocity;
                     Vector3 vector3 = new Vector3(direction.x, 0f, direction.z).normalized * forwardVelocity;
                     characterMotor.Motor.ForceUnground();
-                    characterMotor.velocity = vector + vector2 + vector3;
+                    characterMotor.velocity = vector2 + vector3;
                     characterMotor.onMovementHit += OnMovementHit;
                 }
                 liftedOff = true;

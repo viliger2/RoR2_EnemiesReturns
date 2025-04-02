@@ -262,7 +262,7 @@ MonoBehaviour:
   damageCoefficient: 0.4
   attackerFiltering: 2
   impactEffect: {fileID: 0}
-  forceVector: {x: 0, y: 0, z: 0}
+  forceVector: {x: 0, y: -2000, z: 0}
   overlapProcCoefficient: 0.5
   fireFrequency: 5
   resetFrequency: 10

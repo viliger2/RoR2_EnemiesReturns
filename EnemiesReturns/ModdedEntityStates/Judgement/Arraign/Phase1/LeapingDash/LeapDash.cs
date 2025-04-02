@@ -23,13 +23,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
 
         public override float upwardVelocity => 30f;
 
-        public override float forwardVelocity => 70f;
+        public override float forwardVelocity => 80f;
 
         public override float minimumY => 0.05f;
 
-        public override float aimVelocity => 0f;
+        public override float aimVelocity => 20f;
 
-        public override float airControl => 1f;
+        public override float airControl => 10f;
 
         public override float additionalGravity => 0f;
 

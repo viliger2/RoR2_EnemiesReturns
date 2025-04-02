@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 6533914390430200171}
   - component: {fileID: 4418322593500643424}
   - component: {fileID: 936655539752334188}
+  - component: {fileID: 5761214539947998309}
   m_Layer: 0
   m_Name: ArraignP1Body
   m_TagString: Untagged
@@ -294,7 +295,7 @@ MonoBehaviour:
   baseMaxHealth: 100000
   baseRegen: 0
   baseMaxShield: 0
-  baseMoveSpeed: 10
+  baseMoveSpeed: 8
   baseAcceleration: 45
   baseJumpPower: 25
   baseDamage: 16
@@ -303,7 +304,7 @@ MonoBehaviour:
   baseArmor: 20
   baseVisionDistance: Infinity
   baseJumpCount: 0
-  sprintingSpeedMultiplier: 2
+  sprintingSpeedMultiplier: 2.6
   autoCalculateLevelStats: 0
   levelMaxHealth: 0
   levelRegen: 0
@@ -456,9 +457,9 @@ MonoBehaviour:
   targetTransform: {fileID: 5003907910950348235}
   overrideAnimatorForwardTransform: {fileID: 0}
   rootMotionAccumulator: {fileID: 0}
-  modelAnimator: {fileID: 0}
+  modelAnimator: {fileID: 2413003441898197763}
   driveFromRootRotation: 0
-  turnSpeed: 270
+  turnSpeed: 720
   turnSoundName: 
 --- !u!114 &3274917509634399284
 MonoBehaviour:
@@ -871,10 +872,10 @@ MonoBehaviour:
   - {fileID: 8228178633749228936}
   stunState:
     _typeName: EntityStates.StunState, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  stunDuration: 2
+  stunDuration: 1.5
   applyBuff: 1
   buff: {fileID: 11400000, guid: 0e911e7301c5d7647a78819a0ff662a6, type: 2}
-  buffDuration: 7
+  buffDuration: 15
 --- !u!114 &936655539752334188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,6 +890,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2963873619053843280}
   segments: 6
+--- !u!114 &5761214539947998309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1918744144, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterBody: {fileID: 2963873619053843280}
+  conditionalSkillInfos:
+  - skillSlot: {fileID: 4802310204618504590}
+    sprintSkillDef: {fileID: 11400000, guid: fd6c3f72880bd1a4d8b481475525da9f, type: 2}
+    airborneSkillDef: {fileID: 11400000, guid: ed4a286bd156e6b48b1541a31ce18900, type: 2}
 --- !u!1 &6291839687705409160
 GameObject:
   m_ObjectHideFlags: 0

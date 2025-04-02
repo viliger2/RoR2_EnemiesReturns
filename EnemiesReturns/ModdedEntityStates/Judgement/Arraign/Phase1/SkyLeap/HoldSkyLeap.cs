@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
     public class HoldSkyLeap : BaseState
     {
-        public static float baseDuration = 6f;
+        public static float baseDuration = 4.5f;
 
         public static float baseTargetMarked = 1f;
 
