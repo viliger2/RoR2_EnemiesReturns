@@ -26,7 +26,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public int listCount = 10;
 
-        public PickupDropTable[] tierDropTables;
+        public JudgmentMonsterItemDropTable[] tierDropTables;
 
         public PickupPickerController pickupPickerController;
 
@@ -104,9 +104,13 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 for (int k = 0; k < tierDropTables.Length; k++)
                 {
                     var itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
-                    while (takenList.Contains(itemIndex))
+
+                    if (tierDropTables[k].GetSelectorCount() >= listCount)
                     {
-                        itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
+                        while (takenList.Contains(itemIndex))
+                        {
+                            itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
+                        }
                     }
                     takenList.Add(itemIndex);
                     itemLists[i][k] = itemIndex;

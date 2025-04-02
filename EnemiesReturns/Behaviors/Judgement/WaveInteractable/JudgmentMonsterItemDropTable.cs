@@ -34,6 +34,15 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private readonly WeightedSelection<PickupIndex> selector = new WeightedSelection<PickupIndex>();
 
+        public int GetSelectorCount()
+        {
+            if (selector != null)
+            {
+                return selector.Count;
+            }
+            return 0;
+        }
+
         private void Add(List<PickupIndex> sourceDropList, float chance)
         {
             if (chance <= 0f || sourceDropList.Count == 0)

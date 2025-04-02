@@ -25,7 +25,10 @@ namespace EnemiesReturns.Behaviors
             {
                 bossGroup = GetComponent<BossGroup>();
             }
-            overrideDictionary.Add(bossGroup, this);
+            if (bossGroup)
+            {
+                overrideDictionary.Add(bossGroup, this);
+            }
         }
 
         private void OnDisable()
