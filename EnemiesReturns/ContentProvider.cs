@@ -297,6 +297,14 @@ namespace EnemiesReturns
                 _contentPack.itemDefs.Add(assets);
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemTierDef[]>)((assets) =>
+            {
+                Content.ItemTiers.HiddenInLogbook = assets.First(item => item.name == "HiddenInLogbook");
+                Content.ItemTiers.HiddenInLogbook.highlightPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/HighlightTier1Item.prefab").WaitForCompletion();
+                Content.ItemTiers.HiddenInLogbook.dropletDisplayPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/BossOrb.prefab").WaitForCompletion();
+                _contentPack.itemTierDefs.Add(assets);
+            }));
+
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
             {
                 Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");

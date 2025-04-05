@@ -8,6 +8,11 @@ namespace EnemiesReturns
 {
     public static class Content
     {
+        public static class ItemTiers
+        {
+            public static ItemTierDef HiddenInLogbook;
+        }
+
         public static class Items
         {
             public static ItemDef ColossalCurl;
