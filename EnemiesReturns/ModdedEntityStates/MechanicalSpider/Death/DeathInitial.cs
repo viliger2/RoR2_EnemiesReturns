@@ -10,12 +10,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
         public override void OnEnter()
         {
             base.OnEnter();
-            DisableEffects();
             if (isAuthority)
             {
-#if DEBUG || NOWEAVER
-                outer.SetNextState(new DeathDrone());
-#else
                 var isVoidDeath = (bool)base.healthComponent && (ulong)(base.healthComponent.killingDamageType & DamageType.VoidDeath) != 0;
                 if (isVoidDeath)
                 {
@@ -31,26 +27,6 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 {
                     outer.SetNextState(new DeathNormal());
                 }
-#endif
-            }
-        }
-
-        private void DisableEffects()
-        {
-            var rightSparkTransform = FindModelChild("SparkRightFrontLeg");
-            if (rightSparkTransform)
-            {
-                rightSparkTransform.gameObject.SetActive(false);
-            }
-            var leftSparkTransform = FindModelChild("SparkLeftBackLeg");
-            if (leftSparkTransform)
-            {
-                leftSparkTransform.gameObject.SetActive(false);
-            }
-            var smokeTransform = FindModelChild("Smoke");
-            if (smokeTransform)
-            {
-                smokeTransform.gameObject.SetActive(false);
             }
         }
     }
