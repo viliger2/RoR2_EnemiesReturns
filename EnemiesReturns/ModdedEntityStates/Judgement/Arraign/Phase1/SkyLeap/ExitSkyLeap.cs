@@ -13,11 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public static GameObject secondAttackEffect;
 
-        public static float baseSecondAttack = 1.52f;
-
-        public static float baseDuration = 3.12f;
-
-        public static float baseFireAttack = 0.28f;
+        public static float baseDuration = 2f;
 
         public static string soundString;
 
@@ -25,34 +21,31 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public static float attackForce = 1000f;
 
-        public static float blastAttackRadius = 15f;
+        public static float blastAttackRadius = 30f;
 
         public Vector3 dropPosition;
 
         private float duration;
 
-        private float secondAttack;
-
-        private float fireAttack;
-
         private bool secondAttackFired;
 
         private bool attackFired;
+
+        private Animator modelAnimator;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            secondAttack = baseSecondAttack / attackSpeedStat;
-            fireAttack = baseFireAttack / attackSpeedStat;
             Util.PlaySound(soundString, base.gameObject);
+            modelAnimator = GetModelAnimator();
             PlayAnimation("Gesture, Override", "ExitSkyLeap", "SkyLeap.playbackRate", duration);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!attackFired && base.fixedAge > fireAttack)
+            if (!attackFired && modelAnimator.GetFloat("SkyLeap.firstAttack") > 0.9f)
             {
                 if (isAuthority)
                 {
@@ -75,7 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                 attackFired = true;
             }
 
-            if(!secondAttackFired && fixedAge > secondAttack)
+            if(!secondAttackFired && modelAnimator.GetFloat("SkyLeap.secondAttack") > 0.9f)
             {
                 if (isAuthority)
                 {

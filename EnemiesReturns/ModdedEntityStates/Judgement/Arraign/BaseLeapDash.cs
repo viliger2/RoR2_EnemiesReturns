@@ -13,8 +13,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
     {
         public abstract float damageCoefficient { get; }
 
-        public abstract float liftOffTimer { get; }
-
         public abstract float force { get; }
 
         public abstract float procCoefficient { get; }
@@ -37,6 +35,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract string animationStateName { get; }
 
+        internal Animator modelAnimator;
+
         internal float previousAirControl;
 
         internal bool detonateNextFrame;
@@ -48,6 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.OnEnter();
             previousAirControl = characterMotor.airControl;
             characterMotor.airControl = airControl;
+            modelAnimator = GetModelAnimator();
             PlayCrossfade(layerName, animationStateName, 0.1f);
         }
 
@@ -85,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 }
             }
 
-            if (fixedAge >= liftOffTimer && !liftedOff)
+            if (modelAnimator.GetFloat("swordFlip.liftOffCurve") > 0.9f && !liftedOff)
             {
                 Vector3 direction = GetAimRay().direction;
                 if (isAuthority)

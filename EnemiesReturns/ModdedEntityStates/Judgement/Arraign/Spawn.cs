@@ -9,7 +9,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
     {
         public override void OnEnter()
         {
-            duration = 3.6f;
+            duration = 5.5f;
             base.OnEnter();
         }
     }

@@ -12,8 +12,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
     {
         public static AnimationCurve acdSlash3;
 
-        public static float fireWaves = 0.36f;
-
         public static GameObject waveProjectile;
 
         public static float waveProjectileDamage = 2f;
@@ -37,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             //base.swingEffectMuzzleString = "";
-            //base.mecanimHitboxActiveParameter = "";
+            base.mecanimHitboxActiveParameter = "Slash3.attack";
             base.shorthopVelocityFromHit = 0f;
             //base.impactSound = "";
             base.forceForwardVelocity = true;
@@ -55,7 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.FixedUpdate();
             Vector3 targetMoveVelocity = Vector3.zero;
             characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 45f);
-            if(fixedAge > fireWaves && !firedWaves && isAuthority)
+            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedWaves && isAuthority)
             {
                 FireRingAuthority();
                 firedWaves = true;

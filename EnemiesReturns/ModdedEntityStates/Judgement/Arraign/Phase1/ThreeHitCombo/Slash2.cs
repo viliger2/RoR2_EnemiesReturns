@@ -26,7 +26,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             //base.swingEffectMuzzleString = "";
-            //base.mecanimHitboxActiveParameter = "";
+            base.mecanimHitboxActiveParameter = "Slash2.attack";
             base.shorthopVelocityFromHit = 0f;
             //base.impactSound = "";
             base.forceForwardVelocity = true;

@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
     public class EnterSkyLeap : BaseState
     {
-        public static float baseDuration = 4.6f;
+        public static float baseDuration = 2.0f;
 
         public static string soundString;
 

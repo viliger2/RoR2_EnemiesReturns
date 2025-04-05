@@ -15,8 +15,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract float baseDuration { get; }
 
-        public abstract float baseAttack { get; }
-
         public abstract float damageCoefficient { get; }
 
         public abstract float force { get; }
@@ -29,17 +27,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         private float duration;
 
-        private float attack;
-
         private bool hasAttacked;
 
         private CharacterBody target;
+
+        private Animator modelAnimator;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            attack = baseAttack / attackSpeedStat;
             if (NetworkServer.active && isAuthority)
             {
                 var bodies = Utils.GetActiveAndAlivePlayerBodies();
@@ -72,7 +69,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.FixedUpdate();
 
             characterDirection.forward = GetAimRay().direction.normalized;
-            if (fixedAge > attack && isAuthority && !hasAttacked)
+            if (modelAnimator.GetFloat("WeaponThrow.throw") > 0.9f && isAuthority && !hasAttacked)
             {
                 FireProjectile();
                 hasAttacked = true;

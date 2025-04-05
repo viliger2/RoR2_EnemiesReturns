@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
 {
     public class LeapDashExit : BaseState
     {
-        public static float baseDuration = 2.4f;
+        public static float baseDuration = 1.5f;
 
         private float duration;
 

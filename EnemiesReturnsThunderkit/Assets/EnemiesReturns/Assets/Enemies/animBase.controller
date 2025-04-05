@@ -163,7 +163,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sprint
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2190995434968424095}
@@ -1299,8 +1299,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 2609257150827231897}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 0
@@ -1420,8 +1419,7 @@ AnimatorState:
   - {fileID: -6858537338802234824}
   - {fileID: -580773024017076210}
   - {fileID: 19547910058730898}
-  m_StateMachineBehaviours:
-  - {fileID: 7420569166165325495}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 0
@@ -1527,8 +1525,7 @@ AnimatorState:
   - {fileID: -4071595182522170455}
   - {fileID: 4785491392572456081}
   - {fileID: -5673514175895560060}
-  m_StateMachineBehaviours:
-  - {fileID: 8760250209123599531}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

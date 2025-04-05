@@ -13,8 +13,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
     {
         public override float damageCoefficient => 2f;
 
-        public override float liftOffTimer => 1.7f / 1f; // 1 is animation speed
-
         public override float force => 0f;
 
         public override float procCoefficient => 1f;
