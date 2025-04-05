@@ -224,7 +224,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1480031674983516905, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Motion: {fileID: 5935293797717150085, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Tag: 
   m_SpeedParameter: swordFlip.playbackRate
   m_MirrorParameter: 
@@ -356,6 +356,28 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-6908690021661707045
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 877216145824601880}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9456522
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-6858537338802234824
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -381,6 +403,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-6237867562332577425
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SwordFlipBegin 0
+  m_Speed: 2
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -837918294200278700, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Tag: 
+  m_SpeedParameter: swordFlip.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-6131942194330186957
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -550,7 +598,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.8
   m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 4
+  m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-5673514175895560060
@@ -678,6 +726,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-5275036489307544003
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SwordFlipEnd 0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 1480031674983516905, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Tag: 
+  m_SpeedParameter: swordFlip.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-5251960024602584635
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1190,7 +1264,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -837918294200278700, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Motion: {fileID: 8234375632344599324, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Tag: 
   m_SpeedParameter: swordFlip.playbackRate
   m_MirrorParameter: 
@@ -1973,6 +2047,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &877216145824601880
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SwordFlipLoop 0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 363885929943428449, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Tag: 
+  m_SpeedParameter: swordFlip.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1785635867779455443
 AnimatorState:
   serializedVersion: 6
@@ -2283,6 +2383,15 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -7876193072945696382}
     m_Position: {x: 640, y: 560, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -6237867562332577425}
+    m_Position: {x: 170, y: 870, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 877216145824601880}
+    m_Position: {x: 390, y: 870, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5275036489307544003}
+    m_Position: {x: 610, y: 870, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -2522,7 +2631,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.6338196
+  m_TransitionDuration: 0.2
   m_TransitionOffset: 0
   m_ExitTime: 0.009974911
   m_HasExitTime: 0
@@ -2900,7 +3009,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 363885929943428449, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_Motion: {fileID: -8326644019942252360, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_Tag: 
   m_SpeedParameter: swordFlip.playbackRate
   m_MirrorParameter: 

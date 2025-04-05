@@ -10,19 +10,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
     public class HoldSkyLeap : BaseState
     {
-        public static float baseDuration = 4.5f;
+        public static float baseDuration = 2.5f;
 
         public static float baseTargetMarked = 1f;
-
-        public static float baseTargetDropped = 4f;
 
         public static GameObject dropEffectPrefab;
 
         private float duration;
 
         private float targetMarked;
-
-        private float targetDropped;
 
         private CharacterModel characterModel;
 
@@ -32,20 +28,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         private bool isTargetMarked;
 
-        private bool isTargetDropped;
-
         private GameObject target;
 
         private TemporaryVisualEffect tempEffect;
-
-        private Vector3 dropPosition;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             targetMarked = baseTargetMarked/ attackSpeedStat;
-            targetDropped = baseTargetDropped/ attackSpeedStat;
             Transform modelTransform = GetModelTransform();
             if (modelTransform)
             {
@@ -92,42 +83,29 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                 isTargetMarked = true;
             }
 
-            if(base.fixedAge > targetDropped && !isTargetDropped)
+            if(base.fixedAge > duration)
             {
                 if (tempEffect)
                 {
                     tempEffect.visualState = TemporaryVisualEffect.VisualState.Exit;
                 }
-
-                Vector3 originalPosition;
-                if (target)
+                if (isAuthority)
                 {
-                    originalPosition = target.transform.position;
-                } else
-                {
-                    originalPosition = base.transform.position;
+                    Vector3 dropPosition;
+                    if (target)
+                    {
+                        dropPosition = target.transform.position;
+                    }
+                    else
+                    {
+                        dropPosition = base.transform.position;
+                    }
+                    base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
+                    outer.SetNextState(new ExitSkyLeap
+                    {
+                        dropPosition = dropPosition
+                    });
                 }
-                if(Physics.Raycast(originalPosition + Vector3.up * 2f, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                {
-                    dropPosition = raycastInfo.point;
-                } else
-                {
-                    dropPosition = originalPosition;
-                }
-
-                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
-
-                EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
-
-                isTargetDropped = true;
-            }
-
-            if(isAuthority && base.fixedAge > duration)
-            {
-                outer.SetNextState(new ExitSkyLeap
-                {
-                    dropPosition = dropPosition
-                });
             }
         }
 

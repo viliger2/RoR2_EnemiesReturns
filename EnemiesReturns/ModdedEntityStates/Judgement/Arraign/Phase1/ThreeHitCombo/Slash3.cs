@@ -12,17 +12,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
     {
         public static AnimationCurve acdSlash3;
 
-        public static GameObject waveProjectile;
+        public static float blastAttackRadius = 20f;
 
-        public static float waveProjectileDamage = 2f;
+        public static float blastAttackDamage = 2f;
 
-        public static int waveCount = 8;
-
-        public static float waveProjectileForce = 0f;
+        public static float blastAttackForce = 500f;
 
         private Vector3 desiredDirection;
 
-        private bool firedWaves;
+        private bool firedBlastAttack;
 
         public override void OnEnter()
         {
@@ -53,10 +51,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.FixedUpdate();
             Vector3 targetMoveVelocity = Vector3.zero;
             characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 45f);
-            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedWaves && isAuthority)
+            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedBlastAttack && isAuthority)
             {
-                FireRingAuthority();
-                firedWaves = true;
+                FireBlastAttackAuthority();
+                firedBlastAttack = true;
             }
         }
 
@@ -76,31 +74,47 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             return InterruptPriority.PrioritySkill;
         }
 
-        private void FireRingAuthority()
+        private void FireBlastAttackAuthority()
         {
-            float num = 360f / (float)waveCount;
-            Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
-            Vector3 footPosition = base.characterBody.footPosition;
-            bool crit = RollCrit();
-            for (int i = 0; i < waveCount; i++)
-            {
-                Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
-                if (base.isAuthority)
-                {
-                    var info = new FireProjectileInfo
-                    {
-                        projectilePrefab = waveProjectile,
-                        position = footPosition,
-                        rotation = Util.QuaternionSafeLookRotation(forward),
-                        owner = base.gameObject,
-                        damage = base.characterBody.damage * waveProjectileDamage,
-                        force = waveProjectileForce,
-                        damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
-                        crit = crit
-                    };
-                    ProjectileManager.instance.FireProjectile(info);
-                }
-            }
+            var blastAttack = new BlastAttack();
+            blastAttack.radius = 20f;
+            blastAttack.procCoefficient = 0f;
+            blastAttack.position = base.characterBody.footPosition;
+            blastAttack.attacker = base.gameObject;
+            blastAttack.crit = RollCrit();
+            blastAttack.baseDamage = blastAttackDamage * damageStat;
+            blastAttack.canRejectForce = false;
+            blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            blastAttack.baseForce = blastAttackForce;
+            blastAttack.teamIndex = teamComponent.teamIndex;
+            blastAttack.damageType = DamageSource.Primary;
+            blastAttack.attackerFiltering = AttackerFiltering.Default;
+            blastAttack.Fire();
+
+
+            //float num = 360f / (float)waveCount;
+            //Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
+            //Vector3 footPosition = base.characterBody.footPosition;
+            //bool crit = RollCrit();
+            //for (int i = 0; i < waveCount; i++)
+            //{
+            //    Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
+            //    if (base.isAuthority)
+            //    {
+            //        var info = new FireProjectileInfo
+            //        {
+            //            projectilePrefab = waveProjectile,
+            //            position = footPosition,
+            //            rotation = Util.QuaternionSafeLookRotation(forward),
+            //            owner = base.gameObject,
+            //            damage = base.characterBody.damage * waveProjectileDamage,
+            //            force = waveProjectileForce,
+            //            damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
+            //            crit = crit
+            //        };
+            //        ProjectileManager.instance.FireProjectile(info);
+            //    }
+            //}
         }
     }
 }

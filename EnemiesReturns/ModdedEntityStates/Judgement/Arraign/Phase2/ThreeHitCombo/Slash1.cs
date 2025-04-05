@@ -26,7 +26,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             //base.swingEffectMuzzleString = "";
-            //base.mecanimHitboxActiveParameter = "";
+            base.mecanimHitboxActiveParameter = "Slash1.attack";
             base.shorthopVelocityFromHit = 0f;
             //base.impactSound = "";
             base.forceForwardVelocity = true;
@@ -64,15 +64,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
-            var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
-            if(hitboxes.Count > 0)
-            {
-                outer.SetNextState(new Slash2());
-            } else
-            {
-                //outer.SetNextState(new FireHomingProjectiles());
-                outer.SetNextState(new FireHomingProjectiles());
-            }
+            outer.SetNextState(new Slash2());
         }
 
         private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)

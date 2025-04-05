@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 172cdefaca3eb574091cbdcaee4c0c56, type: 2}
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: baseMoveSpeed
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: baseNameToken
@@ -46,10 +46,6 @@ PrefabInstance:
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: subtitleNameToken
       value: ENEMIES_RETURNS_ARRAIGNP2_BODY_SUBTITLE
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: sprintingSpeedMultiplier
-      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: _skillFamily
@@ -119,6 +115,10 @@ PrefabInstance:
       propertyPath: m_AssetId.i15
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4418322593500643424, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: stunDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -167,17 +167,13 @@ PrefabInstance:
       propertyPath: _skillFamily
       value: 
       objectReference: {fileID: 11400000, guid: 4b2b3cfafc4f5df4192aa1825af28f9f, type: 2}
-    - target: {fileID: 5689184871208395482, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5761214539947998309, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: conditionalSkillInfos.Array.data[0].airborneSkillDef
+      value: 
+      objectReference: {fileID: 11400000, guid: 49eceb2b1babab148b10775f339804f6, type: 2}
     - target: {fileID: 5916704582772687778, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_Name
       value: ArraignP2Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 7257367893667303948, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7857249970222787618, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: skillName
@@ -187,14 +183,6 @@ PrefabInstance:
       propertyPath: _skillFamily
       value: 
       objectReference: {fileID: 11400000, guid: 0eb47862acd1e704999531d41ecc6952, type: 2}
-    - target: {fileID: 8052918050011087724, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8819445435451133275, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 936655539752334188, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}

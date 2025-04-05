@@ -30,7 +30,6 @@ GameObject:
   - component: {fileID: 8309125285211910584}
   - component: {fileID: 3044791099356104589}
   - component: {fileID: 6379881503862435499}
-  - component: {fileID: 3782595728981202761}
   m_Layer: 0
   m_Name: SkyLaserBody
   m_TagString: Untagged
@@ -409,8 +408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathStateMachine: {fileID: 2954441013515554220}
   deathState:
-    _typeName: EntityStates.GenericCharacterDeath, RoR2, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser.DeathState, EnemiesReturns,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   idleStateMachine: []
   bypassDeathLayerChange: 0
 --- !u!114 &4925091623418398144
@@ -549,21 +548,6 @@ MonoBehaviour:
   KillRemainingMovementWhenExceedMaxMovementIterations: 1
   timeUntilUpdate: 0
   playerCharacter: 0
---- !u!114 &3782595728981202761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201946377172454069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bbfee4d9ab2a2744b203e7e08720110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  address: RoR2/Base/Common/ccpStandard.asset
-  targetComponent: {fileID: 8148764304185130219}
-  targetMemberInfoName: 
 --- !u!1 &521013783291427905
 GameObject:
   m_ObjectHideFlags: 0

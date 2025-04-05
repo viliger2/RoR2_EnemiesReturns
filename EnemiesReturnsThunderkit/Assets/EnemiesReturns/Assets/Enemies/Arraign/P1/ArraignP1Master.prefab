@@ -249,10 +249,10 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: 0.75
+  maxUserHealthFraction: 0.9
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 0
+  minDistance: 60
   maxDistance: Infinity
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0

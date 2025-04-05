@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5494281492731519914}
   - component: {fileID: 6433454316342385121}
   - component: {fileID: -2133748247399528627}
+  - component: {fileID: 5582126342748072700}
   - component: {fileID: 8351163272827220986}
   - component: {fileID: 4236657930761556223}
   - component: {fileID: 379553282140014478}
@@ -261,10 +262,10 @@ MonoBehaviour:
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 1
-  movementType: 1
+  movementType: 0
   moveInputScale: 1
-  aimType: 1
-  ignoreNodeGraph: 0
+  aimType: 2
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
@@ -304,10 +305,10 @@ MonoBehaviour:
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 1
   activationRequiresAimConfirmation: 0
-  movementType: 0
+  movementType: 1
   moveInputScale: 1
   aimType: 2
-  ignoreNodeGraph: 0
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
@@ -338,7 +339,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 15
+  maxDistance: 30
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -347,15 +348,58 @@ MonoBehaviour:
   activationRequiresTargetLoS: 1
   activationRequiresAimTargetLoS: 1
   activationRequiresAimConfirmation: 0
-  movementType: 0
+  movementType: 1
   moveInputScale: 1
   aimType: 2
-  ignoreNodeGraph: 0
+  ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
   driverUpdateTimerOverride: -1
+  resetCurrentEnemyOnNextDriverSelection: 0
+  noRepeat: 0
+  nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &5582126342748072700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297957800661026336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: FireHomingOrbs
+  skillSlot: 0
+  requiredSkill: {fileID: 11400000, guid: fd6c3f72880bd1a4d8b481475525da9f, type: 2}
+  requireSkillReady: 1
+  requireEquipmentReady: 0
+  minUserHealthFraction: -Infinity
+  maxUserHealthFraction: Infinity
+  minTargetHealthFraction: -Infinity
+  maxTargetHealthFraction: Infinity
+  minDistance: 50
+  maxDistance: Infinity
+  selectionRequiresTargetLoS: 1
+  selectionRequiresOnGround: 0
+  selectionRequiresAimTarget: 0
+  maxTimesSelected: -1
+  moveTargetType: 0
+  activationRequiresTargetLoS: 1
+  activationRequiresAimTargetLoS: 0
+  activationRequiresAimConfirmation: 0
+  movementType: 1
+  moveInputScale: 1
+  aimType: 2
+  ignoreNodeGraph: 1
+  shouldSprint: 1
+  shouldFireEquipment: 0
+  shouldTapButton: 0
+  buttonPressType: 0
+  driverUpdateTimerOverride: 2
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
@@ -381,7 +425,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 50
+  maxDistance: 30
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -423,8 +467,8 @@ MonoBehaviour:
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 50
-  maxDistance: Infinity
+  minDistance: 30
+  maxDistance: 250
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -480,7 +524,7 @@ MonoBehaviour:
   moveInputScale: 1
   aimType: 1
   ignoreNodeGraph: 0
-  shouldSprint: 0
+  shouldSprint: 1
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0

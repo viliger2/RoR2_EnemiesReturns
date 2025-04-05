@@ -61,6 +61,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                     characterDirection.moveVector = inputBank.aimDirection;
                 }
             }
+            modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animName, playbackRateParamName, duration);
         }
 
