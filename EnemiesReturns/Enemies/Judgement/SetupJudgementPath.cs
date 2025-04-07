@@ -99,6 +99,9 @@ namespace EnemiesReturns.Enemies.Judgement
             newtTrader.itemToGive = Content.Items.LunarFlower;
             newtTrader.available = true; // TODO: eh?
 
+            var procFilter = shopkeeperBody.AddComponent<InteractionProcFilter>();
+            procFilter.shouldAllowOnInteractionBeginProc = false;
+
             var highlight = shopkeeperBody.AddComponent<Highlight>();
             highlight.targetRenderer = shopkeeperBody.transform.Find("ModelBase/mdlNewtShopkeeper/NewtMesh").gameObject.GetComponent<Renderer>();
 
