@@ -218,6 +218,7 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EliteDef[]>)((assets) =>
             {
                 Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
+                Enemies.Judgement.SetupJudgementPath.aeonianEliteRamp = rampLookups["texRampAeonianElite"];
 
                 R2API.EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
 

@@ -9,9 +9,13 @@ namespace EnemiesReturns.Configuration
     {
         public static ConfigEntry<bool> Enabled;
 
+        public static ConfigEntry<bool> EnableAeonianSkins;
+
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
+
+            EnableAeonianSkins = config.Bind("Judgement", "Enable Aeonian Skins", true, "Enables the ability to unlock Aeonian skins.");
         }
     }
 }
