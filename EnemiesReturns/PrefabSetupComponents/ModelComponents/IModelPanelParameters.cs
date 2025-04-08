@@ -7,7 +7,7 @@ namespace EnemiesReturns.Components.ModelComponents
     {
         protected class ModelPanelParams
         {
-            public Quaternion modelRotation;
+            public Quaternion modelRotation = Quaternion.identity;
             public float minDistance = 1.5f;
             public float maxDistance = 6f;
         }

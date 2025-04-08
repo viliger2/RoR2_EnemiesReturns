@@ -22,6 +22,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             base.OnEnter();
             if (NetworkServer.active)
             {
+                if (Configuration.Judgement.EnableAeonianSkins.Value)
+                {
+                    foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+                    {
+                        if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                        {
+                            continue;
+                        }
+
+                        var body = playerCharacterMaster.master.GetBody();
+                        if (!body)
+                        {
+                            continue;
+                        }
+
+                        string bodyName = body.name.Replace("(Clone)", "");
+
+                        if (Enemies.Judgement.SetupJudgementPath.AnointedSkinsUnlockables.TryGetValue(bodyName.Trim().ToLower(), out var unlockable))
+                        {
+                            Run.instance.GrantUnlockToSinglePlayer(unlockable, body);
+                        }
+                    }
+                }
+
                 ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Player);
                 for (int i = 0; i < teamMembers.Count; i++)
                 {
@@ -47,7 +71,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (fixedAge > delay && !ended && NetworkServer.active)
             {
                 ended = true;
-                Run.instance.BeginGameOver(RoR2Content.GameEndings.LimboEnding);
+
+
+                Run.instance.BeginGameOver(Content.GameEndings.SurviveJudgement);
             }
         }
     }

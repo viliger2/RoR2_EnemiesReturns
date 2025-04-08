@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1495945701, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: SurviveJudgement
+  m_EditorClassIdentifier: 
+  endingTextToken: ENEMIES_RETURNS_GAME_RESULT_JUDGEMENT
+  backgroundColor: {r: 0.50980395, g: 0.5568628, b: 0.58431375, a: 0}
+  foregroundColor: {r: 0.40784317, g: 0.8352942, b: 0.8431373, a: 0}
+  icon: {fileID: 21300000, guid: 6ac502748ef1dc64f87b7b1505a28e47, type: 3}
+  material: {fileID: 2100000, guid: 93b2033635e1eab4ea4e3972f305d128, type: 2}
+  defaultKillerOverride: {fileID: 0}
+  isWin: 1
+  showCredits: 1
+  gameOverControllerState:
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Ending.JudgementEndingStart,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  lunarCoinReward: 0

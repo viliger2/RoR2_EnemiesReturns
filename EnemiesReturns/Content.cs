@@ -8,6 +8,11 @@ namespace EnemiesReturns
 {
     public static class Content
     {
+        public static class GameEndings
+        {
+            public static GameEndingDef SurviveJudgement;
+        }
+
         public static class ItemTiers
         {
             public static ItemTierDef HiddenInLogbook;

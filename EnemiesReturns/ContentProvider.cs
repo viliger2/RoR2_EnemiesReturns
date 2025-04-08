@@ -17,7 +17,6 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
-using Rewired.Utils.Classes.Utility;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Skills;
@@ -28,6 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Rewired.Utils.Classes.Utility;
 
 namespace EnemiesReturns
 {
@@ -71,7 +71,8 @@ namespace EnemiesReturns
             {"stubbedcalm water/calmwater - dx11", "Calm Water/CalmWater - DX11.shader" },
             {"stubbednature/speedtree", "RoR2/Base/Shaders/SpeedTreeCustom.shader"},
             {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" },
-            {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" }
+            {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" },
+            {"stubbedror2/base/shaders/hguianimatealpha", "RoR2/Base/Shaders/HGUIAnimateAlpha.shader" }
         };
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?
@@ -300,6 +301,13 @@ namespace EnemiesReturns
                 Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
 
                 _contentPack.itemDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
+            {
+                Content.GameEndings.SurviveJudgement = assets.First(item => item.cachedName == "SurviveJudgement");
+
+                _contentPack.gameEndingDefs.Add(assets);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemTierDef[]>)((assets) =>

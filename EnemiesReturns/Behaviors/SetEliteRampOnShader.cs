@@ -17,7 +17,7 @@ namespace EnemiesReturns.Behaviors
 
         private MaterialPropertyBlock propertyStorage;
 
-        private static int EliteRampPropertyID => Shader.PropertyToID("_EliteRamp");
+        public static int EliteRampPropertyID = Shader.PropertyToID("_EliteRamp");
 
         private static Texture2D vanillaEliteRamp = Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/GlobalTextures/texRampElites.psd").WaitForCompletion();
 

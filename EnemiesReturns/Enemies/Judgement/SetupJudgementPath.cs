@@ -23,6 +23,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static Texture2D aeonianEliteRamp;
 
+        public static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
+
         private static HashSet<SkinDef> AnointedSkins;
 
         private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
@@ -238,7 +240,7 @@ namespace EnemiesReturns.Enemies.Judgement
                         };
                     }
 
-                    var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, false, defaultSkin);
+                    var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
                     eliteSkinDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
                     //eliteSkinDef.icon = ;
 
@@ -248,6 +250,8 @@ namespace EnemiesReturns.Enemies.Judgement
                     skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
                     skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
                     //skinUnlockDef.achievementIcon = ;
+
+                    AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim().ToLower(), skinUnlockDef);
 
                     eliteSkinDef.unlockableDef = skinUnlockDef;
 
