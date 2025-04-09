@@ -216,7 +216,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 baseToken = "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT",
                 pickupToken = pickupDef?.nameToken ?? PickupCatalog.invalidPickupToken,
                 pickupColor = pickupDef?.baseColor ?? Color.black,
-                pickupQuantity = 0
+                pickupQuantity = (uint)escapeDuration
             });
             available = false;
         }

@@ -24,7 +24,13 @@ namespace EnemiesReturns.Enemies.LynxTribe
             itemName = Util.GenerateColoredString(itemName, pickupColor);
             try
             {
-                return string.Format(chatString, subjectName, itemName);
+                if (pickupQuantity > 0)
+                {
+                    return string.Format(chatString, subjectName, itemName, pickupQuantity);
+                } else
+                {
+                    return string.Format(chatString, subjectName, itemName);
+                }
             }
             catch (Exception ex)
             {
