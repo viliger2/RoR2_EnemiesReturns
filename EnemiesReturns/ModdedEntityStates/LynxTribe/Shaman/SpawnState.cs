@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class SpawnState : GenericCharacterSpawnState
     {
         public static GameObject spawnEffect;

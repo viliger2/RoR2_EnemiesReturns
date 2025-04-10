@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 {
+    [RegisterEntityState]
     public class FlameCharge : BaseState
     {
         public static GameObject flamethrowerEffectPrefab;

@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
+    [RegisterEntityState]
     public class DeathNormal : GenericCharacterDeath
     {
         public static GameObject smokeBombPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXCommandoGrenade.prefab").WaitForCompletion();

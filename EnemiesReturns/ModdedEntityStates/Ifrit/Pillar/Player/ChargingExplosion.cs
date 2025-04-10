@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
 {
+    [RegisterEntityState]
     public class ChargingExplosion : BaseChargingExplosion
     {
         public override float duration => EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillChargeTime.Value;

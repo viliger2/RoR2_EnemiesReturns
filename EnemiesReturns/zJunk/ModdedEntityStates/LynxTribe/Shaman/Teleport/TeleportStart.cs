@@ -1,7 +1,9 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
 {
+    [RegisterEntityState]
     public class TeleportStart : BaseState
     {
         public static float baseDuration => 2f;

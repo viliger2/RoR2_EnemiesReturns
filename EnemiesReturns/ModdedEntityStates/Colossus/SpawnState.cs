@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus
 {
+    [RegisterEntityState]
     public class SpawnState : GenericCharacterSpawnState
     {
         public static GameObject burrowPrefab;

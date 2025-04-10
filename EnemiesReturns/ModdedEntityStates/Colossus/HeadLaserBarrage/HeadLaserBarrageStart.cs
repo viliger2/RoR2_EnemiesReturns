@@ -1,10 +1,12 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
+    [RegisterEntityState]
     public class HeadLaserBarrageStart : BaseState
     {
         public static float baseDuration = 4.5f;

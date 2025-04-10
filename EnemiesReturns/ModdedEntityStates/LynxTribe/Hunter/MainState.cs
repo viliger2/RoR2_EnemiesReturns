@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter
 {
+    [RegisterEntityState]
     public class MainState : GenericCharacterMain
     {
         public override void Update()

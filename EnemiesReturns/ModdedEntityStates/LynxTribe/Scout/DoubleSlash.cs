@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 {
+    [RegisterEntityState]
     public class DoubleSlash : BaseState
     {
         public static float baseDuration => 1.8f;

@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class SpitterMain : GenericCharacterMain
     {
         public override void Update()

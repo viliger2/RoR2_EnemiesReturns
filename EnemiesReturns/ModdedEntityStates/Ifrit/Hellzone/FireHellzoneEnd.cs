@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
+    [RegisterEntityState]
     public class FireHellzoneEnd : BaseState
     {
         public static float baseDuration = 2.2f;

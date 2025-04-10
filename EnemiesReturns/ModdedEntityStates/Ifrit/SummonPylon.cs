@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -8,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
 {
+    [RegisterEntityState]
     public class SummonPylon : BaseState
     {
         public static float baseDuration = 3f;

@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
 {
+    [RegisterEntityState]
     public class StompEnter : BaseState
     {
         public static float searchRadius = 10f;

@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Items.LynxFetish;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -9,6 +10,7 @@ using static RoR2.SpawnCard;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    [RegisterEntityState]
     public class SummonTribe : BaseState
     {
         public static float baseDuration = 1.6f;

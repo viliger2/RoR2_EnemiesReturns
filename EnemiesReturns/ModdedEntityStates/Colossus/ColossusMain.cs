@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus
 {
+    [RegisterEntityState]
     public class ColossusMain : GenericCharacterMain
     {
         public override void Update()

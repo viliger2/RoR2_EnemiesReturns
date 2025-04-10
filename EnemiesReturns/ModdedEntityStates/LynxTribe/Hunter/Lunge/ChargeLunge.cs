@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
 {
+    [RegisterEntityState]
     public class ChargeLunge : BaseState
     {
         public static float baseDuration = 1f;

@@ -1,9 +1,11 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 {
+    [RegisterEntityState]
     public class InitialDeathState : BaseState
     {
         public override void OnEnter()

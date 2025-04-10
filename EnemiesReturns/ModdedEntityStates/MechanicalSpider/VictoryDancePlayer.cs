@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
 {
+    [RegisterEntityState]
     public class VictoryDancePlayer : BasePlayerEmoteState
     {
         public override float duration => 20f;

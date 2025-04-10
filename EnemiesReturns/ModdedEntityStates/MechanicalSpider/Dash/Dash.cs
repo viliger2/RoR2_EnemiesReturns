@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
 {
+    [RegisterEntityState]
     public class Dash : BaseState
     {
         public static AnimationCurve forwardSpeedCoefficientCurve;

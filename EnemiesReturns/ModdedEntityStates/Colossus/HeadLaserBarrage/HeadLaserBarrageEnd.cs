@@ -1,9 +1,11 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 {
+    [RegisterEntityState]
     public class HeadLaserBarrageEnd : BaseState
     {
         public static float baseDuration = 3.5f;

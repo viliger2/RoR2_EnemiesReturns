@@ -28,6 +28,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Rewired.Utils.Classes.Utility;
+using System.Reflection;
+using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns
 {
@@ -162,8 +164,6 @@ namespace EnemiesReturns
             {
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
-
-                stateList.Add(typeof(ModdedEntityStates.BasePlayerEmoteState)); // dunno if I need it, but just in case
 
                 CreateSpitter(assets, iconLookup);
 
@@ -337,6 +337,14 @@ namespace EnemiesReturns
 
             CreateJudgement();
 
+            var entityStateTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && type.GetCustomAttribute<RegisterEntityState>(false) != null).ToArray();
+#if DEBUG || NOWEAVER
+            foreach (var type in entityStateTypes)
+            {
+                Log.Info($"Found type {type} when searching for RegisterEntityState attribute.");
+            }
+#endif
+            _contentPack.entityStateTypes.Add(entityStateTypes);
             _contentPack.bodyPrefabs.Add(bodyList.ToArray());
             _contentPack.masterPrefabs.Add(masterList.ToArray());
             _contentPack.skillDefs.Add(sdList.ToArray());
@@ -467,17 +475,6 @@ namespace EnemiesReturns
                 };
                 Utils.AddMonsterToStage(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchIfritDefault);
 
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.DeathState));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.SummonPylon));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneStart));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneFire));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Hellzone.FireHellzoneEnd));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeBegin));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameCharge));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.FlameCharge.FlameChargeEnd));
-                stateList.Add(typeof(Junk.ModdedEntityStates.Ifrit.Smash));
-
                 if (EnemiesReturns.Configuration.Ifrit.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
                 {
                     ModCompats.RiskyArtifafactsCompat.AddMonsterToArtifactOfOrigin(IfritBody.SpawnCards.cscIfritDefault, 2);
@@ -548,10 +545,6 @@ namespace EnemiesReturns
                     masterList.Add(PillarMaster.EnemyMasterPrefab);
 
                     PillarEnemyBody.SpawnCard = pillarEnemyBody.CreateCard("cscIfritEnemyPillar", PillarMaster.EnemyMasterPrefab);
-
-                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.ChargingExplosion));
-                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.FireExplosion));
-                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState));
                 }
 
                 if (EnemiesReturns.Configuration.Ifrit.ItemEnabled.Value)
@@ -565,13 +558,7 @@ namespace EnemiesReturns
                     masterList.Add(PillarMaster.AllyMasterPrefab);
 
                     PillarAllyBody.SpawnCard = pillarAllyBody.CreateCard("cscIfritPlayerPillar", PillarMaster.AllyMasterPrefab);
-
-                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Player.ChargingExplosion));
-                    stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Player.FireExplosion));
                 }
-
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.Enemy.SuicideDeathState));
-                stateList.Add(typeof(ModdedEntityStates.Ifrit.Pillar.SpawnState));
             }
         }
 
@@ -649,28 +636,6 @@ namespace EnemiesReturns
                 var colossusMaster = new ColossusMaster();
                 ColossusMaster.MasterPrefab = colossusMaster.AddMasterComponents(assets.First(master => master.name == "ColossusMaster"), ColossusBody.BodyPrefab);
                 masterList.Add(ColossusMaster.MasterPrefab);
-
-                stateList.Add(typeof(ModdedEntityStates.Colossus.ColossusMain));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.DancePlayer));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.InitialDeathState));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.BaseDeath));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.DeathFallBase));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death1));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.Death2));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Death.DeathBoner));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapEnd));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.RockClap.RockClapStart));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompEnter));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompBase));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompL));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.Stomp.StompR));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageStart));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack));
-                stateList.Add(typeof(ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageEnd));
-                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserStart));
-                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack));
-                stateList.Add(typeof(Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserEnd));
 
                 ColossusBody.SpawnCards.cscColossusDefault = colossusBody.CreateCard("cscColossusDefault", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Default, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusDefault = new DirectorCard
@@ -932,15 +897,6 @@ namespace EnemiesReturns
                 {
                     DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.MiniMushrum, DirectorAPI.Stage.HelminthHatchery);
                 }
-
-                stateList.Add(typeof(ModdedEntityStates.Spitter.Bite));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.SpawnState));
-                stateList.Add(typeof(Junk.ModdedEntityStates.Spitter.NormalSpit));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.ChargeChargedSpit));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.FireChargedSpit));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDance));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.SpitterMain));
-                stateList.Add(typeof(ModdedEntityStates.Spitter.DeathDancePlayer));
             }
         }
 
@@ -979,22 +935,6 @@ namespace EnemiesReturns
                 CreateMechanicalSpiderEnemy(assets, iconLookup, spiderLog, spiderEnemyBody);
 
                 CreateMechanichalSpiderDrone(assets, iconLookup, spiderStuff);
-
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.MainState));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.SpawnStateDrone));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.VictoryDance));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.VictoryDancePlayer));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.CloseHatch));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.DashStart));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.Dash));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Dash.DashStop));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathInitial));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathDrone));
-                stateList.Add(typeof(ModdedEntityStates.MechanicalSpider.Death.DeathNormal));
             }
         }
 
@@ -1220,7 +1160,6 @@ namespace EnemiesReturns
 
                 DirectorAPI.Helpers.AddNewInteractableToStage(shrineToSpawn, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
             }
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Retreat));
 
             nopList.Add(lynxShrine1);
             nopList.Add(lynxShrine2);
@@ -1358,12 +1297,6 @@ namespace EnemiesReturns
             masterList.Add(ArcherMasterAlly.MasterPrefab);
 
             ArcherBodyAlly.SpawnCards.cscLynxArcherAlly = archerBodyAlly.CreateCard("cscLynxArcherAlly", ArcherMasterAlly.MasterPrefab, ArcherBodyAlly.SkinDefs.Ally, ArcherBodyAlly.BodyPrefab);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.FireArrow));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.DeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Archer.GuitarEmotePlayer));
         }
 
         public void CreateLynxHunter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1427,13 +1360,6 @@ namespace EnemiesReturns
             masterList.Add(HunterMasterAlly.MasterPrefab);
 
             HunterBodyAlly.SpawnCards.cscLynxHunterAlly = hunterBodyAlly.CreateCard("cscLynxHunterAlly", HunterMasterAlly.MasterPrefab, HunterBodyAlly.SkinDefs.Ally, HunterBodyAlly.BodyPrefab);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.ChargeLunge));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.Lunge.FireLunge));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.DeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Hunter.HarmonicaEmote));
         }
 
         public void CreateLynxScout(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
@@ -1497,12 +1423,6 @@ namespace EnemiesReturns
             masterList.Add(ScoutMasterAlly.MasterPrefab);
 
             ScoutBodyAlly.SpawnCards.cscLynxScoutAlly = scoutBodyAlly.CreateCard("cscLynxScoutAlly", ScoutMasterAlly.MasterPrefab, ScoutBodyAlly.SkinDefs.Ally, ScoutBodyAlly.BodyPrefab);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DoubleSlash));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DrumEmote));
         }
 
         private void CreateLynxTotem(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, ExplicitPickupDropTable dtLynxTotem)
@@ -1612,18 +1532,6 @@ namespace EnemiesReturns
                 MonsterCategory = DirectorAPI.MonsterCategory.Champions,
             };
             Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrow));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Burrowed));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.Burrow.Unburrow));
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.DeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.GroundpoundProjectile));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonStorm));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Totem.SummonTribe));
 
             if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
             {
@@ -1768,23 +1676,6 @@ namespace EnemiesReturns
             masterList.Add(ShamanMasterAlly.MasterPrefab);
 
             ShamanBodyAlly.SpawnCards.cscLynxShamanAlly = shamanBodyAlly.CreateCard("cscLynxShamanAlly", ShamanMasterAlly.MasterPrefab, ShamanBodyAlly.SkinDefs.Ally, ShamanBodyAlly.BodyPrefab);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.DeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.InitialDeathState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.NopeEmotePlayer));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.PushBack));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.ShamanMainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SingEmotePlayer));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTotemDeath));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun));
-
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonStormSkill));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.TeleportFriend));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.SummonLightning));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.Teleport));
-            stateList.Add(typeof(Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport.TeleportStart));
         }
 
         private void CreateLynxStorm(GameObject[] assets, Dictionary<string, AnimationCurveDef> acdLookup)
@@ -1804,10 +1695,6 @@ namespace EnemiesReturns
             masterList.Add(LynxStormMaster.MasterPrefab);
 
             LynxStormBody.cscLynxStorm = stormBody.CreateCard("cscLynxStorm", LynxStormMaster.MasterPrefab);
-
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.SpawnState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Storm.MainState));
-            stateList.Add(typeof(ModdedEntityStates.LynxTribe.Scout.DeathState));
         }
         #endregion
 

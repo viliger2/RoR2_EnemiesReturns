@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Ifrit
 {
+    [RegisterEntityState]
     public class Smash : BaseState
     {
         public static float damageCoefficient => 4.5f;

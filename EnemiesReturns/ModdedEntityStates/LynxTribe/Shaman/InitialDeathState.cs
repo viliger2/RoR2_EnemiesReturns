@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class InitialDeathState : BaseState
     {
         public static float spawnChancePerLoop => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PostLoopTotemSummon.Value;

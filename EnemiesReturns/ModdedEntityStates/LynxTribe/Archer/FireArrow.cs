@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 {
+    [RegisterEntityState]
     public class FireArrow : BaseState
     {
         public static string targetMuzzle = "BowString";

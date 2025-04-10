@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
+    [RegisterEntityState]
     internal class Fire : BaseState
     {
         public static int numberOfShots => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotShots.Value;

@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 {
+    [RegisterEntityState]
     public class FireHellzoneStart : BaseState
     {
         public static float baseDuration = 1.8f;

@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using EnemiesReturns.Reflection;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class DeathDancePlayer : BasePlayerEmoteState
     {
         public override float duration => 20f;

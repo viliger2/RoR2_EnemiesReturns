@@ -1,7 +1,9 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
 {
+    [RegisterEntityState]
     public class Burrowed : GenericCharacterMain
     {
         public static float duration = 1f;

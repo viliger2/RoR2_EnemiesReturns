@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class ShamanMainState : GenericCharacterMain
     {
         public override void Update()

@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe
 {
+    [RegisterEntityState]
     public class Retreat : BaseState
     {
         public static float duraion = 2.5f;

@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 {
+    [RegisterEntityState]
     public class MainState : GenericCharacterMain
     {
         public override void Update()

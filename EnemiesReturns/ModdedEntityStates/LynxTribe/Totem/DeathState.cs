@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    [RegisterEntityState]
     public class DeathState : GenericCharacterDeath
     {
         public static GameObject lemurianBruiserDeathEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBruiserDeathImpact.prefab").WaitForCompletion();

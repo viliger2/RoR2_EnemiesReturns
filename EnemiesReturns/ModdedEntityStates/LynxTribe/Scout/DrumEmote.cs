@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Scout
 {
+    [RegisterEntityState]
     public class DrumEmote : BasePlayerEmoteState
     {
         public override float duration => -1;

@@ -1,8 +1,10 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
+    [RegisterEntityState]
     public class KilledDeathState : BaseDeathState
     {
         public static float explosionDelay = 0.5f;

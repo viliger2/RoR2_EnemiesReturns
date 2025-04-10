@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class FireChargedSpit : BaseState
     {
         public static float baseDuration = 2.1f;

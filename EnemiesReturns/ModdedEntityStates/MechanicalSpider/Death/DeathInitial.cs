@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
-    internal class DeathInitial : BaseState
+    [RegisterEntityState]
+    public class DeathInitial : BaseState
     {
         public static float spawnChance => EnemiesReturns.Configuration.MechanicalSpider.DroneSpawnChance.Value;
 

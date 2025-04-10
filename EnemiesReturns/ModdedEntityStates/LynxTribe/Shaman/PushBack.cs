@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,6 +7,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
     // TODO: increase range, it is comically bad atm
+    [RegisterEntityState]
     public class PushBack : BaseState
     {
         public static float baseDuration = 1.5f;

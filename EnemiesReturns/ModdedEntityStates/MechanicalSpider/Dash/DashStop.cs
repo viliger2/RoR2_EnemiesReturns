@@ -1,7 +1,9 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
 {
+    [RegisterEntityState]
     public class DashStop : BaseState
     {
         public static float duration = 0.8f;

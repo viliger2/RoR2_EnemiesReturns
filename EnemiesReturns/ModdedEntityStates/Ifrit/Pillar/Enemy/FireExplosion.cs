@@ -1,7 +1,9 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
+    [RegisterEntityState]
     public class FireExplosion : BaseFireExplosion
     {
         public override float damage => EnemiesReturns.Configuration.Ifrit.PillarExplosionDamage.Value;

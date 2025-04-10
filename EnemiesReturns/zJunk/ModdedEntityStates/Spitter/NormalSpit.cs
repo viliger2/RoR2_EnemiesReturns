@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class NormalSpit : GenericProjectileBaseState
     {
         public static GameObject normalSpitProjectile;

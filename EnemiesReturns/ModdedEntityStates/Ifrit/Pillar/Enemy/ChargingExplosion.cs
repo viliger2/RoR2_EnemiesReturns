@@ -1,7 +1,9 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
+    [RegisterEntityState]
     public class ChargingExplosion : BaseChargingExplosion
     {
         public override float duration => EnemiesReturns.Configuration.Ifrit.PillarExplosionChargeDuration.Value;

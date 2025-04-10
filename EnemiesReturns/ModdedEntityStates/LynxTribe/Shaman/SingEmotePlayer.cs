@@ -1,6 +1,9 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
-    internal class SingEmotePlayer : BasePlayerEmoteState
+    [RegisterEntityState]
+    public class SingEmotePlayer : BasePlayerEmoteState
     {
         public override float duration => -1f;
 

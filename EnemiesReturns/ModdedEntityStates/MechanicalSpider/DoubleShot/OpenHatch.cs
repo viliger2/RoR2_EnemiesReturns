@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
+    [RegisterEntityState]
     public class OpenHatch : BaseState
     {
         public static float baseDuration = 0.7f;

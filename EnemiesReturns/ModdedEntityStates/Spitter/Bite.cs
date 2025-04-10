@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class Bite : BaseState
     {
         public static float damageCoefficient => EnemiesReturns.Configuration.Spitter.BiteDamageModifier.Value;

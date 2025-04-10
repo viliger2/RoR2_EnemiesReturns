@@ -1,9 +1,11 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 using RoR2.CharacterAI;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Player
 {
+    [RegisterEntityState]
     public class FireExplosion : BaseFireExplosion
     {
         public override float damage => EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillDamage.Value;

@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter
 {
+    [RegisterEntityState]
     public class HarmonicaEmote : BasePlayerEmoteState
     {
         public override float duration => -1;

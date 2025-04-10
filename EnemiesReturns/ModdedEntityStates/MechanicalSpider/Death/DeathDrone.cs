@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -9,7 +10,8 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 {
-    internal class DeathDrone : GenericCharacterDeath
+    [RegisterEntityState]
+    public class DeathDrone : GenericCharacterDeath
     {
         public static float deathDuration = 4f;
 

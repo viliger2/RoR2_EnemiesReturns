@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {
+    [RegisterEntityState]
     public class ChargeChargedSpit : GenericCharacterMain
     {
         public static float baseDuration = 1.1f;

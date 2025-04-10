@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -10,6 +11,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    [RegisterEntityState]
     public class SummonStorm : BaseState
     {
         public static float baseDuration = 4f;

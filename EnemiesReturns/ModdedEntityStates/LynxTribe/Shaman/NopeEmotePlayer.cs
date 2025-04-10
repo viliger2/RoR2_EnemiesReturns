@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class NopeEmotePlayer : BasePlayerEmoteState
     {
         public override float duration => -1f;

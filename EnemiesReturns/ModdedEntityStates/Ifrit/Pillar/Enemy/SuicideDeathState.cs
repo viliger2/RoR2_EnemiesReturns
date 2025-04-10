@@ -1,5 +1,8 @@
-﻿namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
+﻿using EnemiesReturns.Reflection;
+
+namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar.Enemy
 {
+    [RegisterEntityState]
     public class SuicideDeathState : BaseDeathState
     {
         public override void OnEnter()

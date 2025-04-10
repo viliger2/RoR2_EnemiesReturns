@@ -1,8 +1,10 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 {
+    [RegisterEntityState]
     public class Death2 : BaseDeath
     {
         public override float duration => 1f;

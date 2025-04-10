@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    [RegisterEntityState]
     public class SpawnStateFromShaman : BaseState
     {
         public static float duration = 3.8f;

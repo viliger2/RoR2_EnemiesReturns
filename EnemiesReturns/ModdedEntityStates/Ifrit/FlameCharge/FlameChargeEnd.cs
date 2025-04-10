@@ -1,9 +1,11 @@
 ﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 {
+    [RegisterEntityState]
     public class FlameChargeEnd : BaseState
     {
         public static float baseDuration = 1.2f;

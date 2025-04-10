@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider
 {
+    [RegisterEntityState]
     public class MainState : GenericCharacterMain
     {
         private GameObject leftSpark;

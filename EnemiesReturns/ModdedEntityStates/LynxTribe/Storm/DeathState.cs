@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 {
+    [RegisterEntityState]
     public class DeathState : GenericCharacterDeath
     {
         public override void OnEnter()

@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
 {
+    [RegisterEntityState]
     public class Unburrow : BaseState
     {
         public static float duration = 1.4f;

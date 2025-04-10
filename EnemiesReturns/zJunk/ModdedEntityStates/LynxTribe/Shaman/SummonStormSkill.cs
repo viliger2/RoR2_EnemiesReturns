@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -8,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class SummonStormSkill : BaseState
     {
         public static float baseDuration = 4f;

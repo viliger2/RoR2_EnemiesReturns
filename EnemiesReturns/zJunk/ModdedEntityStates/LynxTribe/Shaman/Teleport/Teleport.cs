@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using KinematicCharacterController;
 using RoR2;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman.Teleport
 {
+    [RegisterEntityState]
     public class Teleport : BaseState
     {
         public static float minSearchRange => 60f;

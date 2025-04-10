@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -9,6 +10,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {
+    [RegisterEntityState]
     public class RockClapEnd : BaseState
     {
         public static float projectileDamageCoefficient => EnemiesReturns.Configuration.Colossus.RockClapProjectileDamage.Value;

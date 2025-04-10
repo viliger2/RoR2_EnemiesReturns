@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2.Projectile;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class SummonTrackingProjectilesRapidFire : BaseState
     {
         public static GameObject trackingProjectilePrefab;

@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System.Linq;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
 {
+    [RegisterEntityState]
     public class SummonLightning : BaseState
     {
         public static int strikesCount = 3;

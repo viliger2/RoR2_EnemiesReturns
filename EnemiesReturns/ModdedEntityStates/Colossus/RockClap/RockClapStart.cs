@@ -1,10 +1,12 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 {
+    [RegisterEntityState]
     public class RockClapStart : BaseState
     {
         public static float baseDuration = 1.5f;

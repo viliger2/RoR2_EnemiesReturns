@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using EnemiesReturns.Reflection;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 {
+    [RegisterEntityState]
     public class GuitarEmotePlayer : BasePlayerEmoteState
     {
         public override float duration => -1;

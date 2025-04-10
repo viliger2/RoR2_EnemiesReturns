@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -7,6 +8,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 {
+    [RegisterEntityState]
     public class MainState : GenericCharacterMain
     {
         public static float stormRadius => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormRadius.Value;

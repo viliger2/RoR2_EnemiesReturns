@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 {
+    [RegisterEntityState]
     public class HeadLaserAttack : BaseState
     {
         // unfuck transforms, too many unncessesary points

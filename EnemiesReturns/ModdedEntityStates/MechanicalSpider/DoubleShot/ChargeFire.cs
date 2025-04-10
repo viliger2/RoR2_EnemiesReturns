@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
+    [RegisterEntityState]
     public class ChargeFire : BaseState
     {
         public static GameObject effectPrefab;

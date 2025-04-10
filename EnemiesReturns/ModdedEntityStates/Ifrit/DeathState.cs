@@ -1,10 +1,12 @@
 ﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Ifrit
 {
+    [RegisterEntityState]
     public class DeathState : GenericCharacterDeath
     {
         public static float effectDuration = 1.25f;

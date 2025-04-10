@@ -1,8 +1,10 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using UnityEngine;
 
 namespace EnemiesReturns.Junk.ModdedEntityStates.Colossus.HeadLaser
 {
+    [RegisterEntityState]
     public class HeadLaserEnd : BaseState
     {
         public static float baseDuration = 3.5f;
