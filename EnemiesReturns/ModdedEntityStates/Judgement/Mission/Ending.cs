@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             base.OnEnter();
             if (NetworkServer.active)
             {
-                if (Configuration.Judgement.EnableAeonianSkins.Value)
+                if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
                     {

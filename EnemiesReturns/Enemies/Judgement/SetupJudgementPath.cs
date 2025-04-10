@@ -35,7 +35,7 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
-                if (Configuration.Judgement.EnableAeonianSkins.Value)
+                if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
                     IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
@@ -248,18 +248,20 @@ namespace EnemiesReturns.Enemies.Judgement
                     eliteSkinDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
                     //eliteSkinDef.icon = ;
 
-                    var skinUnlockDef = ScriptableObject.CreateInstance<UnlockableDef>();
-                    (skinUnlockDef as ScriptableObject).name = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
-                    skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
-                    skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
-                    skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
-                    //skinUnlockDef.achievementIcon = ;
+                    if (!Configuration.Judgement.ForceUnlock.Value)
+                    {
+                        var skinUnlockDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                        (skinUnlockDef as ScriptableObject).name = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
+                        skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
+                        skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
+                        skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
 
-                    AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim().ToLower(), skinUnlockDef);
+                        AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim().ToLower(), skinUnlockDef);
 
-                    eliteSkinDef.unlockableDef = skinUnlockDef;
+                        eliteSkinDef.unlockableDef = skinUnlockDef;
 
-                    HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, skinUnlockDef);
+                        HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, skinUnlockDef);
+                    }
 
                     var skinsArray = modelSkins.skins;
                     var index = skinsArray.Length;

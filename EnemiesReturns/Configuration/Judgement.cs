@@ -9,13 +9,15 @@ namespace EnemiesReturns.Configuration
     {
         public static ConfigEntry<bool> Enabled;
 
-        public static ConfigEntry<bool> EnableAeonianSkins;
+        public static ConfigEntry<bool> EnableAnointedSkins;
+
+        public static ConfigEntry<bool> ForceUnlock;
 
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
-
-            EnableAeonianSkins = config.Bind("Judgement", "Enable Aeonian Skins", true, "Enables the ability to unlock Aeonian skins.");
+            EnableAnointedSkins = config.Bind("Judgement", "Enable Anointed Skins", true, "Enables the ability to unlock Anointed skins.");
+            ForceUnlock = config.Bind("Judgement", "Force Unlock Anointed Skins", false, "Force unlocks all Anointed skins by removing UnlockableDef from them.");
         }
     }
 }
