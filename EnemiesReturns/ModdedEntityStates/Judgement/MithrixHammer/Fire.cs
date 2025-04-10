@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using static R2API.DamageAPI;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 {
+    [RegisterEntityState]
     public class Fire : BaseMithrixHammerState
     {
         public static float duration = 1f;
@@ -106,8 +108,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 procCoefficient = 0f,
                 teamIndex = body.teamComponent.teamIndex,
                 pushAwayForce = 10000f,
-                hitEffectPrefab = hitEffectPrefab
-                //damageType = // TODO
+                hitEffectPrefab = hitEffectPrefab,
+                damageType = DamageSource.Equipment
             };
 
             overlap.damageType.AddModdedDamageType(damageType);

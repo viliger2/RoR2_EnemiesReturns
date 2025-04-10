@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -9,6 +10,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
+    [RegisterEntityState]
     public class LightningStrikes : BaseState
     {
         public static float baseDuration = 2.5f;

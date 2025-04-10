@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using static UnityEngine.ParticleSystem.PlaybackState;
+//using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
@@ -18,7 +19,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public static float baseFireRate = 0.25f;
 
         //public static GameObject projectilePrefab => Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LunarWisp/LunarWispTrackingBomb.prefab").WaitForCompletion();
-        public static GameObject projectilePrefab;
 
         public static float damageCoefficient = 2f;
 
@@ -82,7 +82,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                         owner = base.gameObject,
                         position = origin.position,
                         rotation = lookRotation,
-                        projectilePrefab = projectilePrefab,
+                        //projectilePrefab = projectilePrefab,
                         damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
                     };
                     ProjectileManager.instance.FireProjectile(info);
@@ -105,7 +105,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
 
     }

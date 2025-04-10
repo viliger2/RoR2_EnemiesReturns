@@ -16,9 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public override GameObject projectilePrefab => staticProjectilePrefab;
 
-        public override float baseDuration => 5.6f;
-
-        public override float baseAttack => 3f;
+        public override float baseDuration => 4f;
 
         public override float damageCoefficient => 3f;
 
@@ -28,11 +26,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public override string animName => "ThrowSword";
 
-        public override string playbackRateParamName => "Throw.playbackRate";
+        public override string playbackRateParamName => "WeaponThrow.playbackRate";
 
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
-        }
+        public override string childOrigin => "HandR";
     }
 }

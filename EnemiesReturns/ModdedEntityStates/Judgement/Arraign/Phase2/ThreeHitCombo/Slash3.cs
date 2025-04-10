@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo
 {
+    [RegisterEntityState]
     public class Slash3 : BasicMeleeAttack
     {
         public static AnimationCurve acdSlash3;

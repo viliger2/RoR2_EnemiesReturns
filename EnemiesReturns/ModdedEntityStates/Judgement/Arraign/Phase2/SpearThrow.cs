@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -10,13 +11,14 @@ using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
+    [RegisterEntityState]
     public class SpearThrow : BaseWeaponThrow
     {
         public static GameObject staticProjectilePrefab;
 
         public override GameObject projectilePrefab => staticProjectilePrefab;
 
-        public override float baseDuration => 5.6f;
+        public override float baseDuration => 4f;
 
         public override float damageCoefficient => 3f;
 
@@ -26,6 +28,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public override string animName => "ThrowSword";
 
-        public override string playbackRateParamName => "Throw.playbackRate";
+        public override string playbackRateParamName => "WeaponThrow.playbackRate";
+
+        public override string childOrigin => "HandR";
     }
 }

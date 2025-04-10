@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
+using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 {
+    [RegisterEntityState]
     public class DeathState : GenericCharacterDeath
     { 
         public override void OnEnter()

@@ -9,9 +9,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 {
     public class Slash2 : BasicMeleeAttack
     {
-        public static AnimationCurve acdSlash1;
+        public static AnimationCurve acdSlash2;
 
-        public static float searchRadius = 10f;
+        public static float searchRadius = 20f;
 
         private Vector3 desiredDirection;
 
@@ -26,11 +26,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             //base.swingEffectMuzzleString = "";
-            //base.mecanimHitboxActiveParameter = "";
+            base.mecanimHitboxActiveParameter = "Slash2.attack";
             base.shorthopVelocityFromHit = 0f;
             //base.impactSound = "";
             base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = acdSlash1;
+            base.forwardVelocityCurve = acdSlash2;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
 
@@ -64,16 +64,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public override void AuthorityOnFinish()
         {
-            var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
-            if (hitboxes.Count > 0)
-            {
-                outer.SetNextState(new Slash3());
-            }
-            else
-            {
-                EntityStateMachine.FindByCustomName(gameObject, "Weapon").SetNextState(new FireHomingProjectiles());
-                outer.SetNextStateToMain();
-            }
+            outer.SetNextState(new Slash3());
+            //var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
+            //if (hitboxes.Count > 0)
+            //{
+            //    outer.SetNextState(new Slash3());
+            //}
+            //else
+            //{
+            //    outer.SetNextState(new FireHomingProjectiles()); //TODO: restore
+            //}
         }
 
         private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)

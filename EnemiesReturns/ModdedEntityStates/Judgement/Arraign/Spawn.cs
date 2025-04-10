@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
+    [RegisterEntityState]
     public class Spawn : GenericCharacterSpawnState
     {
         public override void OnEnter()

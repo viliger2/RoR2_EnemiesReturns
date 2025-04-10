@@ -25,6 +25,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract string playbackRateParamName { get; }
 
+        public abstract string childOrigin { get; }
+
         private float duration;
 
         private bool hasAttacked;
@@ -32,6 +34,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         private CharacterBody target;
 
         private Animator modelAnimator;
+
+        private Transform projectileOrigin;
 
         public override void OnEnter()
         {
@@ -61,6 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                     characterDirection.moveVector = inputBank.aimDirection;
                 }
             }
+            projectileOrigin = FindModelChild(childOrigin);
             modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animName, playbackRateParamName, duration);
         }
@@ -88,13 +93,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             {
                 var aimRay = GetAimRay();
 
+                var position = aimRay.origin;
+                if (projectileOrigin)
+                {
+                    position = projectileOrigin.position;
+                }
+
                 var info = new FireProjectileInfo
                 {
                     crit = RollCrit(),
                     damage = damageStat * damageCoefficient,
                     force = force,
                     owner = base.gameObject,
-                    position = aimRay.origin,
+                    position = position,
                     rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                     projectilePrefab = projectilePrefab,
                     damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),

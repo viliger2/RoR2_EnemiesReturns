@@ -1,4 +1,6 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap;
+using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -7,106 +9,35 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
-    public class ExitSkyLeap : BaseState
+    [RegisterEntityState]
+    public class ExitSkyLeap : BaseExitSkyLeap
     {
-        public static GameObject firstAttackEffect;
+        public static GameObject staticFirstAttackEffect;
 
-        public static GameObject secondAttackEffect;
+        public static GameObject staticSecondAttackEffect;
 
-        public static float baseDuration = 2f;
+        public override GameObject firstAttackEffect => staticFirstAttackEffect;
 
-        public static string soundString;
+        public override GameObject secondAttackEffect => staticSecondAttackEffect;
 
-        public static float attackDamage = 3f;
+        public override float baseDuration => 2.5f;
 
-        public static float attackForce = 1000f;
+        public override string soundString => "";
 
-        public static float blastAttackRadius = 30f;
+        public override float attackDamage => 3f;
 
-        public Vector3 dropPosition;
+        public override float attackForce => 1000f;
 
-        private float duration;
+        public override float blastAttackRadius => 30f;
 
-        private bool secondAttackFired;
+        public override string layerName => "Gesture, Override";
 
-        private bool attackFired;
+        public override string animationStateName => "ExitSkyLeap";
 
-        private Animator modelAnimator;
+        public override string playbackParamName => "SkyLeap.playbackRate";
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
-            Util.PlaySound(soundString, base.gameObject);
-            modelAnimator = GetModelAnimator();
-            PlayAnimation("Gesture, Override", "ExitSkyLeap", "SkyLeap.playbackRate", duration);
-        }
+        public override string firstAttackParamName => "SkyLeap.firstAttack";
 
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if (!attackFired && modelAnimator.GetFloat("SkyLeap.firstAttack") > 0.9f)
-            {
-                if (isAuthority)
-                {
-                    BlastAttack blastAttack = new BlastAttack();
-                    blastAttack.radius = blastAttackRadius;
-                    blastAttack.procCoefficient = 0f;
-                    blastAttack.position = dropPosition;
-                    blastAttack.attacker = characterBody.gameObject;
-                    blastAttack.crit = RollCrit();
-                    blastAttack.baseDamage = attackDamage * damageStat;
-                    blastAttack.canRejectForce = false;
-                    blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                    blastAttack.baseForce = attackForce;
-                    blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
-                    blastAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
-                    blastAttack.attackerFiltering = AttackerFiltering.Default;
-                    blastAttack.Fire();
-                }
-                EffectManager.SimpleEffect(firstAttackEffect, dropPosition, Quaternion.identity, false);
-                attackFired = true;
-            }
-
-            if(!secondAttackFired && modelAnimator.GetFloat("SkyLeap.secondAttack") > 0.9f)
-            {
-                if (isAuthority)
-                {
-                    BlastAttack blastAttack = new BlastAttack();
-                    blastAttack.radius = blastAttackRadius;
-                    blastAttack.procCoefficient = 0f;
-                    blastAttack.position = dropPosition;
-                    blastAttack.attacker = characterBody.gameObject;
-                    blastAttack.crit = RollCrit();
-                    blastAttack.baseDamage = attackDamage * damageStat;
-                    blastAttack.canRejectForce = false;
-                    blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                    blastAttack.baseForce = attackForce;
-                    blastAttack.teamIndex = characterBody.teamComponent.teamIndex;
-                    blastAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
-                    blastAttack.attackerFiltering = AttackerFiltering.Default;
-                    blastAttack.Fire();
-                }
-                EffectManager.SimpleEffect(secondAttackEffect, dropPosition, Quaternion.identity, false);
-                secondAttackFired = true;
-            }
-
-            if (isAuthority && base.fixedAge > duration)
-            {
-                outer.SetNextStateToMain();
-            }
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Frozen;
-        }
-
+        public override string secondAttackParamName => "SkyLeap.secondAttack";
     }
 }

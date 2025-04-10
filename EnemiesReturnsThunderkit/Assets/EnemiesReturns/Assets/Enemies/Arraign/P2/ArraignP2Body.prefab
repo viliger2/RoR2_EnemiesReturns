@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: subtitleNameToken
       value: ENEMIES_RETURNS_ARRAIGNP2_BODY_SUBTITLE
       objectReference: {fileID: 0}
+    - target: {fileID: 3274917509634399284, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: special
+      value: 
+      objectReference: {fileID: 2994507521334374443}
     - target: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: _skillFamily
       value: 
@@ -209,3 +213,83 @@ MonoBehaviour:
   mainStateType:
     _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   debug: 0
+--- !u!114 &2994507521334374443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillFamily: {fileID: 11400000, guid: 72ea1b2b64a6fa5468818318df2e826a, type: 2}
+  skillName: SkyDrop
+  hideInCharacterSelect: 0
+  baseStock: 1
+  baseRechargeStopwatch: 0
+  hasExecutedSuccessfully: 0
+--- !u!114 &4969397230896808771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770c27b8add239a4da95823a614320fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkTimer: 0.1
+  laserSkill: {fileID: 3882888290602294189}
+  body: {fileID: 8199240995348899039}
+  esms:
+  - {fileID: 9176156454617969060}
+  - {fileID: 3087245837128473095}
+--- !u!114 &3087245837128473095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8228178633749228936, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+  m_PrefabInstance: {fileID: 6406446765822474127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3882888290602294189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7857249970222787618, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+  m_PrefabInstance: {fileID: 6406446765822474127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8199240995348899039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+  m_PrefabInstance: {fileID: 6406446765822474127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -197296741, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9176156454617969060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2859791027360040491, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+  m_PrefabInstance: {fileID: 6406446765822474127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

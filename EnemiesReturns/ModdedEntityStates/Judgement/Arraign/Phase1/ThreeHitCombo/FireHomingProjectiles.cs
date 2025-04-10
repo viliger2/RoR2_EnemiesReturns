@@ -7,9 +7,11 @@ using System.Text;
 using UnityEngine;
 using static UnityEngine.ParticleSystem.PlaybackState;
 using UnityEngine.AddressableAssets;
+using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
+    [RegisterEntityState]
     public class FireHomingProjectiles : GenericCharacterMain
     {
         public static float baseInitialDelay = 0.68f;

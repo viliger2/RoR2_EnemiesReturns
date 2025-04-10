@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                     firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize / 2 + projectileSize * (projectileCountPerRow / 2 - 1));
                 } else
                 {
-                    firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize * (projectileCountPerRow / 2 - 1));
+                    firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize * (projectileCountPerRow / 2));
                 }
 
                 var position = firstProjectileOrigin.transform.localPosition;
@@ -57,6 +57,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                     projectileOrigin.transform.localPosition = position;
                     projectileOrigin.transform.localRotation = Quaternion.identity;
                 }
+
+                EffectManager.SimpleEffect(effectPrefab, originPoint, Quaternion.LookRotation(targetPoint - originPoint, Vector3.up), false);
             }
 
             ~ClockFiringLine()
@@ -88,7 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                             owner = owner,
                             position = projectileOrigin.position,
                             projectilePrefab = projectilePrefab,
-                            rotation = Quaternion.identity,
+                            rotation = projectileOrigin.rotation,
                             damage = damageStat * damageCoefficient
                         };
 
@@ -102,11 +104,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static GameObject projectilePrefab;
 
+        public static GameObject effectPrefab;
+
         public static float delayBetweenSpawns = 0.1f;
 
-        public static int projectileCountPerRow = 4;
+        public static int projectileCountPerRow = 1;
 
-        public static float projectileSize = 7f;
+        public static float projectileSize = 10f;
 
         public static float damageCoefficient = 3f;
 

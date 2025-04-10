@@ -179,163 +179,170 @@ namespace EnemiesReturns
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
 
-            AssetBundle assetBundleStagesAssets = null;
-            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
+            if (Configuration.Judgement.Enabled.Value)
             {
-                Stopwatch stopwatch = new Stopwatch();
-                foreach (var asset in assets)
+                AssetBundle assetBundleStagesAssets = null;
+                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
                 {
-                    iconLookup.Add(asset.name, asset);
-                }
-            }));
+                    foreach (var asset in assets)
+                    {
+                        iconLookup.Add(asset.name, asset);
+                    }
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
-            {
-                var thisbundleramps = textures.Where(texture => texture.name.StartsWith("texRamp")).ToDictionary(texture => texture.name, texture => texture);
-                foreach(var ramps in thisbundleramps)
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Texture2D[]>)((textures) =>
                 {
-                    rampLookups.Add(ramps.Key, ramps.Value);
-                }
-            }));
+                    var thisbundleramps = textures.Where(texture => texture.name.StartsWith("texRamp")).ToDictionary(texture => texture.name, texture => texture);
+                    foreach (var ramps in thisbundleramps)
+                    {
+                        rampLookups.Add(ramps.Key, ramps.Value);
+                    }
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
-            {
-                zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3").curve;
+                    Enemies.Judgement.SetupJudgementPath.aeonianEliteRamp = rampLookups["texRampAeonianElite"];
+                }));
 
-                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1P2").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2P2").curve;
-                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3P2").curve;
-                foreach (var acd in assets)
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
                 {
-                    acdLookup.Add(acd.name, acd);
-                }
-            }));
+                    zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3").curve;
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EliteDef[]>)((assets) =>
-            {
-                Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
-                Enemies.Judgement.SetupJudgementPath.aeonianEliteRamp = rampLookups["texRampAeonianElite"];
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1P2").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2P2").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3P2").curve;
+                    foreach (var acd in assets)
+                    {
+                        acdLookup.Add(acd.name, acd);
+                    }
+                }));
 
-                R2API.EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EliteDef[]>)((assets) =>
+                {
+                    Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
+                    R2API.EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
 
-                _contentPack.eliteDefs.Add(assets);
-            }));
+                    _contentPack.eliteDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
-            {
-                _contentPack.sceneDefs.Add(assets);
-            }));
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
+                {
+                    _contentPack.sceneDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
-            {
-                Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
-                Content.Buffs.ImmuneToHammer = assets.First(buff => buff.name == "bdImmuneToHammer");
-                Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
+                {
+                    Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
+                    Content.Buffs.ImmuneToHammer = assets.First(buff => buff.name == "bdImmuneToHammer");
+                    Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
 
-                _contentPack.buffDefs.Add(assets);
-            }));
+                    _contentPack.buffDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
-            {
-                SwapMaterial(assets);
-            }));
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
+                {
+                    SwapMaterial(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
-            {
-                _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
-                _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
-                _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
-                _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
+                {
+                    _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                    _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                    _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                    _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                var interactable = assets.First(asset => asset.name == "JudgementInteractable");
-                nopList.Add(interactable);
+                    var interactable = assets.First(asset => asset.name == "JudgementInteractable");
+                    nopList.Add(interactable);
 
-                SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
-                SetupJudgementPath.PileOfDirt = SetupJudgementPath.SetupLunarKey(SetupJudgementPath.PileOfDirt);
-                nopList.Add(SetupJudgementPath.PileOfDirt);
+                    SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
+                    SetupJudgementPath.PileOfDirt = SetupJudgementPath.SetupLunarKey(SetupJudgementPath.PileOfDirt);
+                    nopList.Add(SetupJudgementPath.PileOfDirt);
 
-                SetupJudgementPath.BrokenTeleporter = assets.First(asset => asset.name == "BrokenTeleporterInteractable");
-                SetupJudgementPath.BrokenTeleporter = SetupJudgementPath.SetupBrokenTeleporter(SetupJudgementPath.BrokenTeleporter);
-                nopList.Add(SetupJudgementPath.BrokenTeleporter);
+                    SetupJudgementPath.BrokenTeleporter = assets.First(asset => asset.name == "BrokenTeleporterInteractable");
+                    SetupJudgementPath.BrokenTeleporter = SetupJudgementPath.SetupBrokenTeleporter(SetupJudgementPath.BrokenTeleporter);
+                    nopList.Add(SetupJudgementPath.BrokenTeleporter);
 
-                var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
-                nopList.Add(judgementTeleporter);
+                    var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
+                    nopList.Add(judgementTeleporter);
 
-                Equipment.MithrixHammer.MithrixHammer.MithrixHammerController = assets.First(asset => asset.name == "MithrixHammerController");
-                nopList.Add(Equipment.MithrixHammer.MithrixHammer.MithrixHammerController);
+                    Equipment.MithrixHammer.MithrixHammer.MithrixHammerController = assets.First(asset => asset.name == "MithrixHammerController");
+                    nopList.Add(Equipment.MithrixHammer.MithrixHammer.MithrixHammerController);
 
-                ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
-                ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
+                    ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
+                    ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
 
-                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.firstAttackEffect = assets.First(asset => asset.name == "ArraignDashImpactEffect");
-                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.secondAttackEffect = assets.First(asset => asset.name == "ArraignDashSecondExplosionEffect");
+                    var impactEffect = assets.First(asset => asset.name == "ArraignDashImpactEffect");
+                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = impactEffect;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = impactEffect;
 
-                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.waveProjectile = assets.First(asset => asset.name == "ArraignSlash3Wave");
+                    var explosionEffect = assets.First(asset => asset.name == "ArraignDashSecondExplosionEffect");
+                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
 
-                //var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
-                var lightningProjectile = assets.First(asset => asset.name == "ArraignPreLightningProjectile");
-                ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
-                ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.projectilePrefab = lightningProjectile;
+                    var waveProjectile = assets.First(asset => asset.name == "ArraignSlash3Wave");
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.waveProjectile = waveProjectile;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.waveProjectile = waveProjectile;
 
+                    //var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
+                    var lightningProjectile = assets.First(asset => asset.name == "ArraignPreLightningProjectile");
+                    ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes.projectilePrefab = lightningProjectile;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.projectilePrefab = lightningProjectile;
 
-                ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = assets.First(asset => asset.name == "ArraignPreClockAttackProjectile");
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = assets.First(asset => asset.name == "ArraignPreClockAttackProjectile");
 
-                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
-                ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
-                ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
+                    ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
 
-                ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.effectPrefab = assets.First(asset => asset.name == "ClockZoneEffect");
-            }));
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.effectPrefab = assets.First(asset => asset.name == "ClockZoneEffect");
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
-            {
-                Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
-                Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
+                {
+                    Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
+                    Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
 
-                Content.Items.LunarFlower = assets.First(item => item.name == "LunarFlower");
-                Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
+                    Content.Items.LunarFlower = assets.First(item => item.name == "LunarFlower");
+                    Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
 
-                _contentPack.itemDefs.Add(assets);
-            }));
+                    _contentPack.itemDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
-            {
-                Content.GameEndings.SurviveJudgement = assets.First(item => item.cachedName == "SurviveJudgement");
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
+                {
+                    Content.GameEndings.SurviveJudgement = assets.First(item => item.cachedName == "SurviveJudgement");
 
-                _contentPack.gameEndingDefs.Add(assets);
-            }));
+                    _contentPack.gameEndingDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemTierDef[]>)((assets) =>
-            {
-                Content.ItemTiers.HiddenInLogbook = assets.First(item => item.name == "HiddenInLogbook");
-                Content.ItemTiers.HiddenInLogbook.highlightPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/HighlightTier1Item.prefab").WaitForCompletion();
-                Content.ItemTiers.HiddenInLogbook.dropletDisplayPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/BossOrb.prefab").WaitForCompletion();
-                _contentPack.itemTierDefs.Add(assets);
-            }));
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemTierDef[]>)((assets) =>
+                {
+                    Content.ItemTiers.HiddenInLogbook = assets.First(item => item.name == "HiddenInLogbook");
+                    Content.ItemTiers.HiddenInLogbook.highlightPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/HighlightTier1Item.prefab").WaitForCompletion();
+                    Content.ItemTiers.HiddenInLogbook.dropletDisplayPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/BossOrb.prefab").WaitForCompletion();
+                    _contentPack.itemTierDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
-            {
-                Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
-                Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
+                {
+                    Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
+                    Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
 
-                Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
-                _contentPack.equipmentDefs.Add(assets);
-            }));
+                    Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
+                    _contentPack.equipmentDefs.Add(assets);
+                }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
-            {
-                ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers.cscSkyLaser = assets.First(asset => asset.name == "cscSkyLaser");
-            }));
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
+                {
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers.cscSkyLaser = assets.First(asset => asset.name == "cscSkyLaser");
+                }));
 
-            AssetBundle assetBundleStages = null;
-            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
+                AssetBundle assetBundleStages = null;
+                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
-            CreateJudgement();
+                CreateJudgement();
+            }
 
             var entityStateTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && type.GetCustomAttribute<RegisterEntityState>(false) != null).ToArray();
 #if DEBUG || NOWEAVER
@@ -1169,45 +1176,11 @@ namespace EnemiesReturns
         private void CreateJudgement()
         {
             if (Configuration.Judgement.Enabled.Value)
-            {
-                RoR2.SceneDirector.onPostPopulateSceneServer += SetupJudgementPath.SpawnObjects;
+            {          
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.EnterSkyLeap));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.HoldSkyLeap));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.LightningStrikes));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Arraign.Spawn));
-
-                stateList.Add(typeof(zJunk.ModdedEntityStates.Judgement.Arraign.Phase1.SlashDashPhase1));
-                stateList.Add(typeof(zJunk.ModdedEntityStates.Judgement.Arraign.Phase2.SlashDashPhase2));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Ending));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Idle));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase1));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase2));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.Phase3));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.Mission.PrePhase2));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Fire));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.MithrixHammer.Idle));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.SkyLaser.SpawnState));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.SkyLaser.MainState));
-
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.AwaitingSelection));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.Inactive));
-                stateList.Add(typeof(ModdedEntityStates.Judgement.WaveInteractable.WaveActive));
             }
         }
 

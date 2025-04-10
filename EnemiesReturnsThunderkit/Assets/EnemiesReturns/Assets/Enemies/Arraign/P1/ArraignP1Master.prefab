@@ -271,7 +271,7 @@ MonoBehaviour:
   shouldTapButton: 0
   buttonPressType: 0
   driverUpdateTimerOverride: -1
-  resetCurrentEnemyOnNextDriverSelection: 1
+  resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &6433454316342385121

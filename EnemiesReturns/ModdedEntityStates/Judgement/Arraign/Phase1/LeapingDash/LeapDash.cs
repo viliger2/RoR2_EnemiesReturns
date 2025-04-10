@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
 {
-
+    [RegisterEntityState]
     public class LeapDash : BaseLeapDash
     {
         public override float damageCoefficient => 2f;

@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 {
+    [RegisterEntityState]
     public class LeapDashExit : BaseState
     {
         public static float baseDuration = 1.5f;

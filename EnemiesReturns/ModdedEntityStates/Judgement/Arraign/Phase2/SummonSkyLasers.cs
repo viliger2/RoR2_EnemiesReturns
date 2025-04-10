@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Components;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -9,6 +10,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
+    [RegisterEntityState]
     public class SummonSkyLasers : BaseState
     {
         public static float baseDuration = 6.8f;

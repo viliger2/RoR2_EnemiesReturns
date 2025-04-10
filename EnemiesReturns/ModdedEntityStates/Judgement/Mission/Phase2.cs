@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
+    [RegisterEntityState]
     public class Phase2 : BaseState
     {
         public static float spawnDelay = 3f;
@@ -18,17 +20,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private ScriptedCombatEncounter combatEncounter;
 
-        private BossGroup phaseBossGroup;
-
         private ChildLocator childLocator;
 
         private GameObject phaseControllerObject;
 
         private bool hasSpawned;
-
-        private bool directorEnabled;
-
-        private GameObject combatDirectorHolder;
 
         public override void OnEnter()
         {
@@ -42,8 +38,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 {
                     phaseControllerObject.SetActive(true);
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
-                    phaseBossGroup = phaseControllerObject.GetComponent<BossGroup>();
-                    combatDirectorHolder = phaseControllerObject.transform.Find("CombatDirectorHolder").gameObject;
                 }
             }
         }
@@ -56,13 +50,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 if(fixedAge > spawnDelay)
                 {
                     BeginEncounter();
-                }
-            }
-            if (!directorEnabled && combatDirectorHolder)
-            {
-                if(fixedAge > enableDirectorDelay)
-                {
-                    combatDirectorHolder.SetActive(true);
                 }
             }
             if(NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
@@ -83,6 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void OnExit()
         {
             base.OnExit();
+            KillAllMonsters();
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);

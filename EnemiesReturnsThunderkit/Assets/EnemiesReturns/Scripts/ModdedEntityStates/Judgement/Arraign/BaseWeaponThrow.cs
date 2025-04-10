@@ -15,8 +15,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract float baseDuration { get; }
 
-        public abstract float baseAttack { get; }
-
         public abstract float damageCoefficient { get; }
 
         public abstract float force { get; }
@@ -27,19 +25,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract string playbackRateParamName { get; }
 
-        private float duration;
+        public abstract string childOrigin { get; }
 
-        private float attack;
+        private float duration;
 
         private bool hasAttacked;
 
         private CharacterBody target;
 
+        private Animator modelAnimator;
+
+        private Transform projectileOrigin;
+
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            attack = baseAttack / attackSpeedStat;
             if (NetworkServer.active && isAuthority)
             {
                 // var bodies = Utils.GetActiveAndAlivePlayerBodies();
@@ -50,20 +51,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 //         target = body;
                 //     }
                 // }
-                // if (target)
-                // {
-                //     foreach (var ai in characterBody.master.aiComponents)
-                //     {
-                //         ai.currentEnemy.gameObject = target.gameObject;
-                //         ai.enemyAttention = duration + 1f;
-                //     }
-                //     inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
-                // }
-                // if (characterDirection)
-                // {
-                //     characterDirection.moveVector = inputBank.aimDirection;
-                // }
+                if (target)
+                {
+                    foreach (var ai in characterBody.master.aiComponents)
+                    {
+                        ai.currentEnemy.gameObject = target.gameObject;
+                        ai.enemyAttention = duration + 1f;
+                    }
+                    inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
+                }
+                if (characterDirection)
+                {
+                    characterDirection.moveVector = inputBank.aimDirection;
+                }
             }
+            projectileOrigin = FindModelChild(childOrigin);
+            modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animName, playbackRateParamName, duration);
         }
 
@@ -72,7 +75,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.FixedUpdate();
 
             characterDirection.forward = GetAimRay().direction.normalized;
-            if (fixedAge > attack && isAuthority && !hasAttacked)
+            if (modelAnimator.GetFloat("WeaponThrow.throw") > 0.9f && isAuthority && !hasAttacked)
             {
                 FireProjectile();
                 hasAttacked = true;
@@ -90,13 +93,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             {
                 var aimRay = GetAimRay();
 
+                var position = aimRay.origin;
+                if (projectileOrigin)
+                {
+                    position = projectileOrigin.position;
+                }
+
                 var info = new FireProjectileInfo
                 {
                     crit = RollCrit(),
                     damage = damageStat * damageCoefficient,
                     force = force,
                     owner = base.gameObject,
-                    position = aimRay.origin,
+                    position = position,
                     rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                     projectilePrefab = projectilePrefab,
                     damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),

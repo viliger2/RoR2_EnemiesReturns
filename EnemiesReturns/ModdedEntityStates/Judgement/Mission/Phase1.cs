@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
+    [RegisterEntityState]
     public class Phase1 : BaseState
     {
         public static string phaseControllerChildString = "Phase1";

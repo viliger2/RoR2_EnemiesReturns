@@ -9,12 +9,9 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 {
-
     public class LeapDash : BaseLeapDash
     {
         public override float damageCoefficient => 2f;
-
-        public override float liftOffTimer => 1.7f / 1f; // 1 is animation speed
 
         public override float force => 0f;
 
@@ -24,13 +21,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 
         public override float upwardVelocity => 30f;
 
-        public override float forwardVelocity => 70f;
+        public override float forwardVelocity => 80f;
 
         public override float minimumY => 0.05f;
 
-        public override float aimVelocity => 0f;
+        public override float aimVelocity => 20f;
 
-        public override float airControl => 1f;
+        public override float airControl => 10f;
 
         public override float additionalGravity => 0f;
 
@@ -40,11 +37,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 
         public static GameObject projectilePrefab;
 
-        public static float projectileSpawnTime = 0.2f;
+        public static float distanceBetweenProjectiles = 13f;
 
         public static float projectileDamage = 2f;
 
-        private float timer;
+        private Vector3 lastPosition;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            lastPosition = transform.position;
+        }
 
         public override void SetNextStateAuthority()
         {
@@ -58,34 +61,37 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
             {
                 return;
             }
-            timer += GetDeltaTime();
-            if (isAuthority && timer >= projectileSpawnTime)
+
+            if (isAuthority)
             {
-                Vector3 position;
+                Vector3 newPosition;
                 if (characterMotor.Motor.GroundingStatus.IsStableOnGround)
                 {
-                    position = characterBody.footPosition;
+                    newPosition = characterBody.footPosition;
                 } else if (Physics.Raycast(transform.position, Vector3.down, out var hitInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                 {
-                    position = hitInfo.point;
+                    newPosition = hitInfo.point;
                 } else
                 {
-                    position = transform.position;
+                    newPosition = transform.position;
                 }
 
-                var projectileInfo = new FireProjectileInfo()
+                if (Vector3.Distance(newPosition, lastPosition) > distanceBetweenProjectiles)
                 {
-                    crit = RollCrit(),
-                    owner = base.gameObject,
-                    position = position,
-                    projectilePrefab = projectilePrefab,
-                    rotation = Quaternion.identity,
-                    damage = damageStat * projectileDamage
-                };
 
-                ProjectileManager.instance.FireProjectile(projectileInfo);
+                    var projectileInfo = new FireProjectileInfo()
+                    {
+                        crit = RollCrit(),
+                        owner = base.gameObject,
+                        position = newPosition,
+                        projectilePrefab = projectilePrefab,
+                        rotation = Quaternion.identity,
+                        damage = damageStat * projectileDamage
+                    };
 
-                timer -= projectileSpawnTime;
+                    ProjectileManager.instance.FireProjectile(projectileInfo);
+                    lastPosition = newPosition;
+                }
             }
         }
     }

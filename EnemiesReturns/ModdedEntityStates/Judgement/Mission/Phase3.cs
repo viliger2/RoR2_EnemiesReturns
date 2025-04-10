@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
+    [RegisterEntityState]
     public class Phase3 : BaseState
     {
         public static float spawnDelay = 3f;

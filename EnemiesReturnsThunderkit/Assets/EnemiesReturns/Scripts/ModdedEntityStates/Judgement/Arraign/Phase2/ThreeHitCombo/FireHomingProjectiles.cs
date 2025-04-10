@@ -10,7 +10,7 @@ using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo
 {
-    public class FireHomingProjectiles : BaseState
+    public class FireHomingProjectiles : GenericCharacterMain
     {
         public static float baseInitialDelay = 0.68f;
 
@@ -66,26 +66,26 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
                 PlayCrossfade("FireHomingOrbs", "FireHomingOrb", 0.1f);
                 if (isAuthority)
                 {
-                    // Quaternion lookRotation;
-                    // if (fireRotationHelper)
-                    // {
-                    //     lookRotation = Util.QuaternionSafeLookRotation(fireRotationHelper.position - origin.position, Vector3.up);
-                    // } else
-                    // {
-                    //     lookRotation = Util.QuaternionSafeLookRotation(origin.forward);
-                    // }
-                    // var info = new FireProjectileInfo
-                    // {
-                    //     crit = RollCrit(),
-                    //     damage = damageStat * damageCoefficient,
-                    //     force = 0f,
-                    //     owner = base.gameObject,
-                    //     position = origin.position,
-                    //     rotation = lookRotation,
-                    //     projectilePrefab = projectilePrefab,
-                    //     damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
-                    // };
-                    // ProjectileManager.instance.FireProjectile(info);
+                    Quaternion lookRotation;
+                    if (fireRotationHelper)
+                    {
+                        lookRotation = Util.QuaternionSafeLookRotation(fireRotationHelper.position - origin.position, Vector3.up);
+                    } else
+                    {
+                        lookRotation = Util.QuaternionSafeLookRotation(origin.forward);
+                    }
+                    var info = new FireProjectileInfo
+                    {
+                        crit = RollCrit(),
+                        damage = damageStat * damageCoefficient,
+                        force = 0f,
+                        owner = base.gameObject,
+                        position = origin.position,
+                        rotation = lookRotation,
+                        //projectilePrefab = projectilePrefab,
+                        damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
+                    };
+                    ProjectileManager.instance.FireProjectile(info);
                 }
                 timer -= fireRate;
             }

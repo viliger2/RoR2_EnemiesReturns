@@ -1,4 +1,5 @@
-﻿using EntityStates.GameOver;
+﻿using EnemiesReturns.Reflection;
+using EntityStates.GameOver;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,8 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Ending
 {
-    internal class JudgementEndingPlayCutscene : BaseGameOverControllerState
+    [RegisterEntityState]
+    public class JudgementEndingPlayCutscene : BaseGameOverControllerState
     {
         public override void FixedUpdate()
         {

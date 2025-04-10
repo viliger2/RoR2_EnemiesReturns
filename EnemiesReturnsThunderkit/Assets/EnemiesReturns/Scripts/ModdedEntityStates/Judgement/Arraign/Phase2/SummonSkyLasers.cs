@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿//using EnemiesReturns.Components;
+using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
 using System;
@@ -43,32 +44,32 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             //     return;
             // }
 
-            //totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
+            // totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
 
-            var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
-            if (sceneChildLocator)
-            {
-                var laserPoints = sceneChildLocator.FindChild("LaserSpawnPoints");
-                if (laserPoints)
-                {
-                    laserPointLocator = laserPoints.gameObject.GetComponent<ChildLocator>();
-                }
-            }
+            // var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
+            // if (sceneChildLocator)
+            // {
+            //     var laserPoints = sceneChildLocator.FindChild("LaserSpawnPoints");
+            //     if (laserPoints)
+            //     {
+            //         laserPointLocator = laserPoints.gameObject.GetComponent<ChildLocator>();
+            //     }
+            // }
 
-            if (laserPointLocator)
-            {
-                var staringIndex = UnityEngine.Random.Range(0, laserPointLocator.Count);
-                for (int i = 0; i < totalLaserCount; i++)
-                {
-                    SummonSkyLaser(laserPointLocator.FindChild((staringIndex + i) % laserPointLocator.Count));
-                }
-            } else
-            {
-                for (int i = 0; i < totalLaserCount; i++)
-                {
-                    SummonSkyLaser(null);
-                }
-            }
+            // if (laserPointLocator)
+            // {
+            //     var staringIndex = UnityEngine.Random.Range(0, laserPointLocator.Count);
+            //     for (int i = 0; i < totalLaserCount; i++)
+            //     {
+            //         SummonSkyLaser(laserPointLocator.FindChild((staringIndex + i) % laserPointLocator.Count));
+            //     }
+            // } else
+            // {
+            //     for (int i = 0; i < totalLaserCount; i++)
+            //     {
+            //         SummonSkyLaser(null);
+            //     }
+            // }
         }
 
         public override void FixedUpdate()

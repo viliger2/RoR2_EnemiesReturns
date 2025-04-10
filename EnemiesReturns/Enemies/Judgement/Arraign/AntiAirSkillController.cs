@@ -30,6 +30,12 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             timer += Time.fixedDeltaTime;
             if(timer > checkTimer)
             {
+                timer -= checkTimer;
+                if (!antiAirSkill.IsReady())
+                {
+                    return;
+                }
+
                 bool emssFree = true;
                 foreach(var esm in esms)
                 {
@@ -53,7 +59,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                         }
                     }
                 }
-                timer -= checkTimer;
             }
         }
     }

@@ -65,7 +65,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
             if (itemFound) 
             {
                 var vector = Vector3.up * 20f + transform.forward * 2f;
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop._equipmentIndex), bodyObject.transform.position, vector);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, vector);
             }
         }
 

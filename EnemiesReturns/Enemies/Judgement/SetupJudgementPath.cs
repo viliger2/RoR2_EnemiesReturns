@@ -31,13 +31,17 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static void Hooks()
         {
-            On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
-            if (Configuration.Judgement.EnableAeonianSkins.Value)
+            if (Configuration.Judgement.Enabled.Value)
             {
-                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
-                IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
-                On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
-                IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
+                On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
+                if (Configuration.Judgement.EnableAeonianSkins.Value)
+                {
+                    RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
+                    IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
+                    On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
+                    IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
+                }
             }
         }
 

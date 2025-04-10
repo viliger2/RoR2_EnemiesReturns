@@ -4,7 +4,5 @@ using System.Text;
 
 namespace EnemiesReturns.Reflection
 {
-    internal class RegisterEntityState : Attribute
-    {
-    }
+    internal class RegisterEntityState : Attribute { }
 }

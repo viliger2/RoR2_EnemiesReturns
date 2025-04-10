@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -8,6 +9,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
 {
+    [RegisterEntityState]
     public class WaveActive : BaseJudgementIntaractable
     {
         public override void OnEnter()

@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
@@ -8,11 +9,12 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 {
+    [RegisterEntityState]
     public class MainState : GenericCharacterMain
     {
         public static float laserRange = 15f;
 
-        public static float lifetime = 30f;
+        public static float lifetime = 20f;
 
         public static string hitBoxGroupName = "Laser";
 

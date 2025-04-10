@@ -1,4 +1,6 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap;
+using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -8,38 +10,24 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
-    public class EnterSkyLeap : BaseState
+    [RegisterEntityState]
+    public class EnterSkyLeap : BaseEnterSkyLeap
     {
-        public static float baseDuration = 2.0f;
+        public override float baseDuration => 1.5f;
 
-        public static string soundString;
+        public override string soundString => "";
 
-        private float duration;
+        public override string layerName => "Gesture, Override";
 
-        public override void OnEnter()
+        public override string stateName => "EnterSkyLeap";
+
+        public override string playbackRateParam => "SkyLeap.playbackRate";
+
+        public override bool addBuff => true;
+
+        public override void SetNextStateAuthority()
         {
-            base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
-            Util.PlaySound(soundString, base.gameObject);
-            PlayAnimation("Gesture, Override", "EnterSkyLeap", "SkyLeap.playbackRate", duration);
-            if (NetworkServer.active) 
-            {
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.ArmorBoost, baseDuration);
-            }
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if(isAuthority && fixedAge > duration)
-            {
-                outer.SetNextState(new HoldSkyLeap());
-            }
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Frozen;
+            outer.SetNextState(new HoldSkyLeap());
         }
     }
 }

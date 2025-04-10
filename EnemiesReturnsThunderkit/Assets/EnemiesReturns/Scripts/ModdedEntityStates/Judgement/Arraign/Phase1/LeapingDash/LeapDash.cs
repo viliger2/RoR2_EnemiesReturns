@@ -13,8 +13,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
     {
         public override float damageCoefficient => 2f;
 
-        public override float liftOffTimer => 1.7f / 1f; // 1 is animation speed
-
         public override float force => 0f;
 
         public override float procCoefficient => 1f;
@@ -23,13 +21,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.LeapingDash
 
         public override float upwardVelocity => 30f;
 
-        public override float forwardVelocity => 70f;
+        public override float forwardVelocity => 80f;
 
         public override float minimumY => 0.05f;
 
-        public override float aimVelocity => 0f;
+        public override float aimVelocity => 20f;
 
-        public override float airControl => 1f;
+        public override float airControl => 10f;
 
         public override float additionalGravity => 0f;
 

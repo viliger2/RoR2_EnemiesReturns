@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: sdArraignP2Special
+  m_Name: sdArraignP2SkyLaser
   m_EditorClassIdentifier: 
   skillName: SkyLaser
-  skillNameToken: ENEMIES_RETURNS_ARRAIGNP2_SPECIAL_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP2_SPECIAL_DESC
+  skillNameToken: ENEMIES_RETURNS_ARRAIGNP2_SKYLASER_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP2_SKYLASER_DESC
   keywordTokens: []
   icon: {fileID: 0}
   activationStateMachineName: Body
@@ -22,7 +22,7 @@ MonoBehaviour:
     _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 30
+  baseRechargeInterval: 40
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
