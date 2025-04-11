@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.ArcherBug;
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
@@ -186,6 +187,8 @@ namespace EnemiesReturns
                 CreateMechanicalSpider(assets, iconLookup, acdLookup);
 
                 CreateLynxTribe(assets, iconLookup, acdLookup, rampLookups);
+
+                CreateArcherBug(assets, iconLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -643,6 +646,20 @@ namespace EnemiesReturns
             }
 
             return dtColossus;
+        }
+
+        private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
+            unlockablesList.Add(archerBugLog);
+
+            var archerBugBody = new ArcherBugBody();
+
+            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texSpitterIcon"], archerBugLog);
+            bodyList.Add(ArcherBugBody.BodyPrefab);
+
+            ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
+            masterList.Add(ArcherBugMaster.MasterPrefab);
         }
 
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
