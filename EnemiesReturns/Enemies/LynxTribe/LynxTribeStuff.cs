@@ -242,7 +242,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
 
             var combatSquad = shrinePrefab.AddComponent<CombatSquad>();
-            combatSquad.grantBonusHealthInMultiplayer = true;
+            combatSquad.grantBonusHealthInMultiplayer = true; // TODO: config
 
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
             spawner.spawnCards = new SpawnCard[]

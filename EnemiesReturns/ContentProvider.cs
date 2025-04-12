@@ -1198,6 +1198,7 @@ namespace EnemiesReturns
             spawnCardShrine1.occupyPosition = true;
             spawnCardShrine1.eliteRules = SpawnCard.EliteRules.Default;
             spawnCardShrine1.orientToFloor = false;
+            spawnCardShrine1.maxSpawnsPerStage = 2; // TODO: config
 
             var dcLynxShrine1 = new DirectorCard
             {
