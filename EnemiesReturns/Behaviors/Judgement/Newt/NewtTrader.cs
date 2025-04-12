@@ -16,6 +16,8 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
 
         public ItemDef itemToGive;
 
+        public string chatMessageOnInteraction;
+
         [SyncVar]
         public bool available;
 
@@ -81,6 +83,11 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
 
             var vector = Vector3.up * 20f + transform.forward * 8f;
             PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(itemToGive.itemIndex), this.gameObject.transform.position, vector);
+
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = chatMessageOnInteraction,
+            });
         }
 
         public bool ShouldIgnoreSpherecastForInteractibility([NotNull] Interactor activator)

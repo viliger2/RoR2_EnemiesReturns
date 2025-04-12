@@ -34,6 +34,7 @@ namespace EnemiesReturns.Enemies.Judgement
             if (Configuration.Judgement.Enabled.Value)
             {
                 On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
@@ -45,6 +46,54 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
+        private static void BazaarAddMessageIfPlayersWithRock(Stage stage)
+        {
+            if(stage.sceneDef.cachedName != "bazaar")
+            {
+                return;
+            }
+
+            var itemFound = false;
+            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            {
+                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                {
+                    continue;
+                }
+
+                if (!playerCharacterMaster.master.inventory)
+                {
+                    continue;
+                }
+
+                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.TradableRock) > 0)
+                {
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (!itemFound)
+            {
+                return;
+            }
+
+            var shopkeeperTrigger = GameObject.Find("HOLDER: Store/HOLDER: Store Platforms/ShopkeeperPosition/SpawnShopkeeperTrigger");
+            if (!shopkeeperTrigger)
+            {
+                return;
+            }
+
+            var gameObject = shopkeeperTrigger.gameObject;
+            var chatMessage = gameObject.AddComponent<SendChatMessage>();
+            chatMessage.messageToken = "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER";
+            chatMessage.withDelay = true;
+            chatMessage.delay = 3f;
+
+            var onPlayerEnterEvent = shopkeeperTrigger.gameObject.GetComponent<OnPlayerEnterEvent>();
+            onPlayerEnterEvent.action.AddListener(chatMessage.Send);
+        }
+
         private static void HideHiddenSkinDefs(ILContext il)
         {
             ILCursor c = new ILCursor(il);
@@ -52,9 +101,6 @@ namespace EnemiesReturns.Enemies.Judgement
             ILLabel lable = null;
             var jumpMatch = c.TryGotoNext(MoveType.After,
                 x => x.MatchBrfalse(out lable));
-
-            //var insertMatch = c.TryGotoPrev(MoveType.Before,
-            //    x => x.MatchCall<RoR2.EntitlementManagement.EntitlementManager>(nameof(RoR2.EntitlementManagement.LocalUserEntitlementTracker.UserHasEntitlementForUnlockable)));
 
             if(jumpMatch)
             {
@@ -353,6 +399,7 @@ namespace EnemiesReturns.Enemies.Judgement
             newtTrader.itemToTake = Content.Items.TradableRock;
             newtTrader.itemToGive = Content.Items.LunarFlower;
             newtTrader.available = true; // TODO: eh?
+            newtTrader.chatMessageOnInteraction = "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE";
 
             var procFilter = shopkeeperBody.AddComponent<InteractionProcFilter>();
             procFilter.shouldAllowOnInteractionBeginProc = false;
