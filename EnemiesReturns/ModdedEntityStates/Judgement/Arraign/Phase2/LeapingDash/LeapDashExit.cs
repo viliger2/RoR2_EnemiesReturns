@@ -11,6 +11,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
     {
         public static float baseDuration = 1.5f;
 
+        public static float additionalGravity = -10f;
+
         private float duration;
 
         public override void OnEnter()
@@ -23,7 +25,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+
+            if (isAuthority)
+            {
+                characterMotor.velocity.y += additionalGravity * GetDeltaTime();
+            }
+
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

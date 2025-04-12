@@ -42,7 +42,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (arraignIsImmune && !endGameBossWeaponDamage)
             {
                 damageInfo.rejected = true;
-                RenderDamageNumber();
+                RenderDamageNumber(damageInfo.position);
             }
 
             if (arraignIsImmune && endGameBossWeaponDamage)
@@ -53,25 +53,25 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (body.HasBuff(Content.Buffs.ImmuneToHammer) && endGameBossWeaponDamage)
             {
                 damageInfo.rejected = true;
-                RenderDamageNumber();
+                RenderDamageNumber(damageInfo.position);
             }
         }
 
-        public void RenderDamageNumber()
+        public void RenderDamageNumber(Vector3 position)
         {
             if (ImmuneDamageNumbers.instance)
             {
-                ImmuneDamageNumbers.instance.SpawnDamageNumber(body.corePosition);
-                RpcRenderDamageNumber();
+                ImmuneDamageNumbers.instance.SpawnDamageNumber(position);
+                RpcRenderDamageNumber(position);
             }
         }
 
         [ClientRpc]
-        private void RpcRenderDamageNumber()
+        private void RpcRenderDamageNumber(Vector3 position)
         {
             if (ImmuneDamageNumbers.instance && !NetworkServer.active)
             {
-                ImmuneDamageNumbers.instance.SpawnDamageNumber(body.corePosition);
+                ImmuneDamageNumbers.instance.SpawnDamageNumber(position);
             }
         }
 

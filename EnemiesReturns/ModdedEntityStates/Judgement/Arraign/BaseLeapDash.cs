@@ -54,11 +54,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public override void OnExit()
         {
-            characterMotor.airControl = previousAirControl;
-            characterMotor.onMovementHit -= OnMovementHit;
-            characterMotor.moveDirection = Vector3.zero;
-            characterMotor.velocity = Vector3.zero;
-            characterDirection.moveVector = Vector3.zero;
+            if (isAuthority)
+            {
+                characterMotor.airControl = previousAirControl;
+                characterMotor.onMovementHit -= OnMovementHit;
+                characterMotor.moveDirection = new Vector3(0f, characterMotor.moveDirection.y, 0f);
+                characterMotor.velocity = new Vector3(0f, characterMotor.velocity.y, 0f);
+                characterDirection.moveVector = new Vector3(0f, characterDirection.moveVector.y, 0f);
+            }
             PlayCrossfade(layerName, "BufferEmpty", 0.1f);
             base.OnExit();
         }
