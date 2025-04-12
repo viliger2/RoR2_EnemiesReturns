@@ -187,7 +187,7 @@ Transform:
   - {fileID: 4979729659283697842}
   m_Father: {fileID: 2371906571758304055}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.9802, y: 0, z: 0}
 --- !u!1 &1466123941211088737
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ Transform:
   - {fileID: 5493584861810311715}
   m_Father: {fileID: 1500315079575077679}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
 --- !u!1 &6326729806333557816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1007,7 @@ Transform:
   - {fileID: 1795127869725252512}
   m_Father: {fileID: 3685438879359117559}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
 --- !u!1 &7584096004318281315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1039,7 @@ Transform:
   - {fileID: 7034755168698238272}
   m_Father: {fileID: 8084372334202385810}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0, z: 0}
 --- !u!1 &8431601164504853856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500315079575077679}
   - component: {fileID: 4924177388316961593}
+  - component: {fileID: 7691589277150476466}
   m_Layer: 0
   m_Name: TeleporterVessel(Clone)
   m_TagString: Untagged
@@ -1096,6 +1097,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7691589277150476466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431601164504853856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -46258121, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundCenter: {fileID: 8431601164504853856}
 --- !u!1 &8443512721340281840
 GameObject:
   m_ObjectHideFlags: 0
