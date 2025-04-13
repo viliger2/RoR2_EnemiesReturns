@@ -22,6 +22,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void OnEnter()
         {
             base.OnEnter();
+
+            var childLocator = gameObject.GetComponent<ChildLocator>();
+            if (childLocator)
+            {
+                var judgementMission = childLocator.FindChild("JudgementMission");
+                if(judgementMission)
+                {
+                    judgementMission.gameObject.SetActive(false);
+                }
+            }
+
             if (NetworkServer.active)
             {
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
@@ -48,21 +59,21 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     }
                 }
 
-                ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Player);
-                for (int i = 0; i < teamMembers.Count; i++)
-                {
-                    GameObject gameObject = teamMembers[i].gameObject;
-                    CharacterBody component = gameObject.GetComponent<CharacterBody>();
-                    if ((bool)component)
-                    {
-                        EffectManager.SpawnEffect(destroyEffectPrefab, new EffectData
-                        {
-                            origin = component.corePosition,
-                            scale = component.radius
-                        }, transmit: true);
-                        EntityState.Destroy(gameObject.gameObject);
-                    }
-                }
+                //ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Player);
+                //for (int i = 0; i < teamMembers.Count; i++)
+                //{
+                //    GameObject gameObject = teamMembers[i].gameObject;
+                //    CharacterBody component = gameObject.GetComponent<CharacterBody>();
+                //    if ((bool)component)
+                //    {
+                //        EffectManager.SpawnEffect(destroyEffectPrefab, new EffectData
+                //        {
+                //            origin = component.corePosition,
+                //            scale = component.radius
+                //        }, transmit: true);
+                //        EntityState.Destroy(gameObject.gameObject);
+                //    }
+                //}
             }
         }
 
@@ -73,8 +84,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (fixedAge > delay && !ended && NetworkServer.active)
             {
                 ended = true;
-
-
                 Run.instance.BeginGameOver(Content.GameEndings.SurviveJudgement);
             }
         }
