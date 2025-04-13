@@ -50,7 +50,15 @@ PrefabInstance:
     - target: {fileID: 3274917509634399284, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: special
       value: 
-      objectReference: {fileID: 2994507521334374443}
+      objectReference: {fileID: 3882888290602294189}
+    - target: {fileID: 3274917509634399284, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: utility
+      value: 
+      objectReference: {fileID: 8530705000045727938}
+    - target: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: skillName
+      value: DashAttackP2
+      objectReference: {fileID: 0}
     - target: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: _skillFamily
       value: 
@@ -238,7 +246,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789288941719909421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770c27b8add239a4da95823a614320fa, type: 3}
   m_Name: 
@@ -280,6 +288,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -197296741, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8530705000045727938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+  m_PrefabInstance: {fileID: 6406446765822474127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789288941719909421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &9176156454617969060 stripped
