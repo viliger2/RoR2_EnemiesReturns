@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 6901127484365222981}
   - component: {fileID: 3144661129749043747}
   - component: {fileID: 4432561514256048178}
+  - component: {fileID: 6028010795321098228}
   m_Layer: 0
   m_Name: JudgementInteractable
   m_TagString: Untagged
@@ -307,6 +308,19 @@ MonoBehaviour:
   transformPairs:
   - name: BeamEffect
     transform: {fileID: 7192728530995485611}
+--- !u!114 &6028010795321098228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234055060497005250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 288573216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pingIconOverride: {fileID: 21300000, guid: 0f1ec539938c56140b31c786eb9de41e, type: 3}
 --- !u!1 &607795352906357997
 GameObject:
   m_ObjectHideFlags: 0
