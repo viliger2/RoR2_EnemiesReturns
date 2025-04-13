@@ -15,7 +15,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap
     {
         public override float baseDuration => 1.5f;
 
-        public override float baseTargetMarked => 0.75f;
+        public override float baseTargetMarked => 0.5f;
+
+        public override float baseTargetDropped => 0.75f;
 
         public override void SetNextStateAuthority(Vector3 dropPosition)
         {

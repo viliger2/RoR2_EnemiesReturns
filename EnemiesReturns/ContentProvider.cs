@@ -296,6 +296,8 @@ namespace EnemiesReturns
                     ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
 
                     ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.effectPrefab = assets.First(asset => asset.name == "ClockZoneEffect");
+
+                    ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -617,6 +619,7 @@ namespace EnemiesReturns
 
                 var laserEffect = colossusStuff.CreateLaserEffect();
                 Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
+                ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam.SwordBeamLoop.beamPrefab = laserEffect; // TODO: !!!!
 
                 var colossusBody = new ColossusBody();
                 ColossusBody.Skills.Stomp = colossusBody.CreateStompSkill();

@@ -15,9 +15,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         public abstract float baseTargetMarked { get; }
 
+        public abstract float baseTargetDropped { get; }
+
+        public static GameObject dropEffectPrefab;
+
         private float duration;
 
         private float targetMarked;
+
+        private float targetDropped;
 
         private CharacterModel characterModel;
 
@@ -27,15 +33,20 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         private bool isTargetMarked;
 
+        private bool isTargetDropped;
+
         private GameObject target;
 
         private TemporaryVisualEffect tempEffect;
+
+        private Vector3 dropPosition;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             targetMarked = baseTargetMarked/ attackSpeedStat;
+            targetDropped = baseTargetDropped / attackSpeedStat;
             Transform modelTransform = GetModelTransform();
             if (modelTransform)
             {
@@ -82,26 +93,41 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 isTargetMarked = true;
             }
 
-            if(base.fixedAge > duration)
+            if (base.fixedAge > targetDropped && !isTargetDropped)
             {
                 if (tempEffect)
                 {
                     tempEffect.visualState = TemporaryVisualEffect.VisualState.Exit;
                 }
-                if (isAuthority)
+
+                Vector3 originalPosition;
+                if (target)
                 {
-                    Vector3 dropPosition;
-                    if (target)
-                    {
-                        dropPosition = target.transform.position;
-                    }
-                    else
-                    {
-                        dropPosition = base.transform.position;
-                    }
-                    base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
-                    SetNextStateAuthority(dropPosition);
+                    originalPosition = target.transform.position;
                 }
+                else
+                {
+                    originalPosition = base.transform.position;
+                }
+                if (Physics.Raycast(originalPosition + Vector3.up * 2f, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                {
+                    dropPosition = raycastInfo.point;
+                }
+                else
+                {
+                    dropPosition = originalPosition;
+                }
+
+                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
+
+                EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
+
+                isTargetDropped = true;
+            }
+
+            if (isAuthority && base.fixedAge > duration)
+            {
+                SetNextStateAuthority(dropPosition);
             }
         }
 
