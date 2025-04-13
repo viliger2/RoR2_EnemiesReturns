@@ -253,8 +253,8 @@ namespace EnemiesReturns
                     _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                     _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                    var interactable = assets.First(asset => asset.name == "JudgementInteractable");
-                    nopList.Add(interactable);
+                    SetupJudgementPath.JudgementInteractable = assets.First(asset => asset.name == "JudgementInteractable");
+                    nopList.Add(SetupJudgementPath.JudgementInteractable);
 
                     SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
                     SetupJudgementPath.PileOfDirt = SetupJudgementPath.SetupLunarKey(SetupJudgementPath.PileOfDirt);

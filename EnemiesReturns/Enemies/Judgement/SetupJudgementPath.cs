@@ -21,6 +21,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject BrokenTeleporter;
 
+        public static GameObject JudgementInteractable;
+
         public static Texture2D aeonianEliteRamp;
 
         public static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
@@ -445,6 +447,5 @@ namespace EnemiesReturns.Enemies.Judgement
 
             return prefab;
         }
-
     }
 }
