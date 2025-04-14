@@ -44,8 +44,11 @@ namespace EnemiesReturns.Behaviors
 
         private void Awake()
         {
-            combatSquad.onMemberDiscovered += CombatSquad_onMemberDiscovered;
-            combatSquad.onMemberLost += CombatSquad_onMemberLost;
+            if (combatSquad)
+            {
+                combatSquad.onMemberDiscovered += CombatSquad_onMemberDiscovered;
+                combatSquad.onMemberLost += CombatSquad_onMemberLost;
+            }
 
             if (!NetworkServer.active)
             {
