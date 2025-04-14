@@ -19,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public float delay = 0.5f;
         private bool ended = false;
 
+        public static event Action onArraignDefeated;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -35,45 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
             if (NetworkServer.active)
             {
-                if (Configuration.Judgement.EnableAnointedSkins.Value)
-                {
-                    foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
-                    {
-                        if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                        {
-                            continue;
-                        }
-
-                        var body = playerCharacterMaster.master.GetBody();
-                        if (!body)
-                        {
-                            continue;
-                        }
-
-                        string bodyName = body.name.Replace("(Clone)", "");
-
-                        if (Enemies.Judgement.SetupJudgementPath.AnointedSkinsUnlockables.TryGetValue(bodyName.Trim().ToLower(), out var unlockable))
-                        {
-                            Run.instance.GrantUnlockToSinglePlayer(unlockable, body);
-                        }
-                    }
-                }
-
-                //ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Player);
-                //for (int i = 0; i < teamMembers.Count; i++)
-                //{
-                //    GameObject gameObject = teamMembers[i].gameObject;
-                //    CharacterBody component = gameObject.GetComponent<CharacterBody>();
-                //    if ((bool)component)
-                //    {
-                //        EffectManager.SpawnEffect(destroyEffectPrefab, new EffectData
-                //        {
-                //            origin = component.corePosition,
-                //            scale = component.radius
-                //        }, transmit: true);
-                //        EntityState.Destroy(gameObject.gameObject);
-                //    }
-                //}
+                onArraignDefeated?.Invoke(); 
             }
         }
 

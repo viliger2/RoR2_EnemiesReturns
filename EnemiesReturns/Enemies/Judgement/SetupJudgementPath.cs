@@ -7,6 +7,7 @@ using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
@@ -27,6 +28,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
 
+        public static Dictionary<UnlockableDef, string> AnointedSkinsUnlockables2 = new Dictionary<UnlockableDef, string>();
+
         private static HashSet<SkinDef> AnointedSkins;
 
         private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
@@ -41,10 +44,88 @@ namespace EnemiesReturns.Enemies.Judgement
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
+                    RoR2.AchievementManager.onAchievementsRegistered += CreateAnointedAchievements;
                     IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
                     On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                     IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
                 }
+            }
+        }
+
+        // Holy Sigmar, bless this ravaged code
+        // but seriously I copy pasted like half of the method, I hope this works
+        private static void CreateAnointedAchievements()
+        {
+            for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
+            {
+                var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
+                if (!survivorDef)
+                {
+                    continue;
+                }
+
+                var bodyName = survivorDef.bodyPrefab.name.Trim();
+
+                if(!AnointedSkinsUnlockables.TryGetValue(bodyName, out UnlockableDef skinUnlockable))
+                {
+#if DEBUG || NOWEAVER
+                    Log.Info($"Couldn't find Anointed UnlockableDef for body {bodyName}, most likely because it is in blacklist.");
+#endif
+                    continue;
+                }
+
+                AchievementDef cheevoDef = new AchievementDef
+                {
+                    identifier = bodyName + "JudgementCleared",
+                    unlockableRewardIdentifier = skinUnlockable.cachedName,
+                    prerequisiteAchievementIdentifier = null,
+                    nameToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_NAME",
+                    descriptionToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_DESC",
+                    type = typeof(Achievements.JudgementClearedAchievement),
+                    serverTrackerType = typeof(Achievements.JudgementClearedAchievement.JudgementClearedServerAchievement),
+                    lunarCoinReward = 10u
+                };
+
+                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
+                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
+
+                if (skinUnlockable.achievementIcon)
+                {
+                    cheevoDef.SetAchievedIcon(skinUnlockable.achievementIcon);
+                }
+
+                AchievementManager.achievementIdentifiers.Add(cheevoDef.identifier);
+                AchievementManager.achievementNamesToDefs.Add(cheevoDef.identifier, cheevoDef);
+                HG.ArrayUtils.ArrayAppend(ref AchievementManager.achievementDefs, cheevoDef);
+
+                if (skinUnlockable)
+                {
+                    skinUnlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???"); // TODO
+                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC")); // TODO
+                }
+            }
+
+            AchievementManager.SortAchievements(AchievementManager.achievementDefs);
+            AchievementManager.serverAchievementDefs = AchievementManager.achievementDefs.Where((AchievementDef achievementDef) => achievementDef.serverTrackerType != null).ToArray();
+            for (int j = 0; j < AchievementManager.achievementDefs.Length; j++)
+            {
+                AchievementManager.achievementDefs[j].index = new AchievementIndex
+                {
+                    intValue = j
+                };
+            }
+            for (int k = 0; k < AchievementManager.serverAchievementDefs.Length; k++)
+            {
+                AchievementManager.serverAchievementDefs[k].serverIndex = new ServerAchievementIndex
+                {
+                    intValue = k
+                };
+            }
+
+            for (int l = 0; l < AchievementManager.achievementIdentifiers.Count; l++)
+            {
+                string currentAchievementIdentifier = AchievementManager.achievementIdentifiers[l];
+                AchievementManager.achievementNamesToDefs[currentAchievementIdentifier].childAchievementIdentifiers = AchievementManager.achievementIdentifiers.Where((string v) => AchievementManager.achievementNamesToDefs[v].prerequisiteAchievementIdentifier == currentAchievementIdentifier).ToArray();
             }
         }
 
@@ -219,7 +300,9 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
-            List<SkinDef> anointedSkins = new List<SkinDef>();
+            var icon = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Achievements/texToolbotClearGameMonsoonIcon.png").WaitForCompletion(); // TODO
+
+            List <SkinDef> anointedSkins = new List<SkinDef>();
             for(int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
             {
                 var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
@@ -294,7 +377,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                     var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
                     eliteSkinDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
-                    //eliteSkinDef.icon = ;
+                    eliteSkinDef.icon = icon; // TODO
 
                     if (!Configuration.Judgement.ForceUnlock.Value)
                     {
@@ -303,8 +386,10 @@ namespace EnemiesReturns.Enemies.Judgement
                         skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
                         skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
                         skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
+                        skinUnlockDef.achievementIcon = icon; // TODO
 
-                        AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim().ToLower(), skinUnlockDef);
+                        AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim(), skinUnlockDef);
+                        AnointedSkinsUnlockables2.Add(skinUnlockDef, survivorDef.bodyPrefab.name.Trim());
 
                         eliteSkinDef.unlockableDef = skinUnlockDef;
 
