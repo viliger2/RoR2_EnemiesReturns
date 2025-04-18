@@ -51,12 +51,10 @@ namespace EnemiesReturns
 #if DEBUG == true
             On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
 #endif
-
-            var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Each enemy gets their own config file. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
-
-            Log.Init(Logger);
-
             var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
+            Log.Init(Logger);
+#if DEBUG == false && NOWEAVER == false
+            var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Each enemy gets their own config file. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
 
             if (UseConfigFile.Value)
             {
@@ -67,6 +65,18 @@ namespace EnemiesReturns
                 }
             }
             else
+            {
+                MakeNonConfigs(configs);
+            }
+#else
+            MakeNonConfigs(configs);
+#endif
+            EnemiesReturns.Configuration.General.PopulateConfig(Config);
+
+            RegisterStuff();
+
+            Hooks();
+            void MakeNonConfigs(IEnumerable<System.Type> configs)
             {
                 var notSavedConfigFile = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "Config"), false)
                 {
@@ -79,11 +89,6 @@ namespace EnemiesReturns
                     config.PopulateConfig(notSavedConfigFile);
                 }
             }
-            EnemiesReturns.Configuration.General.PopulateConfig(Config);
-
-            RegisterStuff();
-
-            Hooks();
         }
 
         private void RegisterStuff()

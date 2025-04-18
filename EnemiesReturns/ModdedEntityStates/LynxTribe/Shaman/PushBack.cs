@@ -6,13 +6,10 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 {
-    // TODO: increase range, it is comically bad atm
     [RegisterEntityState]
     public class PushBack : BaseState
     {
         public static float baseDuration = 1.5f;
-
-        public static float baseAttackDelay = 1f;
 
         public static float radius => EnemiesReturns.Configuration.LynxTribe.LynxShaman.PushBackRadius.Value;
 
@@ -28,19 +25,19 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         private float duration;
 
-        private float attackDelay;
-
         private BlastAttack blastAttack;
 
         private bool isAttackFired;
 
         private Transform attackOrigin;
 
+        private Animator modelAnimator;
+
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            attackDelay = baseAttackDelay / attackSpeedStat;
+            modelAnimator = GetModelAnimator();
             PrepareAttack();
             attackOrigin = FindModelChild("StaffLowerPoint");
             if (!attackOrigin)
@@ -63,12 +60,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     scale = 2.5f
                 }, false);
             }
+
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (fixedAge > attackDelay && !isAttackFired)
+            if (modelAnimator.GetFloat("CastTeleport.attack") > 0.9f && !isAttackFired)
             {
                 if (NetworkServer.active)
                 {
@@ -78,7 +76,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     {
                         for (int i = 0; i < result.hitPoints.Length; i++)
                         {
-                            Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position).normalized * force;
+                            Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position).normalized * force + Vector3.up * force / 4f; // 4 is magic number to get 500 from 2000 default value, basically we apply 1/4th of force as Up force
                             result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
                         }
                     }
@@ -88,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                     EffectManager.SpawnEffect(explosionPrefab, new EffectData
                     {
                         origin = attackOrigin.position,
-                        scale = 4f
+                        scale = radius
                     }, false);
                 }
                 isAttackFired = true;

@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
 
         public override void OnExit()
         {
-            //PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
             base.OnExit();
         }
     }

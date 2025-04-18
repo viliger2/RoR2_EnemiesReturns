@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
     {
         public static GameObject characterLandImpactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/CharacterLandImpact.prefab").WaitForCompletion();
 
-        public static float deathEffectDuration = 0.65f;
+        public static float deathEffectDuration = 0.5833f;
 
         private Transform deathEffectOrigin;
 
