@@ -70,7 +70,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 4
     - serializedVersion: 16
       name: ArcherBugArmature|AimYaw
       takeName: ArcherBugArmature|AimYaw
@@ -99,7 +99,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 4
+      additiveReferencePoseFrame: 4.4
     - serializedVersion: 16
       name: ArcherBugArmature|Ascend
       takeName: ArcherBugArmature|Ascend
