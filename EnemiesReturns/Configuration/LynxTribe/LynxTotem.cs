@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
@@ -62,6 +63,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> LynxFetishShamanSpecialBuff;
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
+
+        public static ConfigEntry<KeyCode> SexYesEmoteKey;
 
         public void PopulateConfig(ConfigFile config)
         {
@@ -139,6 +142,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxFetishShamanSpecialBuff = config.Bind("Lynx Fetish", "Spawned Shaman Special Ability Damage Buff Value", 30f, "Damage buff of special ability value of spawned Shaman in percent.");
 
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
+
+            SexYesEmoteKey = config.Bind("Lynx Totem Emotes", "Sex:Yes Emote", KeyCode.Alpha1, "Key used to show your sexual superiority over other males.");
         }
     }
 }

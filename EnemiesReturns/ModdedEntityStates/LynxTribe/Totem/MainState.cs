@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
@@ -11,14 +12,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             base.Update();
             if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
-                //if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.NopeEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new NopeEmotePlayer(), InterruptPriority.Any);
-                //}
-                //else if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxShaman.SingEmoteKey.Value))
-                //{
-                //    this.outer.SetInterruptState(new SingEmotePlayer(), InterruptPriority.Any);
-                //}
+                if (Input.GetKeyDown(EnemiesReturns.Configuration.LynxTribe.LynxTotem.SexYesEmoteKey.Value))
+                {
+                    this.outer.SetInterruptState(new SexYesEmote(), InterruptPriority.Any);
+                }
             }
         }
     }

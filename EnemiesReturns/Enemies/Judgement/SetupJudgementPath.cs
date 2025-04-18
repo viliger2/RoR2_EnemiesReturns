@@ -56,6 +56,11 @@ namespace EnemiesReturns.Enemies.Judgement
         // but seriously I copy pasted like half of the method, I hope this works
         private static void CreateAnointedAchievements()
         {
+            if (Configuration.Judgement.ForceUnlock.Value)
+            {
+                return;
+            }
+
             for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
             {
                 var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];

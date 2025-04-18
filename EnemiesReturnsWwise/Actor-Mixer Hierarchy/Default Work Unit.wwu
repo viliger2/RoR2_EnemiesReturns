@@ -3872,6 +3872,36 @@
 														<ActiveSource Name="mDeathImpactGiantDirtA" ID="{B0918F44-4DFC-4886-9B14-B867C0137315}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Totem_SexYes" ID="{91FA2043-7E76-4BE5-8E29-FAA5453FF39A}" ShortID="881977460">
+													<PropertyList>
+														<Property Name="OverrideConversion" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="sexual_energy" ID="{85555E87-C26E-4647-89F4-964558306ADA}">
+															<Language>SFX</Language>
+															<AudioFile>LynxTribe\Totem\sexual_energy.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="534119104"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="sexual_energy" ID="{85555E87-C26E-4647-89F4-964558306ADA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="Storm" ID="{5A0D9C06-4297-46FF-A850-94EF9B4B6DD7}" ShortID="669550043">

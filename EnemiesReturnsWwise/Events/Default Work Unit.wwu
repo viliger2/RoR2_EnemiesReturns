@@ -1163,6 +1163,31 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Totem_SexYes_Play" ID="{56A8B185-8D03-4D7D-A5A5-51837320118D}">
+											<ChildrenList>
+												<Action Name="" ID="{ED547312-AE2F-46AE-8C60-335C95755771}" ShortID="733360051">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Totem_SexYes" ID="{91FA2043-7E76-4BE5-8E29-FAA5453FF39A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Totem_SexYes_Stop" ID="{897B5C2F-DEF9-4A3A-9BB9-6FE5FDEFEB1C}">
+											<ChildrenList>
+												<Action Name="" ID="{EDEFD082-A2D7-499F-86DD-2FF880CC6A9A}" ShortID="208656122">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Totem_SexYes" ID="{91FA2043-7E76-4BE5-8E29-FAA5453FF39A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Storm" ID="{617719D0-D24F-4667-94D0-A629FE1E4076}" ShortID="913043713">
