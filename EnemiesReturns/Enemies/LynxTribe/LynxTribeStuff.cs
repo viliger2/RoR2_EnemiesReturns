@@ -202,7 +202,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return spawnCardTrap;
         }
 
-        // TODO: lodsofconfig
         public GameObject CreateShrinePrefab(GameObject shrinePrefab, GameObject shrineEffect, NetworkSoundEventDef nsedFailure, NetworkSoundEventDef nsedSuccess)
         {
             shrinePrefab.AddComponent<NetworkIdentity>();
@@ -242,7 +241,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
 
             var combatSquad = shrinePrefab.AddComponent<CombatSquad>();
-            combatSquad.grantBonusHealthInMultiplayer = true; // TODO: config
+            combatSquad.grantBonusHealthInMultiplayer = Configuration.LynxTribe.LynxStuff.LynxShrineMultiplayerScaling.Value;
 
             var spawner = shrinePrefab.AddComponent<LynxTribeSpawner>();
             spawner.spawnCards = new SpawnCard[]
@@ -263,7 +262,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.dropTable = CreateLynxShrineDropTable();
             shrine.localEjectionVelocity = new Vector3(0f, 15f, 8f);
             shrine.spawner = spawner;
-            shrine.escapeDuration = 25f; // TODO: config, fine for now
+            shrine.escapeDuration = Configuration.LynxTribe.LynxStuff.LynxShrineEscapeTimer.Value;
             shrine.shrineUseEffect = shrineEffect;
             shrine.failureSound = nsedFailure;
             shrine.successSound = nsedSuccess;
@@ -294,8 +293,12 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.pickupDisplay = pickupDisplay;
 
             var hologramProjector = shrinePrefab.AddComponent<HologramProjector>();
-            hologramProjector.displayDistance = 100f;
+            hologramProjector.displayDistance = Configuration.LynxTribe.LynxStuff.LynxShrineTimerDisplayDistance.Value;
             hologramProjector.hologramPivot = shrinePrefab.transform.Find("Base/Hologram");
+
+            var dither = shrinePrefab.AddComponent<DitherModel>();
+            dither.bounds = shrinePrefab.transform.Find("Base/LynxTotemPole").GetComponent<Collider>();
+            dither.renderers = shrinePrefab.GetComponentsInChildren<Renderer>(); 
 
             shrinePrefab.RegisterNetworkPrefab();
 
@@ -310,14 +313,13 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return prefab;
         }
 
-        // TODO: config values
         private BasicPickupDropTable CreateLynxShrineDropTable()
         {
             var dropTable = ScriptableObject.CreateInstance<BasicPickupDropTable>();
-            dropTable.tier1Weight = 0.55f;
-            dropTable.tier2Weight = 0.3f;
-            dropTable.tier3Weight = 0.05f;
-            dropTable.bossWeight = 0.1f;
+            dropTable.tier1Weight = Configuration.LynxTribe.LynxStuff.LynxShrineTier1Weight.Value;
+            dropTable.tier2Weight = Configuration.LynxTribe.LynxStuff.LynxShrineTier2Weight.Value;
+            dropTable.tier3Weight = Configuration.LynxTribe.LynxStuff.LynxShrineTier3Weight.Value;
+            dropTable.bossWeight = Configuration.LynxTribe.LynxStuff.LynxShrineTierBossWeight.Value;
             return dropTable;
         }
 

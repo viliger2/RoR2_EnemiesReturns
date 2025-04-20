@@ -7,9 +7,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    // TODO:
-    // 1. One item without multiplayer scaling
-    // 2. Multiple items with multiplayer scaling
     public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
     {
         public GameObject shrineUseEffect;
@@ -80,7 +77,11 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             if (Run.instance)
             {
-                int participatingPlayerCount = Run.instance.participatingPlayerCount;
+                int participatingPlayerCount = 1;
+                if (Configuration.LynxTribe.LynxStuff.LynxShrineMultiplayerScaling.Value)
+                {
+                    participatingPlayerCount = Run.instance.participatingPlayerCount;
+                }
                 if (participatingPlayerCount == 0)
                 {
                     return;
@@ -127,27 +128,27 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 {
                     pickupDisplay.SetPickupIndex(pickupIndex);
                 }
-                switch (pickupIndex.pickupDef.itemTier) // TODO: config
+                switch (pickupIndex.pickupDef.itemTier)
                 {
                     case ItemTier.Tier1:
-                        spawner.minSpawnCount = 2;
-                        spawner.maxSpawnCount = 3;
-                        spawner.eliteBias = 1f;
+                        spawner.minSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier1MinSpawns.Value;
+                        spawner.maxSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier1MaxSpawns.Value;
+                        spawner.eliteBias = Configuration.LynxTribe.LynxStuff.LynxShrineTier1EliteBias.Value;
                         break;
                     case ItemTier.Tier2:
-                        spawner.minSpawnCount = 3;
-                        spawner.maxSpawnCount = 4;
-                        spawner.eliteBias = 0.75f;
+                        spawner.minSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier2MinSpawns.Value;
+                        spawner.maxSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier2MaxSpawns.Value;
+                        spawner.eliteBias = Configuration.LynxTribe.LynxStuff.LynxShrineTier2EliteBias.Value;
                         break;
                     case ItemTier.Tier3:
-                        spawner.minSpawnCount = 5;
-                        spawner.maxSpawnCount = 6;
-                        spawner.eliteBias = 0.4f;
+                        spawner.minSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier3MinSpawns.Value;
+                        spawner.maxSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTier3MaxSpawns.Value;
+                        spawner.eliteBias = Configuration.LynxTribe.LynxStuff.LynxShrineTier3EliteBias.Value;
                         break;
                     case ItemTier.Boss:
-                        spawner.minSpawnCount = 4;
-                        spawner.maxSpawnCount = 5;
-                        spawner.eliteBias = 0.5f;
+                        spawner.minSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTierBossMinSpawns.Value;
+                        spawner.maxSpawnCount = Configuration.LynxTribe.LynxStuff.LynxShrineTierBossMaxSpawns.Value;
+                        spawner.eliteBias = Configuration.LynxTribe.LynxStuff.LynxShrineTierBossEliteBias.Value;
                         break;
                 }
                 spawner.CreateSpawnInfo();
