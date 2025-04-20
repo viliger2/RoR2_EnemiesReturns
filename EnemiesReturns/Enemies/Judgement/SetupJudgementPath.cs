@@ -105,8 +105,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 if (skinUnlockable)
                 {
-                    skinUnlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???"); // TODO
-                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC")); // TODO
+                    skinUnlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???");
+                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
                 }
             }
 
