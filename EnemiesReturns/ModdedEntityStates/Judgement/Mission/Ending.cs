@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     {
         public static GameObject destroyEffectPrefab => Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab").WaitForCompletion();
 
-        public float delay = 0.5f;
+        public float delay = 3f;
         private bool ended = false;
 
         public static event Action onArraignDefeated;
@@ -32,6 +32,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 if(judgementMission)
                 {
                     judgementMission.gameObject.SetActive(false);
+                }
+                var ending = childLocator.FindChild("Ending");
+                if (ending)
+                {
+                    ending.gameObject.SetActive(true);
                 }
             }
 
