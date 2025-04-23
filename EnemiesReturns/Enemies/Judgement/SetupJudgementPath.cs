@@ -32,7 +32,20 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static HashSet<SkinDef> AnointedSkins;
 
+        private static HashSet<string> AnointedBlacklist = new HashSet<string>();
+
         private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
+
+        public static bool AddBodyToBlacklist(string bodyName)
+        {
+            if (AnointedBlacklist.Contains(bodyName))
+            {
+                return false;
+            }
+
+            AnointedBlacklist.Add(bodyName);
+            return true;
+        }
 
         public static void Hooks()
         {
@@ -81,7 +94,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 AchievementDef cheevoDef = new AchievementDef
                 {
-                    identifier = bodyName + "JudgementCleared",
+                    identifier = "EnemiesReturns" + bodyName + "JudgementCleared",
                     unlockableRewardIdentifier = skinUnlockable.cachedName,
                     prerequisiteAchievementIdentifier = null,
                     nameToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_NAME",
@@ -314,6 +327,15 @@ namespace EnemiesReturns.Enemies.Judgement
                 if (survivorDef.bodyPrefab)
                 {
                     var body = survivorDef.bodyPrefab;
+
+                    if (AnointedBlacklist.Contains(body.name))
+                    {
+#if DEBUG || NOWEAVER
+                        Log.Info($"Survivor {survivorDef.cachedName} with body named {body.name} is in blacklist, skipping skin creation...");
+#endif
+                        continue;
+                    }
+
                     var modelLocator = body.GetComponent<ModelLocator>();
                     if (!modelLocator)
                     {

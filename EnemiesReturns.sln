@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnemiesReturns", "EnemiesReturns\EnemiesReturns.csproj", "{9258FCBD-3D4E-464E-B637-28D84832F9F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraignSkinExample", "ArraignSkinExample\ArraignSkinExample.csproj", "{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +20,12 @@ Global
 		{9258FCBD-3D4E-464E-B637-28D84832F9F2}.NoWeaver|Any CPU.Build.0 = NoWeaver|Any CPU
 		{9258FCBD-3D4E-464E-B637-28D84832F9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9258FCBD-3D4E-464E-B637-28D84832F9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.NoWeaver|Any CPU.ActiveCfg = Debug|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.NoWeaver|Any CPU.Build.0 = Debug|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46311781-15D0-4AEB-BB9F-1A4B7447CC7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,6 @@ namespace EnemiesReturns.Enemies.Judgement
 {
     public class HiddenSkinDef : SkinDef
     {
-        public bool hideInLobby = false;
+        public bool hideInLobby = true;
     }
 }
