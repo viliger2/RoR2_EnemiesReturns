@@ -14,15 +14,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
     [RegisterEntityState]
     public class Fire : BaseMithrixHammerState
     {
-        public static float duration = 1f;
+        public static float duration = 0.75f;
 
-        public static float initialFrames = 0.05f;
+        public static float initialFrames = 0.03f;
 
-        public static float endFrames = 0.4f;
+        public static float endFrames = 0.3f;
 
         public static GameObject swingEffect;
 
+        public static GameObject swingVFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSwing1, Kickup.prefab").WaitForCompletion();
+
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
+
+        public static Vector3 spawnEffectVector = new Vector3(270f, 180f, 0);
 
         public static ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
 
@@ -35,6 +39,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
         private InputBankTest bodyInputBank;
 
         private GameObject hammerEffect;
+
+        private GameObject swingEffectInstance;
 
         public override void OnEnter()
         {
@@ -60,6 +66,20 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             hammerEffect = UnityEngine.Object.Instantiate(swingEffect);
             hammerEffect.transform.position = bodyInputBank.aimOrigin;
             hammerEffect.transform.forward = bodyInputBank.aimDirection;
+
+            var childLocator = hammerEffect.GetComponent<ChildLocator>();
+            if (childLocator)
+            {
+                var effectOrigin = childLocator.FindChild("SwingVFXOrigin");
+                if (effectOrigin) 
+                {
+                    swingEffectInstance = UnityEngine.Object.Instantiate(swingVFX, effectOrigin.transform);
+                    //swingEffectInstance.transform.position = effectOrigin.transform.position;
+                    swingEffectInstance.transform.localRotation = Quaternion.Euler(spawnEffectVector);
+                    swingEffectInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    //swingEffectInstance.transform.localRotation = Quaternion.Euler(-180f, 0f, 0f);
+                }
+            }
 
             Util.PlaySound("Play_moonBrother_swing_horizontal", bodyGameObject);
         }
@@ -123,6 +143,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             if (hitBoxObject)
             {
                 UnityEngine.Object.Destroy(hitBoxObject);
+            }
+            if (swingEffectInstance)
+            {
+                UnityEngine.Object.Destroy(swingEffectInstance);
             }
             if(NetworkServer.active)
             {
