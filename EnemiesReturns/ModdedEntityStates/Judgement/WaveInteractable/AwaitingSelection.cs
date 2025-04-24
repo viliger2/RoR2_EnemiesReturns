@@ -17,13 +17,35 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
             {
                 pickupPickerController.SetAvailable(true);
             }
-            var childLocator = gameObject.GetComponent<ChildLocator>();
             if (childLocator)
             {
                 var beamEffect = childLocator.FindChild("BeamEffect");
                 if (beamEffect)
                 {
                     beamEffect.gameObject.SetActive(true);
+                }
+                var lightning = childLocator.FindChild("ProngLightning");
+                if (lightning)
+                {
+                    lightning.gameObject.SetActive(true);
+                }
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (childLocator)
+            {
+                var waveFinishedEffect = childLocator.FindChild("WaveFinishedEffect");
+                if (waveFinishedEffect)
+                {
+                    waveFinishedEffect.gameObject.SetActive(false);
+                }
+                var lightning = childLocator.FindChild("ProngLightning");
+                if (lightning)
+                {
+                    lightning.gameObject.SetActive(false);
                 }
             }
         }

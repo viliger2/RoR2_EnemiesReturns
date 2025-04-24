@@ -12,6 +12,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     [RegisterEntityState]
     public class WaveActive : BaseJudgementIntaractable
     {
+        public static string soundEntryEvent = "Play_ui_obj_nullWard_activate";
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -19,7 +21,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
             {
                 pickupPickerController.SetAvailable(false);
             }
-            var childLocator = gameObject.GetComponent<ChildLocator>();
             if (childLocator)
             {
                 var beamEffect = childLocator.FindChild("BeamEffect");
@@ -28,6 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                     beamEffect.gameObject.SetActive(false);
                 }
             }
+            Util.PlaySound(soundEntryEvent, gameObject);
         }
 
         public override void FixedUpdate()
@@ -51,6 +53,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                     {
                         outer.SetNextState(new AwaitingSelection());
                     }
+                }
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (childLocator)
+            {
+                var waveFinishedEffect = childLocator.FindChild("WaveFinishedEffect");
+                if (waveFinishedEffect)
+                {
+                    waveFinishedEffect.gameObject.SetActive(true);
                 }
             }
         }
