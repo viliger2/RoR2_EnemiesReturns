@@ -108,6 +108,8 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
 
         private void EnableProngsAndFlower()
         {
+            Util.PlaySound("Play_vagrant_R_explode", gameObject);
+
             if (childLocator)
             {
                 var flower = childLocator.FindChild("Flower");
@@ -132,6 +134,10 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
 
             var portal = UnityEngine.Object.Instantiate(portalPrefab, portalSpawnLocation.position, portalSpawnLocation.rotation);
             NetworkServer.Spawn(portal);
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = "ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN"
+            });
         }
 
         public bool ShouldIgnoreSpherecastForInteractibility([NotNull] Interactor activator)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-//using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -11,6 +10,8 @@ namespace EnemiesReturns.Behaviors
         public string addressableMaterialPath;
 
         public bool isParticle;
+
+        public bool isTrailParticle;
 
         public Renderer renderer;
 
@@ -27,12 +28,17 @@ namespace EnemiesReturns.Behaviors
                 {
                     //var material = Addressables.LoadAssetAsync<Material>(addressableMaterialPath).WaitForCompletion();
                     //renderer.material = material;
+                    //if (isTrailParticle)
+                    //{
+                    //    (renderer as ParticleSystemRenderer).trailMaterial = material;
+                    //}
                 }
                 catch (Exception e) 
                 {
                     //Log.Error($"Error while injecting material into renderer belonging to {this.gameObject.name}: {e}");
                 }
             }
+            UnityEngine.GameObject.Destroy(this);
         }
 
     }

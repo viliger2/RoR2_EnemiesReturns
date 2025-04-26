@@ -12,6 +12,8 @@ namespace EnemiesReturns.Behaviors
 
         public bool isParticle;
 
+        public bool isTrailParticle;
+
         public Renderer renderer;
 
         private void Awake()
@@ -27,12 +29,17 @@ namespace EnemiesReturns.Behaviors
                 {
                     var material = Addressables.LoadAssetAsync<Material>(addressableMaterialPath).WaitForCompletion();
                     renderer.material = material;
+                    if (isTrailParticle)
+                    {
+                        (renderer as ParticleSystemRenderer).trailMaterial = material;
+                    }
                 }
                 catch (Exception e) 
                 {
                     Log.Error($"Error while injecting material into renderer belonging to {this.gameObject.name}: {e}");
                 }
             }
+            UnityEngine.GameObject.Destroy(this);
         }
 
     }
