@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 7711582799461632673}
   - component: {fileID: 1896830497123341578}
   - component: {fileID: 4431812050407972114}
-  - component: {fileID: 62948362020492359}
   - component: {fileID: 6901127484365222981}
   - component: {fileID: 3144661129749043747}
   - component: {fileID: 4432561514256048178}
@@ -244,21 +243,6 @@ MonoBehaviour:
   tierDropTables: []
   pickupPickerController: {fileID: 7711582799461632673}
   inventory: {fileID: 0}
---- !u!114 &62948362020492359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234055060497005250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bbfee4d9ab2a2744b203e7e08720110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  address: RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab
-  targetComponent: {fileID: 7711582799461632673}
-  targetMemberInfoName: (PickupPickerController) panelPrefab
 --- !u!114 &6901127484365222981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7793,6 +7777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
+  isTrailParticle: 0
   renderer: {fileID: 0}
 --- !u!1 &4343431286089785402
 GameObject:
@@ -12398,6 +12383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
+  isTrailParticle: 0
   renderer: {fileID: 0}
 --- !u!1 &5193154205031075397
 GameObject:
@@ -17074,6 +17060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
+  isTrailParticle: 0
   renderer: {fileID: 0}
 --- !u!1 &7899819538530278406
 GameObject:
@@ -19362,6 +19349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
+  isTrailParticle: 0
   renderer: {fileID: 0}
 --- !u!1 &8911477774542786738
 GameObject:

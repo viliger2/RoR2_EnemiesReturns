@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,8 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 {
     public class JudgementSelectionController : NetworkBehaviour
     {
+        public static GameObject modifiedPickerPanel;
+
         public struct MinMaxCount
         {
             public int minCount;
@@ -43,6 +46,10 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 return;
             }
             GenerateItemList();
+            if(pickupPickerController && modifiedPickerPanel)
+            {
+                pickupPickerController.panelPrefab = modifiedPickerPanel;
+            }
         }
 
         public void SetOptionsForMonsters(Interactor activator)

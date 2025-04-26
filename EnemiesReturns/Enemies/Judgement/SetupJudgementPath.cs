@@ -5,6 +5,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using RoR2;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -531,6 +532,14 @@ namespace EnemiesReturns.Enemies.Judgement
             var dropEquipment = mithrixHurtBody.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.LunarFlower;
             dropEquipment.equipmentToDrop = Content.Equipment.MithrixHammer;
+        }
+
+        public static GameObject CloneOptionPickerPanel()
+        {
+            var panel = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab").WaitForCompletion().InstantiateClone("JudgementPickerPanel", false);
+            panel.transform.Find("MainPanel/Juice/Label").gameObject.GetComponent<LanguageTextMeshController>().token = "ENEMIES_RETURNS_OPTION_PICKUP_HEADER";
+
+            return panel;
         }
 
         public static GameObject SetupBrokenTeleporter(GameObject prefab)

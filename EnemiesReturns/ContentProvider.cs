@@ -254,6 +254,7 @@ namespace EnemiesReturns
                     _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
                     SetupJudgementPath.JudgementInteractable = assets.First(asset => asset.name == "JudgementInteractable");
+                    Behaviors.Judgement.WaveInteractable.JudgementSelectionController.modifiedPickerPanel = Enemies.Judgement.SetupJudgementPath.CloneOptionPickerPanel();
                     nopList.Add(SetupJudgementPath.JudgementInteractable);
 
                     SetupJudgementPath.PileOfDirt = assets.First(asset => asset.name == "PileOfDirtInteractable");
@@ -269,6 +270,9 @@ namespace EnemiesReturns
 
                     Equipment.MithrixHammer.MithrixHammer.MithrixHammerController = assets.First(asset => asset.name == "MithrixHammerController");
                     nopList.Add(Equipment.MithrixHammer.MithrixHammer.MithrixHammerController);
+
+                    ModdedEntityStates.Judgement.Mission.Phase2.speechControllerPrefab = assets.First(asset => asset.name == "ArraignP1SpeechController");
+                    ModdedEntityStates.Judgement.Mission.Phase3.speechControllerPrefab = assets.First(asset => asset.name == "ArraignP2SpeechController");
 
                     ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
                     ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
