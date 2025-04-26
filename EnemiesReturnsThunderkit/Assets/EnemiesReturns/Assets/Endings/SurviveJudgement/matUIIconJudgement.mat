@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
-        m_Texture: {fileID: 2800000, guid: a42049809dae5d14bae6a08b56fd3fe6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7fdc8f01cb082004faec24deeb21b80e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -66,7 +66,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaBoost: 1.21
+    - _AlphaBoost: 5.7142
     - _BumpScale: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
@@ -82,9 +82,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PatternPanningSpeed: 8.28
-    - _PatternPixelSize: 512
-    - _PatternStrength: 0.28
+    - _PatternPanningSpeed: 6.4
+    - _PatternPixelSize: 45
+    - _PatternStrength: 0.9
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
