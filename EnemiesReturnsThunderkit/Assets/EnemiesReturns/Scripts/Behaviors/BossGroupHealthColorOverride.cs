@@ -25,35 +25,33 @@ namespace EnemiesReturns.Behaviors
             {
                 bossGroup = GetComponent<BossGroup>();
             }
-            overrideDictionary.Add(bossGroup, this);
+            if (bossGroup)
+            {
+                overrideDictionary.Add(bossGroup, this);
+            }
         }
 
         private void OnDisable()
         {
             if (bossGroup)
             {
-                overrideDictionary.Remove(this.gameObject.GetComponent<BossGroup>());
+                overrideDictionary.Remove(bossGroup);
             }
         }
 
-        // public static void Hooks()
-        // {
-        //     On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
-        // }
-
-        // private static void HUDBossHealthBarController_LateUpdate(On.RoR2.UI.HUDBossHealthBarController.orig_LateUpdate orig, RoR2.UI.HUDBossHealthBarController self)
-        // {
-        //     orig(self);
-        //     if(self.currentBossGroup && self.fillRectImage)
-        //     {
-        //         if(overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
-        //         {
-        //             self.fillRectImage.color = component.healthBarColorOverride;
-        //         } else
-        //         {
-        //             self.fillRectImage.color = defaultHealthBarColor;
-        //         }
-        //     }
-        // }
+        public static void HUDBossHealthBarController_LateUpdate(On.RoR2.UI.HUDBossHealthBarController.orig_LateUpdate orig, RoR2.UI.HUDBossHealthBarController self)
+        {
+            orig(self);
+            if(self.currentBossGroup && self.fillRectImage)
+            {
+                if(overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
+                {
+                    self.fillRectImage.color = component.healthBarColorOverride;
+                } else
+                {
+                    self.fillRectImage.color = defaultHealthBarColor;
+                }
+            }
+        }
     }
 }

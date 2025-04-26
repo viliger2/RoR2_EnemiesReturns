@@ -110,7 +110,6 @@ namespace EnemiesReturns
             Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
-            Behaviors.BossGroupHealthColorOverride.Hooks(); // TODO
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
 
             Equipment.MithrixHammer.MithrixHammer.Hooks();

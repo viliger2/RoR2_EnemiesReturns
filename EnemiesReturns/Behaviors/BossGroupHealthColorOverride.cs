@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
 {
-    // TODO: add scene component that just does on hooks for that specific scene
     [RequireComponent(typeof(BossGroup))]
     public class BossGroupHealthColorOverride : MonoBehaviour
     {
@@ -35,19 +34,17 @@ namespace EnemiesReturns.Behaviors
         {
             if (bossGroup)
             {
-                overrideDictionary.Remove(this.gameObject.GetComponent<BossGroup>());
+                overrideDictionary.Remove(bossGroup);
             }
         }
 
-        public static void Hooks()
+        public static void ReplaceColor(RoR2.UI.HUDBossHealthBarController self)
         {
-            On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
-        }
-
-        private static void HUDBossHealthBarController_LateUpdate(On.RoR2.UI.HUDBossHealthBarController.orig_LateUpdate orig, RoR2.UI.HUDBossHealthBarController self)
-        {
-            orig(self);
-            if(self.currentBossGroup && self.fillRectImage)
+            if (!self || !self.currentBossGroup)
+            {
+                return;
+            }
+            if(self.fillRectImage)
             {
                 if(overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
                 {
