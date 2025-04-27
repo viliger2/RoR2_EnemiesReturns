@@ -25,6 +25,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject JudgementInteractable;
 
+        public static Sprite AnointedSkinIcon;
+
         public static Texture2D aeonianEliteRamp;
 
         public static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
@@ -319,7 +321,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
-            var icon = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Achievements/texToolbotClearGameMonsoonIcon.png").WaitForCompletion(); // TODO
+            var icon = AnointedSkinIcon;
 
             List <SkinDef> anointedSkins = new List<SkinDef>();
             for(int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
@@ -405,7 +407,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                     var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
                     eliteSkinDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
-                    eliteSkinDef.icon = icon; // TODO
+                    eliteSkinDef.icon = icon;
 
                     if (!Configuration.Judgement.ForceUnlock.Value)
                     {
@@ -414,7 +416,7 @@ namespace EnemiesReturns.Enemies.Judgement
                         skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
                         skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
                         skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
-                        skinUnlockDef.achievementIcon = icon; // TODO
+                        skinUnlockDef.achievementIcon = icon;
 
                         AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim(), skinUnlockDef);
                         AnointedSkinsUnlockables2.Add(skinUnlockDef, survivorDef.bodyPrefab.name.Trim());

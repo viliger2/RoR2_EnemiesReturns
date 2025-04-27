@@ -188,6 +188,10 @@ namespace EnemiesReturns
                 {
                     foreach (var asset in assets)
                     {
+                        if(asset.name == "texAnointedSkinIcon")
+                        {
+                            Enemies.Judgement.SetupJudgementPath.AnointedSkinIcon = asset;
+                        }
                         iconLookup.Add(asset.name, asset);
                     }
                 }));
