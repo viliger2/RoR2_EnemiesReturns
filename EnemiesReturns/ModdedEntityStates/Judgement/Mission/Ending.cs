@@ -14,9 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     [RegisterEntityState]
     public class Ending : BaseState
     {
-        public static GameObject destroyEffectPrefab => Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab").WaitForCompletion();
-
-        public float delay = 3f;
+        public float delay = 0.5f;
         private bool ended = false;
 
         public static event Action onArraignDefeated;

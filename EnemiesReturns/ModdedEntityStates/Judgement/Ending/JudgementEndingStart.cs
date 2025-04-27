@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Ending
     [RegisterEntityState]
     public class JudgementEndingStart : BaseGameOverControllerState
     {
-        public static float duration = 6f;
+        public static float duration = 3f;
 
         public override void FixedUpdate()
         {

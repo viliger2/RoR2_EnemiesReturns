@@ -7,6 +7,8 @@ using System.Text;
 
 namespace EnemiesReturns.Achievements
 {
+    // TODO: redo cheevo so it triggers on ending instead of Arraign's death
+    // although maybe some players prefer cheevo trigger when Arraign is killed to give sense of acomplishment
     public class JudgementClearedAchievement : BaseAchievement
     {
         public class JudgementClearedServerAchievement : BaseServerAchievement
