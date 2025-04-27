@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterSpeech;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static string phaseControllerChildString = "Phase3";
 
+        public static GameObject speechControllerPrefab;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private BossGroup phaseBossGroup;
@@ -23,6 +26,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private ChildLocator childLocator;
 
         private GameObject phaseControllerObject;
+
+        private CombatSquad combatSquad;
 
         private bool hasSpawned;
 
@@ -40,6 +45,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
                     phaseBossGroup = phaseControllerObject.GetComponent<BossGroup>();
                 }
+            }
+            if (phaseControllerObject)
+            {
+                combatSquad = phaseControllerObject.GetComponent<CombatSquad>();
+                if (combatSquad)
+                {
+                    combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
+                }
+            }
+        }
+
+        private void CombatSquad_onMemberAddedServer(CharacterMaster master)
+        {
+            if (speechControllerPrefab)
+            {
+                UnityEngine.Object.Instantiate(speechControllerPrefab, master.transform).GetComponent<CharacterSpeechController>().characterMaster = master;
             }
         }
 
@@ -75,6 +96,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
+            }
+            if (combatSquad)
+            {
+                combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;
             }
         }
 

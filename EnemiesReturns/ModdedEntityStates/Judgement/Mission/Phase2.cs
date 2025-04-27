@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterSpeech;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float enableDirectorDelay = 9f;
 
+        public static GameObject speechControllerPrefab;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private ChildLocator childLocator;
@@ -25,6 +28,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private GameObject phaseControllerObject;
 
         private bool hasSpawned;
+
+        private CombatSquad combatSquad;
 
         public override void OnEnter()
         {
@@ -39,6 +44,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     phaseControllerObject.SetActive(true);
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
                 }
+            }
+            if (phaseControllerObject)
+            {
+                combatSquad = phaseControllerObject.GetComponent<CombatSquad>();
+                if (combatSquad)
+                {
+                    combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
+                }
+            }
+        }
+
+        private void CombatSquad_onMemberAddedServer(CharacterMaster master)
+        {
+            if (speechControllerPrefab)
+            {
+                UnityEngine.Object.Instantiate(speechControllerPrefab, master.transform).GetComponent<CharacterSpeechController>().characterMaster = master;
             }
         }
 
@@ -74,6 +95,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
+            }
+            if (combatSquad)
+            {
+                combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;
             }
         }
 

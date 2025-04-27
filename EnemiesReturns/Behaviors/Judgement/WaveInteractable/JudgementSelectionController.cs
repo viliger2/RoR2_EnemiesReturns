@@ -39,6 +39,8 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private PickupIndex[][] itemLists;
 
+        private Interactor interactor;
+
         private void Awake()
         {
             if (!NetworkServer.active)
@@ -63,6 +65,8 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             {
                 return;
             }
+
+            interactor = activator;
 
             if (!inventory)
             {
@@ -95,6 +99,11 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 if (tierDropCounts.TryGetValue(pickupDef.itemTier, out var count))
                 {
                     inventory.GiveItem(pickupDef.itemIndex, UnityEngine.Random.Range(count.minCount, count.maxCount + 1));
+                }
+
+                if (interactor)
+                {
+                    ScrapperController.CreateItemTakenOrb(interactor.transform.position, this.gameObject, pickupDef.itemIndex);
                 }
             }
 

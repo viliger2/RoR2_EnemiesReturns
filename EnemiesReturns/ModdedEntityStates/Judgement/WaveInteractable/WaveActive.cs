@@ -14,6 +14,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     {
         public static string soundEntryEvent = "Play_ui_obj_nullWard_activate";
 
+        public static float gracePeriod = 5f;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -35,6 +37,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if(fixedAge < gracePeriod)
+            {
+                return;
+            }
+
             if (isAuthority && JudgementMissionController.instance)
             {
                 var instance = JudgementMissionController.instance;
