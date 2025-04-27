@@ -5432,7 +5432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactability: 2
   shouldIgnoreSpherecastForInteractibility: 0
-  contextToken: ENEMIES_RETURNS_PORTAL_JUDGEMENT_CONTEXT
+  contextToken: ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT
   shouldProximityHighlight: 1
   onActivation:
     m_PersistentCalls:
@@ -5496,7 +5496,7 @@ MonoBehaviour:
   m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: ENEMIES_RETURNS_PORTAL_JUDGEMENT_NAME
+  displayToken: ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME
 --- !u!1 &9057465904797296698
 GameObject:
   m_ObjectHideFlags: 0

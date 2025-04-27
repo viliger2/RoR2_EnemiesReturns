@@ -30,7 +30,7 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
 
         public string GetContextString([NotNull] Interactor activator)
         {
-            return contextString;
+            return RoR2.Language.GetString(contextString);
         }
 
         public Interactability GetInteractability([NotNull] Interactor activator)

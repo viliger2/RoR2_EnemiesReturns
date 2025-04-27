@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: baseNameToken
-      value: ENEMIES_RETURNS_ARRAIGNP2_BODY_NAME
+      value: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME
       objectReference: {fileID: 0}
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: subtitleNameToken
-      value: ENEMIES_RETURNS_ARRAIGNP2_BODY_SUBTITLE
+      value: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_SUBTITLE
       objectReference: {fileID: 0}
     - target: {fileID: 3274917509634399284, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: special

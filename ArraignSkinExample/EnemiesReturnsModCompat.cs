@@ -94,7 +94,7 @@ namespace ArraignSkinExample
                 // you can change ENEMIES_RETURNS strings here to whatever you want,
                 // but since all strings are pretty much the same there is no real reason to do that
                 unlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???");
-                unlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
+                unlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
             }
 
             AchievementManager.SortAchievements(AchievementManager.achievementDefs);

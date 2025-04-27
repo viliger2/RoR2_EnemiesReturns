@@ -108,7 +108,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 };
 
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
-                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
+                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
 
                 if (skinUnlockable.achievementIcon)
                 {
@@ -122,7 +122,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 if (skinUnlockable)
                 {
                     skinUnlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???");
-                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
+                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
                 }
             }
 
@@ -406,7 +406,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     }
 
                     var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
-                    eliteSkinDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
+                    eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                     eliteSkinDef.icon = icon;
 
                     if (!Configuration.Judgement.ForceUnlock.Value)
@@ -414,7 +414,7 @@ namespace EnemiesReturns.Enemies.Judgement
                         var skinUnlockDef = ScriptableObject.CreateInstance<UnlockableDef>();
                         (skinUnlockDef as ScriptableObject).name = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
                         skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
-                        skinUnlockDef.nameToken = "ENEMIES_RETURNS_SKIN_ANOINTED_NAME";
+                        skinUnlockDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                         skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
                         skinUnlockDef.achievementIcon = icon;
 
@@ -539,7 +539,7 @@ namespace EnemiesReturns.Enemies.Judgement
         public static GameObject CloneOptionPickerPanel()
         {
             var panel = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab").WaitForCompletion().InstantiateClone("JudgementPickerPanel", false);
-            panel.transform.Find("MainPanel/Juice/Label").gameObject.GetComponent<LanguageTextMeshController>().token = "ENEMIES_RETURNS_OPTION_PICKUP_HEADER";
+            panel.transform.Find("MainPanel/Juice/Label").gameObject.GetComponent<LanguageTextMeshController>().token = "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER";
 
             return panel;
         }

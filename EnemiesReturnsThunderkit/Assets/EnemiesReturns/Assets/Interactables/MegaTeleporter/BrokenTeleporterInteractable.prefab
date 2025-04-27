@@ -86062,7 +86062,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6969945494351159209, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
   m_PrefabInstance: {fileID: 4284632904837859889}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1542445039236896099
+--- !u!114 &4223783801418836909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86071,12 +86071,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6614708761995842968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 492112044, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d3099172a7bd942b6cf942f72ee5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 15
-  bobHeight: 0.2
-  offsetVector: {x: 0, y: 0, z: 0}
+  bobHeight: 0.3
+  frequency: 0.2
 --- !u!4 &8328268814532913959 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252858190730436886, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}

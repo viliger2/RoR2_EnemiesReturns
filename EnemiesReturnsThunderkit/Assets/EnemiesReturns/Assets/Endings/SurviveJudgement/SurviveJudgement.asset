@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 1495945701, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: SurviveJudgement
   m_EditorClassIdentifier: 
-  endingTextToken: ENEMIES_RETURNS_GAME_RESULT_JUDGEMENT
+  endingTextToken: ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT
   backgroundColor: {r: 0, g: 0.40516382, b: 0.6415094, a: 1}
   foregroundColor: {r: 0.40784317, g: 0.8352942, b: 0.8431373, a: 1}
   icon: {fileID: 21300000, guid: 17755ecace11cee4da727b4b9728aef6, type: 3}

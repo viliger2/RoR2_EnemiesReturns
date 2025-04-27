@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactability: 2
   shouldIgnoreSpherecastForInteractibility: 0
-  contextToken: ENEMIES_RETURNS_PILE_OF_DIRT_CONTEXT
+  contextToken: ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT
   shouldProximityHighlight: 1
   onActivation:
     m_PersistentCalls:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: ENEMIES_RETURNS_PILE_OF_DIRT_NAME
+  displayToken: ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_NAME
 --- !u!114 &6562695257684271736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -207,7 +207,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   cutoffDistance: 10
-  contextString: ENEMIES_RETURNS_JUDGEMENT_INTERACTABLE_CONTEXT
+  contextString: ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT
   shouldProximityHighlight: 1
   synchronizeItemSelectionAcrossNetwork: 1
   isDelusionChoice: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayToken: ENEMIES_RETURNS_JUDGEMENT_INTERACTABLE_NAME
+  displayToken: ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME
 --- !u!114 &4431812050407972114
 MonoBehaviour:
   m_ObjectHideFlags: 0

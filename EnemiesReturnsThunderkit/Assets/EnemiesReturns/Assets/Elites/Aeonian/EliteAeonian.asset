@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -585069481, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: EliteAeonian
   m_EditorClassIdentifier: 
-  modifierToken: ENEMIES_RETURNS_ELITE_MODIFIER_AEONIAN
+  modifierToken: ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN
   eliteEquipmentDef: {fileID: 11400000, guid: 8269509e1811b9c4fbd40847ed19cae1, type: 2}
   color:
     serializedVersion: 2
@@ -20,3 +20,4 @@ MonoBehaviour:
   shaderEliteRampIndex: -1
   healthBoostCoefficient: 18
   damageBoostCoefficient: 6
+  devotionLevel: 0

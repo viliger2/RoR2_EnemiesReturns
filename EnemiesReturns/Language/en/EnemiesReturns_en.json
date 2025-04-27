@@ -116,41 +116,84 @@
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Every 15 seconds <style=cIsUtility>summon Lynx Tribesman</style> with bonus <style=cIsDamage>{0}<style=cStack>(+{1} after 4th stack)</style> damage</style> and <style=cIsHealth>{2}<style=cStack>(+{3} after 4th stack)</style> health</style>. Can have up to <style=cIsUtility>1<style=cStack>(+1 per stack, up to 4)</style></style>. Each <style=cIsUtility>Lynx Tribesman</style> provides unique <style=cIsUtility>buff</style> in <style=cIsUtility>{4}m</style> around them.\r\n<style=cIsDamage>Lynx Archer</style> increases <style=cIsDamage>damage by {5}</style>.\r\n<style=cIsHealing>Lynx Hunter</style> increases <style=cIsHealing>armor by {6}</style>.\r\n<style=cIsUtility>Lynx Scout</style> increases <style=cIsUtility>attack and movement speed by {7}</style>.\r\n<style=cIsHealth>Lynx Shaman</style> increases <style=cIsHealth>damage done by special abilities by {8}</style>.",
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>FIELDTECH Sound-To-Text Translator (v1.6.8a)\r\n# Awaiting input... done.\r\n# Reading sound for text... done.\r\n# Transcribing data... done.\r\n# Translating sound... done. [6 exceptions raised]\r\nComplete: outputting results.</style>\r\n\r\nWe hold this Relic to high regard, there once was many, now there are few.\r\nWe worshiped the balance [REDACTED] brought to the world. When [REDACTED] called, we answered.\r\nWe brought [REDACTED] gifts, relics of our tribes. Some brought weapons, some brought food, some brought toys, crafted from string and cloth.\r\nOne day, another appears. [The Hero] speaks urgently, ushering us to a structure made from stones and sparks.\r\nWe lost contact with [REDACTED], lost homes, lost relics, lost our way.\r\nWe hold this Relic to high regard for this reason.\r\n\r\n<style=cMono>Translation Errors:<\/style>\r\n# [The Hero] could not be fully translated.\r\n# Details on [REDACTED] are only available to Crew with Red-Level Clearance.",
 
+    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_NAME": "???",
+    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "Dig it out",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "Strange Device",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "Not useful to me..",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "TODO: MAYBE SOME FANCY DESCRIPTION? Its \"core\" has a faint glow and entire structure feels like it is frozen outside of time.",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "LORE HERE",
+
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>Newt: Shape, come close.</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "Trade",
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>Newt: Good. Take, delicate shape.</color>",
 
-    "ENEMIES_RETURNS_SKIN_ANOINTED_NAME": "Anointed",
-    "ENEMIES_RETURNS_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "Survive the Judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "Delicate Flower",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "It looks very fragile.",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_DESC": "TODO: MAYBE SOMETHING DIFFERENT. It looks very fragile.",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_LORE": "LORE HERE",
 
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME": "TODO: HAMMER NEEDS A FANCY NAME",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_PICKUP": "\"Brother... Perhaps... We will get it right... Next time...\"",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_DESC": "TODO: CURRENTLY ONE OF THE DESC OF DIVINE RIGHT, MAYBE SWAP PICKUP AND DESC? Heavier than it looks..",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_LORE": "LORE HERE",
+
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_NAME": "TODO: SOME NAME FOR THIS THING",
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_CONTEXT": "Activate it..?",
+
+    "ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME": "Timeless Portal",
+    "ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT": "Enter Timeless Portal",
     "ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>Judgement awaits..</style>",
-    "ENEMIES_RETURNS_EQUIPMENT_MITHRIX_HAMMER_PICKUP": "\"Brother... Perhaps... We will get it right... Next time...\"",
 
-    "ENEMIES_RETURNS_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Quiescent Ultimatum<sprite name=\"CloudRight\" tint=1>",
-    "ENEMIES_RETURNS_ELITE_MODIFIER_AEONIAN": "Aeonian {0}",
+    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "TODO: SS1'S NAME IS \"THE UNKNOWN\" ???",
+    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE": "Somewhere in Time",
 
-    "ENEMIES_RETURNS_OPTION_PICKUP_HEADER": "<color=#00ffe9>The enemy evolves...</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Survive The Judgement",
 
-    "ENEMIES_RETURNS_ARRAIGN_DIALOGUE_FORMAT": "<color=#c6d5ff><size=120%>Arraign: {0}</color></size>",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_1": "Show me what you're made of.",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_2": "Bring it on!",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_3": "Candidate, demonstrate!",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_4": "Candidate, endure!",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_5": "Interesting choice.",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_6": "Astounding resilience...",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_7": "Powerful being...",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_8": "Fair contender...",
-    "ENEMIES_RETURNS_ARRAIGN_DAMAGEDEALT_9": "Step up your strength!",
+    "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME": "???",
+    "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Bond with the beyond",
 
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_1": "Candidate, invigorate!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_2": "Aggravate!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_3": "Do it!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_4": "Enrage!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_5": "Behold!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_6": "Come on!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_7": "Show me more!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_8": "Don't hold back!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_9": "Unfolding strength!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_10": "Reveal your potential!",
-    "ENEMIES_RETURNS_ARRAIGNP2_DAMAGEDEALT_11": "Show me your power!"
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>The enemy evolves...</color>",
+
+    "ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Quiescent Ultimatum<sprite name=\"CloudRight\" tint=1>",
+    "ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Aeonian {0}",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Arraign's Decree",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Become an aspect of judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "LORE HERE",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "Arraign",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_SUBTITLE": "The Judge",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME": "Arraign",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_SUBTITLE": "The Judge",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DIALOGUE_FORMAT": "<color=#c6d5ff><size=120%>Arraign: {0}</color></size>",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_1": "Show me what you're made of.",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_2": "Bring it on!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_3": "Candidate, demonstrate!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_4": "Candidate, endure!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_5": "Interesting choice.",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_6": "Astounding resilience...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_7": "Powerful being...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_8": "Fair contender...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_9": "Step up your strength!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_1": "Candidate, invigorate!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_2": "Aggravate!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_3": "Do it!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_4": "Enrage!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_5": "Behold!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_6": "Come on!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_7": "Show me more!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_8": "Don't hold back!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_9": "Unfolding strength!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_10": "Reveal your potential!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_11": "Show me your power!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT": "Survived the Judgement!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME": "Anointed",
+    "ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "Survive the Judgement"
   }
 }

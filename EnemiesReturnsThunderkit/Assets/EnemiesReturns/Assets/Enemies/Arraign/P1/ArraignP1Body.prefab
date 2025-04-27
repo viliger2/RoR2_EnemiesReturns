@@ -405,8 +405,8 @@ MonoBehaviour:
   BaseImportance: 0
   Importance: -1
   inLava: 0
-  baseNameToken: ENEMIES_RETURNS_ARRAIGNP1_BODY_NAME
-  subtitleNameToken: ENEMIES_RETURNS_ARRAIGNP1_BODY_SUBTITLE
+  baseNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME
+  subtitleNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_SUBTITLE
   bodyFlags: 2065
   lavaCooldown: 0.2
   rootMotionInMainState: 0
@@ -2532,6 +2532,22 @@ MonoBehaviour:
   aimType: 0
   enableAimWeight: 0
   UseTransformedAimVector: 0
+--- !u!114 &5640483450927919137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578691932834601577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1294804675, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupName: SwordBeam
+  hitBoxes:
+  - {fileID: 1141962848791305660}
+  - {fileID: 1310788361774802487}
 --- !u!114 &5876911987732598112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,22 +2641,6 @@ MonoBehaviour:
   enableFootstepDust: 0
   footstepDustPrefab: {fileID: 0}
   inLava: 0
---- !u!114 &5640483450927919137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2578691932834601577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1294804675, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groupName: SwordBeam
-  hitBoxes:
-  - {fileID: 1141962848791305660}
-  - {fileID: 1310788361774802487}
 --- !u!4 &2812961023823909223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 576907508992685663, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
