@@ -18,6 +18,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             public int minCreditCost;
             public int maxCreditCost;
             public float totalAvailableCredits;
+            public uint maxSquadCount;
         }
 
         public WavesInformation[] wavesInformation;
@@ -175,6 +176,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 combatDirector.OverrideCurrentMonsterCard(card);
                 combatDirector.monsterSpawnTimer = 0f;
                 combatDirector.gameObject.SetActive(true);
+                combatDirector.maxSquadCount = information.maxSquadCount;
                 if (combatDirector.combatSquad)
                 {
                     combatDirector.combatSquad.memberHistory.Clear();

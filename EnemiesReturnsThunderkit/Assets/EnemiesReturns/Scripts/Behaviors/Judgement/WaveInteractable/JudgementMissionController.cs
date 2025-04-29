@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-//using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
@@ -18,6 +17,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             public int minCreditCost;
             public int maxCreditCost;
             public float totalAvailableCredits;
+            public uint maxSquadCount;
         }
 
         public WavesInformation[] wavesInformation;
@@ -45,6 +45,14 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         public static JudgementMissionController instance;
 
         private bool roundActive;
+
+        private void Start()
+        {
+            if (NetworkServer.active)
+            {
+                InitCombatDirectors();
+            }
+        }
 
         private void OnEnable()
         {
@@ -167,6 +175,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 combatDirector.OverrideCurrentMonsterCard(card);
                 combatDirector.monsterSpawnTimer = 0f;
                 combatDirector.gameObject.SetActive(true);
+                combatDirector.maxSquadCount = information.maxSquadCount;
                 if (combatDirector.combatSquad)
                 {
                     combatDirector.combatSquad.memberHistory.Clear();
@@ -179,15 +188,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentRound++;
         }
 
-        [Server]
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-            InitCombatDireactors();
-        }
-
-        [Server]
-        private void InitCombatDireactors()
+        private void InitCombatDirectors()
         {
             if (!NetworkServer.active)
             {
@@ -199,7 +200,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 var combatDirector = combatDirectors[i];
                 combatDirector.maximumNumberToSpawnBeforeSkipping = maximumNumberToSpawnBeforeSkipping;
                 combatDirector.spawnDistanceMultiplier = spawnDistanceMultiplier;
-                combatDirector.eliteBias = 99f; // adding insane elite bias so elites are never chosen, we'll set elites ourselves
+                combatDirector.eliteBias = 999f; // adding insane elite bias so elites are never chosen, we'll set elites ourselves
                 combatDirector.onSpawnedServer.AddListener(ModifySpawnedMonsters);
             }
 
