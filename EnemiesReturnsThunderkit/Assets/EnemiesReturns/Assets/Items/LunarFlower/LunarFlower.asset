@@ -20,9 +20,9 @@ MonoBehaviour:
   loreToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_LORE
   unlockableDef: {fileID: 0}
   pickupModelPrefab: {fileID: 9154845379044182652, guid: 42fb53455e435354f8664f646423775f, type: 3}
-  pickupIconSprite: {fileID: 21300000, guid: 83f53adc8b0e9d74794d3a31564e3a82, type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 2812b214e9e992948ba318da535d4761, type: 3}
   isConsumed: 0
   hidden: 0
-  canRemove: 1
+  canRemove: 0
   tags: 090000000c0000000d00000004000000
   requiredExpansion: {fileID: 0}
