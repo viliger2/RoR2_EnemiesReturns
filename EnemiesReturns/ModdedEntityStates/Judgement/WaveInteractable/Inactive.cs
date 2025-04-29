@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
             var childLocator = gameObject.GetComponent<ChildLocator>();
             if (childLocator)
             {
-                var beamEffect = childLocator.FindChild("BeamEffect");
+                var beamEffect = childLocator.FindChild("Idle");
                 if (beamEffect)
                 {
                     beamEffect.gameObject.SetActive(false);

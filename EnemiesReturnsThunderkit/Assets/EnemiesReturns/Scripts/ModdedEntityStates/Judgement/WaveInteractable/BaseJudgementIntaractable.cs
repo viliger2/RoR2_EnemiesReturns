@@ -10,10 +10,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     {
         internal PickupPickerController pickupPickerController;
 
+        internal ChildLocator childLocator;
+
         public override void OnEnter()
         {
             base.OnEnter();
             pickupPickerController = GetComponent<PickupPickerController>();
+            childLocator = gameObject.GetComponent<ChildLocator>();
         }
     }
 }

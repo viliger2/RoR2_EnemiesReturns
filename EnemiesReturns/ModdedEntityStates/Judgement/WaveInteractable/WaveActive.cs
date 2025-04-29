@@ -5,6 +5,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
@@ -12,23 +13,21 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     [RegisterEntityState]
     public class WaveActive : BaseJudgementIntaractable
     {
-        public static string soundEntryEvent = "Play_ui_obj_nullWard_activate";
+        public static string soundEntryEvent = "Play_boss_spawn_radius_appear";
 
         public static float gracePeriod = 5f;
+
+        private Transform waveStartedEffects;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            if (NetworkServer.active && pickupPickerController)
-            {
-                pickupPickerController.SetAvailable(false);
-            }
             if (childLocator)
             {
-                var beamEffect = childLocator.FindChild("BeamEffect");
-                if (beamEffect)
+                waveStartedEffects = childLocator.FindChild("WaveStartedEffect");
+                if (waveStartedEffects)
                 {
-                    beamEffect.gameObject.SetActive(false);
+                    waveStartedEffects.gameObject.SetActive(true);
                 }
             }
             Util.PlaySound(soundEntryEvent, gameObject);
@@ -67,6 +66,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void OnExit()
         {
             base.OnExit();
+            if (waveStartedEffects)
+            {
+                waveStartedEffects.gameObject.SetActive(false);
+            }
             if (childLocator)
             {
                 var waveFinishedEffect = childLocator.FindChild("WaveFinishedEffect");

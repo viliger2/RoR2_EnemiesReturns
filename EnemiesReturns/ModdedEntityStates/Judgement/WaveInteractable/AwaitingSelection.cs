@@ -3,6 +3,7 @@ using EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
@@ -10,6 +11,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     [RegisterEntityState]
     public class AwaitingSelection : BaseJudgementIntaractable
     {
+        private Transform idleEffects;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -19,15 +22,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
             }
             if (childLocator)
             {
-                var beamEffect = childLocator.FindChild("BeamEffect");
-                if (beamEffect)
+                idleEffects = childLocator.FindChild("Idle");
+                if (idleEffects)
                 {
-                    beamEffect.gameObject.SetActive(true);
-                }
-                var lightning = childLocator.FindChild("ProngLightning");
-                if (lightning)
-                {
-                    lightning.gameObject.SetActive(true);
+                    idleEffects.gameObject.SetActive(true);
                 }
             }
         }
@@ -35,18 +33,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void OnExit()
         {
             base.OnExit();
-            if (childLocator)
+            if (idleEffects)
             {
-                var waveFinishedEffect = childLocator.FindChild("WaveFinishedEffect");
-                if (waveFinishedEffect)
-                {
-                    waveFinishedEffect.gameObject.SetActive(false);
-                }
-                var lightning = childLocator.FindChild("ProngLightning");
-                if (lightning)
-                {
-                    lightning.gameObject.SetActive(false);
-                }
+                idleEffects.gameObject.SetActive(false);
+            }
+            var waveFinishedEffect = childLocator.FindChild("WaveFinishedEffect");
+            if (waveFinishedEffect)
+            {
+                waveFinishedEffect.gameObject.SetActive(false);
             }
         }
     }

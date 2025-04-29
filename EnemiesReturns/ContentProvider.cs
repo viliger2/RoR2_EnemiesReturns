@@ -392,7 +392,12 @@ namespace EnemiesReturns
                 {
                     foreach (Material material in materials)
                     {
-                        var replacementShader = Addressables.LoadAssetAsync<Shader>(ShaderLookup[material.shader.name.ToLower()]).WaitForCompletion();
+                        if(!ShaderLookup.TryGetValue(material.shader.name.ToLower(), out var matName))
+                        {
+                            Log.Info($"Couldn't find replacement shader for {material.shader.name.ToLower()} in dictionary.");
+                            continue;
+                        }
+                        var replacementShader = Addressables.LoadAssetAsync<Shader>(matName).WaitForCompletion();
                         if (replacementShader)
                         {
                             material.shader = replacementShader;
