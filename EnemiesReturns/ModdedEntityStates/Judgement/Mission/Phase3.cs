@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterAI;
 using RoR2.CharacterSpeech;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static GameObject speechControllerPrefab;
 
+        public static CharacterSpawnCard cscArraignHaunt;
+
+        public static float hauntSpawnDelay = 5f;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private BossGroup phaseBossGroup;
@@ -29,7 +34,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private CombatSquad combatSquad;
 
-        private bool hasSpawned;
+        private bool hasHauntSpawned;
+
+        private bool hasArraignSpawned;
 
         public override void OnEnter()
         {
@@ -67,7 +74,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!hasSpawned)
+
+            if(fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
+            {
+                if (SummonHaunt())
+                {
+                    hasHauntSpawned = true;
+                }
+            }
+
+            if (!hasArraignSpawned)
             {
                 if(fixedAge > spawnDelay)
                 {
@@ -82,7 +98,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private void BeginEncounter()
         {
-            hasSpawned = true;
+            hasArraignSpawned = true;
             if (NetworkServer.active)
             {
                 combatEncounter.BeginEncounter();
@@ -103,6 +119,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             }
         }
 
+        private GameObject SummonHaunt()
+        {
+            var placementRule = new DirectorPlacementRule();
+            placementRule.placementMode = DirectorPlacementRule.PlacementMode.NearestNode;
+            placementRule.position = Vector3.zero;
+
+            DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscArraignHaunt, placementRule, RoR2Application.rng);
+            directorSpawnRequest.summonerBodyObject = gameObject;
+            directorSpawnRequest.ignoreTeamMemberLimit = true;
+            directorSpawnRequest.teamIndexOverride = TeamIndex.Monster;
+            directorSpawnRequest.onSpawnedServer = (spawnResult) =>
+            {
+                if (spawnResult.success && spawnResult.spawnedInstance && characterBody)
+                {
+                    var baseAI = spawnResult.spawnedInstance.GetComponent<BaseAI>();
+                    if (baseAI && baseAI.body)
+                    {
+                        baseAI.ForceAcquireNearestEnemyIfNoCurrentEnemy();
+                    }
+                }
+            };
+
+            return DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
+        }
 
         public void KillAllMonsters()
         {

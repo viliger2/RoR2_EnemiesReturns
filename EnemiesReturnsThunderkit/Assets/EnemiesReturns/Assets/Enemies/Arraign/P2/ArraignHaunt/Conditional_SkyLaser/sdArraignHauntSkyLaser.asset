@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1391837873, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: sdArraignP2Secondary
+  m_Name: sdArraignHauntSkyLaser
   m_EditorClassIdentifier: 
-  skillName: ClockAttack
-  skillNameToken: ENEMIES_RETURNS_ARRAIGNP2_SECONDARY_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP2_SECONDARY_DESC
+  skillName: SkyLaser
+  skillNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_DESC
   keywordTokens: []
   icon: {fileID: 0}
-  activationStateMachineName: Special
+  activationStateMachineName: Weapon
   activationState:
-    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack,
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 20
+  baseRechargeInterval: 40
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
   attackSpeedBuffsRestockSpeed_Multiplier: 1
   resetCooldownTimerOnUse: 0
   fullRestockOnAssign: 1
-  dontAllowPastMaxStocks: 1
+  dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1627637702, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: sfArraignP2SkyLaser
+  m_Name: sfArraignHauntClockAttack
   m_EditorClassIdentifier: 
   variants:
-  - skillDef: {fileID: 11400000, guid: a7d2649b30e247c45abbcb8e907955dc, type: 2}
+  - skillDef: {fileID: 11400000, guid: 15ee1c0179fcf7349b09eb19e81ff660, type: 2}
     unlockableName: 
     unlockableDef: {fileID: 0}
   defaultVariantIndex: 0

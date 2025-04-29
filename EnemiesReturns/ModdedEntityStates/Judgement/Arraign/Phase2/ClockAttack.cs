@@ -145,15 +145,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
             if (isAuthority && clockChildLocator)
             {
+                List<ClockFiringLine> linesList = new List<ClockFiringLine>();
                 var staringIndex = UnityEngine.Random.Range(0, clockChildLocator.Count);
 
-                HG.ArrayUtils.ArrayAppend(ref lines, CreateLine(clockChildLocator, staringIndex));
+                linesList.Add(CreateLine(clockChildLocator, staringIndex));
 
                 for(int i = 0; i < additionalPairs; i++)
                 {
-                    HG.ArrayUtils.ArrayAppend(ref lines, CreateLine(clockChildLocator, (staringIndex + pairsDistanceFromOrigin * i + 1) % 12));
-                    HG.ArrayUtils.ArrayAppend(ref lines, CreateLine(clockChildLocator, (12 + (staringIndex - (pairsDistanceFromOrigin * i + 1))) % 12));
+                    linesList.Add(CreateLine(clockChildLocator, (staringIndex + pairsDistanceFromOrigin * i + 1) % 12));
+                    linesList.Add(CreateLine(clockChildLocator, (12 + (staringIndex - (pairsDistanceFromOrigin * i + 1))) % 12));
                 }
+                lines = linesList.ToArray();
             }
         }
 
