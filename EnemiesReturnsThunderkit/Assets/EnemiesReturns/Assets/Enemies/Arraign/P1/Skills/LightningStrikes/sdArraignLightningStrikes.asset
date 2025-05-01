@@ -33,10 +33,10 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
-  cancelSprintingOnActivation: 1
-  forceSprintDuringState: 0
+  cancelSprintingOnActivation: 0
+  forceSprintDuringState: 1
   canceledFromSprinting: 0
-  isCombatSkill: 1
+  isCombatSkill: 0
   mustKeyPress: 0
   autoHandleLuminousShot: 1
   hideStockCount: 0
