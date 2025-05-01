@@ -217,6 +217,8 @@ namespace EnemiesReturns
                     ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1P2").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2P2").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3P2").curve;
+
+                    ModdedEntityStates.Judgement.Arraign.Slide.BaseSlideState.speedCoefficientCurve = assets.First(acd => acd.name == "acdMithrixDash").curve;
                     foreach (var acd in assets)
                     {
                         acdLookup.Add(acd.name, acd);

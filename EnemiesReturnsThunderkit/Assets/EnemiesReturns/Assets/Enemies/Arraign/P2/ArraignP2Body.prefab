@@ -25,16 +25,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 514137157348643012, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 514137157348643012, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: skillName
-      value: ClockAttack
+      value: LeftRightSwing
       objectReference: {fileID: 0}
     - target: {fileID: 514137157348643012, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: _skillFamily
       value: 
-      objectReference: {fileID: 11400000, guid: 46aa0b7053ddaea41a27909b40f6aae9, type: 2}
+      objectReference: {fileID: 11400000, guid: 6f44c28529825464e8962a4f21758f5d, type: 2}
     - target: {fileID: 2413003441898197763, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_Controller
       value: 
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 3274917509634399284, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: secondary
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1895310432609537537}
     - target: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: skillName
       value: DashAttackP2
@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 5761214539947998309, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: conditionalSkillInfos.Array.data[0].airborneSkillDef
       value: 
-      objectReference: {fileID: 11400000, guid: 49eceb2b1babab148b10775f339804f6, type: 2}
+      objectReference: {fileID: 11400000, guid: b6a64941e68146244b5cd55560422ae9, type: 2}
     - target: {fileID: 5916704582772687778, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_Name
       value: ArraignP2Body
@@ -206,35 +206,23 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 936655539752334188, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
---- !u!1 &789288941719909421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5916704582772687778, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+--- !u!114 &1895310432609537537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4802310204618504590, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_PrefabInstance: {fileID: 6406446765822474127}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2994507521334374443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789288941719909421}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillFamily: {fileID: 11400000, guid: 72ea1b2b64a6fa5468818318df2e826a, type: 2}
-  skillName: SkyDrop
-  hideInCharacterSelect: 0
-  baseStock: 1
-  baseRechargeStopwatch: 0
-  hasExecutedSuccessfully: 0
 --- !u!114 &3882888290602294189 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7857249970222787618, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_PrefabInstance: {fileID: 6406446765822474127}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789288941719909421}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -245,7 +233,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3353883869141247821, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_PrefabInstance: {fileID: 6406446765822474127}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789288941719909421}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}

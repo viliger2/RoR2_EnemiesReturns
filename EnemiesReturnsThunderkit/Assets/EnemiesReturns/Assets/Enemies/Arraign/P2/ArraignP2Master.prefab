@@ -281,29 +281,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: ClockAttack
-  skillSlot: 1
+  customName: LeftRightSwing
+  skillSlot: 0
   requiredSkill: {fileID: 0}
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: 0.95
+  maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 10
-  maxDistance: Infinity
-  selectionRequiresTargetLoS: 1
+  minDistance: 0
+  maxDistance: 10
+  selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
   maxTimesSelected: -1
   moveTargetType: 0
-  activationRequiresTargetLoS: 1
-  activationRequiresAimTargetLoS: 1
+  activationRequiresTargetLoS: 0
+  activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 0
   movementType: 1
   moveInputScale: 1
@@ -313,7 +313,7 @@ MonoBehaviour:
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: -1
+  driverUpdateTimerOverride: 0.5
   resetCurrentEnemyOnNextDriverSelection: 1
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customName: DoCombo
-  skillSlot: 0
+  skillSlot: 1
   requiredSkill: {fileID: 0}
   requireSkillReady: 1
   requireEquipmentReady: 0
@@ -372,9 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: FireHomingOrbs
+  customName: FireLightning
   skillSlot: 0
-  requiredSkill: {fileID: 11400000, guid: fd6c3f72880bd1a4d8b481475525da9f, type: 2}
+  requiredSkill: {fileID: 11400000, guid: 6ea50d193c2a08945a91a92800cf790b, type: 2}
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity

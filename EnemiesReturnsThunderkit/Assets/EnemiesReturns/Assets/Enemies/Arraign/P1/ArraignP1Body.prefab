@@ -328,6 +328,8 @@ GameObject:
   - component: {fileID: 4418322593500643424}
   - component: {fileID: 936655539752334188}
   - component: {fileID: 5761214539947998309}
+  - component: {fileID: 2099206308877742170}
+  - component: {fileID: 1754519012094115655}
   m_Layer: 0
   m_Name: ArraignP1Body
   m_TagString: Untagged
@@ -592,8 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 306635731, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primary: {fileID: 4802310204618504590}
-  secondary: {fileID: 514137157348643012}
+  primary: {fileID: 514137157348643012}
+  secondary: {fileID: 4802310204618504590}
   utility: {fileID: 7857249970222787618}
   special: {fileID: 3353883869141247821}
   passiveSkill:
@@ -896,8 +898,8 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillFamily: {fileID: 11400000, guid: f37b41b6e11cde84a8fd2fc8da4dce6f, type: 2}
-  skillName: LightningStrikes
+  _skillFamily: {fileID: 11400000, guid: 6b69990a0b8d8564c9183064376001ee, type: 2}
+  skillName: LeftRightSwing
   hideInCharacterSelect: 0
   baseStock: 0
   baseRechargeStopwatch: 0
@@ -1023,9 +1025,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterBody: {fileID: 2963873619053843280}
   conditionalSkillInfos:
-  - skillSlot: {fileID: 4802310204618504590}
-    sprintSkillDef: {fileID: 11400000, guid: fd6c3f72880bd1a4d8b481475525da9f, type: 2}
-    airborneSkillDef: {fileID: 11400000, guid: ed4a286bd156e6b48b1541a31ce18900, type: 2}
+  - skillSlot: {fileID: 514137157348643012}
+    sprintSkillDef: {fileID: 11400000, guid: 6ea50d193c2a08945a91a92800cf790b, type: 2}
+    airborneSkillDef: {fileID: 11400000, guid: 374ef6213df91f5449bdb65893da3643, type: 2}
+--- !u!114 &2099206308877742170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillFamily: {fileID: 11400000, guid: 2c6beae25a5ac4949bfec2c3dbd4f7cb, type: 2}
+  skillName: Slide
+  hideInCharacterSelect: 1
+  baseStock: 1
+  baseRechargeStopwatch: 0
+  hasExecutedSuccessfully: 0
+--- !u!114 &1754519012094115655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2b685d80106b84cbd88a5822b37d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillToExecute: {fileID: 2099206308877742170}
+  characterBody: {fileID: 2963873619053843280}
+  mainStateMachine: {fileID: 2859791027360040491}
+  checkForMainState: 1
 --- !u!1 &5959275310516554732
 GameObject:
   m_ObjectHideFlags: 0

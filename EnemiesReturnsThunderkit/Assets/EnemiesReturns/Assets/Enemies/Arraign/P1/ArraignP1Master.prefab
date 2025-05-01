@@ -243,24 +243,24 @@ MonoBehaviour:
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: FireLightning
-  skillSlot: 1
+  customName: Swing
+  skillSlot: 0
   requiredSkill: {fileID: 0}
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: 0.98
+  maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 10
-  maxDistance: Infinity
-  selectionRequiresTargetLoS: 1
+  minDistance: 0
+  maxDistance: 10
+  selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
   maxTimesSelected: -1
   moveTargetType: 0
-  activationRequiresTargetLoS: 1
-  activationRequiresAimTargetLoS: 1
+  activationRequiresTargetLoS: 0
+  activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 0
   movementType: 1
   moveInputScale: 1
@@ -270,9 +270,9 @@ MonoBehaviour:
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: 4
+  driverUpdateTimerOverride: 0.5
   resetCurrentEnemyOnNextDriverSelection: 0
-  noRepeat: 1
+  noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &-2133748247399528627
 MonoBehaviour:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customName: DoCombo
-  skillSlot: 0
+  skillSlot: 1
   requiredSkill: {fileID: 0}
   requireSkillReady: 1
   requireEquipmentReady: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 0
+  minDistance: 5
   maxDistance: 30
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
@@ -372,17 +372,17 @@ MonoBehaviour:
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customName: FireHomingOrbs
+  customName: FireLightningOverride
   skillSlot: 0
-  requiredSkill: {fileID: 11400000, guid: fd6c3f72880bd1a4d8b481475525da9f, type: 2}
-  requireSkillReady: 1
+  requiredSkill: {fileID: 11400000, guid: 6ea50d193c2a08945a91a92800cf790b, type: 2}
+  requireSkillReady: 0
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 50
-  maxDistance: Infinity
+  minDistance: 35
+  maxDistance: 200
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 35
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
   selectionRequiresAimTarget: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297957800661026336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
