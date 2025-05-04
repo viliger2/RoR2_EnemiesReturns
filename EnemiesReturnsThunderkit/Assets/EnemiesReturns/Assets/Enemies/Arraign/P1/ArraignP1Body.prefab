@@ -327,9 +327,10 @@ GameObject:
   - component: {fileID: 6533914390430200171}
   - component: {fileID: 4418322593500643424}
   - component: {fileID: 936655539752334188}
-  - component: {fileID: 5761214539947998309}
   - component: {fileID: 2099206308877742170}
   - component: {fileID: 1754519012094115655}
+  - component: {fileID: 516704904186379893}
+  - component: {fileID: 480455663985024105}
   m_Layer: 0
   m_Name: ArraignP1Body
   m_TagString: Untagged
@@ -413,10 +414,10 @@ MonoBehaviour:
   lavaCooldown: 0.2
   rootMotionInMainState: 0
   mainRootSpeed: 33
-  baseMaxHealth: 100000
+  baseMaxHealth: 1000
   baseRegen: 0
   baseMaxShield: 0
-  baseMoveSpeed: 8
+  baseMoveSpeed: 15
   baseAcceleration: 45
   baseJumpPower: 25
   baseDamage: 16
@@ -426,8 +427,8 @@ MonoBehaviour:
   baseVisionDistance: Infinity
   baseJumpCount: 0
   sprintingSpeedMultiplier: 2.6
-  autoCalculateLevelStats: 0
-  levelMaxHealth: 0
+  autoCalculateLevelStats: 1
+  levelMaxHealth: 300
   levelRegen: 0
   levelMaxShield: 0
   levelMoveSpeed: 0
@@ -1010,24 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2963873619053843280}
-  segments: 6
---- !u!114 &5761214539947998309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916704582772687778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1918744144, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBody: {fileID: 2963873619053843280}
-  conditionalSkillInfos:
-  - skillSlot: {fileID: 514137157348643012}
-    sprintSkillDef: {fileID: 11400000, guid: 6ea50d193c2a08945a91a92800cf790b, type: 2}
-    airborneSkillDef: {fileID: 11400000, guid: 374ef6213df91f5449bdb65893da3643, type: 2}
+  segments: 4
 --- !u!114 &2099206308877742170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,6 +1046,42 @@ MonoBehaviour:
   characterBody: {fileID: 2963873619053843280}
   mainStateMachine: {fileID: 2859791027360040491}
   checkForMainState: 1
+--- !u!114 &516704904186379893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillFamily: {fileID: 11400000, guid: f37b41b6e11cde84a8fd2fc8da4dce6f, type: 2}
+  skillName: LightningStrikes
+  hideInCharacterSelect: 0
+  baseStock: 1
+  baseRechargeStopwatch: 0
+  hasExecutedSuccessfully: 0
+--- !u!114 &480455663985024105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79c2bb317db938468f04d84ef6b3413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillLocator: {fileID: 3274917509634399284}
+  characterBody: {fileID: 2963873619053843280}
+  conditionalSkillInfos:
+  - replacementSkill: {fileID: 516704904186379893}
+    skillSlot: 0
+    originalSkill: {fileID: 514137157348643012}
 --- !u!1 &5959275310516554732
 GameObject:
   m_ObjectHideFlags: 0
