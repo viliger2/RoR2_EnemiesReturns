@@ -498,7 +498,7 @@ namespace EnemiesReturns
                     Card = dcIfritDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchIfritDefault);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchIfritDefault);
 
                 if (EnemiesReturns.Configuration.Ifrit.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
                 {
@@ -678,7 +678,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusDefault, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.DefaultStageList.Value, dchColossusDefault);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.DefaultStageList.Value, dchColossusDefault);
 
                 ColossusBody.SpawnCards.cscColossusSkyMeadow = colossusBody.CreateCard("cscColossusSkyMeadow", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.SkyMeadow, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSkyMeadow = new DirectorCard
@@ -694,7 +694,7 @@ namespace EnemiesReturns
                     Card = dcColossusSkyMeadow,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.SkyMeadowStageList.Value, dchColossusSkyMeadow);
 
                 ColossusBody.SpawnCards.cscColossusGrassy = colossusBody.CreateCard("cscColossusGrassy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Grassy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusGrassy = new DirectorCard
@@ -711,7 +711,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilyNature").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
 
                 ColossusBody.SpawnCards.cscColossusCastle = colossusBody.CreateCard("cscColossusCastle", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Castle, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusCastle = new DirectorCard
@@ -727,7 +727,7 @@ namespace EnemiesReturns
                     Card = dcColossusCastle,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.CastleStageList.Value, dchColossusCastle);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.CastleStageList.Value, dchColossusCastle);
 
                 ColossusBody.SpawnCards.cscColossusSandy = colossusBody.CreateCard("cscColossusSandy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Sandy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSandy = new DirectorCard
@@ -744,7 +744,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusSandy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySandy.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SandyStageList.Value, dchColossusSandy);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.SandyStageList.Value, dchColossusSandy);
 
                 ColossusBody.SpawnCards.cscColossusSnowy = colossusBody.CreateCard("cscColossusSnowy", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Snowy, ColossusBody.BodyPrefab);
                 DirectorCard dcColossusSnowy = new DirectorCard
@@ -761,7 +761,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusSnowy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamilySnowy.asset").WaitForCompletion());
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Colossus.SnowyStageList.Value, dchColossusSnowy);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Colossus.SnowyStageList.Value, dchColossusSnowy);
 
                 if (EnemiesReturns.Configuration.Colossus.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
                 {
@@ -870,7 +870,7 @@ namespace EnemiesReturns
                     Card = dcSpitterDefault,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.DefaultStageList.Value, dchSpitterDefault);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Spitter.DefaultStageList.Value, dchSpitterDefault);
 
                 SpitterBody.SpawnCards.cscSpitterLakes = spitterBody.CreateCard("cscSpitterLakes", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Lakes, SpitterBody.BodyPrefab);
                 var dcSpitterLakes = new DirectorCard
@@ -886,7 +886,7 @@ namespace EnemiesReturns
                     Card = dcSpitterLakes,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.LakesStageList.Value, dchSpitterLakes);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Spitter.LakesStageList.Value, dchSpitterLakes);
 
                 SpitterBody.SpawnCards.cscSpitterSulfur = spitterBody.CreateCard("cscSpitterSulfur", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Sulfur, SpitterBody.BodyPrefab);
                 var dcSpitterSulfur = new DirectorCard
@@ -902,7 +902,7 @@ namespace EnemiesReturns
                     Card = dcSpitterSulfur,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Spitter.SulfurStageList.Value, dchSpitterSulfur);
 
                 SpitterBody.SpawnCards.cscSpitterDepths = spitterBody.CreateCard("cscSpitterDepths", SpitterMaster.MasterPrefab, SpitterBody.SkinDefs.Depths, SpitterBody.BodyPrefab);
                 var dcSpitterDepth = new DirectorCard
@@ -918,7 +918,7 @@ namespace EnemiesReturns
                     Card = dcSpitterDepth,
                     MonsterCategory = DirectorAPI.MonsterCategory.Minibosses,
                 };
-                Utils.AddMonsterToStage(EnemiesReturns.Configuration.Spitter.DepthStageList.Value, dchSpitterDepths);
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.Spitter.DepthStageList.Value, dchSpitterDepths);
                 if (EnemiesReturns.Configuration.Spitter.HelminthroostReplaceMushrum.Value)
                 {
                     DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.MiniMushrum, DirectorAPI.Stage.HelminthHatchery);
@@ -1003,7 +1003,7 @@ namespace EnemiesReturns
                 Card = dcMechanicalSpiderDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
+            Utils.AddMonsterToStages(EnemiesReturns.Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
 
             MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy = spiderEnemyBody.CreateCard("cscMechanicalSpiderGrassy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Grassy, MechanicalSpiderEnemyMaster.MasterPrefab);
             var dcMechanicalSpiderGrassy = new DirectorCard
@@ -1019,7 +1019,7 @@ namespace EnemiesReturns
                 Card = dcMechanicalSpiderGrassy,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
+            Utils.AddMonsterToStages(EnemiesReturns.Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
 
             MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy = spiderEnemyBody.CreateCard("cscMechanicalSpiderSnowy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Snowy, MechanicalSpiderEnemyMaster.MasterPrefab);
             var dcMechanicalSpiderSnowy = new DirectorCard
@@ -1035,7 +1035,7 @@ namespace EnemiesReturns
                 Card = dcMechanicalSpiderSnowy,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
+            Utils.AddMonsterToStages(EnemiesReturns.Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
 
         private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
@@ -1056,7 +1056,7 @@ namespace EnemiesReturns
                 CreateLynxHunter(assets, iconLookup);
                 CreateLynxArcher(assets, iconLookup, rampLookups);
                 CreateLynxTotem(assets, iconLookup, acdLookup, dtLynxTotem);
-                Utils.AddMonsterFamilyToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, new LynxTribeStuff().CreateLynxTribeFamily());
+                Utils.AddMonsterFamilyToStages(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, new LynxTribeStuff().CreateLynxTribeFamily());
                 if (EnemiesReturns.Configuration.LynxTribe.LynxStuff.LynxShrineEnabled.Value)
                 {
                     CreateLynxShrine(assets);
@@ -1274,7 +1274,7 @@ namespace EnemiesReturns
                 Card = dhLynxArcherDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxArcherDefault);
+            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxArcherDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
 
@@ -1337,7 +1337,7 @@ namespace EnemiesReturns
                 Card = dhLynxHunterDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxHunterDefault);
+            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxHunterDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
 
@@ -1400,7 +1400,7 @@ namespace EnemiesReturns
                 Card = dhLynxScoutDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxScoutDefault);
+            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxScoutDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
 
@@ -1524,7 +1524,7 @@ namespace EnemiesReturns
                 Card = dhLynxTotemDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.Champions,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
+            Utils.AddMonsterToStages(EnemiesReturns.Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, dchLynxTotemDefault);
 
             if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.AddToArtifactOfOrigin.Value && ModCompats.RiskyArtifafactsCompat.enabled)
             {
@@ -1656,7 +1656,7 @@ namespace EnemiesReturns
                 Card = dhLynxShamanDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
+            Utils.AddMonsterToStages(EnemiesReturns.Configuration.LynxTribe.LynxShaman.DefaultStageList.Value, dchLynxShamanDefault);
 
             var shamanBodyAlly = new ShamanBodyAlly();
             Content.Buffs.LynxShamanSpecialDamage = shamanBodyAlly.CreateSpecialBuffDef(iconLookup["texLynxShamanBuff"]);

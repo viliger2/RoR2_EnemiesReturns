@@ -54,7 +54,7 @@ namespace EnemiesReturns
             {"meridian","RoR2/DLC2/meridian/dpMeridianMonsters.asset"},
         };
 
-        public static void AddMonsterFamilyToStage(string stageList, FamilyDirectorCardCategorySelection monsterFamily)
+        public static void AddMonsterFamilyToStages(string stageList, FamilyDirectorCardCategorySelection monsterFamily)
         {
             var defaultStages = stageList.Split(",");
             foreach (var stageString in defaultStages)
@@ -77,7 +77,7 @@ namespace EnemiesReturns
             }
         }
 
-        public static void AddMonsterToStage(string stageList, DirectorCardHolder directorCard)
+        public static void AddMonsterToStages(string stageList, DirectorCardHolder directorCard)
         {
             var defaultStages = stageList.Split(",");
             foreach (var stageString in defaultStages)
