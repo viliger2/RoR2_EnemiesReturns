@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
-        private int swingCount;
+        public int swingCount;
 
         public override void OnEnter()
         {

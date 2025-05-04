@@ -40,10 +40,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 172cdefaca3eb574091cbdcaee4c0c56, type: 2}
     - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: baseMoveSpeed
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963873619053843280, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: baseNameToken
       value: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME
       objectReference: {fileID: 0}
