@@ -28,6 +28,16 @@ namespace EnemiesReturns.Enemies.Spitter
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
         {
+            if(!modelLocator || !modelLocator.modelTransform)
+            {
+                return;
+            }
+
+            if(damageReport == null || !damageReport.victimBody || !damageReport.victimBody.modelLocator || !damageReport.victimBody.modelLocator.modelTransform)
+            {
+                return;
+            }
+
             if (damageReport.victimBody.isPlayerControlled)
             {
                 var distance = Vector3.Distance(damageReport.victimBody.modelLocator.modelTransform.position, modelLocator.modelTransform.position);
