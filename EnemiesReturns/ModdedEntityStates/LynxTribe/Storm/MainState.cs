@@ -49,15 +49,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                 if (owner)
                 {
                     var ownerBody = owner.GetBody();
-                    if (!ownerBody)
+                    if (!ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
                     {
-                        // if we have master, but master has no body, means the owner is dead\doesn't exist in game space
+                        // if we have master, but master has no body or health, means the owner is dead\doesn't exist in game space
                         fixedAge += lifetime;
-                    }
-
-                    if(ownerBody.healthComponent && !ownerBody.healthComponent.alive)
-                    {
-                        fixedAge += lifetime; 
                     }
                 }
             }
