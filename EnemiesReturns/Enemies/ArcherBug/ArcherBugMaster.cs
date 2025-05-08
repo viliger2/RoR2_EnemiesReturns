@@ -32,8 +32,22 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
-                }
+                },
+                new IAISkillDriver.AISkillDriverParams("StrafeAndShootCausticSpit")
+                {
+                    skillSlot = SkillSlot.Primary,
+                    minDistance = 15f,
+                    maxDistance = 60f,
+                    selectionRequiresTargetLoS = true,
+                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
+                    activationRequiresAimConfirmation = true,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
+                    moveInputScale = 0.7f,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget
+                },
             };
         }
+
+
     }
 }

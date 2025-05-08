@@ -6,6 +6,7 @@ using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
+using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,12 +19,12 @@ namespace EnemiesReturns.Enemies.ArcherBug
     {
         public struct Skills
         {
-            
+            public static SkillDef CausticSpit;
         }
 
         public struct SkillFamilies
         {
-            
+            public static SkillFamily Primary;
         }
 
         public struct SkinDefs
@@ -33,14 +34,25 @@ namespace EnemiesReturns.Enemies.ArcherBug
 
         public struct SpawnCards
         {
-      
+            public static CharacterSpawnCard cscArcherBugDefault;
         }
 
         public static GameObject BodyPrefab;
 
         protected override bool AddHitBoxes => true;
 
-        
+        public SkillDef CreateCausticSpitSkill()
+        {
+            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("ArcherBugBodyCausticSpit", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.FireCausticSpit)))
+            {
+                nameToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_NAME",
+                descriptionToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION",
+                icon = acridEpidemic.icon,
+                activationStateMachine = "Body",
+                baseRechargeInterval = 3f
+            });
+        }
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
@@ -169,7 +181,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
         {
             return new IGenericSkill.GenericSkillParams[]
              {
-
+                 new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "CausticSpit", SkillSlot.Primary),
              }
  ;
         }
