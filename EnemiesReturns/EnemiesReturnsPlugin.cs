@@ -21,6 +21,7 @@ using UnityEngine.AddressableAssets;
 using R2API;
 using RoR2.Skills;
 
+// TODO: recheck all enemies with 30 syringes so that their attacks work at high attack speeds
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
@@ -43,7 +44,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.5.5";
+        public const string Version = "0.5.6";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()

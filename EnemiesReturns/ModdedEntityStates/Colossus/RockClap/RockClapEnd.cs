@@ -69,46 +69,51 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             base.FixedUpdate();
             if (modelAnimator && modelAnimator.GetFloat("Clap.activate") >= 0.8f && !hasFired)
             {
-                if (rockController)
-                {
-                    if (isAuthority)
-                    {
-                        foreach (GameObject rock in rockController.floatingRocks)
-                        {
-                            var position = (rock.transform.position - modelLocator.modelTransform.position) * UnityEngine.Random.Range(projectileDistanceFraction - projectileDistanceFractionDelta, projectileDistanceFraction + projectileDistanceFractionDelta);
-                            position = new Vector3(modelLocator.modelTransform.position.x + position.x, modelLocator.modelTransform.position.y, modelLocator.modelTransform.position.z + position.z);
-
-                            //var position = rock.transform.position - new Vector3(0f, 5f, 0f);
-                            var rotation = Quaternion.LookRotation(rock.transform.position - position, Vector3.up);
-                            ProjectileManager.instance.FireProjectile(projectilePrefab, rock.transform.position, rotation, gameObject, damageStat * projectileDamageCoefficient, projectileForce, RollCrit(), RoR2.DamageColorIndex.Default, null, UnityEngine.Random.Range(projectileSpeed - projectileSpeedDelta, projectileSpeed + projectileSpeedDelta), DamageSource.Secondary);
-                        }
-                        var attack = new BlastAttack();
-                        attack.attacker = gameObject;
-                        attack.inflictor = gameObject;
-                        attack.teamIndex = teamComponent.teamIndex;
-                        attack.baseDamage = clapDamageCoefficient * damageStat;
-                        attack.baseForce = clapForce;
-                        attack.position = clapTransform.position;
-                        attack.radius = clapRadius;
-                        attack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                        attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-                        attack.damageType = DamageSource.Secondary;
-                        attack.Fire();
-
-                    }
-                    if (NetworkServer.active && EnemiesReturns.Configuration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
-                    {
-                        SummonHelp();
-                    }
-                    UnityEngine.Object.Instantiate(clapEffect, clapTransform.position, clapTransform.rotation);
-                    rockController.enabled = false;
-                }
+                FireProjectiles();
                 hasFired = true;
             }
 
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
+            }
+        }
+
+        private void FireProjectiles()
+        {
+            if (rockController)
+            {
+                if (isAuthority)
+                {
+                    foreach (GameObject rock in rockController.floatingRocks)
+                    {
+                        var position = (rock.transform.position - modelLocator.modelTransform.position) * UnityEngine.Random.Range(projectileDistanceFraction - projectileDistanceFractionDelta, projectileDistanceFraction + projectileDistanceFractionDelta);
+                        position = new Vector3(modelLocator.modelTransform.position.x + position.x, modelLocator.modelTransform.position.y, modelLocator.modelTransform.position.z + position.z);
+
+                        //var position = rock.transform.position - new Vector3(0f, 5f, 0f);
+                        var rotation = Quaternion.LookRotation(rock.transform.position - position, Vector3.up);
+                        ProjectileManager.instance.FireProjectile(projectilePrefab, rock.transform.position, rotation, gameObject, damageStat * projectileDamageCoefficient, projectileForce, RollCrit(), RoR2.DamageColorIndex.Default, null, UnityEngine.Random.Range(projectileSpeed - projectileSpeedDelta, projectileSpeed + projectileSpeedDelta), DamageSource.Secondary);
+                    }
+                    var attack = new BlastAttack();
+                    attack.attacker = gameObject;
+                    attack.inflictor = gameObject;
+                    attack.teamIndex = teamComponent.teamIndex;
+                    attack.baseDamage = clapDamageCoefficient * damageStat;
+                    attack.baseForce = clapForce;
+                    attack.position = clapTransform.position;
+                    attack.radius = clapRadius;
+                    attack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+                    attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+                    attack.damageType = DamageSource.Secondary;
+                    attack.Fire();
+
+                }
+                if (NetworkServer.active && EnemiesReturns.Configuration.Colossus.RockClapPostLoopSpawns.Value && Run.instance.loopClearCount > 0)
+                {
+                    SummonHelp();
+                }
+                UnityEngine.Object.Instantiate(clapEffect, clapTransform.position, clapTransform.rotation);
+                rockController.enabled = false;
             }
         }
 
@@ -167,6 +172,11 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
 
         public override void OnExit()
         {
+            if (!hasFired)
+            {
+                FireProjectiles();
+                hasFired = true;
+            }
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
         }
