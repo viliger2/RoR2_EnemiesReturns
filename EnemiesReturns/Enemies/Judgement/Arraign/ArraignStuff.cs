@@ -16,7 +16,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public static GameObject P1MasterPrefab;
 
-        public static GameObject SetupLightningStrikePrefab(GameObject projectilePrefab)
+        public GameObject SetupLightningStrikePrefab(GameObject projectilePrefab)
         {
             var fxTransform = projectilePrefab.transform.Find("TeamIndicator");
 
@@ -31,6 +31,15 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             impactExplosion.childrenProjectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricOrbProjectile.prefab").WaitForCompletion();
 
             return projectilePrefab;
+        }
+
+        public GameObject CreateArraignSwingEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/MercSwordSlash.prefab").WaitForCompletion().InstantiateClone("ArraigSwordSlashEffect", false);
+
+            prefab.transform.Find("SwingTrail").localScale = new Vector3(3f, 3f, 3f);
+
+            return prefab;
         }
 
     }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
@@ -12,6 +13,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
     [RegisterEntityState]
     public class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
+        public new static GameObject swingEffectPrefab;
+
+        public new static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
+
         public int swingCount;
 
         public override void OnEnter()
@@ -19,14 +24,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             this.baseDuration = 0.4f;
             base.damageCoefficient = 2f;
             base.hitBoxGroupName = "Sword";
-            //base.hitEffectPrefab = 
+            base.hitEffectPrefab = hitEffectPrefab;
             base.procCoefficient = 1f;
             base.pushAwayForce = 600f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.05f;
-            //base.swingEffectMuzzleString = "";
+            base.swingEffectPrefab = swingEffectPrefab;
+            base.swingEffectMuzzleString = "Swing1EffectMuzzle";
             base.mecanimHitboxActiveParameter = null;
             base.shorthopVelocityFromHit = 0f;
+            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
             //base.impactSound = "";
             base.forceForwardVelocity = false;
             base.forwardVelocityCurve = null;
@@ -40,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("UpperBodyOnly", "BufferEmpty", 0.1f);
+            PlayCrossfade("UpperBodyOnly", "BufferEmpty", 0.5f);
         }
 
         public override void PlayAnimation()

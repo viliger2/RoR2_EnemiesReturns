@@ -1195,11 +1195,16 @@ namespace EnemiesReturns
         private void CreateJudgement()
         {
             if (Configuration.Judgement.Enabled.Value)
-            {          
+            {
+                nseList.Add(Utils.CreateNetworkSoundDef("Play_moonBrother_spawn")); // TODO: replce with different sounds, something heavy that lands in water, use wow sound like you usually do
+
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
+
+                var arraignStuff = new EnemiesReturns.Enemies.Judgement.Arraign.ArraignStuff();
+                ModdedEntityStates.Judgement.Arraign.BasePrimaryWeaponSwing.swingEffectPrefab = arraignStuff.CreateArraignSwingEffect();
             }
         }
 
