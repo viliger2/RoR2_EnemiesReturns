@@ -651,20 +651,15 @@ namespace EnemiesReturns
         private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             var ArcherBugStuff = new ArcherBugStuff();
-
+            var ArcherBugCausticSpitProjectile = ArcherBugStuff.CreateCausticSpitProjectile();
+            ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
             var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
-            unlockablesList.Add(archerBugLog);
+            unlockablesList.Add(archerBugLog);         
+            
+   
+            projectilesList.Add(ArcherBugCausticSpitProjectile);
 
             var archerBugBody = new ArcherBugBody();
-            
-            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texSpitterIcon"], archerBugLog);
-            bodyList.Add(ArcherBugBody.BodyPrefab);
-
-            ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
-            masterList.Add(ArcherBugMaster.MasterPrefab);
-
-            var causticSpitProjectile = ArcherBugStuff.CreateCausticSpitProjectile();
-            projectilesList.Add(causticSpitProjectile);
 
             ArcherBugBody.Skills.CausticSpit = archerBugBody.CreateCausticSpitSkill();
             
@@ -673,6 +668,12 @@ namespace EnemiesReturns
             ArcherBugBody.SkillFamilies.Primary = Utils.CreateSkillFamily("ArcherBugPrimaryFamily", ArcherBugBody.Skills.CausticSpit);
 
             sfList.Add(ArcherBugBody.SkillFamilies.Primary);
+
+            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texSpitterIcon"], archerBugLog);
+            bodyList.Add(ArcherBugBody.BodyPrefab);
+
+            ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
+            masterList.Add(ArcherBugMaster.MasterPrefab);
         }
 
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)

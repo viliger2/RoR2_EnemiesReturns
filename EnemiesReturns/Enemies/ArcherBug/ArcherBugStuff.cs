@@ -14,17 +14,11 @@ namespace EnemiesReturns.Enemies.ArcherBug
         public GameObject CreateCausticSpitProjectile()
         {
             var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoSpit.prefab").WaitForCompletion().InstantiateClone("ArcherBugCausticSpitProjectile", true);
-            clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 10f;
+            clonedProjectile.GetComponent<ProjectileImpactExplosion>().blastRadius = 2f;
 
-            if (clonedProjectile.TryGetComponent<ProjectileImpactExplosion>(out var component))
-            {
-                UnityEngine.Object.DestroyImmediate(component);
-            };
-
-            if (clonedProjectile.TryGetComponent<ProjectileSingleTargetImpact>(out var component2))
-            {
-                UnityEngine.Object.DestroyImmediate(component2);
-            }
+            ProjectileDamage projectileDamage = clonedProjectile.GetComponent<ProjectileDamage>();
+            projectileDamage.damageType.damageSource = DamageSource.Primary;
+            projectileDamage.damageType.damageType = DamageTypeCombo.GenericPrimary;
 
             clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetCausticProjectileGhost();
             

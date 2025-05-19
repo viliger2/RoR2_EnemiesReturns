@@ -49,8 +49,8 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 nameToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_NAME",
                 descriptionToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION",
                 icon = acridEpidemic.icon,
-                activationStateMachine = "Body",
-                baseRechargeInterval = 3f
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = 5f
             });
         }
 
@@ -71,8 +71,8 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 mainRootSpeed = 33,
                 baseMaxHealth = 140,
                 levelMaxHealth = 42,
-                baseDamage = 15,
-                levelDamage = 3,
+                baseDamage = 12,
+                levelDamage = 2.4f,
                 baseArmor = 0,
                 levelArmor = 0,
                 baseMoveSpeed = 8,
