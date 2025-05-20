@@ -5,13 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
+    // TODO: add some effects to feet to better indicate sliding in water
     [RegisterEntityState]
     public class Slash2 : BasicMeleeAttack
     {
         public static AnimationCurve acdSlash2;
+
+        public static GameObject swingEffect;
+
+        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
 
         public static float searchRadius = 20f;
 
@@ -22,14 +28,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             this.baseDuration = 0.48f;
             base.damageCoefficient = 2f;
             base.hitBoxGroupName = "Sword";
-            //base.hitEffectPrefab = 
+            base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 6000f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
-            //base.swingEffectMuzzleString = "";
+            base.swingEffectPrefab = swingEffect;
+            base.swingEffectMuzzleString = "SwingCombo2EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash2.attack";
             base.shorthopVelocityFromHit = 0f;
+            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
             //base.impactSound = "";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash2;
@@ -39,11 +47,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
-
-            //if (characterDirection)
-            //{
-            //    characterDirection.forward = inputBank.aimDirection;
-            //}
         }
 
         public override void FixedUpdate()
@@ -62,6 +65,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Secondary;
         }
 
         public override void AuthorityOnFinish()

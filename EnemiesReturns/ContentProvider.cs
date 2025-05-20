@@ -210,6 +210,8 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
                 {
                     zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
+
+                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.acdOverlayAlpha = assets.First(acd => acd.name == "acdPreSlashMaterialAlpha").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3").curve;
@@ -1204,7 +1206,15 @@ namespace EnemiesReturns
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
 
                 var arraignStuff = new EnemiesReturns.Enemies.Judgement.Arraign.ArraignStuff();
-                ModdedEntityStates.Judgement.Arraign.BasePrimaryWeaponSwing.swingEffectPrefab = arraignStuff.CreateArraignSwingEffect();
+                ModdedEntityStates.Judgement.Arraign.BasePrimaryWeaponSwing.swingEffect = arraignStuff.CreateArraignSwingEffect();
+                var swingComboEffect = arraignStuff.CreateArraignSwingComboEffect();
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.swingEffect = swingComboEffect;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.swingEffect = swingComboEffect;
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.swingEffect = swingComboEffect;
+
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.overlayMaterial = GetOrCreateMaterial("matArraignPreSlashOverlay", arraignStuff.CreatePreSlashWeaponOverlayMaterial);
+                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect = arraignStuff.CreateSlash3ExplosionEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect));
             }
         }
 

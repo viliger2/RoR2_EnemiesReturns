@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
     [RegisterEntityState]
     public class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
-        public new static GameObject swingEffectPrefab;
+        public static GameObject swingEffect;
 
-        public new static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
+        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
 
         public int swingCount;
 
@@ -24,12 +25,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             this.baseDuration = 0.4f;
             base.damageCoefficient = 2f;
             base.hitBoxGroupName = "Sword";
-            base.hitEffectPrefab = hitEffectPrefab;
+            base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 600f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.05f;
-            base.swingEffectPrefab = swingEffectPrefab;
+            base.swingEffectPrefab = swingEffect;
             base.swingEffectMuzzleString = "Swing1EffectMuzzle";
             base.mecanimHitboxActiveParameter = null;
             base.shorthopVelocityFromHit = 0f;
@@ -66,6 +67,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         {
             base.OnDeserialize(reader);
             swingCount = reader.ReadByte();
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Primary;
         }
 
         public void SetStep(int i)

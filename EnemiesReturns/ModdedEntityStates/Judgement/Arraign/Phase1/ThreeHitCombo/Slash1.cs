@@ -5,13 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
+    // TODO: add some effects to feet to better indicate sliding in water
     [RegisterEntityState]
     public class Slash1 : BasicMeleeAttack
     {
         public static AnimationCurve acdSlash1;
+
+        public static GameObject swingEffect;
+
+        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
 
         public static float searchRadius = 20f;
 
@@ -22,30 +28,26 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             this.baseDuration = 0.64f;
             base.damageCoefficient = 2f;
             base.hitBoxGroupName = "Sword";
-            //base.hitEffectPrefab = 
+            base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 600f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
-            //base.swingEffectMuzzleString = "";
+            base.swingEffectPrefab = swingEffect;
+            base.swingEffectMuzzleString = "SwingCombo1EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash1.attack";
             base.shorthopVelocityFromHit = 0f;
+            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
             //base.impactSound = "";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash1;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
-
             base.duration = base.baseDuration / attackSpeedStat;
 
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
-
-            //if (characterDirection)
-            //{
-            //    characterDirection.forward = inputBank.aimDirection;
-            //}
         }
 
         public override void FixedUpdate()
@@ -78,6 +80,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             //{
             //    outer.SetNextState(new FireHomingProjectiles()); // TODO: restore
             //}
+        }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Secondary;
         }
 
         private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)

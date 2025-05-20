@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
+    // TODO: add some effects to feet to better indicate sliding in water
     [RegisterEntityState]
     public class Slash3 : BasicMeleeAttack
     {
@@ -20,23 +22,34 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public static float blastAttackForce = 500f;
 
+        public static GameObject swingEffect;
+
+        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
+
+        public static GameObject explosionEffect;
+
         private Vector3 desiredDirection;
 
         private bool firedBlastAttack;
+
+        private Transform explosionEffectMuzzle;
 
         public override void OnEnter()
         {
             this.baseDuration = 2.4f;
             base.damageCoefficient = 2f;
-            base.hitBoxGroupName = "Sword";
-            //base.hitEffectPrefab = 
+            base.hitBoxGroupName = "SwordNormal";
+            base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 6000f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
-            //base.swingEffectMuzzleString = "";
+            base.swingEffectPrefab = swingEffect;
+            base.swingEffectMuzzleString = "Swing3EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash3.attack";
             base.shorthopVelocityFromHit = 0f;
+            base.beginSwingSoundString = "Play_moonBrother_swing_vertical"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
+                                                                            // also separate sound for explosion, for now reusing mithrix
             //base.impactSound = "";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash3;
@@ -46,6 +59,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
+
+            explosionEffectMuzzle = FindModelChild("SwingCombo3ExplosionMuzzle");
+            if (!explosionEffectMuzzle)
+            {
+                explosionEffectMuzzle = base.transform;
+            }
         }
 
         public override void FixedUpdate()
@@ -53,9 +72,18 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.FixedUpdate();
             Vector3 targetMoveVelocity = Vector3.zero;
             characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 45f);
-            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedBlastAttack && isAuthority)
+            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedBlastAttack)
             {
-                FireBlastAttackAuthority();
+                if (isAuthority)
+                {
+                    FireBlastAttackAuthority();
+                }
+                var effectData = new EffectData
+                {
+                    origin = explosionEffectMuzzle.position,
+                    scale = 7f
+                };
+                EffectManager.SpawnEffect(explosionEffect, effectData, false);
                 firedBlastAttack = true;
             }
         }
@@ -76,47 +104,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             return InterruptPriority.PrioritySkill;
         }
 
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Secondary;
+        }
+
         private void FireBlastAttackAuthority()
         {
-            var blastAttack = new BlastAttack();
-            blastAttack.radius = 20f;
-            blastAttack.procCoefficient = 0f;
-            blastAttack.position = base.characterBody.footPosition;
-            blastAttack.attacker = base.gameObject;
-            blastAttack.crit = RollCrit();
-            blastAttack.baseDamage = blastAttackDamage * damageStat;
-            blastAttack.canRejectForce = false;
-            blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            blastAttack.baseForce = blastAttackForce;
-            blastAttack.teamIndex = teamComponent.teamIndex;
-            blastAttack.damageType = DamageSource.Primary;
-            blastAttack.attackerFiltering = AttackerFiltering.Default;
+            var blastAttack = new BlastAttack
+            {
+                radius = 20f,
+                procCoefficient = 1f,
+                position = explosionEffectMuzzle.position,
+                attacker = base.gameObject,
+                crit = RollCrit(),
+                baseDamage = blastAttackDamage * damageStat,
+                canRejectForce = false,
+                falloffModel = BlastAttack.FalloffModel.SweetSpot,
+                baseForce = blastAttackForce,
+                teamIndex = teamComponent.teamIndex,
+                damageType = DamageSource.Primary,
+                attackerFiltering = AttackerFiltering.Default
+            };
             blastAttack.Fire();
-
-
-            //float num = 360f / (float)waveCount;
-            //Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
-            //Vector3 footPosition = base.characterBody.footPosition;
-            //bool crit = RollCrit();
-            //for (int i = 0; i < waveCount; i++)
-            //{
-            //    Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
-            //    if (base.isAuthority)
-            //    {
-            //        var info = new FireProjectileInfo
-            //        {
-            //            projectilePrefab = waveProjectile,
-            //            position = footPosition,
-            //            rotation = Util.QuaternionSafeLookRotation(forward),
-            //            owner = base.gameObject,
-            //            damage = base.characterBody.damage * waveProjectileDamage,
-            //            force = waveProjectileForce,
-            //            damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Primary),
-            //            crit = crit
-            //        };
-            //        ProjectileManager.instance.FireProjectile(info);
-            //    }
-            //}
         }
     }
 }
