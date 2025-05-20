@@ -1,6 +1,8 @@
 ﻿using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Skills;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.Components.MasterComponents
@@ -46,7 +48,7 @@ namespace EnemiesReturns.Components.MasterComponents
             public float driverUpdateTimerOverride = -1f;
             public bool resetCurrentEnemyOnNextDriverSelection = false;
             public bool noRepeat = false;
-            public AISkillDriver nextHighPriorityOverride = null;
+            public AISkillDriverParams nextHighPriorityOverride = null;
         }
 
         protected bool NeedToAddAISkillDriver();
@@ -57,6 +59,8 @@ namespace EnemiesReturns.Components.MasterComponents
         {
             if (NeedToAddAISkillDriver())
             {
+                // First iteration: just adding stuff in correct order and adding them to the list
+                List<AISkillDriver> skillDrivers = new List<AISkillDriver>();
                 foreach (var aiParam in aiParams)
                 {
                     var skillDriver = masterPrefab.AddComponent<AISkillDriver>();
@@ -92,10 +96,29 @@ namespace EnemiesReturns.Components.MasterComponents
                     skillDriver.driverUpdateTimerOverride = aiParam.driverUpdateTimerOverride;
                     skillDriver.resetCurrentEnemyOnNextDriverSelection = aiParam.resetCurrentEnemyOnNextDriverSelection;
                     skillDriver.noRepeat = aiParam.noRepeat;
-                    skillDriver.nextHighPriorityOverride = aiParam.nextHighPriorityOverride;
+
+                    skillDrivers.Add(skillDriver);
+                }
+
+                // Second iteration: going through all AISkillDriverParams array again and finding states that need nextHighPriorityOverride
+                // from there we find that state in list and set the value
+                // ye, its a mess but this is all because we can't reorder components via code
+                // also linq doesn't allow us to get null if sequence doesn't have the value so hope to god everything is setup correctly
+                foreach (var aiParam in aiParams)
+                {
+                    if (aiParam.nextHighPriorityOverride == null)
+                    {
+                        continue;
+                    }
+
+                    var currentSkillDriver = skillDrivers.FirstOrDefault(state => state.customName == aiParam.customName);
+                    var overrideSkillDriver = skillDrivers.FirstOrDefault(state => state.customName == aiParam.nextHighPriorityOverride.customName);
+                    if (currentSkillDriver != null && overrideSkillDriver != null)
+                    {
+                        currentSkillDriver.nextHighPriorityOverride = overrideSkillDriver;
+                    }
                 }
             }
         }
-
     }
 }
