@@ -30,7 +30,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 {
                     skillSlot = RoR2.SkillSlot.Primary,
                     requireSkillReady = true,
-                    minDistance = 15f,
+                    minDistance = 0f,
                     maxDistance = 90f,
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
