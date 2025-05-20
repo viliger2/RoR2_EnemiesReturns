@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
 using RoR2;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
 {
@@ -16,9 +17,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
 
         public static string soundString = "Play_moonBrother_dash";
 
-        public static GameObject slideEffectPrefab;
+        public static GameObject slideEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherDashEffect.prefab").WaitForCompletion();
 
-        public static string slideEffectMuzzlestring;
+        public static string slideEffectMuzzlestring = "MuzzleBodyCenter";
 
         protected Quaternion slideRotation;
 

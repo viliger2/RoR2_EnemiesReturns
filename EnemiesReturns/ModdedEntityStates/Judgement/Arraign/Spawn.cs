@@ -11,6 +11,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
+    // TODO: sound effect on him removing sword from the ground, maybe even an effect
     [RegisterEntityState]
     public class Spawn : GenericCharacterSpawnState
     {

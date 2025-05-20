@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
+    // TODO: add some sound effect on start up, something snappy
+    [RegisterEntityState]
     public class BasePrePrimaryWeaponSwing : BaseState, SteppedSkillDef.IStepSetter
     {
         public static float baseDuration = 0.5f;

@@ -24,7 +24,7 @@ namespace EnemiesReturns.Components.MasterComponents
             public float maxUserHealthFraction = float.PositiveInfinity;
             public float minTargetHealthFraction = float.NegativeInfinity;
             public float maxTargetHealthFraction = float.PositiveInfinity;
-            public float minDistance = float.NegativeInfinity;
+            public float minDistance = 0;
             public float maxDistance = float.PositiveInfinity;
             public bool selectionRequiresTargetLoS = false;
             public bool selectionRequiresOnGround = false;
