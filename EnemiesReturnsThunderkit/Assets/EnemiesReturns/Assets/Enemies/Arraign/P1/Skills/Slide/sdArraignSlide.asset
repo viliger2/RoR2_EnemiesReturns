@@ -22,9 +22,9 @@ MonoBehaviour:
     _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide.SlideIntroState,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 5
+  baseRechargeInterval: 10
   baseMaxStock: 2
-  rechargeStock: 1
+  rechargeStock: 2
   requiredStock: 1
   stockToConsume: 1
   attackSpeedBuffsRestockSpeed: 0
@@ -33,10 +33,12 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
+  isCooldownBlockedUntilManuallyReset: 0
   cancelSprintingOnActivation: 0
   forceSprintDuringState: 0
   canceledFromSprinting: 0
   isCombatSkill: 0
   mustKeyPress: 0
+  triggeredByPressRelease: 0
   autoHandleLuminousShot: 1
   hideStockCount: 0

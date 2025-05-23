@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Single_Color_Texture
+  m_Name: Single_Color_Texture_Weapon
   m_Shader: {fileID: 4800000, guid: c6e3cc6d1ef256644b62462606b5ab4b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -128,7 +128,7 @@ Material:
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
     - _EliteIndex: 0
-    - _EmPower: 3.065773
+    - _EmPower: 1
     - _EnableCutout: 0
     - _FEON: 0
     - _Fade: 1

@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 8133994365468020944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3428236938971217227}
   m_Father: {fileID: 8899878021361041807}
@@ -240,6 +240,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!114 &1035523234521736334
 MonoBehaviour:
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   falloffModel: 0
-  blastRadius: 3
+  blastRadius: 0
   blastDamageCoefficient: 1
   blastProcCoefficient: 1
   blastAttackerFiltering: 0
@@ -329,7 +330,10 @@ MonoBehaviour:
   rangeRollDegrees: 0
   minPitchDegrees: 0
   rangePitchDegrees: 0
+  minYawDegrees: 0
+  rangeYawDegrees: 0
   useLocalSpaceForChildren: 0
+  useChildRotation: 0
   applyDot: 0
   dotIndex: -1
   dotDuration: 0
@@ -338,6 +342,7 @@ MonoBehaviour:
   maxStacksFromAttacker: 4294967295
   calculateTotalDamage: 0
   totalDamageMultiplier: 0
+  timedDebuffs: []
   impactEffect: {fileID: 2322821087343257593, guid: c7343f4ad5651474aa0e4aa3737d1892, type: 3}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}
@@ -364,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 128488992607986666, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 719ed90bd48507d4c84f598a39980f45, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 411432221210701000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_Name
       value: TeamAreaIndicatorDebug
@@ -387,11 +392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_LocalRotation.y
@@ -403,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -413,8 +418,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7355241146608855708, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 4d3549c3bb20fe4429712867e393c138, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+--- !u!23 &3002629718013880654 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 128488992607986666, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+  m_PrefabInstance: {fileID: 2910178439641025188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3124191303881963618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 232037287799714502, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+  m_PrefabInstance: {fileID: 2910178439641025188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6381231800944205230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3124191303881963618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addressableMaterialPath: RoR2/Base/Common/matTeamAreaIndicatorIntersectionMonster.mat
+  isParticle: 0
+  isTrailParticle: 0
+  renderer: {fileID: 3002629718013880654}
 --- !u!4 &3428236938971217227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}

@@ -30,6 +30,7 @@ using UnityEngine.AddressableAssets;
 using Rewired.Utils.Classes.Utility;
 using System.Reflection;
 using EnemiesReturns.Reflection;
+using EnemiesReturns.Enemies.Judgement.Arraign;
 
 namespace EnemiesReturns
 {
@@ -211,7 +212,9 @@ namespace EnemiesReturns
                 {
                     zJunk.ModdedEntityStates.Judgement.Arraign.BaseSlashDash.speedCoefficientCurve = assets.First(acd => acd.name == "acdMoveSpeed").curve;
 
-                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.acdOverlayAlpha = assets.First(acd => acd.name == "acdPreSlashMaterialAlpha").curve;
+                    var acdOverlay = assets.First(acd => acd.name == "acdPreSlashMaterialAlpha").curve;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.acdOverlayAlpha = acdOverlay;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.acdOverlayAlpha = acdOverlay;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.acdSlash3 = assets.First(acd => acd.name == "acdSlash3").curve;
@@ -261,6 +264,8 @@ namespace EnemiesReturns
                     _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                     _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
+                    var arraignStuff = new ArraignStuff();
+
                     SetupJudgementPath.JudgementInteractable = assets.First(asset => asset.name == "JudgementInteractable");
                     Behaviors.Judgement.WaveInteractable.JudgementSelectionController.modifiedPickerPanel = Enemies.Judgement.SetupJudgementPath.CloneOptionPickerPanel();
                     nopList.Add(SetupJudgementPath.JudgementInteractable);
@@ -285,11 +290,8 @@ namespace EnemiesReturns
                     ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = assets.First(asset => asset.name == "MithrixHammerSwingEffect");
                     ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect = Equipment.MithrixHammer.MithrixHammer.SetupEffectMaterials(ModdedEntityStates.Judgement.MithrixHammer.Fire.swingEffect);
 
-                    var impactEffect = assets.First(asset => asset.name == "ArraignDashImpactEffect");
-                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = impactEffect;
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = impactEffect;
-
-                    var explosionEffect = assets.First(asset => asset.name == "ArraignDashSecondExplosionEffect");
+                    var explosionEffect = assets.First(asset => asset.name == "ArraignRemoveSwordEffect");
+                    explosionEffect = arraignStuff.CreateSkyLeapRemoveSwordEffect(explosionEffect);
                     ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
                     ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
 
@@ -309,7 +311,7 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.effectPrefab = assets.First(asset => asset.name == "ClockZoneEffect");
 
-                    ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.dropEffectPrefab = assets.First(asset => asset.name == "DropPositionEffect");
+                    ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.dropEffectPrefab = arraignStuff.CreateSkyLeapDropPositionEffect(assets.First(asset => asset.name == "DropPositionEffect"));
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -1215,6 +1217,8 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.overlayMaterial = GetOrCreateMaterial("matArraignPreSlashOverlay", arraignStuff.CreatePreSlashWeaponOverlayMaterial);
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect = arraignStuff.CreateSlash3ExplosionEffect();
                 effectsList.Add(new EffectDef(ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect));
+
+                ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
             }
         }
 

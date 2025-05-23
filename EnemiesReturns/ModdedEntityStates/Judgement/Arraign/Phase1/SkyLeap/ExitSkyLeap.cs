@@ -6,13 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
     [RegisterEntityState]
     public class ExitSkyLeap : BaseExitSkyLeap
     {
-        public static GameObject staticFirstAttackEffect;
+        public static GameObject staticFirstAttackEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSlamImpact.prefab").WaitForCompletion();
 
         public static GameObject staticSecondAttackEffect;
 
@@ -28,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override float attackForce => 1000f;
 
-        public override float blastAttackRadius => 30f;
+        public override float blastAttackRadius => 20f;
 
         public override string layerName => "Gesture, Override";
 

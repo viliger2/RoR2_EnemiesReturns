@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 {
@@ -33,6 +34,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         public abstract string secondAttackParamName { get; }
 
+        public static AnimationCurve acdOverlayAlpha;
+
         public Vector3 dropPosition;
 
         private float duration;
@@ -41,7 +44,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         private bool attackFired;
 
+        private float startAge;
+
         internal Animator modelAnimator;
+
+        private Renderer swordRenderer;
+
+        private MaterialPropertyBlock swordPropertyBlock;
+
+        private float originalEmissionPower;
+
+        private Transform removeSwordMuzzle;
 
         public override void OnEnter()
         {
@@ -50,6 +63,32 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             Util.PlaySound(soundString, base.gameObject);
             modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animationStateName, playbackParamName, duration);
+
+            removeSwordMuzzle = FindModelChild("SkyLeapRemoveSwordMuzzle");
+
+            var childLocator = GetModelChildLocator();
+            swordRenderer = childLocator.FindChildComponent<Renderer>("SwordModel");
+            if (swordRenderer)
+            {
+                originalEmissionPower = swordRenderer.material.GetFloat("_EmPower");
+                swordPropertyBlock = new MaterialPropertyBlock();
+                swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (attackFired)
+            {
+                if(startAge == 0)
+                {
+                    startAge = age;
+                }
+                swordPropertyBlock.SetFloat("_EmPower", acdOverlayAlpha.Evaluate(Mathf.Min(1f, age - startAge / startAge + 1f)));
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
+            }
         }
 
         public override void FixedUpdate()
@@ -74,18 +113,24 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.attackerFiltering = AttackerFiltering.Default;
                     blastAttack.Fire();
                 }
+                Util.PlaySound("Play_moonBrother_spawn", base.gameObject);
                 EffectManager.SimpleEffect(firstAttackEffect, dropPosition, Quaternion.identity, false);
                 attackFired = true;
             }
 
             if(!secondAttackFired && modelAnimator.GetFloat(secondAttackParamName) > 0.9f)
             {
+                var position = dropPosition;
+                if (removeSwordMuzzle) 
+                {
+                    position = removeSwordMuzzle.position;
+                }
                 if (isAuthority)
                 {
                     BlastAttack blastAttack = new BlastAttack();
                     blastAttack.radius = blastAttackRadius;
                     blastAttack.procCoefficient = 0f;
-                    blastAttack.position = dropPosition;
+                    blastAttack.position = position;
                     blastAttack.attacker = characterBody.gameObject;
                     blastAttack.crit = RollCrit();
                     blastAttack.baseDamage = attackDamage * damageStat;
@@ -97,7 +142,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.attackerFiltering = AttackerFiltering.Default;
                     blastAttack.Fire();
                 }
-                EffectManager.SimpleEffect(secondAttackEffect, dropPosition, Quaternion.identity, false);
+                var secondEffectData = new EffectData()
+                {
+                    scale = 3f,
+                    origin = position,
+                    rotation = Quaternion.identity
+                };
+                EffectManager.SpawnEffect(secondAttackEffect, secondEffectData, false);
                 secondAttackFired = true;
             }
 
@@ -111,6 +162,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         {
             base.OnExit();
             PlayCrossfade(layerName, "BufferEmpty", 0.1f);
+            if (swordRenderer && swordPropertyBlock != null)
+            {
+                swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

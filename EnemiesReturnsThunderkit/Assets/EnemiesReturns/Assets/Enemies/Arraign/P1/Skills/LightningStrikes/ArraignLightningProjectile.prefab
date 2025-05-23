@@ -335,6 +335,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!114 &9187603891190248833
 MonoBehaviour:

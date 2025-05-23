@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6864691972095306736}
   - component: {fileID: 293158237260932056}
   - component: {fileID: 8476323236053665527}
+  - component: {fileID: 5490805416024976995}
   m_Layer: 0
   m_Name: Ribbon
   m_TagString: Untagged
@@ -4935,7 +4936,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 5
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4965,3 +4966,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5490805416024976995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6848466178973922878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addressableMaterialPath: RoR2/Base/Lightning/matLightningStrike.mat
+  isParticle: 1
+  isTrailParticle: 1
+  renderer: {fileID: 0}

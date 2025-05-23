@@ -21,37 +21,38 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         private float duration;
 
-        private Material originalMaterial;
+        private Renderer swordRenderer;
 
-        private Material overlayCopyMaterial;
+        private MaterialPropertyBlock swordPropertyBlock;
 
-        private SkinnedMeshRenderer swordRenderer;
+        private float originalEmissionPower;
 
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             PlayCrossfade("Gesture, Override", "SlashInit", "combo.playbackRate", duration, 0.1f);
-            var swordModelTransoform = FindModelChild("SwordModel");
-            if (swordModelTransoform)
+
+            var childLocator = GetModelChildLocator();
+            swordRenderer = childLocator.FindChildComponent<Renderer>("SwordModel");
+            if (swordRenderer)
             {
-                swordRenderer = swordModelTransoform.GetComponent<SkinnedMeshRenderer>();
-                if (swordRenderer)
-                {
-                    originalMaterial = swordRenderer.material;
-                    overlayCopyMaterial = UnityEngine.Object.Instantiate(overlayMaterial);
-                }
+                originalEmissionPower = swordRenderer.material.GetFloat("_EmPower");
+                swordPropertyBlock = new MaterialPropertyBlock();
+                swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
+
             Util.PlaySound("Play_scav_attack1_chargeup", gameObject); // TODO: REPLACE
         }
 
         public override void Update()
         {
             base.Update();
-            if(swordRenderer && originalMaterial && overlayCopyMaterial)
+            if(swordRenderer && swordPropertyBlock != null)
             {
-                overlayCopyMaterial.SetFloat("_AlphaBoost", acdOverlayAlpha.Evaluate(fixedAge / duration));
-                swordRenderer.sharedMaterials = new Material[] { originalMaterial, overlayCopyMaterial };
+                swordPropertyBlock.SetFloat("_EmPower", acdOverlayAlpha.Evaluate(age / duration));
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
         }
 
@@ -68,11 +69,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             base.OnExit();
-            if(swordRenderer && originalMaterial)
+
+            if (swordRenderer && swordPropertyBlock != null)
             {
-                swordRenderer.sharedMaterials = new Material[] { originalMaterial };
+                swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
+                swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
-            UnityEngine.Object.Destroy(overlayCopyMaterial);
         }
     }
 }

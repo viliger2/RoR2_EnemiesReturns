@@ -57,7 +57,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
                 if ((bool)base.characterMotor)
                 {
                     float num = speedCoefficientCurve.Evaluate(base.fixedAge / duration);
-                    base.characterMotor.rootMotion += slideRotation * (num * moveSpeedStat * vector * GetDeltaTime());
+                    base.characterMotor.rootMotion += slideRotation * (num * characterBody.baseMoveSpeed * vector * GetDeltaTime());
                 }
                 if (base.fixedAge >= duration)
                 {

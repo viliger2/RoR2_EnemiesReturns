@@ -19,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         public static GameObject dropEffectPrefab;
 
+        public static GameObject markEffect;
+
         private float duration;
 
         private float targetMarked;
@@ -82,8 +84,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 if (target)
                 {
                     var targetBody = target.GetComponent<CharacterBody>();
-                    // TODO: merc expose for now
-                    var effectGameObject = UnityEngine.Object.Instantiate(RoR2.CharacterBody.AssetReferences.mercExposeEffectPrefab, targetBody.corePosition, Quaternion.identity);
+
+                    var effectGameObject = UnityEngine.Object.Instantiate(markEffect, targetBody.corePosition, Quaternion.identity);
                     tempEffect = effectGameObject.GetComponent<TemporaryVisualEffect>();
                     tempEffect.parentTransform = targetBody.coreTransform;
                     tempEffect.visualState = TemporaryVisualEffect.VisualState.Enter;
