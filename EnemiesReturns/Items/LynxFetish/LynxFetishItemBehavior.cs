@@ -41,6 +41,15 @@ namespace EnemiesReturns.Items.LynxFetish
             {
                 if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer >= 15f)
                 {
+                    if (!Configuration.LynxTribe.LynxTotem.LynxFetishSpawnInBazaar.Value)
+                    {
+                        if (RoR2.Stage.instance.sceneDef.cachedName == "bazaar")
+                        {
+                            spawnTimer = 0f;
+                            return;
+                        }
+                    }
+
                     var nextSpawnCard = GetNextSpawnCard();
                     if (nextSpawnCard == null)
                     {

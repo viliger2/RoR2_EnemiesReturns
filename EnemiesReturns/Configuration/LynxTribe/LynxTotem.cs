@@ -61,6 +61,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> LynxFetishHunterArmorBuff;
         public static ConfigEntry<float> LynxFetishScoutSpeedBuff;
         public static ConfigEntry<float> LynxFetishShamanSpecialBuff;
+        public static ConfigEntry<bool> LynxFetishSpawnInBazaar;
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
@@ -135,6 +136,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxFetishBuffWardRadius = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Radius", 60f, "Buff ward radius of spawned tribesmen. By default equal to teleporter hold out zone radius.");
             LynxFetishBuffWardBuffDuration = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Buff Duration", 5f, "Buff ward applied buff duration of spawned tribesmen.");
             LynxFetishBuffWardBuffRefreshTimer = config.Bind("Lynx Fetish", "Spawned Tribesmen Buff Ward Buff Refresh Timer", 4f, "Buff ward refresh timer of buff application of spawned tribesmen.");
+            LynxFetishSpawnInBazaar = config.Bind("Lynx Fetish", "Spawn Tribesmen in Bazaar", false, "Spawn tribesmen in Bazaar.");
 
             LynxFetishArcherDamageBuff = config.Bind("Lynx Fetish", "Spawned Archer Damage Buff Value", 15f, "Damage buff value of spawned Archer in percent.");
             LynxFetishHunterArmorBuff = config.Bind("Lynx Fetish", "Spawned Hunter Armor Buff Value", 20f, "Armor buff value of spawned Hunter.");
