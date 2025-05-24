@@ -155,5 +155,93 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             return newMaterial;
         }
+
+        public GameObject CreateBeamEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/VoidRaidCrabSpinBeamVFX.prefab").WaitForCompletion().InstantiateClone("ArraignBeamEffect", false);
+
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Billboards").gameObject);
+            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("SwirlyTrails").gameObject);
+
+            var firstBeamTransform = prefab.transform.Find("Mesh, Additive");
+            firstBeamTransform.localScale = new Vector3(1f, 10f, 1f);
+            firstBeamTransform.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeam1", CreateBeam1Material);
+
+            var secondBeamTransform = prefab.transform.Find("Mesh, Additive/Mesh, Transparent");
+            secondBeamTransform.localScale = new Vector3(1.5f, 0.1f, 1f);
+            secondBeamTransform.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeam2", CreateBeam2Material);
+
+            var glows = prefab.transform.Find("Glows");
+            var main = glows.GetComponent<ParticleSystem>().main;
+            main.startColor = new Color(0f, 0.6754f, 1f, 0.0588f);
+
+            var lightMiddle = prefab.transform.Find("Point Light, Middle").GetComponent<Light>();
+            lightMiddle.color = new Color(0.3254f, 0.6999f, 0.9137f, 1f);
+            lightMiddle.intensity = 8f;
+            lightMiddle.range = 10f;
+            prefab.transform.Find("Point Light, End").GetComponent<Light>().color = new Color(0.3254f, 0.6227f, 0.9137f, 1f);
+
+            var muzzleRay = prefab.transform.Find("MuzzleRayParticles");
+            muzzleRay.localScale = new Vector3(1f, 1f, 1f);
+            muzzleRay.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeamMuzzleRay", CreateBeamMuzzleRayMaterial);
+
+            return prefab;
+        }
+
+        public Material CreateBeamMuzzleRayMaterial()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamBillboard2.mat").WaitForCompletion());
+            newMaterial.name = "matArraignBeamMuzzleRay";
+
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampHuntressSoft2.png").WaitForCompletion());
+            newMaterial.SetFloat("_AlphaBias", 0.294f);
+
+            return newMaterial;
+        }
+
+        public Material CreateBeam1Material()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());
+            newMaterial.name = "matArraignBeam1";
+            newMaterial.SetColor("_TintColor", new Color(1f, 1f, 1f, 1f));
+
+            newMaterial.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/texCloudDifferenceBW2.png").WaitForCompletion());
+            newMaterial.SetTextureScale("_MainTex", new Vector2(5f, 5f));
+
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampLightning2.png").WaitForCompletion());
+
+            newMaterial.SetFloat("_Boost", 1.493053f);
+            newMaterial.SetFloat("_AlphaBoost", 0.5258f);
+
+            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/texCloudCrackedIceInverted.png").WaitForCompletion());
+            newMaterial.SetTexture("_Cloud2Tex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient5Mask.png").WaitForCompletion());
+
+            newMaterial.SetVector("_CutoffScroll", new Vector4(0f, 44f, 0f, -444f));
+
+            return newMaterial;
+        }
+
+        public Material CreateBeam2Material()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder1.mat").WaitForCompletion());
+            newMaterial.name = "matArraignBeam2";
+
+            newMaterial.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/texCloudDifferenceBW2.png").WaitForCompletion());
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/ColorRamps/texRampLightning.png").WaitForCompletion());
+
+            newMaterial.SetFloat("_InvFade", 0.318f);
+            newMaterial.SetFloat("_Boost", 6.35f);
+            newMaterial.SetFloat("_AlphaBoost", 0.57f);
+            newMaterial.SetFloat("_AlphaBias", 0.298f);
+
+            newMaterial.SetInt("_CloudOffsetOn", 0);
+
+            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/texCloudIce.png").WaitForCompletion());
+            newMaterial.SetTextureScale("_Cloud1Tex", Vector2.one);
+
+            newMaterial.SetVector("_CutoffScroll", new Vector4(0f, 40f, 0f, -44f));
+
+            return newMaterial;
+        }
     }
 }

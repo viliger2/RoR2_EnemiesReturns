@@ -38,6 +38,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
 
         private SphereSearch pushSphereSearch;
 
+        public GameObject ppBeamInstance;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -56,6 +58,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
             backwardsBeam.transform.SetParent(FindModelChild("SwordBeamEffectBackward"));
             backwardsBeam.transform.localPosition = Vector3.zero;
             backwardsBeam.transform.localRotation = Quaternion.identity;
+
+            Util.PlaySound("Play_voidRaid_superLaser_start", base.gameObject); // TODO
         }
 
         public override void FixedUpdate()
@@ -64,6 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
 
             if (isAuthority)
             {
+                characterDirection.moveVector = Vector3.zero; // if move vector gets stuck as non zero then rotation breaks
                 characterDirection.yaw += degreesPerSecond * GetDeltaTime();
                 if (overlapAttack != null)
                 {
@@ -106,6 +111,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
             if (backwardsBeam)
             {
                 UnityEngine.Object.Destroy(backwardsBeam);
+            }
+            if (ppBeamInstance)
+            {
+                UnityEngine.Object.Destroy(ppBeamInstance);
             }
         }
 
