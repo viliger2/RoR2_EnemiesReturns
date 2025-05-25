@@ -26,7 +26,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public float buffDuration = -1f;
 
-        public ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
+        public ModdedDamageType moddedDamateType => Content.DamageTypes.EndGameBossWeapon;
 
         private bool hasEffectiveAuthority = true;
 
@@ -64,7 +64,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 return;
             }
 
-            if (damageReport.damageInfo.damageType.HasModdedDamageType(damageType))
+            var damageType = damageReport.damageInfo.damageType;
+            if (damageType.HasModdedDamageType(moddedDamateType) && (damageType.damageSource & DamageSource.Equipment) == DamageSource.Equipment)
             {
                 SetStun(stunDuration);
                 if (applyBuff)

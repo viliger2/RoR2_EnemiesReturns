@@ -1566,6 +1566,37 @@ Transform:
   m_Father: {fileID: 2812961023823909223}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8439155946357572926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663004676067125538}
+  m_Layer: 0
+  m_Name: BeamPushBackEffectMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663004676067125538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439155946357572926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.006, y: 1.046, z: 0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6969273439126755611}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2467056507369343367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2611,6 +2642,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.560447
       objectReference: {fileID: 0}
+    - target: {fileID: 4834175370325326291, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4840721623378426153, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 38.739613
@@ -2905,6 +2940,11 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4824442635563639251, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_PrefabInstance: {fileID: 3389015307498071864}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1614745043342179513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4134455609149037441, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_PrefabInstance: {fileID: 3389015307498071864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2033360931820830811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3692883017591564131, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
@@ -3071,14 +3111,14 @@ MonoBehaviour:
     transform: {fileID: 1446385726126826569}
   - name: SwordPreBeamBackwardsParticles
     transform: {fileID: 854973610435053408}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
+  - name: Chest
+    transform: {fileID: 4879514076247948355}
+  - name: Head
+    transform: {fileID: 3214573764935265580}
+  - name: Pelvis
+    transform: {fileID: 1614745043342179513}
+  - name: BeamPushBackEffectMuzzle
+    transform: {fileID: 1663004676067125538}
   - name: 
     transform: {fileID: 0}
   - name: 
@@ -3298,6 +3338,11 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8803070779676423147, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_PrefabInstance: {fileID: 3389015307498071864}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3214573764935265580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 257908841843853844, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_PrefabInstance: {fileID: 3389015307498071864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &3434657129313885093 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -9177657636474258275, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
@@ -3335,6 +3380,11 @@ MonoBehaviour:
   m_Height: 0.82
   m_Direction: 1
   m_Bound: 0
+--- !u!4 &4879514076247948355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1387188655599232133, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_PrefabInstance: {fileID: 3389015307498071864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &5506678030661745051 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2061640337918337373, guid: 67c305371ac7cb44084b35e759877b65, type: 3}

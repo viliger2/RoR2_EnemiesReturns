@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
     [RegisterEntityState]
     public class Spawn : GenericCharacterSpawnState
     {
-        public static GameObject slamEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSlamImpact.prefab").WaitForCompletion();
+        public static GameObject slamEffect;
 
         private Animator animator;
 
@@ -38,7 +38,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         private void CharacterMotor_onHitGroundAuthority(ref CharacterMotor.HitGroundInfo hitGroundInfo)
         {
-            EffectManager.SimpleEffect(slamEffect, hitGroundInfo.position, Quaternion.identity, true);
+            var effectData = new EffectData()
+            {
+                origin = hitGroundInfo.position,
+                scale = 7f
+            };
+            EffectManager.SpawnEffect(slamEffect, effectData, true);
             EntitySoundManager.EmitSoundServer((AkEventIdArg)"Play_moonBrother_spawn", base.gameObject);
         }
 

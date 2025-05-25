@@ -30,6 +30,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
 
         public static GameObject beamPrefab;
 
+        public static GameObject pushBackEffect;
+
         private OverlapAttack overlapAttack;
 
         private GameObject forwardBeam;
@@ -60,6 +62,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam
             backwardsBeam.transform.localRotation = Quaternion.identity;
 
             Util.PlaySound("Play_voidRaid_superLaser_start", base.gameObject); // TODO
+
+            var effectData = new EffectData()
+            {
+                origin = transform.position,
+                //rootObject = base.gameObject,
+                //modelChildIndex = (short)GetModelChildLocator().FindChildIndex("BeamPushBackEffectMuzzle"),
+                scale = 8f,
+                rotation = Quaternion.identity
+            };
+            EffectManager.SpawnEffect(pushBackEffect, effectData, false);
         }
 
         public override void FixedUpdate()

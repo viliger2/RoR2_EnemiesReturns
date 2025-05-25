@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
+    // TODO: UPDATE LOOPSOUNDDEF
     public abstract class BaseWeaponThrow : BaseState
     {
         public abstract GameObject projectilePrefab { get; }
@@ -26,6 +27,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public abstract string playbackRateParamName { get; }
 
         public abstract string childOrigin { get; }
+
+        public abstract string throwSound { get; }
 
         private float duration;
 
@@ -75,9 +78,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.FixedUpdate();
 
             characterDirection.forward = GetAimRay().direction.normalized;
-            if (modelAnimator.GetFloat("WeaponThrow.throw") > 0.9f && isAuthority && !hasAttacked)
+            if (modelAnimator.GetFloat("WeaponThrow.throw") > 0.9f && !hasAttacked)
             {
-                FireProjectile();
+                if (isAuthority)
+                {
+                    FireProjectile();
+                }
+                Util.PlaySound(throwSound, base.gameObject);
                 hasAttacked = true;
             }
 

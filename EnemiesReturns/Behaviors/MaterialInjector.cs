@@ -34,40 +34,20 @@ namespace EnemiesReturns.Behaviors
                     return;
                 }
 
-                LegacyResourcesAPI.LoadAsyncCallback(addressableMaterialPath, delegate (Material result)
+                if (Addressables.LoadAssetAsync<Material>(addressableMaterialPath).IsValid())
                 {
-                    renderer.material = result;
-                    if (isTrailParticle)
+                    var result = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
+                    result.Completed += (operationResult) =>
                     {
-                        (renderer as ParticleSystemRenderer).trailMaterial = result;
-                    }
-                    UnityEngine.GameObject.Destroy(this);
-                });
+                        renderer.material = operationResult.Result;
+                        if (isTrailParticle)
+                        {
+                            (renderer as ParticleSystemRenderer).trailMaterial = operationResult.Result;
+                        }
+                        UnityEngine.GameObject.Destroy(this);
+                    };
+                }
             }
-            //    try
-            //    {
-
-            //        //LegacyResourcesAPI.LoadAsyncCallback(addressableMaterialPath, delegate (Material result)
-            //        //{
-            //        //    renderer.material = result;
-            //        //    if (isTrailParticle)
-            //        //    {
-            //        //        (renderer as ParticleSystemRenderer).trailMaterial = result;
-            //        //    }
-            //        //});
-            //        var material = Addressables.LoadAssetAsync<Material>(addressableMaterialPath).WaitForCompletion();
-            //        renderer.material = material;
-            //        if (isTrailParticle)
-            //        {
-            //            (renderer as ParticleSystemRenderer).trailMaterial = material;
-            //        }
-            //    }
-            //    catch (Exception e) 
-            //    {
-            //        Log.Error($"Error while injecting material into renderer belonging to {this.gameObject.name}: {e}");
-            //    }
-            //}
-            //UnityEngine.GameObject.Destroy(this);
         }
     }
 }

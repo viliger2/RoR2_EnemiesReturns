@@ -107,12 +107,13 @@ MonoBehaviour:
   startSound: 
   cannotBeDeleted: 0
   authorityHandlesCollisionEvents: 0
-  flightSoundLoop: {fileID: 0}
+  flightSoundLoop: {fileID: 11400000, guid: b5e2b5a7b944f164da2e93066fff9975, type: 2}
   canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!54 &462146401626301299
 Rigidbody:
@@ -244,7 +245,10 @@ MonoBehaviour:
   rangeRollDegrees: 0
   minPitchDegrees: 0
   rangePitchDegrees: 0
+  minYawDegrees: 0
+  rangeYawDegrees: 0
   useLocalSpaceForChildren: 0
+  useChildRotation: 0
   applyDot: 0
   dotIndex: -1
   dotDuration: 0
@@ -253,6 +257,7 @@ MonoBehaviour:
   maxStacksFromAttacker: 4294967295
   calculateTotalDamage: 0
   totalDamageMultiplier: 0
+  timedDebuffs: []
   impactEffect: {fileID: 0}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}

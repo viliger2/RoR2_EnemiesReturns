@@ -5,13 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
     public class ArraignDamageController : NetworkBehaviour, IOnIncomingDamageServerReceiver, IOnTakeDamageServerReceiver
     {
+        public static GameObject hitEffectPrefab;
+
         public CharacterBody body;
+
+        //private GameObject hitEffectPrefab;
+
+        private ChildLocator childLocator;
 
         public int segments;
 
@@ -27,7 +34,13 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             {
                 body = GetComponent<CharacterBody>();
             }
+            childLocator = body.modelLocator.modelTransform.GetComponent<ChildLocator>();
             currentSegment = 0;
+            //var result = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab");
+            //result.Completed += (operationResult) =>
+            //{
+            //    hitEffectPrefab = operationResult.Result;
+            //};
         }
 
         private void Start()
@@ -48,6 +61,17 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (arraignIsImmune && endGameBossWeaponDamage)
             {
                 body.RemoveBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
+                if (childLocator)
+                {
+                    var effectData = new EffectData()
+                    {
+                        rootObject = base.gameObject,
+                        modelChildIndex = (short)childLocator.FindChildIndex("Chest"),
+                        scale = 2f
+                    };
+
+                    EffectManager.SpawnEffect(hitEffectPrefab, effectData, true);
+                }
             }
 
             if (body.HasBuff(Content.Buffs.ImmuneToHammer) && endGameBossWeaponDamage)

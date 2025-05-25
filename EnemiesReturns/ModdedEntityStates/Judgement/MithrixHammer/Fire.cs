@@ -129,7 +129,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 teamIndex = body.teamComponent.teamIndex,
                 pushAwayForce = 10000f,
                 hitEffectPrefab = hitEffectPrefab,
-                damageType = DamageSource.Equipment
+                damageType = DamageSource.Equipment,
             };
 
             overlap.damageType.AddModdedDamageType(damageType);

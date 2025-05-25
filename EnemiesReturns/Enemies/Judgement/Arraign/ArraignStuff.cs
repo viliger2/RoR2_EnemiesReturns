@@ -33,6 +33,16 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             return projectilePrefab;
         }
 
+        public GameObject CreateArmorBreakEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab").WaitForCompletion().InstantiateClone("ArraignArmorBreakEffect", false);
+            
+            // TODO: replace sound effect
+            prefab.GetComponent<EffectComponent>().applyScale = true;
+
+            return prefab;
+        }
+
         public GameObject CreateArraignSwingEffect()
         {
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/MercSwordSlash.prefab").WaitForCompletion().InstantiateClone("ArraigSwordSlashEffect", false);
@@ -66,8 +76,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             prefab.GetComponent<EffectComponent>().applyScale = true;
 
-            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Fire").gameObject);
-            UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Decal").gameObject);
+            //UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Fire").gameObject);
+            //UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Decal").gameObject);
             UnityEngine.Object.DestroyImmediate(prefab.transform.Find("Spikes, Small").gameObject);
 
             return prefab;
