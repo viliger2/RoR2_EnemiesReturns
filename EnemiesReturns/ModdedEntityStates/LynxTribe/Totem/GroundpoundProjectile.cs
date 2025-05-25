@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
+    // TODO: rewrite to animation values, so we can adjust duration without having to worry about attack timings
     [RegisterEntityState]
     public class GroundpoundProjectile : BaseState
     {

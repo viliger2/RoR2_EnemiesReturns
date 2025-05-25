@@ -48,7 +48,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");
             MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 40, "Director cost of Lynx Shaman.");
-            DefaultStageList = config.Bind("Lynx Totem Director", "Default Variant Stage List",
+            DefaultStageList = config.Bind("Lynx Shaman Director", "Default Variant Stage List",
                 string.Join(",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact),
@@ -61,7 +61,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
                 ),
-                "Stages that Default Lynx Totem appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+                "Stages that Default Lynx Shaman appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Lynx Shaman Character Stats", "Base Max Health", 300f, "Lynx Shaman' base health.");
             BaseMoveSpeed = config.Bind("Lynx Shaman Character Stats", "Base Movement Speed", 6f, "Lynx Shaman' base movement speed.");

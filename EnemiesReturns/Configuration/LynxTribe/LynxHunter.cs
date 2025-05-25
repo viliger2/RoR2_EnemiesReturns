@@ -29,7 +29,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             DirectorCost = config.Bind("Lynx Hunter Director", "Director Cost", 28, "Director cost of Lynx Hunter.");
 
             BaseMaxHealth = config.Bind("Lynx Hunter Character Stats", "Base Max Health", 140f, "Lynx Hunter' base health.");
-            BaseMoveSpeed = config.Bind("Lynx Hunter Character Stats", "Base Movement Speed", 7f, "Lynx Hunter' base movement speed.");
+            BaseMoveSpeed = config.Bind("Lynx Hunter Character Stats", "Base Movement Speed", 10f, "Lynx Hunter' base movement speed.");
             BaseJumpPower = config.Bind("Lynx Hunter Character Stats", "Base Jump Power", 18f, "Lynx Hunter' base jump power.");
             BaseDamage = config.Bind("Lynx Hunter Character Stats", "Base Damage", 12f, "Lynx Hunter' base damage.");
             BaseArmor = config.Bind("Lynx Hunter Character Stats", "Base Armor", 0f, "Lynx Hunter' base armor.");
@@ -39,7 +39,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LevelArmor = config.Bind("Lynx Hunter Character Stats", "Armor per Level", 0f, "Lynx Hunter' armor increase per level.");
 
             StabCooldown = config.Bind("Lynx Hunter Stab", "Stab Cooldown", 3f, "Lynx Hunter's Stab cooldown.");
-            StabDamage = config.Bind("Lynx Hunter Stab", "Stab Damage", 3f, "Lynx Hunter's Stab damage.");
+            StabDamage = config.Bind("Lynx Hunter Stab", "Stab Damage", 2.5f, "Lynx Hunter's Stab damage.");
             StabProcCoefficient = config.Bind("Lynx Hunter Stab", "Stab Proc Coefficient", 1f, "Lynx Hunter's Stab proc coefficient.");
 
             SingEmoteKey = config.Bind("Lynx Hunter Emotes", "Sing Emote", KeyCode.Alpha1, "Key used to Sing.");

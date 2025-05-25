@@ -51,10 +51,16 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                     var ownerBody = owner.GetBody();
                     if (!ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
                     {
-                        // if we have master, but master has no body or health, means the owner is dead\doesn't exist in game space
-                        fixedAge += lifetime;
+                        fixedAge = Mathf.Max(fixedAge, lifetime - 5f); // storm lives for 5 seconds or less after owner has died
                     }
                 }
+            }
+
+            if (fixedAge >= lifetime && NetworkServer.active)
+            {
+                characterBody.healthComponent.godMode = false;
+                characterBody.healthComponent.Suicide();
+                return;
             }
 
             var position = transform.position;
@@ -78,12 +84,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
                         }
                     }
                 }
-            }
-
-            if (fixedAge >= lifetime && NetworkServer.active)
-            {
-                characterBody.healthComponent.godMode = false;
-                characterBody.healthComponent.Suicide();
             }
         }
 
