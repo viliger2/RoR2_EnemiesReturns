@@ -28,6 +28,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
         public static Vector3 spawnEffectVector = new Vector3(270f, 180f, 0);
 
+        public static float damageCoefficient = 15f;
+
         public static ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
 
         private OverlapAttack attack;
@@ -120,7 +122,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             var overlap =  new OverlapAttack()
             {
                 attacker = bodyGameObject,
-                damage = 2000f,
+                damage = body.damage * damageCoefficient,
                 damageColorIndex = DamageColorIndex.Fragile,
                 hitBoxGroup = hitbox,
                 isCrit = false,

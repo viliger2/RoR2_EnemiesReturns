@@ -223,9 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falloffModel: 1
+  falloffModel: 2
   blastRadius: 5
-  blastDamageCoefficient: 3
+  blastDamageCoefficient: 1
   blastProcCoefficient: 1
   blastAttackerFiltering: 0
   bonusBlastForce: {x: 0, y: 0, z: 0}

@@ -18,7 +18,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         public abstract string soundString { get; }
 
-        public abstract float attackDamage { get; }
+        public abstract float firstAttackDamage { get; }
+
+        public abstract float secondAttackDamage { get; }
 
         public abstract float attackForce { get; }
 
@@ -104,7 +106,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.position = dropPosition;
                     blastAttack.attacker = characterBody.gameObject;
                     blastAttack.crit = RollCrit();
-                    blastAttack.baseDamage = attackDamage * damageStat;
+                    blastAttack.baseDamage = firstAttackDamage * damageStat;
                     blastAttack.canRejectForce = false;
                     blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                     blastAttack.baseForce = attackForce;
@@ -133,7 +135,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.position = position;
                     blastAttack.attacker = characterBody.gameObject;
                     blastAttack.crit = RollCrit();
-                    blastAttack.baseDamage = attackDamage * damageStat;
+                    blastAttack.baseDamage = secondAttackDamage * damageStat;
                     blastAttack.canRejectForce = false;
                     blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
                     blastAttack.baseForce = attackForce;

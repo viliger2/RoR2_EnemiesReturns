@@ -20,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public override float baseDuration => 4f;
 
-        public override float damageCoefficient => 3f;
+        public override float damageCoefficient => 6f;
 
         public override float force => 0f;
 

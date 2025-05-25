@@ -27,7 +27,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public static float minSpawnDistance = 2f;
 
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient = 4f;
 
         private float timer;
 

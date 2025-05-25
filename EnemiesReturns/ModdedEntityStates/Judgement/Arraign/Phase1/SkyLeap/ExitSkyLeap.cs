@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
     [RegisterEntityState]
     public class ExitSkyLeap : BaseExitSkyLeap
     {
-        public static GameObject staticFirstAttackEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSlamImpact.prefab").WaitForCompletion();
+        public static GameObject staticFirstAttackEffect;
 
         public static GameObject staticSecondAttackEffect;
 
@@ -25,7 +25,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override string soundString => "";
 
-        public override float attackDamage => 3f;
+        public override float firstAttackDamage => 8f;
+
+        public override float secondAttackDamage => 6f;
 
         public override float attackForce => 1000f;
 
@@ -40,5 +42,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
         public override string firstAttackParamName => "SkyLeap.firstAttack";
 
         public override string secondAttackParamName => "SkyLeap.secondAttack";
+
     }
 }

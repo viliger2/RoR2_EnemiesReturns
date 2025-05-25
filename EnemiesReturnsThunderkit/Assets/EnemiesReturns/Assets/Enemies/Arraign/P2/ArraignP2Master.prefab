@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 8351163272827220986}
   - component: {fileID: 4236657930761556223}
   - component: {fileID: 379553282140014478}
+  - component: {fileID: -4940945187240805269}
   m_Layer: 0
   m_Name: ArraignP2Master
   m_TagString: Untagged
@@ -132,6 +133,9 @@ MonoBehaviour:
   trackedMissileCount: 0
   isBoss: 0
   preventGameOver: 1
+  _seekerRevivedOnce: 0
+  _seekerRevitalize: 0
+  seekerSelfRevive: 0
   devotionInventoryPrefab: {fileID: 0}
   devotionInventoryUpdaterRef: {fileID: 0}
   devotionItem: 0
@@ -532,3 +536,22 @@ MonoBehaviour:
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &-4940945187240805269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297957800661026336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1399583993, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDef: {fileID: 0}
+  equipmentString: 
+  overwriteEquipment: 1
+  itemDefInfos: []
+  itemInfos:
+  - itemString: AdaptiveArmor
+    count: 1

@@ -33,7 +33,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap
 
         public override string soundString => "";
 
-        public override float attackDamage => 3.2f;
+        public override float firstAttackDamage => 3.2f;
+
+        public override float secondAttackDamage => 3.2f;
 
         public override float attackForce => 1000f;
 

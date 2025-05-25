@@ -644,7 +644,7 @@ MonoBehaviour:
   lavaCooldown: 0.2
   rootMotionInMainState: 0
   mainRootSpeed: 33
-  baseMaxHealth: 1000
+  baseMaxHealth: 2000
   baseRegen: 0
   baseMaxShield: 0
   baseMoveSpeed: 15
@@ -658,7 +658,7 @@ MonoBehaviour:
   baseJumpCount: 0
   sprintingSpeedMultiplier: 2.6
   autoCalculateLevelStats: 1
-  levelMaxHealth: 300
+  levelMaxHealth: 600
   levelRegen: 0
   levelMaxShield: 0
   levelMoveSpeed: 0

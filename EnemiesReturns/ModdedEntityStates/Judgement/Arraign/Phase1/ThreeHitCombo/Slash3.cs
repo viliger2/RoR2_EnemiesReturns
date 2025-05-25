@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public static float blastAttackRadius = 20f;
 
-        public static float blastAttackDamage = 2f;
+        public static float blastAttackDamage = 5f;
 
         public static float blastAttackForce = 500f;
 
@@ -37,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 2.4f;
-            base.damageCoefficient = 2f;
+            base.damageCoefficient = 3f;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;

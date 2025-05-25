@@ -260,13 +260,13 @@ MonoBehaviour:
   m_Script: {fileID: -848926067, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCoefficient: 0.4
+  damageCoefficient: 0.2
   attackerFiltering: 2
   impactEffect: {fileID: 0}
   forceVector: {x: 0, y: -2000, z: 0}
   overlapProcCoefficient: 0.5
-  fireFrequency: 5
-  resetFrequency: 10
+  fireFrequency: 6
+  resetFrequency: 6
   lifetime: 10
   onBegin:
     m_PersistentCalls:

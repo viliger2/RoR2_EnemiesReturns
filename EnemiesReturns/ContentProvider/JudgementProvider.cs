@@ -229,6 +229,7 @@ namespace EnemiesReturns
                 var slash3Explosion = arraignStuff.CreateSlash3ExplosionEffect();
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect = slash3Explosion;
                 ModdedEntityStates.Judgement.Arraign.Spawn.slamEffect = slash3Explosion;
+                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = slash3Explosion;
                 effectsList.Add(new EffectDef(slash3Explosion));
 
                 ArraignDamageController.hitEffectPrefab = arraignStuff.CreateArmorBreakEffect();
