@@ -34,6 +34,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 characterMotor.onHitGroundAuthority += CharacterMotor_onHitGroundAuthority;
                 characterMotor.gravityScale = 3f;
             }
+            if (NetworkServer.active)
+            {
+                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 6f);
+            }
         }
 
         private void CharacterMotor_onHitGroundAuthority(ref CharacterMotor.HitGroundInfo hitGroundInfo)
@@ -59,6 +63,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             {
                 animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 1f);
                 animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 1f);
+            }
+            if (NetworkServer.active)
+            {
+                if (characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+                {
+                    characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+                }
             }
         }
     }

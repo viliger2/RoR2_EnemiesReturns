@@ -8,6 +8,7 @@ using RoR2;
 using RoR2.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,6 +26,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject JudgementInteractable;
 
+        public static MasterCatalog.MasterIndex ArraignP1Index;
+
         public static Sprite AnointedSkinIcon;
 
         public static Texture2D aeonianEliteRamp;
@@ -38,6 +41,12 @@ namespace EnemiesReturns.Enemies.Judgement
         private static HashSet<string> AnointedBlacklist = new HashSet<string>();
 
         private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
+
+        [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
+        private static void Init()
+        {
+            ArraignP1Index = MasterCatalog.FindMasterIndex("ArraignP1Master");
+        }
 
         public static bool AddBodyToBlacklist(string bodyName)
         {
@@ -55,8 +64,10 @@ namespace EnemiesReturns.Enemies.Judgement
             if (Configuration.Judgement.Enabled.Value)
             {
                 On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
+                BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
@@ -68,7 +79,99 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
-        // Holy Sigmar, bless this ravaged code
+        private static void SpawnGoldTitanOnArraign(BossGroup bossGroup)
+        {
+            CombatSquad combatSquad = bossGroup.combatSquad;
+            bool flag = false;
+            foreach (CharacterMaster readOnlyMembers in combatSquad.readOnlyMembersList)
+            {
+                if (readOnlyMembers.masterIndex == ArraignP1Index)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            float timer;
+            if (flag)
+            {
+                timer = 2f;
+                RoR2Application.onFixedUpdate += Check;
+            }
+            void Check()
+            {
+                bool flag2 = true;
+                Vector3 approximatePosition = Vector3.zero;
+                try
+                {
+                    if ((bool)combatSquad)
+                    {
+                        ReadOnlyCollection<CharacterMaster> readOnlyMembersList = combatSquad.readOnlyMembersList;
+                        for (int i = 0; i < readOnlyMembersList.Count; i++)
+                        {
+                            CharacterMaster characterMaster = readOnlyMembersList[i];
+                            if ((bool)characterMaster)
+                            {
+                                CharacterBody body = characterMaster.GetBody();
+                                if (body)
+                                {
+                                    approximatePosition = body.transform.position;
+                                }
+                                if (body.HasBuff(RoR2Content.Buffs.HiddenInvincibility) || body.outOfCombat)
+                                {
+                                    flag2 = false;
+                                }
+                                else
+                                {
+                                    timer -= Time.fixedDeltaTime;
+                                    if (timer > 0f)
+                                    {
+                                        flag2 = false;
+                                    }
+                                }
+                            }
+                        }
+                        if (flag2)
+                        {
+                            GoldTitanManager.TryStartChannelingTitansServer(combatSquad, approximatePosition);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                if (flag2)
+                {
+                    RoR2Application.onFixedUpdate -= Check;
+                }
+            }
+        }
+
+        private static void TalkAboutLunarFlower(On.EntityStates.BrotherMonster.SpellChannelExitState.orig_OnExit orig, EntityStates.BrotherMonster.SpellChannelExitState self)
+        {
+            if (NetworkServer.active)
+            {
+                if (self.itemStealController)
+                {
+                    foreach(var stolenInfo in self.itemStealController.stolenInventoryInfos)
+                    {
+                        if(stolenInfo != null && stolenInfo.lentItemStacks != null
+                            && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex 
+                            && stolenInfo.lentItemStacks[(int)Content.Items.LunarFlower.itemIndex] > 0)
+                        {
+                            Chat.SendBroadcastChat(new Chat.NpcChatMessage
+                            {
+                                baseToken = "ENEMIES_RETURNS_JUDGEMENT_MITHRIX_LUNAR_FLOWER_COMMENT",
+                                formatStringToken = "BROTHER_DIALOGUE_FORMAT",
+                                sender = null,
+                                sound = null
+                            });
+                        }
+                    }
+                }
+            }
+            orig(self);
+        }
+
         // but seriously I copy pasted like half of the method, I hope this works
         private static void CreateAnointedAchievements()
         {

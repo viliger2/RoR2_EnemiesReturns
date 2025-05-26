@@ -456,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 5481540473490640419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.69, y: 1.14, z: 151.9}
-  m_LocalScale: {x: 1, y: 300, z: 300}
+  m_LocalScale: {x: 4, y: 300, z: 300}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6969273439126755611}
@@ -500,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 5719061002808259337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.571, y: 1.0734134, z: -151.9}
-  m_LocalScale: {x: 1, y: 300, z: 300}
+  m_LocalScale: {x: 4, y: 300, z: 300}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6969273439126755611}
@@ -644,7 +644,7 @@ MonoBehaviour:
   lavaCooldown: 0.2
   rootMotionInMainState: 0
   mainRootSpeed: 33
-  baseMaxHealth: 2000
+  baseMaxHealth: 4000
   baseRegen: 0
   baseMaxShield: 0
   baseMoveSpeed: 15
@@ -658,7 +658,7 @@ MonoBehaviour:
   baseJumpCount: 0
   sprintingSpeedMultiplier: 2.6
   autoCalculateLevelStats: 1
-  levelMaxHealth: 600
+  levelMaxHealth: 1200
   levelRegen: 0
   levelMaxShield: 0
   levelMoveSpeed: 0

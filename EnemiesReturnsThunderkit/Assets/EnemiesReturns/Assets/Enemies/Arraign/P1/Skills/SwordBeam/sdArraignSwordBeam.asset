@@ -22,7 +22,7 @@ MonoBehaviour:
     _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam.SwordBeamStart,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
-  baseRechargeInterval: 40
+  baseRechargeInterval: 55
   baseMaxStock: 1
   rechargeStock: 1
   requiredStock: 1
@@ -33,10 +33,12 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
+  isCooldownBlockedUntilManuallyReset: 0
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 0
   isCombatSkill: 1
   mustKeyPress: 0
+  triggeredByPressRelease: 0
   autoHandleLuminousShot: 1
   hideStockCount: 0

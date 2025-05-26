@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -7,6 +8,8 @@ namespace EnemiesReturns.Equipment.MithrixHammer
     public class MithrixHammer
     {
         public static GameObject MithrixHammerController;
+
+        public static float aeonianHammerDamageModifier = 100f;
 
         public static void Hooks()
         {
@@ -22,6 +25,19 @@ namespace EnemiesReturns.Equipment.MithrixHammer
                 return true;
             }
             return orig(self, equipmentDef);
+        }
+
+        public static void ModifyDamageOnAeonianElitesFromHammer(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
+        {
+            if (self.body)
+            {
+                if(self.body.HasBuff(Content.Buffs.AffixAeoninan) && (damageInfo.damageType.damageSource & DamageSource.Equipment) == DamageSource.Equipment && damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon))
+                {
+                    damageInfo.damage *= aeonianHammerDamageModifier;
+                }
+            }
+
+            orig(self, damageInfo);
         }
 
         public static GameObject SetupPickupDisplay(GameObject mithrixHammer)

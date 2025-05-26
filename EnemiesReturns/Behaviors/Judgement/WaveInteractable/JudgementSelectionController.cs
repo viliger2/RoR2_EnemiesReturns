@@ -22,9 +22,9 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         private Dictionary<ItemTier, MinMaxCount> tierDropCounts = new Dictionary<ItemTier, MinMaxCount>
         {
             { ItemTier.Tier1, new MinMaxCount{ minCount = 25, maxCount = 35 } },
-            { ItemTier.Tier2, new MinMaxCount{ minCount = 7, maxCount = 12 } },
-            { ItemTier.Tier3, new MinMaxCount{ minCount = 1, maxCount = 3 } },
-            { ItemTier.Boss, new MinMaxCount{ minCount = 2, maxCount = 5 } },
+            { ItemTier.Tier2, new MinMaxCount{ minCount = 10, maxCount = 15 } },
+            { ItemTier.Tier3, new MinMaxCount{ minCount = 4, maxCount = 8 } },
+            { ItemTier.Boss, new MinMaxCount{ minCount = 8, maxCount = 10 } },
         };
 
         public int listCount = 10;

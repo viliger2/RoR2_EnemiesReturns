@@ -4,7 +4,7 @@ using System;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns.ModCompats
 {
-    public class RiskyModCompat
+    internal static class RiskyModCompat
     {
         public static ItemIndex RiskyModAllyMarker;
 

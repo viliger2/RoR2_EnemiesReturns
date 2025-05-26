@@ -195,6 +195,19 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             muzzleRay.localScale = new Vector3(1f, 1f, 1f);
             muzzleRay.GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeamMuzzleRay", CreateBeamMuzzleRayMaterial);
 
+            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.name = "AreaIndicator";
+            if(cube.TryGetComponent<Collider>(out var collider))
+            {
+                UnityEngine.Object.Destroy(collider);
+            }
+
+            cube.transform.parent = prefab.transform;
+            cube.transform.localScale = new Vector3(2.3f, 1f, 20f);
+            cube.transform.localPosition = new Vector3(0f, -0.5f, 9.6f);
+
+            cube.GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matTeamAreaIndicatorIntersectionMonster.mat").WaitForCompletion();
+
             return prefab;
         }
 

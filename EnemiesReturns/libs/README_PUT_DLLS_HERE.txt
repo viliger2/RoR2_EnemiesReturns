@@ -3,3 +3,4 @@ Decalicious.dll
 Unity.Postprocessing.Runtime
 AdvPrediction.dll
 Risky_Artifacts.dll
+EliteReworks.dll

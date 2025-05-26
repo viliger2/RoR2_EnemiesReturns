@@ -45,6 +45,9 @@
 	  <Reference Include="Decalicious">
 	    <HintPath>libs\Decalicious.dll</HintPath>
 	  </Reference>
+	  <Reference Include="EliteReworks">
+	    <HintPath>libs\EliteReworks.dll</HintPath>
+	  </Reference>
 	  <!--<Reference Include="MMHOOK_RoR2">
 	    <HintPath>libs\MMHOOK_RoR2.dll</HintPath>
 	  </Reference>-->
@@ -75,7 +78,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll&#xD;&#xA;del AdvPrediction.dll&#xD;&#xA;del Risky_Artifacts.dll&#xD;&#xA;del Zio.dll" />
+	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll&#xD;&#xA;del AdvPrediction.dll&#xD;&#xA;del Risky_Artifacts.dll&#xD;&#xA;del Zio.dll&#xD;&#xA;del EliteReworks.dll" />
 	</Target>
 
 </Project>

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDropBeReplaced: 1
   requiredItemTags: 
-  bannedItemTags: 04000000060000000700000008000000
-  tier1Weight: 0
-  tier2Weight: 0
+  bannedItemTags: 040000000600000007000000080000001200000018000000
+  tier1Weight: 1
+  tier2Weight: 1
   tier3Weight: 0
-  bossWeight: 1
+  bossWeight: 3
   lunarItemWeight: 0
   voidTier1Weight: 0
   voidTier2Weight: 0

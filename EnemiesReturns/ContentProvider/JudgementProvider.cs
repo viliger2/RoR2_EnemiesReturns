@@ -74,6 +74,11 @@ namespace EnemiesReturns
                     Content.Elites.Aeonian = assets.First(elitedef => elitedef.name == "EliteAeonian");
                     EliteRamp.AddRamp(Content.Elites.Aeonian, rampLookups["texRampAeonianElite"]);
 
+                    if (ModCompats.EliteReworksCompat.enabled)
+                    {
+                        ModCompats.EliteReworksCompat.ModifyAeonianElites(Content.Elites.Aeonian);
+                    }
+
                     _contentPack.eliteDefs.Add(assets);
                 }));
 

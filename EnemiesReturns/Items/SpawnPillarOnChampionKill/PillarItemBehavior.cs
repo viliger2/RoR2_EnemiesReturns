@@ -20,7 +20,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 bool spawn = false;
                 if (damageReport.victimBody)
                 {
-                    spawn = damageReport.victimBody.isChampion;
+                    spawn = damageReport.victimBody.isChampion || damageReport.victimBody.isPlayerControlled;
                     if (!spawn && damageReport.victimBody.isElite)
                     {
                         spawn = Util.CheckRoll(EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);

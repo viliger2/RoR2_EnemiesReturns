@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModCompats
 {
-    public static class AdvancedPredictionCompat
+    internal static class AdvancedPredictionCompat
     {
         private static bool? _enabled;
 
