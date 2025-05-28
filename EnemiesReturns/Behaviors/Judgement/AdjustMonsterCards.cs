@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static R2API.DirectorAPI;
+using static RoR2.UI.CarouselController;
 
 namespace EnemiesReturns.Behaviors.Judgement
 {
@@ -43,9 +44,17 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
+            foreach (var card in Enemies.Judgement.SetupJudgementPath.mixEnemiesDirectorCards) 
+            {
+                if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard != null && choice.value.spawnCard.prefab == card.spawnCard.prefab).Count() == 0)
+                {
+                    stageInfo.monsterSelection.AddChoice(card, 1);
+                }
+            }
+
             // adding hermit crab just to be safe
             var hermitCrab = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/HermitCrab/cscHermitCrab.asset").WaitForCompletion();
-            if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard == hermitCrab).ToArray().Length == 0)
+            if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard == hermitCrab).Count() == 0)
             {
                 stageInfo.monsterSelection.AddChoice(
                     new DirectorCard()
@@ -67,6 +76,11 @@ namespace EnemiesReturns.Behaviors.Judgement
                         stageInfo.monsterSelection.RemoveChoice(i);
                     }
                 }
+            }
+
+            for(int i = 0; i < stageInfo.monsterSelection.Count; i++)
+            {
+                Log.Info(stageInfo.monsterSelection.GetChoice(i).value.spawnCard);
             }
         }
     }

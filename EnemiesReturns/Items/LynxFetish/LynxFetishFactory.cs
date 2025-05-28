@@ -27,7 +27,7 @@ namespace EnemiesReturns.Items.LynxFetish
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
             RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
-            LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLyxTribeCount);
+            LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLynxTribeCount);
             IL.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
         }
 
@@ -146,7 +146,7 @@ namespace EnemiesReturns.Items.LynxFetish
             return itemDef;
         }
 
-        private static int GetFriendlyLyxTribeCount(CharacterMaster master, int countMultiplier)
+        private static int GetFriendlyLynxTribeCount(CharacterMaster master, int countMultiplier)
         {
             return Mathf.Min(master.inventory.GetItemCount(Content.Items.LynxFetish), 4);
         }

@@ -12,15 +12,15 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
-		<PackageReference Include="R2API.DamageType" Version="1.1.3" />
+		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
 		<PackageReference Include="R2API.Deployable" Version="1.0.1" />
-		<PackageReference Include="R2API.Director" Version="2.3.4" />
-		<PackageReference Include="R2API.Dot" Version="1.0.3" />
-		<PackageReference Include="R2API.Elites" Version="1.0.6" />
+		<PackageReference Include="R2API.Director" Version="2.3.5" />
+		<PackageReference Include="R2API.Dot" Version="1.0.4" />
+		<PackageReference Include="R2API.Elites" Version="1.0.7" />
 		<PackageReference Include="R2API.Networking" Version="1.0.3" />
 		<PackageReference Include="R2API.Orb" Version="1.0.1" />
 		<PackageReference Include="R2API.Prefab" Version="1.0.4" />
-		<PackageReference Include="R2API.ProcType" Version="1.0.1" />
+		<PackageReference Include="R2API.ProcType" Version="1.0.2" />
 		<PackageReference Include="R2API.RecalculateStats" Version="1.5.0" />
 		<PackageReference Include="R2API.TempVisualEffect" Version="1.0.3" />
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
@@ -48,6 +48,9 @@
 	  <Reference Include="EliteReworks">
 	    <HintPath>libs\EliteReworks.dll</HintPath>
 	  </Reference>
+	  <!--<Reference Include="R2API.Director">
+	    <HintPath>libs\R2API.Director.dll</HintPath>
+	  </Reference>-->
 	  <!--<Reference Include="MMHOOK_RoR2">
 	    <HintPath>libs\MMHOOK_RoR2.dll</HintPath>
 	  </Reference>-->

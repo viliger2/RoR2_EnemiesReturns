@@ -15,6 +15,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using System.Linq;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
@@ -42,6 +43,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
 
+        public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
+
         [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
         private static void Init()
         {
@@ -68,6 +71,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
+                DirectorAPI.MixEnemiesDccsActions += DirectorAPI_MixEnemiesDccsActions;
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
@@ -75,6 +79,20 @@ namespace EnemiesReturns.Enemies.Judgement
                     IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
                     On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                     IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
+                }
+            }
+        }
+
+        private static void DirectorAPI_MixEnemiesDccsActions(DirectorCardCategorySelection mixEnemiesDccs)
+        {
+            foreach(var category in mixEnemiesDccs.categories)
+            {
+                foreach(var card in category.cards)
+                {
+                    if(mixEnemiesDirectorCards.Where(item => item.spawnCard == card.spawnCard).Count() == 0)
+                    {
+                        mixEnemiesDirectorCards.Add(card);
+                    }
                 }
             }
         }
