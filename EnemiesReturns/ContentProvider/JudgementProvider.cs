@@ -191,6 +191,7 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
                 {
                     Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
+                    Equipment.MithrixHammer.MithrixHammer.SetupEquipmentConfigValues(Content.Equipment.MithrixHammer);
                     Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
 
                     Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");

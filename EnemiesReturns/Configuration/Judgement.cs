@@ -15,6 +15,10 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<string> JudgementEnemyBlacklist;
 
+        public static ConfigEntry<float> MithrixHammerAeonianBonusDamage;
+        public static ConfigEntry<float> MithrixHammerDamageCoefficient;
+        public static ConfigEntry<float> MithrixHammerCooldown;
+
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
@@ -23,6 +27,10 @@ namespace EnemiesReturns.Configuration
             JudgementEnemyBlacklist = config.Bind("Judgement", "Enemy Blacklist",
                 "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster", 
                 "List of enemies that are blacklisted from appearing in Judgement. Requiers master names, you can get master names via DebugToolkit's list_ai command");
+
+            MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 100f, "Bonus damage multiplier against Aeonian elites.");
+            MithrixHammerDamageCoefficient = config.Bind("Mithrix Hammer", "Mithrix Hammer Damage Coefficient", 30f, "Mithrix Hammer damage coefficient off base damage.");
+            MithrixHammerCooldown = config.Bind("Mithrix Hammer", "Mithrix Hammer Cooldown", 15f, "Mithrix Hammer cooldown.");
         }
     }
 }
