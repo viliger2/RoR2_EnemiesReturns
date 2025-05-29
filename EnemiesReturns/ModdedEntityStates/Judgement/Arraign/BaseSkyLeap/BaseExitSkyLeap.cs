@@ -116,7 +116,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.Fire();
                 }
                 Util.PlaySound("Play_moonBrother_spawn", base.gameObject);
-                EffectManager.SimpleEffect(firstAttackEffect, dropPosition, Quaternion.identity, false);
+
+                var effectData = new EffectData()
+                {
+                    origin = dropPosition,
+                    scale = 7f
+                };
+                EffectManager.SpawnEffect(firstAttackEffect, effectData, true);
                 attackFired = true;
             }
 

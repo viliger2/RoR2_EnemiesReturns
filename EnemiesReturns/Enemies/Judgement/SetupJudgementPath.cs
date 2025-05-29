@@ -66,7 +66,8 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             if (Configuration.Judgement.Enabled.Value)
             {
-                On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
+                //On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
@@ -80,6 +81,46 @@ namespace EnemiesReturns.Enemies.Judgement
                     On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                     IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
                 }
+            }
+        }
+
+        private static void SpawnBrokenTeleporter2(On.RoR2.EscapeSequenceController.EscapeSequenceMainState.orig_OnEnter orig, EscapeSequenceController.EscapeSequenceMainState self)
+        {
+            orig(self);
+
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            var itemFound = false;
+            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            {
+                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                {
+                    continue;
+                }
+
+                if (!playerCharacterMaster.master.inventory)
+                {
+                    continue;
+                }
+
+                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.LunarFlower) > 0)
+                {
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (itemFound)
+            {
+                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, new Vector3(-88.4849f, 491.488f, -0.3325f), Quaternion.identity);
+                NetworkServer.Spawn(newTeleporter);
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+                {
+                    baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
+                });
             }
         }
 
@@ -562,6 +603,7 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void SpawnBrokenTeleporter(On.EntityStates.Missions.BrotherEncounter.BossDeath.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.BossDeath self)
         {
             orig(self);
+
             if (!NetworkServer.active)
             {
                 return;

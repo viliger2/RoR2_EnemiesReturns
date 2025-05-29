@@ -52,21 +52,6 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
-            // adding hermit crab just to be safe
-            var hermitCrab = Addressables.LoadAssetAsync<CharacterSpawnCard>("RoR2/Base/HermitCrab/cscHermitCrab.asset").WaitForCompletion();
-            if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard == hermitCrab).Count() == 0)
-            {
-                stageInfo.monsterSelection.AddChoice(
-                    new DirectorCard()
-                    {
-                        spawnCard = hermitCrab,
-                        selectionWeight = 1,
-                        spawnDistance = DirectorCore.MonsterSpawnDistance.Far,
-                        preventOverhead = false
-                    },
-                    1);
-            }
-
             for(int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
             {
                 if (stageInfo.monsterSelection.choices[i].value != null && stageInfo.monsterSelection.choices[i].value.spawnCard && stageInfo.monsterSelection.choices[i].value.spawnCard.prefab)
