@@ -29,10 +29,12 @@ namespace EnemiesReturns.Enemies.ArcherBug
         {
             var stopState = new IAISkillDriver.AISkillDriverParams("Stop")
             {               
-                minDistance = 0,                
+                minDistance = 30f,  
+                maxDistance = 50f,
                 activationRequiresTargetLoS = true,
-                movementType = AISkillDriver.MovementType.Stop,                              
-                driverUpdateTimerOverride = 2,
+                movementType = AISkillDriver.MovementType.Stop,
+                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
+                driverUpdateTimerOverride = 1f,
                 noRepeat = true,      
             };
             return new IAISkillDriver.AISkillDriverParams[]
@@ -40,50 +42,50 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 new IAISkillDriver.AISkillDriverParams("PathFromAfar")
                 {
                     skillSlot = SkillSlot.None,
-                    minDistance = 0f,
+                    minDistance = 90f,
                     maxDistance = float.PositiveInfinity,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    driverUpdateTimerOverride = 0.5f,
+
+
                 },
                 new IAISkillDriver.AISkillDriverParams("Shoot")
                 {
+                    skillSlot = SkillSlot.Primary,
+                    requireSkillReady = true,
+                    selectionRequiresTargetLoS = true,
+                    movementType = AISkillDriver.MovementType.Stop,
+                    minDistance = 0f,
+                    maxDistance = 30f,
+                    driverUpdateTimerOverride = 1f,                   
+                    nextHighPriorityOverride = stopState
+                    
 
                 },
                 new IAISkillDriver.AISkillDriverParams("Follow")
                 {
                     skillSlot = SkillSlot.None,
-                    minDistance = 25f,
-                    maxDistance = 50f,
+                    minDistance = 30f,
+                    maxDistance = 90f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
                     driverUpdateTimerOverride = 0.5f,
+                    nextHighPriorityOverride = stopState
                 },
-                new IAISkillDriver.AISkillDriverParams("Strafe")
-                {
-                    skillSlot = SkillSlot.None,
-                    minDistance = 10f,
-                    maxDistance = 25f,
-                    moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    driverUpdateTimerOverride = 0.5f,
-                },
-                new IAISkillDriver.AISkillDriverParams("Flee")
+              new IAISkillDriver.AISkillDriverParams("Strafe")
                 {
                     skillSlot = SkillSlot.None,
                     minDistance = 0f,
-                    maxDistance = 10f,
+                    maxDistance = 30f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.FleeMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
                     driverUpdateTimerOverride = 0.5f,
-                    nextHighPriorityOverride = 
-
+                    nextHighPriorityOverride = stopState
                 },
-               
+               stopState
 
 
     };

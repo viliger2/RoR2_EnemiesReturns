@@ -12,26 +12,57 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
     internal class FireCausticSpit : BaseState
     {
         public static float baseDuration = 2f;
+        public float baseDelay = 0.5f;
         public static string targetMuzzle = "AbdomenMuzzle";
         public static GameObject projectilePrefab;
         public static float projectileSpeed = 55f;
         public static float minimumDistance = 0f;
         public static float maximumDistance = 200f;
+        public bool hasFired;
         public static float timeToTarget => projectileSpeed;
         public static float damageCoefficient = 2f;
+        private float delayStopwatch;
         private float duration;
-        public static float projectileForce => 1f;
+        private float delay;
+        private float totalDuration;
+       
+
+        public static float projectileForce => 3f;
 
         public override void OnEnter()
         {
+           
             base.OnEnter();
+            delay = baseDelay / attackSpeedStat;
             duration = baseDuration / attackSpeedStat;
-            Ray aimRay = GetAimRay();
-            StartAimMode(aimRay, 2f, false);
+            totalDuration = duration + delay;
+            PlayAnimation("Gesture", "FireCausticSpit", "FireCausticSpit.playbackRate", duration);
             Util.PlaySound("ER_Spiiter_Spit_Play", gameObject);
 
-            if (isAuthority)
-            {              
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+           
+            if (fixedAge > delay)
+            {               
+                FireAttack();
+            }
+
+            if (base.isAuthority && fixedAge >= duration)
+            {
+                outer.SetNextStateToMain();
+            }
+        }
+
+        public void FireAttack()
+        {
+            Ray aimRay = GetAimRay();
+            StartAimMode(aimRay, 2f, false);
+            if (isAuthority && hasFired == false)
+            {
+                
                 Vector3 rhs = Vector3.Cross(Vector3.up, aimRay.direction);
                 Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
 
@@ -52,25 +83,25 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
 
                     //Adjust aimray for the next shot
                     aimRay2.direction = rotation * aimRay2.direction;
-                }               
+                }
+                hasFired = true;
             }
         }
 
-
-        public override void FixedUpdate()
+        public override void OnExit()
         {
-
-            if (base.isAuthority && fixedAge >= duration)
-            {
-                outer.SetNextStateToMain();
+            delayStopwatch += Time.fixedDeltaTime;
+            if (hasFired == false)
+            {               
+                FireAttack();
             }
         }
 
         
 
         public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
+        {         
+            return InterruptPriority.PrioritySkill;           
         }
     }
 }

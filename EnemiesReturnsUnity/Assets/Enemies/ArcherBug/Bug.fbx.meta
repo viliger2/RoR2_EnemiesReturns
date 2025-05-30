@@ -99,7 +99,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 4.4
+      additiveReferencePoseFrame: 4
     - serializedVersion: 16
       name: ArcherBugArmature|Ascend
       takeName: ArcherBugArmature|Ascend
@@ -134,7 +134,7 @@ ModelImporter:
       takeName: ArcherBugArmature|Attack
       internalID: -9012520939976835098
       firstFrame: 0
-      lastFrame: 54
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -460,5 +460,5 @@ ModelImporter:
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: enemiesreturns
   assetBundleVariant: 

@@ -669,7 +669,7 @@ namespace EnemiesReturns
 
             sfList.Add(ArcherBugBody.SkillFamilies.Primary);
 
-            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texSpitterIcon"], archerBugLog);
+            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texArcherBugIcon"], archerBugLog);
             bodyList.Add(ArcherBugBody.BodyPrefab);
 
             ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);

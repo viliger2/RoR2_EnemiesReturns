@@ -50,7 +50,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 descriptionToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION",
                 icon = acridEpidemic.icon,
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 5f
+                baseRechargeInterval = 3f
             });
         }
 
@@ -75,8 +75,9 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 levelDamage = 2.4f,
                 baseArmor = 0,
                 levelArmor = 0,
-                baseMoveSpeed = 8,
+                baseMoveSpeed = 10,
                 baseJumpCount = 1,
+                baseJumpPower = 25,
                 isChampion = false,
                 autoCalculateStats = true,
 
