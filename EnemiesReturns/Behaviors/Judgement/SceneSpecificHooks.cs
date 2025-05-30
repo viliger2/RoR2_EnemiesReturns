@@ -12,7 +12,6 @@ namespace EnemiesReturns.Behaviors.Judgement
         private void Start()
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
-            On.RoR2.HealthComponent.TakeDamageProcess += Equipment.MithrixHammer.MithrixHammer.ModifyDamageOnAeonianElitesFromHammer;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 += PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
         }
 
@@ -43,7 +42,6 @@ namespace EnemiesReturns.Behaviors.Judgement
         private void OnDestroy()
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate -= HUDBossHealthBarController_LateUpdate;
-            On.RoR2.HealthComponent.TakeDamageProcess -= Equipment.MithrixHammer.MithrixHammer.ModifyDamageOnAeonianElitesFromHammer;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 -= PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
         }
 

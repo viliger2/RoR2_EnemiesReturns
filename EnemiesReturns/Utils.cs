@@ -293,5 +293,27 @@ namespace EnemiesReturns
             sphereSearch.searchData.FilterByPlayers();
             return sphereSearch;
         }
+
+        public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
+        {
+            for (uint i = 0; i < inventory.GetEquipmentSlotCount(); i++)
+            {
+                var equipmentState = inventory.GetEquipment(i);
+                if (!equipmentState.Equals(EquipmentState.empty))
+                {
+                    if (equipmentState.equipmentIndex == equipmentIndex)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool HasEquipment(this Inventory inventory, EquipmentDef equipmentDef)
+        {
+            return HasEquipment(inventory, equipmentDef.equipmentIndex);
+        }
     }
 }
