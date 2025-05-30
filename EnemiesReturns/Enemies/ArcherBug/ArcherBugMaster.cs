@@ -27,16 +27,16 @@ namespace EnemiesReturns.Enemies.ArcherBug
 
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
-            var stopState = new IAISkillDriver.AISkillDriverParams("Stop")
-            {               
-                minDistance = 30f,  
-                maxDistance = 50f,
-                activationRequiresTargetLoS = true,
-                movementType = AISkillDriver.MovementType.Stop,
-                aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
-                driverUpdateTimerOverride = 1f,
-                noRepeat = true,      
-            };
+         //   var stopState = new IAISkillDriver.AISkillDriverParams("Stop")
+         //   {               
+         //       minDistance = 30f,  
+         //      maxDistance = 50f,
+         //       activationRequiresTargetLoS = true,
+         //       movementType = AISkillDriver.MovementType.Stop,
+         //       aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
+         //       driverUpdateTimerOverride = 1f,
+         //       noRepeat = true,      
+         //   };
             return new IAISkillDriver.AISkillDriverParams[]
             {
                 new IAISkillDriver.AISkillDriverParams("PathFromAfar")
@@ -47,8 +47,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-
-
                 },
                 new IAISkillDriver.AISkillDriverParams("Shoot")
                 {
@@ -58,10 +56,8 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     movementType = AISkillDriver.MovementType.Stop,
                     minDistance = 0f,
                     maxDistance = 30f,
-                    driverUpdateTimerOverride = 1f,                   
-                    nextHighPriorityOverride = stopState
-                    
-
+                    driverUpdateTimerOverride = 2f,                   
+                   // nextHighPriorityOverride = stopState                    
                 },
                 new IAISkillDriver.AISkillDriverParams("Follow")
                 {
@@ -70,9 +66,8 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     maxDistance = 90f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
-                    driverUpdateTimerOverride = 0.5f,
-                    nextHighPriorityOverride = stopState
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,                   
+                  //  nextHighPriorityOverride = stopState
                 },
               new IAISkillDriver.AISkillDriverParams("Strafe")
                 {
@@ -81,11 +76,10 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     maxDistance = 30f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
-                    driverUpdateTimerOverride = 0.5f,
-                    nextHighPriorityOverride = stopState
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,              
+                  //  nextHighPriorityOverride = stopState
                 },
-               stopState
+              // stopState
 
 
     };
