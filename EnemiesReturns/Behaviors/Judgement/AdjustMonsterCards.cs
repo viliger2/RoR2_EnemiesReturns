@@ -62,11 +62,6 @@ namespace EnemiesReturns.Behaviors.Judgement
                     }
                 }
             }
-
-            for(int i = 0; i < stageInfo.monsterSelection.Count; i++)
-            {
-                Log.Info(stageInfo.monsterSelection.GetChoice(i).value.spawnCard);
-            }
         }
     }
 }

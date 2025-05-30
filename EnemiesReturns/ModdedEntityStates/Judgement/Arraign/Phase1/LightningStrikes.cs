@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
@@ -23,9 +24,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public static float delayBetweenSpawns = 0.1f;
 
-        public static float maxSpawnDistance = 20f;
+        public static float maxSpawnDistance = 30f;
 
-        public static float minSpawnDistance = 2f;
+        public static float minSpawnDistance = 0f;
 
         public static float damageCoefficient = 4f;
 
@@ -67,6 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 {
                     target = this.transform;
                 }
+                FireProjectileAuthority(target.position);
             }
         }
 
@@ -85,28 +87,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 var zOffest = GetRandomOffset();
 
                 var position = target.position + Vector3.forward * zOffest + Vector3.right * xOffest;
-                if(Physics.Raycast(position, Vector3.down, out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                {
-                    position = hitInfo.point + Vector3.up;
-                }
 
-                var projectileInfo = new FireProjectileInfo()
-                {
-                    crit = RollCrit(),
-                    owner = base.gameObject,
-                    position = position,
-                    projectilePrefab = projectilePrefab,
-                    rotation = Quaternion.identity,
-                    damage = damageStat * damageCoefficient
-                };
 
-                ProjectileManager.instance.FireProjectile(projectileInfo);
+                FireProjectileAuthority(position);
 
                 timer -= delayBetweenSpawns;
                 projectilesSpawned++;
             }
 
-            if(projectilesSpawned >= projectileCount && isAuthority && fixedAge > baseDuration)
+            if (projectilesSpawned >= projectileCount && isAuthority && fixedAge > baseDuration)
             {
                 outer.SetNextStateToMain();
             }
@@ -117,6 +106,26 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 value += value > 0f ? minSpawnDistance : -minSpawnDistance;
                 return value;
             }
+        }
+
+        private void FireProjectileAuthority(Vector3 position)
+        {
+            if (Physics.Raycast(position, Vector3.down, out var hitInfo, 1000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+            {
+                position = hitInfo.point + Vector3.up;
+            }
+
+            var projectileInfo = new FireProjectileInfo()
+            {
+                crit = RollCrit(),
+                owner = base.gameObject,
+                position = position,
+                projectilePrefab = projectilePrefab,
+                rotation = Quaternion.identity,
+                damage = damageStat * damageCoefficient
+            };
+
+            ProjectileManager.instance.FireProjectile(projectileInfo);
         }
 
         public override void OnExit()

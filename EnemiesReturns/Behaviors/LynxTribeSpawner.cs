@@ -81,9 +81,9 @@ namespace EnemiesReturns.Behaviors
                 spawnInfos[i].eliteCostMultiplier = 1f;
             }
 
-            // second pass - we try to add elites to evert spawn card
+            // second pass - we try to add elites to every spawn card
             // we do this by checking if we have enough credits to spawn current card as elite,
-            // if we don't then we send the remaining credits to the next monster
+            // if we don't then we pass the remaining credits to the next monster
             float remainingCredits = 0f;
             for (int i = 0; i < spawnCount; i++)
             {

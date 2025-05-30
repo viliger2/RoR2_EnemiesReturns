@@ -16,6 +16,8 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public EliteDef eliteType;
 
+        public static float rewardMultiplier = 6f; // TODO: config
+
         private void Awake()
         {
             if (!combatDirector)
@@ -67,6 +69,23 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             void OnBodyDiscovered(CharacterBody newBody)
             {
                 ai.ForceAcquireNearestEnemyIfNoCurrentEnemy();
+
+                if (newBody.gameObject.TryGetComponent<DeathRewards>(out var deathRewards))
+                {
+                    float num3 = newBody.cost * rewardMultiplier * 0.2f;
+                    deathRewards.spawnValue = (int)Mathf.Max(1f, num3);
+                    if (num3 > Mathf.Epsilon)
+                    {
+                        deathRewards.expReward = (uint)Mathf.Max(1f, num3 * Run.instance.compensatedDifficultyCoefficient);
+                        deathRewards.goldReward = (uint)Mathf.Max(1f, num3 * 2f * Run.instance.compensatedDifficultyCoefficient); // 2 is magic number from combat director
+                    }
+                    else
+                    {
+                        deathRewards.expReward = 0u;
+                        deathRewards.goldReward = 0u;
+                    }
+                }
+
                 ai.onBodyDiscovered -= OnBodyDiscovered;
             }
         }

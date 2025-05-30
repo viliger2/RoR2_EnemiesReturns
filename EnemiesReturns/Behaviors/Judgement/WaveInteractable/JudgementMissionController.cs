@@ -24,7 +24,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public WavesInformation[] wavesInformation;
 
-        public static float rewardMultiplier = 6f; // TODO: config
 
         public int maxWaves => wavesInformation.Length;
 
@@ -218,7 +217,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 combatDirector.maximumNumberToSpawnBeforeSkipping = maximumNumberToSpawnBeforeSkipping;
                 combatDirector.spawnDistanceMultiplier = spawnDistanceMultiplier;
                 combatDirector.eliteBias = 999f; // adding insane elite bias so elites are never chosen, we'll set elites ourselves
-                combatDirector.onSpawnedServer.AddListener(ModifySpawnedMonsters);
             }
         }
 
@@ -231,58 +229,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 bossGroup.bestObservedName = "";
                 bossGroup.bestObservedSubtitle = "";
                 bossGroup.bossMemoryCount = 0;
-            }
-        }
-
-        public void ModifySpawnedMonsters(GameObject spawnedMonster)
-        {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            CharacterMaster component = spawnedMonster.GetComponent<CharacterMaster>();
-            BaseAI ai = component.GetComponent<BaseAI>();
-            if ((bool)ai)
-            {
-                ai.onBodyDiscovered += OnBodyDiscovered;
-            }
-
-            component.inventory.AddItemsFrom(inventory);
-
-            var healthBoost = eliteDef?.healthBoostCoefficient ?? 1f;
-            var damageBoost = eliteDef?.damageBoostCoefficient ?? 1f;
-
-            var equipmentIndex = eliteDef?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
-            if (equipmentIndex != EquipmentIndex.None)
-            {
-                component.inventory.SetEquipmentIndex(equipmentIndex);
-            }
-
-            component.inventory.GiveItem(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1) * 10f));
-            component.inventory.GiveItem(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1) * 10f));
-
-            void OnBodyDiscovered(CharacterBody newBody)
-            {
-                ai.ForceAcquireNearestEnemyIfNoCurrentEnemy();
-
-                if (newBody.gameObject.TryGetComponent<DeathRewards>(out var deathRewards))
-                {
-                    float num3 = newBody.cost * rewardMultiplier * 0.2f;
-                    deathRewards.spawnValue = (int)Mathf.Max(1f, num3);
-                    if (num3 > Mathf.Epsilon)
-                    {
-                        deathRewards.expReward = (uint)Mathf.Max(1f, num3 * Run.instance.compensatedDifficultyCoefficient);
-                        deathRewards.goldReward = (uint)Mathf.Max(1f, num3 * 2f * Run.instance.compensatedDifficultyCoefficient); // 2 is magic number from combat director
-                    }
-                    else
-                    {
-                        deathRewards.expReward = 0u;
-                        deathRewards.goldReward = 0u;
-                    }
-                }
-
-                ai.onBodyDiscovered -= OnBodyDiscovered;
             }
         }
     }
