@@ -21,7 +21,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
                 {
                     var newDamageInfo = new DamageInfo()
                     {
-                        attacker = null,
+                        attacker = damageReport.attacker,
                         inflictor = null,
                         position = body.transform.position,
                         crit = false,

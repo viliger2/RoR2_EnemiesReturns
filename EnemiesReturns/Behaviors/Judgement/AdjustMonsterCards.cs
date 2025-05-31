@@ -52,7 +52,19 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
-            for(int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
+            // TODO: remove on release
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.Colossus.ColossusBody.SpawnCards.cscColossusDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.Ifrit.IfritBody.SpawnCards.cscIfritDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.LynxTribe.Scout.ScoutBody.SpawnCards.cscLynxScoutDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.Spitter.SpitterBody.SpawnCards.cscSpitterDefault), 1);
+            stageInfo.monsterSelection.AddChoice(CreateDirectorCard(Enemies.MechanicalSpider.MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderDefault), 1);
+            // end TODO
+
+            for (int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
             {
                 if (stageInfo.monsterSelection.choices[i].value != null && stageInfo.monsterSelection.choices[i].value.spawnCard && stageInfo.monsterSelection.choices[i].value.spawnCard.prefab)
                 {
@@ -61,6 +73,17 @@ namespace EnemiesReturns.Behaviors.Judgement
                         stageInfo.monsterSelection.RemoveChoice(i);
                     }
                 }
+            }
+
+            DirectorCard CreateDirectorCard(SpawnCard card)
+            {
+                return new DirectorCard()
+                {
+                    spawnCard = card,
+                    selectionWeight = 1,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = false
+                };
             }
         }
     }
