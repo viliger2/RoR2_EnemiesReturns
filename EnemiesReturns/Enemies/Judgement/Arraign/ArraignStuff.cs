@@ -160,6 +160,12 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             return prefab;
         }
 
+        public GameObject SetupPreBeamIndicatorEffect(GameObject prefab)
+        {
+            prefab.transform.Find("TeamAreaIndicator").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matTeamAreaIndicatorIntersectionMonster.mat").WaitForCompletion();
+            return prefab;
+        }
+
         public GameObject CreateSkyLeapMarktempVisualEffect()
         {
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/MercExposeEffect.prefab").WaitForCompletion().InstantiateClone("ArraignMarkEffect", false);

@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         public override void OnEnter()
         {
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
+            duration = baseDuration;
             PlayCrossfade("Gesture, Override", "SwordLaserEnd", "SwordBeam.playbackRate", duration, 0.1f);
         }
 

@@ -19,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
 
         public static GameObject pushBackEffectStatic;
 
+        public static GameObject preBeamIndicatorEffect;
+
         private float duration;
 
         private Transform preBeam1;
@@ -30,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         public override void OnEnter()
         {
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
+            duration = baseDuration;
             PlayCrossfade("Gesture, Override", "SwordLaserBegin", "SwordBeam.playbackRate", duration, 0.1f);
             if (postProccessBeam)
             {
@@ -47,6 +49,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             if (preBeam2)
             {
                 preBeam2.gameObject.SetActive(true);
+            }
+
+            var childLocator = GetModelChildLocator();
+            if (childLocator) 
+            {
+                EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectForward") }, false);
+                EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectBackward") }, false);
             }
         }
 

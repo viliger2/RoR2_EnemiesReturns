@@ -160,6 +160,8 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.dropEffectPrefab = arraignStuff.CreateSkyLeapDropPositionEffect(assets.First(asset => asset.name == "DropPositionEffect"));
 
+                    ModdedEntityStates.Judgement.Arraign.Beam.BeamStart.preBeamIndicatorEffect = arraignStuff.SetupPreBeamIndicatorEffect(assets.First(asset => asset.name == "ArraignPreBeamGroundIndicator"));
+
                     BeamStart.postProccessBeam = assets.First(asset => asset.name == "BeamPostProccess");
 
                     BeamLoop.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
