@@ -137,12 +137,14 @@ namespace EnemiesReturns
 
                     var explosionEffect = assets.First(asset => asset.name == "ArraignRemoveSwordEffect");
                     explosionEffect = arraignStuff.CreateSkyLeapRemoveSwordEffect(explosionEffect);
-                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.staticSecondAttackEffect = explosionEffect;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.secondAttackEffectStatic = explosionEffect;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.secondAttackEffectStatic = explosionEffect;
 
                     var waveProjectile = assets.First(asset => asset.name == "ArraignSlash3Wave");
+                    waveProjectile = arraignStuff.SetupWaveProjectile(waveProjectile);
                     ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.waveProjectile = waveProjectile;
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.waveProjectile = waveProjectile;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.waveProjectileStatic = waveProjectile;
+                    ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.waveProjectileStatic = waveProjectile;
 
                     //var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
                     var lightningProjectile = assets.First(asset => asset.name == "ArraignPreLightningProjectile");
@@ -237,7 +239,7 @@ namespace EnemiesReturns
                 var slash3Explosion = arraignStuff.CreateSlash3ExplosionEffect();
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect = slash3Explosion;
                 ModdedEntityStates.Judgement.Arraign.Spawn.slamEffect = slash3Explosion;
-                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.staticFirstAttackEffect = slash3Explosion;
+                ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.firstAttackEffectStatic = slash3Explosion;
                 effectsList.Add(new EffectDef(slash3Explosion));
 
                 ArraignDamageController.hitEffectPrefab = arraignStuff.CreateArmorBreakEffect();

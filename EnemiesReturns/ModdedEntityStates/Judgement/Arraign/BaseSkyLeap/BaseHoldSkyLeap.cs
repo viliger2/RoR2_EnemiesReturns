@@ -46,6 +46,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         public override void OnEnter()
         {
             base.OnEnter();
+            if (NetworkServer.active)
+            {
+                Util.CleanseBody(base.characterBody, removeDebuffs: true, removeBuffs: false, removeCooldownBuffs: false, removeDots: true, removeStun: false, removeNearbyProjectiles: false);
+            }
             duration = baseDuration / attackSpeedStat;
             targetMarked = baseTargetMarked/ attackSpeedStat;
             targetDropped = baseTargetDropped / attackSpeedStat;

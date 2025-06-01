@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         public abstract string firstAttackParamName { get; }
 
         public abstract string secondAttackParamName { get; }
+
+        public abstract GameObject waveProjectile { get; }
+
+        public abstract float waveProjectileDamage { get; }
+
+        public abstract int waveCount { get; }
+
+        public abstract float waveProjectileForce { get; }
 
         public static AnimationCurve acdOverlayAlpha;
 
@@ -114,15 +123,18 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     blastAttack.damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility);
                     blastAttack.attackerFiltering = AttackerFiltering.Default;
                     blastAttack.Fire();
+
+                    FireRingAuthority();
                 }
                 Util.PlaySound("Play_moonBrother_spawn", base.gameObject);
-
                 var effectData = new EffectData()
                 {
                     origin = dropPosition,
                     scale = 7f
                 };
                 EffectManager.SpawnEffect(firstAttackEffect, effectData, true);
+
+
                 attackFired = true;
             }
 
@@ -180,6 +192,33 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Vehicle;
+        }
+
+        private void FireRingAuthority()
+        {
+            float num = 360f / (float)waveCount;
+            Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
+            Vector3 footPosition = base.characterBody.footPosition;
+            bool crit = RollCrit();
+            for (int i = 0; i < waveCount; i++)
+            {
+                Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
+                if (base.isAuthority)
+                {
+                    var info = new FireProjectileInfo
+                    {
+                        projectilePrefab = waveProjectile,
+                        position = footPosition,
+                        rotation = Util.QuaternionSafeLookRotation(forward),
+                        owner = base.gameObject,
+                        damage = base.characterBody.damage * waveProjectileDamage,
+                        force = waveProjectileForce,
+                        damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility),
+                        crit = crit
+                    };
+                    ProjectileManager.instance.FireProjectile(info);
+                }
+            }
         }
 
     }

@@ -13,13 +13,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
     [RegisterEntityState]
     public class ExitSkyLeap : BaseExitSkyLeap
     {
-        public static GameObject staticFirstAttackEffect;
+        public static GameObject firstAttackEffectStatic;
 
-        public static GameObject staticSecondAttackEffect;
+        public static GameObject secondAttackEffectStatic;
 
-        public override GameObject firstAttackEffect => staticFirstAttackEffect;
+        public static GameObject waveProjectileStatic;
 
-        public override GameObject secondAttackEffect => staticSecondAttackEffect;
+        public override GameObject firstAttackEffect => firstAttackEffectStatic;
+
+        public override GameObject secondAttackEffect => secondAttackEffectStatic;
 
         public override float baseDuration => 2.5f;
 
@@ -43,5 +45,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override string secondAttackParamName => "SkyLeap.secondAttack";
 
+        public override GameObject waveProjectile => waveProjectileStatic;
+
+        public override float waveProjectileDamage => 4f;
+
+        public override int waveCount => 8;
+
+        public override float waveProjectileForce => 0f;
     }
 }

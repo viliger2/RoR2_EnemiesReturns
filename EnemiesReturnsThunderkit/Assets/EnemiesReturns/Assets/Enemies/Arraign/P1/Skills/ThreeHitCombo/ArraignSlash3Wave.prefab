@@ -112,6 +112,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!114 &8664344132684838066
 MonoBehaviour:
@@ -187,6 +188,9 @@ MonoBehaviour:
   overlapProcCoefficient: 1
   maximumOverlapTargets: 100
   onServerHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onServerHitGameObject:
     m_PersistentCalls:
       m_Calls: []
   fireFrequency: 60
@@ -296,7 +300,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8907542080039473685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

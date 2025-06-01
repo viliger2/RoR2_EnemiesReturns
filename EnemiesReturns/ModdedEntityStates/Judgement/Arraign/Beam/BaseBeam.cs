@@ -48,7 +48,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             }
         }
 
-
         public override void OnExit()
         {
             base.OnExit();

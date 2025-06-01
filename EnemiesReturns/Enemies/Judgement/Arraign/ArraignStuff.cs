@@ -1,5 +1,6 @@
 ﻿using R2API;
 using RoR2;
+using RoR2.Audio;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,16 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             impactExplosion.childrenProjectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElectricWorm/ElectricOrbProjectile.prefab").WaitForCompletion();
 
             return projectilePrefab;
+        }
+
+        public GameObject SetupWaveProjectile(GameObject prefab)
+        {
+            var projectileController = prefab.GetComponent<ProjectileController>();
+            projectileController.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSunderWaveGhost.prefab").WaitForCompletion();
+            projectileController.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/Brother/lsdBrotherShockwave.asset").WaitForCompletion();
+
+            prefab.GetComponent<ProjectileOverlapAttack>().impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion();
+            return prefab;
         }
 
         public GameObject CreateArmorBreakEffect()
