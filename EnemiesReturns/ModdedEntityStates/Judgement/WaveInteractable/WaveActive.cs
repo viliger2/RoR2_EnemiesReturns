@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
     {
         public static string soundEntryEvent = "Play_boss_spawn_radius_appear";
 
-        public static float gracePeriod = 5f;
+        public static float gracePeriod = 10f;
 
         private Transform waveStartedEffects;
 
@@ -48,10 +48,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                 for (int i = 0; i < instance.combatDirectors.Length; i++)
                 {
                     var director = instance.combatDirectors[i];
-                    endRound = endRound && director.combatSquad.defeatedServer;
+                    endRound = endRound && (director.combatSquad.defeatedServer || director.combatSquad.membersList.Count == 0);
                 }
                 if (endRound)
                 {
+                    instance.EndRound();
                     if(instance.maxWaves <= instance.currentRound)
                     {
                         outer.SetNextState(new Inactive());

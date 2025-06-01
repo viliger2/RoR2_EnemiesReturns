@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Rewired.Utils.Classes.Utility;
+using RoR2;
 using RoR2.CharacterAI;
 using System;
 using System.Collections.Generic;
@@ -47,8 +48,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public static JudgementMissionController instance;
 
-        private bool roundActive;
-
         private void Start()
         {
             if (NetworkServer.active)
@@ -66,29 +65,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         private void OnDisable()
         {
             instance = SingletonHelper.Unassign(instance, this);
-        }
-
-        private void FixedUpdate()
-        {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            if (roundActive)
-            {
-                var endRound = true;
-                for (int i = 0; i < combatDirectors.Length; i++)
-                {
-                    var director = combatDirectors[i];
-                    endRound = endRound && director.combatSquad.defeatedServer;
-                }
-                if (endRound)
-                {
-                    EndRound();
-                    roundActive = false;
-                }
-            }
         }
 
         [Server]
@@ -199,8 +175,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                     }
                 }
             }
-
-            roundActive = true;
 
             currentRound++;
         }

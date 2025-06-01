@@ -2330,8 +2330,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349197353522193}
-  - component: {fileID: 6084066004315430029}
-  - component: {fileID: 400049046376101977}
   - component: {fileID: 5589290252588492757}
   m_Layer: 0
   m_Name: ArraignBeamPushbackEffect
@@ -2357,43 +2355,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
---- !u!114 &6084066004315430029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480473371441229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectIndex: -1
-  positionAtReferencedTransform: 1
-  parentToReferencedTransform: 0
-  noEffectData: 0
-  applyScale: 0
-  soundName: 
-  disregardZScale: 0
---- !u!114 &400049046376101977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480473371441229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vfxPriority: 2
-  vfxIntensity: 0
-  DoNotPool: 0
-  DoNotCullPool: 0
-  optionalLights: []
-  secondaryParticleSystem: []
 --- !u!114 &5589290252588492757
 MonoBehaviour:
   m_ObjectHideFlags: 0

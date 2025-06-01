@@ -48,6 +48,11 @@ namespace EnemiesReturns.Behaviors.Judgement
             {
                 if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard != null && choice.value.spawnCard.prefab == card.spawnCard.prefab).Count() == 0)
                 {
+                    // fixing regi asking for nodes that are not TelepoterOK for some reason
+                    if(card.spawnCard.name == "cscRegigigas")
+                    {
+                        card.spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.None;
+                    }
                     stageInfo.monsterSelection.AddChoice(card, 1);
                 }
             }

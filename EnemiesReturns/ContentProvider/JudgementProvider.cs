@@ -12,6 +12,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine;
 using RoR2;
 using RoR2.Projectile;
+using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
 
 namespace EnemiesReturns
 {
@@ -157,9 +158,10 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.dropEffectPrefab = arraignStuff.CreateSkyLeapDropPositionEffect(assets.First(asset => asset.name == "DropPositionEffect"));
 
-                    ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam.SwordBeamStart.postProccessBeam = assets.First(asset => asset.name == "BeamPostProccess");
+                    BeamStart.postProccessBeam = assets.First(asset => asset.name == "BeamPostProccess");
 
-                    ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam.SwordBeamLoop.pushBackEffect = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
+                    BeamLoop.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
+                    BeamStart.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffectNoMuzzleParticles");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -242,7 +244,7 @@ namespace EnemiesReturns
                 effectsList.Add(new EffectDef(ArraignDamageController.hitEffectPrefab));
 
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
-                ModdedEntityStates.Judgement.Arraign.Phase1.SwordBeam.SwordBeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
+                BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
             }
         }
 

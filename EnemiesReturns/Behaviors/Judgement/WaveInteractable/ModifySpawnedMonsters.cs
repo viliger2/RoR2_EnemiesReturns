@@ -16,7 +16,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public EliteDef eliteType;
 
-        public static float rewardMultiplier = 6f; // TODO: config
+        public static float rewardMultiplier = 3f; // TODO: config
 
         private void Awake()
         {
