@@ -382,7 +382,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "JawR",
                 localPos = new Vector3(-0.32686F, 2.51006F, -0.21041F),
                 localAngles = new Vector3(354.7525F, 340F, 7.12234F),
@@ -393,7 +393,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "JawL",
                 localPos = new Vector3(-0.12522F, 2.55699F, -0.28728F),
                 localAngles = new Vector3(354.7525F, 20.00001F, 351.6044F),
@@ -403,7 +403,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteFire/EliteFireEquipment.asset").WaitForCompletion(),
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteFire.EliteFireEquipment),
                 displayRuleGroup = displayRuleGroupFire,
             });
             #endregion
@@ -413,7 +413,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "Head",
                 localPos = new Vector3(0F, -0.29125F, -0.36034F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -424,7 +424,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupHaunted,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteHaunted.EliteHauntedEquipment),
             });
             #endregion
 
@@ -433,7 +433,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "Head",
                 localPos = new Vector3(-0.36417F, 4.08597F, -0.81975F),
                 localAngles = new Vector3(88.15041F, 342.9204F, 152.0255F),
@@ -444,7 +444,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupIce,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteIce/EliteIceEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment)
             });
             #endregion
 
@@ -453,7 +453,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "TailEnd",
                 localPos = new Vector3(-0.00302F, 0.77073F, 0.00143F),
                 localAngles = new Vector3(284.2227F, 198.9412F, 159.205F),
@@ -463,7 +463,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "JawL",
                 localPos = new Vector3(-0.25677F, 2.49244F, -0.13195F),
                 localAngles = new Vector3(323.8193F, 261.7038F, 7.48606F),
@@ -473,7 +473,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "JawR",
                 localPos = new Vector3(-0.00804F, 2.49258F, -0.13194F),
                 localAngles = new Vector3(322.8305F, 89.99672F, 7F),
@@ -485,7 +485,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLightning,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLightning/EliteLightningEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLightning.EliteLightningEquipment)
             });
             #endregion
 
@@ -494,7 +494,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Head",
                 localPos = new Vector3(0F, 0F, 0F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -505,7 +505,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLunar,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLunar/EliteLunarEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLunar.EliteLunarEquipment)
             });
             #endregion
 
@@ -514,7 +514,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "JawL",
                 localPos = new Vector3(0F, 0.38638F, -0.00001F),
                 localAngles = new Vector3(0F, 270F, 0F),
@@ -524,7 +524,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "JawR",
                 localPos = new Vector3(0F, 0.38638F, -0.00001F),
                 localAngles = new Vector3(0F, 90F, 0F),
@@ -535,7 +535,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupPoison,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/ElitePoison/ElitePoisonEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.ElitePoison.ElitePoisonEquipment)
             });
             #endregion
 
@@ -544,7 +544,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
                 childName = "Head",
                 localPos = new Vector3(-0.12323F, 2.48183F, -0.47279F),
                 localAngles = new Vector3(7.00848F, 2.28661F, 1.77239F),
@@ -555,7 +555,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupEarth,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteEarth.EliteEarthEquipment)
             });
             #endregion
 
@@ -564,7 +564,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteVoid.DisplayAffixVoid),
                 childName = "Head",
                 localPos = new Vector3(0F, 1.1304F, 0.00001F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -575,7 +575,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupVoid,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteVoid.EliteVoidEquipment)
             });
             #endregion
 
@@ -584,7 +584,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "Chest",
                 localPos = new Vector3(0.03071F, 0.76725F, -0.77548F),
                 localAngles = new Vector3(285.3486F, 351.2853F, 11.4788F),
@@ -595,7 +595,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
             });
             #endregion
 
@@ -604,7 +604,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "Head",
                 localPos = new Vector3(-0.08902F, 0.78706F, 1.13371F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -615,7 +615,7 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupGold,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteGold.EliteAurelioniteEquipment)
             });
             #endregion
 

@@ -71,7 +71,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
         public GameObject CreateDeathFallEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("IfritPillarFallEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("IfritPillarFallEffect", false);
 
             UnityEngine.Object.DestroyImmediate(clonedEffect.GetComponent<ShakeEmitter>());
 

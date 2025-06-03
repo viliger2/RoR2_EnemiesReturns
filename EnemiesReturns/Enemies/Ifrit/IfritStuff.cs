@@ -45,7 +45,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public GameObject CreateHellzoneProjectile()
         {
-            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
 
             var controller = gameObject.GetComponent<ProjectileController>();
             controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/MegaFireballGhost.prefab").WaitForCompletion();
@@ -76,7 +76,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             var scale = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
             gameObject.transform.Find("TeamAreaIndicator, GroundOnly").transform.localScale = new Vector3(scale, scale, scale);
 
-            var beetleQueen = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion();
+            var beetleQueen = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenAcid.prefab").WaitForCompletion();
             var beetleQueenDecal = beetleQueen.transform.Find("FX/Decal");
             var decalGameObject = UnityEngine.GameObject.Instantiate(beetleQueenDecal.gameObject);
 
@@ -105,7 +105,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public GameObject CreateHellfireDotZoneProjectile(GameObject pillarPrefab, GameObject volcanoEffectPrefab, Texture2D texLavaCrack, NetworkSoundEventDef nsedChildSpawnSound)
         {
-            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenAcid.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneDoTZoneProjectile", true);
 
             var lifetime = EnemiesReturns.Configuration.Ifrit.HellzoneDoTZoneLifetime.Value
                 + EnemiesReturns.Configuration.Ifrit.HellzonePillarCount.Value * EnemiesReturns.Configuration.Ifrit.HellzonePillarDelay.Value;
@@ -255,7 +255,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public Material CreatePreditionDecalMaterial(Texture2D texLavaCrack)
         {
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/BeetleQueen/matBeetleQueenAcidDecal.mat").WaitForCompletion());
             material.name = "matIfritHellzoneDecalLavaCrack";
             material.SetTexture("_MaskTex", texLavaCrack);
             material.SetColor("_Color", new Color(255f / 255f, 103f / 255f, 127f / 255f));
@@ -289,7 +289,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public GameObject CreateBreathParticle()
         {
-            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenScream.prefab").WaitForCompletion().InstantiateClone("IfritScream", false);
+            var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenScream.prefab").WaitForCompletion().InstantiateClone("IfritScream", false);
 
             var components = gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (var component in components)

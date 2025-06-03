@@ -247,7 +247,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "Root",
                 localPos = new Vector3(0.24068F, 0.63384F, -0.21041F),
                 localAngles = new Vector3(354.7525F, 340F, 7.12234F),
@@ -258,7 +258,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "Root",
                 localPos = new Vector3(-0.12522F, 0.69532F, -0.28728F),
                 localAngles = new Vector3(354.7525F, 20.00001F, 351.6044F),
@@ -268,7 +268,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteFire/EliteFireEquipment.asset").WaitForCompletion(),
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteFire.EliteFireEquipment),
                 displayRuleGroup = displayRuleGroupFire,
             });
             #endregion
@@ -278,7 +278,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "Body",
                 localPos = new Vector3(-0.02389F, -0.00796F, -0.08039F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -289,7 +289,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupHaunted,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteHaunted.EliteHauntedEquipment),
             });
             #endregion
 
@@ -298,7 +298,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "Root",
                 localPos = new Vector3(0F, 0F, -0.09389F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -309,7 +309,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupIce,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteIce/EliteIceEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment)
             });
             #endregion
 
@@ -318,7 +318,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "FrontRightLeg",
                 localPos = new Vector3(-0.00631F, 1.28985F, -0.03396F),
                 localAngles = new Vector3(358.3381F, 234.5306F, 359.3984F),
@@ -328,7 +328,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BackRightLeg",
                 localPos = new Vector3(0.00288F, 1.26802F, -0.00083F),
                 localAngles = new Vector3(358.8173F, 330.7685F, 3.19376F),
@@ -338,7 +338,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "FrontLeftLeg",
                 localPos = new Vector3(0.01729F, 1.26377F, 0.00951F),
                 localAngles = new Vector3(353.36F, 52.70969F, 0.77622F),
@@ -348,7 +348,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BackLeftLeg",
                 localPos = new Vector3(-0.03144F, 1.28574F, 0.01988F),
                 localAngles = new Vector3(357.4552F, 39.61292F, 353.5382F),
@@ -360,7 +360,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLightning,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLightning/EliteLightningEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLightning.EliteLightningEquipment)
             });
             #endregion
 
@@ -369,7 +369,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Root",
                 localPos = new Vector3(0F, 0.6047F, -0.10589F),
                 localAngles = new Vector3(3.2099F, 180F, 180F),
@@ -380,7 +380,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLunar,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLunar/EliteLunarEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLunar.EliteLunarEquipment)
             });
             #endregion
 
@@ -389,7 +389,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "Root",
                 localPos = new Vector3(0F, 0.42445F, 0F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -400,7 +400,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupPoison,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/ElitePoison/ElitePoisonEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.ElitePoison.ElitePoisonEquipment)
             });
             #endregion
 
@@ -409,7 +409,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
                 childName = "Body",
                 localPos = new Vector3(0F, 0F, 0F),
                 localAngles = new Vector3(7.00848F, 2.28661F, 1.77239F),
@@ -420,7 +420,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupEarth,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteEarth.EliteEarthEquipment)
             });
             #endregion
 
@@ -429,7 +429,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteVoid.DisplayAffixVoid),
                 childName = "Gun",
                 localPos = new Vector3(0.00011F, 0.05419F, 0.0124F),
                 localAngles = new Vector3(285.478F, 179.8397F, 180.3337F),
@@ -440,7 +440,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupVoid,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteVoid.EliteVoidEquipment)
             });
             #endregion
 
@@ -449,7 +449,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "Root",
                 localPos = new Vector3(-0.07959F, 0.63481F, -0.08875F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -460,7 +460,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
             });
             #endregion
 
@@ -469,7 +469,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "Body",
                 localPos = new Vector3(-0.07278F, 0.02729F, 1.08914F),
                 localAngles = new Vector3(359.7283F, 356.8857F, 0.96676F),
@@ -480,7 +480,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupGold,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteGold.EliteAurelioniteEquipment)
             });
             #endregion
 
@@ -489,7 +489,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupDroneWeapon1.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponLauncher.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.DroneWeaponDisplay.DisplayDroneWeaponLauncher),
                 childName = "Body",
                 localPos = new Vector3(-0.85193F, -0.00001F, -0.01456F),
                 localAngles = new Vector3(-0.00003F, 272.4402F, -0.00004F),
@@ -499,7 +499,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupDroneWeapon1.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponMinigun.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.DroneWeaponDisplay.DisplayDroneWeaponMinigun),
                 childName = "Gun",
                 localPos = new Vector3(0.1839F, 0.00148F, 0.00531F),
                 localAngles = new Vector3(1.64742F, 6.47228F, 70.50268F),
@@ -509,7 +509,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupDroneWeapon1,
-                keyAsset = Addressables.LoadAssetAsync<ItemDef>("RoR2/DLC1/DroneWeapons/DroneWeaponsDisplay1.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.DroneWeaponDisplay.DroneWeaponsDisplay1)
             });
             #endregion
 
@@ -518,7 +518,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupDroneWeapon2.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponLauncher.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.DroneWeaponDisplay.DisplayDroneWeaponLauncher),
                 childName = "Body",
                 localPos = new Vector3(-0.85193F, -0.00001F, -0.01456F),
                 localAngles = new Vector3(-0.00003F, 272.4402F, -0.00004F),
@@ -528,7 +528,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupDroneWeapon2.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponRobotArm.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.DroneWeaponDisplay.DisplayDroneWeaponRobotArm),
                 childName = "Gun",
                 localPos = new Vector3(0F, -0.05897F, 0.13338F),
                 localAngles = new Vector3(354.3834F, 233.6984F, 58.97221F),
@@ -538,7 +538,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupDroneWeapon2,
-                keyAsset = Addressables.LoadAssetAsync<ItemDef>("RoR2/DLC1/DroneWeapons/DroneWeaponsDisplay2.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.DroneWeaponDisplay.DroneWeaponsDisplay2)
             });
             #endregion
 
