@@ -238,6 +238,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!114 &9187603891190248833
 MonoBehaviour:
@@ -258,7 +259,7 @@ MonoBehaviour:
   damageType:
     damageType: 0
     damageTypeExtended: 0
-    damageSource: 0
+    damageSource: 8
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &6627648087745488792
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 2
+  lifetime: 1
   lifetimeExpiredEffect: {fileID: 0}
   desiredForwardSpeed: 0
   updateAfterFiring: 0

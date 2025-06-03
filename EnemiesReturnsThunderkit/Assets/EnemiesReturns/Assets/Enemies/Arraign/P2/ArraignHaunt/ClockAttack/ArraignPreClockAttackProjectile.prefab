@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4418767829988916091
 Transform:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4468284548701419426
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8783890083014298338
 Transform:
   m_ObjectHideFlags: 0
@@ -532,6 +532,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
+  combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
 --- !u!114 &1035523234521736334
 MonoBehaviour:
@@ -621,7 +622,10 @@ MonoBehaviour:
   rangeRollDegrees: 0
   minPitchDegrees: 1
   rangePitchDegrees: 0
+  minYawDegrees: 0
+  rangeYawDegrees: 0
   useLocalSpaceForChildren: 0
+  useChildRotation: 0
   applyDot: 0
   dotIndex: -1
   dotDuration: 0
@@ -630,6 +634,7 @@ MonoBehaviour:
   maxStacksFromAttacker: 4294967295
   calculateTotalDamage: 0
   totalDamageMultiplier: 0
+  timedDebuffs: []
   impactEffect: {fileID: 2322821087343257593, guid: f7923872562f5cc499228f9c05ab41f6, type: 3}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}
@@ -660,6 +665,10 @@ PrefabInstance:
     - target: {fileID: 411432221210701000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_Name
       value: TeamAreaIndicatorDebug
+      objectReference: {fileID: 0}
+    - target: {fileID: 411432221210701000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_RootOrder
@@ -792,6 +801,10 @@ PrefabInstance:
     - target: {fileID: 411432221210701000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_Name
       value: TeamAreaIndicatorDebug
+      objectReference: {fileID: 0}
+    - target: {fileID: 411432221210701000, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 572111677656250351, guid: 1fb64ed6168efa848b2b104f08de2c56, type: 3}
       propertyPath: m_RootOrder

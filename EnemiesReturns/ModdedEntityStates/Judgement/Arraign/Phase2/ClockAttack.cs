@@ -93,7 +93,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                             position = projectileOrigin.position,
                             projectilePrefab = projectilePrefab,
                             rotation = projectileOrigin.rotation,
-                            damage = damageStat * damageCoefficient
+                            damage = damageStat * damageCoefficient,
+                            damageTypeOverride = DamageTypeCombo.GenericSpecial
                         };
 
                         ProjectileManager.instance.FireProjectile(projectileInfo);
