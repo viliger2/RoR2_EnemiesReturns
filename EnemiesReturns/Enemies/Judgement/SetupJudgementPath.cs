@@ -15,7 +15,6 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using System.Linq;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
@@ -419,7 +418,7 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
                 int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);
-                SkinDef safe = ArrayUtils.GetSafe(BodyCatalog.GetBodySkins(bodyIndexFromSurvivorIndex), skinIndex);
+                SkinDef safe = ArrayUtils.GetSafe(SkinCatalog.GetBodySkinDefs(bodyIndexFromSurvivorIndex), skinIndex);
                 CharacterModel characterModel = self.mannequinInstanceTransform.GetComponentInChildren<CharacterModel>();
                 if (characterModel)
                 {

@@ -10295,6 +10295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7915973166812823235}
+  - component: {fileID: 429340916666321745}
   m_Layer: 0
   m_Name: Projectile1
   m_TagString: Untagged
@@ -10321,6 +10322,30 @@ Transform:
   m_Father: {fileID: 1330665342995631329}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &429340916666321745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439071227409573918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  shakeOnEnable: 0
+  shakeOnDelay: 0
+  startDelay: 0.15
+  wave:
+    amplitude: 2
+    frequency: 200
+    cycleOffset: 1
+  duration: 0.2
+  radius: 30
+  scaleShakeRadiusWithLocalScale: 0
+  amplitudeTimeDecay: 1
 --- !u!1 &6369046770523200850
 GameObject:
   m_ObjectHideFlags: 0
@@ -13097,6 +13122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5054891032712231279}
+  - component: {fileID: 2998767162301503562}
   m_Layer: 0
   m_Name: Projectile2
   m_TagString: Untagged
@@ -13123,6 +13149,30 @@ Transform:
   m_Father: {fileID: 1330665342995631329}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2998767162301503562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693821260268650427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  shakeOnEnable: 0
+  shakeOnDelay: 0
+  startDelay: 0.15
+  wave:
+    amplitude: 2
+    frequency: 200
+    cycleOffset: 1
+  duration: 0.2
+  radius: 30
+  scaleShakeRadiusWithLocalScale: 0
+  amplitudeTimeDecay: 1
 --- !u!1 &7856627996490498895
 GameObject:
   m_ObjectHideFlags: 0
@@ -13132,6 +13182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5844883707996844829}
+  - component: {fileID: 2423962627498711314}
   m_Layer: 0
   m_Name: Projectile3
   m_TagString: Untagged
@@ -13158,6 +13209,30 @@ Transform:
   m_Father: {fileID: 1330665342995631329}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2423962627498711314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856627996490498895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  shakeOnEnable: 0
+  shakeOnDelay: 0
+  startDelay: 0.15
+  wave:
+    amplitude: 2
+    frequency: 200
+    cycleOffset: 1
+  duration: 0.2
+  radius: 30
+  scaleShakeRadiusWithLocalScale: 0
+  amplitudeTimeDecay: 1
 --- !u!1 &8678845924619593099
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,14 +14,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
     {
         public static float effectDeathDuration = 2f;
 
-        private Transform pillarLarge;
-
-        private Transform pillarSmall;
-
-        private Vector3 initialPillarLargeScale;
-
-        private Vector3 initialPillarSmallScale;
-
         private bool bodyMarkedForDestruction = false;
 
         public override void OnEnter()
@@ -48,22 +40,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
                     particleSystem2.Stop();
                 }
 
-                pillarLarge = childLocator.FindChild("PillarLarge");
+                var pillarLarge = childLocator.FindChild("PillarLarge");
                 if (pillarLarge)
                 {
-                    initialPillarLargeScale = pillarLarge.transform.localScale;
-                    if(pillarLarge.TryGetComponent<ObjectScaleCurve>(out var scaleCurve))
+                    var components = pillarLarge.GetComponents<ObjectScaleCurve>();
+                    foreach(var component in components)
                     {
-                        scaleCurve.enabled = false;
+                        component.enabled = !component.enabled;
                     }
                 }
-                pillarSmall = childLocator.FindChild("PillarSmall");
+                var pillarSmall = childLocator.FindChild("PillarSmall");
                 if (pillarSmall)
                 {
-                    initialPillarSmallScale = pillarSmall.transform.localScale;
-                    if (pillarSmall.TryGetComponent<ObjectScaleCurve>(out var scaleCurve))
+                    var components = pillarSmall.GetComponents<ObjectScaleCurve>();
+                    foreach (var component in components)
                     {
-                        scaleCurve.enabled = false;
+                        component.enabled = !component.enabled;
                     }
                 }
 
@@ -86,27 +78,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
                         component.enabled = true;
                         component.maxDuration = effectDeathDuration;
                     }
-                }
-            }
-        }
-
-        public override void Update()
-        {
-            base.Update();
-            if (isVoidDeath)
-            {
-                return;
-            }
-
-            if (!bodyMarkedForDestruction)
-            {
-                if (pillarLarge)
-                {
-                    pillarLarge.localScale = Vector3.Lerp(initialPillarLargeScale, Vector3.zero, age / effectDeathDuration);
-                }
-                if (pillarSmall)
-                {
-                    pillarSmall.localScale = Vector3.Lerp(initialPillarSmallScale, Vector3.zero, age / effectDeathDuration);
                 }
             }
         }

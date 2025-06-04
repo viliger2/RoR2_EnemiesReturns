@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 6195413325695865376}
   - component: {fileID: 5759664669453394330}
   - component: {fileID: 1902613425089721647}
+  - component: {fileID: 8456659392465217294}
   m_Layer: 0
   m_Name: ArraignLightningEffect
   m_TagString: Untagged
@@ -320,6 +321,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedParticleSystem: {fileID: 293158237260932056}
+--- !u!114 &8456659392465217294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322821087343257593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  shakeOnEnable: 0
+  shakeOnDelay: 0
+  startDelay: 0.15
+  wave:
+    amplitude: 2
+    frequency: 200
+    cycleOffset: 1
+  duration: 0.2
+  radius: 30
+  scaleShakeRadiusWithLocalScale: 0
+  amplitudeTimeDecay: 1
 --- !u!1 &5040397653874497811
 GameObject:
   m_ObjectHideFlags: 0

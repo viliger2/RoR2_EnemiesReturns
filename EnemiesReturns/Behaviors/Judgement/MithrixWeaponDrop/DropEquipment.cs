@@ -62,6 +62,28 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 }
             }
 
+            if (!itemFound)
+            {
+                var returner = bodyObject.GetComponent<ReturnStolenItemsOnGettingHit>();
+                if (returner)
+                {
+                    var itemStealController = returner.itemStealController;
+                    if (itemStealController)
+                    {
+                        foreach (var stolenInfo in itemStealController.stolenInventoryInfos)
+                        {
+                            if (stolenInfo != null && stolenInfo.lentItemStacks != null
+                                && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex
+                                && stolenInfo.lentItemStacks[(int)Content.Items.LunarFlower.itemIndex] > 0)
+                            {
+                                itemFound = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
             if (itemFound) 
             {
                 var vector = Vector3.up * 20f + transform.forward * 2f;

@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyIndex: -1
+  altDeathEventBodyIndex: -1
   CharacterIsVisible: 0
   cost: -1
   dontCull: 0
@@ -701,6 +702,7 @@ MonoBehaviour:
   bodyColor: {r: 0.13725491, g: 0.14509805, b: 0.15294118, a: 1}
   doNotReassignToTeamBasedCollisionLayer: 0
   isChampion: 1
+  altDeathBodyName: 
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
@@ -3004,7 +3006,19 @@ MonoBehaviour:
   m_Script: {fileID: 1533710874, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DelayLoadingAnimatorUntilMaterialsHaveCompleted: 0
+  _animatorControllerAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  _animatorController: {fileID: 0}
+  _avatarAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  _avatar: {fileID: 0}
   skins: []
+  prefabInstantiationDatas: []
 --- !u!114 &994177001091475206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3239,54 +3253,90 @@ MonoBehaviour:
   gameObjectActivationTransforms: []
   baseRendererInfos:
   - renderer: {fileID: 4002131444593999428}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 3088632286808943405}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 1298181887834093845}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 1225208524776679844}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 5f3c6ecf3b1d536498846329e4a9eef2, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 3434657129313885093}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 6856873906046413697}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: a83520da890d9ba46b94696d07560dd1, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 7810501743785015117}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 14444406736759374}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   - renderer: {fileID: 5506678030661745051}
+    defaultMaterialAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 74303c9995971a44da8d9b0051a4e2cb, type: 2}
     defaultShadowCastingMode: 1
     ignoreOverlays: 0

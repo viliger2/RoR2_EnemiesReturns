@@ -522,6 +522,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catalogIndex: -1
   ghostPrefab: {fileID: 4594149102456599582, guid: 4b1f840a31e8378408830a20dfd42cd9, type: 3}
+  ghostPrefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 1
@@ -601,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   falloffModel: 0
-  blastRadius: 3
+  blastRadius: 0
   blastDamageCoefficient: 1
   blastProcCoefficient: 1
   blastAttackerFiltering: 0

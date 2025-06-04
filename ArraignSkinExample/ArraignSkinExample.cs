@@ -66,10 +66,7 @@ namespace ArraignSkinExample
         [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
         public static void Init()
         {
-            On.RoR2.SkinDef.Awake += DoNothing;
             AddArraignSkinExampleBandit2Skin();
-            On.RoR2.SkinDef.Awake -= DoNothing;
-            static void DoNothing(On.RoR2.SkinDef.orig_Awake orig, SkinDef self) { }
         }
 
         // this entire thing is pretty much copy pasted from SkinBuilder
@@ -125,13 +122,15 @@ namespace ArraignSkinExample
                         skin.unlockableDef = unlockable;
                     }
                 });
+                var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
+                skinDefParams.name = skinDefName + "SkinDefParams";
                 TryCatchThrow("Game Object Activations", delegate
                 {
-                    skin.gameObjectActivations = Array.Empty<SkinDef.GameObjectActivation>();
+                    skinDefParams.gameObjectActivations = Array.Empty<SkinDefParams.GameObjectActivation>();
                 });
                 TryCatchThrow("Renderer Infos", delegate
                 {
-                    skin.rendererInfos = new CharacterModel.RendererInfo[4]
+                    skinDefParams.rendererInfos = new CharacterModel.RendererInfo[4]
                     {
                     new CharacterModel.RendererInfo
                     {
@@ -165,39 +164,39 @@ namespace ArraignSkinExample
                 });
                 TryCatchThrow("Mesh Replacements", delegate
                 {
-                    skin.meshReplacements = new SkinDef.MeshReplacement[7]
+                    skinDefParams.meshReplacements = new SkinDefParams.MeshReplacement[7]
                     {
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = null,
                         renderer = renderers[0]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = null,
                         renderer = renderers[1]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = bundle.LoadAsset<Mesh>("Assets\\SkinMods\\ClassicBanditSkin\\Meshes\\BanditMesh.mesh"),
                         renderer = renderers[2]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = bundle.LoadAsset<Mesh>("Assets\\SkinMods\\ClassicBanditSkin\\Meshes\\BanditCoatMesh.mesh"),
                         renderer = renderers[3]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = null,
                         renderer = renderers[6]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = bundle.LoadAsset<Mesh>("Assets\\SkinMods\\ClassicBanditSkin\\Meshes\\BanditShotgunMesh.001.mesh"),
                         renderer = renderers[4]
                     },
-                    new SkinDef.MeshReplacement
+                    new SkinDefParams.MeshReplacement
                     {
                         mesh = bundle.LoadAsset<Mesh>("Assets\\SkinMods\\ClassicBanditSkin\\Meshes\\ClassicPistolMesh.mesh"),
                         renderer = renderers[7]
@@ -206,15 +205,17 @@ namespace ArraignSkinExample
                 });
                 TryCatchThrow("Minion Skin Replacements", delegate
                 {
-                    skin.minionSkinReplacements = Array.Empty<SkinDef.MinionSkinReplacement>();
+                    skinDefParams.minionSkinReplacements = Array.Empty<SkinDefParams.MinionSkinReplacement>();
                 });
                 TryCatchThrow("Projectile Ghost Replacements", delegate
                 {
-                    skin.projectileGhostReplacements = Array.Empty<SkinDef.ProjectileGhostReplacement>();
+                    skinDefParams.projectileGhostReplacements = Array.Empty<SkinDefParams.ProjectileGhostReplacement>();
                 });
+                skin.skinDefParams = skinDefParams;
                 Array.Resize(ref skinController.skins, skinController.skins.Length + 1);
                 skinController.skins[skinController.skins.Length - 1] = skin;
-                BodyCatalog.skins[(int)BodyCatalog.FindBodyIndex(gameObject)] = skinController.skins;
+                SkinCatalog.skinsByBody[(int)BodyCatalog.FindBodyIndex(gameObject)] = skinController.skins;
+                //BodyCatalog.skins[(int)BodyCatalog.FindBodyIndex(gameObject)] = skinController.skins;
             }
             catch (Exception ex2)
             {

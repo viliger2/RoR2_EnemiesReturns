@@ -117,41 +117,30 @@ namespace EnemiesReturns
 
         public static HiddenSkinDef CreateHiddenSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, bool hideInLobby = false, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
         {
-            On.RoR2.SkinDef.Awake += DoNothing;
-
             var skinDef = ScriptableObject.CreateInstance<HiddenSkinDef>();
             (skinDef as ScriptableObject).name = name;
-            skinDef.baseSkins = Array.Empty<SkinDef>();
-            skinDef.rendererInfos = Array.Empty<CharacterModel.RendererInfo>();
-            skinDef.gameObjectActivations = Array.Empty<SkinDef.GameObjectActivation>();
-            skinDef.meshReplacements = Array.Empty<SkinDef.MeshReplacement>();
-            skinDef.projectileGhostReplacements = Array.Empty<SkinDef.ProjectileGhostReplacement>();
-            skinDef.minionSkinReplacements = Array.Empty<SkinDef.MinionSkinReplacement>();
-            skinDef.runtimeSkin = null;
 
             if (baseSkin)
             {
                 skinDef.baseSkins = new SkinDef[] { baseSkin };
             }
             skinDef.rootObject = model;
-            skinDef.rendererInfos = renderInfo;
             skinDef.hideInLobby = hideInLobby;
+            var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
+            (skinDefParams as ScriptableObject).name = name + "SkinDefParams";
+
+            skinDefParams.rendererInfos = renderInfo;
             if (gameObjectActivations != null)
             {
-                skinDef.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDef.GameObjectActivation
+                skinDefParams.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDefParams.GameObjectActivation
                 {
                     gameObject = item,
                     shouldActivate = true
                 });
             }
-
-            skinDef.Bake(); //dunno if we need it
-
-            On.RoR2.SkinDef.Awake -= DoNothing;
+            skinDef.skinDefParams = skinDefParams;
 
             return skinDef;
-
-            static void DoNothing(On.RoR2.SkinDef.orig_Awake orig, SkinDef self) { }
         }
 
         public static SkillFamily CreateSkillFamily(string name, params SkillDef[] skills)

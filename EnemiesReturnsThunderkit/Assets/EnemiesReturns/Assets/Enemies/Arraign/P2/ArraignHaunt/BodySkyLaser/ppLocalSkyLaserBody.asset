@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8533113618831155905
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
+  m_Name: AmbientOcclusion
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 0
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 0.6
+  color:
+    overrideState: 0
+    value: {r: 0, g: 0, b: 0, a: 1}
+  ambientOnly:
+    overrideState: 0
+    value: 1
+  noiseFilterTolerance:
+    overrideState: 0
+    value: 0
+  blurTolerance:
+    overrideState: 0
+    value: -4.6
+  upsampleTolerance:
+    overrideState: 0
+    value: -12
+  thicknessModifier:
+    overrideState: 1
+    value: 10
+  directLightingStrength:
+    overrideState: 0
+    value: 0
+  radius:
+    overrideState: 0
+    value: 0.25
+  quality:
+    overrideState: 0
+    value: 2
 --- !u!114 &-8280768412901761031
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -17,14 +66,14 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   intensity:
-    overrideState: 1
+    overrideState: 0
     value: 3.3
   threshold:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.48
   softKnee:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 1
   clamp:
     overrideState: 0
     value: 65472
@@ -35,7 +84,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   color:
-    overrideState: 1
+    overrideState: 0
     value: {r: 0.30588233, g: 0.30589756, b: 1, a: 1}
   fastMode:
     overrideState: 0
@@ -121,7 +170,7 @@ MonoBehaviour:
     value: 1
   contrast:
     overrideState: 1
-    value: 50
+    value: 83
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1373,3 +1422,4 @@ MonoBehaviour:
   settings:
   - {fileID: -8280768412901761031}
   - {fileID: -1030035393740015768}
+  - {fileID: -8533113618831155905}
