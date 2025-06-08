@@ -13,6 +13,7 @@ using UnityEngine;
 using RoR2;
 using RoR2.Projectile;
 using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
+using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1;
 
 namespace EnemiesReturns
 {
@@ -54,6 +55,7 @@ namespace EnemiesReturns
 
                     var acdOverlay = assets.First(acd => acd.name == "acdPreSlashMaterialAlpha").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.acdOverlayAlpha = acdOverlay;
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.PreSlash.acdOverlayAlpha = acdOverlay;
                     ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseExitSkyLeap.acdOverlayAlpha = acdOverlay;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash1.acdSlash1 = assets.First(acd => acd.name == "acdSlash1").curve;
                     ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.acdSlash2 = assets.First(acd => acd.name == "acdSlash2").curve;
@@ -138,12 +140,12 @@ namespace EnemiesReturns
                     var explosionEffect = assets.First(asset => asset.name == "ArraignRemoveSwordEffect");
                     explosionEffect = arraignStuff.CreateSkyLeapRemoveSwordEffect(explosionEffect);
                     ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.secondAttackEffectStatic = explosionEffect;
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.secondAttackEffectStatic = explosionEffect;
+                    //ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.secondAttackEffectStatic = explosionEffect;
 
                     var waveProjectile = assets.First(asset => asset.name == "ArraignSlash3Wave");
                     waveProjectile = arraignStuff.SetupWaveProjectile(waveProjectile);
                     ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.waveProjectile = waveProjectile;
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.waveProjectileStatic = waveProjectile;
+                    //ModdedEntityStates.Judgement.Arraign.Phase2.SkyLeap.ExitSkyLeap.waveProjectileStatic = waveProjectile;
                     ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.waveProjectileStatic = waveProjectile;
 
                     //var lightningProjectile = Enemies.Judgement.Arraign.ArraignStuff.SetupLightningStrikePrefab(assets.First(asset => asset.name == "ArraignPreLightningProjectile"));
@@ -162,6 +164,11 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.Beam.BeamStart.preBeamIndicatorEffect = arraignStuff.SetupPreBeamIndicatorEffect(assets.First(asset => asset.name == "ArraignPreBeamGroundIndicator"));
 
+                    ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash1.swingEffect = assets.First(asset => asset.name == "LanceStapEffect");
+
+                    ArraignDamageController.hitEffectPrefab = assets.First(asset => asset.name == "ArraignArmorBreakEffect");
+
+
                     BeamStart.postProccessBeam = assets.First(asset => asset.name == "BeamPostProccess");
 
                     BeamLoop.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
@@ -171,10 +178,12 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
                 {
                     Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
+#pragma warning disable CS0618 // Type or member is obsolete
                     Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
 
                     Content.Items.LunarFlower = assets.First(item => item.name == "LunarFlower");
                     Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                     _contentPack.itemDefs.Add(assets);
                 }));
@@ -198,7 +207,9 @@ namespace EnemiesReturns
                 {
                     Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
                     Equipment.MithrixHammer.MithrixHammer.SetupEquipmentConfigValues(Content.Equipment.MithrixHammer);
+#pragma warning disable CS0618 // Type or member is obsolete
                     Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
+#pragma warning restore CS0618 // Type or member is obsolete
 
                     Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
                     _contentPack.equipmentDefs.Add(assets);
@@ -237,15 +248,21 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash2.swingEffect = swingComboEffect;
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.swingEffect = swingComboEffect;
 
-                ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.overlayMaterial = GetOrCreateMaterial("matArraignPreSlashOverlay", arraignStuff.CreatePreSlashWeaponOverlayMaterial);
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash2.swingEffect = swingComboEffect;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.swingEffect = swingComboEffect;
+
+                //ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.PreSlash.overlayMaterial = GetOrCreateMaterial("matArraignPreSlashOverlay", arraignStuff.CreatePreSlashWeaponOverlayMaterial);
                 var slash3Explosion = arraignStuff.CreateSlash3ExplosionEffect();
                 ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo.Slash3.explosionEffect = slash3Explosion;
-                ModdedEntityStates.Judgement.Arraign.Spawn.slamEffect = slash3Explosion;
+                ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo.Slash3.explosionEffect = slash3Explosion;
+                Spawn.slamEffect = slash3Explosion;
                 ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap.ExitSkyLeap.firstAttackEffectStatic = slash3Explosion;
+                ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash.LeapDash.blastAttackEffect = slash3Explosion;
+
                 effectsList.Add(new EffectDef(slash3Explosion));
 
-                ArraignDamageController.hitEffectPrefab = arraignStuff.CreateArmorBreakEffect();
-                effectsList.Add(new EffectDef(ArraignDamageController.hitEffectPrefab));
+                //ArraignDamageController.hitEffectPrefab = arraignStuff.CreateArmorBreakEffect();
+                //effectsList.Add(new EffectDef(ArraignDamageController.hitEffectPrefab));
 
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();

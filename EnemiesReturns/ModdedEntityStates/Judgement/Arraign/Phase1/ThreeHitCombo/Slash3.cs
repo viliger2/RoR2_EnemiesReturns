@@ -124,7 +124,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
                 falloffModel = BlastAttack.FalloffModel.SweetSpot,
                 baseForce = blastAttackForce,
                 teamIndex = teamComponent.teamIndex,
-                damageType = DamageSource.Primary,
+                damageType = DamageSource.Secondary,
                 attackerFiltering = AttackerFiltering.Default
             };
             blastAttack.Fire();

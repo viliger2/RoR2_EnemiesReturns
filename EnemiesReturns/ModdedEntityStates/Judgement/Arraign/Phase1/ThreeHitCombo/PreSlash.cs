@@ -17,8 +17,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public static AnimationCurve acdOverlayAlpha;
 
-        public static Material overlayMaterial;
-
         private float duration;
 
         private Renderer swordRenderer;

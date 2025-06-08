@@ -13,6 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
         {
             slideRotation = Quaternion.AngleAxis(-180f, Vector3.up);
             base.OnEnter();
+            PlayCrossfade("Gesture, Override", "DashBackwards", "Slide.playbackRate", BaseSlideState.duration, 0.05f);
         }
     }
 }

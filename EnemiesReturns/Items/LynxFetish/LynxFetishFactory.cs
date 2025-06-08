@@ -132,6 +132,7 @@ namespace EnemiesReturns.Items.LynxFetish
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
             (itemDef as ScriptableObject).name = "LynxFetish";
             itemDef.tier = ItemTier.Boss;
+#pragma warning disable CS0618 // Type or member is obsolete
             itemDef.deprecatedTier = ItemTier.Boss;
             itemDef.name = "LynxFetish";
             itemDef.nameToken = "ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME";
@@ -139,6 +140,7 @@ namespace EnemiesReturns.Items.LynxFetish
             itemDef.descriptionToken = "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE";
             itemDef.pickupModelPrefab = prefab;
+#pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
             itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy };

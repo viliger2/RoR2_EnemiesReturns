@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo
 {
@@ -13,23 +14,27 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
     {
         public static AnimationCurve acdSlash2;
 
-        public static float searchRadius = 10f;
+        public static GameObject swingEffect;
+
+        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
 
         private Vector3 desiredDirection;
 
         public override void OnEnter()
         {
             this.baseDuration = 0.44f;
-            base.damageCoefficient = 2f;
-            base.hitBoxGroupName = "Sword";
-            //base.hitEffectPrefab = 
+            base.damageCoefficient = 3f;
+            base.hitBoxGroupName = "Spear";
+            base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 6000f;
-            base.forceVector = Vector3.zero;
+            base.forceVector = new Vector3(0f, 1000f, 0f);
             base.hitPauseDuration = 0.1f;
-            //base.swingEffectMuzzleString = "";
+            base.swingEffectPrefab = swingEffect;
+            base.swingEffectMuzzleString = "Swing3EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash2.attack";
             base.shorthopVelocityFromHit = 0f;
+            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
             //base.impactSound = "";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash2;
@@ -39,11 +44,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
-
-            //if (characterDirection)
-            //{
-            //    characterDirection.forward = inputBank.aimDirection;
-            //}
         }
 
         public override void FixedUpdate()
@@ -69,21 +69,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             outer.SetNextState(new Slash3());
         }
 
-        private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
-            List<HurtBox> result = new List<HurtBox>();
-            sphereSearch.mask = LayerIndex.entityPrecise.mask;
-            sphereSearch.origin = origin;
-            sphereSearch.radius = searchRadius;
-            sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
-            sphereSearch.RefreshCandidates();
-            sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(teamComponent.teamIndex));
-            sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
-            sphereSearch.FilterByPlayers();
-            sphereSearch.GetHurtBoxes(result);
-            sphereSearch.ClearCandidates();
-
-            return result;
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Secondary;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

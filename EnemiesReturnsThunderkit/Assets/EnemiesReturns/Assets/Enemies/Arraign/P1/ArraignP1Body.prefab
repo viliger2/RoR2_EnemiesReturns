@@ -1078,8 +1078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Body
   initialStateType:
-    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Spawn, EnemiesReturns,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    _typeName: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.Spawn,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
     _typeName: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -2927,6 +2927,11 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5819949877966041738, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
   m_PrefabInstance: {fileID: 3389015307498071864}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &21399485211733290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3405906319358773778, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
+  m_PrefabInstance: {fileID: 3389015307498071864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &203570442912609710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3304244965665378966, guid: 67c305371ac7cb44084b35e759877b65, type: 3}
@@ -3101,7 +3106,7 @@ MonoBehaviour:
     transform: {fileID: 6822131064339259898}
   - name: Swing1EffectMuzzle
     transform: {fileID: 2792135121714289273}
-  - name: MuzzleBodyCenter
+  - name: MuzzleCenter
     transform: {fileID: 8840954271582044099}
   - name: Swing3EffectMuzzle
     transform: {fileID: 9098064398466416682}
@@ -3135,8 +3140,8 @@ MonoBehaviour:
     transform: {fileID: 1663004676067125538}
   - name: HealthBarOrigin
     transform: {fileID: 5547501906888111515}
-  - name: 
-    transform: {fileID: 0}
+  - name: Mask
+    transform: {fileID: 21399485211733290}
   - name: 
     transform: {fileID: 0}
   - name: 

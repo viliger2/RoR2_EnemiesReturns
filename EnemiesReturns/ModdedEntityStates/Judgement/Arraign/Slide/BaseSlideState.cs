@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
 
         public static GameObject slideEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherDashEffect.prefab").WaitForCompletion();
 
-        public static string slideEffectMuzzlestring = "MuzzleBodyCenter";
+        public static string slideEffectMuzzlestring = "MuzzleCenter";
 
         protected Quaternion slideRotation;
 

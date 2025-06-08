@@ -26,6 +26,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
             (itemDef as ScriptableObject).name = "ColossalKnurl";
             itemDef.tier = ItemTier.Boss;
+#pragma warning disable CS0618 // Type or member is obsolete
             itemDef.deprecatedTier = ItemTier.Boss;
             itemDef.name = "ColossalKnurl";
             itemDef.nameToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME";
@@ -33,6 +34,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.descriptionToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE";
             itemDef.pickupModelPrefab = prefab;
+#pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
             itemDef.tags = new ItemTag[] { ItemTag.Damage };

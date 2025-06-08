@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static CharacterSpawnCard cscArraignHaunt;
 
-        public static float hauntSpawnDelay = 5f;
+        public static float hauntSpawnDelay = 15f;
 
         private ScriptedCombatEncounter combatEncounter;
 

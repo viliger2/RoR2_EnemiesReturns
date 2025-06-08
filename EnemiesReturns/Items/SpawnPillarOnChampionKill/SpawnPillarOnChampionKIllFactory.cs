@@ -23,6 +23,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
             (itemDef as ScriptableObject).name = "SpawnPillarOnChampionKill";
             itemDef.tier = ItemTier.Boss;
+#pragma warning disable CS0618 // Type or member is obsolete
             itemDef.deprecatedTier = ItemTier.Boss;
             itemDef.name = "SpawnPillarOnChampionKill";
             itemDef.nameToken = "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME";
@@ -30,6 +31,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             itemDef.descriptionToken = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE";
             itemDef.pickupModelPrefab = prefab;
+#pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
             itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy, ItemTag.OnKillEffect };

@@ -19,8 +19,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
 
         public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
 
-        public static float searchRadius = 20f;
-
         private Vector3 desiredDirection;
 
         public override void OnEnter()
@@ -71,38 +69,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void AuthorityOnFinish()
         {
             outer.SetNextState(new Slash2());
-            //var hitboxes = GetSphereSearchResult(new SphereSearch(), base.transform.position);
-            //if (hitboxes.Count > 0)
-            //{
-            //    outer.SetNextState(new Slash2());
-            //}
-            //else
-            //{
-            //    outer.SetNextState(new FireHomingProjectiles()); // TODO: restore
-            //}
         }
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
             base.AuthorityModifyOverlapAttack(overlapAttack);
             overlapAttack.damageType.damageSource = DamageSource.Secondary;
-        }
-
-        private List<HurtBox> GetSphereSearchResult(SphereSearch sphereSearch, Vector3 origin)
-        {
-            List<HurtBox> result = new List<HurtBox>();
-            sphereSearch.mask = LayerIndex.entityPrecise.mask;
-            sphereSearch.origin = origin;
-            sphereSearch.radius = searchRadius;
-            sphereSearch.queryTriggerInteraction = QueryTriggerInteraction.UseGlobal;
-            sphereSearch.RefreshCandidates();
-            sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(teamComponent.teamIndex));
-            sphereSearch.FilterCandidatesByDistinctHurtBoxEntities();
-            sphereSearch.FilterByPlayers();
-            sphereSearch.GetHurtBoxes(result);
-            sphereSearch.ClearCandidates();
-
-            return result;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

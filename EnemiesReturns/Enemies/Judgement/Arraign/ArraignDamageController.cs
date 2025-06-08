@@ -50,8 +50,14 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnIncomingDamageServer(DamageInfo damageInfo)
         {
+            var attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+
             var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+            if(attackerBody && attackerBody.master && attackerBody.master.inventory)
+            {
+                endGameBossWeaponDamage &= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+            }
             if (arraignIsImmune && !endGameBossWeaponDamage)
             {
                 damageInfo.rejected = true;

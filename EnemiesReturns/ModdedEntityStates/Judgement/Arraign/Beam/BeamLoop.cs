@@ -40,7 +40,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayCrossfade("Gesture, Override", "SwrodLaserLoop", 0.1f);
+            PlayCrossfade("Gesture, Override", "SwordLaserLoop", 0.1f);
 
             overlapAttack = CreateOverlapAttack(GetModelTransform());
 

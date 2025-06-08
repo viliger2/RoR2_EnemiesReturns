@@ -18,6 +18,8 @@ namespace EnemiesReturns.Behaviors
 
         public Renderer renderer;
 
+        private AsyncOperationHandle<Material> handle;
+
         private void Awake()
         {
             if (isParticle)
@@ -36,18 +38,30 @@ namespace EnemiesReturns.Behaviors
 
                 if (Addressables.LoadAssetAsync<Material>(addressableMaterialPath).IsValid())
                 {
-                    var result = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
-                    result.Completed += (operationResult) =>
+                    handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
+                    handle.Completed += (operationResult) =>
                     {
-                        renderer.material = operationResult.Result;
-                        if (isTrailParticle)
+                        if (operationResult.Status == AsyncOperationStatus.Succeeded)
                         {
-                            (renderer as ParticleSystemRenderer).trailMaterial = operationResult.Result;
+                            renderer.material = operationResult.Result;
+                            if (isTrailParticle)
+                            {
+                                (renderer as ParticleSystemRenderer).trailMaterial = operationResult.Result;
+                            }
                         }
-                        UnityEngine.GameObject.Destroy(this);
+                        else
+                        {
+                            Addressables.Release(operationResult);
+                        }
+                        //UnityEngine.GameObject.Destroy(this);
                     };
                 }
             }
+        }
+
+        private void OnDestroy() 
+        {
+            Addressables.Release(handle);
         }
     }
 }
