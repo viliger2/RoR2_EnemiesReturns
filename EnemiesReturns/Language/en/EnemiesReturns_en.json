@@ -117,38 +117,38 @@
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>FIELDTECH Sound-To-Text Translator (v1.6.8a)\r\n# Awaiting input... done.\r\n# Reading sound for text... done.\r\n# Transcribing data... done.\r\n# Translating sound... done. [6 exceptions raised]\r\nComplete: outputting results.</style>\r\n\r\nWe hold this Relic to high regard, there once was many, now there are few.\r\nWe worshiped the balance [REDACTED] brought to the world. When [REDACTED] called, we answered.\r\nWe brought [REDACTED] gifts, relics of our tribes. Some brought weapons, some brought food, some brought toys, crafted from string and cloth.\r\nOne day, another appears. [The Hero] speaks urgently, ushering us to a structure made from stones and sparks.\r\nWe lost contact with [REDACTED], lost homes, lost relics, lost our way.\r\nWe hold this Relic to high regard for this reason.\r\n\r\n<style=cMono>Translation Errors:<\/style>\r\n# [The Hero] could not be fully translated.\r\n# Details on [REDACTED] are only available to Crew with Red-Level Clearance.",
 
     "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_NAME": "???",
-    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "Dig it out",
+    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "Inspect",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "Strange Device",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "Protototype Construct",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "Not useful to me..",
-    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "TODO: MAYBE SOME FANCY DESCRIPTION? ENDTODO Its \"core\" has a faint glow and entire structure feels like it is frozen outside of time.",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "A low hum comes from within. Not useful to me.",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "LORE HERE",
 
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>Newt: Shape, come close.</color>",
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "Trade",
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>Newt: Good. Take, delicate shape.</color>",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "Delicate Flower",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "A Brother's Promise",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "It looks very fragile.",
-    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_DESC": "TODO: MAYBE SOMETHING DIFFERENT FROM PICKUP TEXT. ENDTODO It looks very fragile.",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_DESC": "It looks very fragile",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_LORE": "LORE HERE",
 
-    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME": "TODO: HAMMER NEEDS A FANCY NAME ENDDOTO",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME": "His Resentment",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_PICKUP": "\"Brother... Perhaps... We will get it right... Next time...\"",
-    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_DESC": "TODO: CURRENTLY ONE OF THE DESC OF DIVINE RIGHT, MAYBE SWAP PICKUP AND DESC? ENDTODO Heavier than it looks..",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_DESC": "A single swing can shatter any kind of defence..",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_LORE": "LORE HERE",
 
-    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_NAME": "TODO: SOME NAME FOR THIS THING ENDTODO",
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_NAME": "Promethean Teleporter",
     "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_CONTEXT": "Activate it..?",
 
     "ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME": "Timeless Portal",
     "ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT": "Enter Timeless Portal",
     "ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>Judgement awaits..</style>",
 
-    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "TODO: SS1'S NAME IS \"THE UNKNOWN\", I LIKE QUESTION MARKS MORE ENDTODO ???",
+    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "???",
     "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE": "Somewhere in Time",
 
-    "ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Survive The Judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Survive <color=#00ffe9>The Judgement</color>",
 
     "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME": "???",
     "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Bond with the beyond",
@@ -200,10 +200,10 @@
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_10": "Reveal your potential!",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_11": "Show me your power!",
 
-    "ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT": "Survived Judgement!",
+    "ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT": "Survived The Judgement!",
 
     "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME": "Anointed",
-    "ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "Survive Judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "Survive The Judgement",
 
     "ENEMIES_RETURNS_JUDGEMENT_MITHRIX_LUNAR_FLOWER_COMMENT": "HOW... HOW DID YOU GET THIS..?",
 
