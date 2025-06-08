@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 
         public static string hitBoxGroupName = "Laser";
 
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient = 10f;
 
         public static float procCoefficient = 0f;
 
@@ -57,7 +57,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
             overlapAttack.isCrit = RollCrit();
             overlapAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == hitBoxGroupName);
             overlapAttack.procCoefficient = procCoefficient;
-            overlapAttack.damageType = new DamageTypeCombo(DamageType.BypassBlock | DamageType.BypassOneShotProtection | DamageType.BypassArmor, DamageTypeExtended.Generic, DamageSource.Primary);
+            overlapAttack.damageType = new DamageTypeCombo(DamageType.BypassBlock | DamageType.BypassOneShotProtection | DamageType.BypassArmor, DamageTypeExtended.Generic, DamageSource.NoneSpecified);
             overlapAttack.retriggerTimeout = 0.25f;
 
             return overlapAttack;

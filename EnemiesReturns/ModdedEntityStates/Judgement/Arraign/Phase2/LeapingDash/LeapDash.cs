@@ -7,13 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 {
     [RegisterEntityState]
     public class LeapDash : BaseState
     {
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient = 6f;
 
         public static float force = 0f;
 
@@ -43,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 
         public static float distanceBetweenProjectiles = 13f;
 
-        public static float projectileDamage = 2f;
+        public static float projectileDamage = 4f;
 
         private Vector3 lastPosition;
 
@@ -127,6 +128,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
                     characterMotor.velocity = vector2 + vector3;
                     characterMotor.onMovementHit += OnMovementHit;
                 }
+                if (NetworkServer.active)
+                {
+                    Util.CleanseBody(base.characterBody, removeDebuffs: true, removeBuffs: false, removeCooldownBuffs: false, removeDots: true, removeStun: false, removeNearbyProjectiles: false);
+                }
                 liftedOff = true;
             }
 
@@ -159,7 +164,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
                         position = newPosition,
                         projectilePrefab = projectilePrefab,
                         rotation = Quaternion.identity,
-                        damage = damageStat * projectileDamage
+                        damage = damageStat * projectileDamage,
+                        damageTypeOverride = DamageTypeCombo.GenericUtility
                     };
 
                     ProjectileManager.instance.FireProjectile(projectileInfo);
@@ -183,7 +189,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
                 baseForce = force,
                 bonusForce = new Vector3(0, force, 0),
                 crit = RollCrit(),
-                damageType = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility),
+                damageType = DamageTypeCombo.GenericUtility,
                 falloffModel = BlastAttack.FalloffModel.None,
                 procCoefficient = procCoefficient,
                 radius = blastAttackRadius,

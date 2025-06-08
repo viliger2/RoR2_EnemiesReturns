@@ -56,7 +56,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
             if(attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
-                endGameBossWeaponDamage &= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+                endGameBossWeaponDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
             }
             if (arraignIsImmune && !endGameBossWeaponDamage)
             {

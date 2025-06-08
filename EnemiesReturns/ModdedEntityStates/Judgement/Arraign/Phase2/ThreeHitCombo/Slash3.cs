@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
 
         public static GameObject waveProjectile;
 
-        public static float waveProjectileDamage = 2f;
+        public static float waveProjectileDamage = 4f;
 
         public static int waveCount = 8;
 
@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 2.4f;
-            base.damageCoefficient = 3f;
+            base.damageCoefficient = 3.5f;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;

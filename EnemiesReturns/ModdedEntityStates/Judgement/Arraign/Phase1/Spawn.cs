@@ -70,7 +70,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 {
                     characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
                 }
+                Chat.SendBroadcastChat(new Chat.NpcChatMessage
+                {
+                    formatStringToken = "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DIALOGUE_FORMAT",
+                    baseToken = "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_2",
+                    sender = base.gameObject,
+                });
             }
+
         }
     }
 }

@@ -122,7 +122,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 position = position,
                 projectilePrefab = projectilePrefab,
                 rotation = Quaternion.identity,
-                damage = damageStat * damageCoefficient
+                damage = damageStat * damageCoefficient,
+                damageTypeOverride = DamageTypeCombo.Generic
             };
 
             ProjectileManager.instance.FireProjectile(projectileInfo);

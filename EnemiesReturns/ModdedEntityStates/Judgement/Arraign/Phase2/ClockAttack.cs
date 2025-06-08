@@ -94,7 +94,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                             projectilePrefab = projectilePrefab,
                             rotation = projectileOrigin.rotation,
                             damage = damageStat * damageCoefficient,
-                            damageTypeOverride = DamageTypeCombo.GenericSpecial
+                            damageTypeOverride = DamageTypeCombo.GenericSecondary
                         };
 
                         ProjectileManager.instance.FireProjectile(projectileInfo);
@@ -115,7 +115,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static float projectileSize = 10f;
 
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient = 4f;
 
         public static int additionalPairs = 1;
 

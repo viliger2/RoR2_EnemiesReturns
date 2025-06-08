@@ -23,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 0.6f;
-            base.damageCoefficient = 3f;
+            base.damageCoefficient = 3.5f;
             base.hitBoxGroupName = "Spear";
             base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
