@@ -230,7 +230,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         protected override string ModelName() => "mdlIfrit";
 
-        protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdLemurian.asset").WaitForCompletion();
+        protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Lemurian.sdLemurian_asset).WaitForCompletion();
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
