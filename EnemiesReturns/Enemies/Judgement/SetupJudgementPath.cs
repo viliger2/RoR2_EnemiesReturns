@@ -6,6 +6,7 @@ using MonoMod.Cil;
 using R2API;
 using RoR2;
 using RoR2.UI;
+using RoR2BepInExPack.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +29,11 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static MasterCatalog.MasterIndex ArraignP1Index;
 
+        public static MasterCatalog.MasterIndex ArraignP2Index;
+
         public static Sprite AnointedSkinIcon;
+
+        public static Material immuneToAllDamageExceptHammerMaterial;
 
         public static Texture2D aeonianEliteRamp;
 
@@ -40,7 +45,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static HashSet<string> AnointedBlacklist = new HashSet<string>();
 
-        private static readonly ConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new ConditionalWeakTable<CharacterModel, ModelSkinController>();
+        private static readonly FixedConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new FixedConditionalWeakTable<CharacterModel, ModelSkinController>();
 
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
@@ -48,6 +53,7 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void Init()
         {
             ArraignP1Index = MasterCatalog.FindMasterIndex("ArraignP1Master");
+            ArraignP2Index = MasterCatalog.FindMasterIndex("ArraignP2Master");
         }
 
         public static bool AddBodyToBlacklist(string bodyName)
@@ -66,6 +72,7 @@ namespace EnemiesReturns.Enemies.Judgement
             if (Configuration.Judgement.Enabled.Value)
             {
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
+                On.RoR2.CharacterModel.UpdateOverlays += AddDamageImmuneOverlay;
                 //On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
@@ -80,6 +87,15 @@ namespace EnemiesReturns.Enemies.Judgement
                     On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                     IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
                 }
+            }
+        }
+
+        private static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        {
+            orig(self);
+            if(self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
+            {
+                self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
             }
         }
 
@@ -465,7 +481,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     if (!skinControlerDictionary.TryGetValue(charModel, out var modelSkinController))
                     {
                         modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
-                        skinControlerDictionary.AddOrUpdate(charModel, modelSkinController);
+                        skinControlerDictionary.Add(charModel, modelSkinController);
                     }
                     if (modelSkinController && modelSkinController.currentSkinIndex > 0)
                     {

@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using RoR2BepInExPack.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -16,7 +17,7 @@ namespace EnemiesReturns.Behaviors
 
         public BossGroup bossGroup;
 
-        public static ConditionalWeakTable<BossGroup, BossGroupTextOverride> overrideDictionary = new ConditionalWeakTable<BossGroup, BossGroupTextOverride>();
+        public static FixedConditionalWeakTable<BossGroup, BossGroupTextOverride> overrideDictionary = new FixedConditionalWeakTable<BossGroup, BossGroupTextOverride>();
 
         private void OnEnable()
         {

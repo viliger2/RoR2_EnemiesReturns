@@ -2387,8 +2387,8 @@ MonoBehaviour:
   shakeOnDelay: 0
   startDelay: 1
   wave:
-    amplitude: 3
-    frequency: 60
+    amplitude: 1.5
+    frequency: 90
     cycleOffset: 1
   duration: 15
   radius: 100

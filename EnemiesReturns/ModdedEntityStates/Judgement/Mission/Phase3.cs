@@ -24,6 +24,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float hauntSpawnDelay = 15f;
 
+        public static float healthBarDelay = 8f;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private BossGroup phaseBossGroup;
@@ -37,6 +39,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private bool hasHauntSpawned;
 
         private bool hasArraignSpawned;
+
+        private Run.FixedTimeStamp healthBarShowTime = Run.FixedTimeStamp.positiveInfinity;
 
         public override void OnEnter()
         {
@@ -61,6 +65,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
                 }
             }
+            healthBarShowTime = Run.FixedTimeStamp.now + healthBarDelay;
             ClearCorpses();
         }
 
@@ -91,6 +96,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     BeginEncounter();
                 }
             }
+            phaseBossGroup.shouldDisplayHealthBarOnHud = healthBarShowTime.hasPassed;
+
             if (NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
                 outer.SetNextState(new Ending());

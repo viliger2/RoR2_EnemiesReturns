@@ -95,6 +95,7 @@ namespace EnemiesReturns
                     Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
                     Content.Buffs.ImmuneToHammer = assets.First(buff => buff.name == "bdImmuneToHammer");
                     Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
+                    Content.Buffs.ImmuneToAllDamageExceptHammer.iconSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_LunarGolem.texBuffLunarShellIcon_tif).WaitForCompletion();
 
                     _contentPack.buffDefs.Add(assets);
                 }));
@@ -168,6 +169,7 @@ namespace EnemiesReturns
 
                     ArraignDamageController.hitEffectPrefab = assets.First(asset => asset.name == "ArraignArmorBreakEffect");
 
+                    ModdedEntityStates.Judgement.SkyLaser.SpawnState.spawnEffect = assets.First(asset => asset.name == "SkyLaserBodySpawnEffect");
 
                     BeamStart.postProccessBeam = assets.First(asset => asset.name == "BeamPostProccess");
 
@@ -266,7 +268,18 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
+
+                Enemies.Judgement.SetupJudgementPath.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
             }
+        }
+
+        public static Material CreateImmuneToAllExceptHammerMaterial()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.matEnergyShield_mat).WaitForCompletion());
+            newMaterial.name = "matImmuneToAllExceptHammer";
+            newMaterial.SetFloat("_OffsetAmount", 0.13f);
+
+            return newMaterial;
         }
 
     }

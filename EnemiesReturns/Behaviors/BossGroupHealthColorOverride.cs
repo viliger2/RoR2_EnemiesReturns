@@ -1,9 +1,9 @@
 ﻿using RoR2;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
+using RoR2BepInExPack.Utilities;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -16,7 +16,7 @@ namespace EnemiesReturns.Behaviors
 
         public readonly static Color defaultHealthBarColor = new Color(206f/255f, 3f/255f, 3f/255f);
 
-        public static ConditionalWeakTable<BossGroup, BossGroupHealthColorOverride> overrideDictionary = new ConditionalWeakTable<BossGroup, BossGroupHealthColorOverride>();
+        public static FixedConditionalWeakTable<BossGroup, BossGroupHealthColorOverride> overrideDictionary = new FixedConditionalWeakTable<BossGroup, BossGroupHealthColorOverride>();
 
         private void OnEnable()
         {

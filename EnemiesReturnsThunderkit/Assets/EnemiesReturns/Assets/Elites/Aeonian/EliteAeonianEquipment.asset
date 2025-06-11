@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 1512808244, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: EliteAeonianEquipment
   m_EditorClassIdentifier: 
-  pickupModelPrefab: {fileID: 0}
+  pickupModelPrefab: {fileID: 3416687959216018126, guid: 75291554508bfb64797c383a21d2bb11, type: 3}
+  pickupModelReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   cooldown: 0
   nameToken: ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME
   pickupToken: ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP

@@ -77,7 +77,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                     sender = base.gameObject,
                 });
             }
-
         }
     }
 }
