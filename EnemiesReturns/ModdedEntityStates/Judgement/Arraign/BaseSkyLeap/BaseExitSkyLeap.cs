@@ -169,6 +169,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     rotation = Quaternion.identity
                 };
                 EffectManager.SpawnEffect(secondAttackEffect, secondEffectData, false);
+
                 secondAttackFired = true;
             }
 

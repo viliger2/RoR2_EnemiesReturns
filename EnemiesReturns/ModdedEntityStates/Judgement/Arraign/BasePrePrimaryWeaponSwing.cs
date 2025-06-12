@@ -9,8 +9,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     // TODO: add some sound effect on start up, something snappy
-    [RegisterEntityState]
-    public class BasePrePrimaryWeaponSwing : BaseState, SteppedSkillDef.IStepSetter
+    public abstract class BasePrePrimaryWeaponSwing : BaseState, SteppedSkillDef.IStepSetter
     {
         public static float baseDuration = 0.5f;
 
@@ -37,11 +36,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.FixedUpdate();
             if(fixedAge >= duration && isAuthority)
             {
-                var nextState = new BasePrimaryWeaponSwing();
+                var nextState = GetNextEntityState();
                 nextState.swingCount = swingCount;
                 outer.SetNextState(nextState);
             }
         }
+
+        public abstract BasePrimaryWeaponSwing GetNextEntityState();
 
         public override void OnSerialize(NetworkWriter writer)
         {

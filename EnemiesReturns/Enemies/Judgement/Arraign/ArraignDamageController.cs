@@ -57,6 +57,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if(attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
                 endGameBossWeaponDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+                endGameBossWeaponDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
             }
             if (arraignIsImmune && !endGameBossWeaponDamage)
             {

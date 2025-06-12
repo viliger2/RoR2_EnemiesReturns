@@ -86,6 +86,42 @@ namespace EnemiesReturns.Enemies.Judgement
                     IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
                     On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                     IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
+                    RoR2.CharacterBody.onBodyStartGlobal += AddAnointedItem;
+                }
+            }
+        }
+
+        private static void AddAnointedItem(CharacterBody body)
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if (!body.isPlayerControlled)
+            {
+                return;
+            }
+
+            if(body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0) // TODO: REPLACE
+            {
+                return;
+            }
+
+            if(body.modelLocator && body.modelLocator.modelTransform)
+            {
+                var modelSkinController = body.modelLocator.modelTransform.GetComponent<ModelSkinController>();
+                if (modelSkinController)
+                {
+                    if(body.skinIndex < modelSkinController.skins.Length)
+                    {
+                        var skin = modelSkinController.skins[body.skinIndex];
+                        if (AnointedSkins.Contains(skin))
+                        {
+                            body.inventory.GiveItem(Content.Items.HiddenAnointed);
+                            return;
+                        };
+                    }
                 }
             }
         }

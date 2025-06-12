@@ -187,6 +187,8 @@ namespace EnemiesReturns
                     Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
 #pragma warning restore CS0618 // Type or member is obsolete
 
+                    Content.Items.HiddenAnointed = assets.First(item => item.name == "HiddenAnointed");
+
                     _contentPack.itemDefs.Add(assets);
                 }));
 

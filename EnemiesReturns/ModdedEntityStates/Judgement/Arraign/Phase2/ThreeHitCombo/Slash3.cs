@@ -55,9 +55,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.swingEffectMuzzleString = "Swing3EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash3.attack";
             base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "Play_moonBrother_swing_vertical"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
-                                                                            // also separate sound for explosion, for now reusing mithrix
-            //base.impactSound = "";
+            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP2_Play"; 
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash3;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
@@ -92,6 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
                     scale = 7f
                 };
                 EffectManager.SpawnEffect(explosionEffect, effectData, false);
+                Util.PlaySound("ER_Arraign_ThreeHitComboExplosion_Play", base.gameObject);
                 firedWaves = true;
             }
         }

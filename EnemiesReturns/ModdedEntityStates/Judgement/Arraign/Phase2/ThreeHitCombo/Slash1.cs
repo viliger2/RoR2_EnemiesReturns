@@ -34,7 +34,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.swingEffectMuzzleString = "LanceEffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash1.attack";
             base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
+            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP2_Play";
             //base.impactSound = "";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash1;

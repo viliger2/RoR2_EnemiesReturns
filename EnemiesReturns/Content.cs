@@ -29,6 +29,8 @@ namespace EnemiesReturns
             public static ItemDef TradableRock;
 
             public static ItemDef LunarFlower;
+
+            public static ItemDef HiddenAnointed;
         }
 
         public static class ItemRelationshipProviders

@@ -38,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             {
                 ppBeamInstance = UnityEngine.Object.Instantiate(postProccessBeam);
             }
-            Util.PlaySound("ER_Colossus_Barrage_Charge_Play", gameObject); // TODO
+            Util.PlaySound("ER_Arraign_BeamStart_Play", gameObject);
             preBeam1 = FindModelChild("SwordPreBeamForwardParticles");
             if (preBeam1)
             {

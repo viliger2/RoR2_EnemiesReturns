@@ -61,7 +61,10 @@ namespace EnemiesReturns.Behaviors
 
         private void OnDestroy() 
         {
-            Addressables.Release(handle);
+            if (handle.IsValid())
+            {
+                Addressables.Release(handle);
+            }
         }
     }
 }

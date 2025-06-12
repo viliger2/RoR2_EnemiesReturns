@@ -54,7 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             backwardsBeam.transform.localPosition = Vector3.zero;
             backwardsBeam.transform.localRotation = Quaternion.identity;
 
-            Util.PlaySound("Play_voidRaid_superLaser_start", gameObject); // TODO
+            Util.PlaySound("ER_Arraign_BeamLoop_Play", gameObject); // TODO
         }
 
         public override void FixedUpdate()
@@ -80,6 +80,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         public override void OnExit()
         {
             base.OnExit();
+            Util.PlaySound("ER_Arraign_BeamLoop_Stop", gameObject);
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
             if (forwardBeam)
             {

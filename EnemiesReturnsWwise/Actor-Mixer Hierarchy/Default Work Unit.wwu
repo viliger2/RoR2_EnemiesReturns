@@ -4162,6 +4162,588 @@
 										</Folder>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Judgement" ID="{AAC9D044-5DF1-437C-81AF-134303843126}" ShortID="913848796">
+									<ChildrenList>
+										<Folder Name="Arraign" ID="{ED56D972-D550-4974-A3DE-6769E17A1BE1}" ShortID="504697932">
+											<ChildrenList>
+												<ActorMixer Name="Random Pitch" ID="{829090FC-C81B-4AFD-85B5-E74A21AF5321}" ShortID="161296508">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{E1B89680-E5E7-4216-9670-69BEA6B13C17}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<RandomSequenceContainer Name="Arraign_LeftRightSwingP1" ID="{BE408E86-8F8B-4BB9-8B4D-637904081773}" ShortID="368841904">
+															<PropertyList>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{71341F75-DB9D-47B7-9453-6667963A58A7}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="Swing1" ID="{B3991993-4DD9-4A06-B366-98C3493B6308}" ShortID="628879059">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium1" ID="{947E0483-17A1-4F90-9E06-B7E3D164E53F}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium1.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="55789865"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium1" ID="{947E0483-17A1-4F90-9E06-B7E3D164E53F}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing2" ID="{E70A8196-E2E6-4F82-B1EE-C73716CBBD76}" ShortID="872389130">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium2" ID="{DF6F5394-3224-441C-969A-454EC1439D16}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium2.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="156262781"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium2" ID="{DF6F5394-3224-441C-969A-454EC1439D16}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing3" ID="{D07BCDE5-F62F-4F33-99FC-926956215A8A}" ShortID="162328181">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium3" ID="{A7F09CCB-CF87-4DE1-B6AA-D1D5D6A8860E}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium3.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="581770494"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium3" ID="{A7F09CCB-CF87-4DE1-B6AA-D1D5D6A8860E}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<RandomSequenceContainer Name="Arraign_ThreeHitComboP1" ID="{68B1DBAE-592F-4C02-8CD8-8A64002DECFE}" ShortID="757821354">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="Swing1" ID="{0CD64A8F-B478-4263-B219-D15B82127AD8}" ShortID="1002690267">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge1" ID="{27C724C5-F87C-4F31-83CC-943C9C4B7DDC}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge1.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="488650691"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge1" ID="{27C724C5-F87C-4F31-83CC-943C9C4B7DDC}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing2" ID="{4C2C6B65-DB17-4559-9653-31C46C6151C1}" ShortID="507341060">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>2</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge2" ID="{96B2AA9A-A452-4EF7-AE02-BED776956312}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge2.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="136396131"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge2" ID="{96B2AA9A-A452-4EF7-AE02-BED776956312}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing3" ID="{09416226-6CE8-4A46-8F07-614BA156FA15}" ShortID="588338247">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge3" ID="{26DB060D-0427-42B8-B040-B6CD74DEFEA5}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge3.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="159983631"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge3" ID="{26DB060D-0427-42B8-B040-B6CD74DEFEA5}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<RandomSequenceContainer Name="Arraign_ThreeHitComboP2" ID="{1FD00345-3BDF-44D0-8D3D-F84BEB677364}" ShortID="712506675">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="Swing1" ID="{23ED41AA-1644-495B-8B29-FE645344ED1C}" ShortID="177270411">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge1_no_metal" ID="{93E7CFA1-3C71-449B-9E11-389445C25530}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge1_no_metal.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="105619789"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge1_no_metal" ID="{93E7CFA1-3C71-449B-9E11-389445C25530}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing2" ID="{611917B9-7583-45EE-AEA2-FF5902A0C62F}" ShortID="921189428">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge2_no_armor" ID="{585278C9-8B3A-437E-A746-685E3F7480EC}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge2_no_armor.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="312368820"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge2_no_armor" ID="{585278C9-8B3A-437E-A746-685E3F7480EC}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing3" ID="{162DFC65-57A2-41BD-82E6-7676F79CD737}" ShortID="565127380">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshLarge3_no_armor" ID="{3137F63C-1F94-4635-A9FB-608023E69FD9}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\ThreeHitCombo\mWooshLarge3_no_armor.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="674101317"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshLarge3_no_armor" ID="{3137F63C-1F94-4635-A9FB-608023E69FD9}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<RandomSequenceContainer Name="Arraign_LeftRightSwingP2" ID="{8ECBA183-6D23-4553-925E-DCF6514E060B}" ShortID="484738138">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="Swing1" ID="{B294CAED-6329-4CE8-B3D1-2AC4BE6A2B05}" ShortID="144557632">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium1_no_armor" ID="{3F6B3659-30A1-4126-8174-B0D12DFAD157}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium1_no_armor.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="519983423"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium1_no_armor" ID="{3F6B3659-30A1-4126-8174-B0D12DFAD157}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing2" ID="{8434D54A-2ABE-499B-9BBF-FA8F010110BF}" ShortID="891166935">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium2_no_armor" ID="{C165CEA2-D6AF-464B-9338-B9B83A095965}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium2_no_armor.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="743141241"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium2_no_armor" ID="{C165CEA2-D6AF-464B-9338-B9B83A095965}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Swing3" ID="{F3618678-9C1D-4BBF-BA3D-D65184E40EB8}" ShortID="395365442">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="mWooshMedium3_no_armor" ID="{1239C5E1-3BA0-471C-B9CB-F5A18FE7E993}">
+																			<Language>SFX</Language>
+																			<AudioFile>Judgement\Arraign\LeftRighSwing\mWooshMedium3_no_armor.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="670484975"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="mWooshMedium3_no_armor" ID="{1239C5E1-3BA0-471C-B9CB-F5A18FE7E993}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+													</ChildrenList>
+												</ActorMixer>
+												<Sound Name="Arraign_ArmorBreak" ID="{46CD6315-199F-486D-A6FD-B28356CF5BED}" ShortID="692224440">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_common_break" ID="{B15011B9-25A3-425F-8145-A2B1D4CF1809}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\se_common_break.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="703680545"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_common_break" ID="{B15011B9-25A3-425F-8145-A2B1D4CF1809}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Arraign_ThreeHitComob_Explosion" ID="{425A9FD2-7408-491F-A0F7-DCEBC37808B9}" ShortID="1060660213">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="explosion" ID="{769D1111-D89C-4251-B02A-64840E7AC684}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\ThreeHitCombo\explosion.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="163560732"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="explosion" ID="{769D1111-D89C-4251-B02A-64840E7AC684}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Arraign_Lightning" ID="{67E2AA5A-706E-4C86-ABD0-5872D75BF38A}" ShortID="579437958">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wLightning" ID="{C0A4F5E5-EADE-41D4-AD49-711E7CB46CAA}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\wLightning.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="748123111"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wLightning" ID="{C0A4F5E5-EADE-41D4-AD49-711E7CB46CAA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Folder Name="Beam" ID="{299F7304-5ED0-48A8-B49D-22CFADFBEABA}" ShortID="647490304">
+													<ChildrenList>
+														<Sound Name="Arraign_Beam_Start" ID="{AD6FD60D-CAF7-455C-ACD6-8374005E7244}" ShortID="740418145">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="beamstart" ID="{BD978C49-EC39-498F-A7B5-92C4F752221C}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\Beam\beamstart.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="607553832"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="beamstart" ID="{BD978C49-EC39-498F-A7B5-92C4F752221C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Arraign_Beam_Loop" ID="{F4A427E9-678A-48F5-B035-DE5DB79F9E65}" ShortID="614054390">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="beamnotreallyloop" ID="{FA42C69C-6303-4C8E-9157-D5AC1965A591}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\Beam\beamnotreallyloop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="899198744"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="beamnotreallyloop" ID="{FA42C69C-6303-4C8E-9157-D5AC1965A591}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Arraign_Beam_End" ID="{9B106940-CB90-4F44-9C01-275DCA435871}" ShortID="295498595">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="beamend" ID="{84E6E7E9-3806-4990-925C-FD1914AE4993}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\Beam\beamend.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="231295798"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="beamend" ID="{84E6E7E9-3806-4990-925C-FD1914AE4993}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">

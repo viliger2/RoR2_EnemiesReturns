@@ -11,9 +11,10 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
-    [RegisterEntityState]
-    public class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
+    public abstract class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
+        public abstract string swingSoundEffect { get; }
+
         public static GameObject swingEffect;
 
         public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
@@ -34,8 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             base.swingEffectMuzzleString = "Swing1EffectMuzzle";
             base.mecanimHitboxActiveParameter = null;
             base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "Play_merc_sword_swing"; // TODO: something heavier, got NGB sound archive, grab from Debilarough or whatever its called
-            //base.impactSound = "";
+            base.beginStateSoundString = swingSoundEffect;
             base.forceForwardVelocity = false;
             base.forwardVelocityCurve = null;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
