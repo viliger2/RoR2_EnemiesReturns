@@ -134,7 +134,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 };
                 EffectManager.SpawnEffect(firstAttackEffect, effectData, true);
 
-
                 attackFired = true;
             }
 
@@ -169,6 +168,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                     rotation = Quaternion.identity
                 };
                 EffectManager.SpawnEffect(secondAttackEffect, secondEffectData, false);
+                Util.PlaySound("Arraign_Leap_RemoveSword", base.gameObject);
 
                 secondAttackFired = true;
             }

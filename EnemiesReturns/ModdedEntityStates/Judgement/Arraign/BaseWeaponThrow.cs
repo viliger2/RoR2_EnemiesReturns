@@ -30,6 +30,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract string throwSound { get; }
 
+        public abstract string chargeSound { get; }
+
         private float duration;
 
         private bool hasAttacked;
@@ -71,6 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
             projectileOrigin = FindModelChild(childOrigin);
             modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animName, playbackRateParamName, duration);
+            Util.PlaySound(chargeSound, base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -129,6 +132,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public override void OnExit()
         {
             base.OnExit();
+            if (!hasAttacked && isAuthority)
+            {
+                FireProjectile();
+            }
             PlayCrossfade(layerName, "BufferEmpty", 0.1f);
         }
 

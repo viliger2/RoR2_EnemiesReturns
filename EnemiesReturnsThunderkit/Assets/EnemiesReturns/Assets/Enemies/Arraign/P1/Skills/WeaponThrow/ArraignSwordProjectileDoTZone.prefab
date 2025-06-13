@@ -220,13 +220,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catalogIndex: -1
   ghostPrefab: {fileID: 0}
-  ghostTransformAnchor: {fileID: 3192100904287290230}
+  ghostPrefabReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
   authorityHandlesCollisionEvents: 0
-  flightSoundLoop: {fileID: 11400000, guid: b5e2b5a7b944f164da2e93066fff9975, type: 2}
+  flightSoundLoop: {fileID: 0}
   canImpactOnTrigger: 0
-  allowPrediction: 1
+  allowPrediction: 0
   owner: {fileID: 0}
   localCollisionHappened: 0
   procCoefficient: 1
@@ -274,8 +278,8 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls: []
-  soundLoopString: 
-  soundLoopStopString: 
+  soundLoopString: ER_Arraign_SwordThrowProjectileLoop_Play
+  soundLoopStopString: ER_Arraign_SwordThrowProjectileLoop_Stop
 --- !u!114 &4472582994782339486
 MonoBehaviour:
   m_ObjectHideFlags: 0

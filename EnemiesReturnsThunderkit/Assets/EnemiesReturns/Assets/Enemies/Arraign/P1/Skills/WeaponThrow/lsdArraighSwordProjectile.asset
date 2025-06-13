@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: -1387411909, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: lsdArraighSwordProjectile
   m_EditorClassIdentifier: 
-  startSoundName: Play_lemurian_fireball_flight_loop
-  stopSoundName: Stop_lemurian_fireball_flight_loop
+  startSoundName: ER_Arraign_SwordThrowProjectileLoop_Play
+  stopSoundName: ER_Arraign_SwordThrowProjectileLoop_Stop

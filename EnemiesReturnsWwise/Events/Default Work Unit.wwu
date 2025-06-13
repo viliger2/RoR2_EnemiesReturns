@@ -1308,34 +1308,12 @@
 												</Action>
 											</ChildrenList>
 										</Event>
-										<Event Name="ER_Arraign_ThreeHitComboSwingP1_Play" ID="{08CB1CA8-5B7F-401F-BBF1-7CB0621526FE}">
-											<ChildrenList>
-												<Action Name="" ID="{D8B52B62-767E-4A6C-8C1B-6BA79215F914}" ShortID="406406639">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Arraign_ThreeHitComboP1" ID="{68B1DBAE-592F-4C02-8CD8-8A64002DECFE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Event Name="ER_Arraign_ArmorBreak_Play" ID="{FA433E49-973F-4AB4-A5FC-2CDE887AAEDC}">
 											<ChildrenList>
 												<Action Name="" ID="{88717B4A-6224-45DB-B24C-23F4EF786B6F}" ShortID="687129386">
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="Arraign_ArmorBreak" ID="{46CD6315-199F-486D-A6FD-B28356CF5BED}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
-										<Event Name="ER_Arraign_ThreeHitComboExplosion_Play" ID="{1359E4AA-F7EE-4205-B898-776475E34CF7}">
-											<ChildrenList>
-												<Action Name="" ID="{74597E69-CD17-42BB-A895-B5E9D736A27C}" ShortID="176949851">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Arraign_ThreeHitComob_Explosion" ID="{425A9FD2-7408-491F-A0F7-DCEBC37808B9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>
@@ -1403,17 +1381,6 @@
 												</Event>
 											</ChildrenList>
 										</Folder>
-										<Event Name="ER_Arraign_ThreeHitComboSwingP2_Play" ID="{7C460383-87EF-4E29-B9C4-53C065E48DA0}">
-											<ChildrenList>
-												<Action Name="" ID="{BD6611E4-7B7A-4E23-A9A8-A3C306BD768E}" ShortID="347156755">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="Arraign_ThreeHitComboP2" ID="{1FD00345-3BDF-44D0-8D3D-F84BEB677364}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Event Name="ER_Arraign_LeftRightSwingP2_Play" ID="{4F1F3A8B-516F-4952-8C37-32196456F418}">
 											<ChildrenList>
 												<Action Name="" ID="{3B00EC9E-F25E-4CDD-88C6-747489820159}" ShortID="172970278">
@@ -1425,6 +1392,131 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Folder Name="ThreeHitCombo" ID="{94DE3937-A90E-4F66-B6E0-338BA0E6D222}" ShortID="315553782">
+											<ChildrenList>
+												<Event Name="ER_Arraign_ThreeHitComboSwingP1_Play" ID="{08CB1CA8-5B7F-401F-BBF1-7CB0621526FE}">
+													<ChildrenList>
+														<Action Name="" ID="{D8B52B62-767E-4A6C-8C1B-6BA79215F914}" ShortID="406406639">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_ThreeHitComboP1" ID="{68B1DBAE-592F-4C02-8CD8-8A64002DECFE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_ThreeHitComboSwingP2_Play" ID="{7C460383-87EF-4E29-B9C4-53C065E48DA0}">
+													<ChildrenList>
+														<Action Name="" ID="{BD6611E4-7B7A-4E23-A9A8-A3C306BD768E}" ShortID="347156755">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_ThreeHitComboP2" ID="{1FD00345-3BDF-44D0-8D3D-F84BEB677364}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_ThreeHitComboExplosion_Play" ID="{1359E4AA-F7EE-4205-B898-776475E34CF7}">
+													<ChildrenList>
+														<Action Name="" ID="{74597E69-CD17-42BB-A895-B5E9D736A27C}" ShortID="176949851">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_ThreeHitComob_Explosion" ID="{425A9FD2-7408-491F-A0F7-DCEBC37808B9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_ThreeHitComboCharge_Play" ID="{B3D3E50C-720A-4C40-8FDE-EB78C8DF6A73}">
+													<ChildrenList>
+														<Action Name="" ID="{DFB3B801-91FD-4D10-A419-D86E5174CC99}" ShortID="1041008675">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_ThreeHitComb_Charge" ID="{721B1FCA-9708-4B9B-A1B9-42FACB9DE07B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="WeaponThrow" ID="{EB18106B-55C1-4F44-89BC-923807D0962D}" ShortID="3729941">
+											<ChildrenList>
+												<Event Name="ER_Arraign_SwordThrow_Throw_Play" ID="{31316F75-BE5D-4F2A-A60B-38B4488F3505}">
+													<ChildrenList>
+														<Action Name="" ID="{11B66423-A598-45EF-A4B9-89EC054837F7}" ShortID="376993187">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_WeaponThrow" ID="{EB329889-0787-4616-808E-43924FD2C930}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_SwordThrowProjectileLoop_Play" ID="{70609D33-2650-49E8-B097-20286EA39A44}">
+													<ChildrenList>
+														<Action Name="" ID="{63BD8974-4B61-4FDA-A6FA-E10781251C35}" ShortID="494415649">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SwordThrow_Loop" ID="{DD0D96E3-CE73-4CC4-945D-D460CD5CC300}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_SwordThrowProjectileLoop_Stop" ID="{D626F292-BFE4-43AA-BF87-E4F2E32D3128}">
+													<ChildrenList>
+														<Action Name="" ID="{4C704EE7-424A-42D7-8E4A-2F01483CBB53}" ShortID="357695913">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SwordThrow_Loop" ID="{DD0D96E3-CE73-4CC4-945D-D460CD5CC300}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Araign_SwordThrow_Charge_Play" ID="{4970A8F1-C248-49C7-942F-728FFD211CDE}">
+													<ChildrenList>
+														<Action Name="" ID="{8F5B220E-78D8-42A0-8040-2BDCB4738811}" ShortID="531521652">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SwordThrow_Charge" ID="{6646B047-E366-45D1-82E0-EA2B1425B018}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="SkyLeap" ID="{B0C0BA84-D583-4D1F-8719-A5F1AA5F247E}" ShortID="31500813">
+											<ChildrenList>
+												<Event Name="ER_Arraign_Leap_RemoveSword_Play" ID="{F4FC66A3-F4CC-44A6-9DC8-92F5D086602F}">
+													<ChildrenList>
+														<Action Name="" ID="{F5DC0407-5D67-42C5-8C9D-AFD54C283B49}" ShortID="350470331">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_Leap_RemoveSword" ID="{E2400B8B-B87A-46AE-B2E6-8626AA001AFB}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_Leap_Incoming_Play" ID="{FFB2F45D-9291-4EBA-8715-5DBF6A3466E1}">
+													<ChildrenList>
+														<Action Name="" ID="{7C3D9A2A-BCD2-4CCF-B5ED-A6D9D0FE04AC}" ShortID="120888724">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_Leap_Incoming" ID="{1D3E09B6-445B-46EE-9756-789BD8235000}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

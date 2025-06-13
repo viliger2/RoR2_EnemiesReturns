@@ -39,7 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
 
-            Util.PlaySound("Play_scav_attack1_chargeup", gameObject); // TODO: REPLACE
+            Util.PlaySound("ER_Arraign_ThreeHitComboCharge_Play", gameObject);
         }
 
         public override void Update()

@@ -125,7 +125,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 }
 
                 base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
-
+                Util.PlaySound("ER_Arraign_Leap_Incoming_Play", base.gameObject);
                 EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
 
                 isTargetDropped = true;
