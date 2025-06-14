@@ -43,15 +43,15 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private void Awake()
         {
+            if (pickupPickerController && modifiedPickerPanel)
+            {
+                pickupPickerController.panelPrefab = modifiedPickerPanel;
+            }
             if (!NetworkServer.active)
             {
                 return;
             }
             GenerateItemList();
-            if(pickupPickerController && modifiedPickerPanel)
-            {
-                pickupPickerController.panelPrefab = modifiedPickerPanel;
-            }
         }
 
         public void SetOptionsForMonsters(Interactor activator)

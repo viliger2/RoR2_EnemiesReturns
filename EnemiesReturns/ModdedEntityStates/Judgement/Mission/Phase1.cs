@@ -28,8 +28,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 phaseControllerObject = childLocator.FindChild(phaseControllerChildString).gameObject;
                 if (phaseControllerObject)
                 {
+                    var judgementObject = phaseControllerObject.transform.Find("JudgementMissionController");
+                    if (judgementObject)
+                    {
+                        missionController = judgementObject.GetComponent<JudgementMissionController>();
+                    }
                     phaseControllerObject.SetActive(true);
-                    missionController = phaseControllerObject.GetComponent<JudgementMissionController>();
                 }
             }
         }
@@ -37,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(missionController.missionClear && isAuthority)
+            if(missionController && missionController.missionClear && isAuthority)
             {
                 outer.SetNextState(new PrePhase2());
             }

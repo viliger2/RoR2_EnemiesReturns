@@ -60,7 +60,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                     projectileOrigin.transform.localRotation = Quaternion.identity;
                 }
 
-                EffectManager.SimpleEffect(effectPrefab, originPoint, Quaternion.LookRotation(targetPoint - originPoint, Vector3.up), false);
+                EffectManager.SimpleEffect(effectPrefab, originPoint, Quaternion.LookRotation(targetPoint - originPoint, Vector3.up), true);
             }
 
             ~ClockFiringLine()

@@ -80,6 +80,18 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             }
         }
 
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(target);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            target = reader.ReadGameObject();
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -105,29 +117,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 {
                     tempEffect.visualState = TemporaryVisualEffect.VisualState.Exit;
                 }
+                if (isAuthority)
+                {
+                    Vector3 originalPosition;
+                    if (target)
+                    {
+                        originalPosition = target.transform.position;
+                    }
+                    else
+                    {
+                        originalPosition = base.transform.position;
+                    }
+                    if (Physics.Raycast(originalPosition + Vector3.up * 2f, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                    {
+                        dropPosition = raycastInfo.point;
+                    }
+                    else
+                    {
+                        dropPosition = originalPosition;
+                    }
 
-                Vector3 originalPosition;
-                if (target)
-                {
-                    originalPosition = target.transform.position;
+                    base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
+                    EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, true);
                 }
-                else
-                {
-                    originalPosition = base.transform.position;
-                }
-                if (Physics.Raycast(originalPosition + Vector3.up * 2f, Vector3.down, out var raycastInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-                {
-                    dropPosition = raycastInfo.point;
-                }
-                else
-                {
-                    dropPosition = originalPosition;
-                }
-
-                base.characterMotor.Motor.SetPositionAndRotation(dropPosition + Vector3.up * 0.25f, Quaternion.identity);
                 Util.PlaySound("ER_Arraign_Leap_Incoming_Play", base.gameObject);
-                EffectManager.SimpleEffect(dropEffectPrefab, dropPosition, Quaternion.identity, false);
-
                 isTargetDropped = true;
             }
 

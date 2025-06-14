@@ -19,6 +19,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
+    // TODO: fix skins, relying on other fixes is for lamers
     public static class SetupJudgementPath
     {
         public static GameObject PileOfDirt;
@@ -27,9 +28,13 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject JudgementInteractable;
 
-        public static MasterCatalog.MasterIndex ArraignP1Index;
+        public static MasterCatalog.MasterIndex ArraignP1MasterIndex;
 
-        public static MasterCatalog.MasterIndex ArraignP2Index;
+        public static MasterCatalog.MasterIndex ArraignP2MasterIndex;
+
+        public static BodyIndex ArraignP1BodyIndex;
+
+        public static BodyIndex ArraignP2BodyIndex;
 
         public static Sprite AnointedSkinIcon;
 
@@ -49,11 +54,14 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
-        [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
+        [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
         private static void Init()
         {
-            ArraignP1Index = MasterCatalog.FindMasterIndex("ArraignP1Master");
-            ArraignP2Index = MasterCatalog.FindMasterIndex("ArraignP2Master");
+            ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
+            ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
+
+            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
+            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
         }
 
         public static bool AddBodyToBlacklist(string bodyName)
@@ -195,7 +203,7 @@ namespace EnemiesReturns.Enemies.Judgement
             bool flag = false;
             foreach (CharacterMaster readOnlyMembers in combatSquad.readOnlyMembersList)
             {
-                if (readOnlyMembers.masterIndex == ArraignP1Index)
+                if (readOnlyMembers.masterIndex == ArraignP1MasterIndex)
                 {
                     flag = true;
                     break;

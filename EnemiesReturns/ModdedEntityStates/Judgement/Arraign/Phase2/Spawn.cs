@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             base.OnEnter();
             if (NetworkServer.active)
             {
-                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 10f);
+                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 20f);
             }
         }
 

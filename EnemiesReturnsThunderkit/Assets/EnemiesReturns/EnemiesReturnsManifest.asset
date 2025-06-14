@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
   - {fileID: 2116132493492715590}
+  - {fileID: 7208265621153013141}
   - {fileID: 967753866725357355}
   identity: {fileID: 2116132493492715590}
   QuickAccess: 0
@@ -56,3 +57,19 @@ MonoBehaviour:
   Description: I hecking love Thunderkit
   Version: 0.6.9
   Dependencies: []
+--- !u!114 &7208265621153013141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7e13dda513544419a89926bd12ad8a, type: 3}
+  m_Name: AssemblyDefinitions
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <LOP_BuildPathAssets>
+  definitions:
+  - {fileID: 5897886265953266890, guid: 5d12a314990967541bd33e4f5dfdec38, type: 3}

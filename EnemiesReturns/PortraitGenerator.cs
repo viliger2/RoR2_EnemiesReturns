@@ -53,6 +53,8 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
+            yield return GeneratePortrait(modelPanel, BodyCatalog.GetBodyPrefab(Enemies.Judgement.SetupJudgementPath.ArraignP1BodyIndex));
+            yield return GeneratePortrait(modelPanel, BodyCatalog.GetBodyPrefab(Enemies.Judgement.SetupJudgementPath.ArraignP2BodyIndex));
             yield return GeneratePortrait(modelPanel, SpitterBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, ColossusBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, IfritBody.BodyPrefab);

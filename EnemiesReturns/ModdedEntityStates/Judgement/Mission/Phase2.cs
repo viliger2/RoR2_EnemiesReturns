@@ -19,9 +19,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float enableDirectorDelay = 9f;
 
+        public static float healthBarDelay = 1f;
+
         public static GameObject speechControllerPrefab;
 
         private ScriptedCombatEncounter combatEncounter;
+
+        private BossGroup phaseBossGroup;
 
         private ChildLocator childLocator;
 
@@ -30,6 +34,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private bool hasSpawned;
 
         private CombatSquad combatSquad;
+
+        private Run.FixedTimeStamp healthBarShowTime = Run.FixedTimeStamp.positiveInfinity;
 
         public override void OnEnter()
         {
@@ -41,10 +47,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 phaseControllerObject = childLocator.FindChild(phaseControllerChildString).gameObject;
                 if (phaseControllerObject)
                 {
-                    phaseControllerObject.SetActive(true);
-                    combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
+                    var phaseObjects = phaseControllerObject.transform.Find("PhaseObjects");
+                    phaseObjects.gameObject.SetActive(true);
 
-                    var musicOverrideObject = phaseControllerObject.transform.Find("MusicOverride");
+                    combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
+                    phaseBossGroup = phaseControllerObject.GetComponent<BossGroup>();
+
+                    var musicOverrideObject = phaseObjects.Find("MusicOverride");
                     if (musicOverrideObject)
                     {
                         var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
@@ -62,6 +71,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
                 }
             }
+            healthBarShowTime = Run.FixedTimeStamp.now + healthBarDelay;
             ClearCorpses();
         }
 
@@ -83,7 +93,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     BeginEncounter();
                 }
             }
-            if(NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
+            phaseBossGroup.shouldDisplayHealthBarOnHud = healthBarShowTime.hasPassed;
+
+            if (NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
                 outer.SetNextState(new Phase3());
             }

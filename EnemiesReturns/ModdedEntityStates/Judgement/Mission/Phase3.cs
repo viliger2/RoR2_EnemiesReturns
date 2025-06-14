@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     [RegisterEntityState]
     public class Phase3 : BaseState
     {
-        public static float spawnDelay = 3f;
+        public static float spawnDelay = 0f;
 
         public static string phaseControllerChildString = "Phase3";
 
@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float hauntSpawnDelay = 30f;
 
-        public static float healthBarDelay = 14f;
+        public static float healthBarDelay = 15f;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -52,21 +52,30 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 phaseControllerObject = childLocator.FindChild(phaseControllerChildString).gameObject;
                 if (phaseControllerObject)
                 {
-                    phaseControllerObject.SetActive(true);
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
                     phaseBossGroup = phaseControllerObject.GetComponent<BossGroup>();
-                }
-                if (Configuration.Judgement.EnableCustomPhase3Music.Value)
-                {
-                    var musicOverrideObject = phaseControllerObject.transform.Find("MusicOverride");
+
+                    var phaseObjects = phaseControllerObject.transform.Find("PhaseObjects");
+                    phaseObjects.gameObject.SetActive(true);
+
+                    var musicOverrideObject = phaseObjects.Find("MusicOverride");
                     if (musicOverrideObject)
                     {
                         var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
-                        musicOverride.track = Content.MusicTracks.TheOrigin;
+                        if (Configuration.General.EnableCustomPhase3Music.Value) // TODO: replace with Judgement config
+                        {
+                            musicOverride.track = Content.MusicTracks.TheOrigin;
+                        }
+                        else
+                        {
+                            musicOverride.track = Content.MusicTracks.UnknownBoss;
+                        }
 
                         musicOverrideObject.gameObject.SetActive(true);
                     }
+
                 }
+
             }
             if (phaseControllerObject)
             {
@@ -100,12 +109,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 }
             }
 
-            if (!hasArraignSpawned)
+            if (!hasArraignSpawned && fixedAge > spawnDelay)
             {
-                if(fixedAge > spawnDelay)
-                {
-                    BeginEncounter();
-                }
+                BeginEncounter();
             }
             phaseBossGroup.shouldDisplayHealthBarOnHud = healthBarShowTime.hasPassed;
 
@@ -122,7 +128,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             {
                 combatEncounter.BeginEncounter();
             }
-
         }
 
         public override void OnExit()

@@ -12,6 +12,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 {
+    // TODO: objectives are broken on clients
     public class JudgementMissionController : NetworkBehaviour
     {
         [Serializable]
