@@ -1447,7 +1447,7 @@
 														<Action Name="" ID="{11B66423-A598-45EF-A4B9-89EC054837F7}" ShortID="376993187">
 															<ReferenceList>
 																<Reference Name="Target">
-																	<ObjectRef Name="Arraign_WeaponThrow" ID="{EB329889-0787-4616-808E-43924FD2C930}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																	<ObjectRef Name="Arraign_SwordThrow_Throw" ID="{EB329889-0787-4616-808E-43924FD2C930}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 																</Reference>
 															</ReferenceList>
 														</Action>
@@ -1478,12 +1478,48 @@
 														</Action>
 													</ChildrenList>
 												</Event>
-												<Event Name="ER_Araign_SwordThrow_Charge_Play" ID="{4970A8F1-C248-49C7-942F-728FFD211CDE}">
+												<Event Name="ER_Arraign_SwordThrow_Charge_Play" ID="{4970A8F1-C248-49C7-942F-728FFD211CDE}">
 													<ChildrenList>
 														<Action Name="" ID="{8F5B220E-78D8-42A0-8040-2BDCB4738811}" ShortID="531521652">
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="Arraign_SwordThrow_Charge" ID="{6646B047-E366-45D1-82E0-EA2B1425B018}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_SpearThrow_Charge_Play" ID="{A39AAB34-1557-416C-A383-BB153DF13A02}">
+													<ChildrenList>
+														<Action Name="" ID="{A0A7B7B1-8B0C-40A0-B681-AB93FD4D4B1F}" ShortID="482151481">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SpearThrow_Charge" ID="{CBFA48F8-8323-4160-97BB-D9B148C2229A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_SpearThrowProjectileLoop_Play" ID="{7EA200A1-BF5E-49FE-8569-229B678F0191}">
+													<ChildrenList>
+														<Action Name="" ID="{ADFE02FC-252C-4820-A3A9-5FEA5C8FACF3}" ShortID="307929785">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SpearThrow_Loop" ID="{0B8EF361-1DC5-49FE-8E67-5454A15E33B1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Arraign_SpearThrowProjectileLoop_Stop" ID="{4559BD63-0EEF-4F1A-BA3E-FCC9E17BA5D6}">
+													<ChildrenList>
+														<Action Name="" ID="{A1D5EA65-9898-4670-9998-5ACF5BF21902}" ShortID="117275305">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Arraign_SpearThrow_Loop" ID="{0B8EF361-1DC5-49FE-8E67-5454A15E33B1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 																</Reference>
 															</ReferenceList>
 														</Action>
@@ -1517,6 +1553,57 @@
 												</Event>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="SkyLaser" ID="{C0C9A70D-C7EF-47AD-BF3C-4DDB4A96B056}" ShortID="117644090">
+											<ChildrenList>
+												<Event Name="ER_SkyLaser_Alive_Loop_Play" ID="{39E11C12-B7C4-4639-BBDE-24CA40C1B499}">
+													<ChildrenList>
+														<Action Name="" ID="{988964FA-8E94-4378-94C2-A524CF739F5B}" ShortID="347073283">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SkyLaser_Alive_Loop" ID="{066859F9-58AB-4D03-9E39-3D872CDB7992}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SkyLaser_Alive_Loop_Stop" ID="{1498877C-27E3-4761-A4D8-BE190888CCF0}">
+													<ChildrenList>
+														<Action Name="" ID="{B4CBA859-E557-4B41-89D6-1681E0BC85D4}" ShortID="478420472">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SkyLaser_Alive_Loop" ID="{066859F9-58AB-4D03-9E39-3D872CDB7992}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SkyLaser_Death_Play" ID="{CD31CD56-9B55-4A72-9CCD-A890A2FD4F14}">
+													<ChildrenList>
+														<Action Name="" ID="{EEB31969-18FF-4E52-A5CE-DDD34EDFB9C5}" ShortID="997270636">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SkyLaser_Death" ID="{E84B36E7-9357-4FF8-98B4-C5D28A8C39AE}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Event Name="ER_Arraign_ClockAttack_Play" ID="{79E0A765-AFE3-46D6-96D0-BA67CBA86985}">
+											<ChildrenList>
+												<Action Name="" ID="{DA80D388-8893-4A09-BC47-67FE08C30364}" ShortID="171790028">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="ClockAttack_Spawn" ID="{EE19794D-1A32-48BF-98E0-A2ACE633C088}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

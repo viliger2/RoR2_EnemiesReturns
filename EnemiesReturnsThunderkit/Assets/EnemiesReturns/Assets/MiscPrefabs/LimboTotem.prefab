@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 9188802982386950303}
   - component: {fileID: 7299914821996539659}
   - component: {fileID: 1170753931035298243}
+  - component: {fileID: 6139352513652252486}
+  - component: {fileID: 4530803197581948197}
   m_Layer: 11
   m_Name: BazaarUpgradeMesh
   m_TagString: Untagged
@@ -99,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addressableMaterialPath: RoR2/Base/limbo/matLimboTotem.mat
   isParticle: 0
+  isTrailParticle: 0
   renderer: {fileID: 9188802982386950303}
 --- !u!64 &1170753931035298243
 MeshCollider:
@@ -114,6 +117,32 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: -1
   m_Mesh: {fileID: 4300000, guid: 680c09e4571d8964ba7c3a6649bcfe1e, type: 2}
+--- !u!114 &6139352513652252486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346606685481496549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &4530803197581948197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346606685481496549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdStone.asset
 --- !u!1 &1882352134323168194
 GameObject:
   m_ObjectHideFlags: 0

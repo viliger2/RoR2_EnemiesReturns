@@ -70,7 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
                 EffectManager.SpawnEffect(footstepEffect, footREffectData, false); 
                 
-                Util.PlaySound("Play_moonBrother_phaseJump_jumpAway", base.gameObject); // TODO: replace
+                Util.PlaySound("Play_moonBrother_phaseJump_jumpAway", base.gameObject);
                 effectsSpawned = true;
             }
         }

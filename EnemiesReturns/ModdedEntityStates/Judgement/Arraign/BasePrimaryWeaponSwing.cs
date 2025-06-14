@@ -13,11 +13,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public abstract class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
+        public abstract GameObject hitEffect { get; }
+
         public abstract string swingSoundEffect { get; }
 
-        public static GameObject swingEffect;
-
-        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
+        public static GameObject swingEffect; 
 
         public int swingCount;
 

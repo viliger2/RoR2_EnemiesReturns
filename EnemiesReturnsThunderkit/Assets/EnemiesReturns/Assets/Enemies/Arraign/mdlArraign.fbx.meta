@@ -1426,69 +1426,6 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature|Spawn
-      takeName: Armature|Armature|Spawn
-      internalID: 3635353754670294297
-      firstFrame: 0
-      lastFrame: 106
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves:
-      - name: spawn.swordEffect
-        curve:
-          serializedVersion: 2
-          curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.42168164
-            value: 1
-            inSlope: Infinity
-            outSlope: Infinity
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          preInfinity: 3
-          postInfinity: 3
-          rotationOrder: 4
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Armature|Armature|SwordFlipAir
       takeName: Armature|Armature|SwordFlipAir
       internalID: 363885929943428449
@@ -2885,7 +2822,21 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.39640385
+        functionName: PlaySound
+        data: ER_Arraign_Remove_Sword_Play
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.39760724
+        functionName: CreateEffect
+        data: SwordEffectSpawn
+        objectReferenceParameter: {fileID: 1560302593562286, guid: 85ae69a2d8064d44085db4ceba2893b3, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -3876,6 +3827,13 @@ ModelImporter:
         functionName: CreateEffect
         data: Chest
         objectReferenceParameter: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.730465
+        functionName: CreateEffect
+        data: MuzzleFloor
+        objectReferenceParameter: {fileID: 1560302593562286, guid: 85ae69a2d8064d44085db4ceba2893b3, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

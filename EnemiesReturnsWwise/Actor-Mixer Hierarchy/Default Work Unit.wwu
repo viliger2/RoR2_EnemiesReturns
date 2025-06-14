@@ -4194,7 +4194,6 @@
 														<RandomSequenceContainer Name="Arraign_LeftRightSwingP1" ID="{BE408E86-8F8B-4BB9-8B4D-637904081773}" ShortID="368841904">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
-																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Pitch" Type="int32">
 																	<ModifierList>
 																		<ModifierInfo>
@@ -4297,6 +4296,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 																</Reference>
@@ -4389,6 +4391,9 @@
 																</Property>
 															</PropertyList>
 															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
 																<Reference Name="Conversion">
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 																</Reference>
@@ -4468,7 +4473,6 @@
 														<RandomSequenceContainer Name="Arraign_LeftRightSwingP2" ID="{8ECBA183-6D23-4553-925E-DCF6514E060B}" ShortID="484738138">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
-																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
 																		<Value>-2</Value>
@@ -4821,7 +4825,7 @@
 																<ActiveSource Name="sword_charge" ID="{E1BA483C-3439-4B28-BDD8-71A30FC2047B}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
-														<Sound Name="Arraign_WeaponThrow" ID="{EB329889-0787-4616-808E-43924FD2C930}" ShortID="899429053">
+														<Sound Name="Arraign_SwordThrow_Throw" ID="{EB329889-0787-4616-808E-43924FD2C930}" ShortID="899429053">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
 																<Property Name="Volume" Type="Real64">
@@ -4902,6 +4906,65 @@
 																<ActiveSource Name="sword_projectile_loop" ID="{9D3EE084-F1F3-44FD-A6CE-A366067D9D78}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
+														<Sound Name="Arraign_SpearThrow_Charge" ID="{CBFA48F8-8323-4160-97BB-D9B148C2229A}" ShortID="192131665">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="spear_charge" ID="{0B33E5D5-B34A-426C-BFC9-47EBBE127E97}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\WeaponThrow\spear_charge.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="756705487"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="spear_charge" ID="{0B33E5D5-B34A-426C-BFC9-47EBBE127E97}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Arraign_SpearThrow_Loop" ID="{0B8EF361-1DC5-49FE-8E67-5454A15E33B1}" ShortID="1010564075">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="spear_loop" ID="{2F3F3CE7-88F8-4AD1-82B7-261BD80DE637}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\WeaponThrow\spear_loop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="3844319"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="spear_loop" ID="{2F3F3CE7-88F8-4AD1-82B7-261BD80DE637}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
 													</ChildrenList>
 												</Folder>
 												<Folder Name="SkyLeap" ID="{D4636C09-3786-4E53-8729-37E51D0D166F}" ShortID="569933814">
@@ -4970,6 +5033,103 @@
 														</Sound>
 													</ChildrenList>
 												</Folder>
+												<Folder Name="SkyLaser" ID="{37AF44F9-DB5A-4675-BE96-E9D7C5743130}" ShortID="360585275">
+													<ChildrenList>
+														<Sound Name="SkyLaser_Alive_Loop" ID="{066859F9-58AB-4D03-9E39-3D872CDB7992}" ShortID="100192637">
+															<PropertyList>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="alive_loop" ID="{70C4858B-355D-413D-B520-7207A41CD4E8}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\SkyLaser\alive_loop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="365420939"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="alive_loop" ID="{70C4858B-355D-413D-B520-7207A41CD4E8}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SkyLaser_Death" ID="{E84B36E7-9357-4FF8-98B4-C5D28A8C39AE}" ShortID="108968853">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="death" ID="{7C164ADD-8C2E-4B47-B51F-85727E6BA7FB}">
+																	<Language>SFX</Language>
+																	<AudioFile>Judgement\Arraign\SkyLaser\death.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="259684146"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="death" ID="{7C164ADD-8C2E-4B47-B51F-85727E6BA7FB}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Sound Name="ClockAttack_Spawn" ID="{EE19794D-1A32-48BF-98E0-A2ACE633C088}" ShortID="907470613">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="LongerThanNormal" ID="{4F242143-B2BC-48DF-8250-AE7C902E9B46}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="clock_attack_spawn" ID="{DD4C3093-28F7-4381-9DA3-491EAF789ACA}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\clock_attack_spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="204662139"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="clock_attack_spawn" ID="{DD4C3093-28F7-4381-9DA3-491EAF789ACA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 									</ChildrenList>

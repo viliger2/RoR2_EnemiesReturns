@@ -32,8 +32,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public override string childOrigin => "HandR";
 
-        public override string throwSound => "Play_moonBrother_swing_horizontal"; // TODO: replace
+        public override string throwSound => ""; // TODO: replace
 
-        public override string chargeSound => throw new NotImplementedException();
+        public override string chargeSound => "ER_Arraign_SpearThrow_Charge_Play";
     }
 }

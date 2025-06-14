@@ -87,7 +87,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 {
                     FireProjectile();
                 }
-                Util.PlaySound(throwSound, base.gameObject);
+                if (!string.IsNullOrEmpty(throwSound))
+                {
+                    Util.PlaySound(throwSound, base.gameObject);
+                }
                 hasAttacked = true;
             }
 

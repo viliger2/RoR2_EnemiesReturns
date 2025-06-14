@@ -156,8 +156,8 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.projectilePrefab = assets.First(asset => asset.name == "ArraignPreClockAttackProjectile");
 
-                    ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSwordProjectile");
-                    ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = assets.First(asset => asset.name == "ArraignSpearProjectile");
+                    ModdedEntityStates.Judgement.Arraign.Phase1.WeaponThrow.staticProjectilePrefab = arraignStuff.SetupSwordProjectile(assets.First(asset => asset.name == "ArraignSwordProjectile"));
+                    ModdedEntityStates.Judgement.Arraign.Phase2.SpearThrow.staticProjectilePrefab = arraignStuff.SetupSpearProjectile(assets.First(asset => asset.name == "ArraignSpearProjectile"));
 
                     ModdedEntityStates.Judgement.Arraign.Phase2.ClockAttack.effectPrefab = assets.First(asset => asset.name == "ClockZoneEffect");
 

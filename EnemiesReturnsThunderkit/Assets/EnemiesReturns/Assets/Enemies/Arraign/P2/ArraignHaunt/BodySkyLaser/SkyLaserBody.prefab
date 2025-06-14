@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: 
+  deathSound: ER_SkyLaser_Death_Play
   barkSound: 
   openSound: 
   landingSound: 

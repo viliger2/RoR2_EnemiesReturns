@@ -28,6 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
         {
             base.OnEnter();
             overlapAttack = SetupOverlapAttack(GetModelTransform());
+            Util.PlaySound("ER_SkyLaser_Alive_Loop_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -61,6 +62,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
             overlapAttack.retriggerTimeout = 0.25f;
 
             return overlapAttack;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            Util.PlaySound("ER_SkyLaser_Alive_Loop_Stop", base.gameObject);
         }
     }
 }

@@ -34,6 +34,26 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             return projectilePrefab;
         }
 
+        public GameObject SetupSwordProjectile(GameObject prefab)
+        {
+            var mercOmnislash = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
+
+            var pieSword = prefab.GetComponent<ProjectileImpactExplosion>();
+            pieSword.impactEffect = mercOmnislash;
+
+            var childProjectile = pieSword.childrenProjectilePrefab;
+            childProjectile.GetComponent<ProjectileDotZone>().impactEffect = mercOmnislash;
+
+            return prefab;
+        }
+
+        public GameObject SetupSpearProjectile(GameObject prefab)
+        {
+            prefab.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Lightning.LightningStrikeImpact_prefab).WaitForCompletion();
+
+            return prefab;
+        }
+
         public GameObject SetupWaveProjectile(GameObject prefab)
         {
             var projectileController = prefab.GetComponent<ProjectileController>();
