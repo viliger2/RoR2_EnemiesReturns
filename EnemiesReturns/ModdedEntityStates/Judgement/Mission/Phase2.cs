@@ -43,6 +43,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 {
                     phaseControllerObject.SetActive(true);
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
+
+                    var musicOverrideObject = phaseControllerObject.transform.Find("MusicOverride");
+                    if (musicOverrideObject)
+                    {
+                        var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
+                        musicOverride.track = Content.MusicTracks.UnknownBoss;
+
+                        musicOverrideObject.gameObject.SetActive(true);
+                    }
                 }
             }
             if (phaseControllerObject)

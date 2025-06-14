@@ -13,6 +13,10 @@ namespace EnemiesReturns.Behaviors.Judgement
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 += PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
+            if (MusicController.Instance)
+            {
+                AkSoundEngine.PostEvent("ER_Play_Music_System", MusicController.Instance.gameObject);
+            }
         }
 
         private void PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3(On.RoR2.PickupDropletController.orig_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 orig, GenericPickupController.CreatePickupInfo pickupInfo, Vector3 position, Vector3 velocity)
@@ -43,6 +47,10 @@ namespace EnemiesReturns.Behaviors.Judgement
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate -= HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 -= PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
+            if (MusicController.Instance)
+            {
+                AkSoundEngine.PostEvent("ER_Stop_Music", MusicController.Instance.gameObject);
+            }
         }
 
     }

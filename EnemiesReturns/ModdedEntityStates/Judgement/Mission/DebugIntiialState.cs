@@ -27,7 +27,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     outer.SetNextState(new Phase1());
                     break;
                 case InitialState.Phase2:
-                    outer.SetNextState(new Phase2());
+                    outer.SetNextState(new PrePhase2());
                     break;
                 case InitialState.Phase3:
                     outer.SetNextState(new Phase3());

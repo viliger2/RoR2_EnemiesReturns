@@ -8,6 +8,18 @@ namespace EnemiesReturns
 {
     public static class Content
     {
+        public static class Stages
+        {
+            public static SceneDef OutOfTime;
+        }
+
+        public static class MusicTracks
+        {
+            public static MusicTrackDef Unknown;
+            public static MusicTrackDef UnknownBoss;
+            public static MusicTrackDef TheOrigin;
+        }
+
         public static class GameEndings
         {
             public static GameEndingDef SurviveJudgement;

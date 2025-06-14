@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2B774E06-CD67-4F05-B710-8CB35851C44D}" SchemaVersion="119">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{2B774E06-CD67-4F05-B710-8CB35851C44D}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2B774E06-CD67-4F05-B710-8CB35851C44D}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="OutOfTime_gameplaySondChoice" ID="{5A40865D-5FC8-40CF-B739-62E4AB40B22E}">
+					<ChildrenList>
+						<State Name="None" ID="{CCB08AF4-08EE-4B1F-9B0F-E3790F7427AF}"/>
+						<State Name="Arraign_mainTrack" ID="{E33CFE37-63FC-4906-8319-ED640366EA6D}"/>
+						<State Name="Arraign_bossTrackP1" ID="{4A9A06CD-E44B-4ADF-9A7B-AA5FAA92FF52}"/>
+						<State Name="Arraign_bossTrackP2" ID="{09AB4B7F-7FD2-4BB4-94D1-8B56EEEC5159}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="bossStatus" ID="{A8B72AD9-53C8-4D44-A30E-BDB67F0D9AF6}">
+					<ChildrenList>
+						<State Name="None" ID="{955AAD21-A442-4D6A-9BAD-A18D6CA078B4}"/>
+						<State Name="alive" ID="{B4A91FDA-4947-46C9-BB3D-C7E29E401F57}"/>
+						<State Name="dead" ID="{0CA1C2EC-E5ED-4C65-B968-99A826E4B2C3}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="Music_system" ID="{5E2384C7-7B00-4126-8ADD-BFE4C6C2AD77}">
+					<ChildrenList>
+						<State Name="None" ID="{D6861B91-3797-4DEF-A379-62423CA11428}"/>
+						<State Name="Bossfight" ID="{A5AB532D-DBCC-4304-A4E9-3988911E1026}"/>
+						<State Name="Gameplay" ID="{B6F2D671-864F-4C28-8338-37ED6B7C8911}"/>
+						<State Name="Menu" ID="{01D8E8C6-40A1-4A1B-B2DC-BC083E6059D1}"/>
+						<State Name="SecretLevel" ID="{A59E42BA-FE35-4923-AA2F-20B9B52BDF48}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

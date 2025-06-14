@@ -47,6 +47,8 @@ namespace EnemiesReturns
 
         public const string SoundbankFolder = "Soundbanks";
         public const string SoundsSoundBankFileName = "EnemiesReturnsSounds";
+        public const string MusicSoundBankFileName = "EnemiesReturnsMusic";
+        public const string InitSoundBankFileName = "EnemiesReturnsInit";
 
         private readonly List<GameObject> bodyList = new List<GameObject>();
         private readonly List<GameObject> masterList = new List<GameObject>();
@@ -320,29 +322,29 @@ namespace EnemiesReturns
                     $"Error code : {akResult}");
             }
 
-            //akResult = AkSoundEngine.LoadBank(InitSoundBankFileName, out var _);
-            //if (akResult == AKRESULT.AK_Success)
-            //{
-            //    Log.Info($"Added bank : {InitSoundBankFileName}");
-            //}
-            //else
-            //{
-            //    Log.Error(
-            //        $"Error loading bank : {InitSoundBankFileName} " +
-            //        $"Error code : {akResult}");
-            //}
+            akResult = AkSoundEngine.LoadBank(InitSoundBankFileName, out var _);
+            if (akResult == AKRESULT.AK_Success)
+            {
+                Log.Info($"Added bank : {InitSoundBankFileName}");
+            }
+            else
+            {
+                Log.Error(
+                    $"Error loading bank : {InitSoundBankFileName} " +
+                    $"Error code : {akResult}");
+            }
 
-            //akResult = AkSoundEngine.LoadBank(MusicSoundBankFileName, out var _);
-            //if (akResult == AKRESULT.AK_Success)
-            //{
-            //    Log.Info($"Added bank : {MusicSoundBankFileName}");
-            //}
-            //else
-            //{
-            //    Log.Error(
-            //        $"Error loading bank : {MusicSoundBankFileName} " +
-            //        $"Error code : {akResult}");
-            //}
+            akResult = AkSoundEngine.LoadBank(MusicSoundBankFileName, out var _);
+            if (akResult == AKRESULT.AK_Success)
+            {
+                Log.Info($"Added bank : {MusicSoundBankFileName}");
+            }
+            else
+            {
+                Log.Error(
+                    $"Error loading bank : {MusicSoundBankFileName} " +
+                    $"Error code : {akResult}");
+            }
 
             akResult = AkSoundEngine.LoadBank(SoundsSoundBankFileName, out var _);
             if (akResult == AKRESULT.AK_Success)

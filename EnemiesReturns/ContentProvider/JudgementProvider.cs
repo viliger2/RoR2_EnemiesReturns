@@ -87,6 +87,8 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
                 {
+                    Content.Stages.OutOfTime = assets.First(sd => sd.cachedName == "enemiesreturns_outoftime");
+
                     _contentPack.sceneDefs.Add(assets);
                 }));
 
@@ -272,7 +274,67 @@ namespace EnemiesReturns
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
                 Enemies.Judgement.SetupJudgementPath.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
+
+                CreateMusic(Content.Stages.OutOfTime);
             }
+        }
+
+        private static void CreateMusic(SceneDef scene)
+        {
+            var mainCustomTrack = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            mainCustomTrack.cachedName = "EnemiesReturns_OutOfTime_Unknown";
+            mainCustomTrack.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            mainCustomTrack.comment = "Unknown from Starstorm 1";
+
+            mainCustomTrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 3892723418U // Unknown
+            });
+            mainCustomTrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.Unknown = mainCustomTrack;
+            scene.mainTrack = Content.MusicTracks.Unknown;
+
+            var bossCustomtrack = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            bossCustomtrack.cachedName = "EnemiesReturns_OutOfTime_UnknownBoss";
+            bossCustomtrack.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            bossCustomtrack.comment = "UnknownBoss from Starstorm 1";
+
+            bossCustomtrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 3446177699U // UnknownBoss
+            });
+            bossCustomtrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.UnknownBoss = bossCustomtrack;
+
+            var bossCustomtrackP2 = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            bossCustomtrackP2.cachedName = "EnemiesReturns_OutOfTime_TheOrigin";
+            bossCustomtrackP2.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            bossCustomtrackP2.comment = "The Origin by Tristan Clark\\nFrom Eviternity 2\\nhttps://tristanclark.bandcamp.com/track/the-origin";
+
+            bossCustomtrackP2.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 3446177696U // The Origin
+            });
+            bossCustomtrackP2.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.TheOrigin = bossCustomtrackP2;
         }
 
         public static Material CreateImmuneToAllExceptHammerMaterial()

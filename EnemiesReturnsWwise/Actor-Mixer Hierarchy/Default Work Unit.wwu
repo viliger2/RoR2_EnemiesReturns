@@ -5130,6 +5130,35 @@
 														<ActiveSource Name="clock_attack_spawn" ID="{DD4C3093-28F7-4381-9DA3-491EAF789ACA}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Arraign_Remove_Sword" ID="{20CE749A-6476-47F9-9462-168C137D8B31}" ShortID="998277009">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-1</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_s00536_removing_sword_from_ground" ID="{B029E088-D1B1-4886-8431-008B7001A702}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\se_s00536_removing_sword_from_ground.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="611589564"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_s00536_removing_sword_from_ground" ID="{B029E088-D1B1-4886-8431-008B7001A702}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</Folder>
 									</ChildrenList>

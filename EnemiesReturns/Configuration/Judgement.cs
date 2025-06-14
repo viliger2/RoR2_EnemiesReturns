@@ -19,6 +19,8 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> MithrixHammerDamageCoefficient;
         public static ConfigEntry<float> MithrixHammerCooldown;
 
+        public static ConfigEntry<bool> EnableCustomPhase3Music;
+
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
@@ -31,6 +33,9 @@ namespace EnemiesReturns.Configuration
             MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites.");
             MithrixHammerDamageCoefficient = config.Bind("Mithrix Hammer", "Mithrix Hammer Damage Coefficient", 30f, "Mithrix Hammer damage coefficient off base damage.");
             MithrixHammerCooldown = config.Bind("Mithrix Hammer", "Mithrix Hammer Cooldown", 15f, "Mithrix Hammer cooldown.");
+
+            // TODO: SET TO FALSE
+            EnableCustomPhase3Music = config.Bind("Judgement", "Enable Custom Phase 3 Music", false, "Enables custom (as in not from Starstorm 1) music for Phase 3 (Phase 2 of boss fight)");
         }
     }
 }

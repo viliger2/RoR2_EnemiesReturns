@@ -39,12 +39,13 @@ namespace EnemiesReturns
     [BepInDependency(R2API.TempVisualEffectAPI.PluginGUID)]
     [BepInDependency(R2API.OrbAPI.PluginGUID)]
     [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
+    [BepInDependency(R2API.SoundAPI.PluginGUID)]
     [BepInDependency("JaceDaDorito.LocationsOfPrecipitation")]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.5.12";
+        public const string Version = "0.5.13";
         public const string GUID = "com." + Author + "." + ModName;
 
         private void Awake()
@@ -112,9 +113,16 @@ namespace EnemiesReturns
             LynxFetishFactory.Hooks();
             IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
+            On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
 
             Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();
+        }
+
+        private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)
+        {
+            orig(self);
+            AkSoundEngine.PostEvent("ER_Play_Music_System", self.gameObject);
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)

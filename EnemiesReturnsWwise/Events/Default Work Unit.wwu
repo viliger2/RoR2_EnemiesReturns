@@ -1604,10 +1604,78 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Event Name="ER_Arraign_Remove_Sword_Play" ID="{15B5DEFB-DD6F-4A0C-B3D9-802FBB86142D}">
+											<ChildrenList>
+												<Action Name="" ID="{4EF38497-FE8F-473D-8EA5-28B7F50B5A27}" ShortID="683789195">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Arraign_Remove_Sword" ID="{20CE749A-6476-47F9-9462-168C137D8B31}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
 						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music" ID="{5D67AA33-F278-4D5A-BFF4-F9D9E4988DB5}" ShortID="404742623">
+					<ChildrenList>
+						<Event Name="ER_Pause_Music" ID="{CB4C1030-F035-414D-A6FE-FCE6E96368A6}">
+							<ChildrenList>
+								<Action Name="" ID="{BC14F5F9-A3F9-43FB-90E2-67A4DC912A21}" ShortID="453521218">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="EnemiesReturns_Music_System" ID="{ADED9DBF-3738-4CDD-AC02-2309081657DA}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ER_Play_Music_System" ID="{1FA7302D-01B3-4C9F-9551-07F0356ACAAF}">
+							<ChildrenList>
+								<Action Name="" ID="{3DDED281-C001-4324-9BA0-7AAEC5874A16}" ShortID="963476283">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="EnemiesReturns_Music_System" ID="{ADED9DBF-3738-4CDD-AC02-2309081657DA}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ER_Unpause_Music" ID="{409E5D9E-AB61-4E45-AAA4-1AECE3D71A83}">
+							<ChildrenList>
+								<Action Name="" ID="{66329CB2-6FDA-4DE4-B4A7-05CC0A74CC94}" ShortID="11676501">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="EnemiesReturns_Music_System" ID="{ADED9DBF-3738-4CDD-AC02-2309081657DA}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="ER_Stop_Music" ID="{8CEF9B41-81C4-440F-8118-D6E6BF08721B}">
+							<ChildrenList>
+								<Action Name="" ID="{B5881912-DD10-49E9-B0AC-284B4C5F72E0}" ShortID="683481019">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="EnemiesReturns_Music_System" ID="{ADED9DBF-3738-4CDD-AC02-2309081657DA}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float hauntSpawnDelay = 30f;
 
-        public static float healthBarDelay = 15f;
+        public static float healthBarDelay = 14f;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -55,6 +55,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     phaseControllerObject.SetActive(true);
                     combatEncounter = phaseControllerObject.GetComponent<ScriptedCombatEncounter>();
                     phaseBossGroup = phaseControllerObject.GetComponent<BossGroup>();
+                }
+                if (Configuration.Judgement.EnableCustomPhase3Music.Value)
+                {
+                    var musicOverrideObject = phaseControllerObject.transform.Find("MusicOverride");
+                    if (musicOverrideObject)
+                    {
+                        var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
+                        musicOverride.track = Content.MusicTracks.TheOrigin;
+
+                        musicOverrideObject.gameObject.SetActive(true);
+                    }
                 }
             }
             if (phaseControllerObject)

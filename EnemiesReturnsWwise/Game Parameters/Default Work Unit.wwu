@@ -5,6 +5,13 @@
 			<ChildrenList>
 				<GameParameter Name="Volume_SFX" ID="{87B00483-D07B-46A4-ACC8-C35846E0105C}"/>
 				<GameParameter Name="ER_Ifrit_Pillar_Fire_Volume" ID="{801E9AE7-80B7-4EA3-9707-8F6B8B7D8B06}"/>
+				<GameParameter Name="Volume_MSX" ID="{5F189423-E96D-49A8-82AC-6530EF715EB2}"/>
+				<GameParameter Name="Volume_Master" ID="{95F27447-3579-4ECC-B8AD-7DBECBF5D856}"/>
+				<GameParameter Name="playerHealth" ID="{EAAB8106-E069-4FE7-9879-E4107CF4256C}">
+					<PropertyList>
+						<Property Name="RTPCRamping" Type="int16" Value="1"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

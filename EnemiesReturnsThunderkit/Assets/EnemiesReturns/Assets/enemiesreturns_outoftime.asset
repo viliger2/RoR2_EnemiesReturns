@@ -24,12 +24,24 @@ MonoBehaviour:
   nameToken: ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME
   subtitleToken: ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE
   previewTexture: {fileID: 0}
+  previewTextureReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   portalMaterial: {fileID: 0}
+  portalMaterialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   portalSelectionMessageString: 
   shouldIncludeInLogbook: 0
   loreToken: 
   dioramaPrefab: {fileID: 0}
-  mainTrack: {fileID: 0}
+  dioramaPrefabAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  mainTrack: {fileID: 11400000, guid: c546437909f4c0043910cb6cadec7350, type: 2}
   bossTrack: {fileID: 0}
   environmentColor: {r: 0.6862745, g: 0.9058824, b: 1, a: 1}
   hasSafeStart: 0
@@ -38,6 +50,7 @@ MonoBehaviour:
   blockOrbitalSkills: 0
   validForRandomSelection: 0
   allowItemsToSpawnObjects: 0
+  preventStageAdvanceCounter: 0
   needSkipDevotionRespawn: 0
   destinationsGroup: {fileID: 0}
   loopedDestinationsGroup: {fileID: 0}
@@ -46,3 +59,7 @@ MonoBehaviour:
   loopedSceneDef: {fileID: 0}
   destinations: []
   preferredPortalPrefab: {fileID: 0}
+  portalPrefabAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
