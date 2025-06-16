@@ -140,8 +140,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 329618885089715151, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: deathState._typeName
-      value: EntityStates.GenericCharacterDeath, RoR2, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      value: EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.DeathState,
+        EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     - target: {fileID: 329618885089715151, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: idleStateMachine.Array.size
@@ -218,6 +218,10 @@ PrefabInstance:
     - target: {fileID: 905340187912927363, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6.208538
+      objectReference: {fileID: 0}
+    - target: {fileID: 936655539752334188, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: segments
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1140394812794729544, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1385,7 +1389,7 @@ PrefabInstance:
       value: 30.336071
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 936655539752334188, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+    - {fileID: 4418322593500643424, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
 --- !u!114 &1895310432609537537 stripped
 MonoBehaviour:

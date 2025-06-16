@@ -86,7 +86,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
-                DirectorAPI.MixEnemiesDccsActions += DirectorAPI_MixEnemiesDccsActions;
+                DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
                 if (Configuration.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
@@ -174,7 +174,18 @@ namespace EnemiesReturns.Enemies.Judgement
 
             if (itemFound)
             {
-                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, new Vector3(-88.4849f, 491.488f, -0.3325f), Quaternion.identity);
+                var position = new Vector3(-88.4849f, 491.488f, -0.3325f);
+                ChildLocator component = SceneInfo.instance.GetComponent<ChildLocator>();
+                if ((bool)component)
+                {
+                    Transform transform = component.FindChild("CenterOfArena");
+                    if ((bool)transform)
+                    {
+                        position = transform.position;
+                    }
+                }
+
+                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, position, Quaternion.identity);
                 NetworkServer.Spawn(newTeleporter);
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage
                 {
@@ -183,7 +194,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
-        private static void DirectorAPI_MixEnemiesDccsActions(DirectorCardCategorySelection mixEnemiesDccs)
+        private static void GrabSpawnCardsForJudgement(DirectorCardCategorySelection mixEnemiesDccs)
         {
             foreach(var category in mixEnemiesDccs.categories)
             {
@@ -719,11 +730,11 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            if (SceneInfo.instance.sceneDef.baseSceneName == "arena"
+            if (SceneInfo.instance.sceneDef.baseSceneName == "mysteryspace"
                 && PileOfDirt)
             {
                 var newPile = UnityEngine.Object.Instantiate(PileOfDirt);
-                newPile.transform.position = new Vector3(113.1104f, 37.679f, 272.3562f);
+                newPile.transform.position = new Vector3(44.72055f, -55.80222f, 0.2936229f);
                 newPile.transform.rotation = Quaternion.Euler(39.434f, 355.6797f, 13.5983f);
                 NetworkServer.Spawn(newPile);
             }
@@ -756,6 +767,7 @@ namespace EnemiesReturns.Enemies.Judgement
             var dropEquipment = mithrixHurtBody.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.LunarFlower;
             dropEquipment.equipmentToDrop = Content.Equipment.MithrixHammer;
+            dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_HAMMER_DROP";
         }
 
         public static GameObject CloneOptionPickerPanel()

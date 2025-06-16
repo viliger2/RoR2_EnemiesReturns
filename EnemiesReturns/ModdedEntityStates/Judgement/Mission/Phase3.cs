@@ -117,7 +117,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
             if (NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
-                outer.SetNextState(new Ending());
+                outer.SetNextState(new PreEnding());
             }
         }
 
@@ -133,10 +133,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void OnExit()
         {
             base.OnExit();
-            if (phaseControllerObject)
-            {
-                phaseControllerObject.SetActive(false);
-            }
+            //if (phaseControllerObject)
+            //{
+            //    phaseControllerObject.SetActive(false);
+            //}
             if (combatSquad)
             {
                 combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;

@@ -61,11 +61,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
                 }
                 if (base.fixedAge >= duration)
                 {
-                    outer.SetNextStateToMain();
+                    SetNextState();
                 }
             }
         }
 
+        public virtual void SetNextState()
+        {
+            outer.SetNextStateToMain();
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {

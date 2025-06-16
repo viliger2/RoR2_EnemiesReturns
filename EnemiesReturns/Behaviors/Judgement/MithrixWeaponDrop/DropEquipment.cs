@@ -13,6 +13,8 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
 
         public ItemDef itemToCheck;
 
+        public string dropChatToken;
+
         private CharacterMaster master;
 
         private void OnEnable()
@@ -36,6 +38,11 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
+            if (!master.IsDeadAndOutOfLivesServer())
+            {
+                return;
+            }
+
             var bodyObject = master.GetBodyObject();
             if (!bodyObject)
             {
@@ -43,41 +50,48 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
             }
 
             bool itemFound = false;
-            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            if (!itemToCheck)
             {
-                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                {
-                    continue;
-                }
-
-                if (!playerCharacterMaster.master.inventory)
-                {
-                    return;
-                }
-
-                if(playerCharacterMaster.master.inventory.GetItemCount(itemToCheck) > 0)
-                {
-                    itemFound = true;
-                    break;
-                }
+                itemFound = true;
             }
-
-            if (!itemFound)
+            else
             {
-                var returner = bodyObject.GetComponent<ReturnStolenItemsOnGettingHit>();
-                if (returner)
+                foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
                 {
-                    var itemStealController = returner.itemStealController;
-                    if (itemStealController)
+                    if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
                     {
-                        foreach (var stolenInfo in itemStealController.stolenInventoryInfos)
+                        continue;
+                    }
+
+                    if (!playerCharacterMaster.master.inventory)
+                    {
+                        return;
+                    }
+
+                    if (playerCharacterMaster.master.inventory.GetItemCount(itemToCheck) > 0)
+                    {
+                        itemFound = true;
+                        break;
+                    }
+                }
+
+                if (!itemFound)
+                {
+                    var returner = bodyObject.GetComponent<ReturnStolenItemsOnGettingHit>();
+                    if (returner)
+                    {
+                        var itemStealController = returner.itemStealController;
+                        if (itemStealController)
                         {
-                            if (stolenInfo != null && stolenInfo.lentItemStacks != null
-                                && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex
-                                && stolenInfo.lentItemStacks[(int)Content.Items.LunarFlower.itemIndex] > 0)
+                            foreach (var stolenInfo in itemStealController.stolenInventoryInfos)
                             {
-                                itemFound = true;
-                                break;
+                                if (stolenInfo != null && stolenInfo.lentItemStacks != null
+                                    && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex
+                                    && stolenInfo.lentItemStacks[(int)Content.Items.LunarFlower.itemIndex] > 0)
+                                {
+                                    itemFound = true;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -88,6 +102,14 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
             {
                 var vector = Vector3.up * 20f + transform.forward * 2f;
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, vector);
+            }
+
+            if (!string.IsNullOrEmpty(dropChatToken))
+            {
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+                {
+                    baseToken = dropChatToken
+                });
             }
         }
 

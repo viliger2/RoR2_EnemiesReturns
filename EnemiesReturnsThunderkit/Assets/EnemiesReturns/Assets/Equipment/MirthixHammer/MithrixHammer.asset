@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: MithrixHammer
   m_EditorClassIdentifier: 
   pickupModelPrefab: {fileID: 9154845379044182652, guid: 07abbd0ce4fd83c4f980e53ec5991450, type: 3}
+  pickupModelReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   cooldown: 15
   nameToken: ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME
   pickupToken: ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_PICKUP
@@ -23,7 +27,7 @@ MonoBehaviour:
   unlockableDef: {fileID: 0}
   colorIndex: 4
   canDrop: 0
-  dropOnDeathChance: 1
+  dropOnDeathChance: 0
   canBeRandomlyTriggered: 1
   enigmaCompatible: 0
   isLunar: 0

@@ -16,8 +16,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public CharacterBody body;
 
-        //private GameObject hitEffectPrefab;
-
         private ChildLocator childLocator;
 
         public int segments;
@@ -36,11 +34,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             }
             childLocator = body.modelLocator.modelTransform.GetComponent<ChildLocator>();
             currentSegment = 0;
-            //var result = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab");
-            //result.Completed += (operationResult) =>
-            //{
-            //    hitEffectPrefab = operationResult.Result;
-            //};
         }
 
         private void Start()
@@ -54,7 +47,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
-            if(attackerBody && attackerBody.master && attackerBody.master.inventory)
+            if(!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
                 endGameBossWeaponDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
                 endGameBossWeaponDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
@@ -74,7 +67,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                     {
                         rootObject = base.gameObject,
                         modelChildIndex = (short)childLocator.FindChildIndex("Chest"),
-                        scale = 2f
+                        scale = 3.5f
                     };
 
                     EffectManager.SpawnEffect(hitEffectPrefab, effectData, true);

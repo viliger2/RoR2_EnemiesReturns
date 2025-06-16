@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
 using RoR2;
+//using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
 {
@@ -18,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
 
         public static GameObject slideEffectPrefab;
 
-        public static string slideEffectMuzzlestring;
+        public static string slideEffectMuzzlestring = "MuzzleCenter";
 
         protected Quaternion slideRotation;
 
@@ -56,15 +57,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide
                 if ((bool)base.characterMotor)
                 {
                     float num = speedCoefficientCurve.Evaluate(base.fixedAge / duration);
-                    base.characterMotor.rootMotion += slideRotation * (num * moveSpeedStat * vector * GetDeltaTime());
+                    base.characterMotor.rootMotion += slideRotation * (num * characterBody.baseMoveSpeed * vector * GetDeltaTime());
                 }
                 if (base.fixedAge >= duration)
                 {
-                    outer.SetNextStateToMain();
+                    SetNextState();
                 }
             }
         }
 
+        public virtual void SetNextState()
+        {
+            outer.SetNextStateToMain();
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {

@@ -339,9 +339,13 @@ namespace EnemiesReturns
 
         public static Material CreateImmuneToAllExceptHammerMaterial()
         {
+            // cloudremap
             var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.matEnergyShield_mat).WaitForCompletion());
             newMaterial.name = "matImmuneToAllExceptHammer";
             newMaterial.SetFloat("_OffsetAmount", 0.13f);
+            newMaterial.SetColor("_TintColor", new Color(23 / 255f, 202 / 255f, 1f, 1f));
+            newMaterial.SetFloat("_Boost", 2.781755f);
+            newMaterial.SetFloat("_AlphaBoost", 0.8013554f);
 
             return newMaterial;
         }

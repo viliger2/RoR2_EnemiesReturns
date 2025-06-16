@@ -165,7 +165,7 @@ MonoBehaviour:
       PublicKeyToken=null
   isHealer: 0
   enemyAttention: 0
-  prioritizePlayers: 0
+  prioritizePlayers: 1
   aimVectorDampTime: 0.1
   aimVectorMaxSpeed: 360
   selectedSkilldriverName: 

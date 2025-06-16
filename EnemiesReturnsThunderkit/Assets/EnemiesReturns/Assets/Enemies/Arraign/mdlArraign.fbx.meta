@@ -749,64 +749,6 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature|LanceStab
-      takeName: Armature|Armature|LanceStab
-      internalID: 2289958718343647141
-      firstFrame: 0
-      lastFrame: 75
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|LanceStabQuick
-      takeName: Armature|Armature|LanceStabQuick
-      internalID: 7955727222949671121
-      firstFrame: 0
-      lastFrame: 56
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Armature|Armature|LanceThrowFull
       takeName: Armature|Armature|LanceThrowFull
       internalID: 2045106019130867857
@@ -984,7 +926,7 @@ ModelImporter:
       - time: 0.011652281
         functionName: CreateEffect
         data: Chest
-        objectReferenceParameter: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+        objectReferenceParameter: {fileID: 1333522165216002, guid: 30bde57b5892d4e4bac53fe8ce15174e, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -1420,127 +1362,6 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|SwordFlipAir
-      takeName: Armature|Armature|SwordFlipAir
-      internalID: 363885929943428449
-      firstFrame: 0
-      lastFrame: 160
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|SwordFlipBegin
-      takeName: Armature|Armature|SwordFlipBegin
-      internalID: -837918294200278700
-      firstFrame: 0
-      lastFrame: 115
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves:
-      - name: swordFlip.liftOffCurve
-        curve:
-          serializedVersion: 2
-          curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.35543278
-            value: 1
-            inSlope: Infinity
-            outSlope: Infinity
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          preInfinity: 3
-          postInfinity: 3
-          rotationOrder: 4
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|SwordFlipEnd
-      takeName: Armature|Armature|SwordFlipEnd
-      internalID: 1480031674983516905
-      firstFrame: 0
-      lastFrame: 72
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
       events: []
       transformMask: []
       maskType: 3
@@ -3812,21 +3633,21 @@ ModelImporter:
       - time: 0.009640016
         functionName: CreateEffect
         data: Chest
-        objectReferenceParameter: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+        objectReferenceParameter: {fileID: 1333522165216002, guid: 30bde57b5892d4e4bac53fe8ce15174e, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.28924024
         functionName: CreateEffect
         data: Chest
-        objectReferenceParameter: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+        objectReferenceParameter: {fileID: 1333522165216002, guid: 30bde57b5892d4e4bac53fe8ce15174e, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.42743292
         functionName: CreateEffect
         data: Chest
-        objectReferenceParameter: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+        objectReferenceParameter: {fileID: 1333522165216002, guid: 30bde57b5892d4e4bac53fe8ce15174e, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
