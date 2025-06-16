@@ -237,7 +237,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
         public GameObject CreateGroundpoundPoundEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("LynxTotemGroundpoundEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("LynxTotemGroundpoundEffect", false);
 
             var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
             shakeEmitter.duration = 0.5f;

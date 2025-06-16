@@ -83,7 +83,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
             projectileImpactExplosion.impactOnWorld = true;
             projectileImpactExplosion.lifetime = 0.65f; // matches with animation and sound, DO NOT TOUCH
-            projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion();
+            projectileImpactExplosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion();
 
             PrefabAPI.RegisterNetworkPrefab(fistPrefab);
 

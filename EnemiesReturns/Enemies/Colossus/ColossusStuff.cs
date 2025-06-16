@@ -64,7 +64,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public GameObject CreateDeathFallEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
 
             var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
             shakeEmitter.duration = 4f;
@@ -89,7 +89,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public GameObject CreateStompEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
 
             var components = clonedEffect.GetComponentsInChildren<ParticleSystem>();
             foreach (var component in components)
@@ -124,8 +124,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public GameObject CreateStompProjectile()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
-            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/Sunder.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectile", true);
+            var clonedEffectGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/SunderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusStompProjectileGhost", false);
 
             var components = clonedEffectGhost.GetComponentsInChildren<ParticleSystem>();
             foreach (var component in components)

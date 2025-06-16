@@ -668,13 +668,11 @@ namespace EnemiesReturns.Enemies.Colossus
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsColossus";
             #region FireElite
-            var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
-
             var displayRuleGroupFire = new DisplayRuleGroup();
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "Head",
                 localPos = new Vector3(0.00133F, 0.11172F, 0.00157F),
                 localAngles = new Vector3(20.60016F, 340F, 359.7185F),
@@ -685,7 +683,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "Head",
                 localPos = new Vector3(0.00095F, 0.07965F, 0.00112F),
                 localAngles = new Vector3(24.60459F, 24.28895F, 2.60649F),
@@ -695,7 +693,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteFire/EliteFireEquipment.asset").WaitForCompletion(),
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteFire.EliteFireEquipment),
                 displayRuleGroup = displayRuleGroupFire,
             });
             #endregion
@@ -705,7 +703,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "Chest",
                 localPos = new Vector3(-0.01152F, -0.32538F, -0.02099F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -716,7 +714,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupHaunted,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteHaunted.EliteHauntedEquipment),
             });
             #endregion
 
@@ -725,7 +723,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "Head",
                 localPos = new Vector3(-0.02513F, 0.56141F, -0.269F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -736,7 +734,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupIce,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteIce/EliteIceEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment)
             });
             #endregion
 
@@ -745,7 +743,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "Head",
                 localPos = new Vector3(-0.02181F, 0.46209F, 0.10716F),
                 localAngles = new Vector3(292.6887F, 3.59969F, 181.911F),
@@ -755,7 +753,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "Head",
                 localPos = new Vector3(-0.12685F, 0.47042F, -0.11722F),
                 localAngles = new Vector3(288.6145F, 259.8474F, 143.9413F),
@@ -765,7 +763,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "Head",
                 localPos = new Vector3(0.10414F, 0.45989F, -0.09844F),
                 localAngles = new Vector3(287.5787F, 127.0641F, 171.7998F),
@@ -773,11 +771,10 @@ namespace EnemiesReturns.Enemies.Colossus
                 limbMask = LimbFlags.None
             });
 
-
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLightning,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLightning/EliteLightningEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLightning.EliteLightningEquipment)
             });
             #endregion
 
@@ -786,7 +783,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Chest",
                 localPos = new Vector3(0F, 0.00002F, -0.37656F),
                 localAngles = new Vector3(-0.00001F, 180F, 180F),
@@ -797,7 +794,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLunar,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLunar/EliteLunarEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLunar.EliteLunarEquipment)
             });
             #endregion
 
@@ -806,7 +803,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "ShoulderR",
                 localPos = new Vector3(0.05337F, 0.29063F, -0.02488F),
                 localAngles = new Vector3(318.2777F, 269.6648F, 89.31491F),
@@ -816,7 +813,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "ShoulderL",
                 localPos = new Vector3(-0.0039F, 0.27819F, 0.00551F),
                 localAngles = new Vector3(309.1658F, 90.22986F, 270.5801F),
@@ -826,7 +823,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "ThighR",
                 localPos = new Vector3(0.00182F, 0.49292F, 0.15797F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -836,7 +833,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "ThighL",
                 localPos = new Vector3(-0.00176F, 0.47607F, 0.14286F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -847,7 +844,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupPoison,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/ElitePoison/ElitePoisonEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.ElitePoison.ElitePoisonEquipment)
             });
             #endregion
 
@@ -856,7 +853,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
                 childName = "Head",
                 localPos = new Vector3(-0.00503F, 0.35341F, -0.06072F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -867,7 +864,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupEarth,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteEarth.EliteEarthEquipment)
             });
             #endregion
 
@@ -876,7 +873,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteVoid.DisplayAffixVoid),
                 childName = "Chest",
                 localPos = new Vector3(0F, -0.10164F, 0.24164F),
                 localAngles = new Vector3(90F, 0F, 0F),
@@ -887,7 +884,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupVoid,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteVoid.EliteVoidEquipment)
             });
             #endregion
 
@@ -896,7 +893,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "Head",
                 localPos = new Vector3(-0.03787F, 0.48882F, -0.059F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -906,7 +903,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "ShoulderR",
                 localPos = new Vector3(0.0042F, 0.32214F, -0.06562F),
                 localAngles = new Vector3(0.55693F, 359.2249F, 48.48366F),
@@ -916,7 +913,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "ShoulderL",
                 localPos = new Vector3(-0.00393F, 0.28007F, 0.00555F),
                 localAngles = new Vector3(0.24913F, 0.51682F, 331.4208F),
@@ -927,7 +924,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
             });
             #endregion
 
@@ -936,7 +933,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "Chest",
                 localPos = new Vector3(0F, -0.66501F, 0.23605F),
                 localAngles = new Vector3(12.27343F, 0F, -0.00001F),
@@ -947,7 +944,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupGold,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteGold.EliteAurelioniteEquipment)
             });
             #endregion
 

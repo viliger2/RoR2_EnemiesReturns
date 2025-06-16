@@ -35,7 +35,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public GameObject CreateChargedSpitProjectile(GameObject bigDotZone, GameObject chunk)
         {
-            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectile", true);
+            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectile", true);
             clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 55f;
 
             if (clonedProjectile.TryGetComponent<ProjectileImpactExplosion>(out var component))
@@ -82,7 +82,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             explosion.applyDot = false;
 
-            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
+            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleSpitExplosion.prefab").WaitForCompletion();
             explosion.lifetimeExpiredSound = null;
             explosion.offsetForLifetimeExpiredSound = 0f;
             explosion.destroyOnEnemy = true;
@@ -101,7 +101,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public GameObject CreateChargedSpitSplitProjectile(GameObject smallPool)
         {
-            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSplitProjectile", true);
+            var clonedProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitSplitProjectile", true);
             clonedProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 15f;
 
             clonedProjectile.layer = LayerIndex.debris.intVal; // no collision with entityprecise or itself, but with world 
@@ -140,7 +140,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
             explosion.applyDot = false;
 
-            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
+            explosion.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleSpitExplosion.prefab").WaitForCompletion();
             explosion.lifetimeExpiredSound = null;
             explosion.offsetForLifetimeExpiredSound = 0f;
             explosion.destroyOnEnemy = false;
@@ -202,7 +202,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         private GameObject GetRecoloredSpitProjectileGhost()
         {
-            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectileGhost", false);
+            var projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SpitterChargedSpitProjectileGhost", false);
             var particle = projectileGhost.GetComponentInChildren<ParticleSystem>();
             if (particle)
             {
@@ -219,7 +219,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public Material CreateRecoloredSpitMaterial()
         {
-            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleSpitLarge.mat").WaitForCompletion());
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/BeetleQueen/matBeetleSpitLarge.mat").WaitForCompletion());
             newMaterial.name = "matSpitterSpit";
             newMaterial.SetColor("_TintColor", new Color(1f, 0.1764f, 0f));
 
@@ -228,7 +228,7 @@ namespace EnemiesReturns.Enemies.Spitter
 
         public Material SetupDoTZoneDecalMaterial()
         {
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Beetle/matBeetleQueenAcidDecal.mat").WaitForCompletion());
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/BeetleQueen/matBeetleQueenAcidDecal.mat").WaitForCompletion());
             material.name = "matSpitterAcidDecal";
             material.SetColor("_Color", new Color(1f, 140f / 255f, 0f));
 

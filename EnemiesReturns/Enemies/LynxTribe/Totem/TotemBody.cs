@@ -428,13 +428,11 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsLynxTotem";
             #region FireElite
-            var fireEquipDisplay = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteFire/DisplayEliteHorn.prefab").WaitForCompletion();
-
             var displayRuleGroupFire = new DisplayRuleGroup();
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "BodyTop",
                 localPos = new Vector3(0.76329F, 0.62547F, 0.00056F),
                 localAngles = new Vector3(359.9644F, 344.8509F, 359.742F),
@@ -444,7 +442,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "BodyTop",
                 localPos = new Vector3(-0.82379F, 0.43643F, 0.00621F),
                 localAngles = new Vector3(-0.00311F, 11.37079F, 0.04467F),
@@ -454,7 +452,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "ShamanHead",
                 localPos = new Vector3(0.07161F, 0.00957F, 0.11201F),
                 localAngles = new Vector3(12.68712F, 343.7514F, 356.4883F),
@@ -464,7 +462,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = fireEquipDisplay,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
                 childName = "ShamanHead",
                 localPos = new Vector3(-0.23389F, 0.00073F, 0.17249F),
                 localAngles = new Vector3(12.92738F, 29.19057F, 6.99305F),
@@ -474,7 +472,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteFire/EliteFireEquipment.asset").WaitForCompletion(),
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteFire.EliteFireEquipment),
                 displayRuleGroup = displayRuleGroupFire,
             });
             #endregion
@@ -484,7 +482,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "BodyMiddle2",
                 localPos = new Vector3(0F, 0F, 0F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -494,7 +492,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "ShamanChest",
                 localPos = new Vector3(0F, 0.75248F, 0.04488F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -505,7 +503,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupHaunted,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteHaunted/EliteHauntedEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteHaunted.EliteHauntedEquipment),
             });
             #endregion
 
@@ -514,7 +512,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "BodyLow",
                 localPos = new Vector3(0F, 2.79952F, -0.43159F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -524,7 +522,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "ShamanHead",
                 localPos = new Vector3(0F, 0.47267F, 0.00298F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -535,7 +533,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupIce,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteIce/EliteIceEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment)
             });
             #endregion
 
@@ -544,7 +542,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyLow",
                 localPos = new Vector3(1.99687F, 0.75009F, 0.00357F),
                 localAngles = new Vector3(0F, 90F, 0F),
@@ -554,7 +552,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyLow",
                 localPos = new Vector3(-1.95838F, 0.86168F, 0.00179F),
                 localAngles = new Vector3(0F, 270F, 0F),
@@ -564,7 +562,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyMiddle1",
                 localPos = new Vector3(1.29815F, 0.25205F, 0.00479F),
                 localAngles = new Vector3(0F, 90F, 0F),
@@ -574,7 +572,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyMiddle1",
                 localPos = new Vector3(-1.28672F, 0.20786F, 0.00435F),
                 localAngles = new Vector3(0F, 270F, 0F),
@@ -584,7 +582,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyMiddle2",
                 localPos = new Vector3(1.1576F, -0.00002F, 0F),
                 localAngles = new Vector3(0F, 90F, 0F),
@@ -594,7 +592,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/DisplayEliteRhinoHorn.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
                 childName = "BodyMiddle2",
                 localPos = new Vector3(-1.21847F, -0.00001F, 0F),
                 localAngles = new Vector3(0F, 270F, 0F),
@@ -605,7 +603,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLightning,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLightning/EliteLightningEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLightning.EliteLightningEquipment)
             });
             #endregion
 
@@ -614,7 +612,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLunar/DisplayEliteLunar, Fire.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "BodyLow",
                 localPos = new Vector3(0F, 1.19209F, -1.54352F),
                 localAngles = new Vector3(-0.00001F, 180F, 180F),
@@ -625,7 +623,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupLunar,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/EliteLunar/EliteLunarEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLunar.EliteLunarEquipment)
             });
             #endregion
 
@@ -634,7 +632,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "BodyLow",
                 localPos = new Vector3(0F, 1.97459F, 0.53381F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -644,7 +642,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
                 childName = "ShamanMask",
                 localPos = new Vector3(0F, -0.24309F, -0.00397F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -655,7 +653,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupPoison,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/Base/ElitePoison/ElitePoisonEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.ElitePoison.ElitePoisonEquipment)
             });
             #endregion
 
@@ -664,7 +662,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
                 childName = "BodyMiddle1",
                 localPos = new Vector3(0F, 0F, 0F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -674,7 +672,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
                 childName = "ShamanHead",
                 localPos = new Vector3(0.00093F, 0.14427F, 0.04535F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -685,7 +683,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupEarth,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteEarth/EliteEarthEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteEarth.EliteEarthEquipment)
             });
             #endregion
 
@@ -694,7 +692,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteVoid.DisplayAffixVoid),
                 childName = "BodyMiddle1",
                 localPos = new Vector3(0F, 0.54748F, 0.55694F),
                 localAngles = new Vector3(90F, 0F, 0F),
@@ -705,7 +703,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupVoid,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC1/EliteVoid/EliteVoidEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteVoid.EliteVoidEquipment)
             });
             #endregion
 
@@ -714,7 +712,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "BodyLow",
                 localPos = new Vector3(-2.27061F, 0.63286F, -0.12408F),
                 localAngles = new Vector3(0.00868F, 0.06395F, 63.83193F),
@@ -724,7 +722,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "BodyLow",
                 localPos = new Vector3(2.39226F, 0.50044F, 0.00747F),
                 localAngles = new Vector3(0.18867F, 359.4086F, 306.608F),
@@ -734,7 +732,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
                 childName = "ShamanMask",
                 localPos = new Vector3(0F, -0.1428F, -0.00477F),
                 localAngles = new Vector3(90F, 0F, 0F),
@@ -745,7 +743,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteBead/EliteBeadEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
             });
             #endregion
 
@@ -754,7 +752,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "BodyLow",
                 localPos = new Vector3(-0.08902F, 0.78706F, 1.13371F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -764,7 +762,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "ShamanMask",
                 localPos = new Vector3(-0.00864F, -0.33865F, 0.26125F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -775,7 +773,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupGold,
-                keyAsset = Addressables.LoadAssetAsync<EquipmentDef>("RoR2/DLC2/Elites/EliteAurelionite/EliteAurelioniteEquipment.asset").WaitForCompletion()
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteGold.EliteAurelioniteEquipment)
             });
             #endregion
 

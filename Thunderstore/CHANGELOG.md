@@ -1,4 +1,11 @@
 <details>
+<summary>0.4.13</summary>
+
+* Fixed for 1.3.9 update.
+* There is probably some additional stuff here, but it would be difficult to trace what is here and what is not so everything will be made into a changelog next content update.
+
+</details>
+<details>
 <summary>0.4.12</summary>
 
 * Added Spanish translation by Manuerth.
