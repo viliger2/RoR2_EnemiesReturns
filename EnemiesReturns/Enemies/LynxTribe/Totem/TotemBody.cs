@@ -777,6 +777,27 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             });
             #endregion
 
+            #region AeonianElite
+            var displayRuleGroupAeonian = new DisplayRuleGroup();
+            displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                childName = "ShamanHead",
+                localPos = new Vector3(-0.0082F, 0.80843F, -0.41071F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.25063F, 0.25063F, 0.25063F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupAeonian,
+                keyAsset = Content.Equipment.EliteAeonian
+            });
+            #endregion
+
             return idrs;
         }
 

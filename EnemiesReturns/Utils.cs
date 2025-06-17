@@ -98,6 +98,7 @@ namespace EnemiesReturns
                 skinDef.baseSkins = new SkinDef[] { baseSkin };
             }
             skinDef.rootObject = model;
+            skinDef.nameToken = "ENEMIES_RETURNS_" + name.ToUpper();
             var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
             (skinDefParams as ScriptableObject).name = name + "SkinDefParams";
 

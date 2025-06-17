@@ -948,6 +948,27 @@ namespace EnemiesReturns.Enemies.Colossus
             });
             #endregion
 
+            #region AeonianElite
+            var displayRuleGroupAeonian = new DisplayRuleGroup();
+            displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                childName = "Head",
+                localPos = new Vector3(-0.02513F, 0.56141F, -0.269F),
+                localAngles = new Vector3(270F, 0F, 0F),
+                localScale = new Vector3(0.05664F, 0.07367F, 0.07367F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupAeonian,
+                keyAsset = Content.Equipment.EliteAeonian
+            });
+            #endregion
+
             return idrs;
         }
 

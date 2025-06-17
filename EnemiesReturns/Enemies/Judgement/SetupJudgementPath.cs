@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Behaviors;
-using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
+﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
 using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -11,11 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
@@ -46,6 +44,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static Dictionary<UnlockableDef, string> AnointedSkinsUnlockables2 = new Dictionary<UnlockableDef, string>();
 
+        public static GameObject AeonianAnointedItemDisplay;
+
         private static HashSet<SkinDef> AnointedSkins;
 
         private static HashSet<string> AnointedBlacklist = new HashSet<string>();
@@ -62,6 +62,98 @@ namespace EnemiesReturns.Enemies.Judgement
 
             ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
             ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
+
+            var keyEquipmentReference = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment);
+            var equipment = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_EliteIce.EliteIceEquipment_asset).WaitForCompletion();
+            var dictionary = CreateAeonianAnointedDictionary();
+            foreach (var body in BodyCatalog.allBodyPrefabs)
+            {
+                var modelLocator = body.GetComponent<ModelLocator>();
+                if (!modelLocator) continue;
+
+                if (!modelLocator.modelTransform) continue;
+
+                var characterModel = modelLocator.modelTransform.GetComponent<CharacterModel>();
+                if (!characterModel) continue;
+
+                var bodyIDRS = characterModel.itemDisplayRuleSet;
+                if (!bodyIDRS) continue;
+
+                var existingidrs = bodyIDRS.keyAssetRuleGroups.Where(item => item.keyAsset == Content.Equipment.EliteAeonian || item.keyAsset == Content.Items.HiddenAnointed).ToArray();
+                if(existingidrs.Length > 0)
+                {
+                    continue;
+                }
+
+                if (dictionary.TryGetValue(body.name, out var value))
+                {
+                    ArrayUtils.ArrayAppend(ref bodyIDRS.keyAssetRuleGroups, new KeyAssetRuleGroup
+                    {
+                        displayRuleGroup = value,
+                        keyAsset = Content.Equipment.EliteAeonian
+                    });
+
+                    ArrayUtils.ArrayAppend(ref bodyIDRS.keyAssetRuleGroups, new KeyAssetRuleGroup
+                    {
+                        displayRuleGroup = value,
+                        keyAsset = Content.Items.HiddenAnointed
+                    });
+
+                    continue;
+                }
+
+                DisplayRuleGroup displayRuleGroup = default;
+
+                var result = bodyIDRS.keyAssetRuleGroups.Where(item => item.keyAssetAddress == keyEquipmentReference || item.keyAsset == equipment).ToArray();
+                if (result.Length != 0)
+                {
+                    displayRuleGroup = result[0].displayRuleGroup;
+                }
+                else
+                {
+                    var result2 = bodyIDRS.namedEquipmentRuleGroups.Where(item => item.name == "EliteIceEquipment").ToArray();
+                    if (result2.Length != 0)
+                    {
+                        displayRuleGroup = result2[0].displayRuleGroup;
+                    }
+                }
+
+                if (displayRuleGroup.Equals(default))
+                {
+                    continue;
+                }
+
+                var keyAssetRuleGroup = result.ToArray()[0];
+
+                var displayRuleGroupAeonian = new DisplayRuleGroup();
+                foreach (var rule in displayRuleGroup.rules)
+                {
+                    displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+                    {
+                        ruleType = ItemDisplayRuleType.ParentedPrefab,
+                        followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                        followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                        childName = rule.childName,
+                        localPos = rule.localPos,
+                        localAngles = rule.localAngles,
+                        localScale = rule.localScale,
+                        limbMask = LimbFlags.None
+                    });
+                }
+
+                ArrayUtils.ArrayAppend(ref bodyIDRS.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupAeonian,
+                    keyAsset = Content.Equipment.EliteAeonian
+                });
+
+                ArrayUtils.ArrayAppend(ref bodyIDRS.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupAeonian,
+                    keyAsset = Content.Items.HiddenAnointed
+                });
+            }
+            dictionary = null;
         }
 
         public static bool AddBodyToBlacklist(string bodyName)
@@ -111,17 +203,17 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            if(body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0) // TODO: REPLACE
+            if (body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0) // TODO: REPLACE
             {
                 return;
             }
 
-            if(body.modelLocator && body.modelLocator.modelTransform)
+            if (body.modelLocator && body.modelLocator.modelTransform)
             {
                 var modelSkinController = body.modelLocator.modelTransform.GetComponent<ModelSkinController>();
                 if (modelSkinController)
                 {
-                    if(body.skinIndex < modelSkinController.skins.Length)
+                    if (body.skinIndex < modelSkinController.skins.Length)
                     {
                         var skin = modelSkinController.skins[body.skinIndex];
                         if (AnointedSkins.Contains(skin))
@@ -137,7 +229,7 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
         {
             orig(self);
-            if(self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
+            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
             {
                 self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
             }
@@ -196,11 +288,11 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void GrabSpawnCardsForJudgement(DirectorCardCategorySelection mixEnemiesDccs)
         {
-            foreach(var category in mixEnemiesDccs.categories)
+            foreach (var category in mixEnemiesDccs.categories)
             {
-                foreach(var card in category.cards)
+                foreach (var card in category.cards)
                 {
-                    if(mixEnemiesDirectorCards.Where(item => item.spawnCard == card.spawnCard).Count() == 0)
+                    if (mixEnemiesDirectorCards.Where(item => item.spawnCard == card.spawnCard).Count() == 0)
                     {
                         mixEnemiesDirectorCards.Add(card);
                     }
@@ -281,10 +373,10 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 if (self.itemStealController)
                 {
-                    foreach(var stolenInfo in self.itemStealController.stolenInventoryInfos)
+                    foreach (var stolenInfo in self.itemStealController.stolenInventoryInfos)
                     {
-                        if(stolenInfo != null && stolenInfo.lentItemStacks != null
-                            && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex 
+                        if (stolenInfo != null && stolenInfo.lentItemStacks != null
+                            && stolenInfo.lentItemStacks.Length > (int)Content.Items.LunarFlower.itemIndex
                             && stolenInfo.lentItemStacks[(int)Content.Items.LunarFlower.itemIndex] > 0)
                         {
                             Chat.SendBroadcastChat(new Chat.NpcChatMessage
@@ -319,7 +411,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 var bodyName = survivorDef.bodyPrefab.name.Trim();
 
-                if(!AnointedSkinsUnlockables.TryGetValue(bodyName, out UnlockableDef skinUnlockable))
+                if (!AnointedSkinsUnlockables.TryGetValue(bodyName, out UnlockableDef skinUnlockable))
                 {
 #if DEBUG || NOWEAVER
                     Log.Info($"Couldn't find Anointed UnlockableDef for body {bodyName}, most likely because it is in blacklist.");
@@ -384,7 +476,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void BazaarAddMessageIfPlayersWithRock(Stage stage)
         {
-            if(stage.sceneDef.cachedName != "bazaar")
+            if (stage.sceneDef.cachedName != "bazaar")
             {
                 return;
             }
@@ -438,7 +530,7 @@ namespace EnemiesReturns.Enemies.Judgement
             var jumpMatch = c.TryGotoNext(MoveType.After,
                 x => x.MatchBrfalse(out lable));
 
-            if(jumpMatch)
+            if (jumpMatch)
             {
                 c.Index -= 6;
 
@@ -446,7 +538,8 @@ namespace EnemiesReturns.Enemies.Judgement
                 c.Emit(OpCodes.Ldloc, 5);
                 c.EmitDelegate<Func<RoR2.UI.LoadoutPanelController, SkinDef, bool>>(CheckForSpecialSkinDef);
                 c.Emit(OpCodes.Brtrue, lable.Target);
-            } else
+            }
+            else
             {
                 Log.Error("RoR2.UI.LoadoutPanelController.Row.FromSkin IL hook failed.");
             }
@@ -458,13 +551,13 @@ namespace EnemiesReturns.Enemies.Judgement
                     return false;
                 }
 
-                if(owner == null)
+                if (owner == null)
                 {
                     return false;
                 }
 
                 UserProfile obj = owner.currentDisplayData.userProfile;
-                if(obj == null)
+                if (obj == null)
                 {
                     return false;
                 }
@@ -473,7 +566,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 {
                     return false;
                 }
-                if(skinDef is HiddenSkinDef)
+                if (skinDef is HiddenSkinDef)
                 {
                     return (skinDef as HiddenSkinDef).hideInLobby;
                 }
@@ -525,7 +618,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
             else
             {
-               Log.Error($"Elite Ramp ILHook failed");
+                Log.Error($"Elite Ramp ILHook failed");
             }
 
             static void UpdateRampProperly(CharacterModel charModel)
@@ -555,8 +648,8 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             var icon = AnointedSkinIcon;
 
-            List <SkinDef> anointedSkins = new List<SkinDef>();
-            for(int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
+            List<SkinDef> anointedSkins = new List<SkinDef>();
+            for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
             {
                 var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
                 if (survivorDef.bodyPrefab)
@@ -623,11 +716,12 @@ namespace EnemiesReturns.Enemies.Judgement
                                 newMaterial.SetFloat(CommonShaderProperties._EliteIndex, 1);
                                 ContentProvider.MaterialCache.Add(newMaterial.name, newMaterial);
                             }
-                        } else
+                        }
+                        else
                         {
                             Log.Warning($"Survivor {survivorDef.cachedName} has an empty material on baseRendererInfos at index {k}.");
                         }
-                        skinRenderInfos[k] = new CharacterModel.RendererInfo 
+                        skinRenderInfos[k] = new CharacterModel.RendererInfo
                         {
                             renderer = baseRenderInfo.renderer,
                             defaultMaterial = newMaterial,
@@ -681,7 +775,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
             if (!self.childLocator)
             {
-                return;                
+                return;
             }
 
             var center = self.childLocator.FindChild("CenterOfArena");
@@ -803,6 +897,294 @@ namespace EnemiesReturns.Enemies.Judgement
             prefab.transform.Find("lunarKey/meshLunarKeyGlass").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherStib.mat").WaitForCompletion();
 
             return prefab;
+        }
+
+        public static Dictionary<string, DisplayRuleGroup> CreateAeonianAnointedDictionary()
+        {
+            var dictionary = new Dictionary<string, DisplayRuleGroup>();
+#pragma warning disable CS0618 // Type or member is obsolete
+            dictionary.Add("ToolbotBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.01192F, 2.33924F, 2.68312F),
+                    localAngles = new Vector3(332.3655F, 0.05552F, 177.9755F),
+                    localScale = new Vector3(0.29092F, 0.29092F, 0.29092F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("TreebotBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "FlowerBase",
+                    localPos = new Vector3(0.01413F, 2.30119F, -0.18182F),
+                    localAngles = new Vector3(270.074F, 0F, 0F),
+                    localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("RailgunnerBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.00989F, 0.23731F, -0.11833F),
+                    localAngles = new Vector3(289.0599F, 180.9201F, 181.0143F),
+                    localScale = new Vector3(0.021F, 0.021F, 0.021F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+
+            dictionary.Add("FalseSonBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.001F, 0.77918F, -0.01667F),
+                    localAngles = new Vector3(271.5699F, 0.00085F, -0.00086F),
+                    localScale = new Vector3(0.04289F, 0.04289F, 0.04289F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("ChefBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.34146F, -0.09502F, 0.02628F),
+                    localAngles = new Vector3(357.3232F, 272.0138F, 198.2701F),
+                    localScale = new Vector3(0.04278F, 0.04278F, 0.04278F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("BeetleBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.01962F, 0.38285F, 0.66161F),
+                    localAngles = new Vector3(296.7061F, 354.1524F, 186.5402F),
+                    localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("GupBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "MainBody2",
+                    localPos = new Vector3(0.05864F, 1.10224F, -0.16438F),
+                    localAngles = new Vector3(274.7971F, 180F, 180F),
+                    localScale = new Vector3(0.10666F, 0.10652F, 0.1066F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("ParentBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-114.9762F, 140.3186F, 1F),
+                    localAngles = new Vector3(315.0002F, 269.9998F, 180.0001F),
+                    localScale = new Vector3(10F, 10F, 10F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("ScorchlingBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.27257F, 0.6441F, -0.047F),
+                    localAngles = new Vector3(279.0522F, 163.4916F, 286.3138F),
+                    localScale = new Vector3(0.16449F, 0.16449F, 0.16449F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("SS2UNemmandoBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0.00006F, 0.00524F, -0.00051F),
+                    localAngles = new Vector3(90F, 180F, 0F),
+                    localScale = new Vector3(0.0003F, 0.0003F, 0.0003F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("EnforcerBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0.09564F, 0.31238F, 0.00459F),
+                    localAngles = new Vector3(270F, 270F, 0F),
+                    localScale = new Vector3(0.03F, 0.03F, 0.03F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("RobHunkBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(1.79623F, 28.51547F, 3.92431F),
+                    localAngles = new Vector3(271.5699F, 0.00085F, -0.00086F),
+                    localScale = new Vector3(1.87715F, 1.87715F, 1.87715F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("RobBelmontBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.09622F, 0.49185F, -0.01094F),
+                    localAngles = new Vector3(271.5699F, 0.00085F, -0.00086F),
+                    localScale = new Vector3(0.04419F, 0.04419F, 0.04419F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("CadetBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0.01117F, 0.33053F, -0.09775F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.02854F, 0.02854F, 0.02854F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("RobPaladinBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0F, 0.59181F, 0.01854F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.03551F, 0.03849F, 0.03551F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("SS2UExecutionerBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0F, 0.0055F, -0.0008F),
+                    localAngles = new Vector3(62.04026F, 0F, 0F),
+                    localScale = new Vector3(0.0003F, 0.0003F, 0.0003F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("SS2UCyborgBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "head_end",
+                    localPos = new Vector3(0F, 0.39848F, -0.03963F),
+                    localAngles = new Vector3(272.2047F, 180F, 180F),
+                    localScale = new Vector3(0.03651F, 0.03651F, 0.03651F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
+            dictionary.Add("GnomeChefBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0F, 0.00917F, -0.00314F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.0013F, 0.0013F, 0.0013F),
+                    limbMask = LimbFlags.None
+            }
+            }));
+#pragma warning restore CS0618 // Type or member is obsolete
+            return dictionary;
+
+            DisplayRuleGroup CreateItemDisplayRule(ItemDisplayRule[] rules)
+            {
+                var drg = new DisplayRuleGroup();
+                foreach (var rule in rules)
+                {
+                    drg.AddDisplayRule(rule);
+                }
+                return drg;
+            }
         }
     }
 }

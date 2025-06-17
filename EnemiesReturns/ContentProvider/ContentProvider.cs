@@ -163,6 +163,8 @@ namespace EnemiesReturns
                 acdLookup = assets.ToDictionary(item => item.name);
             }));
 
+            yield return CreateJudgementAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
+
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
                 Stopwatch stopwatch = new Stopwatch();
@@ -182,7 +184,6 @@ namespace EnemiesReturns
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
 
-            yield return CreateJudgementAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
 
             var entityStateTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && type.GetCustomAttribute<RegisterEntityState>(false) != null).ToArray();
 #if DEBUG || NOWEAVER

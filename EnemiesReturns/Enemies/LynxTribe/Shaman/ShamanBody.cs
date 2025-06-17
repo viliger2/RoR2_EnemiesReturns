@@ -523,6 +523,27 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             });
             #endregion
 
+            #region AeonianElite
+            var displayRuleGroupAeonian = new DisplayRuleGroup();
+            displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                childName = "StaffUpperPoint",
+                localPos = new Vector3(-0.05336F, 0.08204F, 2.08621F),
+                localAngles = new Vector3(32.5183F, 180F, 180F),
+                localScale = new Vector3(0.35559F, 0.35559F, 0.35559F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupAeonian,
+                keyAsset = Content.Equipment.EliteAeonian
+            });
+            #endregion
+
             return idrs;
         }
 

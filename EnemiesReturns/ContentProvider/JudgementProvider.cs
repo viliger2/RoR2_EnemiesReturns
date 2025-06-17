@@ -177,6 +177,8 @@ namespace EnemiesReturns
 
                     BeamLoop.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
                     BeamStart.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffectNoMuzzleParticles");
+
+                    Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay = assets.First(asset => asset.name == "DisplayAeonian");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
