@@ -8,6 +8,9 @@ namespace EnemiesReturns.Behaviors
 {
     public class ImmuneDamageNumbers : MonoBehaviour
     {
+        [SerializeField]
+        public float[] textData;
+
         private List<Vector4> customData = new List<Vector4>();
 
         private ParticleSystem ps;
@@ -17,6 +20,11 @@ namespace EnemiesReturns.Behaviors
         private void Awake()
         {
             ps = GetComponent<ParticleSystem>();
+            if(textData.Length == 0)
+            {
+                //Log.Warning("ImmuneDamageNumbers textData array lengh is zero!");
+                this.gameObject.SetActive(false);
+            }
         }
 
         private void OnEnable()
@@ -34,11 +42,19 @@ namespace EnemiesReturns.Behaviors
             ps.Emit(new ParticleSystem.EmitParams
             {
                 position = position,
-                startColor = Color.gray * Color.blue,
+                startColor = Color.white * Color.white,
                 applyShapeToPosition = true
             }, 1);
             ps.GetCustomParticleData(customData, ParticleSystemCustomData.Custom1);
-            customData[customData.Count - 1] = new Vector4(1f, 0f, 122345f, 0f);
+            float value = 122345f;
+            if(textData.Length == 1)
+            {
+                value = textData[0];
+            } else
+            {
+                value = textData[UnityEngine.Random.Range(0, textData.Length)];
+            }
+            customData[customData.Count - 1] = new Vector4(1, 0, value, 0);
             ps.SetCustomParticleData(customData, ParticleSystemCustomData.Custom1);
         }
     }

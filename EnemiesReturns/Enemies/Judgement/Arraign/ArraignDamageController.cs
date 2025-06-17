@@ -22,8 +22,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private uint segmentStatus = 0;
 
-        private float segmentHealthSize;
-
         private int currentSegment;
 
         private void OnEnable()
@@ -34,11 +32,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             }
             childLocator = body.modelLocator.modelTransform.GetComponent<ChildLocator>();
             currentSegment = 0;
-        }
-
-        private void Start()
-        {
-            segmentHealthSize = body.maxHealth / segments;
         }
 
         public void OnIncomingDamageServer(DamageInfo damageInfo)
@@ -106,12 +99,12 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 return;
             }
             var healthComponent = damageReport.victim;
-
+            var segmentHealthSize = body.maxHealth / segments;
             var currentSegmentStatus = (segmentStatus & (uint)1 << currentSegment) == 0;
 
-            if(damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < healthComponent.fullCombinedHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
+            if(damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
             {
-                healthComponent.health = healthComponent.fullCombinedHealth - (segmentHealthSize * (currentSegment + 1)) + 1;
+                healthComponent.health = body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1;
                 damageReport.victimBody.AddBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
                 segmentStatus |= (uint)1 << currentSegment;
                 currentSegment++;

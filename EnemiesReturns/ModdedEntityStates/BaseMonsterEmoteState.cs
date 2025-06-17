@@ -63,5 +63,10 @@ namespace EnemiesReturns.ModdedEntityStates
                 }
             }
         }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Death;
+        }
     }
 }
