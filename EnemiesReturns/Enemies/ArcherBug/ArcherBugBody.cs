@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
@@ -204,6 +205,11 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 minDistance = 1.5f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
             };
+        }
+
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.DeathState)));
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Beetle/sdBeetleGuard.asset").WaitForCompletion();

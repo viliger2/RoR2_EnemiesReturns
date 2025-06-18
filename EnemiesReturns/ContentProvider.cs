@@ -651,12 +651,16 @@ namespace EnemiesReturns
         private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             var ArcherBugStuff = new ArcherBugStuff();
-            var ArcherBugCausticSpitProjectile = ArcherBugStuff.CreateCausticSpitProjectile();
+            var ArcherBugCausticSpitProjectile = ArcherBugStuff.CreateCausticSpitProjectile();          
             ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
+                        
             var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
-            unlockablesList.Add(archerBugLog);         
-            
-   
+            unlockablesList.Add(archerBugLog);
+
+            var ArcherBugDeathEffect = ArcherBugStuff.CreateDeathEffect();
+            effectsList.Add(new EffectDef(ArcherBugDeathEffect));
+            ModdedEntityStates.ArcherBugs.DeathState.deathEffectPrefab = ArcherBugDeathEffect;
+
             projectilesList.Add(ArcherBugCausticSpitProjectile);
 
             var archerBugBody = new ArcherBugBody();
