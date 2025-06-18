@@ -110,7 +110,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentList++;
         }
 
-        // TODO: add lunar check for those retarded mods that for some reason modify all itemdroptables
         private void GenerateItemList()
         {
             List<PickupIndex> takenList = new List<PickupIndex>();
@@ -124,7 +123,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
                     if (tierDropTables[k].GetSelectorCount() >= listCount)
                     {
-                        while (takenList.Contains(itemIndex))
+                        while (takenList.Contains(itemIndex) && PickupCatalog.GetPickupDef(itemIndex)?.itemTier == ItemTier.Lunar)
                         {
                             itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
                         }
