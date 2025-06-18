@@ -53,9 +53,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Hunter.Lunge
         public override void OnEnter()
         {
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
-            attackDuration = baseAttackDuration / attackSpeedStat;
-            forceDuration = baseForceDuration / attackSpeedStat;
+            duration = baseDuration;
+            attackDuration = baseAttackDuration;
+            forceDuration = baseForceDuration;
             calculatedLungeSpeed = maxLungeSpeedCoefficient;
 
             var modelTransform = GetModelTransform();

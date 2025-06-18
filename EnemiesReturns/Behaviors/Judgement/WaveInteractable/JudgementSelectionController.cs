@@ -110,6 +110,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentList++;
         }
 
+        // TODO: add lunar check for those retarded mods that for some reason modify all itemdroptables
         private void GenerateItemList()
         {
             List<PickupIndex> takenList = new List<PickupIndex>();

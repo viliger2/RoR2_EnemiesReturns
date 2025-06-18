@@ -54,7 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             backwardsBeam.transform.localPosition = Vector3.zero;
             backwardsBeam.transform.localRotation = Quaternion.identity;
 
-            Util.PlaySound("ER_Arraign_BeamLoop_Play", gameObject); // TODO
+            Util.PlaySound("ER_Arraign_BeamLoop_Play", gameObject);
         }
 
         public override void FixedUpdate()

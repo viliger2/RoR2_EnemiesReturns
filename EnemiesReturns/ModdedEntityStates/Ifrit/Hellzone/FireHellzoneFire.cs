@@ -124,7 +124,12 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
 
         public override void OnExit()
         {
+            if (!hasSpawnedDoTZone && isAuthority)
+            {
+                FireDoTZone();
+            }
             PlayCrossfade("Gesture,Override", "BufferEmpty", 0.1f);
+
             base.OnExit();
         }
 

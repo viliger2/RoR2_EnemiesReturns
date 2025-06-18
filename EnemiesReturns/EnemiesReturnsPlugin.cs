@@ -45,8 +45,10 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.5.14";
+        public const string Version = "0.5.15";
         public const string GUID = "com." + Author + "." + ModName;
+
+        public static bool ModIsLoaded = false;
 
         private void Awake()
         {
@@ -78,6 +80,9 @@ namespace EnemiesReturns
             RegisterStuff();
 
             Hooks();
+
+            ModIsLoaded = true;
+
             void MakeNonConfigs(IEnumerable<System.Type> configs)
             {
                 var notSavedConfigFile = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "Config"), false)

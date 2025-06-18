@@ -21,6 +21,11 @@ namespace EnemiesReturns.ModCompats
         [SystemInitializer(new Type[] { typeof(ItemCatalog) })]
         private static void Init()
         {
+            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
+            {
+                return;
+            }
+
             if (!RoR2.ItemCatalog.availability.available)
             {
                 Log.Warning("Somehow got here without inialized ItemCatalog.");

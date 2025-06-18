@@ -7,12 +7,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
     [RegisterEntityState]
     public class Burrow : BaseState
     {
-        public static float duration = 1.4f;
+        public static float baseDuration = 1.4f;
+
+        private float duration;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayAnimation("Body", "Burrow");
+            duration = baseDuration / attackSpeedStat;
+            PlayAnimation("Body", "Burrow", "burrow.playbackDuration", duration);
             Util.PlaySound("ER_Totem_Burrow_Play", gameObject);
         }
 

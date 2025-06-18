@@ -8,7 +8,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
-    // TODO: add some sound effect on start up, something snappy
     public abstract class BasePrePrimaryWeaponSwing : BaseState, SteppedSkillDef.IStepSetter
     {
         public static float baseDuration = 0.5f;

@@ -64,16 +64,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             return prefab;
         }
 
-        public GameObject CreateArmorBreakEffect()
-        {
-            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/BrittleDeath.prefab").WaitForCompletion().InstantiateClone("ArraignArmorBreakEffect", false);
-            
-            // TODO: replace sound effect
-            prefab.GetComponent<EffectComponent>().applyScale = true;
-
-            return prefab;
-        }
-
         public GameObject CreateArraignSwingEffect()
         {
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/MercSwordSlash.prefab").WaitForCompletion().InstantiateClone("ArraigSwordSlashEffect", false);

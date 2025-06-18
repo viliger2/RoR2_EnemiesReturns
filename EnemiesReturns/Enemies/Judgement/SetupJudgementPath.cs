@@ -57,6 +57,11 @@ namespace EnemiesReturns.Enemies.Judgement
         [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
         private static void Init()
         {
+            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
+            {
+                return;
+            }
+
             ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
             ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
 
@@ -203,7 +208,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            if (body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0) // TODO: REPLACE
+            if (body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0)
             {
                 return;
             }
@@ -842,7 +847,7 @@ namespace EnemiesReturns.Enemies.Judgement
             newtTrader.contextString = "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT";
             newtTrader.itemToTake = Content.Items.TradableRock;
             newtTrader.itemToGive = Content.Items.LunarFlower;
-            newtTrader.available = true; // TODO: eh?
+            newtTrader.available = true;
             newtTrader.chatMessageOnInteraction = "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE";
 
             var procFilter = shopkeeperBody.AddComponent<InteractionProcFilter>();

@@ -62,7 +62,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     if (musicOverrideObject)
                     {
                         var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
-                        if (Configuration.General.EnableCustomPhase3Music.Value) // TODO: replace with Judgement config
+                        if (Configuration.Judgement.EnableCustomPhase3Music.Value)
                         {
                             musicOverride.track = Content.MusicTracks.TheOrigin;
                         }

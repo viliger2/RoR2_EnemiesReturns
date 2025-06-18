@@ -9,7 +9,6 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
-    // TODO: just make sword glow instead?
     [RegisterEntityState]
     public class PreSlash : BaseState
     {

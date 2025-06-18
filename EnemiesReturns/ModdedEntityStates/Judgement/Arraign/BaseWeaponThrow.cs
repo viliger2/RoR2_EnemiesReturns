@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
-    // TODO: UPDATE LOOPSOUNDDEF
     public abstract class BaseWeaponThrow : BaseState
     {
         public abstract GameObject projectilePrefab { get; }

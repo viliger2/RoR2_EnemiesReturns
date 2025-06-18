@@ -32,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public override string childOrigin => "HandR";
 
-        public override string throwSound => ""; // TODO: replace
+        public override string throwSound => "";
 
         public override string chargeSound => "ER_Arraign_SpearThrow_Charge_Play";
     }
