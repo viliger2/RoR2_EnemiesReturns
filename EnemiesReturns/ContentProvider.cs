@@ -692,7 +692,7 @@ namespace EnemiesReturns
                 Card = dcArcherBugDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStage(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchArcherBugDefault);
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.ArcherBug.DefaultStageList.Value, dchArcherBugDefault);
         }
 
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
