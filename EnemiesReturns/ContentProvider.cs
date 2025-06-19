@@ -678,6 +678,21 @@ namespace EnemiesReturns
 
             ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
             masterList.Add(ArcherBugMaster.MasterPrefab);
+
+            ArcherBugBody.SpawnCards.cscArcherBugDefault = archerBugBody.CreateCard("cscArcherBugDefault", ArcherBugMaster.MasterPrefab, ArcherBugBody.SkinDefs.Default, ArcherBugBody.BodyPrefab);
+            var dcArcherBugDefault = new DirectorCard
+            {
+                spawnCard = ArcherBugBody.SpawnCards.cscArcherBugDefault,
+                selectionWeight = 1,
+                preventOverhead = true,
+                minimumStageCompletions = 0
+            };
+            DirectorAPI.DirectorCardHolder dchArcherBugDefault = new DirectorAPI.DirectorCardHolder
+            {
+                Card = dcArcherBugDefault,
+                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+            };
+            Utils.AddMonsterToStage(EnemiesReturns.Configuration.Ifrit.DefaultStageList.Value, dchArcherBugDefault);
         }
 
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)

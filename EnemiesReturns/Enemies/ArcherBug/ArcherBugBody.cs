@@ -55,6 +55,19 @@ namespace EnemiesReturns.Enemies.ArcherBug
             });
         }
 
+        public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
+        {
+            return CreateCard(new SpawnCardParams(name, master, 28)
+            {
+                hullSize = HullClassification.Human,
+                forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn,
+                occupyPosition = true,
+                forbiddenAsBoss = false,
+                skinDef = skin,
+                bodyPrefab = bodyPrefab
+            });
+        }
+
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
             return new IAimAssist.AimAssistTargetParams()
