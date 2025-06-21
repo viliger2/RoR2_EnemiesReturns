@@ -180,6 +180,8 @@ namespace EnemiesReturns
 
                 CreateLynxTribe(assets, iconLookup, acdLookup, rampLookups);
 
+                CreateArcherBug(assets, iconLookup);
+
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));

@@ -8,6 +8,7 @@ using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
+using EnemiesReturns.Enemies.ArcherBug;
 using RoR2;
 using RoR2.UI;
 using System;
@@ -53,6 +54,7 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
+            yield return GeneratePortrait(modelPanel, ArcherBugBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, BodyCatalog.GetBodyPrefab(Enemies.Judgement.SetupJudgementPath.ArraignP1BodyIndex));
             yield return GeneratePortrait(modelPanel, BodyCatalog.GetBodyPrefab(Enemies.Judgement.SetupJudgementPath.ArraignP2BodyIndex));
             yield return GeneratePortrait(modelPanel, SpitterBody.BodyPrefab);
