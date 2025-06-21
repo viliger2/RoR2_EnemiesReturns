@@ -11,6 +11,8 @@ namespace EnemiesReturns
         public static class Stages
         {
             public static SceneDef OutOfTime;
+
+            public static SceneDef JudgementOutro;
         }
 
         public static class MusicTracks

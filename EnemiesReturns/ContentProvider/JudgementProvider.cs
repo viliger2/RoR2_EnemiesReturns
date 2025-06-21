@@ -14,6 +14,7 @@ using RoR2;
 using RoR2.Projectile;
 using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
 using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1;
+using RoR2.UI;
 
 namespace EnemiesReturns
 {
@@ -88,6 +89,7 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
                 {
                     Content.Stages.OutOfTime = assets.First(sd => sd.cachedName == "enemiesreturns_outoftime");
+                    Content.Stages.JudgementOutro = assets.First(sd => sd.cachedName == "enemiesreturns_judgementoutro");
 
                     _contentPack.sceneDefs.Add(assets);
                 }));
@@ -179,6 +181,8 @@ namespace EnemiesReturns
                     BeamStart.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffectNoMuzzleParticles");
 
                     Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay = assets.First(asset => asset.name == "DisplayAeonian");
+
+                    ModifyCredits(assets.First(asset => asset.name == "EnemiesReturnsCreditsAdditions"));
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -238,11 +242,24 @@ namespace EnemiesReturns
             yield break;
         }
 
+        private void ModifyCredits(GameObject ourCreditPanel)
+        {
+            var creditPanel = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_UI.CreditsPanel_prefab).WaitForCompletion();
+            creditPanel.GetComponent<CreditsPanelController>().scrollDuration += 10f;
+            var creditsContent = creditPanel.transform.Find("MainArea/Viewport/CreditsContent");
+            var community = creditsContent.Find("CompanyCredits - Community");
+
+            //creditsContent.Find("FinalMessageSpacer").GetComponent<UnityEngine.UI.LayoutElement>().minHeight = 32f;
+            //creditsContent.Find("FinalMessage").GetComponent<UnityEngine.UI.LayoutElement>().minHeight = 128f;
+            ourCreditPanel.transform.SetParent(creditsContent, false);
+            ourCreditPanel.transform.SetSiblingIndex(community.GetSiblingIndex() + 1);
+        }
+
         private void CreateJudgement()
         {
             if (Configuration.Judgement.Enabled.Value)
             {
-                nseList.Add(Utils.CreateNetworkSoundDef("Play_moonBrother_spawn")); // TODO: replce with different sounds, something heavy that lands in water, use wow sound like you usually do
+                nseList.Add(Utils.CreateNetworkSoundDef("Play_moonBrother_spawn"));
 
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();

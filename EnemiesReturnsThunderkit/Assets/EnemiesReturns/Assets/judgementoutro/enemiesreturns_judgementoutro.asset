@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -794597441, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: enemiesreturns_judgementoutro
+  m_EditorClassIdentifier: 
+  sceneAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  baseSceneNameOverride: enemiesreturns_judgementoutro
+  sceneType: 3
+  isOfflineScene: 0
+  stageOrder: 0
+  requiredExpansion: {fileID: 0}
+  nameToken: 
+  subtitleToken: 
+  previewTexture: {fileID: 0}
+  previewTextureReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  portalMaterial: {fileID: 0}
+  portalMaterialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  portalSelectionMessageString: 
+  shouldIncludeInLogbook: 0
+  loreToken: 
+  dioramaPrefab: {fileID: 0}
+  dioramaPrefabAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+  mainTrack: {fileID: 0}
+  bossTrack: {fileID: 0}
+  environmentColor: {r: 0.46274513, g: 0.627451, b: 0.69411767, a: 1}
+  hasSafeStart: 0
+  suppressPlayerEntry: 1
+  suppressNpcEntry: 1
+  blockOrbitalSkills: 0
+  validForRandomSelection: 0
+  allowItemsToSpawnObjects: 0
+  preventStageAdvanceCounter: 0
+  needSkipDevotionRespawn: 0
+  destinationsGroup: {fileID: 0}
+  loopedDestinationsGroup: {fileID: 0}
+  shouldUpdateSceneCollectionAfterLooping: 0
+  isLockedBeforeLooping: 0
+  loopedSceneDef: {fileID: 0}
+  destinations: []
+  preferredPortalPrefab: {fileID: 0}
+  portalPrefabAddress:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 

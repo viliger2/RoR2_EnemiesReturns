@@ -36,22 +36,33 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnIncomingDamageServer(DamageInfo damageInfo)
         {
+            if (!damageInfo.attacker)
+            {
+                return;
+            }
+
             var attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+
+            if (!attackerBody)
+            {
+                return;
+            }
 
             var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+            bool aeonianDamage = false;
             if(!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
-                endGameBossWeaponDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
-                endGameBossWeaponDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
+                aeonianDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+                aeonianDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
             }
-            if (arraignIsImmune && !endGameBossWeaponDamage)
+            if (arraignIsImmune && !(endGameBossWeaponDamage || aeonianDamage))
             {
                 damageInfo.rejected = true;
                 RenderDamageNumber(damageInfo.position);
             }
 
-            if (arraignIsImmune && endGameBossWeaponDamage)
+            if (arraignIsImmune && (endGameBossWeaponDamage || aeonianDamage))
             {
                 body.RemoveBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
                 if (childLocator)

@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Ending
             base.OnEnter();
             FadeToBlackManager.ForceFullBlack();
             FadeToBlackManager.fadeCount++;
-            desiredSceneDef = SceneCatalog.GetSceneDefFromSceneName("voidoutro");
+            desiredSceneDef = SceneCatalog.GetSceneDefFromSceneName("enemiesreturns_judgementoutro");
             if (NetworkServer.active)
             {
                 Run.instance.AdvanceStage(desiredSceneDef);

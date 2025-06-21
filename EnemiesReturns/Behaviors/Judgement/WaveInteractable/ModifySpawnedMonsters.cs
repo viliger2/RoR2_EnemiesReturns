@@ -16,7 +16,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public EliteDef eliteType;
 
-        public static float rewardMultiplier = 3f; // TODO: config
+        public static float rewardMultiplier => Configuration.Judgement.AeonianEliteGoldMultiplier.Value;
 
         private void Awake()
         {
