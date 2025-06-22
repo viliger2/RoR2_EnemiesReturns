@@ -1619,6 +1619,43 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Archer Bug" ID="{D1E07715-4AA0-489B-80FE-B6E0F76E6203}" ShortID="86040629">
+							<ChildrenList>
+								<Event Name="ER_ArcherBug_Shoot_Play" ID="{D5D53DB3-2C03-477C-BF2B-CD852E792EC9}">
+									<ChildrenList>
+										<Action Name="" ID="{150E719E-A301-45FC-8BC4-A991E1392C48}" ShortID="674485372">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ArcherBug_Shoot" ID="{2E92FA58-2241-48A5-8729-904163D6302C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_ArcherBug_Spawn_Play" ID="{88996644-2D2B-44B0-B17A-601195DF82A1}">
+									<ChildrenList>
+										<Action Name="" ID="{B4BB750C-C8D2-4D35-B5DA-31E54E4087F6}" ShortID="399679237">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ArcherBug_Spawn" ID="{31E34727-A88E-47DF-BEBD-9C92CDFB80C1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_ArcherBug_Death_Play" ID="{9E58536C-7B0A-448A-9198-3ACAF1D34FCF}">
+									<ChildrenList>
+										<Action Name="" ID="{A3DC7F7F-0924-4619-B89E-52765BA0ADD8}" ShortID="365947145">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ArcherBug_Death" ID="{0B8A5B99-9CA5-4EA2-A5C1-117A188E057C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{5D67AA33-F278-4D5A-BFF4-F9D9E4988DB5}" ShortID="404742623">

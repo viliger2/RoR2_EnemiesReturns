@@ -26,7 +26,6 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             {
                 return;
             }
-          
         }
 
         public override void FixedUpdate()

@@ -30,6 +30,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Folder Name="Spitter" ID="{0779C91D-AB7D-4D40-9F47-81F3D1F63FD3}" ShortID="1017259765">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="18"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Sound Name="Spitter_Spawn" ID="{B706FF48-6D84-48D1-9173-98A6105037FE}" ShortID="64763262">
 											<PropertyList>
@@ -452,6 +456,10 @@
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Colossus" ID="{124E035B-5625-48AF-8186-B9A676A61F16}" ShortID="720897954">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="27"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Sound Name="Colossus_Death2" ID="{F346D3E7-EB5C-40F9-8857-5B08A06AE4EC}" ShortID="841957440">
 											<PropertyList>
@@ -949,6 +957,10 @@
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Ifrit" ID="{133CFACA-5D3B-49CB-B50F-C11B6F3E6689}" ShortID="821048277">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="21"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Folder Name="Pillar" ID="{B81559F6-32BD-49FB-8F5E-FD00159B1DCE}" ShortID="19118240">
 											<ChildrenList>
@@ -1721,6 +1733,9 @@
 									</ChildrenList>
 								</Folder>
 								<Folder Name="MechanicalSpider" ID="{57490CFC-B503-42D7-BD60-40E191FD604B}" ShortID="498767386">
+									<PropertyList>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<ActorMixer Name="Random Pitch" ID="{0E1E1421-EC37-49C6-9FF2-4623AA735AE5}" ShortID="782095379">
 											<PropertyList>
@@ -2524,6 +2539,10 @@
 									</ChildrenList>
 								</Folder>
 								<Folder Name="LynxTribe" ID="{A0C1E000-89F6-49CD-AC4E-D576F19C7C06}" ShortID="13830507">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="2"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Folder Name="Shaman" ID="{EE1E49E2-1B4D-4785-9AC5-51A3AF2BA0DC}" ShortID="30591707">
 											<ChildrenList>
@@ -4163,6 +4182,10 @@
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Judgement" ID="{AAC9D044-5DF1-437C-81AF-134303843126}" ShortID="913848796">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="15"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
 									<ChildrenList>
 										<Folder Name="Arraign" ID="{ED56D972-D550-4974-A3DE-6769E17A1BE1}" ShortID="504697932">
 											<ChildrenList>
@@ -5142,6 +5165,105 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="ArcherBug" ID="{A79E5ACC-681D-4699-BDA2-ABC0BC21F0FF}" ShortID="1020138286">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="6"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Sound Name="ArcherBug_Spawn" ID="{31E34727-A88E-47DF-BEBD-9C92CDFB80C1}" ShortID="338154147">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wMacG_Spawn" ID="{A3DE6CC9-094C-47C6-9CD1-7BEDAC85B2F0}">
+													<Language>SFX</Language>
+													<AudioFile>ArcherBug\wMacG_Spawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="498890753"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wMacG_Spawn" ID="{A3DE6CC9-094C-47C6-9CD1-7BEDAC85B2F0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ArcherBug_Shoot" ID="{2E92FA58-2241-48A5-8729-904163D6302C}" ShortID="118454525">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.236657334202015"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>ArcherBug\wMacG_Shoot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1019158565"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="ArcherBug_Death" ID="{0B8A5B99-9CA5-4EA2-A5C1-117A188E057C}" ShortID="375283551">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wMac_Death" ID="{FFCC55B7-B309-4705-8074-CA55EB6CCB04}">
+													<Language>SFX</Language>
+													<AudioFile>ArcherBug\wMac_Death.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="449360130"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wMac_Death" ID="{FFCC55B7-B309-4705-8074-CA55EB6CCB04}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

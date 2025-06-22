@@ -10,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         public override void OnEnter()
         {
             duration = 1.3f;
-            spawnSoundString = ""; // TODO
+            spawnSoundString = "ER_ArcherBug_Spawn_Play";
             base.OnEnter();
         }
     }

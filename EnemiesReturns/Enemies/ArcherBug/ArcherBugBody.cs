@@ -57,13 +57,13 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 descriptionToken = "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION",
                 icon = acridEpidemic.icon,
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 3f
+                baseRechargeInterval = Configuration.ArcherBug.CausticSpitCooldown.Value
             });
         }
 
         public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
         {
-            return CreateCard(new SpawnCardParams(name, master, 28)
+            return CreateCard(new SpawnCardParams(name, master, Configuration.ArcherBug.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
                 forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn,
@@ -118,15 +118,15 @@ namespace EnemiesReturns.Enemies.ArcherBug
             {
                 mainRootSpeed = 0,
                 baseAcceleration = 100f,
-                baseMaxHealth = 140,
-                levelMaxHealth = 42,
-                baseDamage = 12,
-                levelDamage = 2.4f,
-                baseArmor = 0,
-                levelArmor = 0,
-                baseMoveSpeed = 30,
+                baseMaxHealth = Configuration.ArcherBug.BaseMaxHealth.Value,
+                levelMaxHealth = Configuration.ArcherBug.LevelMaxHealth.Value,
+                baseDamage = Configuration.ArcherBug.BaseDamage.Value,
+                levelDamage = Configuration.ArcherBug.LevelDamage.Value,
+                baseArmor = Configuration.ArcherBug.BaseArmor.Value,
+                levelArmor = Configuration.ArcherBug.LevelArmor.Value,
+                baseMoveSpeed = Configuration.ArcherBug.BaseMoveSpeed.Value,
                 baseJumpCount = 1,
-                baseJumpPower = 25,
+                baseJumpPower = Configuration.ArcherBug.BaseJumpPower.Value,
                 isChampion = false,
                 autoCalculateStats = true,
             };
@@ -162,6 +162,15 @@ namespace EnemiesReturns.Enemies.ArcherBug
             {
                 autoPopulateLightInfos = true,
                 renderInfos = defaultRender
+            };
+        }
+
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                aliveLoopStart = "Play_item_use_bugWingFlapLoop",
+                aliveLoopStop = "Stop_item_use_bugWingFlapLoop"
             };
         }
 

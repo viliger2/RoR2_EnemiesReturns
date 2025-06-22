@@ -17,16 +17,22 @@ namespace EnemiesReturns
     {
         private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
-            var ArcherBugStuff = new ArcherBugStuff();
-            var ArcherBugCausticSpitProjectile = ArcherBugStuff.CreateCausticSpitProjectile();
+            var archerBugStuff = new ArcherBugStuff();
+
+            var ArcherBugCausticSpitProjectile = archerBugStuff.CreateCausticSpitProjectile();
             ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
+            projectilesList.Add(ArcherBugCausticSpitProjectile);
 
             var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
             unlockablesList.Add(archerBugLog);
-            var ArcherBugDeathEffect = ArcherBugStuff.CreateDeathEffect();
+
+            var ArcherBugDeathEffect = archerBugStuff.CreateDeathEffect();
             effectsList.Add(new EffectDef(ArcherBugDeathEffect));
             ModdedEntityStates.ArcherBugs.DeathState.deathEffectPrefab = ArcherBugDeathEffect;
-            projectilesList.Add(ArcherBugCausticSpitProjectile);
+
+            ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect = archerBugStuff.CreateCausticSpitChargeEffect();
+            effectsList.Add(new EffectDef(ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect));
+
             var archerBugBody = new ArcherBugBody();
             ArcherBugBody.Skills.CausticSpit = archerBugBody.CreateCausticSpitSkill();
 
@@ -41,9 +47,9 @@ namespace EnemiesReturns
             var dcArcherBugDefault = new DirectorCard
             {
                 spawnCard = ArcherBugBody.SpawnCards.cscArcherBugDefault,
-                selectionWeight = 1,
+                selectionWeight = Configuration.ArcherBug.SelectionWeight.Value,
                 preventOverhead = true,
-                minimumStageCompletions = 0
+                minimumStageCompletions = Configuration.ArcherBug.MinimumStageCompletion.Value
             };
             DirectorAPI.DirectorCardHolder dchArcherBugDefault = new DirectorAPI.DirectorCardHolder
             {

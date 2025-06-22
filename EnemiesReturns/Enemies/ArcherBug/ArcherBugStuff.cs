@@ -11,21 +11,23 @@ namespace EnemiesReturns.Enemies.ArcherBug
         public GameObject CreateCausticSpitProjectile()
         {
             var clonedProjectile = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Croco.CrocoSpit_prefab).WaitForCompletion().InstantiateClone("ArcherBugCausticSpitProjectile", true);
-            clonedProjectile.GetComponent<ProjectileImpactExplosion>().blastRadius = 2f;
+            var impactExplosion = clonedProjectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius = Configuration.ArcherBug.CausticSpitBlastRadius.Value;
+            impactExplosion.blastProcCoefficient = Configuration.ArcherBug.CausticSpitProcCoefficient.Value;
 
             ProjectileDamage projectileDamage = clonedProjectile.GetComponent<ProjectileDamage>();
-            projectileDamage.damageType.damageSource = DamageSource.Primary;
-            projectileDamage.damageType.damageType = DamageTypeCombo.GenericPrimary;
+            projectileDamage.damageType = DamageTypeCombo.GenericPrimary;
 
             clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion();
             
             return clonedProjectile;
         }
-       
         public GameObject CreateDeathEffect()
         {
             var deathEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_AcidLarva.AcidLarvaDeath_prefab).WaitForCompletion().InstantiateClone("ArcherBugDeathEffect", false);
-            deathEffectPrefab.GetComponent<EffectComponent>().applyScale = true;
+            var effectComponent = deathEffectPrefab.GetComponent<EffectComponent>();
+            effectComponent.applyScale = true;
+            effectComponent.soundName = "ER_ArcherBug_Death_Play";
 
             foreach (var system in deathEffectPrefab.GetComponentsInChildren<ParticleSystem>())
             {
@@ -34,6 +36,20 @@ namespace EnemiesReturns.Enemies.ArcherBug
             }
 
             return deathEffectPrefab;
+        }
+
+        public GameObject CreateCausticSpitChargeEffect()
+        {
+            var clonedPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion().InstantiateClone("ArcherBugCausticSpitChargeEffect", false);
+            UnityEngine.Object.DestroyImmediate(clonedPrefab.GetComponent<ProjectileGhostController>());
+
+            var effectComponent = clonedPrefab.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = true;
+            effectComponent.parentToReferencedTransform = true;
+
+            clonedPrefab.AddComponent<DestroyOnTimer>().duration = 0.5f;
+
+            return clonedPrefab;
         }
     }
 }

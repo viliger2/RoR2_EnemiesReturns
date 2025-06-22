@@ -17,11 +17,17 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
 
         public static string targetMuzzle = "AbdomenMuzzle";
 
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient => EnemiesReturns.Configuration.ArcherBug.CausticSpitDamage.Value;
 
         public static GameObject projectilePrefab;
 
-        public static float projectileForce => 3f;
+        public static float projectileForce => Configuration.ArcherBug.CausticSpitForce.Value;
+
+        public static int projectileCount => Configuration.ArcherBug.CausitcSpitProjectileCount.Value;
+
+        public static float projectileSpread => Configuration.ArcherBug.CausticSpitProjectileSpread.Value;
+
+        public static GameObject chargeEffect;
 
         public float baseDelay = 0.5f;
 
@@ -37,8 +43,9 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             delay = baseDelay / attackSpeedStat;
             duration = baseDuration / attackSpeedStat;
             PlayAnimation("Gesture", "FireCausticSpit", "FireCausticSpit.playbackRate", duration);
-            Util.PlaySound("ER_Spiiter_Spit_Play", gameObject);
+            Util.PlaySound("ER_ArcherBug_Shoot_Play", gameObject);
             StartAimMode(GetAimRay(), 2f, false);
+            EffectManager.SimpleMuzzleFlash(chargeEffect, base.gameObject, "BugButt", false);
         }
 
         public override void FixedUpdate()
@@ -66,14 +73,15 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             Vector3 rhs = Vector3.Cross(Vector3.up, aimRay.direction);
             Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
 
-            int shotCount = 3;
-            float spread = 20f;   //Bandit is 2, experiment to find a good value for this. Higher = wider
+            int shotCount = projectileCount;
+            float spread = projectileSpread; //Bandit is 2, experiment to find a good value for this. Higher = wider
 
             var num2 = spread;
             var angle = num2 / (shotCount - 1);
 
             Vector3 direction = Quaternion.AngleAxis(-num2 * 0.5f, axis) * aimRay.direction;
             Quaternion rotation = Quaternion.AngleAxis(angle, axis);
+            var proejctileOrigin = aimRay.origin;
             Ray aimRay2 = new Ray(aimRay.origin, direction);
             for (int i = 0; i < shotCount; i++)
             {
