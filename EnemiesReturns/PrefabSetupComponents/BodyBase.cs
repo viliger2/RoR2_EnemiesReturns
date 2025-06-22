@@ -115,6 +115,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddDeployable => false;
         protected virtual bool AddExecuteSkillOnDamage => false;
         protected virtual bool AddRemoveJitterBones => false;
+        protected virtual bool AddRigidbodyMotor => false;
 
         protected class SkillParams
         {
@@ -373,6 +374,16 @@ namespace EnemiesReturns.Components
             };
         }
 
+        protected virtual IRigidbodyMotor.RigidbodyMotorParams RigidbodyMotorParams()
+        {
+            return new IRigidbodyMotor.RigidbodyMotorParams();
+        }
+
+        protected virtual IRigidBodyDirection.RigidbodyDirectionParams RigidbodyDirectionParams()
+        {
+            return new IRigidBodyDirection.RigidbodyDirectionParams();
+        }
+
         protected virtual IExecuteSkillOnDamage.ExecuteSkillOnDamageParams ExecuteSkillOnDamage()
         {
             return new IExecuteSkillOnDamage.ExecuteSkillOnDamageParams()
@@ -440,6 +451,9 @@ namespace EnemiesReturns.Components
 
         IExecuteSkillOnDamage.ExecuteSkillOnDamageParams IExecuteSkillOnDamage.GetExecuteSkillOnDamageParams() => ExecuteSkillOnDamage();
 
+        IRigidBodyDirection.RigidbodyDirectionParams IRigidBodyDirection.GetRigidBodyDirectionParams() => RigidbodyDirectionParams();
+
+        IRigidbodyMotor.RigidbodyMotorParams IRigidbodyMotor.GetRigidBodyMotorParams() => RigidbodyMotorParams();
 
         bool IAimAnimator.NeedToAddAimAnimator() => AddAimAnimator;
         bool IAnimationEvents.NeedToAddAnimationEvents() => AddAnimationEvents;
@@ -481,6 +495,9 @@ namespace EnemiesReturns.Components
         bool IDeployable.NeedToAddDeployable() => AddDeployable;
         bool IExecuteSkillOnDamage.NeedToAddExecuteSkillOnDamage() => AddExecuteSkillOnDamage;
         bool IRemoveJitterBones.NeedToAddRemoveJitterBones() => AddRemoveJitterBones;
+        bool IRigidbodyMotor.NeedToAddRigidbodyMotor() => AddRigidbodyMotor;
+        bool IRigidBodyDirection.NeedToAddRigidBodyDirection() => AddRigidbodyMotor;
+
 
     }
 }

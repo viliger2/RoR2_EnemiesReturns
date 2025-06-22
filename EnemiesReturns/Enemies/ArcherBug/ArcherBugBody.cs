@@ -40,7 +40,13 @@ namespace EnemiesReturns.Enemies.ArcherBug
 
         public static GameObject BodyPrefab;
 
-        protected override bool AddHitBoxes => true;
+        protected override bool AddFootstepHandler => false;
+
+        protected override bool AddCharacterMotor => false;
+
+        protected override bool AddCharacterDirection => false;
+
+        protected override bool AddRigidbodyMotor => true;
 
         public SkillDef CreateCausticSpitSkill()
         {
@@ -68,13 +74,41 @@ namespace EnemiesReturns.Enemies.ArcherBug
             });
         }
 
-        protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
+        protected override IRigidBodyDirection.RigidbodyDirectionParams RigidbodyDirectionParams()
         {
-            return new IAimAssist.AimAssistTargetParams()
+            return new IRigidBodyDirection.RigidbodyDirectionParams()
             {
-                assistScale = 2f,
-                pathToPoint0 = "ModelBase/Bug/Armature/root/Base/Body/head",
-                pathToPoint1 = "ModelBase/Bug/Armature/root"
+                aimDirection = Vector3.one,
+                angularVelocityPID = new QuaternionPIDParams()
+                {
+                    customName = "Angular Velocity PID",
+                    PID = new Vector3(5f, 1f, 0f),
+                    inputQuat = Quaternion.identity,
+                    targetQuat = Quaternion.identity,
+                    gain = 3f
+                },
+                torquePID = new VectorPIDParams()
+                {
+                    customName = "torquePID",
+                    PID = new Vector3(2f, 1f, 0f),
+                    isAngle = true,
+                    gain = 3f
+                },
+            };
+        }
+
+        protected override IRigidbodyMotor.RigidbodyMotorParams RigidbodyMotorParams()
+        {
+            return new IRigidbodyMotor.RigidbodyMotorParams()
+            {
+                forcePID = new VectorPIDParams()
+                {
+                    customName = "Force PID",
+                    PID = new Vector3(3f, 0f, 0f),
+                    isAngle = false,
+                    gain = 1f
+                },
+                canTakeImpactDamage = true
             };
         }
 
@@ -82,14 +116,15 @@ namespace EnemiesReturns.Enemies.ArcherBug
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_ARCHERBUG_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                mainRootSpeed = 33,
+                mainRootSpeed = 0,
+                baseAcceleration = 100f,
                 baseMaxHealth = 140,
                 levelMaxHealth = 42,
                 baseDamage = 12,
                 levelDamage = 2.4f,
                 baseArmor = 0,
                 levelArmor = 0,
-                baseMoveSpeed = 10,
+                baseMoveSpeed = 30,
                 baseJumpCount = 1,
                 baseJumpPower = 25,
                 isChampion = false,
@@ -167,8 +202,8 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 new IEntityStateMachine.EntityStateMachineParams
                 {
                     name = "Body",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain)),
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.SpawnState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.FlyState)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {
@@ -176,19 +211,22 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle)),
                     mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Idle))
                 },
-                new IEntityStateMachine.EntityStateMachineParams()
-                {
-                    name = "Fly",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.FlyingVermin.Mode.GrantFlight)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.FlyingVermin.Mode.GrantFlight))
-                }
             };
         }
 
-        protected override bool AddFootstepHandler => false;
         protected override IFootStepHandler.FootstepHandlerParams FootstepHandlerParams()
         {
             return new IFootStepHandler.FootstepHandlerParams();
+        }
+
+        protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
+        {
+            return new IAimAssist.AimAssistTargetParams()
+            {
+                assistScale = 2f,
+                pathToPoint0 = "ModelBase/Bug/ArcherBugArmature/ROOT/Base/Body/Head",
+                pathToPoint1 = "ModelBase/Bug/ArcherBugArmature/ROOT/Abdomen1/Abdomen2/Abdomen3/Abdomen3_end"
+            };
         }
 
         protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
@@ -196,8 +234,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             return new IGenericSkill.GenericSkillParams[]
              {
                  new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "CausticSpit", SkillSlot.Primary),
-             }
- ;
+             };
         }
 
         protected override ItemDisplayRuleSet ItemDisplayRuleSet()

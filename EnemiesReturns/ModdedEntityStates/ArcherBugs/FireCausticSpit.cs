@@ -16,17 +16,10 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         public static float baseDuration = 2f;
 
         public static string targetMuzzle = "AbdomenMuzzle";
-        public static float timeToTarget => projectileSpeed;
 
         public static float damageCoefficient = 2f;
 
         public static GameObject projectilePrefab;
-
-        public static float projectileSpeed = 55f;
-
-        public static float minimumDistance = 0f;
-
-        public static float maximumDistance = 200f;
 
         public static float projectileForce => 3f;
 
@@ -37,7 +30,6 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         private float duration;
 
         private float delay;
-
        
         public override void OnEnter()
         {
@@ -46,6 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             duration = baseDuration / attackSpeedStat;
             PlayAnimation("Gesture", "FireCausticSpit", "FireCausticSpit.playbackRate", duration);
             Util.PlaySound("ER_Spiiter_Spit_Play", gameObject);
+            StartAimMode(GetAimRay(), 2f, false);
         }
 
         public override void FixedUpdate()
@@ -54,12 +47,9 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
            
             if (fixedAge > delay && !hasFired)
             {
-                Ray aimRay = GetAimRay();
-                StartAimMode(aimRay, 2f, false);
-
                 if (isAuthority)
                 {
-                    FireAttackAuthority(aimRay);
+                    FireAttackAuthority();
                 }
                 hasFired = true;
             }
@@ -70,8 +60,9 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             }
         }
 
-        public void FireAttackAuthority(Ray aimRay)
+        public void FireAttackAuthority()
         {
+            var aimRay = GetAimRay();
             Vector3 rhs = Vector3.Cross(Vector3.up, aimRay.direction);
             Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
 
@@ -98,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             base.OnExit();
             if (!hasFired && isAuthority)
             {               
-                FireAttackAuthority(GetAimRay());
+                FireAttackAuthority();
             }
         }       
 
