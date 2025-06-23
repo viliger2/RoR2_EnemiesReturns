@@ -239,14 +239,14 @@ namespace EnemiesReturns
                 selectionWeight = Configuration.LynxTribe.LynxArcher.SelectionWeight.Value,
                 spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                 preventOverhead = true,
-                minimumStageCompletions = 0
+                minimumStageCompletions = Configuration.LynxTribe.LynxArcher.MinimumStageCompletion.Value
             };
             DirectorAPI.DirectorCardHolder dchLynxArcherDefault = new DirectorAPI.DirectorCardHolder
             {
                 Card = dhLynxArcherDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxArcherDefault);
+            Utils.AddMonsterToStages(Configuration.LynxTribe.LynxArcher.DefaultStageList.Value, dchLynxArcherDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ArcherBody.SpawnCards.cscLynxArcherDefault);
 
@@ -302,14 +302,14 @@ namespace EnemiesReturns
                 selectionWeight = Configuration.LynxTribe.LynxHunter.SelectionWeight.Value,
                 spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                 preventOverhead = true,
-                minimumStageCompletions = 0
+                minimumStageCompletions = Configuration.LynxTribe.LynxHunter.MinimumStageCompletion.Value
             };
             DirectorAPI.DirectorCardHolder dchLynxHunterDefault = new DirectorAPI.DirectorCardHolder
             {
                 Card = dhLynxHunterDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxHunterDefault);
+            Utils.AddMonsterToStages(Configuration.LynxTribe.LynxHunter.DefaultStageList.Value, dchLynxHunterDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, HunterBody.SpawnCards.cscLynxHunterDefault);
 
@@ -365,14 +365,14 @@ namespace EnemiesReturns
                 selectionWeight = Configuration.LynxTribe.LynxScout.SelectionWeight.Value,
                 spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
                 preventOverhead = true,
-                minimumStageCompletions = 0
+                minimumStageCompletions = Configuration.LynxTribe.LynxScout.MinimumStageCompletion.Value
             };
             DirectorAPI.DirectorCardHolder dchLynxScoutDefault = new DirectorAPI.DirectorCardHolder
             {
                 Card = dhLynxScoutDefault,
                 MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
             };
-            Utils.AddMonsterToStages(DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell), dchLynxScoutDefault);
+            Utils.AddMonsterToStages(Configuration.LynxTribe.LynxScout.DefaultStageList.Value, dchLynxScoutDefault);
 
             HG.ArrayUtils.ArrayAppend(ref ModdedEntityStates.LynxTribe.Totem.SummonTribe.spawnCards, ScoutBody.SpawnCards.cscLynxScoutDefault);
 

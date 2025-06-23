@@ -58,7 +58,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
-
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
                 ),
                 "Stages that Default Lynx Shaman appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");

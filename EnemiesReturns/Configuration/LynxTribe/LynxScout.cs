@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using R2API;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
@@ -7,6 +8,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
     {
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
+        public static ConfigEntry<int> MinimumStageCompletion;
+        public static ConfigEntry<string> DefaultStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -27,6 +30,12 @@ namespace EnemiesReturns.Configuration.LynxTribe
         {
             SelectionWeight = config.Bind("Lynx Scout Director", "Selection Weight", 1, "Selection weight of Lynx Scout.");
             DirectorCost = config.Bind("Lynx Scout Director", "Director Cost", 27, "Director cost of Lynx Scout.");
+            MinimumStageCompletion = config.Bind("Lynx Scout Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            DefaultStageList = config.Bind("Lynx Scout Director", "Default Variant Stage List",
+                string.Join(",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
+                ),
+                "Stages that Default Lynx Scout appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Lynx Scout Character Stats", "Base Max Health", 210f, "Lynx Scout' base health.");
             BaseMoveSpeed = config.Bind("Lynx Scout Character Stats", "Base Movement Speed", 12f, "Lynx Scout' base movement speed.");
