@@ -11,7 +11,6 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
-
         public static ConfigEntry<string> DefaultStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
@@ -35,7 +34,7 @@ namespace EnemiesReturns.Configuration
         {
             DirectorCost = config.Bind("Archer Bug Director", "Director Cost", 28, "Director cost of Archer Bug.");
             SelectionWeight = config.Bind("Archer Bug Director", "Selection Weight", 1, "Selection weight of Archer Bug.");
-            MinimumStageCompletion = config.Bind("Archer Bug Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+            MinimumStageCompletion = config.Bind("Archer Bug Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
 
             BaseMaxHealth = config.Bind("Archer Bug Character Stats", "Base Max Health", 140f, "Archer Bug' base health.");
             BaseMoveSpeed = config.Bind("Archer Bug Character Stats", "Base Movement Speed", 30f, "Archer Bug' base movement speed.");
@@ -60,10 +59,11 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuary),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuarySimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.WetlandAspect),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TreebornColony),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueduct),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueductSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ScorchedAcres),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                     ),
                 "Stages that Default Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
