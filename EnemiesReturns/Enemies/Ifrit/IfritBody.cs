@@ -583,6 +583,16 @@ namespace EnemiesReturns.Enemies.Ifrit
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
+                childName = "Head",
+                localPos = new Vector3(-0.00056F, 0.03265F, 0.35276F),
+                localAngles = new Vector3(43.26447F, 1.0525F, 0.40616F),
+                localScale = new Vector3(0.67099F, 0.67099F, 0.67099F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Chest",
                 localPos = new Vector3(0F, 0.11885F, -0.18199F),
@@ -714,7 +724,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

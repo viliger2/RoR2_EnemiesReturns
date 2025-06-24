@@ -783,6 +783,16 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
+                childName = "Head",
+                localPos = new Vector3(0.00503F, 0.42051F, -0.06089F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(0.47317F, 0.47317F, 0.47317F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Chest",
                 localPos = new Vector3(0F, 0.00002F, -0.37656F),
@@ -924,7 +934,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

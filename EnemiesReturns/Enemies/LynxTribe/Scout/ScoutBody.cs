@@ -357,6 +357,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
+                childName = "Head",
+                localPos = new Vector3(-0.00128F, -0.27535F, -0.06339F),
+                localAngles = new Vector3(79.43568F, 180F, 180F),
+                localScale = new Vector3(1.3106F, 1.3106F, 1.3106F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "Chest",
                 localPos = new Vector3(-0.00001F, -1.52425F, -0.86948F),
@@ -468,7 +478,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

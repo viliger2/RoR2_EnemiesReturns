@@ -612,6 +612,16 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
+                childName = "BodyTop",
+                localPos = new Vector3(0F, 0.077F, 0F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(3F, 2F, 3F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
                 childName = "BodyLow",
                 localPos = new Vector3(0F, 1.19209F, -1.54352F),
@@ -743,7 +753,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteBead.EliteBeadEquipment)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

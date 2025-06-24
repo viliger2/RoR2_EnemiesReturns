@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.ArcherBug
 {
@@ -251,6 +252,289 @@ namespace EnemiesReturns.Enemies.ArcherBug
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsArcherBug";
+
+            #region FireElite
+            var displayRuleGroupFire = new DisplayRuleGroup();
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
+                childName = "Head",
+                localPos = new Vector3(0.14363F, 0.68922F, -0.20783F),
+                localAngles = new Vector3(307.2305F, 327.3106F, 39.84308F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+
+            displayRuleGroupFire.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteFire.DisplayEliteHorn),
+                childName = "Head",
+                localPos = new Vector3(-0.01859F, 0.72466F, -0.18266F),
+                localAngles = new Vector3(311.8723F, 33.87458F, 326.1819F),
+                localScale = new Vector3(-0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteFire.EliteFireEquipment),
+                displayRuleGroup = displayRuleGroupFire,
+            });
+            #endregion
+
+            #region HauntedElite
+            var displayRuleGroupHaunted = new DisplayRuleGroup();
+            displayRuleGroupHaunted.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
+                childName = "BottomBody",
+                localPos = new Vector3(0.01843F, 1.292F, -0.28706F),
+                localAngles = new Vector3(52.67337F, 359.362F, 0.1409F),
+                localScale = new Vector3(0.25F, 0.25F, 0.25F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupHaunted,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteHaunted.EliteHauntedEquipment),
+            });
+            #endregion
+
+            #region IceElite
+            var displayRuleGroupIce = new DisplayRuleGroup();
+            displayRuleGroupIce.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
+                childName = "Head",
+                localPos = new Vector3(-0.04036F, 0.35801F, -0.69943F),
+                localAngles = new Vector3(3.535F, 185.4618F, 186.8777F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupIce,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment)
+            });
+            #endregion
+
+            #region LightningElite
+            var displayRuleGroupLightning = new DisplayRuleGroup();
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
+                childName = "UpperBody",
+                localPos = new Vector3(0.00177F, 0.80229F, -0.47328F),
+                localAngles = new Vector3(352.9117F, 177.1099F, 177.786F),
+                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
+                childName = "UpperBody",
+                localPos = new Vector3(0F, 0.42249F, -0.43617F),
+                localAngles = new Vector3(9.48563F, 179.9999F, 180F),
+                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
+                childName = "UpperBody",
+                localPos = new Vector3(0F, 0.0424F, -0.39181F),
+                localAngles = new Vector3(32.88057F, 179.9999F, 180F),
+                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLightning.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLightning.DisplayEliteRhinoHorn),
+                childName = "BugButt",
+                localPos = new Vector3(0F, 0F, 0F),
+                localAngles = new Vector3(272.2996F, 320.5991F, 25.09467F),
+                localScale = new Vector3(0.5F, 0.5F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupLightning,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLightning.EliteLightningEquipment)
+            });
+            #endregion
+
+            #region LunarElite
+            var displayRuleGroupLunar = new DisplayRuleGroup();
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
+                childName = "Head",
+                localPos = new Vector3(0.00819F, 0.08174F, 0.00748F),
+                localAngles = new Vector3(90F, 0F, 0F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarFire),
+                childName = "UpperBody",
+                localPos = new Vector3(0F, -0.00847F, -0.3497F),
+                localAngles = new Vector3(76.88484F, 179.9998F, 179.9998F),
+                localScale = new Vector3(0.5F, 0.3F, 0.5F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupLunar,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteLunar.EliteLunarEquipment)
+            });
+            #endregion
+
+            #region PoisonElite
+            var displayRuleGroupPoison = new DisplayRuleGroup();
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
+                childName = "BottomBody",
+                localPos = new Vector3(-0.02994F, 1.15267F, -0.73712F),
+                localAngles = new Vector3(34.80247F, 180.7755F, 178.1361F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleGroupPoison.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.ElitePoison.DisplayEliteUrchinCrown),
+                childName = "BottomBody",
+                localPos = new Vector3(-0.02852F, 1.49305F, -0.08955F),
+                localAngles = new Vector3(326.5202F, 359.1678F, 0.65932F),
+                localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupPoison,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.ElitePoison.ElitePoisonEquipment)
+            });
+            #endregion
+
+            #region EliteEarth
+            var displayRuleGroupEarth = new DisplayRuleGroup();
+            displayRuleGroupEarth.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteEarth.DisplayEliteMendingAntlers),
+                childName = "Head",
+                localPos = new Vector3(-0.00188F, 0.73608F, -0.26081F),
+                localAngles = new Vector3(286.265F, 0F, 0F),
+                localScale = new Vector3(2F, 2F, 2F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupEarth,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteEarth.EliteEarthEquipment)
+            });
+            #endregion
+
+            #region VoidElite
+            var displayRuleGroupVoid = new DisplayRuleGroup();
+            displayRuleGroupVoid.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteVoid.DisplayAffixVoid),
+                childName = "Head",
+                localPos = new Vector3(0.02022F, 0.81777F, -0.24143F),
+                localAngles = new Vector3(304.5165F, 355.7076F, 6.99781F),
+                localScale = new Vector3(0.35F, 0.35F, 0.35F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupVoid,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteVoid.EliteVoidEquipment)
+            });
+            #endregion
+
+            #region BeadElite
+            var displayRuleGroupBead = new DisplayRuleGroup();
+            displayRuleGroupBead.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteBead.DisplayEliteBeadSpike),
+                childName = "UpperBody",
+                localPos = new Vector3(-0.05061F, 0.2975F, -0.45238F),
+                localAngles = new Vector3(284.7676F, 179.9998F, 180.0001F),
+                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupBead,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+            });
+            #endregion
+
+            #region GoldElite
+            var displayRuleGroupGold = new DisplayRuleGroup();
+            displayRuleGroupGold.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
+                childName = "Head",
+                localPos = new Vector3(0.03033F, 1.17444F, -0.00549F),
+                localAngles = new Vector3(283.9268F, 86.01854F, 272.4486F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupGold,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteGold.EliteAurelioniteEquipment)
+            });
+            #endregion
+
+            #region AeonianElite
+            var displayRuleGroupAeonian = new DisplayRuleGroup();
+            displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                childName = "Head",
+                localPos = new Vector3(-0.03223F, 0.66718F, -1.12624F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(0.12202F, 0.12202F, 0.12202F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleGroupAeonian,
+                keyAsset = Content.Equipment.EliteAeonian
+            });
+            #endregion
+
             return idrs;
         }
 

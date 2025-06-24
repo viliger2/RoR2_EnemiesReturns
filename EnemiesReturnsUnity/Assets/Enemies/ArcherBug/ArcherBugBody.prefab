@@ -1026,7 +1026,7 @@ MonoBehaviour:
     transform: {fileID: 6933685379364479785}
   - name: Head
     transform: {fileID: 2649732255024938713}
-  - name: Body
+  - name: UpperBody
     transform: {fileID: 2989103161338954118}
   - name: WingLeftBack
     transform: {fileID: 394459524725509033}
@@ -1056,6 +1056,8 @@ MonoBehaviour:
     transform: {fileID: 2542353812695843741}
   - name: CalfRFront
     transform: {fileID: 4414784279232512857}
+  - name: BottomBody
+    transform: {fileID: 7090835819194203266}
 --- !u!114 &7035300327044305085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1157,12 @@ Transform:
 --- !u!4 &6933685379364479785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7007032627618070781, guid: 5461714894b5ef543b1c0b6b70a56fc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 73356190551745492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7090835819194203266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7161612409315401558, guid: 5461714894b5ef543b1c0b6b70a56fc3,
     type: 3}
   m_PrefabInstance: {fileID: 73356190551745492}
   m_PrefabAsset: {fileID: 0}
