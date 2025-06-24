@@ -68,27 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             base.FixedUpdate();
             if (modelAnimator.GetFloat("CastTeleport.attack") > 0.9f && !isAttackFired)
             {
-                if (NetworkServer.active)
-                {
-                    blastAttack.position = attackOrigin.position;
-                    var result = blastAttack.Fire();
-                    if (force > 0f)
-                    {
-                        for (int i = 0; i < result.hitPoints.Length; i++)
-                        {
-                            Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position).normalized * force + Vector3.up * force / 4f; // 4 is magic number to get 500 from 2000 default value, basically we apply 1/4th of force as Up force
-                            result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
-                        }
-                    }
-                }
-                if (explosionPrefab)
-                {
-                    EffectManager.SpawnEffect(explosionPrefab, new EffectData
-                    {
-                        origin = attackOrigin.position,
-                        scale = radius
-                    }, false);
-                }
+                FireAttack();
                 isAttackFired = true;
             }
 
@@ -98,10 +78,40 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             }
         }
 
+        private void FireAttack()
+        {
+            if (NetworkServer.active)
+            {
+                blastAttack.position = attackOrigin.position;
+                var result = blastAttack.Fire();
+                if (force > 0f)
+                {
+                    for (int i = 0; i < result.hitPoints.Length; i++)
+                    {
+                        Vector3 direction = (result.hitPoints[i].hitPosition - attackOrigin.position).normalized * force + Vector3.up * force / 4f; // 4 is magic number to get 500 from 2000 default value, basically we apply 1/4th of force as Up force
+                        result.hitPoints[i].hurtBox.healthComponent.TakeDamageForce(direction, true, false);
+                    }
+                }
+            }
+            if (explosionPrefab)
+            {
+                EffectManager.SpawnEffect(explosionPrefab, new EffectData
+                {
+                    origin = attackOrigin.position,
+                    scale = radius
+                }, false);
+            }
+        }
+
         public override void OnExit()
         {
             base.OnExit();
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            if(!isAttackFired)
+            {
+                FireAttack();
+                isAttackFired = true;
+            }
         }
 
         private void PrepareAttack()

@@ -1617,6 +1617,43 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Outro" ID="{32D1F47F-15D0-40C5-8B62-5E614D38713E}" ShortID="365724457">
+									<ChildrenList>
+										<Event Name="ER_JudgementOutro_Fighting_Play" ID="{0374ACA4-8C71-4A19-8B44-B68BF5B706E5}">
+											<ChildrenList>
+												<Action Name="" ID="{B06D7A44-6AE8-4861-92A5-EE0D58FC65A1}" ShortID="642299247">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="JudgementOutro_Fighting" ID="{9CB409C8-933A-4A6A-AC7B-6AE778AEB60B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_JudgementOutro_Water_Thud_Play" ID="{EE41980F-8BEE-43A6-88F6-11534DF027E6}">
+											<ChildrenList>
+												<Action Name="" ID="{E015EF3E-E42C-4D23-8A34-BA45BC1498D3}" ShortID="173277691">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="JudgementOutro_WaterThud" ID="{E48DCAC0-7FEE-4A77-9B07-8F3638A8D52A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_JudgementOutro_SwordTransform_Play" ID="{04472CB1-8044-4471-ABE3-5C55203E5535}">
+											<ChildrenList>
+												<Action Name="" ID="{139E33B6-E3BD-4EE1-BE11-5907666A5237}" ShortID="3612606">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="JudgementOutro_SwordTransform" ID="{8EF8E48D-99F0-43E9-9489-15B58C04E0C1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Archer Bug" ID="{D1E07715-4AA0-489B-80FE-B6E0F76E6203}" ShortID="86040629">

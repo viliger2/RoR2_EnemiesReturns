@@ -29,6 +29,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 
         private CharacterMaster owner;
 
+        private CharacterBody ownerBody;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -38,6 +40,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
             if (aiOwnership)
             {
                 owner = aiOwnership.ownerMaster;
+                if (owner)
+                {
+                    ownerBody = owner.GetBody();
+                }
             }
         }
 
@@ -46,13 +52,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
             base.FixedUpdate();
             if (NetworkServer.active) 
             {
-                if (owner)
+                if(!owner || !ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
                 {
-                    var ownerBody = owner.GetBody();
-                    if (!ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
-                    {
-                        fixedAge = Mathf.Max(fixedAge, lifetime - 5f); // storm lives for 5 seconds or less after owner has died
-                    }
+                    fixedAge = Mathf.Max(fixedAge, lifetime - 5f); // storm lives for 5 seconds or less after owner has died
                 }
             }
 

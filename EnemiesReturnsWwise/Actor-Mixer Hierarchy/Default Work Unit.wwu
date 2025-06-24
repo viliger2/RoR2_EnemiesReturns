@@ -5165,6 +5165,97 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="Outro" ID="{7B061919-0AE9-4D97-8634-7C6FD6FD3ABE}" ShortID="435674300">
+											<ChildrenList>
+												<Sound Name="JudgementOutro_Fighting" ID="{9CB409C8-933A-4A6A-AC7B-6AE778AEB60B}" ShortID="498016830">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="initial_fighting" ID="{0AABABB3-2C0C-4559-8848-311E6D672361}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\Cutscene\initial_fighting.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="237368593"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="initial_fighting" ID="{0AABABB3-2C0C-4559-8848-311E6D672361}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="JudgementOutro_WaterThud" ID="{E48DCAC0-7FEE-4A77-9B07-8F3638A8D52A}" ShortID="639584929">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="water_thud" ID="{FEC2CA4B-F186-40D9-BF18-0F197883890B}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\Cutscene\water_thud.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="64576330"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="water_thud" ID="{FEC2CA4B-F186-40D9-BF18-0F197883890B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="JudgementOutro_SwordTransform" ID="{8EF8E48D-99F0-43E9-9489-15B58C04E0C1}" ShortID="702998452">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="sword_transform" ID="{4852BAA1-083B-4483-AE62-3036EFF32627}">
+															<Language>SFX</Language>
+															<AudioFile>Judgement\Arraign\Cutscene\sword_transform.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="83661797"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="sword_transform" ID="{4852BAA1-083B-4483-AE62-3036EFF32627}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="ArcherBug" ID="{A79E5ACC-681D-4699-BDA2-ABC0BC21F0FF}" ShortID="1020138286">

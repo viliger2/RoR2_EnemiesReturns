@@ -110,6 +110,9 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentList++;
         }
 
+        // TODO: check how it works with Euology Zero, I have a feeling that those tards at Gearbox made it so
+        // it literally just rerolls any drop table it can find to contain lunars and it is not a fault of some
+        // rogue mod
         private void GenerateItemList()
         {
             List<PickupIndex> takenList = new List<PickupIndex>();

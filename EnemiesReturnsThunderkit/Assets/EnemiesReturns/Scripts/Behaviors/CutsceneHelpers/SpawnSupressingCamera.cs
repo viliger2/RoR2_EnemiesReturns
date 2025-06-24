@@ -3,12 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+//using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Behaviors.CutsceneHelpers
 {
     public class SpawnSupressingCamera : MonoBehaviour
     {
+        public float fov = 60f;
+
         private GameObject camera;
+
+        private CameraState cameraState;
 
         private void Awake()
         {
@@ -16,6 +21,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
             // camera.transform.localRotation = Quaternion.identity;
             // var cameraRigController = camera.GetComponent<CameraRigController>();
             // cameraRigController.suppressPlayerCameras = true;
+            // cameraState = new CameraState();
         }
 
         public void OnEnable()
@@ -31,11 +37,10 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
         // private void CameraRigController_LateUpdate(On.RoR2.CameraRigController.orig_LateUpdate orig, CameraRigController self)
         // {
         //     orig(self);
-        //     CameraState state = new CameraState();
-        //     state.position = transform.position;
-        //     state.rotation = transform.rotation;
-        //     state.fov = self.currentCameraState.fov;
-        //     self.SetCameraState(state);
+        //     cameraState.position = transform.position;
+        //     cameraState.rotation = transform.rotation;
+        //     cameraState.fov = fov;
+        //     self.SetCameraState(cameraState);
         // }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
+    // TODO: I think its broken, since I haven't seen them dancing on teleporter charge or defeating mithrix for that matter
     public class MechanicalSpiderVictoryDanceController : MonoBehaviour
     {
         public CharacterBody body;
@@ -24,6 +25,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             TeleporterInteraction.onTeleporterChargedGlobal += TeleporterInteraction_onTeleporterChargedGlobal;
             onBossDeath += SpiderVictoryDanceController_onBossDeath;
+            ModdedEntityStates.Judgement.Mission.Ending.onArraignDefeated += Ending_onArraignDefeated;
         }
 
         private void OnDisable()
@@ -34,6 +36,12 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             }
             TeleporterInteraction.onTeleporterChargedGlobal -= TeleporterInteraction_onTeleporterChargedGlobal;
             onBossDeath -= SpiderVictoryDanceController_onBossDeath;
+            ModdedEntityStates.Judgement.Mission.Ending.onArraignDefeated -= Ending_onArraignDefeated;
+        }
+
+        private void Ending_onArraignDefeated()
+        {
+            StartDancing();
         }
 
         private void SpiderVictoryDanceController_onBossDeath()

@@ -18,6 +18,8 @@ namespace EnemiesReturns.Behaviors
 
         public Renderer renderer;
 
+        public bool loadAsynchronous = true;
+
         private AsyncOperationHandle<Material> handle;
 
         private void Awake()
@@ -29,16 +31,17 @@ namespace EnemiesReturns.Behaviors
 
             if (renderer && !string.IsNullOrEmpty(addressableMaterialPath))
             {
-                if (!Addressables.LoadAssetAsync<GameObject>(addressableMaterialPath).IsValid())
+                handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
+                if (!handle.IsValid())
                 {
                     Log.Error($"Couldn't find material {addressableMaterialPath} while injecting it to {this.gameObject.name}");
+                    Addressables.Release(handle);
                     UnityEngine.GameObject.Destroy(this);
                     return;
                 }
 
-                if (Addressables.LoadAssetAsync<Material>(addressableMaterialPath).IsValid())
+                if (loadAsynchronous)
                 {
-                    handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
                     handle.Completed += (operationResult) =>
                     {
                         if (operationResult.Status == AsyncOperationStatus.Succeeded)
@@ -55,6 +58,14 @@ namespace EnemiesReturns.Behaviors
                         }
                         //UnityEngine.GameObject.Destroy(this);
                     };
+                } else
+                {
+                    var material = handle.WaitForCompletion();
+                    renderer.material = material;
+                    if (isTrailParticle)
+                    {
+                        (renderer as ParticleSystemRenderer).trailMaterial = material;
+                    }
                 }
             }
         }

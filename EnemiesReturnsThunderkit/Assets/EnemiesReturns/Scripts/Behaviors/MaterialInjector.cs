@@ -13,6 +13,8 @@ namespace EnemiesReturns.Behaviors
 
         public bool isTrailParticle;
 
+        public bool loadAsynchronous = true;
+
         public Renderer renderer;
 
         private void Awake()
