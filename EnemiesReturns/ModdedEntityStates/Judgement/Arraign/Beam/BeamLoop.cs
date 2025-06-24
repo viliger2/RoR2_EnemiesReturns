@@ -15,15 +15,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
     {
         public override GameObject pushBackEffect => pushBackEffectStatic;
 
-        public static float baseDuration = 10f;
+        public static float baseDuration => Configuration.Judgement.ArraignP1.SwordBeamDuration.Value;
 
-        public static float degreesPerSecond = 40f;
+        public static float degreesPerSecond => Configuration.Judgement.ArraignP1.SwordBeamDegreesPerSecond.Value;
 
-        public static float beamDamage = 10f;
+        public static float beamDamage => Configuration.Judgement.ArraignP1.SwordBeamDamage.Value;
 
         public static string hitBoxGroupName = "SwordBeam";
 
-        public static float procCoefficient = 1f;
+        public static float procCoefficient => Configuration.Judgement.ArraignP1.SwordBeamProcCoefficient.Value;
 
         public static GameObject beamPrefab;
 

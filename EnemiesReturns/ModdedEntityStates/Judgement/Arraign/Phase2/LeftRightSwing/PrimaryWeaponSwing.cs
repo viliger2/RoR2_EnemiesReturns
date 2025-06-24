@@ -15,5 +15,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeftRightSw
         public static GameObject hitEffectStatic = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/OmniImpactVFXHuntress.prefab").WaitForCompletion();
 
         public override GameObject hitEffect => hitEffectStatic;
+
+        public override float swingDamageCoefficient => 2f;
+
+        public override float swingProcCoefficient => 1f;
+
+        public override float swingForce => 600f;
     }
 }

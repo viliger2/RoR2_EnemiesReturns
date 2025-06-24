@@ -26,7 +26,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public WavesInformation[] wavesInformation;
 
-
         public int maxWaves => wavesInformation.Length;
 
         public CombatDirector[] combatDirectors;
@@ -138,7 +137,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                     }
                     selectedCard.Add(card);
                 }
-                Log.Info($"Selected card: {card.spawnCard.name}");
                 combatDirector.OverrideCurrentMonsterCard(card);
                 combatDirector.monsterSpawnTimer = 0f;
                 combatDirector.gameObject.SetActive(true);

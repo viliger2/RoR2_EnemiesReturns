@@ -13,6 +13,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public abstract class BasePrimaryWeaponSwing : BasicMeleeAttack, SteppedSkillDef.IStepSetter
     {
+        public abstract float swingDamageCoefficient { get; }
+
+        public abstract float swingProcCoefficient { get; }
+
+        public abstract float swingForce { get; }
+
         public abstract GameObject hitEffect { get; }
 
         public abstract string swingSoundEffect { get; }
@@ -24,11 +30,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public override void OnEnter()
         {
             this.baseDuration = 0.4f;
-            base.damageCoefficient = 2f;
+            base.damageCoefficient = swingDamageCoefficient;
             base.hitBoxGroupName = "Sword";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 600f;
+            base.procCoefficient = swingProcCoefficient;
+            base.pushAwayForce = swingForce;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.05f;
             base.swingEffectPrefab = swingEffect;

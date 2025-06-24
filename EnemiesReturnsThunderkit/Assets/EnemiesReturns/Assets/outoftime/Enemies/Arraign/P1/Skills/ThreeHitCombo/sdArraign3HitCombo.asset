@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: sdArraign3HitCombo
   m_EditorClassIdentifier: 
   skillName: TrippleAttackP1
-  skillNameToken: ENEMIES_RETURNS_ARRAIGNP1_PRIMARY_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP1_PRIMARY_DESC
+  skillNameToken: ENEMIES_RETURNS_ARRAIGNP1_THREE_HIT_COMBO_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP1_THREE_HIT_COMBO_DESC
   keywordTokens: []
   icon: {fileID: 0}
   activationStateMachineName: Body
@@ -33,10 +33,12 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
+  isCooldownBlockedUntilManuallyReset: 0
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 0
   isCombatSkill: 1
   mustKeyPress: 0
+  triggeredByPressRelease: 0
   autoHandleLuminousShot: 1
   hideStockCount: 0

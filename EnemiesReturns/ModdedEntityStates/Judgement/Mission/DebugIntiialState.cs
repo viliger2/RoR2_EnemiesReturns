@@ -5,7 +5,6 @@ using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
-    // TODO: remove it from scene
     public class DebugIntiialState : BaseState
     {
         public enum InitialState

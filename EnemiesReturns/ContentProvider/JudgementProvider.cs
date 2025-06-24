@@ -15,6 +15,8 @@ using RoR2.Projectile;
 using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
 using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1;
 using RoR2.UI;
+using EnemiesReturns.Configuration.Judgement;
+using RoR2.Skills;
 
 namespace EnemiesReturns
 {
@@ -22,7 +24,7 @@ namespace EnemiesReturns
     {
         public IEnumerator CreateJudgementAsync(LoadStaticContentAsyncArgs args, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups, Dictionary<string, AnimationCurveDef> acdLookup, string assetBundleFolderPath)
         {
-            if (Configuration.Judgement.Enabled.Value)
+            if (Judgement.Enabled.Value)
             {
                 AssetBundle assetBundleStagesAssets = null;
                 yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
@@ -81,6 +83,10 @@ namespace EnemiesReturns
                     if (ModCompats.EliteReworksCompat.enabled)
                     {
                         ModCompats.EliteReworksCompat.ModifyAeonianElites(Content.Elites.Aeonian);
+                    } else
+                    {
+                        Content.Elites.Aeonian.healthBoostCoefficient = Judgement.AeonianEliteHealthMultiplier.Value;
+                        Content.Elites.Aeonian.damageBoostCoefficient = Judgement.AeonianEliteDamageMultiplier.Value;
                     }
 
                     _contentPack.eliteDefs.Add(assets);
@@ -92,6 +98,27 @@ namespace EnemiesReturns
                     Content.Stages.JudgementOutro = assets.First(sd => sd.cachedName == "enemiesreturns_judgementoutro");
 
                     _contentPack.sceneDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
+                {
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.ThreeHitCombo = assets.First(asset => (asset as ScriptableObject).name == "sdArraign3HitCombo");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.ThreeHitCombo.baseRechargeInterval = Configuration.Judgement.ArraignP1.ThreeHitComboCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.LeftRightSwing = assets.First(asset => (asset as ScriptableObject).name == "sdArraignRightLeftSwing");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.LeftRightSwing.baseRechargeInterval = Configuration.Judgement.ArraignP1.LeftRightSwingCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SwordBeam = assets.First(asset => (asset as ScriptableObject).name == "sdArraignSwordBeam");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SwordBeam.baseRechargeInterval = Configuration.Judgement.ArraignP1.SwordBeamCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SkyDrop = assets.First(asset => (asset as ScriptableObject).name == "sdArraignSkyDrop");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SkyDrop.baseRechargeInterval = Configuration.Judgement.ArraignP1.SkyDropCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SwordThrow = assets.First(asset => (asset as ScriptableObject).name == "sdArraignSwordThrow");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.SwordThrow.baseRechargeInterval = Configuration.Judgement.ArraignP1.SwordBeamCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.LightningStrikes = assets.First(asset => (asset as ScriptableObject).name == "sdArraignLightningStrikes");
+                    Enemies.Judgement.Arraign.ArraignBody.P1Skills.LightningStrikes.baseRechargeInterval = Configuration.Judgement.ArraignP1.LightningStrikesCooldown.Value;
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
@@ -115,6 +142,12 @@ namespace EnemiesReturns
                     _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
                     _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                     _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+
+                    var p1Body = assets.First(asset => asset.name == "ArraignP1Body");
+                    Enemies.Judgement.Arraign.ArraignBody.ArraignP1Body = ArraignBody.SetupP1Body(p1Body);
+
+                    var p2Body = assets.First(asset => asset.name == "ArraignP2Body");
+                    Enemies.Judgement.Arraign.ArraignBody.ArraignP2Body = ArraignBody.SetupP2Body(p2Body);
 
                     var arraignStuff = new ArraignStuff();
 
@@ -257,7 +290,7 @@ namespace EnemiesReturns
 
         private void CreateJudgement()
         {
-            if (Configuration.Judgement.Enabled.Value)
+            if (Judgement.Enabled.Value)
             {
                 nseList.Add(Utils.CreateNetworkSoundDef("Play_moonBrother_spawn"));
 

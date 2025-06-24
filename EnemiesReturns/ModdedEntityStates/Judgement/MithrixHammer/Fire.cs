@@ -28,7 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
         public static Vector3 spawnEffectVector = new Vector3(270f, 180f, 0);
 
-        public static float damageCoefficient => Configuration.Judgement.MithrixHammerDamageCoefficient.Value;
+        public static float damageCoefficient => Configuration.Judgement.Judgement.MithrixHammerDamageCoefficient.Value;
 
         public static ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
 

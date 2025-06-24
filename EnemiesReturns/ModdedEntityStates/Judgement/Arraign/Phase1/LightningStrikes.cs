@@ -20,15 +20,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public static GameObject projectilePrefab;
 
-        public static int projectileCount = 20;
+        public static int projectileCount => Configuration.Judgement.ArraignP1.LightningStrikesCount.Value;
 
-        public static float delayBetweenSpawns = 0.1f;
+        public static float delayBetweenSpawns => Configuration.Judgement.ArraignP1.LightningStrikesDelayBetweenProjectiles.Value;
 
-        public static float maxSpawnDistance = 30f;
+        public static float maxSpawnDistance => Configuration.Judgement.ArraignP1.LightningStrikesMaxDistance.Value;
 
-        public static float minSpawnDistance = 0f;
+        public static float minSpawnDistance => Configuration.Judgement.ArraignP1.LightningStrikesMinDistance.Value;
 
-        public static float damageCoefficient = 4f;
+        public static float damageCoefficient => Configuration.Judgement.ArraignP1.LightningStrikesDamage.Value;
 
         private float timer;
 

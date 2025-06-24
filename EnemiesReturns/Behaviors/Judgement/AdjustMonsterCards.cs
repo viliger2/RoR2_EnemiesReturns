@@ -33,7 +33,7 @@ namespace EnemiesReturns.Behaviors.Judgement
         private void Start()
         {
             HashSet<GameObject> blacklist = new HashSet<GameObject>();
-            var blackListMasters = Configuration.Judgement.JudgementEnemyBlacklist.Value.Split(",");
+            var blackListMasters = Configuration.Judgement.Judgement.JudgementEnemyBlacklist.Value.Split(",");
             foreach (var banned in blackListMasters)
             {
                 string cleanMasterString = string.Join("", banned.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
@@ -66,17 +66,6 @@ namespace EnemiesReturns.Behaviors.Judgement
                         stageInfo.monsterSelection.RemoveChoice(i);
                     }
                 }
-            }
-
-            DirectorCard CreateDirectorCard(SpawnCard card)
-            {
-                return new DirectorCard()
-                {
-                    spawnCard = card,
-                    selectionWeight = 1,
-                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
-                    preventOverhead = false
-                };
             }
         }
     }

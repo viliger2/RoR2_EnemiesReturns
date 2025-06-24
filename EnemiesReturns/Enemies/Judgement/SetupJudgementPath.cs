@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
+using EnemiesReturns.Components;
 using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -17,7 +19,6 @@ using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
-    // TODO: fix skins, relying on other fixes is for lamers
     public static class SetupJudgementPath
     {
         public static GameObject PileOfDirt;
@@ -68,6 +69,11 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
             ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
 
+            AddAeonianAnointedItemDisplays();
+        }
+
+        private static void AddAeonianAnointedItemDisplays()
+        {
             var keyEquipmentReference = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment);
             var equipment = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_EliteIce.EliteIceEquipment_asset).WaitForCompletion();
             var dictionary = CreateAeonianAnointedDictionary();
@@ -85,7 +91,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 if (!bodyIDRS) continue;
 
                 var existingidrs = bodyIDRS.keyAssetRuleGroups.Where(item => item.keyAsset == Content.Equipment.EliteAeonian || item.keyAsset == Content.Items.HiddenAnointed).ToArray();
-                if(existingidrs.Length > 0)
+                if (existingidrs.Length > 0)
                 {
                     continue;
                 }
@@ -174,7 +180,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static void Hooks()
         {
-            if (Configuration.Judgement.Enabled.Value)
+            if (Configuration.Judgement.Judgement.Enabled.Value)
             {
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
                 On.RoR2.CharacterModel.UpdateOverlays += AddDamageImmuneOverlay;
@@ -184,7 +190,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
                 DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
-                if (Configuration.Judgement.EnableAnointedSkins.Value)
+                if (Configuration.Judgement.Judgement.EnableAnointedSkins.Value)
                 {
                     RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
                     RoR2.AchievementManager.onAchievementsRegistered += CreateAnointedAchievements;
@@ -401,7 +407,7 @@ namespace EnemiesReturns.Enemies.Judgement
         // but seriously I copy pasted like half of the method, I hope this works
         private static void CreateAnointedAchievements()
         {
-            if (Configuration.Judgement.ForceUnlock.Value)
+            if (Configuration.Judgement.Judgement.ForceUnlock.Value)
             {
                 return;
             }
@@ -649,6 +655,8 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
+        // we basically rely on combination of mistfixes and skinapi to fix our shit
+        // thanks randy, you made this all possible
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             var icon = AnointedSkinIcon;
@@ -712,7 +720,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                         Material newMaterial = null;
                         if (baseRenderInfo.defaultMaterial)
-                        {
+                    {
                             if (!ContentProvider.MaterialCache.TryGetValue(baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed", out newMaterial))
                             {
                                 newMaterial = UnityEngine.Object.Instantiate(baseRenderInfo.defaultMaterial);
@@ -720,12 +728,12 @@ namespace EnemiesReturns.Enemies.Judgement
                                 newMaterial.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
                                 newMaterial.SetFloat(CommonShaderProperties._EliteIndex, 1);
                                 ContentProvider.MaterialCache.Add(newMaterial.name, newMaterial);
-                            }
+                    }
                         }
                         else
-                        {
+                    {
                             Log.Warning($"Survivor {survivorDef.cachedName} has an empty material on baseRendererInfos at index {k}.");
-                        }
+                    }
                         skinRenderInfos[k] = new CharacterModel.RendererInfo
                         {
                             renderer = baseRenderInfo.renderer,
@@ -740,7 +748,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                     eliteSkinDef.icon = icon;
 
-                    if (!Configuration.Judgement.ForceUnlock.Value)
+                    if (!Configuration.Judgement.Judgement.ForceUnlock.Value)
                     {
                         var skinUnlockDef = ScriptableObject.CreateInstance<UnlockableDef>();
                         (skinUnlockDef as ScriptableObject).name = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";

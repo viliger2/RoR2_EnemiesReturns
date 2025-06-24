@@ -51,6 +51,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (fixedAge > delay && !ended && NetworkServer.active)
             {
                 ended = true;
+                ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Player);
+                if (teamMembers.Count > 0)
+                {
+                    GameObject gameObject = teamMembers[0].gameObject;
+                    CharacterBody component = gameObject.GetComponent<CharacterBody>();
+                    if ((bool)component)
+                    {
+                        EntityState.Destroy(gameObject.gameObject);
+                    }
+                }
                 Run.instance.BeginGameOver(Content.GameEndings.SurviveJudgement);
             }
         }

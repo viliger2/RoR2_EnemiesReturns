@@ -120,7 +120,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                     position = position,
                     rotation = Util.QuaternionSafeLookRotation(aimRay.direction),
                     projectilePrefab = projectilePrefab,
-                    damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.NoneSpecified),
+                    damageTypeOverride = DamageTypeCombo.Generic
                 };
                 if (target)
                 {

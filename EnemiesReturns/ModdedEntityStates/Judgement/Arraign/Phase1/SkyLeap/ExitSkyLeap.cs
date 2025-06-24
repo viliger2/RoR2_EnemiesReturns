@@ -27,13 +27,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override string soundString => "";
 
-        public override float firstAttackDamage => 8f;
+        public override float firstAttackDamage => Configuration.Judgement.ArraignP1.SkyDropFirstExplosionDamage.Value;
 
-        public override float secondAttackDamage => 6f;
+        public override float secondAttackDamage => Configuration.Judgement.ArraignP1.SkyDropSecondExplosionDamage.Value;
 
-        public override float attackForce => 1000f;
+        public override float attackForce => Configuration.Judgement.ArraignP1.SkyDropExplosionForce.Value;
 
-        public override float blastAttackRadius => 20f;
+        public override float blastAttackRadius => Configuration.Judgement.ArraignP1.SkyDropExplosionRadius.Value;
 
         public override string layerName => "Gesture, Override";
 
@@ -47,10 +47,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override GameObject waveProjectile => waveProjectileStatic;
 
-        public override float waveProjectileDamage => 4f;
+        public override float waveProjectileDamage => Configuration.Judgement.ArraignP1.SkyDropWavesDamage.Value;
 
-        public override int waveCount => 8;
+        public override int waveCount => Configuration.Judgement.ArraignP1.SkyDropWavesCount.Value;
 
-        public override float waveProjectileForce => 0f;
+        public override float waveProjectileForce => Configuration.Judgement.ArraignP1.SkyDropWavesForce.Value;
     }
 }

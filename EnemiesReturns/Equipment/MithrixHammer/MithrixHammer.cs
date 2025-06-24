@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Components;
+using EnemiesReturns.Configuration.Judgement;
 using EnemiesReturns.Items.LynxFetish;
 using R2API;
 using RoR2;
@@ -12,7 +13,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
     {
         public static GameObject MithrixHammerController;
 
-        public static float aeonianHammerDamageModifier => Configuration.Judgement.MithrixHammerAeonianBonusDamage.Value;
+        public static float aeonianHammerDamageModifier => Judgement.MithrixHammerAeonianBonusDamage.Value;
 
         public static void Hooks()
         {
@@ -44,7 +45,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 
         public static void SetupEquipmentConfigValues(EquipmentDef equipment)
         {
-            equipment.cooldown = Configuration.Judgement.MithrixHammerCooldown.Value;
+            equipment.cooldown = Judgement.MithrixHammerCooldown.Value;
         }
 
         public static GameObject SetupPickupDisplay(GameObject mithrixHammer)

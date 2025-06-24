@@ -24,6 +24,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Ending
         public override void OnEnter()
         {
             base.OnEnter();
+            if (Configuration.General.SkipJudgementCutscene.Value)
+            {
+                outer.SetNextState(new EntityStates.GameOver.LingerShort());
+            }
         }
 
         public override void OnExit()

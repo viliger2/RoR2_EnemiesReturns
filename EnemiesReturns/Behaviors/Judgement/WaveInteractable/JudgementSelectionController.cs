@@ -21,10 +21,10 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private Dictionary<ItemTier, MinMaxCount> tierDropCounts = new Dictionary<ItemTier, MinMaxCount>
         {
-            { ItemTier.Tier1, new MinMaxCount{ minCount = 25, maxCount = 35 } },
-            { ItemTier.Tier2, new MinMaxCount{ minCount = 10, maxCount = 15 } },
-            { ItemTier.Tier3, new MinMaxCount{ minCount = 4, maxCount = 8 } },
-            { ItemTier.Boss, new MinMaxCount{ minCount = 8, maxCount = 10 } },
+            { ItemTier.Tier1, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTier1ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier1ItemMaxCount.Value } },
+            { ItemTier.Tier2, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTier2ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier2ItemMaxCount.Value } },
+            { ItemTier.Tier3, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTier3ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier3ItemMaxCount.Value } },
+            { ItemTier.Boss, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTierBossItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTierBossItemMaxCount.Value } },
         };
 
         public int listCount = 10;

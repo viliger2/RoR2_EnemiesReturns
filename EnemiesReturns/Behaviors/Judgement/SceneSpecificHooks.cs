@@ -52,6 +52,5 @@ namespace EnemiesReturns.Behaviors.Judgement
                 AkSoundEngine.PostEvent("ER_Stop_Music", MusicController.Instance.gameObject);
             }
         }
-
     }
 }

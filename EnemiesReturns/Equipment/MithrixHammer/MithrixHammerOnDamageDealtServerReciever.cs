@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using EnemiesReturns.Configuration.Judgement;
+using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
                         inflictor = null,
                         position = body.transform.position,
                         crit = false,
-                        damage = damageInfo.damage * Configuration.Judgement.MithrixHammerAeonianBonusDamage.Value,
+                        damage = damageInfo.damage * Judgement.MithrixHammerAeonianBonusDamage.Value,
                         damageColorIndex = DamageColorIndex.Fragile,
                         procCoefficient = 0f,
                         force = Vector3.zero,

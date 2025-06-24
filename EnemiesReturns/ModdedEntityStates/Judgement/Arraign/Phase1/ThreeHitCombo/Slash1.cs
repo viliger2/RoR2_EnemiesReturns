@@ -9,7 +9,6 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
-    // TODO: add some effects to feet to better indicate sliding in water
     [RegisterEntityState]
     public class Slash1 : BasicMeleeAttack
     {
@@ -24,11 +23,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 0.64f;
-            base.damageCoefficient = 3f;
+            base.damageCoefficient = EnemiesReturns.Configuration.Judgement.ArraignP1.ThreeHitComboFirstSwingDamage.Value;
             base.hitBoxGroupName = "Sword";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 600f;
+            base.procCoefficient = Configuration.Judgement.ArraignP1.ThreeHitComboFirstSwingProcCoefficient.Value;
+            base.pushAwayForce = Configuration.Judgement.ArraignP1.ThreeHitComboFirstSwingForce.Value;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;

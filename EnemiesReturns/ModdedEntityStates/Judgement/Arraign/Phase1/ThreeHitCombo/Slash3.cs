@@ -10,17 +10,18 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
-    // TODO: add some effects to feet to better indicate sliding in water
     [RegisterEntityState]
     public class Slash3 : BasicMeleeAttack
     {
         public static AnimationCurve acdSlash3;
 
-        public static float blastAttackRadius = 20f;
+        public static float blastAttackRadius => Configuration.Judgement.ArraignP1.ThreeHitComboExplosionRadius.Value;
 
-        public static float blastAttackDamage = 5f;
+        public static float blastAttackDamage => Configuration.Judgement.ArraignP1.ThreeHitComboExplosionDamage.Value;
 
-        public static float blastAttackForce = 500f;
+        public static float blastAttackForce => Configuration.Judgement.ArraignP1.ThreeHitComboExplosionForce.Value;
+
+        public static float blastAttackProcCoefficient => Configuration.Judgement.ArraignP1.ThreeHitComboExplosionProcCoefficient.Value;
 
         public static GameObject swingEffect;
 
@@ -37,11 +38,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 2.4f;
-            base.damageCoefficient = 3f;
+            base.damageCoefficient = Configuration.Judgement.ArraignP1.ThreeHitComboThirdSwingDamage.Value;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 6000f;
+            base.procCoefficient = Configuration.Judgement.ArraignP1.ThreeHitComboThirdSwingProcCoefficient.Value;
+            base.pushAwayForce = Configuration.Judgement.ArraignP1.ThreeHitComboThirdSwingForce.Value;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
@@ -114,8 +115,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         {
             var blastAttack = new BlastAttack
             {
-                radius = 20f,
-                procCoefficient = 1f,
+                radius = blastAttackRadius,
+                procCoefficient = blastAttackProcCoefficient,
                 position = explosionEffectMuzzle.position,
                 attacker = base.gameObject,
                 crit = RollCrit(),

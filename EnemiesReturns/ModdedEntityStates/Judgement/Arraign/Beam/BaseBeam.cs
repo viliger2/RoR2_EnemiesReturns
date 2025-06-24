@@ -11,9 +11,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
     {
         public abstract GameObject pushBackEffect { get; }
 
-        public static float pushRadius = 20f;
+        public static float pushRadius => Configuration.Judgement.ArraignP1.SwordBeamForceFieldPushRadius.Value;
 
-        public static float pushStrength = 15f;
+        public static float pushStrength => Configuration.Judgement.ArraignP1.SwordBeamForceFieldPushStrength.Value;
 
         private GameObject pushBackEffectInstance;
 

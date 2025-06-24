@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Components;
+using EnemiesReturns.Configuration.Judgement;
 using EnemiesReturns.Enemies.Judgement;
 using RoR2;
 using System;
@@ -39,7 +40,7 @@ namespace ArraignSkinExample
         {
             // this makes your skin respect ForceUnlock config in EnemiesReturns
             // if you don't want that - remove\comment these 3 lines
-            if (EnemiesReturns.Configuration.Judgement.ForceUnlock.Value)
+            if (Judgement.ForceUnlock.Value)
             {
                 return null;
             }
@@ -58,7 +59,7 @@ namespace ArraignSkinExample
         {
             // this makes your skin respect ForceUnlock config in EnemiesReturns
             // if you don't want that - remove\comment these 3 lines
-            if (EnemiesReturns.Configuration.Judgement.ForceUnlock.Value)
+            if (Judgement.ForceUnlock.Value)
             {
                 return;
             }
