@@ -109,17 +109,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static GameObject effectPrefab;
 
-        public static float delayBetweenSpawns = 0.1f;
+        public static float delayBetweenSpawns => Configuration.Judgement.ArraignP2.ClockAttackDelayBetweenSpawns.Value;
 
         public static int projectileCountPerRow = 1;
 
-        public static float projectileSize = 10f;
+        public static float projectileSize => Configuration.Judgement.ArraignP2.ClockAttackProjectileDistance.Value;
 
-        public static float damageCoefficient = 4f;
+        public static float damageCoefficient => Configuration.Judgement.ArraignP2.ClockAttackProjectileDamage.Value;
 
-        public static int additionalPairs = 1;
+        public static int additionalPairs => Configuration.Judgement.ArraignP2.ClockAttackAdditionalPairs.Value;
 
-        public static int pairsDistanceFromOrigin = 2;
+        public static int pairsDistanceFromOrigin => Configuration.Judgement.ArraignP2.ClockAttackDistanceFromStart.Value;
 
         private ClockFiringLine[] lines = Array.Empty<ClockFiringLine>();
 

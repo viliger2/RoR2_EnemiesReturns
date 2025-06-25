@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: sdArraignLightningStrikes
   m_EditorClassIdentifier: 
   skillName: LightningStrikes
-  skillNameToken: ENEMIES_RETURNS_ARRAIGNP1_SECONDARY_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP1_SECONDARY_DESC
+  skillNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_DESC
   keywordTokens: []
   icon: {fileID: 0}
   activationStateMachineName: Weapon
@@ -33,10 +33,12 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
   beginSkillCooldownOnSkillEnd: 0
+  isCooldownBlockedUntilManuallyReset: 0
   cancelSprintingOnActivation: 0
   forceSprintDuringState: 1
   canceledFromSprinting: 0
   isCombatSkill: 0
   mustKeyPress: 0
+  triggeredByPressRelease: 0
   autoHandleLuminousShot: 1
   hideStockCount: 0

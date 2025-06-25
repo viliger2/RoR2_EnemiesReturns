@@ -150,7 +150,7 @@ MonoBehaviour:
   BaseImportance: 0
   Importance: -1
   inLava: 0
-  baseNameToken: ENEMIES_RETURNS_ARRAIGN_SKYLASER_BODY
+  baseNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY
   subtitleNameToken: 
   bodyFlags: 51289
   lavaCooldown: 0.2
@@ -6309,6 +6309,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &6214859968644320000
 GameObject:
@@ -8656,6 +8657,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 1642383318718382050}
 --- !u!1 &6517468695026086822
 GameObject:

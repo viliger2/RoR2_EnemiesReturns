@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: sdArraignSwordBeam
   m_EditorClassIdentifier: 
   skillName: SwordBeam
-  skillNameToken: ENEMIES_RETURNS_ARRAIGN_SWORD_BEAM_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGN_SWORD_BEAM_DESCRIPTION
+  skillNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_DESCRIPTION
   keywordTokens: []
   icon: {fileID: 0}
   activationStateMachineName: Body

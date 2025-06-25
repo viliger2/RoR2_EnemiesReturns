@@ -37,7 +37,6 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<int> WavesTierBossItemMinCount;
         public static ConfigEntry<int> WavesTierBossItemMaxCount;
 
-
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");

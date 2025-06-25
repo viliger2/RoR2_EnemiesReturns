@@ -16,10 +16,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeftRightSw
 
         public override GameObject hitEffect => hitEffectStatic;
 
-        public override float swingDamageCoefficient => 2f;
+        public override float swingDamageCoefficient => Configuration.Judgement.ArraignP2.LeftRightSwingDamage.Value;
 
-        public override float swingProcCoefficient => 1f;
+        public override float swingProcCoefficient => Configuration.Judgement.ArraignP2.LeftRightSwingProcCoefficient.Value;
 
-        public override float swingForce => 600f;
+        public override float swingForce => Configuration.Judgement.ArraignP2.LeftRightSwingForce.Value;
     }
 }

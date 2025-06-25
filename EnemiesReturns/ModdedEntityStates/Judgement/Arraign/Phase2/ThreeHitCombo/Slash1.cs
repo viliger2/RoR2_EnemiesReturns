@@ -23,11 +23,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 0.6f;
-            base.damageCoefficient = 3.5f;
+            base.damageCoefficient = Configuration.Judgement.ArraignP2.ThreeHitComboFirstSwingDamage.Value;
             base.hitBoxGroupName = "Spear";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 6000f;
+            base.procCoefficient = Configuration.Judgement.ArraignP2.ThreeHitComboFirstSwingProcCoefficient.Value;
+            base.pushAwayForce = Configuration.Judgement.ArraignP2.ThreeHitComboFirstSwingForce.Value;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;

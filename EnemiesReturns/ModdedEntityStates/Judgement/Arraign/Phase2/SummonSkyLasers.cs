@@ -17,9 +17,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static CharacterSpawnCard cscSkyLaser;
 
-        public static int baseLaserCount = 3;
+        public static int baseLaserCount => Configuration.Judgement.ArraignP2.SkyLaserCount.Value;
 
-        public static float additionalLaserPerPlayer = 0.5f;
+        public static float additionalLaserPerPlayer => Configuration.Judgement.ArraignP2.SkyLaserAdditionalCountPerPlayer.Value;
 
         private static float minDistance = 30f;
 

@@ -14,13 +14,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
     [RegisterEntityState]
     public class LeapDash : BaseState
     {
-        public static float damageCoefficient = 6f;
+        public static float explosionDamage => Configuration.Judgement.ArraignP2.DashLeapExplosionDamage.Value;
 
-        public static float force = 0f;
+        public static float explosionForce => Configuration.Judgement.ArraignP2.DashLeapExplosionForce.Value;
 
-        public static float procCoefficient = 1f;
+        public static float procCoefficient => Configuration.Judgement.ArraignP2.DashLeapProcCoefficient.Value;
 
-        public static float blastAttackRadius = 20f;
+        public static float explosionAttackRadius => Configuration.Judgement.ArraignP2.DashLeapExplosionRadius.Value;
+
 
         public static float upwardVelocity = 30f;
 
@@ -42,9 +43,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
 
         public static GameObject projectilePrefab;
 
-        public static float distanceBetweenProjectiles = 13f;
+        public static float distanceBetweenProjectiles => Configuration.Judgement.ArraignP2.DashLeapProjectileDistanceBetween.Value;
 
-        public static float projectileDamage = 4f;
+        public static float projectileForce => Configuration.Judgement.ArraignP2.DashLeapExplosionForce.Value;
+
+        public static float projectileDamage => Configuration.Judgement.ArraignP2.DashLeapProjectileDamage.Value;
 
         private Vector3 lastPosition;
 
@@ -186,14 +189,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
             return new BlastAttack
             {
                 attacker = gameObject,
-                baseDamage = damageStat * damageCoefficient,
-                baseForce = force,
-                bonusForce = new Vector3(0, force, 0),
+                baseDamage = damageStat * explosionDamage,
+                baseForce = explosionForce,
+                bonusForce = new Vector3(0, explosionForce, 0),
                 crit = RollCrit(),
                 damageType = DamageTypeCombo.GenericUtility,
                 falloffModel = BlastAttack.FalloffModel.None,
                 procCoefficient = procCoefficient,
-                radius = blastAttackRadius,
+                radius = explosionAttackRadius,
                 position = footPosition,
                 attackerFiltering = AttackerFiltering.NeverHitSelf,
                 //impactEffect = EffectCatalog.FindEffectIndexFromPrefab(blastImpactEffectPrefab),

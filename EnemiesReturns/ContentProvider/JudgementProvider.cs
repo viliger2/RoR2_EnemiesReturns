@@ -119,6 +119,25 @@ namespace EnemiesReturns
 
                     Enemies.Judgement.Arraign.ArraignBody.P1Skills.LightningStrikes = assets.First(asset => (asset as ScriptableObject).name == "sdArraignLightningStrikes");
                     Enemies.Judgement.Arraign.ArraignBody.P1Skills.LightningStrikes.baseRechargeInterval = Configuration.Judgement.ArraignP1.LightningStrikesCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.ThreeHitCombo = assets.First(asset => (asset as ScriptableObject).name == "sdArraign3HitComboP2");
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.ThreeHitCombo.baseRechargeInterval = Configuration.Judgement.ArraignP2.ThreeHitComboCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.LeftRightSwing = assets.First(asset => (asset as ScriptableObject).name == "sdArraignRightLeftSwingP2");
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.LeftRightSwing.baseRechargeInterval = Configuration.Judgement.ArraignP2.LeftRightSwingCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.DashLeap = assets.First(asset => (asset as ScriptableObject).name == "sdArraignDashAttackP2");
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.DashLeap.baseRechargeInterval = Configuration.Judgement.ArraignP2.DashLeapCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.SpearThrow = assets.First(asset => (asset as ScriptableObject).name == "sdArraignSpearThrow");
+                    Enemies.Judgement.Arraign.ArraignBody.P2Skills.SpearThrow.baseRechargeInterval = Configuration.Judgement.ArraignP2.SpearThrowCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.HauntSkills.ClockAttack = assets.First(asset => (asset as ScriptableObject).name == "sdArraignaHauntClockAttack");
+                    Enemies.Judgement.Arraign.ArraignBody.HauntSkills.ClockAttack.baseRechargeInterval = Configuration.Judgement.ArraignP2.ClockAttackCooldown.Value;
+
+                    Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser = assets.First(asset => (asset as ScriptableObject).name == "sdArraignHauntSkyLaser");
+                    Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser.baseRechargeInterval = Configuration.Judgement.ArraignP2.SkyLaserCooldown.Value;
+
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>

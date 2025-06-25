@@ -14,13 +14,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
     {
         public static float laserRange = 15f;
 
-        public static float lifetime = 20f;
+        public static float lifetime => Configuration.Judgement.ArraignP2.SkyLaserLifetime.Value;
 
         public static string hitBoxGroupName = "Laser";
 
-        public static float damageCoefficient = 10f;
+        public static float damageCoefficient => Configuration.Judgement.ArraignP2.SkyLaserDamageCoefficient.Value;
 
         public static float procCoefficient = 0f;
+
+        public static float movementSpeed => Configuration.Judgement.ArraignP2.SkyLaserMovementSpeed.Value;
 
         private OverlapAttack overlapAttack;
 
@@ -28,6 +30,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
         {
             base.OnEnter();
             overlapAttack = SetupOverlapAttack(GetModelTransform());
+            if (characterBody)
+            {
+                characterBody.baseMoveSpeed = movementSpeed;
+                characterBody.statsDirty = true;
+            }
             Util.PlaySound("ER_SkyLaser_Alive_Loop_Play", base.gameObject);
         }
 

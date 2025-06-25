@@ -29,6 +29,24 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             public static SkillDef LightningStrikes;
         }
 
+        public static class P2Skills
+        {
+            public static SkillDef ThreeHitCombo;
+
+            public static SkillDef LeftRightSwing;
+
+            public static SkillDef DashLeap;
+
+            public static SkillDef SpearThrow;
+        }
+
+        public static class HauntSkills
+        {
+            public static SkillDef ClockAttack;
+
+            public static SkillDef SummonSkyLaser;
+        }
+
         public static GameObject SetupP1Body(GameObject bodyPrefab)
         {
             var characterBody = bodyPrefab.GetComponent<CharacterBody>();

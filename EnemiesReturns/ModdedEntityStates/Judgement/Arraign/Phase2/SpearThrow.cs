@@ -20,9 +20,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public override float baseDuration => 4f;
 
-        public override float damageCoefficient => 7f;
+        public override float damageCoefficient => Configuration.Judgement.ArraignP2.SpearThrowDamage.Value;
 
-        public override float force => 0f;
+        public override float force => Configuration.Judgement.ArraignP2.SpearThrowForce.Value;
 
         public override string layerName => "Gesture, Override";
 

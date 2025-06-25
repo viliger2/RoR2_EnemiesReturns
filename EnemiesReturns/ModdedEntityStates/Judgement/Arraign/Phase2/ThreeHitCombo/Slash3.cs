@@ -15,11 +15,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
     {
         public static AnimationCurve acdSlash3;
 
-        public static float blastAttackRadius = 20f;
+        public static float blastAttackRadius => Configuration.Judgement.ArraignP2.ThreeHitComboExplosionRadius.Value;
 
-        public static float blastAttackDamage = 5f;
+        public static float blastAttackDamage => Configuration.Judgement.ArraignP2.ThreeHitComboExplosionDamage.Value;
 
-        public static float blastAttackForce = 500f;
+        public static float blastAttackForce => Configuration.Judgement.ArraignP2.ThreeHitComboExplosionForce.Value;
+
+        public static float blastAttackProcCoefficient => Configuration.Judgement.ArraignP2.ThreeHitComboExplosionProcCoefficient.Value;
 
         public static GameObject explosionEffect;
 
@@ -29,11 +31,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
 
         public static GameObject waveProjectile;
 
-        public static float waveProjectileDamage = 4f;
+        public static float waveProjectileDamage => Configuration.Judgement.ArraignP2.ThreeHitComboWavesDamage.Value;
 
-        public static int waveCount = 8;
+        public static int waveCount => Configuration.Judgement.ArraignP2.ThreeHitComboWavesCount.Value;
 
-        public static float waveProjectileForce = 0f;
+        public static float waveProjectileForce => Configuration.Judgement.ArraignP2.ThreeHitComboWavesForce.Value;
 
         private Vector3 desiredDirection;
 
@@ -44,11 +46,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 2.4f;
-            base.damageCoefficient = 3.5f;
+            base.damageCoefficient = Configuration.Judgement.ArraignP2.ThreeHitComboThirdSwingDamage.Value;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 6000f;
+            base.procCoefficient = Configuration.Judgement.ArraignP2.ThreeHitComboThirdSwingProcCoefficient.Value;
+            base.pushAwayForce = Configuration.Judgement.ArraignP2.ThreeHitComboThirdSwingForce.Value;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
@@ -148,8 +150,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
         {
             var blastAttack = new BlastAttack
             {
-                radius = 20f,
-                procCoefficient = 1f,
+                radius = blastAttackRadius,
+                procCoefficient = blastAttackProcCoefficient,
                 position = explosionEffectMuzzle.position,
                 attacker = base.gameObject,
                 crit = RollCrit(),
