@@ -1,13 +1,5 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.LynxTribe;
-using R2API;
-using RoR2.ContentManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine.AddressableAssets;
-using UnityEngine;
 using EnemiesReturns.Enemies.LynxTribe.Archer;
 using EnemiesReturns.Enemies.LynxTribe.Hunter;
 using EnemiesReturns.Enemies.LynxTribe.Scout;
@@ -15,7 +7,14 @@ using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Items.LynxFetish;
+using R2API;
 using RoR2;
+using RoR2.ContentManagement;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {

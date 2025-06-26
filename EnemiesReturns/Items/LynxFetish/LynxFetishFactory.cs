@@ -37,7 +37,7 @@ namespace EnemiesReturns.Items.LynxFetish
             {
                 // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
                 if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
-                { 
+                {
                     body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(Content.Items.LynxFetish));
                 }
             }

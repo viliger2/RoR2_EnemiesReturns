@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.Components.BodyComponents.CharacterMotor;
-using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using RoR2;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace EnemiesReturns.Components.BodyComponents
             var kcm = AddKinematicCharacterMotor(bodyPrefab, GetCapsuleCollider(bodyPrefab), rigidBody, motor, GetKinematicCharacterMotorParams());
             AddRigidbodyDirection(bodyPrefab, rigidBody, GetRigidBodyDirectionParams());
             var rbm = AddRigidbodyMotor(bodyPrefab, rigidBody, GetRigidBodyMotorParams());
-            if(kcm && rbm)
+            if (kcm && rbm)
             {
                 Log.Warning($"Body {bodyPrefab} has both KinematicCharacterMotor and RigidbodyMotor, surely this will result in a disaster!");
             }

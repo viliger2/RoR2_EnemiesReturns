@@ -1,9 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
@@ -32,7 +28,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         {
             base.FixedUpdate();
 
-            if(fixedAge > duration)
+            if (fixedAge > duration)
             {
                 outer.SetNextState(new Ending());
             }

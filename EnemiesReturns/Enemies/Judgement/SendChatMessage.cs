@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,7 +22,8 @@ namespace EnemiesReturns.Enemies.Judgement
             if (withDelay)
             {
                 Invoke("SendMessage", delay);
-            } else
+            }
+            else
             {
                 SendMessage();
             }

@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide;
 using EnemiesReturns.Reflection;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
@@ -32,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
                 var centerOfArena = component.FindChild("CenterOfArena");
                 if (centerOfArena)
                 {
-                    if(Vector3.Distance(centerOfArena.position, transform.position) > distanceToCenter)
+                    if (Vector3.Distance(centerOfArena.position, transform.position) > distanceToCenter)
                     {
                         var newDashState = new SlideToCenter();
                         newDashState.animationStateName = animationStateName;

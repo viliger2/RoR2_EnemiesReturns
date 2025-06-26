@@ -19,7 +19,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             projectileDamage.damageType = DamageTypeCombo.GenericPrimary;
 
             clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion();
-            
+
             return clonedProjectile;
         }
         public GameObject CreateDeathEffect()

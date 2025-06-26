@@ -13,7 +13,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     public class ShamanStuff
-    { 
+    {
 
         public GameObject CreateShamanSpawnEffect(GameObject prefab)
         {

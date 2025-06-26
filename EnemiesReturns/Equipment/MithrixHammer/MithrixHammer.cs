@@ -1,7 +1,4 @@
-﻿using EnemiesReturns.Components;
-using EnemiesReturns.Configuration.Judgement;
-using EnemiesReturns.Items.LynxFetish;
-using R2API;
+﻿using EnemiesReturns.Configuration.Judgement;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -34,7 +31,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 
         private static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
         {
-            if(equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
+            if (equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
             {
                 var hammerController = UnityEngine.Object.Instantiate(MithrixHammerController);
                 hammerController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");

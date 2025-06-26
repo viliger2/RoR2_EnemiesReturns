@@ -1,15 +1,8 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.MasterComponents;
-using IL.RoR2.Skills;
-using Rewired.Utils.Interfaces;
 using RoR2;
 using RoR2.CharacterAI;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.ArcherBug
@@ -24,7 +17,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             aiParams.graphType = RoR2.Navigation.MapNodeGroup.GraphType.Air;
             aiParams.aimVectorDampTime = 0.1f;
             aiParams.showDebugStateChanges = true;
-            return base.BaseAIParams();       
+            return base.BaseAIParams();
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()

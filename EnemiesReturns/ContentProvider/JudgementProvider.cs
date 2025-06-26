@@ -1,22 +1,21 @@
-﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.Judgement.Arraign;
+﻿using EnemiesReturns.Configuration.Judgement;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Judgement;
+using EnemiesReturns.Enemies.Judgement.Arraign;
+using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
+using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1;
 using R2API;
+using RoR2;
 using RoR2.ContentManagement;
+using RoR2.Projectile;
+using RoR2.Skills;
+using RoR2.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UnityEngine.AddressableAssets;
 using UnityEngine;
-using RoR2;
-using RoR2.Projectile;
-using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
-using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1;
-using RoR2.UI;
-using EnemiesReturns.Configuration.Judgement;
-using RoR2.Skills;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {
@@ -83,7 +82,8 @@ namespace EnemiesReturns
                     if (ModCompats.EliteReworksCompat.enabled)
                     {
                         ModCompats.EliteReworksCompat.ModifyAeonianElites(Content.Elites.Aeonian);
-                    } else
+                    }
+                    else
                     {
                         Content.Elites.Aeonian.healthBoostCoefficient = Judgement.AeonianEliteHealthMultiplier.Value;
                         Content.Elites.Aeonian.damageBoostCoefficient = Judgement.AeonianEliteDamageMultiplier.Value;

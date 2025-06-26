@@ -48,7 +48,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Hellzone
                 {
                     predictor = new Predictor(base.transform);
                     predictor.SetTargetTransform(hurtBox.transform);
-                } else
+                }
+                else
                 {
                     foreach (var ai in characterBody.master.aiComponents)
                     {

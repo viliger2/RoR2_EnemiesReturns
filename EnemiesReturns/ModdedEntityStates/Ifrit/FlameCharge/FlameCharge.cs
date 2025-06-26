@@ -182,14 +182,15 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.FlameCharge
 
         private void ProccessForceHits(List<HurtBox> hits, Transform sourceTransform, float force)
         {
-            foreach(var hit in hits)
+            foreach (var hit in hits)
             {
                 var distanceFromRight = Vector3.Distance(hit.healthComponent.transform.position, sourceTransform.position + sourceTransform.right);
                 var distanceFromLeft = Vector3.Distance(hit.healthComponent.transform.position, sourceTransform.position - sourceTransform.right);
-                if(distanceFromLeft > distanceFromRight)
+                if (distanceFromLeft > distanceFromRight)
                 {
                     hit.healthComponent.TakeDamageForce(sourceTransform.right * force);
-                } else
+                }
+                else
                 {
                     hit.healthComponent.TakeDamageForce(-sourceTransform.right * force);
                 }

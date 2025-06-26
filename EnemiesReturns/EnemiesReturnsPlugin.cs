@@ -1,13 +1,10 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using EnemiesReturns.Behaviors.Judgement;
 using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider;
-using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -16,10 +13,6 @@ using RoR2.ContentManagement;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using R2API;
-using RoR2.Skills;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns

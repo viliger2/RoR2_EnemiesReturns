@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates.GameOver;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Ending

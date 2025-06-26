@@ -30,7 +30,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             if (teamComponent.teamIndex == TeamIndex.Player)
             {
                 duration = baseDuration / attackSpeedStat;
-            } else
+            }
+            else
             {
                 duration = baseDuration;
             }

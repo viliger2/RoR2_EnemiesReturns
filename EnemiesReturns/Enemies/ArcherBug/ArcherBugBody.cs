@@ -8,9 +8,6 @@ using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -137,7 +134,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
         {
             var bugBodyRenderer = modelPrefab.transform.Find("Bug").gameObject.GetComponent<SkinnedMeshRenderer>();
             var bugWingsRenderer = modelPrefab.transform.Find("Wings").gameObject.GetComponent<SkinnedMeshRenderer>();
-           
+
             CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
@@ -156,7 +153,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
                 },
-               
+
             };
 
             return new ICharacterModel.CharacterModelParams()
@@ -202,7 +199,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             };
             SkinDefs.Default = Utils.CreateSkinDef("skinArcherBugDefault", modelPrefab, defaultRender);
 
-            return new SkinDef[] {SkinDefs.Default};
+            return new SkinDef[] { SkinDefs.Default };
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()

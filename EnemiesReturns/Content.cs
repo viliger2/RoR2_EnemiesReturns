@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static R2API.DamageAPI;
 
 namespace EnemiesReturns

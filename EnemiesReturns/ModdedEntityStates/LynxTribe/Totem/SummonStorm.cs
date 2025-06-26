@@ -225,7 +225,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                                 }
 
                                 var distanceToCurrentBody = Vector3.Distance(base.transform.position, body.transform.position);
-                                if(distanceToCurrentBody < distance)
+                                if (distanceToCurrentBody < distance)
                                 {
                                     distance = distanceToCurrentBody;
                                     targetBody = body;

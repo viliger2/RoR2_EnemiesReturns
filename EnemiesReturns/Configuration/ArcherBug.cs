@@ -1,8 +1,5 @@
 ﻿using BepInEx.Configuration;
 using R2API;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.Configuration
 {
@@ -27,7 +24,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> CausticSpitProcCoefficient;
         public static ConfigEntry<float> CausticSpitBlastRadius;
         public static ConfigEntry<float> CausticSpitForce;
-        public static ConfigEntry<int>   CausitcSpitProjectileCount;
+        public static ConfigEntry<int> CausitcSpitProjectileCount;
         public static ConfigEntry<float> CausticSpitProjectileSpread;
 
         public void PopulateConfig(ConfigFile config)

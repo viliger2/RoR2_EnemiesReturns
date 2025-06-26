@@ -2,14 +2,12 @@
 using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Items.ColossalKnurl;
 using R2API;
+using RoR2;
 using RoR2.ContentManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UnityEngine.AddressableAssets;
 using UnityEngine;
-using RoR2;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {

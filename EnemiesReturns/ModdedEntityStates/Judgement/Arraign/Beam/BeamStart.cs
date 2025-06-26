@@ -1,9 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
-using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
@@ -52,7 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             }
 
             var childLocator = GetModelChildLocator();
-            if (childLocator) 
+            if (childLocator)
             {
                 EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectForward") }, false);
                 EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectBackward") }, false);

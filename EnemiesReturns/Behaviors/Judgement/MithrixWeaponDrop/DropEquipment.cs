@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -49,7 +46,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
-            if(master.teamIndex == TeamIndex.Monster)
+            if (master.teamIndex == TeamIndex.Monster)
             {
                 return;
             }

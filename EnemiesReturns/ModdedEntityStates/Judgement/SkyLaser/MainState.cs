@@ -1,8 +1,6 @@
-﻿using EnemiesReturns.Enemies.LynxTribe.Storm;
-using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using RoR2.CharacterAI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;

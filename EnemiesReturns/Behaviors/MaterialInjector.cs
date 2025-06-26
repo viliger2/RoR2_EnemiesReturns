@@ -1,8 +1,4 @@
-﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -58,7 +54,8 @@ namespace EnemiesReturns.Behaviors
                         }
                         //UnityEngine.GameObject.Destroy(this);
                     };
-                } else
+                }
+                else
                 {
                     var material = handle.WaitForCompletion();
                     renderer.material = material;
@@ -70,7 +67,7 @@ namespace EnemiesReturns.Behaviors
             }
         }
 
-        private void OnDestroy() 
+        private void OnDestroy()
         {
             if (handle.IsValid())
             {

@@ -1,8 +1,5 @@
 ﻿using JetBrains.Annotations;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -65,7 +62,7 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
                 return;
             }
 
-            if(!portalSpawnLocation || !portalPrefab)
+            if (!portalSpawnLocation || !portalPrefab)
             {
                 return;
             }

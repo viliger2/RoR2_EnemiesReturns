@@ -1,12 +1,7 @@
-﻿using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
@@ -23,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 
         public abstract string swingSoundEffect { get; }
 
-        public static GameObject swingEffect; 
+        public static GameObject swingEffect;
 
         public int swingCount;
 

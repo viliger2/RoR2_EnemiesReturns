@@ -2,12 +2,8 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
@@ -64,7 +60,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 if (hurtBox)
                 {
                     target = hurtBox.healthComponent.body.transform;
-                } else
+                }
+                else
                 {
                     target = this.transform;
                 }
@@ -75,13 +72,13 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge < baseInitialDelay)
+            if (fixedAge < baseInitialDelay)
             {
                 return;
             }
 
             timer += GetDeltaTime();
-            if(isAuthority && timer > delayBetweenSpawns && projectilesSpawned < projectileCount)
+            if (isAuthority && timer > delayBetweenSpawns && projectilesSpawned < projectileCount)
             {
                 var xOffest = GetRandomOffset();
                 var zOffest = GetRandomOffset();

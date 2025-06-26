@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -39,7 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration)
+            if (fixedAge > duration)
             {
                 outer.SetNextState(new WaveActive());
             }

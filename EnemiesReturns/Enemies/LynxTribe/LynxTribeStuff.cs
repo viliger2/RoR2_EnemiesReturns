@@ -298,7 +298,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
             var dither = shrinePrefab.AddComponent<DitherModel>();
             dither.bounds = shrinePrefab.transform.Find("Base/LynxTotemPole").GetComponent<Collider>();
-            dither.renderers = shrinePrefab.GetComponentsInChildren<Renderer>(); 
+            dither.renderers = shrinePrefab.GetComponentsInChildren<Renderer>();
 
             shrinePrefab.RegisterNetworkPrefab();
 

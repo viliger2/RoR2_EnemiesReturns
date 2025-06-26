@@ -1,12 +1,7 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
 using EnemiesReturns.Reflection;
-using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
 {
@@ -36,7 +31,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge < gracePeriod)
+            if (fixedAge < gracePeriod)
             {
                 return;
             }
@@ -53,10 +48,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                 if (endRound)
                 {
                     instance.EndRound();
-                    if(instance.maxWaves <= instance.currentRound)
+                    if (instance.maxWaves <= instance.currentRound)
                     {
                         outer.SetNextState(new Inactive());
-                    } else
+                    }
+                    else
                     {
                         outer.SetNextState(new AwaitingSelection());
                     }

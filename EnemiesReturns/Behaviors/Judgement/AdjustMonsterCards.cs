@@ -1,13 +1,9 @@
-﻿using R2API;
-using RoR2;
+﻿using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static R2API.DirectorAPI;
-using static RoR2.UI.CarouselController;
 
 namespace EnemiesReturns.Behaviors.Judgement
 {
@@ -44,12 +40,12 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
-            foreach (var card in Enemies.Judgement.SetupJudgementPath.mixEnemiesDirectorCards) 
+            foreach (var card in Enemies.Judgement.SetupJudgementPath.mixEnemiesDirectorCards)
             {
                 if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard != null && choice.value.spawnCard.prefab == card.spawnCard.prefab).Count() == 0)
                 {
                     // fixing regi asking for nodes that are not TelepoterOK for some reason
-                    if(card.spawnCard.name == "cscRegigigas")
+                    if (card.spawnCard.name == "cscRegigigas")
                     {
                         card.spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.None;
                     }

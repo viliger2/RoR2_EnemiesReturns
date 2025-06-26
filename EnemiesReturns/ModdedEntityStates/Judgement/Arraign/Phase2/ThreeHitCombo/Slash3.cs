@@ -1,11 +1,8 @@
-﻿using EntityStates;
-using RoR2.Projectile;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RoR2.Projectile;
 using UnityEngine;
-using EnemiesReturns.Reflection;
 using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCombo
@@ -57,7 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.swingEffectMuzzleString = "Swing3EffectMuzzle";
             base.mecanimHitboxActiveParameter = "Slash3.attack";
             base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP2_Play"; 
+            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP2_Play";
             base.forceForwardVelocity = true;
             base.forwardVelocityCurve = acdSlash3;
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;

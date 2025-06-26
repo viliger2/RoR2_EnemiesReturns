@@ -1,11 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UnityEngine.UIElements.ListViewDragger;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 {
@@ -51,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 Util.CleanseBody(base.characterBody, removeDebuffs: true, removeBuffs: false, removeCooldownBuffs: false, removeDots: true, removeStun: false, removeNearbyProjectiles: false);
             }
             duration = baseDuration / attackSpeedStat;
-            targetMarked = baseTargetMarked/ attackSpeedStat;
+            targetMarked = baseTargetMarked / attackSpeedStat;
             targetDropped = baseTargetDropped / attackSpeedStat;
             Transform modelTransform = GetModelTransform();
             if (modelTransform)
@@ -95,7 +91,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(base.fixedAge > targetMarked && !isTargetMarked)
+            if (base.fixedAge > targetMarked && !isTargetMarked)
             {
                 if (target)
                 {

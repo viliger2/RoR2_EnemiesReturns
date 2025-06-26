@@ -1,9 +1,5 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.EditorHelpers
 {
@@ -23,7 +19,7 @@ namespace EnemiesReturns.EditorHelpers
                 }
             }
         }
-        
+
         private void FixedUpdate()
         {
             if (distanceTo)

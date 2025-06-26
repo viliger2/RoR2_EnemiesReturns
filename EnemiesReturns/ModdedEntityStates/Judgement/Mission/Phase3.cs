@@ -3,9 +3,7 @@ using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
 using RoR2.CharacterSpeech;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -101,7 +99,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         {
             base.FixedUpdate();
 
-            if(fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
+            if (fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
             {
                 if (SummonHaunt())
                 {

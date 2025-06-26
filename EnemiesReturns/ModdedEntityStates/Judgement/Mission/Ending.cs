@@ -2,11 +2,8 @@
 using EntityStates;
 using RoR2;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
@@ -27,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             if (childLocator)
             {
                 var judgementMission = childLocator.FindChild("JudgementMission");
-                if(judgementMission)
+                if (judgementMission)
                 {
                     judgementMission.gameObject.SetActive(false);
                 }
@@ -40,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
             if (NetworkServer.active)
             {
-                onArraignDefeated?.Invoke(); 
+                onArraignDefeated?.Invoke();
             }
         }
 

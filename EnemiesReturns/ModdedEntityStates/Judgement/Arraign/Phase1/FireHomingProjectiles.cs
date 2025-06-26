@@ -1,13 +1,9 @@
-﻿using EntityStates;
-using RoR2.Projectile;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RoR2.Projectile;
 using UnityEngine;
-using static UnityEngine.ParticleSystem.PlaybackState;
 using UnityEngine.AddressableAssets;
-using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 {
@@ -72,7 +68,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                     if (fireRotationHelper)
                     {
                         lookRotation = Util.QuaternionSafeLookRotation(fireRotationHelper.position - origin.position, Vector3.up);
-                    } else
+                    }
+                    else
                     {
                         lookRotation = Util.QuaternionSafeLookRotation(origin.forward);
                     }
@@ -92,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 timer -= fireRate;
             }
 
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

@@ -2,7 +2,6 @@
 using EntityStates;
 using RoR2;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 {

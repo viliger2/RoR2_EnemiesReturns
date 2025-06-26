@@ -2,10 +2,6 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -150,10 +146,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
                 if (characterMotor.Motor.GroundingStatus.IsStableOnGround)
                 {
                     newPosition = characterBody.footPosition;
-                } else if (Physics.Raycast(transform.position, Vector3.down, out var hitInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                }
+                else if (Physics.Raycast(transform.position, Vector3.down, out var hitInfo, 10000f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                 {
                     newPosition = hitInfo.point;
-                } else
+                }
+                else
                 {
                     newPosition = transform.position;
                 }

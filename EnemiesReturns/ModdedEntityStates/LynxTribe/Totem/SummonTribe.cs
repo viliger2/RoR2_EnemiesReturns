@@ -1,12 +1,9 @@
-﻿using EnemiesReturns.Components;
-using EnemiesReturns.Items.LynxFetish;
-using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
-using static RoR2.SpawnCard;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
@@ -50,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             summonCount = summonCountBase;
             var currentDeployableCount = characterBody.master.GetDeployableCount(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
             var deployableLimit = characterBody.master.GetDeployableSameSlotLimit(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
-            if(deployableLimit > currentDeployableCount)
+            if (deployableLimit > currentDeployableCount)
             {
                 summonCount = Mathf.Min(deployableLimit - currentDeployableCount, summonCountBase);
             }

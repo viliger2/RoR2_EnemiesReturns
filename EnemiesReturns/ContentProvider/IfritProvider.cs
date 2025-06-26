@@ -1,15 +1,13 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using R2API;
+using RoR2;
 using RoR2.ContentManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using RoR2;
 
 namespace EnemiesReturns
 {

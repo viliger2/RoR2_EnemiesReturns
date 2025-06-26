@@ -1,7 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
-using RoR2;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
 {

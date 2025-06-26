@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -33,7 +30,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                 var effectData = new EffectData();
                 effectData.origin = transform.position;
                 effectData.rotation = transform.rotation;
-                if(scale > 0)
+                if (scale > 0)
                 {
                     effectData.scale = scale;
                 }

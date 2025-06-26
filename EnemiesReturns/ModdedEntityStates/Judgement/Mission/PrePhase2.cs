@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
@@ -25,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(NetworkServer.active && !spoke && fixedAge > speechTimer)
+            if (NetworkServer.active && !spoke && fixedAge > speechTimer)
             {
                 Chat.SendBroadcastChat(new Chat.NpcChatMessage
                 {
@@ -36,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 spoke = true;
             }
 
-            if(fixedAge > phaseDuration && isAuthority)
+            if (fixedAge > phaseDuration && isAuthority)
             {
                 outer.SetNextState(new Phase2());
             }

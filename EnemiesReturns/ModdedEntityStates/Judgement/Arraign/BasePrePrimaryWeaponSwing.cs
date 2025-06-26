@@ -1,9 +1,5 @@
-﻿using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EntityStates;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
@@ -33,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 var nextState = GetNextEntityState();
                 nextState.swingCount = swingCount;

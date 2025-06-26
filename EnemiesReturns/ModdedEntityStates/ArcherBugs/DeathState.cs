@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.Behaviors;
-using EnemiesReturns.Enemies.ArcherBug;
-using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
@@ -20,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         public override void OnEnter()
         {
             bodyPreservationDuration = 0.4f;
-            base.OnEnter();          
+            base.OnEnter();
 
             if (isVoidDeath)
             {
@@ -37,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             }
             if (base.fixedAge > deathDelay && !hasDied)
             {
-                hasDied = true;               
+                hasDied = true;
                 EffectManager.SimpleImpactEffect(deathEffectPrefab, base.characterBody.corePosition, Vector3.up, false);
                 DestroyModel();
                 if (NetworkServer.active)

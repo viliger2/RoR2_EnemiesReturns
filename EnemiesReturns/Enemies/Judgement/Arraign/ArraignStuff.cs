@@ -2,12 +2,8 @@
 using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
@@ -139,7 +135,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             return prefab;
         }
 
-        public Material CreateSkyLeapRemoveSwordFlamesRadialMaterial() 
+        public Material CreateSkyLeapRemoveSwordFlamesRadialMaterial()
         {
             var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Parent/matParentNovaPillar.mat").WaitForCompletion());
             newMaterial.name = "matArraignSkyLeapRadialFlames";
@@ -224,7 +220,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.name = "AreaIndicator";
-            if(cube.TryGetComponent<Collider>(out var collider))
+            if (cube.TryGetComponent<Collider>(out var collider))
             {
                 UnityEngine.Object.Destroy(collider);
             }

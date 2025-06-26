@@ -1,12 +1,10 @@
 ﻿using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using static RoR2.Chat;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    public class LynxShrineChatMessage : PlayerPickupChatMessage 
+    public class LynxShrineChatMessage : PlayerPickupChatMessage
     {
         public static void Hooks()
         {
@@ -27,7 +25,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 if (pickupQuantity > 0)
                 {
                     return string.Format(chatString, subjectName, itemName, pickupQuantity);
-                } else
+                }
+                else
                 {
                     return string.Format(chatString, subjectName, itemName);
                 }

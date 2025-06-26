@@ -107,7 +107,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             base.OnExit();
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-            if(!isAttackFired)
+            if (!isAttackFired)
             {
                 FireAttack();
                 isAttackFired = true;

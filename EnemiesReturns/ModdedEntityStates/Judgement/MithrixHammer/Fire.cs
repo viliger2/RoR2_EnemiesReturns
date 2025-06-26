@@ -1,9 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
-using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -61,8 +57,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             var hitBox = hitBoxObject.AddComponent<HitBox>();
             var hitBoxGroup = hitBoxObject.AddComponent<HitBoxGroup>();
             hitBoxGroup.groupName = "HammerHitBox";
-            hitBoxGroup.hitBoxes = new HitBox[] {hitBox };
-           
+            hitBoxGroup.hitBoxes = new HitBox[] { hitBox };
+
             attack = SetupAttack(hitBoxGroup);
 
             hammerEffect = UnityEngine.Object.Instantiate(swingEffect);
@@ -73,7 +69,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             if (childLocator)
             {
                 var effectOrigin = childLocator.FindChild("SwingVFXOrigin");
-                if (effectOrigin) 
+                if (effectOrigin)
                 {
                     swingEffectInstance = UnityEngine.Object.Instantiate(swingVFX, effectOrigin.transform);
                     //swingEffectInstance.transform.position = effectOrigin.transform.position;
@@ -99,7 +95,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge < initialFrames)
+            if (fixedAge < initialFrames)
             {
                 return;
             }
@@ -111,7 +107,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 attack.Fire();
             }
 
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Idle());
             }
@@ -119,7 +115,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
         private OverlapAttack SetupAttack(HitBoxGroup hitbox)
         {
-            var overlap =  new OverlapAttack()
+            var overlap = new OverlapAttack()
             {
                 attacker = bodyGameObject,
                 damage = body.damage * damageCoefficient,
@@ -150,7 +146,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             {
                 UnityEngine.Object.Destroy(swingEffectInstance);
             }
-            if(NetworkServer.active)
+            if (NetworkServer.active)
             {
                 UnityEngine.Object.Destroy(this.gameObject);
             }

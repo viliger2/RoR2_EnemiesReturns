@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Components.BodyComponents
@@ -29,7 +26,7 @@ namespace EnemiesReturns.Components.BodyComponents
             RigidbodyMotor motor = null;
             if (NeedToAddRigidbodyMotor())
             {
-                if(motorParams.forcePID == null)
+                if (motorParams.forcePID == null)
                 {
                     Log.Warning($"ForcePIDParams is null when creating RigidbodyMotor for body {bodyPrefab}!");
                     return null;

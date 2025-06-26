@@ -58,7 +58,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
         {
             if (NetworkServer.active)
             {
-                if(body && body.inventory)
+                if (body && body.inventory)
                 {
                     body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCount(Content.Items.SpawnPillarOnChampionKill));
                 }

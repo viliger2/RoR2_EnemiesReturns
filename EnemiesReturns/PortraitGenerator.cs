@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Enemies.ArcherBug;
+using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe.Archer;
@@ -8,7 +9,6 @@ using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.Spitter;
-using EnemiesReturns.Enemies.ArcherBug;
 using RoR2;
 using RoR2.UI;
 using System;

@@ -1,11 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam;
-using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EnemiesReturns.Reflection;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -66,7 +60,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > swordSpawnMoment && !swordSpawned)
+            if (fixedAge > swordSpawnMoment && !swordSpawned)
             {
                 if (swordEmote)
                 {
@@ -74,7 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 }
                 swordSpawned = true;
             }
-            if(fixedAge > nanomachines && !saidTheMeme)
+            if (fixedAge > nanomachines && !saidTheMeme)
             {
                 if (NetworkServer.active)
                 {

@@ -1,11 +1,8 @@
-﻿using EnemiesReturns.Components;
-using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
@@ -40,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             PlayCrossfade("Gesture, Override", "SummonSkyLaser", "SkyLaser.playbackRate", duration, 0.1f);
 
             var bodies = Utils.GetActiveAndAlivePlayerBodies();
-            if(bodies.Count == 0)
+            if (bodies.Count == 0)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -65,7 +62,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 {
                     SummonSkyLaser(laserPointLocator.FindChild((staringIndex + i) % laserPointLocator.Count));
                 }
-            } else
+            }
+            else
             {
                 for (int i = 0; i < totalLaserCount; i++)
                 {
@@ -77,7 +75,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isAuthority && fixedAge > duration)
+            if (isAuthority && fixedAge > duration)
             {
                 outer.SetNextStateToMain();
             }
@@ -101,7 +99,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             {
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Direct;
                 placementRule.spawnOnTarget = transform;
-            } else
+            }
+            else
             {
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Approximate;
                 placementRule.minDistance = minDistance;

@@ -1,9 +1,6 @@
 ﻿using Assets.RoR2.Scripts.Platform;
 using RoR2;
 using RoR2.Achievements;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.Achievements
 {
@@ -39,7 +36,7 @@ namespace EnemiesReturns.Achievements
                 return BodyIndex.None;
             }
 
-            if(Enemies.Judgement.SetupJudgementPath.AnointedSkinsUnlockables2.TryGetValue(unlockableDef, out string bodyName))
+            if (Enemies.Judgement.SetupJudgementPath.AnointedSkinsUnlockables2.TryGetValue(unlockableDef, out string bodyName))
             {
                 return BodyCatalog.FindBodyIndex(bodyName);
             }

@@ -1,8 +1,5 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Projectiles
@@ -41,7 +38,7 @@ namespace EnemiesReturns.Projectiles
             }
 
             var healthComponent = hurtBox.healthComponent;
-            if(healthComponent.gameObject == projectileController.owner)
+            if (healthComponent.gameObject == projectileController.owner)
             {
                 return;
             }

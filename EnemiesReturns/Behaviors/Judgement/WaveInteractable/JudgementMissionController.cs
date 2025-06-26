@@ -1,13 +1,8 @@
-﻿using Rewired.Utils.Classes.Utility;
-using RoR2;
-using RoR2.CharacterAI;
+﻿using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
@@ -109,7 +104,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             for (int i = 0; i < monsterSelection.Count; i++)
             {
                 var card = monsterSelection.choices[i].value;
-                if (card == null) 
+                if (card == null)
                 {
                     continue;
                 }

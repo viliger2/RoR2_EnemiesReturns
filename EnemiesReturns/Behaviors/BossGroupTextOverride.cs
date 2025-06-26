@@ -1,9 +1,5 @@
 ﻿using RoR2;
 using RoR2BepInExPack.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -37,7 +33,7 @@ namespace EnemiesReturns.Behaviors
             {
                 return;
             }
-            if(overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
+            if (overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
             {
                 if (!string.IsNullOrEmpty(component.nameTokenOverride))
                 {

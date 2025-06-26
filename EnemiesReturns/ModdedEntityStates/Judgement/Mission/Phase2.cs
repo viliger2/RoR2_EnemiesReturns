@@ -2,9 +2,7 @@
 using EntityStates;
 using RoR2;
 using RoR2.CharacterSpeech;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -88,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             base.FixedUpdate();
             if (!hasSpawned)
             {
-                if(fixedAge > spawnDelay)
+                if (fixedAge > spawnDelay)
                 {
                     BeginEncounter();
                 }

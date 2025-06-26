@@ -4,7 +4,6 @@ using RoR2;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
@@ -41,10 +40,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 firstProjectileOrigin.transform.localPosition = Vector3.zero;
                 firstProjectileOrigin.transform.localRotation = Quaternion.identity;
 
-                if(projectileCountPerRow % 2 == 0)
+                if (projectileCountPerRow % 2 == 0)
                 {
                     firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize / 2 + projectileSize * (projectileCountPerRow / 2 - 1));
-                } else
+                }
+                else
                 {
                     firstProjectileOrigin.transform.localPosition = -Vector3.right * (projectileSize * (projectileCountPerRow / 2));
                 }
@@ -75,16 +75,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             {
                 timer += deltaTime;
 
-                if(Vector3.Distance(targetPoint, currentPointGameObject.transform.position) < projectileSize / 2)
+                if (Vector3.Distance(targetPoint, currentPointGameObject.transform.position) < projectileSize / 2)
                 {
                     Finished = true;
                     return;
                 }
 
-                if(timer > delayBetweenSpawns)
+                if (timer > delayBetweenSpawns)
                 {
                     currentPointGameObject.transform.position = Vector3.MoveTowards(currentPointGameObject.transform.position, targetPoint, projectileSize);
-                    foreach(Transform projectileOrigin in currentPointGameObject.transform)
+                    foreach (Transform projectileOrigin in currentPointGameObject.transform)
                     {
                         var projectileInfo = new FireProjectileInfo()
                         {
@@ -151,7 +151,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
                 linesList.Add(CreateLine(clockChildLocator, staringIndex));
 
-                for(int i = 0; i < additionalPairs; i++)
+                for (int i = 0; i < additionalPairs; i++)
                 {
                     linesList.Add(CreateLine(clockChildLocator, (staringIndex + pairsDistanceFromOrigin * i + 1) % 12));
                     linesList.Add(CreateLine(clockChildLocator, (12 + (staringIndex - (pairsDistanceFromOrigin * i + 1))) % 12));
@@ -180,7 +180,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 {
                     targetPoint = child.transform.position;
                 }
-            } else
+            }
+            else
             {
                 var forward = Quaternion.AngleAxis(UnityEngine.Random.Range(0f, 360f), Vector3.up) * Vector3.ProjectOnPlane(originPoint, Vector3.up).normalized;
                 targetPoint = base.transform.position + forward * 1000f;
@@ -213,7 +214,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 }
             }
 
-            if(isAuthority && lines.Length == 0)
+            if (isAuthority && lines.Length == 0)
             {
                 outer.SetNextStateToMain();
             }

@@ -1,11 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCombo
 {
@@ -46,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void Update()
         {
             base.Update();
-            if(swordRenderer && swordPropertyBlock != null)
+            if (swordRenderer && swordPropertyBlock != null)
             {
                 swordPropertyBlock.SetFloat("_EmPower", acdOverlayAlpha.Evaluate(age / duration));
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
@@ -56,7 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Slash1());
             }

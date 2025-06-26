@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns
+﻿namespace EnemiesReturns
 {
     public static class ThanksRandy
     {
@@ -76,6 +72,6 @@ namespace EnemiesReturns
             public const string DroneWeaponsDisplay1 = "648a1d9c63c34b044b60ce3b2e99a6b8";
             public const string DroneWeaponsDisplay2 = "1aaf36d4754a593458e921a3de3bd00b";
         }
-        
+
     }
 }

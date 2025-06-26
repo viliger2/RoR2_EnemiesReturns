@@ -1,14 +1,9 @@
-﻿using BepInEx.Configuration;
-using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.ArcherBug;
+﻿using EnemiesReturns.Enemies.ArcherBug;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns

@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
-using EnemiesReturns.Components;
 using EnemiesReturns.Enemies.Judgement.Arraign;
 using HG;
 using Mono.Cecil.Cil;
@@ -12,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -724,7 +722,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                         Material newMaterial = null;
                         if (baseRenderInfo.defaultMaterial)
-                    {
+                        {
                             if (!ContentProvider.MaterialCache.TryGetValue(baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed", out newMaterial))
                             {
                                 newMaterial = UnityEngine.Object.Instantiate(baseRenderInfo.defaultMaterial);
@@ -732,12 +730,12 @@ namespace EnemiesReturns.Enemies.Judgement
                                 newMaterial.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
                                 newMaterial.SetFloat(CommonShaderProperties._EliteIndex, 1);
                                 ContentProvider.MaterialCache.Add(newMaterial.name, newMaterial);
-                    }
+                            }
                         }
                         else
-                    {
+                        {
                             Log.Warning($"Survivor {survivorDef.cachedName} has an empty material on baseRendererInfos at index {k}.");
-                    }
+                        }
                         skinRenderInfos[k] = new CharacterModel.RendererInfo
                         {
                             renderer = baseRenderInfo.renderer,

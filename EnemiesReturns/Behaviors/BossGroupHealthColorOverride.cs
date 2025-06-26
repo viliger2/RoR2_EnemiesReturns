@@ -1,9 +1,6 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 using RoR2BepInExPack.Utilities;
+using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -14,7 +11,7 @@ namespace EnemiesReturns.Behaviors
 
         public BossGroup bossGroup;
 
-        public readonly static Color defaultHealthBarColor = new Color(206f/255f, 3f/255f, 3f/255f);
+        public readonly static Color defaultHealthBarColor = new Color(206f / 255f, 3f / 255f, 3f / 255f);
 
         public static FixedConditionalWeakTable<BossGroup, BossGroupHealthColorOverride> overrideDictionary = new FixedConditionalWeakTable<BossGroup, BossGroupHealthColorOverride>();
 
@@ -44,12 +41,13 @@ namespace EnemiesReturns.Behaviors
             {
                 return;
             }
-            if(self.fillRectImage)
+            if (self.fillRectImage)
             {
-                if(overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
+                if (overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
                 {
                     self.fillRectImage.color = component.healthBarColorOverride;
-                } else
+                }
+                else
                 {
                     self.fillRectImage.color = defaultHealthBarColor;
                 }

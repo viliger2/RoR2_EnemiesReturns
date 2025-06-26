@@ -1,9 +1,5 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using static RoR2.BossGroup;
 
 namespace EnemiesReturns.Behaviors.Judgement
 {
@@ -26,7 +22,7 @@ namespace EnemiesReturns.Behaviors.Judgement
                 var pickupDef = PickupCatalog.GetPickupDef(pickupInfo.pickupIndex);
                 if (pickupDef != null)
                 {
-                    if(pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex
+                    if (pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex
                         && pickupDef.equipmentIndex != Content.Equipment.MithrixHammer.equipmentIndex)
                     {
                         return;

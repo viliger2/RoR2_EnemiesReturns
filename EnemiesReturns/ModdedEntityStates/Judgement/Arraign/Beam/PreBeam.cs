@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
@@ -31,10 +28,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
                     return;
                 }
 
-                if(Vector3.Distance(centerOfArena.position, transform.position) > distanceToCenter)
+                if (Vector3.Distance(centerOfArena.position, transform.position) > distanceToCenter)
                 {
                     FindSlideRotationAndSlideNextState();
-                } else
+                }
+                else
                 {
                     outer.SetNextState(new BeamStart());
                 }

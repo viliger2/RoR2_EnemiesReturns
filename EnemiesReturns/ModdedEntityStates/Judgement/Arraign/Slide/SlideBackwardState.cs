@@ -1,7 +1,4 @@
 ﻿using EnemiesReturns.Reflection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Slide

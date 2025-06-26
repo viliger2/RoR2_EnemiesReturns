@@ -243,21 +243,23 @@ namespace EnemiesReturns
         public static void FilterByPlayers(this SphereSearch.SearchData searchData)
         {
             searchData.LoadHurtBoxes();
-            for(int num = searchData.candidatesCount - 1; num >= 0; num--)
+            for (int num = searchData.candidatesCount - 1; num >= 0; num--)
             {
                 if (!searchData.GetCandidate(num).hurtBox)
                 {
                     searchData.RemoveCandidate(num);
-                } else
+                }
+                else
                 {
                     var healthComponent = searchData.GetCandidate(num).hurtBox.healthComponent;
-                    if(healthComponent && healthComponent.body)
+                    if (healthComponent && healthComponent.body)
                     {
                         if (!healthComponent.body.isPlayerControlled)
                         {
                             searchData.RemoveCandidate(num);
                         }
-                    } else
+                    }
+                    else
                     {
                         searchData.RemoveCandidate(num);
                     }

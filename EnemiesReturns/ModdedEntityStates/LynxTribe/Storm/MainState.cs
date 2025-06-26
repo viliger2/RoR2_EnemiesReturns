@@ -50,9 +50,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Storm
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (NetworkServer.active) 
+            if (NetworkServer.active)
             {
-                if(!owner || !ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
+                if (!owner || !ownerBody || !ownerBody.healthComponent || !ownerBody.healthComponent.alive)
                 {
                     fixedAge = Mathf.Max(fixedAge, lifetime - 5f); // storm lives for 5 seconds or less after owner has died
                 }

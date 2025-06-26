@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
@@ -19,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         private bool spokeFirst = false;
 
-        private bool spokeSecond = false; 
+        private bool spokeSecond = false;
 
         private bool spokeThird = false;
 

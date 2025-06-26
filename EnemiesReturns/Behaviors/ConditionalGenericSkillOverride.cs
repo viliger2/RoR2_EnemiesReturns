@@ -1,7 +1,5 @@
 ﻿using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -37,7 +35,7 @@ namespace EnemiesReturns.Behaviors
                 characterBody = GetComponent<CharacterBody>();
             }
 
-            for(int i = 0; i < conditionalSkillInfos.Length; i++)
+            for (int i = 0; i < conditionalSkillInfos.Length; i++)
             {
                 if (!conditionalSkillInfos[i].originalSkill)
                 {
@@ -54,12 +52,13 @@ namespace EnemiesReturns.Behaviors
                 wasSprinting = characterBody.isSprinting;
             }
 
-            for(int i = 0; i < conditionalSkillInfos.Length; i++)
+            for (int i = 0; i < conditionalSkillInfos.Length; i++)
             {
-                if(wasSprinting && !this.wasSprinting)
+                if (wasSprinting && !this.wasSprinting)
                 {
                     SetGenericSkillBySlot(skillLocator, conditionalSkillInfos[i].replacementSkill, conditionalSkillInfos[i].skillSlot);
-                } else if(!wasSprinting && this.wasSprinting)
+                }
+                else if (!wasSprinting && this.wasSprinting)
                 {
                     SetGenericSkillBySlot(skillLocator, conditionalSkillInfos[i].originalSkill, conditionalSkillInfos[i].skillSlot);
                 }
@@ -74,7 +73,7 @@ namespace EnemiesReturns.Behaviors
                 return null;
             }
 
-            if(slot == SkillSlot.Primary)
+            if (slot == SkillSlot.Primary)
             {
                 return skillLocator.primary;
             }
@@ -97,14 +96,14 @@ namespace EnemiesReturns.Behaviors
             return null;
         }
 
-        private void SetGenericSkillBySlot(SkillLocator skillLocator, GenericSkill skill, SkillSlot slot) 
+        private void SetGenericSkillBySlot(SkillLocator skillLocator, GenericSkill skill, SkillSlot slot)
         {
             if (!skillLocator || !skill || slot == SkillSlot.None)
             {
                 return;
             }
 
-            if(slot == SkillSlot.Primary)
+            if (slot == SkillSlot.Primary)
             {
                 skillLocator.primary = skill;
             }

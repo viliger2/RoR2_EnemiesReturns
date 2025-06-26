@@ -1,11 +1,8 @@
 ﻿using EnemiesReturns.Behaviors;
 using R2API;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
@@ -28,7 +25,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public static void AddBodyToArmorBypass(BodyIndex bodyIndex)
         {
-            if(bodyIndex != BodyIndex.None) bodiesToBypassArmor.Add(bodyIndex);
+            if (bodyIndex != BodyIndex.None) bodiesToBypassArmor.Add(bodyIndex);
         }
 
         public static bool BodyCanBypassArmor(BodyIndex bodyIndex)
@@ -63,7 +60,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
             bool aeonianDamage = false;
-            if(!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
+            if (!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
                 aeonianDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
                 aeonianDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
@@ -118,7 +115,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
-            if(currentSegment >= segments)
+            if (currentSegment >= segments)
             {
                 return;
             }
@@ -126,7 +123,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             var segmentHealthSize = body.maxHealth / segments;
             var currentSegmentStatus = (segmentStatus & (uint)1 << currentSegment) == 0;
 
-            if(damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
+            if (damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
             {
                 healthComponent.health = body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1;
                 damageReport.victimBody.AddBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
@@ -137,7 +134,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private void OnValidate()
         {
-            if(segments > 16)
+            if (segments > 16)
             {
                 segments = 16;
             }

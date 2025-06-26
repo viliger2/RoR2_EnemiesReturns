@@ -3,11 +3,7 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Audio;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
@@ -79,11 +75,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
             bool playersCanAttack = false;
             var players = Utils.GetActiveAndAlivePlayerBodies();
-            foreach(var player in players)
+            foreach (var player in players)
             {
                 if (player.inventory)
                 {
-                    playersCanAttack = playersCanAttack 
+                    playersCanAttack = playersCanAttack
                         || player.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0
                         || player.inventory.HasEquipment(Content.Equipment.MithrixHammer)
                         || player.inventory.HasEquipment(Content.Equipment.EliteAeonian);
@@ -93,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
             {
                 foreach (var characterBody in CharacterBody.readOnlyInstancesList)
                 {
-                    if(characterBody.teamComponent.teamIndex != TeamIndex.Player)
+                    if (characterBody.teamComponent.teamIndex != TeamIndex.Player)
                     {
                         continue;
                     }
@@ -108,7 +104,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
             if (!playersCanAttack)
             {
                 outer.SetNextState(new SomebodyGettingFucked());
-            } else
+            }
+            else
             {
                 outer.SetNextStateToMain();
             }

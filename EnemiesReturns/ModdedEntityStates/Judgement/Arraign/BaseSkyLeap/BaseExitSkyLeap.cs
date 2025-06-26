@@ -1,11 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 {
@@ -93,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             base.Update();
             if (attackFired)
             {
-                if(startAge == 0)
+                if (startAge == 0)
                 {
                     startAge = age;
                 }
@@ -137,10 +133,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 attackFired = true;
             }
 
-            if(!secondAttackFired && modelAnimator.GetFloat(secondAttackParamName) > 0.9f)
+            if (!secondAttackFired && modelAnimator.GetFloat(secondAttackParamName) > 0.9f)
             {
                 var position = dropPosition;
-                if (removeSwordMuzzle) 
+                if (removeSwordMuzzle)
                 {
                     position = removeSwordMuzzle.position;
                 }

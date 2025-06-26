@@ -28,12 +28,12 @@ namespace EnemiesReturns.Enemies.Spitter
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
         {
-            if(!modelLocator || !modelLocator.modelTransform)
+            if (!modelLocator || !modelLocator.modelTransform)
             {
                 return;
             }
 
-            if(damageReport == null || !damageReport.victimBody || !damageReport.victimBody.modelLocator || !damageReport.victimBody.modelLocator.modelTransform)
+            if (damageReport == null || !damageReport.victimBody || !damageReport.victimBody.modelLocator || !damageReport.victimBody.modelLocator.modelTransform)
             {
                 return;
             }

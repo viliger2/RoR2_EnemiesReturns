@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
@@ -28,7 +25,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             }
 
             timer += Time.fixedDeltaTime;
-            if(timer > checkTimer)
+            if (timer > checkTimer)
             {
                 timer -= checkTimer;
                 if (!antiAirSkill.IsReady())
@@ -37,7 +34,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 }
 
                 bool emssFree = true;
-                foreach(var esm in esms)
+                foreach (var esm in esms)
                 {
                     emssFree = emssFree && esm.IsInMainState();
                 }

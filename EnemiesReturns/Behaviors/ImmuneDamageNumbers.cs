@@ -1,7 +1,4 @@
-﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -20,7 +17,7 @@ namespace EnemiesReturns.Behaviors
         private void Awake()
         {
             ps = GetComponent<ParticleSystem>();
-            if(textData.Length == 0)
+            if (textData.Length == 0)
             {
                 Log.Warning("ImmuneDamageNumbers textData array lengh is zero!");
                 this.gameObject.SetActive(false);
@@ -47,10 +44,11 @@ namespace EnemiesReturns.Behaviors
             }, 1);
             ps.GetCustomParticleData(customData, ParticleSystemCustomData.Custom1);
             float value = 122345f;
-            if(textData.Length == 1)
+            if (textData.Length == 1)
             {
                 value = textData[0];
-            } else
+            }
+            else
             {
                 value = textData[UnityEngine.Random.Range(0, textData.Length)];
             }

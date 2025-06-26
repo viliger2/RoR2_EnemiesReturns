@@ -1,10 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -72,7 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
             base.FixedUpdate();
             Vector3 targetMoveVelocity = Vector3.zero;
             characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 45f);
-            if(animator.GetFloat("Slash3.slam") > 0.9f && !firedBlastAttack)
+            if (animator.GetFloat("Slash3.slam") > 0.9f && !firedBlastAttack)
             {
                 if (isAuthority)
                 {

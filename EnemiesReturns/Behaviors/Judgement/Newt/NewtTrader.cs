@@ -1,8 +1,5 @@
 ﻿using JetBrains.Annotations;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -43,7 +40,7 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
                 return Interactability.Disabled;
             }
 
-            if(characterBody.inventory.GetItemCount(itemToTake) > 0)
+            if (characterBody.inventory.GetItemCount(itemToTake) > 0)
             {
                 return Interactability.Available;
             }

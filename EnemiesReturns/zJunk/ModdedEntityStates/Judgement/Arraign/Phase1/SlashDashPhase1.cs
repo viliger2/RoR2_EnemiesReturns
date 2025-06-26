@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EnemiesReturns.zJunk.ModdedEntityStates.Judgement.Arraign.Phase1
+﻿namespace EnemiesReturns.zJunk.ModdedEntityStates.Judgement.Arraign.Phase1
 {
     public class SlashDashPhase1 : BaseSlashDash
     {

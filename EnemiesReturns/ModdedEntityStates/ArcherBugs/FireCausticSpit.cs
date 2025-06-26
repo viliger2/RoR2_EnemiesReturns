@@ -2,10 +2,6 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
@@ -36,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         private float duration;
 
         private float delay;
-       
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -51,7 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-           
+
             if (fixedAge > delay && !hasFired)
             {
                 if (isAuthority)
@@ -96,14 +92,14 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
         {
             base.OnExit();
             if (!hasFired && isAuthority)
-            {               
+            {
                 FireAttackAuthority();
             }
-        }       
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
-        {         
-            return InterruptPriority.PrioritySkill;           
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

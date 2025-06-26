@@ -90,7 +90,8 @@ namespace EnemiesReturns.Items.LynxFetish
             if (bodyObject)
             {
                 SetTeamFilter(bodyObject);
-            } else
+            }
+            else
             {
                 summonedMaster.onBodyStart += SummonedMaster_onBodyStart;
             }
@@ -177,7 +178,7 @@ namespace EnemiesReturns.Items.LynxFetish
                 }
             }
 
-            if(list.Count == 0)
+            if (list.Count == 0)
             {
                 return null;
             }

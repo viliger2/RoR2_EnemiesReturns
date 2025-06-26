@@ -1,9 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
@@ -30,7 +26,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             duration = baseDuration / attackSpeedStat;
             Util.PlaySound(soundString, base.gameObject);
             PlayAnimation(layerName, stateName, playbackRateParam, duration);
-            if (NetworkServer.active && addBuff) 
+            if (NetworkServer.active && addBuff)
             {
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.ArmorBoost, baseDuration);
             }
@@ -39,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(isAuthority && fixedAge > duration)
+            if (isAuthority && fixedAge > duration)
             {
                 SetNextStateAuthority();
             }

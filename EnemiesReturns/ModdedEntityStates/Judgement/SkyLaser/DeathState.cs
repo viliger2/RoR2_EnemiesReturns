@@ -1,11 +1,8 @@
-﻿using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.Networking;
-using UnityEngine;
-using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
+using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 {
@@ -44,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
                 if (pillarLarge)
                 {
                     var components = pillarLarge.GetComponents<ObjectScaleCurve>();
-                    foreach(var component in components)
+                    foreach (var component in components)
                     {
                         component.enabled = !component.enabled;
                     }
@@ -63,7 +60,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
                 if (light)
                 {
                     var components = light.GetComponents<LightIntensityCurve>();
-                    foreach(var component in components)
+                    foreach (var component in components)
                     {
                         component.enabled = !component.enabled;
                     }

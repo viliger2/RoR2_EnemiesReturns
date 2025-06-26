@@ -1,10 +1,6 @@
 ﻿using EntityStates;
 using R2API;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 using UnityEngine.Networking;
 using static R2API.DamageAPI;
 
@@ -59,7 +55,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 return;
             }
 
-            if(damageReport.damageInfo == null || !damageReport.victimBody)
+            if (damageReport.damageInfo == null || !damageReport.victimBody)
             {
                 return;
             }
@@ -70,10 +66,11 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 SetStun(stunDuration);
                 if (applyBuff)
                 {
-                    if(buffDuration < 0)
+                    if (buffDuration < 0)
                     {
                         damageReport.victimBody.AddBuff(buff);
-                    } else
+                    }
+                    else
                     {
                         damageReport.victimBody.AddTimedBuff(buff, buffDuration);
                     }
@@ -91,7 +88,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (hasEffectiveAuthority)
             {
                 SetStunInternal(duration);
-            } else
+            }
+            else
             {
                 RpcSetStun(duration);
             }
@@ -105,7 +103,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
                 (newStunState as StunState).stunDuration = duration;
                 targetStateMachine.SetInterruptState(newStunState, InterruptPriority.Stun);
             }
-            foreach(var machine in idleStateMachines)
+            foreach (var machine in idleStateMachines)
             {
                 machine.SetNextStateToMain();
             }

@@ -1,13 +1,8 @@
 ﻿using EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap;
 using EnemiesReturns.Reflection;
-using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 {
@@ -48,7 +43,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(animator && animator.GetFloat("SkyLeap.spawnLeapEffect") > 0.95f && !effectsSpawned)
+            if (animator && animator.GetFloat("SkyLeap.spawnLeapEffect") > 0.95f && !effectsSpawned)
             {
                 var dashEffectData = new EffectData()
                 {
@@ -68,8 +63,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
                     origin = FindModelChild("FootR").position
                 };
 
-                EffectManager.SpawnEffect(footstepEffect, footREffectData, false); 
-                
+                EffectManager.SpawnEffect(footstepEffect, footREffectData, false);
+
                 Util.PlaySound("Play_moonBrother_phaseJump_jumpAway", base.gameObject);
                 effectsSpawned = true;
             }

@@ -1,8 +1,5 @@
 ﻿using JetBrains.Annotations;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Totem

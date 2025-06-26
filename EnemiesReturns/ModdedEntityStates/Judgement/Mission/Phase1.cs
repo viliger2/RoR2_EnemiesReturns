@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
 using EnemiesReturns.Reflection;
 using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
@@ -41,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(missionController && missionController.missionClear && isAuthority)
+            if (missionController && missionController.missionClear && isAuthority)
             {
                 outer.SetNextState(new PrePhase2());
             }
