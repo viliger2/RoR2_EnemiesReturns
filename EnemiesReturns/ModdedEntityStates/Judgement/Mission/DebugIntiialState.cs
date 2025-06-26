@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             Phase3,
             Ending
         }
-
+#if DEBUG == true || NOWEAVER == true
         public static InitialState initialState => Configuration.General.JudgementInitialState.Value;
 
         public override void OnEnter()
@@ -37,5 +37,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     break;
             }
         }
+#endif
     }
 }

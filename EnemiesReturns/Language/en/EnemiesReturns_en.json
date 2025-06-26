@@ -165,7 +165,7 @@
     "ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Quiescent Ultimatum<sprite name=\"CloudRight\" tint=1>",
     "ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Aeonian {0}",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Arraign's Decree",
-    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Become an aspect of judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Become an aspect of judgement.",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Allows the owner to shatter any kind of defense.",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "LORE HERE",
 
@@ -174,8 +174,6 @@
 
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME": "Arraign",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_SUBTITLE": "The Judge",
-
-    "ENEMIES_RETURNS_ARRAIGN_SKYLASER_BODY": "Sky Laser",
 
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_1": "You have gotten this far...",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_2": "Candidate, prevail. Or fall victim to my judgement.",
@@ -221,28 +219,28 @@
 
     "ENEMIES_RETURNS_JUDGEMENT_OUTRO": "..and so they triumphed, bequeathing the sovereignty.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_NAME": "Enforcing Swings",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_NAME": "Tribunal Sword: Three-Step Execution",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_DESC": "Take a stance and then deliver 3 fast swings, third swing ending in explosions.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_NAME": "Accusing Sweep",
+    "ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_NAME": "Blade of Accusation",
     "ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_DESC": "Perform rapid weapon sweeps.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_NAME": "Divine Judgement",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_NAME": "Brilliant Glory",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_DESCRIPTION": "Charge an attack for a few seconds and deliver devastating laser from both ends of your weapon, while rotating in place.",
 
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_NAME": "Deliverance",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_DESC": "Jump high into the air and land on top of a target.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_NAME": "Turnabout",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_NAME": "Strike Out at the Unrighteous",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_DESC": "Throw a weapon to ground your target.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_NAME": "Restoring Order",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_NAME": "His Shining Radiance",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_DESC": "Summon lightning strikes around target.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_NAME": "Long Arm of Law",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_NAME": "Adjudication",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_DESC": "Leap forward, leaving trail of lightning and ending in explosion upon landing.",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_NAME": "Swift Justice",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_NAME": "Pierce Through the Heart of Evil",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_DESC": "Throw a very fast spear at air target.",
 
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_CLOCKATTACK_NAME": "Roaring Verdict",
@@ -251,6 +249,6 @@
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_NAME": "Summon Sky Laser",
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_DESC": "",
 
-    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "Sky Laser"
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "Heavenly Pressure of Judgement"
   }
 }
