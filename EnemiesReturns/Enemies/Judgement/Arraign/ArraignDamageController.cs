@@ -24,6 +24,18 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private int currentSegment;
 
+        private static HashSet<BodyIndex> bodiesToBypassArmor = new HashSet<BodyIndex>();
+
+        public static void AddBodyToArmorBypass(BodyIndex bodyIndex)
+        {
+            if(bodyIndex != BodyIndex.None) bodiesToBypassArmor.Add(bodyIndex);
+        }
+
+        public static bool BodyCanBypassArmor(BodyIndex bodyIndex)
+        {
+            return bodiesToBypassArmor.Contains(bodyIndex);
+        }
+
         private void OnEnable()
         {
             if (!body)
@@ -55,6 +67,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             {
                 aeonianDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
                 aeonianDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
+                aeonianDamage |= bodiesToBypassArmor.Contains(attackerBody.bodyIndex);
             }
             if (arraignIsImmune && !(endGameBossWeaponDamage || aeonianDamage))
             {

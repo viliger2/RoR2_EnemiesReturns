@@ -51,15 +51,11 @@ namespace EnemiesReturns
 
         private void Awake()
         {
-#if DEBUG == true
-            //On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
-#endif
             var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
             Log.Init(Logger);
+            EnemiesReturns.Configuration.General.PopulateConfig(Config);
 #if DEBUG == false && NOWEAVER == false
-            var UseConfigFile = Config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Each enemy gets their own config file. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
-
-            if (UseConfigFile.Value)
+            if (Configuration.General.UseConfigFile.Value)
             {
                 foreach(var configType in configs)
                 {
@@ -74,12 +70,12 @@ namespace EnemiesReturns
 #else
             MakeNonConfigs(configs);
 #endif
-            EnemiesReturns.Configuration.General.PopulateConfig(Config);
-
             RegisterStuff();
-
             Hooks();
-
+#if DEBUG == true
+            On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
+            Log.Error("EnemiesReturns is in a debug build! If you see this in release builds - report immediately since multiplayer will not work!");
+#endif
             ModIsLoaded = true;
 
             void MakeNonConfigs(IEnumerable<System.Type> configs)

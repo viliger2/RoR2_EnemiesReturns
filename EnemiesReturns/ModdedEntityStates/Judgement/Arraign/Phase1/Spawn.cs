@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Enemies.Judgement.Arraign;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Audio;
@@ -86,6 +87,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                         || player.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0
                         || player.inventory.HasEquipment(Content.Equipment.MithrixHammer)
                         || player.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+                }
+            }
+            if (!playersCanAttack)
+            {
+                foreach (var characterBody in CharacterBody.readOnlyInstancesList)
+                {
+                    if(characterBody.teamComponent.teamIndex != TeamIndex.Player)
+                    {
+                        continue;
+                    }
+
+                    if (ArraignDamageController.BodyCanBypassArmor(characterBody.bodyIndex))
+                    {
+                        playersCanAttack = true;
+                        break;
+                    }
                 }
             }
             if (!playersCanAttack)

@@ -17,13 +17,48 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
 
         private CharacterMaster master;
 
+        private CharacterBody body;
+
+        private bool wasMonster = false;
+
         private void OnEnable()
         {
             master = GetComponent<CharacterMaster>();
             if (master)
             {
+                master.onBodyStart += Master_onBodyStart;
                 master.onBodyDeath.AddListener(OnBodyDeath);
+                wasMonster = master.teamIndex == TeamIndex.Monster;
             }
+        }
+
+        private void Master_onBodyStart(CharacterBody obj)
+        {
+            this.body = obj;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!wasMonster || !master || !NetworkServer.active)
+            {
+                return;
+            }
+
+            if (!body || body.isPlayerControlled)
+            {
+                return;
+            }
+
+            if(master.teamIndex == TeamIndex.Monster)
+            {
+                return;
+            }
+
+            // handling chirr befriending mithrix
+            // since we are now on team player and wasn't on player team before
+            TryToDropEquipment(body.gameObject);
+
+            wasMonster = false;
         }
 
         public void OnBodyDeath()
@@ -49,6 +84,11 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
+            TryToDropEquipment(bodyObject);
+        }
+
+        private void TryToDropEquipment(GameObject bodyObject)
+        {
             bool itemFound = false;
             if (!itemToCheck)
             {
@@ -98,7 +138,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 }
             }
 
-            if (itemFound) 
+            if (itemFound)
             {
                 var vector = Vector3.up * 20f + transform.forward * 2f;
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, vector);
@@ -112,6 +152,5 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 });
             }
         }
-
     }
 }

@@ -136,6 +136,7 @@ namespace EnemiesReturns.Configuration.Judgement
             ClockAttackDistanceFromStart = config.Bind("ClockAttack", "ClockAttack Distance From Origin", 2, "ClockAttack additional lines distance from original. Imagine a clock and then add or subtract this number of hours, this will be origin point of additional lines.");
 
             SkyLaserCooldown = config.Bind("SkyLaser", "SkyLaser Cooldown", 40f, "SkyLaser cooldown.");
+            SkyLaserLifetime = config.Bind("SkyLaser", "SkyLaser Lifetime", 20f, "SkyLaser lifetime.");
             SkyLaserCount = config.Bind("SkyLaser", "SkyLaser Count", 3, "SkyLaser summon count.");
             SkyLaserAdditionalCountPerPlayer = config.Bind("SkyLaser", "SkyLaser Additional Summon Per Player", 0.5f, "SkyLaser additional summon per player, so with default config you will get 1 additional laser per 2 additional players, so 3 players will get 4 lasers instead of 3.");
             SkyLaserDamageCoefficient = config.Bind("SkyLaser", "SkyLaser Damage", 10f, "SkyLaser damage, does not scale off ArraignP2 body stats and instead scales of its own stat values which are 16(+3.2).");

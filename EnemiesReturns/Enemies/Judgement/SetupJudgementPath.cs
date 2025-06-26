@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
 using EnemiesReturns.Components;
+using EnemiesReturns.Enemies.Judgement.Arraign;
 using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -70,6 +71,9 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
 
             AddAeonianAnointedItemDisplays();
+
+            ArraignDamageController.AddBodyToArmorBypass(BodyCatalog.FindBodyIndex("BrotherBody"));
+            ArraignDamageController.AddBodyToArmorBypass(BodyCatalog.FindBodyIndex("BrotherHurtBody"));
         }
 
         private static void AddAeonianAnointedItemDisplays()
