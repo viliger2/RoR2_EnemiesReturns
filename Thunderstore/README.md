@@ -26,7 +26,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td>Lynx Shaman</td>
 		<td>The leader of Lynx Tribe. His deep connection to N'kuhana empowers him.</td>
 		<td>Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow</td>
-	</tr>		
+	</tr>	
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
+		<td>Archer Bug</td>
+		<td>An incessant pest. Shoots a spread of projectiles.</td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call</td>
+	</tr>	
 	<thead>
 		<tr>
 			<th>Medium Enemies</th>
@@ -136,6 +142,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Hand digging dirt, leaves crunch - https://pixabay.com/sound-effects/hand-digging-dirt-leaves-crunch-32630/
 * Digging - https://pixabay.com/sound-effects/digging-6691/
 * Falling In Dirt - https://pixabay.com/sound-effects/falling-in-dirt-87202/
+</details>
+<details>
+<summary>Archer Bug</summary>
+
+* Model, rigging, animations and code by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Additional code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from RoRR.
 </details>
 - Special thanks to 
 

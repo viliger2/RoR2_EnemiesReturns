@@ -1,4 +1,59 @@
 <details>
+<summary>0.5.17</summary>
+
+* Added new Small-tier monster: Archer Bug.
+* Lynx Tribe
+  * Totem
+    * Sex: Yes
+    * Storm
+      * Poison duration lowered to 4 (was 5).
+	  * Poison damage increased to 1.25 (was 0.8).
+	  * Grab range increased to 6 (was 3).
+	  * Grab strength increased to 6 (was 5).
+	  * Storm immunity duration lowered to 4 (was 8).
+	  * Storm now lives for 5 seconds after Totem death.
+	  * Now zeroes your jump count, so you can no longer escape it with enough Feathers. Can be disabled in the config.
+	* Groundpound
+      * Cooldown lowered to 5 (was 10).
+      * Damage increased to 3.2 (was 3).
+    * Summon Tribe
+      * Summon count increased to 5 (was 4).
+      * Summon cap lowered to 10 (was 12).
+      * Summon max range increased to 8 (was 4).
+  * Shaman
+    * Animation improvements.
+    * Push back range increased to 11 (was 6).
+  * Hunter
+    * Movement speed increased to 10 (was 7).
+    * Stab damage lowered to 2.5 (was 3).	
+  * _Lynx Tribe as a whole felt a bit weak, this should buff them up a bit without going overboard._
+  * Shrine
+    * Added additional config values.
+	* Shrine now becomes dithered when close to camera.
+	* Reverted shrine to dropping only one item. Shrine no longer uses multiplayer scaling for spawned enemies. Multiplayer scaling + per player items can be enabled in the config.
+    * Increased visibility of timer.
+	* Spawned enemies are now marked with an indicator, similar to one used for bosses.
+	* There are now chat messages on initial interaction, success and failure.
+
+  * Lynx Fetish
+    * Spawns are now disabled in bazaar. This can be reverted in the config.  
+  * You can now set stages that Hunter, Archer and Scout can spawn on.
+* Colosus
+  * Rock Clap
+    * Fixed skill not firing at high attack speeds.
+  * Stomp
+    * Removed minimum target distance activation requirement.
+  * Colossal Fist
+    * Restored fade in and out effect that was "broken" since SoTS.
+      * _Thank Randy._	
+* Mechanical Spider
+  * Projectile speed lowered to 80 (was 100).
+  * Fixed spiders not dancing on victories.	  
+* Fixed Twisted elites displays not working since memop update.
+* Fixed NREs when mod enemies die by void death.
+* Judgement.
+</details>
+<details>
 <summary>0.4.13</summary>
 
 * Fixed for 1.3.9 update.
