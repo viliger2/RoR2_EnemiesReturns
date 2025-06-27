@@ -1469,6 +1469,8 @@
 														<Action Name="" ID="{4C704EE7-424A-42D7-8E4A-2F01483CBB53}" ShortID="357695913">
 															<PropertyList>
 																<Property Name="ActionType" Type="int16" Value="2"/>
+																<Property Name="FadeOutCurve" Type="int16" Value="1"/>
+																<Property Name="FadeTime" Type="Real64" Value="1"/>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Target">
