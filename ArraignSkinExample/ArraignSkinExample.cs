@@ -66,10 +66,6 @@ namespace ArraignSkinExample
         [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
         public static void Init()
         {
-            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
-            {
-                return;
-            }
             AddArraignSkinExampleBandit2Skin();
         }
 

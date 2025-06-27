@@ -62,6 +62,11 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
+            if (!EnemiesReturns.Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                return;
+            }
+
             ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
             ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
 

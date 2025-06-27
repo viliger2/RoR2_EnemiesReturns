@@ -552,24 +552,27 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #endregion
 
             #region AeonianElite
-            var displayRuleGroupAeonian = new DisplayRuleGroup();
-            displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+            if (Configuration.Judgement.Judgement.Enabled.Value)
             {
-                ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
-                followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
-                childName = "Root",
-                localPos = new Vector3(0F, 1.53293F, -0.41985F),
-                localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.1984F, 0.1984F, 0.19647F),
-                limbMask = LimbFlags.None
-            });
+                var displayRuleGroupAeonian = new DisplayRuleGroup();
+                displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Root",
+                    localPos = new Vector3(0F, 1.53293F, -0.41985F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.1984F, 0.1984F, 0.19647F),
+                    limbMask = LimbFlags.None
+                });
 
-            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
-            {
-                displayRuleGroup = displayRuleGroupAeonian,
-                keyAsset = Content.Equipment.EliteAeonian
-            });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupAeonian,
+                    keyAsset = Content.Equipment.EliteAeonian
+                });
+            }
             #endregion
 
             return idrs;

@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider
 {
-    // TODO: I think its broken, since I haven't seen them dancing on teleporter charge or defeating mithrix for that matter
     public class MechanicalSpiderVictoryDanceController : MonoBehaviour
     {
         public CharacterBody body;
