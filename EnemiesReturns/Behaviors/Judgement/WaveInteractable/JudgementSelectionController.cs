@@ -21,6 +21,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             { ItemTier.Tier2, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTier2ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier2ItemMaxCount.Value } },
             { ItemTier.Tier3, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTier3ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier3ItemMaxCount.Value } },
             { ItemTier.Boss, new MinMaxCount{ minCount = Configuration.Judgement.Judgement.WavesTierBossItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTierBossItemMaxCount.Value } },
+            { ItemTier.Lunar, new MinMaxCount{minCount = Configuration.Judgement.Judgement.WavesTier3ItemMinCount.Value, maxCount = Configuration.Judgement.Judgement.WavesTier1ItemMaxCount.Value} }
         };
 
         public int listCount = 10;
@@ -106,9 +107,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             currentList++;
         }
 
-        // TODO: check how it works with Euology Zero, I have a feeling that those tards at Gearbox made it so
-        // it literally just rerolls any drop table it can find to contain lunars and it is not a fault of some
-        // rogue mod
         private void GenerateItemList()
         {
             List<PickupIndex> takenList = new List<PickupIndex>();
@@ -122,7 +120,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
                     if (tierDropTables[k].GetSelectorCount() >= listCount)
                     {
-                        while (takenList.Contains(itemIndex) && PickupCatalog.GetPickupDef(itemIndex)?.itemTier == ItemTier.Lunar)
+                        while (takenList.Contains(itemIndex))
                         {
                             itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
                         }

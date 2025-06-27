@@ -26,7 +26,6 @@
             public const string EliteLightningEquipment = "fd4fd78564c97074b8911e66a23edbae";
         }
 
-        // TODO: there is lunar eye, maybe use it instead of fire?
         public static class EliteLunar
         {
             public const string DisplayEliteLunarFire = "740fa828216ad424d88cf59f31fa5792";

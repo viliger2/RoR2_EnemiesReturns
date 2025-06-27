@@ -244,7 +244,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
              };
         }
 
-        // TODO: elite displays
         protected override ItemDisplayRuleSet ItemDisplayRuleSet()
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();

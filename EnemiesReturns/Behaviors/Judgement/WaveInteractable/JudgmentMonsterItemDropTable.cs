@@ -33,6 +33,12 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private readonly WeightedSelection<PickupIndex> selector = new WeightedSelection<PickupIndex>();
 
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            canDropBeReplaced = Configuration.Judgement.Judgement.EulogyZeroSupport.Value;
+        }
+
         public int GetSelectorCount()
         {
             if (selector != null)

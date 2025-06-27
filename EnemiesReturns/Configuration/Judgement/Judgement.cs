@@ -11,6 +11,7 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<bool> ForceUnlock;
 
         public static ConfigEntry<string> JudgementEnemyBlacklist;
+        public static ConfigEntry<bool> EulogyZeroSupport;
 
         public static ConfigEntry<float> MithrixHammerAeonianBonusDamage;
         public static ConfigEntry<float> MithrixHammerDamageCoefficient;
@@ -65,7 +66,7 @@ namespace EnemiesReturns.Configuration.Judgement
             WavesTierBossItemMinCount = config.Bind("Waves", "Boss Tier Item Min Count", 8, "Minimum number of Boss Tier items that will be given to monsters.");
             WavesTierBossItemMaxCount = config.Bind("Waves", "Boss Tier Item Max Count", 10, "Maximum number of Boss Tier items that will be given to monsters.");
 
-
+            EulogyZeroSupport = config.Bind("Waves", "Eulogy Zero Support", false, "Allows Eulogy Zero to replace items with lunars. Number of items given will between lowest number of Tier 3 to highest number of Tier 1.");
         }
     }
 }
