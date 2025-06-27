@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
@@ -26,6 +27,9 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> CausticSpitForce;
         public static ConfigEntry<int> CausitcSpitProjectileCount;
         public static ConfigEntry<float> CausticSpitProjectileSpread;
+
+        public static ConfigEntry<KeyCode> BuckBumbleKey;
+
 
         public void PopulateConfig(ConfigFile config)
         {
@@ -64,6 +68,8 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                     ),
                 "Stages that Default Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            BuckBumbleKey = config.Bind("Buck Bumble", "Buck Bumble", KeyCode.Alpha1, "Mah bassy madde ooh la de DE.");
         }
     }
 }

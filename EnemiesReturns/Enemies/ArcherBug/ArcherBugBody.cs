@@ -210,7 +210,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 {
                     name = "Body",
                     initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.SpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.FlyState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.MainState)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {

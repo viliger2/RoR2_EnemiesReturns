@@ -232,6 +232,8 @@
 										<Action Name="" ID="{7C508034-CD83-441A-AB50-D98057F49054}" ShortID="507390264">
 											<PropertyList>
 												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeOutCurve" Type="int16" Value="1"/>
+												<Property Name="FadeTime" Type="Real64" Value="1"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
@@ -847,6 +849,8 @@
 												<Action Name="" ID="{82B309D3-4A55-4EA3-9B89-3AC4F086EAB2}" ShortID="307027102">
 													<PropertyList>
 														<Property Name="ActionType" Type="int16" Value="2"/>
+														<Property Name="FadeOutCurve" Type="int16" Value="1"/>
+														<Property Name="FadeTime" Type="Real64" Value="1"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Target">
@@ -1688,6 +1692,33 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="ArcherBug_Death" ID="{0B8A5B99-9CA5-4EA2-A5C1-117A188E057C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_ArcherBug_BuckBumble_Play" ID="{0334E2C1-8705-45DE-B986-0653C061DFAB}">
+									<ChildrenList>
+										<Action Name="" ID="{C4E2456F-5708-4F10-8C15-7B3C42900B89}" ShortID="743912587">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ArcherBug_BuckBumble" ID="{9D30E540-CA63-46E6-89F5-8A7D0FC01C9E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_ArcherBug_BuckBumble_Stop" ID="{5EF51BDF-5633-46CE-868D-FBC94653A146}">
+									<ChildrenList>
+										<Action Name="" ID="{8882C7EE-75F5-4AE4-9A02-421C2E121F78}" ShortID="109609105">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeOutCurve" Type="int16" Value="1"/>
+												<Property Name="FadeTime" Type="Real64" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ArcherBug_BuckBumble" ID="{9D30E540-CA63-46E6-89F5-8A7D0FC01C9E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

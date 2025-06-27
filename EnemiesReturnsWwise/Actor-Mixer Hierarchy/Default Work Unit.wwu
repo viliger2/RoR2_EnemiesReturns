@@ -5355,6 +5355,36 @@
 												<ActiveSource Name="wMac_Death" ID="{FFCC55B7-B309-4705-8074-CA55EB6CCB04}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="ArcherBug_BuckBumble" ID="{9D30E540-CA63-46E6-89F5-8A7D0FC01C9E}" ShortID="732280409">
+											<PropertyList>
+												<Property Name="OverrideConversion" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Buck Bumble Main Theme [w8FQ-N0zb2U]" ID="{970988F0-E7CB-4859-A10F-85569FE68A4D}">
+													<Language>SFX</Language>
+													<AudioFile>ArcherBug\Buck Bumble Main Theme [w8FQ-N0zb2U].wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="573791956"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Buck Bumble Main Theme [w8FQ-N0zb2U]" ID="{970988F0-E7CB-4859-A10F-85569FE68A4D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

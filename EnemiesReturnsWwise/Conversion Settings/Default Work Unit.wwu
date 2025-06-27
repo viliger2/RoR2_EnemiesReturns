@@ -77,9 +77,9 @@
 					</PropertyList>
 					<ConversionPluginInfoList>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{F68D2B4D-F241-4991-9494-9D26BCE83AAA}" PluginName="Vorbis" CompanyID="0" PluginID="4">
+							<ConversionPlugin Name="" ID="{F5D78839-042B-4E3B-A22D-0401CCD750CD}" PluginName="WEM Opus" CompanyID="0" PluginID="20">
 								<PropertyList>
-									<Property Name="QualityFactor" Type="Real32" Value="1"/>
+									<Property Name="Quality" Type="int32" Value="32"/>
 								</PropertyList>
 							</ConversionPlugin>
 						</ConversionPluginInfo>
