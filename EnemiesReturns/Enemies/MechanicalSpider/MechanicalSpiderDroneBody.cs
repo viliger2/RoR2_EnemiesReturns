@@ -16,9 +16,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public static GameObject BodyPrefab;
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite)
         {
-            var body = base.AddBodyComponents(bodyPrefab, sprite, log);
+            var body = base.AddBodyComponents(bodyPrefab, sprite);
 
             body.AddComponent<MechanicalSpiderVictoryDanceController>().body = body.GetComponent<CharacterBody>();
 
