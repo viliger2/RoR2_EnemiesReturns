@@ -439,7 +439,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 AchievementDef cheevoDef = new AchievementDef
                 {
-                    identifier = "EnemiesReturns" + bodyName + "JudgementCleared",
+                    identifier = "EnemiesReturns" + bodyName + "JudgementClearedNew",
                     unlockableRewardIdentifier = skinUnlockable.cachedName,
                     prerequisiteAchievementIdentifier = null,
                     nameToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_NAME",
