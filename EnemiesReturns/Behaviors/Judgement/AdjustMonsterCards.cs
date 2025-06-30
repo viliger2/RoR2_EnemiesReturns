@@ -1,4 +1,7 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Enemies.LynxTribe.Archer;
+using EnemiesReturns.Enemies.LynxTribe.Hunter;
+using EnemiesReturns.Enemies.LynxTribe.Scout;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +43,10 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
+            bool needToAddScout = true;
+            bool needToAddHunter = true;
+            bool needToAddArcher = true;
+
             foreach (var card in Enemies.Judgement.SetupJudgementPath.mixEnemiesDirectorCards)
             {
                 if (stageInfo.monsterSelection.choices.Where(choice => choice.value != null && choice.value.spawnCard != null && choice.value.spawnCard.prefab == card.spawnCard.prefab).Count() == 0)
@@ -49,7 +56,50 @@ namespace EnemiesReturns.Behaviors.Judgement
                     {
                         card.spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.None;
                     }
+                    if (Configuration.LynxTribe.LynxTotem.Enabled.Value)
+                    {
+                        needToAddScout &= card.spawnCard.name != ScoutBody.SpawnCards.cscLynxScoutDefault.name;
+                        needToAddHunter &= card.spawnCard.name != Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault.name;
+                        needToAddArcher &= card.spawnCard.name != Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault.name;
+                    }
                     stageInfo.monsterSelection.AddChoice(card, 1);
+                }
+            }
+
+            if (Configuration.LynxTribe.LynxTotem.Enabled.Value)
+            {
+                if (needToAddScout)
+                {
+                    stageInfo.monsterSelection.AddChoice(new DirectorCard
+                    {
+                        spawnCard = ScoutBody.SpawnCards.cscLynxScoutDefault,
+                        selectionWeight = Configuration.LynxTribe.LynxScout.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = true,
+                        minimumStageCompletions = Configuration.LynxTribe.LynxScout.MinimumStageCompletion.Value
+                    }, 1);
+                }
+                if (needToAddArcher)
+                {
+                    stageInfo.monsterSelection.AddChoice(new DirectorCard
+                    {
+                        spawnCard = ArcherBody.SpawnCards.cscLynxArcherDefault,
+                        selectionWeight = Configuration.LynxTribe.LynxArcher.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = true,
+                        minimumStageCompletions = Configuration.LynxTribe.LynxArcher.MinimumStageCompletion.Value
+                    }, 1);
+                }
+                if (needToAddHunter)
+                {
+                    stageInfo.monsterSelection.AddChoice(new DirectorCard
+                    {
+                        spawnCard = HunterBody.SpawnCards.cscLynxHunterDefault,
+                        selectionWeight = Configuration.LynxTribe.LynxHunter.SelectionWeight.Value,
+                        spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                        preventOverhead = true,
+                        minimumStageCompletions = Configuration.LynxTribe.LynxHunter.MinimumStageCompletion.Value
+                    }, 1);
                 }
             }
 

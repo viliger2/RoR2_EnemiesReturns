@@ -64,6 +64,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             return CreateCard(new SpawnCardParams(name, master, Configuration.ArcherBug.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
+                graphType = RoR2.Navigation.MapNodeGroup.GraphType.Air,
                 forbiddenFlags = RoR2.Navigation.NodeFlags.NoCharacterSpawn,
                 occupyPosition = true,
                 forbiddenAsBoss = false,

@@ -135,7 +135,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 combatDirector.OverrideCurrentMonsterCard(card);
                 combatDirector.monsterSpawnTimer = 0f;
                 combatDirector.gameObject.SetActive(true);
-                combatDirector.maxSquadCount = information.maxSquadCount;
+                combatDirector.maxSquadCount = (uint)Mathf.CeilToInt(information.maxSquadCount * playerDifficultyCoefficient);
                 if (combatDirector.combatSquad)
                 {
                     combatDirector.combatSquad.memberHistory.Clear();

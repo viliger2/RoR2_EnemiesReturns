@@ -1,4 +1,9 @@
 <details>
+<summary>0.5.18</summary>
+
+* Fixed some language tokens.
+</details>
+<details>
 <summary>0.5.17</summary>
 
 * Added new Small-tier monster: Archer Bug.
@@ -34,7 +39,6 @@
     * Increased visibility of timer.
 	* Spawned enemies are now marked with an indicator, similar to one used for bosses.
 	* There are now chat messages on initial interaction, success and failure.
-
   * Lynx Fetish
     * Spawns are now disabled in bazaar. This can be reverted in the config.  
   * You can now set stages that Hunter, Archer and Scout can spawn on.
