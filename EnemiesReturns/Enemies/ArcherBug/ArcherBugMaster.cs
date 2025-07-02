@@ -20,19 +20,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
             return base.BaseAIParams();
         }
 
-        protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()
-        {
-            return new IEntityStateMachine.EntityStateMachineParams[]
-            {
-                new IEntityStateMachine.EntityStateMachineParams()
-                {
-                    name = "AI",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Guard)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Guard))
-                }
-            };
-        }
-
         protected override IAISkillDriver.AISkillDriverParams[] AISkillDriverParams()
         {
             var stopState = new IAISkillDriver.AISkillDriverParams("StopStep")
