@@ -461,6 +461,12 @@ namespace EnemiesReturns.Enemies.Judgement
                 newPile.transform.position = new Vector3(44.72055f, -55.80222f, 0.2936229f);
                 newPile.transform.rotation = Quaternion.Euler(39.434f, 355.6797f, 13.5983f);
                 NetworkServer.Spawn(newPile);
+            } else if(SceneInfo.instance.sceneDef.baseSceneName == "moon"
+                || SceneInfo.instance.sceneDef.baseSceneName == "moon2")
+            {
+                var lunarFlowerChecker = SceneInfo.instance.gameObject.AddComponent<LunarFlowerCheckerSingleton>();
+                lunarFlowerChecker.itemToCheck = Content.Items.LunarFlower;
+                lunarFlowerChecker.CheckForFlower();
             }
         }
 
