@@ -794,7 +794,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "ShamanHead",
                     localPos = new Vector3(-0.0082F, 0.80843F, -0.41071F),

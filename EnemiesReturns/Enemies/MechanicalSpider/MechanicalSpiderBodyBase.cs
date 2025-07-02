@@ -558,7 +558,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Root",
                     localPos = new Vector3(0F, 1.53293F, -0.41985F),

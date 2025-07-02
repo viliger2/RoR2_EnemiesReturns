@@ -636,7 +636,7 @@ namespace EnemiesReturns.Enemies.Spitter
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.36417F, 4.08597F, -0.81975F),

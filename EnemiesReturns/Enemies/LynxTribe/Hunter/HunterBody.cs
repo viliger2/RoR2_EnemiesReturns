@@ -488,7 +488,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0.05418F, 1.86632F, -0.39678F),

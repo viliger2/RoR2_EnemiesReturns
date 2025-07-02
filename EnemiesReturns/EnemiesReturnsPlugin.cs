@@ -110,6 +110,7 @@ namespace EnemiesReturns
 
             Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();
+            Enemies.Judgement.AnointedSkins.Hooks();
         }
 
         private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)

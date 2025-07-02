@@ -34,7 +34,7 @@ namespace EnemiesReturns
                     {
                         if (asset.name == "texAnointedSkinIcon")
                         {
-                            SetupJudgementPath.AnointedSkinIcon = asset;
+                            AnointedSkins.AnointedSkinIcon = asset;
                         }
                         iconLookup.Add(asset.name, asset);
                     }
@@ -48,7 +48,7 @@ namespace EnemiesReturns
                         rampLookups.Add(ramps.Key, ramps.Value);
                     }
 
-                    SetupJudgementPath.aeonianEliteRamp = rampLookups["texRampAeonianElite"];
+                    AnointedSkins.aeonianEliteRamp = rampLookups["texRampAeonianElite"];
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
@@ -232,7 +232,7 @@ namespace EnemiesReturns
                     BeamLoop.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffect");
                     BeamStart.pushBackEffectStatic = assets.First(asset => asset.name == "ArraignBeamPushbackEffectNoMuzzleParticles");
 
-                    Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay = assets.First(asset => asset.name == "DisplayAeonian");
+                    Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay = assets.First(asset => asset.name == "DisplayAeonian");
 
                     ModifyCredits(assets.First(asset => asset.name == "EnemiesReturnsCreditsAdditions"));
                 }));

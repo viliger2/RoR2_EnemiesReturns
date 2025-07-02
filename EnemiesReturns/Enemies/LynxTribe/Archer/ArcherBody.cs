@@ -517,7 +517,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0.11934F, 4.16131F, -0.64195F),

@@ -34,23 +34,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static BodyIndex ArraignP2BodyIndex;
 
-        public static Sprite AnointedSkinIcon;
-
         public static Material immuneToAllDamageExceptHammerMaterial;
-
-        public static Texture2D aeonianEliteRamp;
-
-        public static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
-
-        public static Dictionary<UnlockableDef, string> AnointedSkinsUnlockables2 = new Dictionary<UnlockableDef, string>();
-
-        public static GameObject AeonianAnointedItemDisplay;
-
-        private static HashSet<SkinDef> AnointedSkins;
-
-        private static HashSet<string> AnointedBlacklist = new HashSet<string>();
-
-        private static readonly FixedConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new FixedConditionalWeakTable<CharacterModel, ModelSkinController>();
 
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
@@ -149,7 +133,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                     {
                         ruleType = ItemDisplayRuleType.ParentedPrefab,
-                        followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                        followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                         followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                         childName = rule.childName,
                         localPos = rule.localPos,
@@ -174,17 +158,6 @@ namespace EnemiesReturns.Enemies.Judgement
             dictionary = null;
         }
 
-        public static bool AddBodyToBlacklist(string bodyName)
-        {
-            if (AnointedBlacklist.Contains(bodyName))
-            {
-                return false;
-            }
-
-            AnointedBlacklist.Add(bodyName);
-            return true;
-        }
-
         public static void Hooks()
         {
             if (Configuration.Judgement.Judgement.Enabled.Value)
@@ -197,51 +170,13 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
                 DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
-                if (Configuration.Judgement.Judgement.EnableAnointedSkins.Value)
-                {
-                    RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
-                    RoR2.AchievementManager.onAchievementsRegistered += CreateAnointedAchievements;
-                    IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
-                    On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
-                    IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
-                    RoR2.CharacterBody.onBodyStartGlobal += AddAnointedItem;
-                }
             }
         }
 
-        private static void AddAnointedItem(CharacterBody body)
+        [Obsolete("Please use methods from EnemiesReturns.Enemies.AnointedSkins, this method now does nothing and is only left for backcompat.")]
+        public static bool AddBodyToBlacklist(string bodyName)
         {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            if (!body.isPlayerControlled)
-            {
-                return;
-            }
-
-            if (body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0)
-            {
-                return;
-            }
-
-            if (body.modelLocator && body.modelLocator.modelTransform)
-            {
-                var modelSkinController = body.modelLocator.modelTransform.GetComponent<ModelSkinController>();
-                if (modelSkinController)
-                {
-                    if (body.skinIndex < modelSkinController.skins.Length)
-                    {
-                        var skin = modelSkinController.skins[body.skinIndex];
-                        if (AnointedSkins.Contains(skin))
-                        {
-                            body.inventory.GiveItem(Content.Items.HiddenAnointed);
-                            return;
-                        };
-                    }
-                }
-            }
+            return false;
         }
 
         private static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
@@ -411,87 +346,6 @@ namespace EnemiesReturns.Enemies.Judgement
             orig(self);
         }
 
-        // but seriously I copy pasted like half of the method, I hope this works
-        private static void CreateAnointedAchievements()
-        {
-            if (Configuration.Judgement.Judgement.ForceUnlock.Value)
-            {
-                return;
-            }
-
-            for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
-            {
-                var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
-                if (!survivorDef)
-                {
-                    continue;
-                }
-
-                var bodyName = survivorDef.bodyPrefab.name.Trim();
-
-                if (!AnointedSkinsUnlockables.TryGetValue(bodyName, out UnlockableDef skinUnlockable))
-                {
-#if DEBUG || NOWEAVER
-                    Log.Info($"Couldn't find Anointed UnlockableDef for body {bodyName}, most likely because it is in blacklist.");
-#endif
-                    continue;
-                }
-
-                AchievementDef cheevoDef = new AchievementDef
-                {
-                    identifier = "EnemiesReturns" + bodyName + "JudgementClearedNew",
-                    unlockableRewardIdentifier = skinUnlockable.cachedName,
-                    prerequisiteAchievementIdentifier = null,
-                    nameToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_NAME",
-                    descriptionToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_DESC",
-                    type = typeof(Achievements.JudgementClearedAchievement),
-                    serverTrackerType = typeof(Achievements.JudgementClearedAchievement.JudgementClearedServerAchievement),
-                    lunarCoinReward = 10u
-                };
-
-                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
-                RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
-
-                if (skinUnlockable.achievementIcon)
-                {
-                    cheevoDef.SetAchievedIcon(skinUnlockable.achievementIcon);
-                }
-
-                AchievementManager.achievementIdentifiers.Add(cheevoDef.identifier);
-                AchievementManager.achievementNamesToDefs.Add(cheevoDef.identifier, cheevoDef);
-                HG.ArrayUtils.ArrayAppend(ref AchievementManager.achievementDefs, cheevoDef);
-
-                if (skinUnlockable)
-                {
-                    skinUnlockable.getHowToUnlockString = () => RoR2.Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", "???", "???");
-                    skinUnlockable.getUnlockedString = () => RoR2.Language.GetStringFormatted("UNLOCKED_FORMAT", RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME"), RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
-                }
-            }
-
-            AchievementManager.SortAchievements(AchievementManager.achievementDefs);
-            AchievementManager.serverAchievementDefs = AchievementManager.achievementDefs.Where((AchievementDef achievementDef) => achievementDef.serverTrackerType != null).ToArray();
-            for (int j = 0; j < AchievementManager.achievementDefs.Length; j++)
-            {
-                AchievementManager.achievementDefs[j].index = new AchievementIndex
-                {
-                    intValue = j
-                };
-            }
-            for (int k = 0; k < AchievementManager.serverAchievementDefs.Length; k++)
-            {
-                AchievementManager.serverAchievementDefs[k].serverIndex = new ServerAchievementIndex
-                {
-                    intValue = k
-                };
-            }
-
-            for (int l = 0; l < AchievementManager.achievementIdentifiers.Count; l++)
-            {
-                string currentAchievementIdentifier = AchievementManager.achievementIdentifiers[l];
-                AchievementManager.achievementNamesToDefs[currentAchievementIdentifier].childAchievementIdentifiers = AchievementManager.achievementIdentifiers.Where((string v) => AchievementManager.achievementNamesToDefs[v].prerequisiteAchievementIdentifier == currentAchievementIdentifier).ToArray();
-            }
-        }
-
         private static void BazaarAddMessageIfPlayersWithRock(Stage stage)
         {
             if (stage.sceneDef.cachedName != "bazaar")
@@ -538,250 +392,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
             var onPlayerEnterEvent = shopkeeperTrigger.gameObject.GetComponent<OnPlayerEnterEvent>();
             onPlayerEnterEvent.action.AddListener(chatMessage.Send);
-        }
-
-        private static void HideHiddenSkinDefs(ILContext il)
-        {
-            ILCursor c = new ILCursor(il);
-
-            ILLabel lable = null;
-            var jumpMatch = c.TryGotoNext(MoveType.After,
-                x => x.MatchBrfalse(out lable));
-
-            if (jumpMatch)
-            {
-                c.Index -= 6;
-
-                c.Emit(OpCodes.Ldarg_0);
-                c.Emit(OpCodes.Ldloc, 5);
-                c.EmitDelegate<Func<RoR2.UI.LoadoutPanelController, SkinDef, bool>>(CheckForSpecialSkinDef);
-                c.Emit(OpCodes.Brtrue, lable.Target);
-            }
-            else
-            {
-                Log.Error("RoR2.UI.LoadoutPanelController.Row.FromSkin IL hook failed.");
-            }
-
-            static bool CheckForSpecialSkinDef(RoR2.UI.LoadoutPanelController owner, SkinDef skinDef)
-            {
-                if (!skinDef.unlockableDef)
-                {
-                    return false;
-                }
-
-                if (owner == null)
-                {
-                    return false;
-                }
-
-                UserProfile obj = owner.currentDisplayData.userProfile;
-                if (obj == null)
-                {
-                    return false;
-                }
-
-                if (obj.HasUnlockable(skinDef.unlockableDef))
-                {
-                    return false;
-                }
-                if (skinDef is HiddenSkinDef)
-                {
-                    return (skinDef as HiddenSkinDef).hideInLobby;
-                }
-                return false;
-            }
-        }
-
-        private static void AddAnointedOverlay(On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.orig_ApplyLoadoutToMannequinInstance orig, RoR2.SurvivorMannequins.SurvivorMannequinSlotController self)
-        {
-            orig(self);
-
-            if (self && self.currentSurvivorDef && self.currentSurvivorDef.survivorIndex != SurvivorIndex.None)
-            {
-                BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
-                int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);
-                SkinDef safe = ArrayUtils.GetSafe(SkinCatalog.GetBodySkinDefs(bodyIndexFromSurvivorIndex), skinIndex);
-                CharacterModel characterModel = self.mannequinInstanceTransform.GetComponentInChildren<CharacterModel>();
-                if (characterModel)
-                {
-                    if (AnointedSkins.Contains(safe))
-                    {
-                        // this is such a fucking hack holy shit but this is only for the lobby so it should be fine
-                        characterModel.inventoryEquipmentIndex = Content.Equipment.EliteAeonian.equipmentIndex;
-                    }
-                    else
-                    {
-                        characterModel.inventoryEquipmentIndex = EquipmentIndex.None;
-                    }
-                }
-            }
-        }
-
-        // shamelessly copy pasted from EliteAPI
-        private static void SetupAnointedMaterials(MonoMod.Cil.ILContext il)
-        {
-            ILCursor c = new ILCursor(il);
-            var firstMatchSuccesful = c.TryGotoNext(MoveType.After,
-                x => x.MatchLdarg(0),
-                x => x.MatchLdfld<CharacterModel>(nameof(CharacterModel.propertyStorage)),
-                x => x.MatchLdsfld(typeof(CommonShaderProperties), nameof(CommonShaderProperties._Fade)));
-
-            var secondMatchSuccesful = c.TryGotoNext(MoveType.After,
-                x => x.MatchCallOrCallvirt<MaterialPropertyBlock>(nameof(MaterialPropertyBlock.SetFloat)));
-
-            if (firstMatchSuccesful && secondMatchSuccesful)
-            {
-                c.Emit(OpCodes.Ldarg, 0);
-                c.EmitDelegate<Action<CharacterModel>>(UpdateRampProperly);
-            }
-            else
-            {
-                Log.Error($"Elite Ramp ILHook failed");
-            }
-
-            static void UpdateRampProperly(CharacterModel charModel)
-            {
-                if (charModel.shaderEliteRampIndex == -1)
-                {
-                    //var modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
-                    if (!skinControlerDictionary.TryGetValue(charModel, out var modelSkinController))
-                    {
-                        modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
-                        skinControlerDictionary.Add(charModel, modelSkinController);
-                    }
-                    if (modelSkinController && modelSkinController.currentSkinIndex > 0)
-                    {
-                        var skin = modelSkinController.skins[modelSkinController.currentSkinIndex];
-                        if (AnointedSkins.Contains(skin))
-                        {
-                            charModel.propertyStorage.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
-                            charModel.propertyStorage.SetFloat(CommonShaderProperties._EliteIndex, 1f);
-                        }
-                    }
-                }
-            }
-        }
-
-        // we basically rely on combination of mistfixes and skinapi to fix our shit
-        // thanks randy, you made this all possible
-        private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
-        {
-            var icon = AnointedSkinIcon;
-
-            List<SkinDef> anointedSkins = new List<SkinDef>();
-            for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
-            {
-                var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
-                if (survivorDef.bodyPrefab)
-                {
-                    var body = survivorDef.bodyPrefab;
-
-                    if (AnointedBlacklist.Contains(body.name))
-                    {
-#if DEBUG || NOWEAVER
-                        Log.Info($"Survivor {survivorDef.cachedName} with body named {body.name} is in blacklist, skipping skin creation...");
-#endif
-                        continue;
-                    }
-
-                    var modelLocator = body.GetComponent<ModelLocator>();
-                    if (!modelLocator)
-                    {
-                        Log.Warning($"Survivor {survivorDef.cachedName} doesn't have ModelLocator component.");
-                        continue;
-                    }
-                    var model = modelLocator.modelTransform;
-                    if (!model)
-                    {
-                        Log.Warning($"Survivor {survivorDef.cachedName} doesn't have model (somehow).");
-                        continue;
-                    }
-                    var characterModel = model.GetComponent<CharacterModel>();
-                    if (!characterModel)
-                    {
-                        Log.Warning($"Survivor {survivorDef.cachedName} doesn't have CharacterModel component.");
-                        continue;
-                    }
-                    var modelSkins = model.GetComponent<ModelSkinController>();
-                    if (!modelSkins)
-                    {
-                        Log.Warning($"Survivor {survivorDef.cachedName} doesn't have ModelSkinController component.");
-                        continue;
-                    }
-
-                    // trying to find baseSkins for survivor
-                    SkinDef defaultSkin = null;
-                    foreach (var skin in modelSkins.skins)
-                    {
-                        if (skin.baseSkins != null && skin.baseSkins.Length > 0)
-                        {
-                            defaultSkin = skin.baseSkins[0];
-                            break;
-                        }
-                    }
-
-                    CharacterModel.RendererInfo[] skinRenderInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
-                    for (int k = 0; k < skinRenderInfos.Length; k++)
-                    {
-                        var baseRenderInfo = characterModel.baseRendererInfos[k];
-
-                        Material newMaterial = null;
-                        if (baseRenderInfo.defaultMaterial)
-                        {
-                            if (!ContentProvider.MaterialCache.TryGetValue(baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed", out newMaterial))
-                            {
-                                newMaterial = UnityEngine.Object.Instantiate(baseRenderInfo.defaultMaterial);
-                                newMaterial.name = baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed";
-                                newMaterial.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
-                                newMaterial.SetFloat(CommonShaderProperties._EliteIndex, 1);
-                                ContentProvider.MaterialCache.Add(newMaterial.name, newMaterial);
-                            }
-                        }
-                        else
-                        {
-                            Log.Warning($"Survivor {survivorDef.cachedName} has an empty material on baseRendererInfos at index {k}.");
-                        }
-                        skinRenderInfos[k] = new CharacterModel.RendererInfo
-                        {
-                            renderer = baseRenderInfo.renderer,
-                            defaultMaterial = newMaterial,
-                            defaultShadowCastingMode = baseRenderInfo.defaultShadowCastingMode,
-                            hideOnDeath = baseRenderInfo.hideOnDeath,
-                            ignoreOverlays = baseRenderInfo.ignoreOverlays,
-                        };
-                    }
-
-                    var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{survivorDef.cachedName}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
-                    eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
-                    eliteSkinDef.icon = icon;
-
-                    if (!Configuration.Judgement.Judgement.ForceUnlock.Value)
-                    {
-                        var skinUnlockDef = ScriptableObject.CreateInstance<UnlockableDef>();
-                        (skinUnlockDef as ScriptableObject).name = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
-                        skinUnlockDef.cachedName = $"Skins.{survivorDef.cachedName}.EnemiesReturnsAnointed";
-                        skinUnlockDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
-                        skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
-                        skinUnlockDef.achievementIcon = icon;
-
-                        AnointedSkinsUnlockables.Add(survivorDef.bodyPrefab.name.Trim(), skinUnlockDef);
-                        AnointedSkinsUnlockables2.Add(skinUnlockDef, survivorDef.bodyPrefab.name.Trim());
-
-                        eliteSkinDef.unlockableDef = skinUnlockDef;
-
-                        HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, skinUnlockDef);
-                    }
-
-                    var skinsArray = modelSkins.skins;
-                    var index = skinsArray.Length;
-                    Array.Resize(ref skinsArray, index + 1);
-                    skinsArray[index] = eliteSkinDef;
-                    modelSkins.skins = skinsArray;
-
-                    anointedSkins.Add(eliteSkinDef);
-                }
-            }
-            AnointedSkins = new HashSet<SkinDef>(anointedSkins);
         }
 
         private static void SpawnBrokenTeleporter(On.EntityStates.Missions.BrotherEncounter.BossDeath.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.BossDeath self)
@@ -928,7 +538,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.01192F, 2.33924F, 2.68312F),
@@ -943,7 +553,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "FlowerBase",
                     localPos = new Vector3(0.01413F, 2.30119F, -0.18182F),
@@ -958,7 +568,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.00989F, 0.23731F, -0.11833F),
@@ -974,7 +584,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.001F, 0.77918F, -0.01667F),
@@ -989,7 +599,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.34146F, -0.09502F, 0.02628F),
@@ -1004,7 +614,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.01962F, 0.38285F, 0.66161F),
@@ -1019,7 +629,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "MainBody2",
                     localPos = new Vector3(0.05864F, 1.10224F, -0.16438F),
@@ -1034,7 +644,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-114.9762F, 140.3186F, 1F),
@@ -1049,7 +659,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.27257F, 0.6441F, -0.047F),
@@ -1064,7 +674,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0.00006F, 0.00524F, -0.00051F),
@@ -1079,7 +689,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0.09564F, 0.31238F, 0.00459F),
@@ -1094,7 +704,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(1.79623F, 28.51547F, 3.92431F),
@@ -1109,7 +719,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(-0.09622F, 0.49185F, -0.01094F),
@@ -1124,7 +734,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0.01117F, 0.33053F, -0.09775F),
@@ -1139,7 +749,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0F, 0.59181F, 0.01854F),
@@ -1154,7 +764,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0F, 0.0055F, -0.0008F),
@@ -1169,7 +779,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "head_end",
                     localPos = new Vector3(0F, 0.39848F, -0.03963F),
@@ -1184,7 +794,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 new ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
-                    followerPrefab = Enemies.Judgement.SetupJudgementPath.AeonianAnointedItemDisplay,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
                     followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
                     childName = "Head",
                     localPos = new Vector3(0F, 0.00917F, -0.00314F),

@@ -17,7 +17,6 @@ namespace ArraignSkinExample
     // The skin added is ClassicBanditSkin by FORCED_REASSEMBLY,
     // asset bundle does not come with this project, you can grab it from here (its actually embded into dll because that's how SkinBuilder works, oops)
     // https://thunderstore.io/package/Forced_Reassembly/ClassicBanditSkin/
-    // also it uses ContentAddition because I got lazy
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID)]
     [BepInDependency(EnemiesReturns.EnemiesReturnsPlugin.GUID, BepInDependency.DependencyFlags.SoftDependency)]
@@ -33,8 +32,6 @@ namespace ArraignSkinExample
 
         private static AssetBundle bundle;
 
-        private static UnlockableDef unlockable;
-
         private static readonly List<Material> materialsWithRoRShader = new List<Material>();
 
         public void Awake()
@@ -43,24 +40,6 @@ namespace ArraignSkinExample
 
             bundle = AssetBundle.LoadFromFile(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Info.Location), "ClassicBanditSkin.bundle"));
             LoadMaterialsWithReplacedShader("RoR2/Base/Shaders/HGStandard.shader", "Assets/ClassicBanditSkin/Resources/BanditCoatMaterial.mat", "Assets/ClassicBanditSkin/Resources/BanditPistolMaterial.mat");
-
-            if (EnemiesReturnsModCompat.enabled)
-            {
-                // We add Bandit2Body to blacklist so EnemiesReturns won't generate automatic Anointed skin
-                EnemiesReturnsModCompat.AddBodyToBlacklist(BodyName);
-                // We create unlockable that is base for our achievement
-                unlockable = EnemiesReturnsModCompat.CreateUnlockable(BodyName, bundle.LoadAsset<Sprite>("Assets\\SkinMods\\ClassicBanditSkin\\Icons\\ClassicBanditSkinDefIcon.png"));
-                // We register achievement manually to keep EnemiesReturns as soft dependency,
-                // if you are fine with EnemiesReturns being hard dependency, then go to Bandit2JudgementClearedAchievement and read the comment
-                RoR2.AchievementManager.onAchievementsRegistered += CreateAchievement;
-                // We add unlockable to catalog via R2API
-                R2API.ContentAddition.AddUnlockableDef(unlockable);
-            }
-        }
-
-        private void CreateAchievement()
-        {
-            EnemiesReturnsModCompat.CreateAchievement(unlockable, BodyName);
         }
 
         [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
@@ -96,14 +75,7 @@ namespace ArraignSkinExample
                 }
                 Renderer[] renderers = gameObject2.GetComponentsInChildren<Renderer>(includeInactive: true);
                 SkinDef skin;
-                if (EnemiesReturnsModCompat.enabled)
-                {
-                    skin = EnemiesReturnsModCompat.CreateHiddenSkinDef();
-                }
-                else
-                {
-                    skin = ScriptableObject.CreateInstance<SkinDef>();
-                }
+                skin = ScriptableObject.CreateInstance<SkinDef>();
                 TryCatchThrow("Icon", delegate
                 {
                     skin.icon = bundle.LoadAsset<Sprite>("Assets\\SkinMods\\ClassicBanditSkin\\Icons\\ClassicBanditSkinDefIcon.png");
@@ -114,13 +86,6 @@ namespace ArraignSkinExample
                 TryCatchThrow("Base Skins", delegate
                 {
                     skin.baseSkins = new SkinDef[1] { skinController.skins[0] };
-                });
-                TryCatchThrow("Unlockable Name", delegate
-                {
-                    if (EnemiesReturnsModCompat.enabled && unlockable)
-                    {
-                        skin.unlockableDef = unlockable;
-                    }
                 });
                 var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
                 skinDefParams.name = skinDefName + "SkinDefParams";
@@ -212,10 +177,14 @@ namespace ArraignSkinExample
                     skinDefParams.projectileGhostReplacements = Array.Empty<SkinDefParams.ProjectileGhostReplacement>();
                 });
                 skin.skinDefParams = skinDefParams;
+                skin.skinDefParamsAddress = new AssetReferenceT<SkinDefParams>("");
+                if (EnemiesReturnsModCompat.enabled)
+                {
+                    skin = EnemiesReturnsModCompat.CreateHiddenSkinDef(BodyName, skin, false);
+                }
                 Array.Resize(ref skinController.skins, skinController.skins.Length + 1);
                 skinController.skins[skinController.skins.Length - 1] = skin;
                 SkinCatalog.skinsByBody[(int)BodyCatalog.FindBodyIndex(gameObject)] = skinController.skins;
-                //BodyCatalog.skins[(int)BodyCatalog.FindBodyIndex(gameObject)] = skinController.skins;
             }
             catch (Exception ex2)
             {

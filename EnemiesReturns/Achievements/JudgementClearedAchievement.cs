@@ -36,7 +36,7 @@ namespace EnemiesReturns.Achievements
                 return BodyIndex.None;
             }
 
-            if (Enemies.Judgement.SetupJudgementPath.AnointedSkinsUnlockables2.TryGetValue(unlockableDef, out string bodyName))
+            if (Enemies.Judgement.AnointedSkins.AnointedSkinsUnlockablesAchivements.TryGetValue(unlockableDef, out string bodyName))
             {
                 return BodyCatalog.FindBodyIndex(bodyName);
             }
