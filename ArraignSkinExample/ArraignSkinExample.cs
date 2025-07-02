@@ -12,7 +12,7 @@ using UnityEngine.Rendering;
 namespace ArraignSkinExample
 {
     // This is an example plugin for adding skins as a reward for killing Arraign and surviving Judgement
-    // example is rather messy, but it should serve you as a basic example of how to add unlock condition for a skin related to Arraign
+    // example is rather messy, but it should serve you as a basic example.
     // The plugin adds skin as a normal skin with no unlock conditions if EnemiesReturns is not found
     // The skin added is ClassicBanditSkin by FORCED_REASSEMBLY,
     // asset bundle does not come with this project, you can grab it from here (its actually embded into dll because that's how SkinBuilder works, oops)

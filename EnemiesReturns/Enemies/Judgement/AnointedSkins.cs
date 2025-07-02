@@ -53,7 +53,7 @@ namespace EnemiesReturns.Enemies.Judgement
         /// out of it with apropriate <see cref="UnlockableDef"/> and <see cref="EnemiesReturns.Achievements.JudgementClearedAchievement"/> tied to it.
         /// You will need to replace all references to your original <see cref="SkinDef"/> (like those in <see cref="ModelSkinController"/>) manually.
         /// This method needs to be called before all catalogs are initialized, otherwise EnemiesReturns will still generate "default" Anointed skin.
-        /// Method also respects all of the config options of EnemiesReturns, so if Judgement is disabled no skin will be generated,
+        /// Method also respects all of the config options of EnemiesReturns, so if Judgement is disabled no skin will be generated and original <see cref="SkinDef"/> will be returned,
         /// if skins are ForceUnlocked then no <see cref="UnlockableDef"/> will be attached to the skin.
         /// </summary>
         /// <param name="bodyName">Name of the body, used for <see cref="ScriptableObject"/> names and later to properly setup achivement for this specific body.</param>
