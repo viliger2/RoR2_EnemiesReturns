@@ -6,6 +6,8 @@ namespace EnemiesReturns.Configuration
 {
     internal class ArcherBug : IConfiguration
     {
+        public static ConfigEntry<bool> Enabled;
+
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -33,6 +35,8 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
+            Enabled = config.Bind("Archer Bug Director", "Enable Archer Bug", true, "Enables Archer Bug.");
+
             DirectorCost = config.Bind("Archer Bug Director", "Director Cost", 28, "Director cost of Archer Bug.");
             SelectionWeight = config.Bind("Archer Bug Director", "Selection Weight", 1, "Selection weight of Archer Bug.");
             MinimumStageCompletion = config.Bind("Archer Bug Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");

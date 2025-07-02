@@ -12,46 +12,49 @@ namespace EnemiesReturns
     {
         private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
-            var archerBugStuff = new ArcherBugStuff();
-
-            var ArcherBugCausticSpitProjectile = archerBugStuff.CreateCausticSpitProjectile();
-            ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
-            projectilesList.Add(ArcherBugCausticSpitProjectile);
-
-            var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
-            unlockablesList.Add(archerBugLog);
-
-            var ArcherBugDeathEffect = archerBugStuff.CreateDeathEffect();
-            effectsList.Add(new EffectDef(ArcherBugDeathEffect));
-            ModdedEntityStates.ArcherBugs.DeathState.deathEffectPrefab = ArcherBugDeathEffect;
-
-            ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect = archerBugStuff.CreateCausticSpitChargeEffect();
-            effectsList.Add(new EffectDef(ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect));
-
-            var archerBugBody = new ArcherBugBody();
-            ArcherBugBody.Skills.CausticSpit = archerBugBody.CreateCausticSpitSkill();
-
-            sdList.Add(ArcherBugBody.Skills.CausticSpit);
-            ArcherBugBody.SkillFamilies.Primary = Utils.CreateSkillFamily("ArcherBugPrimaryFamily", ArcherBugBody.Skills.CausticSpit);
-            sfList.Add(ArcherBugBody.SkillFamilies.Primary);
-            ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texArcherBugIcon"], archerBugLog);
-            bodyList.Add(ArcherBugBody.BodyPrefab);
-            ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
-            masterList.Add(ArcherBugMaster.MasterPrefab);
-            ArcherBugBody.SpawnCards.cscArcherBugDefault = archerBugBody.CreateCard("cscArcherBugDefault", ArcherBugMaster.MasterPrefab, ArcherBugBody.SkinDefs.Default, ArcherBugBody.BodyPrefab);
-            var dcArcherBugDefault = new DirectorCard
+            if (Configuration.ArcherBug.Enabled.Value)
             {
-                spawnCard = ArcherBugBody.SpawnCards.cscArcherBugDefault,
-                selectionWeight = Configuration.ArcherBug.SelectionWeight.Value,
-                preventOverhead = true,
-                minimumStageCompletions = Configuration.ArcherBug.MinimumStageCompletion.Value
-            };
-            DirectorAPI.DirectorCardHolder dchArcherBugDefault = new DirectorAPI.DirectorCardHolder
-            {
-                Card = dcArcherBugDefault,
-                MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
-            };
-            Utils.AddMonsterToStages(EnemiesReturns.Configuration.ArcherBug.DefaultStageList.Value, dchArcherBugDefault);
+                var archerBugStuff = new ArcherBugStuff();
+
+                var ArcherBugCausticSpitProjectile = archerBugStuff.CreateCausticSpitProjectile();
+                ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
+                projectilesList.Add(ArcherBugCausticSpitProjectile);
+
+                var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
+                unlockablesList.Add(archerBugLog);
+
+                var ArcherBugDeathEffect = archerBugStuff.CreateDeathEffect();
+                effectsList.Add(new EffectDef(ArcherBugDeathEffect));
+                ModdedEntityStates.ArcherBugs.DeathState.deathEffectPrefab = ArcherBugDeathEffect;
+
+                ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect = archerBugStuff.CreateCausticSpitChargeEffect();
+                effectsList.Add(new EffectDef(ModdedEntityStates.ArcherBugs.FireCausticSpit.chargeEffect));
+
+                var archerBugBody = new ArcherBugBody();
+                ArcherBugBody.Skills.CausticSpit = archerBugBody.CreateCausticSpitSkill();
+
+                sdList.Add(ArcherBugBody.Skills.CausticSpit);
+                ArcherBugBody.SkillFamilies.Primary = Utils.CreateSkillFamily("ArcherBugPrimaryFamily", ArcherBugBody.Skills.CausticSpit);
+                sfList.Add(ArcherBugBody.SkillFamilies.Primary);
+                ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texArcherBugIcon"], archerBugLog);
+                bodyList.Add(ArcherBugBody.BodyPrefab);
+                ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
+                masterList.Add(ArcherBugMaster.MasterPrefab);
+                ArcherBugBody.SpawnCards.cscArcherBugDefault = archerBugBody.CreateCard("cscArcherBugDefault", ArcherBugMaster.MasterPrefab, ArcherBugBody.SkinDefs.Default, ArcherBugBody.BodyPrefab);
+                var dcArcherBugDefault = new DirectorCard
+                {
+                    spawnCard = ArcherBugBody.SpawnCards.cscArcherBugDefault,
+                    selectionWeight = Configuration.ArcherBug.SelectionWeight.Value,
+                    preventOverhead = true,
+                    minimumStageCompletions = Configuration.ArcherBug.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchArcherBugDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcArcherBugDefault,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.ArcherBug.DefaultStageList.Value, dchArcherBugDefault);
+            }
         }
     }
 }
