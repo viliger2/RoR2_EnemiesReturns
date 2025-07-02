@@ -10,6 +10,7 @@ using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -67,8 +68,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
-            var fixer = prefab.transform.Find("ModelBase/mdlLynxTotem").gameObject.AddComponent<FixJitterBones>();
-            fixer.bonesToFix = new string[] { "Mask" };
+            prefab.transform.Find("ModelBase/mdlLynxTotem/LynxTotem/ROOT/Base_1/Stomach/Chest/Neck/Head/Mask/").gameObject.AddComponent<JitterBoneBlacklist>();
 
             return prefab;
         }

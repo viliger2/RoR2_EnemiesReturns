@@ -46,8 +46,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
             result.transform.Find("ModelBase/mdlLynxArcher/LynxArcher/Root/Base/Stomach/Chest/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
-            var fixer = result.transform.Find("ModelBase/mdlLynxArcher").gameObject.AddComponent<FixJitterBones>();
-            fixer.bonesToFix = new string[] { "Mask" };
+            result.transform.Find("ModelBase/mdlLynxArcher/LynxArcher/Root/Base/Stomach/Chest/Neck/Head/Mask").gameObject.AddComponent<JitterBoneBlacklist>();
 
             return result;
         }

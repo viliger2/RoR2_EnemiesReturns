@@ -56,8 +56,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             prefab.transform.Find("ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
-            var fixer = prefab.transform.Find("ModelBase/mdlLynxShaman").gameObject.AddComponent<FixJitterBones>();
-            fixer.bonesToFix = new string[] { "Mask" };
+            prefab.transform.Find("ModelBase/mdlLynxShaman/LynxArmature/Pelvis/Stomach/Chest/Neck/Head/Mask").gameObject.AddComponent<JitterBoneBlacklist>();
 
             return prefab;
         }

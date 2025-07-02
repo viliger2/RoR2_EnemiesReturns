@@ -48,8 +48,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Scout
 
             result.transform.Find("ModelBase/mdlScout/LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head/Mask/HurtBox").GetComponent<SurfaceDefProvider>().surfaceDef = Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Common/sdWood.asset").WaitForCompletion();
 
-            var fixer = result.transform.Find("ModelBase/mdlScout").gameObject.AddComponent<FixJitterBones>();
-            fixer.bonesToFix = new string[] { "Mask" };
+            result.transform.Find("ModelBase/mdlScout/LynxScout/ROOT/Base/Spine2/Spine3/Neck/Head/Mask").gameObject.AddComponent<JitterBoneBlacklist>();
 
             return result;
         }
