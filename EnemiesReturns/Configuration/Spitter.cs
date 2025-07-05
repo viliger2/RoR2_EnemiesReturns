@@ -57,7 +57,9 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
                     "FBLScene",
-                    "agatevillage"
+                    "agatevillage",
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                 ),
                 "Stages that Default Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Spitter.LakesStageList = config.Bind("Spitter Director", "Lakes Variant Stage List",

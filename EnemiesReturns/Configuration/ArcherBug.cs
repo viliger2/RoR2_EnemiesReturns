@@ -69,7 +69,10 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ScorchedAcres),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    "snowtime_gmconstruct",
+                    "snowtime_sandtrap",
+                    "snowtime_gmflatgrass"
                     ),
                 "Stages that Default Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

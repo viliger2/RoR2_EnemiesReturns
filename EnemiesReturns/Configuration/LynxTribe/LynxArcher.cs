@@ -35,7 +35,9 @@ namespace EnemiesReturns.Configuration.LynxTribe
             MinimumStageCompletion = config.Bind("Lynx Archer Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             DefaultStageList = config.Bind("Lynx Archer Director", "Default Variant Stage List",
                 string.Join(",",
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                 ),
                 "Stages that Default Lynx Archer appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

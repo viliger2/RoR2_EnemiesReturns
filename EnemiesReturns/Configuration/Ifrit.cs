@@ -91,7 +91,9 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     "catacombs_DS1_Catacombs",
-                    "snowtime_gephyrophobia"
+                    "snowtime_gephyrophobia",
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                     ),
                 "Stages that Default Ifrit appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

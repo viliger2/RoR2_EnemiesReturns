@@ -61,7 +61,8 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VerdantFalls),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ViscousFalls),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    "snowtime_gephyrophobia"
                 ),
                 "Stages that Default Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
@@ -78,7 +79,9 @@ namespace EnemiesReturns.Configuration
                 string.Join
                 (
                     ",",
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                 ),
                 "Stages that Grassy Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

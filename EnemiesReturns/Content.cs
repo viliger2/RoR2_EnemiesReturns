@@ -53,7 +53,7 @@ namespace EnemiesReturns
         {
             public static EquipmentDef MithrixHammer;
 
-            public static EquipmentDef EliteAeonian;
+            public static EquipmentDef EliteAeonian; // TODO: implement movespeed and attackspeed reduction immunity, maybe stun immnunity
         }
 
         public static class Buffs

@@ -31,7 +31,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
 		<td>Archer Bug</td>
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
-		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call</td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a></td>
 	</tr>	
 	<thead>
 		<tr>
@@ -45,7 +45,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a> </td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a></td>
 	</tr>
 	<thead>
 		<tr>
