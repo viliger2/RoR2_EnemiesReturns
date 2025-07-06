@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.SkyLeap
 
         public override GameObject secondAttackEffect => secondAttackEffectStatic;
 
-        public override float baseDuration => 2.5f;
+        public override float baseDuration => 3.5f;
 
         public override string soundString => "";
 

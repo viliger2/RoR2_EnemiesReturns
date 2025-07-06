@@ -109,7 +109,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private void GenerateItemList()
         {
-            List<PickupIndex> takenList = new List<PickupIndex>();
+            HashSet<PickupIndex> takenList = new HashSet<PickupIndex>();
             itemLists = new PickupIndex[listCount][];
             for (int i = 0; i < listCount; i++)
             {

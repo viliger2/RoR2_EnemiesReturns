@@ -9,7 +9,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     // TODO: implement item text on ping in chat
     // this would require somewhat complex il hook that I am not willing to do, so no chat message for now
-    // TODO: redo network sync of pickupindex, maybe just request it from the server until you get it
     public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
     {
         public GameObject shrineUseEffect;

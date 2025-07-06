@@ -260,7 +260,7 @@ ModelImporter:
       takeName: Armature|Armature|Death
       internalID: -7528349071394716303
       firstFrame: 0
-      lastFrame: 169
+      lastFrame: 194
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -874,7 +874,7 @@ ModelImporter:
       takeName: Armature|Armature|Phase2TransformBegin
       internalID: 2491493416241112833
       firstFrame: 0
-      lastFrame: 162
+      lastFrame: 163
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -903,7 +903,7 @@ ModelImporter:
       takeName: Armature|Armature|Phase2TransformEnd
       internalID: -4049896400220041212
       firstFrame: 0
-      lastFrame: 76
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1808,7 +1808,7 @@ ModelImporter:
       takeName: Armature|Armature|SkyLeapEnd
       internalID: -2130683439287591859
       firstFrame: 0
-      lastFrame: 78
+      lastFrame: 101
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1841,7 +1841,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.08043647
+            time: 0.09428688
             value: 1
             inSlope: Infinity
             outSlope: Infinity
@@ -1875,7 +1875,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.45841238
+            time: 0.35037914
             value: 1
             inSlope: Infinity
             outSlope: Infinity
@@ -1968,7 +1968,7 @@ ModelImporter:
       takeName: Armature|Armature|Slash3
       internalID: 5906932320256228204
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 74
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2001,7 +2001,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.25001395
+            time: 0.17522171
             value: 1
             inSlope: Infinity
             outSlope: Infinity
@@ -2035,7 +2035,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.034373112
+            time: 0.0842346
             value: 1
             inSlope: Infinity
             outSlope: Infinity
@@ -2044,7 +2044,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.15026852
+            time: 0.17519927
             value: 1
             inSlope: -Infinity
             outSlope: -Infinity
@@ -2132,7 +2132,7 @@ ModelImporter:
       takeName: Armature|Armature|Slash3P2
       internalID: -4724351514204413778
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2238,7 +2238,7 @@ ModelImporter:
       takeName: Armature|Armature|LanceOverheadBegin
       internalID: -2608913786687137205
       firstFrame: 0
-      lastFrame: 54
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2330,7 +2330,7 @@ ModelImporter:
       takeName: Armature|Armature|LanceOverheadEnd
       internalID: -4248615922798765232
       firstFrame: 0
-      lastFrame: 87
+      lastFrame: 114
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2590,7 +2590,7 @@ ModelImporter:
       takeName: Armature|Armature|SpawnV2
       internalID: 1479118750416100096
       firstFrame: 0
-      lastFrame: 138
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2623,7 +2623,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.30180195
+            time: 0.38490444
             value: 1
             inSlope: Infinity
             outSlope: Infinity
@@ -2640,6 +2640,40 @@ ModelImporter:
             weightedMode: 0
             inWeight: 0.33333334
             outWeight: 0.33333334
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      - name: spawn.landEffect
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.045535777
+            value: 1
+            inSlope: Infinity
+            outSlope: Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4

@@ -14,6 +14,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     public class ShamanStuff
     {
+        public static void Hooks()
+        {
+            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
+        }
 
         public GameObject CreateShamanSpawnEffect(GameObject prefab)
         {

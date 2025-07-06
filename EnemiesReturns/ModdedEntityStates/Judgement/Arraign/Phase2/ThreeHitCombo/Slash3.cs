@@ -42,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
 
         public override void OnEnter()
         {
-            this.baseDuration = 2.4f;
+            this.baseDuration = 2.84f;
             base.damageCoefficient = Configuration.Judgement.ArraignP2.ThreeHitComboThirdSwingDamage.Value;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;
