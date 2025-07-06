@@ -166,7 +166,7 @@
 		"ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Вечный {0}",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Указ Эррейна",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Станьте воплощением правосудия.",
-		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Позволяет владельцу проломить любую защиту.",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Позволяет владельцу проломить любую <style=cWorldEvent>защиту </style>, игнорировать уменьшение <style=cIsDamage>скорости атаки</style> и <style=cIsUtility>скорости передвижения</style>, и <style=cIsHealing>уменьшает</style> длительность эффектов <style=cIsUtility>оглушения</style> и <style=cIsUtility>заморозки</style> на {0}.",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "LORE HERE",
 
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "Эррейн",

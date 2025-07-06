@@ -166,7 +166,7 @@
     "ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Aeonian {0}",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Arraign's Decree",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Become an aspect of judgement.",
-    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Allows the owner to shatter any kind of defense.",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Allows the owner to shatter any kind of <style=cWorldEvent>defense</style>, to ignore <style=cIsDamage>attack speed</style> and <style=cIsUtility>movement speed</style> reduction effects, and to <style=cIsHealing>reduce</style> duration of <style=cIsUtility>stun</style> and <style=cIsUtility>freeze</style> by {0}.",
     "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "LORE HERE",
 
     "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "Arraign",

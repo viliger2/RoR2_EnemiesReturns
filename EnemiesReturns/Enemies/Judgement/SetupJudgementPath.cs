@@ -170,6 +170,98 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
                 DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
+                IL.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+                R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+                On.EntityStates.StunState.OnEnter += StunState_OnEnter;
+                On.EntityStates.FrozenState.OnEnter += FrozenState_OnEnter;
+                Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            }
+        }
+
+        private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
+        {
+            var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC");
+            if (!keyPair.Equals(default(KeyValuePair<string, string>)))
+            {
+                string description = string.Format(
+                    keyPair.Value,
+                    EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value.ToString("###%")
+                    );
+                language.SetStringByToken("ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC", description);
+            }
+        }
+
+        private static void FrozenState_OnEnter(On.EntityStates.FrozenState.orig_OnEnter orig, EntityStates.FrozenState self)
+        {
+            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                self.freezeDuration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
+            }
+            orig(self);
+        }
+
+        private static void StunState_OnEnter(On.EntityStates.StunState.orig_OnEnter orig, EntityStates.StunState self)
+        {
+            orig(self);
+            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                self.duration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
+            }
+        }
+
+        public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if(sender && sender.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                args.attackSpeedReductionMultAdd = 0f;
+                args.moveSpeedReductionMultAdd = 0f;
+            }
+        }
+
+        private static void CharacterBody_RecalculateStats(ILContext il)
+        {
+            // TODO: this is not actual todo, remember to double check it every game update
+            // since for sure indexes for values will change
+            ILCursor c = new ILCursor(il);
+            if(c.TryGotoNext(MoveType.After,
+                x => x.MatchLdloc(88),
+                x => x.MatchLdloc(45),
+                x => x.MatchConvR4(),
+                x => x.MatchLdcR4(1),
+                x => x.MatchMul(),
+                x => x.MatchAdd(),
+                x => x.MatchStloc(88)))
+            {
+                c.Emit(OpCodes.Ldarg_0); // self
+                c.Emit(OpCodes.Ldloc, 88); // 88 is float where slows are collected
+                c.EmitDelegate<System.Func<RoR2.CharacterBody, float, float>>((self, ammount) =>
+                {
+                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
+                    {
+                        return 1;
+                    }
+                    return ammount;
+                });
+                c.Emit(OpCodes.Stloc, 88);
+            } else
+            {
+                Log.Warning("ILHook failed: SetupJudgementPath.CharacterBody_RecalculateStats");
+            }
+
+            while (c.TryGotoNext(MoveType.Before,
+                x => x.MatchStloc(100)))
+            {
+                c.Emit(OpCodes.Ldarg_0); // self
+                c.Emit(OpCodes.Ldloc, 100); // 100 is float where attack speed is stored
+                c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>((newValue, self, origValue) =>
+                {
+                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
+                    {
+                        return Mathf.Max(newValue, origValue);
+                    }
+                    return newValue;
+                });
+                c.Index++;
             }
         }
 

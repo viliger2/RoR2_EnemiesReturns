@@ -125,6 +125,10 @@ namespace EnemiesReturns
             {
                 LynxFetishFactory.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
+            if (EnemiesReturns.Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                Enemies.Judgement.SetupJudgementPath.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            }
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)

@@ -71,7 +71,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             }
             else
             {
-                Log.Warning("ILHook failed: HealthComponent_Heal");
+                Log.Warning("ILHook failed: ShamanStuff.HealthComponent_Heal");
             }
         }
 
