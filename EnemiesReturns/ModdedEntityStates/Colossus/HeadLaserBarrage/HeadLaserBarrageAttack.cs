@@ -104,6 +104,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
             aimDirection = GetTargetDirection();
 
             PlayAnimation("Body", "LasetBeamWalkF");
+            PlayAnimation("Gesture, Additive", "LaserBeamLoop");
             Fire();
         }
 
@@ -174,6 +175,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
         public override void OnExit()
         {
             base.OnExit();
+            PlayAnimation("Gesture, Additive", "BufferEmpty");
             base.characterMotor.moveDirection = Vector3.zero;
             if (aimAnimator && animatorDirectionOverrideRequest != null)
             {

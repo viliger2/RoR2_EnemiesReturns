@@ -7322,6 +7322,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserChargeParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 2966688441469256017, guid: fd9c850aa97d6a74e97875045e67ca3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3017912210878910183, guid: fd9c850aa97d6a74e97875045e67ca3c,
         type: 3}
       propertyPath: m_RootOrder
