@@ -104,7 +104,7 @@ namespace EnemiesReturns
             MechanicalSpiderVictoryDanceController.Hooks();
             Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
-            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
+            ShamanStuff.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
 
