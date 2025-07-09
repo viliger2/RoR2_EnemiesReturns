@@ -131,10 +131,6 @@ PrefabInstance:
       propertyPath: surfaceDef
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1799987380248159105, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1882634193080004359, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: surfaceDef
       value: 
