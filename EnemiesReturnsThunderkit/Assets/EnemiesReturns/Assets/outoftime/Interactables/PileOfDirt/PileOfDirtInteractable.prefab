@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6188545293570663072}
   - component: {fileID: 2271767397067496116}
+  - component: {fileID: 8426797893056315689}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -276,6 +277,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &8426797893056315689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264079358855095736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -875252823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 2271767397067496116}
+  sinWaves:
+  - amplitude: 0.12
+    frequency: 3.25
+    cycleOffset: 1.2
+  - amplitude: 0.1
+    frequency: 8.9
+    cycleOffset: 0
+  - amplitude: 0.12
+    frequency: 1
+    cycleOffset: 2
 --- !u!1001 &8093553715533715855
 PrefabInstance:
   m_ObjectHideFlags: 0

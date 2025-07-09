@@ -51,6 +51,11 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
+            if (master.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
+            {
+                return;
+            }
+
             // handling chirr befriending mithrix
             // since we are now on team player and wasn't on player team before
             TryToDropEquipment(body.gameObject);
@@ -71,6 +76,11 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
             }
 
             if (!master.IsDeadAndOutOfLivesServer())
+            {
+                return;
+            }
+
+            if(master.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
             {
                 return;
             }
