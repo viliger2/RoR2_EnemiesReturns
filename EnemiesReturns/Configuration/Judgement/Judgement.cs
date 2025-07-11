@@ -52,7 +52,7 @@ namespace EnemiesReturns.Configuration.Judgement
             AeonianEliteGoldMultiplier = config.Bind("Aeonian Elites", "Gold Multiplier", 3f, "Gold and exp multiplier (from standard reward) of Aeonian elites in Judgement.");
             AeonianEliteHealthMultiplier = config.Bind("Aeonian Elites", "Health Multiplier", 18f, "Aeonian elite health multiplier. By default equal to that of T2 elites. Gets overwritten by EliteReworks.");
             AeonianEliteDamageMultiplier = config.Bind("Aeonian Elites", "Damage Multiplier", 6f, "Aeonian elite damage multiplier. By default equal to that of T2 elites. Gets overwritten by EliteReworks");
-            AeonianEliteStunAndFreezeReduction = config.Bind("Aeonian Elites", "Stun and Freeze Duration Reduction", 0.5f, "Aeonian elite stun and freeze reduction, 0.5 will half the duration, 0 will remove the mechanic, 1 will not make it completely immune since it will still swap states and would get stunned for a few logic frames. Values above 1 will be ignored.");
+            AeonianEliteStunAndFreezeReduction = config.Bind("Aeonian Elites", "Stun and Freeze Duration Reduction", 0.5f, "Aeonian elite stun and freeze reduction, 0.5 will half the duration, 0 will remove the mechanic, it will not make it completely immune since it will still swap states and would get stunned for a few logic frames. Values above 1 will be ignored.");
 
             EnableCustomPhase3Music = config.Bind("Judgement", "Enable Custom Phase 3 Music", false, "Enables custom (as in not from Starstorm 1) music for Phase 3 (Phase 2 of boss fight)");
 
