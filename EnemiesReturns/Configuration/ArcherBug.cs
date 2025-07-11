@@ -32,7 +32,6 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<KeyCode> BuckBumbleKey;
 
-
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Archer Bug Director", "Enable Archer Bug", true, "Enables Archer Bug.");
