@@ -150,6 +150,25 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Additional code by [viliger](https://thunderstore.io/package/viliger/)
 * Majority of sounds come from RoRR.
 </details>
+<details>
+<summary>Judgement</summary>
+
+* Model, rigging and animations by Sentinel
+* Additional modeling and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Elite icon by Glad
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from Ys 10, RoRR, Starstorm and WoW.
+* Lightsaber Hum and Swings 2 - https://freesound.org/people/Sheyvan/sounds/703384/
+* armor - https://pixabay.com/sound-effects/armor-6890/
+* palming football - https://pixabay.com/sound-effects/palming-football-34928/
+* Large Underground Fan - https://pixabay.com/ru/sound-effects/large-underground-fan-303764/
+* Debris Slide Sound - https://pixabay.com/ru/sound-effects/debris-slide-sound-196394/
+* Boiling Water Sound - https://pixabay.com/ru/sound-effects/boiling-water-sound-62556/
+* laser weld - https://pixabay.com/ru/sound-effects/laser-weld-103309/
+* Cinematic Impact Boom 04 - https://pixabay.com/ru/sound-effects/cinematic-impact-boom-4-326123/
+* Godzilla atomic breath 2014-2019 sound effect - https://www.youtube.com/watch?v=ISqg6CRPsOI
+* The Origin - Eviternity II OST (MAP30) - https://www.youtube.com/watch?v=n1C2Qp4GIss
+</details>
 - Special thanks to 
 
 * [Moffein](https://thunderstore.io/package/Moffein/) - balance and design help

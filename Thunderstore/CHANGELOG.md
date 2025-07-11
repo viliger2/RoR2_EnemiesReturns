@@ -1,4 +1,31 @@
 <details>
+<summary>0.5.19</summary>
+
+* Added support for more Snowtime stages.
+* Lynx Tribe
+  * Redid item display sync on Lynx Shrine, so item should now be visible on high latency connections.
+  * Fixed Lynx Totem having negative hitboxes on being spawned from Shaman.
+* Archer Bugs
+  * Fixed JitterBones (Malachite elite body shaking).
+  * Added option to disable Archer Bugs.
+  * Fixed Archer Bugs doing nothing after spawning.
+  * Fixed Archer Bugs spawning on Ground nodes instead of Air nodes.
+  * Fixed yaw animation.
+  * Optimizations to wing textures.
+* Colossus
+  * Small animation improvements.
+  * Fixed Colossus playing charge particles on spawn and not on actual attack charge.  
+* Judgement
+  * Max enemy count on waves now scales with player count.
+  * Fixed Promethean Teleporter sometimes not spawning despite requirements being fulfilled.
+  * Adjustments to fix pathfinding issues and potential cheese spots.
+  * Animation improvements.
+  * Elites now have additional gameplay effects.
+  * Added additional checks to King leaving a trophy. 
+  * Fixed chat message playing that King left a trophy despite it not being the case.
+
+</details>
+<details>
 <summary>0.5.18</summary>
 
 * Fixed some language tokens.
