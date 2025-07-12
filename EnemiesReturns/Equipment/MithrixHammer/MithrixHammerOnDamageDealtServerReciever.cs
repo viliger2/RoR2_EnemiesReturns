@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Configuration.Judgement;
 using R2API;
 using RoR2;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using static RoR2.CharacterBody;
@@ -9,6 +10,13 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 {
     public class MithrixHammerOnDamageDealtServerReciever : ItemBehavior, IOnDamageDealtServerReceiver
     {
+        public readonly static List<BodyIndex> whiteListedBodies = new List<BodyIndex>();
+
+        public static void AddWhitelistedBodies()
+        {
+            whiteListedBodies.Add(BodyCatalog.FindBodyIndex("EquipmentDroneBody"));
+        }
+
         private void Start()
         {
             if (body && body.master)
@@ -38,6 +46,11 @@ namespace EnemiesReturns.Equipment.MithrixHammer
             }
 
             if (!body.master.IsDeadAndOutOfLivesServer())
+            {
+                return;
+            }
+
+            if (!(body.isPlayerControlled || whiteListedBodies.Contains(body.bodyIndex)))
             {
                 return;
             }
