@@ -5,6 +5,7 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
@@ -41,6 +42,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                 baseMoveSpeed = 6.6f,
                 baseJumpCount = 1,
                 baseJumpPower = 18f,
+                hullClassification = HullClassification.Golem,
                 isChampion = false,
                 autoCalculateStats = true,
             };
@@ -122,7 +124,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary),                       
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary),
             };
         }
 
@@ -132,7 +134,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         }
 
         protected override string ModelName() => "Crabbo";
-       
+
 
         protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
         {
@@ -140,7 +142,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             {
                 maxDistance = 6f,
                 minDistance = 1.5f,
-                modelRotation = new Quaternion(0 , 0, 0, 1)
+                modelRotation = new Quaternion(0, 0, 0, 1)
             };
         }
 
@@ -164,6 +166,15 @@ namespace EnemiesReturns.Enemies.SandCrab
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscSandCrabDefault;
+        }
+
+        public static GameObject BodyPrefab;
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            var body = base.AddBodyComponents(bodyPrefab, sprite, log);
+                     
+            return body;
         }
     }
 }
