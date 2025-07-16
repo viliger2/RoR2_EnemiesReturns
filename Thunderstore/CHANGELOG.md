@@ -1,4 +1,15 @@
 <details>
+<summary>0.5.20</summary>
+
+* Lynx Tribe
+  * Fixed potential game freeze if summoned tribesmen failed to spawn. 
+* Judgement
+  * Fixed Engineer turrets dropping equipment.
+  * Implemented clientside collision checks for some attacks.
+    * _This is somewhat experimental since I haven't had a good chance to test networking with real delay and on proper modpack, but now rotating laser and chasing laser attacks should use clientside hit detection. If you have any network issues after this change - please report them._
+
+</details>
+<details>
 <summary>0.5.19</summary>
 
 * Added support for more Snowtime stages.
@@ -23,7 +34,6 @@
   * Elites now have additional gameplay effects.
   * Added additional checks to King leaving a trophy. 
   * Fixed chat message playing that King left a trophy despite it not being the case.
-
 </details>
 <details>
 <summary>0.5.18</summary>
