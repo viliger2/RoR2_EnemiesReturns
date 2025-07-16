@@ -34,8 +34,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static BodyIndex ArraignP2BodyIndex;
 
-        public static Material immuneToAllDamageExceptHammerMaterial;
-
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
         [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
@@ -165,8 +163,7 @@ namespace EnemiesReturns.Enemies.Judgement
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
-                On.RoR2.CharacterModel.UpdateOverlays += AddDamageImmuneOverlay;
-                //On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                On.RoR2.CharacterModel.UpdateOverlays += Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
@@ -174,8 +171,8 @@ namespace EnemiesReturns.Enemies.Judgement
                 DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
                 IL.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
                 R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
-                On.EntityStates.StunState.OnEnter += StunState_OnEnter;
-                On.EntityStates.FrozenState.OnEnter += FrozenState_OnEnter;
+                On.EntityStates.StunState.OnEnter += HalfStunState;
+                On.EntityStates.FrozenState.OnEnter += HalfFrozenState;
                 Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
             }
         }
@@ -193,7 +190,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
-        private static void FrozenState_OnEnter(On.EntityStates.FrozenState.orig_OnEnter orig, EntityStates.FrozenState self)
+        private static void HalfFrozenState(On.EntityStates.FrozenState.orig_OnEnter orig, EntityStates.FrozenState self)
         {
             if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
             {
@@ -202,7 +199,7 @@ namespace EnemiesReturns.Enemies.Judgement
             orig(self);
         }
 
-        private static void StunState_OnEnter(On.EntityStates.StunState.orig_OnEnter orig, EntityStates.StunState self)
+        private static void HalfStunState(On.EntityStates.StunState.orig_OnEnter orig, EntityStates.StunState self)
         {
             orig(self);
             if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
@@ -271,15 +268,6 @@ namespace EnemiesReturns.Enemies.Judgement
         public static bool AddBodyToBlacklist(string bodyName)
         {
             return false;
-        }
-
-        private static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
-        {
-            orig(self);
-            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
-            {
-                self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
-            }
         }
 
         private static void SpawnBrokenTeleporter2(On.RoR2.EscapeSequenceController.EscapeSequenceMainState.orig_OnEnter orig, EscapeSequenceController.EscapeSequenceMainState self)
@@ -486,53 +474,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
             var onPlayerEnterEvent = shopkeeperTrigger.gameObject.GetComponent<OnPlayerEnterEvent>();
             onPlayerEnterEvent.action.AddListener(chatMessage.Send);
-        }
-
-        private static void SpawnBrokenTeleporter(On.EntityStates.Missions.BrotherEncounter.BossDeath.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.BossDeath self)
-        {
-            orig(self);
-
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            if (!self.childLocator)
-            {
-                return;
-            }
-
-            var center = self.childLocator.FindChild("CenterOfArena");
-            if (!center)
-            {
-                return;
-            }
-
-            var itemFound = false;
-            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
-            {
-                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                {
-                    continue;
-                }
-
-                if (!playerCharacterMaster.master.inventory)
-                {
-                    continue;
-                }
-
-                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.LunarFlower) > 0)
-                {
-                    itemFound = true;
-                    break;
-                }
-            }
-
-            if (itemFound)
-            {
-                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, center.position, Quaternion.identity);
-                NetworkServer.Spawn(newTeleporter);
-            }
         }
 
         public static void SpawnObjects(SceneDirector sceneDirector)

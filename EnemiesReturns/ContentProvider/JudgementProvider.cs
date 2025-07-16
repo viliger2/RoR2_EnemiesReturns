@@ -344,7 +344,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
-                Enemies.Judgement.SetupJudgementPath.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
+                Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
 
                 CreateMusic(Content.Stages.OutOfTime);
             }
