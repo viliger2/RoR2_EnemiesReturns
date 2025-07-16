@@ -36,7 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (fixedAge > duration)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextState(new WaveActive());
             }
@@ -50,10 +50,5 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                 startingUpEffects.gameObject.SetActive(false);
             }
         }
-
-
-
     }
-
-
 }

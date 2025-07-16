@@ -143,8 +143,8 @@ namespace EnemiesReturns.Configuration
             Ifrit.PillarBodyBaseMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Base Max Health", 585f, "Ifrit's Summon Pillar body base max health.");
             Ifrit.PillarBodyLevelMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Per Level Max Health", 176f, "Ifrit's Summon Pillar body per level max health.");
             Ifrit.PillarMaxInstances = config.Bind("Ifrit Pillar", "Summon Pillar Max Instances", 2, "Maximum instances of Ifrit's Pillar that can exist at the same time. This also controls how many pillar will be summoned on one skill use.");
-            Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum distance for pillar spawning.");
-            Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum distance for pillar spawning.");
+            Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum starting distance for pillar spawning. It will decrease if pillar fails to spawn on the first try.");
+            Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum starting distance for pillar spawning. It will increase if pillar fails to spawn on the first try.");
 
             Ifrit.ItemEnabled = config.Bind("Infernal Lantern", "Enable Infernal Lantern", true, "Enables Infernal Lantern to drop from Ifrit and appear in printers.");
             Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("Infernal Lantern", "Infernal Lantern Damage", 10f, "Infernal Lantern explosion damage.");

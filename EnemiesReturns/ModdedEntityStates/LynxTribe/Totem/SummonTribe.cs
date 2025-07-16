@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterAI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
         public static float baseSummonDuration = 0.916f;
 
-        public static float summonDistance = 8f; // distance from body for summon
+        public static float summonDistance = 10f; // distance from body for summon
 
         public static int summonCountBase => EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonTribeSummonCountPerCast.Value;
 
@@ -44,13 +45,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         {
             base.OnEnter();
 
-            summonCount = summonCountBase;
             var currentDeployableCount = characterBody.master.GetDeployableCount(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
             var deployableLimit = characterBody.master.GetDeployableSameSlotLimit(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
-            if (deployableLimit > currentDeployableCount)
-            {
-                summonCount = Mathf.Min(deployableLimit - currentDeployableCount, summonCountBase);
-            }
+            summonCount = Mathf.Min(deployableLimit - currentDeployableCount, summonCountBase);
 
             duration = baseDuration / attackSpeedStat;
             summonDuration = baseSummonDuration / attackSpeedStat;
@@ -76,7 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             }
 
             PlayAnimation("Gesture, Override", "SummonTribe", "summonTribe.playbackDuration", duration);
-            if (spawnCards.Length == 0)
+            if (spawnCards.Length == 0 && isAuthority)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -88,24 +85,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             base.FixedUpdate();
             if (fixedAge > summonDuration && !tribeSummoned)
             {
-                if (NetworkServer.active)
-                {
-                    float angle = 360 / summonCount;
-                    for (int i = 0; i < summonCount; i++)
-                    {
-                        var currentRetryCount = 0;
-                        var x = summonDistance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
-                        var z = summonDistance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
-                        while (currentRetryCount < retryCount)
-                        {
-                            if (SummonTribesman(i, base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), retryCount))
-                            {
-                                break;
-                            }
-                            retryCount++;
-                        }
-                    }
-                }
                 if (summonEffect && summonEffectTransform)
                 {
                     EffectManager.SimpleEffect(summonEffect, summonEffectTransform.position, Quaternion.identity, false);
@@ -115,6 +94,30 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     EffectManager.SimpleEffect(stoneEffectPrefab, stoneParticlesOrigin.position, stoneParticlesOrigin.rotation, false);
                 }
                 tribeSummoned = true;
+
+                if (NetworkServer.active)
+                {
+                    if(summonCount == 0)
+                    {
+                        return;
+                    }
+
+                    float angle = 360 / summonCount;
+                    for (int i = 0; i < summonCount; i++)
+                    {
+                        var currentRetryCount = 0;
+                        var x = summonDistance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
+                        var z = summonDistance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
+                        while (currentRetryCount < retryCount)
+                        {
+                            if (SummonTribesman(i, base.transform.position + new Vector3(x + 2 * i, 0 + i, z + 2 * i), currentRetryCount))
+                            {
+                                break;
+                            }
+                            currentRetryCount++;
+                        }
+                    }
+                }
             }
 
             if (fixedAge >= duration && isAuthority)
@@ -143,7 +146,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             var directorSpawnRequest = new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
-                minDistance = 0f,
+                minDistance = summonDistance / 2,
                 maxDistance = summonDistance * (1 + retryCount), // just to be safe
                 position = approximateSpawnPosition
             }, RoR2Application.rng);
@@ -173,6 +176,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     if (deployable)
                     {
                         characterBody.master.AddDeployable(deployable, Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+                    }
+
+                    var ai = result.spawnedInstance.GetComponent<BaseAI>();
+                    if (ai)
+                    {
+                        ai.ForceAcquireNearestEnemyIfNoCurrentEnemy();
                     }
                 }
             }

@@ -26,6 +26,8 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
 
         public static int pillarCount => EnemiesReturns.Configuration.Ifrit.PillarMaxInstances.Value;
 
+        public static int retryCount = 3;
+
         private float duration;
 
         private float summonTimer;
@@ -55,7 +57,15 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                 {
                     for (int i = 0; i < pillarCount; i++)
                     {
-                        SummonPillar();
+                        var currentRetryCount = 0;
+                        while (currentRetryCount < retryCount)
+                        {
+                            if (SummonPillar(currentRetryCount))
+                            {
+                                break;
+                            }
+                            currentRetryCount++;
+                        }
                     }
                 }
                 if (muzzleMouth)
@@ -75,25 +85,20 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
             EffectManager.SpawnEffect(screamPrefab, new EffectData { rootObject = muzzleMouth.gameObject }, false);
         }
 
-        private void SummonPillar()
+        private GameObject SummonPillar(int attempt)
         {
             DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(scPylon, new DirectorPlacementRule
             {
                 placementMode = DirectorPlacementRule.PlacementMode.Approximate,
-                minDistance = minSpawnDistance,
-                maxDistance = maxSpawnDistance,
+                minDistance = minSpawnDistance / (1 + (attempt * 0.5f)),
+                maxDistance = maxSpawnDistance * (1 + (attempt * 0.5f)),
                 spawnOnTarget = transform
             }, RoR2Application.rng);
             directorSpawnRequest.summonerBodyObject = base.gameObject;
             directorSpawnRequest.ignoreTeamMemberLimit = true;
             directorSpawnRequest.onSpawnedServer = (SpawnCard.SpawnResult spawnResult) =>
             {
-                if (!spawnResult.success)
-                {
-                    SummonPillar(); // surely this won't break anything
-                    return;
-                }
-                if (spawnResult.spawnedInstance && base.characterBody)
+                if (spawnResult.success && spawnResult.spawnedInstance && base.characterBody)
                 {
                     var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();
                     if (aiownership)
@@ -121,7 +126,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                     }
                 }
             };
-            DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
+            return DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
         }
     }
 }
