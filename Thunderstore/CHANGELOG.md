@@ -1,4 +1,13 @@
 <details>
+<summary>0.5.21</summary>
+
+* Judgement
+  * Fixed game freeze if player enters with 20 stacks of Eulogy Zero.
+  * Added Stone Titan to enemy blacklist.
+  * There aren't any more rains down in Africa.
+</details>
+
+<details>
 <summary>0.5.20</summary>
 
 * Lynx Tribe
@@ -7,7 +16,6 @@
   * Fixed Engineer turrets dropping equipment.
   * Implemented clientside collision checks for some attacks.
     * _This is somewhat experimental since I haven't had a good chance to test networking with real delay and on proper modpack, but now rotating laser and chasing laser attacks should use clientside hit detection. If you have any network issues after this change - please report them._
-
 </details>
 <details>
 <summary>0.5.19</summary>
