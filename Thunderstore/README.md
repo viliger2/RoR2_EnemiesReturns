@@ -179,3 +179,5 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Translations:
 	* pt-BR by [Kauzok](https://github.com/Kauzok)
 	* es-ES by Manuerth
+	
+If you would like to support us, you can do it [here](https://www.youtube.com/watch?v=Cx3a0bos8aY).
