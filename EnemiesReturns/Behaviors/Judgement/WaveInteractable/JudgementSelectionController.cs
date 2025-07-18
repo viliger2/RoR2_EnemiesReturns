@@ -120,9 +120,11 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
                     if (tierDropTables[k].GetSelectorCount() >= listCount)
                     {
-                        while (takenList.Contains(itemIndex))
+                        var retryCount = 0;
+                        while (takenList.Contains(itemIndex) && retryCount < 3)
                         {
                             itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
+                            retryCount++;
                         }
                     }
                     takenList.Add(itemIndex);

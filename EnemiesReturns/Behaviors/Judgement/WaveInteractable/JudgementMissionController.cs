@@ -126,9 +126,11 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 // failsafe in case of monster count being less than director count, like in cases of not having dlcs
                 if (cardSelection.Count >= combatDirectors.Length)
                 {
-                    while (selectedCard.Contains(card))
+                    var retryCount = 0;
+                    while (selectedCard.Contains(card) && retryCount < 3)
                     {
                         card = cardSelection.Evaluate(RoR2Application.rng.nextNormalizedFloat);
+                        retryCount++;
                     }
                     selectedCard.Add(card);
                 }
