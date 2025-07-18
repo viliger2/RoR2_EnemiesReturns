@@ -42,7 +42,7 @@ namespace EnemiesReturns.Configuration.Judgement
             EnableAnointedSkins = config.Bind("Judgement", "Enable Anointed Skins", true, "Enables the ability to unlock Anointed skins.");
             ForceUnlock = config.Bind("Judgement", "Force Unlock Anointed Skins", false, "Force unlocks all Anointed skins by removing UnlockableDef from them.");
             JudgementEnemyBlacklist = config.Bind("Judgement", "Enemy Blacklist",
-                "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster",
+                "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster,TitanMaster",
                 "List of enemies that are blacklisted from appearing in Judgement. Requiers master names, you can get master names via DebugToolkit's list_ai command");
 
             MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites.");

@@ -132,6 +132,5 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 }
             }
         }
-
     }
 }
