@@ -5,7 +5,6 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
@@ -24,10 +23,12 @@ namespace EnemiesReturns.Enemies.SandCrab
             return new IAimAssist.AimAssistTargetParams()
             {
                 assistScale = 2f,
-                pathToPoint0 = "ModelBase/Time_For_Crab_weighted/SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead",
-                pathToPoint1 = "ModelBase/Time_For_Crab_weighted/SandCrabArmature/Root/BaseButt/BaseMiddle1"
+                pathToPoint0 = "ModelBase/mdlSandCrab/SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead",
+                pathToPoint1 = "ModelBase/mdlSandCrab/SandCrabArmature/Root/BaseButt/BaseMiddle1"
             };
         }
+
+        
 
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
@@ -46,6 +47,19 @@ namespace EnemiesReturns.Enemies.SandCrab
                 isChampion = false,
                 autoCalculateStats = true,
             };
+        }
+
+        public SkillDef CreateClawSnipSkill()
+        {
+            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("SandCrabClawSnip", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.FireCausticSpit)))
+            {
+                nameToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME",
+                descriptionToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION",
+                icon = acridEpidemic.icon,
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = 5f,
+            });
         }
 
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
@@ -99,7 +113,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                 {
                     name = "Body",
                     initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.MainState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpitterMain)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {
@@ -124,16 +138,19 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary)
             };
         }
 
         protected override ItemDisplayRuleSet ItemDisplayRuleSet()
         {
-            throw new System.NotImplementedException();
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            (idrs as ScriptableObject).name = "idrsSandCrab";
+
+            return idrs;
         }
 
-        protected override string ModelName() => "Crabbo";
+        protected override string ModelName() => "mdlSandCrab";
 
 
         protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
@@ -170,11 +187,6 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public static GameObject BodyPrefab;
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
-        {
-            var body = base.AddBodyComponents(bodyPrefab, sprite, log);
-                     
-            return body;
-        }
+        
     }
 }

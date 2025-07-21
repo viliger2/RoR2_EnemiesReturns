@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Enemies.SandCrab;
+﻿using EnemiesReturns.Enemies.ArcherBug;
+using EnemiesReturns.Enemies.SandCrab;
 using EnemiesReturns.Enemies.Spitter;
 using R2API;
 using RoR2;
@@ -16,14 +17,17 @@ namespace EnemiesReturns
         {
             var SandCrabStuff = new SandCrabStuff();
 
-            var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
-            unlockablesList.Add(sandCrabLog);
-
             var sandCrabBody = new SandCrabBody();
 
-            sfList.Add(SandCrabBody.SkillFamilies.Primary);
+            var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
+            unlockablesList.Add(sandCrabLog);          
 
-            SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == " SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
+           // sfList.Add(SandCrabBody.SkillFamilies.Primary);
+
+           
+           SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();
+
+            SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
             bodyList.Add(SandCrabBody.BodyPrefab);
 
             SandCrabMaster.MasterPrefab = new SandCrabMaster().AddMasterComponents(assets.First(master => master.name == "SandCrabMaster"), SandCrabBody.BodyPrefab);

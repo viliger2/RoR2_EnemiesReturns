@@ -16,6 +16,11 @@ namespace EnemiesReturns.Components
             var modelBase = GetModelBase(body);
             var modelTransform = GetModelTransform(modelBase);
 
+            if (modelTransform == null)
+            {
+                Debug.Log("modelTransform is Null");
+            }
+
             AddNetworkIdentity(body, GetNetworkIdentityParams());
             var direction = AddCharacterDirection(body, modelBase, GetAnimator(body), GetCharacterDirectionTurnSpeed());
             AddMotor(body, direction);
@@ -45,7 +50,7 @@ namespace EnemiesReturns.Components
             {
                 body.RegisterNetworkPrefab();
             }
-
+            
             return body;
         }
 
