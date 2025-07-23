@@ -162,6 +162,8 @@ namespace EnemiesReturns
 
                 CreateArcherBug(assets, iconLookup);
 
+                CreateSwift(assets, iconLookup, acdLookup);
+
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));

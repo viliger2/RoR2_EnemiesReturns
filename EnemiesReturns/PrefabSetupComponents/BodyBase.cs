@@ -74,6 +74,11 @@ namespace EnemiesReturns.Components
             return AddBodyComponents(bodyPrefab, sprite, null, null, acdLookup);
         }
 
+        public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            return AddBodyComponents(bodyPrefab, sprite, log, null, acdLookup);
+        }
+
         public virtual GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite = null, UnlockableDef log = null, ExplicitPickupDropTable droptable = null, Dictionary<string, AnimationCurveDef> acdLookup = null)
         {
             var body = (this as IBody).CreateBody(bodyPrefab, sprite, log, droptable);
