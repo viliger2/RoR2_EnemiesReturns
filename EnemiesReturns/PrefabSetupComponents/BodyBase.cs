@@ -8,6 +8,8 @@ using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.Components.ModelComponents.Hurtboxes;
 using EnemiesReturns.Components.ModelComponents.Skins;
 using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.LynxTribe.Totem;
+using EnemiesReturns.Enemies.Swift;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using RoR2;
@@ -181,6 +183,62 @@ namespace EnemiesReturns.Components
         protected SkillDef CreateSkill(SkillParams skillParams)
         {
             var skill = ScriptableObject.CreateInstance<SkillDef>();
+            FillSkillDefValues(skillParams, skill);
+
+            return skill;
+        }
+
+        protected ShouldBeGroundedSkillDef CreateNonGroundedSkill(SkillParams skillParams)
+        {
+            var skill = ScriptableObject.CreateInstance<ShouldBeGroundedSkillDef>();
+            FillSkillDefValues(skillParams, skill);
+
+            return skill;
+        }
+
+        protected LynxTotemSkillDef CreateTotemSkill(SkillParams skillParams)
+        {
+            var skill = ScriptableObject.CreateInstance<LynxTotemSkillDef>();
+            FillSkillDefValues(skillParams, skill);
+
+            return skill;
+        }
+
+        private static void FillSkillDefValues(SkillParams skillParams, SkillDef skill)
+        {
+            (skill as ScriptableObject).name = skillParams.name;
+            skill.skillName = skillParams.name;
+
+            skill.skillNameToken = skillParams.nameToken;
+            skill.skillDescriptionToken = skillParams.descriptionToken;
+            skill.icon = skillParams.icon;
+
+            skill.activationStateMachineName = skillParams.activationStateMachine;
+            skill.activationState = skillParams.activationState;
+            skill.interruptPriority = skillParams.interruptPriority;
+
+            skill.baseRechargeInterval = skillParams.baseRechargeInterval;
+            skill.baseMaxStock = skillParams.baseMaxStock;
+            skill.rechargeStock = skillParams.rechargeStock;
+            skill.requiredStock = skillParams.requiredStock;
+            skill.stockToConsume = skillParams.stockToConsume;
+
+            skill.resetCooldownTimerOnUse = skillParams.resetCooldownTimerOnUse;
+            skill.fullRestockOnAssign = skillParams.fullRestockOnAssign;
+            skill.dontAllowPastMaxStocks = skillParams.dontAllowPAstMaxStocks;
+            skill.beginSkillCooldownOnSkillEnd = skillParams.beginSkillCooldownOnSkillEnd;
+
+            skill.canceledFromSprinting = skillParams.canceledFromSprinting;
+            skill.forceSprintDuringState = skillParams.forceSprintDuringState;
+            skill.canceledFromSprinting = skillParams.canceledFromSprinting;
+
+            skill.isCombatSkill = skillParams.isCombatSkill;
+            skill.mustKeyPress = skillParams.mustKeyPress;
+        }
+
+        protected SummonTribeSkillDef CreateSummonTribeSkill(SkillParams skillParams)
+        {
+            var skill = ScriptableObject.CreateInstance<SummonTribeSkillDef>();
             (skill as ScriptableObject).name = skillParams.name;
             skill.skillName = skillParams.name;
 

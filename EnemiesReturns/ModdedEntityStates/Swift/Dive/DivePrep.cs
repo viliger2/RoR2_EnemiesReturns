@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnemiesReturns.ModdedEntityStates.Swift
+namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 {
     [RegisterEntityState]
     public class DivePrep : BaseState
@@ -24,7 +24,8 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= duration && isAuthority)
+            base.characterDirection.moveVector = base.inputBank.aimDirection;
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Dive());
             }

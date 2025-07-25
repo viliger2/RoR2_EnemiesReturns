@@ -10611,6 +10611,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2751433786028044955, guid: 2ee207096ed688145a1035cf0ac3742a,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.007140811
+      objectReference: {fileID: 0}
+    - target: {fileID: -2751433786028044955, guid: 2ee207096ed688145a1035cf0ac3742a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06796545
+      objectReference: {fileID: 0}
+    - target: {fileID: -2751433786028044955, guid: 2ee207096ed688145a1035cf0ac3742a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.4414636
+      objectReference: {fileID: 0}
+    - target: {fileID: -2751433786028044955, guid: 2ee207096ed688145a1035cf0ac3742a,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -12.88554
       objectReference: {fileID: 0}
@@ -10874,6 +10889,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7132676466883323900}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4525524747982669922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2580070335116120162, guid: 2ee207096ed688145a1035cf0ac3742a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7132676466883323900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4773233521418747613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2360367712862525729, guid: 2ee207096ed688145a1035cf0ac3742a,
@@ -10883,6 +10904,12 @@ Transform:
 --- !u!4 &5304480431740663089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6097566384765021491, guid: 2ee207096ed688145a1035cf0ac3742a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7132676466883323900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6215189304848058352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5423298452746870772, guid: 2ee207096ed688145a1035cf0ac3742a,
     type: 3}
   m_PrefabInstance: {fileID: 7132676466883323900}
   m_PrefabAsset: {fileID: 0}
@@ -10940,6 +10967,24 @@ MonoBehaviour:
   transformPairs:
   - name: SphereCheckTransform
     transform: {fileID: 5490071291291304419}
+  - name: Stones1
+    transform: {fileID: 3831065442936266197}
+  - name: Stones2
+    transform: {fileID: 110345287304339555}
+  - name: WingR
+    transform: {fileID: 4263970930995505817}
+  - name: WingL
+    transform: {fileID: 165154879105062667}
+  - name: Tail
+    transform: {fileID: 4773233521418747613}
+  - name: FootL
+    transform: {fileID: 4525524747982669922}
+  - name: FootR
+    transform: {fileID: 6215189304848058352}
+  - name: Head
+    transform: {fileID: 1335449444750160143}
+  - name: Body
+    transform: {fileID: 6454305696051574043}
 --- !u!114 &6132405027051348072
 MonoBehaviour:
   m_ObjectHideFlags: 0

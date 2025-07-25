@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Swift
+namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 {
     [RegisterEntityState]
     public class Dive : BaseState
     {
-        public static float maxDuration = 5f; // TODO?
+        public static float maxDuration = 3.5f; // TODO
 
         public static float damageCoefficient = 2f;
 
@@ -31,6 +31,8 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
 
         private Vector3 targetMoveVectorVelocity;
 
+        private Transform speedLines;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -38,9 +40,15 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             PlayCrossfade("Gesture, Override", "Dive", 0.1f);
             diveAttack = SetupOverlapAttack();
             sphereCheckTransform = FindModelChild("SphereCheckTransform");
+            speedLines = FindModelChild("SprintEffect");
+            if (speedLines)
+            {
+                speedLines.gameObject.SetActive(true);
+            }
+
             if (!sphereCheckTransform)
             {
-                sphereCheckTransform = base.transform;
+                sphereCheckTransform = transform;
             }
         }
 
@@ -48,27 +56,23 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
         {
             base.FixedUpdate();
 
-            targetMoveVector = Vector3.SmoothDamp(targetMoveVector, base.inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed).normalized;
-            base.characterDirection.moveVector = targetMoveVector;
-
-            //Vector3 forward = base.characterDirection.forward;
-            //base.characterMotor.moveDirection = targetMoveVector * diveSpeedCoefficient;
-            //base.characterMotor.velocity += targetMoveVector * moveSpeedStat * diveSpeedCoefficient * GetDeltaTime();
-            base.characterMotor.rootMotion = targetMoveVector * moveSpeedStat * diveSpeedCoefficient * GetDeltaTime();
+            targetMoveVector = Vector3.SmoothDamp(targetMoveVector, inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed).normalized;
+            characterDirection.moveVector = targetMoveVector;
+            characterMotor.rootMotion = targetMoveVector * moveSpeedStat * diveSpeedCoefficient * GetDeltaTime();
 
             if (isAuthority)
             {
                 diveAttack.Fire();
-                
-                if(HGPhysics.DoesOverlapSphere(sphereCheckTransform.position, 0.1f, LayerIndex.world.mask) || base.characterMotor.isGrounded)
+
+                if (HGPhysics.DoesOverlapSphere(sphereCheckTransform.position, 0.1f, LayerIndex.world.mask) || characterMotor.isGrounded)
                 {
                     outer.SetNextState(new DiveEnd());
                     return;
                 }
 
-                if(fixedAge >= maxDuration)
+                if (fixedAge >= maxDuration)
                 {
-                    outer.SetNextState(new DiveEnd());
+                    outer.SetNextState(new DiveEndAir());
                 }
             }
         }
@@ -76,17 +80,21 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
         public override void OnExit()
         {
             base.OnExit();
-            base.characterMotor.moveDirection = Vector3.zero;
-            base.characterDirection.moveVector = base.characterDirection.forward;
+            characterMotor.moveDirection = Vector3.zero;
+            characterDirection.moveVector = characterDirection.forward;
+            if (speedLines)
+            {
+                speedLines.gameObject.SetActive(false);
+            }
             PlayAnimation("Gesture, Override", "BufferEmpty");
         }
 
         private OverlapAttack SetupOverlapAttack()
         {
             var attack = new OverlapAttack();
-            attack.attacker = base.gameObject;
-            attack.inflictor = base.gameObject;
-            attack.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
+            attack.attacker = gameObject;
+            attack.inflictor = gameObject;
+            attack.teamIndex = TeamComponent.GetObjectTeam(gameObject);
             attack.damage = damageStat * damageCoefficient;
             //attack.hitEffectPrefab = ; TODO
             attack.isCrit = RollCrit();
@@ -94,7 +102,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             var modelTransform = GetModelTransform();
             if (modelTransform)
             {
-                attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Dive");
+                attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == "Dive");
             }
             return attack;
         }

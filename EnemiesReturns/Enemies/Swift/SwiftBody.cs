@@ -1,11 +1,14 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.ModdedEntityStates.Swift.Dive;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
+using HG;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -47,6 +50,7 @@ namespace EnemiesReturns.Enemies.Swift
             var result = base.AddBodyComponents(bodyPrefab, sprite, log);
 
             var modelTransform = result.transform.Find("ModelBase/mdlSwift");
+            var childLocator = modelTransform.gameObject.GetComponent<ChildLocator>();
             var printController = modelTransform.gameObject.AddComponent<PrintController>();
             printController.printTime = 2f;
             printController.printCurve = acdLookup["acdSwiftPrint"].curve;
@@ -58,6 +62,19 @@ namespace EnemiesReturns.Enemies.Swift
             printController.startingPrintBias = 0f;
             printController.maxPrintBias = 0f;
             printController.animateFlowmapPower = false;
+
+            #region BisonSprintEffect
+            var bisonBody = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bison/BisonBody.prefab").WaitForCompletion();
+            var sprintEffectTransform = bisonBody.transform.Find("ModelBase/mdlBison/BisonArmature/ROOT/SprintEffect");
+            var sprintEffectCopy = UnityEngine.GameObject.Instantiate(sprintEffectTransform.gameObject);
+            sprintEffectCopy.transform.parent = modelTransform.Find("SwiftArmature");
+            sprintEffectCopy.transform.localPosition = new Vector3(0f, -2.4f, -0.6f);
+            sprintEffectCopy.transform.localRotation = Quaternion.Euler(70f, 180f, 180f);
+            sprintEffectCopy.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            sprintEffectCopy.SetActive(false);
+
+            ArrayUtils.ArrayAppend(ref childLocator.transformPairs, new ChildLocator.NameTransformPair { name = "SprintEffect", transform = sprintEffectCopy.transform });
+            #endregion
 
             return result;
         }
@@ -116,6 +133,10 @@ namespace EnemiesReturns.Enemies.Swift
             };
         }
 
+        protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
+        {
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(EntityStates.Vulture.FallingDeath)));
+        }
 
         protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
         {
@@ -182,13 +203,16 @@ namespace EnemiesReturns.Enemies.Swift
         public SkillDef CreateDiveSkill()
         {
             // TODO: icon
-            return CreateSkill(new SkillParams("SwiftBodyDive", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.DivePrep)))
+            var groundedSkillDef = CreateNonGroundedSkill(new SkillParams("SwiftBodyDive", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.Dive.DivePrep)))
             {
                 nameToken = "ENEMIES_RETURNS_SWIFT_DIVE_NAME",
                 descriptionToken = "ENEMIES_RETURNS_SWIFT_DIVE_DESCRIPTION",
                 activationStateMachine = "Body",
                 baseRechargeInterval = 5f // TODO
-            }); ;
+            });
+            groundedSkillDef.shouldBeGrounded = false;
+
+            return groundedSkillDef;
         }
 
         protected override IFootStepHandler.FootstepHandlerParams FootstepHandlerParams()

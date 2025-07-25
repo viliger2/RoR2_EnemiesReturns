@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Swift
+namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 {
     [RegisterEntityState]
     public class FlyToNearestNode : BaseState
@@ -69,6 +69,19 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
                 {
                     outer.SetNextStateToMain();
                 }
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (characterMotor)
+            {
+                characterMotor.moveDirection = Vector3.zero;
+            }
+            if (characterDirection)
+            {
+                characterDirection.moveVector = characterDirection.forward;
             }
         }
 
