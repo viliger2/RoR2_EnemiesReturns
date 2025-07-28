@@ -95,12 +95,25 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             {
                 if (tierDropCounts.TryGetValue(pickupDef.itemTier, out var count))
                 {
-                    inventory.GiveItem(pickupDef.itemIndex, UnityEngine.Random.Range(count.minCount, count.maxCount + 1));
-                }
+                    // TODO: add chat message
+                    var itemCount = UnityEngine.Random.Range(count.minCount, count.maxCount + 1);
+                    inventory.GiveItem(pickupDef.itemIndex, itemCount);
 
-                if (interactor)
-                {
-                    ScrapperController.CreateItemTakenOrb(interactor.transform.position, this.gameObject, pickupDef.itemIndex);
+                    if (interactor)
+                    {
+                        ScrapperController.CreateItemTakenOrb(interactor.transform.position, this.gameObject, pickupDef.itemIndex);
+
+                        Chat.SendBroadcastChat(new Behaviors.SubjectParamsChatMessage
+                        {
+                            subjectAsCharacterBody = interactor.GetComponent<CharacterBody>(),
+                            baseToken = "ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED",
+                            paramsTokens = new string[]
+                            {
+                                Util.GenerateColoredString(RoR2.Language.GetString(pickupDef.nameToken) ?? "???", pickupDef.baseColor),
+                                itemCount.ToString()
+                            }
+                        });
+                    }
                 }
             }
 

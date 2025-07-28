@@ -106,6 +106,7 @@ namespace EnemiesReturns
             LynxFetishFactory.Hooks();
             ShamanStuff.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
+            Behaviors.SubjectParamsChatMessage.Hooks();
 
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
             Equipment.MithrixHammer.MithrixHammer.Hooks();

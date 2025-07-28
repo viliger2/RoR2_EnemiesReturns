@@ -161,6 +161,8 @@
 		"ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Прикоснуться к другой стороне",
 
 		"ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>Враг эволюционирует...</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED": "<style=cWorldEvent><color=white>{0}</color> выбрал(а) {1}<style=cStack>({2})</style>.</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED_2P": "<style=cWorldEvent>Вы выбрали {1}<style=cStack>({2})</style>.</style>",
 
 		"ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Спокойный ультиматум<sprite name=\"CloudRight\" tint=1>",
 		"ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Вечный {0}",

@@ -161,6 +161,8 @@
     "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Bond with the beyond",
 
     "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>The enemy evolves...</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED": "<style=cWorldEvent><color=white>{0}</color> has chosen {1}<style=cStack>({2})</style>.</style>",
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED_2P": "<style=cWorldEvent>You have chosen {1}<style=cStack>({2})</style>.</style>",
 
     "ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Quiescent Ultimatum<sprite name=\"CloudRight\" tint=1>",
     "ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Aeonian {0}",
