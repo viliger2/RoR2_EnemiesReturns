@@ -177,12 +177,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     {
                         characterBody.master.AddDeployable(deployable, Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
                     }
-
-                    var ai = result.spawnedInstance.GetComponent<BaseAI>();
-                    if (ai)
-                    {
-                        ai.ForceAcquireNearestEnemyIfNoCurrentEnemy();
-                    }
                 }
             }
         }
