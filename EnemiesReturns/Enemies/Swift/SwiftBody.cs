@@ -168,7 +168,7 @@ namespace EnemiesReturns.Enemies.Swift
                 {
                     name = "Body",
                     initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.GenericSpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain))
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.SwiftMain))
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {

@@ -12,8 +12,6 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
 
         public override string soundEventStopName => "ER_Spitter_Laugh_Stop";
 
-        public Transform target;
-
         public override void OnEnter()
         {
             base.OnEnter();

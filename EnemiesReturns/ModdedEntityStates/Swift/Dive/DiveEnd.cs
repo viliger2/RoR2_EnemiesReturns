@@ -28,7 +28,14 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             base.FixedUpdate();
             if (fixedAge >= duration && isAuthority)
             {
-                outer.SetNextState(new FlyToNearestNode());
+                if (characterBody.isPlayerControlled)
+                {
+                    outer.SetNextStateToMain();
+                }
+                else
+                {
+                    outer.SetNextState(new FlyToNearestNode());
+                }
             }
         }
 

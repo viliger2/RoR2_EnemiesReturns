@@ -109,7 +109,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Death;
         }
     }
 }
