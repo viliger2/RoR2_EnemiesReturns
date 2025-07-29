@@ -42,15 +42,15 @@ ModelImporter:
       takeName: SandCrabArmature|AdditiveBlinking
       internalID: -512041444894926839
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
+      hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -71,7 +71,7 @@ ModelImporter:
       takeName: SandCrabArmature|AimPitch
       internalID: -1206903590901515716
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -100,7 +100,7 @@ ModelImporter:
       takeName: SandCrabArmature|AimYaw
       internalID: -206534036486459476
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +123,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 5
+      additiveReferencePoseFrame: 6
     - serializedVersion: 16
       name: SandCrabArmature|Armature
       takeName: SandCrabArmature|Armature
@@ -183,11 +183,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: SandCrabArmature|Ascend
+      takeName: SandCrabArmature|Ascend
+      internalID: 9092059132814590583
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: SandCrabArmature|Attack1Begin
       takeName: SandCrabArmature|Attack1Begin
       internalID: -2583365498274512638
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -216,7 +245,7 @@ ModelImporter:
       takeName: SandCrabArmature|Attack1Charge
       internalID: -1114092638432295573
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 6
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -245,7 +274,7 @@ ModelImporter:
       takeName: SandCrabArmature|Attack1Fire
       internalID: -1805799122556038986
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -274,7 +303,7 @@ ModelImporter:
       takeName: SandCrabArmature|Attack2
       internalID: 5127646890825706511
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 72
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -303,7 +332,7 @@ ModelImporter:
       takeName: SandCrabArmature|CrabDance
       internalID: 1571599670049875157
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -332,7 +361,7 @@ ModelImporter:
       takeName: SandCrabArmature|Death
       internalID: 3390265798590563986
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -361,7 +390,7 @@ ModelImporter:
       takeName: SandCrabArmature|Descend
       internalID: 6932598526013593743
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -390,7 +419,7 @@ ModelImporter:
       takeName: SandCrabArmature|Flinch1
       internalID: -6644517086306912860
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -419,7 +448,7 @@ ModelImporter:
       takeName: SandCrabArmature|Flinch2
       internalID: -6620679588682593976
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -448,7 +477,7 @@ ModelImporter:
       takeName: SandCrabArmature|Flinch3
       internalID: -874789741814230666
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -506,7 +535,7 @@ ModelImporter:
       takeName: SandCrabArmature|Jump
       internalID: 7554089959162687940
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -535,7 +564,7 @@ ModelImporter:
       takeName: SandCrabArmature|Land
       internalID: -5492726367123871797
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -593,7 +622,7 @@ ModelImporter:
       takeName: SandCrabArmature|Stun
       internalID: -7612961226571039982
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
