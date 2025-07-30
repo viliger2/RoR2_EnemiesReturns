@@ -4,6 +4,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 {
@@ -12,11 +13,9 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
     {
         public static float baseDuration = 1.8f;
 
-        public static float soundTimer = 1.5f;
+        public static GameObject effectPrefab;
 
         private float duration;
-
-        private bool playedSound = false;
 
         public override void OnEnter()
         {
@@ -24,17 +23,28 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             duration = baseDuration / attackSpeedStat;
             base.characterDirection.moveVector = base.inputBank.aimDirection;
             PlayCrossfade("Gesture, Override", "DivePrep", "dive.playbackRate", duration, 0.1f);
+            Util.PlaySound("ER_Swift_PrepAttack_Play", gameObject);
+            var modelChildLocator = GetModelChildLocator();
+            if (modelChildLocator)
+            {
+                var beakTranform = modelChildLocator.FindChild("Beak");
+                if (beakTranform)
+                {
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
+                    {
+                        rootObject = base.gameObject,
+                        modelChildIndex = (short)modelChildLocator.FindChildIndex(beakTranform),
+                        origin = beakTranform.position,
+                        rotation = Quaternion.identity,
+                    }, false);
+                }
+            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             base.characterDirection.moveVector = base.inputBank.aimDirection;
-            if(fixedAge >= duration && !playedSound)
-            {
-                Util.PlaySound("ER_Swift_PrepAttack_Play", gameObject);
-                playedSound = true;
-            }
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Dive());

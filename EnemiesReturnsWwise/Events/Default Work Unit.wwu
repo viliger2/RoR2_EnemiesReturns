@@ -1764,12 +1764,12 @@
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="ER_Swift_GroundImpact_Play" ID="{2911F81B-A8E3-4849-84F8-D6B1DC914AAE}">
+								<Event Name="ER_Swift_AttackGroundImpact_Play" ID="{2911F81B-A8E3-4849-84F8-D6B1DC914AAE}">
 									<ChildrenList>
 										<Action Name="" ID="{8EBFB774-780D-4B2D-BC6B-DBC44164E99D}" ShortID="862002241">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Swift_GroundImpact" ID="{167631B1-419A-44DA-85DE-3F3739B16E29}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+													<ObjectRef Name="Swift_AttackGroundImpact" ID="{167631B1-419A-44DA-85DE-3F3739B16E29}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -1781,6 +1781,28 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="Swift_WingFlap" ID="{FDD1AFD1-5C39-4A3D-9A15-980381924264}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_Death_GroundImpact_Play" ID="{4885FCA0-32F8-4CD7-90A7-3FED596E0F8D}">
+									<ChildrenList>
+										<Action Name="" ID="{2A8525C2-E43B-4CEB-A158-8E76F36E1925}" ShortID="783615317">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DeathGroundImpact" ID="{5D8E0D81-5282-4C06-9AB4-1E2C120414F8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_AttackGroundEject_Play" ID="{6A01BB1E-AFE9-453A-9630-2D80033A1603}">
+									<ChildrenList>
+										<Action Name="" ID="{02AB55BD-3A82-416B-A9E2-47FFE95BAC49}" ShortID="609306279">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_AttackGroundEject" ID="{9A1B9CD2-308D-499A-9213-B5BD00CCE691}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>

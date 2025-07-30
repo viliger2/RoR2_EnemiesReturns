@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             characterMotor.moveDirection = Vector3.zero;
             characterDirection.moveVector = characterDirection.forward;
             PlayCrossfade("Gesture, Override", "DiveGround", "dive.playbackRate", duration, 0.1f);
-            Util.PlaySound("ER_Swift_GroundImpact_Play", gameObject);
+            Util.PlaySound("ER_Swift_AttackGroundImpact_Play", gameObject);
         }
 
         public override void FixedUpdate()

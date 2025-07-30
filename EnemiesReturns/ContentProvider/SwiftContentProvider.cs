@@ -17,6 +17,10 @@ namespace EnemiesReturns
             {
                 var swiftLog = Utils.CreateUnlockableDef("Logs.SwiftBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT");
 
+                var swiftStuff = new SwiftStuff();
+                ModdedEntityStates.Swift.Dive.DivePrep.effectPrefab = swiftStuff.CreateDiveChargeEffect(assets.First(effect => effect.name == "SwiftChargeDiveEffect"));
+                effectsList.Add(new RoR2.EffectDef(ModdedEntityStates.Swift.Dive.DivePrep.effectPrefab));
+
                 var swiftBody = new SwiftBody();
 
                 SwiftBody.Skills.Dive = swiftBody.CreateDiveSkill();

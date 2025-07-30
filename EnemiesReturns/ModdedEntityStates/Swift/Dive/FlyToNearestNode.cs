@@ -24,6 +24,11 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             base.OnEnter();
             var position = GetFootPosition();
             PlayAnimation("Body", "Jump");
+            var animator = GetModelAnimator();
+            if (animator)
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("FlyOverride"), 1);
+            }
 
             if (isAuthority)
             {

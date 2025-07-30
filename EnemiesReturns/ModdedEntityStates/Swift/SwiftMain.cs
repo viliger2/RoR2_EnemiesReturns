@@ -7,6 +7,20 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
     [RegisterEntityState]
     public class SwiftMain : GenericCharacterMain
     {
+        private int flyOverideLayer;
+
+        private Animator animator;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            animator = GetModelAnimator();
+            if (animator)
+            {
+                flyOverideLayer = animator.GetLayerIndex("FlyOverride");
+            }
+        }
+
         public override void Update()
         {
             base.Update();
@@ -16,6 +30,19 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
                 {
                     this.outer.SetInterruptState(new DuckDancePlayer(), InterruptPriority.Any);
                 }
+            }
+            if (characterBody && animator)
+            {
+                animator.SetLayerWeight(flyOverideLayer, characterBody.isFlying ? 1 : 0);
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (animator)
+            {
+                animator.SetLayerWeight(flyOverideLayer, 0);
             }
         }
     }

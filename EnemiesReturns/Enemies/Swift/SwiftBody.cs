@@ -135,7 +135,7 @@ namespace EnemiesReturns.Enemies.Swift
 
         protected override ICharacterDeathBehavior.CharacterDeathBehaviorParams CharacterDeathBehaviorParams()
         {
-            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(EntityStates.Vulture.FallingDeath)));
+            return new ICharacterDeathBehavior.CharacterDeathBehaviorParams("Body", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.DeathState)));
         }
 
         protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
