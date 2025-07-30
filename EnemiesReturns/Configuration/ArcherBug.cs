@@ -12,6 +12,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
         public static ConfigEntry<string> DefaultStageList;
+        public static ConfigEntry<string> JungleStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -58,22 +59,28 @@ namespace EnemiesReturns.Configuration
             CausticSpitProjectileSpread = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Spread", 20f, "Archer Bug's Caustic Spit projectile spread, basically angle between projectiles.");
             CausitcSpitProjectileCount = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Count", 3, "Archer Bug's Caustic Spit projectile count.");
 
-            ArcherBug.DefaultStageList = config.Bind("Archer Bug Director", "Default Variant Stage List",
+            DefaultStageList = config.Bind("Archer Bug Director", "Default Variant Stage List",
                 string.Join(
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuary),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuarySimulacrum),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TreebornColony),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ScorchedAcres),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     "snowtime_gmconstruct",
                     "snowtime_sandtrap",
                     "snowtime_gmflatgrass"
                     ),
                 "Stages that Default Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            JungleStageList = config.Bind("Archer Bug Director", "Jungle Variant Stage List",
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall)
+                    ),
+                "Stages that Jungle Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BuckBumbleKey = config.Bind("Buck Bumble", "Buck Bumble", KeyCode.Alpha1, "Mah bassy madde ooh la de DE.");
         }

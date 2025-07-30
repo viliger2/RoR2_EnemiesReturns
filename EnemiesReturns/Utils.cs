@@ -88,7 +88,7 @@ namespace EnemiesReturns
             }
         }
 
-        public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
+        public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null, SkinDefParams.MeshReplacement[] meshReplacements = null)
         {
             var skinDef = ScriptableObject.CreateInstance<SkinDef>();
             (skinDef as ScriptableObject).name = name;
@@ -110,6 +110,10 @@ namespace EnemiesReturns
                     gameObject = item,
                     shouldActivate = true
                 });
+            }
+            if (meshReplacements != null)
+            {
+                skinDefParams.meshReplacements = meshReplacements;
             }
             skinDef.skinDefParams = skinDefParams;
 

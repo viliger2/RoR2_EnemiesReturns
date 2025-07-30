@@ -31,14 +31,18 @@ namespace EnemiesReturns.Enemies.ArcherBug
         public struct SkinDefs
         {
             public static SkinDef Default;
+            public static SkinDef Jungle;
         }
 
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscArcherBugDefault;
+            public static CharacterSpawnCard cscArcherBugJungle;
         }
 
         public static GameObject BodyPrefab;
+
+        public static GameObject StadiaJungleMeshPrefab;
 
         protected override bool AddFootstepHandler => false;
 
@@ -211,7 +215,45 @@ namespace EnemiesReturns.Enemies.ArcherBug
             };
             SkinDefs.Default = Utils.CreateSkinDef("skinArcherBugDefault", modelPrefab, defaultRender);
 
-            return new SkinDef[] { SkinDefs.Default };
+            CharacterModel.RendererInfo[] jungleRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = bugBodyRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matArcherBugBodyStadiaJungle"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = bugWingsRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matArcherBugWingStadiaJungle"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+            };
+
+            SkinDefParams.MeshReplacement[] meshReplacements = new SkinDefParams.MeshReplacement[]
+            {
+                new SkinDefParams.MeshReplacement
+                {
+                    renderer = bugBodyRenderer,
+                    meshAddress = new AssetReferenceT<Mesh>(""),
+                    mesh = StadiaJungleMeshPrefab.transform.Find("Bug").gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh
+                },
+                new SkinDefParams.MeshReplacement
+                {
+                    renderer = bugWingsRenderer,
+                    meshAddress = new AssetReferenceT<Mesh>(""),
+                    mesh = StadiaJungleMeshPrefab.transform.Find("Wings").gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh
+                },
+            };
+
+            SkinDefs.Jungle = Utils.CreateSkinDef("skinArcherBugJungle", modelPrefab, jungleRender, SkinDefs.Default, null, meshReplacements);
+
+            return new SkinDef[] { SkinDefs.Default, SkinDefs.Jungle };
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()

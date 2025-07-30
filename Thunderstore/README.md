@@ -146,8 +146,9 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 <details>
 <summary>Archer Bug</summary>
 
-* Model, rigging, animations and code by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Model, texturing, rigging, animations and code by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
 * Additional code by [viliger](https://thunderstore.io/package/viliger/)
+* Jungle variant texturing by Synodii
 * Majority of sounds come from RoRR.
 </details>
 <details>

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e7367b92c4c56e54abf25e3ccd9eb5b9
+guid: 86176cc46d7f83540b0b13c51a2b6507
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -119,5 +119,5 @@ TextureImporter:
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: enemiesreturns
+  assetBundleName: 
   assetBundleVariant: 
