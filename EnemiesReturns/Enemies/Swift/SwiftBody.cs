@@ -19,7 +19,6 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Enemies.Swift
 {
-    // TODO: try freshnel on swifts, to give them smooth\glow effect
     public class SwiftBody : BodyBase
     {
         public struct Skills
@@ -168,7 +167,7 @@ namespace EnemiesReturns.Enemies.Swift
                 new IEntityStateMachine.EntityStateMachineParams
                 {
                     name = "Body",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.GenericSpawnState)),
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.SpawnState)),
                     mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.SwiftMain))
                 },
                 new IEntityStateMachine.EntityStateMachineParams
@@ -234,12 +233,12 @@ namespace EnemiesReturns.Enemies.Swift
             };
         }
 
-        protected override ItemDisplayRuleSet ItemDisplayRuleSet()
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
         {
-            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
-            (idrs as ScriptableObject).name = "idrsSwift";
-
-            return idrs;
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_Swift_Death_PLay"
+            };
         }
 
         protected override string ModelName() => "mdlSwift";
@@ -255,5 +254,13 @@ namespace EnemiesReturns.Enemies.Swift
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Golem/sdGolem.asset").WaitForCompletion();
+
+        protected override ItemDisplayRuleSet ItemDisplayRuleSet()
+        {
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            (idrs as ScriptableObject).name = "idrsSwift";
+
+            return idrs;
+        }
     }
 }

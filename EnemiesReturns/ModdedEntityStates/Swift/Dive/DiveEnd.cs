@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             characterMotor.moveDirection = Vector3.zero;
             characterDirection.moveVector = characterDirection.forward;
             PlayCrossfade("Gesture, Override", "DiveGround", "dive.playbackRate", duration, 0.1f);
+            Util.PlaySound("ER_Swift_GroundImpact_Play", gameObject);
         }
 
         public override void FixedUpdate()

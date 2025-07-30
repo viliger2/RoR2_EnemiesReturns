@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,11 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
     {
         public static float baseDuration = 1.8f;
 
+        public static float soundTimer = 1.5f;
+
         private float duration;
+
+        private bool playedSound = false;
 
         public override void OnEnter()
         {
@@ -25,6 +30,11 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
         {
             base.FixedUpdate();
             base.characterDirection.moveVector = base.inputBank.aimDirection;
+            if(fixedAge >= duration && !playedSound)
+            {
+                Util.PlaySound("ER_Swift_PrepAttack_Play", gameObject);
+                playedSound = true;
+            }
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextState(new Dive());
