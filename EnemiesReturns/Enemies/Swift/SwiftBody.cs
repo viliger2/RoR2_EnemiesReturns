@@ -19,6 +19,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Enemies.Swift
 {
+    // TODO: try freshnel on swifts, to give them smooth\glow effect
     public class SwiftBody : BodyBase
     {
         public struct Skills
