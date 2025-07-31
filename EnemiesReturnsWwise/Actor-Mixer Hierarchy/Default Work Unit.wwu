@@ -5675,6 +5675,36 @@
 														<ActiveSource Name="wGolemB_Shoot_2" ID="{A9AB7AE0-1539-4650-9195-D264AE52DED2}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Sound Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" ShortID="327472240">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="dive_loop" ID="{C824BBE5-3009-417F-A0AF-3ACB796E0111}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\dive_loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="171395394"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="dive_loop" ID="{C824BBE5-3009-417F-A0AF-3ACB796E0111}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</ActorMixer>
 									</ChildrenList>

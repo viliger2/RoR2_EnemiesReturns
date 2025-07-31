@@ -1808,6 +1808,31 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Swift_DiveLoop_Play" ID="{9C292D93-D854-4E1B-8A1B-45093ED711FC}">
+									<ChildrenList>
+										<Action Name="" ID="{4C817690-D4A6-4BDC-9541-57C69E32CB3A}" ShortID="270464328">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_DiveLoop_Stop" ID="{D74E3BC6-2624-4347-B0D0-5ED3FF2715F7}">
+									<ChildrenList>
+										<Action Name="" ID="{4F03B36E-7230-4ABE-8173-17B6F9D00B7C}" ShortID="52440899">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

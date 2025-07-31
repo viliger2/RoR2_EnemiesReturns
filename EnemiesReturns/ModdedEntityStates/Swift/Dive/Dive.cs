@@ -5,23 +5,26 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 {
     [RegisterEntityState]
     public class Dive : BaseState
     {
-        public static float maxDuration = 3.5f; // TODO
+        public static float maxDuration => Configuration.Swift.DiveMaxDuration.Value; 
 
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient => Configuration.Swift.DiveDamage.Value;
 
         public static float turnSmoothTime = 1f;
 
-        public static float turnSpeed = 200f;
+        public static float turnSpeed => Configuration.Swift.DiveTurnSpeed.Value;
 
-        public static float diveSpeedCoefficient = 6f;
+        public static float diveSpeedCoefficient => Configuration.Swift.DiveSpeedCoefficient.Value;
 
         public static float acceleration = 360f;
+
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.OmniImpactVFX_prefab).WaitForCompletion();
 
         private OverlapAttack diveAttack;
 
@@ -50,6 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             {
                 sphereCheckTransform = transform;
             }
+            Util.PlaySound("ER_Swift_DiveLoop_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -87,6 +91,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 speedLines.gameObject.SetActive(false);
             }
             PlayAnimation("Gesture, Override", "BufferEmpty");
+            Util.PlaySound("ER_Swift_DiveLoop_Stop", base.gameObject);
         }
 
         private OverlapAttack SetupOverlapAttack()
@@ -96,7 +101,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             attack.inflictor = gameObject;
             attack.teamIndex = TeamComponent.GetObjectTeam(gameObject);
             attack.damage = damageStat * damageCoefficient;
-            //attack.hitEffectPrefab = ; TODO
+            attack.hitEffectPrefab = hitEffectPrefab;
             attack.isCrit = RollCrit();
             attack.damageType = DamageTypeCombo.GenericPrimary;
             var modelTransform = GetModelTransform();

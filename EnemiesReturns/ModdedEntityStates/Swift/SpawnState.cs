@@ -3,6 +3,7 @@ using EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift
 {
@@ -15,6 +16,12 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             spawnSoundString = "ER_Swift_Spawn_Play";
 
             base.OnEnter();
+
+            var animator = GetModelAnimator();
+            if (animator)
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("FlyOverride"), 0f);
+            }
         }
     }
 }

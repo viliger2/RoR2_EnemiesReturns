@@ -13,6 +13,8 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
     {
         public static float baseDuration = 2.6f;
 
+        public static GameObject effectPrefab;
+
         private float duration;
 
         public override void OnEnter()
@@ -23,6 +25,12 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             characterDirection.moveVector = characterDirection.forward;
             PlayCrossfade("Gesture, Override", "DiveGround", "dive.playbackRate", duration, 0.1f);
             Util.PlaySound("ER_Swift_AttackGroundImpact_Play", gameObject);
+            var effectPosition = FindModelChild("ImpactEffectMuzzle");
+            if (!effectPosition)
+            {
+                effectPosition = base.transform;
+            }
+            EffectManager.SimpleEffect(effectPrefab, effectPosition.position, Quaternion.identity, false);
         }
 
         public override void FixedUpdate()

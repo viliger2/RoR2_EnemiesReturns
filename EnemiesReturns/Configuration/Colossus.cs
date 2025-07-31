@@ -101,7 +101,7 @@ namespace EnemiesReturns.Configuration
             Colossus.DefaultStageList = config.Bind("Colossus Director", "Default Variant Stage List",
                 string.Join(
                     ",",
-                    ""
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GildedCoast)
                 ),
                 "Stages that Default Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Colossus.SkyMeadowStageList = config.Bind("Colossus Director", "Sky Meadow Variant Stage List",
