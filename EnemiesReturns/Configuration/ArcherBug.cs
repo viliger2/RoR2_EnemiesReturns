@@ -68,6 +68,9 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ScorchedAcres),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_AphelianSanctuary_Theme),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_ScorchedAcres_Theme),
                     "snowtime_gmconstruct",
                     "snowtime_sandtrap",
                     "snowtime_gmflatgrass"
