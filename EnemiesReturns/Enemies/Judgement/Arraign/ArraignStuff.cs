@@ -9,10 +9,6 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
     public class ArraignStuff
     {
-        public static GameObject P1BodyPrefab;
-
-        public static GameObject P1MasterPrefab;
-
         public GameObject SetupLightningStrikePrefab(GameObject projectilePrefab)
         {
             var fxTransform = projectilePrefab.transform.Find("TeamIndicator");

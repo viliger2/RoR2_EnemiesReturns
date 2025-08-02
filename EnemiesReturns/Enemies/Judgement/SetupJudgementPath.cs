@@ -30,10 +30,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static MasterCatalog.MasterIndex ArraignP2MasterIndex;
 
-        public static BodyIndex ArraignP1BodyIndex;
-
-        public static BodyIndex ArraignP2BodyIndex;
-
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
         [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
@@ -51,9 +47,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
             ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
             ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
-
-            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
-            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
 
             AddAeonianAnointedItemDisplays();
 

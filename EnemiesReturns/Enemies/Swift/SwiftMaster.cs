@@ -39,6 +39,9 @@ namespace EnemiesReturns.Enemies.Swift
                     maxDistance = 30f,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
+                    activationRequiresAimConfirmation = true,
+                    activationRequiresTargetLoS = true,
+                    activationRequiresAimTargetLoS = true,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },
                 new IAISkillDriver.AISkillDriverParams("PathFromAfar")
