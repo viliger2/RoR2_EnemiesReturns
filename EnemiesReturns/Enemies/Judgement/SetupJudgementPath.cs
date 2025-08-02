@@ -61,6 +61,10 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignDamageController.AddBodyToArmorBypass(BodyCatalog.FindBodyIndex("BrotherHurtBody"));
 
             EnemiesReturns.Equipment.MithrixHammer.MithrixHammerOnDamageDealtServerReciever.AddWhitelistedBodies();
+
+            var idrsArraign = ArraignBody.CreateIDRS();
+            ArraignBody.ArraignP1Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
+            ArraignBody.ArraignP2Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
         }
 
         private static void AddAeonianAnointedItemDisplays()

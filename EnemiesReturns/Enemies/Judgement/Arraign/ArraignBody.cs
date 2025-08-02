@@ -1,7 +1,9 @@
 ﻿using EnemiesReturns.Configuration.Judgement;
+using HG;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
@@ -42,6 +44,36 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             public static SkillDef ClockAttack;
 
             public static SkillDef SummonSkyLaser;
+        }
+
+        public static ItemDisplayRuleSet CreateIDRS()
+        {
+            var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            (idrs as ScriptableObject).name = "idrsArraign";
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0F, 0.19826F, 0.02128F),
+                    localAngles = new Vector3(354.6417F, 0F, 0F),
+                    localScale = new Vector3(0.09988F, 0.10159F, 0.10159F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
+                });
+            }
+            #endregion
+
+            return idrs;
         }
 
         public static GameObject SetupP1Body(GameObject bodyPrefab)

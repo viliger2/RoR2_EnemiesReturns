@@ -811,6 +811,40 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             }
             #endregion
 
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "BodyTop",
+                    localPos = new Vector3(-1.05297F, 0.35721F, 0.0011F),
+                    localAngles = new Vector3(0.07354F, 359.789F, 45.20722F),
+                    localScale = new Vector3(0.94643F, 0.94643F, 0.94643F),
+                    limbMask = LimbFlags.None
+                });
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "ShamanHead",
+                    localPos = new Vector3(0F, 0.23787F, 0.00319F),
+                    localAngles = new Vector3(0F, 0F, 0F),
+                    localScale = new Vector3(0.12214F, 0.17446F, 0.12214F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
+                });
+            }
+            #endregion
+
             return idrs;
         }
 

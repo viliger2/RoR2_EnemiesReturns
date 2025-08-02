@@ -150,6 +150,8 @@ namespace EnemiesReturns
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
+                CreatePartyHat(assets);
+
                 CreateSpitter(assets, iconLookup);
 
                 CreateColossus(assets, iconLookup, acdLookup);

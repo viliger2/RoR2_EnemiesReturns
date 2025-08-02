@@ -567,7 +567,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
             #region AeonianElite
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
-
                 var displayRuleGroupAeonian = new DisplayRuleGroup();
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
@@ -585,6 +584,29 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 {
                     displayRuleGroup = displayRuleGroupAeonian,
                     keyAsset = Content.Equipment.EliteAeonian
+                });
+            }
+            #endregion
+
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.0086F, 0.4594F, -0.35924F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
                 });
             }
             #endregion

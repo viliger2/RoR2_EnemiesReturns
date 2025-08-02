@@ -42,6 +42,8 @@ namespace EnemiesReturns
             public static ItemDef LunarFlower;
 
             public static ItemDef HiddenAnointed;
+
+            public static ItemDef PartyHat;
         }
 
         public static class ItemRelationshipProviders
@@ -53,7 +55,7 @@ namespace EnemiesReturns
         {
             public static EquipmentDef MithrixHammer;
 
-            public static EquipmentDef EliteAeonian; // TODO: implement movespeed and attackspeed reduction immunity, maybe stun immnunity
+            public static EquipmentDef EliteAeonian;
         }
 
         public static class Buffs
