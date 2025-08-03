@@ -38,18 +38,24 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 {
                     var nodeIndex = airNodes.FindClosestNode(transform.position, characterBody.hullClassification);
                     flag = nodeIndex != RoR2.Navigation.NodeGraph.NodeIndex.invalid && airNodes.GetNodePosition(nodeIndex, out targetPosition);
-                }
-                if (!flag)
-                {
-                    outer.SetNextStateToMain();
-                    return;
+                    if (flag) {
+                        var nodes = airNodes.FindNodesInRange(targetPosition, 0f, 20f, HullMask.Human);
+                        if (nodes.Count > 0)
+                        {
+                            flag = airNodes.GetNodePosition(nodes[UnityEngine.Random.Range(0, nodes.Count)], out targetPosition);
+                        }
+                    }
                 }
                 if (characterMotor)
                 {
                     characterMotor.velocity.y = launchSpeed;
                     characterMotor.Motor.ForceUnground();
                 }
-
+                if (!flag)
+                {
+                    outer.SetNextStateToMain();
+                    return;
+                }
                 var vector = targetPosition - position;
                 var speed = moveSpeedStat * speedMultiplier;
                 duration = vector.magnitude / speed;

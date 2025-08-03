@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
     [RegisterEntityState]
     public class DivePrep : BaseState
     {
-        public static float baseDuration = 1.8f;
+        public static float baseDuration = 1.3f;
 
         public static GameObject effectPrefab;
 
@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             base.characterDirection.moveVector = base.inputBank.aimDirection;
-            PlayCrossfade("Gesture, Override", "DivePrep", "dive.playbackRate", duration, 0.1f);
+            PlayCrossfade("Gesture, Override", "DivePrep", 0.1f);
             Util.PlaySound("ER_Swift_PrepAttack_Play", gameObject);
             var modelChildLocator = GetModelChildLocator();
             if (modelChildLocator)
