@@ -38,7 +38,7 @@ namespace EnemiesReturns.Configuration
         {
             Enabled = config.Bind("Swift Director", "Enable Swift", true, "Enables Swift.");
             SelectionWeight = config.Bind("Swift Director", "Selection Weight", 1, "Selection weight of Swift.");
-            MinimumStageCompletion = config.Bind("Swift Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning."); // TODO: fix to 1 after gameplay test
+            MinimumStageCompletion = config.Bind("Swift Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Swift Director", "Director Cost", 32, "Director cost of Swift.");
             DefaultStageList = config.Bind("Swift Director", "Default Variant Stage List",
                 string.Join
@@ -54,10 +54,7 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_AphelianSanctuary_Theme),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PrimeMeridian),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
-
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes), // TODO: potentially remove
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                 ),
                 "Stages that Default Swift appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

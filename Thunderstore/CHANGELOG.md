@@ -1,4 +1,21 @@
 <details>
+<summary>0.6.3</summary>
+
+* Added new Small-tier monster: Swift.
+* Added appropriate monsters to Gilded Coast, Meridian and Artifact Reliquary (all variants).
+* Archer Bug
+  * Scaled size down by roughly 10%.
+  * Added new Archer Bug variant courtesy of Synodii.
+    * It spawns on Sundered Grove and Siren's Call.
+* Ifrit
+  * Pillar now has post processing and its light drops shadows. Pillars spawned by players are unaffected by these changes.
+* Judgement
+  * Added chat messages on item selection.
+* Party time!
+  * _It has been a year since first version of EnemiesReturns has been released. We would like to thank everyone who downloaded and played the mod, gave feedback and talked about it, it means a lot to us. To commemorate the occasion we added party mode to all added enemies that occurs every year on 4th of August. We hope to bring you more content in the upcoming year._
+  * <img src="https://files.catbox.moe/64y9xf.jpg" alt="Thank you!">
+</details>
+<details>
 <summary>0.5.21</summary>
 
 * Judgement
@@ -6,7 +23,6 @@
   * Added Stone Titan to enemy blacklist.
   * There aren't any more rains down in Africa.
 </details>
-
 <details>
 <summary>0.5.20</summary>
 

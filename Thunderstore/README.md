@@ -33,6 +33,12 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
 		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a></td>
 	</tr>	
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>
+		<td>Swift</td>
+		<td>Stones...Flying stones!</td>
+		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest</td>
+	</tr>	
 	<thead>
 		<tr>
 			<th>Medium Enemies</th>
@@ -170,8 +176,22 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Godzilla atomic breath 2014-2019 sound effect - https://www.youtube.com/watch?v=ISqg6CRPsOI
 * The Origin - Eviternity II OST (MAP30) - https://www.youtube.com/watch?v=n1C2Qp4GIss
 </details>
-- Special thanks to 
+<details>
+<summary>Swift</summary>
 
+* Animations by Sentinel
+* Modeling and rigging by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Texturing by Hyperinvox
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from RoRR.
+* Dragon Wing Flap - https://pixabay.com/sound-effects/dragon-wing-flap-81642/
+* Fast Body Fall Impact - https://pixabay.com/ru/sound-effects/fast-body-fall-impact-352725/
+* stone on stone - https://pixabay.com/ru/sound-effects/stone-on-stone-62692/
+* Car interior sound - https://pixabay.com/sound-effects/car-interior-sound-246025/
+* Wind Sound - https://pixabay.com/sound-effects/wind-sound-301491/
+</details>
+
+Special thanks to 
 * [Moffein](https://thunderstore.io/package/Moffein/) - balance and design help
 * [rob](https://thunderstore.io/package/rob_gaming/) - the fun guy
 * [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/) - explaining how to make landing animation work
@@ -182,3 +202,5 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 	* es-ES by Manuerth
 	
 If you would like to support us, you can do it [here](https://www.youtube.com/watch?v=Cx3a0bos8aY).
+
+[![lmaogotem](https://help.ko-fi.com/hc/article_attachments/11833788361117)](https://www.youtube.com/watch?v=Cx3a0bos8aY "Donate")
