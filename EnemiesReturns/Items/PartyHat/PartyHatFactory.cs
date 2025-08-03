@@ -14,7 +14,7 @@ namespace EnemiesReturns.Items.PartyHat
         public static bool ShouldThrowParty()
         {
             return (Configuration.General.PartyTimeConfig.Value == Configuration.General.PartyTime.Default
-                && System.DateTime.Now.Month == 8 && System.DateTime.Now.Day == 3)
+                && System.DateTime.Now.Month == 8 && System.DateTime.Now.Day == 4)
                 || Configuration.General.PartyTimeConfig.Value == Configuration.General.PartyTime.AllYear;
         }
 
