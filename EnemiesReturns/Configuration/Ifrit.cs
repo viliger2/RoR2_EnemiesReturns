@@ -114,7 +114,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 2.5f, "Ifrit's Flame Charge body contact damage.");
             Ifrit.FlameChargeForce = config.Bind("Ifrit Flame Charge", "Flame Charge Body Force", 5000f, "Ifrit's Flame Charge body contact force.");
             Ifrit.FlameChargeProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Body Proc Coefficient", 1f, "Ifrit's Flame Charge body contact proc coefficient.");
-            Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.4f, "Ifrit's Flame Charge flame damage.");
+            Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.625f, "Ifrit's Flame Charge flame damage.");
             Ifrit.FlameChargeFlameIgniteChance = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Ignite Chance", 100f, "Ifrit's Flame Charge flame ignite chance.");
             Ifrit.FlameChargeFlameForce = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Force", 0f, "Ifrit's Flame Charge flame force.");
             Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 4f, "How many times per second Ifrit's Flame Charge flame deal damage.");

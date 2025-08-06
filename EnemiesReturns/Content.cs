@@ -15,7 +15,9 @@ namespace EnemiesReturns
         public static class MusicTracks
         {
             public static MusicTrackDef Unknown;
+
             public static MusicTrackDef UnknownBoss;
+
             public static MusicTrackDef TheOrigin;
         }
 
