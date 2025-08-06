@@ -56,7 +56,7 @@ namespace EnemiesReturns.Configuration
             CausticSpitProcCoefficient = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Proc Coefficient", 1f, "Archer Bug's Caustic Spit proc coefficient.");
             CausticSpitForce = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Force", 0f, "Archer Bug's Caustic Spit force.");
             CausticSpitBlastRadius = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Blast Radius", 2f, "Archer Bug's Caustic Spit blast radius.");
-            CausticSpitProjectileSpread = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Spread", 20f, "Archer Bug's Caustic Spit projectile spread, basically angle between projectiles.");
+            CausticSpitProjectileSpread = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Spread", 25f, "Archer Bug's Caustic Spit projectile spread, basically angle between projectiles.");
             CausitcSpitProjectileCount = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Count", 3, "Archer Bug's Caustic Spit projectile count.");
 
             DefaultStageList = config.Bind("Archer Bug Director", "Default Variant Stage List",

@@ -27,7 +27,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 activationRequiresTargetLoS = true,
                 movementType = AISkillDriver.MovementType.Stop,
                 aimType = AISkillDriver.AimType.AtCurrentEnemy,
-                driverUpdateTimerOverride = 0.75f,
+                driverUpdateTimerOverride = 1f,
                 noRepeat = true
             };
             return new IAISkillDriver.AISkillDriverParams[]
