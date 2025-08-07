@@ -117,7 +117,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             if (body && NetworkServer.active)
             {
                 EntityStateMachine.FindByCustomName(body.gameObject, "Body")?.SetState(new ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman());
-            }
+            }            
         }
     }
 }
