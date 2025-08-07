@@ -16,6 +16,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<bool> HelminthroostReplaceMushrum;
 
         public static ConfigEntry<string> DefaultStageList;
+        public static ConfigEntry<string> RallypointStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -45,7 +46,6 @@ namespace EnemiesReturns.Configuration
                 (
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DistantRoost),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GildedCoast),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuary),
@@ -57,6 +57,14 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
                 ),
                 "Stages that Default Swift appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            RallypointStageList = config.Bind("Swift Director", "Rallypoint Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta)
+                ),
+                "Stages that Rallypint Swift appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command. I would not recommend putting this variant anywhere else since it was specifically made to be garish so it stands out on Rallypoint Delta against the walls and containers due to very \"special\" Rallypoint post proccessing.");
 
             BaseMaxHealth = config.Bind("Swift Character Stats", "Base Max Health", 200f, "Swift's base health.");
             BaseMoveSpeed = config.Bind("Swift Character Stats", "Base Movement Speed", 7f, "Swift's base movement speed.");

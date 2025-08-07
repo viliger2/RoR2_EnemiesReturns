@@ -82,7 +82,7 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.LynxTribe.Totem.TotemBody.SpawnCards.cscLynxTotemDefault, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
-        [ConCommand(commandName = "returns_spawn_archerbugs", flags = ConVarFlags.None, helpText = "Spawns all Archer Bugs variants")]
+        [ConCommand(commandName = "returns_spawn_archerbugs", flags = ConVarFlags.None, helpText = "Spawns all Archer Bug variants")]
         private static void CCSpawnArcherBugs(ConCommandArgs args)
         {
             var localPlayers = LocalUserManager.readOnlyLocalUsersList;
@@ -90,6 +90,16 @@ namespace EnemiesReturns
 
             SpawnMonster(Enemies.ArcherBug.ArcherBugBody.SpawnCards.cscArcherBugDefault, localPlayer.modelLocator.modelBaseTransform.position);
             SpawnMonster(Enemies.ArcherBug.ArcherBugBody.SpawnCards.cscArcherBugJungle, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
+        [ConCommand(commandName = "returns_spawn_swifts", flags = ConVarFlags.None, helpText = "Spawns all Swift variants")]
+        private static void CCSpawnSwifts(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.Swift.SwiftBody.SpawnCards.cscSwiftDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.Swift.SwiftBody.SpawnCards.cscSwiftRallypoint, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
         [ConCommand(commandName = "returns_outoftime_test", flags = ConVarFlags.None)]

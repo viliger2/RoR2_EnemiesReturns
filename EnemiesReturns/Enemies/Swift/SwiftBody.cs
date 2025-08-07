@@ -35,11 +35,15 @@ namespace EnemiesReturns.Enemies.Swift
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscSwiftDefault;
+
+            public static CharacterSpawnCard cscSwiftRallypoint;
         }
 
         public struct SkinDefs
         {
             public static SkinDef Default;
+
+            public static SkinDef RallypointDelta;
         }
 
         protected override bool AddHitBoxes => true;
@@ -117,14 +121,13 @@ namespace EnemiesReturns.Enemies.Swift
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
             var modelRenderer = modelPrefab.transform.Find("MeshSwift").gameObject.GetComponent<SkinnedMeshRenderer>();
-            modelRenderer.material.SetTexture("_PrintRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampHuntressSoft2_png).WaitForCompletion());
 
             CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    defaultMaterial = modelRenderer.material,
+                    defaultMaterial = ContentProvider.CreateAndReplaceMaterial("matSwift", SwiftStuff.ModifySwiftMaterial),
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
@@ -146,14 +149,13 @@ namespace EnemiesReturns.Enemies.Swift
         protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
         {
             var modelRenderer = modelPrefab.transform.Find("MeshSwift").gameObject.GetComponent<SkinnedMeshRenderer>();
-            modelRenderer.material.SetTexture("_PrintRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampHuntressSoft2_png).WaitForCompletion());
 
             CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
                 {
                     renderer = modelRenderer,
-                    defaultMaterial = modelRenderer.material,
+                    defaultMaterial = ContentProvider.CreateAndReplaceMaterial("matSwift", SwiftStuff.ModifySwiftMaterial),
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
@@ -162,7 +164,21 @@ namespace EnemiesReturns.Enemies.Swift
 
             SkinDefs.Default = Utils.CreateSkinDef("skinSwiftDefault", modelPrefab, defaultRender);
 
-            return new SkinDef[] { SkinDefs.Default };
+            CharacterModel.RendererInfo[] rallyPointRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = modelRenderer,
+                    defaultMaterial = ContentProvider.CreateAndReplaceMaterial("matSwiftRallypoint", SwiftStuff.ModifySwiftMaterial),
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                }
+            };
+
+            SkinDefs.RallypointDelta = Utils.CreateSkinDef("skinSwiftRallypoint", modelPrefab, rallyPointRender, SkinDefs.Default);
+
+            return new SkinDef[] { SkinDefs.Default, SkinDefs.RallypointDelta };
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()

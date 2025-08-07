@@ -33,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             }
             if (characterBody && animator)
             {
-                animator.SetLayerWeight(flyOverideLayer, characterBody.isFlying ? 1 : 0);
+                animator.SetLayerWeight(flyOverideLayer, base.characterMotor.isGrounded ? 0 : 1);
             }
         }
 

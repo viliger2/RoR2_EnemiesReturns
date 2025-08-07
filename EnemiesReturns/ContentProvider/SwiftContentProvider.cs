@@ -56,6 +56,22 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
                 };
                 Utils.AddMonsterToStages(Configuration.Swift.DefaultStageList.Value, dchSwiftDefault);
+
+                SwiftBody.SpawnCards.cscSwiftRallypoint = swiftBody.CreateCard("cscSwiftRallypoint", SwiftMaster.MasterPrefab, SwiftBody.SkinDefs.RallypointDelta, SwiftBody.BodyPrefab);
+                var dcSwiftRallypoint = new DirectorCard
+                {
+                    spawnCard = SwiftBody.SpawnCards.cscSwiftRallypoint,
+                    selectionWeight = Configuration.Swift.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    preventOverhead = true,
+                    minimumStageCompletions = Configuration.Swift.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchSwiftRallypoint = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSwiftRallypoint,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStages(Configuration.Swift.RallypointStageList.Value, dchSwiftRallypoint);
             }
         }
     }

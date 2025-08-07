@@ -10,6 +10,14 @@ namespace EnemiesReturns.Enemies.Swift
 {
     public class SwiftStuff
     {
+        public static Material ModifySwiftMaterial(Material swiftMaterial)
+        {
+            swiftMaterial.SetTexture("_FresnelRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampStealthRevealed_png).WaitForCompletion());
+            swiftMaterial.SetTexture("_PrintRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampHuntressSoft2_png).WaitForCompletion());
+
+            return swiftMaterial;
+        }
+
         public GameObject CreateDiveChargeEffect(GameObject effectPrefab)
         {
             var effectComponent = effectPrefab.AddComponent<EffectComponent>();
