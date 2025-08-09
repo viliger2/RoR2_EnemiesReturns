@@ -20,7 +20,6 @@ namespace EnemiesReturns.Configuration
             AllYear
         }
 
-
         public static void PopulateConfig(ConfigFile config)
         {
 #if DEBUG || NOWEAVER

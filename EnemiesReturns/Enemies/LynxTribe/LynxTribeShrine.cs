@@ -9,7 +9,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     // TODO: implement item text on ping in chat
     // this would require somewhat complex il hook that I am not willing to do, so no chat message for now
-    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
+    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable, IDisplayNameProvider
     {
         public GameObject shrineUseEffect;
 
@@ -186,6 +186,13 @@ namespace EnemiesReturns.Enemies.LynxTribe
         public string GetContextString([NotNull] Interactor activator)
         {
             return RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT");
+        }
+
+        public string GetDisplayName()
+        {
+            var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+            var itemString = Util.GenerateColoredString(RoR2.Language.GetString(pickupDef.nameToken) ?? "???", pickupDef.baseColor);
+            return string.Format(RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME_WITH_ITEM"), RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME"), itemString);
         }
 
         public Interactability GetInteractability([NotNull] Interactor activator)
