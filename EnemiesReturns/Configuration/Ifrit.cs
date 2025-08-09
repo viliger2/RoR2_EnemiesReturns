@@ -111,7 +111,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.FlameChargeCooldown = config.Bind("Ifrit Flame Charge", "Flame Charge Cooldown", 15f, "Ifrit's Flame Charge cooldown.");
             Ifrit.FlameChargeDuration = config.Bind("Ifrit Flame Charge", "Flame Charge Duration", 5f, "Ifrit's Flame Charge duration.");
             Ifrit.FlameChargeSpeedCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Movement Speed Multiplier", 2f, "Ifrit's Flame Charge speed multiplier.");
-            Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 2.5f, "Ifrit's Flame Charge body contact damage.");
+            Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 1.875f, "Ifrit's Flame Charge body contact damage.");
             Ifrit.FlameChargeForce = config.Bind("Ifrit Flame Charge", "Flame Charge Body Force", 5000f, "Ifrit's Flame Charge body contact force.");
             Ifrit.FlameChargeProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Body Proc Coefficient", 1f, "Ifrit's Flame Charge body contact proc coefficient.");
             Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.625f, "Ifrit's Flame Charge flame damage.");
