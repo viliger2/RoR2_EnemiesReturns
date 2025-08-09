@@ -120,7 +120,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 4f, "How many times per second Ifrit's Flame Charge flame deal damage.");
             Ifrit.FlameChargeFlameProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Proc Coefficient", 0.2f, "Ifrit's Flame Charge flame proc coefficient.");
             Ifrit.FlameChargeHeighCheck = config.Bind("Ifrit Flame Charge", "Flame Charge Height Check", 50f, "Checks for falls in front of Ifrit and stops his so he wouldn't yeet himself off cliffs. Set it above 1000 to basically disable the functionality.");
-            FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 200f, "Ifrit's Flame Charge turn speed.");
+            FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 160f, "Ifrit's Flame Charge turn speed.");
 
             Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
             Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 9f, "Ifrit's Hellzone radius.");
