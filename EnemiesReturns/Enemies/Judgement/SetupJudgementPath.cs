@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
+using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
 using EnemiesReturns.Enemies.Judgement.Arraign;
 using HG;
 using Mono.Cecil.Cil;
@@ -536,6 +537,13 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             var panel = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab").WaitForCompletion().InstantiateClone("JudgementPickerPanel", false);
             panel.transform.Find("MainPanel/Juice/Label").gameObject.GetComponent<LanguageTextMeshController>().token = "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER";
+
+            var pickerPanel = panel.GetComponent<PickupPickerPanel>();
+
+            var helper = panel.AddComponent<JudgementPickerPanelTextHelper>();
+            helper.pickupPickerPanel = pickerPanel;
+
+            pickerPanel.pickupBaseContentReady.AddPersistentListener(helper.AddQuantityToPickerButton);
 
             return panel;
         }
