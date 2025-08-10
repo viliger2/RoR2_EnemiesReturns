@@ -7039,12 +7039,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 47f03489c4aee7546a49ccce1e243f71, type: 2}
+      objectReference: {fileID: 2100000, guid: 18e538487b104414c9543ff2860a0f42, type: 2}
     - target: {fileID: 1818073509599170975, guid: 913eed9d753fbf24b9767d8422f7639a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 47f03489c4aee7546a49ccce1e243f71, type: 2}
+      objectReference: {fileID: 2100000, guid: 18e538487b104414c9543ff2860a0f42, type: 2}
     - target: {fileID: 3445257181451598458, guid: 913eed9d753fbf24b9767d8422f7639a,
         type: 3}
       propertyPath: m_UpdateWhenOffscreen

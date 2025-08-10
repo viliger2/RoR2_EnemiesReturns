@@ -53,7 +53,6 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             if (pickupPickerController && modifiedPickerPanel)
             {
                 pickupPickerController.panelPrefab = modifiedPickerPanel;
-                var pickerPanel = pickupPickerController.panelPrefab.GetComponent<PickupPickerPanel>();
             }
             if (!NetworkServer.active)
             {

@@ -277,12 +277,6 @@ namespace EnemiesReturns.Enemies.Colossus
             var particleRenderer = modelPrefab.transform.Find("Armature/root/root_pelvis_control/spine/spine.001/ParticleSystem").gameObject.GetComponent<ParticleSystemRenderer>();
             var eyeLight = modelPrefab.transform.Find("Armature/root/root_pelvis_control/spine/spine.001/head/Light").gameObject.GetComponent<Light>();
 
-            // the only way to fix vertex colors not working is to put model with
-            // vertex color preview material in the bundle and then swap material here
-            // this is the most retarded, asinine bullshit yet with this game
-            modelRenderer.material = ContentProvider.MaterialCache["matColossus"];
-            headRenderer.material = ContentProvider.MaterialCache["matColossus"];
-
             var renderInfos = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo

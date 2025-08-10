@@ -96,7 +96,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.MechanicalSpider.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
-                occupyPosition = false
+                occupyPosition = false,
+                skinDef = skin,
+                bodyPrefab = bodyGameObject
             });
         }
 
