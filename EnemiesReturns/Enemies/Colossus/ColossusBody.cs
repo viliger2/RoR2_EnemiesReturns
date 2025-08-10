@@ -403,7 +403,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -440,7 +440,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -477,7 +477,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -514,7 +514,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -551,7 +551,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossusSMBBody"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
