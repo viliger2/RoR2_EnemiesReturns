@@ -22,17 +22,15 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 
         public static float diveSpeedCoefficient => Configuration.Swift.DiveSpeedCoefficient.Value;
 
-        public static float acceleration = 360f;
-
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.OmniImpactVFX_prefab).WaitForCompletion();
+
+        public Vector3 diveTarget;
 
         private OverlapAttack diveAttack;
 
         private Transform sphereCheckTransform;
 
         private Vector3 targetMoveVector;
-
-        private Vector3 targetMoveVectorVelocity;
 
         private Transform speedLines;
 
@@ -53,6 +51,13 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             {
                 sphereCheckTransform = transform;
             }
+            if(diveTarget != Vector3.zero)
+            {
+                targetMoveVector = (diveTarget - base.transform.position).normalized;
+            } else
+            {
+                targetMoveVector = inputBank.aimDirection;
+            }
             Util.PlaySound("ER_Swift_DiveLoop_Play", base.gameObject);
         }
 
@@ -60,7 +65,6 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
         {
             base.FixedUpdate();
 
-            targetMoveVector = Vector3.SmoothDamp(targetMoveVector, inputBank.aimDirection, ref targetMoveVectorVelocity, turnSmoothTime, turnSpeed).normalized;
             characterDirection.moveVector = targetMoveVector;
             characterMotor.rootMotion = targetMoveVector * moveSpeedStat * diveSpeedCoefficient * GetDeltaTime();
 

@@ -96,7 +96,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 3173229787302838096, guid: 2ee207096ed688145a1035cf0ac3742a,
       type: 3}
-    m_Threshold: 1
+    m_Threshold: 0.3
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -105,7 +105,7 @@ BlendTree:
   m_BlendParameter: forwardSpeed
   m_BlendParameterY: walkSpeed
   m_MinThreshold: 0
-  m_MaxThreshold: 1
+  m_MaxThreshold: 0.3
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -1579,7 +1579,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fly
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
