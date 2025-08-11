@@ -5,6 +5,7 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
@@ -51,12 +52,12 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public SkillDef CreateClawSnipSkill()
         {
-            var acridEpidemic = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoDisease.asset").WaitForCompletion();
-            return CreateSkill(new SkillParams("SandCrabClawSnip", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ArcherBugs.FireCausticSpit)))
+            var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
+            return CreateSkill(new SkillParams("SandCrabClawSnip", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.FireSnip)))
             {
                 nameToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME",
                 descriptionToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION",
-                icon = acridEpidemic.icon,
+                icon = acridBite.icon,
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = 5f,
             });
@@ -163,6 +164,19 @@ namespace EnemiesReturns.Enemies.SandCrab
             };
         }
 
+        protected override IHitboxes.HitBoxesParams[] HitBoxesParams()
+        {
+            return new IHitboxes.HitBoxesParams[]
+            {
+                new IHitboxes.HitBoxesParams
+                {
+                    groupName = "Snip",
+                    pathsToTransforms = new string[] {"SandCrabArmature/HandIK.L/Hand.L/UpperClaw.L/Hitbox", "SandCrabArmature/HandIK.R/Hand.R/UpperClaw.R/Hitbox" } 
+                    
+                }
+            };
+        }
+
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Beetle/sdBeetleGuard.asset").WaitForCompletion();
 
         public struct Skills
@@ -187,6 +201,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public static GameObject BodyPrefab;
 
-        
+        protected override bool AddHitBoxes => true;
+
     }
 }

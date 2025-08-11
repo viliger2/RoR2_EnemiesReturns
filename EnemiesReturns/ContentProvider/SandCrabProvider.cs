@@ -16,16 +16,21 @@ namespace EnemiesReturns
         private void CreateSandCrab(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             var SandCrabStuff = new SandCrabStuff();
+            ModdedEntityStates.SandCrab.FireSnip.snipEffectPrefab = SandCrabStuff.CreateSnipEffect();
 
             var sandCrabBody = new SandCrabBody();
 
             var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
             unlockablesList.Add(sandCrabLog);          
 
-           // sfList.Add(SandCrabBody.SkillFamilies.Primary);
+            
+            SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();
 
-           
-           SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();
+            sdList.Add(SandCrabBody.Skills.ClawSnip);
+
+            SandCrabBody.SkillFamilies.Primary = Utils.CreateSkillFamily("SandCrabPrimaryFamily", SandCrabBody.Skills.ClawSnip);
+
+            sfList.Add(SandCrabBody.SkillFamilies.Primary);
 
             SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
             bodyList.Add(SandCrabBody.BodyPrefab);
