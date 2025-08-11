@@ -343,6 +343,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileSimple.lifetime = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesLifetime.Value;
             projectileSimple.desiredForwardSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesSpeed.Value;
             projectileSimple.updateAfterFiring = true;
+            projectileSimple.lifetimeExpiredEffect = impact;
 
             var projectileSingleTarget = prefab.AddComponent<ProjectileSingleTargetImpact>();
             projectileSingleTarget.destroyWhenNotAlive = true;
