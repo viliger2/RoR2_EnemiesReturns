@@ -100,7 +100,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
 
             if (!storm)
             {
-                // just release without anything for now
+                ApplyDoTAndEffect();
                 Destroy(this);
                 return;
             }
@@ -132,16 +132,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                         rigidbody.AddForce(forceVector, ForceMode.Impulse);
                     }
                 }
-                R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Poison, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonDuration.Value, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonCoefficient.Value);
-                if (dotEffect)
-                {
-                    EffectData effectData = new EffectData
-                    {
-                        rootObject = characterBody.gameObject,
-                        origin = characterBody.transform.position,
-                    };
-                    EffectManager.SpawnEffect(dotEffect, effectData, transmit: true);
-                }
+                ApplyDoTAndEffect();
                 Destroy(this);
                 return;
             }
@@ -164,6 +155,20 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             else
             {
                 characterMotor.disableAirControlUntilCollision = false;
+            }
+        }
+
+        private void ApplyDoTAndEffect()
+        {
+            R2API.Networking.NetworkingHelpers.ApplyDot(characterBody.healthComponent, GetAttacker(), DotController.DotIndex.Poison, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonDuration.Value, EnemiesReturns.Configuration.LynxTribe.LynxTotem.SummonStormPoisonCoefficient.Value);
+            if (dotEffect)
+            {
+                EffectData effectData = new EffectData
+                {
+                    rootObject = characterBody.gameObject,
+                    origin = characterBody.transform.position,
+                };
+                EffectManager.SpawnEffect(dotEffect, effectData, transmit: true);
             }
         }
 

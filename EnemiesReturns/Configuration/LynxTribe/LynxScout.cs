@@ -40,7 +40,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
                 "Stages that Default Lynx Scout appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Lynx Scout Character Stats", "Base Max Health", 210f, "Lynx Scout' base health.");
-            BaseMoveSpeed = config.Bind("Lynx Scout Character Stats", "Base Movement Speed", 12f, "Lynx Scout' base movement speed.");
+            BaseMoveSpeed = config.Bind("Lynx Scout Character Stats", "Base Movement Speed", 13f, "Lynx Scout' base movement speed.");
             BaseJumpPower = config.Bind("Lynx Scout Character Stats", "Base Jump Power", 18f, "Lynx Scout' base jump power.");
             BaseDamage = config.Bind("Lynx Scout Character Stats", "Base Damage", 12f, "Lynx Scout' base damage.");
             BaseArmor = config.Bind("Lynx Scout Character Stats", "Base Armor", 0f, "Lynx Scout' base armor.");
