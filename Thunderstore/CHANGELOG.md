@@ -1,4 +1,47 @@
 <details>
+<summary>0.6.4</summary>
+
+* Switched sound effects volume curve from Linear to Sine.
+  * _With this change sounds should follow the same volume curve as vanilla sounds. This will bring zero changes to people who play at 100% sound effect volume and will increase loudness for everyone else. Please let me know if some sounds become too loud, since I play at 100% volume and would not notice the difference._
+* Ifrit
+  * Flame Charge
+    * Buffed flame damage to 0.625 (was 0.4).
+	* Nerfed body damage to 1.875 (was 2.5).
+	* Nerfed turn speed to 160 (was 200).
+	  * _Flame Charge was a bit too difficult to dodge without movement speed items and damage balancing was too skewed toward body contact damage, while flame was dealing basically nothing._
+* Archer Bug
+  * Movement pause duration when strafing around target changed to 1 second (was 0.75).
+  * Attack projectile spread changed to 25 degrees between projectiles (was 20).
+* Lynx Tribe
+  * Totem
+    * Now has invulnerability for the duration of animation when summoned from Shaman.
+    * Now Storm applies DoT to targets that were grabbed but weren't thrown away before Storm disappears.
+  * Shrine
+    * Added item info on ping.
+  * Shaman
+    * Projectile now has lifetime expire effect.  
+  * Scout
+    * Buffed movement speed to 13ms (was 12).
+    * Slightly increased attack sound volume.	
+  * Hunter
+    * Increased pre attack sound volume.  
+* Mechanical spiders
+  * Fixed variants not working.
+    * _According to my git history it wasn't working from the very start but I distinctly remember it working? Dunno what happened here._  
+* Swift
+  * Fixed Swift spawning on ground nodes.
+    * _I told you about the nodes bro!_
+  * Dive
+    * No longer adjusts movement vector during it.
+    * Now has predictive aiming.
+	* Slightly extended hitbox forward.
+  * Slight animation and visual improvements.
+  * Added Rallypoint Delta specific variant.
+    * _Swifts were blending into walls on Rallypoint Delta. With how difficult post processing is on that stage to work with we made a very garish Swift variant that will not blend with the walls, however it will look terrible outside of Rallypoint, so I do not recommend putting it anywhere else. While adding snow variant, similar to golems, is an option, the issue is that this is a flying enemy and you will be looking at it from below 99% of the time, basically not seeing the snow at all._
+* Judgement
+  * Item selection now shows item count.	
+</details>
+<details>
 <summary>0.6.3</summary>
 
 * Added new Small-tier monster: Swift.
