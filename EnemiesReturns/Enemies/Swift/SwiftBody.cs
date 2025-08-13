@@ -226,6 +226,7 @@ namespace EnemiesReturns.Enemies.Swift
             return CreateCard(new SpawnCardParams(name, master, Configuration.Swift.DirectorCost.Value)
             {
                 skinDef = skin,
+                graphType = RoR2.Navigation.MapNodeGroup.GraphType.Air,
                 bodyPrefab = bodyPrefab,
             });
         }
