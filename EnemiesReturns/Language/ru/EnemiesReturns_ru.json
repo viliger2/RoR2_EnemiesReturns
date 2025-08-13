@@ -71,6 +71,7 @@
 
 		"ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT": "Украсть предмет",
 		"ENEMIES_RETURNS_LYNX_SHRINE_NAME": "Святилище рыси",
+		"ENEMIES_RETURNS_LYNX_SHRINE_NAME_WITH_ITEM": "{0} ({1})",
 		"ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION": "Попытаться украсть предмет у Племени рыси. Но Племя рыси не отдаст предмет без боя и попытается забрать его.'",
 		"ENEMIES_RETURNS_LYNX_SHRINE_LORE": "LORE",
 		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT": "<style=cShrine>{0} пытается украть {1} у Племени рыси. ({2} сек.)</style>",
@@ -127,7 +128,7 @@
 		"ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "Осмотреть",
 
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "Конструкция-прототип",
-		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "Выглядит бесполезной..",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "Выглядит бесполезной...",
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "Изнутри слышен гул. Бесполезна для меня.",
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "LORE HERE",
 
@@ -150,23 +151,25 @@
 
 		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME": "Вневременной портал",
 		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT": "Войти во вневременной портал",
-		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>Правосудие ждет..</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>Правосудие ждет...</style>",
 
 		"ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "???",
 		"ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE": "Где-то во времени",
 
-		"ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Выживите <color=#00ffe9>Правосудие</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Переживите <color=#00ffe9>Правосудие</color>",
 
 		"ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME": "???",
 		"ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Прикоснуться к другой стороне",
 
 		"ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>Враг эволюционирует...</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED": "<style=cWorldEvent><color=white>{0}</color> выбрал(а) {1}<style=cStack>({2})</style>.</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED_2P": "<style=cWorldEvent>Вы выбрали {1}<style=cStack>({2})</style>.</style>",
 
 		"ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Спокойный ультиматум<sprite name=\"CloudRight\" tint=1>",
 		"ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "Вечный {0}",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Указ Эррейна",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Станьте воплощением правосудия.",
-		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Позволяет владельцу проломить любую защиту.",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Позволяет владельцу проломить любую <style=cWorldEvent>защиту </style>, игнорировать уменьшение <style=cIsDamage>скорости атаки</style> и <style=cIsUtility>скорости передвижения</style>, и <style=cIsHealing>уменьшает</style> длительность эффектов <style=cIsUtility>оглушения</style> и <style=cIsUtility>заморозки</style> на {0}.",
 		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "LORE HERE",
 
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "Эррейн",
@@ -179,7 +182,7 @@
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_2": "Кандидат, превалируйте. Или падите перед моим правосудием.",
 
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DIALOGUE_FORMAT": "<color=#c6d5ff><size=120%>Эррейн: {0}</color></size>",
-		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_1": "Покажите мне из чего ты сделан.",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_1": "Покажите мне из чего вы сделаны.",
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_2": "Давайте же!",
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_3": "Кандидат, демонстрируйте!",
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_4": "Кандидат, переживите!",
@@ -249,6 +252,12 @@
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_NAME": "Призвать небесный лазер",
 		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_DESC": "",
 
-		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "Райское давление правосудия"
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "Райское давление правосудия",
+
+		"ENEMIES_RETURNS_SWIFT_BODY_NAME": "Свифт",
+		"ENEMIES_RETURNS_SWIFT_BODY_LORE": "Полевые заметки:\n\nЭти летающие булыжники умудряются зависать в воздухе, несмотря на плотную броню. Подобно тысячам стрел, они стремительно врезаются клювами в землю рядом со мной.\n\nДо сих пор я не встречал поверхности, которую они не смогли бы проткнуть, и при этом их клювы выглядят не повреждёнными. Кроме того, меня беспокоит их умение предугадывать движения, что позволяет им точно направлять атаки.\n\nЯ своими глазами видел, как стаи этих странных птиц кружат высоко над землёй, будто стервятники, но не замечал, чтобы кто-то из них покушался на падаль. Любые попытки сделать из их панцирей новые лезвия оставляют лишь сколы и вмятины на моём ноже.",
+		"ENEMIES_RETURNS_SWIFT_DIVE_NAME": "Пикировать",
+		"ENEMIES_RETURNS_SWIFT_DIVE_DESCRIPTION": "Пикирует в направлении прицеливания.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT": "Запись о монстре: Свифт"
 	}
 }

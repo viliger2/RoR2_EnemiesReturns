@@ -9,7 +9,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 {
     // TODO: implement item text on ping in chat
     // this would require somewhat complex il hook that I am not willing to do, so no chat message for now
-    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable
+    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable, IDisplayNameProvider
     {
         public GameObject shrineUseEffect;
 
@@ -124,12 +124,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
             if (NetworkServer.active)
             {
                 var rng = new Xoroshiro128Plus(Run.instance.treasureRng.nextUlong);
-                pickupIndex = dropTable.GenerateDrop(rng);
-                pickupValue = pickupIndex.value;
-                if (pickupDisplay)
-                {
-                    pickupDisplay.SetPickupIndex(pickupIndex);
-                }
+                var pickupIndex = dropTable.GenerateDrop(rng);
+                SetPickupIndex(pickupIndex.value);
                 switch (pickupIndex.pickupDef.itemTier)
                 {
                     case ItemTier.Tier1:
@@ -155,26 +151,48 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 }
                 spawner.CreateSpawnInfo();
             }
+            if (NetworkClient.active)
+            {
+                UpdatePickupDisplay();
+            }
         }
 
         public void OnPickupChanged(int newPickupValue)
         {
-            this.pickupValue = newPickupValue;
-            this.pickupIndex = new PickupIndex(this.pickupValue);
+            SetPickupIndex(newPickupValue);
+            if (NetworkClient.active)
+            {
+                UpdatePickupDisplay();
+            }
+        }
 
+        private void SetPickupIndex(int newPickupValue)
+        {
+            if(pickupValue != newPickupValue)
+            {
+                pickupValue = newPickupValue;
+                pickupIndex = new PickupIndex(pickupValue);
+            }
+        }
+
+        private void UpdatePickupDisplay()
+        {
             if (pickupDisplay)
             {
                 pickupDisplay.SetPickupIndex(pickupIndex);
-                if (pickupIndex == PickupIndex.none)
-                {
-                    pickupDisplay.enabled = false;
-                }
             }
         }
 
         public string GetContextString([NotNull] Interactor activator)
         {
             return RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT");
+        }
+
+        public string GetDisplayName()
+        {
+            var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+            var itemString = Util.GenerateColoredString(RoR2.Language.GetString(pickupDef.nameToken) ?? "???", pickupDef.baseColor);
+            return string.Format(RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME_WITH_ITEM"), RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME"), itemString);
         }
 
         public Interactability GetInteractability([NotNull] Interactor activator)

@@ -12,6 +12,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
         public static ConfigEntry<string> DefaultStageList;
+        public static ConfigEntry<string> JungleStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -31,7 +32,6 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> CausticSpitProjectileSpread;
 
         public static ConfigEntry<KeyCode> BuckBumbleKey;
-
 
         public void PopulateConfig(ConfigFile config)
         {
@@ -56,22 +56,34 @@ namespace EnemiesReturns.Configuration
             CausticSpitProcCoefficient = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Proc Coefficient", 1f, "Archer Bug's Caustic Spit proc coefficient.");
             CausticSpitForce = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Force", 0f, "Archer Bug's Caustic Spit force.");
             CausticSpitBlastRadius = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Blast Radius", 2f, "Archer Bug's Caustic Spit blast radius.");
-            CausticSpitProjectileSpread = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Spread", 20f, "Archer Bug's Caustic Spit projectile spread, basically angle between projectiles.");
+            CausticSpitProjectileSpread = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Spread", 25f, "Archer Bug's Caustic Spit projectile spread, basically angle between projectiles.");
             CausitcSpitProjectileCount = config.Bind("Archer Bug Caustic Spit", "Caustic Spit Projectile Count", 3, "Archer Bug's Caustic Spit projectile count.");
 
-            ArcherBug.DefaultStageList = config.Bind("Archer Bug Director", "Default Variant Stage List",
+            DefaultStageList = config.Bind("Archer Bug Director", "Default Variant Stage List",
                 string.Join(
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuary),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AphelianSanctuarySimulacrum),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TreebornColony),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GoldenDieback),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ScorchedAcres),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_AphelianSanctuary_Theme),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_ScorchedAcres_Theme),
+                    "snowtime_gmconstruct",
+                    "snowtime_sandtrap",
+                    "snowtime_gmflatgrass"
                     ),
                 "Stages that Default Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            JungleStageList = config.Bind("Archer Bug Director", "Jungle Variant Stage List",
+                string.Join(
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall)
+                    ),
+                "Stages that Jungle Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BuckBumbleKey = config.Bind("Buck Bumble", "Buck Bumble", KeyCode.Alpha1, "Mah bassy madde ooh la de DE.");
         }

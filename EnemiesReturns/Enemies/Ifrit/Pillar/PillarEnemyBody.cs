@@ -7,6 +7,7 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace EnemiesReturns.Enemies.Ifrit.Pillar
 {
@@ -30,6 +31,61 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
             #region LineRendererHelper
             model.AddComponent<DeployableLineRendererToOwner>().childOriginName = "LineOriginPoint";
+            #endregion
+
+            #region Light
+            var light = body.transform.Find("ModelBase/IfritPillar/Fireball/Light").gameObject;
+            var flickerLight = light.AddComponent<FlickerLight>();
+            flickerLight.light = light.GetComponent<Light>();
+            flickerLight.sinWaves = new Wave[]
+            {
+                new Wave()
+                {
+                    amplitude = 0.1f,
+                    frequency = 9f,
+                    cycleOffset = 0f,
+                },
+                new Wave()
+                {
+                    amplitude = 0.2f,
+                    frequency = 0.333333f,
+                    cycleOffset = 0f,
+                },
+                new Wave()
+                {
+                    amplitude = 0.06f,
+                    frequency = 4f,
+                    cycleOffset = 0f,
+                },
+            };
+
+            var ngssLocal = light.AddComponent<NGSS_Local>();
+            ngssLocal.NGSS_NO_UPDATE_ON_PLAY = false;
+            ngssLocal.NGSS_MULTIPLE_INSTANCES_WARNING = false;
+
+            ngssLocal.NGSS_SAMPLING_TEST = 16;
+            ngssLocal.NGSS_SAMPLING_FILTER = 32;
+            ngssLocal.NGSS_SAMPLING_DISTANCE = 75;
+            ngssLocal.NGSS_NORMAL_BIAS = 0.1f;
+
+            ngssLocal.NGSS_NOISE_TO_DITHERING_SCALE = 0;
+            ngssLocal.NGSS_NOISE_TEXTURE = Addressables.LoadAssetAsync<Texture2D>("NGSS/BlueNoise_R8_8.png").WaitForCompletion(); ;
+
+            ngssLocal.NGSS_SHADOWS_OPACITY = 1;
+            ngssLocal.NGSS_PCSS_SOFTNESS_NEAR = 0;
+            ngssLocal.NGSS_PCSS_SOFTNESS_FAR = 1;
+
+            light.GetComponent<LightRangeScale>().maxDuration = EnemiesReturns.Configuration.Ifrit.PillarExplosionChargeDuration.Value * 0.6f;
+            #endregion
+
+            #region PP
+            var postProccess = body.transform.Find("ModelBase/IfritPillar/Fireball/PP").gameObject;
+            var ppDuration = postProccess.AddComponent<PostProcessDuration>();
+            ppDuration.ppVolume = postProccess.GetComponent<PostProcessVolume>();
+            ppDuration.ppWeightCurve = acdLookup["acdPillarPP"].curve;
+            ppDuration.maxDuration = EnemiesReturns.Configuration.Ifrit.PillarExplosionChargeDuration.Value * 0.6f;
+            ppDuration.destroyOnEnd = false;
+            ppDuration.useUnscaledTime = false;
             #endregion
 
             return body;

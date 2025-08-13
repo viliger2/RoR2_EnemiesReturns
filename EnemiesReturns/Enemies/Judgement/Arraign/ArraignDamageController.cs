@@ -23,6 +23,17 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private static HashSet<BodyIndex> bodiesToBypassArmor = new HashSet<BodyIndex>();
 
+        public static Material immuneToAllDamageExceptHammerMaterial;
+
+        public static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        {
+            orig(self);
+            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
+            {
+                self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
+            }
+        }
+
         public static void AddBodyToArmorBypass(BodyIndex bodyIndex)
         {
             if (bodyIndex != BodyIndex.None) bodiesToBypassArmor.Add(bodyIndex);

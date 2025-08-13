@@ -2,11 +2,13 @@
 using R2API;
 using RoR2;
 using RoR2.Skills;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 using static R2API.DirectorAPI;
 
 namespace EnemiesReturns
@@ -88,7 +90,7 @@ namespace EnemiesReturns
             }
         }
 
-        public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
+        public static SkinDef CreateSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null, SkinDefParams.MeshReplacement[] meshReplacements = null)
         {
             var skinDef = ScriptableObject.CreateInstance<SkinDef>();
             (skinDef as ScriptableObject).name = name;
@@ -110,6 +112,10 @@ namespace EnemiesReturns
                     gameObject = item,
                     shouldActivate = true
                 });
+            }
+            if (meshReplacements != null)
+            {
+                skinDefParams.meshReplacements = meshReplacements;
             }
             skinDef.skinDefParams = skinDefParams;
 
@@ -288,6 +294,18 @@ namespace EnemiesReturns
             }
 
             return false;
+        }
+
+        public static void AddPersistentListener(this UnityEvent<MPButton, PickupDef> unityEvent, UnityAction<MPButton, PickupDef> action)
+        {
+            unityEvent.m_PersistentCalls.AddListener(new PersistentCall
+            {
+                m_Target = action.Target as UnityEngine.Object,
+                m_TargetAssemblyTypeName = UnityEventTools.TidyAssemblyTypeName(action.Method.DeclaringType.AssemblyQualifiedName),
+                m_MethodName = action.Method.Name,
+                m_CallState = UnityEventCallState.RuntimeOnly,
+                m_Mode = PersistentListenerMode.EventDefined,
+            });
         }
 
         public static bool HasEquipment(this Inventory inventory, EquipmentDef equipmentDef)

@@ -101,7 +101,7 @@ namespace EnemiesReturns.Configuration
             Colossus.DefaultStageList = config.Bind("Colossus Director", "Default Variant Stage List",
                 string.Join(
                     ",",
-                    ""
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.GildedCoast)
                 ),
                 "Stages that Default Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Colossus.SkyMeadowStageList = config.Bind("Colossus Director", "Sky Meadow Variant Stage List",
@@ -119,13 +119,15 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ShatteredAbodes),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DisturbedImpact),
-                    "FBLScene"
+                    "FBLScene",
+                    "snowtime_gmflatgrass"
                 ),
                 "Stages that Grassy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Colossus.CastleStageList = config.Bind("Colossus Director", "Castle Variant Stage List",
                 string.Join(
                     ",",
-                    "sm64_bbf_SM64_BBF"
+                    "sm64_bbf_SM64_BBF",
+                    "snowtime_gmconstruct"
                 ),
                 "Stages that Castle Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Colossus.SandyStageList = config.Bind("Colossus Director", "Sandy Variant Stage List",

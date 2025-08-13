@@ -90,7 +90,7 @@ namespace EnemiesReturns
             };
             Utils.AddMonsterToStages(Configuration.MechanicalSpider.DefaultStageList.Value, dchMechanicalSpiderDefault);
 
-            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy = spiderEnemyBody.CreateCard("cscMechanicalSpiderGrassy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Grassy, MechanicalSpiderEnemyMaster.MasterPrefab);
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy = spiderEnemyBody.CreateCard("cscMechanicalSpiderGrassy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Grassy, MechanicalSpiderEnemyBody.BodyPrefab);
             var dcMechanicalSpiderGrassy = new DirectorCard
             {
                 spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderGrassy,
@@ -106,7 +106,7 @@ namespace EnemiesReturns
             };
             Utils.AddMonsterToStages(Configuration.MechanicalSpider.GrassyStageList.Value, dchMechanicalSpiderGrassy);
 
-            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy = spiderEnemyBody.CreateCard("cscMechanicalSpiderSnowy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Snowy, MechanicalSpiderEnemyMaster.MasterPrefab);
+            MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy = spiderEnemyBody.CreateCard("cscMechanicalSpiderSnowy", MechanicalSpiderEnemyMaster.MasterPrefab, MechanicalSpiderEnemyBody.SkinDefs.Snowy, MechanicalSpiderEnemyBody.BodyPrefab);
             var dcMechanicalSpiderSnowy = new DirectorCard
             {
                 spawnCard = MechanicalSpiderEnemyBody.SpawnCards.cscMechanicalSpiderSnowy,

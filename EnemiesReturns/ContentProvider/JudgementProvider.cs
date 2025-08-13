@@ -344,13 +344,13 @@ namespace EnemiesReturns
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
-                Enemies.Judgement.SetupJudgementPath.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
+                Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
 
-                CreateMusic(Content.Stages.OutOfTime);
+                CreateJudgementMusic(Content.Stages.OutOfTime);
             }
         }
 
-        private static void CreateMusic(SceneDef scene)
+        private void CreateJudgementMusic(SceneDef scene)
         {
             var mainCustomTrack = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
             mainCustomTrack.cachedName = "EnemiesReturns_OutOfTime_Unknown";

@@ -22,11 +22,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public override void OnEnter()
         {
-            duration = 20f;
+            duration = 21f;
             base.OnEnter();
             if (NetworkServer.active)
             {
-                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 20f);
+                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, duration);
             }
         }
 

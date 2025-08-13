@@ -3,6 +3,7 @@ using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 {
@@ -28,6 +29,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void OnEnter()
         {
             base.OnEnter();
+            if(Configuration.LynxTribe.LynxShaman.PostLoopTotemSummonInvunerability.Value && NetworkServer.active)
+            {
+                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, duration);
+            }
+
             Util.PlaySound("ER_Totem_ShamanSpawn_Play", base.gameObject);
             PlayAnimation("Body", "SpawnFromShaman");
             effectOrigin = FindModelChild("SpawnFromShamanEffectOrigin");
@@ -53,6 +59,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
             if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (NetworkServer.active && characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+            {
+                characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             }
         }
 

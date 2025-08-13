@@ -1726,6 +1726,115 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Swift" ID="{CE339346-3502-4553-8DD4-1EF568CC8B39}" ShortID="718047339">
+							<ChildrenList>
+								<Event Name="ER_Swift_Spawn_Play" ID="{A2495A28-5E07-44CD-8DC3-7180C7876054}">
+									<ChildrenList>
+										<Action Name="" ID="{D1ED5722-9FD9-435B-ACE7-E951C6BDBA45}" ShortID="917970162">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_Spawn" ID="{8FE10E8D-62A9-45A4-A9F9-90E525B30512}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_Death_PLay" ID="{46292361-D6D4-46FB-BFC3-09455B60861E}">
+									<ChildrenList>
+										<Action Name="" ID="{EC369D0B-AC82-4799-AD14-ED2A48741DE3}" ShortID="893111515">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_Death" ID="{991F88FF-FEB9-4458-880D-F2AAC5240052}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_PrepAttack_Play" ID="{8E129EE4-CDF9-47AD-9B6E-56636ECBEEC8}">
+									<ChildrenList>
+										<Action Name="" ID="{3C9A7EA7-AF53-4A2F-8469-AC3BDDD3C55B}" ShortID="775946817">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_PrepAttack" ID="{B3F22608-A536-4A33-959C-5D0958BDA44D}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_AttackGroundImpact_Play" ID="{2911F81B-A8E3-4849-84F8-D6B1DC914AAE}">
+									<ChildrenList>
+										<Action Name="" ID="{8EBFB774-780D-4B2D-BC6B-DBC44164E99D}" ShortID="862002241">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_AttackGroundImpact" ID="{167631B1-419A-44DA-85DE-3F3739B16E29}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_WingFlap_Play" ID="{4D88CD4A-E58A-4D61-B5A3-D43FD874CC21}">
+									<ChildrenList>
+										<Action Name="" ID="{723EF231-A23C-41F8-BAB2-8C0CBBB1AFF8}" ShortID="493711552">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_WingFlap" ID="{FDD1AFD1-5C39-4A3D-9A15-980381924264}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_Death_GroundImpact_Play" ID="{4885FCA0-32F8-4CD7-90A7-3FED596E0F8D}">
+									<ChildrenList>
+										<Action Name="" ID="{2A8525C2-E43B-4CEB-A158-8E76F36E1925}" ShortID="783615317">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DeathGroundImpact" ID="{5D8E0D81-5282-4C06-9AB4-1E2C120414F8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_AttackGroundEject_Play" ID="{6A01BB1E-AFE9-453A-9630-2D80033A1603}">
+									<ChildrenList>
+										<Action Name="" ID="{02AB55BD-3A82-416B-A9E2-47FFE95BAC49}" ShortID="609306279">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_AttackGroundEject" ID="{9A1B9CD2-308D-499A-9213-B5BD00CCE691}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_DiveLoop_Play" ID="{9C292D93-D854-4E1B-8A1B-45093ED711FC}">
+									<ChildrenList>
+										<Action Name="" ID="{4C817690-D4A6-4BDC-9541-57C69E32CB3A}" ShortID="270464328">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_Swift_DiveLoop_Stop" ID="{D74E3BC6-2624-4347-B0D0-5ED3FF2715F7}">
+									<ChildrenList>
+										<Action Name="" ID="{4F03B36E-7230-4ABE-8173-17B6F9D00B7C}" ShortID="52440899">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{5D67AA33-F278-4D5A-BFF4-F9D9E4988DB5}" ShortID="404742623">

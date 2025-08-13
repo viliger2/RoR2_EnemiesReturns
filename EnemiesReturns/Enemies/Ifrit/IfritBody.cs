@@ -772,6 +772,29 @@ namespace EnemiesReturns.Enemies.Ifrit
             }
             #endregion
 
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.00359F, 0.18143F, -0.09013F),
+                    localAngles = new Vector3(274.1064F, 196.056F, 162.7962F),
+                    localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
+                });
+            }
+            #endregion
+
             return idrs;
         }
 

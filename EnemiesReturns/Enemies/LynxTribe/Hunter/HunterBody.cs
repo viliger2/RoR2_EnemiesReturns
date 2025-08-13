@@ -505,6 +505,29 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             }
             #endregion
 
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Mask",
+                    localPos = new Vector3(0F, 1.31318F, -0.0812F),
+                    localAngles = new Vector3(0F, 0F, 0F),
+                    localScale = new Vector3(0.58643F, 0.58643F, 0.58643F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
+                });
+            }
+            #endregion
+
             return idrs;
         }
 

@@ -91,7 +91,9 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     "catacombs_DS1_Catacombs",
-                    "snowtime_gephyrophobia"
+                    "snowtime_gephyrophobia",
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                     ),
                 "Stages that Default Ifrit appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
@@ -109,16 +111,16 @@ namespace EnemiesReturns.Configuration
             Ifrit.FlameChargeCooldown = config.Bind("Ifrit Flame Charge", "Flame Charge Cooldown", 15f, "Ifrit's Flame Charge cooldown.");
             Ifrit.FlameChargeDuration = config.Bind("Ifrit Flame Charge", "Flame Charge Duration", 5f, "Ifrit's Flame Charge duration.");
             Ifrit.FlameChargeSpeedCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Movement Speed Multiplier", 2f, "Ifrit's Flame Charge speed multiplier.");
-            Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 2.5f, "Ifrit's Flame Charge body contact damage.");
+            Ifrit.FlameChargeDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Body Damage", 1.875f, "Ifrit's Flame Charge body contact damage.");
             Ifrit.FlameChargeForce = config.Bind("Ifrit Flame Charge", "Flame Charge Body Force", 5000f, "Ifrit's Flame Charge body contact force.");
             Ifrit.FlameChargeProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Body Proc Coefficient", 1f, "Ifrit's Flame Charge body contact proc coefficient.");
-            Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.4f, "Ifrit's Flame Charge flame damage.");
+            Ifrit.FlameChargeFlameDamage = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Damage", 0.625f, "Ifrit's Flame Charge flame damage.");
             Ifrit.FlameChargeFlameIgniteChance = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Ignite Chance", 100f, "Ifrit's Flame Charge flame ignite chance.");
             Ifrit.FlameChargeFlameForce = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Force", 0f, "Ifrit's Flame Charge flame force.");
             Ifrit.FlameChargeFlameTickFrequency = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Tick Frequence", 4f, "How many times per second Ifrit's Flame Charge flame deal damage.");
             Ifrit.FlameChargeFlameProcCoefficient = config.Bind("Ifrit Flame Charge", "Flame Charge Flame Proc Coefficient", 0.2f, "Ifrit's Flame Charge flame proc coefficient.");
             Ifrit.FlameChargeHeighCheck = config.Bind("Ifrit Flame Charge", "Flame Charge Height Check", 50f, "Checks for falls in front of Ifrit and stops his so he wouldn't yeet himself off cliffs. Set it above 1000 to basically disable the functionality.");
-            FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 200f, "Ifrit's Flame Charge turn speed.");
+            FlameChargeTurnSpeed = config.Bind("Ifrit Flame Charge", "Flame Charge Turn Speed", 160f, "Ifrit's Flame Charge turn speed.");
 
             Ifrit.HellzoneCooldown = config.Bind("Ifrit Hellzone", "Hellzone Cooldown", 10f, "Ifrit's Hellzone cooldown.");
             Ifrit.HellzoneRadius = config.Bind("Ifrit Hellzone", "Hellzone Radius", 9f, "Ifrit's Hellzone radius.");
@@ -141,8 +143,8 @@ namespace EnemiesReturns.Configuration
             Ifrit.PillarBodyBaseMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Base Max Health", 585f, "Ifrit's Summon Pillar body base max health.");
             Ifrit.PillarBodyLevelMaxHealth = config.Bind("Ifrit Pillar", "Summon Pillar Body Per Level Max Health", 176f, "Ifrit's Summon Pillar body per level max health.");
             Ifrit.PillarMaxInstances = config.Bind("Ifrit Pillar", "Summon Pillar Max Instances", 2, "Maximum instances of Ifrit's Pillar that can exist at the same time. This also controls how many pillar will be summoned on one skill use.");
-            Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum distance for pillar spawning.");
-            Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum distance for pillar spawning.");
+            Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum starting distance for pillar spawning. It will decrease if pillar fails to spawn on the first try.");
+            Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum starting distance for pillar spawning. It will increase if pillar fails to spawn on the first try.");
 
             Ifrit.ItemEnabled = config.Bind("Infernal Lantern", "Enable Infernal Lantern", true, "Enables Infernal Lantern to drop from Ifrit and appear in printers.");
             Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("Infernal Lantern", "Infernal Lantern Damage", 10f, "Infernal Lantern explosion damage.");

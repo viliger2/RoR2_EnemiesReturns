@@ -1,7 +1,8 @@
 ﻿using EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow;
-using JetBrains.Annotations;
+
 using RoR2;
 using RoR2.Skills;
+using UnityEngine.Bindings;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Totem
 {

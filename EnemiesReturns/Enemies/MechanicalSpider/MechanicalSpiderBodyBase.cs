@@ -96,7 +96,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return CreateCard(new SpawnCardParams(name, master, EnemiesReturns.Configuration.MechanicalSpider.DirectorCost.Value)
             {
                 hullSize = HullClassification.Human,
-                occupyPosition = false
+                occupyPosition = false,
+                skinDef = skin,
+                bodyPrefab = bodyGameObject
             });
         }
 
@@ -571,6 +573,29 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 {
                     displayRuleGroup = displayRuleGroupAeonian,
                     keyAsset = Content.Equipment.EliteAeonian
+                });
+            }
+            #endregion
+
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "FrontRightLeg",
+                    localPos = new Vector3(0.03967F, 1.266F, 0.01525F),
+                    localAngles = new Vector3(0.42937F, 322.0721F, 32.98829F),
+                    localScale = new Vector3(0.37148F, 0.37148F, 0.37148F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
                 });
             }
             #endregion

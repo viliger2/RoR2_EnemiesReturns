@@ -31,14 +31,18 @@ namespace EnemiesReturns.Enemies.ArcherBug
         public struct SkinDefs
         {
             public static SkinDef Default;
+            public static SkinDef Jungle;
         }
 
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscArcherBugDefault;
+            public static CharacterSpawnCard cscArcherBugJungle;
         }
 
         public static GameObject BodyPrefab;
+
+        public static GameObject StadiaJungleMeshPrefab;
 
         protected override bool AddFootstepHandler => false;
 
@@ -211,7 +215,45 @@ namespace EnemiesReturns.Enemies.ArcherBug
             };
             SkinDefs.Default = Utils.CreateSkinDef("skinArcherBugDefault", modelPrefab, defaultRender);
 
-            return new SkinDef[] { SkinDefs.Default };
+            CharacterModel.RendererInfo[] jungleRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = bugBodyRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matArcherBugBodyStadiaJungle"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = bugWingsRenderer,
+                    defaultMaterial = ContentProvider.MaterialCache["matArcherBugWingStadiaJungle"],
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+            };
+
+            SkinDefParams.MeshReplacement[] meshReplacements = new SkinDefParams.MeshReplacement[]
+            {
+                new SkinDefParams.MeshReplacement
+                {
+                    renderer = bugBodyRenderer,
+                    meshAddress = new AssetReferenceT<Mesh>(""),
+                    mesh = StadiaJungleMeshPrefab.transform.Find("Bug").gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh
+                },
+                new SkinDefParams.MeshReplacement
+                {
+                    renderer = bugWingsRenderer,
+                    meshAddress = new AssetReferenceT<Mesh>(""),
+                    mesh = StadiaJungleMeshPrefab.transform.Find("Wings").gameObject.GetComponent<SkinnedMeshRenderer>().sharedMesh
+                },
+            };
+
+            SkinDefs.Jungle = Utils.CreateSkinDef("skinArcherBugJungle", modelPrefab, jungleRender, SkinDefs.Default, null, meshReplacements);
+
+            return new SkinDef[] { SkinDefs.Default, SkinDefs.Jungle };
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()
@@ -525,7 +567,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
             #region AeonianElite
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
-
                 var displayRuleGroupAeonian = new DisplayRuleGroup();
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule
                 {
@@ -543,6 +584,29 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 {
                     displayRuleGroup = displayRuleGroupAeonian,
                     keyAsset = Content.Equipment.EliteAeonian
+                });
+            }
+            #endregion
+
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.0086F, 0.4594F, -0.35924F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
                 });
             }
             #endregion

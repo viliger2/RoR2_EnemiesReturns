@@ -24,6 +24,9 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             var linerenderer = model.GetComponentInChildren<LineRenderer>();
             UnityEngine.Object.Destroy(linerenderer);
 
+            body.transform.Find("ModelBase/IfritPillar/Fireball/Light").gameObject.SetActive(false);
+            body.transform.Find("ModelBase/IfritPillar/Fireball/PP").gameObject.SetActive(false);
+
             return body;
         }
 

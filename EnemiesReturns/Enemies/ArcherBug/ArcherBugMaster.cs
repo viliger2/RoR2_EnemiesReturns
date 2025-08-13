@@ -16,7 +16,6 @@ namespace EnemiesReturns.Enemies.ArcherBug
             var aiParams = base.BaseAIParams();
             aiParams.graphType = RoR2.Navigation.MapNodeGroup.GraphType.Air;
             aiParams.aimVectorDampTime = 0.1f;
-            aiParams.showDebugStateChanges = true;
             return base.BaseAIParams();
         }
 
@@ -28,7 +27,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 activationRequiresTargetLoS = true,
                 movementType = AISkillDriver.MovementType.Stop,
                 aimType = AISkillDriver.AimType.AtCurrentEnemy,
-                driverUpdateTimerOverride = 0.75f,
+                driverUpdateTimerOverride = 1f,
                 noRepeat = true
             };
             return new IAISkillDriver.AISkillDriverParams[]

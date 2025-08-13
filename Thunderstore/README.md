@@ -31,7 +31,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
 		<td>Archer Bug</td>
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
-		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call</td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a></td>
+	</tr>	
+	<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>
+		<td>Swift</td>
+		<td>Stones...Flying stones!</td>
+		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest</td>
 	</tr>	
 	<thead>
 		<tr>
@@ -45,7 +51,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a> </td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a></td>
 	</tr>
 	<thead>
 		<tr>
@@ -146,12 +152,46 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 <details>
 <summary>Archer Bug</summary>
 
-* Model, rigging, animations and code by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Model, texturing, rigging, animations, code and lore by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
 * Additional code by [viliger](https://thunderstore.io/package/viliger/)
+* Jungle variant texturing by Synodii
 * Majority of sounds come from RoRR.
 </details>
-- Special thanks to 
+<details>
+<summary>Judgement</summary>
 
+* Model, rigging and animations by Sentinel
+* Additional modeling and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Elite icon by Glad
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from Ys 10, RoRR, Starstorm and WoW.
+* Lightsaber Hum and Swings 2 - https://freesound.org/people/Sheyvan/sounds/703384/
+* armor - https://pixabay.com/sound-effects/armor-6890/
+* palming football - https://pixabay.com/sound-effects/palming-football-34928/
+* Large Underground Fan - https://pixabay.com/ru/sound-effects/large-underground-fan-303764/
+* Debris Slide Sound - https://pixabay.com/ru/sound-effects/debris-slide-sound-196394/
+* Boiling Water Sound - https://pixabay.com/ru/sound-effects/boiling-water-sound-62556/
+* laser weld - https://pixabay.com/ru/sound-effects/laser-weld-103309/
+* Cinematic Impact Boom 04 - https://pixabay.com/ru/sound-effects/cinematic-impact-boom-4-326123/
+* Godzilla atomic breath 2014-2019 sound effect - https://www.youtube.com/watch?v=ISqg6CRPsOI
+* The Origin - Eviternity II OST (MAP30) - https://www.youtube.com/watch?v=n1C2Qp4GIss
+</details>
+<details>
+<summary>Swift</summary>
+
+* Animations by Sentinel
+* Modeling and rigging by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Texturing by Hyperinvox
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from RoRR.
+* Dragon Wing Flap - https://pixabay.com/sound-effects/dragon-wing-flap-81642/
+* Fast Body Fall Impact - https://pixabay.com/ru/sound-effects/fast-body-fall-impact-352725/
+* stone on stone - https://pixabay.com/ru/sound-effects/stone-on-stone-62692/
+* Car interior sound - https://pixabay.com/sound-effects/car-interior-sound-246025/
+* Wind Sound - https://pixabay.com/sound-effects/wind-sound-301491/
+</details>
+
+Special thanks to 
 * [Moffein](https://thunderstore.io/package/Moffein/) - balance and design help
 * [rob](https://thunderstore.io/package/rob_gaming/) - the fun guy
 * [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/) - explaining how to make landing animation work
@@ -160,3 +200,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Translations:
 	* pt-BR by [Kauzok](https://github.com/Kauzok)
 	* es-ES by Manuerth
+	
+If you would like to support us, you can do it [here](https://www.youtube.com/watch?v=Cx3a0bos8aY).
+
+[![lmaogotem](https://help.ko-fi.com/hc/article_attachments/11833788361117)](https://www.youtube.com/watch?v=Cx3a0bos8aY "Donate")

@@ -1,4 +1,108 @@
 <details>
+<summary>0.6.4</summary>
+
+* Switched sound effects volume curve from Linear to Sine.
+  * _With this change sounds should follow the same volume curve as vanilla sounds. This will bring zero changes to people who play at 100% sound effect volume and will increase loudness for everyone else. Please let me know if some sounds become too loud, since I play at 100% volume and would not notice the difference._
+* Ifrit
+  * Flame Charge
+    * Buffed flame damage to 0.625 (was 0.4).
+	* Nerfed body damage to 1.875 (was 2.5).
+	* Nerfed turn speed to 160 (was 200).
+	  * _Flame Charge was a bit too difficult to dodge without movement speed items and damage balancing was too skewed toward body contact damage, while flame was dealing basically nothing._
+* Archer Bug
+  * Movement pause duration when strafing around target changed to 1 second (was 0.75).
+  * Attack projectile spread changed to 25 degrees between projectiles (was 20).
+* Lynx Tribe
+  * Totem
+    * Now has invulnerability for the duration of animation when summoned from Shaman.
+    * Now Storm applies DoT to targets that were grabbed but weren't thrown away before Storm disappears.
+  * Shrine
+    * Added item info on ping.
+  * Shaman
+    * Projectile now has lifetime expire effect.  
+  * Scout
+    * Buffed movement speed to 13ms (was 12).
+    * Slightly increased attack sound volume.	
+  * Hunter
+    * Increased pre attack sound volume.  
+* Mechanical spiders
+  * Fixed variants not working.
+    * _According to my git history it wasn't working from the very start but I distinctly remember it working? Dunno what happened here._  
+* Swift
+  * Fixed Swift spawning on ground nodes.
+    * _I told you about the nodes bro!_
+  * Dive
+    * No longer adjusts movement vector during it.
+    * Now has predictive aiming.
+	* Slightly extended hitbox forward.
+  * Slight animation and visual improvements.
+  * Added Rallypoint Delta specific variant.
+    * _Swifts were blending into walls on Rallypoint Delta. With how difficult post processing is on that stage to work with we made a very garish Swift variant that will not blend with the walls, however it will look terrible outside of Rallypoint, so I do not recommend putting it anywhere else. While adding snow variant, similar to golems, is an option, the issue is that this is a flying enemy and you will be looking at it from below 99% of the time, basically not seeing the snow at all._
+* Judgement
+  * Item selection now shows item count.	
+</details>
+<details>
+<summary>0.6.3</summary>
+
+* Added new Small-tier monster: Swift.
+* Added appropriate monsters to Gilded Coast, Meridian and Artifact Reliquary (all variants).
+* Archer Bug
+  * Scaled size down by roughly 10%.
+  * Added new Archer Bug variant courtesy of Synodii.
+    * It spawns on Sundered Grove and Siren's Call.
+* Ifrit
+  * Pillar now has post processing and its light drops shadows. Pillars spawned by players are unaffected by these changes.
+* Judgement
+  * Added chat messages on item selection.
+* Party time!
+  * _It has been a year since first version of EnemiesReturns has been released. We would like to thank everyone who downloaded and played the mod, gave feedback and talked about it, it means a lot to us. To commemorate the occasion we added party mode to all added enemies that occurs every year on 4th of August. We hope to bring you more content in the upcoming year._
+  * <img src="https://files.catbox.moe/64y9xf.jpg" alt="Thank you!">
+</details>
+<details>
+<summary>0.5.21</summary>
+
+* Judgement
+  * Fixed game freeze if player enters with 20 stacks of Eulogy Zero.
+  * Added Stone Titan to enemy blacklist.
+  * There aren't any more rains down in Africa.
+</details>
+<details>
+<summary>0.5.20</summary>
+
+* Lynx Tribe
+  * Fixed potential game freeze if summoned tribesmen failed to spawn. 
+* Judgement
+  * Fixed Engineer turrets dropping equipment.
+  * Implemented clientside collision checks for some attacks.
+    * _This is somewhat experimental since I haven't had a good chance to test networking with real delay and on proper modpack, but now rotating laser and chasing laser attacks should use clientside hit detection. If you have any network issues after this change - please report them._
+</details>
+<details>
+<summary>0.5.19</summary>
+
+* Added support for more Snowtime stages.
+* Lynx Tribe
+  * Redid item display sync on Lynx Shrine, so item should now be visible on high latency connections.
+  * Fixed Lynx Totem having negative hitboxes on being spawned from Shaman.
+* Archer Bugs
+  * Fixed JitterBones (Malachite elite body shaking).
+  * Added option to disable Archer Bugs.
+  * Fixed Archer Bugs doing nothing after spawning.
+  * Fixed Archer Bugs spawning on Ground nodes instead of Air nodes.
+  * Fixed yaw animation.
+  * Optimizations to wing textures.
+* Colossus
+  * Small animation improvements.
+  * Fixed Colossus playing charge particles on spawn and not on actual attack charge.  
+* Judgement
+  * Max enemy count on waves now scales with player count.
+  * Fixed Promethean Teleporter sometimes not spawning despite requirements being fulfilled.
+  * Adjustments to fix pathfinding issues and potential cheese spots.
+  * Animation improvements.
+  * Elites now have additional gameplay effects.
+  * Added additional checks to King leaving a trophy. 
+  * Fixed chat message playing that King left a trophy despite it not being the case.
+</details>
+<details>
 <summary>0.5.18</summary>
 
 * Fixed some language tokens.

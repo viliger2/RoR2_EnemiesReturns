@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
 {
+    // TODO: investigate wave end effect not firing on clients
     [RegisterEntityState]
     public class WaveActive : BaseJudgementIntaractable
     {

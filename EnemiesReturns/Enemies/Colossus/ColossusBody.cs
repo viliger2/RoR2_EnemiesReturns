@@ -277,12 +277,6 @@ namespace EnemiesReturns.Enemies.Colossus
             var particleRenderer = modelPrefab.transform.Find("Armature/root/root_pelvis_control/spine/spine.001/ParticleSystem").gameObject.GetComponent<ParticleSystemRenderer>();
             var eyeLight = modelPrefab.transform.Find("Armature/root/root_pelvis_control/spine/spine.001/head/Light").gameObject.GetComponent<Light>();
 
-            // the only way to fix vertex colors not working is to put model with
-            // vertex color preview material in the bundle and then swap material here
-            // this is the most retarded, asinine bullshit yet with this game
-            modelRenderer.material = ContentProvider.MaterialCache["matColossus"];
-            headRenderer.material = ContentProvider.MaterialCache["matColossus"];
-
             var renderInfos = new CharacterModel.RendererInfo[]
             {
                 new CharacterModel.RendererInfo
@@ -409,7 +403,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -446,7 +440,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -483,7 +477,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -520,7 +514,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossus"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -557,7 +551,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 new CharacterModel.RendererInfo
                 {
                     renderer = particleRenderer,
-                    defaultMaterial = ContentProvider.MaterialCache["matColossusSMBBody"],
+                    defaultMaterial = particleRenderer.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = true
@@ -977,6 +971,29 @@ namespace EnemiesReturns.Enemies.Colossus
                 {
                     displayRuleGroup = displayRuleGroupAeonian,
                     keyAsset = Content.Equipment.EliteAeonian
+                });
+            }
+            #endregion
+
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(-0.01372F, 0.46715F, -0.04329F),
+                    localAngles = new Vector3(0F, 0F, 0F),
+                    localScale = new Vector3(0.23833F, 0.23833F, 0.23833F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
                 });
             }
             #endregion

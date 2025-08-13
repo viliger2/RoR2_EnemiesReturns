@@ -15,7 +15,9 @@ namespace EnemiesReturns
         public static class MusicTracks
         {
             public static MusicTrackDef Unknown;
+
             public static MusicTrackDef UnknownBoss;
+
             public static MusicTrackDef TheOrigin;
         }
 
@@ -42,6 +44,8 @@ namespace EnemiesReturns
             public static ItemDef LunarFlower;
 
             public static ItemDef HiddenAnointed;
+
+            public static ItemDef PartyHat;
         }
 
         public static class ItemRelationshipProviders

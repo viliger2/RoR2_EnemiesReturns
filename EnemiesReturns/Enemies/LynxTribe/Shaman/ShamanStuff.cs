@@ -14,6 +14,10 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 {
     public class ShamanStuff
     {
+        public static void Hooks()
+        {
+            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
+        }
 
         public GameObject CreateShamanSpawnEffect(GameObject prefab)
         {
@@ -67,7 +71,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             }
             else
             {
-                Log.Warning("ILHook failed: HealthComponent_Heal");
+                Log.Warning("ILHook failed: ShamanStuff.HealthComponent_Heal");
             }
         }
 
@@ -339,6 +343,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileSimple.lifetime = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesLifetime.Value;
             projectileSimple.desiredForwardSpeed = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesSpeed.Value;
             projectileSimple.updateAfterFiring = true;
+            projectileSimple.lifetimeExpiredEffect = impact;
 
             var projectileSingleTarget = prefab.AddComponent<ProjectileSingleTargetImpact>();
             projectileSingleTarget.destroyWhenNotAlive = true;

@@ -13,6 +13,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<string> DefaultStageList;
 
         public static ConfigEntry<float> PostLoopTotemSummon;
+        public static ConfigEntry<bool> PostLoopTotemSummonInvunerability;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -58,7 +59,9 @@ namespace EnemiesReturns.Configuration.LynxTribe
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadow),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum),
+                    "snowtime_gmconstruct",
+                    "snowtime_gmflatgrass"
                 ),
                 "Stages that Default Lynx Shaman appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
@@ -89,6 +92,7 @@ namespace EnemiesReturns.Configuration.LynxTribe
             PushBackRadius = config.Bind("Lynx Shaman Push Back", "Lynx Shaman Push Back Radius", 11f, "Lynx Shaman's Push Back attack radius.");
 
             PostLoopTotemSummon = config.Bind("Lynx Shaman Director", "Post Loop Totem Summon Chance", 5f, "Chance for Shaman to summon Totem post loop. This value is multiplied by loop count.");
+            PostLoopTotemSummonInvunerability = config.Bind("Lynx Shaman Director", "Post Loop Totem Summon Invunerability", true, "Totem summoned from Shaman is invunerable for the duration of summon animations.");
 
             NopeEmoteKey = config.Bind("Lynx Shaman Emotes", "Nope Emote", KeyCode.Alpha2, "Key used to Nope.");
             SingEmoteKey = config.Bind("Lynx Shaman Emotes", "Sing Emote", KeyCode.Alpha1, "Key used to Sing.");

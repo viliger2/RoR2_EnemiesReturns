@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
+using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
 using EnemiesReturns.Enemies.Judgement.Arraign;
 using HG;
 using Mono.Cecil.Cil;
@@ -30,12 +31,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static MasterCatalog.MasterIndex ArraignP2MasterIndex;
 
-        public static BodyIndex ArraignP1BodyIndex;
-
-        public static BodyIndex ArraignP2BodyIndex;
-
-        public static Material immuneToAllDamageExceptHammerMaterial;
-
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
         [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
@@ -54,13 +49,16 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
             ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
 
-            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
-            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
-
             AddAeonianAnointedItemDisplays();
 
             ArraignDamageController.AddBodyToArmorBypass(BodyCatalog.FindBodyIndex("BrotherBody"));
             ArraignDamageController.AddBodyToArmorBypass(BodyCatalog.FindBodyIndex("BrotherHurtBody"));
+
+            EnemiesReturns.Equipment.MithrixHammer.MithrixHammerOnDamageDealtServerReciever.AddWhitelistedBodies();
+
+            var idrsArraign = ArraignBody.CreateIDRS();
+            ArraignBody.ArraignP1Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
+            ArraignBody.ArraignP2Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
         }
 
         private static void AddAeonianAnointedItemDisplays()
@@ -163,13 +161,104 @@ namespace EnemiesReturns.Enemies.Judgement
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
-                On.RoR2.CharacterModel.UpdateOverlays += AddDamageImmuneOverlay;
-                //On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += SpawnBrokenTeleporter;
+                On.RoR2.CharacterModel.UpdateOverlays += Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;
                 BossGroup.onBossGroupStartServer += SpawnGoldTitanOnArraign;
                 DirectorAPI.MixEnemiesDccsActions += GrabSpawnCardsForJudgement;
+                IL.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+                R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+                On.EntityStates.StunState.OnEnter += HalfStunState;
+                On.EntityStates.FrozenState.OnEnter += HalfFrozenState;
+                Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            }
+        }
+
+        private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
+        {
+            var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC");
+            if (!keyPair.Equals(default(KeyValuePair<string, string>)))
+            {
+                string description = string.Format(
+                    keyPair.Value,
+                    EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value.ToString("###%")
+                    );
+                language.SetStringByToken("ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC", description);
+            }
+        }
+
+        private static void HalfFrozenState(On.EntityStates.FrozenState.orig_OnEnter orig, EntityStates.FrozenState self)
+        {
+            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                self.freezeDuration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
+            }
+            orig(self);
+        }
+
+        private static void HalfStunState(On.EntityStates.StunState.orig_OnEnter orig, EntityStates.StunState self)
+        {
+            orig(self);
+            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                self.duration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
+            }
+        }
+
+        public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if(sender && sender.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                args.attackSpeedReductionMultAdd = 0f;
+                args.moveSpeedReductionMultAdd = 0f;
+            }
+        }
+
+        private static void CharacterBody_RecalculateStats(ILContext il)
+        {
+            // TODO: this is not actual todo, remember to double check it every game update
+            // since for sure indexes for values will change
+            ILCursor c = new ILCursor(il);
+            if(c.TryGotoNext(MoveType.After,
+                x => x.MatchLdloc(88),
+                x => x.MatchLdloc(45),
+                x => x.MatchConvR4(),
+                x => x.MatchLdcR4(1),
+                x => x.MatchMul(),
+                x => x.MatchAdd(),
+                x => x.MatchStloc(88)))
+            {
+                c.Emit(OpCodes.Ldarg_0); // self
+                c.Emit(OpCodes.Ldloc, 88); // 88 is float where slows are collected
+                c.EmitDelegate<System.Func<RoR2.CharacterBody, float, float>>((self, ammount) =>
+                {
+                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
+                    {
+                        return 1;
+                    }
+                    return ammount;
+                });
+                c.Emit(OpCodes.Stloc, 88);
+            } else
+            {
+                Log.Warning("ILHook failed: SetupJudgementPath.CharacterBody_RecalculateStats");
+            }
+
+            while (c.TryGotoNext(MoveType.Before,
+                x => x.MatchStloc(100)))
+            {
+                c.Emit(OpCodes.Ldarg_0); // self
+                c.Emit(OpCodes.Ldloc, 100); // 100 is float where attack speed is stored
+                c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>((newValue, self, origValue) =>
+                {
+                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
+                    {
+                        return Mathf.Max(newValue, origValue);
+                    }
+                    return newValue;
+                });
+                c.Index++;
             }
         }
 
@@ -177,15 +266,6 @@ namespace EnemiesReturns.Enemies.Judgement
         public static bool AddBodyToBlacklist(string bodyName)
         {
             return false;
-        }
-
-        private static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
-        {
-            orig(self);
-            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
-            {
-                self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
-            }
         }
 
         private static void SpawnBrokenTeleporter2(On.RoR2.EscapeSequenceController.EscapeSequenceMainState.orig_OnEnter orig, EscapeSequenceController.EscapeSequenceMainState self)
@@ -394,53 +474,6 @@ namespace EnemiesReturns.Enemies.Judgement
             onPlayerEnterEvent.action.AddListener(chatMessage.Send);
         }
 
-        private static void SpawnBrokenTeleporter(On.EntityStates.Missions.BrotherEncounter.BossDeath.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.BossDeath self)
-        {
-            orig(self);
-
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            if (!self.childLocator)
-            {
-                return;
-            }
-
-            var center = self.childLocator.FindChild("CenterOfArena");
-            if (!center)
-            {
-                return;
-            }
-
-            var itemFound = false;
-            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
-            {
-                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                {
-                    continue;
-                }
-
-                if (!playerCharacterMaster.master.inventory)
-                {
-                    continue;
-                }
-
-                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.LunarFlower) > 0)
-                {
-                    itemFound = true;
-                    break;
-                }
-            }
-
-            if (itemFound)
-            {
-                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, center.position, Quaternion.identity);
-                NetworkServer.Spawn(newTeleporter);
-            }
-        }
-
         public static void SpawnObjects(SceneDirector sceneDirector)
         {
             if (!NetworkServer.active)
@@ -504,6 +537,13 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             var panel = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab").WaitForCompletion().InstantiateClone("JudgementPickerPanel", false);
             panel.transform.Find("MainPanel/Juice/Label").gameObject.GetComponent<LanguageTextMeshController>().token = "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER";
+
+            var pickerPanel = panel.GetComponent<PickupPickerPanel>();
+
+            var helper = panel.AddComponent<JudgementPickerPanelTextHelper>();
+            helper.pickupPickerPanel = pickerPanel;
+
+            pickerPanel.pickupBaseContentReady.AddPersistentListener(helper.AddQuantityToPickerButton);
 
             return panel;
         }

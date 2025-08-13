@@ -113,6 +113,17 @@ namespace EnemiesReturns.Behaviors.Judgement
                     }
                 }
             }
+
+#if DEBUG || NOWEAVER
+            Log.Info("This list is before DCCS is blended, so if you have mods that modify DCCS blend then they will be applied afterwards.");
+            for (int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
+            {
+                if (stageInfo.monsterSelection.choices[i].value != null && stageInfo.monsterSelection.choices[i].value.spawnCard && stageInfo.monsterSelection.choices[i].value.spawnCard.prefab)
+                {
+                    Log.Info(stageInfo.monsterSelection.choices[i].value.spawnCard);
+                }
+            }
+#endif
         }
     }
 }

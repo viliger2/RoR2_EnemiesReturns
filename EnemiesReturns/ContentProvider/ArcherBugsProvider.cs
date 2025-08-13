@@ -14,6 +14,8 @@ namespace EnemiesReturns
         {
             if (Configuration.ArcherBug.Enabled.Value)
             {
+                ArcherBugBody.StadiaJungleMeshPrefab = assets.First(asset => asset.name == "ArcherBug_stadiajungle");
+
                 var archerBugStuff = new ArcherBugStuff();
 
                 var ArcherBugCausticSpitProjectile = archerBugStuff.CreateCausticSpitProjectile();
@@ -54,6 +56,22 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
                 };
                 Utils.AddMonsterToStages(EnemiesReturns.Configuration.ArcherBug.DefaultStageList.Value, dchArcherBugDefault);
+
+                ArcherBugBody.SpawnCards.cscArcherBugJungle = archerBugBody.CreateCard("cscArhcerBugJungle", ArcherBugMaster.MasterPrefab, ArcherBugBody.SkinDefs.Jungle, ArcherBugBody.BodyPrefab);
+                var dcArhcerBugJungle = new DirectorCard
+                {
+                    spawnCard = ArcherBugBody.SpawnCards.cscArcherBugJungle,
+                    selectionWeight = Configuration.ArcherBug.SelectionWeight.Value,
+                    preventOverhead = true,
+                    minimumStageCompletions = Configuration.ArcherBug.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchArcherBugJungle = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcArhcerBugJungle,
+                    MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
+                };
+                Utils.AddMonsterToStages(EnemiesReturns.Configuration.ArcherBug.JungleStageList.Value, dchArcherBugJungle);
+
             }
         }
     }

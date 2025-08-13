@@ -234,9 +234,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
             };
             shrinePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef;
 
-            var genericNameInfoProvider = shrinePrefab.AddComponent<GenericDisplayNameProvider>();
-            genericNameInfoProvider.displayToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME";
-
             var pingInfoProvider = shrinePrefab.AddComponent<PingInfoProvider>();
             pingInfoProvider.pingIconOverride = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texShrineIconOutlined.png").WaitForCompletion();
 

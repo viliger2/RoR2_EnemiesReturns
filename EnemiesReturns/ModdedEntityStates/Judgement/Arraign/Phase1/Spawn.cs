@@ -15,13 +15,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         private static int Spawn1ParamHash = Animator.StringToHash("Spawn1.playbackRate");
 
-        public static float duration = 5.5f;
+        private static int LandEffectHash = Animator.StringToHash("spawn.landEffect");
+
+        public static float duration = 6f;
 
         public static string spawnSoundString;
 
         public static GameObject slamEffect;
 
         private Animator animator;
+
+        private bool landEffectSpawned;
 
         public override void OnEnter()
         {
@@ -34,31 +38,26 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 0f);
             }
             PlayAnimation("Body", Spawn1StateHash, Spawn1ParamHash, duration);
-            if (characterMotor && isAuthority)
-            {
-                characterMotor.onHitGroundAuthority += CharacterMotor_onHitGroundAuthority;
-                characterMotor.gravityScale = 3f;
-            }
             if (NetworkServer.active)
             {
-                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 6f);
+                characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, duration);
             }
-        }
-
-        private void CharacterMotor_onHitGroundAuthority(ref CharacterMotor.HitGroundInfo hitGroundInfo)
-        {
-            var effectData = new EffectData()
-            {
-                origin = hitGroundInfo.position,
-                scale = 7f
-            };
-            EffectManager.SpawnEffect(slamEffect, effectData, true);
-            EntitySoundManager.EmitSoundServer((AkEventIdArg)"Play_moonBrother_spawn", gameObject);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!landEffectSpawned && animator.GetFloat(LandEffectHash) > 0.9f)
+            {
+                var effectData = new EffectData()
+                {
+                    origin = FindModelChild("MuzzleFloor").position,
+                    scale = 7f
+                };
+                EffectManager.SpawnEffect(slamEffect, effectData, true);
+                EntitySoundManager.EmitSoundServer((AkEventIdArg)"Play_moonBrother_spawn", gameObject);
+                landEffectSpawned = true;
+            }
             if (base.fixedAge >= duration && base.isAuthority)
             {
                 SetNextState();
@@ -113,11 +112,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public override void OnExit()
         {
-            if (characterMotor && isAuthority)
-            {
-                characterMotor.onHitGroundAuthority -= CharacterMotor_onHitGroundAuthority;
-                characterMotor.gravityScale = 1f;
-            }
             base.OnExit();
             if (animator)
             {

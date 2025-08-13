@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.LynxTribe.Storm
 {
@@ -188,6 +189,29 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         {
             var idrs = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             (idrs as ScriptableObject).name = "idrsLynxStorm";
+            #region PartyHat
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var displayRuleGroupPartyHat = new DisplayRuleGroup();
+                displayRuleGroupPartyHat.AddDisplayRule(new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Items.PartyHat.PartyHatFactory.PartyHatDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "PartyHat",
+                    localPos = new Vector3(0F, 0F, 0F),
+                    localAngles = new Vector3(353.5232F, 3.66842F, 300.9822F),
+                    localScale = new Vector3(0.28734F, 0.28734F, 0.28734F),
+                    limbMask = LimbFlags.None
+                });
+                ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+                {
+                    displayRuleGroup = displayRuleGroupPartyHat,
+                    keyAsset = Content.Items.PartyHat
+                });
+            }
+            #endregion
+
             return idrs;
         }
 

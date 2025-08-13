@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Projectiles;
+using EnemiesReturns.Reflection;
 using RoR2;
 using System;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
 
         public static GameObject pushBackEffectStatic;
 
-        private OverlapAttack overlapAttack;
+        private OverlapAttackAuthority overlapAttack;
 
         private GameObject forwardBeam;
 
@@ -60,10 +61,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             {
                 characterDirection.moveVector = Vector3.zero; // if move vector gets stuck as non zero then rotation breaks
                 characterDirection.yaw += degreesPerSecond * GetDeltaTime();
-                if (overlapAttack != null)
-                {
-                    overlapAttack.Fire();
-                }
+            }
+
+            if (overlapAttack != null)
+            {
+                overlapAttack.Fire();
             }
 
             if (fixedAge > baseDuration && isAuthority)
@@ -91,9 +93,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             }
         }
 
-        private OverlapAttack CreateOverlapAttack(Transform modelTransform)
+        private OverlapAttackAuthority CreateOverlapAttack(Transform modelTransform)
         {
-            var overlapAttack = new OverlapAttack();
+            var overlapAttack = new OverlapAttackAuthority();
             overlapAttack.attacker = gameObject;
             overlapAttack.inflictor = gameObject;
             overlapAttack.teamIndex = TeamComponent.GetObjectTeam(gameObject);

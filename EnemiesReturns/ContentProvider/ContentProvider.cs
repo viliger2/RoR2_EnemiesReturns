@@ -150,6 +150,8 @@ namespace EnemiesReturns
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
+                CreatePartyHat(assets);
+
                 CreateSpitter(assets, iconLookup);
 
                 CreateColossus(assets, iconLookup, acdLookup);
@@ -163,6 +165,8 @@ namespace EnemiesReturns
                 CreateArcherBug(assets, iconLookup);
 
                 CreateSandCrab(assets, iconLookup);
+
+                CreateSwift(assets, iconLookup, acdLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
@@ -260,6 +264,20 @@ namespace EnemiesReturns
             onAssetsLoaded(sceneDefsRequest.allAssets.Cast<T>().ToArray());
 
             yield break;
+        }
+
+        public static Material CreateAndReplaceMaterial(string materialName, Func<Material, Material> materialCreateFunc)
+        {
+            if(!MaterialCache.TryGetValue(materialName, out var material))
+            {
+                Log.Warning($"There is no material with name {materialName} to replace in MaterialCache!");
+                return null;
+            }
+
+            var newMaterial = materialCreateFunc(material);
+            MaterialCache[materialName] = newMaterial;
+
+            return newMaterial;
         }
 
         public static Material GetOrCreateMaterial(string materialName, Func<Material> materialCreateFunc)

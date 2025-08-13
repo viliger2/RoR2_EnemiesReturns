@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Projectiles;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -22,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 
         public static float movementSpeed => Configuration.Judgement.ArraignP2.SkyLaserMovementSpeed.Value;
 
-        private OverlapAttack overlapAttack;
+        private OverlapAttackAuthority overlapAttack;
 
         public override void OnEnter()
         {
@@ -40,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
         {
             base.FixedUpdate();
 
-            if (isAuthority)
+            if (overlapAttack != null)
             {
                 overlapAttack.Fire();
             }
@@ -52,9 +53,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
             }
         }
 
-        private OverlapAttack SetupOverlapAttack(Transform modelTransform)
+        private OverlapAttackAuthority SetupOverlapAttack(Transform modelTransform)
         {
-            var overlapAttack = new OverlapAttack();
+            var overlapAttack = new OverlapAttackAuthority();
             overlapAttack.attacker = gameObject;
             overlapAttack.inflictor = gameObject;
             overlapAttack.teamIndex = TeamComponent.GetObjectTeam(gameObject);

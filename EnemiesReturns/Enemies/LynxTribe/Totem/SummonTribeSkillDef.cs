@@ -26,6 +26,5 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 
             return false; // players are never capped
         }
-
     }
 }

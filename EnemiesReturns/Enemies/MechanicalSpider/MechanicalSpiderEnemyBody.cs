@@ -58,7 +58,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
             var modelRenderer = modelPrefab.transform.Find("MechanicalSpider").gameObject.GetComponent<SkinnedMeshRenderer>();
-            modelRenderer.material = ContentProvider.MaterialCache["matMechanicalSpider"];
 
             var baseRendererInfos = new CharacterModel.RendererInfo[]
             {
@@ -82,7 +81,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
         {
             var modelRenderer = modelPrefab.transform.Find("MechanicalSpider").gameObject.GetComponent<SkinnedMeshRenderer>();
-            modelRenderer.material = ContentProvider.MaterialCache["matMechanicalSpider"];
 
             var bsaeRenderInfos = new CharacterModel.RendererInfo[] { new CharacterModel.RendererInfo
             {

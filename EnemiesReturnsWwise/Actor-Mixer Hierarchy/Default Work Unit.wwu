@@ -20,6 +20,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<ActorMixer Name="Sfx Mixer" ID="{D36B1E12-7066-4932-A8CF-74F034D9711D}" ShortID="906046263">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -3598,7 +3605,7 @@
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-7</Value>
+																		<Value>-6</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -5387,6 +5394,309 @@
 										</Sound>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Swift" ID="{3EC0C5EF-0518-46A4-AA5F-BC0D1EE82BAC}" ShortID="507144276">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="24"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Sound Name="Swift_Spawn" ID="{8FE10E8D-62A9-45A4-A9F9-90E525B30512}" ShortID="9653545">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wGolemB_Spawn" ID="{9005E74E-8986-42EA-B079-B3F00F81E102}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Swift\wGolemB_Spawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="106230718"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wGolemB_Spawn" ID="{9005E74E-8986-42EA-B079-B3F00F81E102}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swift_Death" ID="{991F88FF-FEB9-4458-880D-F2AAC5240052}" ShortID="480131212">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wGolemB_Death" ID="{F64189DB-E9C1-4836-89AE-BC79ECDC83C2}">
+													<Language>SFX</Language>
+													<AudioFile>Swift\wGolemB_Death.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="557799477"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wGolemB_Death" ID="{F64189DB-E9C1-4836-89AE-BC79ECDC83C2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Swift_PrepAttack" ID="{B3F22608-A536-4A33-959C-5D0958BDA44D}" ShortID="103743990">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wGolemB_Shoot_1" ID="{89D263E6-D7E1-45D0-96FC-A2B7E83FEB62}">
+													<Language>SFX</Language>
+													<AudioFile>Swift\wGolemB_Shoot_1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="831893569"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wGolemB_Shoot_1" ID="{89D263E6-D7E1-45D0-96FC-A2B7E83FEB62}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<ActorMixer Name="Random Pitch" ID="{605B400C-229F-435C-A97C-595C2F6766C3}" ShortID="395439841">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EF07B972-8BBF-4551-AFE5-1E668572A7FD}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Swift_AttackGroundImpact" ID="{167631B1-419A-44DA-85DE-3F3739B16E29}" ShortID="6310875">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wGolemB_Shoot_2" ID="{EFF39DC1-B495-498F-8016-A060907F5DCE}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\wGolemB_Shoot_2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="4103259"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="wGolemB_Hit" ID="{66A08381-7CF8-4BD1-B529-0B237384786D}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\wGolemB_Hit.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="945917530"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wGolemB_Hit" ID="{66A08381-7CF8-4BD1-B529-0B237384786D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="Swift_WingFlap" ID="{FDD1AFD1-5C39-4A3D-9A15-980381924264}" ShortID="714191902">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Flap1" ID="{CB761AD6-7575-4CA6-A5C8-E4A06C13FE1B}" ShortID="215679917">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="flap1" ID="{16F4FB21-38D8-401B-ACF4-3C3950235012}">
+																	<Language>SFX</Language>
+																	<AudioFile>Swift\Wings\flap1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="908440825"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="flap1" ID="{16F4FB21-38D8-401B-ACF4-3C3950235012}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Flap2" ID="{207667AD-C33E-477D-9373-34EE334F17C1}" ShortID="890597772">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="flap2" ID="{A9D14097-0868-44CE-9895-8B001A09BBFB}">
+																	<Language>SFX</Language>
+																	<AudioFile>Swift\Wings\flap2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="188390281"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="flap2" ID="{A9D14097-0868-44CE-9895-8B001A09BBFB}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Sound Name="Swift_DeathGroundImpact" ID="{5D8E0D81-5282-4C06-9AB4-1E2C120414F8}" ShortID="12970036">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="fall_impact" ID="{8E3D684A-03A0-4A83-B817-18E9B9C73316}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\fall_impact.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="264164089"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="fall_impact" ID="{8E3D684A-03A0-4A83-B817-18E9B9C73316}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Swift_AttackGroundEject" ID="{9A1B9CD2-308D-499A-9213-B5BD00CCE691}" ShortID="885671625">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wGolemB_Shoot_2" ID="{A9AB7AE0-1539-4650-9195-D264AE52DED2}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\wGolemB_Shoot_2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="4103259"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wGolemB_Shoot_2" ID="{A9AB7AE0-1539-4650-9195-D264AE52DED2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Swift_DiveLoop" ID="{44398107-6933-4D73-B47F-3657FA1D91DF}" ShortID="327472240">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="dive_loop" ID="{C824BBE5-3009-417F-A0AF-3ACB796E0111}">
+															<Language>SFX</Language>
+															<AudioFile>Swift\dive_loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="171395394"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="dive_loop" ID="{C824BBE5-3009-417F-A0AF-3ACB796E0111}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</ActorMixer>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
@@ -5411,6 +5721,7 @@
 																		<XPos>0</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>5</Flags>
+																		<SegmentShape>Log2</SegmentShape>
 																	</Point>
 																	<Point>
 																		<XPos>100</XPos>

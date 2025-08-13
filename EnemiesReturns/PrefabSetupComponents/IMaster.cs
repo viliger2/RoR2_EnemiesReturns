@@ -3,6 +3,7 @@ using EnemiesReturns.Components.MasterComponents;
 using EnemiesReturns.PrefabSetupComponents.MasterComponents;
 using R2API;
 using Rewired.Utils;
+using RoR2;
 using System.Linq;
 using UnityEngine;
 
@@ -26,6 +27,20 @@ namespace EnemiesReturns.Components
             if ((this as INetworkIdentity).NeedToAddNetworkIdentity())
             {
                 masterPrefab.RegisterNetworkPrefab();
+            }
+
+            if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
+            {
+                var pickups = masterPrefab.AddComponent<GivePickupsOnStart>();
+                pickups.itemDefInfos = new GivePickupsOnStart.ItemDefInfo[]
+                {
+                    new GivePickupsOnStart.ItemDefInfo()
+                    {
+                        count = 1,
+                        dontExceedCount = true,
+                        itemDef = Content.Items.PartyHat
+                    }
+                };
             }
 
             return masterPrefab;

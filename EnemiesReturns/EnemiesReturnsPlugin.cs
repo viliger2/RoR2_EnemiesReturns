@@ -17,6 +17,7 @@ using System.Reflection;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
+    // TODO:  and crabs can go to distant roost, sulfur pools, reformed altar
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
@@ -37,7 +38,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.5.18";
+        public const string Version = "0.6.4";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
@@ -104,10 +105,11 @@ namespace EnemiesReturns
             MechanicalSpiderVictoryDanceController.Hooks();
             Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
-            IL.RoR2.HealthComponent.Heal += ShamanStuff.HealthComponent_Heal;
+            ShamanStuff.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
-            On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
+            Behaviors.SubjectParamsChatMessage.Hooks();
 
+            On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
             Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
@@ -124,6 +126,10 @@ namespace EnemiesReturns
             if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
             {
                 LynxFetishFactory.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            }
+            if (EnemiesReturns.Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                Enemies.Judgement.SetupJudgementPath.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
         }
 
