@@ -164,6 +164,8 @@ namespace EnemiesReturns
 
                 CreateArcherBug(assets, iconLookup);
 
+                CreateSandCrab(assets, iconLookup);
+
                 CreateSwift(assets, iconLookup, acdLookup);
 
                 stopwatch.Stop();
