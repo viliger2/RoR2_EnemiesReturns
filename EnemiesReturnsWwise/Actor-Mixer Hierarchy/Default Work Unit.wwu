@@ -46,7 +46,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>5</Value>
+														<Value>-3</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -75,7 +75,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-4</Value>
+														<Value>-11</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -104,7 +104,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -307,7 +307,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -356,7 +356,7 @@
 														<ActiveSource Name="sfx_spitter_spit_windup" ID="{9DFFCF9B-D787-4E24-B815-194D01E80A36}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="Spittter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
+												<Sound Name="Spitter_Bite" ID="{BAC0ABE9-3196-4B4B-A8DF-416EE781F952}" ShortID="410576396">
 													<PropertyList>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
@@ -372,7 +372,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-1</Value>
+																<Value>-7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -423,7 +423,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>2</Value>
+																<Value>-5</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1083,7 +1083,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1773,7 +1773,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-10</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1800,13 +1800,25 @@
 												</Sound>
 												<Sound Name="Spider_Dash" ID="{B5531BF2-9747-4FE2-8642-23B9DBE44210}" ShortID="318593837">
 													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{AF1B1A57-BD7C-42E9-B9D5-44C06B25E2BD}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-10</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 														</Reference>
@@ -1833,7 +1845,7 @@
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>10</Value>
+																<Value>7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1882,9 +1894,16 @@
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EA47FD18-33D5-480B-8F1C-AA00BA7622E9}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>10</Value>
+																<Value>7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1932,7 +1951,7 @@
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-12</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1964,10 +1983,12 @@
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>6</Value>
-															</ValueList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EB73DBC9-C5CA-4519-9F44-6DA92CC585F2}"/>
+																</ModifierInfo>
+															</ModifierList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
@@ -2066,7 +2087,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2110,13 +2131,13 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-10</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Attenuation">
-															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+															<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
 														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -2147,6 +2168,13 @@
 															</ValueList>
 														</Property>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{730FE5D9-A544-4222-999B-7BF68122B78B}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="UseMaxSoundPerInstance" Type="bool">
 															<ValueList>
 																<Value>True</Value>
@@ -2154,7 +2182,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>12</Value>
+																<Value>6</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2315,6 +2343,13 @@
 														<Value>2</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C66C8D61-A23F-4B87-B4C0-30DCF0ABD202}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="UseMaxSoundPerInstance" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -2322,7 +2357,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>-1</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2349,9 +2384,16 @@
 										</Sound>
 										<Sound Name="Spider_Death_Drone" ID="{ACDC6A29-EA2F-4D06-86DF-A91D367891C2}" ShortID="980587449">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{76B351A2-BB81-42F1-8DEA-AFE91197A73F}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2378,9 +2420,16 @@
 										</Sound>
 										<Sound Name="Spider_Fire_Charge" ID="{6440DC88-D172-40F6-8E1D-7744BC7C1600}" ShortID="785929494">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{A4AF5333-4E2F-475E-9E0C-EDD3031D5CA9}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-10</Value>
+														<Value>-13</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2407,7 +2456,16 @@
 										</Sound>
 										<Sound Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" ShortID="478291165">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AB738BB6-B8F2-4A88-B775-003099359505}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-10</Value>
@@ -2415,6 +2473,9 @@
 												</Property>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 												</Reference>
@@ -2437,9 +2498,16 @@
 										</Sound>
 										<Sound Name="Spider_Death_Normal" ID="{535C63B8-6531-476A-852B-979F74F2ADE5}" ShortID="673878891">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{69BE2E86-4D76-4796-8031-EB8980BBCE30}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-2</Value>
+														<Value>-7</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -2469,6 +2537,13 @@
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{48CD846D-7448-4EF7-A714-7AB853994BB4}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-2</Value>
@@ -2512,6 +2587,11 @@
 													<ValueList>
 														<Value>800</Value>
 													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{81E1B0E8-33AE-4106-BCDB-9A701B749445}"/>
+														</ModifierInfo>
+													</ModifierList>
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
@@ -2589,7 +2669,7 @@
 																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-5</Value>
+																		<Value>-11</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2622,9 +2702,16 @@
 														<Sound Name="Shaman_FireProjectiles" ID="{573F86BD-35F7-4B7F-A3E2-E60B321F5A9E}" ShortID="285118927">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{DD42AE9B-3F38-4B15-BD4D-4CA878ED58D8}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-5</Value>
+																		<Value>-11</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2657,9 +2744,16 @@
 																<Property Name="3DSpatialization" Type="int16" Value="1"/>
 																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{F4BA6352-B77F-4578-8093-C1CA88785506}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-6</Value>
+																		<Value>-8</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -2691,6 +2785,18 @@
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{AE8F222D-3B3C-4C15-9686-19EE32531938}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Attenuation">
@@ -2806,9 +2912,16 @@
 												<Sound Name="Shaman_SummonProjectilesNoVoice" ID="{E7C4087C-C4CE-4972-AF48-A5DF9DCB66EC}" ShortID="345148098">
 													<PropertyList>
 														<Property Name="OverrideEffect" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F4A18CBD-8856-45BD-A8BC-3A5707018B7E}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>2</Value>
+																<Value>-3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2842,9 +2955,16 @@
 												</Sound>
 												<Sound Name="Shaman_SummonPushBackNoVoice" ID="{67059634-BCA3-45AC-9B66-99BD7ED2E982}" ShortID="996695356">
 													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{88D576D5-46E8-4495-A5FB-E51DEB9A75BB}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-6</Value>
+																<Value>-11</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2871,9 +2991,16 @@
 												</Sound>
 												<Sound Name="Shaman_SpawnNoVoice" ID="{AB72E8B1-CB0C-4227-AAC0-8D68BAA0A6D9}" ShortID="820794674">
 													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{D3E1FDAE-4B21-4DBB-A0EA-BAB7703E3179}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2900,9 +3027,16 @@
 												</Sound>
 												<Sound Name="Shaman_Death" ID="{5F174EE4-0494-4D05-AC06-55E98EA1DC4E}" ShortID="488088731">
 													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{C3D48DC4-06F4-4445-8847-48D24BCFE241}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-5</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -2929,6 +3063,13 @@
 												</Sound>
 												<Sound Name="Shaman_Slide_Whistle" ID="{6162EDEF-A39B-405E-93AD-5A92662E7ED9}" ShortID="4999929">
 													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{EAD0753F-F8E6-4032-B798-EC44B27D5077}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
 																<Value>-2</Value>
@@ -2988,6 +3129,13 @@
 												<Sound Name="ShamanTookTheDrug" ID="{4707980D-815C-401B-A533-F6D76172D64B}" ShortID="992278961">
 													<PropertyList>
 														<Property Name="OverrideConversion" Type="bool" Value="True"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{6AEB9BAF-056B-4FB8-96AC-A35EB4C95098}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
 																<Value>-6</Value>
@@ -3087,7 +3235,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3149,7 +3297,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-10</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3175,6 +3323,13 @@
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="Archer_FireArrow" ID="{7FB54E82-A2A0-41BF-8261-69830E250550}" ShortID="1011860492">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -3263,6 +3418,11 @@
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
 															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Attenuation">
@@ -3375,7 +3535,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-6</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3409,7 +3569,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-5</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3443,11 +3603,6 @@
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Attenuation">
@@ -3484,7 +3639,7 @@
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-11</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3520,7 +3675,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3549,7 +3704,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-6</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3605,7 +3760,7 @@
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-6</Value>
+																		<Value>-11</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -3643,7 +3798,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-8</Value>
+																<Value>-11</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3701,7 +3856,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-2</Value>
+																<Value>-5</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3735,7 +3890,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-6</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3764,7 +3919,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3815,7 +3970,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-6</Value>
+																<Value>-10</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3873,7 +4028,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-5</Value>
+																<Value>-8</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3903,7 +4058,7 @@
 														<Property Name="OverrideConversion" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-2</Value>
+																<Value>-5</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -3936,7 +4091,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-3</Value>
+																<Value>-7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -4001,7 +4156,7 @@
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-4</Value>
+																<Value>-7</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -5273,9 +5428,16 @@
 									<ChildrenList>
 										<Sound Name="ArcherBug_Spawn" ID="{31E34727-A88E-47DF-BEBD-9C92CDFB80C1}" ShortID="338154147">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{95B9AB86-A641-49CE-A94D-288C622CBE4B}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-8</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -5300,44 +5462,18 @@
 												<ActiveSource Name="wMacG_Spawn" ID="{A3DE6CC9-094C-47C6-9CD1-7BEDAC85B2F0}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="ArcherBug_Shoot" ID="{2E92FA58-2241-48A5-8729-904163D6302C}" ShortID="118454525">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-3</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.236657334202015"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ArcherBug\wMacG_Shoot.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1019158565"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<Sound Name="ArcherBug_Death" ID="{0B8A5B99-9CA5-4EA2-A5C1-117A188E057C}" ShortID="375283551">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{8E039E24-D1CF-4817-ADBF-66B6E9110FD9}"/>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-7</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -5392,6 +5528,77 @@
 												<ActiveSource Name="Buck Bumble Main Theme [w8FQ-N0zb2U]" ID="{970988F0-E7CB-4859-A10F-85569FE68A4D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<ActorMixer Name="Random Pitch" ID="{8744C9DC-BB31-487C-822C-D83197639970}" ShortID="662381699">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{41FF477E-404E-49B0-8AFC-9505A6152C56}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="ArcherBug_Shoot" ID="{2E92FA58-2241-48A5-8729-904163D6302C}" ShortID="118454525">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{F8735EA2-8795-455E-BC5D-F6276CCB0785}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.236657334202015"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ArcherBug\wMacG_Shoot.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1019158565"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wMacG_Shoot" ID="{A1408A36-7572-4CEA-97A4-B2701DB20B8A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</ActorMixer>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Swift" ID="{3EC0C5EF-0518-46A4-AA5F-BC0D1EE82BAC}" ShortID="507144276">
@@ -5401,6 +5608,13 @@
 									</PropertyList>
 									<ChildrenList>
 										<Sound Name="Swift_Spawn" ID="{8FE10E8D-62A9-45A4-A9F9-90E525B30512}" ShortID="9653545">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -5429,7 +5643,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-2</Value>
+														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -5458,7 +5672,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-2</Value>
+														<Value>-8</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -5511,6 +5725,11 @@
 												<Sound Name="Swift_AttackGroundImpact" ID="{167631B1-419A-44DA-85DE-3F3739B16E29}" ShortID="6310875">
 													<PropertyList>
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Attenuation">
@@ -5548,6 +5767,11 @@
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Attenuation">
@@ -5613,7 +5837,7 @@
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-7</Value>
+																<Value>-14</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -5642,6 +5866,13 @@
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="Swift_AttackGroundEject" ID="{9A1B9CD2-308D-499A-9213-B5BD00CCE691}" ShortID="885671625">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -5668,6 +5899,11 @@
 														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Attenuation">

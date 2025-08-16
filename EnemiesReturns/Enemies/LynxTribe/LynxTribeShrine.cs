@@ -17,7 +17,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
         public bool available;
 
         [SyncVar(hook = "OnPickupChanged")]
-        public int pickupValue;
+        public int pickupValue = -1;
 
         [SyncVar]
         public bool activated = false;
@@ -177,6 +177,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private void UpdatePickupDisplay()
         {
+            if(pickupIndex.value != pickupValue && pickupValue > 0)
+            {
+                pickupIndex = new PickupIndex(pickupValue);
+            }
             if (pickupDisplay)
             {
                 pickupDisplay.SetPickupIndex(pickupIndex);
