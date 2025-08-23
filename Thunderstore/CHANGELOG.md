@@ -1,4 +1,11 @@
 <details>
+<summary>0.6.5</summary>
+
+* Did another sound effect volume pass.
+  * _Changing volume curve from last update caused a lot of sounds becoming way louder than before. I've adjusted almost all of them, so hopefully it should be in line with vanilla. Judgement sounds are mostly left the same, since sound cues are important for that encounter._
+* Another attempt to fix network desync on Lynx Shrine item.
+</details>
+<details>
 <summary>0.6.4</summary>
 
 * Switched sound effects volume curve from Linear to Sine.

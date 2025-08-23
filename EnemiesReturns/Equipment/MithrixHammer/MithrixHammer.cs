@@ -14,8 +14,11 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 
         public static void Hooks()
         {
-            On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
-            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
+            if (Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
+                RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
+            }
         }
 
         private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)

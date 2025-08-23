@@ -427,7 +427,7 @@ namespace EnemiesReturns.Enemies.Ifrit
         {
             return new IRandomBlinkController.RandomBlinkParams(new string[] { "BlinkEye" })
             {
-                blinkChancePerUpdate = 10f
+                blinkChancePerUpdate = 3f
             };
         }
 

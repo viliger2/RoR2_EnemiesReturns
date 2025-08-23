@@ -10,7 +10,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 {
     public class MithrixHammerOnDamageDealtServerReciever : ItemBehavior, IOnDamageDealtServerReceiver
     {
-        public readonly static List<BodyIndex> whiteListedBodies = new List<BodyIndex>();
+        public readonly static HashSet<BodyIndex> whiteListedBodies = new HashSet<BodyIndex>();
 
         public static void AddWhitelistedBodies()
         {
