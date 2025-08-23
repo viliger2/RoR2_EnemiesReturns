@@ -1,4 +1,9 @@
 <details>
+<summary>0.6.6</summary>
+
+* Fixed disabling Judgement breaks the game.
+</details>
+<details>
 <summary>0.6.5</summary>
 
 * Did another sound effect volume pass.
