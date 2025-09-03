@@ -4822,6 +4822,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueWaterSplash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &412610041694138441
 GameObject:
@@ -9782,6 +9783,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &1377688613413228743
 GameObject:
@@ -14614,6 +14616,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &1398044929812140078
 GameObject:
@@ -19437,6 +19440,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &1435834310010834381
 GameObject:
@@ -19472,7 +19476,6 @@ Transform:
   - {fileID: 6528184031571869681}
   - {fileID: 6669787947589000807}
   - {fileID: 1443993734342971693}
-  - {fileID: 1807165569860378229}
   m_Father: {fileID: 2687818105705390187}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19602,7 +19605,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2235346324157654885}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 3
@@ -24382,6 +24385,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueWaterSplash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &2415899232952894171
 GameObject:
@@ -29362,6 +29366,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &2488093492630070440
 GameObject:
@@ -34185,6 +34190,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &2643895063004981310
 GameObject:
@@ -34197,7 +34203,7 @@ GameObject:
   - component: {fileID: 5876597635554297162}
   - component: {fileID: 629825392135869751}
   - component: {fileID: 8427676829184087041}
-  - component: {fileID: 6001100798469048653}
+  - component: {fileID: 540295235353319080}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -34232,8 +34238,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.40000004, g: 0.59607846, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 15.35
+  m_Intensity: 7
+  m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -34294,7 +34300,7 @@ MonoBehaviour:
   m_Script: {fileID: 2011550347, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6001100798469048653
+--- !u!114 &540295235353319080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34303,37 +34309,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2643895063004981310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: -875252823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -2.433951
-      outSlope: -2.433951
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.116939425
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  timeMax: 0.6
-  loop: 0
-  randomStart: 0
-  enableNegativeLights: 0
+  light: {fileID: 629825392135869751}
+  sinWaves:
+  - amplitude: 0.25
+    frequency: 0.25
+    cycleOffset: 0
 --- !u!1 &2759470622113753792
 GameObject:
   m_ObjectHideFlags: 0
@@ -39165,6 +39148,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &2980719257873518811
 GameObject:
@@ -39255,7 +39239,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.55e-43, y: 7.1e-44, z: 0, w: -25512.828}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 7.34684e-40}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -44091,6 +44075,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &3945472253673501801
 GameObject:
@@ -46441,6 +46426,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/mysteryspace/matMSStarsLink.mat
   isParticle: 1
   isTrailParticle: 1
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &4287830716326238807
 GameObject:
@@ -51264,6 +51250,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueWaterSplash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &4793156525660764779
 GameObject:
@@ -51455,7 +51442,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812504403145496476}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 3
@@ -56244,6 +56231,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matDebris1.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &5076417879294992789
 GameObject:
@@ -58623,6 +58611,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &5237566439054113715
 GameObject:
@@ -60972,6 +60961,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matGenericFlash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &5341312000261538402
 GameObject:
@@ -65795,6 +65785,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &5387160795642899779
 GameObject:
@@ -68084,6 +68075,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matGenericFlash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &5714314972578204607
 GameObject:
@@ -73101,6 +73093,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueWaterSplash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &6593780514173938039
 GameObject:
@@ -78104,6 +78097,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueWaterSplash.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &7342271448941626365
 GameObject:
@@ -78272,6 +78266,7 @@ Transform:
   - {fileID: 4578444458989928976}
   - {fileID: 4301048704442274645}
   - {fileID: 5876597635554297162}
+  - {fileID: 1807165569860378229}
   m_Father: {fileID: 3432906683162265886}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78317,7 +78312,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7515341485366829884}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 1
   cullingMode: 3
@@ -83097,6 +83092,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matOpaqueDustLarge.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1 &7846007203511663593
 GameObject:
@@ -83438,13 +83434,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9221487536496738100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.16032, y: 0.16032, z: 0.16032}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5600116733958071955}
-  m_RootOrder: 5
+  m_Father: {fileID: 4169733775144414638}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
 --- !u!198 &7270133053685173513
 ParticleSystem:
@@ -85754,6 +85750,7 @@ MonoBehaviour:
   addressableMaterialPath: RoR2/Base/Common/VFX/matJellyfishLightning.mat
   isParticle: 1
   isTrailParticle: 0
+  loadAsynchronous: 1
   renderer: {fileID: 0}
 --- !u!1001 &4284632904837859889
 PrefabInstance:
@@ -85774,17 +85771,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1466123941211088737, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1500315079575077679, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1500315079575077679, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1500315079575077679, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500315079575077679, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1795127869725252512, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -85873,6 +85878,10 @@ PrefabInstance:
     - target: {fileID: 8084372334202385810, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084372334202385810, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9001056202962638389, guid: d17780c099c919c4bb9df5d45ff0011b, type: 3}
       propertyPath: m_LocalPosition.y
