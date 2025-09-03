@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using EnemiesReturns.Reflection;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift
 {
+    [RegisterEntityState]
     public class DeathState : EntityStates.Vulture.FallingDeath
     {
         public static GameObject impactEffect;
