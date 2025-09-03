@@ -23,6 +23,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public static GameObject slamEffect;
 
+        private HurtBoxGroup hurtboxGroup;
+
         private Animator animator;
 
         private bool landEffectSpawned;
@@ -30,6 +32,17 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override void OnEnter()
         {
             base.OnEnter();
+            Transform modelTransform = GetModelTransform();
+            if (modelTransform)
+            {
+                hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
+            }
+
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter++;
+            }
+
             Util.PlaySound(spawnSoundString, base.gameObject);
             animator = GetModelAnimator();
             if (animator)
@@ -117,6 +130,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
             {
                 animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 1f);
                 animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 1f);
+            }
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter--;
             }
             if (NetworkServer.active)
             {

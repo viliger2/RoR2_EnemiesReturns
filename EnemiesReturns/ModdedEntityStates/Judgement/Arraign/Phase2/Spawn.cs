@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
@@ -20,6 +21,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         private bool spokeThird = false;
 
+        private HurtBoxGroup hurtboxGroup;
+
         public override void OnEnter()
         {
             duration = 21f;
@@ -27,6 +30,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             if (NetworkServer.active)
             {
                 characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, duration);
+            }
+            Transform modelTransform = GetModelTransform();
+            if (modelTransform)
+            {
+                hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
+            }
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter++;
             }
         }
 
@@ -68,6 +80,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void OnExit()
         {
             base.OnExit();
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter--;
+            }
             if (NetworkServer.active)
             {
                 if (characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))

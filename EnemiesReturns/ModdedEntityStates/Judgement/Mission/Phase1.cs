@@ -38,6 +38,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+#if DEBUG || NOWEAVER
+            if (Input.GetKeyDown(EnemiesReturns.Configuration.Colossus.EmoteKey.Value))
+            {
+                outer.SetNextState(new Phase2());
+            }
+#endif
             if (missionController && missionController.missionClear && isAuthority)
             {
                 outer.SetNextState(new PrePhase2());
