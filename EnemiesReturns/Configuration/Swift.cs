@@ -67,7 +67,7 @@ namespace EnemiesReturns.Configuration
                 "Stages that Rallypint Swift appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command. I would not recommend putting this variant anywhere else since it was specifically made to be garish so it stands out on Rallypoint Delta against the walls and containers due to very \"special\" Rallypoint post proccessing.");
 
             BaseMaxHealth = config.Bind("Swift Character Stats", "Base Max Health", 200f, "Swift's base health.");
-            BaseMoveSpeed = config.Bind("Swift Character Stats", "Base Movement Speed", 7f, "Swift's base movement speed.");
+            BaseMoveSpeed = config.Bind("Swift Character Stats", "Base Movement Speed", 10f, "Swift's base movement speed.");
             BaseJumpPower = config.Bind("Swift Character Stats", "Base Jump Power", 15f, "Swift's base jump power.");
             BaseDamage = config.Bind("Swift Character Stats", "Base Damage", 15f, "Swift's base damage.");
             BaseArmor = config.Bind("Swift Character Stats", "Base Armor", 0f, "Swift's base armor.");
@@ -80,7 +80,7 @@ namespace EnemiesReturns.Configuration
             DiveDamage = config.Bind("Swift Dive", "Dive Damage", 3f, "Swift's Dive damage.");
             DiveMaxDuration = config.Bind("Swift Dive", "Dive Maximum Duration", 3.5f, "Swift's Dive maximum duration after which it will stop diving if no targets or ground are hit.");
             DiveTurnSpeed = config.Bind("Swift Dive", "Dive Turn Speed", 200f, "Swift's Dive turn speed, the higher the value the faster it will turn following the aim vector.");
-            DiveSpeedCoefficient = config.Bind("Swift Dive", "Dive Speed Coefficient", 9f, "Swift's Dive speed coefficient, multiplies base speed.");
+            DiveSpeedCoefficient = config.Bind("Swift Dive", "Dive Speed Coefficient", 6.3f, "Swift's Dive speed coefficient, multiplies base speed.");
 
             EmoteKey = config.Bind("Swift Emotes", "Duck Dance Emote", KeyCode.Alpha1, "Key used to do the Duck Dance.");
         }
