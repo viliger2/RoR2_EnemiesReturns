@@ -6,6 +6,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.ModdedEntityStates.SandCrab.Snip;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
@@ -19,6 +20,30 @@ namespace EnemiesReturns.Enemies.SandCrab
 {
     public class SandCrabBody : BodyBase
     {
+        public struct Skills
+        {
+            public static SkillDef ClawSnip;
+        }
+
+        public struct SkillFamilies
+        {
+            public static SkillFamily Primary;
+
+        }
+        public struct SkinDefs
+        {
+            public static SkinDef Default;
+        }
+
+        public struct SpawnCards
+        {
+            public static CharacterSpawnCard cscSandCrabDefault;
+        }
+
+        public static GameObject BodyPrefab;
+
+        protected override bool AddHitBoxes => true;
+
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
             return new IAimAssist.AimAssistTargetParams()
@@ -29,8 +54,6 @@ namespace EnemiesReturns.Enemies.SandCrab
             };
         }
 
-        
-
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SANDCRAB_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
@@ -38,22 +61,22 @@ namespace EnemiesReturns.Enemies.SandCrab
                 mainRootSpeed = 0,
                 baseAcceleration = 100f,
                 baseMaxHealth = 480f,
-                levelMaxHealth = 144f,
                 baseDamage = 20f,
-                levelDamage = 4f,
                 baseMoveSpeed = 6.6f,
                 baseJumpCount = 1,
                 baseJumpPower = 18f,
                 hullClassification = HullClassification.Golem,
                 isChampion = false,
                 autoCalculateStats = true,
+                levelMaxHealth = 144f,
+                levelDamage = 4f,
             };
         }
 
         public SkillDef CreateClawSnipSkill()
         {
             var acridBite = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Croco/CrocoBite.asset").WaitForCompletion();
-            return CreateSkill(new SkillParams("SandCrabClawSnip", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.FireSnip)))
+            return CreateSkill(new SkillParams("SandCrabClawSnip", new EntityStates.SerializableEntityStateType(typeof(ChargeSnip)))
             {
                 nameToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME",
                 descriptionToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION",
@@ -113,8 +136,8 @@ namespace EnemiesReturns.Enemies.SandCrab
                 new IEntityStateMachine.EntityStateMachineParams
                 {
                     name = "Body",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Spitter.SpitterMain)),
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.GenericSpawnState)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {
@@ -153,7 +176,6 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         protected override string ModelName() => "mdlSandCrab";
 
-
         protected override IModelPanelParameters.ModelPanelParams ModelPanelParams()
         {
             return new IModelPanelParameters.ModelPanelParams()
@@ -178,30 +200,5 @@ namespace EnemiesReturns.Enemies.SandCrab
         }
 
         protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>("RoR2/Base/Beetle/sdBeetleGuard.asset").WaitForCompletion();
-
-        public struct Skills
-        {
-            public static SkillDef ClawSnip;
-        }
-
-        public struct SkillFamilies
-        {
-            public static SkillFamily Primary;
-
-        }
-        public struct SkinDefs
-        {
-            public static SkinDef Default;
-        }
-
-        public struct SpawnCards
-        {
-            public static CharacterSpawnCard cscSandCrabDefault;
-        }
-
-        public static GameObject BodyPrefab;
-
-        protected override bool AddHitBoxes => true;
-
     }
 }

@@ -164,9 +164,9 @@ namespace EnemiesReturns
 
                 CreateArcherBug(assets, iconLookup);
 
-                CreateSandCrab(assets, iconLookup);
-
                 CreateSwift(assets, iconLookup, acdLookup);
+
+                //CreateSandCrab(assets, iconLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);

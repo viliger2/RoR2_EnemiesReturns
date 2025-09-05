@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.ModdedEntityStates.SandCrab
+namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 {
-    internal class FireSnip : BaseState
+    public class FireSnip : BaseState
     {
         public static float damageCoefficient => 2.5f;
 
@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 
-        public static float baseDuration = 1f;
+        public static float baseDuration = 1.458f;
 
         public static GameObject snipEffectPrefab;
 
@@ -35,8 +35,8 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab
             modelAnimator = GetModelAnimator();
             Transform modelTransform = GetModelTransform();
             attack = new OverlapAttack();
-            attack.attacker = base.gameObject;
-            attack.inflictor = base.gameObject;
+            attack.attacker = gameObject;
+            attack.inflictor = gameObject;
             attack.teamIndex = TeamComponent.GetObjectTeam(attack.attacker);
             attack.damage = damageCoefficient * damageStat;
             attack.hitEffectPrefab = hitEffectPrefab;
@@ -44,49 +44,41 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab
             attack.damageType = DamageSource.Primary;
             if ((bool)modelTransform)
             {
-                attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Snip");
+                attack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == "Snip");
             }
-            if ((bool)modelAnimator)
+            PlayAnimation("Gesture, Override, Mask", "FireSnip", "FireSnip.playbackRate", duration);
+            if ((bool)characterBody)
             {
-                PlayAnimation("Gesture", "FireSnip", "FireSnip.playbackRate", duration);
+                characterBody.SetAimTimer(2f);
             }
-            if ((bool)base.characterBody)
-            {
-                base.characterBody.SetAimTimer(2f);
-            }
-            Debug.Log("AttackEntered");
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (NetworkServer.active && (bool)modelAnimator && modelAnimator.GetFloat("Snip.hitBoxActive") > 0.9f)
+            if (modelAnimator && modelAnimator.GetFloat("Snip.hitBoxActive") > 0.9f)
             {
-                Debug.Log("AttackFired");
-                Fire();
+                if (!hasSnipped)
+                {
+                    EffectManager.SimpleMuzzleFlash(snipEffectPrefab, gameObject, "SnipSpot", false);
+                    hasSnipped = true;
+                }
+                if (isAuthority)
+                {
+                    attack.forceVector = transform.forward * forceMagnitude;
+                    attack.Fire();
+                }
             }
-            if (base.fixedAge >= duration && base.isAuthority)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }
         }
 
-        private void Fire()
-        {
-            if (!hasSnipped)
-            {
-                EffectManager.SimpleMuzzleFlash(snipEffectPrefab, base.gameObject, "SnipSpot", transmit: true);
-                hasSnipped = true;
-            }
-            attack.forceVector = base.transform.forward * forceMagnitude;
-            attack.Fire();
-            
-        }
-
         public override void OnExit()
         {
             base.OnExit();
-            Debug.Log("AttackExit");
+            PlayCrossfade("Gesture, Override, Mask", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

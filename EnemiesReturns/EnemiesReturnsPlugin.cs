@@ -19,8 +19,6 @@ namespace EnemiesReturns
 {
     // TODO: and crabs can go to distant roost, sulfur pools, reformed altar
     // TODO: fix the client objectives, surely it can be done
-    // TODO: swifts do not play death animation on clients
-    // TODO: add some effects and lights to pedestal
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
