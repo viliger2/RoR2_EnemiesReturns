@@ -104,7 +104,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
             else
             {
-                Log.Error($"Elite Ramp ILHook failed");
+                Log.Warning($"IL Hook Failed - RoR2.CharacterModel.UpdateMaterials: Anointed skins won't have their elite ramp applied.");
             }
 
             static void UpdateRampProperly(CharacterModel charModel)
@@ -394,7 +394,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
             else
             {
-                Log.Error("RoR2.UI.LoadoutPanelController.Row.FromSkin IL hook failed.");
+                Log.Warning("IL Hook Failed - RoR2.UI.LoadoutPanelController.Row.FromSkin: Anointed skins won't be hidden in the lobby until they are unlocked.");
             }
 
             static bool CheckForSpecialSkinDef(RoR2.UI.LoadoutPanelController owner, SkinDef skinDef)

@@ -71,7 +71,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             }
             else
             {
-                Log.Warning("ILHook failed: ShamanStuff.HealthComponent_Heal");
+                Log.Warning("IL Hook Failed - RoR2.HealthComponent.Heal: Lynx Shaman debuff won't reduce incoming healing.");
             }
         }
 

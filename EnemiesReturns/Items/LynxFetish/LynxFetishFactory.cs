@@ -70,7 +70,7 @@ namespace EnemiesReturns.Items.LynxFetish
             }
             else
             {
-                Log.Warning("ILHook failed: HealthComponent_TakeDamageProcess");
+                Log.Warning("IL Hook Failed - RoR2.HealthComponent.TakeDamageProcess: Lynx Fetish Special damage buff won't be working.");
             }
         }
 

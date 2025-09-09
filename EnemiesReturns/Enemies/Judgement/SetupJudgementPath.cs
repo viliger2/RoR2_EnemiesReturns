@@ -242,7 +242,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 c.Emit(OpCodes.Stloc, 88);
             } else
             {
-                Log.Warning("ILHook failed: SetupJudgementPath.CharacterBody_RecalculateStats");
+                Log.Warning("IL Hook Failed - RoR2.CharacterBody.RecalculateStats: Aenonian elites won't have their affix working.");
             }
 
             while (c.TryGotoNext(MoveType.Before,
