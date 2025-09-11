@@ -6,6 +6,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.ModdedEntityStates.SandCrab;
 using EnemiesReturns.ModdedEntityStates.SandCrab.Snip;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
@@ -23,11 +24,15 @@ namespace EnemiesReturns.Enemies.SandCrab
         public struct Skills
         {
             public static SkillDef ClawSnip;
+
+            public static SkillDef Bubbles;
         }
 
         public struct SkillFamilies
         {
             public static SkillFamily Primary;
+
+            public static SkillFamily Secondary;
 
         }
         public struct SkinDefs
@@ -58,18 +63,18 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_SANDCRAB_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                mainRootSpeed = 0,
+                mainRootSpeed = 20,
                 baseAcceleration = 100f,
                 baseMaxHealth = 480f,
-                baseDamage = 20f,
-                baseMoveSpeed = 6.6f,
+                baseDamage = 16f,
+                baseMoveSpeed = 7f,
                 baseJumpCount = 1,
                 baseJumpPower = 18f,
                 hullClassification = HullClassification.Golem,
                 isChampion = false,
                 autoCalculateStats = true,
                 levelMaxHealth = 144f,
-                levelDamage = 4f,
+                levelDamage = 3.2f,
             };
         }
 
@@ -83,6 +88,17 @@ namespace EnemiesReturns.Enemies.SandCrab
                 icon = acridBite.icon,
                 activationStateMachine = "Weapon",
                 baseRechargeInterval = 5f,
+            });
+        }
+
+        public SkillDef CreateBubblesSkill()
+        {
+            return CreateSkill(new SkillParams("SandCrabBubbles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.Bubbles.ChargeBubbles)))
+            {
+                nameToken = "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME",
+                descriptionToken = "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION",
+                activationStateMachine = "Weapon",
+                baseRechargeInterval = 15f,
             });
         }
 
@@ -153,7 +169,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             return new IFootStepHandler.FootstepHandlerParams()
             {
                 enableFootstepDust = true,
-                baseFootstepString = "Play_treeBot_step",
+                //baseFootstepString = "Play_treeBot_step", // TODO: not treebot, its way too mechanic
                 footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion()
             };
         }
@@ -162,7 +178,8 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             return new IGenericSkill.GenericSkillParams[]
             {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary)
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "ClawSnip", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Secondary, "Bubbles", SkillSlot.Secondary)
             };
         }
 

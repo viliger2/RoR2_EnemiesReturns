@@ -8,9 +8,10 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 {
+    [RegisterEntityState]
     public class FireSnip : BaseState
     {
-        public static float damageCoefficient => 2.5f;
+        public static float damageCoefficient => 5f;
 
         public static float forceMagnitude => 200f;
 

@@ -166,7 +166,7 @@ namespace EnemiesReturns
 
                 CreateSwift(assets, iconLookup, acdLookup);
 
-                //CreateSandCrab(assets, iconLookup);
+                CreateSandCrab(assets, iconLookup, acdLookup);
 
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);

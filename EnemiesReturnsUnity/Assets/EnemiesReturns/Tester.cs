@@ -4,40 +4,30 @@ using UnityEngine;
 
 public class Tester : MonoBehaviour
 {
-    public Transform initialPoint;
+    public int projectileCount = 4;
 
-    public Transform spawnPoint;
+    public float angle = 120f;
 
-    public GameObject box;
+    public Vector3 aimDirection;
 
-    public float repeatEach = 3f;
-
-    public float speed;
-
-    private float timer;
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnDrawGizmos()
     {
-        
-    }
+        var angle = this.angle / (projectileCount - 1);
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        timer += Time.fixedDeltaTime;
-        if(timer >= repeatEach) {
-            
-            var initialPosition = (spawnPoint.position - initialPoint.position) * 0.8f;
-            initialPosition = new Vector3(initialPoint.position.x + initialPosition.x, initialPoint.position.y, initialPoint.position.z + initialPosition.z);
+        var normalizerAimDirection = aimDirection.normalized;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, normalizerAimDirection);
+
+        Gizmos.color = Color.white;
 
 
-            var rotation = Quaternion.LookRotation(spawnPoint.position - initialPosition, Vector3.up);
-            var newObject = UnityEngine.Object.Instantiate(box, spawnPoint.position, rotation);
-
-            var rigidBodyComponent = newObject.GetComponent<Rigidbody>();
-            rigidBodyComponent.velocity = newObject.transform.forward * speed;
-            timer = 0;
+        var startingDirection = Quaternion.AngleAxis(-this.angle * 0.5f, normalizerAimDirection) * Vector3.up;
+        Gizmos.DrawRay(transform.position, startingDirection);
+        var rotation = Quaternion.AngleAxis(angle, new Vector3(normalizerAimDirection.x, 0f, normalizerAimDirection.z));
+        for (int i = 0; i < projectileCount; i++)
+        {
+            Gizmos.DrawCube(transform.position + startingDirection * 5, Vector3.one);
+            startingDirection = rotation * startingDirection;
         }
     }
 }

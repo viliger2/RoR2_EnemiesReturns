@@ -69,17 +69,12 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             Vector3 rhs = Vector3.Cross(Vector3.up, aimRay.direction);
             Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
 
-            int shotCount = projectileCount;
-            float spread = projectileSpread; //Bandit is 2, experiment to find a good value for this. Higher = wider
-
-            var num2 = spread;
-            var angle = num2 / (shotCount - 1);
-
-            Vector3 direction = Quaternion.AngleAxis(-num2 * 0.5f, axis) * aimRay.direction;
+            var angle = projectileSpread / (projectileCount - 1);
+            
+            Vector3 direction = Quaternion.AngleAxis(-projectileSpread * 0.5f, axis) * aimRay.direction;
             Quaternion rotation = Quaternion.AngleAxis(angle, axis);
-            var proejctileOrigin = aimRay.origin;
             Ray aimRay2 = new Ray(aimRay.origin, direction);
-            for (int i = 0; i < shotCount; i++)
+            for (int i = 0; i < projectileCount; i++)
             {
                 ProjectileManager.instance.FireProjectile(projectilePrefab, aimRay2.origin, Util.QuaternionSafeLookRotation(aimRay2.direction), gameObject, damageStat * damageCoefficient, projectileForce, RollCrit(), DamageColorIndex.Default, null, 50f, DamageTypeCombo.GenericPrimary);
 
