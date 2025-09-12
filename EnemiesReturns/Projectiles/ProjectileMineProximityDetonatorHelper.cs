@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Projectiles
 {
-    [RequireComponent(typeof(MineProximityDetonatorWithGameObjectCheck))]
+    [RequireComponent(typeof(MineProximityDetonator))]
     public class ProjectileMineProximityDetonatorHelper : MonoBehaviour
     {
         public ProjectileImpactExplosion impactExplosion;

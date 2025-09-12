@@ -4,6 +4,7 @@ using EnemiesReturns.Projectiles;
 using R2API;
 using RoR2;
 using RoR2.Projectile;
+using System.Collections.Generic;
 using ThreeEyedGames;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -28,7 +29,60 @@ namespace EnemiesReturns.Enemies.SandCrab
             return clonedEffect;
         }
 
-        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, AnimationCurveDef acdBubbleSpeed)
+        public GameObject CreateBubbleGhost(GameObject ghostPrefab, Dictionary<string, AnimationCurveDef> acdLookup)
+        {
+            ghostPrefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = false;
+
+            var vfxAttributes = ghostPrefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            //vfxAttributes.DoNotPool = true;
+
+            ghostPrefab.AddComponent<EffectManagerHelper>();
+
+            var scaleCurveLoop = ghostPrefab.AddComponent<ObjectScaleCurve>();
+            scaleCurveLoop.useOverallCurveOnly = false;
+            scaleCurveLoop.curveX = acdLookup["acdSandCrabBubbleWobbleXZ"].curve;
+            scaleCurveLoop.curveZ = acdLookup["acdSandCrabBubbleWobbleXZ"].curve;
+            scaleCurveLoop.curveY = acdLookup["acdSandCrabBubbleWobbleY"].curve;
+            scaleCurveLoop.overallCurve = acdLookup["acdLinearCurve"].curve;
+            scaleCurveLoop.timeMax = 3f;
+            scaleCurveLoop.resetOnAwake = false;
+
+            var scaleCurveInitial = ghostPrefab.AddComponent<ObjectScaleCurve>();
+            scaleCurveInitial.useOverallCurveOnly = true;
+            scaleCurveInitial.overallCurve = acdLookup["acdSandCrabBubbleInitialScale"].curve;
+            scaleCurveInitial.timeMax = 12f * 0.125f; // TODO: 12 is projectile lifetime
+            scaleCurveInitial.resetOnAwake = false;
+
+            ghostPrefab.AddComponent<ObjectScaleCurveDisableOnMaxTime>().curve = scaleCurveInitial;
+
+            ghostPrefab.AddComponent<ObjectScaleCurveResetOnMaxTime>().curve = scaleCurveLoop;
+
+            var enabler = ghostPrefab.AddComponent<ComponentEnabler>();
+            enabler.component = scaleCurveLoop;
+
+            var enabler2 = ghostPrefab.AddComponent<ComponentEnabler>();
+            enabler2.component = scaleCurveInitial;
+
+            var awakeEvents = ghostPrefab.AddComponent<OnEnableEvent>();
+            awakeEvents.action = new UnityEngine.Events.UnityEvent();
+            awakeEvents.action.AddPersistentListener(enabler.DisableComponent);
+            awakeEvents.action.AddPersistentListener(enabler2.EnableComponent);
+
+            var timer = ghostPrefab.AddComponent<RoR2.EntityLogic.Timer>();
+            timer.duration = 12f * 0.125f; // TODO: 12 is duration, should be the same across all, 0.125f is middle of 0 speed of speed curve
+            timer.resetTimerOnEnable = true;
+            timer.playTimerOnEnable = true;
+            timer.loop = false;
+            timer.timeStepType = RoR2.EntityLogic.Timer.TimeStepType.FixedTime;
+            timer.action = new UnityEngine.Events.UnityEvent();
+            timer.action.AddPersistentListener(enabler.EnableComponent);
+
+            return ghostPrefab;
+        }
+
+        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed)
         {
             projectilePrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
@@ -40,7 +94,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             dissableCollisions.collidersB = new Collider[] { hurtBoxTransform.GetComponent<SphereCollider>() };        
 
             var projectileController = projectilePrefab.AddComponent<ProjectileController>();
-            //projectileController.ghostPrefab = ; // TODO
+            projectileController.ghostPrefab = projectileGhost;
             //projectileController.flightSoundLoop = ; // TODO
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = 1f; // TODO
