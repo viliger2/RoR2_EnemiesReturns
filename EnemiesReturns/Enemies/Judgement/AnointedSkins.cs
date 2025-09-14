@@ -5,6 +5,7 @@ using MonoMod.Cil;
 using RoR2;
 using RoR2BepInExPack.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -133,6 +134,8 @@ namespace EnemiesReturns.Enemies.Judgement
         // thanks randy, you made this all possible
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
+            var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
+
             var icon = AnointedSkinIcon;
 
             List<SkinDef> anointedSkins = new List<SkinDef>();
@@ -189,6 +192,23 @@ namespace EnemiesReturns.Enemies.Judgement
                     }
                 }
 
+                if (!defaultSkin)
+                {
+                    Log.Warning($"Couldn't find Default Skin for {body.name}.");
+                    continue;
+                }
+
+                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. Custom skins are not really supported, they are only supported if they use content packs instead of directly modifying catalogs, which basically excludes anything made with Skin Builder.");
+                var targetSkinArray = modelSkins.skins.Where(skinDef => skinDef.name == targetSkinConfig.Value).ToArray();
+                if (targetSkinArray.Length > 0)
+                {
+                    defaultSkin = targetSkinArray[0];
+                }
+                else
+                {
+                    Log.Info($"Couldn't find skin with name {targetSkinConfig.Value} for {body.name} for Anointed skin creation. Will use default skin.");
+                }
+
                 CharacterModel.RendererInfo[] skinRenderInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
                 for (int k = 0; k < skinRenderInfos.Length; k++)
                 {
@@ -242,7 +262,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 AnointedSkinsOverlayHashSet.Add(skin);
                 AnointedSkinsItemHashSet.Add(skin);
             }
-            foreach(var unlockable in skinUnlockables)
+            foreach (var unlockable in skinUnlockables)
             {
                 HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, unlockable);
             }

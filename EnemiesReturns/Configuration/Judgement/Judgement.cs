@@ -4,6 +4,8 @@ namespace EnemiesReturns.Configuration.Judgement
 {
     public class Judgement : IConfiguration
     {
+        public static ConfigFile JudgementConfig;
+
         public static ConfigEntry<bool> Enabled;
 
         public static ConfigEntry<bool> EnableAnointedSkins;
@@ -38,6 +40,8 @@ namespace EnemiesReturns.Configuration.Judgement
 
         public void PopulateConfig(ConfigFile config)
         {
+            JudgementConfig = config;
+
             Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
             EnableAnointedSkins = config.Bind("Judgement", "Enable Anointed Skins", true, "Enables the ability to unlock Anointed skins.");
             ForceUnlock = config.Bind("Judgement", "Force Unlock Anointed Skins", false, "Force unlocks all Anointed skins by removing UnlockableDef from them.");
