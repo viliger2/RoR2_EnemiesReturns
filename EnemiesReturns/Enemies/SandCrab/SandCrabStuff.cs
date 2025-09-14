@@ -31,6 +31,8 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public GameObject CreateBubbleGhost(GameObject ghostPrefab, Dictionary<string, AnimationCurveDef> acdLookup)
         {
+            ghostPrefab.transform.Find("Sphere").localScale = new Vector3(Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value);
+
             ghostPrefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = false;
 
             var vfxAttributes = ghostPrefab.AddComponent<VFXAttributes>();
@@ -86,8 +88,12 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             projectilePrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
+            projectilePrefab.GetComponent<SphereCollider>().radius = Configuration.SandCrab.BubbleSize.Value / 2f;
+
             var hurtBoxTransform = projectilePrefab.transform.Find("Model/HurtBox");
+            hurtBoxTransform.GetComponent<SphereCollider>().radius = Configuration.SandCrab.BubbleSize.Value / 2f;
             var proximityDetonatorTransform = projectilePrefab.transform.Find("ProximityDetonator");
+            proximityDetonatorTransform.GetComponent<SphereCollider>().radius = Configuration.SandCrab.BubbleSize.Value / 2f;
 
             var dissableCollisions = projectilePrefab.AddComponent<DisableCollisionsBetweenColliders>();
             dissableCollisions.collidersA = new Collider[] { projectilePrefab.GetComponent<SphereCollider>(), proximityDetonatorTransform.GetComponent<SphereCollider>() };

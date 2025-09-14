@@ -14,11 +14,11 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
     {
         public static float baseSingleDuration = 0.45f;
 
-        public static float projectileSpread = 135f;
+        public static float projectileSpread = 120f;
 
-        public static int timesToFire = 4;
+        public static int timesToFire => Configuration.SandCrab.BubbleShotCount.Value;
 
-        public static int projectilesCount = 1;
+        public static int projectilesCount => Configuration.SandCrab.BubbleCountPerShot.Value;
 
         public static float damageCoefficient = 2f;
 

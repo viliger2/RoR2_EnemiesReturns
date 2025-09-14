@@ -20,7 +20,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                 {
                     skillSlot = SkillSlot.Primary,
                     minDistance = 0f,
-                    maxDistance = 3f,
+                    maxDistance = 5f,
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
@@ -38,7 +38,6 @@ namespace EnemiesReturns.Enemies.SandCrab
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
-                    ignoreNodeGraph = true,
                     driverUpdateTimerOverride = 0.5f
                 },
                 new IAISkillDriver.AISkillDriverParams("StrafeAndShootBubbles")
