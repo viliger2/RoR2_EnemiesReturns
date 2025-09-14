@@ -112,7 +112,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var projectileSimple = projectilePrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = 12f; // TODO: same value as on ProjectileImpactExplosion
-            projectileSimple.desiredForwardSpeed = 5f; // TODO: curve multiplies this value, not assignes value by itself, so at the begining we can do like x5, then stop and then set it to x1
+            projectileSimple.desiredForwardSpeed = Configuration.SandCrab.BubbleSpeed.Value; // TODO: curve multiplies this value, not assignes value by itself, so at the begining we can do like x5, then stop and then set it to x1
             projectileSimple.updateAfterFiring = true;
             projectileSimple.enableVelocityOverLifetime = true;
             projectileSimple.velocityOverLifetime = acdBubbleSpeed.curve;
@@ -162,8 +162,8 @@ namespace EnemiesReturns.Enemies.SandCrab
             var teamFilter = projectilePrefab.GetOrAddComponent<TeamFilter>();
 
             var characterBody = projectilePrefab.AddComponent<CharacterBody>();
-            characterBody.baseMaxHealth = 30f;
-            characterBody.levelMaxHealth = 9f;
+            characterBody.baseMaxHealth = 20f;
+            characterBody.levelMaxHealth = 6f;
             characterBody.bodyFlags = CharacterBody.BodyFlags.Masterless;
             characterBody.doNotReassignToTeamBasedCollisionLayer = true;
 
@@ -195,7 +195,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var impactExplosion = projectilePrefab.AddComponent<ProjectileImpactExplosion>();
             impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius = 7f;
+            impactExplosion.blastRadius = Configuration.SandCrab.BubbleExplosionSize.Value;
             impactExplosion.blastDamageCoefficient = 1f;
             impactExplosion.blastProcCoefficient = 1f;
             impactExplosion.projectileHealthComponent = healthComponent;
@@ -205,7 +205,9 @@ namespace EnemiesReturns.Enemies.SandCrab
             impactExplosion.destroyOnWorld = true;
             impactExplosion.impactOnWorld = true;
             impactExplosion.timerAfterImpact = false;
+            impactExplosion.explodeOnLifeTimeExpiration = true;
             impactExplosion.lifetime = 12f;
+            impactExplosion.lifetimeRandomOffset = 1f;
             impactExplosion.transformSpace = ProjectileImpactExplosion.TransformSpace.World;
 
             var proximityDetonatorGameObject = proximityDetonatorTransform.gameObject;

@@ -19,7 +19,6 @@ namespace EnemiesReturns
 {
     // TODO: and crabs can go to distant roost, sulfur pools, reformed altar
     // TODO: fix the client objectives, surely it can be done
-    // TODO: check if artifact of dissonance works
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
@@ -40,7 +39,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.6.6";
+        public const string Version = "0.7.1";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
