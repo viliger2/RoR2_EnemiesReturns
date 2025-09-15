@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Components;
+﻿using BepInEx.Configuration;
+using EnemiesReturns.Components;
 using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -29,6 +30,8 @@ namespace EnemiesReturns.Enemies.Judgement
         private static HashSet<SkinDef> AnointedSkinsOverlayHashSet = new HashSet<SkinDef>();
 
         private static HashSet<SkinDef> AnointedSkinsItemHashSet = new HashSet<SkinDef>();
+
+        private static List<SkinDef> anointedSkinsSecondIterationList = new List<SkinDef>();
 
         private static HashSet<string> AnointedBlacklist = new HashSet<string>();
 
@@ -86,6 +89,69 @@ namespace EnemiesReturns.Enemies.Judgement
             return hiddenSkin;
         }
 
+        // second iteration is purely to support modded skins
+        [SystemInitializer(new Type[] {typeof(BodyCatalog)})]
+        private static IEnumerator CreateAnointedSkinsSecondIteration()
+        {
+            var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
+            for(int i = 0; i < anointedSkinsSecondIterationList.Count; i++)
+            {
+                SkinDef skin = anointedSkinsSecondIterationList[i];
+                if (!skin.rootObject)
+                {
+                    continue;
+                }
+
+                if(!skin.rootObject.TryGetComponent<CharacterModel>(out var characterModel))
+                {
+                    continue;
+                }
+
+                var body = characterModel.GetComponent<CharacterModel>().body;
+                if (!body)
+                {
+                    continue;
+                }
+
+                if (!judgementConfiguration.TryGetEntry<string>("Anointed Skins", body.name, out var entry))
+                {
+                    continue;
+                }
+
+                if(!skin.rootObject.TryGetComponent<ModelSkinController>(out var controller))
+                {
+                    continue;
+                }
+
+                var anointedBaseSkinName = entry.Value;
+                var customSkins = controller.skins.Where(skin => skin.name == anointedBaseSkinName).ToArray();
+                if(customSkins.Length == 0)
+                {
+                    Log.Info($"Couldn't find skin with name {anointedBaseSkinName} for {body.name} for Anointed skin creation on second iteration. Default skin will be used.");
+                    continue;
+                }
+
+                var baseCustomSkin = customSkins[0];
+                skin.baseSkins = new SkinDef[] { baseCustomSkin };
+                skin.skinDefParams = baseCustomSkin.skinDefParams;
+                skin.rendererInfos = baseCustomSkin.rendererInfos;
+                skin.gameObjectActivations = baseCustomSkin.gameObjectActivations;
+                skin.meshReplacements = baseCustomSkin.meshReplacements;
+                skin.projectileGhostReplacements = baseCustomSkin.projectileGhostReplacements;
+                skin.minionSkinReplacements = baseCustomSkin.minionSkinReplacements;
+                skin._runtimeSkin = baseCustomSkin._runtimeSkin;
+            }
+            for (int i = 0; i < anointedSkinsSecondIterationList.Count; i++)
+            {
+                var result = anointedSkinsSecondIterationList[i].BakeAsync();
+                while (result.MoveNext())
+                {
+                    yield return null;
+                }
+            }
+            anointedSkinsSecondIterationList = null;
+        }
+
         // shamelessly copy pasted from EliteAPI
         private static void SetupAnointedMaterials(MonoMod.Cil.ILContext il)
         {
@@ -138,7 +204,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
             var icon = AnointedSkinIcon;
 
-            List<SkinDef> anointedSkins = new List<SkinDef>();
+            List<SkinDef> anointedSkinsLocal = new List<SkinDef>();
             for (int i = 0; i < RoR2.ContentManagement.ContentManager._survivorDefs.Length; i++)
             {
                 var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs[i];
@@ -198,7 +264,8 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. Custom skins are not really supported, they are only supported if they use content packs instead of directly modifying catalogs, which basically excludes anything made with Skin Builder.");
+                bool addToList = false;
+                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. This is technically client side, but hasn't been tested in any real modpacks.");
                 var targetSkinArray = modelSkins.skins.Where(skinDef => skinDef.name == targetSkinConfig.Value).ToArray();
                 if (targetSkinArray.Length > 0)
                 {
@@ -206,41 +273,11 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 else
                 {
-                    Log.Info($"Couldn't find skin with name {targetSkinConfig.Value} for {body.name} for Anointed skin creation. Will use default skin.");
+                    Log.Info($"Couldn't find skin with name {targetSkinConfig.Value} for {body.name} for Anointed skin creation. Will try again on second iteration.");
+                    addToList = true;
                 }
 
-                CharacterModel.RendererInfo[] skinRenderInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
-                for (int k = 0; k < skinRenderInfos.Length; k++)
-                {
-                    var baseRenderInfo = characterModel.baseRendererInfos[k];
-
-                    Material newMaterial = null;
-                    if (baseRenderInfo.defaultMaterial)
-                    {
-                        if (!ContentProvider.MaterialCache.TryGetValue(baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed", out newMaterial))
-                        {
-                            newMaterial = UnityEngine.Object.Instantiate(baseRenderInfo.defaultMaterial);
-                            newMaterial.name = baseRenderInfo.defaultMaterial.name + "EnemiesReturnsAnointed";
-                            newMaterial.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
-                            newMaterial.SetFloat(CommonShaderProperties._EliteIndex, 1);
-                            ContentProvider.MaterialCache.Add(newMaterial.name, newMaterial);
-                        }
-                    }
-                    else
-                    {
-                        Log.Warning($"Body {body.name} has an empty material on baseRendererInfos at index {k}.");
-                    }
-                    skinRenderInfos[k] = new CharacterModel.RendererInfo
-                    {
-                        renderer = baseRenderInfo.renderer,
-                        defaultMaterial = newMaterial,
-                        defaultShadowCastingMode = baseRenderInfo.defaultShadowCastingMode,
-                        hideOnDeath = baseRenderInfo.hideOnDeath,
-                        ignoreOverlays = baseRenderInfo.ignoreOverlays,
-                    };
-                }
-
-                var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{body.name}EnemiesReturnsAnointed", model.gameObject, skinRenderInfos, true, defaultSkin);
+                var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{body.name}EnemiesReturnsAnointed", model.gameObject, hideInLobby: true, baseSkin: defaultSkin);
                 eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                 eliteSkinDef.icon = icon;
                 eliteSkinDef.unlockableDef = CreateAnointedUnlockable(body.name);
@@ -255,13 +292,18 @@ namespace EnemiesReturns.Enemies.Judgement
                 skinsArray[index] = eliteSkinDef;
                 modelSkins.skins = skinsArray;
 
-                anointedSkins.Add(eliteSkinDef);
+                anointedSkinsLocal.Add(eliteSkinDef);
+                if (addToList)
+                {
+                    anointedSkinsSecondIterationList.Add(eliteSkinDef);
+                }
             }
-            foreach (var skin in anointedSkins)
+            foreach (var skin in anointedSkinsLocal)
             {
                 AnointedSkinsOverlayHashSet.Add(skin);
                 AnointedSkinsItemHashSet.Add(skin);
             }
+
             foreach (var unlockable in skinUnlockables)
             {
                 HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, unlockable);

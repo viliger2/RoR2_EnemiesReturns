@@ -16,6 +16,7 @@ namespace EnemiesReturns.Enemies.Judgement
             hiddenSkinDef.meshReplacements = skinDef.meshReplacements;
             hiddenSkinDef.projectileGhostReplacements = skinDef.projectileGhostReplacements;
             hiddenSkinDef.minionSkinReplacements = skinDef.minionSkinReplacements;
+            hiddenSkinDef.rendererInfos = skinDef.rendererInfos;
             hiddenSkinDef.baseSkins = skinDef.baseSkins;
             hiddenSkinDef.icon = skinDef.icon;
             hiddenSkinDef.nameToken = skinDef.nameToken;

@@ -122,7 +122,7 @@ namespace EnemiesReturns
             return skinDef;
         }
 
-        public static HiddenSkinDef CreateHiddenSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo, bool hideInLobby = false, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
+        public static HiddenSkinDef CreateHiddenSkinDef(string name, GameObject model, CharacterModel.RendererInfo[] renderInfo = null, bool hideInLobby = false, SkinDef baseSkin = null, GameObject[] gameObjectActivations = null)
         {
             var skinDef = ScriptableObject.CreateInstance<HiddenSkinDef>();
             (skinDef as ScriptableObject).name = name;
@@ -136,7 +136,10 @@ namespace EnemiesReturns
             var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
             (skinDefParams as ScriptableObject).name = name + "SkinDefParams";
 
-            skinDefParams.rendererInfos = renderInfo;
+            if(renderInfo != null)
+            {
+                skinDefParams.rendererInfos = renderInfo;
+            }
             if (gameObjectActivations != null)
             {
                 skinDefParams.gameObjectActivations = Array.ConvertAll(gameObjectActivations, item => new SkinDefParams.GameObjectActivation
