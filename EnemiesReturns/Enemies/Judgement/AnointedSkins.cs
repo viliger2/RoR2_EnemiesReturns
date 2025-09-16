@@ -127,7 +127,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 var customSkins = controller.skins.Where(skin => skin.name == anointedBaseSkinName).ToArray();
                 if(customSkins.Length == 0)
                 {
-                    Log.Info($"Couldn't find skin with name {anointedBaseSkinName} for {body.name} for Anointed skin creation on second iteration. Default skin will be used.");
+                    Log.Info($"CreateAnointedSkins: Couldn't find skin with name {anointedBaseSkinName} for {body.name} on second iteration. Default skin will be used.");
                     continue;
                 }
 
@@ -225,25 +225,31 @@ namespace EnemiesReturns.Enemies.Judgement
                 var modelLocator = body.GetComponent<ModelLocator>();
                 if (!modelLocator)
                 {
-                    Log.Warning($"Body {body.name} doesn't have ModelLocator component.");
+                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have ModelLocator component.");
                     continue;
                 }
                 var model = modelLocator.modelTransform;
                 if (!model)
                 {
-                    Log.Warning($"Body {body.name} doesn't have model (somehow).");
+                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have model (somehow).");
                     continue;
                 }
                 var characterModel = model.GetComponent<CharacterModel>();
                 if (!characterModel)
                 {
-                    Log.Warning($"Body {body.name} doesn't have CharacterModel component.");
+                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have CharacterModel component.");
                     continue;
                 }
                 var modelSkins = model.GetComponent<ModelSkinController>();
                 if (!modelSkins)
                 {
-                    Log.Warning($"Body {body.name} doesn't have ModelSkinController component.");
+                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have ModelSkinController component.");
+                    continue;
+                }
+
+                if(modelSkins.skins.Length == 0)
+                {
+                    Log.Warning($"CreateAnointedSkins: Body {body.name} has zero skins on ModelSkinController component.");
                     continue;
                 }
 
@@ -260,12 +266,12 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 if (!defaultSkin)
                 {
-                    Log.Warning($"Couldn't find Default Skin for {body.name}.");
-                    continue;
+                    Log.Warning($"CreateAnointedSkins: Couldn't find Default Skin for {body.name}, using first skin in the ModelSkinController instead.");
+                    defaultSkin = modelSkins.skins[0];
                 }
 
                 bool addToList = false;
-                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. This is technically client side, but hasn't been tested in any real modpacks.");
+                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. Might not work with modded skins. This is technically client side, but hasn't been tested in any real modpacks.");
                 var targetSkinArray = modelSkins.skins.Where(skinDef => skinDef.name == targetSkinConfig.Value).ToArray();
                 if (targetSkinArray.Length > 0)
                 {
@@ -273,7 +279,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 else
                 {
-                    Log.Info($"Couldn't find skin with name {targetSkinConfig.Value} for {body.name} for Anointed skin creation. Will try again on second iteration.");
+                    Log.Info($"CreateAnointedSkins: Couldn't find skin with name {targetSkinConfig.Value} for {body.name}. Will try again on second iteration.");
                     addToList = true;
                 }
 
