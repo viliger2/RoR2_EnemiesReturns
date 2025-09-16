@@ -849,6 +849,230 @@ namespace EnemiesReturns.Enemies.Judgement
                     limbMask = LimbFlags.None
             }
             }));
+            dictionary.Add("CannonJellyBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Core",
+                    localPos = new Vector3(-0.28385F, 5.0823F, 0.81299F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
+                }
+            }));
+            dictionary.Add("ClayBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "SwingCenter",
+                    localPos = new Vector3(0.06482F, 0.2234F, 0.56736F),
+                    localAngles = new Vector3(344.1189F, 8.06783F, 359.4635F),
+                    localScale = new Vector3(0.05F, 0.05F, 0.05F)
+                }
+            }));
+            dictionary.Add("DeltaConstructBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Core",
+                    localPos = new Vector3(-0.05888F, 0.33089F, -1.3203F),
+                    localAngles = new Vector3(0F, 0F, 0F),
+                    localScale = new Vector3(0.16054F, 0.16054F, 0.16054F)
+                }
+            }));
+            dictionary.Add("GammaConstructBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Core",
+                    localPos = new Vector3(1.43671F, 0.24203F, -0.02799F),
+                    localAngles = new Vector3(0F, 90F, 0F),
+                    localScale = new Vector3(0.16054F, 0.16054F, 0.16054F)
+                }
+            }));
+            dictionary.Add("LampBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.20849F, 3.23483F, 1.0493F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
+                }
+            }));
+            dictionary.Add("LampBossBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.27523F, 4.08952F, 0.75448F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
+                }
+            }));
+            dictionary.Add("MoffeinAncientWispBody", CreateItemDisplayRule(new ItemDisplayRule[] // TODO
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(1.44931F, 0.00893F, 0.17682F),
+                    localAngles = new Vector3(0F, 90F, 0F),
+                    localScale = new Vector3(0.16054F, 0.16054F, 0.16054F)
+                }
+            }));
+            dictionary.Add("MoffeinArchWispBody", CreateItemDisplayRule(new ItemDisplayRule[] // TODO
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.28385F, 5.0823F, 0.81299F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
+                }
+            }));
+            dictionary.Add("ThetaConstructBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Core",
+                    localPos = new Vector3(1.44931F, 0.00893F, 0.17682F),
+                    localAngles = new Vector3(0F, 90F, 0F),
+                    localScale = new Vector3(0.16054F, 0.16054F, 0.16054F),
+                }
+            }));
+            dictionary.Add("RunshrumBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.28385F, 5.0823F, 0.81299F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
+                }
+            }));
+            dictionary.Add("NemCommandoBody", CreateItemDisplayRule(new ItemDisplayRule[] 
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.01643F, 2.03794F, 0.55734F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.17849F, 0.17849F, 0.17849F),
+                }
+            }));
+            dictionary.Add("NemMercBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.00391F, 0.45145F, 0.07187F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.04162F, 0.04162F, 0.04162F)
+                }
+            }));
+            dictionary.Add("ChirrBody", CreateItemDisplayRule(new ItemDisplayRule[] // TODO
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.02044F, -0.07385F, 0.81293F),
+                    localAngles = new Vector3(20.09466F, 0F, 0F),
+                    localScale = new Vector3(0.12456F, 0.12456F, 0.12456F)
+                }
+            }));
+            dictionary.Add("ElectricianBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.01384F, 0.65799F, 0.20955F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.09066F, 0.09066F, 0.09066F),
+                }
+            }));
+            dictionary.Add("RangerBody", CreateItemDisplayRule(new ItemDisplayRule[]
+                       {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.00708F, 0.43838F, 0.16273F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.04203F, 0.04203F, 0.04203F),
+                }
+            }));
+            dictionary.Add("Executioner2Body", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.00314F, 0.43111F, 0.05168F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.03189F, 0.03189F, 0.03189F)
+                }
+            }));
 #pragma warning restore CS0618 // Type or member is obsolete
             return dictionary;
 
