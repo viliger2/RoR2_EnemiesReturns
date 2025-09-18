@@ -29,7 +29,6 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> SnipDamage;
         public static ConfigEntry<float> SnipForce;
 
-
         public static ConfigEntry<float> BubbleCooldown;
         public static ConfigEntry<float> BubbleDamage;
         public static ConfigEntry<float> BubbleProjectileSpread;
@@ -39,6 +38,9 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> BubbleCountPerShot;
         public static ConfigEntry<int> BubbleShotCount;
         public static ConfigEntry<float> BubbleForce;
+        public static ConfigEntry<float> BubbleBaseHealth;
+        public static ConfigEntry<float> BubbleHealthPerLevel;
+        public static ConfigEntry<float> BubbleLifetime;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -51,7 +53,7 @@ namespace EnemiesReturns.Configuration
             MinimumStageCompletion = config.Bind("Sand Crab Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
 
             BaseMaxHealth = config.Bind("Sand Crab Character Stats", "Base Max Health", 480f, "Sand Crab's base health.");
-            BaseMoveSpeed = config.Bind("Sand Crab Character Stats", "Base Movement Speed", 7f, "Sand Crab's base movement speed.");
+            BaseMoveSpeed = config.Bind("Sand Crab Character Stats", "Base Movement Speed", 10f, "Sand Crab's base movement speed.");
             BaseJumpPower = config.Bind("Sand Crab Character Stats", "Base Jump Power", 18f, "Sand Crab's base jump power.");
             BaseDamage = config.Bind("Sand Crab Character Stats", "Base Damage", 16f, "Sand Crab's base damage.");
             BaseArmor = config.Bind("Sand Crab Character Stats", "Base Armor", 0f, "Sand Crab's base armor.");
@@ -60,19 +62,23 @@ namespace EnemiesReturns.Configuration
             LevelDamage = config.Bind("Sand Crab Character Stats", "Damage per Level", 3.2f, "Sand Crab's damage increase per level.");
             LevelArmor = config.Bind("Sand Crab Character Stats", "Armor per Level", 0f, "Sand Crab's armor increase per level.");
 
-            SnipCooldown = config.Bind("Sand Crab Snip", "Snip Cooldown", 5f, "Sand Crab's Snip cooldown.");
-            SnipHoldMaxDuration = config.Bind("Sand Crab Snip", "Snip Hold State Max Duration", 5f, "Sand Crab's Snip skill hold max duration.");
+            SnipCooldown = config.Bind("Sand Crab Snip", "Snip Cooldown", 4f, "Sand Crab's Snip cooldown.");
+            SnipHoldMaxDuration = config.Bind("Sand Crab Snip", "Snip Hold State Max Duration", 2f, "Sand Crab's Snip skill hold max duration.");
             SnipDamage = config.Bind("Sand Crab Snip", "Snip Damage", 5f, "Sand Crab's Snip damage.");
             SnipForce = config.Bind("Sand Crab Snip", "Snip Force", 200f, "Sand Crab's Snip force");
 
             BubbleCooldown = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Cooldown", 15f, "Sand Crab's Fire Bubbles cooldown.");
-            BubbleDamage = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Damage", 2f, "Sand Crab's Fire Bubbles projectile damage.");
+            BubbleDamage = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Damage", 1.5f, "Sand Crab's Fire Bubbles projectile damage.");
             BubbleProjectileSpread = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Spread", 120f, "Sand Crab's Fire Bubbles projectile spread. The bigger the angle, the more further apart projectiles will be on spawn.");
-            BubbleSize = config.Bind<float>("Sand Crab Fire Bubbles", "Fire Bubbles Size", 2.25f, "Sand Crab's Fire Bubbles projectile size");
+            BubbleSize = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Size", 2.25f, "Sand Crab's Fire Bubbles projectile size");
             BubbleShotCount = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Shots Count", 6, "Sand Crab's Fire Bubbles shots count");
             BubbleExplosionSize = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Explosion Radius", 2.5f, "Sand Crab's Fire Bubbles projectile explosion radius");
             BubbleSpeed = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Speed", 12f, "Sand Crab's Fire Bubbles projectile speed");
             BubbleForce = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Force", 0f, "Sand Crab's Fire Bubbles projectile force.");
+
+            BubbleBaseHealth = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Base Health", 35f, "Sand Crab's Fire Bubbles projectile base health.");
+            BubbleHealthPerLevel = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Per Level Health", 10f, "Sand Crab's Fire Bubbles projectile per level health.");
+            BubbleLifetime = config.Bind("Sand Ctab Fire Bubbles", "Fire Bubbles Projectile Lifetime", 12f, "Sand Crab's Fire Bubbles projectile lifetime.");
 
             EmoteKey = config.Bind("Sand Crab Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }

@@ -17,38 +17,43 @@ namespace EnemiesReturns
     {
         private void CreateSandCrab(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            var sandCrabStuff = new SandCrabStuff();
-            FireSnip.snipEffectPrefab = sandCrabStuff.CreateSnipEffect();
-            ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab = sandCrabStuff.CreateBubbleProjectile(
-                assets.First(projectile => projectile.name == "SandCrabBubbleProjectile"), 
-                sandCrabStuff.CreateBubbleGhost(assets.First(ghost => ghost.name == "SandCrabBubbleGhost"), acdLookup),
-                acdLookup["acdSandCrabBubbleSpeed"]);
+            if (Configuration.SandCrab.Enabled.Value)
+            {
+                var sandCrabStuff = new SandCrabStuff();
+                FireSnip.snipEffectPrefab = sandCrabStuff.CreateSnipEffect();
+                effectsList.Add(new EffectDef(FireSnip.snipEffectPrefab));
 
-            projectilesList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
-            bodyList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
+                ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab = sandCrabStuff.CreateBubbleProjectile(
+                    assets.First(projectile => projectile.name == "SandCrabBubbleProjectile"),
+                    sandCrabStuff.CreateBubbleGhost(assets.First(ghost => ghost.name == "SandCrabBubbleGhost"), acdLookup),
+                    acdLookup["acdSandCrabBubbleSpeed"]);
 
-            var sandCrabBody = new SandCrabBody();
+                projectilesList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
+                bodyList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
 
-            var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
-            unlockablesList.Add(sandCrabLog);          
-            
-            SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();
-            SandCrabBody.Skills.Bubbles = sandCrabBody.CreateBubblesSkill();
+                var sandCrabBody = new SandCrabBody();
 
-            sdList.Add(SandCrabBody.Skills.ClawSnip);
-            sdList.Add(SandCrabBody.Skills.Bubbles);
+                var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
+                unlockablesList.Add(sandCrabLog);
 
-            SandCrabBody.SkillFamilies.Primary = Utils.CreateSkillFamily("SandCrabPrimaryFamily", SandCrabBody.Skills.ClawSnip);
-            SandCrabBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("SandCrabSecondaryFamily", SandCrabBody.Skills.Bubbles);
+                SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();
+                SandCrabBody.Skills.Bubbles = sandCrabBody.CreateBubblesSkill();
 
-            sfList.Add(SandCrabBody.SkillFamilies.Primary);
-            sfList.Add(SandCrabBody.SkillFamilies.Secondary);
+                sdList.Add(SandCrabBody.Skills.ClawSnip);
+                sdList.Add(SandCrabBody.Skills.Bubbles);
 
-            SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
-            bodyList.Add(SandCrabBody.BodyPrefab);
+                SandCrabBody.SkillFamilies.Primary = Utils.CreateSkillFamily("SandCrabPrimaryFamily", SandCrabBody.Skills.ClawSnip);
+                SandCrabBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("SandCrabSecondaryFamily", SandCrabBody.Skills.Bubbles);
 
-            SandCrabMaster.MasterPrefab = new SandCrabMaster().AddMasterComponents(assets.First(master => master.name == "SandCrabMaster"), SandCrabBody.BodyPrefab);
-            masterList.Add(SandCrabMaster.MasterPrefab);
+                sfList.Add(SandCrabBody.SkillFamilies.Primary);
+                sfList.Add(SandCrabBody.SkillFamilies.Secondary);
+
+                SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
+                bodyList.Add(SandCrabBody.BodyPrefab);
+
+                SandCrabMaster.MasterPrefab = new SandCrabMaster().AddMasterComponents(assets.First(master => master.name == "SandCrabMaster"), SandCrabBody.BodyPrefab);
+                masterList.Add(SandCrabMaster.MasterPrefab);
+            }
         }
     }
 }

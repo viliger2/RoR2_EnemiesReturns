@@ -798,6 +798,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3848530971860219828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134099601012389045}
+  m_Layer: 0
+  m_Name: SnipEffectMuzzleR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134099601012389045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848530971860219828}
+  m_LocalRotation: {x: -0.11384691, y: 0.45556134, z: 0.88127184, w: 0.053503755}
+  m_LocalPosition: {x: 1.3656666, y: 1.0185266, z: 4.3493123}
+  m_LocalScale: {x: 2.1319668, y: 1.3423789, z: 1.0377799}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5843907734465559238}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -16.261, y: 263.485, z: -3.366}
 --- !u!1 &4338752791791686544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1715,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &8369642867923905534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4859459352965967073}
+  m_Layer: 0
+  m_Name: SnipEffectMuzzleL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4859459352965967073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369642867923905534}
+  m_LocalRotation: {x: 0.2755876, y: 0.55329275, z: 0.7848769, w: -0.043438945}
+  m_LocalPosition: {x: -1.5770419, y: 1.2198868, z: 4.6933136}
+  m_LocalScale: {x: 2.8239691, y: 1.4740417, z: 1.2218035}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5843907734465559238}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -8.327001, y: 84.525, z: -0.368}
 --- !u!1 &8507939468895360756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2203,10 @@ MonoBehaviour:
     transform: {fileID: 7698811382259212824}
   - name: UpperClawL
     transform: {fileID: 9131886755063488537}
+  - name: SnipEffectMuzzleL
+    transform: {fileID: 4859459352965967073}
+  - name: SnipEffectMuzzleR
+    transform: {fileID: 1134099601012389045}
 --- !u!4 &2564023220825731167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 886974630498610205, guid: 704e7b6775446c34288f5b8598b2114c,

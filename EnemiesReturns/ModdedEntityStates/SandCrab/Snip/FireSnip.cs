@@ -27,7 +27,8 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 
         private float duration;
 
-        private bool hasSnipped;
+        private bool effectSpawned;
+
 
         public override void OnEnter()
         {
@@ -59,10 +60,11 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
             base.FixedUpdate();
             if (modelAnimator && modelAnimator.GetFloat("Snip.hitBoxActive") > 0.9f)
             {
-                if (!hasSnipped)
+                if (!effectSpawned)
                 {
-                    EffectManager.SimpleMuzzleFlash(snipEffectPrefab, gameObject, "SnipSpot", false);
-                    hasSnipped = true;
+                    EffectManager.SimpleMuzzleFlash(snipEffectPrefab, base.gameObject, "SnipEffectMuzzleL", false);
+                    EffectManager.SimpleMuzzleFlash(snipEffectPrefab, base.gameObject, "SnipEffectMuzzleR", false);
+                    effectSpawned = true;
                 }
                 if (isAuthority)
                 {

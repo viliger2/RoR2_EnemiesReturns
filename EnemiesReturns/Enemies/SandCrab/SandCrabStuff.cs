@@ -17,20 +17,23 @@ namespace EnemiesReturns.Enemies.SandCrab
     {
         public GameObject CreateSnipEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBiteTrail.prefab").WaitForCompletion().InstantiateClone("SpitterBiteEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBiteTrail.prefab").WaitForCompletion().InstantiateClone("SandCrabSnipEffect", false);
 
             var particleSystem = clonedEffect.GetComponentInChildren<ParticleSystem>();
             var main = particleSystem.main;
-            main.startRotationX = new ParticleSystem.MinMaxCurve(0f, 0f);
-            main.startRotationY = new ParticleSystem.MinMaxCurve(140f, 140f);
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            main.startRotation3D = false;
+            main.startSize3D = false;
 
-            particleSystem.gameObject.transform.localScale = new Vector3(2f, 2f, 2f);
+            clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f);
 
             return clonedEffect;
         }
 
         public GameObject CreateBubbleGhost(GameObject ghostPrefab, Dictionary<string, AnimationCurveDef> acdLookup)
         {
+            var lifetime = Configuration.SandCrab.BubbleLifetime.Value;
+
             ghostPrefab.transform.Find("Sphere").localScale = new Vector3(Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value);
 
             ghostPrefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = false;
@@ -38,7 +41,6 @@ namespace EnemiesReturns.Enemies.SandCrab
             var vfxAttributes = ghostPrefab.AddComponent<VFXAttributes>();
             vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
             vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
-            //vfxAttributes.DoNotPool = true;
 
             ghostPrefab.AddComponent<EffectManagerHelper>();
 
@@ -54,7 +56,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             var scaleCurveInitial = ghostPrefab.AddComponent<ObjectScaleCurve>();
             scaleCurveInitial.useOverallCurveOnly = true;
             scaleCurveInitial.overallCurve = acdLookup["acdSandCrabBubbleInitialScale"].curve;
-            scaleCurveInitial.timeMax = 12f * 0.125f; // TODO: 12 is projectile lifetime
+            scaleCurveInitial.timeMax = lifetime * 0.125f;
             scaleCurveInitial.resetOnAwake = false;
 
             ghostPrefab.AddComponent<ObjectScaleCurveDisableOnMaxTime>().curve = scaleCurveInitial;
@@ -73,7 +75,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             awakeEvents.action.AddPersistentListener(enabler2.EnableComponent);
 
             var timer = ghostPrefab.AddComponent<RoR2.EntityLogic.Timer>();
-            timer.duration = 12f * 0.125f; // TODO: 12 is duration, should be the same across all, 0.125f is middle of 0 speed of speed curve
+            timer.duration = lifetime * 0.125f;
             timer.resetTimerOnEnable = true;
             timer.playTimerOnEnable = true;
             timer.loop = false;
@@ -81,11 +83,16 @@ namespace EnemiesReturns.Enemies.SandCrab
             timer.action = new UnityEngine.Events.UnityEvent();
             timer.action.AddPersistentListener(enabler.EnableComponent);
 
+            var meshRenderer = ghostPrefab.transform.Find("Sphere").GetComponent<MeshRenderer>();
+            meshRenderer.material = ContentProvider.GetOrCreateMaterial("matSandCrabBubble", CreateBubbleMaterial);
+
             return ghostPrefab;
         }
 
         public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed)
         {
+            var lifetime = Configuration.SandCrab.BubbleLifetime.Value;
+
             projectilePrefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             projectilePrefab.GetComponent<SphereCollider>().radius = Configuration.SandCrab.BubbleSize.Value / 2f;
@@ -111,7 +118,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             projectileNetworkTransform.allowClientsideCollision = false;
 
             var projectileSimple = projectilePrefab.AddComponent<ProjectileSimple>();
-            projectileSimple.lifetime = 12f; // TODO: same value as on ProjectileImpactExplosion
+            projectileSimple.lifetime = lifetime;
             projectileSimple.desiredForwardSpeed = Configuration.SandCrab.BubbleSpeed.Value; // TODO: curve multiplies this value, not assignes value by itself, so at the begining we can do like x5, then stop and then set it to x1
             projectileSimple.updateAfterFiring = true;
             projectileSimple.enableVelocityOverLifetime = true;
@@ -124,12 +131,6 @@ namespace EnemiesReturns.Enemies.SandCrab
             oscillate.oscillateMagnitude = 1.0f;
             oscillate.oscillateSpeed = 2f;
             oscillate.randomStartingOffset = true;
-
-            //var projectileSingleTarget = projectilePrefab.AddComponent<ProjectileSingleTargetImpactDoNotCollideWithSameTeam>();
-            //projectileSingleTarget.destroyWhenNotAlive = true;
-            //projectileSingleTarget.destroyOnWorld = true;
-            ////projectileSingleTarget.impactEffect = impact; // TODO
-            ////projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play"; // TODO
 
             projectilePrefab.AddComponent<ProjectileDamage>();
             projectilePrefab.AddComponent<ProjectileTargetComponent>();
@@ -151,7 +152,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             enabler.component = targetFinder;
 
             var timer = projectilePrefab.AddComponent<RoR2.EntityLogic.Timer>();
-            timer.duration = 12f * 0.125f; // TODO: 12 is duration, should be the same across all, 0.125f is middle of 0 speed of speed curve
+            timer.duration = lifetime * 0.125f;
             timer.resetTimerOnEnable = true;
             timer.playTimerOnEnable = true;
             timer.loop = false;
@@ -162,9 +163,9 @@ namespace EnemiesReturns.Enemies.SandCrab
             var teamFilter = projectilePrefab.GetOrAddComponent<TeamFilter>();
 
             var characterBody = projectilePrefab.AddComponent<CharacterBody>();
-            characterBody.baseMaxHealth = 20f;
-            characterBody.levelMaxHealth = 6f;
-            characterBody.bodyFlags = CharacterBody.BodyFlags.Masterless;
+            characterBody.baseMaxHealth = Configuration.SandCrab.BubbleBaseHealth.Value;
+            characterBody.levelMaxHealth = Configuration.SandCrab.BubbleHealthPerLevel.Value;
+            characterBody.bodyFlags = CharacterBody.BodyFlags.Masterless | CharacterBody.BodyFlags.ResistantToAOE;
             characterBody.doNotReassignToTeamBasedCollisionLayer = true;
 
             var teamComponent = projectilePrefab.GetOrAddComponent<TeamComponent>();
@@ -194,7 +195,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             hurtBox.indexInGroup = 0;
 
             var impactExplosion = projectilePrefab.AddComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.None;
             impactExplosion.blastRadius = Configuration.SandCrab.BubbleExplosionSize.Value;
             impactExplosion.blastDamageCoefficient = 1f;
             impactExplosion.blastProcCoefficient = 1f;
@@ -206,7 +207,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             impactExplosion.impactOnWorld = true;
             impactExplosion.timerAfterImpact = false;
             impactExplosion.explodeOnLifeTimeExpiration = true;
-            impactExplosion.lifetime = 12f;
+            impactExplosion.lifetime = lifetime;
             impactExplosion.lifetimeRandomOffset = 1f;
             impactExplosion.transformSpace = ProjectileImpactExplosion.TransformSpace.World;
 
@@ -218,15 +219,25 @@ namespace EnemiesReturns.Enemies.SandCrab
             var helper = proximityDetonatorGameObject.AddComponent<ProjectileMineProximityDetonatorHelper>();
             helper.impactExplosion = impactExplosion;
 
-            //var proximityDetonator = proximityDetonatorGameObject.AddComponent<Behaviors.MineProximityDetonatorWithGameObjectCheck>();
-            //proximityDetonator.myTeamFilter = teamFilter;
-
-            //var helper = proximityDetonatorGameObject.AddComponent<ProjectileMineProximityDetonatorHelper>();
-            //helper.impactExplosion = impactExplosion;
-
             PrefabAPI.RegisterNetworkPrefab(projectilePrefab);
 
             return projectilePrefab;
+        }
+
+        public Material CreateBubbleMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BarrierOnKill.matBarrier_mat).WaitForCompletion());
+            material.name = "matSandCrabBubble";
+            material.SetColor("_TintColor", new Color(107f/255f, 139f/255f, 1f, 1f));
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.texCloudDifferenceBW1_png).WaitForCompletion());
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
+            material.SetFloat("_InvFade", 2f);
+            material.SetFloat("_Boost", 1f);
+            material.SetFloat("_AlphaBoost", 1.540995f);
+            material.SetFloat("_AlphaBias", 0.1219502f);
+            material.SetVector("_CutoffScroll", new Vector4(1f, 3f, 1f, 0f));
+
+            return material;
         }
     }
 }
