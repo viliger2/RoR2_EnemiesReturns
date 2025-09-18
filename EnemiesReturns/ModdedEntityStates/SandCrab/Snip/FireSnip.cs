@@ -11,9 +11,9 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
     [RegisterEntityState]
     public class FireSnip : BaseState
     {
-        public static float damageCoefficient => 5f;
+        public static float damageCoefficient => Configuration.SandCrab.SnipDamage.Value;
 
-        public static float forceMagnitude => 200f;
+        public static float forceMagnitude => Configuration.SandCrab.SnipForce.Value;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFXSlash.prefab").WaitForCompletion();
 

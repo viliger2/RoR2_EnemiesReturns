@@ -14,21 +14,15 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
     {
         public static float baseSingleDuration = 0.45f;
 
-        public static float projectileSpread = 120f;
+        public static float projectileSpread => Configuration.SandCrab.BubbleProjectileSpread.Value;
 
         public static int timesToFire => Configuration.SandCrab.BubbleShotCount.Value;
 
-        public static int projectilesCount => Configuration.SandCrab.BubbleCountPerShot.Value;
+        public static int projectilesCount = 1;
 
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient => Configuration.SandCrab.BubbleDamage.Value;
 
-        public static float force = 0f;
-
-        public static float minSpread = 0f;
-
-        public static float maxSpread = 10f;
-
-        public static float bonusSpread = 3f;
+        public static float force => Configuration.SandCrab.BubbleForce.Value;
 
         public static GameObject projectilePrefab;
 
@@ -66,18 +60,17 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.characterMotor.moveDirection = Vector3.zero;
+            inputBank.moveVector = Vector3.zero;
             timer -= Time.fixedDeltaTime;
             if (timer < 0f)
             {
                 PlayAnimation("Gesture, Override, Mask", "FireBubbles", "FireBubbles.playbackRate", singleDuration);
                 if (isAuthority)
                 {
-                    //Ray ray = GetAimRay();
                     for (int i = 0; i < projectilesCount; i++)
                     {
-                        //float bonusPitch = UnityEngine.Random.Range(-bonusSpread, bonusSpread);
-                        //float bonusYaw = UnityEngine.Random.Range(-bonusSpread, bonusSpread);
-                        FireSingleBubble(startingDirection, 0f, 0f);
+                        FireSingleBubble(startingDirection);
                     }
                 }
                 timesFired++;
@@ -91,9 +84,8 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
             }
         }
 
-        private void FireSingleBubble(Vector3 direction, float bonusPitch, float bonusYaw)
+        private void FireSingleBubble(Vector3 direction)
         {
-            //Vector3 forward = Util.ApplySpread(aimRay.direction, minSpread, maxSpread, 1f, 1f, bonusYaw, bonusPitch);
             var fireProjectileInfo = new FireProjectileInfo()
             {
                 crit = RollCrit(),

@@ -65,16 +65,18 @@ namespace EnemiesReturns.Enemies.SandCrab
             {
                 mainRootSpeed = 20,
                 baseAcceleration = 100f,
-                baseMaxHealth = 480f,
-                baseDamage = 16f,
-                baseMoveSpeed = 7f,
+                baseMaxHealth = Configuration.SandCrab.BaseMaxHealth.Value,
+                baseDamage = Configuration.SandCrab.BaseDamage.Value,
+                baseMoveSpeed = Configuration.SandCrab.BaseMoveSpeed.Value,
                 baseJumpCount = 1,
                 baseJumpPower = 18f,
+                baseArmor = Configuration.SandCrab.BaseArmor.Value,
                 hullClassification = HullClassification.Golem,
                 isChampion = false,
                 autoCalculateStats = true,
-                levelMaxHealth = 144f,
-                levelDamage = 3.2f,
+                levelArmor = Configuration.SandCrab.LevelArmor.Value,
+                levelMaxHealth = Configuration.SandCrab.LevelMaxHealth.Value,
+                levelDamage = Configuration.SandCrab.LevelDamage.Value,
             };
         }
 
@@ -87,18 +89,20 @@ namespace EnemiesReturns.Enemies.SandCrab
                 descriptionToken = "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION",
                 icon = acridBite.icon,
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 5f,
+                baseRechargeInterval = Configuration.SandCrab.SnipCooldown.Value,
             });
         }
 
         public SkillDef CreateBubblesSkill()
         {
+            var mageSecondary = Addressables.LoadAssetAsync<SkillDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Mage.MageBodyNovaBomb_asset).WaitForCompletion();
             return CreateSkill(new SkillParams("SandCrabBubbles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.Bubbles.ChargeBubbles)))
             {
                 nameToken = "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME",
                 descriptionToken = "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION",
                 activationStateMachine = "Weapon",
-                baseRechargeInterval = 15f,
+                baseRechargeInterval = Configuration.SandCrab.BubbleCooldown.Value,
+                icon = mageSecondary.icon,
             });
         }
 
@@ -153,7 +157,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                 {
                     name = "Body",
                     initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.GenericSpawnState)),
-                    mainState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GenericCharacterMain)),
+                    mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.SandCrabMain)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
                 {
@@ -169,7 +173,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             return new IFootStepHandler.FootstepHandlerParams()
             {
                 enableFootstepDust = true,
-                //baseFootstepString = "Play_treeBot_step", // TODO: not treebot, its way too mechanic
+                baseFootstepString = "Play_hermitCrab_step", // TODO: not treebot, its way too mechanic
                 footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion()
             };
         }

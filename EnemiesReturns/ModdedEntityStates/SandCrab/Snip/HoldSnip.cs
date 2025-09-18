@@ -5,19 +5,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 {
     [RegisterEntityState]
     public class HoldSnip : BaseSkillState
     {
-        public static float maxDuration = 5f;
+        public static float maxDuration => Configuration.SandCrab.SnipHoldMaxDuration.Value;
 
         private Transform attackCheckHitbox;
+
+        private SphereSearch sphereSearch;
+
+        private readonly List<HurtBox> hurtBoxesList = new List<HurtBox>();
 
         public override void OnEnter()
         {
             base.OnEnter();
+            sphereSearch = new SphereSearch()
+            {
+                mask = LayerIndex.entityPrecise.mask,
+                queryTriggerInteraction = QueryTriggerInteraction.UseGlobal,
+                radius = 3.5f
+            };
+
             this.activatorSkillSlot = skillLocator.primary; // we assume this is always primary;
             PlayAnimation("Gesture, Override, Mask", "HoldSnip");
 
@@ -52,32 +64,24 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 
                 var position = attackCheckHitbox.position;
 
-                Collider[] colliders;
+                sphereSearch.origin = position;
+                sphereSearch.RefreshCandidates();
+                sphereSearch.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(teamComponent.teamIndex));
+                sphereSearch.GetHurtBoxes(hurtBoxesList);
+                sphereSearch.ClearCandidates();
 
-                int num = HGPhysics.OverlapSphere(out colliders, position, 3.5f, LayerIndex.entityPrecise.mask);
-                for (int i = 0; i < num; i++)
+                foreach (var hurtBox in hurtBoxesList)
                 {
-                    if (!colliders[i])
-                    {
-                        HGPhysics.ReturnResults(colliders);
-                        continue;
-                    }
-
-                    var hurtBox = colliders[i].GetComponent<HurtBox>();
                     if (!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body)
                     {
-                        HGPhysics.ReturnResults(colliders);
                         continue;
                     }
 
-                    var body = hurtBox.healthComponent.body;
                     if (characterBody.teamComponent.teamIndex == hurtBox.teamIndex)
                     {
-                        HGPhysics.ReturnResults(colliders);
                         continue;
                     }
 
-                    HGPhysics.ReturnResults(colliders);
                     outer.SetNextState(new FireSnip());
                 }
             }
