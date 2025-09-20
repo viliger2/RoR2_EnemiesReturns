@@ -19,7 +19,7 @@ namespace EnemiesReturns.Behaviors
 
         public static int EliteRampPropertyID = Shader.PropertyToID("_EliteRamp");
 
-        private static Texture2D vanillaEliteRamp = Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/GlobalTextures/texRampElites.psd").WaitForCompletion();
+        private readonly static Texture2D vanillaEliteRamp = Addressables.LoadAssetAsync<Texture2D>("RoR2/Base/Common/GlobalTextures/texRampElites.psd").WaitForCompletion();
 
         private void Awake()
         {

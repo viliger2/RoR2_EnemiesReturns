@@ -37,6 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             if (modelRenderer)
             {
                 propertyBlock = new MaterialPropertyBlock();
+                modelRenderer.GetPropertyBlock(propertyBlock);
                 initialEmission = modelRenderer.material.GetFloat("_EmPower");
                 propertyBlock.SetFloat("_EmPower", initialEmission);
                 modelRenderer.SetPropertyBlock(propertyBlock);
@@ -52,6 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             }
             if (modelRenderer)
             {
+                modelRenderer.GetPropertyBlock(propertyBlock);
                 propertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmission, 0, age / (bodyPreservationDuration - 0.1f)));
                 modelRenderer.SetPropertyBlock(propertyBlock);
             }

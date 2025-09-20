@@ -462,7 +462,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
             else
             {
-                Log.Warning("IL Hook Failed - RoR2.UI.LoadoutPanelController.Row.FromSkin: Anointed skins won't be hidden in the lobby until they are unlocked.");
+                Log.Warning("IL Hook Failed - RoR2.UI.LoadoutPanelController.Row.FromSkin: Anointed skins won't be hidden in the lobby if they aren't unlocked.");
             }
 
             static bool CheckForSpecialSkinDef(RoR2.UI.LoadoutPanelController owner, SkinDef skinDef)

@@ -79,6 +79,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             {
                 originalEmissionPower = swordRenderer.material.GetFloat("_EmPower");
                 swordPropertyBlock = new MaterialPropertyBlock();
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
@@ -93,6 +94,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
                 {
                     startAge = age;
                 }
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", acdOverlayAlpha.Evaluate(Mathf.Min(1f, age - startAge / startAge + 1f)));
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
@@ -181,6 +183,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             PlayCrossfade(layerName, "BufferEmpty", 0.1f);
             if (swordRenderer && swordPropertyBlock != null)
             {
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }

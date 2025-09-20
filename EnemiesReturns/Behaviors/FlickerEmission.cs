@@ -30,6 +30,7 @@ namespace EnemiesReturns.Behaviors
             if (renderer)
             {
                 propertyBlock = new MaterialPropertyBlock();
+                renderer.GetPropertyBlock(propertyBlock);
                 initialEmissionPower = renderer.material.GetFloat("_EmPower");
                 workingEmissionPower = initialEmissionPower;
                 propertyBlock.SetFloat("_EmPower", initialEmissionPower);
@@ -59,6 +60,7 @@ namespace EnemiesReturns.Behaviors
                 {
                     num *= 1f + sinWaves[i].Evaluate(stopwatch);
                 }
+                renderer.GetPropertyBlock(propertyBlock);
                 propertyBlock.SetFloat("_EmPower", num);
                 renderer.SetPropertyBlock(propertyBlock);
                 if (num > soundEmissionValue && soundRepeatThreshold < soundTimer)

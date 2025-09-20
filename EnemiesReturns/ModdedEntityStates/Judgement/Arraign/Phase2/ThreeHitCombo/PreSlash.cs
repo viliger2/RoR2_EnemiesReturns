@@ -32,6 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             {
                 originalEmissionPower = swordRenderer.material.GetFloat("_EmPower");
                 swordPropertyBlock = new MaterialPropertyBlock();
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
@@ -44,6 +45,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
             base.Update();
             if (swordRenderer && swordPropertyBlock != null)
             {
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", acdOverlayAlpha.Evaluate(age / duration));
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }
@@ -65,6 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.ThreeHitCom
 
             if (swordRenderer && swordPropertyBlock != null)
             {
+                swordRenderer.GetPropertyBlock(swordPropertyBlock);
                 swordPropertyBlock.SetFloat("_EmPower", originalEmissionPower);
                 swordRenderer.SetPropertyBlock(swordPropertyBlock);
             }

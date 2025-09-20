@@ -20,6 +20,10 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     outer.SetNextState(new DeathNormal());
                     return;
                 }
+#if NOWEAVER || DEBUG
+                outer.SetNextState(new DeathDrone());
+                return;
+#endif
                 var chance = RoR2Application.rng.RangeFloat(0f, 100f);
                 if (chance < spawnChance)
                 {

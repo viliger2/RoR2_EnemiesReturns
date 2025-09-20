@@ -105,6 +105,7 @@ namespace EnemiesReturns.Behaviors.Judgement
 
             for (int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
             {
+                stageInfo.monsterSelection.choices[i].weight = 1f; // fixing weights
                 if (stageInfo.monsterSelection.choices[i].value != null && stageInfo.monsterSelection.choices[i].value.spawnCard && stageInfo.monsterSelection.choices[i].value.spawnCard.prefab)
                 {
                     if (blacklist.Contains(stageInfo.monsterSelection.choices[i].value.spawnCard.prefab))
@@ -114,13 +115,15 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
+            stageInfo.monsterSelection.RecalculateTotalWeight();
+
 #if DEBUG || NOWEAVER
             Log.Info("This list is before DCCS is blended, so if you have mods that modify DCCS blend then they will be applied afterwards.");
             for (int i = stageInfo.monsterSelection.Count - 1; i >= 0; i--)
             {
                 if (stageInfo.monsterSelection.choices[i].value != null && stageInfo.monsterSelection.choices[i].value.spawnCard && stageInfo.monsterSelection.choices[i].value.spawnCard.prefab)
                 {
-                    Log.Info(stageInfo.monsterSelection.choices[i].value.spawnCard);
+                    Log.Info($"card: {stageInfo.monsterSelection.choices[i].value.spawnCard}, weight: {stageInfo.monsterSelection.choices[i].weight}");
                 }
             }
 #endif
