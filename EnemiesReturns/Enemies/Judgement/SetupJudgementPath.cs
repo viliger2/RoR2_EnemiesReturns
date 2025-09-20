@@ -1073,6 +1073,62 @@ namespace EnemiesReturns.Enemies.Judgement
                     localScale = new Vector3(0.03189F, 0.03189F, 0.03189F)
                 }
             }));
+            dictionary.Add("RobomandoBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.10819F, 0.39685F, -0.00423F),
+                    localAngles = new Vector3(272.5432F, 75.42619F, 197.188F),
+                    localScale = new Vector3(0.03533F, 0.03533F, 0.03533F)
+                }
+            }));
+            dictionary.Add("HereticBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.10819F, 0.39685F, -0.00423F),
+                    localAngles = new Vector3(272.5432F, 75.42619F, 197.188F),
+                    localScale = new Vector3(0.03533F, 0.03533F, 0.03533F)
+                }
+            }));
+            dictionary.Add("ArsonistBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.0113F, 0.35675F, -0.0124F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.02F, 0.02F, 0.02F)
+                }
+            }));
+            dictionary.Add("RocketSurvivorBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "head",
+                    localPos = new Vector3(-0.06084F, 0.33787F, -0.00035F),
+                    localAngles = new Vector3(270F, 90F, 0F),
+                    localScale = new Vector3(0.025F, 0.025F, 0.025F),
+                }
+            }));
 #pragma warning restore CS0618 // Type or member is obsolete
             return dictionary;
 
