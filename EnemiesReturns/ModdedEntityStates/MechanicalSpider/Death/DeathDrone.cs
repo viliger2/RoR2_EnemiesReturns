@@ -112,8 +112,16 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     float eliteModifier = 1f;
                     if (eliteDef)
                     {
-                        var eliteTier = CombatDirector.eliteTiers.First(tier => tier.eliteTypes.Contains(eliteDef));
-                        eliteModifier = eliteTier.costMultiplier * EnemiesReturns.Configuration.MechanicalSpider.DroneEliteCostMultiplier.Value;
+                        var costMultipier = CombatDirector.baseEliteCostMultiplier;
+                        var eliteTiers = CombatDirector.eliteTiers.Where(tier => tier.eliteTypes.Contains(eliteDef)).ToArray();
+                        if(eliteTiers.Length > 0)
+                        {
+                            costMultipier = eliteTiers[0].costMultiplier;
+                        } else
+                        {
+                            costMultipier *= (eliteDef.healthBoostCoefficient / 4f); // scaling cost off base elites if elite is not in eliteTiers
+                        }
+                        eliteModifier = costMultipier * EnemiesReturns.Configuration.MechanicalSpider.DroneEliteCostMultiplier.Value;
                     }
                     if (EnemiesReturns.Configuration.MechanicalSpider.DroneUseInitialStageCostCoef.Value)
                     {
