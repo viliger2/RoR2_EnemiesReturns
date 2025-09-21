@@ -24,6 +24,8 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
 
         public static float force => Configuration.SandCrab.BubbleForce.Value;
 
+        public static float degrees = 20f;
+
         public static GameObject projectilePrefab;
 
         private Transform projectileOrigin;
@@ -53,8 +55,13 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
 
             var angle = projectileSpread / (timesToFire - 1);
             var aimRay = GetAimRay();
-            startingDirection = Quaternion.AngleAxis(-projectileSpread * 0.5f, aimRay.direction) * Vector3.up;
-            rotation = Quaternion.AngleAxis(angle, new Vector3(aimRay.direction.x, 0f, aimRay.direction.z));
+            var angleFromForward = Vector3.SignedAngle(Vector3.forward, new Vector3(aimRay.direction.x, 0, aimRay.direction.z), Vector3.up); // we find how far are we from forward ignoring y axis, so it doesn't affect the angle from forward
+            var newRight = Quaternion.AngleAxis(angleFromForward, Vector3.up) * Vector3.right; // using the angle we find our new right to our aim direction
+            var newVector = (Quaternion.AngleAxis(-degrees, newRight) * aimRay.direction).normalized; // here we angle aim direction 30 degrees towards the sky
+            var rotationVector = Vector3.Cross(newRight, newVector); // and finally we find the vector that we use as a vector to rotate bubbles around
+
+            startingDirection = Quaternion.AngleAxis(projectileSpread * 0.5f, rotationVector) * newVector;
+            rotation = Quaternion.AngleAxis(-angle, rotationVector);
         }
 
         public override void FixedUpdate()

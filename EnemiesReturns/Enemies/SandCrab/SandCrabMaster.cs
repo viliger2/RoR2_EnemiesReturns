@@ -25,7 +25,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     moveInputScale = 0.4f,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
                     ignoreNodeGraph = true,
                     driverUpdateTimerOverride = 0.5f
                 },
@@ -37,7 +37,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
-                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtMoveTarget,
+                    aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy,
                     driverUpdateTimerOverride = 0.5f
                 },
                 new IAISkillDriver.AISkillDriverParams("StrafeAndShootBubbles")
@@ -49,7 +49,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                     selectionRequiresTargetLoS = true,
                     moveTargetType = RoR2.CharacterAI.AISkillDriver.TargetType.CurrentEnemy,
                     activationRequiresAimConfirmation = true,
-                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.StrafeMovetarget,
+                    movementType = RoR2.CharacterAI.AISkillDriver.MovementType.ChaseMoveTarget,
                     moveInputScale = 1f,
                     aimType = RoR2.CharacterAI.AISkillDriver.AimType.AtCurrentEnemy
                 },

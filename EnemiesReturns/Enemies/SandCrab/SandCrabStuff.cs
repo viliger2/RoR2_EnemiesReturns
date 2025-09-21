@@ -15,6 +15,42 @@ namespace EnemiesReturns.Enemies.SandCrab
 {
     public class SandCrabStuff
     {
+        public GameObject CreateBubbleImpactEffect(GameObject prefab)
+        {
+            var foamTransform = prefab.transform.Find("Effects/Foam");
+
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = true;
+            //effectComponent.soundName = "ER_IFrit_Portal_Spawn_Play"; // TODO: sound
+
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+
+            var destroyOnEnd = prefab.AddComponent<DestroyOnParticleEnd>();
+            destroyOnEnd.trackedParticleSystem = foamTransform.GetComponent<ParticleSystem>();
+
+            foamTransform.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
+
+            prefab.transform.Find("Effects/ImpactRing").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matSandCrabBubbleImpactRing", CreateBubbleImpactRingMaterial);
+
+            var shakeEmitter = prefab.AddComponent<ShakeEmitter>();
+            shakeEmitter.shakeOnStart = true;
+            shakeEmitter.wave = new Wave()
+            {
+                amplitude = 0.1f,
+                frequency = 1f,
+                cycleOffset = 0f
+            };
+            shakeEmitter.duration = 0.1f;
+            shakeEmitter.radius = 20f;
+            shakeEmitter.amplitudeTimeDecay = true;
+
+            prefab.transform.Find("Effects/Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matTracerBrightTransparent_mat).WaitForCompletion();
+
+            return prefab;
+        }
+
         public GameObject CreateSnipEffect()
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBiteTrail.prefab").WaitForCompletion().InstantiateClone("SandCrabSnipEffect", false);
@@ -89,7 +125,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             return ghostPrefab;
         }
 
-        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed)
+        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed, GameObject impactEffect)
         {
             var lifetime = Configuration.SandCrab.BubbleLifetime.Value;
 
@@ -110,7 +146,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             projectileController.ghostPrefab = projectileGhost;
             //projectileController.flightSoundLoop = ; // TODO
             projectileController.allowPrediction = true;
-            projectileController.procCoefficient = 1f; // TODO
+            projectileController.procCoefficient = 1f;
 
             var projectileNetworkTransform = projectilePrefab.AddComponent<ProjectileNetworkTransform>();
             projectileNetworkTransform.positionTransmitInterval = 0.03333334f;
@@ -123,8 +159,8 @@ namespace EnemiesReturns.Enemies.SandCrab
             projectileSimple.updateAfterFiring = true;
             projectileSimple.enableVelocityOverLifetime = true;
             projectileSimple.velocityOverLifetime = acdBubbleSpeed.curve;
-            //projectileSimple.lifetimeExpiredEffect = impact; // TODO
-            projectileSimple.oscillate = false; // TODO: this is z oscillate, not y
+            projectileSimple.lifetimeExpiredEffect = impactEffect;
+            projectileSimple.oscillate = false; 
 
             var oscillate = projectilePrefab.AddComponent<ProjectileOscillate>();
             oscillate.oscillateY = true;
@@ -201,7 +237,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             impactExplosion.blastProcCoefficient = 1f;
             impactExplosion.projectileHealthComponent = healthComponent;
 
-            //impactExplosion.impactEffect = ; // TODO
+            impactExplosion.impactEffect = impactEffect; 
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.impactOnWorld = true;
@@ -236,6 +272,17 @@ namespace EnemiesReturns.Enemies.SandCrab
             material.SetFloat("_AlphaBoost", 1.540995f);
             material.SetFloat("_AlphaBias", 0.1219502f);
             material.SetVector("_CutoffScroll", new Vector4(1f, 3f, 1f, 0f));
+
+            return material;
+        }
+
+        public Material CreateBubbleImpactRingMaterial()
+        {
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOmniRing2_mat).WaitForCompletion());
+            material.name = "matSandCrabBubbleImpactRing";
+            material.SetColor("_TintColor", new Color(187f / 255f, 215f / 255f, 1f, 1f));
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.texOmniShockwave1Mask_png).WaitForCompletion());
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
 
             return material;
         }

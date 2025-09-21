@@ -23,10 +23,14 @@ namespace EnemiesReturns
                 FireSnip.snipEffectPrefab = sandCrabStuff.CreateSnipEffect();
                 effectsList.Add(new EffectDef(FireSnip.snipEffectPrefab));
 
+                var bubbleImpactEffect = sandCrabStuff.CreateBubbleImpactEffect(assets.First(effect => effect.name == "SandCrabBubbleImpactEffect"));
+                effectsList.Add(new EffectDef(bubbleImpactEffect));
+
                 ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab = sandCrabStuff.CreateBubbleProjectile(
                     assets.First(projectile => projectile.name == "SandCrabBubbleProjectile"),
                     sandCrabStuff.CreateBubbleGhost(assets.First(ghost => ghost.name == "SandCrabBubbleGhost"), acdLookup),
-                    acdLookup["acdSandCrabBubbleSpeed"]);
+                    acdLookup["acdSandCrabBubbleSpeed"],
+                    bubbleImpactEffect);
 
                 projectilesList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
                 bodyList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);

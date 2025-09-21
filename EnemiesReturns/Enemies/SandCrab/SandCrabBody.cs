@@ -11,6 +11,7 @@ using EnemiesReturns.ModdedEntityStates.SandCrab.Snip;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
+using RoR2.Mecanim;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -48,6 +49,22 @@ namespace EnemiesReturns.Enemies.SandCrab
         public static GameObject BodyPrefab;
 
         protected override bool AddHitBoxes => true;
+
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            var result =  base.AddBodyComponents(bodyPrefab, sprite, log);
+
+            var modelTransform = result.transform.Find("ModelBase/mdlSandCrab");
+            var randomBlinks = modelTransform.gameObject.AddComponent<RandomBlinkController>();
+            randomBlinks.animator = modelTransform.gameObject.GetComponent<Animator>();
+            randomBlinks.blinkChancePerUpdate = 3f;
+            randomBlinks.blinkTriggers = new string[]
+            {
+                "Blink2"
+            };
+
+            return result;
+        }
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
