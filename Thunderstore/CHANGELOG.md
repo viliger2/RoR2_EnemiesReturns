@@ -1,4 +1,26 @@
 <details>
+<summary>0.7.4</summary>
+
+* Added new Medium-tier monster: Sand Crab.
+* Swift:
+  * Fixed death animation not being played on clients.
+  * Buffed movement speed to 10 (was 7).
+  * Nerfed Dive speed coefficient to 6.3 (was 9).
+    * _Dive is still the same, just adjusted to new movement speed so it is not faster than before._
+* Colossus:
+  * Min stage completion changed to 1 (was 0).
+  * Laser Barrage projectile damage coefficient buffed to 1 (was 0.5).
+    * _Laser Barrage was rather weak, but on stage 1 (and Colossus on stage 1 in general) with new buff it would rip survivors to shreds, so we decided to up minimum stage completion. It doesn't make that huge of a difference since in order to see Colossus on stage 1 you would need to pump those mountain shrines._
+* Mechanical Spider:
+  * Restored elite ramp display on purchasable drone.
+  * Fixed purchasable drone spawning infinitely and throwing errors if interactable is spawned from elite that can't spawn normally. 
+* Judgement:
+  * Fixed NPC allies attacking enemies during cinematic phases.
+  * Improved pedestal visibility.
+  * Added ability to create Anointed skins from any skin.
+    * _There is a new separate section in Judgement config dedicated to skin creation. Each survivor gets an entry where you can specify which skin will be used as source for Anointed skin. Do not expect 100% compatability with modded skins, especially ones with dynamic bones, but vanilla skins and more modest custom skins should work without issues._
+</details>
+<details>
 <summary>0.6.6</summary>
 
 * Fixed disabling Judgement breaks the game.

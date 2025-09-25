@@ -53,6 +53,12 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
 		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a></td>
 	</tr>
+		<tr>
+		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/SandCrab/texSandCrabIcon.png" alt="Sand Crab"></td>
+		<td>Sand Crab</td>
+		<td>Slows prey down and then chops it up with its giant claws.</td>
+		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a></td>
+	</tr>
 	<thead>
 		<tr>
 			<th>Bosses</th>
@@ -189,6 +195,21 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * stone on stone - https://pixabay.com/ru/sound-effects/stone-on-stone-62692/
 * Car interior sound - https://pixabay.com/sound-effects/car-interior-sound-246025/
 * Wind Sound - https://pixabay.com/sound-effects/wind-sound-301491/
+</details>
+<details>
+<summary>Sand Crab</summary>
+
+* Modeling, rigging, texturing and animations by Hyperinvox
+* Additional animation and additional code by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Code by [viliger](https://thunderstore.io/package/viliger/)
+* Majority of sounds come from RoRR, WoW and Starstorm
+* Heavy Bubbles - https://pixabay.com/sound-effects/heavy-bubbles-35889/
+* 071695_bubble bounce.wav - https://pixabay.com/sound-effects/071695-bubble-bouncewav-88131/
+* Boiling Water - https://pixabay.com/sound-effects/boiling-water-69115/
+* Boiling Water - https://pixabay.com/sound-effects/boiling-water-61271/
+* woosh - https://pixabay.com/sound-effects/woosh-260275/
+* Shaking a powder bottle - https://pixabay.com/sound-effects/shaking-a-powder-bottle-281274/
+* Pincer - https://pixabay.com/sound-effects/pincer-107960/
 </details>
 
 Special thanks to 
