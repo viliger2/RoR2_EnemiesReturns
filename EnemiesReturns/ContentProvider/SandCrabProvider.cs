@@ -53,11 +53,71 @@ namespace EnemiesReturns
                 sfList.Add(SandCrabBody.SkillFamilies.Primary);
                 sfList.Add(SandCrabBody.SkillFamilies.Secondary);
 
-                SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSpitterIcon"], sandCrabLog);
+                SandCrabBody.BodyPrefab = sandCrabBody.AddBodyComponents(assets.First(body => body.name == "SandCrabBody"), iconLookup["texSandCrabIcon"], sandCrabLog);
                 bodyList.Add(SandCrabBody.BodyPrefab);
 
                 SandCrabMaster.MasterPrefab = new SandCrabMaster().AddMasterComponents(assets.First(master => master.name == "SandCrabMaster"), SandCrabBody.BodyPrefab);
                 masterList.Add(SandCrabMaster.MasterPrefab);
+
+                SandCrabBody.SpawnCards.cscSandCrabDefault = sandCrabBody.CreateCard("cscSandCrabDefault", SandCrabMaster.MasterPrefab, SandCrabBody.SkinDefs.Default, SandCrabBody.BodyPrefab);
+                var dcSandCrabDefault = new DirectorCard
+                {
+                    spawnCard = SandCrabBody.SpawnCards.cscSandCrabDefault,
+                    selectionWeight = Configuration.SandCrab.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    minimumStageCompletions = Configuration.SandCrab.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchSandCrabDefault = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSandCrabDefault,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses
+                };
+                Utils.AddMonsterToStages(Configuration.SandCrab.DefaultStageList.Value, dchSandCrabDefault);
+
+                SandCrabBody.SpawnCards.cscSandCrabGrassy = sandCrabBody.CreateCard("cscSandCrabGrassy", SandCrabMaster.MasterPrefab, SandCrabBody.SkinDefs.Grassy, SandCrabBody.BodyPrefab);
+                var dcSandCrabGrassy = new DirectorCard
+                {
+                    spawnCard = SandCrabBody.SpawnCards.cscSandCrabGrassy,
+                    selectionWeight = Configuration.SandCrab.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    minimumStageCompletions = Configuration.SandCrab.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchSandCrabGrassy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSandCrabGrassy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses
+                };
+                Utils.AddMonsterToStages(Configuration.SandCrab.GrassyStageList.Value, dchSandCrabGrassy);
+
+                SandCrabBody.SpawnCards.cscSandCrabSandy = sandCrabBody.CreateCard("cscSandCrabSandy", SandCrabMaster.MasterPrefab, SandCrabBody.SkinDefs.Sandy, SandCrabBody.BodyPrefab);
+                var dcSandCrabSandy = new DirectorCard
+                {
+                    spawnCard = SandCrabBody.SpawnCards.cscSandCrabSandy,
+                    selectionWeight = Configuration.SandCrab.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    minimumStageCompletions = Configuration.SandCrab.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchSandCrabSandy = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSandCrabSandy,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses
+                };
+                Utils.AddMonsterToStages(Configuration.SandCrab.SandyStateList.Value, dchSandCrabSandy);
+
+                SandCrabBody.SpawnCards.cscSandCrabSulfur = sandCrabBody.CreateCard("cscSandCrabSulfur", SandCrabMaster.MasterPrefab, SandCrabBody.SkinDefs.Sulfur, SandCrabBody.BodyPrefab);
+                var dcSandCrabSulfur = new DirectorCard
+                {
+                    spawnCard = SandCrabBody.SpawnCards.cscSandCrabSulfur,
+                    selectionWeight = Configuration.SandCrab.SelectionWeight.Value,
+                    spawnDistance = DirectorCore.MonsterSpawnDistance.Standard,
+                    minimumStageCompletions = Configuration.SandCrab.MinimumStageCompletion.Value
+                };
+                DirectorAPI.DirectorCardHolder dchSandCrabSulfur = new DirectorAPI.DirectorCardHolder
+                {
+                    Card = dcSandCrabSulfur,
+                    MonsterCategory = DirectorAPI.MonsterCategory.Minibosses
+                };
+                Utils.AddMonsterToStages(Configuration.SandCrab.SulfurStageList.Value, dchSandCrabSulfur);
             }
         }
     }

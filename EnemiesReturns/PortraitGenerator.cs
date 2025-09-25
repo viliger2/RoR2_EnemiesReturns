@@ -8,6 +8,7 @@ using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.SandCrab;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
 using RoR2.UI;
@@ -54,6 +55,7 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
+            yield return GeneratePortrait(modelPanel, SandCrabBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, Enemies.Swift.SwiftBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, ArcherBugBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, Enemies.Judgement.Arraign.ArraignBody.ArraignP1Body);

@@ -102,6 +102,18 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.Swift.SwiftBody.SpawnCards.cscSwiftRallypoint, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
+        [ConCommand(commandName = "returns_spawn_sand_crabs", flags = ConVarFlags.None, helpText = "Spawns all Sand Crab variants")]
+        private static void CCSpawnCrabs(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabDefault, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabSandy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabGrassy, localPlayer.modelLocator.modelBaseTransform.position);
+            SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabSulfur, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
         [ConCommand(commandName = "returns_outoftime_test", flags = ConVarFlags.None)]
         private static void CCOutOfTimeTest(ConCommandArgs args)
         {

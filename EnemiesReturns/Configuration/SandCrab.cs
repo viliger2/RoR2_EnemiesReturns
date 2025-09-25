@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using R2API;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,11 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
+
         public static ConfigEntry<string> DefaultStageList;
+        public static ConfigEntry<string> GrassyStageList;
+        public static ConfigEntry<string> SandyStateList;
+        public static ConfigEntry<string> SulfurStageList;
 
         public static ConfigEntry<float> BaseMaxHealth;
         public static ConfigEntry<float> BaseMoveSpeed;
@@ -51,6 +56,39 @@ namespace EnemiesReturns.Configuration
             DirectorCost = config.Bind("Sand Crab Director", "Director Cost", 40, "Director cost of Sand Crab.");
             SelectionWeight = config.Bind("Sand Crab Director", "Selection Weight", 1, "Selection weight of Sand Crab.");
             MinimumStageCompletion = config.Bind("Sand Crab Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
+
+            DefaultStageList = config.Bind("Sand Crab Director", "Default Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    ""
+                ),
+                "Stages that Default Sand Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            GrassyStageList = config.Bind("Sand Crab Director", "Grassy Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DistantRoost),
+                    "FBLScene"
+                ),
+                "Stages that Grassy Sand Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            SandyStateList = config.Bind("Sand Crab Director", "Sandy Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ReformedAltar)
+                ),
+                "Stages that Sandy Sand (lol, lmao) Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
+
+            SulfurStageList = config.Bind("Sand Crab Director", "Sulfur Variant Stage List",
+                string.Join
+                (
+                    ",",
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SulfurPools)
+                ),
+                "Stages that Sulfur Sand Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
             BaseMaxHealth = config.Bind("Sand Crab Character Stats", "Base Max Health", 480f, "Sand Crab's base health.");
             BaseMoveSpeed = config.Bind("Sand Crab Character Stats", "Base Movement Speed", 10f, "Sand Crab's base movement speed.");

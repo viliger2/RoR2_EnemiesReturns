@@ -39,11 +39,23 @@ namespace EnemiesReturns.Enemies.SandCrab
         public struct SkinDefs
         {
             public static SkinDef Default;
+
+            public static SkinDef Sandy;
+
+            public static SkinDef Grassy;
+
+            public static SkinDef Sulfur;
         }
 
         public struct SpawnCards
         {
             public static CharacterSpawnCard cscSandCrabDefault;
+
+            public static CharacterSpawnCard cscSandCrabSandy;
+
+            public static CharacterSpawnCard cscSandCrabGrassy;
+
+            public static CharacterSpawnCard cscSandCrabSulfur;
         }
 
         public static GameObject BodyPrefab;
@@ -95,6 +107,16 @@ namespace EnemiesReturns.Enemies.SandCrab
                 levelMaxHealth = Configuration.SandCrab.LevelMaxHealth.Value,
                 levelDamage = Configuration.SandCrab.LevelDamage.Value,
             };
+        }
+
+        public CharacterSpawnCard CreateCard(string name, GameObject master, SkinDef skin = null, GameObject bodyPrefab = null)
+        {
+            return CreateCard(new SpawnCardParams(name, master, Configuration.Spitter.DirectorCost.Value)
+            {
+                hullSize = HullClassification.Golem,
+                skinDef = skin,
+                bodyPrefab = bodyPrefab,
+            });
         }
 
         public SkillDef CreateClawSnipSkill()
@@ -163,7 +185,45 @@ namespace EnemiesReturns.Enemies.SandCrab
             };
             SkinDefs.Default = Utils.CreateSkinDef("skinSandCrabDefault", modelPrefab, defaultRender);
 
-            return new SkinDef[] { SkinDefs.Default };
+            CharacterModel.RendererInfo[] sandyRender = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = sandCrabBodyRender,
+                    defaultMaterial = ContentProvider.MaterialCache["mat3DSandCrabSandy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                }
+            };
+            SkinDefs.Sandy = Utils.CreateSkinDef("skinSandCrabSandy", modelPrefab, sandyRender, SkinDefs.Default);
+
+            CharacterModel.RendererInfo[] grassyRenderer = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = sandCrabBodyRender,
+                    defaultMaterial = ContentProvider.MaterialCache["mat3DSandCrabGrassy"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                }
+            };
+            SkinDefs.Grassy = Utils.CreateSkinDef("skinSandCrabGrassy", modelPrefab, grassyRenderer, SkinDefs.Default);
+
+            CharacterModel.RendererInfo[] sulfurRenderer = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    renderer = sandCrabBodyRender,
+                    defaultMaterial = ContentProvider.MaterialCache["mat3DSandCrabSulfur"],
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                }
+            };
+            SkinDefs.Sulfur = Utils.CreateSkinDef("skinSandCrabSulfur", modelPrefab, sulfurRenderer, SkinDefs.Default);
+            return new SkinDef[] { SkinDefs.Default, SkinDefs.Sulfur, SkinDefs.Sandy, SkinDefs.Grassy };
         }
 
         protected override IEntityStateMachine.EntityStateMachineParams[] EntityStateMachineParams()
@@ -226,8 +286,8 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             return new IModelPanelParameters.ModelPanelParams()
             {
-                maxDistance = 6f,
-                minDistance = 1.5f,
+                maxDistance = 15f,
+                minDistance = 6f,
                 modelRotation = new Quaternion(0, 0, 0, 1)
             };
         }
