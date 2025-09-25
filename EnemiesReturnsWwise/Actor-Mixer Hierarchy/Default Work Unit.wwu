@@ -5933,6 +5933,629 @@
 										</ActorMixer>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Sand Crab" ID="{17F50BAC-3100-4C30-9336-8E865A7C8AF0}" ShortID="822300203">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="9"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<ActorMixer Name="Random Pitch" ID="{7B2D7411-3186-4B82-833A-B32A281F8AEA}" ShortID="614458005">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{16FD01D1-5C0E-4A04-A450-DEE7343D1732}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="SandCrab_Footstep" ID="{6CC40663-FD42-4EEA-A8CA-A570F18BA3F1}" ShortID="182640321">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-20</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="SandCrab_Step_01" ID="{68319A2C-491A-4501-99FD-EA4E21138D93}" ShortID="165468488">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="CrabFootSteps1" ID="{C81A39A0-A872-4FAB-BEDC-2B3516A10B93}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\CrabFootSteps1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="852199911"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="CrabFootSteps1" ID="{C81A39A0-A872-4FAB-BEDC-2B3516A10B93}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SandCrab_Step_02" ID="{C81CDB05-878C-4A5D-8E4E-2D823E1B8510}" ShortID="363767962">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="CrabFootSteps2" ID="{1A941A8F-542D-4873-A020-8785D3D5A15C}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\CrabFootSteps2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="325602607"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="CrabFootSteps2" ID="{1A941A8F-542D-4873-A020-8785D3D5A15C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SandCrab_Step_03" ID="{B1D46823-9EFF-4486-87FF-1F92073660C1}" ShortID="220867340">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="CrabFootSteps3" ID="{CC8BA278-F3E2-4589-8064-4A12E307B861}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\CrabFootSteps3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="314097255"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="CrabFootSteps3" ID="{CC8BA278-F3E2-4589-8064-4A12E307B861}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SandCrab_Step_04" ID="{679A0659-9FF6-42E9-800D-F8476FD96339}" ShortID="810436971">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="CrabFootSteps4" ID="{22C839E6-B164-4FBC-9346-080607640249}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\CrabFootSteps4.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="430061715"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="CrabFootSteps4" ID="{22C839E6-B164-4FBC-9346-080607640249}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Sound Name="SandCrab_Bubble_Pop" ID="{5D53D168-A46C-4C39-AD6D-32112A22CF73}" ShortID="382561633">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-13</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BubblePop" ID="{2A1B3AE2-2973-4A50-A2BB-9AEDA12C6166}">
+															<Language>SFX</Language>
+															<AudioFile>SandCrab\BubblePop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="4667547"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="BubblePop" ID="{2A1B3AE2-2973-4A50-A2BB-9AEDA12C6166}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="SandCrab_Bubble_Blow" ID="{B34281AD-96E7-436F-B8BE-5673A01ACEA0}" ShortID="740859831">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="blowingbubbles1" ID="{FE8E2C31-B5AD-4F93-B0E8-AE5672C35226}" ShortID="653707871">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="blowingbubbles1" ID="{455D78B1-4A14-466D-8FC2-F897B24137C0}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\blowingbubbles1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="825232422"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="blowingbubbles1" ID="{455D78B1-4A14-466D-8FC2-F897B24137C0}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="bubbles3" ID="{7E4D4E09-DD45-4D1B-98B4-F8A1F1018C49}" ShortID="324488749">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="bubbles3" ID="{6731FB03-AA3D-4527-A016-3F254A368351}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\bubbles3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="712741687"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="bubbles3" ID="{6731FB03-AA3D-4527-A016-3F254A368351}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="bubbles 6" ID="{9044D0A7-3396-4030-9319-27E81C2EC007}" ShortID="127690004">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="bubbles 6" ID="{FF074DC9-B718-40E3-A2BC-63C9DDA57B3A}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\bubbles 6.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="513220108"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="bubbles 6" ID="{FF074DC9-B718-40E3-A2BC-63C9DDA57B3A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="bubbles 7" ID="{EF9D3DF1-B170-40FA-91A1-8BAA1F9B7624}" ShortID="805446264">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-1</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="bubbles 7" ID="{659090AC-D8D5-494D-B316-46733F475015}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\bubbles 7.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="851580757"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="bubbles 7" ID="{659090AC-D8D5-494D-B316-46733F475015}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="bubbles 15" ID="{BD05D1C5-3D5E-44B5-9A78-9615948C7EC7}" ShortID="352978700">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="bubbles 15" ID="{49560447-3728-471C-8A78-88D7D933A3A9}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\bubbles 15.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="288865629"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="bubbles 15" ID="{49560447-3728-471C-8A78-88D7D933A3A9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="bubbles 16" ID="{08DE9B84-BCF4-4598-AE27-D188E990DC22}" ShortID="836656360">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="bubbles 16" ID="{2A246431-81DA-4E17-8026-6E53AB90CF95}">
+																	<Language>SFX</Language>
+																	<AudioFile>SandCrab\bubbles 16.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="320063894"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="bubbles 16" ID="{2A246431-81DA-4E17-8026-6E53AB90CF95}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Sound Name="SandCrab_Bubble_FlightLoop" ID="{1D5EC839-342C-4DED-AF83-AF94D67FBB68}" ShortID="732131317">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="bubble_flight_loop" ID="{6F82DF7A-D509-46E2-9574-76BE3E808A37}">
+															<Language>SFX</Language>
+															<AudioFile>SandCrab\bubble_flight_loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="486572730"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="bubble_flight_loop" ID="{6F82DF7A-D509-46E2-9574-76BE3E808A37}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</ActorMixer>
+										<Sound Name="SandCrab_Spawn" ID="{AB2CFB98-EC67-4564-B0C0-AEBBCB568096}" ShortID="267483517">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wCrabSpawn" ID="{6E5623B0-6120-41DF-A038-8F3FE490483F}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\wCrabSpawn.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="944514061"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wCrabSpawn" ID="{6E5623B0-6120-41DF-A038-8F3FE490483F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_FireBubblesPrep" ID="{2D64A851-FED0-4F5C-BEBB-2F7CFBBEA1E8}" ShortID="280087605">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Rabid" ID="{41E1188D-145D-4495-9D7D-8D2B3AEBFCCC}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\Rabid.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="17130526"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="crab_bubble_attack" ID="{92B824F7-5721-431A-9068-224577EE3DEA}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\crab_bubble_attack.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="644497817"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="crab_bubble_attack" ID="{92B824F7-5721-431A-9068-224577EE3DEA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_Death" ID="{D8E95E7A-7BDD-461C-B194-63657B4F3C88}" ShortID="1037021677">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="crabdeath" ID="{49800DF2-AAC8-4AD7-AD14-9B89B41AFC05}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\crabdeath.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="55134679"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="crabdeath" ID="{49800DF2-AAC8-4AD7-AD14-9B89B41AFC05}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_FireBubbles" ID="{05E53EF8-E0A8-413F-8A41-C86061128A0E}" ShortID="200681863">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="start_fire_bubbles" ID="{F65A28CF-F239-417D-B15C-EF5B95EEED0F}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\start_fire_bubbles.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1033596437"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="start_fire_bubbles" ID="{F65A28CF-F239-417D-B15C-EF5B95EEED0F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_Melee_Start" ID="{39A1A92D-73C0-4AA9-93CA-4285C6082548}" ShortID="266489016">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="hit-shell-01-266294" ID="{C2361A0A-F92D-48ED-819A-D4E51D26ED41}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\hit-shell-01-266294.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="450373126"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="charge_snip" ID="{B86EFCD7-8DF8-45E3-8F51-2A4FE2D7FBBD}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\snip\charge_snip.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1023406500"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="charge_snip" ID="{B86EFCD7-8DF8-45E3-8F51-2A4FE2D7FBBD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_Melee_Hold" ID="{AF884A9E-F66D-4125-84DF-60B8B27A9264}" ShortID="7121754">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="hold_snip" ID="{FFA798A8-1B5A-432F-B4B9-907F86200D60}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\snip\hold_snip.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="670443779"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="hold_snip" ID="{FFA798A8-1B5A-432F-B4B9-907F86200D60}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SandCrab_Melee_Fire" ID="{7DD8FD05-A4DD-4612-9C33-7B5EDB4489B1}" ShortID="702004772">
+											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-11</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="snip_fire" ID="{2D691085-FACF-4DF7-AC24-83A5B538FDFE}">
+													<Language>SFX</Language>
+													<AudioFile>SandCrab\snip\snip_fire.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="363185352"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="snip_fire" ID="{2D691085-FACF-4DF7-AC24-83A5B538FDFE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">

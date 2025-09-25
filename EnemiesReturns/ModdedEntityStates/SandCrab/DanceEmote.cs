@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayAnimation("Gesture, Override", "Dance");
+            PlayCrossfade("Gesture, Override", "Dance", 0.25f);
         }
 
         public override void OnExit()

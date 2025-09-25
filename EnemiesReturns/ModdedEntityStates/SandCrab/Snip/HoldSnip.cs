@@ -34,6 +34,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
             PlayAnimation("Gesture, Override, Mask", "HoldSnip");
 
             attackCheckHitbox = FindModelChild("ChargeAttackHitbox");
+            Util.PlaySound("ER_SandCrab_Melee_Hold_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -91,6 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
         {
             base.OnExit();
             PlayAnimation("Gesture, Override, Mask", "BufferEmpty");
+            Util.PlaySound("ER_SandCrab_Melee_Hold_Stop", base.gameObject);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

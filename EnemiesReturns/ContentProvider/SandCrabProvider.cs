@@ -30,7 +30,8 @@ namespace EnemiesReturns
                     assets.First(projectile => projectile.name == "SandCrabBubbleProjectile"),
                     sandCrabStuff.CreateBubbleGhost(assets.First(ghost => ghost.name == "SandCrabBubbleGhost"), acdLookup),
                     acdLookup["acdSandCrabBubbleSpeed"],
-                    bubbleImpactEffect);
+                    bubbleImpactEffect,
+                    sandCrabStuff.CreateBubbleFlightLoop());
 
                 projectilesList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);
                 bodyList.Add(ModdedEntityStates.SandCrab.Bubbles.FireBubbles.projectilePrefab);

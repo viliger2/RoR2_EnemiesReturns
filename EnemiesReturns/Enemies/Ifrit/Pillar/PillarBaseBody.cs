@@ -116,6 +116,13 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             return CreateCard(new SpawnCardParams(name, master, 0));
         }
 
+        protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
+        {
+            var baseParams =  base.ModelLocatorParams();
+            baseParams.noCorpse = true;
+            return baseParams;
+        }
+
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
             return new IAimAssist.AimAssistTargetParams()

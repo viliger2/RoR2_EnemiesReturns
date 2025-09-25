@@ -53,6 +53,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
             {
                 characterBody.SetAimTimer(2f);
             }
+            Util.PlaySound("ER_SandCrab_Melee_Fire_Play", base.gameObject);
         }
 
         public override void FixedUpdate()

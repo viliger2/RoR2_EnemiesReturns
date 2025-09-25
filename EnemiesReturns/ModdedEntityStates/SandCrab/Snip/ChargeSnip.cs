@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
             duration = baseDuration / attackSpeedStat;
 
             PlayCrossfade("Gesture, Override, Mask", "ChargeSnip", "ChargeSnip.playbackRate", duration, 0.1f);
+            Util.PlaySound("ER_SandCrab_Melee_Start_Play", base.gameObject);
         }
 
         public override void FixedUpdate()

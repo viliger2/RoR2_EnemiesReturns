@@ -62,6 +62,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
 
             startingDirection = Quaternion.AngleAxis(projectileSpread * 0.5f, rotationVector) * newVector;
             rotation = Quaternion.AngleAxis(-angle, rotationVector);
+            Util.PlaySound("ER_SandCrab_FireBubbles_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -80,6 +81,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
                         FireSingleBubble(startingDirection);
                     }
                 }
+                Util.PlaySound("ER_SandCrab_Bubbles_Spawn_Play", base.gameObject);
                 timesFired++;
                 timer += singleDuration;
                 startingDirection = rotation * startingDirection;

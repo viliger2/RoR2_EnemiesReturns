@@ -1835,6 +1835,167 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="SandCrab" ID="{A936BC74-0213-4AAC-AE36-69A1E1912E75}" ShortID="664322263">
+							<ChildrenList>
+								<Event Name="ER_SandCrab_Footstep_Play" ID="{DBFCE41B-B763-4433-A845-985EF1DC0891}">
+									<ChildrenList>
+										<Action Name="" ID="{597DEA6F-AA0B-4D76-A13A-A2C22AE98DFD}" ShortID="384496382">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SandCrab_Footstep" ID="{6CC40663-FD42-4EEA-A8CA-A570F18BA3F1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_SandCrab_Spawn_Play" ID="{0E3DDA55-10F4-47C7-9D6C-211D63BF16D1}">
+									<ChildrenList>
+										<Action Name="" ID="{ED433FED-880C-481E-86AF-B5C4A4E49C95}" ShortID="320758067">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SandCrab_Spawn" ID="{AB2CFB98-EC67-4564-B0C0-AEBBCB568096}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Bubbles" ID="{E7A18C3E-9501-4305-A070-457D3BBF1107}" ShortID="482952306">
+									<ChildrenList>
+										<Event Name="ER_SandCrab_Bubbles_Spawn_Play" ID="{76D531B5-FE9E-4F1C-A268-CD2BB4B38731}">
+											<ChildrenList>
+												<Action Name="" ID="{8DA804F3-98CB-4B06-B2E2-419A2FCD388D}" ShortID="641458532">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Bubble_Blow" ID="{B34281AD-96E7-436F-B8BE-5673A01ACEA0}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Bubbles_Death_Play" ID="{EBDBBA4F-6AD4-465D-BAC7-70EF44D9B9BD}">
+											<ChildrenList>
+												<Action Name="" ID="{AEABCC1D-8819-42F7-A197-79A612465F9D}" ShortID="1055069965">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Bubble_Pop" ID="{5D53D168-A46C-4C39-AD6D-32112A22CF73}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Bubbles_FlightLoop_Play" ID="{010A3625-D369-4061-B3D8-4ED430C35A2D}">
+											<ChildrenList>
+												<Action Name="" ID="{1082479A-A1E9-45B7-B989-9FC480A8D44B}" ShortID="730622521">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Bubble_FlightLoop" ID="{1D5EC839-342C-4DED-AF83-AF94D67FBB68}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Bubbles_FlightLoop_Stop" ID="{B6A4EAC9-7A6F-4454-9831-3C99C619AC53}">
+											<ChildrenList>
+												<Action Name="" ID="{BD6D14FE-7207-441D-9C4B-39E972FA32A2}" ShortID="634551102">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Bubble_FlightLoop" ID="{1D5EC839-342C-4DED-AF83-AF94D67FBB68}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Event Name="ER_SandCrab_FireBubblesPrep_Play" ID="{CD84D34E-34C4-49EE-82A2-2D2B62C406AE}">
+									<ChildrenList>
+										<Action Name="" ID="{D34B69D5-E53C-4E4D-A4A8-D865D788AE49}" ShortID="943597714">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SandCrab_FireBubblesPrep" ID="{2D64A851-FED0-4F5C-BEBB-2F7CFBBEA1E8}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_SandCrab_Death_Play" ID="{51ED60BA-3B4D-4DA4-8982-706D31C4FFF2}">
+									<ChildrenList>
+										<Action Name="" ID="{1594158E-5A87-4F81-84EC-8E14266EC8B9}" ShortID="848688376">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SandCrab_Death" ID="{D8E95E7A-7BDD-461C-B194-63657B4F3C88}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="ER_SandCrab_FireBubbles_Play" ID="{D2106C30-0242-4EA6-9A46-450C6E97E38A}">
+									<ChildrenList>
+										<Action Name="" ID="{504D54F6-FE7F-4132-AAF1-AD3FD765C986}" ShortID="123168686">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="SandCrab_FireBubbles" ID="{05E53EF8-E0A8-413F-8A41-C86061128A0E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Melee" ID="{B32D0413-DD67-4C16-B531-88016858C7D4}" ShortID="747743434">
+									<ChildrenList>
+										<Event Name="ER_SandCrab_Melee_Start_Play" ID="{536966DA-A563-4DCB-8AFE-CEAF1D56BDD9}">
+											<ChildrenList>
+												<Action Name="" ID="{D11FDE96-D6ED-45E9-A91F-B0C43933740A}" ShortID="1000373037">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Melee_Start" ID="{39A1A92D-73C0-4AA9-93CA-4285C6082548}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Melee_Hold_Play" ID="{C41A54BD-3290-4CA5-B5E7-E36E6A4A6114}">
+											<ChildrenList>
+												<Action Name="" ID="{EC38D178-BF5F-4819-915B-009367B03D2B}" ShortID="130122111">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Melee_Hold" ID="{AF884A9E-F66D-4125-84DF-60B8B27A9264}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Melee_Hold_Stop" ID="{2E1FBC37-9D97-4E38-9284-C780C2EAF28E}">
+											<ChildrenList>
+												<Action Name="" ID="{719D1AF7-1F3C-4C07-9277-A673513FBC0E}" ShortID="965020761">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Melee_Hold" ID="{AF884A9E-F66D-4125-84DF-60B8B27A9264}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SandCrab_Melee_Fire_Play" ID="{D76377C7-C758-4386-9C26-B41FE7C4ED08}">
+											<ChildrenList>
+												<Action Name="" ID="{59F5C1F7-2B8D-450F-B437-5F2FC0F8B605}" ShortID="116317830">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SandCrab_Melee_Fire" ID="{7DD8FD05-A4DD-4612-9C33-7B5EDB4489B1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{5D67AA33-F278-4D5A-BFF4-F9D9E4988DB5}" ShortID="404742623">

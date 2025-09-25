@@ -3,6 +3,7 @@ using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Projectiles;
 using R2API;
 using RoR2;
+using RoR2.Audio;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using ThreeEyedGames;
@@ -21,7 +22,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var effectComponent = prefab.AddComponent<EffectComponent>();
             effectComponent.positionAtReferencedTransform = true;
-            //effectComponent.soundName = "ER_IFrit_Portal_Spawn_Play"; // TODO: sound
+            effectComponent.soundName = "ER_SandCrab_Bubbles_Death_Play";
 
             var vfxAttributes = prefab.AddComponent<VFXAttributes>();
             vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
@@ -49,6 +50,16 @@ namespace EnemiesReturns.Enemies.SandCrab
             prefab.transform.Find("Effects/Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matTracerBrightTransparent_mat).WaitForCompletion();
 
             return prefab;
+        }
+
+        public LoopSoundDef CreateBubbleFlightLoop()
+        {
+            var loopSound = ScriptableObject.CreateInstance<LoopSoundDef>();
+            (loopSound as ScriptableObject).name = "lsdSandCrabBubbleFlight";
+            loopSound.startSoundName = "ER_SandCrab_Bubbles_FlightLoop_Play";
+            loopSound.stopSoundName = "ER_SandCrab_Bubbles_FlightLoop_Stop";
+
+            return loopSound;
         }
 
         public GameObject CreateSnipEffect()
@@ -122,10 +133,12 @@ namespace EnemiesReturns.Enemies.SandCrab
             var meshRenderer = ghostPrefab.transform.Find("Sphere").GetComponent<MeshRenderer>();
             meshRenderer.material = ContentProvider.GetOrCreateMaterial("matSandCrabBubble", CreateBubbleMaterial);
 
+            ghostPrefab.transform.Find("SplatEffect").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
+
             return ghostPrefab;
         }
 
-        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed, GameObject impactEffect)
+        public GameObject CreateBubbleProjectile(GameObject projectilePrefab, GameObject projectileGhost, AnimationCurveDef acdBubbleSpeed, GameObject impactEffect, LoopSoundDef flightLoop)
         {
             var lifetime = Configuration.SandCrab.BubbleLifetime.Value;
 
@@ -144,7 +157,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var projectileController = projectilePrefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = projectileGhost;
-            //projectileController.flightSoundLoop = ; // TODO
+            projectileController.flightSoundLoop = flightLoop;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = 1f;
 

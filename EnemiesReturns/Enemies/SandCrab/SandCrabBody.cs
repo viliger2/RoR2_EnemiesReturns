@@ -173,7 +173,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                 new IEntityStateMachine.EntityStateMachineParams
                 {
                     name = "Body",
-                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.GenericSpawnState)),
+                    initialState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.SpawnState)),
                     mainState = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.SandCrabMain)),
                 },
                 new IEntityStateMachine.EntityStateMachineParams
@@ -190,8 +190,16 @@ namespace EnemiesReturns.Enemies.SandCrab
             return new IFootStepHandler.FootstepHandlerParams()
             {
                 enableFootstepDust = true,
-                baseFootstepString = "Play_hermitCrab_step", // TODO: not treebot, its way too mechanic
+                baseFootstepString = "ER_SandCrab_Footstep_Play",
                 footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion()
+            };
+        }
+
+        protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
+        {
+            return new ISfxLocator.SfxLocatorParams()
+            {
+                deathSound = "ER_SandCrab_Death_Play"
             };
         }
 
