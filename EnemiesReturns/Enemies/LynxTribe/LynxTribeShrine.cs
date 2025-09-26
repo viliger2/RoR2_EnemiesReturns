@@ -7,8 +7,6 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    // TODO: implement item text on ping in chat
-    // this would require somewhat complex il hook that I am not willing to do, so no chat message for now
     public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable, IDisplayNameProvider
     {
         public GameObject shrineUseEffect;

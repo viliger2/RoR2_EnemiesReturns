@@ -20,6 +20,7 @@ namespace EnemiesReturns
     // TODO: fix the client objectives, surely it can be done
     // TODO: animation transition polish, can do that in editor
     // TODO: spawn points on outoftime, locked, near edge, spawned looking at interactable, use moon2 as reference
+    // TODO: path to judgement through void, we have models, entrance needs void flower, void flower is made from lunar flower when owner goes though void death
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
@@ -40,7 +41,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.4";
+        public const string Version = "0.7.5";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;

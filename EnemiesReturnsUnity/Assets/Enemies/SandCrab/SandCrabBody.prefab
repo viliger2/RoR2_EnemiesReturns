@@ -2199,14 +2199,16 @@ MonoBehaviour:
     transform: {fileID: 6660216915495672715}
   - name: UpperClawR
     transform: {fileID: 771300390077514787}
-  - name: LowerClawL
-    transform: {fileID: 7698811382259212824}
   - name: UpperClawL
+    transform: {fileID: 7698811382259212824}
+  - name: LowerClawL
     transform: {fileID: 9131886755063488537}
   - name: SnipEffectMuzzleL
     transform: {fileID: 4859459352965967073}
   - name: SnipEffectMuzzleR
     transform: {fileID: 1134099601012389045}
+  - name: HandR
+    transform: {fileID: 460513123181406635}
 --- !u!4 &2564023220825731167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 886974630498610205, guid: 704e7b6775446c34288f5b8598b2114c,

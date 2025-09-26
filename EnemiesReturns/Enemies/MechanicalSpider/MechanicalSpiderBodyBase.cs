@@ -371,6 +371,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             displayRuleGroupLunar.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteLunar.DisplayEliteLunarEye),
                 childName = "Body",
                 localPos = new Vector3(0F, 0.02893F, 0F),
                 localAngles = new Vector3(90F, 0F, 0F),
