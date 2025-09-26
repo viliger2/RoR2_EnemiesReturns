@@ -1,5 +1,5 @@
 <details>
-<summary>0.7.4</summary>
+<summary>0.7.5</summary>
 
 * Added new Medium-tier monster: Sand Crab.
 * Swift:
