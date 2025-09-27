@@ -224,6 +224,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var healthComponent = projectilePrefab.GetOrAddComponent<HealthComponent>();
             healthComponent.body = characterBody;
+            healthComponent.globalDeathEventChanceCoefficient = Configuration.SandCrab.BubbleGlobalDeathProcCoefficient.Value;
 
             var modelLocator = projectilePrefab.GetOrAddComponent<ModelLocator>();
             modelLocator.modelTransform = projectilePrefab.transform.Find("Model");

@@ -46,6 +46,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> BubbleBaseHealth;
         public static ConfigEntry<float> BubbleHealthPerLevel;
         public static ConfigEntry<float> BubbleLifetime;
+        public static ConfigEntry<float> BubbleGlobalDeathProcCoefficient;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -117,6 +118,7 @@ namespace EnemiesReturns.Configuration
             BubbleBaseHealth = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Base Health", 35f, "Sand Crab's Fire Bubbles projectile base health.");
             BubbleHealthPerLevel = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Per Level Health", 10f, "Sand Crab's Fire Bubbles projectile per level health.");
             BubbleLifetime = config.Bind("Sand Ctab Fire Bubbles", "Fire Bubbles Projectile Lifetime", 12f, "Sand Crab's Fire Bubbles projectile lifetime.");
+            BubbleGlobalDeathProcCoefficient = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Global Death Proc Coefficient", 0f, "Sand Crab's Fire Bubbles projectile global death proc coefficient, basically controls how frequently on death procs happen when bubble is killed.");
 
             EmoteKey = config.Bind("Sand Crab Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
         }
