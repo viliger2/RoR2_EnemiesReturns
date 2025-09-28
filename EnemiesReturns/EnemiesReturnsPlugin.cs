@@ -18,7 +18,6 @@ using System.Reflection;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
-    // TODO: fix the client objectives, surely it can be done
     // TODO: animation transition polish, can do that in editor
     // TODO: spawn points on outoftime, locked, near edge, spawned looking at interactable, use moon2 as reference
     // TODO: path to judgement through void, we have models, entrance needs void flower, void flower is made from lunar flower when owner goes though void death

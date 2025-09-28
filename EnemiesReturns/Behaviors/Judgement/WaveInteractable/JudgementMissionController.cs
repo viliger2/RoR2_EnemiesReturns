@@ -7,7 +7,9 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 {
-    // TODO: objectives are broken on clients
+    // TODO: fixed objectives by hooking BossGroup.ReportObjective
+    // however there is still potential issue of objective getting stuck
+    // and in general this seems like a unity\mono issue, since readonlylist sometimes gets filled, sometimes it stays empty, seems like some memory shenanigans to me
     public class JudgementMissionController : NetworkBehaviour
     {
         [Serializable]

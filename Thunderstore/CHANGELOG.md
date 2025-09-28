@@ -1,4 +1,11 @@
 <details>
+<summary>0.7.7</summary>
+
+* Judgement
+  * Fixed objectives going bananas on clients.
+    * _There is a chance that objective might get stuck as uncompleted but this is better than objectives constantly being added and removed for like 20 seconds after wave has been started._
+</details>
+<details>
 <summary>0.7.6</summary>
 
 * I am 99% sure I've released 0.7.5 without functioning networking, so I am just gonna do another release just to be sure.
