@@ -1,4 +1,14 @@
 <details>
+<summary>0.7.6</summary>
+
+* I am 99% sure I've released 0.7.5 without functioning networking, so I am just gonna do another release just to be sure.
+* Added soft dependency to [MoreStats](https://thunderstore.io/package/RiskOfBrainrot/MoreStats/)
+  * _MoreStats breaks Lynx Shaman healing debuff hook, making it so debuff doesn't actually reduce healing. So I've decided to add soft dependency to it, using it if it is present. HOWEVER, current version of MoreStats (1.2.5) has broken hook for healing modification (lol) so, at the time of 0.7.6 release, if you have MoreStats installed you wouldn't get working healing debuff either way._
+* Sand Crab
+  * Set global death proc chance for bubbles to 0.
+    * _This means that bubbles no longer proc on death effects. Value can be changed in the config._
+</details>
+<details>
 <summary>0.7.5</summary>
 
 * Added new Medium-tier monster: Sand Crab.
