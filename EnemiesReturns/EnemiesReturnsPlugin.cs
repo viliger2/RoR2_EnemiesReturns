@@ -8,6 +8,7 @@ using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
+using EnemiesReturns.ModCompats;
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace EnemiesReturns
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.RiskyArtifacts", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.RiskOfBrainrot.MoreStats", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency(R2API.DeployableAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
@@ -108,7 +110,6 @@ namespace EnemiesReturns
             MechanicalSpiderVictoryDanceController.Hooks();
             Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
-            ShamanStuff.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             Behaviors.SubjectParamsChatMessage.Hooks();
 
@@ -116,6 +117,15 @@ namespace EnemiesReturns
             Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
+
+            if (MoreStatsCompat.enabled)
+            {
+                MoreStatsCompat.Hooks();
+            }
+            else
+            {
+                ShamanStuff.Hooks();
+            }
         }
 
         private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)
