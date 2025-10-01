@@ -12,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
     [RegisterEntityState]
     public class FireBubbles : BaseState
     {
-        public static float baseSingleDuration = 0.45f;
+        public static float baseSingleDuration = 0.325f;
 
         public static float projectileSpread => Configuration.SandCrab.BubbleProjectileSpread.Value;
 
@@ -30,8 +30,6 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
 
         private Transform projectileOrigin;
 
-        private float singleDuration;
-
         private float timer;
 
         private int timesFired;
@@ -43,7 +41,6 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
         public override void OnEnter()
         {
             base.OnEnter();
-            singleDuration = baseSingleDuration / attackSpeedStat;
             timer = 0f;
 
             projectileOrigin = FindModelChild("BubblesFireOrigin");
@@ -51,7 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
             {
                 projectileOrigin = transform;
             }
-            characterBody.SetAimTimer(singleDuration * timesToFire);
+            characterBody.SetAimTimer(baseSingleDuration * timesToFire);
 
             var angle = projectileSpread / (timesToFire - 1);
             var aimRay = GetAimRay();
@@ -73,7 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
             timer -= Time.fixedDeltaTime;
             if (timer < 0f)
             {
-                PlayAnimation("Gesture, Override, Mask", "FireBubbles", "FireBubbles.playbackRate", singleDuration);
+                PlayAnimation("Gesture, Override, Mask", "FireBubbles", "FireBubbles.playbackRate", baseSingleDuration);
                 if (isAuthority)
                 {
                     for (int i = 0; i < projectilesCount; i++)
@@ -83,7 +80,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
                 }
                 Util.PlaySound("ER_SandCrab_Bubbles_Spawn_Play", base.gameObject);
                 timesFired++;
-                timer += singleDuration;
+                timer += baseSingleDuration;
                 startingDirection = rotation * startingDirection;
             }
 

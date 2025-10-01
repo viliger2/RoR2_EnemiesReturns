@@ -103,7 +103,7 @@ namespace EnemiesReturns.Configuration
 
             SnipCooldown = config.Bind("Sand Crab Snip", "Snip Cooldown", 4f, "Sand Crab's Snip cooldown.");
             SnipHoldMaxDuration = config.Bind("Sand Crab Snip", "Snip Hold State Max Duration", 2f, "Sand Crab's Snip skill hold max duration.");
-            SnipDamage = config.Bind("Sand Crab Snip", "Snip Damage", 5f, "Sand Crab's Snip damage.");
+            SnipDamage = config.Bind("Sand Crab Snip", "Snip Damage", 3.75f, "Sand Crab's Snip damage.");
             SnipForce = config.Bind("Sand Crab Snip", "Snip Force", 200f, "Sand Crab's Snip force");
 
             BubbleCooldown = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Cooldown", 15f, "Sand Crab's Fire Bubbles cooldown.");
@@ -117,7 +117,7 @@ namespace EnemiesReturns.Configuration
 
             BubbleBaseHealth = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Base Health", 35f, "Sand Crab's Fire Bubbles projectile base health.");
             BubbleHealthPerLevel = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Per Level Health", 10f, "Sand Crab's Fire Bubbles projectile per level health.");
-            BubbleLifetime = config.Bind("Sand Ctab Fire Bubbles", "Fire Bubbles Projectile Lifetime", 12f, "Sand Crab's Fire Bubbles projectile lifetime.");
+            BubbleLifetime = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Projectile Lifetime", 12f, "Sand Crab's Fire Bubbles projectile lifetime.");
             BubbleGlobalDeathProcCoefficient = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Global Death Proc Coefficient", 0f, "Sand Crab's Fire Bubbles projectile global death proc coefficient, basically controls how frequently on death procs happen when bubble is killed.");
 
             EmoteKey = config.Bind("Sand Crab Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
