@@ -53,6 +53,9 @@
 	  <Reference Include="MoreStats">
 	    <HintPath>libs\MoreStats.dll</HintPath>
 	  </Reference>
+	  <Reference Include="ReviveAPI">
+	    <HintPath>libs\ReviveAPI.dll</HintPath>
+	  </Reference>
 	  <!--<Reference Include="R2API.Director">
 	    <HintPath>libs\R2API.Director.dll</HintPath>
 	  </Reference>-->
@@ -86,7 +89,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll&#xD;&#xA;del AdvPrediction.dll&#xD;&#xA;del Risky_Artifacts.dll&#xD;&#xA;del Zio.dll&#xD;&#xA;del EliteReworks.dll&#xD;&#xA;del MoreStats.dll" />
+	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll&#xD;&#xA;del AdvPrediction.dll&#xD;&#xA;del Risky_Artifacts.dll&#xD;&#xA;del Zio.dll&#xD;&#xA;del EliteReworks.dll&#xD;&#xA;del MoreStats.dll&#xD;&#xA;del ReviveAPI.dll" />
 	</Target>
 
 </Project>

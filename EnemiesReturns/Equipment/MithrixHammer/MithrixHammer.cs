@@ -12,35 +12,25 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 
         public static float aeonianHammerDamageModifier => Judgement.MithrixHammerAeonianBonusDamage.Value;
 
-        public static void Hooks()
+        public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
-                On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
-                RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
-            }
-        }
-
-        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
-        {
-            if (NetworkServer.active)
-            {
-                if (body && body.inventory)
+                if (NetworkServer.active)
                 {
-                    body.AddItemBehavior<MithrixHammerOnDamageDealtServerReciever>(body.inventory.HasEquipment(Content.Equipment.MithrixHammer) ? 1 : 0);
+                    if (body && body.inventory)
+                    {
+                        var result = body.AddItemBehavior<MithrixHammerOnDamageDealtServerReciever>(body.inventory.HasEquipment(Content.Equipment.MithrixHammer) ? 1 : 0);
+                    }
                 }
             }
         }
 
-        private static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        public static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
         {
-            if (equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
-            {
-                var hammerController = UnityEngine.Object.Instantiate(MithrixHammerController);
-                hammerController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");
-                return true;
-            }
-            return orig(self, equipmentDef);
+            var hammerController = UnityEngine.Object.Instantiate(MithrixHammerController);
+            hammerController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");
+            return true;
         }
 
         public static void SetupEquipmentConfigValues(EquipmentDef equipment)

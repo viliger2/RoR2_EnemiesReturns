@@ -43,6 +43,8 @@ namespace EnemiesReturns
 
             public static ItemDef LunarFlower;
 
+            public static ItemDef VoidFlower;
+
             public static ItemDef HiddenAnointed;
 
             public static ItemDef PartyHat;
@@ -58,6 +60,8 @@ namespace EnemiesReturns
             public static EquipmentDef MithrixHammer;
 
             public static EquipmentDef EliteAeonian;
+
+            public static EquipmentDef VoidlingWeapon;
         }
 
         public static class Buffs

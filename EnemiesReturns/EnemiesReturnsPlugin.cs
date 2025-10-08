@@ -14,13 +14,15 @@ using RoR2.ContentManagement;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine.Networking;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
     // TODO: animation transition polish, can do that in editor
     // TODO: path to judgement through void, we have models, entrance needs void flower, void flower is made from lunar flower when owner goes though void death
-    // TODO: bubble visuals, probably add something in the middle, like vargant's circle thing from homing projectile
+    // TODO: bubble visuals, probably add something in the middle, like vargant's circle thing from homing projectile, replace mesh with simplified mesh, unity sphere is like 700 polys
+    // TODO: crab visuals, add models for variants, grass and moss for grassy, sulfur pods for sulfur, some sand puddles for sandy
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
@@ -37,6 +39,7 @@ namespace EnemiesReturns
     [BepInDependency(R2API.OrbAPI.PluginGUID)]
     [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
     [BepInDependency(R2API.SoundAPI.PluginGUID)]
+    [BepInDependency(ReviveAPI.ReviveAPI.ModGuid)]
     [BepInDependency("JaceDaDorito.LocationsOfPrecipitation")]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {
@@ -103,6 +106,8 @@ namespace EnemiesReturns
             RoR2.Language.onCurrentLanguageChanged += Language.Language_onCurrentLanguageChanged;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_onServerDamageDealt;
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
+            On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
             ColossalKnurlFactory.Hooks();
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
@@ -113,9 +118,9 @@ namespace EnemiesReturns
             Behaviors.SubjectParamsChatMessage.Hooks();
 
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
-            Equipment.MithrixHammer.MithrixHammer.Hooks();
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
+            Items.LunarFlower.LunarFlowerItemBehaviour.Hooks();
 
             if (MoreStatsCompat.enabled)
             {
@@ -125,6 +130,50 @@ namespace EnemiesReturns
             {
                 ShamanStuff.Hooks();
             }
+
+            On.RoR2.NetworkedBodyAttachment.FixedUpdate += NetworkedBodyAttachment_FixedUpdate;
+
+        }
+
+        private void NetworkedBodyAttachment_FixedUpdate(On.RoR2.NetworkedBodyAttachment.orig_FixedUpdate orig, NetworkedBodyAttachment self)
+        {
+            if (!self.attachedBodyObject && NetworkServer.active)
+            {
+                if ((bool)self.attachmentBody && (bool)self.attachmentBody.healthComponent)
+                {
+                    self.attachmentBody.healthComponent.Suicide();
+                }
+                else
+                {
+                    Log.Info("destroying newtorked body attachment");
+                    UnityEngine.Object.Destroy(base.gameObject);
+                }
+            }
+        }
+
+        private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        {
+            if (Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                if (equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
+                {
+                    return Equipment.MithrixHammer.MithrixHammer.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                }
+                else if (equipmentDef.equipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex)
+                {
+                    return Equipment.VoidlingWeapon.VoidlingWeapon.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                }
+            }
+            return orig(self, equipmentDef);
+        }
+
+        private void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
+        {
+            EnemiesReturns.Equipment.MithrixHammer.MithrixHammer.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Equipment.VoidlingWeapon.VoidlingWeapon.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Items.LynxFetish.LynxFetishFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Items.LunarFlower.LunarFlowerItemBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
         }
 
         private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)

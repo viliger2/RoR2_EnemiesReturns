@@ -182,6 +182,16 @@ namespace EnemiesReturns
                     SetupJudgementPath.BrokenTeleporter = SetupJudgementPath.SetupBrokenTeleporter(SetupJudgementPath.BrokenTeleporter);
                     nopList.Add(SetupJudgementPath.BrokenTeleporter);
 
+                    SetupJudgementPath.VoidBrokenTeleporter = SetupJudgementPath.SetupVoidMegaTeleporter(assets.First(asset => asset.name == "VoidMegaTeleporter"));
+                    nopList.Add(SetupJudgementPath.VoidBrokenTeleporter);
+
+                    Equipment.VoidlingWeapon.VoidlingWeapon.VoidlingWeaponController = assets.First(asset => asset.name == "VoidlingWeaponController");
+                    nopList.Add(Equipment.VoidlingWeapon.VoidlingWeapon.VoidlingWeaponController);
+
+                    SetupJudgementPath.VoidlingWeaponIndicator = SetupJudgementPath.CreateVoidlingWeaponIndicator();
+
+                    ModdedEntityStates.Judgement.VoidlingWeapon.SpawnAndFire.voidlingWeaponVisualsPrefab = SetupJudgementPath.SetupVoidlingWeapon(assets.First(asset => asset.name == "VoidWeaponPrefab"));
+
                     var judgementTeleporter = assets.First(asset => asset.name == "PortalJudgement");
                     nopList.Add(judgementTeleporter);
 
@@ -235,16 +245,25 @@ namespace EnemiesReturns
                     Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay = assets.First(asset => asset.name == "DisplayAeonian");
 
                     ModifyCredits(assets.First(asset => asset.name == "EnemiesReturnsCreditsAdditions"));
+
+                    Items.LunarFlower.LunarFlowerItemBehaviour.startEffect = SetupJudgementPath.CreateVoidFlowerRespawnStartEffect();
+                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFlowerItemBehaviour.startEffect));
+
+                    Items.LunarFlower.LunarFlowerItemBehaviour.endEffect = SetupJudgementPath.CreateVoidFlowerRespawnEndEffect();
+                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFlowerItemBehaviour.endEffect));
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
                 {
-                    Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
 #pragma warning disable CS0618 // Type or member is obsolete
+                    Content.Items.TradableRock = assets.First(item => item.name == "TradableRock");
                     Content.Items.TradableRock.pickupModelPrefab = SetupJudgementPath.SetupLunarKey(Content.Items.TradableRock.pickupModelPrefab);
 
                     Content.Items.LunarFlower = assets.First(item => item.name == "LunarFlower");
                     Content.Items.LunarFlower.pickupModelPrefab = SetupJudgementPath.SetupLunarFlower(Content.Items.LunarFlower.pickupModelPrefab);
+
+                    Content.Items.VoidFlower = assets.First(item => item.name == "VoidFlower");
+                    Content.Items.VoidFlower.pickupModelPrefab = SetupJudgementPath.SetupVoidFlower(Content.Items.VoidFlower.pickupModelPrefab);
 #pragma warning restore CS0618 // Type or member is obsolete
 
                     Content.Items.HiddenAnointed = assets.First(item => item.name == "HiddenAnointed");
@@ -269,13 +288,18 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
                 {
+#pragma warning disable CS0618 // Type or member is obsolete
                     Content.Equipment.MithrixHammer = assets.First(equipment => equipment.name == "MithrixHammer");
                     Equipment.MithrixHammer.MithrixHammer.SetupEquipmentConfigValues(Content.Equipment.MithrixHammer);
-#pragma warning disable CS0618 // Type or member is obsolete
                     Content.Equipment.MithrixHammer.pickupModelPrefab = Equipment.MithrixHammer.MithrixHammer.SetupPickupDisplay(Content.Equipment.MithrixHammer.pickupModelPrefab);
-#pragma warning restore CS0618 // Type or member is obsolete
 
                     Content.Equipment.EliteAeonian = assets.First(equipment => equipment.name == "EliteAeonianEquipment");
+
+                    Content.Equipment.VoidlingWeapon = assets.First(equipment => equipment.name == "VoidlingWeapon");
+                    Equipment.VoidlingWeapon.VoidlingWeapon.SetupEquipmentConfigValues(Content.Equipment.VoidlingWeapon);
+                    Content.Equipment.VoidlingWeapon.pickupModelPrefab = Equipment.VoidlingWeapon.VoidlingWeapon.SetupPickupDisplay(Content.Equipment.VoidlingWeapon.pickupModelPrefab);
+#pragma warning restore CS0618 // Type or member is obsolete
+
                     _contentPack.equipmentDefs.Add(assets);
                 }));
 

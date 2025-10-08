@@ -1,12 +1,10 @@
-﻿using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using UnityEngine;
 
-namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
+namespace EnemiesReturns.ModdedEntityStates
 {
-    [RegisterEntityState]
-    public class BaseMithrixHammerState : EntityState
+    public class BaseNetworkedBodyAttachmentState : EntityState
     {
         protected NetworkedBodyAttachment bodyAttachment;
 

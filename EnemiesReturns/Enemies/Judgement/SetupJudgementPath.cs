@@ -6,15 +6,18 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using RoR2;
+using RoR2.EntityLogic;
 using RoR2.UI;
 using RoR2BepInExPack.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static RoR2.EquipmentSlot;
 using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.Judgement
@@ -25,7 +28,11 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject BrokenTeleporter;
 
+        public static GameObject VoidBrokenTeleporter;
+
         public static GameObject JudgementInteractable;
+
+        public static GameObject VoidlingWeaponIndicator;
 
         public static MasterCatalog.MasterIndex ArraignP1MasterIndex;
 
@@ -172,6 +179,87 @@ namespace EnemiesReturns.Enemies.Judgement
                 On.EntityStates.StunState.OnEnter += HalfStunState;
                 On.EntityStates.FrozenState.OnEnter += HalfFrozenState;
                 Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+                On.RoR2.VoidRaidGauntletController.SpawnOutroPortal += SpawnVoidMegaTeleporter;
+                On.RoR2.EquipmentSlot.UpdateTargets += VoidlingWeaponTarget;
+            }
+        }
+
+        public static GameObject CreateVoidlingWeaponIndicator()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_PassiveHealing.WoodSpriteIndicator_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponIndicator", false);
+            prefab.GetComponentInChildren<SpriteRenderer>().color = new Color(0.46f, 0, 1f, 1f);
+            prefab.GetComponentInChildren<TextMeshPro>().color = new Color(0.46f, 0, 1f, 1f); ;
+
+            return prefab;
+        }
+
+        private static void VoidlingWeaponTarget(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)
+        {
+            if (Configuration.Judgement.Judgement.Enabled.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
+            {
+                self.ConfigureTargetFinderForEnemies();
+                var source = self.targetFinder.GetResults().FirstOrDefault();
+                self.currentTarget = new UserTargetInfo(source);
+                var hasTarget = self.currentTarget.transformToIndicateAt;
+                if (hasTarget)
+                {
+                    self.targetIndicator.visualizerPrefab = VoidlingWeaponIndicator;
+                }
+                self.targetIndicator.active = hasTarget;
+                self.targetIndicator.targetTransform = (hasTarget ? self.currentTarget.transformToIndicateAt : null);
+            } else
+            {
+                orig(self, targetingEquipmentIndex, userShouldAnticipateTarget);
+            }
+        }
+
+        private static void SpawnVoidMegaTeleporter(On.RoR2.VoidRaidGauntletController.orig_SpawnOutroPortal orig, VoidRaidGauntletController self)
+        {
+            orig(self);
+
+            var spawnPedestal = false;
+            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            {
+                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                {
+                    continue;
+                }
+
+                if (!playerCharacterMaster.master.inventory)
+                {
+                    continue;
+                }
+
+                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.VoidFlower) > 0)
+                {
+                    spawnPedestal = true;
+                    break;
+                }
+            }
+
+            if (spawnPedestal)
+            {
+                var spawnPoint = self.currentDonut.root.transform.Find("HOLDER: Skybox+PP/ReflectionProbe, Center");
+                if (!spawnPoint)
+                {
+                    spawnPoint = self.currentDonut.crabPosition;
+                }
+
+                var newTeleporter = UnityEngine.Object.Instantiate(VoidBrokenTeleporter, spawnPoint.position, Quaternion.identity);
+                NetworkServer.Spawn(newTeleporter);
+                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab);
+                if (handle.IsValid())
+                {
+                    handle.Completed += (result) =>
+                    {
+                        EffectManager.SpawnEffect(result.Result, new EffectData() { origin = spawnPoint.position + Vector3.down * 10f }, true);
+                        Addressables.Release(handle);
+                    };
+                }
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+                {
+                    baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
+                });
             }
         }
 
@@ -278,23 +366,9 @@ namespace EnemiesReturns.Enemies.Judgement
             }
 
             var itemFound = false;
-            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            if (LunarFlowerCheckerSingleton.instance)
             {
-                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                {
-                    continue;
-                }
-
-                if (!playerCharacterMaster.master.inventory)
-                {
-                    continue;
-                }
-
-                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.LunarFlower) > 0)
-                {
-                    itemFound = true;
-                    break;
-                }
+                itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
             }
 
             if (itemFound)
@@ -533,6 +607,97 @@ namespace EnemiesReturns.Enemies.Judgement
             dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_HAMMER_DROP";
         }
 
+        public static GameObject SetupVoidMegaTeleporter(GameObject prefab)
+        {
+            var itemGameObject = prefab.transform.Find("VoidSpire/Armature/Spire/ParentForSomeReason/TeleporterVessel/ItemOnPedestal/PickupVoidFlower/itemJudgeAccessVoid");
+            itemGameObject.Find("Sphere").gameObject.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerSphere", CreateVoidFlowerSphereMaterial);
+            itemGameObject.Find("meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
+
+            return prefab;
+        }
+
+        public static GameObject SetupVoidlingWeapon(GameObject prefab)
+        {
+            prefab.transform.Find("VoidWeapon/VoidRaidCrabEyeMesh").GetComponent<SkinnedMeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.matVoidRaidCrabEye_mat).WaitForCompletion();
+
+            var effectObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponSpawnEffect", false);
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<VFXAttributes>());
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<ShakeEmitter>());
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<EffectComponent>());
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<StartEvent>());
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<DelayedEvent>());
+            UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<DestroyOnTimer>());
+
+            UnityEngine.Object.DestroyImmediate(effectObject.transform.Find("Rotator/Buildup").gameObject);
+
+            var release = effectObject.transform.Find("Rotator/Release");
+            release.gameObject.SetActive(true);
+
+            UnityEngine.Object.DestroyImmediate(release.Find("PP").gameObject);
+            UnityEngine.Object.DestroyImmediate(release.Find("Point light").gameObject);
+
+            UnityEngine.Object.DestroyImmediate(release.gameObject.GetComponent<ShakeEmitter>());
+
+            var particleSystem = release.Find("BigFlash").GetComponent<ParticleSystem>();
+            var main = particleSystem.main;
+            main.duration = 1.6f;
+
+            particleSystem = release.Find("Portal Edge, Rising").GetComponent<ParticleSystem>();
+            main = particleSystem.main;
+            main.duration = 1.6f;
+            main.startLifetime = 1.6f;
+
+            var velocityOverLifetime = particleSystem.velocityOverLifetime;
+            velocityOverLifetime.enabled = false;
+
+            particleSystem = release.Find("Portal Center, Rising").GetComponent<ParticleSystem>();
+            main = particleSystem.main;
+            main.duration = 1.6f;
+            main.startLifetime = 1.6f;
+
+            velocityOverLifetime = particleSystem.velocityOverLifetime;
+            velocityOverLifetime.enabled = false;
+
+            release.Find("Lifting Stars").gameObject.SetActive(false);
+            release.Find("Streaks").gameObject.SetActive(false);
+
+            particleSystem = release.Find("VerticalCylinder").GetComponent<ParticleSystem>();
+            main = particleSystem.main;
+            main.duration = 1.6f;
+            main.startLifetime = 1.6f;
+
+            effectObject.transform.SetParent(prefab.transform.Find("EffectOrigin"), false);
+            effectObject.transform.localPosition = Vector3.zero;
+            effectObject.transform.rotation = Quaternion.identity;
+            effectObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+            return prefab;
+        }
+
+        public static GameObject CreateVoidFlowerRespawnStartEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathCharge_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnStartEffect", false);
+
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+  
+            prefab.transform.Find("Sphere (1)").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere2", CreateVoidFlowerRespawnStartSphere2Material);
+            prefab.transform.Find("Sphere").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere1", CreateVoidFlowerRespawnStartSphere1Material);
+
+            return prefab;
+        }
+
+        public static GameObject CreateVoidFlowerRespawnEndEffect()
+        {
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnEndEffect", false);
+
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+
+            prefab.transform.Find("ExplosionSphere, Stars (1)").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere1", CreateVoidFlowerRespawnStartSphere1Material);
+            prefab.transform.Find("ExplosionSphere, Stars (2)").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere2", CreateVoidFlowerRespawnStartSphere2Material);
+
+            return prefab;
+        }
+
         public static GameObject CloneOptionPickerPanel()
         {
             var panel = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/OptionPickup/OptionPickerPanel.prefab").WaitForCompletion().InstantiateClone("JudgementPickerPanel", false);
@@ -567,12 +732,49 @@ namespace EnemiesReturns.Enemies.Judgement
             return prefab;
         }
 
+        public static GameObject SetupVoidFlower(GameObject prefab)
+        {
+            prefab.transform.Find("itemJudgeAccessVoid/Sphere").gameObject.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerSphere", CreateVoidFlowerSphereMaterial);
+            prefab.transform.Find("itemJudgeAccessVoid/meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
+
+            return prefab;
+        }
+
         public static GameObject SetupLunarKey(GameObject prefab)
         {
             prefab.transform.Find("lunarKey/LunarExploderCoreMesh").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarExploder/matLunarExploderCore.mat").WaitForCompletion();
             prefab.transform.Find("lunarKey/meshLunarKeyGlass").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherStib.mat").WaitForCompletion();
 
             return prefab;
+        }
+
+        public static Material CreateVoidFlowerSphereMaterial()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantOrb.mat").WaitForCompletion());
+            newMaterial.name = "matVoidFlowerSphere";
+
+            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.texCloudLightning1_png).WaitForCompletion());
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_Common_ColorRamps.texRampVoidRaidCrabEye_png).WaitForCompletion());
+
+            return newMaterial;
+        }
+
+        private static Material CreateVoidFlowerRespawnStartSphere2Material()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere2_mat).WaitForCompletion());
+            newMaterial.name = "matVoidFlowerRespawnStartSphere2";
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.texRampVoidRaidCrabTripleBeam_png).WaitForCompletion());
+
+            return newMaterial;
+        }
+
+        private static Material CreateVoidFlowerRespawnStartSphere1Material()
+        {
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere1_mat).WaitForCompletion());
+            newMaterial.name = "matVoidFlowerRespawnStartSphere1";
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_FalseSonBoss.texFSBLunarSpikeRamp_png).WaitForCompletion());
+
+            return newMaterial;
         }
 
         public static Dictionary<string, DisplayRuleGroup> CreateAeonianAnointedDictionary()

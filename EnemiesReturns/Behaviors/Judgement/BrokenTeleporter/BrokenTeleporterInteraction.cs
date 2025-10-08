@@ -77,8 +77,18 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
                 return;
             }
 
+            var targetObject = this.gameObject;
+            if (childLocator)
+            {
+                var target = childLocator.FindChild("TargetForItemOrb");
+                if (target)
+                {
+                    targetObject = target.gameObject;
+                }
+            }
+
             characterBody.inventory.RemoveItem(requiredItem, characterBody.inventory.GetItemCount(requiredItem));
-            ScrapperController.CreateItemTakenOrb(characterBody.transform.position, this.gameObject, requiredItem.itemIndex);
+            ScrapperController.CreateItemTakenOrb(characterBody.transform.position, targetObject, requiredItem.itemIndex);
             Invoke("EnableVisuals", 1.5f);
 
             available = false;

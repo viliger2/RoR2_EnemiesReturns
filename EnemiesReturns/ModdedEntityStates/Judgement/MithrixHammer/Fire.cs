@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -8,7 +9,7 @@ using static R2API.DamageAPI;
 namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 {
     [RegisterEntityState]
-    public class Fire : BaseMithrixHammerState
+    public class Fire : BaseNetworkedBodyAttachmentState
     {
         public static float duration = 0.75f;
 
@@ -72,10 +73,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 if (effectOrigin)
                 {
                     swingEffectInstance = UnityEngine.Object.Instantiate(swingVFX, effectOrigin.transform);
-                    //swingEffectInstance.transform.position = effectOrigin.transform.position;
                     swingEffectInstance.transform.localRotation = Quaternion.Euler(spawnEffectVector);
                     swingEffectInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                    //swingEffectInstance.transform.localRotation = Quaternion.Euler(-180f, 0f, 0f);
                 }
             }
 
@@ -109,7 +108,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
             if (fixedAge >= duration && isAuthority)
             {
-                outer.SetNextState(new Idle());
+                outer.SetNextState(new BaseState());
             }
         }
 

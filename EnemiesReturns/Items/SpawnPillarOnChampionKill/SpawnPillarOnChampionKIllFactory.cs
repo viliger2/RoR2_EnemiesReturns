@@ -51,16 +51,18 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
-            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
         }
 
-        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
+        public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (NetworkServer.active)
+            if (Configuration.Ifrit.ItemEnabled.Value)
             {
-                if (body && body.inventory)
+                if (NetworkServer.active)
                 {
-                    body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCount(Content.Items.SpawnPillarOnChampionKill));
+                    if (body && body.inventory)
+                    {
+                        body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCount(Content.Items.SpawnPillarOnChampionKill));
+                    }
                 }
             }
         }

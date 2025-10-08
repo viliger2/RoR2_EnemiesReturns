@@ -26,19 +26,21 @@ namespace EnemiesReturns.Items.LynxFetish
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
-            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
             LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLynxTribeCount);
             IL.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
         }
 
-        private static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
+        public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (NetworkServer.active)
+            if (Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
             {
-                // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
-                if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
+                if (NetworkServer.active)
                 {
-                    body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(Content.Items.LynxFetish));
+                    // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
+                    if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
+                    {
+                        body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(Content.Items.LynxFetish));
+                    }
                 }
             }
         }
