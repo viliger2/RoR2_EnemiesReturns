@@ -47,9 +47,13 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
         {
             self.UpdateTargets(Content.Equipment.VoidlingWeapon.equipmentIndex, true);
 
-            var weaponController = UnityEngine.Object.Instantiate(VoidlingWeaponController);
-            weaponController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");
-            return true;
+            if (self.currentTarget.hurtBox)
+            {
+                var weaponController = UnityEngine.Object.Instantiate(VoidlingWeaponController);
+                weaponController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");
+                return true;
+            }
+            return false;
         }
     }
 }
