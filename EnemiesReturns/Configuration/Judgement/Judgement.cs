@@ -19,6 +19,10 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<float> MithrixHammerDamageCoefficient;
         public static ConfigEntry<float> MithrixHammerCooldown;
 
+        public static ConfigEntry<float> VoidlingWeaponCooldown;
+        public static ConfigEntry<float> VoidlingWeaponDamageCoefficient;
+        public static ConfigEntry<float> VoidlingWeaponBulletRange;
+
         public static ConfigEntry<bool> EnableCustomPhase3Music;
 
         public static ConfigEntry<float> AeonianEliteGoldMultiplier;
@@ -54,9 +58,13 @@ namespace EnemiesReturns.Configuration.Judgement
                 "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster,TitanMaster",
                 "List of enemies that are blacklisted from appearing in Judgement. Requiers master names, you can get master names via DebugToolkit's list_ai command");
 
-            MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites.");
+            MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites. Also used for other boss weapons.");
             MithrixHammerDamageCoefficient = config.Bind("Mithrix Hammer", "Mithrix Hammer Damage Coefficient", 30f, "Mithrix Hammer damage coefficient off base damage.");
             MithrixHammerCooldown = config.Bind("Mithrix Hammer", "Mithrix Hammer Cooldown", 15f, "Mithrix Hammer cooldown.");
+
+            VoidlingWeaponCooldown = config.Bind("Voidling Weapon", "Voidling Weapon Cooldown", 30f, "Voidling Weapon Cooldown.");
+            VoidlingWeaponDamageCoefficient = config.Bind("Voidling Weapon", "Voidling Weapon Damage Coefficient", 20f, "Voidling Weapon damage coefficient.");
+            VoidlingWeaponBulletRange = config.Bind("Voidling Weapon", "Voidling Weapon Bullet Range", 300f, "Voidling Weapon bullet range. Basically how far it reaches.");
 
             AeonianEliteGoldMultiplier = config.Bind("Aeonian Elites", "Gold Multiplier", 3f, "Gold and exp multiplier (from standard reward) of Aeonian elites in Judgement.");
             AeonianEliteHealthMultiplier = config.Bind("Aeonian Elites", "Health Multiplier", 18f, "Aeonian elite health multiplier. By default equal to that of T2 elites. Gets overwritten by EliteReworks.");

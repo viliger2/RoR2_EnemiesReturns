@@ -33,7 +33,7 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
 
         public static void SetupEquipmentConfigValues(EquipmentDef equipment)
         {
-            equipment.cooldown = 20f; // TODO
+            equipment.cooldown = Configuration.Judgement.Judgement.VoidlingWeaponCooldown.Value;
         }
 
         public static GameObject SetupPickupDisplay(GameObject mithrixHammer)

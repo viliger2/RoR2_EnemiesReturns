@@ -95,6 +95,8 @@ namespace EnemiesReturns
             public static ModdedDamageType ApplyReducedHealing;
 
             public static ModdedDamageType EndGameBossWeapon;
+
+            public static ModdedDamageType CanStunArraign;
         }
     }
 }

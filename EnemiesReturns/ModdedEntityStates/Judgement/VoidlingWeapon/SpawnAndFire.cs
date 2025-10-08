@@ -20,9 +20,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
 
         public static float disableOffset = 1.408f;
 
-        public static float damageCoefficient = 50f;
+        public static float damageCoefficient => Configuration.Judgement.Judgement.VoidlingWeaponDamageCoefficient.Value;
 
-        public static float maxDistance = 300f;
+        public static float maxDistance => Configuration.Judgement.Judgement.VoidlingWeaponBulletRange.Value;
 
         public static GameObject tracerEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.TracerVoidRaidCrabTripleBeamSmall_prefab).WaitForCompletion();
 

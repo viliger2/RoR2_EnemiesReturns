@@ -341,6 +341,7 @@ namespace EnemiesReturns
                 SetupJudgementPath.AddWeaponDropToMithrix();
 
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
+                Content.DamageTypes.CanStunArraign = DamageAPI.ReserveDamageType();
 
                 var arraignStuff = new ArraignStuff();
                 ModdedEntityStates.Judgement.Arraign.BasePrimaryWeaponSwing.swingEffect = arraignStuff.CreateArraignSwingEffect();

@@ -27,8 +27,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
 
         public static float damageCoefficient => Configuration.Judgement.Judgement.MithrixHammerDamageCoefficient.Value;
 
-        public static ModdedDamageType damageType => Content.DamageTypes.EndGameBossWeapon;
-
         private OverlapAttack attack;
 
         private CharacterBody body;
@@ -129,7 +127,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 damageType = DamageSource.Equipment,
             };
 
-            overlap.damageType.AddModdedDamageType(damageType);
+            overlap.damageType.AddModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+            overlap.damageType.AddModdedDamageType(Content.DamageTypes.CanStunArraign);
 
             return overlap;
         }
