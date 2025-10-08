@@ -47,7 +47,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
                 target = equipmentSlot.targetIndicator.targetTransform;
             }
 
-            weaponInstance = UnityEngine.Object.Instantiate(voidlingWeaponVisualsPrefab, bodyGameObject.transform);
+            weaponInstance = UnityEngine.Object.Instantiate(voidlingWeaponVisualsPrefab);
+            SetEyePositionAndLocation();
+        }
+
+        private void SetEyePositionAndLocation()
+        {
             var aimRay = body.inputBank.GetAimRay();
             var angleFromForward = Vector3.SignedAngle(Vector3.forward, new Vector3(aimRay.direction.x, 0, aimRay.direction.z), Vector3.up); // we find how far are we from forward ignoring y axis, so it doesn't affect the angle from forward
             var newRight = Quaternion.AngleAxis(angleFromForward, Vector3.up) * Vector3.right; // using the angle we find our new right to our aim direction
@@ -61,7 +66,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
             {
                 weaponInstance.transform.forward = body.inputBank.aimDirection;
             }
-            Log.Info("onEnter");
         }
 
         public override void FixedUpdate()
@@ -76,19 +80,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
 
                 Util.PlaySound("Play_voidRaid_snipe_shoot_final", this.gameObject);
                 hasFired = true;
-                Log.Info("fired");
             }
             if(fixedAge >= disableOffset && weaponInstance)
             {
                 weaponInstance.SetActive(false);
-                Log.Info("disabled eye");
             }
-            if(fixedAge >= duration && isAuthority)
+            if(fixedAge >= duration && NetworkServer.active)
             {
-                Log.Info("exited state at " + fixedAge);
-                outer.SetNextState(new EntityState());
+                NetworkServer.Destroy(this.gameObject);
             }
-            Log.Info("fixedUpdate " + fixedAge);
         }
 
         private void FireBulletAuthority()
@@ -112,7 +112,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
             bulletAttack.force = 0;
             bulletAttack.tracerEffectPrefab = tracerEffect;
             bulletAttack.falloffModel = BulletAttack.FalloffModel.None;
-            //bulletAttack.hitEffectPrefab = hitEffectPrefab;
             bulletAttack.isCrit = Util.CheckRoll(body.crit, body.master);
             bulletAttack.radius = 1f;
             bulletAttack.smartCollision = true;
@@ -132,18 +131,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
             {
                 return;
             }
-            var aimRay = body.inputBank.GetAimRay();
-            var angleFromForward = Vector3.SignedAngle(Vector3.forward, new Vector3(aimRay.direction.x, 0, aimRay.direction.z), Vector3.up); // we find how far are we from forward ignoring y axis, so it doesn't affect the angle from forward
-            var newRight = Quaternion.AngleAxis(angleFromForward, Vector3.up) * Vector3.right; // using the angle we find our new right to our aim direction
-            weaponInstance.transform.position = body.corePosition + newRight * body.bestFitActualRadius;
-            if (target)
-            {
-                weaponInstance.transform.LookAt(target);
-            }
-            else
-            {
-                weaponInstance.transform.forward = body.inputBank.aimDirection;
-            }
+            SetEyePositionAndLocation();
         }
 
         public override void OnExit()
@@ -153,8 +141,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
             {
                 UnityEngine.Object.Destroy(weaponInstance);
             }
-            UnityEngine.Object.Destroy(this.gameObject);
-            Log.Info("OnExit");
         }
     }
 }

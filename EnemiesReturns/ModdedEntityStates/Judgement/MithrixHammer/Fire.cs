@@ -106,9 +106,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
                 attack.Fire();
             }
 
-            if (fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && NetworkServer.active)
             {
-                outer.SetNextState(new BaseState());
+                NetworkServer.Destroy(this.gameObject);
             }
         }
 
@@ -144,10 +144,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
             if (swingEffectInstance)
             {
                 UnityEngine.Object.Destroy(swingEffectInstance);
-            }
-            if (NetworkServer.active)
-            {
-                UnityEngine.Object.Destroy(this.gameObject);
             }
         }
 

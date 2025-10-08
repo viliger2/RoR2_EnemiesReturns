@@ -9,8 +9,10 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using EnemiesReturns.ModCompats;
+using HarmonyLib;
 using RoR2;
 using RoR2.ContentManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -23,6 +25,7 @@ namespace EnemiesReturns
     // TODO: path to judgement through void, we have models, entrance needs void flower, void flower is made from lunar flower when owner goes though void death
     // TODO: bubble visuals, probably add something in the middle, like vargant's circle thing from homing projectile, replace mesh with simplified mesh, unity sphere is like 700 polys
     // TODO: crab visuals, add models for variants, grass and moss for grassy, sulfur pods for sulfur, some sand puddles for sandy
+    // TODO: add second attacks to lynx tribesmen, rob is very upset
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]
@@ -129,25 +132,6 @@ namespace EnemiesReturns
             else
             {
                 ShamanStuff.Hooks();
-            }
-
-            On.RoR2.NetworkedBodyAttachment.FixedUpdate += NetworkedBodyAttachment_FixedUpdate;
-
-        }
-
-        private void NetworkedBodyAttachment_FixedUpdate(On.RoR2.NetworkedBodyAttachment.orig_FixedUpdate orig, NetworkedBodyAttachment self)
-        {
-            if (!self.attachedBodyObject && NetworkServer.active)
-            {
-                if ((bool)self.attachmentBody && (bool)self.attachmentBody.healthComponent)
-                {
-                    self.attachmentBody.healthComponent.Suicide();
-                }
-                else
-                {
-                    Log.Info("destroying newtorked body attachment");
-                    UnityEngine.Object.Destroy(base.gameObject);
-                }
             }
         }
 
