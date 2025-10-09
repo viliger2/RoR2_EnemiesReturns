@@ -65,6 +65,58 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         protected override bool AddRandomBlinks => true;
 
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
+        {
+            var baseForAdditions = bodyPrefab.transform.Find("ModelBase/mdlSandCrab/SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead");
+            
+            #region sulfur pods
+            var sulfurPodBodyPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_SulfurPod.SulfurPodBody_prefab).WaitForCompletion();
+            var mesh = sulfurPodBodyPrefab.transform.Find("Mesh");
+            var podMesh = UnityEngine.Object.Instantiate(mesh.gameObject);
+            UnityEngine.Object.DestroyImmediate(podMesh.GetComponent<HurtBoxGroup>());
+            UnityEngine.Object.DestroyImmediate(podMesh.GetComponent<MeshCollider>());
+            UnityEngine.Object.DestroyImmediate(podMesh.GetComponent<SurfaceDefProvider>());
+            UnityEngine.Object.DestroyImmediate(podMesh.transform.Find("Hurtbox").gameObject);
+            UnityEngine.Object.DestroyImmediate(podMesh.transform.Find("Point Light").gameObject);
+
+            var sulfurPods = baseForAdditions.Find("SulfurPods");
+
+            var podMesh2 = UnityEngine.Object.Instantiate(podMesh);
+            podMesh2.transform.SetParent(sulfurPods.transform.Find("Pod1"), false);
+            podMesh2.transform.localPosition = new Vector3(0.01f, -0.19f, -0.136f);
+            podMesh2.transform.localRotation = Quaternion.Euler(new Vector3(-81.10505f, 0f, 0f));
+
+            podMesh2 = UnityEngine.Object.Instantiate(podMesh);
+            podMesh2.transform.SetParent(sulfurPods.transform.Find("Pod2"), false);
+            podMesh2.transform.localPosition = new Vector3(0.01f, -0.19f, -0.136f);
+            podMesh2.transform.localRotation = Quaternion.Euler(new Vector3(-81.10505f, 0f, 0f));
+
+            mesh = null;
+            podMesh = null;
+            #endregion
+
+            #region grass
+            var mossAndGrass = baseForAdditions.Find("MossAndGrass");
+            var grassPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_artifactworld.spmAWGrass_spm).WaitForCompletion();
+
+            var grass = UnityEngine.Object.Instantiate(grassPrefab);
+            grass.transform.SetParent(mossAndGrass.transform.Find("Grass1"), false);
+            grass.transform.localPosition = Vector3.zero;
+
+            grass = UnityEngine.Object.Instantiate(grassPrefab);
+            grass.transform.SetParent(mossAndGrass.transform.Find("Grass2"), false);
+            grass.transform.localPosition = Vector3.zero;
+
+            grass = UnityEngine.Object.Instantiate(grassPrefab);
+            grass.transform.SetParent(mossAndGrass.transform.Find("Grass3"), false);
+            grass.transform.localPosition = Vector3.zero;
+
+            grassPrefab = null;
+            #endregion
+
+            return base.AddBodyComponents(bodyPrefab, sprite, log);
+        }
+
         protected override IRandomBlinkController.RandomBlinkParams RandomBlinkParams()
         {
             return new IRandomBlinkController.RandomBlinkParams(new string[] {"Blink2"})
@@ -178,6 +230,7 @@ namespace EnemiesReturns.Enemies.SandCrab
                     hideOnDeath = false
                 }
             };
+
             SkinDefs.Default = Utils.CreateSkinDef("skinSandCrabDefault", modelPrefab, defaultRender);
 
             CharacterModel.RendererInfo[] sandyRender = new CharacterModel.RendererInfo[]
@@ -204,7 +257,11 @@ namespace EnemiesReturns.Enemies.SandCrab
                     hideOnDeath = false
                 }
             };
-            SkinDefs.Grassy = Utils.CreateSkinDef("skinSandCrabGrassy", modelPrefab, grassyRenderer, SkinDefs.Default);
+            GameObject[] gameObjectsActivationsGrassy = new GameObject[]
+            {
+                modelPrefab.transform.Find("SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead/MossAndGrass").gameObject
+            };
+            SkinDefs.Grassy = Utils.CreateSkinDef("skinSandCrabGrassy", modelPrefab, grassyRenderer, SkinDefs.Default, gameObjectsActivationsGrassy);
 
             CharacterModel.RendererInfo[] sulfurRenderer = new CharacterModel.RendererInfo[]
             {
@@ -217,7 +274,11 @@ namespace EnemiesReturns.Enemies.SandCrab
                     hideOnDeath = false
                 }
             };
-            SkinDefs.Sulfur = Utils.CreateSkinDef("skinSandCrabSulfur", modelPrefab, sulfurRenderer, SkinDefs.Default);
+            GameObject[] gameObjectActivationsSulfur = new GameObject[]
+            {
+                modelPrefab.transform.Find("SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead/SulfurPods").gameObject
+            };
+            SkinDefs.Sulfur = Utils.CreateSkinDef("skinSandCrabSulfur", modelPrefab, sulfurRenderer, SkinDefs.Default, gameObjectActivationsSulfur);
             return new SkinDef[] { SkinDefs.Default, SkinDefs.Sulfur, SkinDefs.Sandy, SkinDefs.Grassy };
         }
 
