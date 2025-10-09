@@ -81,7 +81,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             var lifetime = Configuration.SandCrab.BubbleLifetime.Value;
 
-            ghostPrefab.transform.Find("Sphere").localScale = new Vector3(Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value);
+            ghostPrefab.transform.Find("Models").localScale = new Vector3(Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value, Configuration.SandCrab.BubbleSize.Value);
 
             ghostPrefab.AddComponent<ProjectileGhostController>().inheritScaleFromProjectile = false;
 
@@ -130,7 +130,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             timer.action = new UnityEngine.Events.UnityEvent();
             timer.action.AddPersistentListener(enabler.EnableComponent);
 
-            var meshRenderer = ghostPrefab.transform.Find("Sphere").GetComponent<MeshRenderer>();
+            var meshRenderer = ghostPrefab.transform.Find("Models/Sphere").GetComponent<MeshRenderer>();
             meshRenderer.material = ContentProvider.GetOrCreateMaterial("matSandCrabBubble", CreateBubbleMaterial);
 
             ghostPrefab.transform.Find("SplatEffect").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();

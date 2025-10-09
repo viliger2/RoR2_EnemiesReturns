@@ -22,8 +22,6 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     // TODO: animation transition polish, can do that in editor
-    // TODO: bubble visuals, probably add something in the middle, like vargant's circle thing from homing projectile
-    // TODO: crab visuals, add models for variants, grass and moss for grassy, sulfur pods for sulfur, some sand puddles for sandy
     // TODO: add second attacks to lynx tribesmen, rob is very upset
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
