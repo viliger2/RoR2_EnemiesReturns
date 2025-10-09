@@ -357,5 +357,23 @@ namespace EnemiesReturns
             }
 
         }
+
+        public static Vector3 CalculateLaunchVelocityForRigidBody(Vector3 start, Vector3 target, float timeToTarget)
+        {
+            Vector3 distance = target - start;
+
+            Vector3 distanceXZ = new Vector3(distance.x, 0, distance.z);
+            float yOffset = distance.y;
+
+            // Calculate initial velocities in XZ and Y
+            float xzVelocity = distanceXZ.magnitude / timeToTarget;
+            float yVelocity = Trajectory.CalculateInitialYSpeed(timeToTarget, yOffset);
+
+            // Final velocity vector
+            Vector3 result = distanceXZ.normalized * xzVelocity;
+            result.y = yVelocity;
+
+            return result;
+        }
     }
 }

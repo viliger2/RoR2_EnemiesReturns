@@ -339,6 +339,7 @@ namespace EnemiesReturns
 
                 SetupJudgementPath.AddInteractabilityToNewt();
                 SetupJudgementPath.AddWeaponDropToMithrix();
+                SetupJudgementPath.AddWeaponDropToVoidling();
 
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
                 Content.DamageTypes.CanStunArraign = DamageAPI.ReserveDamageType();

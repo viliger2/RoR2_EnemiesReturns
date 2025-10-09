@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,7 +26,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
             {
                 master.onBodyStart += Master_onBodyStart;
                 master.onBodyDeath.AddListener(OnBodyDeath);
-                wasMonster = master.teamIndex == TeamIndex.Monster;
+                wasMonster = master.teamIndex != TeamIndex.Player;
             }
         }
 
@@ -46,7 +47,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
-            if (master.teamIndex == TeamIndex.Monster)
+            if (master.teamIndex != TeamIndex.Player)
             {
                 return;
             }
@@ -96,10 +97,31 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
             }
 
+            if (!itemFound)
+            {
+                foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+                {
+                    if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                    {
+                        continue;
+                    }
+
+                    if (!playerCharacterMaster.master.inventory)
+                    {
+                        continue;
+                    }
+
+                    if (playerCharacterMaster.master.inventory.GetItemCount(itemToCheck) > 0)
+                    {
+                        itemFound = true;
+                        break;
+                    }
+                }
+            }
+
             if (itemFound)
             {
-                var vector = Vector3.up * 20f + transform.forward * 2f;
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, vector);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, GetItemDropVelocity(bodyObject.transform.position));
 
                 if (!string.IsNullOrEmpty(dropChatToken))
                 {
@@ -110,5 +132,22 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 }
             }
         }
+
+        private Vector3 GetItemDropVelocity(Vector3 origin)
+        {
+            var vector3 = Vector3.up * 20f + transform.forward * 2f;
+
+            if (VoidRaidGauntletController.instance)
+            {
+                var donut = VoidRaidGauntletController.instance.currentDonut;
+                var desiredDropPosition = donut.crabPosition.position;
+
+                vector3 = Utils.CalculateLaunchVelocityForRigidBody(origin, desiredDropPosition, 4f);
+            }
+
+            return vector3;
+        }
+
+
     }
 }

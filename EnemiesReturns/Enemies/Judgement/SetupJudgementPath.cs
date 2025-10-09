@@ -607,6 +607,16 @@ namespace EnemiesReturns.Enemies.Judgement
             dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_HAMMER_DROP";
         }
 
+        public static void AddWeaponDropToVoidling()
+        {
+            var voidling3Master = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.MiniVoidRaidCrabMasterPhase3_prefab).WaitForCompletion();
+
+            var dropEquipment = voidling3Master.AddComponent<DropEquipment>();
+            dropEquipment.itemToCheck = Content.Items.VoidFlower;
+            dropEquipment.equipmentToDrop = Content.Equipment.VoidlingWeapon;
+            dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_VOIDLING_DROP";
+        }
+
         public static GameObject SetupVoidMegaTeleporter(GameObject prefab)
         {
             var itemGameObject = prefab.transform.Find("VoidSpire/Armature/Spire/ParentForSomeReason/TeleporterVessel/ItemOnPedestal/PickupVoidFlower/itemJudgeAccessVoid");
