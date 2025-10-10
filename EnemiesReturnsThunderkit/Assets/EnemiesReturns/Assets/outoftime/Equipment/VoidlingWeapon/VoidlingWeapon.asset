@@ -23,7 +23,7 @@ MonoBehaviour:
   descriptionToken: ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_DESC
   loreToken: ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_LORE
   isConsumed: 0
-  pickupIconSprite: {fileID: 0}
+  pickupIconSprite: {fileID: 21300000, guid: 589a7d53369fe14469c21b861257160e, type: 3}
   unlockableDef: {fileID: 0}
   colorIndex: 25
   canDrop: 0
