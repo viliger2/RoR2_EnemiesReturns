@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.8</summary>
+
+* Added Simplified Chinese translation by [锅巴](https://space.bilibili.com/10832951?spm_id_from=333.1007.0.0).
+</details>
+<details>
 <summary>0.7.7</summary>
 
 * General polish to animation transitions for all monsters.
