@@ -1,9 +1,25 @@
 <details>
 <summary>0.7.7</summary>
 
+* General polish to animation transitions for all monsters.
+* Sand Crab
+  * Additional visuals for grassy and sulfur variants.
+  * Snip
+    * Lowered damage to 3.75 (was 5).
+  * Fire Bubbles
+    * Lowered time between bubbles to 0.325 (was 0.45).
+	* Optimized bubble mesh.
+	* Added small white sphere inside of a bubble to improve visibility.
 * Judgement
   * Fixed objectives going bananas on clients.
     * _There is a chance that objective might get stuck as uncompleted but this is better than objectives constantly being added and removed for like 20 seconds after wave has been started._
+  * Lowered elite damage multiplier to 5 (was 6).
+  * Phase 2 spawns
+    * Increased spawn timer to 8-10 (was 3-5).
+	* Lowered credit multiplier to 0.5 (was 0.75).
+	  * _This just means that there will be less monsters spawning during phase 2._
+  * Added fixed spawns for players.
+  * Added ability to enter Judgement through void.
 </details>
 <details>
 <summary>0.7.6</summary>

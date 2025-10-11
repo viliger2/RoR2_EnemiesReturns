@@ -21,7 +21,6 @@ using UnityEngine.Networking;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
-    // TODO: animation transition polish, can do that in editor
     // TODO: add second attacks to lynx tribesmen, rob is very upset
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
@@ -45,7 +44,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.6";
+        public const string Version = "0.7.7";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
