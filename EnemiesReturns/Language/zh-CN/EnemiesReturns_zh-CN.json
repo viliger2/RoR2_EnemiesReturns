@@ -1,0 +1,283 @@
+{
+  "strings": {
+    "ENEMIES_RETURNS_SPITTER_BODY_NAME": "喷吐兽",
+    "ENEMIES_RETURNS_SPITTER_BODY_LORE": "野外笔记:\n\n唉,又一个敌对生物。这个生物的本性无疑背叛了它早熟的外表。甚至对我的反击显得尤为恼火。真是个脾气暴躁的家伙。\n\n它那咬合的颚部会喷出橙色胆汁。这种酸性粘液必定是通过咬合的牙齿引爆的-可以想象类似于我们的苦味酸。真有趣,这究竟是如何产生的?\n\n在尸体解剖中,我还发现了这种生物惊人灵活性的来源。除了头骨、下颌骨和牙齿外,其骨骼大部分是软骨性的1!",
+    "ENEMIES_RETURNS_SPITTER_BITE_NAME": "撕咬",
+    "ENEMIES_RETURNS_SPITTER_BITE_DESCRIPTION": "撕咬近战范围内的敌人。",
+    "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_NAME": "喷吐",
+    "ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION": "发射一个快速射弹。",
+    "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME": "蓄力喷吐",
+    "ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION": "蓄力一个缓慢的射弹,命中后留下一滩毒液。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "怪物日志: 喷吐兽",
+
+    "ENEMIES_RETURNS_COLOSSUS_BODY_NAME": "巨像",
+    "ENEMIES_RETURNS_COLOSSUS_BODY_LORE": "野外笔记:\n\n一阵低沉的呻吟声,至少持续了好几天。我从相对安全的空投舱内望去,看到一座山峦跪地而起,用石头、泥土和藤蔓构成的手臂将自己撑起。\n\n巨像看起来是石傀儡的近亲,并且有着许多相似之处,从它红色的目光到它矮壮的身材。在它脚边,许多较小的石傀儡升起,加入它的行列。常规武器究竟能以何种方式帮助我?\n\n我开始在面对此等绝对过剩的毁灭之力，我竟从中品出了一丝黑色幽默。这简直荒谬透顶。",
+    "ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE": "巨石守护者",
+    "ENEMIES_RETURNS_COLOSSUS_STOMP_NAME": "践踏",
+    "ENEMIES_RETURNS_COLOSSUS_STOMP_DESCRIPTION": "践踏附近的敌人,向四周发出冲击波。",
+    "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_NAME": "岩石拍击",
+    "ENEMIES_RETURNS_COLOSSUS_STONE_CLAP_DESCRIPTION": "张开双臂,同时石块从地面升起,然后突然拍击,迫使石块飞向四周并击中附近目标。",
+    "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "激光弹幕",
+    "ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "采取姿态,准备发射。短暂延迟后,降下毁灭性的弹幕射弹。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "怪物日志: 巨像",
+    "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME": "巨型激光",
+    "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION": "采取姿态,准备发射。短暂延迟后,发射一道巨型激光,从左到右扫射多次。",
+
+    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "巨像之拳",
+    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "命中时有几率召唤一只巨拳。",
+    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "命中时有<style=cIsDamage>{0}</style>几率召唤一只<style=cIsDamage>巨像之拳</style>,造成<style=cIsDamage>{1}</style><style=cStack>(每层+{2})</style>总伤害。",
+    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "目的地: 6542, 碎裂岩石, 未知\n\n日期: 2056年7月22日\n\n这块大东西里显然还残留着一些精华;石核仍在吸引周围的泥土和尘埃,试图自我重建。也许我可以利用这一点;一块自我修复的土块可以充当很好的盾牌。",
+
+    "ENEMIES_RETURNS_IFRIT_BODY_NAME": "伊弗利特",
+    "ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE": "地狱之王的后裔",
+    "ENEMIES_RETURNS_IFRIT_BODY_LORE": "野外笔记:\n\n这难道是..? 那些我从不相信的传说讲述了一个可怕的野兽,火焰的化身。作为另一个太阳系的灾祸者,伊弗利特几乎消灭了整个太空殖民地,之后被锁链束缚并发射进巨大的黑色虚空。据说,伴随着它咆哮的火焰喷射流在它向外漂流时能持续数日可见。\n\n巨大的塔楼,想必曾是禁锢结构,即使在这个被遗弃的位面也阻止了它的逃脱。对于我能从这次传奇遭遇中幸存下来,我唯一的解释是它在太空中漂流了许多年,并且被束缚在这片严酷的冰冻荒原之中。",
+    "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_NAME": "召唤火柱",
+    "ENEMIES_RETURNS_IFRIT_SUMMON_PYLON_DESCRIPTION": "在附近位置召唤多个火柱。火柱需要一段时间充能,一旦完全充能,会对周围敌人造成毁灭性伤害并使其燃烧。",
+    "ENEMIES_RETURNS_IFRIT_HELLZONE_NAME": "地狱领域",
+    "ENEMIES_RETURNS_IFRIT_HELLZONE_DESCRIPTION": "发射一个巨大的火球,撞击时留下一个坑洞。片刻之后,熔岩射向天空,灼烧敌人。",
+    "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME": "火焰冲锋",
+    "ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION": "向前冲锋,燃烧路径上的一切,在身后留下燃烧轨迹。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT": "怪物日志: 伊弗利特",
+    "ENEMIES_RETURNS_IFRIT_SMASH_NAME": "猛击",
+    "ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION": "向前方猛击,造成伤害并击退敌人。",
+
+    "ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "烈焰火柱",
+
+    "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "地狱灯笼",
+    "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "击杀大型或精英怪物时召唤一个烈焰火柱。",
+    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>击杀大型怪物</style>会生成一个<style=cIsDamage>烈焰火柱</style>。在<style=cIsUtility>{0}s</style>后,火柱<style=cIsDamage>爆炸</style>,在<style=cIsDamage>{3}m</style>半径内造成<style=cIsDamage>{1}</style><style=cStack>(每层+{2} )</style>基础伤害。<style=cIsDamage>击杀精英怪物</style>有<style=cIsDamage>{4}</style>几率触发相同效果。",
+    "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "目的地: Z区, 拍卖行, 未知\n\n日期: 2056年4月10日\n\n当我最终击败这头野兽时,我从它召唤的塔上扯下了这个灯笼,希望它能对这次旅程有所帮助。自从得到它,我感到一股奇怪的力量...虽然我感觉变强了,但我觉得我不再是独自一人了。",
+
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "野外笔记:\n\n我们这个时代的恶意软件!这些机械寄生虫可能在飞船坠毁前就潜伏在船上了。海盗会用这些虫子来收集特别有价值的货物,重定向传输信号,甚至劫持船只。蜘蛛可以被编程用于各种恶意目的。\n\n通常它们在大型船只上很难找到和根除,但现在它们散落在外,似乎能够在它们的软件之外运行。它们保留了防御能力,与之交战很危险。不过,我想知道,在没有电网供电的情况下,它们还能运行多久?",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME": "机械蜘蛛",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER": "怪物日志: 机械蜘蛛",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME": "损坏的机械蜘蛛",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION": "一个损坏的机械蜘蛛。用一些专业知识和金币,它就会转换阵营帮助幸存者。",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_CONTEXT": "修复机械蜘蛛",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "双重射击",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "打开舱门,为枪充能并发射两发快速射弹。",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "冲刺",
+    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "短距离冲刺。",
+
+    "ENEMIES_RETURNS_FAMILY_LYNX_TRIBE": "<style=cWorldEvent>[警告] 你感觉你正在被注视..</style>",
+
+    "ENEMIES_RETURNS_LYNX_ARCHER_BODY_NAME": "猞猁弓手",
+    "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_NAME": "射击",
+    "ENEMIES_RETURNS_LYNX_ARCHER_SHOT_DESCRIPTION": "射出一支箭。",
+
+    "ENEMIES_RETURNS_LYNX_HUNTER_BODY_NAME": "猞猁猎手",
+    "ENEMIES_RETURNS_LYNX_HUNTER_STAB_NAME": "突刺",
+    "ENEMIES_RETURNS_LYNX_HUNTER_STAB_DESCRIPTION": "在蓄力攻击片刻后向前突刺。",
+
+    "ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT": "偷取物品",
+    "ENEMIES_RETURNS_LYNX_SHRINE_NAME": "猞猁神龛",
+    "ENEMIES_RETURNS_LYNX_SHRINE_NAME_WITH_ITEM": "{0} ({1})",
+    "ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION": "试图偷取神圣的猞猁部落物品。然而猞猁部落不会不战而退,并且会试图将其夺回。",
+    "ENEMIES_RETURNS_LYNX_SHRINE_LORE": "背景故事",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT": "<style=cShrine>{0} 正试图从猞猁部落偷取 {1}。({2}s.)</style>",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_2P": "<style=cShrine>猞猁部落前来夺回 {1}。快! ({2}s.)</style>",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_SUCCESS": "<style=cShrine>{0} 成功从猞猁部落偷取了 {1}。</style>",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_SUCCESS_2P": "<style=cShrine>你成功从猞猁部落偷取了 {1}。</style>",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_FAILURE": "<style=cShrine>{0} 未能从猞猁部落偷取 {1}。</style>",
+    "ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_FAILURE_2P": "<style=cShrine>猞猁部落带着 {1} 撤退了...</style>",
+
+    "ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME": "猞猁斥候",
+    "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME": "双重劈砍",
+    "ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION": "用两次连续的劈砍进行攻击。",
+
+    "ENEMIES_RETURNS_LYNX_SHAMAN_BODY_NAME": "猞猁萨满",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_BODY_LORE": "<style=cMono>\r\n$ 转录图像... 完成。\r\n$ 解析... 完成。\r\n$ 输出文本字符串... 完成。\r\n完成!\r\n</style>\r\n\r\n这是D. Furthen的日志条目,他是UES [已编辑]的自然学家,与UES外层生命研究与记录部门合作。我的好朋友Tharson与我同行,他在这次旅程中保护我的安全。\r\n\r\n---------------------\r\n\r\n在研究当地动植物时,Tharson听到了远处的吟唱声。接近骚动源头后,我们发现一群猫科生物正在举行看似仪式般的活动。\r\n当我们观察它们的祈祷时,一个更大的生物出现了,戴着一个更大的面具并手持一根法杖。\r\n随着法杖一挥,火焰从地面喷发,吟唱声变得更响亮。一群其他生物出现了,抬着一只工甲虫。\r\n当它们将甲虫抬向一个持有数个面具的雕像时,那个更大的生物再次挥动法杖,甲虫发出一声尖叫后静止不动。\r\n一个火球出现在甲虫面前,飞向那个更大生物的法杖,然后被吸收。\r\n将此视为离开的信号,Tharson和我悄悄离开,返回我们的考察队。\r\n\r\n我将在下面描述它的特性。我已将其俗名指定为'猞猁萨满'。\r\n\r\n\u2022 拥有更大的体型,推测萨满是这个部落的首领,尽管该部落遵循松散的等级制度。\r\n\r\n\u2022 它所持的法杖似乎具有魔法特性。我将在日后尝试收集样本。\r\n\r\n\u2022 与其他部落成员相比,它的面具是独特的,进一步支持了它可能是某种首领的理论。\r\n\r\n\u2022 已建议Tharson不要与部落接触,即使某个成员看起来是孤身一人。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN": "怪物日志: 猞猁萨满",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_NAME": "恩库哈娜之怒",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_PROJECTILES_DESCRIPTION": "召唤5个追踪射弹,命中时施加治疗减益效果。",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_NAME": "击退",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_PUSH_BACK_DESCRIPTION": "击退近距离的敌人。",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_NAME": "传送",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_TELEPORT_DESCRIPTION": "传送到随机位置。",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_NAME": "召唤龙卷风",
+    "ENEMIES_RETURNS_LYNX_SHAMAN_SUMMON_STORM_DESCRIPTION": "召唤一个追逐目标的龙卷风。",
+
+    "ENEMIES_RETURNS_LYNX_STORM_BODY_NAME": "猞猁龙卷风",
+
+    "ENEMIES_RETURNS_LYNX_TOTEM_BODY_NAME": "猞猁图腾",
+    "ENEMIES_RETURNS_LYNX_TITEM_BODY_SUBTITLE": "恩库哈娜的信徒",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BODY_LORE": "野外笔记:\n\n在穿越真菌洞穴时,我不断看到违和的碎石断断续续延向深处。视线范围内没有建筑物,所以当我看到远处有一堵砖墙时,我感到震惊。\n\n小小的、戴面具和携带武器的猫科生物围绕着这个结构跳舞,我能听到它们彼此欢笑。它们似乎在进行某种崇拜活动,尽管这个结构看起来不像我在这个星球上见过的任何东西。\n\n更多的它们从附近的泥土中爬出来,但奇怪的是,在那之前我从未见过它们在土壤中休息或藏身的任何证据。幸运的是,它们分心了-我不知道我能否对付那么一大群,无论它们有多小。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM": "怪物日志: 猞猁图腾",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_NAME": "召唤部落",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_TRIBE_DESCRIPTION": "召唤猞猁部落成员作战。",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_NAME": "召唤龙卷风群",
+    "ENEMIES_RETURNS_LYNX_TOTEM_SUMMON_STORMS_DESCRIPTION": "召唤多个龙卷风来追逐目标。",
+    "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_NAME": "重踏",
+    "ENEMIES_RETURNS_LYNX_TOTEM_GROUNDPOUND_DESCRIPTION": "猛击地面,攻击附近的敌人并将其击飞。",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_NAME": "掘地",
+    "ENEMIES_RETURNS_LYNX_TOTEM_BURROW_DESCRIPTION": "掘入地下,启用其他技能。再次使用以钻出地面。",
+
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME": "猞猁神物",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_PICKUP": "招募猞猁部落成员。",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "每15秒<style=cIsUtility>召唤猞猁部落成员</style>,具有额外<style=cIsDamage>{0}<style=cStack>(第5层起每层+{1})</style>伤害</style>和<style=cIsHealth>{2}<style=cStack>(第5层起每层+{3})</style>生命值</style>。最多可拥有<style=cIsUtility>1<style=cStack>(每层+1 最多 4)</style></style>个。每个<style=cIsUtility>猞猁部落成员</style>在<style=cIsUtility>{4}m</style>范围内提供独特的<style=cIsUtility>增益</style>。\r\n<style=cIsDamage>猞猁弓手</style>增加<style=cIsDamage>{5}伤害</style>。\r\n<style=cIsHealing>猞猁猎手</style>增加<style=cIsHealing>{6}护甲</style>。\r\n<style=cIsUtility>猞猁斥候</style>增加<style=cIsUtility>{7}攻击速度和移动速度</style>。\r\n<style=cIsHealth>猞猁萨满</style>增加<style=cIsHealth>{8}特殊技能造成的伤害</style>。",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>FIELDTECH 声音转文本翻译器 (v1.6.8a)\r\n# 等待输入... 完成。\r\n# 读取声音以获取文本... 完成。\r\n# 转录数据... 完成。\r\n# 翻译声音... 完成。 [6个异常被引发]\r\n完成: 输出结果。</style>\r\n\r\n我们高度重视这件遗物,曾经有很多,现在所剩无几。\r\n我们崇拜[已编辑]为世界带来的平衡。当[已编辑]呼唤时,我们回应了。\r\n我们向[已编辑]献上礼物,我们部落的遗物。有些带来了武器,有些带来了食物,有些带来了玩具,用线和布制成。\r\n有一天,另一个存在出现了。[英雄]急切地说着,催促我们前往一个由石头和火花构成的结构。\r\n我们与[已编辑]失去了联系,失去了家园,失去了遗物,迷失了方向。\r\n我们高度重视这件遗物正是因为这个原因。\r\n\r\n<style=cMono>翻译错误:</style>\r\n# [英雄] 无法完全翻译。\r\n# [已编辑] 的详细信息仅对具有红色级别许可的船员可用。",
+
+    "ENEMIES_RETURNS_ARCHERBUG_BODY_NAME": "弓箭虫",
+    "ENEMIES_RETURNS_ARCHERBUG_BODY_LORE": "<style=cMono>\r\n$ 转录图像... 完成。\r\n$ 解析... 完成。\r\n$ 输出文本字符串... 完成。\r\n完成!\r\n</style>\r\n\r\n这是D. Furthen的日志条目,他是UES [已编辑]的自然学家,与UES外层生命研究与记录部门合作。我的好朋友Tharson与我同行,他在这次旅程中保护我的安全。\r\n\r\n---------------------\r\n\r\n在探索一片森林,记录其极其巨大的树木时,Tharson和我遭到一大群大型昆虫的袭击。我们盲目地走进了它们的巢穴。\r\n幸运的是,我们设法通过树林间的一片空地逃脱了。Tharson在这次遭遇中没事。\r\n\r\n我将在下面描述它的特性。我已将其俗名指定为'弓箭虫'。\r\n\r\n\u2022 大型、黄蜂般的生物。它们的眼睛发出病态的绿光,我认为它们腹部下方的一个腔体也是如此。\r\n\r\n\u2022 能够发射一种可以熔化金属的腐蚀性物质。\r\n\r\n\u2022 能够使用翅膀飞行。考虑到它们的大体型,它们的翅膀能支撑其身体让我着迷。\r\n\r\n\u2022 据观察,弓箭虫具有高度领地意识,任何在巢穴2英里内的东西都会被这些害虫群起攻之。\r\n\r\n\u2022 虽然这纯粹是推测,但我相信蜂群中有一个女王。然而,我们缺乏证据来支持我的理论。(记录工作高度优先)\r\n\r\n\u2022 极度害怕火焰。通过生起篝火,我们能够将这些害虫挡在我们的营地之外。\r\n\r\n\u2022 与这个迷人星球上的大多数生物不同,这些昆虫喜欢迁移到星球的其他区域。来自伽玛集结点的报告显示,弓箭虫倾向于被较温暖的环境所吸引。\r\n\r\n\u2022 最后,我们开始注意到弓箭虫倾向于挑衅工甲虫队伍,向它们投掷有毒胆汁,然后甲虫迅速撤退到地下。\r\n\r\n\u2022 (注意,创建关于甲虫竞争的报告。)",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG": "怪物日志: 弓箭虫",
+
+    "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_NAME": "腐蚀喷吐",
+    "ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION": "以宽弧线发射3个射弹。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_NAME": "???",
+    "ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "检查",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "原型构造体",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "对我没用..",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "内部传来低沉的嗡嗡声。对我没用。",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>纽特: 形态啊,靠近些。</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "交易",
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>纽特: 很好。拿去吧,脆弱的形态。</color>",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "兄弟的承诺",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "它看起来非常脆弱。",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_DESC": "它看起来非常脆弱。",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME": "他的怨恨",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_PICKUP": "\"兄弟...也许...下次...我们会做对的...\"",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_DESC": "一次挥击就能粉碎任何形式的防御..",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_NAME": "普罗米修斯传送器",
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_CONTEXT": "激活它..?",
+
+    "ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME": "永恒传送门",
+    "ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT": "进入永恒传送门",
+    "ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>审判等待着..</style>",
+
+    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "???",
+    "ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE": "时间中的某处",
+
+    "ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "在<color=#00ffe9>审判</color>中幸存",
+
+    "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME": "???",
+    "ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "与彼岸结合",
+
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>敌人进化了...</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED": "<style=cWorldEvent><color=white>{0}</color> 选择了 {1}<style=cStack>({2})</style>。</style>",
+    "ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED_2P": "<style=cWorldEvent>你选择了 {1}<style=cStack>({2})</style>。</style>",
+
+    "ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>沉寂的最终通牒<sprite name=\"CloudRight\" tint=1>",
+    "ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "永世 {0}",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "阿莱恩的法令",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "成为审判的化身。",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "允许持有者粉碎任何形式的<style=cWorldEvent>防御</style>,忽略<style=cIsDamage>攻击速度</style>和<style=cIsUtility>移动速度</style>降低效果,并将<style=cIsUtility>眩晕</style>和<style=cIsUtility>冻结</style>的持续时间<style=cIsHealing>减少</style>{0}。",
+    "ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "阿莱恩",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_SUBTITLE": "审判者",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME": "阿莱恩",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_SUBTITLE": "审判者",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_1": "你已经走到这一步了...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_2": "候选者,胜出吧。否则就沦为我的审判的牺牲品。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DIALOGUE_FORMAT": "<color=#c6d5ff><size=120%>阿莱恩: {0}</color></size>",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_1": "让我看看你的本事。",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_2": "放马过来!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_3": "候选者,展示吧!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_4": "候选者,坚持住!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_5": "有趣的选择。",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_6": "惊人的韧性...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_7": "强大的存在...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_8": "公平的竞争者...",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_9": "拿出你的实力来!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_1": "你与我之前所见过的任何存在都不同..",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_2": "那份力量.. 那种威能..",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_3": "我们还没结束。我不会手下留情的!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_1": "候选者,振奋起来!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_2": "激怒吧!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_3": "动手吧!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_4": "狂怒吧!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_5": "看哪!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_6": "来啊!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_7": "给我看更多!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_8": "别保留实力!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_9": "展现的力量!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_10": "展现你的潜力!",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_11": "让我看看你的力量!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_NANOMACHINES": "纳米机器,候选者。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT": "在审判中幸存!",
+
+    "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME": "受膏者",
+    "ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "在审判中幸存",
+
+    "ENEMIES_RETURNS_JUDGEMENT_MITHRIX_LUNAR_FLOWER_COMMENT": "怎么...你怎么得到这个的..?",
+
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED": "<style=cWorldEvent>奇怪的基座从地面升起...</style>",
+    "ENEMIES_RETURNS_JUDGEMENT_HAMER_DROP": "<style=cWorldEvent>国王留下了一件战利品...</style>",
+
+    "ENEMIES_RETURNS_JUDGEMENT_OUTRO": "..于是他们胜利了,被授予了统治权。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_NAME": "审判之剑:三步处决",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_DESC": "采取姿态,然后进行3次快速挥击,第三次挥击以爆炸结束。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_NAME": "控诉之刃",
+    "ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_DESC": "执行快速的武器扫击。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_NAME": "辉煌荣耀",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_DESCRIPTION": "蓄力攻击几秒钟,在原地旋转时从武器两端释放毁灭性激光。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_NAME": "天降审判",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_DESC": "高高跳向空中并降落在目标顶部。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_NAME": "打击不义之徒",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_DESC": "投掷武器以击倒目标。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_NAME": "他的闪耀光辉",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_DESC": "在目标周围召唤闪电打击。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_NAME": "裁决",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_DESC": "向前跳跃,留下闪电轨迹并在落地时以爆炸结束。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_NAME": "刺穿邪恶之心",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_DESC": "向空中目标投掷一支极快的长矛。",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_CLOCKATTACK_NAME": "咆哮裁决",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_CLOCKATTACK_DESC": "",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_NAME": "召唤天基激光",
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_DESC": "",
+
+    "ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "审判的天界威压",
+
+    "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_VOID_NAME": "腐化的基座",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_NAME": "「兄??长的腐?败』",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_PICKUP": "「一?个易?碎的承诺。』",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_DESC": "「一?个易?碎的承诺。』",
+    "ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_JUDGEMENT_VOIDLING_DROP": "<style=cWorldEvent>预言者留下了一片自身的碎片...</style>",
+    "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_NAME": "虚空之眼",
+    "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_PICKUP": "它令人不安的凝视穿透了你。",
+    "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_DESC": "一道能摧毁路径上一切的光束。",
+    "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_LORE": "背景故事在此",
+
+    "ENEMIES_RETURNS_SWIFT_BODY_NAME": "迅捷",
+    "ENEMIES_RETURNS_SWIFT_BODY_LORE": "野外笔记:\n\n这些覆着页岩甲壳的飞石竟能持续悬空。如同从太阳投出的千支飞镖,它们向我俯冲得如此迅捷,以至于它们的喙都砸入了地面。\n\n我尚未见过它们无法刺穿的表面,而且令我震惊的是它们的喙似乎从未磨损。它们的预测性瞄准令人不安,而且它们似乎在我之前就知道我要去哪里。\n\n我曾目睹成群的这些怪鸟在远方的天空像秃鹫一样盘旋,尽管我从未见过它们任何一只在觅食。尝试将它们的装甲制成新刀刃的结果只是让我的刀出现了缺口。",
+    "ENEMIES_RETURNS_SWIFT_DIVE_NAME": "俯冲",
+    "ENEMIES_RETURNS_SWIFT_DIVE_DESCRIPTION": "准备片刻并向瞄准方向快速俯冲。",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT": "怪物日志: 迅捷",
+
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB": "怪物日志: 沙蟹",
+    "ENEMIES_RETURNS_SANDCRAB_BODY_NAME": "沙蟹",
+    "ENEMIES_RETURNS_SANDCRAB_BODY_LORE": "野外笔记:\n\n坠毁几小时后,我终于决定调查附近区域。当我经过一个特别大的沙丘时,它开始移动并发出咆哮。\n\n从中爆发出一只巨大的蟹状野兽,十英尺高的身躯俯视着我,钳子有一个小个子男人那么大。这只巨蟹移动速度相对于它的体型惊人地快;它背上生长的植被表明它们会长时间保持静止。这只螃蟹要么极其耐心,要么定期冬眠。\n\n在耗尽我的补给将其击败后,我抢救了尽可能多的肉。非常有嚼劲,但并不难吃。望向整个海滩,我发现了许多类似的沙丘。我必须继续前进;天快亮了。",
+    "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME": "剪钳",
+    "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION": "蓄力近战攻击并立即用双钳剪击。",
+    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME": "火焰泡泡",
+    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "发射追踪泡泡。"
+  }
+}

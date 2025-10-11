@@ -22,6 +22,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     // TODO: add second attacks to lynx tribesmen, rob is very upset
+    // TODO: flowers visuals when aeonian elite dies, careful with performance
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.score.AdvancedPrediction", BepInDependency.DependencyFlags.SoftDependency)]

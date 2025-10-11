@@ -168,6 +168,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 
 * Model, rigging and animations by Sentinel
 * Additional modeling and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Additional animations by [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/)
 * Elite icon by Glad
 * Code by [viliger](https://thunderstore.io/package/viliger/)
 * Majority of sounds come from Ys 10, RoRR, Starstorm and WoW.
