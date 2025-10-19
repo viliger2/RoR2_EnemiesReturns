@@ -75,6 +75,13 @@
 		"ENEMIES_RETURNS_LYNX_SHRINE_DESCRIPTION": "Intenta robar un objeto sagrado de la tribu Lince. Ten mucho cuidado, la tribu Lince no te lo entregará sin luchar y tratará de recuperarlo.",
 		"ENEMIES_RETURNS_LYNX_SHRINE_LORE": "HISTORIA",
 
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT": "<style=cShrine>{0} esta tratando de robar {1} de la tribu Lince. ({2}s.)</style>",
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_2P": "<style=cShrine>La tribu Lince esta tratando de recuperar {1}. Deprisa! ({2}s.)</style>",
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_SUCCESS": "<style=cShrine>{0} se ha podido robar {1} de la tribu Lince.</style>",
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_SUCCESS_2P": "<style=cShrine> tu has podido robar {1} de la tribu Lince.</style>",
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_FAILURE": "<style=cShrine>{0} ha fallado en robar {1} de la tribu Lince.</style>",
+		"ENEMIES_RETURNS_LYNX_SHRINE_INTERACT_FAILURE_2P": "<style=cShrine> La Tribu lince se retira con {1}...</style>",
+
 		"ENEMIES_RETURNS_LYNX_SCOUT_BODY_NAME": "Explorador Lince",
 		"ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_NAME": "Doble Cuchilla",
 		"ENEMIES_RETURNS_LYNX_SCOUT_DOUBLE_SLASH_DESCRIPTION": "Ataque con dos cortes consecutivos.",
@@ -109,6 +116,169 @@
 		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME": "Amuleto Lince",
 		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_PICKUP": "Recluta miembros de la tribu lince.",
 		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Cada 15 segundos <style=cIsUtility>Invocara un miembro de la tribu Lince</style> con bonificaciones de <style=cIsDamage>{0}<style=cStack>(+{1} luego del 4th stack)</style> de daño</style> y <style=cIsHealth>{2}<style=cStack>(+{3} luego del 4th stack)</style> de salud</style>. Puedes tener hasta <style=cIsUtility>1<style=cStack> (+1 por stack, hasta 4)</style></style>. un <style=cIsUtility>Miembro Lince</style> que provee de <style=cIsUtility>bonificaciones</style> unicas a una distancia de <style=cIsUtility>{4}m</style>.\r\n<style=cIsDamage>Arquero Lince</style> incrementa el<style=cIsDamage> daño por {5}</style>.\r\n<style=cIsHealing>Cazador Lince</style> incrementa la <style=cIsHealing>armadura por {6}</style>.\r\n<style=cIsUtility>Explorador Lince</style> incrementa <style=cIsUtility> velocidad de ataque y movimiento en un {7}</style>.\r\n<style=cIsHealth>Curandero Lince</style> incremente <style=cIsHealth>daño por habilidades especiales en {8}</style>.",
-		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>FIELDTECH Sound-To-Text Translator (v1.6.8a)\r\n# Awaiting input... done.\r\n# Reading sound for text... done.\r\n# Transcribing data... done.\r\n# Translating sound... done. [6 exceptions raised]\r\nComplete: outputting results.</style>\r\n\r\nWe hold this Relic to high regard, there once was many, now there are few.\r\nWe worshiped the balance [REDACTED] brought to the world. When [REDACTED] called, we answered.\r\nWe brought [REDACTED] gifts, relics of our tribes. Some brought weapons, some brought food, some brought toys, crafted from string and cloth.\r\nOne day, another appears. [The Hero] speaks urgently, ushering us to a structure made from stones and sparks.\r\nWe lost contact with [REDACTED], lost homes, lost relics, lost our way.\r\nWe hold this Relic to high regard for this reason.\r\n\r\n<style=cMono>Translation Errors:<\/style>\r\n# [The Hero] could not be fully translated.\r\n# Details on [REDACTED] are only available to Crew with Red-Level Clearance."
+		"ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>Sistema traduccion de Sonido a Texto (v1.6.8a)\r\n# Esperando Entrada... Hecho.\r\n# Leyendo sonido a texto... Hecho.\r\n# Transcripción de imagen... Hecho.\r\n# Traduciendo sonido... Hecho. [6 excepciones detectadas]\r\nCompletado: salida de resultados.</style>\r\n\r\nTengos en nuestras manos una reliquia de alto valor, antes habian muchos, pero ahora no queda nada.\r\nAnelamos el equilibro que [REDACTADO] nos trajo al mundo. Cuando [REDACTADO] nos llamo, respondimos.\r\nHemos traido el [REDACTADO] como regalo, reliquias de nuestra tribu. Algunos trajeron armas, otros comida, algunos juguetes, Hechos con tela e hilo.\r\nUn dia, Otro aparecia. [El heroe] Habla urgentemente, nos lleva a una estructura hecha de piedras y chispas.\r\nHemos perdido contacto con [REDACTADO], Hogares perdidos, Reliquias perdidas, perdido nuestro camino.\r\nPor eso esta reliquia que tenemos adquiere tanto valor por una experiencia que jamas podremos repetir.\r\n\r\n<style=cMono>Error de traduccion:<\/style>\r\n# [El Heroe] no se puedo traducir correctamente.\r\n# Detalles de [REDACTADO] solo estan disponibles para la tripulacion de mayor nivel.",
+
+		"ENEMIES_RETURNS_ARCHERBUG_BODY_NAME": "Bicho Arquero",
+		"ENEMIES_RETURNS_ARCHERBUG_BODY_LORE": "<style=cMono>Sistema traduccion de Sonido a Texto (v1.6.8a)\r\n# Esperando Entrada... Hecho.\r\n# Leyendo sonido a texto... Hecho.\r\n$ Transcripción de imagen... Hecho.\r\n$ Resolviendo... Hecho.\r\n$ Salida de Texto... Hecho.\r\nCompletado!\r\n</style>\r\n\r\nEsta es la entrada de registro de D. Furthen, naturalista para el UES [Redactado] en conjunto con el grupo de investigadores de UES para documentar vidas posteriores. Me uni a mi buen amigo Tharson, quien me esta cuidando durante toda esta travesia.\r\n\r\n---------------------\r\n\r\nMientras explorabamos un bosque, catalogando sus increibles y altos arboles, Tharson y yo fuimos atacados por un nido de insectos de proporsiones similares a las de un tripulante promedio. Caminamos ciegamente dentro del nido.\r\nAfortunadamente, Hemos logrado escapar por un punto ciego de entre los arboles. Tharson no tuvo lesiones fisicas tras ese encuentro.\r\n\r\nDescribire las caracteristicas acerca de esta nueva entidad. Les e asignado el nombre comun como \u2018Bicho Arquero\u2019.\r\n\r\n\u2022 Grande, Similar a una avispa. Con unos ojos que emanan un verde intenso, y siendo objetivo parece ser que tienen una cavidad dentro de su abdomen.\r\n\r\n\u2022 Capaz de disparar un acido que puede pulverizar el metal como si fuese mantequilla.\r\n\r\n\u2022 Siendo capaces de volar. Considerando su gran tamaño, es realmente sorprendete como sus alas son capaces de soportar semejante tamaño.\r\n\r\n\u2022 Desde mi observaciones, los Bicho arqueros son altamente territoriales, cual entidad que este a una distancia de 3 Kilometros, sera atacada por estos insectos.\r\n\r\n\u2022 Aunque esto ya es especulacion, Creo que puede haber alguna especie de Reina de la Colmena. Aunque, no tengamos ninguna evidencia para respaldar esta teoria. (Documentacion es altamente priorizada)\r\n\r\n\u2022 Un alto temor hacia el fuego. Cuando hicimos una fogata, Hemos podido espantarlos de nuestro campamento.\r\n\r\n\u2022 A diferencia de otras entidades en este increible planeta, Estos insectos les gusta emigrar a otras Areas del planeta. Reportes de Rallypoint Gamma demuestran que estos insectos tienden a gravitar en entornos mas calidos.\r\n\r\n\u2022 Por ultimo, Nos hemos percatado que este grupo de insectos se lleva muy mal con el grupo de los escarabajos obreros, Lanzandoles Acido llevando a que estos se retiren rapidamente bajo tierra.\r\n\r\n\u2022 (Nota, crear un reporte sobre la Rivalidad entre Escarabajos.)",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG": "Registro de Monstruo: Bicho Arquero",
+
+		"ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_NAME": "Espumajo Corrosivo",
+		"ENEMIES_RETURNS_ARCHERBUG_CAUSTIC_SPIT_DESCRIPTION": "Dispara 3 proyectiles en arco.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_NAME": "???",
+		"ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT": "Inspeccionar",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME": "Prototipo de Constructo",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP": "No es util para mi..",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "Murmullos vienen de abajo. No es util para mi..",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>Newt: Forma, viene cerca.</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "Intercambiar",
+		"ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>Newt: Bien. tomar, Forma delicada.</color>",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "Promesa de Hermano",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "Se ve muy fragil.",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_DESC": "Parece muy fragil.",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_NAME": "Su resentimiento",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_PICKUP": "\"Hermanos... Talvez... Lo haremos mejor... la proxima vez...\"",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_DESC": "Cualquier ataque puede acabar con cualquier tipo de denfesa..",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_MITHRIX_HAMMER_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_NAME": "Teletransportador de Prometeo",
+		"ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_CONTEXT": "Activar..?",
+
+		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_NAME": "Portal Eterno",
+		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT": "Entrar al Portal Eterno",
+		"ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN": "<style=cWorldEvent>El juicio espera..</style>",
+
+		"ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_NAME": "???",
+		"ENEMIES_RETURNS_JUDGEMENT_MAP_OUT_OF_TIME_SUBTITLE": "En alguna parte del tiempo",
+
+		"ENEMIES_RETURNS_JUDGEMENT_OBJECTIVE": "Sobrevive <color=#00ffe9>El Juicio</color>",
+
+		"ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_NAME": "???",
+		"ENEMIES_RETURNS_JUDGEMENT_WAVES_INTERACTABLE_CONTEXT": "Haz las pases con el mas alla",
+
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_PICKUP_HEADER": "<color=#00ffe9>Los enemigos evolucionan...</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED": "<style=cWorldEvent><color=white>{0}</color> Ha sido elejido {1}<style=cStack>({2})</style>.</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_OPTION_SELECTED_2P": "<style=cWorldEvent> Tu has sido elejido {1}<style=cStack>({2})</style>.</style>",
+
+		"ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE": "<sprite name=\"CloudLeft\" tint=1>Quiescent Ultimatum<sprite name=\"CloudRight\" tint=1>",
+		"ENEMIES_RETURNS_JUDGEMENT_ELITE_MODIFIER_AEONIAN": "{0} Aeónico",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_NAME": "Decreto del Enjuiciado",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_PICKUP": "Conviertete en un aspecto del Juicio.",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_DESC": "Permite a su portador destruir cualquier tipo de <style=cWorldEvent>defensa</style>, Ignora los efectos de reduccion de la <style=cIsDamage>Velocidad de Ataque</style> y <style=cIsUtility>Velocidad de movimiento</style>, y <style=cIsHealing>reduce</style> la duracion de <style=cIsUtility>aturdimiento</style> y <style=cIsUtility>congelado</style> en {0}.",
+		"ENEMIES_RETURNS_JUDGEMENT_EQUIPMENT_AFFIXAEONIAN_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_NAME": "Enjuiciado",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_BODY_SUBTITLE": "El Juicio",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_NAME": "Enjuiciado",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_BODY_SUBTITLE": "El Juicio",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_1": "Has llegado muy lejos...",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P1_2": "Candidato, prevalece. O cae víctima de mi Juicio.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DIALOGUE_FORMAT": "<color=#c6d5ff><size=120%>Enjuiciado: {0}</color></size>",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_1": "Muestrame de lo que estas hecho.",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_2": "Vamos!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_3": "Candidato, desmuestralo!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_4": "Candidato, soportalo!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_5": "Interesante eleccion.",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_6": "Impresionante resilencia...",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_7": "que ser poderoso...",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_8": "un Contendiente digno...",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DAMAGEDEALT_9": "Muestrame tu fuerza!",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_1": "Eres diferente a todo lo que he presenciado antes..",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_2": "Esa fuerza.. Ese poder..",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPAWN_P2_3": "No terminamos aqui. No me contendré!",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_1": "Candidato, vigorizate!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_2": "Dame tu mejor golpe!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_3": "Hazlo!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_4": "Enfurecete!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_5": "Observen!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_6": "Vamos!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_7": "Muestrame mas!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_8": "No te contengas!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_9": "Libera tu fuerza!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_10": "Muestrame tu potencial!",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_DAMAGEDEALT_11": "Libera ese poder!",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_NANOMACHINES": "Nano-Maquinas, Candidato.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_GAME_RESULT": "Sobreviviste El Juicio!",
+
+		"ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME": "Elegido",
+		"ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC": "Sobrevive al Juicio",
+
+		"ENEMIES_RETURNS_JUDGEMENT_MITHRIX_LUNAR_FLOWER_COMMENT": "COMO... COMO OBTUVISTE ESTO..?",
+
+		"ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED": "<style=cWorldEvent>Un extraño pedestal se eleva desde el suelo...</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_HAMMER_DROP": "<style=cWorldEvent>El Rey deja un trofeo...</style>",
+
+		"ENEMIES_RETURNS_JUDGEMENT_OUTRO": "..y así triunfaron, legando la soberanía.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_NAME": "Espada Tribunal: tres pasos de la ejecucion",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_THREE_HIT_COMBO_DESC": "se concentra y lanza 3 golpes rápidos, el tercer golpe termina en explosiones..",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_NAME": "Hoja de acusación",
+		"ENEMIES_RETURNS_JUDGEMENT_ARAIGN_RIGHTLEFTSWING_DESC": "Realiza varios barridos rapidos.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_NAME": "Gloria Radiante",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SWORD_BEAM_DESCRIPTION": "Carga un ataque durante unos segundos y lanza un láser devastador desde ambos extremos de tu arma, mientras giras..",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_NAME": "Liberación",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYDROP_DESC": "Salta alto en el aire y aterriza sobre un objetivo.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_NAME": "Ataque directo a los injustos",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_WEAPONTHROW_DESC": "Lanza un arma que aterriza a tu objetivo.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_NAME": "Su resplandor brillante",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP1_LIGHTNING_DESC": "Invoca rayos alrededor del objetivo.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_NAME": "Adjudicación",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_DASH_LEAP_DESC": "Salta hacia adelante, dejando un rastro de relámpagos y terminando en una explosión al aterrizar.",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_NAME": "Atraviesa el corazón del mal",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SPEARTHROW_DESC": "Dispara una lanza veloz a un objetivo aéreo..",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_CLOCKATTACK_NAME": "Veredicto Rotundo",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_CLOCKATTACK_DESC": "",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_NAME": "Invocar Láser Celestial",
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_DESC": "",
+
+		"ENEMIES_RETURNS_JUDGEMENT_ARRAIGN_SKYLASER_BODY": "Presión celestial del Juicio",
+
+		"ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_VOID_NAME": "Pedestal Corrupto",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_NAME": "「LA DEC??ENCIA DEL HER??MANO?』",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_PICKUP": "「Una pr?mes?, R?ta.』",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_DESC": "「Una pr??mes?, R?ta.』",
+		"ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_JUDGEMENT_VOIDLING_DROP": "<style=cWorldEvent>El Adivino deja un pedazo de sí mismo atrás...</style>",
+		"ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_NAME": "Ojo del vacío",
+		"ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_PICKUP": "Su mirada desconcertante te mira fijamente.",
+		"ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_DESC": "Un rayo que destruye todo a su paso.",
+		"ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_LORE": "SABER AQUI",
+
+		"ENEMIES_RETURNS_SWIFT_BODY_NAME": "Raudo",
+		"ENEMIES_RETURNS_SWIFT_BODY_LORE": "Diario:\n\nEstos guijarros voladoras logran mantenerse en el aire a pesar de su armadura de pizarra. Como mil dardos lanzados desde el sol, se lanzan tan rápido hacia mí que sus picos se estrellan contra el suelo.\n\nNo hay material que haya visto que esas cosas no hayan podido perforar, y me sorprende que sus picos nunca parezcan desgastados. Su puntería predictiva es inquietante, y parecen saber adónde me dirijo antes que yo..\n\nHe visto manadas de esas criaturas sobrevolando como buitres en el cielo lejano, aunque nunca las he visto buscando comida. Los intentos de fabricar nuevas espadas con su armadura solo han resultado en astillas en mi cuchillo.",
+		"ENEMIES_RETURNS_SWIFT_DIVE_NAME": "Embestida",
+		"ENEMIES_RETURNS_SWIFT_DIVE_DESCRIPTION": "Se prepara por unos momentos para realizar una rápida embestida hacia su objetivo..",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT": "Registro de Monstruo: Raudo",
+
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB": "Registro de Monstruo: Cangrejo Arenoso",
+		"ENEMIES_RETURNS_SANDCRAB_BODY_NAME": "Cangrejo Arenoso",
+		"ENEMIES_RETURNS_SANDCRAB_BODY_LORE": "Diario:\n\nUnas horas después de mi accidente, finalmente decidí investigar los alrededores. Al pasar junto a un montículo de arena curiosamente grande, este empezó a moverse y a emitir sonidos extra;os.\n\nDe allí surgió una bestia gigantesca parecida a un cangrejo, oh bueno... talvez realmente es el equivalente a un cangrejo de este planeta, que se alzaba sobre mí a 3 metros de altura, con pinzas del tamaño de un hombre pequeño. El cangrejo gigante se mueve sorprendentemente rápido para su tamaño; la vegetacion que crece en su lomo indica que permanece quieto durante largos periodos. Esta criatura es extremadamente paciente o hiberna con regularidad.\n\nTras agotar mis provisiones para desmantelarlo, recuperé la carne que pude. Muy masticable, mas no desagradable. Mirando al otro lado de la playa, veo muchos montículos de arena similares. Debo seguir adelante; se acerca el amanecer.",
+		"ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME": "Cortar",
+		"ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION": "Carga un ataque para cortar con sus grandes tenazas.",
+		"ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME": "Burbujas llameantes",
+		"ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "Lanza burbujas rastreadoras."
 	}
   }
