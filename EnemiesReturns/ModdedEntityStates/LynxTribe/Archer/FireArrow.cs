@@ -124,8 +124,11 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
-            animator.SetLayerWeight(animator.GetLayerIndex("AttackPitch"), 0f);
+            if (animator)
+            {
+                PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
+                animator.SetLayerWeight(animator.GetLayerIndex("AttackPitch"), 0f);
+            }
             if (arrowTransform)
             {
                 arrowTransform.gameObject.SetActive(true);
