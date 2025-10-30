@@ -39,7 +39,8 @@ namespace EnemiesReturns.Behaviors.Judgement
                 if (pickupDef != null)
                 {
                     if (pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex
-                        && pickupDef.equipmentIndex != Content.Equipment.MithrixHammer.equipmentIndex)
+                        && pickupDef.equipmentIndex != Content.Equipment.MithrixHammer.equipmentIndex
+                        && pickupDef.equipmentIndex != Content.Equipment.VoidlingWeapon.equipmentIndex)
                     {
                         return;
                     }
