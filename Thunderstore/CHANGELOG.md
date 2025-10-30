@@ -1,4 +1,20 @@
 <details>
+<summary>0.7.10</summary>
+
+* Updated ru localization.
+* Updated es-ES localization.
+* Lynx Archer
+  * Fixed NRE on stage transition if Archer is firing an arrow.
+* Sand Crab
+  * Increased mass to 300 (was 250).
+    * _This is mainly so Loader cannot pull it with alt secondary._
+  * Buffed bubbles health to 45+14(was 35+10).
+  * Lowered range of footstep sounds.  
+* Judgement
+  * Fixed certain equipment not dropping on death.
+  * Known issue: Expedition 0.1.2 breaks the pedastal if you pick up the Geolocator item. Next update to that mod will fix it. For now, just disable the item.
+</details>
+<details>
 <summary>0.7.9</summary>
 
 * Judgement
