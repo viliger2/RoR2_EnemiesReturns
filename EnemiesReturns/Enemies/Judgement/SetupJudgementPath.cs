@@ -369,6 +369,11 @@ namespace EnemiesReturns.Enemies.Judgement
             if (LunarFlowerCheckerSingleton.instance)
             {
                 itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
+                if (!itemFound)
+                {
+                    LunarFlowerCheckerSingleton.instance.CheckForFlower();
+                    itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
+                }
             }
 
             if (itemFound)
