@@ -12,6 +12,9 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
+		<PackageReference Include="Brynzananas-Revive_API" Version="1.2.0" />
+		<PackageReference Include="Moffein-EliteReworks" Version="1.15.0" />
+		<PackageReference Include="Moffein-Risky_Artifacts" Version="2.4.21" />
 		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
 		<PackageReference Include="R2API.Deployable" Version="1.0.1" />
 		<PackageReference Include="R2API.Director" Version="2.3.5" />
@@ -24,6 +27,8 @@
 		<PackageReference Include="R2API.RecalculateStats" Version="1.5.0" />
 		<PackageReference Include="R2API.Sound" Version="1.0.3" />
 		<PackageReference Include="R2API.TempVisualEffect" Version="1.0.3" />
+		<PackageReference Include="RiskOfBrainrot-MoreStats" Version="1.2.7" />
+		<PackageReference Include="score-AdvancedPrediction" Version="1.0.4" />
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
 		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.3.9-r.0" />
 		<PackageReference Include="MMHOOK.RoR2" Version="2025.6.3" NoWarn="NU1701" />
@@ -41,34 +46,34 @@
 	</ItemGroup>-->	
 
 	<ItemGroup>
-	  <Reference Include="AdvPrediction">
+	  <!--<Reference Include="AdvPrediction" Private="false">
 	    <HintPath>libs\AdvPrediction.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Decalicious">
+	  </Reference>-->
+	  <Reference Include="Decalicious" Private="false">
 	    <HintPath>libs\Decalicious.dll</HintPath>
 	  </Reference>
-	  <Reference Include="EliteReworks">
+	  <!--<Reference Include="EliteReworks" Private="false">
 	    <HintPath>libs\EliteReworks.dll</HintPath>
-	  </Reference>
-	  <Reference Include="MoreStats">
+	  </Reference>-->
+	  <!--<Reference Include="MoreStats" Private="false">
 	    <HintPath>libs\MoreStats.dll</HintPath>
-	  </Reference>
-	  <Reference Include="ReviveAPI">
+	  </Reference>-->
+	  <!--<Reference Include="ReviveAPI" Private="false">
 	    <HintPath>libs\ReviveAPI.dll</HintPath>
-	  </Reference>
+	  </Reference>-->
 	  <!--<Reference Include="R2API.Director">
 	    <HintPath>libs\R2API.Director.dll</HintPath>
 	  </Reference>-->
 	  <!--<Reference Include="MMHOOK_RoR2">
 	    <HintPath>libs\MMHOOK_RoR2.dll</HintPath>
 	  </Reference>-->
-	  <Reference Include="Risky_Artifacts">
+	  <!--<Reference Include="Risky_Artifacts" Private="false">
 	    <HintPath>libs\Risky_Artifacts.dll</HintPath>
-	  </Reference>
+	  </Reference>-->
 	  <!--<Reference Include="RoR2">
 	    <HintPath>libs\RoR2.dll</HintPath>
 	  </Reference>-->
-	  <Reference Include="Unity.Postprocessing.Runtime">
+	  <Reference Include="Unity.Postprocessing.Runtime" Private="false">
 	    <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
@@ -92,7 +97,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;cd $(TargetDir)&#xD;&#xA;del Decalicious.dll&#xD;&#xA;del Unity.Postprocessing.Runtime.dll&#xD;&#xA;del AdvPrediction.dll&#xD;&#xA;del Risky_Artifacts.dll&#xD;&#xA;del Zio.dll&#xD;&#xA;del EliteReworks.dll&#xD;&#xA;del MoreStats.dll&#xD;&#xA;del ReviveAPI.dll" />
+	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;" />
 	</Target>
 
 </Project>
