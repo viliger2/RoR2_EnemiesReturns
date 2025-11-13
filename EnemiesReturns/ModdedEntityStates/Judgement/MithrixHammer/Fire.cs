@@ -82,7 +82,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.MithrixHammer
         public override void Update()
         {
             base.Update();
-            if (hammerEffect)
+            if (hammerEffect && bodyInputBank)
             {
                 hammerEffect.transform.position = bodyInputBank.aimOrigin;
                 hammerEffect.transform.forward = bodyInputBank.aimDirection;
