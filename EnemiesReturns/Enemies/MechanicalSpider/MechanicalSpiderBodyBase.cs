@@ -5,6 +5,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash;
+using EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Enemy;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
@@ -20,13 +21,11 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
     {
         public struct Skills
         {
-            public static SkillDef DoubleShot;
             public static SkillDef Dash;
         }
 
         public struct SkillFamilies
         {
-            public static SkillFamily Primary;
             public static SkillFamily Utility;
         }
 
@@ -65,10 +64,10 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             return body;
         }
 
-        public SkillDef CreateDoubleShotSkill()
+        public SkillDef CreateDoubleShotSkill(string name, EntityStates.SerializableEntityStateType activationState)
         {
             var tazer = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainTazer.asset").WaitForCompletion();
-            return CreateSkill(new SkillParams("MechanicalSpiderWeaponDoubleShot", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.OpenHatch)))
+            return CreateSkill(new SkillParams(name, activationState)
             {
                 nameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME",
                 descriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION",
@@ -225,15 +224,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
                 enableFootstepDust = true,
                 baseFootstepString = "Play_treeBot_step",
                 footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericFootstepDust.prefab").WaitForCompletion()
-            };
-        }
-
-        protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
-        {
-            return new IGenericSkill.GenericSkillParams[]
-            {
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "DoubleShot", SkillSlot.Primary),
-                new IGenericSkill.GenericSkillParams(SkillFamilies.Utility, "Dash", SkillSlot.Utility)
             };
         }
 

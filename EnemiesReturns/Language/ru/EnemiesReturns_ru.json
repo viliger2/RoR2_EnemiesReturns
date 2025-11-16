@@ -278,6 +278,15 @@
 		"ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME": "Цапнуть",
 		"ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION": "Заряжает атаку и моментально хватает обоими клешнями.",
 		"ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME": "Пустить пузыри",
-		"ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "Выпускает самонаводящиеся пузыри."
+		"ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "Выпускает самонаводящиеся пузыри.",
+
+		"ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_NAME": "Механический паук",
+		"ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_DESCRIPTION": "Установка <style=cIsUtility>механического паукта</style> который <style=cIsUtility>наследует свойства всех ваших предметов</style>. Стреляет из бластера, нанося <style=cIsDamage>2x250% урона</style>. Можно вызвать до двух одновременно.",
+
+		"ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_NAME": "Механический паук Mk. 2",
+		"ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_DESCRIPTION": "Установка <style=cIsUtility>механического паукта</style> который <style=cIsUtility>наследует свойства всех ваших предметов</style>. Стреляет из бластера, нанося <style=cIsDamage>2x250% урона</style>. Можно вызвать до двух одновременно.\n<color=#d299ff>СКИПЕТР: Теперь стреляет 4 раза и в два раза быстрее.</color>",
+
+		"ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_NAME": "Инженер: очумелые ручки",
+		"ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "Играя за инженера, почините сломанного механического паука."
 	}
 }

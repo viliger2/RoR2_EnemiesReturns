@@ -1,11 +1,17 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.MechanicalSpider.Drone;
+using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
+using EnemiesReturns.Enemies.MechanicalSpider.Turret;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
+using RoR2.Skills;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {
@@ -23,35 +29,43 @@ namespace EnemiesReturns
                 var doubleShotEffect = spiderStuff.CreateDoubleShotImpactEffect();
                 effectsList.Add(new EffectDef(doubleShotEffect));
 
-                ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab = spiderStuff.CreateDoubleShotProjectilePrefab(doubleShotEffect);
-                projectilesList.Add(ModdedEntityStates.MechanicalSpider.DoubleShot.Fire.projectilePrefab);
+                ModdedEntityStates.MechanicalSpider.DoubleShot.BaseFire.projectilePrefab = spiderStuff.CreateDoubleShotProjectilePrefab(doubleShotEffect);
+                projectilesList.Add(ModdedEntityStates.MechanicalSpider.DoubleShot.BaseFire.projectilePrefab);
 
-                ModdedEntityStates.MechanicalSpider.DoubleShot.ChargeFire.effectPrefab = spiderStuff.CreateDoubleShotChargeEffect();
+                ModdedEntityStates.MechanicalSpider.DoubleShot.BaseChargeFire.effectPrefab = spiderStuff.CreateDoubleShotChargeEffect();
 
                 var spiderEnemyBody = new MechanicalSpiderEnemyBody();
-                MechanicalSpiderBodyBase.Skills.DoubleShot = spiderEnemyBody.CreateDoubleShotSkill();
                 MechanicalSpiderBodyBase.Skills.Dash = spiderEnemyBody.CreateDashSkill();
 
                 ModdedEntityStates.MechanicalSpider.Dash.Dash.forwardSpeedCoefficientCurve = acdLookup["acdSpiderDash"].curve;
 
-                sdList.Add(MechanicalSpiderBodyBase.Skills.DoubleShot);
                 sdList.Add(MechanicalSpiderBodyBase.Skills.Dash);
 
-                MechanicalSpiderBodyBase.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderPrimaryFamily", MechanicalSpiderBodyBase.Skills.DoubleShot);
                 MechanicalSpiderBodyBase.SkillFamilies.Utility = Utils.CreateSkillFamily("MechanicalSpiderUtilityFamily", MechanicalSpiderBodyBase.Skills.Dash);
 
-                sfList.Add(MechanicalSpiderBodyBase.SkillFamilies.Primary);
                 sfList.Add(MechanicalSpiderBodyBase.SkillFamilies.Utility);
 
                 CreateMechanicalSpiderEnemy(assets, iconLookup, spiderLog, spiderEnemyBody);
 
                 CreateMechanichalSpiderDrone(assets, iconLookup, spiderStuff);
+
+                if (Configuration.MechanicalSpider.EngiSkillEnabled.Value)
+                {
+                    SetupMechanicalSpiderEngiSkill(assets, iconLookup);
+                }
             }
         }
 
         private void CreateMechanichalSpiderDrone(GameObject[] assets, Dictionary<string, Sprite> iconLookup, MechanicalSpiderStuff spiderStuff)
         {
             var spiderAllyBody = new MechanicalSpiderDroneBody();
+
+            MechanicalSpiderDroneBody.Skills.DoubleShot = spiderAllyBody.CreateDoubleShotSkill("MechanicalSpiderDroneWeaponDoubleShot", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Drone.OpenHatch)));
+            sdList.Add(MechanicalSpiderDroneBody.Skills.DoubleShot);
+
+            MechanicalSpiderDroneBody.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderDronePrimaryFamily", MechanicalSpiderDroneBody.Skills.DoubleShot);
+            sfList.Add(MechanicalSpiderDroneBody.SkillFamilies.Primary);
+
             MechanicalSpiderDroneBody.BodyPrefab = spiderAllyBody.AddBodyComponents(assets.First(body => body.name == "MechanicalSpiderDroneBody"), iconLookup["texMechanicalSpiderAllyIcon"]);
             bodyList.Add(MechanicalSpiderDroneBody.BodyPrefab);
 
@@ -67,6 +81,12 @@ namespace EnemiesReturns
 
         private void CreateMechanicalSpiderEnemy(GameObject[] assets, Dictionary<string, Sprite> iconLookup, UnlockableDef spiderLog, MechanicalSpiderEnemyBody spiderEnemyBody)
         {
+            MechanicalSpiderEnemyBody.Skills.DoubleShot = spiderEnemyBody.CreateDoubleShotSkill("MechanicalSpiderEnemyWeaponDoubleShot", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Enemy.OpenHatch)));
+            sdList.Add(MechanicalSpiderEnemyBody.Skills.DoubleShot);
+
+            MechanicalSpiderEnemyBody.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderEnemyPrimaryFamily", MechanicalSpiderEnemyBody.Skills.DoubleShot);
+            sfList.Add(MechanicalSpiderEnemyBody.SkillFamilies.Primary);
+
             MechanicalSpiderEnemyBody.BodyPrefab = spiderEnemyBody.AddBodyComponents(assets.First(body => body.name == "MechanicalSpiderBody"), iconLookup["texMechanicalSpiderEnemyIcon"], spiderLog);
             bodyList.Add(MechanicalSpiderEnemyBody.BodyPrefab);
 
@@ -123,5 +143,57 @@ namespace EnemiesReturns
             Utils.AddMonsterToStages(Configuration.MechanicalSpider.SnowyStageList.Value, dchMechanicalSpiderSnowy);
         }
 
+        private void SetupMechanicalSpiderEngiSkill(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
+        {
+            var setupSkill = new Skills.Engi.MechanicalSpiderTurret.SetupSkill();
+
+            Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill = setupSkill.CreateNormalSkill(iconLookup["texEngiMechanicalSpiderIcon"]);
+            sdList.Add(Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill);
+
+            var unlockable = setupSkill.CreateUnlockable(iconLookup["texEngiMechanicalSpiderIcon"]);
+            if (unlockable)
+            {
+                unlockablesList.Add(unlockable);
+            }
+
+            SkillFamily skillFamily = Addressables.LoadAssetAsync<SkillFamily>("RoR2/Base/Engi/EngiBodySpecialFamily.asset").WaitForCompletion();
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill,
+                unlockableDef = unlockable, 
+                viewableNode = new ViewablesCatalog.Node(Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill.skillNameToken, false, null)
+            };
+
+            if (ModCompats.AncientScepterCompat.enabled)
+            {
+                Skills.Engi.MechanicalSpiderTurret.SetupSkill.scepterSkill = setupSkill.CreateScepterSkill(iconLookup["texEngiMechanicalSpiderScepterIcon"]);
+                sdList.Add(Skills.Engi.MechanicalSpiderTurret.SetupSkill.scepterSkill);
+                ModCompats.AncientScepterCompat.RegisterScepter(Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill, "EngiBody", Skills.Engi.MechanicalSpiderTurret.SetupSkill.scepterSkill);
+
+                MasterSummon.onServerMasterSummonGlobal += Skills.Engi.MechanicalSpiderTurret.SetupSkill.GiveScepterItem;
+
+                Content.Items.MechanicalSpiderTurretScepterHelper = setupSkill.CreateMechanicalSpiderTurretScepterHelperItem();
+                itemList.Add(Content.Items.MechanicalSpiderTurretScepterHelper);
+            }
+
+            var spiderTurretBody = new MechanicalSpiderTurretBody();
+
+            MechanicalSpiderTurretBody.Skills.DoubleShot = spiderTurretBody.CreateDoubleShotSkill("MechanicalSpiderTurretWeaponDoubleShot", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.MechanicalSpider.DoubleShot.Turret.OpenHatch)));
+            sdList.Add(MechanicalSpiderTurretBody.Skills.DoubleShot);
+
+            MechanicalSpiderTurretBody.SkillFamilies.Primary = Utils.CreateSkillFamily("MechanicalSpiderTurretPrimaryFamily", MechanicalSpiderTurretBody.Skills.DoubleShot);
+            sfList.Add(MechanicalSpiderTurretBody.SkillFamilies.Primary);
+
+            MechanicalSpiderTurretBody.BodyPrefab = spiderTurretBody.AddBodyComponents(assets.First(body => body.name == "MechanicalSpiderTurretBody"), iconLookup["texMechanicalSpiderAllyIcon"]);
+            bodyList.Add(MechanicalSpiderTurretBody.BodyPrefab);
+
+            var mechanicalSpiderTurretMaster = new MechanicalSpiderTurretMaster();
+            MechanicalSpiderTurretMaster.MasterPrefab = mechanicalSpiderTurretMaster.AddMasterComponents(assets.First(master => master.name == "MechanicalSpiderTurretMaster"), MechanicalSpiderTurretBody.BodyPrefab);
+            masterList.Add(MechanicalSpiderTurretMaster.MasterPrefab);
+            ModdedEntityStates.Engi.PlaceMechSpider.spiderTurretMasterPrefab = MechanicalSpiderTurretMaster.MasterPrefab;
+
+            ModdedEntityStates.Engi.PlaceMechSpider.spiderBlueprintPrefab = setupSkill.SetupBlueprint(assets.First(asset => asset.name == "MechanicalSpiderTurretBlueprints"));
+        }
     }
 }

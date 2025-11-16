@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using MoreStats;
 
@@ -21,11 +22,13 @@ namespace EnemiesReturns.ModCompats
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static void Hooks()
         {
             MoreStats.StatHooks.GetMoreStatCoefficients += StatHooks_GetMoreStatCoefficients;
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void StatHooks_GetMoreStatCoefficients(RoR2.CharacterBody sender, StatHooks.MoreStatHookEventArgs args)
         {
             if (!sender)

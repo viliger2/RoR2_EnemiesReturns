@@ -48,6 +48,17 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
+        public static ConfigEntry<bool> EngiSkillEnabled;
+        public static ConfigEntry<bool> EngiSkillForceUnlock;
+
+        public static ConfigEntry<float> TurretBaseMoveSpeed;
+        public static ConfigEntry<float> TurretBaseRegen;
+        public static ConfigEntry<float> TurretLevelRegen;
+        public static ConfigEntry<float> TurretDoubleShotDamage;
+
+        public static ConfigEntry<int> ScepterTurretProjectileMultiplier;
+        public static ConfigEntry<float> ScepterTurretAttackSpeedMultiplier;
+
         public void PopulateConfig(ConfigFile config)
         {
             Enabled = config.Bind("Mechanical Spider Director", "Enable Mechanical Spider", true, "Enables Mechanical Spider.");
@@ -118,6 +129,17 @@ namespace EnemiesReturns.Configuration
             DroneUseInitialStageCostCoef = config.Bind("Mechanical Spider Drone", "Use Initial Stage Cost Coefficient", false, "Use initial stage coefficient for price. Basically it means that the cost of spider drone won't scale with time on current stage, using the same price coefficient that was used when initial interactables were spawned. So if spider drone spawns the moment you enter a stage or 5 minutes into it price will be the same.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
+
+            EngiSkillEnabled = config.Bind("Engineer Special Skill", "Enable", true, "Enables Engineer Special skill to use Mechanical Spiders as turrets.");
+            EngiSkillForceUnlock = config.Bind("Engineer Special Skill", "Force Unlock", false, "Force unlocks Engineer Special skill.");
+
+            TurretBaseRegen = config.Bind("Engineer Special Skill", "Turret Base Regen", 1f, "Base health regeneration of Engi Mechanical Spider.");
+            TurretLevelRegen = config.Bind("Engineer Special Skill", "Turret Level Regen", 0.2f, "Per level health regeneration of Engi Mechanical Spider.");
+            TurretBaseMoveSpeed = config.Bind("Engineer Special Skill", "Turret Movement Speed", 10.15f, "Base movement speed of Engi Mechanical Spider.");
+            TurretDoubleShotDamage = config.Bind("Engineer Special Skill", "Turret Double Shot Damage", 2.5f, "Double Shot damage of Engi Mechanical Spider.");
+
+            ScepterTurretProjectileMultiplier = config.Bind("Engineer Special Skill", "Scepter Projecile Multiplier", 2, "Projectile count multiplier for Engi Mechanical Spiders with Scepter.");
+            ScepterTurretAttackSpeedMultiplier = config.Bind("Engineer Special Skill", "Scepter Attack Speed Multiplier", 2f, "Attack speed multiplier for Engi Mechanical Spiders with Scepter.");
         }
     }
 }

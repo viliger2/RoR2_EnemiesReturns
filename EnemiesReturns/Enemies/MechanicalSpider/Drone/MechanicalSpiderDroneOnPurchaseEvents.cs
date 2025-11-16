@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 {
     public class MechanicalSpiderDroneOnPurchaseEvents : MonoBehaviour
     {
@@ -86,12 +86,12 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
         public static void Hooks()
         {
-            RoR2.SceneDirector.onPostPopulateSceneServer += SceneDirector_onPostPopulateSceneServer;
+            SceneDirector.onPostPopulateSceneServer += SceneDirector_onPostPopulateSceneServer;
         }
 
         private static void SceneDirector_onPostPopulateSceneServer(SceneDirector obj)
         {
-            initialStageDifficultyCoefficient = RoR2.Run.instance.difficultyCoefficient;
+            initialStageDifficultyCoefficient = Run.instance.difficultyCoefficient;
         }
     }
 }

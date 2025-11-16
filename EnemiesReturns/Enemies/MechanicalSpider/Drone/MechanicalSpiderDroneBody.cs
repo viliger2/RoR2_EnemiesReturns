@@ -1,17 +1,31 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
+using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Drone;
 using RoR2;
+using RoR2.Skills;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 {
     public class MechanicalSpiderDroneBody : MechanicalSpiderBodyBase
     {
         public struct SkinDefs
         {
             public static SkinDef Minion;
+        }
+
+        public new struct Skills
+        {
+            public static SkillDef DoubleShot;
+        }
+
+        public new struct SkillFamilies
+        {
+            public static SkillFamily Primary;
         }
 
         public static GameObject BodyPrefab;
@@ -42,6 +56,15 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()
         {
             return new ISfxLocator.SfxLocatorParams();
+        }
+
+        protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
+        {
+            return new IGenericSkill.GenericSkillParams[]
+            {
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "DoubleShot", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(MechanicalSpiderBodyBase.SkillFamilies.Utility, "Dash", SkillSlot.Utility)
+            };
         }
 
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
@@ -98,8 +121,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             var bodyParams = base.CharacterBodyParams(aimOrigin, icon);
-            bodyParams.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;
-            bodyParams.levelRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneLevelRegen.Value;
+            bodyParams.baseRegen = Configuration.MechanicalSpider.DroneBaseRegen.Value;
+            bodyParams.levelRegen = Configuration.MechanicalSpider.DroneLevelRegen.Value;
             bodyParams.lavaCooldown = 1f;
             bodyParams.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
             return bodyParams;

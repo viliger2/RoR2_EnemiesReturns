@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 {
     public class MechanicalSpiderVictoryDanceController : MonoBehaviour
     {

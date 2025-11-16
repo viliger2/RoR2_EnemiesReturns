@@ -1,5 +1,5 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
-using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
 using System.Linq;

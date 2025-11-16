@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System.Runtime.CompilerServices;
 
 namespace EnemiesReturns.ModCompats
 {
@@ -18,6 +19,7 @@ namespace EnemiesReturns.ModCompats
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static void ModifyAeonianElites(EliteDef aenonianElite)
         {
             aenonianElite.damageBoostCoefficient = EliteReworks.Tweaks.ModifyEliteTiers.t2Damage;

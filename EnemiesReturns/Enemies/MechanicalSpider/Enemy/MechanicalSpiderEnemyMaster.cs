@@ -2,7 +2,7 @@
 using EnemiesReturns.Components.MasterComponents;
 using UnityEngine;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Enemies.MechanicalSpider.Enemy
 {
     public class MechanicalSpiderEnemyMaster : MasterBase
     {

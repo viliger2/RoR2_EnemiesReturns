@@ -1,11 +1,15 @@
 ﻿using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
+using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
+using EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Enemy;
 using RoR2;
+using RoR2.Skills;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-namespace EnemiesReturns.Enemies.MechanicalSpider
+namespace EnemiesReturns.Enemies.MechanicalSpider.Enemy
 {
     public class MechanicalSpiderEnemyBody : MechanicalSpiderBodyBase
     {
@@ -14,6 +18,16 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             public static SkinDef Default;
             public static SkinDef Grassy;
             public static SkinDef Snowy;
+        }
+
+        public new struct Skills
+        {
+            public static SkillDef DoubleShot;
+        }
+
+        public new struct SkillFamilies
+        {
+            public static SkillFamily Primary;
         }
 
         public static GameObject BodyPrefab;
@@ -44,6 +58,15 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             });
 
             return esmParams;
+        }
+
+        protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
+        {
+            return new IGenericSkill.GenericSkillParams[]
+            {
+                new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "DoubleShot", SkillSlot.Primary),
+                new IGenericSkill.GenericSkillParams(MechanicalSpiderBodyBase.SkillFamilies.Utility, "Dash", SkillSlot.Utility)
+            };
         }
 
         protected override ISfxLocator.SfxLocatorParams SfxLocatorParams()

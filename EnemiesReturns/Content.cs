@@ -48,6 +48,8 @@ namespace EnemiesReturns
             public static ItemDef HiddenAnointed;
 
             public static ItemDef PartyHat;
+
+            public static ItemDef MechanicalSpiderTurretScepterHelper;
         }
 
         public static class ItemRelationshipProviders

@@ -278,6 +278,15 @@
     "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME": "Snip",
     "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION": "Charges melee attack and instantly snips with both claws.",
     "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME": "Fire Bubbles",
-    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "Fires tracking bubbles."
+    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "Fires tracking bubbles.",
+
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_NAME": "Mechanical Spider",
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_DESCRIPTION": "Place a <style=cIsUtility>Mechanical Spider</style> that <style=cIsUtility>inherits all your items</style>. Fires a blaster for <style=cIsDamage>2x250% damage</style>. Can place up to 2.",
+
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_NAME": "Mechanical Spider Mk. 2",
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_DESCRIPTION": "Place a <style=cIsUtility>Mechanical Spider</style> that <style=cIsUtility>inherits all your items</style>. Fires a blaster for <style=cIsDamage>2x250% damage</style>. Can place up to 2.\n<color=#d299ff>SCEPTER: Now fires 4 times and twiсe as fast.</color>",
+
+    "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_NAME": "Engineer: Handyman",
+    "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "As Engineer, repair broken Mechanical Spider."
   }
 }

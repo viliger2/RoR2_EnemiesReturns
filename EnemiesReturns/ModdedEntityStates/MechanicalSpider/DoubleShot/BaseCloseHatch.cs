@@ -1,13 +1,19 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
     [RegisterEntityState]
-    public class OpenHatch : BaseState
+    public abstract class BaseCloseHatch : BaseState
     {
         public static float baseDuration = 0.7f;
+
+        public abstract string closeHatchSound { get; }
 
         private float duration;
 
@@ -15,18 +21,16 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayAnimation("Hatch", "OpenHatch", "Fire.playbackRate", duration);
-            GetModelAnimator().SetBool("hatchOpen", true);
-            Util.PlaySound("ER_Spider_Hatch_Open_Play", base.gameObject);
-            //PlayAnimation("Hatch", "OpenHatch");
+            GetModelAnimator().SetBool("hatchOpen", false);
+            Util.PlaySound(closeHatchSound, gameObject);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (isAuthority && fixedAge > duration)
+            if (fixedAge >= duration && isAuthority)
             {
-                outer.SetNextState(new ChargeFire());
+                outer.SetNextStateToMain();
             }
         }
 

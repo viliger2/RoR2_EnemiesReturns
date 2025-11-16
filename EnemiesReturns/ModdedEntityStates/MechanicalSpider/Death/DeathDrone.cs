@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.MechanicalSpider.Drone;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
@@ -125,7 +126,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     }
                     if (EnemiesReturns.Configuration.MechanicalSpider.DroneUseInitialStageCostCoef.Value)
                     {
-                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier), Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.initialStageDifficultyCoefficient);
+                        purchaseInteraction.Networkcost = Run.instance.GetDifficultyScaledCost((int)(purchaseInteraction.cost * eliteModifier), MechanicalSpiderDroneOnPurchaseEvents.initialStageDifficultyCoefficient);
                     }
                     else
                     {

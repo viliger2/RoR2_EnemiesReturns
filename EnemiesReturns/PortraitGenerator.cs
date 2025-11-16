@@ -7,7 +7,7 @@ using EnemiesReturns.Enemies.LynxTribe.Hunter;
 using EnemiesReturns.Enemies.LynxTribe.Scout;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Totem;
-using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.SandCrab;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;

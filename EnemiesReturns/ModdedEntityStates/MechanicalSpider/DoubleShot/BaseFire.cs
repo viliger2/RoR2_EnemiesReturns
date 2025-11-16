@@ -6,34 +6,33 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
-    [RegisterEntityState]
-    internal class Fire : BaseState
+
+    public abstract class BaseFire : BaseState
     {
-        public static int numberOfShots => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotShots.Value;
+        public abstract int baseNumberOfShots { get; }
+
+        public abstract string soundString { get; }
+
+        public abstract float damageCoefficient { get; }
+
+        public abstract float baseDelay { get; }
+
+        public abstract float baseDuration { get; }
 
         public static GameObject projectilePrefab;
 
-        public static string soundString = "ER_Spider_Fire_Play";
+        public static float minSpread => Configuration.MechanicalSpider.DoubleShotMinSpread.Value;
 
-        public static string soundStringMinion = "ER_Spider_Fire_Drone_Play";
+        public static float maxSpread => Configuration.MechanicalSpider.DoubleShotMaxSpread.Value;
 
-        public static float damageCoefficient => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotDamage.Value;
+        public static float projectileSpeed => Configuration.MechanicalSpider.DoubleShotProjectileSpeed.Value;
 
         public static float force = 0f;
 
-        public static float baseDuration = 1f;
-
-        public static float baseDelay => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotDelayBetween.Value;
-
-        public static float minSpread => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotMinSpread.Value;
-
-        public static float maxSpread => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotMaxSpread.Value;
 
         public static float projectilePitchBonus = -1f;
 
         public static float distanceToTarget = 65f; // distance check to current target so we can continue firing instead of closing the hatch, 5m more than AI state check
-
-        public static float projectileSpeed => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotProjectileSpeed.Value;
 
         private float delay;
 
@@ -43,18 +42,18 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 
         private float delayStopwatch;
 
-        private int shotsFired;
+        private int numberOfShots;
 
-        private bool isMinion = false;
+        private int shotsFired;
 
         public override void OnEnter()
         {
             base.OnEnter();
             delay = baseDelay / attackSpeedStat;
             duration = baseDuration / attackSpeedStat;
+            numberOfShots = baseNumberOfShots;
             totalDuration = duration + delay * (numberOfShots - 1);
             PlayAnimation("Gesture, Additive", "Fire", "Fire.playbackRate", duration);
-            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
             FireProjectile();
             shotsFired = 1;
         }
@@ -77,17 +76,21 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                 {
                     if (ai.currentEnemy.characterBody)
                     {
-                        if (Vector3.Distance(ai.currentEnemy.characterBody.transform.position, base.transform.position) <= distanceToTarget)
+                        if (Vector3.Distance(ai.currentEnemy.characterBody.transform.position, transform.position) <= distanceToTarget)
                         {
-                            outer.SetNextState(new ChargeFire());
+                            outer.SetNextState(GetNextFiringState());
                             return;
                         }
                     }
                 }
 
-                outer.SetNextState(new CloseHatch());
+                outer.SetNextState(GetNextCloseHatch());
             }
         }
+
+        public abstract EntityState GetNextFiringState();
+
+        public abstract EntityState GetNextCloseHatch();
 
         private void FireProjectile()
         {
@@ -103,16 +106,16 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                     projectilePrefab,
                     aimRay.origin,
                     Util.QuaternionSafeLookRotation(aimRay.direction),
-                    base.gameObject,
+                    gameObject,
                     damageStat * damageCoefficient,
                     force,
-                    Util.CheckRoll(critStat, base.characterBody.master),
+                    Util.CheckRoll(critStat, characterBody.master),
                     DamageColorIndex.Default,
                     null,
                     projectileSpeed,
                     DamageSource.Primary);
             }
-            Util.PlayAttackSpeedSound(isMinion ? soundStringMinion : soundString, gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound(soundString, gameObject, attackSpeedStat);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

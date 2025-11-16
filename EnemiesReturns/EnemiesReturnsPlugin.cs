@@ -4,7 +4,7 @@ using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Ifrit;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
-using EnemiesReturns.Enemies.MechanicalSpider;
+using EnemiesReturns.Enemies.MechanicalSpider.Drone;
 using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
@@ -21,7 +21,6 @@ using UnityEngine.Networking;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
-    // TODO: add second attacks to lynx tribesmen, rob is very upset
     // TODO: flowers visuals when aeonian elite dies, careful with performance
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
@@ -112,7 +111,7 @@ namespace EnemiesReturns
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
             MechanicalSpiderVictoryDanceController.Hooks();
-            Enemies.MechanicalSpider.MechanicalSpiderDroneOnPurchaseEvents.Hooks();
+            MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             Behaviors.SubjectParamsChatMessage.Hooks();

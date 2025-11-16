@@ -1,28 +1,25 @@
-﻿using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
 {
-    [RegisterEntityState]
-    public class ChargeFire : BaseState
+    public abstract class BaseChargeFire : BaseState
     {
         public static GameObject effectPrefab;
 
-        public static float baseDuration => EnemiesReturns.Configuration.MechanicalSpider.DoubleShotChargeDuration.Value;
+        public static float baseDuration => Configuration.MechanicalSpider.DoubleShotChargeDuration.Value;
 
-        public static string soundString = "ER_Spider_Fire_Charge_Play";
-
-        public static string soundStringMinion = "ER_Spider_Fire_Charge_Drone_Play";
+        public abstract string soundString { get; }
 
         private float duration;
 
         private GameObject chargeEffect;
 
         protected EffectManagerHelper _efh_Charge;
-
-        private bool isMinion = false;
 
         public override void OnEnter()
         {
@@ -37,8 +34,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             }
             SpawnEffect(FindModelChild("GunNozzle"));
             PlayAnimation("Gesture, Additive", "ChargeFire", "Fire.playbackRate", duration);
-            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
-            Util.PlayAttackSpeedSound(isMinion ? soundStringMinion : soundString, base.gameObject, attackSpeedStat);
+            Util.PlayAttackSpeedSound(soundString, gameObject, attackSpeedStat);
         }
 
         public override void FixedUpdate()
@@ -46,9 +42,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             base.FixedUpdate();
             if (isAuthority && fixedAge > duration)
             {
-                outer.SetNextState(new Fire());
+                outer.SetNextState(GetNextState());
             }
         }
+
+        public abstract EntityState GetNextState();
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
@@ -86,7 +84,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
             {
                 if (!EffectManager.UsePools)
                 {
-                    EntityState.Destroy(chargeEffect);
+                    Destroy(chargeEffect);
                 }
                 else if (_efh_Charge != null && _efh_Charge.OwningPool != null)
                 {
@@ -99,11 +97,12 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot
                 {
                     if (_efh_Charge != null)
                     {
-                        Debug.LogFormat("ChargeFire has no owning pool {0} {1}", base.gameObject.name, base.gameObject.GetInstanceID());
+                        Debug.LogFormat("ChargeFire has no owning pool {0} {1}", gameObject.name, gameObject.GetInstanceID());
                     }
-                    EntityState.Destroy(chargeEffect);
+                    Destroy(chargeEffect);
                 }
             }
         }
     }
+
 }
