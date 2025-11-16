@@ -46,6 +46,8 @@ namespace EnemiesReturns.Components.BodyComponents
             public float levelCrit = 0f;
             public float levelArmor = 0f;
 
+            public bool doNotReassignCollision = false;
+
             public float spreadBloomDecayTime = 0.45f;
             public float lavaCooldown = 0.2f;
             public GameObject defaultCrosshairPrefab;
@@ -125,6 +127,8 @@ namespace EnemiesReturns.Components.BodyComponents
                 body.levelAttackSpeed = bodyParams.levelAttackSpeed;
                 body.levelCrit = bodyParams.levelCrit;
                 body.levelArmor = bodyParams.levelArmor;
+
+                body.doNotReassignToTeamBasedCollisionLayer = bodyParams.doNotReassignCollision;
 
                 body.lavaCooldown = bodyParams.lavaCooldown;
                 body.spreadBloomDecayTime = bodyParams.spreadBloomDecayTime;
