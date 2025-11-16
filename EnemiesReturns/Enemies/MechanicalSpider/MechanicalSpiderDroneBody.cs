@@ -101,6 +101,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             bodyParams.baseRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneBaseRegen.Value;
             bodyParams.levelRegen = EnemiesReturns.Configuration.MechanicalSpider.DroneLevelRegen.Value;
             bodyParams.lavaCooldown = 1f;
+            bodyParams.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
             return bodyParams;
         }
 
