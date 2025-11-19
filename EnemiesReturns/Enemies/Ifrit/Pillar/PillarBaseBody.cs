@@ -120,6 +120,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
         {
             var baseParams =  base.ModelLocatorParams();
             baseParams.noCorpse = true;
+            baseParams.dontDetachFromParent = true;
             return baseParams;
         }
 
