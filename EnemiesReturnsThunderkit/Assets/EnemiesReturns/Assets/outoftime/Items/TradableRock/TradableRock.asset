@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: TradableRock
   m_EditorClassIdentifier: 
-  deprecatedTier: 10
+  deprecatedTier: 11
   _itemTierDef: {fileID: 11400000, guid: d3b61bc0e66369448b60da5ca48111c9, type: 2}
   nameToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_NAME
   pickupToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_PICKUP
@@ -20,6 +20,10 @@ MonoBehaviour:
   loreToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE
   unlockableDef: {fileID: 0}
   pickupModelPrefab: {fileID: 9154845379044182652, guid: 4a63aefefeb07a341907042b497794f5, type: 3}
+  pickupModelReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   pickupIconSprite: {fileID: 21300000, guid: 5bc4fdf1a2e206a4998c7790ef883ff5, type: 3}
   isConsumed: 0
   hidden: 0

@@ -162,7 +162,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
                         Inventory component = spawnResult.spawnedInstance.GetComponent<Inventory>();
                         if ((bool)component)
                         {
-                            component.CopyEquipmentFrom(base.characterBody.inventory);
+                            component.CopyEquipmentFrom(base.characterBody.inventory, false);
                         }
                     }
                 });

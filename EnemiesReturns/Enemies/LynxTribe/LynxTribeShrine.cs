@@ -93,7 +93,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 int spawnedCount = 0;
                 while (spawnedCount < participatingPlayerCount)
                 {
-                    PickupDropletController.CreatePickupDroplet(pickupIndex, pickupDisplay.transform.position, vector);
+                    PickupDropletController.CreatePickupDroplet(new UniquePickup(pickupIndex), pickupDisplay.transform.position, vector, false);
                     spawnedCount++;
                     vector = quaternion * vector;
                 }
@@ -102,7 +102,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private void DisableItemDisplay()
         {
-            pickupDisplay.SetPickupIndex(PickupIndex.none);
+            pickupDisplay.SetPickup(new UniquePickup(PickupIndex.none));
             pickupDisplay.enabled = false;
             pickupIndex = PickupIndex.none;
         }
@@ -122,7 +122,8 @@ namespace EnemiesReturns.Enemies.LynxTribe
             if (NetworkServer.active)
             {
                 var rng = new Xoroshiro128Plus(Run.instance.treasureRng.nextUlong);
-                var pickupIndex = dropTable.GenerateDrop(rng);
+                var uniquePickup = dropTable.GeneratePickup(rng);
+                var pickupIndex = uniquePickup.pickupIndex;
                 SetPickupIndex(pickupIndex.value);
                 switch (pickupIndex.pickupDef.itemTier)
                 {
@@ -181,7 +182,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             }
             if (pickupDisplay)
             {
-                pickupDisplay.SetPickupIndex(pickupIndex);
+                pickupDisplay.SetPickup(new UniquePickup(pickupIndex));
             }
         }
 

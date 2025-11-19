@@ -324,7 +324,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return material;
         }
 
-        public GameObject CreateShamanTrackingProjectile(GameObject prefab, GameObject ghost, GameObject impact, LoopSoundDef loopSound)
+        public GameObject CreateShamanTrackingProjectile(GameObject prefab, GameObject ghost, GameObject impact, LoopSoundDef loopSound, NetworkSoundEventDef projectileImpactSound)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
@@ -349,7 +349,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             projectileSingleTarget.destroyWhenNotAlive = true;
             projectileSingleTarget.destroyOnWorld = true;
             projectileSingleTarget.impactEffect = impact;
-            projectileSingleTarget.hitSoundString = "ER_Shaman_Projectile_Impact_Play";
+            projectileSingleTarget.hitSound = projectileImpactSound;
 
             prefab.AddComponent<ProjectileDamage>();
             prefab.AddComponent<ProjectileTargetComponent>();

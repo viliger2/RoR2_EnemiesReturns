@@ -41,7 +41,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public GameObject SetupSpearProjectile(GameObject prefab)
         {
-            prefab.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Lightning.LightningStrikeImpact_prefab).WaitForCompletion();
+            prefab.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Lightning.LightningStrikeImpact_prefab).WaitForCompletion();
 
             return prefab;
         }

@@ -31,7 +31,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             var destroyOnEnd = prefab.AddComponent<DestroyOnParticleEnd>();
             destroyOnEnd.trackedParticleSystem = foamTransform.GetComponent<ParticleSystem>();
 
-            foamTransform.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
+            foamTransform.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
 
             prefab.transform.Find("Effects/ImpactRing").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matSandCrabBubbleImpactRing", CreateBubbleImpactRingMaterial);
 
@@ -47,7 +47,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             shakeEmitter.radius = 20f;
             shakeEmitter.amplitudeTimeDecay = true;
 
-            prefab.transform.Find("Effects/Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matTracerBrightTransparent_mat).WaitForCompletion();
+            prefab.transform.Find("Effects/Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matTracerBrightTransparent_mat).WaitForCompletion();
 
             return prefab;
         }
@@ -133,7 +133,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             var meshRenderer = ghostPrefab.transform.Find("Models/Sphere").GetComponent<MeshRenderer>();
             meshRenderer.material = ContentProvider.GetOrCreateMaterial("matSandCrabBubble", CreateBubbleMaterial);
 
-            ghostPrefab.transform.Find("SplatEffect").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
+            ghostPrefab.transform.Find("SplatEffect").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matOpaqueWaterSplash_mat).WaitForCompletion();
 
             return ghostPrefab;
         }
@@ -276,11 +276,11 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public Material CreateBubbleMaterial()
         {
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BarrierOnKill.matBarrier_mat).WaitForCompletion());
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BarrierOnKill.matBarrier_mat).WaitForCompletion());
             material.name = "matSandCrabBubble";
             material.SetColor("_TintColor", new Color(107f/255f, 139f/255f, 1f, 1f));
-            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.texCloudDifferenceBW1_png).WaitForCompletion());
-            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texCloudDifferenceBW1_png).WaitForCompletion());
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
             material.SetFloat("_InvFade", 2f);
             material.SetFloat("_Boost", 1f);
             material.SetFloat("_AlphaBoost", 1.540995f);
@@ -292,11 +292,11 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public Material CreateBubbleImpactRingMaterial()
         {
-            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matOmniRing2_mat).WaitForCompletion());
+            var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matOmniRing2_mat).WaitForCompletion());
             material.name = "matSandCrabBubbleImpactRing";
             material.SetColor("_TintColor", new Color(187f / 255f, 215f / 255f, 1f, 1f));
-            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.texOmniShockwave1Mask_png).WaitForCompletion());
-            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.texOmniShockwave1Mask_png).WaitForCompletion());
+            material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
 
             return material;
         }

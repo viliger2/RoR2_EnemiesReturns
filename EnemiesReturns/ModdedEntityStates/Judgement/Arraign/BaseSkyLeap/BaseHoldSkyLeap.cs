@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             base.OnEnter();
             if (NetworkServer.active)
             {
-                Util.CleanseBody(base.characterBody, removeDebuffs: true, removeBuffs: false, removeCooldownBuffs: false, removeDots: true, removeStun: false, removeNearbyProjectiles: false);
+                CleanseSystem.CleanseBodyServer(base.characterBody, true, false, false, true, false, false);
             }
             duration = baseDuration / attackSpeedStat;
             targetMarked = baseTargetMarked / attackSpeedStat;

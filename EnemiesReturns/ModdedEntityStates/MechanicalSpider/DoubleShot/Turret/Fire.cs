@@ -22,7 +22,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret
         private int GetNumberOfShots()
         {
             int baseNumber = Configuration.MechanicalSpider.DoubleShotShots.Value;
-            if (characterBody.inventory.GetItemCount(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
+            if (characterBody.inventory.GetItemCountPermanent(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
             {
                 baseNumber *= Configuration.MechanicalSpider.ScepterTurretProjectileMultiplier.Value;
             }
@@ -33,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret
         private float GetBaseDelay()
         {
             float baseDelay = Configuration.MechanicalSpider.DoubleShotDelayBetween.Value;
-            if (characterBody.inventory.GetItemCount(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
+            if (characterBody.inventory.GetItemCountPermanent(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
             {
                 baseDelay /= Configuration.MechanicalSpider.ScepterTurretAttackSpeedMultiplier.Value;
             }
@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret
         private float GetBaseDuration()
         {
             float baseDuration = 1f;
-            if (characterBody.inventory.GetItemCount(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
+            if (characterBody.inventory.GetItemCountPermanent(Content.Items.MechanicalSpiderTurretScepterHelper) > 0)
             {
                 baseDuration /= Configuration.MechanicalSpider.ScepterTurretAttackSpeedMultiplier.Value;
             }

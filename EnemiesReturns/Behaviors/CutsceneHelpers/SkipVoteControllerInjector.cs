@@ -15,7 +15,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
             {
                 return;
             }
-            var skipVoteOverlay = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_UI.SkipVoteOverlay_prefab).WaitForCompletion();
+            var skipVoteOverlay = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_UI.SkipVoteOverlay_prefab).WaitForCompletion();
             skipVoteOverlay.transform.SetParent(base.transform, false);
             var nakedButton = skipVoteOverlay.transform.Find("CanvasGroup/NakedButton");
             if (nakedButton)

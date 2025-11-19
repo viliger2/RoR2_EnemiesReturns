@@ -63,14 +63,15 @@ namespace EnemiesReturns.Behaviors
             }
 
             var vector = Vector3.up * 20f + transform.forward * 2f;
-            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentIndex), body.transform.position, vector);
+            PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipmentIndex)), body.transform.position, vector, false);
 
             for (uint i = 0; i < body.inventory.GetEquipmentSlotCount(); i++)
             {
-                var equipmentSlot = body.inventory.GetEquipment(i);
+                var equipmentSlot = body.inventory.GetEquipment(i, body.inventory.FindBestEquipmentSetIndex());
                 if (equipmentSlot.equipmentIndex == equipmentIndex)
                 {
-                    body.inventory.SetEquipment(new EquipmentState(EquipmentIndex.None, Run.FixedTimeStamp.now, 0), i);
+                    var equipmentState = new EquipmentState(EquipmentIndex.None, Run.FixedTimeStamp.now, 0);
+                    body.inventory.SetEquipment(equipmentState, i, body.inventory.FindBestEquipmentSetIndex());
                     break;
                 }
             }

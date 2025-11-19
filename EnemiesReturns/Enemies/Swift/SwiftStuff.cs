@@ -12,8 +12,8 @@ namespace EnemiesReturns.Enemies.Swift
     {
         public static Material ModifySwiftMaterial(Material swiftMaterial)
         {
-            swiftMaterial.SetTexture("_FresnelRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampStealthRevealed_png).WaitForCompletion());
-            swiftMaterial.SetTexture("_PrintRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_ColorRamps.texRampHuntressSoft2_png).WaitForCompletion());
+            swiftMaterial.SetTexture("_FresnelRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampStealthRevealed_png).WaitForCompletion());
+            swiftMaterial.SetTexture("_PrintRamp", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampHuntressSoft2_png).WaitForCompletion());
 
             return swiftMaterial;
         }
@@ -29,15 +29,15 @@ namespace EnemiesReturns.Enemies.Swift
 
             effectPrefab.AddComponent<DestroyOnParticleEnd>();
 
-            effectPrefab.transform.Find("Particles/Glow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matArcaneCircleWisp_mat).WaitForCompletion();
-            effectPrefab.transform.Find("Particles/Sparks").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.matTracer_mat).WaitForCompletion();
+            effectPrefab.transform.Find("Particles/Glow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matArcaneCircleWisp_mat).WaitForCompletion();
+            effectPrefab.transform.Find("Particles/Sparks").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matTracer_mat).WaitForCompletion();
 
             return effectPrefab;
         }
 
         public GameObject CreateDiveGroundImpactEffect()
         {
-            var bellPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Bell.BellBall_prefab).WaitForCompletion();
+            var bellPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Bell.BellBall_prefab).WaitForCompletion();
 
             var stickEffecttransform = bellPrefab.transform.Find("StickEffect");
             var effectPrefab = stickEffecttransform.gameObject.InstantiateClone("SwiftDiveImpactEffect", false);

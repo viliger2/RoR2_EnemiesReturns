@@ -97,11 +97,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                 var inventory = result.GetComponent<Inventory>();
                 if (inventory && characterBody.inventory)
                 {
-                    inventory.CopyEquipmentFrom(characterBody.inventory);
+                    inventory.CopyEquipmentFrom(characterBody.inventory, false);
                     inventory.CopyItemsFrom(characterBody.inventory);
                     DeleteMinionItems(inventory);
                 }
-                var eliteDef = inventory.GetEquipment(0).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
+                var eliteDef = inventory.GetEquipment(0, inventory.FindBestEquipmentSetIndex()).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
                 {
@@ -141,21 +141,21 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             // this entire thing so we don't remove elite bonus stats from the body
             int bonusHpToRemove = EnemiesReturns.Configuration.MechanicalSpider.DroneBonusHP.Value;
             int bonusDamageToRemove = EnemiesReturns.Configuration.MechanicalSpider.DroneBonusDamage.Value;
-            var equipment = inventory.GetEquipment(0).equipmentDef;
+            var equipment = inventory.GetEquipment(0, inventory.FindBestEquipmentSetIndex()).equipmentDef;
             if (equipment && equipment.passiveBuffDef && equipment.passiveBuffDef.eliteDef)
             {
-                bonusHpToRemove = Mathf.Min(inventory.GetItemCount(RoR2Content.Items.BoostHp) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.healthBoostCoefficient), 0);
-                bonusDamageToRemove = Mathf.Min(inventory.GetItemCount(RoR2Content.Items.BoostDamage) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.damageBoostCoefficient), 0);
+                bonusHpToRemove = Mathf.Min(inventory.GetItemCountPermanent(RoR2Content.Items.BoostHp) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.healthBoostCoefficient), 0);
+                bonusDamageToRemove = Mathf.Min(inventory.GetItemCountPermanent(RoR2Content.Items.BoostDamage) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.damageBoostCoefficient), 0);
             }
 
-            inventory.RemoveItem(RoR2Content.Items.MinionLeash, inventory.GetItemCount(RoR2Content.Items.MinionLeash));
-            inventory.RemoveItem(RoR2Content.Items.BoostHp, bonusHpToRemove);
-            inventory.RemoveItem(RoR2Content.Items.BoostDamage, bonusDamageToRemove);
+            inventory.RemoveItemPermanent(RoR2Content.Items.MinionLeash, inventory.GetItemCountPermanent(RoR2Content.Items.MinionLeash));
+            inventory.RemoveItemPermanent(RoR2Content.Items.BoostHp, bonusHpToRemove);
+            inventory.RemoveItemPermanent(RoR2Content.Items.BoostDamage, bonusDamageToRemove);
             if (ModCompats.RiskyModCompat.enabled)
             {
-                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyScaling, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyScaling));
-                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyMarker));
-                inventory.RemoveItem(ModCompats.RiskyModCompat.RiskyModAllyRegen, inventory.GetItemCount(ModCompats.RiskyModCompat.RiskyModAllyRegen));
+                inventory.RemoveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling, inventory.GetItemCountPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling));
+                inventory.RemoveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyMarker, inventory.GetItemCountPermanent(ModCompats.RiskyModCompat.RiskyModAllyMarker));
+                inventory.RemoveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyRegen, inventory.GetItemCountPermanent(ModCompats.RiskyModCompat.RiskyModAllyRegen));
             }
         }
 

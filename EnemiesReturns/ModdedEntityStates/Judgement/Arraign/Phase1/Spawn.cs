@@ -92,7 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 if (player.inventory)
                 {
                     playersCanAttack = playersCanAttack
-                        || player.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0
+                        || player.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0
                         || player.inventory.HasEquipment(Content.Equipment.MithrixHammer)
                         || player.inventory.HasEquipment(Content.Equipment.VoidlingWeapon)
                         || player.inventory.HasEquipment(Content.Equipment.EliteAeonian);

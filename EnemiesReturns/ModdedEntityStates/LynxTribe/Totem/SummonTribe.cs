@@ -163,12 +163,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     var inventory = result.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {
-                        inventory.CopyEquipmentFrom(base.characterBody.inventory);
-                        if (characterBody.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
+                        inventory.CopyEquipmentFrom(base.characterBody.inventory, false);
+                        if (characterBody.inventory.GetItemCountPermanent(RoR2Content.Items.Ghost) > 0)
                         {
-                            inventory.GiveItem(RoR2Content.Items.Ghost);
-                            inventory.GiveItem(RoR2Content.Items.HealthDecay, 30);
-                            inventory.GiveItem(RoR2Content.Items.BoostDamage, 150);
+                            inventory.GiveItemPermanent(RoR2Content.Items.Ghost);
+                            inventory.GiveItemPermanent(RoR2Content.Items.HealthDecay, 30);
+                            inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, 150);
                         }
                     }
 

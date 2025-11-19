@@ -162,7 +162,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                     CharacterMaster master = teamComponent.body.master;
                     if ((bool)master)
                     {
-                        int itemCount = master.inventory.GetItemCount(RoR2Content.Items.WardOnLevel);
+                        int itemCount = master.inventory.GetItemCountPermanent(RoR2Content.Items.WardOnLevel);
                         if (itemCount > 0)
                         {
                             GameObject obj = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard"), body.transform.position, Quaternion.identity);

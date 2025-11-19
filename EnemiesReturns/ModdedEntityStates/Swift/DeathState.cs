@@ -21,7 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             wasGrounded = base.characterMotor.isGrounded;
             if (!impactEffect)
             {
-                var handler = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleGuard.BeetleGuardDeathImpact_prefab);
+                var handler = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BeetleGuard.BeetleGuardDeathImpact_prefab);
                 if (handler.IsValid())
                 {
                     handler.Completed += (operationResult) =>

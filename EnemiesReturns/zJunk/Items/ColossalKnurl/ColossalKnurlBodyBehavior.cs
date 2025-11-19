@@ -37,11 +37,11 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
                 var master = spawnedObject.GetComponent<CharacterMaster>();
                 if (master)
                 {
-                    master.inventory.GiveItem(RoR2Content.Items.BoostDamage,
+                    master.inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage,
                         30 + 30 * (stack - 1));
-                    master.inventory.GiveItem(RoR2Content.Items.BoostHp,
+                    master.inventory.GiveItemPermanent(RoR2Content.Items.BoostHp,
                         10 + 10 * (stack - 1));
-                    master.inventory.GiveItem(RoR2Content.Items.Hoof,
+                    master.inventory.GiveItemPermanent(RoR2Content.Items.Hoof,
                         5 + 5 * (stack - 1)); // maybe too much
                     var deployable = master.GetComponent<Deployable>();
                     if (deployable)

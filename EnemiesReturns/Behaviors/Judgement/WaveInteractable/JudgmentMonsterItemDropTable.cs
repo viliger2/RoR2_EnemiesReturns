@@ -31,7 +31,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         public float voidBossWeight;
 
-        private readonly WeightedSelection<PickupIndex> selector = new WeightedSelection<PickupIndex>();
+        private readonly WeightedSelection<UniquePickup> selector = new WeightedSelection<UniquePickup>();
 
         public override void OnEnable()
         {
@@ -58,7 +58,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             {
                 if (PassesFilter(sourceDrop))
                 {
-                    selector.AddChoice(sourceDrop, chance);
+                    selector.AddChoice(new UniquePickup { pickupIndex = sourceDrop }, chance);
                 }
             }
         }
@@ -77,10 +77,10 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             Add(run.availableVoidBossDropList, voidBossWeight);
         }
 
-        public override PickupIndex GenerateDropPreReplacement(Xoroshiro128Plus rng)
+        public override UniquePickup GeneratePickupPreReplacement(Xoroshiro128Plus rng)
         {
             GenerateWeightedSelection(Run.instance);
-            return GenerateDropFromWeightedSelection(rng, selector);
+            return PickupDropTable.GeneratePickupFromWeightedSelection(rng, selector);
         }
 
         public override int GetPickupCount()
@@ -88,9 +88,9 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             return selector.Count;
         }
 
-        public override PickupIndex[] GenerateUniqueDropsPreReplacement(int maxDrops, Xoroshiro128Plus rng)
+        public override void GenerateDistinctPickupsPreReplacement(List<UniquePickup> dest, int desiredCount, Xoroshiro128Plus rng)
         {
-            return GenerateUniqueDropsFromWeightedSelection(maxDrops, rng, selector);
+            PickupDropTable.GenerateDistinctFromWeightedSelection(dest, desiredCount, rng, selector);
         }
 
         private bool PassesFilter(PickupIndex pickupIndex)
@@ -99,7 +99,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             if (pickupDef.itemIndex != ItemIndex.None)
             {
                 ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
-                if (JudgementMissionController.instance && JudgementMissionController.instance.inventory.GetItemCount(itemDef.itemIndex) > 0)
+                if (JudgementMissionController.instance && JudgementMissionController.instance.inventory.GetItemCountPermanent(itemDef.itemIndex) > 0)
                 {
                     return false;
                 }

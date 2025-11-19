@@ -26,7 +26,7 @@ namespace EnemiesReturns.Items.LunarFlower
             hasVoidDied = false;
             //if (!endEffect)
             //{
-            //    var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab);
+            //    var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab);
             //    if (handle.IsValid())
             //    {
             //        handle.Completed += (obj) =>
@@ -38,7 +38,7 @@ namespace EnemiesReturns.Items.LunarFlower
             //}
             if (!glassEffect)
             {
-                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common_VFX.BrittleDeath_prefab);
+                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.BrittleDeath_prefab);
                 if (handle.IsValid())
                 {
                     handle.Completed += (obj) =>
@@ -71,7 +71,7 @@ namespace EnemiesReturns.Items.LunarFlower
                 {
                     if (body && body.inventory)
                     {
-                        body.AddItemBehavior<LunarFlowerItemBehaviour>(body.inventory.GetItemCount(Content.Items.LunarFlower));
+                        body.AddItemBehavior<LunarFlowerItemBehaviour>(body.inventory.GetItemCountPermanent(Content.Items.LunarFlower));
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace EnemiesReturns.Items.LunarFlower
             master.Respawn(master.deathFootPosition, Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f), true);
             var body = master.GetBody();
             body.AddTimedBuff(RoR2Content.Buffs.Immune, 3f);
-            master.inventory.GiveItem(Content.Items.VoidFlower);
+            master.inventory.GiveItemPermanent(Content.Items.VoidFlower);
             CharacterMasterNotificationQueue.SendTransformNotification(master, Content.Items.LunarFlower.itemIndex, Content.Items.VoidFlower.itemIndex, CharacterMasterNotificationQueue.TransformationType.ContagiousVoid);
             if (master.bodyInstanceObject)
             {
@@ -133,7 +133,7 @@ namespace EnemiesReturns.Items.LunarFlower
                     }
                 }
             }
-            master.inventory.RemoveItem(Content.Items.LunarFlower, master.inventory.GetItemCount(Content.Items.LunarFlower));
+            master.inventory.RemoveItemPermanent(Content.Items.LunarFlower, master.inventory.GetItemCountPermanent(Content.Items.LunarFlower));
         }
 
         private static void SpawnVoidFiendEffect(CharacterMaster master)

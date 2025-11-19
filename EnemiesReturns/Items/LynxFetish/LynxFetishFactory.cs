@@ -30,32 +30,20 @@ namespace EnemiesReturns.Items.LynxFetish
             IL.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
         }
 
-        public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
-        {
-            if (Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
-            {
-                if (NetworkServer.active)
-                {
-                    // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
-                    if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
-                    {
-                        body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCount(Content.Items.LynxFetish));
-                    }
-                }
-            }
-        }
-
-        private static void HealthComponent_TakeDamageProcess(MonoMod.Cil.ILContext il)
+        private static void HealthComponent_TakeDamageProcess(ILContext il)
         {
             ILCursor c = new ILCursor(il);
-            if (c.TryGotoNext(x => x.MatchStloc(7)))
+            if (c.TryGotoNext(MoveType.After, 
+                x => x.MatchLdfld<DamageInfo>(nameof(DamageInfo.damage)),
+                x => x.MatchStloc(out _)))
             {
-                c.Emit(OpCodes.Ldarg_0);
-                c.Emit(OpCodes.Ldarg_1);
-                c.EmitDelegate<Func<float, HealthComponent, DamageInfo, float>>((origDamage, victimHealth, damageInfo) =>
+                c.Emit(OpCodes.Ldloc, 9);
+                c.Emit(OpCodes.Ldarg_1); // damageInfo
+                c.Emit(OpCodes.Ldarg_0); // self (healthComponent)
+                c.EmitDelegate<Func<float, DamageInfo, HealthComponent, float>>((origDamage, damageInfo, self) =>
                 {
                     float newDamage = origDamage;
-                    CharacterBody victimBody = victimHealth.body;
+                    CharacterBody victimBody = self.body;
                     if (victimBody && damageInfo.attacker)
                     {
                         CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
@@ -69,10 +57,26 @@ namespace EnemiesReturns.Items.LynxFetish
                     }
                     return newDamage;
                 });
+                c.Emit(OpCodes.Stloc, 9);
             }
             else
             {
                 Log.Warning("IL Hook Failed - RoR2.HealthComponent.TakeDamageProcess: Lynx Fetish Special damage buff won't be working.");
+            }
+        }
+
+        public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
+        {
+            if (Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            {
+                if (NetworkServer.active)
+                {
+                    // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
+                    if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
+                    {
+                        body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCountPermanent(Content.Items.LynxFetish));
+                    }
+                }
             }
         }
 
@@ -157,7 +161,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private static int GetFriendlyLynxTribeCount(CharacterMaster master, int countMultiplier)
         {
-            return Mathf.Min(master.inventory.GetItemCount(Content.Items.LynxFetish), 4);
+            return Mathf.Min(master.inventory.GetItemCountPermanent(Content.Items.LynxFetish), 4);
         }
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)

@@ -135,7 +135,7 @@ namespace EnemiesReturns
                     Card = dcColossusGrassy,
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
-                Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.dccsGolemFamilyNature_asset).WaitForCompletion());
+                Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.dccsGolemFamilyNature_asset).WaitForCompletion());
       
                 Utils.AddMonsterToStages(Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
 

@@ -240,7 +240,7 @@ namespace EnemiesReturns.Enemies.Colossus
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_COLOSSUS_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 subtitleNameToken = "ENEMIES_RETURNS_COLOSSUS_BODY_SUBTITLE",
-                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.IgnoreKnockback,
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.IgnoreKnockup,
                 mainRootSpeed = 7.5f,
 
                 baseMaxHealth = EnemiesReturns.Configuration.Colossus.BaseMaxHealth.Value,
@@ -927,7 +927,7 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

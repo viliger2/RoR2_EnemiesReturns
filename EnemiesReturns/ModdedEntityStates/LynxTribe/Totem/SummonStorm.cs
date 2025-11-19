@@ -265,7 +265,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {
-                        inventory.CopyEquipmentFrom(characterBody.inventory);
+                        inventory.CopyEquipmentFrom(characterBody.inventory, false);
                         inventory.CopyItemsFrom(characterBody.inventory);
                     }
                     var baseAI = spawnResult.spawnedInstance.GetComponent<BaseAI>();

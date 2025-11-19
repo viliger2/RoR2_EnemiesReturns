@@ -29,7 +29,7 @@ namespace EnemiesReturns.Behaviors.Judgement.PileOfDirt
             }
 
             var vector = Vector3.up * 20f + transform.forward * 2f;
-            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(itemToDrop.itemIndex), spawnPoint.position, vector);
+            PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(itemToDrop.itemIndex)), spawnPoint.position, vector, false);
             NetworkServer.Destroy(this.gameObject);
         }
 

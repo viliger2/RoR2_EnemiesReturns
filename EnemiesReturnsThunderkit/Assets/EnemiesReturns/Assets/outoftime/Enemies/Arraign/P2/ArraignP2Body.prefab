@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 1783796254, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showAsSphere: 0
 --- !u!1001 &6406446765822474127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +104,14 @@ PrefabInstance:
       propertyPath: idleStateMachine.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 425204979159018185, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: _animatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: 172cdefaca3eb574091cbdcaee4c0c56, type: 2}
+    - target: {fileID: 425204979159018185, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: skins.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4805fb357ef25dd4591e4abfd031b09e, type: 2}
     - target: {fileID: 514137157348643012, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_Enabled
       value: 1

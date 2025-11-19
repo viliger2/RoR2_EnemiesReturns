@@ -98,7 +98,9 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             var itemDef = ScriptableObject.CreateInstance<ItemDef>();
             itemDef.canRemove = false;
             itemDef.name = "MechanicalSpiderTurretScepterHelper";
+#pragma warning disable CS0618 // Type or member is obsolete
             itemDef.deprecatedTier = ItemTier.NoTier;
+#pragma warning restore CS0618 // Type or member is obsolete
             itemDef.descriptionToken = "Stat modifier for Mech Spiders summoned by Engi with Scepter.";
             itemDef.nameToken = "MechanicalSpiderTurretScepterHelper";
             itemDef.pickupToken = "Stat modifier for Mech Spiders summoned by Engi with Scepter.";
@@ -118,21 +120,21 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
 
         public GameObject SetupBlueprint(GameObject blueprintObject)
         {
-            var blueprintOk = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Engi.matBlueprintsOk_mat).WaitForCompletion();
+            var blueprintOk = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Engi.matBlueprintsOk_mat).WaitForCompletion();
 
             var renderer = blueprintObject.transform.Find("mdlMechanicalSpider/MechanicalSpider").GetComponent<Renderer>();
             renderer.material = blueprintOk;
 
             var blueprintController = blueprintObject.AddComponent<BlueprintController>();
             blueprintController.okMaterial = blueprintOk;
-            blueprintController.invalidMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Engi.matBlueprintsInvalid_mat).WaitForCompletion();
+            blueprintController.invalidMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Engi.matBlueprintsInvalid_mat).WaitForCompletion();
 
             blueprintController.renderers = new Renderer[]
             {
                 renderer
             };
 
-            var existingBlueprint = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Engi.EngiTurretBlueprints_prefab).WaitForCompletion();
+            var existingBlueprint = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Engi.EngiTurretBlueprints_prefab).WaitForCompletion();
 
             blueprintObject.transform.Find("BlobLightProjector").GetComponent<Projector>().material = existingBlueprint.transform.Find("BlobLightProjector").GetComponent<Projector>().material;
 
@@ -168,9 +170,9 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             {
                 return;
             }
-            if (engiMaster.inventory.GetItemCount(ModCompats.AncientScepterCompat.AncientScepterItemIndex) > 0 && spiderMaster.masterIndex == masterIndex)
+            if (engiMaster.inventory.GetItemCountPermanent(ModCompats.AncientScepterCompat.AncientScepterItemIndex) > 0 && spiderMaster.masterIndex == masterIndex)
             {
-                spiderMaster.inventory.GiveItem(Content.Items.MechanicalSpiderTurretScepterHelper);
+                spiderMaster.inventory.GiveItemPermanent(Content.Items.MechanicalSpiderTurretScepterHelper);
             }
         }
 

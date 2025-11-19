@@ -52,7 +52,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
-            if (master.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
+            if (master.inventory.GetItemCountPermanent(RoR2Content.Items.Ghost) > 0)
             {
                 return;
             }
@@ -81,7 +81,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
-            if(master.inventory.GetItemCount(RoR2Content.Items.Ghost) > 0)
+            if(master.inventory.GetItemCountPermanent(RoR2Content.Items.Ghost) > 0)
             {
                 return;
             }
@@ -111,7 +111,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                         continue;
                     }
 
-                    if (playerCharacterMaster.master.inventory.GetItemCount(itemToCheck) > 0)
+                    if (playerCharacterMaster.master.inventory.GetItemCountPermanent(itemToCheck) > 0)
                     {
                         itemFound = true;
                         break;
@@ -121,7 +121,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
 
             if (itemFound)
             {
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex), bodyObject.transform.position, GetItemDropVelocity(bodyObject.transform.position));
+                PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipmentToDrop.equipmentIndex)), bodyObject.transform.position, GetItemDropVelocity(bodyObject.transform.position), false);
 
                 if (!string.IsNullOrEmpty(dropChatToken))
                 {

@@ -230,7 +230,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         protected override string ModelName() => "mdlIfrit";
 
-        protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Lemurian.sdLemurian_asset).WaitForCompletion();
+        protected override SurfaceDef SurfaceDef() => Addressables.LoadAssetAsync<SurfaceDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Lemurian.sdLemurian_asset).WaitForCompletion();
 
         protected override IAimAssist.AimAssistTargetParams AimAssistTargetParams()
         {
@@ -724,7 +724,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

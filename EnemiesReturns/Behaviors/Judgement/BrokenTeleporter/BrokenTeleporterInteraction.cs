@@ -47,7 +47,7 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
                 return Interactability.Disabled;
             }
 
-            if (characterBody.inventory.GetItemCount(requiredItem) > 0)
+            if (characterBody.inventory.GetItemCountPermanent(requiredItem) > 0)
             {
                 return Interactability.Available;
             }
@@ -87,7 +87,7 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
                 }
             }
 
-            characterBody.inventory.RemoveItem(requiredItem, characterBody.inventory.GetItemCount(requiredItem));
+            characterBody.inventory.RemoveItemPermanent(requiredItem, characterBody.inventory.GetItemCountPermanent(requiredItem));
             ScrapperController.CreateItemTakenOrb(characterBody.transform.position, targetObject, requiredItem.itemIndex);
             Invoke("EnableVisuals", 1.5f);
 

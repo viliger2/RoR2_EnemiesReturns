@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -42,13 +43,13 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
                 inventory = GetComponent<Inventory>();
             }
 
-            purchaseInteraction.onPurchase.AddListener(OnPurchase);
+            purchaseInteraction.onDetailedPurchaseServer.AddListener(OnDetailedPurchase);
+            //purchaseInteraction.onPurchase.AddListener(OnPurchase);
         }
 
-        public void OnPurchase(Interactor activator)
+        public void OnDetailedPurchase(CostTypeDef.PayCostContext payCostContext, CostTypeDef.PayCostResults payCostResult)
         {
             purchaseInteraction.SetAvailable(false);
-
             if (!NetworkServer.active)
             {
                 return;
@@ -56,10 +57,10 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 
             if (summonMasterBehavior)
             {
-                var master = summonMasterBehavior.OpenSummonReturnMaster(activator);
+                var master = summonMasterBehavior.OpenSummonReturnMaster(payCostContext.activator);
                 if (master && master.inventory && inventory)
                 {
-                    master.inventory.CopyEquipmentFrom(inventory);
+                    master.inventory.CopyEquipmentFrom(inventory, true);
                     master.inventory.AddItemsFrom(inventory);
                     GiveMinionItems(master.inventory);
                 }
@@ -73,14 +74,14 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 
         private void GiveMinionItems(Inventory inventory)
         {
-            inventory.GiveItem(RoR2Content.Items.MinionLeash, 1);
-            inventory.GiveItem(RoR2Content.Items.BoostHp, Configuration.MechanicalSpider.DroneBonusHP.Value);
-            inventory.GiveItem(RoR2Content.Items.BoostDamage, Configuration.MechanicalSpider.DroneBonusDamage.Value);
+            inventory.GiveItemPermanent(RoR2Content.Items.MinionLeash, 1);
+            inventory.GiveItemPermanent(RoR2Content.Items.BoostHp, Configuration.MechanicalSpider.DroneBonusHP.Value);
+            inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, Configuration.MechanicalSpider.DroneBonusDamage.Value);
             if (ModCompats.RiskyModCompat.enabled)
             {
-                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);
-                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyScaling, 1);
-                inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyRegen, 40);
+                inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);
+                inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling, 1);
+                inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyRegen, 40);
             }
         }
 

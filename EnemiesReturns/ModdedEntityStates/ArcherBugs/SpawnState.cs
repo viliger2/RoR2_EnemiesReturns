@@ -1,7 +1,9 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 
 namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
 {
+    [RegisterEntityState]
     public class SpawnState : GenericCharacterSpawnState
     {
         public override void OnEnter()

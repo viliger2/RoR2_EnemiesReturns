@@ -35,7 +35,7 @@ namespace EnemiesReturns.Behaviors.Judgement
         {
             if (RoR2.Stage.instance.sceneDef.cachedName == "enemiesreturns_outoftime")
             {
-                var pickupDef = PickupCatalog.GetPickupDef(pickupInfo.pickupIndex);
+                var pickupDef = PickupCatalog.GetPickupDef(pickupInfo.pickup.pickupIndex);
                 if (pickupDef != null)
                 {
                     if (pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex

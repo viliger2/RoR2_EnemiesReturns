@@ -92,7 +92,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
                 var inventory = result.GetComponent<Inventory>();
                 if (inventory && characterBody.inventory)
                 {
-                    inventory.CopyEquipmentFrom(characterBody.inventory);
+                    inventory.CopyEquipmentFrom(characterBody.inventory, false);
                     inventory.CopyItemsFrom(characterBody.inventory);
                 }
 

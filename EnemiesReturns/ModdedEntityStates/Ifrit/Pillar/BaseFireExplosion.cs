@@ -48,7 +48,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
                     var aiOwnership = characterBody.master.gameObject.GetComponent<AIOwnership>();
                     if (aiOwnership && aiOwnership.ownerMaster)
                     {
-                        stackCount = aiOwnership.ownerMaster.inventory.GetItemCount(Content.Items.SpawnPillarOnChampionKill);
+                        stackCount = aiOwnership.ownerMaster.inventory.GetItemCountPermanent(Content.Items.SpawnPillarOnChampionKill);
                     }
                 }
 

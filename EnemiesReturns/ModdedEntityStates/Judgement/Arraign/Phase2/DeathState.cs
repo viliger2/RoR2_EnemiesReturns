@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         {
             bodyPreservationDuration = 20f;
             base.OnEnter();
-            var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Brother.BrotherDeathEffect_prefab);
+            var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.BrotherDeathEffect_prefab);
             if (handle.IsValid()) {
                 handle.Completed += (operationResult) =>
                 {

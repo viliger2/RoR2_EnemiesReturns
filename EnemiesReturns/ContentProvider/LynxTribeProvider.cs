@@ -209,11 +209,15 @@ namespace EnemiesReturns
             var archerStuff = new ArcherStuff();
             var material = GetOrCreateMaterial("matLynxArcherArrow", archerStuff.CreateArcherArrowMaterial);
 
+            var nsdArrowHit = Utils.CreateNetworkSoundDef("ER_Archer_ArrowImpact_Play");
+            nseList.Add(nsdArrowHit);
+
             ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab = archerStuff.CreateArrowProjectile(
                 assets.First(prefab => prefab.name == "ArrowProjectile"),
                 archerStuff.CreateArrowProjectileGhost(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
                 archerStuff.CreateArrowImpalePrefab(assets.First(prefab => prefab.name == "ArrowProjectileGhost"), material),
-                archerStuff.CreateArrowLoopSoundDef());
+                archerStuff.CreateArrowLoopSoundDef(),
+                nsdArrowHit);
             projectilesList.Add(ModdedEntityStates.LynxTribe.Archer.FireArrow.projectilePrefab);
 
             var archerBody = new ArcherBody();
@@ -561,11 +565,15 @@ namespace EnemiesReturns
             var projectileImpactEffect = shamanStuff.CreateShamanProjectileImpactEffect(assets.First(prefab => prefab.name == "LynxShamanProjectileImpactEffect"), rampLookups["texRampLynxShamanProjectileImpact"]);
             effectsList.Add(new EffectDef(projectileImpactEffect));
 
+            var projectileImpactSound = Utils.CreateNetworkSoundDef("ER_Shaman_Projectile_Impact_Play");
+            nseList.Add(projectileImpactSound);
+
             var skullProjectile = shamanStuff.CreateShamanTrackingProjectile(
                 assets.First(prefab => prefab.name == "ShamanTrackingProjectile"),
                 shamanStuff.CreateShamanTrackingProjectileGhost(),
                 projectileImpactEffect,
-                shamanStuff.CreateProjectileFlightSoundLoop()
+                shamanStuff.CreateProjectileFlightSoundLoop(),
+                projectileImpactSound
             );
             Junk.ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesRapidFire.trackingProjectilePrefab = skullProjectile;
             ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.trackingProjectilePrefab = skullProjectile;

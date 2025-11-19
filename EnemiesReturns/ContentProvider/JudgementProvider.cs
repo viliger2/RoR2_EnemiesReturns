@@ -145,7 +145,7 @@ namespace EnemiesReturns
                     Content.Buffs.AffixAeoninan = assets.First(buff => buff.name == "bdAeonian");
                     Content.Buffs.ImmuneToHammer = assets.First(buff => buff.name == "bdImmuneToHammer");
                     Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
-                    Content.Buffs.ImmuneToAllDamageExceptHammer.iconSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_LunarGolem.texBuffLunarShellIcon_tif).WaitForCompletion();
+                    Content.Buffs.ImmuneToAllDamageExceptHammer.iconSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarGolem.texBuffLunarShellIcon_tif).WaitForCompletion();
 
                     _contentPack.buffDefs.Add(assets);
                 }));
@@ -320,7 +320,7 @@ namespace EnemiesReturns
 
         private void ModifyCredits(GameObject ourCreditPanel)
         {
-            var creditPanel = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_UI.CreditsPanel_prefab).WaitForCompletion();
+            var creditPanel = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_UI.CreditsPanel_prefab).WaitForCompletion();
             creditPanel.GetComponent<CreditsPanelController>().scrollDuration += 10f;
             var creditsContent = creditPanel.transform.Find("MainArea/Viewport/CreditsContent");
             var community = creditsContent.Find("CompanyCredits - Community");
@@ -437,7 +437,7 @@ namespace EnemiesReturns
         public static Material CreateImmuneToAllExceptHammerMaterial()
         {
             // cloudremap
-            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.matEnergyShield_mat).WaitForCompletion());
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.matEnergyShield_mat).WaitForCompletion());
             newMaterial.name = "matImmuneToAllExceptHammer";
             newMaterial.SetFloat("_OffsetAmount", 0.13f);
             newMaterial.SetColor("_TintColor", new Color(23 / 255f, 202 / 255f, 1f, 1f));

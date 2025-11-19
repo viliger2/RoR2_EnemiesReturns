@@ -215,7 +215,7 @@ namespace EnemiesReturns.Behaviors
                     EquipmentIndex equipmentIndex = eliteDef?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
                     if (equipmentIndex != EquipmentIndex.None)
                     {
-                        master.inventory.SetEquipmentIndex(equipmentIndex);
+                        master.inventory.SetEquipmentIndex(equipmentIndex, false);
                     }
                     if (combatSquad && combatSquad.grantBonusHealthInMultiplayer)
                     {
@@ -223,8 +223,8 @@ namespace EnemiesReturns.Behaviors
                         healthBoost *= Mathf.Pow(livingPlayerCount, 1f);
                     }
                     //master.isBoss = this.isBoss;
-                    master.inventory.GiveItem(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1f) * 10f));
-                    master.inventory.GiveItem(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1f) * 10f));
+                    master.inventory.GiveItemPermanent(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1f) * 10f));
+                    master.inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, Mathf.RoundToInt((damageBoost - 1f) * 10f));
                     if (assignRewards && bodyObject.TryGetComponent<DeathRewards>(out var deathRewards))
                     {
                         float num3 = card.directorCreditCost * eliteCostMultiplier * expRewardCoefficient;

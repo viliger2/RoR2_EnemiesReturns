@@ -46,7 +46,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Dash
                 characterMotor.velocity = velocity;
             }
             PlayCrossfade("Body", "Dash", 0.2f);
-            isMinion = characterBody.inventory.GetItemCount(RoR2Content.Items.MinionLeash) > 0;
+            isMinion = characterBody.inventory.GetItemCountPermanent(RoR2Content.Items.MinionLeash) > 0;
             Util.PlaySound(isMinion ? soundStringMinion : soundString, base.gameObject);
             ledgeHandling = FindModelChild("LedgeHandling");
         }

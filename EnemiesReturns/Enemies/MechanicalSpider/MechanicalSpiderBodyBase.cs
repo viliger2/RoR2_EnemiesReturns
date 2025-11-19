@@ -40,8 +40,8 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var rightFrontLeg = body.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg1.1/SparkRightFrontLeg");
             var backLeftLeg = body.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg3.1/SparkBackLeftLeg");
 
-            var brokenMissileDrone = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/MissileDroneBroken.prefab").WaitForCompletion();
-            var sparkGameObject = brokenMissileDrone.transform.Find("ModelBase/BrokenDroneVFX/Damage Point/Small Sparks, Point").gameObject;
+            var brokenMissileDrone = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Drones.MissileDroneBroken_prefab).WaitForCompletion();
+            var sparkGameObject = brokenMissileDrone.transform.Find("ModelBase/mdlDrone2/BrokenDroneVFX/Damage Point/Small Sparks, Point").gameObject;
             var smallSparksRight = UnityEngine.GameObject.Instantiate(sparkGameObject);
             smallSparksRight.transform.parent = rightFrontLeg;
             smallSparksRight.transform.localPosition = Vector3.zero;
@@ -54,7 +54,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             smallSparksLeft.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
 
             var smoke = body.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Smoke");
-            var smokeGameObject = brokenMissileDrone.transform.Find("ModelBase/BrokenDroneVFX/Damage Point/Smoke, Point").gameObject;
+            var smokeGameObject = brokenMissileDrone.transform.Find("ModelBase/mdlDrone2/BrokenDroneVFX/Damage Point/Smoke, Point").gameObject;
             var smokeCenter = UnityEngine.GameObject.Instantiate(smokeGameObject);
             smokeCenter.transform.parent = smoke;
             smokeCenter.transform.localPosition = Vector3.zero;
@@ -462,7 +462,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

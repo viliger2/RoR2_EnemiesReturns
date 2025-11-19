@@ -66,7 +66,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             return loopSound;
         }
 
-        public GameObject CreateArrowProjectile(GameObject prefab, GameObject ghost, GameObject impalePrefab, LoopSoundDef lsd)
+        public GameObject CreateArrowProjectile(GameObject prefab, GameObject ghost, GameObject impalePrefab, LoopSoundDef lsd, NetworkSoundEventDef arrowHit)
         {
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
@@ -90,7 +90,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             projectileSingleTarget.destroyWhenNotAlive = true;
             projectileSingleTarget.destroyOnWorld = true;
             //projectileSingleTarget.impactEffect = impact; // I don't think we need it with impale thing
-            projectileSingleTarget.hitSoundString = "ER_Archer_ArrowImpact_Play";
+            projectileSingleTarget.hitSound = arrowHit;
 
             prefab.AddComponent<ProjectileDamage>();
 

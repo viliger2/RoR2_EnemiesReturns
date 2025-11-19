@@ -28,10 +28,11 @@ MonoBehaviour:
   colorIndex: 25
   canDrop: 0
   dropOnDeathChance: 0
-  canBeRandomlyTriggered: 1
+  canBeRandomlyTriggered: 0
   enigmaCompatible: 0
   isLunar: 0
   isBoss: 1
+  foodRelated: 0
   passiveBuffDef: {fileID: 0}
   appearsInSinglePlayer: 1
   appearsInMultiPlayer: 1

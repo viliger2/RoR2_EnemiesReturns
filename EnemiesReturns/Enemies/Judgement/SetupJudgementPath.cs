@@ -71,7 +71,7 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void AddAeonianAnointedItemDisplays()
         {
             var keyEquipmentReference = new RoR2.AddressableAssets.IDRSKeyAssetReference(ThanksRandy.EliteIce.EliteIceEquipment);
-            var equipment = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_EliteIce.EliteIceEquipment_asset).WaitForCompletion();
+            var equipment = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_EliteIce.EliteIceEquipment_asset).WaitForCompletion();
             var dictionary = CreateAeonianAnointedDictionary();
             foreach (var body in BodyCatalog.allBodyPrefabs)
             {
@@ -118,7 +118,9 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 else
                 {
+#pragma warning disable CS0618 // this was obsolete before AC
                     var result2 = bodyIDRS.namedEquipmentRuleGroups.Where(item => item.name == "EliteIceEquipment").ToArray();
+#pragma warning restore CS0618 // Type or member is obsolete
                     if (result2.Length != 0)
                     {
                         displayRuleGroup = result2[0].displayRuleGroup;
@@ -186,7 +188,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject CreateVoidlingWeaponIndicator()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_PassiveHealing.WoodSpriteIndicator_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponIndicator", false);
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_PassiveHealing.WoodSpriteIndicator_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponIndicator", false);
             prefab.GetComponentInChildren<SpriteRenderer>().color = new Color(0.46f, 0, 1f, 1f);
             prefab.GetComponentInChildren<TextMeshPro>().color = new Color(0.46f, 0, 1f, 1f); ;
 
@@ -230,7 +232,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.VoidFlower) > 0)
+                if (playerCharacterMaster.master.inventory.GetItemCountPermanent(Content.Items.VoidFlower) > 0)
                 {
                     spawnPedestal = true;
                     break;
@@ -247,7 +249,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 var newTeleporter = UnityEngine.Object.Instantiate(VoidBrokenTeleporter, spawnPoint.position, Quaternion.identity);
                 NetworkServer.Spawn(newTeleporter);
-                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab);
+                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab);
                 if (handle.IsValid())
                 {
                     handle.Completed += (result) =>
@@ -525,7 +527,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                if (playerCharacterMaster.master.inventory.GetItemCount(Content.Items.TradableRock) > 0)
+                if (playerCharacterMaster.master.inventory.GetItemCountPermanent(Content.Items.TradableRock) > 0)
                 {
                     itemFound = true;
                     break;
@@ -614,7 +616,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static void AddWeaponDropToVoidling()
         {
-            var voidling3Master = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.MiniVoidRaidCrabMasterPhase3_prefab).WaitForCompletion();
+            var voidling3Master = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.MiniVoidRaidCrabMasterPhase3_prefab).WaitForCompletion();
 
             var dropEquipment = voidling3Master.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.VoidFlower;
@@ -626,16 +628,16 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             var itemGameObject = prefab.transform.Find("VoidSpire/Armature/Spire/ParentForSomeReason/TeleporterVessel/ItemOnPedestal/PickupVoidFlower/itemJudgeAccessVoid");
             itemGameObject.Find("Sphere").gameObject.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerSphere", CreateVoidFlowerSphereMaterial);
-            itemGameObject.Find("meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
+            itemGameObject.Find("meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
 
             return prefab;
         }
 
         public static GameObject SetupVoidlingWeapon(GameObject prefab)
         {
-            prefab.transform.Find("VoidWeapon/VoidRaidCrabEyeMesh").GetComponent<SkinnedMeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.matVoidRaidCrabEye_mat).WaitForCompletion();
+            prefab.transform.Find("VoidWeapon/VoidRaidCrabEyeMesh").GetComponent<SkinnedMeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.matVoidRaidCrabEye_mat).WaitForCompletion();
 
-            var effectObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponSpawnEffect", false);
+            var effectObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab).WaitForCompletion().InstantiateClone("VoidlingWeaponSpawnEffect", false);
             UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<VFXAttributes>());
             UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<ShakeEmitter>());
             UnityEngine.Object.DestroyImmediate(effectObject.GetComponent<EffectComponent>());
@@ -691,7 +693,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject CreateVoidFlowerRespawnStartEffect()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathCharge_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnStartEffect", false);
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathCharge_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnStartEffect", false);
 
             var effectComponent = prefab.AddComponent<EffectComponent>();
   
@@ -703,7 +705,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject CreateVoidFlowerRespawnEndEffect()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnEndEffect", false);
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnEndEffect", false);
 
             var effectComponent = prefab.AddComponent<EffectComponent>();
 
@@ -750,7 +752,7 @@ namespace EnemiesReturns.Enemies.Judgement
         public static GameObject SetupVoidFlower(GameObject prefab)
         {
             prefab.transform.Find("itemJudgeAccessVoid/Sphere").gameObject.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerSphere", CreateVoidFlowerSphereMaterial);
-            prefab.transform.Find("itemJudgeAccessVoid/meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
+            prefab.transform.Find("itemJudgeAccessVoid/meshVoidBubbleCoral").gameObject.GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_voidstage.matVoidCoral_mat).WaitForCompletion();
 
             return prefab;
         }
@@ -768,26 +770,26 @@ namespace EnemiesReturns.Enemies.Judgement
             var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantOrb.mat").WaitForCompletion());
             newMaterial.name = "matVoidFlowerSphere";
 
-            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Common.texCloudLightning1_png).WaitForCompletion());
-            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_Common_ColorRamps.texRampVoidRaidCrabEye_png).WaitForCompletion());
+            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texCloudLightning1_png).WaitForCompletion());
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_Common_ColorRamps.texRampVoidRaidCrabEye_png).WaitForCompletion());
 
             return newMaterial;
         }
 
         private static Material CreateVoidFlowerRespawnStartSphere2Material()
         {
-            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere2_mat).WaitForCompletion());
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere2_mat).WaitForCompletion());
             newMaterial.name = "matVoidFlowerRespawnStartSphere2";
-            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.texRampVoidRaidCrabTripleBeam_png).WaitForCompletion());
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.texRampVoidRaidCrabTripleBeam_png).WaitForCompletion());
 
             return newMaterial;
         }
 
         private static Material CreateVoidFlowerRespawnStartSphere1Material()
         {
-            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere1_mat).WaitForCompletion());
+            var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.matVoidSuvivorEnterCorruptionSphere1_mat).WaitForCompletion());
             newMaterial.name = "matVoidFlowerRespawnStartSphere1";
-            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_FalseSonBoss.texFSBLunarSpikeRamp_png).WaitForCompletion());
+            newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_FalseSonBoss.texFSBLunarSpikeRamp_png).WaitForCompletion());
 
             return newMaterial;
         }

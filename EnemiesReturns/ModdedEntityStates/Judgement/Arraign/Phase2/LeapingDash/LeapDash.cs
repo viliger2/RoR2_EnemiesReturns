@@ -129,7 +129,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2.LeapingDash
                 }
                 if (NetworkServer.active)
                 {
-                    Util.CleanseBody(base.characterBody, removeDebuffs: true, removeBuffs: false, removeCooldownBuffs: false, removeDots: true, removeStun: false, removeNearbyProjectiles: false);
+                    CleanseSystem.CleanseBodyServer(base.characterBody, true, false, false, true, false, false);
                 }
                 Util.PlaySound("Play_moonBrother_phaseJump_jumpAway", base.gameObject);
                 liftedOff = true;

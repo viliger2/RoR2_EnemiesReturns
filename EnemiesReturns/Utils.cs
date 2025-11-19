@@ -286,7 +286,7 @@ namespace EnemiesReturns
         {
             for (uint i = 0; i < inventory.GetEquipmentSlotCount(); i++)
             {
-                var equipmentState = inventory.GetEquipment(i);
+                var equipmentState = inventory.GetEquipment(i, inventory.FindBestEquipmentSetIndex());
                 if (!equipmentState.Equals(EquipmentState.empty))
                 {
                     if (equipmentState.equipmentIndex == equipmentIndex)

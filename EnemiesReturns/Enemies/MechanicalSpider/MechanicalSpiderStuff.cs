@@ -144,7 +144,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var backLeftLeg = interactablePrefab.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/Leg3.1");
 
             var brokenMissileDrone = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/MissileDroneBroken.prefab").WaitForCompletion();
-            var sparkGameObject = brokenMissileDrone.transform.Find("ModelBase/BrokenDroneVFX/Damage Point/Small Sparks, Point").gameObject;
+            var sparkGameObject = brokenMissileDrone.transform.Find("ModelBase/mdlDrone2/BrokenDroneVFX/Damage Point/Small Sparks, Point").gameObject;
             var smallSparksRight = UnityEngine.GameObject.Instantiate(sparkGameObject);
             smallSparksRight.transform.parent = rightFrontLeg;
             smallSparksRight.transform.localPosition = Vector3.zero;
@@ -157,7 +157,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             smallSparksLeft.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
 
             var smoke = interactablePrefab.transform.Find("ModelBase/mdlMechanicalSpider/SpiderArmature/Root/UpperBody");
-            var smokeGameObject = brokenMissileDrone.transform.Find("ModelBase/BrokenDroneVFX/Damage Point/Smoke, Point").gameObject;
+            var smokeGameObject = brokenMissileDrone.transform.Find("ModelBase/mdlDrone2/BrokenDroneVFX/Damage Point/Smoke, Point").gameObject;
             var smokeCenter = UnityEngine.GameObject.Instantiate(smokeGameObject);
             smokeCenter.transform.parent = smoke;
             smokeCenter.transform.localPosition = Vector3.zero;

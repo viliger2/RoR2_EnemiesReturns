@@ -137,7 +137,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
                 baseJumpPower = 0f,
                 baseDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseDamage.Value,
                 levelDamage = EnemiesReturns.Configuration.LynxTribe.LynxTotem.LevelDamage.Value,
-                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.IgnoreKnockback | CharacterBody.BodyFlags.ImmuneToLava
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.IgnoreKnockup | CharacterBody.BodyFlags.ImmuneToLava
             };
         }
 

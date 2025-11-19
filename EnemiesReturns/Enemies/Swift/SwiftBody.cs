@@ -62,7 +62,6 @@ namespace EnemiesReturns.Enemies.Swift
             printController.printTime = 2.2f;
             printController.printCurve = acdLookup["acdSwiftPrint"].curve;
             printController.disableWhenFinished = true;
-            printController.materialPrintCutoffPostSkinApplying = true;
 
             printController.startingPrintHeight = 3f;
             printController.maxPrintHeight = -0.5f;
@@ -233,7 +232,7 @@ namespace EnemiesReturns.Enemies.Swift
 
         public SkillDef CreateDiveSkill()
         {
-            var banditShiv = Addressables.LoadAssetAsync<SkillDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Bandit2.Bandit2SerratedShivs_asset).WaitForCompletion();
+            var banditShiv = Addressables.LoadAssetAsync<SkillDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Bandit2.Bandit2SerratedShivs_asset).WaitForCompletion();
 
             var groundedSkillDef = CreateNonGroundedSkill(new SkillParams("SwiftBodyDive", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.Swift.Dive.DivePrep)))
             {
@@ -519,7 +518,7 @@ namespace EnemiesReturns.Enemies.Swift
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

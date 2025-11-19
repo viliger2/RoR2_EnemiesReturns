@@ -70,8 +70,8 @@ namespace EnemiesReturns.Enemies.SandCrab
             var baseForAdditions = bodyPrefab.transform.Find("ModelBase/mdlSandCrab/SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead");
             
             #region sulfur pods
-            var sulfurPodBodyPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_SulfurPod.SulfurPodBody_prefab).WaitForCompletion();
-            var mesh = sulfurPodBodyPrefab.transform.Find("Mesh");
+            var sulfurPodBodyPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_SulfurPod.SulfurPodBody_prefab).WaitForCompletion();
+            var mesh = sulfurPodBodyPrefab.transform.Find("ModelBase/mdlSulfurPod/Mesh");
             var podMesh = UnityEngine.Object.Instantiate(mesh.gameObject);
             UnityEngine.Object.DestroyImmediate(podMesh.GetComponent<HurtBoxGroup>());
             UnityEngine.Object.DestroyImmediate(podMesh.GetComponent<MeshCollider>());
@@ -97,7 +97,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             #region grass
             var mossAndGrass = baseForAdditions.Find("MossAndGrass");
-            var grassPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_artifactworld.spmAWGrass_spm).WaitForCompletion();
+            var grassPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_artifactworld.spmAWGrass_spm).WaitForCompletion();
 
             var grass = UnityEngine.Object.Instantiate(grassPrefab);
             grass.transform.SetParent(mossAndGrass.transform.Find("Grass1"), false);
@@ -181,7 +181,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         public SkillDef CreateBubblesSkill()
         {
-            var mageSecondary = Addressables.LoadAssetAsync<SkillDef>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Mage.MageBodyNovaBomb_asset).WaitForCompletion();
+            var mageSecondary = Addressables.LoadAssetAsync<SkillDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Mage.MageBodyNovaBomb_asset).WaitForCompletion();
             return CreateSkill(new SkillParams("SandCrabBubbles", new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.SandCrab.Bubbles.ChargeBubbles)))
             {
                 nameToken = "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME",
@@ -582,7 +582,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleGroupBead,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC2_Elites_EliteBead.EliteBeadEquipment_asset)
             });
             #endregion
 

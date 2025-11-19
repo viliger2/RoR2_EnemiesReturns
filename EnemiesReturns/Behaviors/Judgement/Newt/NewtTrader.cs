@@ -40,7 +40,7 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
                 return Interactability.Disabled;
             }
 
-            if (characterBody.inventory.GetItemCount(itemToTake) > 0)
+            if (characterBody.inventory.GetItemCountPermanent(itemToTake) > 0)
             {
                 return Interactability.Available;
             }
@@ -65,7 +65,7 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
                 return;
             }
 
-            characterBody.inventory.RemoveItem(itemToTake, characterBody.inventory.GetItemCount(itemToTake));
+            characterBody.inventory.RemoveItemPermanent(itemToTake, characterBody.inventory.GetItemCountPermanent(itemToTake));
             ScrapperController.CreateItemTakenOrb(characterBody.transform.position, this.gameObject, itemToTake.itemIndex);
             Invoke("SpawnPickupOrb", 1.5f);
             available = false;
@@ -79,7 +79,7 @@ namespace EnemiesReturns.Behaviors.Judgement.Newt
             }
 
             var vector = Vector3.up * 20f + transform.forward * 8f;
-            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(itemToGive.itemIndex), this.gameObject.transform.position, vector);
+            PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(itemToGive.itemIndex)), this.gameObject.transform.position, vector, false);
 
             Chat.SendBroadcastChat(new Chat.SimpleChatMessage
             {

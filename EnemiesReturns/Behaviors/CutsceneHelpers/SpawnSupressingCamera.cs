@@ -14,7 +14,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
 
         private void Awake()
         {
-            camera = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Core/Menu Main Camera.prefab").WaitForCompletion(), transform);
+            camera = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Core.Menu_Main_Camera_prefab).WaitForCompletion(), transform);
             camera.transform.localRotation = Quaternion.identity;
             var cameraRigController = camera.GetComponent<CameraRigController>();
             cameraRigController.suppressPlayerCameras = true;

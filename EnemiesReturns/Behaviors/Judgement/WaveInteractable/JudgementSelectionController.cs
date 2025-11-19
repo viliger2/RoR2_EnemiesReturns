@@ -87,7 +87,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 options.Add(new PickupPickerController.Option
                 {
                     available = true,
-                    pickupIndex = currentList[i].pickupIndex
+                    pickup = new UniquePickup(currentList[i].pickupIndex)
                 });
             }
             pickupPickerController.SetOptionsServer(options.ToArray());
@@ -110,7 +110,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 {
                     itemCount = 10;
                 }
-                inventory.GiveItem(pickupDef.itemIndex, itemCount);
+                inventory.GiveItemPermanent(pickupDef.itemIndex, itemCount);
 
                 if (interactor)
                 {
@@ -156,14 +156,16 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 itemLists[i] = new EnemyItems[tierDropTables.Length];
                 for (int k = 0; k < tierDropTables.Length; k++)
                 {
-                    var itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
+                    var uniquePickup = tierDropTables[k].GeneratePickup(Run.instance.stageRng);
+                    var itemIndex = uniquePickup.pickupIndex;
 
                     if (tierDropTables[k].GetSelectorCount() >= listCount)
                     {
                         var retryCount = 0;
                         while (takenList.Contains(itemIndex) && retryCount < 3)
                         {
-                            itemIndex = tierDropTables[k].GenerateDrop(Run.instance.stageRng);
+                            uniquePickup = tierDropTables[k].GeneratePickup(Run.instance.stageRng);
+                            itemIndex = uniquePickup.pickupIndex;
                             retryCount++;
                         }
                     }

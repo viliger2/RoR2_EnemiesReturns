@@ -38,7 +38,7 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
 
         public static GameObject SetupPickupDisplay(GameObject mithrixHammer)
         {
-            mithrixHammer.transform.Find("Model/Eye").GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.matVoidRaidCrabEye_mat).WaitForCompletion();
+            mithrixHammer.transform.Find("Model/Eye").GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.matVoidRaidCrabEye_mat).WaitForCompletion();
 
             return mithrixHammer;
         }

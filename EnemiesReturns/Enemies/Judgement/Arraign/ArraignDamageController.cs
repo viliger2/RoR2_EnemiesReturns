@@ -74,7 +74,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
             {
                 aeonianDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
-                aeonianDamage |= attackerBody.master.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0;
+                aeonianDamage |= attackerBody.master.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0;
                 aeonianDamage |= bodiesToBypassArmor.Contains(attackerBody.bodyIndex);
             }
             if (arraignIsImmune && !(endGameBossWeaponDamage || aeonianDamage))

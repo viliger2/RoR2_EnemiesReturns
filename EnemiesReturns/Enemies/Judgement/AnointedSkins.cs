@@ -134,11 +134,13 @@ namespace EnemiesReturns.Enemies.Judgement
                 var baseCustomSkin = customSkins[0];
                 skin.baseSkins = new SkinDef[] { baseCustomSkin };
                 skin.skinDefParams = baseCustomSkin.skinDefParams;
+#pragma warning disable CS0618 // Type or member is obsolete
                 skin.rendererInfos = baseCustomSkin.rendererInfos;
                 skin.gameObjectActivations = baseCustomSkin.gameObjectActivations;
                 skin.meshReplacements = baseCustomSkin.meshReplacements;
                 skin.projectileGhostReplacements = baseCustomSkin.projectileGhostReplacements;
                 skin.minionSkinReplacements = baseCustomSkin.minionSkinReplacements;
+#pragma warning restore CS0618 // Type or member is obsolete
                 skin._runtimeSkin = baseCustomSkin._runtimeSkin;
             }
             for (int i = 0; i < anointedSkinsSecondIterationList.Count; i++)
@@ -507,7 +509,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            if (body.inventory.GetItemCount(Content.Items.HiddenAnointed) > 0)
+            if (body.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0)
             {
                 return;
             }
@@ -522,7 +524,7 @@ namespace EnemiesReturns.Enemies.Judgement
                         var skin = modelSkinController.skins[body.skinIndex];
                         if (AnointedSkinsItemHashSet.Contains(skin))
                         {
-                            body.inventory.GiveItem(Content.Items.HiddenAnointed);
+                            body.inventory.GiveItemPermanent(Content.Items.HiddenAnointed);
                             return;
                         };
                     }

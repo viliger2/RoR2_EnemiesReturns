@@ -96,15 +96,15 @@ namespace EnemiesReturns.Items.LynxFetish
                 summonedMaster.onBodyStart += SummonedMaster_onBodyStart;
             }
 
-            summonedMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamage.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamagePerStack.Value * Mathf.Max(0, stack - 4));
-            summonedMaster.inventory.GiveItem(RoR2Content.Items.BoostHp, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHP.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHPPerStack.Value * Mathf.Max(0, stack - 4));
+            summonedMaster.inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamage.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusDamagePerStack.Value * Mathf.Max(0, stack - 4));
+            summonedMaster.inventory.GiveItemPermanent(RoR2Content.Items.BoostHp, EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHP.Value + EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishBonusHPPerStack.Value * Mathf.Max(0, stack - 4));
             if (ModCompats.RiskyModCompat.enabled)
             {
-                summonedMaster.inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);
-                summonedMaster.inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyScaling, 1);
-                summonedMaster.inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyRegen, 40);
-                summonedMaster.inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyAllowOverheatDeath, 1);
-                summonedMaster.inventory.GiveItem(ModCompats.RiskyModCompat.RiskyModAllyAllowVoidDeath, 1);
+                summonedMaster.inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);
+                summonedMaster.inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling, 1);
+                summonedMaster.inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyRegen, 40);
+                summonedMaster.inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyAllowOverheatDeath, 1);
+                summonedMaster.inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyAllowVoidDeath, 1);
             }
 
             var aiownership = spawnResult.spawnedInstance.GetComponent<AIOwnership>();

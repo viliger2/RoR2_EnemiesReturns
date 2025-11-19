@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
 
         public static float maxDistance => Configuration.Judgement.Judgement.VoidlingWeaponBulletRange.Value;
 
-        public static GameObject tracerEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_DLC1_VoidRaidCrab.TracerVoidRaidCrabTripleBeamSmall_prefab).WaitForCompletion();
+        public static GameObject tracerEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.TracerVoidRaidCrabTripleBeamSmall_prefab).WaitForCompletion();
 
         public static GameObject voidlingWeaponVisualsPrefab;
 

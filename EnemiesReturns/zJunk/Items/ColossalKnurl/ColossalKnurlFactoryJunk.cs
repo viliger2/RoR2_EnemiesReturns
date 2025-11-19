@@ -221,7 +221,7 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
 
         //public static void RecalcStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         //{
-        //    var count = sender.inventory.GetItemCount(ColossalKnurlFactory.itemDef);
+        //    var count = sender.inventory.GetItemCountPermanent(ColossalKnurlFactory.itemDef);
         //    if (count > 0)
         //    {
         //        args.armorAdd += 20 + 20 * (count - 1);
@@ -232,7 +232,7 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
         {
             if (body && body.inventory)
             {
-                body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCount(EnemiesReturns.Content.Items.ColossalCurl));
+                body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCountPermanent(EnemiesReturns.Content.Items.ColossalCurl));
             }
         }
 

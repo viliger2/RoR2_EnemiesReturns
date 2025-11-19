@@ -108,7 +108,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                     var inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
                     if (inventory)
                     {
-                        inventory.CopyEquipmentFrom(base.characterBody.inventory);
+                        inventory.CopyEquipmentFrom(base.characterBody.inventory, false);
                         if (this.characterBody.isPlayerControlled)
                         {
                             inventory.CopyItemsFrom(base.characterBody.inventory);

@@ -32,6 +32,7 @@ MonoBehaviour:
   enigmaCompatible: 0
   isLunar: 0
   isBoss: 0
+  foodRelated: 0
   passiveBuffDef: {fileID: 11400000, guid: 2e0c3b914ce263b44bb929674b908518, type: 2}
   appearsInSinglePlayer: 1
   appearsInMultiPlayer: 1

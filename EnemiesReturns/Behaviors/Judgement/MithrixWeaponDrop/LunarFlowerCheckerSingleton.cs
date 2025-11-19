@@ -44,7 +44,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                     continue;
                 }
 
-                if (playerCharacterMaster.master.inventory.GetItemCount(itemToCheck) > 0)
+                if (playerCharacterMaster.master.inventory.GetItemCountPermanent(itemToCheck) > 0)
                 {
                     haveFlower = true;
                     return;
