@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7382322248426808620}
   - component: {fileID: 123312933226050086}
   - component: {fileID: 6562695257684271736}
+  - component: {fileID: 1904275795438905884}
   m_Layer: 0
   m_Name: PileOfDirtInteractable
   m_TagString: Untagged
@@ -84,8 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 871971028, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupIndex:
-    value: 0
   targetRenderer: {fileID: 1991588297628016849}
   strength: 1
   highlightColor: 0
@@ -107,6 +106,7 @@ MonoBehaviour:
   shouldIgnoreSpherecastForInteractibility: 0
   contextToken: ENEMIES_RETURNS_JUDGEMENT_PILE_OF_DIRT_CONTEXT
   shouldProximityHighlight: 1
+  allowRemoteOpInteraction: 0
   onActivation:
     m_PersistentCalls:
       m_Calls:
@@ -151,6 +151,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToDrop: {fileID: 11400000, guid: f5e986d8f896df84e83067b15ecc1291, type: 2}
   dropletOrigin: {fileID: 7253507220025293409}
+--- !u!114 &1904275795438905884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968770900678513371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6b6d9333a910248b9815977be00e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageToken: ENEMIES_RETURNS_JUDGEMENT_TRADABLEROCK_BUZZ
+  withDelay: 1
+  delay: 2
+  onAwake: 1
 --- !u!1 &7196816218256534991
 GameObject:
   m_ObjectHideFlags: 0

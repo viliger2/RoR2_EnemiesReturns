@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop;
 using EnemiesReturns.Behaviors.Judgement.WaveInteractable;
 using EnemiesReturns.Enemies.Judgement.Arraign;
 using HG;
@@ -219,50 +220,27 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             orig(self);
 
-            var spawnPedestal = false;
-            foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+            var spawnPoint = self.currentDonut.root.transform.Find("HOLDER: Skybox+PP/ReflectionProbe, Center");
+            if (!spawnPoint)
             {
-                if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                {
-                    continue;
-                }
-
-                if (!playerCharacterMaster.master.inventory)
-                {
-                    continue;
-                }
-
-                if (playerCharacterMaster.master.inventory.GetItemCountPermanent(Content.Items.VoidFlower) > 0)
-                {
-                    spawnPedestal = true;
-                    break;
-                }
+                spawnPoint = self.currentDonut.crabPosition;
             }
 
-            if (spawnPedestal)
+            var newTeleporter = UnityEngine.Object.Instantiate(VoidBrokenTeleporter, spawnPoint.position, Quaternion.identity);
+            NetworkServer.Spawn(newTeleporter);
+            var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab);
+            if (handle.IsValid())
             {
-                var spawnPoint = self.currentDonut.root.transform.Find("HOLDER: Skybox+PP/ReflectionProbe, Center");
-                if (!spawnPoint)
+                handle.Completed += (result) =>
                 {
-                    spawnPoint = self.currentDonut.crabPosition;
-                }
-
-                var newTeleporter = UnityEngine.Object.Instantiate(VoidBrokenTeleporter, spawnPoint.position, Quaternion.identity);
-                NetworkServer.Spawn(newTeleporter);
-                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidRaidCrab.VoidRaidCrabSpawnEffect_prefab);
-                if (handle.IsValid())
-                {
-                    handle.Completed += (result) =>
-                    {
-                        EffectManager.SpawnEffect(result.Result, new EffectData() { origin = spawnPoint.position + Vector3.down * 10f }, true);
-                        Addressables.Release(handle);
-                    };
-                }
-                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
-                {
-                    baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
-                });
+                    EffectManager.SpawnEffect(result.Result, new EffectData() { origin = spawnPoint.position + Vector3.down * 10f }, true);
+                    Addressables.Release(handle);
+                };
             }
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
+            });
         }
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
@@ -311,16 +289,16 @@ namespace EnemiesReturns.Enemies.Judgement
             // since for sure indexes for values will change
             ILCursor c = new ILCursor(il);
             if(c.TryGotoNext(MoveType.After,
-                x => x.MatchLdloc(88),
-                x => x.MatchLdloc(45),
+                x => x.MatchLdloc(112),
+                x => x.MatchLdloc(46),
                 x => x.MatchConvR4(),
                 x => x.MatchLdcR4(1),
                 x => x.MatchMul(),
                 x => x.MatchAdd(),
-                x => x.MatchStloc(88)))
+                x => x.MatchStloc(112)))
             {
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.Emit(OpCodes.Ldloc, 88); // 88 is float where slows are collected
+                c.Emit(OpCodes.Ldloc, 112); // 112 is float where slows are collected
                 c.EmitDelegate<System.Func<RoR2.CharacterBody, float, float>>((self, ammount) =>
                 {
                     if (self.HasBuff(Content.Buffs.AffixAeoninan))
@@ -329,17 +307,17 @@ namespace EnemiesReturns.Enemies.Judgement
                     }
                     return ammount;
                 });
-                c.Emit(OpCodes.Stloc, 88);
+                c.Emit(OpCodes.Stloc, 112);
             } else
             {
-                Log.Warning("IL Hook Failed - RoR2.CharacterBody.RecalculateStats: Aenonian elites won't have their affix working.");
+                Log.Warning("IL Hook Failed - RoR2.CharacterBody.RecalculateStats: Aeonian elites won't have their affix working.");
             }
 
             while (c.TryGotoNext(MoveType.Before,
-                x => x.MatchStloc(100)))
+                x => x.MatchStloc(126)))
             {
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.Emit(OpCodes.Ldloc, 100); // 100 is float where attack speed is stored
+                c.Emit(OpCodes.Ldloc, 126); // 100 is float where attack speed is stored
                 c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>((newValue, self, origValue) =>
                 {
                     if (self.HasBuff(Content.Buffs.AffixAeoninan))
@@ -367,37 +345,23 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            var itemFound = false;
-            if (LunarFlowerCheckerSingleton.instance)
+            var position = new Vector3(-88.4849f, 491.488f, -0.3325f);
+            ChildLocator component = SceneInfo.instance.GetComponent<ChildLocator>();
+            if ((bool)component)
             {
-                itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
-                if (!itemFound)
+                Transform transform = component.FindChild("CenterOfArena");
+                if ((bool)transform)
                 {
-                    LunarFlowerCheckerSingleton.instance.CheckForFlower();
-                    itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
+                    position = transform.position;
                 }
             }
 
-            if (itemFound)
+            var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, position, Quaternion.identity);
+            NetworkServer.Spawn(newTeleporter);
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
             {
-                var position = new Vector3(-88.4849f, 491.488f, -0.3325f);
-                ChildLocator component = SceneInfo.instance.GetComponent<ChildLocator>();
-                if ((bool)component)
-                {
-                    Transform transform = component.FindChild("CenterOfArena");
-                    if ((bool)transform)
-                    {
-                        position = transform.position;
-                    }
-                }
-
-                var newTeleporter = UnityEngine.Object.Instantiate(BrokenTeleporter, position, Quaternion.identity);
-                NetworkServer.Spawn(newTeleporter);
-                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
-                {
-                    baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
-                });
-            }
+                baseToken = "ENEMIES_RETURNS_JUDGEMENT_BROKEN_TELEPORTER_SPAWNED",
+            });
         }
 
         private static void GrabSpawnCardsForJudgement(DirectorCardCategorySelection mixEnemiesDccs)

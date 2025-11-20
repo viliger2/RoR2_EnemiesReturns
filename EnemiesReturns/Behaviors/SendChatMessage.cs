@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EnemiesReturns.Enemies.Judgement
+namespace EnemiesReturns.Behaviors
 {
     public class SendChatMessage : MonoBehaviour
     {
@@ -12,6 +12,16 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public float delay;
 
+        public bool onAwake = false;
+
+        private void Awake()
+        {
+            if (onAwake)
+            {
+                SendMessage();
+            }
+        }
+
         public void Send()
         {
             if (!NetworkServer.active)
@@ -19,9 +29,14 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
+            SendMessage();
+        }
+
+        private void SendMessage()
+        {
             if (withDelay)
             {
-                Invoke("SendMessage", delay);
+                Invoke("SendMessageInvoke", delay);
             }
             else
             {
@@ -29,7 +44,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
-        private void SendMessage()
+        private void SendMessageInvoke()
         {
             Chat.SendBroadcastChat(new Chat.SimpleChatMessage
             {
