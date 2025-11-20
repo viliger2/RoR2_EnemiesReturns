@@ -1,24 +1,24 @@
 {
     "name": "EnemiesReturns",
-    "version_number": "0.7.10",
+    "version_number": "0.7.11",
     "website_url": "https://github.com/viliger2/RoR2_EnemiesReturns",
-    "description": "Brings back a few guys lost on the way here.",
+    "description": "Brings back a few guys lost on the way here. Updated for AC.",
     "dependencies": [
-	"bbepis-BepInExPack-5.4.2120",
+	"bbepis-BepInExPack-5.4.2121",
 	"RiskofThunder-HookGenPatcher-1.2.4",
 	"viliger-RestoreGrandparentRock-1.0.0",
-	"RiskofThunder-R2API_Prefab-1.0.4",
+	"RiskofThunder-R2API_Prefab-1.1.1",
 	"RiskofThunder-R2API_Deployable-1.0.1",
-	"RiskofThunder-R2API_Director-2.3.5",
+	"RiskofThunder-R2API_Director-2.3.6",
 	"RiskofThunder-R2API_Elites-1.0.7",
 	"RiskofThunder-R2API_ProcType-1.0.2",
-	"RiskofThunder-R2API_Networking-1.0.3",
+	"RiskofThunder-R2API_Networking-1.0.4",
 	"RiskofThunder-R2API_DamageType-1.1.7",
 	"RiskofThunder-R2API_TempVisualEffect-1.0.3",
 	"RiskofThunder-R2API_Orb-1.0.1",
-	"RiskofThunder-R2API_RecalculateStats-1.6.0",
+	"RiskofThunder-R2API_RecalculateStats-1.6.3",
 	"RiskofThunder-R2API_Sound-1.0.3",
 	"JaceDaDorito-LocationsOfPrecipitation-1.1.2",
-	"Brynzananas-Revive_API-1.2.0"
+	"Brynzananas-Revive_API-1.2.2"
     ]
 }

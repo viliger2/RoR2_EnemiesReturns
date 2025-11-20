@@ -1,4 +1,30 @@
 <details>
+<summary>0.7.11</summary>
+
+* Updated for AC.
+* Lynx Archer
+  * Fixed Archer breaking his neck when firing from his bow.
+* Sand Crab
+  * Fixed Sand Crab going into T-pose animation while jumping.
+* Swift
+  * Extended Dive hitbox forward and made it slightly larger.
+* Mechanical spiders
+  * Integrated [Engi Mechanical Spider Skill](https://thunderstore.io/package/Moffein/Engi_Mechanical_Spider_Skill/) into the mod.
+    * _Skill mod was made with a lot of jank, so we decided to integrate it, making it smoother and giving players more options on how to configure it. Comes with unlock condition related to Mechanical Spiders._
+  * Made friendly Mechanical Spiders immune to fall damage.
+  * Friendly Mechanical Spiders now make less sounds.
+* Ifrit
+  * Pillars from both Ifrit and players no longer leave a corpse.
+* Archer Bug
+  * Fixed spawning being broken on clients.
+* Judgement
+  * Fixed NRE when using equipment during stage transition.
+  * Fixed issues when selecting monsters for waves that lobby has no entitlement for.
+  * Made custom P3 music enabled by default.
+    * _If Gearbox doesn't care about music style why should I?_
+* Oops, I dropped my monster condom that I use for my magnum dong.
+</details>
+<details>
 <summary>0.7.10</summary>
 
 * Updated ru localization.

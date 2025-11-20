@@ -13,19 +13,18 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
-		<PackageReference Include="Brynzananas-Revive_API" Version="1.2.0" />
+		<PackageReference Include="Brynzananas-Revive_API" Version="1.2.2" />
 		<PackageReference Include="Moffein-EliteReworks" Version="1.15.0" />
 		<PackageReference Include="Moffein-Risky_Artifacts" Version="2.4.21" />
 		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
 		<PackageReference Include="R2API.Deployable" Version="1.0.1" />
-		<PackageReference Include="R2API.Director" Version="2.3.5" />
-		<PackageReference Include="R2API.Dot" Version="1.0.4" />
+		<PackageReference Include="R2API.Director" Version="2.3.6" />
 		<PackageReference Include="R2API.Elites" Version="1.0.7" />
-		<PackageReference Include="R2API.Networking" Version="1.0.3" />
+		<PackageReference Include="R2API.Networking" Version="1.0.4" />
 		<PackageReference Include="R2API.Orb" Version="1.0.1" />
-		<PackageReference Include="R2API.Prefab" Version="1.0.4" />
+		<PackageReference Include="R2API.Prefab" Version="1.1.1" />
 		<PackageReference Include="R2API.ProcType" Version="1.0.2" />
-		<PackageReference Include="R2API.RecalculateStats" Version="1.5.0" />
+		<PackageReference Include="R2API.RecalculateStats" Version="1.6.3" />
 		<PackageReference Include="R2API.Sound" Version="1.0.3" />
 		<PackageReference Include="R2API.TempVisualEffect" Version="1.0.3" />
 		<PackageReference Include="RiskOfBrainrot-MoreStats" Version="1.2.7" />
