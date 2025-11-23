@@ -8,6 +8,8 @@ namespace EnemiesReturns.ModCompats
 {
     public class MoreStatsCompat
     {
+        public const string PLUGIN_GUID = "com.RiskOfBrainrot.MoreStats";
+
         private static bool? _enabled;
 
         public static bool enabled
@@ -16,7 +18,7 @@ namespace EnemiesReturns.ModCompats
             {
                 if (_enabled == null)
                 {
-                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskOfBrainrot.MoreStats");
+                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(PLUGIN_GUID);
                 }
                 return (bool)_enabled;
             }

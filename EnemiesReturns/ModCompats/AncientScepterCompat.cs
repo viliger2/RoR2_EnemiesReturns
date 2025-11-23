@@ -11,6 +11,8 @@ namespace EnemiesReturns.ModCompats
 {
     internal static class AncientScepterCompat
     {
+        public const string PLUGIN_GUID = "com.score.AdvancedPrediction";
+
         private static bool? _enabled;
 
         public static bool enabled
@@ -19,7 +21,7 @@ namespace EnemiesReturns.ModCompats
             {
                 if (_enabled == null)
                 {
-                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
+                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(PLUGIN_GUID);
                 }
                 return (bool)_enabled;
             }

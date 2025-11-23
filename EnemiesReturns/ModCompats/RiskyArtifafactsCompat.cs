@@ -5,6 +5,8 @@ namespace EnemiesReturns.ModCompats
 {
     internal class RiskyArtifafactsCompat
     {
+        public const string PLUGIN_GUID = "com.Moffein.RiskyArtifacts";
+
         private static bool? _enabled;
 
         public static bool enabled
@@ -13,7 +15,7 @@ namespace EnemiesReturns.ModCompats
             {
                 if (_enabled == null)
                 {
-                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.RiskyArtifacts");
+                    _enabled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(PLUGIN_GUID);
                 }
                 return (bool)_enabled;
             }
