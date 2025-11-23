@@ -39,5 +39,10 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
                 }
             }
         }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Death;
+        }
     }
 }

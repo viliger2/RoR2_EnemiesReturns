@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
             base.OnEnter();
             if (isAuthority)
             {
-                var isVoidDeath = (bool)base.healthComponent && (ulong)(base.healthComponent.killingDamageType & DamageType.VoidDeath) != 0;
+                var isVoidDeath = base.healthComponent && (base.healthComponent.killingDamageType & DamageType.VoidDeath) != 0;
                 if (isVoidDeath)
                 {
                     outer.SetNextState(new DeathNormal());
@@ -34,6 +34,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     outer.SetNextState(new DeathNormal());
                 }
             }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Death;
         }
     }
 }
