@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Configuration.Judgement;
+﻿using EnemiesReturns.Components;
+using EnemiesReturns.Configuration.Judgement;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Judgement;
 using EnemiesReturns.Enemies.Judgement.Arraign;
@@ -309,6 +310,22 @@ namespace EnemiesReturns
                     ModdedEntityStates.Judgement.Mission.Phase3.cscArraignHaunt = assets.First(asset => asset.name == "cscArraignHaunt");
                 }));
 
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ModdedSkinDefParams[]>)((assets) =>
+                {
+                    var moddedSkinDefList = assets.Where(item => item.name.Contains("Judgement")).ToArray();
+                    foreach(var moddedSkinDef in moddedSkinDefList)
+                    {
+                        var newSkin = moddedSkinDef.CreateSkinDef();
+                        if (newSkin)
+                        {
+                            var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(moddedSkinDef.bodyPrefab).WaitForCompletion();
+                            var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, moddedSkinDef.CreateSkinDef(), false);
+                            var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
+                            HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                        }
+                    }
+                }));
+
                 AssetBundle assetBundleStages = null;
                 yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
@@ -446,6 +463,5 @@ namespace EnemiesReturns
 
             return newMaterial;
         }
-
     }
 }

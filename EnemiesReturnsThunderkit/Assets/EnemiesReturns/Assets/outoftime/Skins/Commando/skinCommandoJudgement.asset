@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f16e491ff8a51e459a1d078b43e413d, type: 3}
+  m_Name: skinCommandoJudgement
+  m_EditorClassIdentifier: 
+  baseSkin:
+    m_AssetGUID: 5dab33025bb0e3043a28f65e49bf7def
+    m_SubObjectName: 
+    m_SubObjectType: 
+  display:
+    m_AssetGUID: da73b409c79ffb84a898660fce1eeb61
+    m_SubObjectName: 
+    m_SubObjectType: 
+  bodyName: CommandoBody
+  nameToken: ENEMIES_RETURNS_COMMANDO_SKIN_JUDGEMENT
+  icon: {fileID: 21300000, guid: 604d6242466683248beb5f713b9fc5fd, type: 3}
+  bodyPrefab:
+    m_AssetGUID: 64ee0a4463fdfdc41ac7a06c8f5f2f0f
+    m_SubObjectName: 
+    m_SubObjectType: 
+  renderInfos:
+  - rendererName: CommandoMesh
+    material: {fileID: 2100000, guid: 2d2797adb83549c408914e4d0909043c, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  - rendererName: GunMesh
+    material: {fileID: 2100000, guid: 2d2797adb83549c408914e4d0909043c, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  - rendererName: GunMesh.001
+    material: {fileID: 2100000, guid: 2d2797adb83549c408914e4d0909043c, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  meshReplacements:
+  - rendererName: CommandoMesh
+    mesh: {fileID: 3708166546827403368, guid: 05812a7092b772841a89d82eb97b1b8d, type: 3}

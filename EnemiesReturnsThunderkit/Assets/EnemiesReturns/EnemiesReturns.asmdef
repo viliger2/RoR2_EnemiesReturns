@@ -17,7 +17,8 @@
         "R2API.Core.dll",
         "MMHOOK_KinematicCharacterController.dll",
         "MMHOOK_RoR2.dll",
-        "R2API.Sound.dll"
+        "R2API.Sound.dll",
+        "Unity.Addressables.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

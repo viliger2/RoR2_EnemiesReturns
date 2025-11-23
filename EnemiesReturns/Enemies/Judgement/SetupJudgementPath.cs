@@ -777,6 +777,21 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
             }));
 
+            dictionary.Add("Bandit2Body", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new UnityEngine.AddressableAssets.AssetReferenceGameObject(""),
+                    childName = "Head",
+                    localPos = new Vector3(0.0077F, 0.30369F, 0.1301F),
+                    localAngles = new Vector3(70.16354F, 181.8142F, 178.1497F),
+                    localScale = new Vector3(0.02226F, 0.02226F, 0.02226F),
+                    limbMask = LimbFlags.None
+                }
+            }));
+
             dictionary.Add("TreebotBody", CreateItemDisplayRule(new ItemDisplayRule[]
             {
                 new ItemDisplayRule

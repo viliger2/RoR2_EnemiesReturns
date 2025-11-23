@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f16e491ff8a51e459a1d078b43e413d, type: 3}
+  m_Name: skinBandit2Judgement
+  m_EditorClassIdentifier: 
+  baseSkin:
+    m_AssetGUID: 5c194d792f377224d823bc5f4e805317
+    m_SubObjectName: 
+    m_SubObjectType: 
+  bodyName: Bandit2Body
+  nameToken: ENEMIES_RETURNS_BANDIT2_SKIN_JUDGEMENT
+  icon: {fileID: 21300000, guid: d53458da447dce84f988c74c3fa9d2ad, type: 3}
+  bodyPrefab:
+    m_AssetGUID: 22c5b5de3a57a7b45bf3a6528e86c2fe
+    m_SubObjectName: 
+    m_SubObjectType: 
+  renderInfos:
+  - rendererName: Bandit2HatMesh
+    material: {fileID: 2100000, guid: f506e083e3a16934b96644aeb2204584, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  - rendererName: Bandit2CoatMesh
+    material: {fileID: 2100000, guid: c8a123a887b3a0c4aaf0f51ec53a27c1, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  - rendererName: Bandit2BodyMesh
+    material: {fileID: 2100000, guid: 22332c30c7b2bed439843a1ae9f7fbfa, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  - rendererName: Bandit2ArmsMesh
+    material: {fileID: 2100000, guid: 22332c30c7b2bed439843a1ae9f7fbfa, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
+    ignoresMaterialOverrides: 0
+  meshReplacements:
+  - rendererName: Bandit2HatMesh
+    mesh: {fileID: 6008145250130972294, guid: 82fba7388f042d744a209b7366acfb07, type: 3}
+  - rendererName: Bandit2CoatMesh
+    mesh: {fileID: 9189179457286302602, guid: 82fba7388f042d744a209b7366acfb07, type: 3}
+  - rendererName: Bandit2BodyMesh
+    mesh: {fileID: -1936111444555148505, guid: 82fba7388f042d744a209b7366acfb07, type: 3}
+  - rendererName: Bandit2ArmsMesh
+    mesh: {fileID: 8377331823030118, guid: 82fba7388f042d744a209b7366acfb07, type: 3}
+  - rendererName: Bandit2AccessoriesMesh
+    mesh: {fileID: 0}
