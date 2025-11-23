@@ -181,6 +181,7 @@ namespace EnemiesReturns
         public static NetworkSoundEventDef CreateNetworkSoundDef(string eventName)
         {
             NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            (networkSoundEventDef as ScriptableObject).name = eventName;
             networkSoundEventDef.eventName = eventName;
 
             return networkSoundEventDef;

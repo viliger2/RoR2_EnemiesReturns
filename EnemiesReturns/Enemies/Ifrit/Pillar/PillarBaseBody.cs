@@ -138,7 +138,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
         {
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
-                bodyFlags = CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.HasBackstabImmunity,
+                bodyFlags = CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.HasBackstabImmunity | CharacterBody.BodyFlags.Ungrabbable | CharacterBody.BodyFlags.Unmovable,
                 baseMaxHealth = EnemiesReturns.Configuration.Ifrit.PillarBodyBaseMaxHealth.Value,
                 baseMoveSpeed = 0f,
                 autoCalculateStats = true,

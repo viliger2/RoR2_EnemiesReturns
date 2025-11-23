@@ -167,7 +167,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_LYNX_TOTEM_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 subtitleNameToken = "ENEMIES_RETURNS_LYNX_TITEM_BODY_SUBTITLE",
-                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage,
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.Ungrabbable,
                 mainRootSpeed = 7.5f,
 
                 baseMaxHealth = EnemiesReturns.Configuration.LynxTribe.LynxTotem.BaseMaxHealth.Value,

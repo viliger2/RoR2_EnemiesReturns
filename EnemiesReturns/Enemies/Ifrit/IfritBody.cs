@@ -247,7 +247,7 @@ namespace EnemiesReturns.Enemies.Ifrit
             return new ICharacterBody.CharacterBodyParams("ENEMIES_RETURNS_IFRIT_BODY_NAME", GetCrosshair(), aimOrigin, icon, GetInitialBodyState())
             {
                 subtitleNameToken = "ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE",
-                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage,
+                bodyFlags = CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.Ungrabbable,
                 mainRootSpeed = 33f,
                 baseMaxHealth = EnemiesReturns.Configuration.Ifrit.BaseMaxHealth.Value,
                 baseMoveSpeed = EnemiesReturns.Configuration.Ifrit.BaseMoveSpeed.Value,
