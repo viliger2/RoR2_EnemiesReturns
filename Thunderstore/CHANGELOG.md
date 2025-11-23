@@ -1,4 +1,15 @@
 <details>
+<summary>0.7.12</summary>
+
+* Made bosses ungrabbable (like base game).
+* Mechanical Spider
+  * Fixed Mechanical Spiders becoming zombies if killed when in vehicle seat (Drop Drone, Drifter's bag, etc).
+* EliteReworks 2.0 compatability.
+* Judgement
+  * Added Commando and Bandit Anointed skins.
+    * _This is not something that will happen regularly or even more at all. However we are open to submissions if someone wants to contribute to the mod._
+</details>
+<details>
 <summary>0.7.11</summary>
 
 * Updated for AC.
