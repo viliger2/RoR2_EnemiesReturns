@@ -29,9 +29,6 @@ namespace EnemiesReturns.Enemies.Colossus
             rockThing.transform.localPosition = new Vector3(0, 0f, 0);
             rockThing.transform.rotation = Quaternion.identity;
 
-            GameObject modelPrefab = flyingRockPrefab.InstantiateClone("RockFloater", false);
-            Destroy(modelPrefab.GetComponent<ProjectileGhostController>());
-
             List<GameObject> floatingRocks = new List<GameObject>();
 
             float angle = 360 / rockCount;
@@ -41,7 +38,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 var x = distance * Mathf.Cos(angle * i * Mathf.Deg2Rad);
                 var z = distance * Mathf.Sin(angle * i * Mathf.Deg2Rad);
 
-                var newRock = Instantiate(modelPrefab);
+                var newRock = Instantiate(flyingRockPrefab);
                 newRock.transform.parent = rockThing.transform;
                 //newRock.transform.position = rockThing.transform.position + new Vector3(x, Random.Range(-2f, 2f), z);
                 newRock.transform.localPosition = new Vector3(x, Random.Range(-2f, 2f), z);

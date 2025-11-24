@@ -23,7 +23,6 @@ namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
     [BepInPlugin(GUID, ModName, Version)]
-    [BepInDependency("com.Viliger.RandyBobandyBrokeMyGamandy", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(EliteReworksCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(MoreStatsCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]

@@ -4,6 +4,7 @@ using EnemiesReturns.Items.ColossalKnurl;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
+using RoR2.Projectile;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -41,7 +42,11 @@ namespace EnemiesReturns
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.clapEffect = clapEffect;
 
                 var flyingRockGhost = colossusStuff.CreateFlyingRocksGhost();
-                FloatingRocksController.flyingRockPrefab = flyingRockGhost;
+
+                var colossusFlyingRockRotating = flyingRockGhost.InstantiateClone("ColossusFlyingRockRotating", false);
+                UnityEngine.Object.DestroyImmediate(colossusFlyingRockRotating.GetComponent<ProjectileGhostController>());
+                FloatingRocksController.flyingRockPrefab = colossusFlyingRockRotating;
+
                 var flyingRockProjectile = colossusStuff.CreateFlyingRockProjectile(flyingRockGhost);
                 ModdedEntityStates.Colossus.RockClap.RockClapEnd.projectilePrefab = flyingRockProjectile;
                 projectilesList.Add(flyingRockProjectile);

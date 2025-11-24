@@ -168,6 +168,12 @@ namespace EnemiesReturns.Enemies.Colossus
         public GameObject CreateFlyingRocksGhost()
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockGhost", false);
+            var meshFilter = clonedEffect.GetComponentInChildren<MeshFilter>();
+
+            meshFilter.mesh = Addressables.LoadAssetAsync<Mesh>("RoR2/Base/blackbeach/mdlBBBoulderMediumRound1.fbx").WaitForCompletion();
+            var rockTransform = clonedEffect.transform.Find("Rotator/RockMesh").transform;
+            rockTransform.localScale = new Vector3(0.267036915f, 0.674989223f, 0.267036915f) * 2.5f;
+
             clonedEffect.transform.localScale = new Vector3(2f, 2f, 2f); // for future reference: ProjectileController does not scale ghost to its size, unless ghost has a flag for it
 
             return clonedEffect;
