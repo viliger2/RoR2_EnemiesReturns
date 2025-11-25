@@ -90,7 +90,7 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice),
                     "catacombs_DS1_Catacombs",
                     "snowtime_gephyrophobia",
                     "snowtime_gmconstruct",

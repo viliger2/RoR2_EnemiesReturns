@@ -1,6 +1,7 @@
 <details>
 <summary>0.7.13</summary>
 
+* Added support for Alloyed Collective stages.
 * Colossus
   * Fixed Colossus' clap rocks being gigantic if WolfFixes is installed. This also removes RestoreGrandparentRock as dependency.
 * Fixed mod not loading if AdvancedPrediction was installed.
