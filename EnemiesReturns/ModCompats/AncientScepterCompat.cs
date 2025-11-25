@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModCompats
 {
     internal static class AncientScepterCompat
     {
-        public const string PLUGIN_GUID = "com.score.AdvancedPrediction";
+        public const string PLUGIN_GUID = "com.DestroyedClone.AncientScepter";
 
         private static bool? _enabled;
 
