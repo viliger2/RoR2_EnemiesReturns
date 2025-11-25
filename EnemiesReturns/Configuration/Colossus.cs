@@ -142,7 +142,8 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SiphonedForest),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice)
                 ),
                 "Stages that Snowy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

@@ -1,4 +1,11 @@
 <details>
+<summary>0.7.13</summary>
+
+* Colossus
+  * Fixed Colossus' clap rocks being gigantic if WolfFixes is installed. This also removes RestoreGrandparentRock as dependency.
+* Fixed mod not loading if AdvancedPrediction was installed.
+</details>
+<details>
 <summary>0.7.12</summary>
 
 * Made bosses ungrabbable (like base game).

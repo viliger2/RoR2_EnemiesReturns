@@ -62,7 +62,7 @@ namespace EnemiesReturns.Configuration
                 string.Join
                 (
                     ",",
-                    ""
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RepurposedCrater)
                 ),
                 "Stages that Default Sand Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
@@ -79,7 +79,9 @@ namespace EnemiesReturns.Configuration
                 string.Join
                 (
                     ",",
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ReformedAltar)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ReformedAltar),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.IronAuroras),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.IronAlluvium)
                 ),
                 "Stages that Sandy Sand (lol, lmao) Crab appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

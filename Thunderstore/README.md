@@ -19,7 +19,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/MechanicalSpider/texMechanicalSpiderEnemyIcon.png" alt="Mechanical Spider"></td>
 		<td>Mechanical Spider</td>
 		<td>Re-programmable malware of the modern age. They will harass you at range and dash away from your attacks.</td>
-		<td>Verdant Falls, Viscous Falls, Rallypoint Delta, Sirens Call</td>
+		<td>Verdant Falls, Viscous Falls, Rallypoint Delta, Sirens Call, Conduit Canyon, Pretender's Precipice</td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Shaman/texLynxShamanIcon.png" alt="Lynx Shaman"></td>
@@ -37,7 +37,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>
 		<td>Swift</td>
 		<td>Stones...Flying stones!</td>
-		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest</td>
+		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest, Iron Alluvium, Iron Auroras</td>
 	</tr>	
 	<thead>
 		<tr>
@@ -57,7 +57,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/SandCrab/texSandCrabIcon.png" alt="Sand Crab"></td>
 		<td>Sand Crab</td>
 		<td>Slows prey down and then chops it up with its giant claws.</td>
-		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a></td>
+		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Iron Alluvium, Iron Auroras, Repurposed Crater</td>
 	</tr>
 	<thead>
 		<tr>
@@ -71,13 +71,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Colossus/texColossusIcon.png" alt="Colossus"></td>
 		<td>Colossus</td>
 		<td>The one and only.</td>
-		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a></td>
+		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Pretender's Precipice</td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
 		<td>Ifrit</td>
 		<td>Fiery spawn of Hell. He will burn you with every attack.</td>
-		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, <a href="https://thunderstore.io/package/viliger/Catacombs/">Catacombs</a>, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Gephyrophobia</a></td>
+		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, <a href="https://thunderstore.io/package/viliger/Catacombs/">Catacombs</a>, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Gephyrophobia</a>, Pretender's Precipice</td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Totem/texLynxTotemIcon.png" alt="Lynx Totem"></td>

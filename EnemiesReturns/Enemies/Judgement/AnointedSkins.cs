@@ -424,7 +424,7 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             orig(self);
 
-            if (self && self.currentSurvivorDef && self.currentSurvivorDef.survivorIndex != SurvivorIndex.None)
+            if (self && self.mannequinInstanceTransform && self.currentSurvivorDef && self.currentSurvivorDef.survivorIndex != SurvivorIndex.None)
             {
                 BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
                 int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);

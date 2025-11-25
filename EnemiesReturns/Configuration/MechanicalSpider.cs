@@ -73,6 +73,7 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VerdantFalls),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ViscousFalls),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ConduitCanyon),
                     "snowtime_gephyrophobia"
                 ),
                 "Stages that Default Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
@@ -82,7 +83,8 @@ namespace EnemiesReturns.Configuration
                 (
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice)
                 ),
                 "Stages that Snowy Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
