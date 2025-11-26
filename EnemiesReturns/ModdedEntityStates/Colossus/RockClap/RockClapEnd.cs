@@ -85,13 +85,13 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.RockClap
             {
                 if (isAuthority)
                 {
+                    var rockThingPosition = rockController.GetRockThingPosition();
                     foreach (GameObject rock in rockController.floatingRocks)
                     {
-                        var position = (rock.transform.position - modelLocator.modelTransform.position) * UnityEngine.Random.Range(projectileDistanceFraction - projectileDistanceFractionDelta, projectileDistanceFraction + projectileDistanceFractionDelta);
-                        position = new Vector3(modelLocator.modelTransform.position.x + position.x, modelLocator.modelTransform.position.y, modelLocator.modelTransform.position.z + position.z);
+                        var position = rock.transform.position;
+                        var aimOrigin = new Vector3(Mathf.Lerp(rockThingPosition.x, position.x, 0.75f), position.y - 15f, Mathf.Lerp(rockThingPosition.z, position.z, 0.75f));
+                        var rotation = Quaternion.LookRotation(position - aimOrigin, Vector3.up);
 
-                        //var position = rock.transform.position - new Vector3(0f, 5f, 0f);
-                        var rotation = Quaternion.LookRotation(rock.transform.position - position, Vector3.up);
                         ProjectileManager.instance.FireProjectile(projectilePrefab, rock.transform.position, rotation, gameObject, damageStat * projectileDamageCoefficient, projectileForce, RollCrit(), RoR2.DamageColorIndex.Default, null, UnityEngine.Random.Range(projectileSpeed - projectileSpeedDelta, projectileSpeed + projectileSpeedDelta), DamageSource.Secondary);
                     }
                     var attack = new BlastAttack();

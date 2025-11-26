@@ -66,6 +66,11 @@ namespace EnemiesReturns.Enemies.Colossus
             rockThing.transform.Rotate(new Vector3(0f, 90f * Time.fixedDeltaTime, 0f));
         }
 
+        public Vector3 GetRockThingPosition()
+        {
+            return rockThing.transform.position;    
+        }
+
         public void SetRockThingPosition(Vector3 position)
         {
             rockThing.transform.position = position;
