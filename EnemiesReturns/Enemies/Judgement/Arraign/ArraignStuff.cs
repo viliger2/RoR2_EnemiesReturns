@@ -197,7 +197,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             firstBeamTransform.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeam1", CreateBeam1Material);
 
             var secondBeamTransform = prefab.transform.Find("Mesh, Additive/Mesh, Transparent");
-            secondBeamTransform.localScale = new Vector3(1.5f, 0.1f, 1f);
+            secondBeamTransform.localScale = new Vector3(1.5f, 1f, 1f);
             secondBeamTransform.GetComponent<MeshRenderer>().material = ContentProvider.GetOrCreateMaterial("matArraignBeam2", CreateBeam2Material);
 
             var glows = prefab.transform.Find("Glows");

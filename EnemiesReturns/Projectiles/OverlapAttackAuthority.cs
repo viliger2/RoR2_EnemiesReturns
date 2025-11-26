@@ -62,11 +62,11 @@ namespace EnemiesReturns.Projectiles
 
         private bool HurtBoxPassesFilter(HurtBox hurtBox)
         {
-            if (!Util.HasEffectiveAuthority(hurtBox.healthComponent.gameObject))
+            if (!hurtBox.healthComponent)
             {
                 return false;
             }
-            if (!hurtBox.healthComponent)
+            if (!Util.HasEffectiveAuthority(hurtBox.healthComponent.gameObject))
             {
                 return false;
             }
