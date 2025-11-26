@@ -1,4 +1,15 @@
 <details>
+<summary>0.7.14</summary>
+
+* Colossus
+  * Redid Rock Clap because it somehow broke with AC.
+  * Increased homing speed on rocks to 40 (was 15).
+    * _Number might look big, but for me it seems to be in line with how it was before AC, so I am not sure what happened._
+* Judgement
+  * Fixed Rotating Laser visuals not matching hitbox.
+    * _I would like to also thank Randy to somehow fixing Arraign's Utility in his second phase, he shouldn't do like 3 laps around the arena anymore if you are far enough._
+</details>
+<details>
 <summary>0.7.13</summary>
 
 * Added support for Alloyed Collective stages.
