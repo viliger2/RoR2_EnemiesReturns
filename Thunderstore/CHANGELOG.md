@@ -1,4 +1,10 @@
 <details>
+<summary>0.7.15</summary>
+
+* Colossus
+  * Another fix for Rock Clap rocks being incorrectly scaled.
+</details>
+<details>
 <summary>0.7.14</summary>
 
 * Colossus
