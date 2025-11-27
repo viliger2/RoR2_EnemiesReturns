@@ -22,6 +22,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
+    // TODO: redo lynx shrine to use purchaseinteraction
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]

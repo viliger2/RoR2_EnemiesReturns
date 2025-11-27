@@ -170,6 +170,8 @@ namespace EnemiesReturns.Enemies.Colossus
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulderGhost.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockGhost", false);
             var meshFilter = clonedEffect.GetComponentInChildren<MeshFilter>();
 
+            clonedEffect.transform.Find("Rotator").localScale = Vector3.one;
+
             meshFilter.mesh = Addressables.LoadAssetAsync<Mesh>("RoR2/Base/blackbeach/mdlBBBoulderMediumRound1.fbx").WaitForCompletion();
             var rockTransform = clonedEffect.transform.Find("Rotator/RockMesh").transform;
             rockTransform.localScale = new Vector3(0.267036915f, 0.674989223f, 0.267036915f) * 2.5f;
