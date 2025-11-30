@@ -42,6 +42,7 @@ namespace EnemiesReturns
         private readonly List<NetworkSoundEventDef> nseList = new List<NetworkSoundEventDef>();
         private readonly List<GameObject> nopList = new List<GameObject>();
         private readonly List<BuffDef> bdList = new List<BuffDef>();
+        private readonly List<CraftableDef> craftableList = new List<CraftableDef>();
 
         public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -194,6 +195,7 @@ namespace EnemiesReturns
             _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
             _contentPack.itemRelationshipProviders.Add(new[] { Content.ItemRelationshipProviders.ModdedContagiousItemProvider });
             _contentPack.buffDefs.Add(bdList.ToArray());
+            _contentPack.craftableDefs.Add(craftableList.ToArray());
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 

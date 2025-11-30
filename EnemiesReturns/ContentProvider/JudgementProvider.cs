@@ -270,6 +270,55 @@ namespace EnemiesReturns
                     Content.Items.HiddenAnointed = assets.First(item => item.name == "HiddenAnointed");
 
                     _contentPack.itemDefs.Add(assets);
+
+                    var lunarEliteRecipe = ScriptableObject.CreateInstance<CraftableDef>();
+                    (lunarEliteRecipe as ScriptableObject).name = "cdEliteLunar";
+                    lunarEliteRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_EliteLunar.EliteLunarEquipment_asset).WaitForCompletion();
+                    lunarEliteRecipe.recipes = new Recipe[]
+                    {
+                        new Recipe()
+                        {
+                            ingredients = new RecipeIngredient[]
+                            {
+                                new RecipeIngredient()
+                                {
+                                    pickup = Content.Items.LunarFlower,
+                                    type = IngredientTypeIndex.AssetReference
+                                },
+                                new RecipeIngredient()
+                                {
+                                    pickup = Addressables.LoadAssetAsync<ItemDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_HeadHunter.HeadHunter_asset).WaitForCompletion(),
+                                    type = IngredientTypeIndex.AssetReference
+                                }
+                            }
+                        }
+                    };
+                    craftableList.Add(lunarEliteRecipe);
+
+                    var voidRecipe = ScriptableObject.CreateInstance<CraftableDef>();
+                    (voidRecipe as ScriptableObject).name = "cdEliteVoid";
+                    voidRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_EliteVoid.EliteVoidEquipment_asset).WaitForCompletion();
+                    voidRecipe.recipes = new Recipe[]
+                    {
+                        new Recipe()
+                        {
+                            ingredients = new RecipeIngredient[]
+                            {
+                                new RecipeIngredient()
+                                {
+                                    pickup = Content.Items.VoidFlower,
+                                    type = IngredientTypeIndex.AssetReference
+                                },
+                                new RecipeIngredient()
+                                {
+                                    pickup = Addressables.LoadAssetAsync<ItemDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_HeadHunter.HeadHunter_asset).WaitForCompletion(),
+                                    type = IngredientTypeIndex.AssetReference
+                                }
+                            }
+                        }
+                    };
+                    craftableList.Add(voidRecipe);
+
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>

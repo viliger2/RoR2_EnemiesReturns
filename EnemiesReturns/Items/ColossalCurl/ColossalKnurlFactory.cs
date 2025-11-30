@@ -37,7 +37,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Damage };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage | ItemTag.CanBeTemporary };
 
             return itemDef;
         }
@@ -101,7 +101,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
         {
             if (!damageInfo.procChainMask.HasModdedProc(ColossalFist))
             {
-                var itemCount = attackerBody.inventory.GetItemCountPermanent(EnemiesReturns.Content.Items.ColossalCurl);
+                var itemCount = attackerBody.inventory.GetItemCountEffective(EnemiesReturns.Content.Items.ColossalCurl);
                 if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
                 {
                     bool isFlying = true; // always assume that the target is flying, so we hit the target instead of trying to find ground beneath

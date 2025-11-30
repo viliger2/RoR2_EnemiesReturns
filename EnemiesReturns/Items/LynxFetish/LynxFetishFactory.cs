@@ -74,7 +74,7 @@ namespace EnemiesReturns.Items.LynxFetish
                     // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
                     if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
                     {
-                        body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCountPermanent(Content.Items.LynxFetish));
+                        body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCountEffective(Content.Items.LynxFetish));
                     }
                 }
             }
@@ -154,14 +154,14 @@ namespace EnemiesReturns.Items.LynxFetish
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy };
+            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.CanBeTemporary };
 
             return itemDef;
         }
 
         private static int GetFriendlyLynxTribeCount(CharacterMaster master, int countMultiplier)
         {
-            return Mathf.Min(master.inventory.GetItemCountPermanent(Content.Items.LynxFetish), 4);
+            return Mathf.Min(master.inventory.GetItemCountEffective(Content.Items.LynxFetish), 4);
         }
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)

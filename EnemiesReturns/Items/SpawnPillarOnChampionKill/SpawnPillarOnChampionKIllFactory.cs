@@ -34,7 +34,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy, ItemTag.OnKillEffect };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy, ItemTag.OnKillEffect, ItemTag.CanBeTemporary };
 
             return itemDef;
         }
@@ -61,7 +61,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 {
                     if (body && body.inventory)
                     {
-                        body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCountPermanent(Content.Items.SpawnPillarOnChampionKill));
+                        body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCountEffective(Content.Items.SpawnPillarOnChampionKill));
                     }
                 }
             }
