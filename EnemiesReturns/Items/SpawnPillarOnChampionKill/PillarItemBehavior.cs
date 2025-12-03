@@ -18,7 +18,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             bool spawn = false;
             if (damageReport.victimBody)
             {
-                spawn = damageReport.victimBody.isChampion || damageReport.victimBody.isPlayerControlled;
+                spawn = damageReport.victimBody.isChampion || damageReport.victimBody.isPlayerControlled || damageReport.victimBody.inventory.GetItemCountPermanent(RoR2Content.Items.InvadingDoppelganger) > 0;
                 if (Configuration.Ifrit.SpawnPillarOnChampionKillEliteKills.Value && !spawn && damageReport.victimBody.isElite)
                 {
                     spawn = Util.CheckRoll(EnemiesReturns.Configuration.Ifrit.SpawnPillarOnChampionKillEliteChance.Value, damageReport.attackerMaster);
