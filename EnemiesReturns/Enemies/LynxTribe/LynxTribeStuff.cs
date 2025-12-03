@@ -247,7 +247,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
-
             spawner.assignRewards = false;
             spawner.spawnDistance = 5f;
             spawner.retrySpawnCount = 3;
@@ -263,6 +262,18 @@ namespace EnemiesReturns.Enemies.LynxTribe
             shrine.shrineUseEffect = shrineEffect;
             shrine.failureSound = nsedFailure;
             shrine.successSound = nsedSuccess;
+
+            var purchaseInteraction = shrinePrefab.AddComponent<PurchaseInteraction>();
+            purchaseInteraction.displayNameToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME";
+            purchaseInteraction.contextToken = "ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT";
+            purchaseInteraction.costType = CostTypeIndex.None;
+            purchaseInteraction.setUnavailableOnTeleporterActivated = true;
+            purchaseInteraction.isShrine = true;
+            purchaseInteraction.shouldProximityHighlight = true;
+            purchaseInteraction.onPurchase = new PurchaseEvent();
+            purchaseInteraction.onPurchase.AddPersistentListener<Interactor>(shrine.AddShrineStack);
+
+            shrine.purchaseInteraction = purchaseInteraction;
 
             var cubeObject = shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject;
             cubeObject.AddComponent<EntityLocator>().entity = shrinePrefab;

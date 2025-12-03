@@ -303,7 +303,7 @@ namespace EnemiesReturns
             return false;
         }
 
-        public static void AddPersistentListener(this UnityEvent<MPButton, PickupDef> unityEvent, UnityAction<MPButton, PickupDef> action)
+        public static void AddPersistentListener<T0, T1>(this UnityEvent<T0, T1> unityEvent, UnityAction<T0, T1> action)
         {
             unityEvent.m_PersistentCalls.AddListener(new PersistentCall
             {

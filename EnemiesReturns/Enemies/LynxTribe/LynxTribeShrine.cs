@@ -2,23 +2,23 @@
 using JetBrains.Annotations;
 using RoR2;
 using RoR2.Audio;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Enemies.LynxTribe
 {
-    public class LynxTribeShrine : NetworkBehaviour, IInteractable, IHologramContentProvider, IInspectable, IDisplayNameProvider
+    public class LynxTribeShrine : NetworkBehaviour, IHologramContentProvider, IDisplayNameProvider
     {
         public GameObject shrineUseEffect;
-
-        [SyncVar]
-        public bool available;
 
         [SyncVar(hook = "OnPickupChanged")]
         public int pickupValue = -1;
 
         [SyncVar]
         public bool activated = false;
+
+        public PurchaseInteraction purchaseInteraction;
 
         public float escapeDuration = 60f;
 
@@ -44,7 +44,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private void Awake()
         {
-            available = true;
             networkIdentity = GetComponent<NetworkIdentity>();
             if (spawner && spawner.combatSquad)
             {
@@ -186,11 +185,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
             }
         }
 
-        public string GetContextString([NotNull] Interactor activator)
-        {
-            return RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT");
-        }
-
         public string GetDisplayName()
         {
             var pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
@@ -198,17 +192,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             return string.Format(RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME_WITH_ITEM"), RoR2.Language.GetString("ENEMIES_RETURNS_LYNX_SHRINE_NAME"), itemString);
         }
 
-        public Interactability GetInteractability([NotNull] Interactor activator)
-        {
-            if (!available)
-            {
-                return Interactability.Disabled;
-            }
-
-            return Interactability.Available;
-        }
-
-        public void OnInteractionBegin([NotNull] Interactor activator)
+        public void AddShrineStack(Interactor activator)
         {
             if (!NetworkServer.active)
             {
@@ -241,7 +225,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 pickupColor = pickupDef?.baseColor ?? Color.black,
                 pickupQuantity = (uint)escapeDuration
             });
-            available = false;
+            purchaseInteraction.SetAvailable(false);
         }
 
         private void FixedUpdate()
@@ -282,21 +266,6 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 }
                 escapeTimer += Time.fixedDeltaTime;
             }
-        }
-
-        public bool ShouldIgnoreSpherecastForInteractibility([NotNull] Interactor activator)
-        {
-            return false;
-        }
-
-        public bool ShouldProximityHighlight()
-        {
-            return true;
-        }
-
-        public bool ShouldShowOnScanner()
-        {
-            return true;
         }
 
         public bool ShouldDisplayHologram(GameObject viewer)
