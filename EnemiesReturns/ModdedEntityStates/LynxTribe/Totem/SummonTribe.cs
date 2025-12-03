@@ -45,8 +45,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         {
             base.OnEnter();
 
-            var currentDeployableCount = characterBody.master.GetDeployableCount(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
-            var deployableLimit = characterBody.master.GetDeployableSameSlotLimit(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+            var currentDeployableCount = characterBody.master.GetDeployableCount(Content.Deployables.SummonLynxTribeDeployable);
+            var deployableLimit = characterBody.master.GetDeployableSameSlotLimit(Content.Deployables.SummonLynxTribeDeployable);
             summonCount = Mathf.Min(deployableLimit - currentDeployableCount, summonCountBase);
 
             duration = baseDuration / attackSpeedStat;
@@ -175,7 +175,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
                     var deployable = result.spawnedInstance.GetComponent<Deployable>();
                     if (deployable)
                     {
-                        characterBody.master.AddDeployable(deployable, Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+                        characterBody.master.AddDeployable(deployable, Content.Deployables.SummonLynxTribeDeployable);
                     }
                 }
             }

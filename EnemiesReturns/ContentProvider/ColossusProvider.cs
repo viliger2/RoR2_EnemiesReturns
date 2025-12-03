@@ -207,8 +207,6 @@ namespace EnemiesReturns
 
             if (Configuration.Colossus.ItemEnabled.Value)
             {
-                ColossalKnurlFactory.ColossalFist = ProcTypeAPI.ReserveProcType();
-
                 var knurlFactory = new ColossalKnurlFactory();
 
                 Content.Items.ColossalCurl = knurlFactory.CreateItem(assets.First(item => item.name == "PickupColossalCurl"), iconLookup["texColossalKnurlIcon"]);

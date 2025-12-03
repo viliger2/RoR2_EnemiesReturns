@@ -39,7 +39,7 @@ namespace EnemiesReturns.Items.LynxFetish
         {
             if (body && body.master)
             {
-                if (!body.master.IsDeployableLimited(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) && spawnTimer >= 15f)
+                if (!body.master.IsDeployableLimited(Content.Deployables.LynxFetishDeployable) && spawnTimer >= 15f)
                 {
                     if (!Configuration.LynxTribe.LynxTotem.LynxFetishSpawnInBazaar.Value)
                     {
@@ -61,7 +61,7 @@ namespace EnemiesReturns.Items.LynxFetish
                     directorSpawnRequest.onSpawnedServer = OnMasterSpawned;
                     directorSpawnRequest.ignoreTeamMemberLimit = true;
                     DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
-                    if (body.master.GetDeployableCount(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable) < body.master.GetDeployableSameSlotLimit(Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable))
+                    if (body.master.GetDeployableCount(Content.Deployables.LynxFetishDeployable) < body.master.GetDeployableSameSlotLimit(Content.Deployables.LynxFetishDeployable))
                     {
                         spawnTimer = 14f;
                     }
@@ -117,7 +117,7 @@ namespace EnemiesReturns.Items.LynxFetish
             if (deployable)
             {
                 deployable.onUndeploy.AddListener(summonedMaster.TrueKill);
-                body.master.AddDeployable(deployable, LynxFetishFactory.LynxFetishDeployable);
+                body.master.AddDeployable(deployable, Content.Deployables.LynxFetishDeployable);
             }
         }
 
@@ -144,7 +144,7 @@ namespace EnemiesReturns.Items.LynxFetish
             {
                 for (int i = body.master.deployablesList.Count - 1; i >= 0; i--)
                 {
-                    if (body.master.deployablesList[i].slot == Items.LynxFetish.LynxFetishFactory.LynxFetishDeployable)
+                    if (body.master.deployablesList[i].slot == Content.Deployables.LynxFetishDeployable)
                     {
                         var deployable = this.body.master.deployablesList[i].deployable;
                         if (!deployable)

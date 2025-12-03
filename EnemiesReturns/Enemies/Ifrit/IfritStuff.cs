@@ -1,4 +1,5 @@
 ﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Projectiles;
 using R2API;
 using RoR2;
@@ -14,14 +15,14 @@ namespace EnemiesReturns.Enemies.Ifrit
 {
     public class IfritStuff
     {
-        public static DeployableSlot PylonDeployable;
-
-        public static R2API.ModdedProcType PillarExplosion;
 
         public static void Hooks()
         {
-            PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
-            PillarExplosion = R2API.ProcTypeAPI.ReserveProcType();
+            if (Configuration.Ifrit.ItemEnabled.Value)
+            {
+                Content.Deployables.PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
+                Content.ProcChainTypes.PillarExplosion = ProcTypeAPI.ReserveProcType();
+            }
         }
 
         private static int GetPylonCount(CharacterMaster master, int countMultiplier)

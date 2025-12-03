@@ -8,8 +8,6 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 {
     public class PillarStuff
     {
-        public static R2API.ModdedProcType PillarExplosion;
-
         public GameObject CreateExplosionEffect()
         {
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/RoboBallBoss/OmniExplosionVFXRoboBallBossDeath.prefab").WaitForCompletion().InstantiateClone("IfritPylonExplosionEffect", false);

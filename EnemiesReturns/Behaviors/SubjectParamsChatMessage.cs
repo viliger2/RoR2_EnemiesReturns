@@ -14,8 +14,8 @@ namespace EnemiesReturns.Behaviors
         public static void Hooks()
         {
             var type = typeof(SubjectParamsChatMessage);
-            chatMessageTypeToIndex.Add(type, (byte)chatMessageIndexToType.Count);
-            chatMessageIndexToType.Add(type);
+            ChatMessageBase.chatMessageTypeToIndex.Add(type, (byte)chatMessageIndexToType.Count);
+            ChatMessageBase.chatMessageIndexToType.Add(type);
         }
 
         public override string ConstructChatString()

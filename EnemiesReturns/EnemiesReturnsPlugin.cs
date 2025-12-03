@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Ifrit;
+using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider.Drone;
@@ -10,6 +11,7 @@ using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using EnemiesReturns.ModCompats;
 using HarmonyLib;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using System;
@@ -22,7 +24,6 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
-    // TODO: redo lynx shrine to use purchaseinteraction
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
@@ -72,7 +73,7 @@ namespace EnemiesReturns
 #else
             MakeNonConfigs(configs);
 #endif
-            RegisterStuff();
+            RegisterOrbs();
             Hooks();
 #if DEBUG == true
             On.RoR2.Networking.NetworkManagerSystemSteam.OnClientConnect += (s, u, t) => { };
@@ -95,7 +96,7 @@ namespace EnemiesReturns
             }
         }
 
-        private void RegisterStuff()
+        private void RegisterOrbs()
         {
             R2API.OrbAPI.AddOrb(typeof(LynxStormOrb));
         }

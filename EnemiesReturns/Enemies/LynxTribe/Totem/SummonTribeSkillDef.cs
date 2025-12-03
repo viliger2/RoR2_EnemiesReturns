@@ -21,7 +21,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             var body = ((InstanceData)skillSlot.skillInstanceData).characterBody;
             if (body.hasEffectiveAuthority && NetworkServer.active) // this won't work on clients, so if someone wants to play as totem his minions won't be capped via this
             {
-                return body.master.IsDeployableLimited(Enemies.LynxTribe.Totem.TotemStuff.SummonLynxTribeDeployable);
+                return body.master.IsDeployableLimited(Content.Deployables.SummonLynxTribeDeployable);
             }
 
             return false; // players are never capped

@@ -38,17 +38,6 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             return spawnEffect;
         }
 
-        public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
-        {
-            if (damageInfo.HasModdedDamageType(Content.DamageTypes.ApplyReducedHealing))
-            {
-                if (victim.TryGetComponent<CharacterBody>(out var victimBody))
-                {
-                    victimBody.AddTimedBuff(Content.Buffs.ReduceHealing, EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesDebuffDuration.Value);
-                }
-            }
-        }
-
         public static void HealthComponent_Heal(MonoMod.Cil.ILContext il)
         {
             ILCursor c = new ILCursor(il);

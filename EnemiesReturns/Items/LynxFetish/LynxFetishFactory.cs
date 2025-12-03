@@ -11,7 +11,6 @@ namespace EnemiesReturns.Items.LynxFetish
 {
     public class LynxFetishFactory
     {
-        public static DeployableSlot LynxFetishDeployable;
 
         public struct IndexToCards
         {
@@ -26,7 +25,7 @@ namespace EnemiesReturns.Items.LynxFetish
         public static void Hooks()
         {
             EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
-            LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLynxTribeCount);
+            Content.Deployables.LynxFetishDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetFriendlyLynxTribeCount);
             IL.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
         }
 

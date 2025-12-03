@@ -94,11 +94,25 @@ namespace EnemiesReturns
 
         public static class DamageTypes
         {
-            public static ModdedDamageType ApplyReducedHealing;
-
             public static ModdedDamageType EndGameBossWeapon;
 
             public static ModdedDamageType CanStunArraign;
+        }
+
+        public static class ProcChainTypes
+        {
+            public static R2API.ModdedProcType PillarExplosion;
+
+            public static R2API.ModdedProcType ColossalFist;
+        }
+
+        public static class Deployables
+        {
+            public static DeployableSlot PylonDeployable;
+
+            public static DeployableSlot SummonLynxTribeDeployable;
+
+            public static DeployableSlot LynxFetishDeployable;
         }
     }
 }

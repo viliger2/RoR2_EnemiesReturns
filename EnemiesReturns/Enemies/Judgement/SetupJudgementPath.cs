@@ -170,6 +170,9 @@ namespace EnemiesReturns.Enemies.Judgement
         {
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
+                Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
+                Content.DamageTypes.CanStunArraign = DamageAPI.ReserveDamageType();
+
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
                 On.RoR2.CharacterModel.UpdateOverlays += Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;

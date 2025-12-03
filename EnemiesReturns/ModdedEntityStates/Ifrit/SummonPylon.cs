@@ -121,7 +121,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                         if (deployable)
                         {
                             deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
-                            characterBody.master.AddDeployable(deployable, IfritStuff.PylonDeployable);
+                            characterBody.master.AddDeployable(deployable, Content.Deployables.PylonDeployable);
                         }
                     }
                 }

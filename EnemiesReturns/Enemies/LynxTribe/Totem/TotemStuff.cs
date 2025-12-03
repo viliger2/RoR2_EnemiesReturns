@@ -14,11 +14,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
 {
     public class TotemStuff
     {
-        public static DeployableSlot SummonLynxTribeDeployable;
-
         public void RegisterDeployableSlot()
         {
-            SummonLynxTribeDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetSummonLynxTribeDeployableLimit);
+            Content.Deployables.SummonLynxTribeDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetSummonLynxTribeDeployableLimit);
         }
 
         private static int GetSummonLynxTribeDeployableLimit(CharacterMaster master, int countMultiplier)

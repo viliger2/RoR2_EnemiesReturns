@@ -11,9 +11,9 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
     {
         public void OnKilledOtherServer(DamageReport damageReport)
         {
-            if (!damageReport.damageInfo.procChainMask.HasModdedProc(IfritStuff.PillarExplosion))
+            if (!damageReport.damageInfo.procChainMask.HasModdedProc(Content.ProcChainTypes.PillarExplosion))
             {
-                if (base.body.master.IsDeployableLimited(IfritStuff.PylonDeployable))
+                if (base.body.master.IsDeployableLimited(Content.Deployables.PylonDeployable))
                 {
                     return;
                 }
@@ -51,7 +51,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                                 if (deployable)
                                 {
                                     //deployable.onUndeploy.AddListener(deployableMaster.TrueKill);
-                                    base.body.master.AddDeployable(deployable, IfritStuff.PylonDeployable);
+                                    base.body.master.AddDeployable(deployable, Content.Deployables.PylonDeployable);
                                 }
                             }
                         }

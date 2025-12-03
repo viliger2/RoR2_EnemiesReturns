@@ -44,7 +44,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
             }
 
             purchaseInteraction.onDetailedPurchaseServer.AddListener(OnDetailedPurchase);
-            //purchaseInteraction.onPurchase.AddListener(OnPurchase);
         }
 
         public void OnDetailedPurchase(CostTypeDef.PayCostContext payCostContext, CostTypeDef.PayCostResults payCostResult)

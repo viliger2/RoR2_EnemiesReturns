@@ -151,8 +151,6 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Ifrit.Pillar.Enemy.KilledDeathState.fireballYCurve = acdLookup["acdFireballFallCurve"].curve;
 
-                PillarStuff.PillarExplosion = ProcTypeAPI.ReserveProcType();
-
                 var pillarMaster = new PillarMaster();
 
                 if (Configuration.Ifrit.Enabled.Value)

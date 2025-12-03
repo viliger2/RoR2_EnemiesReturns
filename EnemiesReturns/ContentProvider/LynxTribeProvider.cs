@@ -538,7 +538,6 @@ namespace EnemiesReturns
 
         private void CreateLynxShaman(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
-            Content.DamageTypes.ApplyReducedHealing = DamageAPI.ReserveDamageType();
             var shamanStuff = new ShamanStuff();
 
             var shamanSpawnEffect = shamanStuff.CreateShamanSpawnEffect(assets.First(prefab => prefab.name == "LynxSpawnParticles"));

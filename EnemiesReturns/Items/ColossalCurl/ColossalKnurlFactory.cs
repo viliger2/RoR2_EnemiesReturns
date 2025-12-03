@@ -12,8 +12,6 @@ namespace EnemiesReturns.Items.ColossalKnurl
     {
         public static GameObject projectilePrefab;
 
-        public static R2API.ModdedProcType ColossalFist;
-
         public ItemDef CreateItem(GameObject prefab, Sprite icon)
         {
             var modelPanelParameters = prefab.AddComponent<ModelPanelParameters>();
@@ -94,12 +92,16 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
         public static void Hooks()
         {
-            EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            if (Configuration.Colossus.ItemEnabled.Value)
+            {
+                Content.ProcChainTypes.ColossalFist = ProcTypeAPI.ReserveProcType();
+                EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            }
         }
 
         public static void OnHitEnemy(DamageInfo damageInfo, CharacterBody attackerBody, GameObject victim)
         {
-            if (!damageInfo.procChainMask.HasModdedProc(ColossalFist))
+            if (!damageInfo.procChainMask.HasModdedProc(Content.ProcChainTypes.ColossalFist))
             {
                 var itemCount = attackerBody.inventory.GetItemCountEffective(EnemiesReturns.Content.Items.ColossalCurl);
                 if (itemCount > 0 && Util.CheckRoll(EnemiesReturns.Configuration.Colossus.KnurlProcChance.Value * damageInfo.procCoefficient, attackerBody.master))
@@ -127,7 +129,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
                     //fireProjectileInfo.force = EnemiesReturns.Configuration.Colossus.KnurlForce.Value;
                     fireProjectileInfo.crit = damageInfo.crit;
                     fireProjectileInfo.procChainMask = damageInfo.procChainMask;
-                    fireProjectileInfo.procChainMask.AddModdedProc(ColossalFist);
+                    fireProjectileInfo.procChainMask.AddModdedProc(Content.ProcChainTypes.ColossalFist);
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
             }
