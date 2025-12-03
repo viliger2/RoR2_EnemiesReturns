@@ -1,4 +1,24 @@
 <details>
+<summary>0.7.16</summary>
+
+* Allowed boss items to be temporary. Fixed them not working if player somehow managed to make them temporary prior to this.
+* Added cooking recipes.
+* Lynx Shrine
+  * Lynx Shrine now uses PurchaseInteraction for its activation.
+    * _This is purely vanilla compatibility change, so any vanilla or modded item\behavior that checks for PurchaseInteraction.isShrine can work._
+  * Shrine no longer collides with camera.
+* Ifrit
+  * Infernal Lantern
+    * No longer triggers on elite kills. Old behavior can be restored in the config.
+	* Can now chain proc from itself.
+	  * _Technically it could before, it just wasn't intended._
+	* Now spawns on Umbra kills.
+	* Per item scaling lowered to 800% (was 1000%).
+	  * _Main intention of these changes to lower chances of pillar just clearing stages by itself, chain-procing over and over again from elites (even if it wasn't intended and it still can happen now due to dots which do not save proc chain information)._
+* Judgement
+  * Fixed boss ignoring certain equipment if it was in non-active slot from new red item.
+</details>
+<details>
 <summary>0.7.15</summary>
 
 * Colossus
