@@ -101,8 +101,6 @@ namespace EnemiesReturns
 
         public static class ProcChainTypes
         {
-            public static R2API.ModdedProcType PillarExplosion;
-
             public static R2API.ModdedProcType ColossalFist;
         }
 

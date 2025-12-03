@@ -69,7 +69,16 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 
         private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
         {
-            var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION");
+            string tokenValue = "";
+            if (Configuration.Ifrit.SpawnPillarOnChampionKillEliteKills.Value)
+            {
+                tokenValue = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES";
+            } else
+            {
+                tokenValue = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES";
+            }
+
+            var keyPair = output.Find(item => item.Key == tokenValue);
             if (!keyPair.Equals(default(KeyValuePair<string, string>)))
             {
                 string description = string.Format(

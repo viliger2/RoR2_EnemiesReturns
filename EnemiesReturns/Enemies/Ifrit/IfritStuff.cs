@@ -21,7 +21,6 @@ namespace EnemiesReturns.Enemies.Ifrit
             if (Configuration.Ifrit.ItemEnabled.Value)
             {
                 Content.Deployables.PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
-                Content.ProcChainTypes.PillarExplosion = ProcTypeAPI.ReserveProcType();
             }
         }
 

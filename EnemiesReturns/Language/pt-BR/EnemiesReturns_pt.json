@@ -8,7 +8,7 @@
 		"ENEMIES_RETURNS_SPITTER_NORMAL_SPIT_DESCRIPTION": "Dispara um rápido projétil.",
 		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_NAME": "Cuspida Carregada",
 		"ENEMIES_RETURNS_SPITTER_CHARGED_SPIT_DESCRIPTION": "Carrega um projétil lento que deixa uma poça de veneno ao atingir.",
-		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "Registro de Monstro: Cuspidor"
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER": "Registro de Monstro: Cuspidor",
 
 		"ENEMIES_RETURNS_COLOSSUS_BODY_NAME": "Colosso",
 		"ENEMIES_RETURNS_COLOSSUS_BODY_LORE": "Notas de Campo:\n\nUm grunhido baixo, duradouro. Da relativa segurança da minha cápsula de descida, observei enquanto uma montanha se erguia de joelhos, levantando-se com braços de pedra, terra e cipós.\n\nO Colosso se assemelha a um primo do Golem de Pedra e compartilha muitas semelhanças, desde o olhar vermelho até a estatura robusta. Ao redor de seus pés, muitos golems menores surgiram, juntando-se a ele. De que maneira as armas convencionais poderiam me ajudar?\n\nComecei a encontrar um humor sombrio no massacre absoluto que enfrento. Isso é simplesmente ridículo.",
@@ -20,13 +20,13 @@
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_NAME": "Barragem de Laser",
 		"ENEMIES_RETURNS_COLOSSUS_LASER_BARRAGE_DESCRIPTION": "Assuma uma postura, preparando-se para disparar. Após um curto período, lance uma devastadora barragem de projéteis.",
 		"ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS": "Registro de Monstro: Colosso",
-	  "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME": "Laser Gigante",
-    "ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION": "Tome posição e prepare para atirar. Após um curto período, dispare um laser gigante, movendo-o da esquerda para direita múltiplas vezes.",
+		"ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_NAME": "Laser Gigante",
+		"ENEMIES_RETURNS_COLOSSUS_HEAD_LASER_DESCRIPTION": "Tome posição e prepare para atirar. Após um curto período, dispare um laser gigante, movendo-o da esquerda para direita múltiplas vezes.",
 
 		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Punho Colossal",
 		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Chance de gerar um punho gigante.",
 		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "Ao atingir um inimigo, tem <style=cIsDamage>{0}</style> de chance de gerar o <style=cIsDamage>punho do Colosso</style>, causando <style=cIsDamage>{1}</style><style=cStack>(+{2} por acúmulo)</style> de dano TOTAL.",
-		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Endereço de Entrega: Nº 6542, Rocha Fraturada, Desconhecido\n\nEntrega Estimada: 7/22/2056\n\nObviamente, resta alguma essência neste naco. O Knurl ainda está atraindo terra e poeira das proximidades, tentando se reconstruir. Talvez eu possa usar isso a meu favor. Um bocado de terra autorreparadora poderia servir como um bom escudo."
+		"ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Endereço de Entrega: Nº 6542, Rocha Fraturada, Desconhecido\n\nEntrega Estimada: 7/22/2056\n\nObviamente, resta alguma essência neste naco. O Knurl ainda está atraindo terra e poeira das proximidades, tentando se reconstruir. Talvez eu possa usar isso a meu favor. Um bocado de terra autorreparadora poderia servir como um bom escudo.",
 
 		"ENEMIES_RETURNS_IFRIT_BODY_NAME": "Ifrit",
 		"ENEMIES_RETURNS_IFRIT_BODY_SUBTITLE": "Rebento do Rei Infernal",
@@ -38,25 +38,26 @@
 		"ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_NAME": "Disparada Flamejante",
 		"ENEMIES_RETURNS_IFRIT_FLAME_CHARGE_DESCRIPTION": "Avança para frente, queimando tudo em seu caminho e deixando um rastro de chamas para trás.",
 		"ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT": "Registro de Monstro: Ifrit",
-	  "ENEMIES_RETURNS_IFRIT_SMASH_NAME": "Esmagar",
-    "ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION": "Esmague à frente, causando dano e afastando inimigos.",
+		"ENEMIES_RETURNS_IFRIT_SMASH_NAME": "Esmagar",
+		"ENEMIES_RETURNS_IFRIT_SMASH_DESCRIPTION": "Esmague à frente, causando dano e afastando inimigos.",
 
 		"ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "Pilar de Fogo",
 
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Lanterna Infernal",
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "Gera um pilar de fogo ao abater um monstro grande ou um elite.",
-		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>Abater grandes monstros</style> gera um <style=cIsDamage>pilar de fogo</style>. Após <style=cIsUtility>{0}s</style>, o pilar <style=cIsDamage>explode</style>, causando <style=cIsDamage>{1}</style><style=cStack>(+{2} por acúmulo)</style> de dano base em um raio de <style=cIsDamage>{3}m</style>. <style=cIsDamage>Abater monstros elite</style> tem <style=cIsDamage>{4}</style> chances de causar o mesmo efeito.",
-		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destino: Lote Z, Casa de Leilões, Desconhecido\n\nData: 4/10/2056\n\nQuando eu finalmente abati a fera, arranquei a lanterna da torre que ela convocou, esperando que me ajudasse nessa jornada. Eu senti um poder estranho desde então... embora eu me sinta mais forte, sinto que não estou mais sozinho."
+		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>Abater grandes monstros</style> gera um <style=cIsDamage>pilar de fogo</style>. Após <style=cIsUtility>{0}s</style>, o pilar <style=cIsDamage>explode</style>, causando <style=cIsDamage>{1}</style><style=cStack>(+{2} por acúmulo)</style> de dano base em um raio de <style=cIsDamage>{3}m</style>. <style=cIsDamage>Abater monstros elite</style> tem <style=cIsDamage>{4}</style> chances de causar o mesmo efeito.",
+		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES": "<style=cIsDamage>Abater grandes monstros</style> gera um <style=cIsDamage>pilar de fogo</style>. Após <style=cIsUtility>{0}s</style>, o pilar <style=cIsDamage>explode</style>, causando <style=cIsDamage>{1}</style><style=cStack>(+{2} por acúmulo)</style> de dano base em um raio de <style=cIsDamage>{3}m</style>.",
+		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destino: Lote Z, Casa de Leilões, Desconhecido\n\nData: 4/10/2056\n\nQuando eu finalmente abati a fera, arranquei a lanterna da torre que ela convocou, esperando que me ajudasse nessa jornada. Eu senti um poder estranho desde então... embora eu me sinta mais forte, sinto que não estou mais sozinho.",
 
 		"ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "Notas de Campo:\n\nO malware da nossa era! Provavelmente, esses parasitas mecânicos estavam se escondendo na nave antes do acidente. Piratas costumam usar esses insetos para roubar cargas especialmente valiosas, redirecionar sinais de transmissão ou até mesmo sequestrar naves. As aranhas podem ser programadas com todo tipo de objetivos maliciosos. \n\nEm geral, elas são bem difíceis de encontrar e erradicar em grandes embarcações, mas agora que estão soltas, parecem ser capazes de operar além dos limites da programação. Elas mantiveram suas capacidades defensivas, e é arriscado enfrentá-las. No entanto, por quanto tempo será que continuarão funcionando sem acesso a uma rede elétrica?",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME": "Aranha Mecânica",
-    "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER": "Registro de Monstro: Aranha Mecânica",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME": "Aranha Mecânica Quebrada",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION": "Uma aranha mecânica quebrada. Com o conhecimento certo e uma boa quentia de ouro, ele mudará de lado e ajudará o sobrevivente..",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_CONTEXT": "Reparar Aranha Mecânica",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "Disparo Duplo",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "Abra uma escotilha, carregue a arma e dispare dois projéteis rapidamente.",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Investida",
-    "ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Invista por uma curta distância."
-  }
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME": "Aranha Mecânica",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER": "Registro de Monstro: Aranha Mecânica",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME": "Aranha Mecânica Quebrada",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION": "Uma aranha mecânica quebrada. Com o conhecimento certo e uma boa quentia de ouro, ele mudará de lado e ajudará o sobrevivente..",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_CONTEXT": "Reparar Aranha Mecânica",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_NAME": "Disparo Duplo",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DOUBLE_SHOT_DESCRIPTION": "Abra uma escotilha, carregue a arma e dispare dois projéteis rapidamente.",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_NAME": "Investida",
+		"ENEMIES_RETURNS_MECHANICAL_SPIDER_DASH_DESCRIPTION": "Invista por uma curta distância."
+	}
 }

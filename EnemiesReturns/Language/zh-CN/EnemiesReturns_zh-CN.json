@@ -45,7 +45,8 @@
 
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "地狱灯笼",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "击杀大型或精英怪物时召唤一个烈焰火柱。",
-    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION": "<style=cIsDamage>击杀大型怪物</style>会生成一个<style=cIsDamage>烈焰火柱</style>。在<style=cIsUtility>{0}s</style>后,火柱<style=cIsDamage>爆炸</style>,在<style=cIsDamage>{3}m</style>半径内造成<style=cIsDamage>{1}</style><style=cStack>(每层+{2} )</style>基础伤害。<style=cIsDamage>击杀精英怪物</style>有<style=cIsDamage>{4}</style>几率触发相同效果。",
+    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>击杀大型怪物</style>会生成一个<style=cIsDamage>烈焰火柱</style>。在<style=cIsUtility>{0}s</style>后,火柱<style=cIsDamage>爆炸</style>,在<style=cIsDamage>{3}m</style>半径内造成<style=cIsDamage>{1}</style><style=cStack>(每层+{2} )</style>基础伤害。<style=cIsDamage>击杀精英怪物</style>有<style=cIsDamage>{4}</style>几率触发相同效果。",
+    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES": "<style=cIsDamage>击杀大型怪物</style>会生成一个<style=cIsDamage>烈焰火柱</style>。在<style=cIsUtility>{0}s</style>后,火柱<style=cIsDamage>爆炸</style>,在<style=cIsDamage>{3}m</style>半径内造成<style=cIsDamage>{1}</style><style=cStack>(每层+{2} )</style>基础伤害。",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "目的地: Z区, 拍卖行, 未知\n\n日期: 2056年4月10日\n\n当我最终击败这头野兽时,我从它召唤的塔上扯下了这个灯笼,希望它能对这次旅程有所帮助。自从得到它,我感到一股奇怪的力量...虽然我感觉变强了,但我觉得我不再是独自一人了。",
 
     "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "野外笔记:\n\n我们这个时代的恶意软件!这些机械寄生虫可能在飞船坠毁前就潜伏在船上了。海盗会用这些虫子来收集特别有价值的货物,重定向传输信号,甚至劫持船只。蜘蛛可以被编程用于各种恶意目的。\n\n通常它们在大型船只上很难找到和根除,但现在它们散落在外,似乎能够在它们的软件之外运行。它们保留了防御能力,与之交战很危险。不过,我想知道,在没有电网供电的情况下,它们还能运行多久?",

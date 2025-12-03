@@ -70,6 +70,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> SpawnPillarOnChampionKillBodyLevelDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillEliteChance;
         public static ConfigEntry<int> SpawnPillarOnChampionKillMaxPillarCount;
+        public static ConfigEntry<bool> SpawnPillarOnChampionKillEliteKills;
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
@@ -149,7 +150,7 @@ namespace EnemiesReturns.Configuration
 
             Ifrit.ItemEnabled = config.Bind("Infernal Lantern", "Enable Infernal Lantern", true, "Enables Infernal Lantern to drop from Ifrit and appear in printers.");
             Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("Infernal Lantern", "Infernal Lantern Damage", 10f, "Infernal Lantern explosion damage.");
-            Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("Infernal Lantern", "Infernal Lantern Damage Per Stack", 10f, "Infernal Lantern explosion damage per stack.");
+            Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("Infernal Lantern", "Infernal Lantern Damage Per Stack", 8f, "Infernal Lantern explosion damage per stack.");
             Ifrit.SpawnPillarOnChampionKillRadius = config.Bind("Infernal Lantern", "Infernal Lantern Radius", 80f, "Infernal Lantern explosion radius.");
             Ifrit.SpawnPillarOnChampionKillChargeTime = config.Bind("Infernal Lantern", "Infernal Lantern Charge Time", 5f, "Infernal Lantern explosion charge time.");
             Ifrit.SpawnPillarOnChampionKillProcCoefficient = config.Bind("Infernal Lantern", "Infernal Lantern Proc Coefficient", 0f, "Infernal Lantern explosion proc coefficient.");
@@ -157,6 +158,7 @@ namespace EnemiesReturns.Configuration
             Ifrit.SpawnPillarOnChampionKillBodyLevelDamage = config.Bind("Infernal Lantern", "Infernal Lantern Base Damage", 2.4f, "Infernal Lantern pillar damage per level. By default equal to most survivors.");
             Ifrit.SpawnPillarOnChampionKillEliteChance = config.Bind("Infernal Lantern", "Infernal Lantern Elite Kill Spawn Chance", 20f, "Infernal Lantern chance to spawn on elite kill.");
             Ifrit.SpawnPillarOnChampionKillMaxPillarCount = config.Bind("Infernal Lantern", "Infernal Lantern Max Pillar Count", 2, "Max summoned pillars count. When limit is reached new pillars won't be spawned until old ones despawn.");
+            SpawnPillarOnChampionKillEliteKills = config.Bind("Infernal Lantern", "Infernal Lanter Spawn On Elite Kills", false, "Enables Infernal Lanter chance spawn on elite kills.");
 
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
         }
