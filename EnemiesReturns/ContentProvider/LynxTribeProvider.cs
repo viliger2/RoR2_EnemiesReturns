@@ -531,6 +531,31 @@ namespace EnemiesReturns
                 };
 
                 HG.ArrayUtils.ArrayAppend(ref Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = Content.Items.LynxFetish, itemDef2 = VoidMegaCrabItem });
+
+                var elitePoisonRecipe = ScriptableObject.CreateInstance<CraftableDef>();
+                (elitePoisonRecipe as ScriptableObject).name = "cdEnemiesReturnsElitePoison";
+                elitePoisonRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_ElitePoison.ElitePoisonEquipment_asset).WaitForCompletion();
+                elitePoisonRecipe.recipes = new Recipe[]
+                {
+                        new Recipe()
+                        {
+                            ingredients = new RecipeIngredient[]
+                            {
+                                new RecipeIngredient()
+                                {
+                                    pickup = Content.Items.LynxFetish,
+                                    type = IngredientTypeIndex.AssetReference
+                                },
+                                new RecipeIngredient()
+                                {
+                                    pickup = Addressables.LoadAssetAsync<ItemDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_HeadHunter.HeadHunter_asset).WaitForCompletion(),
+                                    type = IngredientTypeIndex.AssetReference
+                                }
+                            }
+                        }
+                };
+
+                craftableList.Add(elitePoisonRecipe);
             }
 
             return dtLynxTotem;

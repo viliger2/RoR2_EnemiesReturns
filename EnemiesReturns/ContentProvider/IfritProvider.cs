@@ -8,6 +8,7 @@ using RoR2.ContentManagement;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {
@@ -124,6 +125,31 @@ namespace EnemiesReturns
                         }
                 };
                 HG.ArrayUtils.ArrayAppend(ref Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships, new ItemDef.Pair { itemDef1 = Content.Items.SpawnPillarOnChampionKill, itemDef2 = VoidMegaCrabItem });
+
+                var eliteFireRecipe = ScriptableObject.CreateInstance<CraftableDef>();
+                (eliteFireRecipe as ScriptableObject).name = "cdEnemiesReturnsEliteFire";
+                eliteFireRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_EliteFire.EliteFireEquipment_asset).WaitForCompletion();
+                eliteFireRecipe.recipes = new Recipe[]
+                {
+                        new Recipe()
+                        {
+                            ingredients = new RecipeIngredient[]
+                            {
+                                new RecipeIngredient()
+                                {
+                                    pickup = Content.Items.SpawnPillarOnChampionKill,
+                                    type = IngredientTypeIndex.AssetReference
+                                },
+                                new RecipeIngredient()
+                                {
+                                    pickup = Addressables.LoadAssetAsync<ItemDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_HeadHunter.HeadHunter_asset).WaitForCompletion(),
+                                    type = IngredientTypeIndex.AssetReference
+                                }
+                            }
+                        }
+                };
+
+                craftableList.Add(eliteFireRecipe);
             }
 
             return dtIfrit;
