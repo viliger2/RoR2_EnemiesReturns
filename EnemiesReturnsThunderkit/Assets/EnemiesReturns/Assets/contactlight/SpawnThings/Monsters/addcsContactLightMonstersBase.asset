@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2099981080, guid: 45feadaaa90b2d2217207fb8b533753e, type: 3}
+  m_Name: addcsContactLightMonstersBase
+  m_EditorClassIdentifier: 
+  targetCardCategorySelection: {fileID: 11400000, guid: dea26f806ab1e5c44ab1972c497052f1, type: 2}
+  categories:
+  - name: Champions
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 8ddcbc7e2022f3241bd5ad5b6d29077e
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 06072945e2499574db95c4f798f3707e
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    selectionWeight: 2
+  - name: Minibosses
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: e5cc043fa7ee4cd4e903f0dde1561f0f
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 1
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 3f78bcc1024d47f42b6fcde3e19099e7
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 1
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: f7aba48d470b1594281c0eab455a12dd
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    selectionWeight: 3
+  - name: Basic Monsters
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 94ec3e9c9692ff84a99fd8bb1962cbb0
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: c0363b855d43fc04d8e82d1ef505d972
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 1
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: f7a1bc2e4756beb448d61e9e1421a9e1
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    selectionWeight: 3
+  - name: Special
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: a91a75aa7ea8e954c827db66eefedd98
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 5
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+    selectionWeight: 1

@@ -1,0 +1,394 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2099981080, guid: 45feadaaa90b2d2217207fb8b533753e, type: 3}
+  m_Name: addcsContactLightInteractablesBase
+  m_EditorClassIdentifier: 
+  targetCardCategorySelection: {fileID: 11400000, guid: dc9ff78f30cd4e24db6d968efb418579, type: 2}
+  categories:
+  - name: Chests
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 4cccf4ce0ec36974aaab0633dd1b189f
+        _useDirectReference: 0
+      selectionWeight: 24
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 4390f76b47c49204092aa4d3e9bbdef3
+        _useDirectReference: 0
+      selectionWeight: 4
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 8ca7006781fd27447a18bac452d46f23
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 0a8dba9ed8f044f42bad974647536053
+        _useDirectReference: 0
+      selectionWeight: 8
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 79f8cea0f42e0924c967b6480ff65e19
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 45
+  - name: Barrels
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 230a8db225fbb6f489f1d8d525bcca3e
+        _useDirectReference: 0
+      selectionWeight: 10
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 10
+  - name: Shrines
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: a6d01afb758a15940bf09deb9db44067
+        _useDirectReference: 0
+      selectionWeight: 3
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: fa529fd257781ae418bdf21f5367c5b5
+        _useDirectReference: 0
+      selectionWeight: 4
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 17d0ba680c7b4a540b1f665928b5f073
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 7
+  - name: Drones
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 749e2ff7e1839074885efb0f82197ba7
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 81e6491f830f9c143bb5954640a383b1
+        _useDirectReference: 0
+      selectionWeight: 4
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 4.5
+  - name: Rare
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 0ca987933662e6e42972fe4c19074474
+        _useDirectReference: 0
+      selectionWeight: 6
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: c6c8f501bfa87e54294f9b0bb9db3da4
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 11400000, guid: c579556fd89fd154c8662af8e621c19d, type: 2}
+        _address: 
+        _useDirectReference: 1
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 32c40c2b1da4a4244871ef499447ac1a
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 1
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: f651e21f3d76a02488235b52509f1482
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 3
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 0.4
+  - name: Duplicator
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: b29e1b964cc9ceb48a273dfe366ee32c
+        _useDirectReference: 0
+      selectionWeight: 30
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: ca49c54059b2bc34ba74fbc6ef6bf2a0
+        _useDirectReference: 0
+      selectionWeight: 6
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 1
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: d2bef187f32e129468ab3f5d7d651193
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 4
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 6e0f8f86485837e43945e703d14ff0a0
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 1
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 9abfd4337e4042f4784a421d6dbce07d
+        _useDirectReference: 0
+      selectionWeight: 12
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    selectionWeight: 8

@@ -131,6 +131,23 @@ namespace EnemiesReturns
             InvokeCMD(user, "set_scene", "enemiesreturns_outoftime");
         }
 
+        [ConCommand(commandName = "returns_contactlight_test", flags = ConVarFlags.None)]
+        private static void CCContactLightTest(ConCommandArgs args)
+        {
+            NetworkUser user = args.sender;
+            InvokeCMD(user, "fixed_time", UnityEngine.Random.Range(1500, 1800).ToString());
+            InvokeCMD(user, "run_set_stages_cleared", "6");
+            InvokeCMD(user, "team_set_level", "1", UnityEngine.Random.Range(15, 20).ToString());
+
+            InvokeCMD(user, "random_items", UnityEngine.Random.Range(20, 30).ToString(), "Tier1:100");
+            InvokeCMD(user, "random_items", UnityEngine.Random.Range(10, 15).ToString(), "Tier2:100");
+            InvokeCMD(user, "random_items", UnityEngine.Random.Range(1, 4).ToString(), "Tier3:100");
+            InvokeCMD(user, "random_items", UnityEngine.Random.Range(1, 3).ToString(), "Boss:100");
+
+            //InvokeCMD(user, "give_equip", "random");
+            InvokeCMD(user, "set_scene", "enemiesreturns_contactlight");
+        }
+
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)
         {
             var args = arguments.ToList();

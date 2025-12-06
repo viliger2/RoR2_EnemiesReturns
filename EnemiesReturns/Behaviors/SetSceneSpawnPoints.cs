@@ -1,8 +1,6 @@
 ﻿using RoR2;
 using RoR2.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using static RoR2.Navigation.NodeGraph;
 
@@ -13,6 +11,12 @@ namespace EnemiesReturns.Behaviors
         public Transform[] spawnPoints;
 
         public bool randomizeOrder = true;
+
+        public bool closestNode = true;
+
+        public float minDistance = 10f;
+
+        public float maxDistance = 40f;
 
         void OnEnable()
         {
@@ -53,7 +57,18 @@ namespace EnemiesReturns.Behaviors
                 {
                     return;
                 }
-                var spawnNode = groundNodes.FindClosestNode(spawnPoints[i].position, HullClassification.Human);
+                NodeIndex spawnNode = NodeIndex.invalid;
+                if (closestNode)
+                {
+                    spawnNode = groundNodes.FindClosestNode(spawnPoints[i].position, HullClassification.Human);
+                } else
+                {
+                    var allNodes = groundNodes.FindNodesInRange(spawnPoints[i].position, minDistance, maxDistance, HullMask.Human);
+                    if(allNodes.Count > 0)
+                    {
+                        spawnNode = allNodes[UnityEngine.Random.Range(0, allNodes.Count)];
+                    }
+                }
                 if(spawnNode == NodeIndex.invalid)
                 {
                     continue;
