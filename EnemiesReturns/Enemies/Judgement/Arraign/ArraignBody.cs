@@ -13,6 +13,10 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public static GameObject ArraignP2Body;
 
+        public static CharacterSpawnCard cscArraignP1;
+
+        public static CharacterSpawnCard cscArraignP2;
+
         public static class P1Skills
         {
             public static SkillDef ThreeHitCombo;

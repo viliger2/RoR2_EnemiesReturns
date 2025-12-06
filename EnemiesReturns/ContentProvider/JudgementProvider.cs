@@ -272,7 +272,7 @@ namespace EnemiesReturns
                     _contentPack.itemDefs.Add(assets);
 
                     var lunarEliteRecipe = ScriptableObject.CreateInstance<CraftableDef>();
-                    (lunarEliteRecipe as ScriptableObject).name = "cdEliteLunar";
+                    (lunarEliteRecipe as ScriptableObject).name = "cdEnemiesReturnsEliteLunar";
                     lunarEliteRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_EliteLunar.EliteLunarEquipment_asset).WaitForCompletion();
                     lunarEliteRecipe.recipes = new Recipe[]
                     {
@@ -296,7 +296,7 @@ namespace EnemiesReturns
                     craftableList.Add(lunarEliteRecipe);
 
                     var voidRecipe = ScriptableObject.CreateInstance<CraftableDef>();
-                    (voidRecipe as ScriptableObject).name = "cdEliteVoid";
+                    (voidRecipe as ScriptableObject).name = "cdEnemiesReturnsEliteVoid";
                     voidRecipe.pickup = Addressables.LoadAssetAsync<EquipmentDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_EliteVoid.EliteVoidEquipment_asset).WaitForCompletion();
                     voidRecipe.recipes = new Recipe[]
                     {
@@ -355,6 +355,9 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
                 {
+                    Enemies.Judgement.Arraign.ArraignBody.cscArraignP1 = assets.First(asset => asset.name == "cscArraignP1");
+                    Enemies.Judgement.Arraign.ArraignBody.cscArraignP2 = assets.First(asset => asset.name == "cscArraignP2");
+
                     ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers.cscSkyLaser = assets.First(asset => asset.name == "cscSkyLaser");
                     ModdedEntityStates.Judgement.Mission.Phase3.cscArraignHaunt = assets.First(asset => asset.name == "cscArraignHaunt");
                 }));
