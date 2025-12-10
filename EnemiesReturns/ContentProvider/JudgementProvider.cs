@@ -247,11 +247,11 @@ namespace EnemiesReturns
 
                     ModifyCredits(assets.First(asset => asset.name == "EnemiesReturnsCreditsAdditions"));
 
-                    Items.LunarFlower.LunarFlowerItemBehaviour.startEffect = SetupJudgementPath.CreateVoidFlowerRespawnStartEffect();
-                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFlowerItemBehaviour.startEffect));
+                    Items.LunarFlower.LunarFowerExtraLifeBehaviour.startEffect = SetupJudgementPath.CreateVoidFlowerRespawnStartEffect();
+                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFowerExtraLifeBehaviour.startEffect));
 
-                    Items.LunarFlower.LunarFlowerItemBehaviour.endEffect = SetupJudgementPath.CreateVoidFlowerRespawnEndEffect();
-                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFlowerItemBehaviour.endEffect));
+                    Items.LunarFlower.LunarFowerExtraLifeBehaviour.endEffect = SetupJudgementPath.CreateVoidFlowerRespawnEndEffect();
+                    effectsList.Add(new EffectDef(Items.LunarFlower.LunarFowerExtraLifeBehaviour.endEffect));
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

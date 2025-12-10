@@ -23,6 +23,11 @@ namespace EnemiesReturns.Behaviors
             SceneDirector.onPreGeneratePlayerSpawnPointsServer += SceneDirector_onPreGeneratePlayerSpawnPointsServer;
         }
 
+        private void OnDisable()
+        {
+            SceneDirector.onPreGeneratePlayerSpawnPointsServer -= SceneDirector_onPreGeneratePlayerSpawnPointsServer;
+        }
+
         private void SceneDirector_onPreGeneratePlayerSpawnPointsServer(SceneDirector sceneDirector, ref Action generationMethod)
         {
             generationMethod = GeneratePlayerSpawnPointsServer;

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 1006468269, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: HiddenInLogbook
   m_EditorClassIdentifier: 
-  _tier: 11
+  _tier: 1000
   bgIconTexture: {fileID: 0}
   colorIndex: 4
   darkColorIndex: 21
   isDroppable: 0
   canScrap: 0
   canRestack: 0
+  canRebirth: 0
   pickupRules: 2
   highlightPrefab: {fileID: 0}
   dropletDisplayPrefab: {fileID: 0}

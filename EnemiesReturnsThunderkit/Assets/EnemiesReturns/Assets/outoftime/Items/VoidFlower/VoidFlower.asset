@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: VoidFlower
   m_EditorClassIdentifier: 
-  deprecatedTier: 11
+  deprecatedTier: 1000
   _itemTierDef: {fileID: 11400000, guid: d3b61bc0e66369448b60da5ca48111c9, type: 2}
   nameToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_NAME
   pickupToken: ENEMIES_RETURNS_JUDGEMENT_ITEM_VOIDFLOWER_PICKUP

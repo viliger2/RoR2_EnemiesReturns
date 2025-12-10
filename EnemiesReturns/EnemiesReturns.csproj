@@ -13,7 +13,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
-		<PackageReference Include="Brynzananas-Revive_API" Version="1.2.2" />
 		<PackageReference Include="Moffein-EliteReworks" Version="2.0.0" />
 		<PackageReference Include="Moffein-Risky_Artifacts" Version="2.4.21" />
 		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
@@ -30,9 +29,9 @@
 		<PackageReference Include="RiskOfBrainrot-MoreStats" Version="1.2.7" />
 		<PackageReference Include="score-AdvancedPrediction" Version="1.0.4" />
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.0-r.0" />
-		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19" NoWarn="NU1701" />
-		<PackageReference Include="RoR2BepInExPack" Version="1.36.0" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.1-r.0" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2025.12.9" NoWarn="NU1701" />
+		<PackageReference Include="RoR2BepInExPack" Version="1.40.0" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="Exists('D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll')">

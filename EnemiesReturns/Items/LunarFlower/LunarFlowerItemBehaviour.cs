@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using static RoR2.CharacterBody;
+using static RoR2.CharacterMaster;
+using static RoR2.CharacterMasterNotificationQueue;
 
 namespace EnemiesReturns.Items.LunarFlower
 {
@@ -15,44 +17,14 @@ namespace EnemiesReturns.Items.LunarFlower
     {
         public bool hasVoidDied;
 
-        public static GameObject startEffect;
-
-        public static GameObject endEffect;
-
-        private static GameObject glassEffect;
-
         private void Start()
         {
             hasVoidDied = false;
-            //if (!endEffect)
-            //{
-            //    var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathMuzzleflash_prefab);
-            //    if (handle.IsValid())
-            //    {
-            //        handle.Completed += (obj) =>
-            //        {
-            //            endEffect = obj.Result;
-            //            Addressables.Release(handle);
-            //        };
-            //    }
-            //}
-            if (!glassEffect)
-            {
-                var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.BrittleDeath_prefab);
-                if (handle.IsValid())
-                {
-                    handle.Completed += (obj) =>
-                    {
-                        glassEffect = obj.Result;
-                        Addressables.Release(handle);
-                    };
-                }
-            }
         }
 
         public void OnKilledServer(DamageReport damageReport)
         {
-            if(damageReport != null && damageReport.damageInfo != null && IsDamageVoidDeath(damageReport.damageInfo))
+            if (damageReport != null && damageReport.damageInfo != null && IsDamageVoidDeath(damageReport.damageInfo))
             {
                 hasVoidDied = true;
             }
@@ -81,93 +53,31 @@ namespace EnemiesReturns.Items.LunarFlower
         {
             if (Configuration.Judgement.Judgement.Enabled.Value)
             {
-                ReviveAPI.ReviveAPI.AddCustomRevive(CanRevive, new ReviveAPI.ReviveAPI.PendingOnRevive[]
-                {
-                    new ReviveAPI.ReviveAPI.PendingOnRevive
-                    {
-                        onReviveDelegate = SpawnVoidFiendEffect,
-                        timer = 1f,
-                    },
-                    new ReviveAPI.ReviveAPI.PendingOnRevive
-                    {
-                        onReviveDelegate = ReviveWithEffects,
-                        timer = 2f,
-                    }
-                },
-                9999);
+                On.RoR2.CharacterMaster.TryReviveOnBodyDeath += CharacterMaster_TryReviveOnBodyDeath;
             }
         }
 
-        private static void ReviveWithEffects(CharacterMaster master)
+        private static bool CharacterMaster_TryReviveOnBodyDeath(On.RoR2.CharacterMaster.orig_TryReviveOnBodyDeath orig, CharacterMaster self, CharacterBody body)
         {
-            var vector = master.deathFootPosition + Vector3.up * 2;
-            master.Respawn(master.deathFootPosition, Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f), true);
-            var body = master.GetBody();
-            body.AddTimedBuff(RoR2Content.Buffs.Immune, 3f);
-            master.inventory.GiveItemPermanent(Content.Items.VoidFlower);
-            CharacterMasterNotificationQueue.SendTransformNotification(master, Content.Items.LunarFlower.itemIndex, Content.Items.VoidFlower.itemIndex, CharacterMasterNotificationQueue.TransformationType.ContagiousVoid);
-            if (master.bodyInstanceObject)
+            if (LunarFowerExtraLifeBehaviour.CanRevive(self))
             {
-                EntityStateMachine[] components = master.bodyInstanceObject.GetComponents<EntityStateMachine>();
-                foreach (EntityStateMachine obj in components)
+                Inventory.ItemTransformation itemTransformation = default(Inventory.ItemTransformation);
+                itemTransformation.originalItemIndex = Content.Items.LunarFlower.itemIndex;
+                itemTransformation.newItemIndex = Content.Items.VoidFlower.itemIndex;
+                itemTransformation.transformationType = (ItemTransformationTypeIndex)TransformationType.ContagiousVoid;
+                if (itemTransformation.TryTake(self.inventory, out var result))
                 {
-                    obj.initialStateType = obj.mainStateType;
-                }
-                if (master.gameObject)
-                {
-                    if (endEffect)
-                    {
-                        EffectManager.SpawnEffect(endEffect, new EffectData
-                        {
-                            origin = vector,
-                            rotation = master.bodyInstanceObject.transform.rotation
-                        }, transmit: true);
-                    }
-                    if (glassEffect)
-                    {
-                        EffectManager.SpawnEffect(glassEffect, new EffectData
-                        {
-                            origin = vector,
-                            rotation = master.bodyInstanceObject.transform.rotation
-                        }, transmit: true);
-                    }
+                    LunarFowerExtraLifeBehaviour extraLifeServerBehavior = self.gameObject.AddComponent<LunarFowerExtraLifeBehaviour>();
+                    extraLifeServerBehavior.pendingTransformation = result;
+                    extraLifeServerBehavior.consumedItemIndex = Content.Items.VoidFlower.itemIndex;
+                    extraLifeServerBehavior.completionTime = Run.FixedTimeStamp.now + 2f;
+                    extraLifeServerBehavior.completionCallback = extraLifeServerBehavior.LunarFlowerRevive;
+                    extraLifeServerBehavior.soundTime = Run.FixedTimeStamp.positiveInfinity;
+                    return true;
                 }
             }
-            master.inventory.RemoveItemPermanent(Content.Items.LunarFlower, master.inventory.GetItemCountPermanent(Content.Items.LunarFlower));
-        }
-
-        private static void SpawnVoidFiendEffect(CharacterMaster master)
-        {
-            if (startEffect)
-            {
-                EffectManager.SpawnEffect(startEffect, new EffectData
-                {
-                    origin = master.deathFootPosition + Vector3.up * 2,
-                    rotation = Quaternion.identity
-                }, true);
-            }
-        }
-
-        private static bool CanRevive(CharacterMaster master)
-        {
-            if (!NetworkServer.active)
-            {
-                return false;
-            }
-
-            var body = master.GetBody();
-            if (!body)
-            {
-                return false;
-            }
-
-            var lunarFlowerComponent = body.GetComponent<LunarFlowerItemBehaviour>();
-            if (!lunarFlowerComponent)
-            {
-                return false;
-            }
-
-            return lunarFlowerComponent.hasVoidDied;
+            return orig(self, body);
         }
     }
+
 }

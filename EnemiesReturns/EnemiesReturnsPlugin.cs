@@ -41,7 +41,6 @@ namespace EnemiesReturns
     [BepInDependency(R2API.OrbAPI.PluginGUID)]
     [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
     [BepInDependency(R2API.SoundAPI.PluginGUID)]
-    [BepInDependency(ReviveAPI.ReviveAPI.ModGuid)]
     [BepInDependency("JaceDaDorito.LocationsOfPrecipitation")]
     public class EnemiesReturnsPlugin : BaseUnityPlugin
     {

@@ -36,7 +36,7 @@ namespace EnemiesReturns.Items.LynxFetish
                 x => x.MatchLdfld<DamageInfo>(nameof(DamageInfo.damage)),
                 x => x.MatchStloc(out _)))
             {
-                c.Emit(OpCodes.Ldloc, 9);
+                c.Emit(OpCodes.Ldloc, 10); // 10 is stloc.s number after RoR2.DamageInfo::damage
                 c.Emit(OpCodes.Ldarg_1); // damageInfo
                 c.Emit(OpCodes.Ldarg_0); // self (healthComponent)
                 c.EmitDelegate<Func<float, DamageInfo, HealthComponent, float>>((origDamage, damageInfo, self) =>
@@ -56,7 +56,7 @@ namespace EnemiesReturns.Items.LynxFetish
                     }
                     return newDamage;
                 });
-                c.Emit(OpCodes.Stloc, 9);
+                c.Emit(OpCodes.Stloc, 10);
             }
             else
             {
