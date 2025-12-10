@@ -66,7 +66,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             }
             rigidbody = GetComponent<Rigidbody>();
             characterMotor.Motor.ForceUnground();
-            characterMotor.useGravity = false;
+            var gravityParams = characterMotor.gravityParameters;
+            gravityParams.antiGravityNeutralizerCount++;
             characterMotor.disableAirControlUntilCollision = true;
             moveTarget = new GameObject();
             if (storm)
@@ -123,7 +124,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
             {
                 if (characterMotor)
                 {
-                    characterMotor.useGravity = true;
+                    var gravityParams = characterMotor.gravityParameters;
+                    gravityParams.antiGravityNeutralizerCount--;
                     var normalized2 = (characterMotor.transform.position - previousPosition).normalized;
                     var forceVector = new Vector3(normalized2.x, 0f, normalized2.z) * force;
                     characterMotor.ApplyForce(forceVector, true, false);
@@ -198,7 +200,8 @@ namespace EnemiesReturns.Enemies.LynxTribe.Storm
         {
             if (characterMotor)
             {
-                characterMotor.useGravity = true;
+                var gravityParams = characterMotor.gravityParameters;
+                gravityParams.antiGravityNeutralizerCount--;
                 characterMotor.disableAirControlUntilCollision = false;
             }
             if (characterBody)
