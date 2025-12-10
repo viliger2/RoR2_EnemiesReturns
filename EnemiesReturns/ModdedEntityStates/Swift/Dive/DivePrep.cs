@@ -81,11 +81,14 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 if(predictor != null)
                 {
                     var transform = predictor.GetTargetTransform();
-                    var distance = Vector3.Distance(transform.position, base.transform.position);
-                    if(distance > 0)
+                    if (transform)
                     {
-                        var timeToTarget = distance / (moveSpeedStat * EnemiesReturns.ModdedEntityStates.Swift.Dive.Dive.diveSpeedCoefficient);
-                        predictor.GetPredictedTargetPosition(timeToTarget, out predictedPosition);
+                        var distance = Vector3.Distance(transform.position, base.transform.position);
+                        if (distance > 0)
+                        {
+                            var timeToTarget = distance / (moveSpeedStat * EnemiesReturns.ModdedEntityStates.Swift.Dive.Dive.diveSpeedCoefficient);
+                            predictor.GetPredictedTargetPosition(timeToTarget, out predictedPosition);
+                        }
                     }
                 }
                 outer.SetNextState(new Dive() { diveTarget = predictedPosition});
