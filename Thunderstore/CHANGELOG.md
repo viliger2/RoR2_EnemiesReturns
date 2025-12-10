@@ -1,4 +1,17 @@
 <details>
+<summary>0.7.17</summary>
+
+* 1.4.1 update.
+* ReviveAPI is no longer a dependency.
+* Added more cooking recipes.
+* Swift
+  * Fixed NRE when Swift prepares to dive and has no target.
+* Ifrit
+  * Fixed NRE when target without inventory is killed while killer has Infernal Lantern.
+* Judgement
+  * Fixed NRE on starting new run right after entering Judgement.
+</details>
+<details>
 <summary>0.7.16</summary>
 
 * Allowed boss items to be temporary. Fixed them not working if player somehow managed to make them temporary prior to this.
