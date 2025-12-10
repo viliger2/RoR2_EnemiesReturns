@@ -267,6 +267,11 @@
     "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_DESC": "一道能摧毁路径上一切的光束。",
     "ENEMIES_RETURNS_JUDGEMENT_VOIDLINGWEAPON_LORE": "背景故事在此",
 
+    "ENEMIES_RETURNS_JUDGEMENT_TRADABLEROCK_BUZZ": "<style=cWorldEvent>你听到下方传来奇怪的嗡嗡声...</style>",
+
+    "ENEMIES_RETURNS_BANDIT2_SKIN_JUDGEMENT": "平滑",
+    "ENEMIES_RETURNS_COMMANDO_SKIN_JUDGEMENT": "天使",
+
     "ENEMIES_RETURNS_SWIFT_BODY_NAME": "迅捷",
     "ENEMIES_RETURNS_SWIFT_BODY_LORE": "野外笔记:\n\n这些覆着页岩甲壳的飞石竟能持续悬空。如同从太阳投出的千支飞镖,它们向我俯冲得如此迅捷,以至于它们的喙都砸入了地面。\n\n我尚未见过它们无法刺穿的表面,而且令我震惊的是它们的喙似乎从未磨损。它们的预测性瞄准令人不安,而且它们似乎在我之前就知道我要去哪里。\n\n我曾目睹成群的这些怪鸟在远方的天空像秃鹫一样盘旋,尽管我从未见过它们任何一只在觅食。尝试将它们的装甲制成新刀刃的结果只是让我的刀出现了缺口。",
     "ENEMIES_RETURNS_SWIFT_DIVE_NAME": "俯冲",
@@ -279,6 +284,15 @@
     "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_NAME": "剪钳",
     "ENEMIES_RETURNS_SANDCRAB_CLAW_SNIP_DESCRIPTION": "蓄力近战攻击并立即用双钳剪击。",
     "ENEMIES_RETURNS_SANDCRAB_BUBBLES_NAME": "火焰泡泡",
-    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "发射追踪泡泡。"
+    "ENEMIES_RETURNS_SANDCRAB_BUBBLES_DESCRIPTION": "发射追踪泡泡。",
+
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_NAME": "机械蜘蛛",
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_DESCRIPTION": "放置一只<style=cIsUtility>机械蜘蛛</style>，<style=cIsUtility>继承你所有的物品</style>。发射爆破枪造成<style=cIsDamage>2x250%伤害</style>。最多可放置2只。",
+
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_NAME": "机械蜘蛛 Mk. 2",
+    "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_DESCRIPTION": "放置一只<style=cIsUtility>机械蜘蛛</style>，<style=cIsUtility>继承你所有的物品</style>。发射爆破枪造成<style=cIsDamage>2x250%伤害</style>。最多可放置2只。\n<color=#d299ff>权杖：现在发射4次且速度快一倍。</color>",
+
+    "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_NAME": "工程师：巧手",
+    "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "以工程师身份，修理损坏的机械蜘蛛。"
   }
 }
