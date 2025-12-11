@@ -1,4 +1,14 @@
 <details>
+<summary>0.7.18</summary>
+
+* Updated Simplified Chinese translation by [锅巴](https://space.bilibili.com/10832951?spm_id_from=333.1007.0.0).
+* Lynx Tribe
+  * Fixed being able to escape Storm just by using movement keys.
+* Judgement
+  * Lowered music volume to roughly match vanilla.
+    * _I am so, so tired of this shit. I'll do sound effect pass some time in the future._
+</details>
+<details>
 <summary>0.7.17</summary>
 
 * 1.4.1 update.

@@ -24,6 +24,7 @@ using UnityEngine.Networking;
 namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
+    // TODO: add collective elite displays you lazy fuck its been a month
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
@@ -46,7 +47,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.17";
+        public const string Version = "0.7.18";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
