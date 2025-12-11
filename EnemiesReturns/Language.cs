@@ -19,6 +19,16 @@ namespace EnemiesReturns
                 List<KeyValuePair<string, string>> output = new List<KeyValuePair<string, string>>();
                 RoR2.Language.LoadAllTokensFromFolder(path, output);
                 onCurrentLangaugeChanged?.Invoke(currentLanguage, output);
+            } else
+            {
+                // loading english tokens
+                path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(EnemiesReturnsPlugin).Assembly.Location), Language.LanguageFolder, "en");
+                if (System.IO.Directory.Exists(path))
+                {
+                    List<KeyValuePair<string, string>> output = new List<KeyValuePair<string, string>>();
+                    RoR2.Language.LoadAllTokensFromFolder(path, output);
+                    onCurrentLangaugeChanged?.Invoke(currentLanguage, output);
+                }
             }
         }
     }
