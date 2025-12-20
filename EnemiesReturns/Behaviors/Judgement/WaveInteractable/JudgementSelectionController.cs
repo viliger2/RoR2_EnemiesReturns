@@ -80,6 +80,11 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 return;
             }
 
+            if(this.currentList >= itemLists.Length)
+            {
+                return;
+            }
+
             List<PickupPickerController.Option> options = new List<PickupPickerController.Option>();
             var currentList = itemLists[this.currentList];
             for (int i = 0; i < currentList.Length; i++)
