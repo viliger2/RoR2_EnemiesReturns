@@ -195,6 +195,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         protected override ICharacterModel.CharacterModelParams CharacterModelParams(GameObject modelPrefab)
         {
             var sandCrabBodyRender = modelPrefab.transform.Find("Crabbo").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var baseForAdditions = modelPrefab.transform.Find("SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead");
 
             CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
@@ -204,6 +205,62 @@ namespace EnemiesReturns.Enemies.SandCrab
                     defaultMaterial = sandCrabBodyRender.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = false
                 }
             };
@@ -218,6 +275,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         protected override SkinDef[] CreateSkinDefs(GameObject modelPrefab)
         {
             var sandCrabBodyRender = modelPrefab.transform.Find("Crabbo").gameObject.GetComponent<SkinnedMeshRenderer>();
+            var baseForAdditions = modelPrefab.transform.Find("SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead");
 
             CharacterModel.RendererInfo[] defaultRender = new CharacterModel.RendererInfo[]
             {
@@ -227,6 +285,62 @@ namespace EnemiesReturns.Enemies.SandCrab
                     defaultMaterial = sandCrabBodyRender.material,
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = false
                 }
             };
@@ -242,6 +356,62 @@ namespace EnemiesReturns.Enemies.SandCrab
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 }
             };
             SkinDefs.Sandy = Utils.CreateSkinDef("skinSandCrabSandy", modelPrefab, sandyRender, SkinDefs.Default);
@@ -254,6 +424,62 @@ namespace EnemiesReturns.Enemies.SandCrab
                     defaultMaterial = ContentProvider.MaterialCache["mat3DSandCrabGrassy"],
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Base").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2/Mesh(Clone)(Clone)").gameObject.GetComponent<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
                     hideOnDeath = false
                 }
             };
@@ -272,12 +498,53 @@ namespace EnemiesReturns.Enemies.SandCrab
                     ignoreOverlays = false,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("SulfurPods/Pod2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("SulfurPods/Pod2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass1").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass2").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
+                },
+                new CharacterModel.RendererInfo
+                {
+                    renderer = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>(),
+                    defaultMaterial = baseForAdditions.Find("MossAndGrass/Grass3").gameObject.GetComponentInChildren<MeshRenderer>().material,
+                    ignoreOverlays = true,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                    hideOnDeath = false
                 }
             };
             GameObject[] gameObjectActivationsSulfur = new GameObject[]
             {
                 modelPrefab.transform.Find("SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead/SulfurPods").gameObject
             };
+
             SkinDefs.Sulfur = Utils.CreateSkinDef("skinSandCrabSulfur", modelPrefab, sulfurRenderer, SkinDefs.Default, gameObjectActivationsSulfur);
             return new SkinDef[] { SkinDefs.Default, SkinDefs.Sulfur, SkinDefs.Sandy, SkinDefs.Grassy };
         }
