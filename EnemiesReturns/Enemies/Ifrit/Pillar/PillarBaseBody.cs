@@ -41,7 +41,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             var body = base.AddBodyComponents(bodyPrefab, sprite);
 
             var lanternFire = body.transform.Find("ModelBase/IfritPillar/IfritPillarArmture/MainPillar/Chain1.1/Lantern/Fire");
-            lanternFire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial); ;
+            lanternFire.gameObject.GetComponent<Renderer>().material = ContentProvider.GetOrCreateMaterial("matIfritLanternFire", CreateLanternFireMaterial);
 
             #region TeamIndicator
 

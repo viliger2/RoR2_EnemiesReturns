@@ -1,4 +1,19 @@
 <details>
+<summary>0.7.19</summary>
+
+* Fixed parameterized strings not being filled for unsupported languages.
+* Added Collective elite displays.
+* Sand Crab
+  * Fixed Sand Crab attachments floating in the air when it is being grabbed by Drifter.
+* Colossus
+  * Expanded awooga body list.
+    * _This expands the dong._
+* Judgement
+  * Fixed NRE spam if players somehow went over the normal wave count.
+  * Added sanitization of bodies' names when creating Anointed skin configs.
+    * _This might result in some of the configs changing, I apologize for the inconvenience._
+</details>
+<details>
 <summary>0.7.18</summary>
 
 * Updated Simplified Chinese translation by [锅巴](https://space.bilibili.com/10832951?spm_id_from=333.1007.0.0).
