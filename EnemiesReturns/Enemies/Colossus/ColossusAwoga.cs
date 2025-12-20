@@ -22,7 +22,9 @@ namespace EnemiesReturns.Enemies.Colossus
             "submarinerbody",
             "asteriabody",
             "railgunnerbody",
-            "seekerbody"
+            "seekerbody",
+            "drifterbody",
+            "rangerbody"
         };
 
         public void OnKilledServer(DamageReport damageReport)
@@ -30,7 +32,7 @@ namespace EnemiesReturns.Enemies.Colossus
             if (damageReport != null && damageReport.attacker)
             {
                 string bodyName = damageReport.attacker.name ?? "";
-                bodyName = bodyName.Replace("(Clone)", "");
+                //bodyName = bodyName.Replace("(Clone)", "");
                 if (dames.Contains(bodyName.Trim().ToLower()))
                 {
                     boing = true;

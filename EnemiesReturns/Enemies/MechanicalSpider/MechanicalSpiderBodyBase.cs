@@ -591,6 +591,46 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             }
             #endregion
 
+            #region Collective
+            var displayRuleCollective = new DisplayRuleGroup();
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                childName = "Body",
+                localPos = new Vector3(0.57228F, -0.76984F, 0.38154F),
+                localAngles = new Vector3(-0.00007F, 149.4288F, 0.00002F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                childName = "Body",
+                localPos = new Vector3(-0.59216F, -0.88738F, 0.23193F),
+                localAngles = new Vector3(-0.00007F, 191.9479F, 0F),
+                localScale = new Vector3(-1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                childName = "Body",
+                localPos = new Vector3(0.00557F, 0F, 0.22303F),
+                localAngles = new Vector3(0F, 0F, 0F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleCollective,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 

@@ -675,6 +675,46 @@ namespace EnemiesReturns.Enemies.Spitter
             }
             #endregion
 
+            #region Collective
+            var displayRuleCollective = new DisplayRuleGroup();
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                childName = "JawR",
+                localPos = new Vector3(-0.04977F, 0.71974F, 0.43647F),
+                localAngles = new Vector3(31.99997F, 138.8635F, 347.7262F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                childName = "JawL",
+                localPos = new Vector3(-0.30734F, 0.72922F, 0.54457F),
+                localAngles = new Vector3(32.16174F, 195.7662F, 6.04966F),
+                localScale = new Vector3(-1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleCollective.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                childName = "Head",
+                localPos = new Vector3(0.01009F, 2.07758F, 0.30767F),
+                localAngles = new Vector3(339.0323F, 0.46254F, 358.0071F),
+                localScale = new Vector3(1F, 1F, 1F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleCollective,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 

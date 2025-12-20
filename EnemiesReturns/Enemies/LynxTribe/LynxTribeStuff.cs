@@ -270,8 +270,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
             purchaseInteraction.setUnavailableOnTeleporterActivated = true;
             purchaseInteraction.isShrine = true;
             purchaseInteraction.shouldProximityHighlight = true;
+#pragma warning disable CS0618 // Type or member is obsolete
             purchaseInteraction.onPurchase = new PurchaseEvent();
             purchaseInteraction.onPurchase.AddPersistentListener<Interactor>(shrine.AddShrineStack);
+#pragma warning restore CS0618 // Type or member is obsolete
 
             shrine.purchaseInteraction = purchaseInteraction;
 
