@@ -216,10 +216,12 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 var body = survivorDef.bodyPrefab;
 
-                if (AnointedBlacklist.Contains(body.name))
+                var sanitizedBodyName = new string(body.name.Where(char.IsLetterOrDigit).ToArray());
+
+                if (AnointedBlacklist.Contains(sanitizedBodyName))
                 {
 #if DEBUG || NOWEAVER
-                    Log.Info($"Survivor {survivorDef.cachedName} with body named {body.name} is in blacklist, skipping skin creation...");
+                    Log.Info($"Survivor {survivorDef.cachedName} with body named {sanitizedBodyName} is in blacklist, skipping skin creation...");
 #endif
                     continue;
                 }
@@ -227,31 +229,31 @@ namespace EnemiesReturns.Enemies.Judgement
                 var modelLocator = body.GetComponent<ModelLocator>();
                 if (!modelLocator)
                 {
-                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have ModelLocator component.");
+                    Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} doesn't have ModelLocator component.");
                     continue;
                 }
                 var model = modelLocator.modelTransform;
                 if (!model)
                 {
-                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have model (somehow).");
+                    Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} doesn't have model (somehow).");
                     continue;
                 }
                 var characterModel = model.GetComponent<CharacterModel>();
                 if (!characterModel)
                 {
-                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have CharacterModel component.");
+                    Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} doesn't have CharacterModel component.");
                     continue;
                 }
                 var modelSkins = model.GetComponent<ModelSkinController>();
                 if (!modelSkins)
                 {
-                    Log.Warning($"CreateAnointedSkins: Body {body.name} doesn't have ModelSkinController component.");
+                    Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} doesn't have ModelSkinController component.");
                     continue;
                 }
 
                 if(modelSkins.skins.Length == 0)
                 {
-                    Log.Warning($"CreateAnointedSkins: Body {body.name} has zero skins on ModelSkinController component.");
+                    Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} has zero skins on ModelSkinController component.");
                     continue;
                 }
 
@@ -268,12 +270,12 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 if (!defaultSkin)
                 {
-                    Log.Warning($"CreateAnointedSkins: Couldn't find Default Skin for {body.name}, using first skin in the ModelSkinController instead.");
+                    Log.Warning($"CreateAnointedSkins: Couldn't find Default Skin for {sanitizedBodyName}, using first skin in the ModelSkinController instead.");
                     defaultSkin = modelSkins.skins[0];
                 }
 
                 bool addToList = false;
-                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", body.name, defaultSkin.name, $"Target skin for {body.name}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. Might not work with modded skins. This is technically client side, but hasn't been tested in any real modpacks.");
+                var targetSkinConfig = judgementConfiguration.Bind<string>("Anointed Skins", sanitizedBodyName, defaultSkin.name, $"Target skin for {sanitizedBodyName}, use DebugToolkit's \"list_skin\" command to get all available skins. If skin value is not found then default skin will be used. Might not work with modded skins. This is technically client side, but hasn't been tested in any real modpacks.");
                 var targetSkinArray = modelSkins.skins.Where(skinDef => skinDef.name == targetSkinConfig.Value).ToArray();
                 if (targetSkinArray.Length > 0)
                 {
@@ -281,14 +283,14 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 else
                 {
-                    Log.Info($"CreateAnointedSkins: Couldn't find skin with name {targetSkinConfig.Value} for {body.name}. Will try again on second iteration.");
+                    Log.Info($"CreateAnointedSkins: Couldn't find skin with name {targetSkinConfig.Value} for {sanitizedBodyName}. Will try again on second iteration.");
                     addToList = true;
                 }
 
-                var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{body.name}EnemiesReturnsAnointed", model.gameObject, hideInLobby: true, baseSkin: defaultSkin);
+                var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{sanitizedBodyName}EnemiesReturnsAnointed", model.gameObject, hideInLobby: true, baseSkin: defaultSkin);
                 eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                 eliteSkinDef.icon = icon;
-                eliteSkinDef.unlockableDef = CreateAnointedUnlockable(body.name);
+                eliteSkinDef.unlockableDef = CreateAnointedUnlockable(sanitizedBodyName);
                 if (eliteSkinDef.unlockableDef)
                 {
                     HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, eliteSkinDef.unlockableDef);
