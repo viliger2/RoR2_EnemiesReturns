@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: sdArraignSkyDropP2
   m_EditorClassIdentifier: 
   skillName: sdArraignP2Special
-  skillNameToken: ENEMIES_RETURNS_ARRAIGNP2_SPECIAL_NAME
-  skillDescriptionToken: ENEMIES_RETURNS_ARRAIGNP2_SPECIAL_DESC
+  skillNameToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_SPECIAL_NAME
+  skillDescriptionToken: ENEMIES_RETURNS_JUDGEMENT_ARRAIGNP2_SPECIAL_DESC
   keywordTokens: []
   icon: {fileID: 0}
   activationStateMachineName: Body
@@ -33,10 +33,14 @@ MonoBehaviour:
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 1
   beginSkillCooldownOnSkillEnd: 0
+  isCooldownBlockedUntilManuallyReset: 0
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 0
   isCombatSkill: 1
   mustKeyPress: 0
+  triggeredByPressRelease: 0
   autoHandleLuminousShot: 1
+  suppressSkillActivation: 0
   hideStockCount: 0
+  hideCooldown: 0
