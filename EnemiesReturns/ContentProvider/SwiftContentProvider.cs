@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns
 {
@@ -56,6 +57,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.BasicMonsters,
                 };
                 Utils.AddMonsterToStages(Configuration.Swift.DefaultStageList.Value, dchSwiftDefault);
+                Utils.AddMonsterToCardCategory(dcSwiftDefault, MonsterCategories.BasicMonsters, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>("RoR2/Base/Common/dccsGolemFamily.asset").WaitForCompletion());
 
                 SwiftBody.SpawnCards.cscSwiftRallypoint = swiftBody.CreateCard("cscSwiftRallypoint", SwiftMaster.MasterPrefab, SwiftBody.SkinDefs.RallypointDelta, SwiftBody.BodyPrefab);
                 var dcSwiftRallypoint = new DirectorCard
