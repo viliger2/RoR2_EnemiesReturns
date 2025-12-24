@@ -267,7 +267,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             purchaseInteraction.displayNameToken = "ENEMIES_RETURNS_LYNX_SHRINE_NAME";
             purchaseInteraction.contextToken = "ENEMIES_RETURNS_LYNX_SHRINE_CONTEXT";
             purchaseInteraction.costType = CostTypeIndex.None;
-            purchaseInteraction.setUnavailableOnTeleporterActivated = true;
+            purchaseInteraction.setUnavailableOnTeleporterActivated = false;
             purchaseInteraction.isShrine = true;
             purchaseInteraction.shouldProximityHighlight = true;
 #pragma warning disable CS0618 // Type or member is obsolete
