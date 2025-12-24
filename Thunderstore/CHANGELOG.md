@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.20</summary>
+
+* 0.7.19 was a debug version. Oops.
+</details>
+<details>
 <summary>0.7.19</summary>
 
 * Fixed parameterized strings not being filled for unsupported languages.

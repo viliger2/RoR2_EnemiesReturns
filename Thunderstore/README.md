@@ -94,7 +94,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Model by Jinazler
 * Rigging and animation by Sentinel 
 * Code by [viliger](https://thunderstore.io/package/viliger/)
-* Additional animations and sounds by [rob](https://thunderstore.io/package/rob_gaming/)
+* Additional animations and sounds by [rob](https://thunderstore.io/package/rob/)
 * Model fixes by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
 * Majority of sounds come from RoR and RoRR
 </details>
@@ -106,7 +106,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Rigging and animation by Sentinel 
 * Code by [viliger](https://thunderstore.io/package/viliger/)
 * Help with AI pathfinding by [DestroyedClone](https://thunderstore.io/package/DestroyedClone/)
-* Additional sound design by [rob](https://thunderstore.io/package/rob_gaming/)
+* Additional sound design by [rob](https://thunderstore.io/package/rob/)
 * Item pick model and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
 * Majority of sounds come from RoR, RoRR and WoW
 * Laser charge sound - https://pixabay.com/sound-effects/charged-laser-7125/
@@ -215,7 +215,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 
 Special thanks to 
 * [Moffein](https://thunderstore.io/package/Moffein/) - balance and design help
-* [rob](https://thunderstore.io/package/rob_gaming/) - the fun guy
+* [rob](https://thunderstore.io/package/rob/) - the fun guy
 * [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/) - explaining how to make landing animation work
 * Hyperinvox - new and shiny banner
 * /vm/ - telling me to fix my (viliger's) shit.
