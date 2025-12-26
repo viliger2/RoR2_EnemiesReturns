@@ -22,7 +22,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             public static InteractableSpawnCard iscMechanicalSpiderBroken;
         }
 
-        // TODO: should probably make a factory similar to mater and bodies but cba at the moment
+        // TODO: should probably make a factory similar to master and bodies but cba at the moment
         public GameObject CreateInteractable(GameObject interactablePrefab, GameObject masterPrefab)
         {
             var meshRendererTransform = interactablePrefab.transform.Find("ModelBase/mdlMechanicalSpider/MechanicalSpider");

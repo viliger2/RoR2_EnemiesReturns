@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -18,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 
         private float duration;
 
-        private RoR2.Projectile.Predictor predictor;
+        private PredictorNoWorldHit predictor;
 
         public override void OnEnter()
         {
@@ -61,7 +62,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 var hurtBox = search.GetResults().FirstOrDefault();
                 if (hurtBox)
                 {
-                    predictor = new RoR2.Projectile.Predictor(base.transform);
+                    predictor = new PredictorNoWorldHit(base.transform);
                     predictor.SetTargetTransform(hurtBox.transform);
                 }
             }

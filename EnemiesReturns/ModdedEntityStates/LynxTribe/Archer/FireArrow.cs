@@ -1,7 +1,9 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -50,7 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
         private float aimCurrentVelocity;
 
-        private Predictor predictor;
+        private PredictorNoWorldHit predictor;
 
         public override void OnEnter()
         {
@@ -70,7 +72,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             muzzleTransform = FindModelChild(targetMuzzle);
             arrowTransform = FindModelChild("Arrow");
 
-            predictor = new Predictor(characterBody.transform);
+            SetupPredictor();
 
             if (!muzzleTransform)
             {
@@ -144,9 +146,9 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 ray.origin = muzzleTransform.position;
             }
 
-            Vector3 vector;
+            var targetPoint = aimRay.origin + aimRay.direction * 1000f;
             bool flag = false;
-            if (!predictor.hasTargetTransform)
+            if (predictor == null || !predictor.hasTargetTransform)
             {
                 BullseyeSearch search = new BullseyeSearch()
                 {
@@ -166,19 +168,13 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
                 if (hurtBox)
                 {
-                    predictor.SetTargetTransform(hurtBox.transform);
-                    vector = predictor.GetTargetTransform().position;
-                    flag = true;
-                }
-                else
-                {
-                    vector = aimRay.origin + aimRay.direction * 1000f;
+                    targetPoint = predictor.GetTargetTransform().position;
                     flag = true;
                 }
             }
-            else
+            else if (predictor != null)
             {
-                predictor.GetPredictedTargetPosition(timeToTarget, out vector);
+                predictor.GetPredictedTargetPosition(timeToTarget, out targetPoint);
                 flag = true;
             }
 
@@ -187,7 +183,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             if (flag)
             {
                 // getting vector between target and creature
-                Vector3 vectorToTarget = vector - ray.origin;
+                Vector3 vectorToTarget = targetPoint - ray.origin;
                 // making Vector2 out of that so we can calculate magnitude
                 Vector2 vector2 = new Vector2(vectorToTarget.x, vectorToTarget.z);
                 float magnitude2 = vector2.magnitude;
@@ -212,7 +208,21 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             }
 
             Quaternion rotation = Util.QuaternionSafeLookRotation(ray.direction);
-            ProjectileManager.instance.FireProjectile(projectilePrefab, ray.origin, rotation, gameObject, damageStat * damageCoefficient, projectileForce, RollCrit(), DamageColorIndex.Default, null, magnitude, DamageSource.Primary);
+            var projectileInfo = new FireProjectileInfo()
+            {
+                crit = RollCrit(),
+                damage = damageStat * damageCoefficient,
+                force = projectileForce,
+                owner = gameObject,
+                position = ray.origin,
+                projectilePrefab = projectilePrefab,
+                rotation = rotation,
+                speedOverride = magnitude,
+                _speedOverride = magnitude,
+                useSpeedOverride = true
+            };
+
+            ProjectileManager.instance.FireProjectile(projectileInfo);
         }
 
         private float GetAimAngle()
@@ -245,7 +255,6 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
                 if (hurtBox)
                 {
-                    predictor.SetTargetTransform(hurtBox.transform);
                     vector = predictor.GetTargetTransform().position;
                 }
                 else
@@ -275,6 +284,32 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
             Vector3 direction = new Vector3(anotherVector2.x * num, y, anotherVector2.y * num);
 
             return Vector3.Angle(Vector3.up, direction);
+        }
+
+        private void SetupPredictor()
+        {
+            predictor = new PredictorNoWorldHit(characterBody.transform);
+            var aimRay = GetAimRay();
+            BullseyeSearch search = new BullseyeSearch()
+            {
+                searchOrigin = aimRay.origin,
+                searchDirection = aimRay.direction,
+                filterByLoS = false,
+                teamMaskFilter = TeamMask.allButNeutral,
+                sortMode = BullseyeSearch.SortMode.Angle
+            };
+            if (teamComponent)
+            {
+                search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
+            }
+            search.RefreshCandidates();
+
+            var hurtBox = search.GetResults().FirstOrDefault();
+
+            if (hurtBox)
+            {
+                predictor.SetTargetTransform(hurtBox.transform);
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
