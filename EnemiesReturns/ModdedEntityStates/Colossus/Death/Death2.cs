@@ -7,9 +7,9 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
     [RegisterEntityState]
     public class Death2 : BaseDeath
     {
-        public override float duration => 1f;
+        public override float duration => 1.28f;
 
-        public override float fallEffectSpawnTime => 0.88f;
+        public override float fallEffectSpawnTime => 1.166f;
 
         public override string fallEffectChild => "Death2FallEffect";
 

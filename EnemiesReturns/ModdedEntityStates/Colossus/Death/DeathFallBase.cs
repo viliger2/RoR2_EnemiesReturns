@@ -7,7 +7,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
     {
         public override float duration => 3.6f;
 
-        public override float fallEffectSpawnTime => 3.2f;
+        public override float fallEffectSpawnTime => 3.1f;
 
         public override string fallEffectChild => "Death1FallEffect";
 

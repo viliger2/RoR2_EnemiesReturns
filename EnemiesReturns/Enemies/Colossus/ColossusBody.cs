@@ -6,6 +6,7 @@ using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
+using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using R2API;
@@ -698,9 +699,9 @@ namespace EnemiesReturns.Enemies.Colossus
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteHaunted.DisplayEliteStealthCrown),
                 childName = "Chest",
-                localPos = new Vector3(-0.01152F, -0.32538F, -0.02099F),
+                localPos = new Vector3(-0.01152F, -0.32515F, -0.05079F),
                 localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.16025F, 0.11155F, 0.21315F),
+                localScale = new Vector3(0.16025F, 0.13969F, 0.21315F),
                 limbMask = LimbFlags.None
             });
 
@@ -718,9 +719,9 @@ namespace EnemiesReturns.Enemies.Colossus
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteIce.DisplayEliteIceCrown),
                 childName = "Head",
-                localPos = new Vector3(-0.02513F, 0.56141F, -0.269F),
+                localPos = new Vector3(-0.02573F, 0.50841F, -0.08533F),
                 localAngles = new Vector3(270F, 0F, 0F),
-                localScale = new Vector3(0.1F, 0.1F, 0.1F),
+                localScale = new Vector3(0.07215F, 0.07215F, 0.07215F),
                 limbMask = LimbFlags.None
             });
 
@@ -938,7 +939,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 followerPrefabAddress = new AssetReferenceGameObject(ThanksRandy.EliteGold.DisplayEliteAurelioniteEquipment),
                 childName = "Chest",
-                localPos = new Vector3(0F, -0.66501F, 0.23605F),
+                localPos = new Vector3(0F, -0.57393F, 0.32947F),
                 localAngles = new Vector3(12.27343F, 0F, -0.00001F),
                 localScale = new Vector3(0.99081F, 1.07413F, 1.17694F),
                 limbMask = LimbFlags.None

@@ -203,6 +203,22 @@ ModelImporter:
         weight: 0
       - path: Armature/foot.r/foot.r_end
         weight: 0
+      - path: Armature/IK.hand.l
+        weight: 1
+      - path: Armature/IK.hand.l/IK.hand.l_end
+        weight: 1
+      - path: Armature/IK.hand.pole.l
+        weight: 1
+      - path: Armature/IK.hand.pole.l/IK.hand.pole.l_end
+        weight: 1
+      - path: Armature/IK.hand.pole.r
+        weight: 1
+      - path: Armature/IK.hand.pole.r/IK.hand.pole.r_end
+        weight: 1
+      - path: Armature/IK.hand.r
+        weight: 1
+      - path: Armature/IK.hand.r/IK.hand.r_end
+        weight: 1
       - path: Armature/root
         weight: 0
       - path: Armature/root/IK.l
@@ -330,6 +346,22 @@ ModelImporter:
         weight: 0
       - path: Armature/foot.r/foot.r_end
         weight: 0
+      - path: Armature/IK.hand.l
+        weight: 1
+      - path: Armature/IK.hand.l/IK.hand.l_end
+        weight: 1
+      - path: Armature/IK.hand.pole.l
+        weight: 1
+      - path: Armature/IK.hand.pole.l/IK.hand.pole.l_end
+        weight: 1
+      - path: Armature/IK.hand.pole.r
+        weight: 1
+      - path: Armature/IK.hand.pole.r/IK.hand.pole.r_end
+        weight: 1
+      - path: Armature/IK.hand.r
+        weight: 1
+      - path: Armature/IK.hand.r/IK.hand.r_end
+        weight: 1
       - path: Armature/root
         weight: 0
       - path: Armature/root/IK.l
@@ -424,7 +456,7 @@ ModelImporter:
       takeName: Armature|Armature|Ascending
       internalID: 0
       firstFrame: 0
-      lastFrame: 45
+      lastFrame: 219
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -507,40 +539,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ColossusDeathBoner
-      takeName: Armature|Armature|Death
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 46
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: ColossusDeath2
       takeName: Armature|Armature|DeathV2
       internalID: 0
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -627,7 +630,7 @@ ModelImporter:
       takeName: Armature|Armature|EyeBlastEnter
       internalID: 0
       firstFrame: 0
-      lastFrame: 133
+      lastFrame: 141
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -646,7 +649,28 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.1923021
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.54519284
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6381806
+        functionName: PlaySound
+        data: ER_Colossus_Barrage_Move_Play
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -656,7 +680,7 @@ ModelImporter:
       takeName: Armature|Armature|EyeBlastExit
       internalID: 0
       firstFrame: 0
-      lastFrame: 83
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -675,7 +699,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.403224
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.79612124
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -714,7 +752,7 @@ ModelImporter:
       takeName: Armature|Armature|EyeBlastWalkBWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 84
+      lastFrame: 91
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -763,14 +801,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.48598132
+      - time: 0.493444
         functionName: Footstep
         data: FootL
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.93457943
+      - time: 0.9315944
         functionName: Footstep
         data: FootR
         objectReferenceParameter: {instanceID: 0}
@@ -1047,7 +1085,7 @@ ModelImporter:
       takeName: Armature|Armature|IntoIdle
       internalID: 0
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 55
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1076,7 +1114,7 @@ ModelImporter:
       takeName: Armature|Armature|Jump
       internalID: 0
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 91
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1163,7 +1201,7 @@ ModelImporter:
       takeName: Armature|Armature|Stomp
       internalID: 0
       firstFrame: 0
-      lastFrame: 116
+      lastFrame: 134
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1181,7 +1219,50 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: Stomp.activate
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.38488337
+            value: 1
+            inSlope: Infinity
+            outSlope: Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.44628248
+            value: 1
+            inSlope: -Infinity
+            outSlope: -Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
       events: []
       transformMask: []
       maskType: 3
@@ -1192,7 +1273,7 @@ ModelImporter:
       takeName: Armature|Armature|StoneClap
       internalID: 0
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1221,7 +1302,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkBWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 74
+      lastFrame: 117
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1240,7 +1321,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4114936
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.85179067
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1250,7 +1345,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkFastBWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1279,7 +1374,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkFastFWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1308,7 +1403,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkFastLFT
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1337,7 +1432,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkFastRHT
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1366,7 +1461,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkFWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 74
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1385,7 +1480,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.35036984
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8338524
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1395,7 +1504,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkLFT
       internalID: 0
       firstFrame: 0
-      lastFrame: 74
+      lastFrame: 107
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1414,7 +1523,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.37515807
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8938832
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1424,7 +1547,7 @@ ModelImporter:
       takeName: Armature|Armature|WalkRHT
       internalID: 0
       firstFrame: 0
-      lastFrame: 77
+      lastFrame: 112
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1443,7 +1566,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.3709992
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.86072516
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1452,8 +1589,8 @@ ModelImporter:
       name: ColussusCoolerClapEnd
       takeName: Armature|Armature|StoneClap
       internalID: 0
-      firstFrame: 37
-      lastFrame: 98
+      firstFrame: 41
+      lastFrame: 116
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1471,7 +1608,50 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: Clap.activate
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0.0017700195
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.113811776
+            value: 1
+            inSlope: Infinity
+            outSlope: Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.17553493
+            value: 1
+            inSlope: -Infinity
+            outSlope: -Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
       events: []
       transformMask: []
       maskType: 3
@@ -1482,7 +1662,79 @@ ModelImporter:
       takeName: Armature|Armature|StompR
       internalID: 0
       firstFrame: 0
-      lastFrame: 116
+      lastFrame: 134
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Stomp.activate
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.38629764
+            value: 1
+            inSlope: Infinity
+            outSlope: Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.448649
+            value: 1
+            inSlope: -Infinity
+            outSlope: -Infinity
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ColossusDeath1
+      takeName: Armature|Armature|Death
+      internalID: 4366819653698216385
+      firstFrame: 0
+      lastFrame: 78
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

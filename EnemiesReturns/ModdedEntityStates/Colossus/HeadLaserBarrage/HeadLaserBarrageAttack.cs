@@ -70,7 +70,6 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.HeadLaserBarrage
 
         private Vector3 targetMoveVector;
 
-
         public override void OnEnter()
         {
             base.OnEnter();
