@@ -31,10 +31,11 @@ namespace EnemiesReturns.Items.LynxFetish
 
         private static void HealthComponent_TakeDamageProcess(ILContext il)
         {
+            // TODO: check it after each game update
+            // look for ldfld float32 RoR2.DamageInfo::damage, stloc.s X where X is your desired number
             ILCursor c = new ILCursor(il);
             if (c.TryGotoNext(MoveType.After, 
-                x => x.MatchLdfld<DamageInfo>(nameof(DamageInfo.damage)),
-                x => x.MatchStloc(out _)))
+                x => x.MatchStloc(10)))
             {
                 c.Emit(OpCodes.Ldloc, 10); // 10 is stloc.s number after RoR2.DamageInfo::damage
                 c.Emit(OpCodes.Ldarg_1); // damageInfo
