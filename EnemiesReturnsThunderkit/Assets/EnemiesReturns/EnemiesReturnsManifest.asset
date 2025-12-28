@@ -33,14 +33,23 @@ MonoBehaviour:
   StagingPaths:
   - <LOP_BuildPathAssets>
   assetBundles:
-  - assetBundleName: enemiesreturnsstagesassets
+  - assetBundleName: enemiesreturns_judgement_stages_assets
     assets:
-    - {fileID: 102900000, guid: dbbe4cb8c7504764091d60f209a08108, type: 3}
-  - assetBundleName: enemiesreturnsstagesscenes
+    - {fileID: 102900000, guid: ef146ededf92210428b6a1dd464f3ac6, type: 3}
+    - {fileID: 102900000, guid: 5393be04321d468429a7aae6f3a31fac, type: 3}
+  - assetBundleName: enemiesreturns_judgement_stages_scenes
     assets:
     - {fileID: 102900000, guid: 41ba4ce8c150b2b4ca0876c73e8e68c5, type: 3}
     - {fileID: 102900000, guid: 3193f054d6c2a0845bf9b3e310937019, type: 3}
+  - assetBundleName: enemiesreturns_contactlight_stages_assets
+    assets:
+    - {fileID: 102900000, guid: 2af571a1b2ebab144aad81a3845919df, type: 3}
+  - assetBundleName: enemiesreturns_contactlight_stages_scenes
+    assets:
     - {fileID: 102900000, guid: 6f821db56eae9234da053a7c9698e462, type: 3}
+  - assetBundleName: enemiesreturns_thunderkit_stubbedshaders
+    assets:
+    - {fileID: 102900000, guid: cd71663f6d2213c4ba8590c08cca7e83, type: 3}
 --- !u!114 &2116132493492715590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,8 +21,7 @@ namespace EnemiesReturns
         private readonly ContentPack _contentPack = new ContentPack();
 
         public const string AssetBundleName = "enemiesreturns";
-        public const string AssetBundleStagesName = "enemiesreturnsstagesscenes";
-        public const string AssetBundleStagesAssetsName = "enemiesreturnsstagesassets";
+        public const string ThunderkitStubbedShadersBundleName = "enemiesreturns_thunderkit_stubbedshaders";
         public const string AssetBundleFolder = "AssetBundles";
 
         public const string SoundbankFolder = "Soundbanks";
@@ -108,6 +107,9 @@ namespace EnemiesReturns
 
             string assetBundleFolderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(ContentProvider).Assembly.Location), AssetBundleFolder);
 
+            AssetBundle stubbedShaders = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, ThunderkitStubbedShadersBundleName), args.progressReceiver, (resultAssetBundle) => stubbedShaders = resultAssetBundle);
+
             AssetBundle assetbundle = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleName), args.progressReceiver, (resultAssetBundle) => assetbundle = resultAssetBundle);
 
@@ -145,6 +147,9 @@ namespace EnemiesReturns
             }));
 
             yield return CreateJudgementAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
+#if DEBUG || NOWEAVER
+            yield return CreateContactLightAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
+#endif
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
@@ -172,7 +177,6 @@ namespace EnemiesReturns
                 stopwatch.Stop();
                 Log.Info("Characters created in " + stopwatch.elapsedSeconds);
             }));
-
 
             var entityStateTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && type.GetCustomAttribute<RegisterEntityState>(false) != null).ToArray();
 #if DEBUG || NOWEAVER

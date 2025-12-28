@@ -114,6 +114,15 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabSulfur, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
+        [ConCommand(commandName = "returns_spawn_temple_guardian", flags = ConVarFlags.None, helpText = "Spawns Lunar Golem skinned as Temple Guardian")]
+        private static void CCSpawnTempleGuardian(ConCommandArgs args)
+        {
+            var localPlayers = LocalUserManager.readOnlyLocalUsersList;
+            var localPlayer = localPlayers[0].cachedBody;
+
+            SpawnMonster(ContentProvider.cscTempleGuardian, localPlayer.modelLocator.modelBaseTransform.position);
+        }
+
         [ConCommand(commandName = "returns_outoftime_test", flags = ConVarFlags.None)]
         private static void CCOutOfTimeTest(ConCommandArgs args)
         {
@@ -136,7 +145,7 @@ namespace EnemiesReturns
         {
             NetworkUser user = args.sender;
             InvokeCMD(user, "fixed_time", UnityEngine.Random.Range(1500, 1800).ToString());
-            InvokeCMD(user, "run_set_stages_cleared", "6");
+            InvokeCMD(user, "run_set_stages_cleared", "5");
             InvokeCMD(user, "team_set_level", "1", UnityEngine.Random.Range(15, 20).ToString());
 
             InvokeCMD(user, "random_items", UnityEngine.Random.Range(20, 30).ToString(), "Tier1:100");
@@ -147,6 +156,8 @@ namespace EnemiesReturns
             //InvokeCMD(user, "give_equip", "random");
             InvokeCMD(user, "set_scene", "enemiesreturns_contactlight");
         }
+
+
 
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)
         {

@@ -22,12 +22,16 @@ namespace EnemiesReturns
 {
     public partial class ContentProvider : IContentPackProvider
     {
+        public const string AssetBundleJudgementStagesAssetsName = "enemiesreturns_judgement_stages_assets";
+
+        public const string AssetBundleJudgementStagesName = "enemiesreturns_judgement_stages_scenes";
+
         public IEnumerator CreateJudgementAsync(LoadStaticContentAsyncArgs args, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups, Dictionary<string, AnimationCurveDef> acdLookup, string assetBundleFolderPath)
         {
             if (Judgement.Enabled.Value)
             {
                 AssetBundle assetBundleStagesAssets = null;
-                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
+                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleJudgementStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
                 {
@@ -379,7 +383,7 @@ namespace EnemiesReturns
                 }));
 
                 AssetBundle assetBundleStages = null;
-                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
+                yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleJudgementStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
                 CreateJudgement();
             }

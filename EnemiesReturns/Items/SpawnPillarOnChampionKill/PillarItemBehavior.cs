@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.Enemies.Ifrit;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
-using R2API;
+﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
 using RoR2;
 using RoR2.CharacterAI;
 using static RoR2.CharacterBody;

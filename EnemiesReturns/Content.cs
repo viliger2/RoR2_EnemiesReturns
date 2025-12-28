@@ -10,6 +10,8 @@ namespace EnemiesReturns
             public static SceneDef OutOfTime;
 
             public static SceneDef JudgementOutro;
+
+            public static SceneDef ContactLight;
         }
 
         public static class MusicTracks
