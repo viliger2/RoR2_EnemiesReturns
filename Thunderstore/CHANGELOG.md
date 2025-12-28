@@ -1,4 +1,22 @@
 <details>
+<summary>0.7.21</summary>
+
+* Mechanical Spider
+  * Removed cooldown on Double Shot (was 2 seconds).
+    * _This doesn't change anything balance wise, this is mainly to fix friendly Spiders shooting at the owner because of AI state shenanigans tied to skill cooldown._
+  * Drone
+    * Buffed drone's passive healh regen to 15+3 (was 5+1).
+	* Buffed dron's bonus damage to 200% (was 100%).
+	  * _With AC buffing drones Mechanical Spiders fell behind in power, so this should bring them back up._
+* Lynx Tribe
+  * Lynx Shrine is now usable after teleporter is done charging.
+* Ifrit
+  * Added sniper hurtbox to Fiery Pillar.
+* Colossus
+  * Improved animations.
+* Condom has been found, thanks for all who helped.
+</details>
+<details>
 <summary>0.7.20</summary>
 
 * 0.7.19 was a debug version. Oops.
