@@ -13,6 +13,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
     {
         public static GameObject CustomHologramContent;
 
+        public static GameObject LynxShrine1;
+        public static GameObject LynxShrine2;
+        public static GameObject LynxShrine3;
+
         public FamilyDirectorCardCategorySelection CreateLynxTribeFamily()
         {
             var dccsFamily = ScriptableObject.CreateInstance<FamilyDirectorCardCategorySelection>();

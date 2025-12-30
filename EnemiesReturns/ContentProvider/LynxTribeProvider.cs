@@ -133,13 +133,13 @@ namespace EnemiesReturns
             var nsedLynxShrineSuccess = Utils.CreateNetworkSoundDef("ER_Lynx_Shrine_Success_Play");
             nseList.Add(nsedLynxShrineSuccess);
 
-            var lynxShrine1 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
-            var lynxShrine2 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab2"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
-            var lynxShrine3 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab3"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            LynxTribeStuff.LynxShrine1 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            LynxTribeStuff.LynxShrine2 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab2"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
+            LynxTribeStuff.LynxShrine3 = lynxStuff.CreateShrinePrefab(assets.First(prefab => prefab.name == "LynxShrinePrefab3"), shrineEffect, nsedLynxShrineFailure, nsedLynxShrineSuccess);
 
-            DirectorAPI.DirectorCardHolder holderShrine1 = CreateCardHolderLynxShrine(lynxShrine1, "1");
-            DirectorAPI.DirectorCardHolder holderShrine2 = CreateCardHolderLynxShrine(lynxShrine2, "2");
-            DirectorAPI.DirectorCardHolder holderShrine3 = CreateCardHolderLynxShrine(lynxShrine3, "3");
+            DirectorAPI.DirectorCardHolder holderShrine1 = CreateCardHolderLynxShrine(LynxTribeStuff.LynxShrine1, "1");
+            DirectorAPI.DirectorCardHolder holderShrine2 = CreateCardHolderLynxShrine(LynxTribeStuff.LynxShrine2, "2");
+            DirectorAPI.DirectorCardHolder holderShrine3 = CreateCardHolderLynxShrine(LynxTribeStuff.LynxShrine3, "3");
 
             var defaultStages = Configuration.LynxTribe.LynxTotem.DefaultStageList.Value.Split(",");
             foreach (var stageString in defaultStages)
@@ -169,9 +169,9 @@ namespace EnemiesReturns
                 DirectorAPI.Helpers.AddNewInteractableToStage(shrineToSpawn, DirectorAPI.ParseInternalStageName(cleanStageString), cleanStageString);
             }
 
-            nopList.Add(lynxShrine1);
-            nopList.Add(lynxShrine2);
-            nopList.Add(lynxShrine3);
+            nopList.Add(LynxTribeStuff.LynxShrine1);
+            nopList.Add(LynxTribeStuff.LynxShrine2);
+            nopList.Add(LynxTribeStuff.LynxShrine3);
         }
 
         private DirectorAPI.DirectorCardHolder CreateCardHolderLynxShrine(GameObject lynxShrine1, string suffix)
