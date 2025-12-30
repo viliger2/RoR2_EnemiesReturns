@@ -320,7 +320,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 x => x.MatchStloc(126)))
             {
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.Emit(OpCodes.Ldloc, 126); // 100 is float where attack speed is stored
+                c.Emit(OpCodes.Ldloc, 126); // 126 is float where attack speed is stored
                 c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>((newValue, self, origValue) =>
                 {
                     if (self.HasBuff(Content.Buffs.AffixAeoninan))

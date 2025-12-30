@@ -254,6 +254,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="ER_Colossus_Spawn_EyeEffect_Play" ID="{69B9F0E7-AB95-449A-BA80-2BA1BA03E6AA}">
+									<ChildrenList>
+										<Action Name="" ID="{7AF0C01A-77A3-4111-B271-C8C3F191713D}" ShortID="488956792">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Colossus_Eye_Spawn_Effect" ID="{038E8CCC-782C-4C6B-8EA8-2BF627CD5AEA}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Ifrit" ID="{84F2140A-F343-4030-A929-0BBC9690A422}" ShortID="981367310">

@@ -157,8 +157,6 @@ namespace EnemiesReturns
             InvokeCMD(user, "set_scene", "enemiesreturns_contactlight");
         }
 
-
-
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)
         {
             var args = arguments.ToList();
@@ -175,8 +173,10 @@ namespace EnemiesReturns
                 card,
                 new DirectorPlacementRule
                 {
-                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
-                    position = position
+                    placementMode = DirectorPlacementRule.PlacementMode.Approximate,
+                    position = position,
+                    minDistance = 0f,
+                    maxDistance = 30f
                 },
                 RoR2Application.rng
                 );

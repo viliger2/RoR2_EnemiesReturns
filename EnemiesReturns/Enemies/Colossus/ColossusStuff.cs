@@ -372,6 +372,28 @@ namespace EnemiesReturns.Enemies.Colossus
             return clonedEffect;
         }
 
+        public GameObject CreateEyeSpawnEffect(GameObject prefab)
+        {
+            var effectComponent = prefab.AddComponent<EffectComponent>();
+            effectComponent.positionAtReferencedTransform = true;
+            effectComponent.parentToReferencedTransform = true;
+            effectComponent.soundName = "ER_Colossus_Spawn_EyeEffect_Play";
+
+            var vfxAttributes = prefab.AddComponent<VFXAttributes>();
+            vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfxAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Medium;
+            vfxAttributes.DoNotPool = false;
+
+            prefab.AddComponent<DestroyOnParticleEnd>();
+
+            prefab.transform.Find("Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_PowerOrbShieldTank.matShieldTankStartImpactFlash_mat).WaitForCompletion();
+            prefab.transform.Find("Lines").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("Glow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matGlow1_mat).WaitForCompletion();
+            prefab.transform.Find("Glow(1)").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
+
+            return prefab;
+        }
+
         public Material CreateSpinBeamCylinder2Material()
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidRaidCrab/matVoidRaidCrabSpinBeamCylinder2.mat").WaitForCompletion());

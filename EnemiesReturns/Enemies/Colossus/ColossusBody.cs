@@ -12,6 +12,7 @@ using HG;
 using R2API;
 using RoR2;
 using RoR2.Skills;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -137,9 +138,9 @@ namespace EnemiesReturns.Enemies.Colossus
             });
         }
 
-        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable)
+        public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, ExplicitPickupDropTable droptable, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            var body = base.AddBodyComponents(bodyPrefab, sprite, log, droptable);
+            var body = base.AddBodyComponents(bodyPrefab, sprite, log, droptable, acdLookup);
 
             body.AddComponent<ColossusAwooga>();
 
@@ -155,6 +156,21 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var mdlColossus = body.transform.Find("ModelBase/" + ModelName()).gameObject;
             mdlColossus.AddComponent<FloatingRocksController>().initialPosition = rocksInitialTransform;
+
+            var mainRenderer = body.transform.Find("ModelBase/mdlColossus");
+            var printController = mainRenderer.gameObject.AddComponent<PrintController>();
+            printController.printTime = 3.125f;
+            printController.printCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+            //acdLookup["acdColossusPrint"].curve;
+            printController.disableWhenFinished = true;
+
+            printController.ignoreMaterialsWithPrintControllers = false;
+
+            printController.startingPrintHeight = -25f;
+            printController.maxPrintHeight = 25f;
+            printController.startingPrintBias = 0f;
+            printController.maxPrintBias = 0f;
+            printController.animateFlowmapPower = false;
 
             //var helper = body.AddComponent<WalkSpeedDebugHelper>();
             //helper.animator = body.transform.Find("ModelBase/mdlColossus").GetComponent<Animator>();

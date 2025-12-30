@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.22</summary>
+
+* Lynx Hunter and Switf are now able to hit airborne enemies (was made in 0.7.21).
+</details>
+<details>
 <summary>0.7.21</summary>
 
 * Mechanical Spider

@@ -7385,6 +7385,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.68211794
       objectReference: {fileID: 0}
+    - target: {fileID: 1020149319574363186, guid: 913eed9d753fbf24b9767d8422f7639a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.491
+      objectReference: {fileID: 0}
     - target: {fileID: 1349156029491373300, guid: 913eed9d753fbf24b9767d8422f7639a,
         type: 3}
       propertyPath: m_UpdateWhenOffscreen
@@ -7498,6 +7503,11 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 913eed9d753fbf24b9767d8422f7639a,
         type: 3}
       propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984094422441712875, guid: 913eed9d753fbf24b9767d8422f7639a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6090509318893518554, guid: 913eed9d753fbf24b9767d8422f7639a,

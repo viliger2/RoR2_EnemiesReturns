@@ -534,8 +534,122 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/foot.l
+        weight: 0
+      - path: Armature/foot.l/foot.l_end
+        weight: 0
+      - path: Armature/foot.r
+        weight: 0
+      - path: Armature/foot.r/foot.r_end
+        weight: 0
+      - path: Armature/IK.hand.l
+        weight: 1
+      - path: Armature/IK.hand.l/IK.hand.l_end
+        weight: 0
+      - path: Armature/IK.hand.pole.l
+        weight: 1
+      - path: Armature/IK.hand.pole.l/IK.hand.pole.l_end
+        weight: 0
+      - path: Armature/IK.hand.pole.r
+        weight: 1
+      - path: Armature/IK.hand.pole.r/IK.hand.pole.r_end
+        weight: 0
+      - path: Armature/IK.hand.r
+        weight: 1
+      - path: Armature/IK.hand.r/IK.hand.r_end
+        weight: 0
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/IK.l
+        weight: 1
+      - path: Armature/root/IK.l/pole.l
+        weight: 1
+      - path: Armature/root/IK.l/pole.l/pole.l_end
+        weight: 1
+      - path: Armature/root/IK.r
+        weight: 1
+      - path: Armature/root/IK.r/pole.r
+        weight: 1
+      - path: Armature/root/IK.r/pole.r/pole.r_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.l/thigh.l/calf.l/calf.l_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/pelvis.r/thigh.r/calf.r/calf.r_end
+        weight: 0
+      - path: Armature/root/root_pelvis_control/spine/spine.001
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger1.l/finger1.l_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/finger2.l/finger2.l_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.l/upper_arm.l/lower_arm.l/hand.l/thumb.l/thumb.l_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger1.r/finger1.r_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/finger2.r/finger2.r_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/cavicle.r/upper_arm.r/lower_arm.r/hand.r/thumb.r/thumb.r_end
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head
+        weight: 1
+      - path: Armature/root/root_pelvis_control/spine/spine.001/head/head_end
+        weight: 1
+      - path: Colossus
+        weight: 0
+      - path: Colossus Eye
+        weight: 0
+      - path: Colossus Head
+        weight: 0
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -1754,6 +1868,42 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ColossusSpawnV2
+      takeName: Armature|Armature|SpawnV2
+      internalID: 6115121092995772821
+      firstFrame: 0
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.9990983
+        functionName: PlaySound
+        data: ER_Colossus_Landing_Play
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

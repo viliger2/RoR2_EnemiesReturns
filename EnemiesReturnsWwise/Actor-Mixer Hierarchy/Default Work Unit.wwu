@@ -593,6 +593,13 @@
 											</ChildrenList>
 										</Folder>
 										<Sound Name="Colossus_Spawn" ID="{1F8B5A22-A479-4AB5-B994-29FADD1D3624}" ShortID="30799422">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -609,9 +616,16 @@
 														<MediaID ID="806740436"/>
 													</MediaIDList>
 												</AudioFileSource>
+												<AudioFileSource Name="MountainGiantAggro2" ID="{F0B1EF2E-06DD-44F1-AB79-D20C9B165FE8}">
+													<Language>SFX</Language>
+													<AudioFile>Colossus\MountainGiantAggro2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1010923623"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="MountainGiantAggro" ID="{A4AEC6E7-66CA-4CF1-A53D-9A38CBB799CE}" Platform="Linked"/>
+												<ActiveSource Name="MountainGiantAggro2" ID="{F0B1EF2E-06DD-44F1-AB79-D20C9B165FE8}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Colossus_Death1" ID="{14CF106B-EFF6-4705-B80E-21B2DF8F36B8}" ShortID="593915133">
@@ -959,6 +973,35 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="mDeathImpactGiantSnowA" ID="{97BA65E2-8166-4A75-ADD4-0BECEAD7DDD3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Colossus_Eye_Spawn_Effect" ID="{038E8CCC-782C-4C6B-8EA8-2BF627CD5AEA}" ShortID="823939315">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="high_speed_moving" ID="{DB65893D-8F72-4D81-BDC0-6CF6938CFEF1}">
+													<Language>SFX</Language>
+													<AudioFile>Colossus\high_speed_moving.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="255164585"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="high_speed_moving" ID="{DB65893D-8F72-4D81-BDC0-6CF6938CFEF1}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

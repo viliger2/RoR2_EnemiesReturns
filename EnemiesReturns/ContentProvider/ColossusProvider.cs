@@ -67,6 +67,9 @@ namespace EnemiesReturns
                 var laserEffect = colossusStuff.CreateLaserEffect();
                 Junk.ModdedEntityStates.Colossus.HeadLaser.HeadLaserAttack.beamPrefab = laserEffect;
 
+                ModdedEntityStates.Colossus.SpawnState.eyeEffectPrefab = colossusStuff.CreateEyeSpawnEffect(assets.First(item => item.name == "ColossusEyeSpawnEffect"));
+                effectsList.Add(new EffectDef(ModdedEntityStates.Colossus.SpawnState.eyeEffectPrefab));
+
                 var colossusBody = new ColossusBody();
                 ColossusBody.Skills.Stomp = colossusBody.CreateStompSkill();
                 ColossusBody.Skills.StoneClap = colossusBody.CreateStoneClapSkill();
@@ -86,7 +89,7 @@ namespace EnemiesReturns
                 sfList.Add(ColossusBody.SkillFamilies.Utility);
                 sfList.Add(ColossusBody.SkillFamilies.Special);
 
-                ColossusBody.BodyPrefab = colossusBody.AddBodyComponents(assets.First(body => body.name == "ColossusBody"), iconLookup["texColossusIcon"], colossusLog, dtColossus);
+                ColossusBody.BodyPrefab = colossusBody.AddBodyComponents(assets.First(body => body.name == "ColossusBody"), iconLookup["texColossusIcon"], colossusLog, dtColossus, acdLookup);
                 bodyList.Add(ColossusBody.BodyPrefab);
 
                 var colossusMaster = new ColossusMaster();
