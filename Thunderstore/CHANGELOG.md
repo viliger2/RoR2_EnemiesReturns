@@ -1,7 +1,14 @@
 <details>
 <summary>0.7.22</summary>
 
-* Lynx Hunter and Switf are now able to hit airborne enemies (was made in 0.7.21).
+* Lynx Archer and Swift are now able to hit airborne enemies (was in 0.7.21).
+* Colossus
+  * New spawn animation.
+  * Some additional animation polish.
+* Lynx Tribe
+  * Exposed Lynx Shrine in code.
+    * _You can find static references to Lynx Shrines in `EnemiesReturns.Enemies.LynxTribe.LynxTribeStuff`._
+  * Fixed Lynx Fetish Special Damage buff hook not working with certain mods.
 </details>
 <details>
 <summary>0.7.21</summary>
@@ -19,7 +26,7 @@
   * Added sniper hurtbox to Fiery Pillar.
 * Colossus
   * Improved animations.
-* Condom has been found, thanks for all who helped.
+* Condom has been found, thanks to all who helped.
 </details>
 <details>
 <summary>0.7.20</summary>

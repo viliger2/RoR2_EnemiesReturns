@@ -108,9 +108,11 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Help with AI pathfinding by [DestroyedClone](https://thunderstore.io/package/DestroyedClone/)
 * Additional sound design by [rob](https://thunderstore.io/package/rob/)
 * Item pick model and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/)
+* Spawn animation by [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/)
 * Majority of sounds come from RoR, RoRR and WoW
 * Laser charge sound - https://pixabay.com/sound-effects/charged-laser-7125/
 * Woosh sound - https://pixabay.com/sound-effects/long-whoosh-194554/
+* 高速移動.mp3 - https://soundeffect-lab.info/sound/battle/
 </details>
 <details>
 <summary>Ifrit</summary>
