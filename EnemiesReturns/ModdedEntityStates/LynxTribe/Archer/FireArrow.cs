@@ -146,7 +146,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 ray.origin = muzzleTransform.position;
             }
 
-            var targetPoint = aimRay.origin + aimRay.direction * 1000f;
+            var targetPoint = aimRay.origin + aimRay.direction * 50f;
             bool flag = false;
             if (predictor == null || !predictor.hasTargetTransform)
             {
@@ -168,8 +168,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
                 if (hurtBox)
                 {
-                    targetPoint = predictor.GetTargetTransform().position;
+                    targetPoint = hurtBox.transform.position;
                     flag = true;
+                } else
+                {
+                    if(Physics.Raycast(aimRay.origin, aimRay.direction, out var hitinfo, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                    {
+                        targetPoint = hitinfo.point;
+                        flag = true;
+                    }
                 }
             }
             else if (predictor != null)
@@ -255,11 +262,12 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
 
                 if (hurtBox)
                 {
-                    vector = predictor.GetTargetTransform().position;
+                    predictor.SetTargetTransform(hurtBox.transform);
+                    vector = hurtBox.transform.position;
                 }
                 else
                 {
-                    vector = aimRay.origin + aimRay.direction * 1000f;
+                    vector = aimRay.origin + aimRay.direction * 50f;
                 }
             }
             else
