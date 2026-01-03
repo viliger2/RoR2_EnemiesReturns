@@ -71,6 +71,8 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_AphelianSanctuary_Theme),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_ScorchedAcres_Theme),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall),
                     "snowtime_gmconstruct",
                     "snowtime_sandtrap",
                     "snowtime_gmflatgrass"
@@ -80,8 +82,7 @@ namespace EnemiesReturns.Configuration
             JungleStageList = config.Bind("Archer Bug Director", "Jungle Variant Stage List",
                 string.Join(
                     ",",
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SunderedGrove),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SirensCall)
+                    ""
                     ),
                 "Stages that Jungle Archer Bugs appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

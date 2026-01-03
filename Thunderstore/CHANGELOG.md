@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.23</summary>
+
+* Fixed Lynx Archer throwing NREs if target died between starting FireArrow state and actually firing the projectile.
+</details>
+<details>
 <summary>0.7.22</summary>
 
 * Lynx Archer and Swift are now able to hit airborne enemies (was in 0.7.21).

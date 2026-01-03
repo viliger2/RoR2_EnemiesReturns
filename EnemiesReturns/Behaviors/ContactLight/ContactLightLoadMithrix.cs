@@ -14,10 +14,10 @@ namespace EnemiesReturns.Behaviors.ContactLight
 
         private void Awake()
         {
-            if (combatEncounter && combatEncounter.spawns.Length > 0)
-            {
-                combatEncounter.spawns[0].spawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Brother.cscBrother_asset).WaitForCompletion();
-            }
+            //if (combatEncounter && combatEncounter.spawns.Length > 0)
+            //{
+            //    combatEncounter.spawns[0].spawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Brother.cscBrother_asset).WaitForCompletion();
+            //}
         }
 
         public void KillAllMonsters()

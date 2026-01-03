@@ -2589,8 +2589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileCount: 6
-  angle: 120
-  aimDirection: {x: -0.95, y: 0.05, z: 0.29}
+  angle: 119.51
+  aimDirection: {x: 1.39, y: 0.56, z: 4.28}
   multiplierVector: {x: 0, y: 0, z: 0}
 --- !u!23 &1963772015
 MeshRenderer:

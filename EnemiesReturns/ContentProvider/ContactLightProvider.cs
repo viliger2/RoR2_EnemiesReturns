@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using RoR2.Projectile;
+using EnemiesReturns.Enemies.Judgement;
 
 namespace EnemiesReturns
 {
@@ -78,6 +80,21 @@ namespace EnemiesReturns
                 //}
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
+            {
+                _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+
+                ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
+                ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
+            {
+                _contentPack.itemDefs.Add(assets);
+            }));
 
             AssetBundle assetBundleStages = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
