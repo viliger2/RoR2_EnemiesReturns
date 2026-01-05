@@ -10,6 +10,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     {
         public static float baseDuration = 3.5f;
 
+        public static float earlyExit = 2f;
+
         private bool attackFired = false;
 
         private Animator modelAnimator;
@@ -51,6 +53,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
                 attackFired = true;
             }
+            if(attackFired && fixedAge > earlyExit)
+            {
+                if(isAuthority && inputBank && skillLocator && skillLocator.secondary.IsReady() && inputBank.skill2.justPressed)
+                {
+                    skillLocator.secondary.ExecuteIfReady();
+                    return;
+                }
+            }
+
             if(fixedAge > baseDuration && isAuthority)
             {
                 outer.SetNextStateToMain();
@@ -65,7 +76,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            if (!attackFired && fixedAge < earlyExit)
+            {
+                return InterruptPriority.PrioritySkill;
+            }
+            return InterruptPriority.Skill;
         }
     }
 }

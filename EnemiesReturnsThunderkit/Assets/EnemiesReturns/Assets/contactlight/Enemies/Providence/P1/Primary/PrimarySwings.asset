@@ -19,12 +19,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.ProjectileSwings,
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.PrePrimaryWeaponSwing,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 5
-  baseMaxStock: 3
-  rechargeStock: 3
+  baseMaxStock: 2
+  rechargeStock: 2
   requiredStock: 1
   stockToConsume: 1
   attackSpeedBuffsRestockSpeed: 0

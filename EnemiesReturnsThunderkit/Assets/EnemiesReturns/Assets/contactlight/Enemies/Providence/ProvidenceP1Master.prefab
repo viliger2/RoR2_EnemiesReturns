@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 4301911917478337586}
   - component: {fileID: 4858475832381552851}
   - component: {fileID: 1162282349616290818}
+  - component: {fileID: 4810802965051555593}
   - component: {fileID: 1971129291444294069}
   - component: {fileID: 3372504834716886907}
-  - component: {fileID: 4810802965051555593}
   - component: {fileID: 1074069841503665960}
   - component: {fileID: 274565481402184747}
   - component: {fileID: 1606962296500798017}
@@ -225,6 +225,52 @@ MonoBehaviour:
   itemInfos:
   - itemString: AdaptiveArmor
     count: 1
+--- !u!114 &4810802965051555593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796795507270346501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: DashSwing
+  skillSlot: 1
+  requiredSkill: {fileID: 11400000, guid: 41dc96c81331c1941a70465db86a0e1f, type: 2}
+  requireSkillReady: 1
+  requireEquipmentReady: 0
+  minUserHealthFraction: -Infinity
+  maxUserHealthFraction: Infinity
+  minTargetHealthFraction: -Infinity
+  maxTargetHealthFraction: Infinity
+  minDistance: 10
+  maxDistance: 60
+  selectionRequiresTargetLoS: 1
+  selectionRequiresOnGround: 1
+  selectionRequiresTargetNonFlier: 0
+  selectionRequiresAimTarget: 0
+  maxTimesSelected: -1
+  moveTargetType: 0
+  activationRequiresTargetLoS: 1
+  activationRequiresAimTargetLoS: 1
+  activationRequiresAimConfirmation: 0
+  movementType: 1
+  moveInputScale: 1
+  aimVectorDampTimeOverride: -1
+  aimVectorMaxSpeedOverride: -1
+  aimType: 1
+  ignoreNodeGraph: 0
+  shouldSprint: 0
+  shouldFireEquipment: 0
+  shouldTapButton: 0
+  buttonPressType: 2
+  driverUpdateTimerOverride: -1
+  resetCurrentEnemyOnNextDriverSelection: 0
+  noRepeat: 0
+  nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &1971129291444294069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,52 +350,6 @@ MonoBehaviour:
   activationRequiresAimTargetLoS: 0
   activationRequiresAimConfirmation: 0
   movementType: 0
-  moveInputScale: 1
-  aimVectorDampTimeOverride: -1
-  aimVectorMaxSpeedOverride: -1
-  aimType: 1
-  ignoreNodeGraph: 0
-  shouldSprint: 0
-  shouldFireEquipment: 0
-  shouldTapButton: 0
-  buttonPressType: 0
-  driverUpdateTimerOverride: -1
-  resetCurrentEnemyOnNextDriverSelection: 0
-  noRepeat: 0
-  nextHighPriorityOverride: {fileID: 0}
---- !u!114 &4810802965051555593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796795507270346501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customName: DashSwing
-  skillSlot: 1
-  requiredSkill: {fileID: 11400000, guid: 41dc96c81331c1941a70465db86a0e1f, type: 2}
-  requireSkillReady: 1
-  requireEquipmentReady: 0
-  minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
-  minTargetHealthFraction: -Infinity
-  maxTargetHealthFraction: Infinity
-  minDistance: 10
-  maxDistance: 30
-  selectionRequiresTargetLoS: 1
-  selectionRequiresOnGround: 1
-  selectionRequiresTargetNonFlier: 0
-  selectionRequiresAimTarget: 0
-  maxTimesSelected: -1
-  moveTargetType: 0
-  activationRequiresTargetLoS: 1
-  activationRequiresAimTargetLoS: 1
-  activationRequiresAimConfirmation: 0
-  movementType: 1
   moveInputScale: 1
   aimVectorDampTimeOverride: -1
   aimVectorMaxSpeedOverride: -1

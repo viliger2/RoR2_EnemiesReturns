@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     {
         public static GameObject predictedPositionEffect;
 
-        public static float baseDuration = 0.5f;
+        public static float baseDuration = 2f;
 
         public Vector3 predictedPosition;
 

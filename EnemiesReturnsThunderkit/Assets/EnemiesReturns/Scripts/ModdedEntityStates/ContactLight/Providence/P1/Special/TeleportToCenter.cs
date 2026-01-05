@@ -1,4 +1,4 @@
-﻿//using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
 {
-    //[RegisterEntityState]
+    [RegisterEntityState]
     public class TeleportToCenter : BaseState
     {
         public static float baseDuration = 1f;

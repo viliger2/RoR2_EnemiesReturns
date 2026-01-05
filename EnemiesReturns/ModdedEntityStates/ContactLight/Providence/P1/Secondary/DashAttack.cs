@@ -63,8 +63,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-            skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "FireOrbs");
+            //skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "FireOrbs");
             base.OnExit();
+        }
+
+        public override void AuthorityOnFinish()
+        {
+            outer.SetNextState(new DashEnd());
         }
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)

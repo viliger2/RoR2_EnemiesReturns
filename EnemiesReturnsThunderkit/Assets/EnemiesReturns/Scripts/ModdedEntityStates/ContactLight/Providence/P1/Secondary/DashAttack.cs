@@ -1,14 +1,16 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
+using System.Linq;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 {
-    //[RegisterEntityState]
+    [RegisterEntityState]
     public class DashAttack : BasicMeleeAttack
     {
         public static AnimationCurve acdSlash1;
@@ -61,7 +63,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            //skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "FireOrbs");
             base.OnExit();
+        }
+
+        public override void ModifyNextState(EntityState nextState)
+        {
+            base.ModifyNextState(nextState);
         }
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)

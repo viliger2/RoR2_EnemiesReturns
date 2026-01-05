@@ -3716,7 +3716,7 @@ MonoBehaviour:
   baseMaxHealth: 4000
   baseRegen: 0
   baseMaxShield: 0
-  baseMoveSpeed: 15
+  baseMoveSpeed: 5
   baseAcceleration: 45
   baseJumpPower: 25
   baseDamage: 16
@@ -3911,7 +3911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primary: {fileID: -1520533190366740244}
-  secondary: {fileID: 4813135780523483581}
+  secondary: {fileID: 3602628820203683220}
   utility: {fileID: 4670884398897931420}
   special: {fileID: -4561139627196630957}
   passiveSkill:

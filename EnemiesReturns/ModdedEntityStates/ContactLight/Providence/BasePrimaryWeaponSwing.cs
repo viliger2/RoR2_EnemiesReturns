@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence
 
         public override void OnEnter()
         {
-            this.baseDuration = 0.4f;
+            this.baseDuration = 1f;
             base.damageCoefficient = swingDamageCoefficient;
             base.hitBoxGroupName = "Sword";
             base.hitEffectPrefab = hitEffect;

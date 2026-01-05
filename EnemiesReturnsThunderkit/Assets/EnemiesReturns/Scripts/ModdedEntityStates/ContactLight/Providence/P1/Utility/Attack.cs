@@ -1,9 +1,11 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 {
+    [RegisterEntityState]
     public class Attack : BaseState
     {
         public static float baseDuration = 3.5f;
@@ -39,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
                         owner = gameObject,
                         minSpread = 0f,
                         maxSpread = 0f,
-                        radius = 4f,
+                        radius = 8f,
                         origin = transform.position,
                         isCrit = RollCrit()
                     };

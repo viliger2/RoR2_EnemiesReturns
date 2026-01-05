@@ -1,5 +1,5 @@
-﻿//using EnemiesReturns.Projectiles;
-//using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Projectiles;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
 {
-    //[RegisterEntityState]
+    [RegisterEntityState]
     public class FireRings : BaseState
     {
         public static int timesToFire = 4;
@@ -49,14 +49,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
 
         private Transform modelTransform;
 
-        //private OverlapAttackAuthority overlapAttack;
+        private OverlapAttackAuthority overlapAttack;
 
         public override void OnEnter()
         {
             base.OnEnter();
             locator = GetModelChildLocator();
             modelTransform = GetModelTransform();
-            //overlapAttack = SetupOverlapAttack();
+            overlapAttack = SetupOverlapAttack();
             PlayAnimation();
             SetupNewRings();
         }
@@ -68,7 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             {
                 outer.SetNextStateToMain();
             }
-            if(oneRingTimer <= 0f)
+            if(oneRingTimer <= 0f && !ringFired)
             {
                 FireRing();
                 SetEffects(false);
@@ -125,43 +125,43 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             PlayAnimation("Gesture, Override", "Slash3", "combo.playbackRate", baseOneRingDuration);
         }
 
-        // private OverlapAttackAuthority SetupOverlapAttack()
-        // {
-        //     return new OverlapAttackAuthority()
-        //     {
-        //         attacker = base.gameObject,
-        //         attackerFiltering = RoR2.AttackerFiltering.NeverHitSelf,
-        //         inflictor = base.gameObject,
-        //         teamIndex = TeamComponent.GetObjectTeam(gameObject),
-        //         damage = baseDamage * damageStat,
-        //         isCrit = RollCrit(),
-        //         retriggerTimeout = 1f
-        //     };
-        // }
+        private OverlapAttackAuthority SetupOverlapAttack()
+        {
+            return new OverlapAttackAuthority()
+            {
+                attacker = base.gameObject,
+                attackerFiltering = RoR2.AttackerFiltering.NeverHitSelf,
+                inflictor = base.gameObject,
+                teamIndex = TeamComponent.GetObjectTeam(gameObject),
+                damage = baseDamage * damageStat,
+                isCrit = RollCrit(),
+                retriggerTimeout = 1f
+            };
+        }
 
         private void FireRing()
         {
-            // var hitBoxes = modelTransform.GetComponents<HitBoxGroup>();
-            // List<HurtBox> hits = new List<HurtBox>();
-            // for (int i = 0; i < currentRings.Length; i++)
-            // {
-            //     int number = currentRings[i];
+            var hitBoxes = modelTransform.GetComponents<HitBoxGroup>();
+            List<HurtBox> hits = new List<HurtBox>();
+            for (int i = 0; i < currentRings.Length; i++)
+            {
+                int number = currentRings[i];
 
-            //     overlapAttack.hitBoxGroup = Array.Find(hitBoxes, (element) => element.groupName == hitboxList[number]);
+                overlapAttack.hitBoxGroup = Array.Find(hitBoxes, (element) => element.groupName == hitboxList[number]);
 
-            //     if (overlapAttack.Fire(hits))
-            //     {
-            //         foreach(HurtBox box in hits)
-            //         {
-            //             if(!box || !box.healthComponent)
-            //             {
-            //                 continue;
-            //             }
-            //             overlapAttack.addIgnoredHitList(box.healthComponent);
-            //         }
-            //         hits.Clear();
-            //     }
-            // }
+                if (overlapAttack.Fire(hits))
+                {
+                    foreach(HurtBox box in hits)
+                    {
+                        if(!box || !box.healthComponent)
+                        {
+                            continue;
+                        }
+                        overlapAttack.addIgnoredHitList(box.healthComponent);
+                    }
+                    hits.Clear();
+                }
+            }
         }
     }
 }

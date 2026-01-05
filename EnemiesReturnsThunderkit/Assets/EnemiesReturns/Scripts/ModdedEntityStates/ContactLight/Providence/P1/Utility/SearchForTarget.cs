@@ -1,10 +1,12 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 {
+    [RegisterEntityState]
     public class SearchForTarget : BaseState
     {
         private RoR2.Projectile.Predictor predictor;
@@ -22,7 +24,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
             if (predictor != null && !predictor.hasTargetTransform)
             {
                 FindTarget();
+            } else
+            {
+                predictor.Update();
             }
+
+            Log.Info($"targetPosition {predictor.GetTargetTransform()?.position}");
 
             if (fixedAge > 0.75f && isAuthority)
             {
@@ -31,6 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
                 {
                     predictor.GetPredictedTargetPosition(Disappear.baseDuration, out targetPosition);
                 }
+                Log.Info($"predictedPosition {targetPosition}");
                 var nextState = new Disappear();
                 nextState.predictedPosition = targetPosition;
                 outer.SetNextState(nextState);

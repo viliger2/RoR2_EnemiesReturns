@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Body
   activationState:
-    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary.DashAttack,
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary.DashPrep,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 15

@@ -36,7 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
                 Vector3 targetPosition = transform.position;
                 if (predictor.hasTargetTransform)
                 {
-                    predictor.GetPredictedTargetPosition(Disappear.baseDuration, out targetPosition);
+                    predictor.GetPredictedTargetPosition(0.75f, out targetPosition);
                 }
                 Log.Info($"predictedPosition {targetPosition}");
                 var nextState = new Disappear();

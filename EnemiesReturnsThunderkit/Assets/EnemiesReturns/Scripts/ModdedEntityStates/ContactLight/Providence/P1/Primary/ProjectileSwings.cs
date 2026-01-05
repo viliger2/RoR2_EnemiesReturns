@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -10,10 +11,12 @@ using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
 {
+    [RegisterEntityState]
     public class ProjectileSwings : BasePrimaryWeaponSwing
     {
-        //public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
-        public static GameObject projectilePrefab;
+        public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
+
+        public static float projectileTime = 1f;
 
         public override float swingDamageCoefficient => 2f;
 
@@ -36,13 +39,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
                     owner = base.gameObject,
                     position = GetAimRay().origin,
                     projectilePrefab = projectilePrefab,
-                    rotation = Quaternion.Euler(GetAimRay().direction),
+                    rotation = Util.QuaternionSafeLookRotation(GetAimRay().direction),
                     damage = damageStat * damageCoefficient,
                     damageTypeOverride = DamageTypeCombo.Generic
                 };
 
                 ProjectileManager.instance.FireProjectile(projectileInfo);
             }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }
