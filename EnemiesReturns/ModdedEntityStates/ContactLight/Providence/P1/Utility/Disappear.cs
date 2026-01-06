@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     {
         public static GameObject predictedPositionEffect;
 
-        public static float baseDuration = 2f;
+        public static float baseDuration => Configuration.General.ProvidenceP1UtilityInvisibleDuration.Value;
 
         public Vector3 predictedPosition;
 
@@ -21,15 +21,30 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         private int originalLayer;
 
+        private float duration;
+
         public override void OnEnter()
         {
             base.OnEnter();
+            duration = baseDuration / attackSpeedStat;
             Transform modelTransform = GetModelTransform();
             if (NetworkServer.active)
             {
                 CleanseSystem.CleanseBodyServer(base.characterBody, true, false, false, true, false, false);
                 base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
             }
+            if(SceneInfo.instance && SceneInfo.instance.groundNodes)
+            {
+                var closestNode = SceneInfo.instance.groundNodes.FindClosestNode(predictedPosition, HullClassification.Golem);
+                if(closestNode != RoR2.Navigation.NodeGraph.NodeIndex.invalid)
+                {
+                    if(SceneInfo.instance.groundNodes.GetNodePosition(closestNode, out var nodePosition))
+                    {
+                        predictedPosition = nodePosition;
+                    }
+                }
+            }
+
             base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.25f, Quaternion.identity);
 
             if (modelTransform)
@@ -55,7 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > baseDuration && isAuthority)
+            if(fixedAge > duration && isAuthority)
             {
                 outer.SetNextState(new Attack());
             }

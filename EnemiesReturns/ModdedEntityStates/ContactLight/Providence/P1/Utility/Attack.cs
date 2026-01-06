@@ -8,9 +8,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     [RegisterEntityState]
     public class Attack : BaseState
     {
-        public static float baseDuration = 3.5f;
+        public static float baseDuration => Configuration.General.ProvidenceP1UtilityAttackDuraion.Value;
 
-        public static float earlyExit = 2f;
+        public static float earlyExit => Configuration.General.ProvidenceP1UtilityEarlyExit.Value;
 
         private bool attackFired = false;
 

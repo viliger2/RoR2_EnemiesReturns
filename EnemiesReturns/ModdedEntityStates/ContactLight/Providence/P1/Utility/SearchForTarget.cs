@@ -9,13 +9,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     [RegisterEntityState]
     public class SearchForTarget : BaseState
     {
+        public static float baseDuration => Configuration.General.ProvidenceP1UtilityPreDuration.Value;
+
+        public static float predictionTime => Configuration.General.ProvidenceP1UtilityPredictionTimer.Value;
+
+        private float duration;
+
         private RoR2.Projectile.Predictor predictor;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            duration = baseDuration / attackSpeedStat;
             SetupPredictor();
-            PlayCrossfade("Gesture, Override", "SlashInit", "combo.playbackRate", 0.75f, 0.1f);
+            PlayCrossfade("Gesture, Override", "SlashInit", "combo.playbackRate", duration, 0.1f);
         }
 
         public override void FixedUpdate()
@@ -31,12 +38,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
             Log.Info($"targetPosition {predictor.GetTargetTransform()?.position}");
 
-            if (fixedAge > 0.75f && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 Vector3 targetPosition = transform.position;
                 if (predictor.hasTargetTransform)
                 {
-                    predictor.GetPredictedTargetPosition(0.75f, out targetPosition);
+                    predictor.GetPredictedTargetPosition(predictionTime, out targetPosition);
                 }
                 Log.Info($"predictedPosition {targetPosition}");
                 var nextState = new Disappear();

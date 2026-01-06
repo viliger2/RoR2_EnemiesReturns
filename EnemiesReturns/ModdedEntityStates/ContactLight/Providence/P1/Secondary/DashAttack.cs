@@ -23,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 
         public override void OnEnter()
         {
-            this.baseDuration = 1f;
+            this.baseDuration = Configuration.General.ProvidenceP1SecondaryDuration.Value;
             base.damageCoefficient = 3f;
             base.hitBoxGroupName = "SecondaryProvidence";
             base.hitEffectPrefab = hitEffect;

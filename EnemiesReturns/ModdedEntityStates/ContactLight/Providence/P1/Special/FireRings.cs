@@ -13,9 +13,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
     [RegisterEntityState]
     public class FireRings : BaseState
     {
-        public static int timesToFire = 4;
+        public static int timesToFire => Configuration.General.ProvidenceP1SpecialTimesToFire.Value;
 
-        public static int ringToFire = 3;
+        public static int ringToFire => Configuration.General.ProvidenceP1SpecialRingsToFire.Value;
 
         public static string[] effectList = new string[]
         {
@@ -27,9 +27,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             "FirstRing", "SecondRing", "ThirdRing", "FourthRing", "FifthRing"
         };
 
-        public static float delayBetweenRings = 0.5f;
+        public static float delayBetweenRings => Configuration.General.ProvidenceP1SpecialDelayBetweenRings.Value;
 
-        public static float baseOneRingDuration = 2f;
+        public static float baseOneRingDuration => Configuration.General.ProvidenceP1SpecialOneRingDuration.Value;
 
         public static float baseDamage = 2f;
 
