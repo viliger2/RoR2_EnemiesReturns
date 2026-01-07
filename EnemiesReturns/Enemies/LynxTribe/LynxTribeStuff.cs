@@ -2,6 +2,8 @@
 using R2API;
 using RoR2;
 using RoR2.Hologram;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -210,10 +212,10 @@ namespace EnemiesReturns.Enemies.LynxTribe
         {
             shrinePrefab.AddComponent<NetworkIdentity>();
 
-            var hightLightMesh = shrinePrefab.AddComponent<Highlight>();
-            hightLightMesh.strength = 1f;
-            hightLightMesh.targetRenderer = shrinePrefab.transform.Find("Base/LynxTotemPole/Pole").GetComponent<Renderer>();
-            hightLightMesh.highlightColor = Highlight.HighlightColor.interactive;
+            var highLightMesh = shrinePrefab.AddComponent<Highlight>();
+            highLightMesh.strength = 1f;
+            highLightMesh.targetRenderer = shrinePrefab.transform.Find("Base/LynxTotemPole/Pole").GetComponent<Renderer>();
+            highLightMesh.highlightColor = Highlight.HighlightColor.interactive;
 
             var modelLocator = shrinePrefab.AddComponent<ModelLocator>();
             modelLocator.modelTransform = shrinePrefab.transform.Find("Base/LynxTotemPole");
@@ -313,6 +315,22 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var dither = shrinePrefab.AddComponent<DitherModel>();
             dither.bounds = shrinePrefab.transform.Find("Base/LynxTotemPole").GetComponent<Collider>();
             dither.renderers = shrinePrefab.GetComponentsInChildren<Renderer>();
+
+            var soa = shrinePrefab.AddComponent<SpecialObjectAttributes>();
+            soa.grabbable = true;
+            soa.massOverride = 500;
+            soa.damageOverride = -1;
+            soa.damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.NoneSpecified);
+            soa.collisionToDisable = new List<GameObject>() { shrinePrefab.transform.Find("Base/LynxTotemPole").gameObject };
+            soa.renderersToDisable = new List<Renderer>(shrinePrefab.GetComponentsInChildren<Renderer>());
+            soa.behavioursToDisable = new List<MonoBehaviour>() { highlightPickup, highLightMesh, purchaseInteraction, hologramProjector };
+            soa.pickupDisplaysToDisable = new List<PickupDisplay>() { pickupDisplay };
+
+            soa.hullClassification = HullClassification.Golem;
+            soa.maxDurability = 0;
+            soa.orientToFloor = false;
+            soa.useSkillHighlightRenderers = false;
+            soa.isVoid = false;
 
             shrinePrefab.RegisterNetworkPrefab();
 
