@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
 {
@@ -8,10 +9,17 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
     {
         public static float duration = 1f;
 
+        private CharacterBody.BodyFlags originalFlags;
+
         public override void OnEnter()
         {
             base.OnEnter();
             PlayCrossfade("Body", "Burrowed", 0.1f);
+            if (characterBody)
+            {
+                originalFlags = characterBody.bodyFlags;
+                characterBody.bodyFlags |= CharacterBody.BodyFlags.Unmovable | CharacterBody.BodyFlags.IgnoreKnockup;
+            }
         }
 
         public override void FixedUpdate()
@@ -24,6 +32,15 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem.Burrow
                 {
                     outer.SetNextState(new Unburrow());
                 }
+            }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (characterBody)
+            {
+                characterBody.bodyFlags = originalFlags;
             }
         }
 
