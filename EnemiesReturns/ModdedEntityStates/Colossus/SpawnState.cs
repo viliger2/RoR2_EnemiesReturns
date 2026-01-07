@@ -77,7 +77,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             var data = new EffectData
             {
                 rootObject = gameObject,
-                modelChildIndex = (short)GetModelChildLocator().FindChildIndex(headLight.transform)
+                modelChildIndex = (short)GetModelChildLocator().FindChildIndex(headLight.transform),
+                origin = headLight.transform.position
             };
             EffectManager.SpawnEffect(eyeEffectPrefab, data, false);
         }
