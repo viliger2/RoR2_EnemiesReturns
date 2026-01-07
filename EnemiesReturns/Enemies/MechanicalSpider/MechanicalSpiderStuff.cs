@@ -5,6 +5,7 @@ using RoR2;
 using RoR2.Audio;
 using RoR2.Hologram;
 using RoR2.Projectile;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -44,11 +45,26 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             highlight.highlightColor = Highlight.HighlightColor.interactive;
             #endregion
 
+            #region GenericInspectInfoProvider
+            var inspectDef = ScriptableObject.CreateInstance<InspectDef>();
+            (inspectDef as ScriptableObject).name = "idBrokenMechanicalSpider";
+            inspectDef.Info = new RoR2.UI.InspectInfo
+            {
+                Visual = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texDroneIconOutlined.png").WaitForCompletion(),
+                TitleToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME",
+                DescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION",
+                FlavorToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE",
+                TitleColor = Color.white,
+                isConsumedItem = false
+            };
+            #endregion
+
             #region SummonMasterBehavior
             var summonMaster = interactablePrefab.AddComponent<SummonMasterBehavior>();
             summonMaster.masterPrefab = masterPrefab;
             summonMaster.callOnEquipmentSpentOnPurchase = false;
             summonMaster.destroyAfterSummoning = false;
+            summonMaster.inspectDef = inspectDef;
             #endregion
 
             #region PurchaseInteraction
@@ -106,21 +122,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             modelLocator.normalizeToFloor = true;
             modelLocator.normalSmoothdampTime = 0.1f;
             modelLocator.normalMaxAngleDelta = 90f;
-            #endregion
-
-            #region GenericInspectInfoProvider
-            var inspectDef = ScriptableObject.CreateInstance<InspectDef>();
-            (inspectDef as ScriptableObject).name = "idBrokenMechanicalSpider";
-            inspectDef.Info = new RoR2.UI.InspectInfo
-            {
-                Visual = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texDroneIconOutlined.png").WaitForCompletion(),
-                TitleToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_NAME",
-                DescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_INTERACTABLE_DESCRIPTION",
-                FlavorToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE",
-                TitleColor = Color.white,
-                isConsumedItem = false
-            };
-            interactablePrefab.AddComponent<GenericInspectInfoProvider>().InspectInfo = inspectDef;
             #endregion
 
             #region Inventory
@@ -194,6 +195,20 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             };
 
             meshRendererTransform.gameObject.AddComponent<EntityLocator>().entity = interactablePrefab;
+
+            var soa = interactablePrefab.AddComponent<SpecialObjectAttributes>();
+            soa.grabbable = true;
+            soa.massOverride = 150f;
+            soa.damageOverride = -1f;
+            soa.damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.NoneSpecified);
+            soa.collisionToDisable = new List<GameObject>() { interactablePrefab.transform.Find("ModelBase/mdlMechanicalSpider/MechanicalSpider").gameObject };
+            soa.renderersToDisable = new List<Renderer>(interactablePrefab.GetComponentsInChildren<Renderer>());
+            soa.behavioursToDisable = new List<MonoBehaviour>() { highlight, purchaseInteraction, projector };
+            soa.hullClassification = HullClassification.Human;
+            soa.maxDurability = 0;
+            soa.orientToFloor = true;
+            soa.useSkillHighlightRenderers = false;
+            soa.isVoid = false;
 
             interactablePrefab.RegisterNetworkPrefab();
 
