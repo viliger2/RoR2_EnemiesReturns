@@ -35,14 +35,17 @@ namespace EnemiesReturns.Behaviors.Judgement
         {
             if (RoR2.Stage.instance.sceneDef.cachedName == "enemiesreturns_outoftime")
             {
-                var pickupDef = PickupCatalog.GetPickupDef(pickupInfo.pickup.pickupIndex);
-                if (pickupDef != null)
+                if (!pickupInfo.pickup.isTempItem)
                 {
-                    if (pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex
-                        && pickupDef.equipmentIndex != Content.Equipment.MithrixHammer.equipmentIndex
-                        && pickupDef.equipmentIndex != Content.Equipment.VoidlingWeapon.equipmentIndex)
+                    var pickupDef = PickupCatalog.GetPickupDef(pickupInfo.pickup.pickupIndex);
+                    if (pickupDef != null)
                     {
-                        return;
+                        if (pickupDef.equipmentIndex != Content.Equipment.EliteAeonian.equipmentIndex
+                            && pickupDef.equipmentIndex != Content.Equipment.MithrixHammer.equipmentIndex
+                            && pickupDef.equipmentIndex != Content.Equipment.VoidlingWeapon.equipmentIndex)
+                        {
+                            return;
+                        }
                     }
                 }
             }
