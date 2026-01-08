@@ -62,8 +62,8 @@ namespace EnemiesReturns.Configuration
             ProvidenceP1UtilityEarlyExit = config.Bind("Providence", "P1 Utility Early Exit Timer", 2f);
 
             ProvidenceP1SpecialTeleportDuration = config.Bind("Providence", "P1 Special Teleport Duration", 1f);
-            ProvidenceP1SpecialTimesToFire = config.Bind("Providence", "P1 Special Times To Fire", 4);
-            ProvidenceP1SpecialRingsToFire = config.Bind("Providence", "P1 Special Rings To Fire", 3);
+            ProvidenceP1SpecialTimesToFire = config.Bind("Providence", "P1 Special Times To Fire", 3);
+            ProvidenceP1SpecialRingsToFire = config.Bind("Providence", "P1 Special Rings To Fire", 2);
             ProvidenceP1SpecialDelayBetweenRings = config.Bind("Providence", "P1 Special Delay Between Rings", 0.5f);
             ProvidenceP1SpecialOneRingDuration = config.Bind("Providence", "P1 Special One Ring Duration", 2f);
 #endif

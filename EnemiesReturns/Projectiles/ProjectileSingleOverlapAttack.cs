@@ -13,6 +13,8 @@ namespace EnemiesReturns.Projectiles
 
         public ProjectileDamage projectileDamage;
 
+        public float delay = 0f;
+
         public float damageCoefficient;
 
         public GameObject impactEffect;
@@ -28,6 +30,17 @@ namespace EnemiesReturns.Projectiles
             projectileController = GetComponent<ProjectileController>();
             projectileDamage = GetComponent<ProjectileDamage>();
 
+            if (delay <= 0f)
+            {
+                FireAttack();
+            } else
+            {
+                Invoke("FireAttack", delay);
+            }
+        }
+
+        private void FireAttack()
+        {
             var attack = new OverlapAttack
             {
                 procChainMask = projectileController.procChainMask,
