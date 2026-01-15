@@ -39,7 +39,10 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
                 }
             } else
             {
-                EffectManager.SimpleEffect(impactEffect, transform.position, Quaternion.identity, false);
+                if (wasGrounded)
+                {
+                    EffectManager.SimpleEffect(impactEffect, transform.position, Quaternion.identity, false);
+                }
             }
 
             var stones1 = FindModelChild("Stones1");
@@ -60,7 +63,10 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             base.FixedUpdate();
             if(!wasGrounded && characterMotor.isGrounded)
             {
-                EffectManager.SimpleEffect(impactEffect, transform.position, Quaternion.identity, false);
+                if (impactEffect)
+                {
+                    EffectManager.SimpleEffect(impactEffect, transform.position, Quaternion.identity, false);
+                }
                 wasGrounded = true;
             }
         }

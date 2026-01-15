@@ -41,15 +41,21 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             var childLocator = GetModelChildLocator();
 
             eyeRenderer = childLocator.FindChildComponent<Renderer>("EyeModel");
-            eyePropertyBlock = new MaterialPropertyBlock();
-            initialEmmision = eyeRenderer.material.GetFloat("_EmPower");
-            eyePropertyBlock.SetFloat("_EmPower", initialEmmision);
-            eyeRenderer.SetPropertyBlock(eyePropertyBlock);
+            if (eyeRenderer)
+            {
+                eyePropertyBlock = new MaterialPropertyBlock();
+                initialEmmision = eyeRenderer.material.GetFloat("_EmPower");
+                eyePropertyBlock.SetFloat("_EmPower", initialEmmision);
+                eyeRenderer.SetPropertyBlock(eyePropertyBlock);
+            }
 
             fallTransform = childLocator.FindChild(fallEffectChild);
 
             headLight = childLocator.FindChildComponent<Light>("HeadLight");
-            initialRange = headLight.range;
+            if (headLight)
+            {
+                initialRange = headLight.range;
+            }
 
             var stoneParticles = childLocator.FindChild("StoneParticles");
             if (stoneParticles)
@@ -74,9 +80,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
 
             if (age <= duration)
             {
-                eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmmision, 0f, age / duration));
-                eyeRenderer.SetPropertyBlock(eyePropertyBlock);
-                headLight.range = Mathf.Lerp(initialRange, 0f, age / duration);
+                if (eyeRenderer)
+                {
+                    eyePropertyBlock.SetFloat("_EmPower", Mathf.Lerp(initialEmmision, 0f, age / duration));
+                    eyeRenderer.SetPropertyBlock(eyePropertyBlock);
+                }
+                if (headLight)
+                {
+                    headLight.range = Mathf.Lerp(initialRange, 0f, age / duration);
+                }
             }
         }
 
@@ -88,7 +100,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
                 return;
             }
 
-            if (fixedAge >= fallEffectSpawnTime && !fallEffectSpawned)
+            if (fixedAge >= fallEffectSpawnTime && fallTransform && !fallEffectSpawned)
             {
                 EffectManager.SpawnEffect(fallEffect, new EffectData { origin = fallTransform.position }, true);
                 fallEffectSpawned = true;
