@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseProjectilePrimary;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -16,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
     {
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
 
-        public static float projectileTime = 1f;
+        public static float projectileTime => 1f;
 
         public override float swingDamageCoefficient => 2f;
 
@@ -28,23 +29,29 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
 
         public override string swingSoundEffect => "";
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            if (isAuthority)
-            {
-                var projectileInfo = new FireProjectileInfo()
-                {
-                    crit = RollCrit(),
-                    owner = base.gameObject,
-                    position = GetAimRay().origin,
-                    projectilePrefab = projectilePrefab,
-                    rotation = Util.QuaternionSafeLookRotation(GetAimRay().direction),
-                    damage = damageStat * damageCoefficient,
-                    damageTypeOverride = DamageTypeCombo.Generic
-                };
+        private bool hasFired;
 
-                ProjectileManager.instance.FireProjectile(projectileInfo);
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if(fixedAge > projectileTime && !hasFired)
+            {
+                if (isAuthority)
+                {
+                    var projectileInfo = new FireProjectileInfo()
+                    {
+                        crit = RollCrit(),
+                        owner = base.gameObject,
+                        position = GetAimRay().origin,
+                        projectilePrefab = projectilePrefab,
+                        rotation = Util.QuaternionSafeLookRotation(GetAimRay().direction),
+                        damage = damageStat * damageCoefficient,
+                        damageTypeOverride = DamageTypeCombo.Generic
+                    };
+
+                    ProjectileManager.instance.FireProjectile(projectileInfo);
+                }
+                hasFired = true;
             }
         }
 

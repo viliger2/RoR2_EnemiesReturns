@@ -1,10 +1,12 @@
-﻿using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Configuration;
+using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -155,6 +157,51 @@ namespace EnemiesReturns
 
             //InvokeCMD(user, "give_equip", "random");
             InvokeCMD(user, "set_scene", "enemiesreturns_contactlight");
+        }
+
+        [ConCommand(commandName = "returns_take_damage", flags = ConVarFlags.None)]
+        private static void CCTakeDamage(ConCommandArgs args)
+        {
+            NetworkUser user = args.sender;
+            if (!Run.instance)
+            {
+                Debug.Log("Can't do this without Run!");
+                return;
+            }
+
+            if (!NetworkServer.active)
+            {
+                Debug.Log("Only works on hosts!");
+                return;
+            }
+
+            if (args.Count == 0)
+            {
+                Debug.Log("Missing arguments! arg0 - damage to take");
+                return;
+            }
+
+            float damage = 0;
+            if (!float.TryParse(args[0], out damage))
+            {
+                Debug.Log("Couldn't parse arg0! Should be float.");
+                return;
+            }
+
+            if(args.senderBody && damage > 0)
+            {
+                DamageInfo damageInfo = new DamageInfo
+                {
+                    attacker = null,
+                    damage = damage,
+                    crit = false,
+                    procCoefficient = 0f,
+                    damageColorIndex = DamageColorIndex.Item,
+                    damageType = DamageType.BypassArmor | DamageType.BypassBlock | DamageType.BypassOneShotProtection,
+                    position = args.senderBody.transform.position
+                };
+                args.senderBody.healthComponent.TakeDamage(damageInfo);
+            }
         }
 
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)

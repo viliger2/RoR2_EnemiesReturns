@@ -86,7 +86,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 
             modelChildLocator = GetModelChildLocator();
             muzzleFloor = FindModelChild("MuzzleFloor");
-
         }
 
         public override void FixedUpdate()

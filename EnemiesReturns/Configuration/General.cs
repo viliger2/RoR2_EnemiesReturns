@@ -52,14 +52,14 @@ namespace EnemiesReturns.Configuration
             ProvidenceP1PrimarySwingDuration = config.Bind("Providence", "P1 Primary Swing Duration", 1f);
 
             ProvidenceP1SecondaryPreDuration = config.Bind("Providence", "P1 Secondary Pre Duration", 1.8f);
-            ProvidenceP1SecondaryDuration = config.Bind("Providence", "P1 Secondary Duration", 1f);
-            ProvidenceP1SecondaryPostDuration = config.Bind("Providence", "P1 Secondary Post Duration", 1f);
+            ProvidenceP1SecondaryDuration = config.Bind("Providence", "P1 Secondary Duration", 0.75f);
+            ProvidenceP1SecondaryPostDuration = config.Bind("Providence", "P1 Secondary Post Duration", 0.5f);
 
             ProvidenceP1UtilityPreDuration = config.Bind("Providence", "P1 Utility Pre Duration", 0.75f);
             ProvidenceP1UtilityPredictionTimer = config.Bind("Providence", "P1 Utility Prediction Timer", 0.75f);
-            ProvidenceP1UtilityInvisibleDuration = config.Bind("Providence", "P1 Utility Invisible Duration", 2f);
+            ProvidenceP1UtilityInvisibleDuration = config.Bind("Providence", "P1 Utility Invisible Duration", 1f);
             ProvidenceP1UtilityAttackDuraion = config.Bind("Providence", "P1 Utility Attack Duration", 3.5f);
-            ProvidenceP1UtilityEarlyExit = config.Bind("Providence", "P1 Utility Early Exit Timer", 2f);
+            ProvidenceP1UtilityEarlyExit = config.Bind("Providence", "P1 Utility Early Exit Timer", 1.25f);
 
             ProvidenceP1SpecialTeleportDuration = config.Bind("Providence", "P1 Special Teleport Duration", 1f);
             ProvidenceP1SpecialTimesToFire = config.Bind("Providence", "P1 Special Times To Fire", 3);

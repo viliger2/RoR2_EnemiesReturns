@@ -14,7 +14,11 @@ PrefabInstance:
     - target: {fileID: -1520533190366740244, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: _skillFamily
       value: 
-      objectReference: {fileID: 11400000, guid: 17b0da6407df0fc4c98f03d9e8b114fb, type: 2}
+      objectReference: {fileID: 11400000, guid: d8884bc43dc8535499faab9887a2a2da, type: 2}
+    - target: {fileID: -217684116850925860, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+      propertyPath: _skillFamily
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e2b3cd07e3609145a98075e7240400f, type: 2}
     - target: {fileID: 2413003441898197763, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_Controller
       value: 
@@ -155,26 +159,9 @@ PrefabInstance:
       propertyPath: _skillFamily
       value: 
       objectReference: {fileID: 11400000, guid: 1bc69d5031397ae46a142050dc4601ec, type: 2}
-    - target: {fileID: 5352614908182493314, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-      propertyPath: transformPairs.Array.size
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352614908182493314, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-      propertyPath: transformPairs.Array.data[30].name
-      value: Base
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352614908182493314, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-      propertyPath: transformPairs.Array.data[30].transform
-      value: 
-      objectReference: {fileID: 6401262824464474079}
     - target: {fileID: 5916704582772687778, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_Name
       value: ProvidenceP2Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
---- !u!4 &6401262824464474079 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3125147758617264400, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-  m_PrefabInstance: {fileID: 8325778897918746319}
-  m_PrefabAsset: {fileID: 0}

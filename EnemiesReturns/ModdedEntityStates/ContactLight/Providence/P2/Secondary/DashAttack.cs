@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
             base.swingEffectMuzzleString = "SwingCombo1EffectMuzzle";
-            base.mecanimHitboxActiveParameter = "Slash1.attack";
+            //base.mecanimHitboxActiveParameter = "Slash1.attack";
             base.shorthopVelocityFromHit = 0f;
             base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP1_Play";
             //base.impactSound = "";

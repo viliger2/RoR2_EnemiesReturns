@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
@@ -6,66 +7,18 @@ using UnityEngine;
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 {
     [RegisterEntityState]
-    public class Attack : BaseState
+    public class Attack : BaseAttack
     {
-        public static float baseDuration = 3.5f;
+        public override string layerName => "Gesture, Override";
 
-        private bool attackFired = false;
+        public override string animationStateName => "ExitSkyLeap";
 
-        private Animator modelAnimator;
+        public override string playbackRateParams => "SkyLeap.playbackRate";
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            modelAnimator = GetModelAnimator();
-            PlayAnimation("Gesture, Override", "ExitSkyLeap", "SkyLeap.playbackRate", baseDuration);
-        }
+        public override string animatorAttackParam => "SkyLeap.firstAttack";
 
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if (!attackFired && modelAnimator.GetFloat("SkyLeap.firstAttack") > 0.9f)
-            {
-                if (isAuthority)
-                {
-                    var bulletAttack = new BulletAttack
-                    {
-                        aimVector = Vector3.up,
-                        bulletCount = 1,
-                        damage = damageStat * 3f,
-                        falloffModel = BulletAttack.FalloffModel.None,
-                        damageType = DamageSource.Utility,
-                        hitMask = BulletAttack.defaultHitMask,
-                        stopperMask = LayerIndex.world.mask,
-                        maxDistance = 1000f,
-                        owner = gameObject,
-                        minSpread = 0f,
-                        maxSpread = 0f,
-                        radius = 8f,
-                        origin = transform.position,
-                        isCrit = RollCrit()
-                    };
+        public override float baseDuration => 1f;
 
-                    bulletAttack.Fire();
-                }
-
-                attackFired = true;
-            }
-            if(fixedAge > baseDuration && isAuthority)
-            {
-                outer.SetNextStateToMain();
-            }
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
-        }
+        public override float earlyExit => 1f;
     }
 }

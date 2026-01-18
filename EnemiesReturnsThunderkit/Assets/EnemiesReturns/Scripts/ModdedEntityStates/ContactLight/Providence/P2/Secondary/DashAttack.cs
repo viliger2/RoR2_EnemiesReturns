@@ -34,7 +34,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
 
         public override void OnEnter()
         {
-            //this.baseDuration = Configuration.General.ProvidenceP1SecondaryDuration.Value;
             this.baseDuration = 1f;
             base.damageCoefficient = dashDamageCoefficient;
             base.hitBoxGroupName = "SecondaryProvidence";
@@ -84,6 +83,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
         public override void AuthorityOnFinish()
         {
             outer.SetNextState(new DashEnd());
+            FireProjectileAuthority();
         }
 
         private void FireProjectileAuthority()
@@ -95,7 +95,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
 
             var info = new FireProjectileInfo()
             {
-                comboNumber = (byte)(clonesCount),
+                comboNumber = (byte)(clonesCount - 1),
                 crit = RollCrit(),
                 damage = damageStat * dashDamageCoefficient,
                 damageTypeOverride = DamageSource.Secondary,
@@ -105,6 +105,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
                 procChainMask = new ProcChainMask(),
                 projectilePrefab = projectileClone,
                 rotation = Util.QuaternionSafeLookRotation(inputBank.aimDirection),
+                fuseOverride = 1f
             };
 
             ProjectileManager.instance.FireProjectile(info);

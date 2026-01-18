@@ -33,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
             base.swingEffectMuzzleString = "SwingCombo1EffectMuzzle";
-            base.mecanimHitboxActiveParameter = "Slash1.attack";
+            //base.mecanimHitboxActiveParameter = "Slash1.attack";
             base.shorthopVelocityFromHit = 0f;
             base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP1_Play";
             //base.impactSound = "";
@@ -52,7 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         {
             base.FixedUpdate();
             Vector3 targetMoveVelocity = Vector3.zero;
-            characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 90f);
+            characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 120f);
         }
 
         public override void PlayAnimation()
@@ -67,9 +67,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             base.OnExit();
         }
 
-        public override void ModifyNextState(EntityState nextState)
+        public override void AuthorityOnFinish()
         {
-            base.ModifyNextState(nextState);
+            outer.SetNextState(new DashEnd());
         }
 
         public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)

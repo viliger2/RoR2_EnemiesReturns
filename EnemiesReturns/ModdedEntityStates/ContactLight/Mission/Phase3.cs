@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
+using EnemiesReturns.Reflection;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 {
+    [RegisterEntityState]
     public class Phase3 : BaseState
     {
         public static string phaseControllerChildString = "Phase3";

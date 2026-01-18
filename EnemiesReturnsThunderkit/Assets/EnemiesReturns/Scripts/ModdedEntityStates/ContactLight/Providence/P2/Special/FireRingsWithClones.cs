@@ -13,14 +13,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
     [RegisterEntityState]
     public class FireRingsWithClones : BaseState
     {
+        public static int baseTimesToFire => 1;
 
-        //public static int baseTimesToFire => Configuration.General.ProvidenceP1SpecialTimesToFire.Value;
-
-        //public static int baseRingToFire => Configuration.General.ProvidenceP1SpecialRingsToFire.Value;
-        public static int baseTimesToFire => 2;
-
-        public static int baseRingToFire => 2;
-
+        public static int baseRingToFire => 1;
 
         public static GameObject cloneEffectPrefab;
 
@@ -42,11 +37,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             "FirstRing", "SecondRing", "ThirdRing", "FourthRing", "FifthRing"
         };
 
-        //public static float delayBetweenRings => Configuration.General.ProvidenceP1SpecialDelayBetweenRings.Value;
-        public static float delayBetweenRings => 2f;
+        public static float delayBetweenRings => 1f;
 
-        //public static float baseOneRingDuration => Configuration.General.ProvidenceP1SpecialOneRingDuration.Value;
-        public static float baseOneRingDuration => 2f;
+        public static float baseOneRingDuration => 1f;
 
         public static float baseDamage = 2f;
 
@@ -84,14 +77,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             locator = GetModelChildLocator();
             modelTransform = GetModelTransform();
             overlapAttack = SetupOverlapAttack();
+
+            timesToFire = baseTimesToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalTimesMax, (float)additionalTimesMin), 1, baseTimesToFire + additionalTimesMax);
+            ringsToFire = baseRingToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalRingsMax, (float)additionalRingsMin), 1, rngArray.Length);
+
             PlayAnimation();
             SetupNewRings();
 
             modelChildLocator = GetModelChildLocator();
             muzzleFloor = FindModelChild("MuzzleFloor");
-
-            timesToFire = baseTimesToFire + (int)Mathf.Min(baseTimesToFire + additionalTimesMax, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalTimesMax, (float)additionalTimesMin));
-            ringsToFire = baseRingToFire + (int)Mathf.Min(rngArray.Length, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalRingsMax, (float)additionalRingsMin));
         }
 
         public override void FixedUpdate()

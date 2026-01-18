@@ -21,6 +21,8 @@ namespace EnemiesReturns
 
         public static CharacterSpawnCard cscTempleGuardian;
 
+        public static GameObject TempleGuard2Body;
+
         public IEnumerator CreateContactLightAsync(LoadStaticContentAsyncArgs args, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups, Dictionary<string, AnimationCurveDef> acdLookup, string assetBundleFolderPath)
         {
             AssetBundle assetBundleStagesAssets = null;
@@ -42,28 +44,18 @@ namespace EnemiesReturns
             {
                 var templeGuardians = assets.Where(item => item.name == "skinLunarGolemTempleGuardian").First();
                 var newSkin = templeGuardians.CreateSkinDef();
+                var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(templeGuardians.bodyPrefab).WaitForCompletion();
+                var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                 if (newSkin)
                 {
-                    var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(templeGuardians.bodyPrefab).WaitForCompletion();
-                    var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                     HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in newSkin);
+                }
 
-                    var cscLunarGolem = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarGolem.cscLunarGolem_asset).WaitForCompletion();
-                    cscTempleGuardian = UnityEngine.Object.Instantiate(cscLunarGolem);
-                    cscTempleGuardian.name = "cscTempleGuardian";
-
-                    cscTempleGuardian.loadout = new SerializableLoadout
-                    {
-                        bodyLoadouts = new SerializableLoadout.BodyLoadout[]
-                        {
-                            new SerializableLoadout.BodyLoadout()
-                            {
-                                body = bodyObject.GetComponent<CharacterBody>(),
-                                skinChoice = newSkin,
-                                skillChoices = Array.Empty<SerializableLoadout.BodyLoadout.SkillChoice>() // yes, we need it
-                            }
-                        }
-                    };
+                var templeGuardians2 = assets.Where(item => item.name == "skinLunarGolemTempleGuardian2").First();
+                var newSkin2 = templeGuardians2.CreateSkinDef();
+                if (newSkin2)
+                {
+                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in newSkin2);
                 }
 
                 //var moddedSkinDefList = assets.Where(item => item.name.Contains("Judgement")).ToArray();
@@ -87,14 +79,27 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                 _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
+                TempleGuard2Body = assets.First(prefab => prefab.name == "TempleGuard2Body");
+                TempleGuard2Body.GetComponentInChildren<ModelSkinController>()._avatarAddress = new AssetReferenceT<Avatar>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarGolem.mdlLunarGolem_fbx);
+
                 ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
-                ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+                ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
 
                 ModdedEntityStates.ContactLight.Providence.P2.Primary.ProjectileSwingsWithClones.cloneEffect = assets.First(prefab => prefab.name == "ProvidenceP2PrimaryShadowClone");
                 ModdedEntityStates.ContactLight.Providence.P2.Secondary.DashAttack.projectileClone = assets.First(prefab => prefab.name == "ProvidenceSecondaryCloneProjectile");
                 ModdedEntityStates.ContactLight.Providence.P2.Special.FireRingsWithClones.cloneEffectPrefab = assets.First(prefab => prefab.name == "ProvidenceP2SpecialShadowClone");
                 ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
-                ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+                ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+
+                var orbProjectilePrefab = assets.First(prefab => prefab.name == "ProviTwoSwingsProjectile");
+                orbProjectilePrefab.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
+                ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
+                ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
+
+                ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
+                ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

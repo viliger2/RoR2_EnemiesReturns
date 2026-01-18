@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseProjectilePrimary;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -16,14 +17,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
     {
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
 
-        public static GameObject ghostEffect;
+        public static GameObject cloneEffect;
 
-        //public static float projectileTime => Configuration.General.ProvidenceP1PrimaryProjectileTime.Value;
-        public static float projectileTime => 0.1f;
+        public static float projectileTime => 1f;
 
-        public static float ghostDelay = 0.2f;
+        public static float cloneDelay = 0.2f;
 
-        public static int ghostCount = 2;
+        public static int minCloneCount = 1;
+            
+        public static int maxCloneCount = 3;
 
         public override float swingDamageCoefficient => 2f;
 
@@ -35,9 +37,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
 
         public override string swingSoundEffect => "";
 
-        private float ghostTimer;
+        private float cloneTimer;
 
-        private int ghostsFired;
+        private int clonesFired;
+
+        private int cloneCount;
 
         private ChildLocator modelChildLocator;
 
@@ -50,6 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
             base.OnEnter();
             modelChildLocator = GetModelChildLocator();
             muzzleFloor = FindModelChild("MuzzleFloor");
+            cloneCount = (int)Mathf.Min(maxCloneCount, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxCloneCount, (float)minCloneCount));
         }
 
         public override void FixedUpdate()
@@ -59,18 +64,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
             {
                 FireProjectileAuthority();
                 hasFired = true;
-                ghostTimer = ghostDelay;
+                cloneTimer = cloneDelay;
             }
             if (hasFired)
             {
-                if(ghostTimer < 0f && ghostsFired < ghostCount)
+                if(cloneTimer < 0f && clonesFired < cloneCount)
                 {
                     SpawnGhostEffect();
                     FireProjectileAuthority();
-                    ghostsFired++;
-                    ghostTimer += ghostDelay;
+                    clonesFired++;
+                    cloneTimer += cloneDelay;
                 }
-                ghostTimer -= GetDeltaTime();
+                cloneTimer -= GetDeltaTime();
             }
         }
 
@@ -83,7 +88,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
                 origin = muzzleFloor.position
             };
 
-            EffectManager.SpawnEffect(ghostEffect, effectData, false);
+            EffectManager.SpawnEffect(cloneEffect, effectData, false);
         }
 
         private void FireProjectileAuthority()

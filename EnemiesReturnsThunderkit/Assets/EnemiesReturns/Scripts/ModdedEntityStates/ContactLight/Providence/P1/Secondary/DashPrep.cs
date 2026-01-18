@@ -1,13 +1,15 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 {
+    [RegisterEntityState]
     public class DashPrep : BaseState
     {
-        public static float baseDuration = 1.8f;
+        public static float baseDuration => 1f;
 
         private float duration;
 
