@@ -22,7 +22,8 @@ namespace EnemiesReturns.Achievements
 
             private void GlobalEventManager_OnInteractionsGlobal(Interactor interactor, IInteractable interactable, UnityEngine.GameObject interactableObject)
             {
-                if (IsCurrentBody(interactor.gameObject) && interactableObject.GetComponent<SummonMasterBehavior>()?.masterPrefab == MechanicalSpiderDroneMaster.MasterPrefab)
+                var summonMasterBehaviour = interactableObject.GetComponent<SummonMasterBehavior>();
+                if (IsCurrentBody(interactor.gameObject) && summonMasterBehaviour && summonMasterBehaviour.masterPrefab == MechanicalSpiderDroneMaster.MasterPrefab)
                 {
                     Grant();
                 }
