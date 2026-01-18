@@ -3,11 +3,9 @@ using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Drone;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
 {

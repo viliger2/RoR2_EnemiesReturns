@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
@@ -35,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > baseDuration && isAuthority)
+            if (fixedAge > baseDuration && isAuthority)
             {
                 base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.25f, Quaternion.identity);
                 outer.SetNextState(new FireRingsWithClones());

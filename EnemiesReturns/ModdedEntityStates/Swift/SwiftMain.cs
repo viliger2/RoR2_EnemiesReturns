@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
         public override void Update()
         {
             base.Update();
-            if(base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
+            if (base.isAuthority && base.characterMotor.isGrounded && characterBody.isPlayerControlled)
             {
                 if (Input.GetKeyDown(EnemiesReturns.Configuration.Swift.EmoteKey.Value))
                 {

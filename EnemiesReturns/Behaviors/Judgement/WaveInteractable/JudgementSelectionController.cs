@@ -1,7 +1,5 @@
 ﻿using RoR2;
-using RoR2.UI;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -80,7 +78,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                 return;
             }
 
-            if(this.currentList >= itemLists.Length)
+            if (this.currentList >= itemLists.Length)
             {
                 return;
             }
@@ -111,7 +109,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             if (pickupDef != null)
             {
                 var itemCount = GetItemCountFromList(pickupIndex);
-                if(itemCount < 0)
+                if (itemCount < 0)
                 {
                     itemCount = 10;
                 }
@@ -206,7 +204,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
                     for (int k = 0; k < itemLists[i].Length; k++)
                     {
                         writer.Write(itemLists[i][k].pickupIndex);
-                        writer.WritePackedUInt32((uint)(itemLists[i][k].count));    
+                        writer.WritePackedUInt32((uint)(itemLists[i][k].count));
                     }
                 }
             }
@@ -217,13 +215,13 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
         public override void OnDeserialize(NetworkReader reader, bool initialState)
         {
             uint num = reader.ReadPackedUInt32();
-            if((num & ITEM_LIST_DIRTY_BIT) != 0)
+            if ((num & ITEM_LIST_DIRTY_BIT) != 0)
             {
                 itemLists = new EnemyItems[reader.ReadPackedUInt32()][];
-                for(int i = 0; i < itemLists.Length; i++)
+                for (int i = 0; i < itemLists.Length; i++)
                 {
                     itemLists[i] = new EnemyItems[reader.ReadPackedUInt32()];
-                    for(int k = 0; k < itemLists[i].Length; k++)
+                    for (int k = 0; k < itemLists[i].Length; k++)
                     {
                         itemLists[i][k] = new EnemyItems { pickupIndex = reader.ReadPickupIndex(), count = (int)reader.ReadPackedUInt32() };
                     }

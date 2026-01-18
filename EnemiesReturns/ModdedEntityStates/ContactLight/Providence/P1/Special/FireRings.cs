@@ -5,7 +5,6 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
@@ -64,11 +63,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(timesFired >= timesToFire)
+            if (timesFired >= timesToFire)
             {
                 outer.SetNextStateToMain();
             }
-            if(oneRingTimer <= 0f && !ringFired)
+            if (oneRingTimer <= 0f && !ringFired)
             {
                 FireRing();
                 SetEffects(false);
@@ -79,7 +78,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             }
             if (ringFired)
             {
-                if(inbetweenTimer <= 0f)
+                if (inbetweenTimer <= 0f)
                 {
                     SetupNewRings();
                     PlayAnimation();
@@ -151,9 +150,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
 
                 if (overlapAttack.Fire(hits))
                 {
-                    foreach(HurtBox box in hits)
+                    foreach (HurtBox box in hits)
                     {
-                        if(!box || !box.healthComponent)
+                        if (!box || !box.healthComponent)
                         {
                             continue;
                         }

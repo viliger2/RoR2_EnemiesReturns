@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Components;
-using EnemiesReturns.Configuration.Judgement;
+﻿using EnemiesReturns.Configuration.Judgement;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.Judgement;
 using EnemiesReturns.Enemies.Judgement.Arraign;
@@ -369,7 +368,7 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ModdedSkinDefParams[]>)((assets) =>
                 {
                     var moddedSkinDefList = assets.Where(item => item.name.Contains("Judgement")).ToArray();
-                    foreach(var moddedSkinDef in moddedSkinDefList)
+                    foreach (var moddedSkinDef in moddedSkinDefList)
                     {
                         var newSkin = moddedSkinDef.CreateSkinDef();
                         if (newSkin)

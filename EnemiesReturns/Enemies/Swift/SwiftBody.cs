@@ -6,14 +6,11 @@ using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.ModdedEntityStates.Swift.Dive;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;
@@ -50,7 +47,7 @@ namespace EnemiesReturns.Enemies.Swift
 
         protected override bool AddFootstepHandler => false;
 
-        public static GameObject BodyPrefab; 
+        public static GameObject BodyPrefab;
 
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log, Dictionary<string, AnimationCurveDef> acdLookup)
         {
@@ -259,8 +256,8 @@ namespace EnemiesReturns.Enemies.Swift
 
         protected override IGenericSkill.GenericSkillParams[] GenericSkillParams()
         {
-            return new IGenericSkill.GenericSkillParams[] 
-            { 
+            return new IGenericSkill.GenericSkillParams[]
+            {
                 new IGenericSkill.GenericSkillParams(SkillFamilies.Primary, "Dive", SkillSlot.Primary)
             };
         }

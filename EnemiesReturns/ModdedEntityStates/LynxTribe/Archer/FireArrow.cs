@@ -3,7 +3,6 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -170,9 +169,10 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 {
                     targetPoint = hurtBox.transform.position;
                     flag = true;
-                } else
+                }
+                else
                 {
-                    if(Physics.Raycast(aimRay.origin, aimRay.direction, out var hitinfo, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
+                    if (Physics.Raycast(aimRay.origin, aimRay.direction, out var hitinfo, 100f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
                     {
                         targetPoint = hitinfo.point;
                         flag = true;

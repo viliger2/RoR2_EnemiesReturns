@@ -1,12 +1,10 @@
-﻿using RoR2.Audio;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static RoR2.OverlapAttack;
-using UnityEngine;
+﻿using RoR2;
+using RoR2.Audio;
 using RoR2.Networking;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
+using static RoR2.OverlapAttack;
 
 namespace EnemiesReturns.Projectiles
 {

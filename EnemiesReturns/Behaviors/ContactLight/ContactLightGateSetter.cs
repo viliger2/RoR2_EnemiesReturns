@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors.ContactLight
@@ -37,7 +34,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
         {
             foreach (var gate in gates)
             {
-                if(string.Equals(gate, spawnPointGate))
+                if (string.Equals(gate, spawnPointGate))
                 {
                     continue;
                 }
@@ -47,7 +44,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
 
         private void SceneDirector_onPrePopulateSceneServer(RoR2.SceneDirector obj)
         {
-            foreach(var gate in gates)
+            foreach (var gate in gates)
             {
                 SceneInfo.instance.SetGateState(gate, true);
             }

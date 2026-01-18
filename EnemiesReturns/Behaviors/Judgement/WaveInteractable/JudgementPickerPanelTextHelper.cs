@@ -1,8 +1,5 @@
 ﻿using RoR2;
 using RoR2.UI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
@@ -15,7 +12,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
 
         private void Start()
         {
-            if(pickupPickerPanel && pickupPickerPanel.pickerController)
+            if (pickupPickerPanel && pickupPickerPanel.pickerController)
             {
                 selectionController = pickupPickerPanel.pickerController.gameObject.GetComponent<JudgementSelectionController>();
             }
@@ -65,7 +62,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             counterText.enableWordWrapping = false;
             counterText.alignment = TMPro.TextAlignmentOptions.BottomRight;
             counterText.fontSize = 20f;
-            counterText.color = new Color(0f, 255/255f, 233/255f);
+            counterText.color = new Color(0f, 255 / 255f, 233 / 255f);
             counterText.outlineColor = Color.gray;
             counterText.outlineWidth = 0.2f;
             counterText.text = "x" + itemCount;

@@ -1,15 +1,13 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using RoR2;
 using RoR2.ContentManagement;
+using RoR2.Projectile;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using RoR2.Projectile;
-using EnemiesReturns.Enemies.Judgement;
 
 namespace EnemiesReturns
 {

@@ -161,7 +161,7 @@ namespace EnemiesReturns
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill,
-                unlockableDef = unlockable, 
+                unlockableDef = unlockable,
                 viewableNode = new ViewablesCatalog.Node(Skills.Engi.MechanicalSpiderTurret.SetupSkill.normalSkill.skillNameToken, false, null)
             };
 

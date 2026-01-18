@@ -1,8 +1,4 @@
-﻿using EnemiesReturns.Enemies.LynxTribe;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors
@@ -27,13 +23,13 @@ namespace EnemiesReturns.Behaviors
         public override void Serialize(NetworkWriter writer)
         {
             base.Serialize(writer);
-            if(paramsTokens == null)
+            if (paramsTokens == null)
             {
                 writer.Write((short)0);
                 return;
             }
             writer.Write((short)paramsTokens.Length);
-            foreach(var param in paramsTokens)
+            foreach (var param in paramsTokens)
             {
                 writer.Write(param);
             }
@@ -43,14 +39,14 @@ namespace EnemiesReturns.Behaviors
         {
             base.Deserialize(reader);
             short num = reader.ReadInt16();
-            if(num == 0)
+            if (num == 0)
             {
                 paramsTokens = new string[0];
                 return;
             }
 
             paramsTokens = new string[num];
-            for(short i = 0; i < num; i++)
+            for (short i = 0; i < num; i++)
             {
                 paramsTokens[i] = reader.ReadString();
             }

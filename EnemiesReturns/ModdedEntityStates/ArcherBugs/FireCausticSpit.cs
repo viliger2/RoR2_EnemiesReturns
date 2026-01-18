@@ -70,7 +70,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
             Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
 
             var angle = projectileSpread / (projectileCount - 1);
-            
+
             Vector3 direction = Quaternion.AngleAxis(-projectileSpread * 0.5f, axis) * aimRay.direction;
             Quaternion rotation = Quaternion.AngleAxis(angle, axis);
             Ray aimRay2 = new Ray(aimRay.origin, direction);

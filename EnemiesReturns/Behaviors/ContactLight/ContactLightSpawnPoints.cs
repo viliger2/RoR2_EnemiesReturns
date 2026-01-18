@@ -1,8 +1,6 @@
 ﻿using RoR2;
 using RoR2.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors.ContactLight

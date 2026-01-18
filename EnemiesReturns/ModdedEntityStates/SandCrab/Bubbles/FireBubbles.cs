@@ -2,9 +2,6 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
@@ -84,7 +81,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Bubbles
                 startingDirection = rotation * startingDirection;
             }
 
-            if (timesFired >= timesToFire && isAuthority) 
+            if (timesFired >= timesToFire && isAuthority)
             {
                 outer.SetNextState(new EndBubbles());
             }

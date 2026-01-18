@@ -1,12 +1,8 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.AddressableAssets;
 using UnityEngine;
-using System.Linq;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 {

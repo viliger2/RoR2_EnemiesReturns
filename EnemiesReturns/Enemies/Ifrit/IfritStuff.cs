@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Projectiles;
 using R2API;
 using RoR2;

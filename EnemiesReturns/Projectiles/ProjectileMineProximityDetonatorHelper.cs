@@ -1,8 +1,4 @@
-﻿using EnemiesReturns.Behaviors;
-using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2.Projectile;
 using UnityEngine;
 
 namespace EnemiesReturns.Projectiles

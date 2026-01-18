@@ -1,7 +1,5 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.ArcherBug;
 using EnemiesReturns.Enemies.SandCrab;
-using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.ModdedEntityStates.SandCrab.Snip;
 using R2API;
 using RoR2;

@@ -144,7 +144,7 @@ namespace EnemiesReturns
                     MonsterCategory = DirectorAPI.MonsterCategory.Champions,
                 };
                 Utils.AddMonsterToCardCategory(dcColossusGrassy, MonsterCategories.Champions, Addressables.LoadAssetAsync<FamilyDirectorCardCategorySelection>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.dccsGolemFamilyNature_asset).WaitForCompletion());
-      
+
                 Utils.AddMonsterToStages(Configuration.Colossus.GrassyStageList.Value, dchColossusGrassy);
 
                 ColossusBody.SpawnCards.cscColossusCastle = colossusBody.CreateCard("cscColossusCastle", ColossusMaster.MasterPrefab, ColossusBody.SkinDefs.Castle, ColossusBody.BodyPrefab);

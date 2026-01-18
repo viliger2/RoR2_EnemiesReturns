@@ -1,6 +1,4 @@
-﻿using BepInEx.Configuration;
-using EnemiesReturns.Components;
-using HG;
+﻿using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using RoR2;
@@ -9,7 +7,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -90,11 +87,11 @@ namespace EnemiesReturns.Enemies.Judgement
         }
 
         // second iteration is purely to support modded skins
-        [SystemInitializer(new Type[] {typeof(BodyCatalog)})]
+        [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
         private static IEnumerator CreateAnointedSkinsSecondIteration()
         {
             var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
-            for(int i = 0; i < anointedSkinsSecondIterationList.Count; i++)
+            for (int i = 0; i < anointedSkinsSecondIterationList.Count; i++)
             {
                 SkinDef skin = anointedSkinsSecondIterationList[i];
                 if (!skin.rootObject)
@@ -102,7 +99,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                if(!skin.rootObject.TryGetComponent<CharacterModel>(out var characterModel))
+                if (!skin.rootObject.TryGetComponent<CharacterModel>(out var characterModel))
                 {
                     continue;
                 }
@@ -118,14 +115,14 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                if(!skin.rootObject.TryGetComponent<ModelSkinController>(out var controller))
+                if (!skin.rootObject.TryGetComponent<ModelSkinController>(out var controller))
                 {
                     continue;
                 }
 
                 var anointedBaseSkinName = entry.Value;
                 var customSkins = controller.skins.Where(skin => skin.name == anointedBaseSkinName).ToArray();
-                if(customSkins.Length == 0)
+                if (customSkins.Length == 0)
                 {
                     Log.Info($"CreateAnointedSkins: Couldn't find skin with name {anointedBaseSkinName} for {body.name} on second iteration. Default skin will be used.");
                     continue;
@@ -251,7 +248,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     continue;
                 }
 
-                if(modelSkins.skins.Length == 0)
+                if (modelSkins.skins.Length == 0)
                 {
                     Log.Warning($"CreateAnointedSkins: Body {sanitizedBodyName} has zero skins on ModelSkinController component.");
                     continue;

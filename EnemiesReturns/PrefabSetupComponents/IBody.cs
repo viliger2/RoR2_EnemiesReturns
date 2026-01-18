@@ -50,7 +50,7 @@ namespace EnemiesReturns.Components
             {
                 body.RegisterNetworkPrefab();
             }
-            
+
             return body;
         }
 

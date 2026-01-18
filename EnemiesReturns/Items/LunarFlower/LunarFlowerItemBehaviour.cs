@@ -1,14 +1,6 @@
-﻿using EnemiesReturns.Equipment.MithrixHammer;
-using RoR2;
-using RoR2.Items;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
+﻿using RoR2;
 using UnityEngine.Networking;
 using static RoR2.CharacterBody;
-using static RoR2.CharacterMaster;
 using static RoR2.CharacterMasterNotificationQueue;
 
 namespace EnemiesReturns.Items.LunarFlower

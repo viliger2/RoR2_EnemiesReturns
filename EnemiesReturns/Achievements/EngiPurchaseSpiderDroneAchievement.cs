@@ -2,10 +2,6 @@
 using EnemiesReturns.Enemies.MechanicalSpider.Drone;
 using RoR2;
 using RoR2.Achievements;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.Networking;
 
 namespace EnemiesReturns.Achievements
 {

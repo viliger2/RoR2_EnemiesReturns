@@ -2,7 +2,6 @@
 using R2API;
 using RoR2;
 using RoR2.Skills;
-using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,7 +135,7 @@ namespace EnemiesReturns
             var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
             (skinDefParams as ScriptableObject).name = name + "SkinDefParams";
 
-            if(renderInfo != null)
+            if (renderInfo != null)
             {
                 skinDefParams.rendererInfos = renderInfo;
             }
@@ -352,7 +351,7 @@ namespace EnemiesReturns
         public static void Shuffle<T>(this Xoroshiro128Plus rng, T[] array)
         {
             int n = array.Length;
-            while(n > 1)
+            while (n > 1)
             {
                 int k = rng.RangeInt(0, n--);
                 T temp = array[n];

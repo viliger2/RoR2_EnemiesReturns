@@ -1,22 +1,17 @@
-﻿using EnemiesReturns.Behaviors.JitterBonesStuff;
-using EnemiesReturns.Components;
+﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
-using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
 using EnemiesReturns.Components.ModelComponents.Hitboxes;
-using EnemiesReturns.ModdedEntityStates.SandCrab;
 using EnemiesReturns.ModdedEntityStates.SandCrab.Snip;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using EnemiesReturns.PrefabSetupComponents.ModelComponents;
 using HG;
 using RoR2;
-using RoR2.Mecanim;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static Rewired.UI.ControlMapper.ControlMapper;
 using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.SandCrab
@@ -68,7 +63,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         public override GameObject AddBodyComponents(GameObject bodyPrefab, Sprite sprite, UnlockableDef log)
         {
             var baseForAdditions = bodyPrefab.transform.Find("ModelBase/mdlSandCrab/SandCrabArmature/Root/BaseButt/BaseMiddle1/BaseMiddle2/BaseHead");
-            
+
             #region sulfur pods
             var sulfurPodBodyPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_SulfurPod.SulfurPodBody_prefab).WaitForCompletion();
             var mesh = sulfurPodBodyPrefab.transform.Find("ModelBase/mdlSulfurPod/Mesh");
@@ -119,7 +114,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
         protected override IRandomBlinkController.RandomBlinkParams RandomBlinkParams()
         {
-            return new IRandomBlinkController.RandomBlinkParams(new string[] {"Blink2"})
+            return new IRandomBlinkController.RandomBlinkParams(new string[] { "Blink2" })
             {
                 blinkChancePerUpdate = 3f,
             };
@@ -982,8 +977,8 @@ namespace EnemiesReturns.Enemies.SandCrab
                 new IHitboxes.HitBoxesParams
                 {
                     groupName = "Snip",
-                    pathsToTransforms = new string[] {"SandCrabArmature/HandIK.L/Hand.L/UpperClaw.L/Hitbox", "SandCrabArmature/HandIK.R/Hand.R/UpperClaw.R/Hitbox" } 
-                    
+                    pathsToTransforms = new string[] {"SandCrabArmature/HandIK.L/Hand.L/UpperClaw.L/Hitbox", "SandCrabArmature/HandIK.R/Hand.R/UpperClaw.R/Hitbox" }
+
                 }
             };
         }

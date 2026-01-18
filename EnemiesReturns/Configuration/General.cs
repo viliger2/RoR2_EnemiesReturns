@@ -4,7 +4,7 @@ namespace EnemiesReturns.Configuration
 {
     public static class General
     {
-#if DEBUG || NOWEAVER
+
         public static ConfigEntry<float> DebugWalkSpeedValue;
         public static ConfigEntry<float> testconfig;
         public static ConfigEntry<ModdedEntityStates.Judgement.Mission.DebugIntiialState.InitialState> JudgementInitialState;
@@ -28,7 +28,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> ProvidenceP1SpecialRingsToFire;
         public static ConfigEntry<float> ProvidenceP1SpecialDelayBetweenRings;
         public static ConfigEntry<float> ProvidenceP1SpecialOneRingDuration;
-#endif
+
         public static ConfigEntry<bool> UseConfigFile;
         public static ConfigEntry<bool> SkipJudgementCutscene;
         public static ConfigEntry<PartyTime> PartyTimeConfig;

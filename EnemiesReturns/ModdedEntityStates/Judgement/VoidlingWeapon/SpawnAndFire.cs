@@ -1,10 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
-using EntityStates;
 using R2API;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -71,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge >= fireOffset && !hasFired)
+            if (fixedAge >= fireOffset && !hasFired)
             {
                 if (isAuthority)
                 {
@@ -81,11 +77,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.VoidlingWeapon
                 Util.PlaySound("Play_voidRaid_snipe_shoot_final", this.gameObject);
                 hasFired = true;
             }
-            if(fixedAge >= disableOffset && weaponInstance)
+            if (fixedAge >= disableOffset && weaponInstance)
             {
                 weaponInstance.SetActive(false);
             }
-            if(fixedAge >= duration && NetworkServer.active)
+            if (fixedAge >= duration && NetworkServer.active)
             {
                 NetworkServer.Destroy(this.gameObject);
             }

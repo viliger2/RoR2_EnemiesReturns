@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 {
@@ -23,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

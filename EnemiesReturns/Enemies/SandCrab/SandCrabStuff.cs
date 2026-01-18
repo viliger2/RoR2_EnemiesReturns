@@ -6,11 +6,9 @@ using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
 using System.Collections.Generic;
-using ThreeEyedGames;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using static Rewired.UI.ControlMapper.ControlMapper;
 
 namespace EnemiesReturns.Enemies.SandCrab
 {
@@ -153,7 +151,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var dissableCollisions = projectilePrefab.AddComponent<DisableCollisionsBetweenColliders>();
             dissableCollisions.collidersA = new Collider[] { projectilePrefab.GetComponent<SphereCollider>(), proximityDetonatorTransform.GetComponent<SphereCollider>() };
-            dissableCollisions.collidersB = new Collider[] { hurtBoxTransform.GetComponent<SphereCollider>() };        
+            dissableCollisions.collidersB = new Collider[] { hurtBoxTransform.GetComponent<SphereCollider>() };
 
             var projectileController = projectilePrefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = projectileGhost;
@@ -173,7 +171,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             projectileSimple.enableVelocityOverLifetime = true;
             projectileSimple.velocityOverLifetime = acdBubbleSpeed.curve;
             projectileSimple.lifetimeExpiredEffect = impactEffect;
-            projectileSimple.oscillate = false; 
+            projectileSimple.oscillate = false;
 
             var oscillate = projectilePrefab.AddComponent<ProjectileOscillate>();
             oscillate.oscillateY = true;
@@ -251,7 +249,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             impactExplosion.blastProcCoefficient = 1f;
             impactExplosion.projectileHealthComponent = healthComponent;
 
-            impactExplosion.impactEffect = impactEffect; 
+            impactExplosion.impactEffect = impactEffect;
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.impactOnWorld = true;
@@ -278,7 +276,7 @@ namespace EnemiesReturns.Enemies.SandCrab
         {
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BarrierOnKill.matBarrier_mat).WaitForCompletion());
             material.name = "matSandCrabBubble";
-            material.SetColor("_TintColor", new Color(107f/255f, 139f/255f, 1f, 1f));
+            material.SetColor("_TintColor", new Color(107f / 255f, 139f / 255f, 1f, 1f));
             material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texCloudDifferenceBW1_png).WaitForCompletion());
             material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
             material.SetFloat("_InvFade", 2f);

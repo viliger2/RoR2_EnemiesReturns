@@ -1,6 +1,4 @@
 ﻿using EnemiesReturns.Reflection;
-using EntityStates;
-using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Enemy
 {

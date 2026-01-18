@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
 using EnemiesReturns.Reflection;
 using EntityStates;
-using RoR2;
-using System.Linq;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 {

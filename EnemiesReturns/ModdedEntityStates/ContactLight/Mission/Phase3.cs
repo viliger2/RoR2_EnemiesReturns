@@ -1,11 +1,9 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using UnityEngine.Networking;
 using UnityEngine;
-using EnemiesReturns.Reflection;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 {

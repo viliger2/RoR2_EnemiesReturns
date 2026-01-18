@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
-using EntityStates;
-using R2API;
+﻿using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
 using UnityEngine;

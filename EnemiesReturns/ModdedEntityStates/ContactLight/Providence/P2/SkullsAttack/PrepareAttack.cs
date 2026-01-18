@@ -1,12 +1,10 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls;
+using EnemiesReturns.Reflection;
 using EntityStates;
-using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack
 {
+    [RegisterEntityState]
     public class PrepareAttack : BasePrepareAttack
     {
         public override float baseDuration => 3f;

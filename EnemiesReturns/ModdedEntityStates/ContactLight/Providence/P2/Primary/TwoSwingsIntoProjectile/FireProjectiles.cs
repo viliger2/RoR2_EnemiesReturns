@@ -1,14 +1,7 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.Reflection;
-using EntityStates;
-using RoR2;
-using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Object = UnityEngine.Object;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile
 {

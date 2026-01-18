@@ -1,15 +1,7 @@
-﻿using EnemiesReturns.Configuration.Judgement;
-using EnemiesReturns.Equipment.MithrixHammer;
-using R2API;
-using RoR2;
-using RoR2.EntityLogic;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.Equipment.VoidlingWeapon
 {

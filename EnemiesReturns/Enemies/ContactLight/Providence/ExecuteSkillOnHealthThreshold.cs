@@ -1,7 +1,5 @@
 ﻿using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.ContactLight.Providence
@@ -52,28 +50,28 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
                     return;
                 }
 
-                if(timesExecuted >= healthThresholds.Length)
+                if (timesExecuted >= healthThresholds.Length)
                 {
                     return;
                 }
 
                 int reachedThresholdCount = 0;
-                foreach(var healthTheshold in healthThresholds)
+                foreach (var healthTheshold in healthThresholds)
                 {
-                    if(healthComponent.healthFraction <= healthTheshold)
+                    if (healthComponent.healthFraction <= healthTheshold)
                     {
                         reachedThresholdCount++;
                     }
                 }
 
                 // if we executed skill as many times as there are reached thresholds then we don't need to do anything
-                if(reachedThresholdCount <= timesExecuted)
+                if (reachedThresholdCount <= timesExecuted)
                 {
                     return;
                 }
 
                 var esmsAreFree = true;
-                foreach(var esm in esms)
+                foreach (var esm in esms)
                 {
                     esmsAreFree = esmsAreFree && esm.IsInMainState();
                 }

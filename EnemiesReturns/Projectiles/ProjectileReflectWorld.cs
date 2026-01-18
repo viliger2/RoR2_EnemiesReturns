@@ -1,11 +1,5 @@
-﻿using RoR2;
-using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RoR2.Projectile;
 using UnityEngine;
-using UnityEngine.Networking;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.Projectiles
 {

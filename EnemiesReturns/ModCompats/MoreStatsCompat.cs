@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MoreStats;
 using System.Runtime.CompilerServices;
-using System.Text;
-using MoreStats;
 
 namespace EnemiesReturns.ModCompats
 {

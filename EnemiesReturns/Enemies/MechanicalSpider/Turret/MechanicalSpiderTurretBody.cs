@@ -1,16 +1,11 @@
-﻿using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
-using EnemiesReturns.Components.BodyComponents;
+﻿using EnemiesReturns.Components.BodyComponents;
+using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
+using EnemiesReturns.Components.BodyComponents.Skills;
 using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.ModelComponents;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 using RoR2;
-using UnityEngine.AddressableAssets;
 using RoR2.Skills;
-using EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret;
-using EnemiesReturns.Components.BodyComponents.Skills;
+using UnityEngine;
 
 namespace EnemiesReturns.Enemies.MechanicalSpider.Turret
 {

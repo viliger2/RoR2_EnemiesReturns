@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.Components;
-using EnemiesReturns.Components.GeneralComponents;
 using EnemiesReturns.Components.MasterComponents;
 using RoR2;
 using RoR2.CharacterAI;

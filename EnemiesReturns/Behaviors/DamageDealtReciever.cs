@@ -1,7 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -25,7 +22,7 @@ namespace EnemiesReturns.Behaviors
         {
             if (useTimer)
             {
-                if(timer >= resetTime)
+                if (timer >= resetTime)
                 {
                     DamageDealt = false;
                     timer -= resetTime;
@@ -36,15 +33,16 @@ namespace EnemiesReturns.Behaviors
 
         public void OnDamageDealtServer(DamageReport damageReport)
         {
-            if(damageReport.damageDealt <= 0)
+            if (damageReport.damageDealt <= 0)
             {
                 return;
             }
 
-            if (useDamageType && damageReport.damageInfo.damageType.Equals(damageType)) 
+            if (useDamageType && damageReport.damageInfo.damageType.Equals(damageType))
             {
                 DamageDealt = true;
-            } else
+            }
+            else
             {
                 DamageDealt = true;
             }

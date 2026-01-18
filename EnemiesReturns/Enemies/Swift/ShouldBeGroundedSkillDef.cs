@@ -1,8 +1,5 @@
 ﻿using RoR2;
 using RoR2.Skills;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Bindings;
 
 namespace EnemiesReturns.Enemies.Swift

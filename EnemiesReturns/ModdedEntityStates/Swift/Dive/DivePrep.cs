@@ -2,10 +2,7 @@
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
@@ -71,7 +68,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(predictor != null)
+            if (predictor != null)
             {
                 predictor.Update();
             }
@@ -79,7 +76,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             if (fixedAge >= duration && isAuthority)
             {
                 Vector3 predictedPosition = Vector3.zero;
-                if(predictor != null)
+                if (predictor != null)
                 {
                     var transform = predictor.GetTargetTransform();
                     if (transform)
@@ -92,7 +89,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                         }
                     }
                 }
-                outer.SetNextState(new Dive() { diveTarget = predictedPosition});
+                outer.SetNextState(new Dive() { diveTarget = predictedPosition });
             }
         }
 

@@ -2,7 +2,6 @@
 using BepInEx.Configuration;
 using EnemiesReturns.Configuration;
 using EnemiesReturns.Enemies.Ifrit;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Enemies.LynxTribe.Shaman;
 using EnemiesReturns.Enemies.LynxTribe.Storm;
 using EnemiesReturns.Enemies.MechanicalSpider.Drone;
@@ -10,15 +9,11 @@ using EnemiesReturns.Items.ColossalKnurl;
 using EnemiesReturns.Items.LynxFetish;
 using EnemiesReturns.Items.SpawnPillarOnChampionKill;
 using EnemiesReturns.ModCompats;
-using HarmonyLib;
-using R2API;
 using RoR2;
 using RoR2.ContentManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine.Networking;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns

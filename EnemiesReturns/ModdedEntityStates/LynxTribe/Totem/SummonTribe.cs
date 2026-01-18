@@ -1,7 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using RoR2.CharacterAI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -97,7 +96,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
 
                 if (NetworkServer.active)
                 {
-                    if(summonCount == 0)
+                    if (summonCount == 0)
                     {
                         return;
                     }

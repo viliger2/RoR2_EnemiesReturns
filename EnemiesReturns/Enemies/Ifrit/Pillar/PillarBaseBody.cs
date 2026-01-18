@@ -118,7 +118,7 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
 
         protected override IModelLocator.ModelLocatorParams ModelLocatorParams()
         {
-            var baseParams =  base.ModelLocatorParams();
+            var baseParams = base.ModelLocatorParams();
             baseParams.noCorpse = true;
             baseParams.dontDetachFromParent = true;
             return baseParams;

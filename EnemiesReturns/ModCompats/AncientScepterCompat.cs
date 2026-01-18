@@ -1,11 +1,7 @@
-﻿using AdvancedPrediction.Prediction;
-using RoR2;
+﻿using RoR2;
 using RoR2.Skills;
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text;
-using UnityEngine;
 
 namespace EnemiesReturns.ModCompats
 {

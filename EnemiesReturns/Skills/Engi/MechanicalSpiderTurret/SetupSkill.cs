@@ -1,15 +1,10 @@
-﻿using EnemiesReturns.Components;
-using EnemiesReturns.Enemies.Judgement.Arraign;
-using EnemiesReturns.ModdedEntityStates.Engi;
+﻿using EnemiesReturns.ModdedEntityStates.Engi;
 using EntityStates;
 using RoR2;
 using RoR2.Skills;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 using static RoR2.MasterCatalog;
 
 namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
@@ -166,7 +161,7 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
                 return;
             }
             var spiderMaster = summonReport.summonMasterInstance;
-            if(!spiderMaster || !spiderMaster.inventory)
+            if (!spiderMaster || !spiderMaster.inventory)
             {
                 return;
             }

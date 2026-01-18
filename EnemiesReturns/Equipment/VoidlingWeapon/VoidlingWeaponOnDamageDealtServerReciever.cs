@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Configuration.Judgement;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.Equipment.VoidlingWeapon
 {

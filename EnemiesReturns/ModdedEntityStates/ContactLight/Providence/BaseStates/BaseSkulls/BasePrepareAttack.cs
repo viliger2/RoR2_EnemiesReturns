@@ -1,10 +1,6 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {

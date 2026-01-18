@@ -1,6 +1,4 @@
-﻿using R2API;
-using RoR2.Projectile;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -68,7 +66,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public Vector3 GetRockThingPosition()
         {
-            return rockThing.transform.position;    
+            return rockThing.transform.position;
         }
 
         public void SetRockThingPosition(Vector3 position)

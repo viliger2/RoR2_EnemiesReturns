@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Behaviors.JitterBonesStuff;
-using EnemiesReturns.Components;
+﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
@@ -11,7 +10,6 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static Rewired.UI.ControlMapper.ControlMapper;
 using static RoR2.ItemDisplayRuleSet;
 
 namespace EnemiesReturns.Enemies.ArcherBug

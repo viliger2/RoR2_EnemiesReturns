@@ -9,7 +9,6 @@ using R2API;
 using RoR2;
 using RoR2.EntityLogic;
 using RoR2.UI;
-using RoR2BepInExPack.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -213,7 +212,8 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
                 self.targetIndicator.active = hasTarget;
                 self.targetIndicator.targetTransform = (hasTarget ? self.currentTarget.transformToIndicateAt : null);
-            } else
+            }
+            else
             {
                 orig(self, targetingEquipmentIndex, userShouldAnticipateTarget);
             }
@@ -261,7 +261,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void HalfFrozenState(On.EntityStates.FrozenState.orig_OnEnter orig, EntityStates.FrozenState self)
         {
-            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            if (self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
             {
                 self.freezeDuration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
             }
@@ -271,7 +271,7 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void HalfStunState(On.EntityStates.StunState.orig_OnEnter orig, EntityStates.StunState self)
         {
             orig(self);
-            if(self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
+            if (self.characterBody && self.characterBody.HasBuff(Content.Buffs.AffixAeoninan))
             {
                 self.duration *= 1f - Mathf.Clamp01(EnemiesReturns.Configuration.Judgement.Judgement.AeonianEliteStunAndFreezeReduction.Value);
             }
@@ -279,7 +279,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(sender && sender.HasBuff(Content.Buffs.AffixAeoninan))
+            if (sender && sender.HasBuff(Content.Buffs.AffixAeoninan))
             {
                 args.attackSpeedReductionMultAdd = 0f;
                 args.moveSpeedReductionMultAdd = 0f;
@@ -291,7 +291,7 @@ namespace EnemiesReturns.Enemies.Judgement
             // TODO: this is not actual todo, remember to double check it every game update
             // since for sure indexes for values will change
             ILCursor c = new ILCursor(il);
-            if(c.TryGotoNext(MoveType.After,
+            if (c.TryGotoNext(MoveType.After,
                 x => x.MatchLdloc(112),
                 x => x.MatchLdloc(46),
                 x => x.MatchConvR4(),
@@ -311,7 +311,8 @@ namespace EnemiesReturns.Enemies.Judgement
                     return ammount;
                 });
                 c.Emit(OpCodes.Stloc, 112);
-            } else
+            }
+            else
             {
                 Log.Warning("IL Hook Failed - RoR2.CharacterBody.RecalculateStats: Aeonian elites won't have their affix working.");
             }
@@ -542,7 +543,8 @@ namespace EnemiesReturns.Enemies.Judgement
                 newPile.transform.position = new Vector3(44.72055f, -55.80222f, 0.2936229f);
                 newPile.transform.rotation = Quaternion.Euler(39.434f, 355.6797f, 13.5983f);
                 NetworkServer.Spawn(newPile);
-            } else if(SceneInfo.instance.sceneDef.baseSceneName == "moon"
+            }
+            else if (SceneInfo.instance.sceneDef.baseSceneName == "moon"
                 || SceneInfo.instance.sceneDef.baseSceneName == "moon2")
             {
                 var lunarFlowerChecker = SceneInfo.instance.gameObject.AddComponent<LunarFlowerCheckerSingleton>();
@@ -663,7 +665,7 @@ namespace EnemiesReturns.Enemies.Judgement
             var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_VoidSurvivor.VoidSurvivorCorruptDeathCharge_prefab).WaitForCompletion().InstantiateClone("VoidFlowerRespawnStartEffect", false);
 
             var effectComponent = prefab.AddComponent<EffectComponent>();
-  
+
             prefab.transform.Find("Sphere (1)").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere2", CreateVoidFlowerRespawnStartSphere2Material);
             prefab.transform.Find("Sphere").GetComponent<ParticleSystemRenderer>().material = ContentProvider.GetOrCreateMaterial("matVoidFlowerRespawnStartSphere1", CreateVoidFlowerRespawnStartSphere1Material);
 
@@ -1190,7 +1192,7 @@ namespace EnemiesReturns.Enemies.Judgement
                     localScale = new Vector3(0.35192F, 0.35192F, 0.35192F)
                 }
             }));
-            dictionary.Add("NemCommandoBody", CreateItemDisplayRule(new ItemDisplayRule[] 
+            dictionary.Add("NemCommandoBody", CreateItemDisplayRule(new ItemDisplayRule[]
             {
                 new ItemDisplayRule
                 {

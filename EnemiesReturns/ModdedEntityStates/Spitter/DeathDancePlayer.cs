@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.Reflection;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Spitter
 {

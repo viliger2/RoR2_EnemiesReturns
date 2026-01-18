@@ -40,7 +40,7 @@ namespace EnemiesReturns.Behaviors
                 return;
             }
 
-            if(spawnPoints.Length == 0)
+            if (spawnPoints.Length == 0)
             {
                 return;
             }
@@ -66,20 +66,21 @@ namespace EnemiesReturns.Behaviors
                 if (closestNode)
                 {
                     spawnNode = groundNodes.FindClosestNode(spawnPoints[i].position, HullClassification.Human);
-                } else
+                }
+                else
                 {
                     var allNodes = groundNodes.FindNodesInRange(spawnPoints[i].position, minDistance, maxDistance, HullMask.Human);
-                    if(allNodes.Count > 0)
+                    if (allNodes.Count > 0)
                     {
                         spawnNode = allNodes[UnityEngine.Random.Range(0, allNodes.Count)];
                     }
                 }
-                if(spawnNode == NodeIndex.invalid)
+                if (spawnNode == NodeIndex.invalid)
                 {
                     continue;
                 }
 
-                if(groundNodes.GetNodePosition(spawnNode, out Vector3 position))
+                if (groundNodes.GetNodePosition(spawnNode, out Vector3 position))
                 {
                     SpawnPoint.AddSpawnPoint(position, spawnPoints[i].rotation);
                 }

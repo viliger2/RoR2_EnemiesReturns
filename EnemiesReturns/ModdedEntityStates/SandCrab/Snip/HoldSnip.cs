@@ -1,11 +1,8 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 {
@@ -45,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
                 return;
             }
 
-            if(fixedAge > maxDuration)
+            if (fixedAge > maxDuration)
             {
                 outer.SetNextState(new FireSnip());
             }
@@ -56,7 +53,8 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
                 {
                     outer.SetNextState(new FireSnip());
                 }
-            } else
+            }
+            else
             {
                 if (!attackCheckHitbox)
                 {

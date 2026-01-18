@@ -1,8 +1,4 @@
-﻿using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemiesReturns.Projectiles
 {
@@ -70,22 +66,23 @@ namespace EnemiesReturns.Projectiles
                 {
                     result += Vector3.up * Mathf.Sin(oscillationStopwatch * oscillateSpeedY);
                 }
-                if(oscillateZ)
+                if (oscillateZ)
                 {
                     result += Vector3.forward * Mathf.Sin(oscillationStopwatch * oscillateSpeedZ);
                 }
-            } else
+            }
+            else
             {
                 var delta = Mathf.Sin(oscillationStopwatch * oscillateSpeed);
                 if (oscillateX)
                 {
                     result += Vector3.right * (delta * oscillateMagnitude);
                 }
-                if(oscillateY)
+                if (oscillateY)
                 {
                     result += Vector3.up * (delta * oscillateMagnitude);
                 }
-                if(oscillateZ)
+                if (oscillateZ)
                 {
                     result += Vector3.forward * (delta * oscillateMagnitude);
                 }

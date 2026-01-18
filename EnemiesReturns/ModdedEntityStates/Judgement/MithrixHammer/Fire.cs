@@ -1,5 +1,4 @@
 ﻿using EnemiesReturns.Reflection;
-using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

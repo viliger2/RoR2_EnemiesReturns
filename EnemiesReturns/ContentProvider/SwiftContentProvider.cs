@@ -1,13 +1,10 @@
 ﻿using EnemiesReturns.EditorHelpers;
-using EnemiesReturns.Enemies.Spitter;
 using EnemiesReturns.Enemies.Swift;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

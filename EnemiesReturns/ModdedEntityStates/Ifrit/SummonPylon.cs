@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Enemies.Ifrit;
-using EnemiesReturns.Enemies.Ifrit.Pillar;
+﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;

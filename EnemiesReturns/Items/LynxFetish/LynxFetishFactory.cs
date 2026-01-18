@@ -34,7 +34,7 @@ namespace EnemiesReturns.Items.LynxFetish
             // TODO: check it after each game update
             // look for ldfld float32 RoR2.DamageInfo::damage, stloc.s X where X is your desired number
             ILCursor c = new ILCursor(il);
-            if (c.TryGotoNext(MoveType.After, 
+            if (c.TryGotoNext(MoveType.After,
                 x => x.MatchStloc(10)))
             {
                 c.Emit(OpCodes.Ldloc, 10); // 10 is stloc.s number after RoR2.DamageInfo::damage

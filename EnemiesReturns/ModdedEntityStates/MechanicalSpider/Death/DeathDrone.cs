@@ -115,10 +115,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     {
                         var costMultipier = CombatDirector.baseEliteCostMultiplier;
                         var eliteTiers = CombatDirector.eliteTiers.Where(tier => tier.eliteTypes.Contains(eliteDef)).ToArray();
-                        if(eliteTiers.Length > 0)
+                        if (eliteTiers.Length > 0)
                         {
                             costMultipier = eliteTiers[0].costMultiplier;
-                        } else
+                        }
+                        else
                         {
                             costMultipier *= (eliteDef.healthBoostCoefficient / 4f); // scaling cost off base elites if elite is not in eliteTiers
                         }

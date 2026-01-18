@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
 {
@@ -44,7 +41,7 @@ namespace EnemiesReturns.Behaviors
             stopwatch += Time.deltaTime;
             float num = Mathf.Clamp01(stopwatch / maxDuration);
             light.range = initialRange * lightRangeCurve.Evaluate(num);
-            if(num == 1f && destroyOnEnd)
+            if (num == 1f && destroyOnEnd)
             {
                 UnityEngine.Object.Destroy(light.gameObject);
             }

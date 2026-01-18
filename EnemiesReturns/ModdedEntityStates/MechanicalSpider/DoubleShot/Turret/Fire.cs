@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret
 {
@@ -40,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.DoubleShot.Turret
 
             return baseDelay;
         }
-        
+
         private float GetBaseDuration()
         {
             float baseDuration = 1f;

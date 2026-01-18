@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;

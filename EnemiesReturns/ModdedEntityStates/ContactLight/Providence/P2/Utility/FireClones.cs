@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
@@ -61,7 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
                 projectilesFired++;
             }
 
-            if((projectilesFired >= projectileCount || fixedAge > 15f) && isAuthority)
+            if ((projectilesFired >= projectileCount || fixedAge > 15f) && isAuthority)
             {
                 Vector3 targetPosition = transform.position;
                 if (predictor.hasTargetTransform)

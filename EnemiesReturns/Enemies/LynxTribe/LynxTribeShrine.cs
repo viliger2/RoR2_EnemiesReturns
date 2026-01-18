@@ -1,8 +1,6 @@
 ﻿using EnemiesReturns.Behaviors;
-using JetBrains.Annotations;
 using RoR2;
 using RoR2.Audio;
-using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -166,7 +164,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private void SetPickupIndex(int newPickupValue)
         {
-            if(pickupValue != newPickupValue)
+            if (pickupValue != newPickupValue)
             {
                 pickupValue = newPickupValue;
                 pickupIndex = new PickupIndex(pickupValue);
@@ -175,7 +173,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         private void UpdatePickupDisplay()
         {
-            if(pickupIndex.value != pickupValue && pickupValue > 0)
+            if (pickupIndex.value != pickupValue && pickupValue > 0)
             {
                 pickupIndex = new PickupIndex(pickupValue);
             }

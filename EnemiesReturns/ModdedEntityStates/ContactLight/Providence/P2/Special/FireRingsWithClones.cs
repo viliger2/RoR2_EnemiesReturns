@@ -5,7 +5,6 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
@@ -91,11 +90,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(timesFired >= timesToFire)
+            if (timesFired >= timesToFire)
             {
                 outer.SetNextStateToMain();
             }
-            if(oneRingTimer <= 0f && !ringFired)
+            if (oneRingTimer <= 0f && !ringFired)
             {
                 FireRing();
                 SetEffects(false);
@@ -106,7 +105,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             }
             if (ringFired)
             {
-                if(inbetweenTimer <= 0f)
+                if (inbetweenTimer <= 0f)
                 {
                     SetupNewRings();
                     PlayAnimation();
@@ -114,7 +113,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
                 }
                 inbetweenTimer -= GetDeltaTime();
             }
-            if(oneRingTimer <= baseOneRingDuration / 2f && !spawnedClone)
+            if (oneRingTimer <= baseOneRingDuration / 2f && !spawnedClone)
             {
                 SpawnGhostEffect();
                 spawnedClone = true;
@@ -196,9 +195,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 
                 if (overlapAttack.Fire(hits))
                 {
-                    foreach(HurtBox box in hits)
+                    foreach (HurtBox box in hits)
                     {
-                        if(!box || !box.healthComponent)
+                        if (!box || !box.healthComponent)
                         {
                             continue;
                         }

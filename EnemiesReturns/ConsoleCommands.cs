@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Configuration;
-using EnemiesReturns.Enemies.Colossus;
+﻿using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.Spitter;
 using RoR2;
@@ -188,7 +187,7 @@ namespace EnemiesReturns
                 return;
             }
 
-            if(args.senderBody && damage > 0)
+            if (args.senderBody && damage > 0)
             {
                 DamageInfo damageInfo = new DamageInfo
                 {

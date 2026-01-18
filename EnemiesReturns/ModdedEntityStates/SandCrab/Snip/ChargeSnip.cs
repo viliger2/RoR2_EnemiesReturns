@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
 {
@@ -26,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.SandCrab.Snip
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > duration && isAuthority)
+            if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextState(new HoldSnip());
             }

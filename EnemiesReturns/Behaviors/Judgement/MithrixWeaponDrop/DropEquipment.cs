@@ -1,5 +1,4 @@
 ﻿using RoR2;
-using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -81,7 +80,7 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
                 return;
             }
 
-            if(master.inventory.GetItemCountPermanent(RoR2Content.Items.Ghost) > 0)
+            if (master.inventory.GetItemCountPermanent(RoR2Content.Items.Ghost) > 0)
             {
                 return;
             }

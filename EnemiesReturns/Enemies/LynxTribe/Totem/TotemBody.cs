@@ -1,5 +1,4 @@
-﻿using EnemiesReturns.Behaviors.JitterBonesStuff;
-using EnemiesReturns.Components;
+﻿using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
 using EnemiesReturns.Components.BodyComponents.Skills;
@@ -10,7 +9,6 @@ using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
 using RoR2;
 using RoR2.Skills;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.ItemDisplayRuleSet;

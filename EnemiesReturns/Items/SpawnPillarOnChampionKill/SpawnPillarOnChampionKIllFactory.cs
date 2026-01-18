@@ -73,7 +73,8 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             if (Configuration.Ifrit.SpawnPillarOnChampionKillEliteKills.Value)
             {
                 tokenValue = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES";
-            } else
+            }
+            else
             {
                 tokenValue = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES";
             }

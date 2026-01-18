@@ -17,10 +17,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
             bodyPreservationDuration = 20f;
             base.OnEnter();
             var handle = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.BrotherDeathEffect_prefab);
-            if (handle.IsValid()) {
+            if (handle.IsValid())
+            {
                 handle.Completed += (operationResult) =>
                 {
-                    if(operationResult.Status == AsyncOperationStatus.Succeeded)
+                    if (operationResult.Status == AsyncOperationStatus.Succeeded)
                     {
                         EffectManager.SimpleMuzzleFlash(operationResult.Result, base.gameObject, "MuzzleCenter", transmit: false);
                     }
@@ -32,7 +33,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
         public override void OnExit()
         {
             base.OnExit();
-            if(handle.IsValid())
+            if (handle.IsValid())
             {
                 Addressables.Release(handle);
             }

@@ -1,8 +1,6 @@
 ﻿using R2API;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using static RoR2.CharacterBody;

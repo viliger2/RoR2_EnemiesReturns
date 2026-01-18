@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
@@ -38,7 +35,8 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 {
                     var nodeIndex = airNodes.FindClosestNode(transform.position, characterBody.hullClassification);
                     flag = nodeIndex != RoR2.Navigation.NodeGraph.NodeIndex.invalid && airNodes.GetNodePosition(nodeIndex, out targetPosition);
-                    if (flag) {
+                    if (flag)
+                    {
                         var nodes = airNodes.FindNodesInRange(targetPosition, 0f, 20f, HullMask.Human);
                         if (nodes.Count > 0)
                         {
@@ -76,7 +74,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 {
                     characterDirection.moveVector = (targetPosition - position).normalized;
                 }
-                if(fixedAge >= duration || Vector3.Distance(position, targetPosition) <= 0.01f)
+                if (fixedAge >= duration || Vector3.Distance(position, targetPosition) <= 0.01f)
                 {
                     outer.SetNextStateToMain();
                 }

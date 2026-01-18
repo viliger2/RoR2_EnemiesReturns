@@ -2,8 +2,6 @@
 using EntityStates;
 using RoR2;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -12,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
     [RegisterEntityState]
     public class Dive : BaseState
     {
-        public static float maxDuration => Configuration.Swift.DiveMaxDuration.Value; 
+        public static float maxDuration => Configuration.Swift.DiveMaxDuration.Value;
 
         public static float damageCoefficient => Configuration.Swift.DiveDamage.Value;
 
@@ -51,10 +49,11 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
             {
                 sphereCheckTransform = transform;
             }
-            if(diveTarget != Vector3.zero)
+            if (diveTarget != Vector3.zero)
             {
                 targetMoveVector = (diveTarget - base.transform.position).normalized;
-            } else
+            }
+            else
             {
                 targetMoveVector = inputBank.aimDirection;
             }

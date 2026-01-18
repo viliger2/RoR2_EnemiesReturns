@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Totem
         public override void OnEnter()
         {
             base.OnEnter();
-            if(Configuration.LynxTribe.LynxShaman.PostLoopTotemSummonInvunerability.Value && NetworkServer.active)
+            if (Configuration.LynxTribe.LynxShaman.PostLoopTotemSummonInvunerability.Value && NetworkServer.active)
             {
                 characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, duration);
             }

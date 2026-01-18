@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash
 {

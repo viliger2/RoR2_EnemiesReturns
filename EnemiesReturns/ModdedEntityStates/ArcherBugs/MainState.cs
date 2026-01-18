@@ -1,10 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.Colossus;
-using EnemiesReturns.Reflection;
-using EntityStates;
+﻿using EnemiesReturns.Reflection;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ArcherBugs

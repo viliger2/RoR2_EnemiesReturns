@@ -33,7 +33,8 @@ namespace EnemiesReturns.Projectiles
             if (delay <= 0f)
             {
                 FireAttack();
-            } else
+            }
+            else
             {
                 Invoke("FireAttack", delay);
             }

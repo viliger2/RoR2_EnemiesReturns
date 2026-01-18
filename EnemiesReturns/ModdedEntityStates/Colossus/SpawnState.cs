@@ -35,7 +35,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
             }
 
             var headLightTransform = FindModelChild("HeadLight");
-            if(headLightTransform)
+            if (headLightTransform)
             {
                 headLight = headLightTransform.gameObject;
                 headLight.SetActive(false);
@@ -56,7 +56,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > 4.75f && !effectSpawned)
+            if (fixedAge > 4.75f && !effectSpawned)
             {
                 SpawnEffects();
 

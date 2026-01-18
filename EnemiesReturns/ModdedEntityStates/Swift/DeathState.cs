@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.Reflection;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -37,7 +34,8 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
                         Addressables.Release(handler);
                     };
                 }
-            } else
+            }
+            else
             {
                 if (wasGrounded)
                 {
@@ -52,7 +50,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
             }
 
             var stones2 = FindModelChild("Stones2");
-            if(stones2)
+            if (stones2)
             {
                 stones2.gameObject.SetActive(false);
             }
@@ -61,7 +59,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(!wasGrounded && characterMotor.isGrounded)
+            if (!wasGrounded && characterMotor.isGrounded)
             {
                 if (impactEffect)
                 {
