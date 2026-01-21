@@ -154,7 +154,7 @@ namespace EnemiesReturns.Items.LynxFetish
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.CanBeTemporary };
+            itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.CanBeTemporary, ItemTag.ExtractorUnitBlacklist };
 
             return itemDef;
         }
