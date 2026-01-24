@@ -52,7 +52,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
             base.OnEnter();
             cloneTimer = cloneFireDelay;
         }
-        public override EntityState GetNextState()
+        public override EntityState GetNextStateIfMissed()
         {
             return new FireProjectiles();
         }

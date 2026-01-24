@@ -362,7 +362,7 @@ MonoBehaviour:
   maxDistance: 0
   impactOnWorld: 1
   timerAfterImpact: 0
-  lifetime: 2
+  lifetime: 1.5
   lifetimeAfterImpact: 0
   lifetimeRandomOffset: 0
   minimumPhysicsStepsToKeepAliveAfterImpact: 0

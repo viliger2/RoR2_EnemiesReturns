@@ -76,18 +76,16 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             }
             if (isAuthority && fixedAge > firstSwing + secondSwing)
             {
+                var esm = EntityStateMachine.FindByCustomName(gameObject, "Body");
                 if (characterBody.isPlayerControlled && inputBank.skill1.down)
                 {
-                    outer.SetNextState(GetNextState());
+                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
                 }
                 else if (!characterBody.isPlayerControlled && damageDealtReciever && !damageDealtReciever.DamageDealt)
                 {
-                    outer.SetNextState(GetNextState());
+                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
                 }
-                else
-                {
-                    outer.SetNextStateToMain();
-                }
+                outer.SetNextStateToMain();
             }
         }
 
@@ -111,7 +109,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             overlapAttack.Fire();
         }
 
-        public abstract EntityState GetNextState();
+        public abstract EntityState GetNextStateIfMissed();
 
         public override void OnExit()
         {

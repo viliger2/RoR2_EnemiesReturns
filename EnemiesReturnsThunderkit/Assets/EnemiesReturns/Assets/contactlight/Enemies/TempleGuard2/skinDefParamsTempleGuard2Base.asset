@@ -13,17 +13,7 @@ MonoBehaviour:
   m_Name: skinDefParamsTempleGuard2Base
   m_EditorClassIdentifier: 
   rendererInfos:
-  - renderer: {fileID: 7050152207778585193, guid: 91f92d5622947d545b593ce597dcdf52, type: 3}
-    defaultMaterialAddress:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-    defaultMaterial: {fileID: 2100000, guid: 75bb982d86ffe594cb11d8286951798d, type: 2}
-    defaultShadowCastingMode: 0
-    ignoreOverlays: 0
-    hideOnDeath: 0
-    ignoresMaterialOverrides: 0
-  - renderer: {fileID: 7039951897775604251, guid: 91f92d5622947d545b593ce597dcdf52, type: 3}
+  - renderer: {fileID: 137196040260161530, guid: a1065592a9735bb4780a70012ab75cda, type: 3}
     defaultMaterialAddress:
       m_AssetGUID: 
       m_SubObjectName: 
@@ -34,7 +24,13 @@ MonoBehaviour:
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
   gameObjectActivations: []
-  meshReplacements: []
+  meshReplacements:
+  - renderer: {fileID: 137196040260161530, guid: a1065592a9735bb4780a70012ab75cda, type: 3}
+    meshAddress:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+    mesh: {fileID: 2959467708922500008, guid: 9a20a656db819d749bf6c254a3c5547e, type: 3}
   projectileGhostReplacements: []
   minionSkinReplacements: []
   lightReplacements: []

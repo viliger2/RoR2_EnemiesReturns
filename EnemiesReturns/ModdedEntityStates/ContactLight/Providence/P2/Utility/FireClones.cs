@@ -3,11 +3,30 @@ using RoR2;
 using RoR2.Projectile;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 {
     public class FireClones : BaseState
     {
+        public static GameObject predictedPositionEffect;
+
+        public static float predictionEffectMinusTimer = 1f;
+
+        public static float projectileLifetime = 1.5f;
+
+        public Vector3 predictedPosition;
+
+        private CharacterModel characterModel;
+
+        private HurtBoxGroup hurtboxGroup;
+
+        private int originalLayer;
+
+        internal float predictionEffectTimer;
+
+        private bool spawnedPrediction;
+
         public static int minProjectileCount = 5;
 
         public static int maxProjectileCount = 10;
@@ -29,15 +48,43 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
         public override void OnEnter()
         {
             base.OnEnter();
+            Transform modelTransform = GetModelTransform();
+            if (NetworkServer.active)
+            {
+                CleanseSystem.CleanseBodyServer(base.characterBody, true, false, false, true, false, false);
+                base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+            }
+
+            if (modelTransform)
+            {
+                characterModel = modelTransform.GetComponent<CharacterModel>();
+                hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
+            }
+
+            if (characterModel)
+            {
+                characterModel.invisibilityCount++;
+            }
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter++;
+            }
+            originalLayer = base.gameObject.layer;
+            base.gameObject.layer = LayerIndex.GetAppropriateFakeLayerForTeam(base.teamComponent.teamIndex).intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
+            
             SetupPredictor();
 
             projectileCount = Mathf.Clamp((int)Mathf.Min(maxProjectileCount, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxProjectileCount, (float)minProjectileCount)), minProjectileCount, maxProjectileCount);
             projectileTimer += delayBetweenProjectiles;
+
+            predictionEffectTimer = projectileCount * delayBetweenProjectiles + projectileLifetime - predictionEffectMinusTimer;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
             if (predictor != null && !predictor.hasTargetTransform)
             {
                 FindTarget();
@@ -47,7 +94,30 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
                 predictor.Update();
             }
 
-            if (projectileTimer <= 0f)
+            if (fixedAge >= predictionEffectTimer && !spawnedPrediction)
+            {
+                if (isAuthority)
+                {
+                    predictedPosition = transform.position;
+                    if (predictor.hasTargetTransform)
+                    {
+                        predictor.GetPredictedTargetPosition(predictionTime, out predictedPosition);
+                    }
+                    var closestNode = SceneInfo.instance.groundNodes.FindClosestNode(predictedPosition, HullClassification.Golem);
+                    if (closestNode != RoR2.Navigation.NodeGraph.NodeIndex.invalid)
+                    {
+                        if (SceneInfo.instance.groundNodes.GetNodePosition(closestNode, out var nodePosition))
+                        {
+                            predictedPosition = nodePosition;
+                        }
+                    }
+
+                    EffectManager.SimpleEffect(predictedPositionEffect, predictedPosition, Quaternion.identity, true);
+                }
+                spawnedPrediction = true;
+            }
+
+            if (projectileTimer <= 0f && projectilesFired < projectileCount)
             {
                 if (isAuthority)
                 {
@@ -58,20 +128,32 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
                 projectilesFired++;
             }
 
-            if ((projectilesFired >= projectileCount || fixedAge > 15f) && isAuthority)
+            if ((projectilesFired >= projectileCount && fixedAge > predictionEffectTimer + projectileLifetime) && isAuthority)
             {
-                Vector3 targetPosition = transform.position;
-                if (predictor.hasTargetTransform)
-                {
-                    predictor.GetPredictedTargetPosition(predictionTime, out targetPosition);
-                }
-                Log.Info($"predictedPosition {targetPosition}");
-                var nextState = new Disappear();
-                nextState.predictedPosition = targetPosition;
-                outer.SetNextState(nextState);
+                base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.25f, Quaternion.identity);
+                outer.SetNextState(new Attack());
             }
 
             projectileTimer -= GetDeltaTime();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (NetworkServer.active)
+            {
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+            }
+            if (characterModel)
+            {
+                characterModel.invisibilityCount--;
+            }
+            if (hurtboxGroup)
+            {
+                hurtboxGroup.hurtBoxesDeactivatorCounter--;
+            }
+            base.gameObject.layer = originalLayer;
+            base.characterMotor.Motor.RebuildCollidableLayers();
         }
 
         private void SetupPredictor()
@@ -99,7 +181,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
             };
 
             ProjectileManager.instance.FireProjectile(info);
-
         }
 
         private void FindTarget()
@@ -125,6 +206,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
             {
                 predictor.SetTargetTransform(hurtBox.transform);
             }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

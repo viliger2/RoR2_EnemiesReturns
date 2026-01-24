@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3605809801093436609}
   - component: {fileID: 4301911917478337586}
   - component: {fileID: 4858475832381552851}
-  - component: {fileID: 1162282349616290818}
   m_Layer: 0
   m_Name: TempleGuard2Master
   m_TagString: Untagged
@@ -116,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _masterIndex: 0
   hideAllyCard: 0
-  bodyPrefab: {fileID: 5916704582772687778, guid: 91f92d5622947d545b593ce597dcdf52, type: 3}
+  bodyPrefab: {fileID: 1125579137575025, guid: a1065592a9735bb4780a70012ab75cda, type: 3}
   spawnOnStart: 0
   _teamIndex: 2
   onBodyDeath:
@@ -200,22 +199,3 @@ MonoBehaviour:
     _typeName: EntityStates.AI.Walker.Wander, RoR2, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   debug: 0
---- !u!114 &1162282349616290818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796795507270346501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1399583993, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentDef: {fileID: 0}
-  equipmentString: 
-  overwriteEquipment: 1
-  itemDefInfos: []
-  itemInfos:
-  - itemString: AdaptiveArmor
-    count: 1

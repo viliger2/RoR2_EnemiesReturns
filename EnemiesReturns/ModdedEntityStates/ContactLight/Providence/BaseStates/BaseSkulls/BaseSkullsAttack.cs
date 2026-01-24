@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
-    public abstract class BaseSkullsAttack : BaseState
+    public abstract class BaseSkullsAttack : GenericCharacterMain
     {
         public abstract GameObject projectilePrefab { get; }
 

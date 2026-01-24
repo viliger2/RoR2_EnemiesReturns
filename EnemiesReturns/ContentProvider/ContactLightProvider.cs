@@ -87,7 +87,9 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.Providence.P2.Secondary.DashAttack.projectileClone = assets.First(prefab => prefab.name == "ProvidenceSecondaryCloneProjectile");
                 ModdedEntityStates.ContactLight.Providence.P2.Special.FireRingsWithClones.cloneEffectPrefab = assets.First(prefab => prefab.name == "ProvidenceP2SpecialShadowClone");
                 ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
-                ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+                ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+
+                //ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
 
                 var orbProjectilePrefab = assets.First(prefab => prefab.name == "ProviTwoSwingsProjectile");
                 orbProjectilePrefab.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
@@ -95,6 +97,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
 
                 ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
 
                 ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
                 ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");

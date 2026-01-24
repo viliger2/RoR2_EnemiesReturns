@@ -172,7 +172,7 @@ MonoBehaviour:
   enemyAttention: 0
   leaderTargetCopied:
     t: -Infinity
-  prioritizePlayers: 0
+  prioritizePlayers: 1
   copyLeaderTarget: 0
   aimVectorDampTime: 0.1
   aimVectorMaxSpeed: 360
@@ -451,7 +451,7 @@ MonoBehaviour:
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: -1
+  driverUpdateTimerOverride: 3
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}

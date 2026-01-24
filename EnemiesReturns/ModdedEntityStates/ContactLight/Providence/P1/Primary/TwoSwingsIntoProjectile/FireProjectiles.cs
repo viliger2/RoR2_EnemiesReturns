@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override float baseDuration => 2.2f;
 
-        public override float baseSpawnProjectiles => 1f;
+        public override float baseSpawnProjectilesTime => 1f;
 
         public override float damageCoefficient => 2f;
 

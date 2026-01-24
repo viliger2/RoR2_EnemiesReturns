@@ -13,8 +13,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAtt
 
         public override string animationStateName => "Thundercall";
 
-        public override string nextStateESMName => "Skulls";
-
         public override EntityState GetNextState()
         {
             return new SkullsAttack();

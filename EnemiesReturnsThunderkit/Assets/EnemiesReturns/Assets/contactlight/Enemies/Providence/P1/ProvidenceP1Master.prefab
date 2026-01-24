@@ -172,7 +172,7 @@ MonoBehaviour:
   enemyAttention: 0
   leaderTargetCopied:
     t: -Infinity
-  prioritizePlayers: 0
+  prioritizePlayers: 1
   copyLeaderTarget: 0
   aimVectorDampTime: 0.1
   aimVectorMaxSpeed: 360
@@ -399,7 +399,7 @@ MonoBehaviour:
   moveInputScale: 1
   aimVectorDampTimeOverride: -1
   aimVectorMaxSpeedOverride: -1
-  aimType: 1
+  aimType: 2
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 15
+  maxDistance: 30
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
@@ -445,13 +445,13 @@ MonoBehaviour:
   moveInputScale: 1
   aimVectorDampTimeOverride: -1
   aimVectorMaxSpeedOverride: -1
-  aimType: 1
+  aimType: 2
   ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
   shouldTapButton: 0
   buttonPressType: 0
-  driverUpdateTimerOverride: -1
+  driverUpdateTimerOverride: 3
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}

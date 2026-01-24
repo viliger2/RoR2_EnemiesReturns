@@ -12,8 +12,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract string animationStateName { get; }
 
-        public abstract string nextStateESMName { get; }
-
         public override void OnEnter()
         {
             base.OnEnter();
@@ -25,12 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.FixedUpdate();
             if (fixedAge > baseDuration && isAuthority)
             {
-                var esm = EntityStateMachine.FindByCustomName(gameObject, nextStateESMName);
-                if (esm)
-                {
-                    esm.SetNextState(new SkullsAttack());
-                }
-                outer.SetNextStateToMain();
+                outer.SetNextState(new SkullsAttack());
             }
         }
 
