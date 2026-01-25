@@ -41,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
             if (NetworkServer.active && fixedAge > 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
-                outer.SetNextState(new Idle());
+                outer.SetNextState(new Phase4());
             }
         }
 

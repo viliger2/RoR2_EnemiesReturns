@@ -101,6 +101,12 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
                 ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                ModdedEntityStates.ContactLight.Providence.P3.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
+                ModdedEntityStates.ContactLight.Providence.P3.FireDashingClone.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceSecondaryCloneProjectile");
+                ModdedEntityStates.ContactLight.Providence.P3.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
+                ModdedEntityStates.ContactLight.Providence.P3.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

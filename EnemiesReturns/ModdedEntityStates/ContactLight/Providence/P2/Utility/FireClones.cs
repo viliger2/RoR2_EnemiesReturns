@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System.Linq;
@@ -7,6 +8,7 @@ using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 {
+    [RegisterEntityState]
     public class FireClones : BaseState
     {
         public static GameObject predictedPositionEffect;
