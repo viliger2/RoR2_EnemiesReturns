@@ -3,19 +3,15 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
 {
     [RegisterEntityState]
     public class ProjectileSwingsWithClones : BasePrimaryWeaponSwing
     {
-        public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
+        public static GameObject projectilePrefab;
 
         public static GameObject cloneEffect;
 
@@ -24,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
         public static float cloneDelay = 0.2f;
 
         public static int minCloneCount = 1;
-            
+
         public static int maxCloneCount = 3;
 
         public override float swingDamageCoefficient => 2f;
@@ -60,7 +56,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > projectileTime && !hasFired)
+            if (fixedAge > projectileTime && !hasFired)
             {
                 FireProjectileAuthority();
                 hasFired = true;
@@ -68,7 +64,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
             }
             if (hasFired)
             {
-                if(cloneTimer < 0f && clonesFired < cloneCount)
+                if (cloneTimer < 0f && clonesFired < cloneCount)
                 {
                     SpawnGhostEffect();
                     FireProjectileAuthority();

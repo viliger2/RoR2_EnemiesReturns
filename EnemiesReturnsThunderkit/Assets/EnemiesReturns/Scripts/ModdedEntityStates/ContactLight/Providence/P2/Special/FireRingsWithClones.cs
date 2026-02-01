@@ -5,8 +5,8 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 {
@@ -43,7 +43,26 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 
         public static float baseDamage = 2f;
 
-        private static int[] rngArray = new int[] { 0, 1, 2, 3, 4 };
+        public int startingArray;
+
+        private static int[][] rngTable = new int[][]
+        {
+            new int[] {0,2,3,4 },
+            new int[] {0,1,2,4 },
+            new int[] {0,1,2,3 },
+            new int[] {0,1,3,4 },
+            new int[] {1,2,3,4 },
+            new int[] {0,1,3,4 },
+            new int[] {0,2,3,4 },
+            new int[] {0,1,2,4 },
+            new int[] {0,1,3,4 },
+            new int[] {0,1,2,3 },
+            new int[] {0,1,3,4 },
+            new int[] {1,2,3,4 },
+            new int[] {0,2,3,4 },
+            new int[] {0,1,3,4 },
+            new int[] {0,1,2,4 }
+        };
 
         private int timesFired;
 
@@ -74,12 +93,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
         public override void OnEnter()
         {
             base.OnEnter();
+            if (isAuthority)
+            {
+                startingArray = UnityEngine.Random.Range(0, rngTable.Length);
+            }
+
             locator = GetModelChildLocator();
             modelTransform = GetModelTransform();
             overlapAttack = SetupOverlapAttack();
 
             timesToFire = baseTimesToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalTimesMax, (float)additionalTimesMin), 1, baseTimesToFire + additionalTimesMax);
-            ringsToFire = baseRingToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalRingsMax, (float)additionalRingsMin), 1, rngArray.Length);
+            ringsToFire = baseRingToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalRingsMax, (float)additionalRingsMin), 1, rngTable[0].Length);
 
             PlayAnimation();
             SetupNewRings();
@@ -88,14 +112,26 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             muzzleFloor = FindModelChild("MuzzleFloor");
         }
 
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(startingArray);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            startingArray = reader.ReadInt32();
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(timesFired >= timesToFire)
+            if (timesFired >= timesToFire)
             {
                 outer.SetNextStateToMain();
             }
-            if(oneRingTimer <= 0f && !ringFired)
+            if (oneRingTimer <= 0f && !ringFired)
             {
                 FireRing();
                 SetEffects(false);
@@ -106,7 +142,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             }
             if (ringFired)
             {
-                if(inbetweenTimer <= 0f)
+                if (inbetweenTimer <= 0f)
                 {
                     SetupNewRings();
                     PlayAnimation();
@@ -114,7 +150,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
                 }
                 inbetweenTimer -= GetDeltaTime();
             }
-            if(oneRingTimer <= baseOneRingDuration / 2f && !spawnedClone)
+            if (oneRingTimer <= baseOneRingDuration / 2f && !spawnedClone)
             {
                 SpawnGhostEffect();
                 spawnedClone = true;
@@ -147,10 +183,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 
         private void SetupNewRings()
         {
-            currentRings = rngArray.OrderBy(_ => RoR2.Run.instance.stageRng.Next()).Take(ringsToFire).ToArray();
+            currentRings = rngTable[startingArray].OrderBy(_ => RoR2.Run.instance.stageRng.Next()).Take(ringsToFire).ToArray();
             SetEffects(true);
             oneRingTimer += baseOneRingDuration;
             spawnedClone = false;
+            startingArray = (startingArray + 1) % rngTable.Length;
         }
 
         private void SetEffects(bool active)
@@ -196,9 +233,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
 
                 if (overlapAttack.Fire(hits))
                 {
-                    foreach(HurtBox box in hits)
+                    foreach (HurtBox box in hits)
                     {
-                        if(!box || !box.healthComponent)
+                        if (!box || !box.healthComponent)
                         {
                             continue;
                         }

@@ -19,6 +19,8 @@ using System.Reflection;
 namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
+    // TODO: add effect to drone spiders spawning, similar to one used by drones
+    // TODO: move enable\disable configs to general
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]

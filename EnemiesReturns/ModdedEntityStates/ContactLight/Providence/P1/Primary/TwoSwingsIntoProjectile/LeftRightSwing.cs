@@ -44,6 +44,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public static float cloneProjectileDamage = 2f;
 
+        public static float projectileHealthThreshold = 0.85f;
+
         private bool firedClone;
 
         private float cloneTimer;
@@ -56,7 +58,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
         public override void FireSecondAttack()
         {
             base.FireSecondAttack();
-            if (healthComponent.healthFraction <= 0.75f)
+            if (healthComponent.healthFraction <= projectileHealthThreshold)
             {
                 CheckAndFireClone();
             }

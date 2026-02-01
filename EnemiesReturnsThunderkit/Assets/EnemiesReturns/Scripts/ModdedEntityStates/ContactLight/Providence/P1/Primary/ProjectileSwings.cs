@@ -3,12 +3,8 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
 {
@@ -34,7 +30,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > projectileTime && !hasFired)
+            if (fixedAge > projectileTime && !hasFired)
             {
                 if (isAuthority)
                 {

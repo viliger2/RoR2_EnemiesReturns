@@ -2,12 +2,8 @@
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Orbs
 {
@@ -35,13 +31,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Orbs
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(fixedAge > 1f && isAuthority && !fired)
+            if (fixedAge > 1f && isAuthority && !fired)
             {
                 FireOrbsAuthority();
                 fired = true;
             }
 
-            if(fixedAge > 2f && isAuthority)
+            if (fixedAge > 2f && isAuthority)
             {
                 outer.SetNextStateToMain();
             }

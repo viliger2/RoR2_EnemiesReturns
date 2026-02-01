@@ -1,14 +1,7 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.Reflection;
-using EntityStates;
-using RoR2;
-using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Object = UnityEngine.Object;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile
 {
@@ -21,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override float baseDuration => 2.2f;
 
-        public override float baseSpawnProjectiles => 1f;
+        public override float baseSpawnProjectilesTime => 1f;
 
         public override float damageCoefficient => 2f;
 

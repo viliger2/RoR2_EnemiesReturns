@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
 using EnemiesReturns.Reflection;
-using EntityStates;
-using RoR2;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 {
@@ -20,5 +17,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
         public override string playbackRateParams => "SkyLeap.playbackRate";
 
         public override string animatorAttackParam => "SkyLeap.firstAttack";
+
+        public override int waveCount => 8;
+
+        public override float waveProjectileDamage => 2f;
+
+        public override float waveProjectileForce => 1000f;
     }
 }

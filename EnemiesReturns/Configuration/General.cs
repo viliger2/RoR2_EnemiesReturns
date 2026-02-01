@@ -53,7 +53,7 @@ namespace EnemiesReturns.Configuration
 
             ProvidenceP1SecondaryPreDuration = config.Bind("Providence", "P1 Secondary Pre Duration", 1.8f);
             ProvidenceP1SecondaryDuration = config.Bind("Providence", "P1 Secondary Duration", 0.75f);
-            ProvidenceP1SecondaryPostDuration = config.Bind("Providence", "P1 Secondary Post Duration", 0.5f);
+            ProvidenceP1SecondaryPostDuration = config.Bind("Providence", "P1 Secondary Post Duration", 0.25f);
 
             ProvidenceP1UtilityPreDuration = config.Bind("Providence", "P1 Utility Pre Duration", 0.75f);
             ProvidenceP1UtilityPredictionTimer = config.Bind("Providence", "P1 Utility Prediction Timer", 0.75f);

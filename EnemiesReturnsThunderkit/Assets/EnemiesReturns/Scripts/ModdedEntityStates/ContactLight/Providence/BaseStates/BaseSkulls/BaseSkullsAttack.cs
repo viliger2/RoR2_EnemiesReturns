@@ -1,14 +1,12 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
-    public abstract class BaseSkullsAttack : BaseState
+    public abstract class BaseSkullsAttack : GenericCharacterMain
     {
         public abstract GameObject projectilePrefab { get; }
 
@@ -38,7 +36,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             base.OnEnter();
 
-            //activePlayers = Utils.GetActiveAndAlivePlayerBodies();
+            
             totalProjectiles = projectilesToSpawn + additionalProjectilesPerPlayer * Mathf.Max(0, activePlayers.Count - 1);
         }
 
@@ -104,7 +102,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     maxDistance = distance,
                     owner = gameObject,
                     position = gameObject.transform.position,
-                    rotation = Util.QuaternionSafeLookRotation((position - gameObject.transform.position).normalized),
                     useFuseOverride = true,
                     useSpeedOverride = true,
                     speedOverride = projectileSpeed,

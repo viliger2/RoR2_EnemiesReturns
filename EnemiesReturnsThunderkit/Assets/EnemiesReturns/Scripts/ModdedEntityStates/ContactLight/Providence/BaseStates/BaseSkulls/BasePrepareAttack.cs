@@ -1,10 +1,6 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack;
 using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
@@ -15,8 +11,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         public abstract string layerName { get; }
 
         public abstract string animationStateName { get; }
-
-        public abstract string nextStateESMName { get; }
 
         public override void OnEnter()
         {
@@ -29,12 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.FixedUpdate();
             if (fixedAge > baseDuration && isAuthority)
             {
-                var esm = EntityStateMachine.FindByCustomName(gameObject, nextStateESMName);
-                if (esm)
-                {
-                    esm.SetNextState(new SkullsAttack());
-                }
-                outer.SetNextStateToMain();
+                outer.SetNextState(new SkullsAttack());
             }
         }
 
@@ -51,6 +40,5 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             return InterruptPriority.Death;
         }
-
     }
 }

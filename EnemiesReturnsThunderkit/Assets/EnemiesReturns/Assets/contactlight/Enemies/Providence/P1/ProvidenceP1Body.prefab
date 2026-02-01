@@ -3749,7 +3749,6 @@ GameObject:
   - component: {fileID: -6614560281326015714}
   - component: {fileID: 2558075397671752026}
   - component: {fileID: -217684116850925860}
-  - component: {fileID: 4693069474016896091}
   m_Layer: 0
   m_Name: ProvidenceP1Body
   m_TagString: Untagged
@@ -4175,7 +4174,6 @@ MonoBehaviour:
   stateMachines:
   - {fileID: 2859791027360040491}
   - {fileID: 8228178633749228936}
-  - {fileID: 4693069474016896091}
 --- !u!114 &8336650562071421897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4468,7 +4466,6 @@ MonoBehaviour:
   - 0.5
   - 0.25
   esms:
-  - {fileID: 4693069474016896091}
   - {fileID: 8228178633749228936}
   - {fileID: 2859791027360040491}
   checkFrequency: 0.1
@@ -4494,24 +4491,6 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
   hasExecutedSuccessfully: 0
---- !u!114 &4693069474016896091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916704582772687778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1297580292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customName: Skulls
-  initialStateType:
-    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  mainStateType:
-    _typeName: EntityStates.Idle, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  debug: 0
 --- !u!1 &5959275310516554732
 GameObject:
   m_ObjectHideFlags: 0

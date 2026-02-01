@@ -40,6 +40,5 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             return InterruptPriority.Death;
         }
-
     }
 }

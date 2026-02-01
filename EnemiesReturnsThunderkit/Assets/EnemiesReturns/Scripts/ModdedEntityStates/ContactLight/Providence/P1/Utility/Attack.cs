@@ -1,8 +1,5 @@
 ﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
 using EnemiesReturns.Reflection;
-using EntityStates;
-using RoR2;
-using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 {
@@ -20,5 +17,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
         public override float baseDuration => 1f;
 
         public override float earlyExit => 1f;
+
+        public override int waveCount => 4;
+
+        public override float waveProjectileDamage => 2f;
+
+        public override float waveProjectileForce => 500f;
     }
 }
