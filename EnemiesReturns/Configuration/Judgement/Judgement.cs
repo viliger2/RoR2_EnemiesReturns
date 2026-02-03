@@ -55,7 +55,8 @@ namespace EnemiesReturns.Configuration.Judgement
 #endif
 
             JudgementEnemyBlacklist = config.Bind("Judgement", "Enemy Blacklist",
-                "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster,TitanMaster",
+                "GeepMaster,GipMaster,GupMaster,ClayBruiserMaster,MinorConstructMaster,VoidMegaCrabMaster,LunarGolemMaster,LunarWispMaster,NullifierMaster,VoidJailerMaster,HalcyoniteMaster,LunarExploderMaster,VoidBarnacleMaster,TitanMaster" +
+                "MimicMaster,RobGreatGargoyleMaster,RobGargoyleMaster,TitanGoldAllyMaster,SuperRoboBallBossMaster",
                 "List of enemies that are blacklisted from appearing in Judgement. Requiers master names, you can get master names via DebugToolkit's list_ai command");
 
             MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites. Also used for other boss weapons.");
