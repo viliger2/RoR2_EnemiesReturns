@@ -106,7 +106,7 @@ namespace EnemiesReturns.Configuration
             SnipForce = config.Bind("Sand Crab Snip", "Snip Force", 200f, "Sand Crab's Snip force");
 
             BubbleCooldown = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Cooldown", 15f, "Sand Crab's Fire Bubbles cooldown.");
-            BubbleDamage = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Damage", 1.5f, "Sand Crab's Fire Bubbles projectile damage.");
+            BubbleDamage = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Damage", 1.1f, "Sand Crab's Fire Bubbles projectile damage.");
             BubbleProjectileSpread = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Spread", 120f, "Sand Crab's Fire Bubbles projectile spread. The bigger the angle, the more further apart projectiles will be on spawn.");
             BubbleSize = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Size", 2.25f, "Sand Crab's Fire Bubbles projectile size");
             BubbleShotCount = config.Bind("Sand Crab Fire Bubbles", "Fire Bubbles Shots Count", 6, "Sand Crab's Fire Bubbles shots count");
