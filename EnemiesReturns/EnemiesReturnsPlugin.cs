@@ -115,7 +115,7 @@ namespace EnemiesReturns
             LynxFetishFactory.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             Behaviors.SubjectParamsChatMessage.Hooks();
-
+            On.RoR2.CharacterModel.UpdateOverlays += UpdateOverlays;
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
@@ -129,6 +129,16 @@ namespace EnemiesReturns
             {
                 ShamanStuff.Hooks();
             }
+        }
+
+        private static void UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        {
+            orig(self);
+            if (Configuration.Judgement.Judgement.Enabled.Value)
+            {
+                Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay(self);
+            }
+            Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
         }
 
         private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)

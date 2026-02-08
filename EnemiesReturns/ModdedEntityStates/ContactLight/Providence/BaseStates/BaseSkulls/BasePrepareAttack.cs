@@ -1,6 +1,4 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack;
-using EntityStates;
-using RoR2;
+﻿using EntityStates;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
@@ -23,7 +21,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.FixedUpdate();
             if (fixedAge > baseDuration && isAuthority)
             {
-                outer.SetNextState(new SkullsAttack());
+                outer.SetNextState(GetNextState());
             }
         }
 

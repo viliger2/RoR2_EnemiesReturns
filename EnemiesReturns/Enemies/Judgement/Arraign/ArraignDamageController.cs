@@ -25,9 +25,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public static Material immuneToAllDamageExceptHammerMaterial;
 
-        public static void AddDamageImmuneOverlay(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        public static void AddDamageImmuneOverlay(CharacterModel self)
         {
-            orig(self);
             if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
             {
                 self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;

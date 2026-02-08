@@ -21,7 +21,8 @@
         "Unity.Addressables.dll",
         "Unity.ResourceManager.dll",
         "RoR2BepInExPack.dll",
-        "BepInEx.dll"
+        "BepInEx.dll",
+        "R2API.ProcType.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

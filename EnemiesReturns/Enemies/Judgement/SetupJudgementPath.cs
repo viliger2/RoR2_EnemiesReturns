@@ -173,7 +173,6 @@ namespace EnemiesReturns.Enemies.Judgement
                 Content.DamageTypes.CanStunArraign = DamageAPI.ReserveDamageType();
 
                 On.RoR2.EscapeSequenceController.EscapeSequenceMainState.OnEnter += SpawnBrokenTeleporter2;
-                On.RoR2.CharacterModel.UpdateOverlays += Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay;
                 On.EntityStates.BrotherMonster.SpellChannelExitState.OnExit += TalkAboutLunarFlower;
                 RoR2.Stage.onServerStageBegin += BazaarAddMessageIfPlayersWithRock;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnObjects;

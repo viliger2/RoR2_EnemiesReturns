@@ -1,13 +1,38 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static R2API.DamageAPI;
 
 namespace EnemiesReturns
 {
     public static class Content
     {
+        public static class Stages
+        {
+            public static SceneDef OutOfTime;
+
+            public static SceneDef JudgementOutro;
+
+            public static SceneDef ContactLight;
+        }
+
+        public static class MusicTracks
+        {
+            public static MusicTrackDef Unknown;
+
+            public static MusicTrackDef UnknownBoss;
+
+            public static MusicTrackDef TheOrigin;
+        }
+
+        public static class GameEndings
+        {
+            public static GameEndingDef SurviveJudgement;
+        }
+
+        public static class ItemTiers
+        {
+            public static ItemTierDef HiddenInLogbook;
+        }
+
         public static class Items
         {
             public static ItemDef ColossalCurl;
@@ -19,6 +44,14 @@ namespace EnemiesReturns
             public static ItemDef TradableRock;
 
             public static ItemDef LunarFlower;
+
+            public static ItemDef VoidFlower;
+
+            public static ItemDef HiddenAnointed;
+
+            public static ItemDef PartyHat;
+
+            public static ItemDef MechanicalSpiderTurretScepterHelper;
         }
 
         public static class ItemRelationshipProviders
@@ -31,6 +64,8 @@ namespace EnemiesReturns
             public static EquipmentDef MithrixHammer;
 
             public static EquipmentDef EliteAeonian;
+
+            public static EquipmentDef VoidlingWeapon;
         }
 
         public static class Buffs
@@ -52,6 +87,8 @@ namespace EnemiesReturns
             public static BuffDef ImmuneToAllDamageExceptHammer;
 
             public static BuffDef ImmuneToHammer;
+
+            public static BuffDef ProvidenceImmuneToDamage;
         }
 
         public static class Elites
@@ -61,9 +98,23 @@ namespace EnemiesReturns
 
         public static class DamageTypes
         {
-            public static ModdedDamageType ApplyReducedHealing;
-
             public static ModdedDamageType EndGameBossWeapon;
+
+            public static ModdedDamageType CanStunArraign;
+        }
+
+        public static class ProcChainTypes
+        {
+            public static R2API.ModdedProcType ColossalFist;
+        }
+
+        public static class Deployables
+        {
+            public static DeployableSlot PylonDeployable;
+
+            public static DeployableSlot SummonLynxTribeDeployable;
+
+            public static DeployableSlot LynxFetishDeployable;
         }
     }
 }

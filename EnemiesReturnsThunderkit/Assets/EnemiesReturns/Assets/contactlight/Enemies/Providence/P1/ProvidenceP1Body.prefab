@@ -3749,6 +3749,7 @@ GameObject:
   - component: {fileID: -6614560281326015714}
   - component: {fileID: 2558075397671752026}
   - component: {fileID: -217684116850925860}
+  - component: {fileID: -3593341228920075978}
   m_Layer: 0
   m_Name: ProvidenceP1Body
   m_TagString: Untagged
@@ -4491,6 +4492,19 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
   hasExecutedSuccessfully: 0
+--- !u!114 &-3593341228920075978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571251d516852664dad0de38e9f72adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 2963873619053843280}
 --- !u!1 &5959275310516554732
 GameObject:
   m_ObjectHideFlags: 0

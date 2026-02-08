@@ -11,6 +11,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Secondary
 
         public static GameObject staticEffectPrefab;
 
+        public static GameObject staticEffectRedPrefab;
+
         public override GameObject projectilePrefab => staticProjectilePrefab;
 
         public override GameObject effectPrefab => staticEffectPrefab;
@@ -26,5 +28,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Secondary
         public override float projectileSpeed => 50f;
 
         public override float maxDistance => 15f;
+
+        public override GameObject effectPrefabRed => staticEffectRedPrefab;
+
+        public override bool canBeRed => true;
     }
 }

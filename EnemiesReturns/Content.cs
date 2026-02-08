@@ -87,6 +87,8 @@ namespace EnemiesReturns
             public static BuffDef ImmuneToAllDamageExceptHammer;
 
             public static BuffDef ImmuneToHammer;
+
+            public static BuffDef ProvidenceImmuneToDamage;
         }
 
         public static class Elites

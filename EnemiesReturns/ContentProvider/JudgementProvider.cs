@@ -440,6 +440,8 @@ namespace EnemiesReturns
                 BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
                 Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
+                // TODO: remove
+                Enemies.ContactLight.Providence.ProvidenceDamageController.immuneToAllDamageOverlay = Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial;
 
                 CreateJudgementMusic(Content.Stages.OutOfTime);
             }

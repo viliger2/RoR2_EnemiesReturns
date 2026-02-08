@@ -1504,6 +1504,10 @@ PrefabInstance:
       propertyPath: _skillFamily
       value: 
       objectReference: {fileID: 11400000, guid: d937046d265be2a489b78567d190d2d6, type: 2}
+    - target: {fileID: -3593341228920075978, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+      propertyPath: segments
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -1520533190366740244, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: skillName
       value: PrimarySwingWithClones
@@ -1537,10 +1541,6 @@ PrefabInstance:
       propertyPath: initialStateType._typeName
       value: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963873619053843280, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-      propertyPath: bodyFlags
-      value: 608273
       objectReference: {fileID: 0}
     - target: {fileID: 2963873619053843280, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: baseMaxHealth
