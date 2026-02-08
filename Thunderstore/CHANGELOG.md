@@ -1,4 +1,29 @@
 <details>
+<summary>0.7.24</summary>
+
+* Added additional null checks to death states.
+* Colossus
+  * Gave Unmovable body tag.
+  * Fixed Spawn Eye VFX on spawn not playing its sound.
+* Lynx Tribe
+  * Lynx Totem
+    * Now has KnockbackImmune body flag when it is burrowed.
+	* Lynx Fetish now has ExctractorUnitBlacklist tag.
+  * Lynx Shrine
+    * Shrine is now grabbable by Drifter.
+* Mechanical Spider
+  * Broken Mechanical Spider is now grabbable by Drifter.
+  * Fixed InspectDef not working on broken Mechanical Spider.
+* Sand Crab
+  * Nerfed bubble damage to 1.1 (was 1.5).
+    * _Main intention behind this nerf is so you are no longer oneshot on stage 1 if all bubbles managed to hit you. Total damage goes from 144 to 105.6, just below Commando's level 1 health._
+* Judgement
+  * Gave boss Unmovable, Ungrabable and KnockbackImmune body flags.
+  * Temporary items can now drop during the encounter.
+  * Added following monsters to blacklist: AWU, Aurelionite, SS2 Mimic, Belmont Gargoyle and Blue Fangs.
+    * _AWU, Aurelionite and Belmont enemies should not be spawning there in the first place, but I've had report of them spawning there. Meanwhile SS2 Mimics and Belmont enemies are spawning infinitely and not counting as dead even after being killed, preventing wave from ending, on top of Mimics stealing your items and not giving them back. In the future a more universal system will be added to prevent softlocks, but for now we are just gonna extend blacklist if more issues arise._
+</details>
+<details>
 <summary>0.7.23</summary>
 
 * Fixed Lynx Archer throwing NREs if target died between starting FireArrow state and actually firing the projectile.

@@ -21,6 +21,7 @@ namespace EnemiesReturns
     // TODO: flowers visuals when aeonian elite dies, careful with performance
     // TODO: add effect to drone spiders spawning, similar to one used by drones
     // TODO: move enable\disable configs to general
+    // TODO: add spiders to drone catalog, not purchasable, not usable by operator, just so you can combine them
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
@@ -43,7 +44,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.23";
+        public const string Version = "0.7.24";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
