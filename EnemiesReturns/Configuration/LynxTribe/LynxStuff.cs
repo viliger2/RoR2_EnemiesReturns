@@ -1,10 +1,14 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using System;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
     public class LynxStuff : IConfiguration
     {
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> LynxShrineEnabled;
+
         public static ConfigEntry<int> LynxShrineDirectorCost;
         public static ConfigEntry<int> LynxShrineSelectionWeight;
         public static ConfigEntry<DirectorAPI.InteractableCategory> LynxShrineSpawnCategory;
@@ -33,6 +37,9 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<int> LynxShrineTierBossMinSpawns;
         public static ConfigEntry<int> LynxShrineTierBossMaxSpawns;
         public static ConfigEntry<float> LynxShrineTierBossEliteBias;
+
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> LynxTrapEnabled;
 
         public static ConfigEntry<int> LynxTrapDirectorCost;
         public static ConfigEntry<int> LynxTrapSelectionWeight;

@@ -1,11 +1,15 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using System;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
     public class SandCrab : IConfiguration
     {
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> Enabled;
+
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;

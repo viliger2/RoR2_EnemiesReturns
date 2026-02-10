@@ -1,11 +1,15 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using System;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration
 {
     public class Colossus : IConfiguration
     {
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> Enabled;
+
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -70,6 +74,9 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> LaserBarrageExplosionDamage;
         public static ConfigEntry<float> LaserBarrageExplosionDelay;
         public static ConfigEntry<float> LaserBarrageMoveSpeedMultiplier;
+
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> ItemEnabled;
 
         public static ConfigEntry<float> KnurlDamage;
         public static ConfigEntry<float> KnurlDamagePerStack;

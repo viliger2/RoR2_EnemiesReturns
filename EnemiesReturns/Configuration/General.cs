@@ -106,6 +106,24 @@ namespace EnemiesReturns.Configuration
             EnableLynxShaman = config.Bind("Content", "Enable Lynx Shaman", true, "Enables Lynx Shaman to spawn.");
             EnableLynxShrine = config.Bind("Content", "Enable Lynx Shrine", true, "Enables Lynx Shrine. Has no effect if Lynx Totem is disabled.");
             EnableLynxTrap = config.Bind("Content", "Enable Lynx Trap", true, "Enables Lynx Trap. Has no effect is Lynx Totem is disabled.");
+
+#pragma warning disable CS0618 // Type or member is obsolete
+            Configuration.ArcherBug.Enabled = EnableArcherBug;
+            Configuration.SandCrab.Enabled = EnableSandCrab;
+            Configuration.Spitter.Enabled = EnableSpitter;
+            Configuration.Swift.Enabled = EnableSwift;
+            Configuration.MechanicalSpider.Enabled = EnableMechanicalSpider;
+            Configuration.Judgement.Judgement.Enabled = EnableJudgement;
+            Configuration.Colossus.Enabled = EnableColossus;
+            Configuration.Colossus.ItemEnabled = EnableColossusItem;
+            Configuration.Ifrit.Enabled = EnableIfrit;
+            Configuration.Ifrit.ItemEnabled = EnableIfritItem;
+            Configuration.LynxTribe.LynxTotem.Enabled = EnableLynxTotem;
+            Configuration.LynxTribe.LynxTotem.ItemEnabled = EnableLynxTotemItem;
+            Configuration.LynxTribe.LynxShaman.Enabled = EnableLynxShaman;
+            Configuration.LynxTribe.LynxStuff.LynxShrineEnabled = EnableLynxShrine;
+            Configuration.LynxTribe.LynxStuff.LynxTrapEnabled = EnableLynxTrap;
+#pragma warning restore CS0618 // Type or member is obsolete
         }
     }
 }

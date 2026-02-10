@@ -1,11 +1,15 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using System;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration.LynxTribe
 {
     public class LynxTotem : IConfiguration
     {
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> Enabled;
+
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -47,6 +51,9 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> GroundpoundProcCoefficient;
         public static ConfigEntry<float> GroundpoundRadius;
         public static ConfigEntry<float> GroundpoundForce;
+
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> ItemEnabled;
 
         public static ConfigEntry<int> LynxFetishBonusHP;
         public static ConfigEntry<int> LynxFetishBonusDamage;

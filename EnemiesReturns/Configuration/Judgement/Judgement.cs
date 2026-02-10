@@ -1,10 +1,14 @@
 ﻿using BepInEx.Configuration;
+using System;
 
 namespace EnemiesReturns.Configuration.Judgement
 {
     public class Judgement : IConfiguration
     {
         public static ConfigFile JudgementConfig;
+
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> Enabled;
 
         public static ConfigEntry<bool> EnableAnointedSkins;
 

@@ -1,10 +1,14 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using System;
 
 namespace EnemiesReturns.Configuration
 {
     public class Ifrit : IConfiguration
     {
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> Enabled;
+
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -58,6 +62,9 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<int> PillarMaxInstances;
         public static ConfigEntry<float> PillarMinSpawnDistance;
         public static ConfigEntry<float> PillarMaxSpawnDistance;
+
+        [Obsolete("Use config options from Configuration.General")]
+        public static ConfigEntry<bool> ItemEnabled;
 
         public static ConfigEntry<float> SpawnPillarOnChampionKillDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillDamagePerStack;
