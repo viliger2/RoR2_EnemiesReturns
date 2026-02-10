@@ -12,7 +12,7 @@ namespace EnemiesReturns
     {
         private void CreateSpitter(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
-            if (Configuration.Spitter.Enabled.Value)
+            if (Configuration.General.EnableSpitter.Value)
             {
                 var spitterStuff = new SpitterStuff();
                 ModdedEntityStates.Spitter.Bite.biteEffectPrefab = spitterStuff.CreateBiteEffect();

@@ -35,7 +35,7 @@ namespace EnemiesReturns.ModCompats
                 return;
             }
 
-            if (Configuration.LynxTribe.LynxShaman.Enabled.Value && sender.HasBuff(Content.Buffs.ReduceHealing))
+            if (Configuration.General.EnableLynxShaman.Value && sender.HasBuff(Content.Buffs.ReduceHealing))
             {
                 args.healingPercentIncreaseMult -= Configuration.LynxTribe.LynxShaman.SummonProjectilesHealingFraction.Value;
             }

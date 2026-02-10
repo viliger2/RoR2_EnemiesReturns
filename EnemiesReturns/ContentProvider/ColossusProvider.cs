@@ -18,7 +18,7 @@ namespace EnemiesReturns
         {
             ExplicitPickupDropTable dtColossus = CreateColossusItem(assets, iconLookup);
 
-            if (Configuration.Colossus.Enabled.Value)
+            if (Configuration.General.EnableColossus.Value)
             {
                 var colossusStuff = new ColossusStuff();
 
@@ -208,7 +208,7 @@ namespace EnemiesReturns
         {
             ExplicitPickupDropTable dtColossus = null;
 
-            if (Configuration.Colossus.ItemEnabled.Value)
+            if (Configuration.General.EnableColossusItem.Value)
             {
                 var knurlFactory = new ColossalKnurlFactory();
 

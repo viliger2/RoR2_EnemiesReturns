@@ -5,7 +5,6 @@ namespace EnemiesReturns.Configuration
 {
     public class Ifrit : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -60,7 +59,6 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> PillarMinSpawnDistance;
         public static ConfigEntry<float> PillarMaxSpawnDistance;
 
-        public static ConfigEntry<bool> ItemEnabled;
         public static ConfigEntry<float> SpawnPillarOnChampionKillDamage;
         public static ConfigEntry<float> SpawnPillarOnChampionKillDamagePerStack;
         public static ConfigEntry<float> SpawnPillarOnChampionKillRadius;
@@ -76,7 +74,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Ifrit.Enabled = config.Bind("Ifrit Director", "Enable Ifrit", true, "Enables Ifrit.");
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
             Ifrit.MinimumStageCompletion = config.Bind("Ifrit Director", "Minimum Stage Completion", 2, "Minimum stages players need to complete before monster starts spawning.");
             Ifrit.DirectorCost = config.Bind("Ifrit Director", "Director Cost", 800, "Director cost of Ifrit.");
@@ -148,7 +145,6 @@ namespace EnemiesReturns.Configuration
             Ifrit.PillarMinSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Min Spawn Distance", 50f, "Ifrit's Summon Pillar minimum starting distance for pillar spawning. It will decrease if pillar fails to spawn on the first try.");
             Ifrit.PillarMaxSpawnDistance = config.Bind("Ifrit Pillar", "Summon Pillar Max Spawn Distance", 80f, "Ifrit's Summon Pillar maximum starting distance for pillar spawning. It will increase if pillar fails to spawn on the first try.");
 
-            Ifrit.ItemEnabled = config.Bind("Infernal Lantern", "Enable Infernal Lantern", true, "Enables Infernal Lantern to drop from Ifrit and appear in printers.");
             Ifrit.SpawnPillarOnChampionKillDamage = config.Bind("Infernal Lantern", "Infernal Lantern Damage", 10f, "Infernal Lantern explosion damage.");
             Ifrit.SpawnPillarOnChampionKillDamagePerStack = config.Bind("Infernal Lantern", "Infernal Lantern Damage Per Stack", 8f, "Infernal Lantern explosion damage per stack.");
             Ifrit.SpawnPillarOnChampionKillRadius = config.Bind("Infernal Lantern", "Infernal Lantern Radius", 80f, "Infernal Lantern explosion radius.");

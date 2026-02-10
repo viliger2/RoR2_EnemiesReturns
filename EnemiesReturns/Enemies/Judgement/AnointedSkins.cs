@@ -38,7 +38,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         internal static void Hooks()
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value && Configuration.Judgement.Judgement.EnableAnointedSkins.Value)
+            if (Configuration.General.EnableJudgement.Value && Configuration.Judgement.Judgement.EnableAnointedSkins.Value)
             {
                 RoR2.ContentManagement.ContentManager.onContentPacksAssigned += CreateAnointedSkins;
                 RoR2.AchievementManager.onAchievementsRegistered += CreateAnointedAchievements;
@@ -63,7 +63,7 @@ namespace EnemiesReturns.Enemies.Judgement
         /// <returns><see cref="HiddenSkinDef"/> as <see cref="SkinDef"/></returns>
         public static SkinDef CreateAnointedSkin(string bodyName, SkinDef fromSkin, bool addEliteRamp)
         {
-            if (!Configuration.Judgement.Judgement.EnableAnointedSkins.Value || !Configuration.Judgement.Judgement.Enabled.Value)
+            if (!Configuration.Judgement.Judgement.EnableAnointedSkins.Value || !Configuration.General.EnableJudgement.Value)
             {
                 Log.Warning($"Anointed Skins are disabled in EnemiesReturns. Doing nothing with skin {fromSkin} for body {bodyName}.");
                 return fromSkin;

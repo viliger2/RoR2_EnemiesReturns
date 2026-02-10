@@ -55,7 +55,7 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.Ifrit.ItemEnabled.Value)
+            if (Configuration.General.EnableIfritItem.Value)
             {
                 if (NetworkServer.active)
                 {

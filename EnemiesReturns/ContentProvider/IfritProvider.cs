@@ -19,7 +19,7 @@ namespace EnemiesReturns
             CreateIfritPillar(assets, iconLookup, acdLookup);
             ExplicitPickupDropTable dtIfrit = CreateIfritItem(assets, iconLookup);
 
-            if (Configuration.Ifrit.Enabled.Value)
+            if (Configuration.General.EnableIfrit.Value)
             {
                 var ifritStuff = new IfritStuff();
 
@@ -106,7 +106,7 @@ namespace EnemiesReturns
         private ExplicitPickupDropTable CreateIfritItem(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
             ExplicitPickupDropTable dtIfrit = null;
-            if (Configuration.Ifrit.ItemEnabled.Value)
+            if (Configuration.General.EnableIfritItem.Value)
             {
                 var pillarItemFactory = new SpawnPillarOnChampionKillFactory();
 
@@ -157,7 +157,7 @@ namespace EnemiesReturns
 
         private void CreateIfritPillar(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            if (Configuration.Ifrit.ItemEnabled.Value || Configuration.Ifrit.Enabled.Value)
+            if (Configuration.General.EnableIfrit.Value|| Configuration.General.EnableIfritItem.Value)
             {
                 var pillarStuff = new PillarStuff();
 
@@ -179,7 +179,7 @@ namespace EnemiesReturns
 
                 var pillarMaster = new PillarMaster();
 
-                if (Configuration.Ifrit.Enabled.Value)
+                if (Configuration.General.EnableIfrit.Value)
                 {
                     var pillarEnemyBody = new PillarEnemyBody();
                     PillarEnemyBody.BodyPrefab = pillarEnemyBody.AddBodyComponents(pylonBody.InstantiateClone("IfritPylonEnemyBody", false), iconLookup["texIconPillarEnemy"], acdLookup);
@@ -191,7 +191,7 @@ namespace EnemiesReturns
                     PillarEnemyBody.SpawnCard = pillarEnemyBody.CreateCard("cscIfritEnemyPillar", PillarMaster.EnemyMasterPrefab);
                 }
 
-                if (Configuration.Ifrit.ItemEnabled.Value)
+                if (Configuration.General.EnableIfritItem.Value)
                 {
                     var pillarAllyBody = new PillarAllyBody();
 

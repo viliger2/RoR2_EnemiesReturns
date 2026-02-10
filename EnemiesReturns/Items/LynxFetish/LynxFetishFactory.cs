@@ -67,7 +67,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            if (Configuration.General.EnableLynxTotemItem.Value)
             {
                 if (NetworkServer.active)
                 {
@@ -107,7 +107,7 @@ namespace EnemiesReturns.Items.LynxFetish
                 Log.Warning("Somehow got here without inialized BodyCatalog.");
             }
 
-            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.Enabled.Value && EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableLynxTotem.Value && EnemiesReturns.Configuration.General.EnableLynxTotemItem.Value)
             {
                 var archerIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Archer.ArcherBodyAlly.BodyPrefab);
                 var hunterIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Hunter.HunterBodyAlly.BodyPrefab);
@@ -122,7 +122,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
                 bodiesToIgnore = new BodyIndex[] { archerIndex, hunterIndex, scoutIndex };
 
-                if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+                if (EnemiesReturns.Configuration.General.EnableLynxShaman.Value)
                 {
                     var shamanIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Shaman.ShamanBodyAlly.BodyPrefab);
                     HG.ArrayUtils.ArrayAppend(ref spawnCards, new IndexToCards { bodyIndex = shamanIndex, spawnCard = Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly });

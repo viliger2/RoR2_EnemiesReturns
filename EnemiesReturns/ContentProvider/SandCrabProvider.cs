@@ -15,7 +15,7 @@ namespace EnemiesReturns
     {
         private void CreateSandCrab(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            if (Configuration.SandCrab.Enabled.Value)
+            if (Configuration.General.EnableSandCrab.Value)
             {
                 var sandCrabStuff = new SandCrabStuff();
                 FireSnip.snipEffectPrefab = sandCrabStuff.CreateSnipEffect();

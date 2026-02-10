@@ -60,7 +60,7 @@ namespace EnemiesReturns.Behaviors.Judgement
                     {
                         card.spawnCard.forbiddenFlags = RoR2.Navigation.NodeFlags.None;
                     }
-                    if (Configuration.LynxTribe.LynxTotem.Enabled.Value)
+                    if (Configuration.General.EnableLynxTotem.Value)
                     {
                         needToAddScout &= card.spawnCard.name != ScoutBody.SpawnCards.cscLynxScoutDefault.name;
                         needToAddHunter &= card.spawnCard.name != Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault.name;
@@ -70,7 +70,7 @@ namespace EnemiesReturns.Behaviors.Judgement
                 }
             }
 
-            if (Configuration.LynxTribe.LynxTotem.Enabled.Value)
+            if (Configuration.General.EnableLynxTotem.Value)
             {
                 if (needToAddScout)
                 {

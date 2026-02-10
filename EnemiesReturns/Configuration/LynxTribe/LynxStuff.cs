@@ -5,8 +5,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 {
     public class LynxStuff : IConfiguration
     {
-        public static ConfigEntry<bool> LynxShrineEnabled;
-
         public static ConfigEntry<int> LynxShrineDirectorCost;
         public static ConfigEntry<int> LynxShrineSelectionWeight;
         public static ConfigEntry<DirectorAPI.InteractableCategory> LynxShrineSpawnCategory;
@@ -36,8 +34,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<int> LynxShrineTierBossMaxSpawns;
         public static ConfigEntry<float> LynxShrineTierBossEliteBias;
 
-        public static ConfigEntry<bool> LynxTrapEnabled;
-
         public static ConfigEntry<int> LynxTrapDirectorCost;
         public static ConfigEntry<int> LynxTrapSelectionWeight;
         public static ConfigEntry<DirectorAPI.InteractableCategory> LynxTrapSpawnCategory;
@@ -51,7 +47,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
         public void PopulateConfig(ConfigFile config)
         {
-            LynxShrineEnabled = config.Bind("Lynx Shrine Spawn", "Enable Lynx Shrine", true, "Enables Lynx Shrine. Has no effect if Lynx Totem is disabled.");
             LynxShrineDirectorCost = config.Bind("Lynx Shrine Spawn", "Lynx Shrine Director Cost", 20, "Lynx Shrine's director cost. The same as other shrines by default.");
             LynxShrineSelectionWeight = config.Bind("Lynx Shrine Spawn", "Lynx Shrine Selection Weight", 2, "Lynx Shrine's selection weight. The same as Combat shrine by default.");
             LynxShrineSpawnCategory = config.Bind("Lynx Shrine Spawn", "Lynx Shrine Spawn Category", DirectorAPI.InteractableCategory.Shrines, "Lynx Shrine's spawn category.");
@@ -81,7 +76,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxShrineTierBossMaxSpawns = config.Bind("Lynx Shrine Behaviour", "Lynx Shrine Tier Boss Max Spawns", 5, "Maximum number of enemies that are spawned when Boss Tier item is selected.");
             LynxShrineTierBossEliteBias = config.Bind("Lynx Shrine Behaviour", "Lynx Shrine Tier Boss Elite Bias", 0.5f, "Elite bias of Boss Tier item. Basically, the lower the value the cheaper elites are to spawn, which means there will be more of them.");
 
-            LynxTrapEnabled = config.Bind("Lynx Trap Spawn", "Enable Lynx Trap", true, "Enables Lynx Trap. Has no effect is Lynx Totem is disabled.");
             LynxTrapDirectorCost = config.Bind("Lynx Trap Spawn", "Lynx Trap Director Cost", 2, "Lynx Trap's director cost. The same as other shrines by default.");
             LynxTrapSelectionWeight = config.Bind("Lynx Trap Spawn", "Lynx Trap Selection Weight", 1, "Lynx Trap's selection weight. The same as Combat shrine by default.");
             LynxTrapSpawnCategory = config.Bind("Lynx Trap Spawn", "Lynx Trap Spawn Category", DirectorAPI.InteractableCategory.Barrels, "Lynx Trap's spawn category.");

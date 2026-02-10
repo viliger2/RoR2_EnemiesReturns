@@ -12,7 +12,7 @@ namespace EnemiesReturns
     {
         private void CreateArcherBug(GameObject[] assets, Dictionary<string, Sprite> iconLookup)
         {
-            if (Configuration.ArcherBug.Enabled.Value)
+            if (Configuration.General.EnableArcherBug.Value)
             {
                 ArcherBugBody.StadiaJungleMeshPrefab = assets.First(asset => asset.name == "ArcherBug_stadiajungle");
 

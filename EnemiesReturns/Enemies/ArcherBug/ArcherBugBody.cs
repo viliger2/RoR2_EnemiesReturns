@@ -563,7 +563,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             #endregion
 
             #region AeonianElite
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 var displayRuleGroupAeonian = new DisplayRuleGroup();
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule

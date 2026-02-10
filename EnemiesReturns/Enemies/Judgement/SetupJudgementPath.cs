@@ -48,7 +48,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            if (!EnemiesReturns.Configuration.Judgement.Judgement.Enabled.Value)
+            if (!EnemiesReturns.Configuration.General.EnableJudgement.Value)
             {
                 return;
             }
@@ -167,7 +167,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static void Hooks()
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 Content.DamageTypes.EndGameBossWeapon = DamageAPI.ReserveDamageType();
                 Content.DamageTypes.CanStunArraign = DamageAPI.ReserveDamageType();
@@ -199,7 +199,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static void VoidlingWeaponTarget(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
+            if (Configuration.General.EnableJudgement.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
             {
                 self.ConfigureTargetFinderForEnemies();
                 var source = self.targetFinder.GetResults().FirstOrDefault();

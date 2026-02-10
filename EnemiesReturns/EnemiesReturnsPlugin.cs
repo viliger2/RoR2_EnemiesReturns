@@ -134,7 +134,7 @@ namespace EnemiesReturns
         private static void UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
         {
             orig(self);
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay(self);
             }
@@ -143,7 +143,7 @@ namespace EnemiesReturns
 
         private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 if (equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
                 {
@@ -174,11 +174,11 @@ namespace EnemiesReturns
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (EnemiesReturns.Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableLynxTotemItem.Value)
             {
                 LynxFetishFactory.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
-            if (EnemiesReturns.Configuration.Judgement.Judgement.Enabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableJudgement.Value)
             {
                 Enemies.Judgement.SetupJudgementPath.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
@@ -200,7 +200,7 @@ namespace EnemiesReturns
             {
                 return;
             }
-            if (EnemiesReturns.Configuration.Colossus.ItemEnabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableColossusItem.Value)
             {
                 ColossalKnurlFactory.OnHitEnemy(damageInfo, attackerBody, victim);
             }

@@ -17,7 +17,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
         public static void Hooks()
         {
-            if (Configuration.Ifrit.ItemEnabled.Value)
+            if (Configuration.General.EnableIfritItem.Value)
             {
                 Content.Deployables.PylonDeployable = R2API.DeployableAPI.RegisterDeployableSlot(GetPylonCount);
             }

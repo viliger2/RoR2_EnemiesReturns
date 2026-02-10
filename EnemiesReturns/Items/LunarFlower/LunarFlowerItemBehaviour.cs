@@ -29,7 +29,7 @@ namespace EnemiesReturns.Items.LunarFlower
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 if (NetworkServer.active)
                 {
@@ -43,7 +43,7 @@ namespace EnemiesReturns.Items.LunarFlower
 
         public static void Hooks()
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 On.RoR2.CharacterMaster.TryReviveOnBodyDeath += CharacterMaster_TryReviveOnBodyDeath;
             }

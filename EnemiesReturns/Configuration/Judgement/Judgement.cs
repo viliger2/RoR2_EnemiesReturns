@@ -6,8 +6,6 @@ namespace EnemiesReturns.Configuration.Judgement
     {
         public static ConfigFile JudgementConfig;
 
-        public static ConfigEntry<bool> Enabled;
-
         public static ConfigEntry<bool> EnableAnointedSkins;
 
         public static ConfigEntry<bool> ForceUnlock;
@@ -46,7 +44,6 @@ namespace EnemiesReturns.Configuration.Judgement
         {
             JudgementConfig = config;
 
-            Enabled = config.Bind("Judgement", "Enabled", true, "Enables all content related to Judgement.");
             EnableAnointedSkins = config.Bind("Judgement", "Enable Anointed Skins", true, "Enables the ability to unlock Anointed skins.");
 #if DEBUG || NOWEAVER
             ForceUnlock = config.Bind("Judgement", "Force Unlock Anointed Skins", true, "Force unlocks all Anointed skins by removing UnlockableDef from them.");

@@ -22,16 +22,16 @@ namespace EnemiesReturns
     {
         private void CreateLynxTribe(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup, Dictionary<string, Texture2D> rampLookups)
         {
-            if (Configuration.LynxTribe.LynxTotem.Enabled.Value
-                || Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            if (Configuration.General.EnableLynxTotem.Value
+                || Configuration.General.EnableLynxShaman.Value)
             {
                 CreateLynxStorm(assets, acdLookup);
             }
-            if (Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            if (Configuration.General.EnableLynxShaman.Value)
             {
                 CreateLynxShaman(assets, iconLookup, acdLookup, rampLookups);
             }
-            if (Configuration.LynxTribe.LynxTotem.Enabled.Value)
+            if (Configuration.General.EnableLynxTotem.Value)
             {
                 var dtLynxTotem = CreateLynxTotemItem(assets, iconLookup);
                 CreateLynxScout(assets, iconLookup);
@@ -39,11 +39,11 @@ namespace EnemiesReturns
                 CreateLynxArcher(assets, iconLookup, rampLookups);
                 CreateLynxTotem(assets, iconLookup, acdLookup, dtLynxTotem);
                 Utils.AddMonsterFamilyToStages(Configuration.LynxTribe.LynxTotem.DefaultStageList.Value, new LynxTribeStuff().CreateLynxTribeFamily());
-                if (Configuration.LynxTribe.LynxStuff.LynxShrineEnabled.Value)
+                if (Configuration.General.EnableLynxShrine.Value)
                 {
                     CreateLynxShrine(assets);
                 }
-                if (Configuration.LynxTribe.LynxStuff.LynxTrapEnabled.Value)
+                if (Configuration.General.EnableLynxTrap.Value)
                 {
                     CreateLynxTrap(assets);
                 }
@@ -511,7 +511,7 @@ namespace EnemiesReturns
         {
             ExplicitPickupDropTable dtLynxTotem = null;
 
-            if (Configuration.LynxTribe.LynxTotem.ItemEnabled.Value)
+            if (Configuration.General.EnableLynxTotemItem.Value)
             {
                 var fetishFactory = new LynxFetishFactory();
 

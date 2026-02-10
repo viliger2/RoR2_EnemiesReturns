@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration
 {
     public class Spitter : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -43,7 +42,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Spitter.Enabled = config.Bind("Spitter Director", "Enable Spitter", true, "Enables Spitter.");
             Spitter.SelectionWeight = config.Bind("Spitter Director", "Selection Weight", 1, "Selection weight of Spitter.");
             Spitter.MinimumStageCompletion = config.Bind("Spitter Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             Spitter.DirectorCost = config.Bind("Spitter Director", "Director Cost", 30, "Director cost of Spitter.");

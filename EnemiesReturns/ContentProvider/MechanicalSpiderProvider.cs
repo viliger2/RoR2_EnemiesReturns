@@ -19,7 +19,7 @@ namespace EnemiesReturns
     {
         private void CreateMechanicalSpider(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            if (Configuration.MechanicalSpider.Enabled.Value)
+            if (Configuration.General.EnableMechanicalSpider.Value)
             {
                 var spiderLog = Utils.CreateUnlockableDef("Logs.MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
                 unlockablesList.Add(spiderLog);

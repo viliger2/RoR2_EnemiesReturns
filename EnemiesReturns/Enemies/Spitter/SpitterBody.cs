@@ -629,8 +629,8 @@ namespace EnemiesReturns.Enemies.Spitter
             });
             #endregion
 
-            #region AeonianElite
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            #region AeonianElite    
+            if (Configuration.General.EnableJudgement.Value)
             {
                 var displayRuleGroupAeonian = new DisplayRuleGroup();
                 displayRuleGroupAeonian.AddDisplayRule(new ItemDisplayRule

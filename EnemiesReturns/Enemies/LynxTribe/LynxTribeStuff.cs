@@ -74,7 +74,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             };
 
             // adding shaman separately since he can spawn on his own and has his own enabled flag
-            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableLynxShaman.Value)
             {
                 HG.ArrayUtils.ArrayAppend(ref basicMonsters.cards, new DirectorCard
                 {
@@ -142,7 +142,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 Enemies.LynxTribe.Hunter.HunterBody.SpawnCards.cscLynxHunterDefault,
                 Enemies.LynxTribe.Archer.ArcherBody.SpawnCards.cscLynxArcherDefault,
             };
-            if (EnemiesReturns.Configuration.LynxTribe.LynxShaman.Enabled.Value)
+            if (EnemiesReturns.Configuration.General.EnableLynxShaman.Value)
             {
                 HG.ArrayUtils.ArrayAppend(ref spawner.spawnCards, Enemies.LynxTribe.Shaman.ShamanBody.SpawnCards.cscLynxShamanDefault);
             }

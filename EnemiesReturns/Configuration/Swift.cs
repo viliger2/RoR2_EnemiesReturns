@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration
 {
     public class Swift : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -34,7 +33,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Enabled = config.Bind("Swift Director", "Enable Swift", true, "Enables Swift.");
             SelectionWeight = config.Bind("Swift Director", "Selection Weight", 1, "Selection weight of Swift.");
             MinimumStageCompletion = config.Bind("Swift Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Swift Director", "Director Cost", 32, "Director cost of Swift.");

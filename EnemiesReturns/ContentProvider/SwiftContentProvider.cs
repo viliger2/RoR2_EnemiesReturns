@@ -14,7 +14,7 @@ namespace EnemiesReturns
     {
         private void CreateSwift(GameObject[] assets, Dictionary<string, Sprite> iconLookup, Dictionary<string, AnimationCurveDef> acdLookup)
         {
-            if (Configuration.Swift.Enabled.Value)
+            if (Configuration.General.EnableSwift.Value)
             {
                 var swiftLog = Utils.CreateUnlockableDef("Logs.SwiftBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT");
 

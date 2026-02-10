@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration
 {
     public class Colossus : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -72,7 +71,6 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> LaserBarrageExplosionDelay;
         public static ConfigEntry<float> LaserBarrageMoveSpeedMultiplier;
 
-        public static ConfigEntry<bool> ItemEnabled;
         public static ConfigEntry<float> KnurlDamage;
         public static ConfigEntry<float> KnurlDamagePerStack;
         public static ConfigEntry<float> KnurlProcChance;
@@ -93,7 +91,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Colossus.Enabled = config.Bind("Colossus Director", "Enable Colossus", true, "Enables Colossus.");
             Colossus.SelectionWeight = config.Bind("Colossus Director", "Selection Weight", 1, "Selection weight of Colossus.");
             Colossus.MinimumStageCompletion = config.Bind("Colossus Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             Colossus.DirectorCost = config.Bind("Colossus Director", "Director Cost", 1150, "Director cost of Colossus.");
@@ -202,7 +199,6 @@ namespace EnemiesReturns.Configuration
             Colossus.LaserBarrageExplosionDelay = config.Bind("Colossus Laser Barrage", "Laser Barrage Explosion Delay", 0.5f, "Colossus' Laser Barrage explosion delay after hitting the ground.");
             LaserBarrageMoveSpeedMultiplier = config.Bind("Colossus Laser Barrage", "Laser Barrage Movespeed Multiplier", 0.5f, "Colossus' Laser Barrage movespeed multiplier of normal movespeed.");
 
-            Colossus.ItemEnabled = config.Bind("Colossal Fist", "Enable Colossal Fist", true, "Enables Colossal Fist to drop from Colossus and appear in printers.");
             Colossus.KnurlDamage = config.Bind("Colossal Fist", "Colossal Fist Damage", 5f, "Colossal Fist' damage");
             Colossus.KnurlDamagePerStack = config.Bind("Colossal Fist", "Colossal Fist Damage Per Stack", 5f, "Colossal Fist' damage per stack");
             Colossus.KnurlProcCoefficient = config.Bind("Colossal Fist", "Colossal Fist Proc Coefficient", 0f, "Colossal Fist proc coefficient.");

@@ -27,7 +27,7 @@ namespace EnemiesReturns
 
         public IEnumerator CreateJudgementAsync(LoadStaticContentAsyncArgs args, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups, Dictionary<string, AnimationCurveDef> acdLookup, string assetBundleFolderPath)
         {
-            if (Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 AssetBundle assetBundleStagesAssets = null;
                 yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleJudgementStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
@@ -405,7 +405,7 @@ namespace EnemiesReturns
 
         private void CreateJudgement()
         {
-            if (Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 nseList.Add(Utils.CreateNetworkSoundDef("Play_moonBrother_spawn"));
 

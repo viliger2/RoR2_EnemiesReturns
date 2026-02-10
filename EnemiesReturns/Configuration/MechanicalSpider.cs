@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration
 {
     public class MechanicalSpider : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -61,7 +60,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Enabled = config.Bind("Mechanical Spider Director", "Enable Mechanical Spider", true, "Enables Mechanical Spider.");
             SelectionWeight = config.Bind("Mechanical Spider Director", "Selection Weight", 1, "Selection weight of Mechanical Spider.");
             MinimumStageCompletion = config.Bind("Mechanical Spider Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Mechanical Spider Director", "Director Cost", 28, "Director cost of Mechanical Spider.");

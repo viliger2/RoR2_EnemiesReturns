@@ -14,7 +14,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.Judgement.Judgement.Enabled.Value)
+            if (Configuration.General.EnableJudgement.Value)
             {
                 if (NetworkServer.active)
                 {

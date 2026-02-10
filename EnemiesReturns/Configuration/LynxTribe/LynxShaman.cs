@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 {
     public class LynxShaman : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -45,7 +44,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
         public void PopulateConfig(ConfigFile config)
         {
-            Enabled = config.Bind("Lynx Shaman Director", "Enable Lynx Shaman", true, "Enables Lynx Shaman.");
             SelectionWeight = config.Bind("Lynx Shaman Director", "Selection Weight", 1, "Selection weight of Lynx Shaman.");
             MinimumStageCompletion = config.Bind("Lynx Shaman Director", "Minimum Stage Completion", 1, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Shaman Director", "Director Cost", 40, "Director cost of Lynx Shaman.");

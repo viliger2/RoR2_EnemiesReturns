@@ -14,16 +14,17 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
             base.OnEnter();
             if (isAuthority)
             {
-                var totalChance = spawnChancePerLoop * Run.instance.loopClearCount;
-                var roll = RoR2Application.rng.RangeFloat(0f, 100f);
-                if (roll < totalChance)
+                if (Configuration.General.EnableLynxTotem.Value)
                 {
-                    outer.SetNextState(new SummonTotemDeath());
+                    var totalChance = spawnChancePerLoop * Run.instance.loopClearCount;
+                    var roll = RoR2Application.rng.RangeFloat(0f, 100f);
+                    if (roll < totalChance)
+                    {
+                        outer.SetNextState(new SummonTotemDeath());
+                        return;
+                    }
                 }
-                else
-                {
-                    outer.SetNextState(new DeathState());
-                }
+                outer.SetNextState(new DeathState());
             }
         }
     }

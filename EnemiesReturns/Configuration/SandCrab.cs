@@ -6,8 +6,6 @@ namespace EnemiesReturns.Configuration
 {
     public class SandCrab : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
-
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -49,8 +47,6 @@ namespace EnemiesReturns.Configuration
 
         public void PopulateConfig(ConfigFile config)
         {
-            Enabled = config.Bind("Sand Crab Director", "Enable Sand Crab", true, "Enables Sand Crab.");
-
             DirectorCost = config.Bind("Sand Crab Director", "Director Cost", 40, "Director cost of Sand Crab.");
             SelectionWeight = config.Bind("Sand Crab Director", "Selection Weight", 1, "Selection weight of Sand Crab.");
             MinimumStageCompletion = config.Bind("Sand Crab Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");

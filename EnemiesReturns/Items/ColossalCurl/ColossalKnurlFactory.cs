@@ -92,7 +92,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
         public static void Hooks()
         {
-            if (Configuration.Colossus.ItemEnabled.Value)
+            if (Configuration.General.EnableColossusItem.Value)
             {
                 Content.ProcChainTypes.ColossalFist = ProcTypeAPI.ReserveProcType();
                 EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;

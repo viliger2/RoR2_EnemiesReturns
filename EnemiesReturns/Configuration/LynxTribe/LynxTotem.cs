@@ -6,7 +6,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 {
     public class LynxTotem : IConfiguration
     {
-        public static ConfigEntry<bool> Enabled;
         public static ConfigEntry<int> DirectorCost;
         public static ConfigEntry<int> SelectionWeight;
         public static ConfigEntry<int> MinimumStageCompletion;
@@ -49,7 +48,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
         public static ConfigEntry<float> GroundpoundRadius;
         public static ConfigEntry<float> GroundpoundForce;
 
-        public static ConfigEntry<bool> ItemEnabled;
         public static ConfigEntry<int> LynxFetishBonusHP;
         public static ConfigEntry<int> LynxFetishBonusDamage;
         public static ConfigEntry<int> LynxFetishBonusHPPerStack;
@@ -69,7 +67,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
 
         public void PopulateConfig(ConfigFile config)
         {
-            Enabled = config.Bind("Lynx Totem Director", "Enable Lynx Totem", true, "Enables Lynx Totem.");
             SelectionWeight = config.Bind("Lynx Totem Director", "Selection Weight", 1, "Selection weight of Lynx Totem.");
             MinimumStageCompletion = config.Bind("Lynx Totem Director", "Minimum Stage Completion", 0, "Minimum stages players need to complete before monster starts spawning.");
             DirectorCost = config.Bind("Lynx Totem Director", "Director Cost", 600, "Director cost of Lynx Totem.");
@@ -130,7 +127,6 @@ namespace EnemiesReturns.Configuration.LynxTribe
             GroundpoundForce = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Force", 1500f, "Lynx Totem's Groundpound's upwards force.");
             GroundpoundRadius = config.Bind("Lynx Totem Groundpound", "Lynx Totem Groundpound Radius", 25f, "Lynx Totem's Groundpound's radius.");
 
-            ItemEnabled = config.Bind("Lynx Fetish", "Enable Lynx Fetish", true, "Enables Lynx Fetish to drop from Lynx Totem and appear in printers. Item cannot be enabled without Totem.");
             LynxFetishBonusDamage = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Damage", 10, "Bonus damage boost from base stats (the same as normal lynx tribesman), boosts by 10% for each value.");
             LynxFetishBonusHP = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Health", 10, "Bonus health boost from base stats (the same as normal lynx tribesman), boosts by 10% for each value.");
             LynxFetishBonusDamagePerStack = config.Bind("Lynx Fetish", "Spawned Tribesmen Bonus Damage Per Stack", 3, "Bonus damage boost from base stats per stack after 4th (the same as normal lynx tribesman), boosts by 10% for each value.");
