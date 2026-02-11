@@ -1,10 +1,19 @@
 <details>
+<summary>0.7.25</summary>
+
+* Archer Bug
+  * Disabled Jungle variant and moved its stages to Normal variant.
+    * _This was actually done with 0.7.24. The reason behind this is simple - SS2 released their own Archer Bugs and they use basically the same texture as Jungle variant since it was also made by Synodii. To minimize confusion we decided to just remove Jungle variant from spawn pool. Jungle variant is not removed completely however, you can still move stages back from Normal variant if you desire via config._
+* Judgement
+  * Fixed an oopsie woopsie fucky wucky with blacklist that was made with 0.7.24 that resulted in Titans spawning during the encounter.
+</details>
+<details>
 <summary>0.7.24</summary>
 
 * Added additional null checks to death states.
 * Colossus
   * Gave Unmovable body tag.
-  * Fixed Spawn Eye VFX on spawn not playing its sound.
+  * Fixed Spawn Eye VFX not playing its sound.
 * Lynx Tribe
   * Lynx Totem
     * Now has KnockbackImmune body flag when it is burrowed.

@@ -240,6 +240,28 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         }
         // end TODO
 
+        public DroneDef CreateDroneDef(GameObject bodyPrefab, Sprite icon)
+        {
+            var droneDef = ScriptableObject.CreateInstance<DroneDef>();
+            (droneDef as ScriptableObject).name = "EnemiesReturnsMechanicalSpiderDrone";
+            droneDef.bodyPrefab = bodyPrefab;
+            //Content.Drones.MechanicalSpiderDrone.displayPrefab = ;
+            droneDef.iconSprite = icon;
+            droneDef.canDrop = false;
+            droneDef.canScrap = true;
+            droneDef.canCombine = true;
+            droneDef.nameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME";
+            droneDef.pickupToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_FUNCTION";
+            droneDef.descriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_DESC";
+            droneDef.skillDescriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_DRONE_SKILL_DESC";
+            droneDef.droneTechCommandToken = "DRONE_COMMAND_GENERIC";
+            droneDef.droneType = Configuration.MechanicalSpider.DroneType.Value;
+            droneDef.tier = Configuration.MechanicalSpider.DroneTier.Value;
+            droneDef.desiredSortPosition = 3;
+
+            return droneDef;
+        }
+
         public GameObject CreateDoubleShotChargeEffect()
         {
             var chargeEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ChargeGolem.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderCharge", false);

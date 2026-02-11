@@ -73,8 +73,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
         private void GiveMinionItems(Inventory inventory)
         {
             inventory.GiveItemPermanent(RoR2Content.Items.MinionLeash, 1);
-            inventory.GiveItemPermanent(RoR2Content.Items.BoostHp, Configuration.MechanicalSpider.DroneBonusHP.Value);
-            inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, Configuration.MechanicalSpider.DroneBonusDamage.Value);
             if (ModCompats.RiskyModCompat.enabled)
             {
                 inventory.GiveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyMarker, 1);

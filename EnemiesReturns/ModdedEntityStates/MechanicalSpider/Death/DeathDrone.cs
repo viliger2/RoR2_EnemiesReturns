@@ -139,19 +139,7 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
 
         private void DeleteMinionItems(Inventory inventory)
         {
-            // this entire thing so we don't remove elite bonus stats from the body
-            int bonusHpToRemove = EnemiesReturns.Configuration.MechanicalSpider.DroneBonusHP.Value;
-            int bonusDamageToRemove = EnemiesReturns.Configuration.MechanicalSpider.DroneBonusDamage.Value;
-            var equipment = inventory.GetEquipment(0, inventory.FindBestEquipmentSetIndex()).equipmentDef;
-            if (equipment && equipment.passiveBuffDef && equipment.passiveBuffDef.eliteDef)
-            {
-                bonusHpToRemove = Mathf.Min(inventory.GetItemCountPermanent(RoR2Content.Items.BoostHp) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.healthBoostCoefficient), 0);
-                bonusDamageToRemove = Mathf.Min(inventory.GetItemCountPermanent(RoR2Content.Items.BoostDamage) - ConvertCoefficientToItemCount(equipment.passiveBuffDef.eliteDef.damageBoostCoefficient), 0);
-            }
-
             inventory.RemoveItemPermanent(RoR2Content.Items.MinionLeash, inventory.GetItemCountPermanent(RoR2Content.Items.MinionLeash));
-            inventory.RemoveItemPermanent(RoR2Content.Items.BoostHp, bonusHpToRemove);
-            inventory.RemoveItemPermanent(RoR2Content.Items.BoostDamage, bonusDamageToRemove);
             if (ModCompats.RiskyModCompat.enabled)
             {
                 inventory.RemoveItemPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling, inventory.GetItemCountPermanent(ModCompats.RiskyModCompat.RiskyModAllyScaling));

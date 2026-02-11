@@ -116,5 +116,10 @@ namespace EnemiesReturns
 
             public static DeployableSlot LynxFetishDeployable;
         }
+
+        public static class Drones
+        {
+            public static DroneDef MechanicalSpiderDrone;
+        }
     }
 }

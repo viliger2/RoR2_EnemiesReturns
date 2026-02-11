@@ -119,10 +119,18 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
         protected override ICharacterBody.CharacterBodyParams CharacterBodyParams(Transform aimOrigin, Sprite icon)
         {
             var bodyParams = base.CharacterBodyParams(aimOrigin, icon);
+            bodyParams.baseMaxHealth = Configuration.MechanicalSpider.DroneBaseMaxHealth.Value;
+            bodyParams.baseDamage = Configuration.MechanicalSpider.DroneBaseDamage.Value;
             bodyParams.baseRegen = Configuration.MechanicalSpider.DroneBaseRegen.Value;
+            bodyParams.baseArmor = Configuration.MechanicalSpider.DroneBaseArmor.Value;
+
+            bodyParams.levelMaxHealth = Configuration.MechanicalSpider.DroneLevelMaxHealth.Value;
+            bodyParams.levelDamage = Configuration.MechanicalSpider.DroneLevelDamage.Value;
             bodyParams.levelRegen = Configuration.MechanicalSpider.DroneLevelRegen.Value;
+            bodyParams.levelArmor = Configuration.MechanicalSpider.DroneLevelArmor.Value;
+
             bodyParams.lavaCooldown = 1f;
-            bodyParams.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+            bodyParams.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.Drone;
             return bodyParams;
         }
 

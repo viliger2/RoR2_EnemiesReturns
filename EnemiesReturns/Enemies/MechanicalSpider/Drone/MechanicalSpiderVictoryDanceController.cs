@@ -67,6 +67,20 @@ namespace EnemiesReturns.Enemies.MechanicalSpider.Drone
             On.EntityStates.Missions.BrotherEncounter.BossDeath.OnEnter += BossDeath_OnEnter;
             On.EntityStates.MeridianEvent.MeridianEventCleared.OnEnter += MeridianEventCleared_OnEnter;
             On.RoR2.VoidRaidGauntletController.SpawnOutroPortal += VoidRaidGauntletController_SpawnOutroPortal;
+            On.EntityStates.SolusWing2.Mission5Death.OnEnter += Mission5Death_OnEnter;
+            On.EntityStates.SolusHeart.Death.SolusHeartFinaleSequence.Death.OnEnter += Death_OnEnter;
+        }
+
+        private static void Death_OnEnter(On.EntityStates.SolusHeart.Death.SolusHeartFinaleSequence.Death.orig_OnEnter orig, EntityStates.SolusHeart.Death.SolusHeartFinaleSequence.Death self)
+        {
+            orig(self);
+            onBossDeath?.Invoke();
+        }
+
+        private static void Mission5Death_OnEnter(On.EntityStates.SolusWing2.Mission5Death.orig_OnEnter orig, EntityStates.SolusWing2.Mission5Death self)
+        {
+            orig(self);
+            onBossDeath?.Invoke();
         }
 
         private static void VoidRaidGauntletController_SpawnOutroPortal(On.RoR2.VoidRaidGauntletController.orig_SpawnOutroPortal orig, VoidRaidGauntletController self)

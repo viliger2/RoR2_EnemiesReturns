@@ -77,6 +77,9 @@ namespace EnemiesReturns
             nopList.Add(MechanicalSpiderStuff.InteractablePrefab);
 
             MechanicalSpiderStuff.SpawnCards.iscMechanicalSpiderBroken = spiderStuff.CreateInteractableSpawnCard("iscMechanicalSpiderBroken", MechanicalSpiderStuff.InteractablePrefab);
+
+            Content.Drones.MechanicalSpiderDrone = spiderStuff.CreateDroneDef(MechanicalSpiderDroneBody.BodyPrefab, iconLookup["texMechanicalSpiderAllyIcon"]);
+            dronesList.Add(Content.Drones.MechanicalSpiderDrone);
         }
 
         private void CreateMechanicalSpiderEnemy(GameObject[] assets, Dictionary<string, Sprite> iconLookup, UnlockableDef spiderLog, MechanicalSpiderEnemyBody spiderEnemyBody)

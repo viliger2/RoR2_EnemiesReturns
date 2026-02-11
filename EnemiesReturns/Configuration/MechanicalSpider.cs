@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using R2API;
+using RoR2;
 using UnityEngine;
 
 namespace EnemiesReturns.Configuration
@@ -39,11 +40,21 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DroneSpawnChance;
         public static ConfigEntry<int> DroneCost;
         public static ConfigEntry<float> DroneEliteCostMultiplier;
+
+        public static ConfigEntry<float> DroneBaseMaxHealth;
+        public static ConfigEntry<float> DroneBaseMoveSpeed;
+        public static ConfigEntry<float> DroneBaseDamage;
+        public static ConfigEntry<float> DroneBaseArmor;
         public static ConfigEntry<float> DroneBaseRegen;
+
+        public static ConfigEntry<float> DroneLevelMaxHealth;
+        public static ConfigEntry<float> DroneLevelDamage;
+        public static ConfigEntry<float> DroneLevelArmor;
         public static ConfigEntry<float> DroneLevelRegen;
-        public static ConfigEntry<int> DroneBonusHP;
-        public static ConfigEntry<int> DroneBonusDamage;
+
         public static ConfigEntry<bool> DroneUseInitialStageCostCoef;
+        public static ConfigEntry<DroneType> DroneType;
+        public static ConfigEntry<ItemTier> DroneTier;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -122,11 +133,21 @@ namespace EnemiesReturns.Configuration
             DroneSpawnChance = config.Bind("Mechanical Spider Drone", "Chance to Spawn Drone", 2f, "Chance to spawn purchasable Mechanical Spider on death.");
             DroneCost = config.Bind("Mechanical Spider Drone", "Drone Cost", 60, "Cost to repair broken Mechanical Spider.");
             DroneEliteCostMultiplier = config.Bind("Mechanical Spider Drone", "Elite Cost Multiplier", 0.5f, "Elite cost multiplier. Multiplies elite director cost to this value and then multiplies gold values to result. T1 elites are 6, T2 elites are 36, honor elites are half of those values.");
+
+            DroneBaseMaxHealth = config.Bind("Mechanical Spider Drone", "Base Max Health", 420f, "Mechanical Spider's base health.");
+            DroneBaseMoveSpeed = config.Bind("Mechanical Spider Drone", "Base Movement Speed", 9f, "Mechanical Spider's base movement speed.");
+            DroneBaseDamage = config.Bind("Mechanical Spider Drone", "Base Damage", 36f, "Mechanical Spider's base damage.");
+            DroneBaseArmor = config.Bind("Mechanical Spider Drone", "Base Armor", 0f, "Mechanical Spider's base armor.");
             DroneBaseRegen = config.Bind("Mechanical Spider Drone", "Base Regen", 15f, "Base health regeneration of allied Mechanical Spider.");
+
+            DroneLevelMaxHealth = config.Bind("Mechanical Spider Character Stats", "Health per Level", 126f, "Mechanical Spider's health increase per level.");
+            DroneLevelDamage = config.Bind("Mechanical Spider Character Stats", "Damage per Level", 7.2f, "Mechanical Spider's damage increase per level.");
+            DroneLevelArmor = config.Bind("Mechanical Spider Character Stats", "Armor per Level", 0f, "Mechanical Spider's armor increase per level.");
             DroneLevelRegen = config.Bind("Mechanical Spider Drone", "Regen Per Level", 3f, "Per level health regeneration of allied Mechanical Spider.");
-            DroneBonusHP = config.Bind("Mechanical Spider Drone", "Bonus HP Boost", 20, "Bonus health boost from base stats (the same as normal spider), boosts by 10% for each value.");
-            DroneBonusDamage = config.Bind("Mechanical Spider Drone", "Bonus Damage Boost", 20, "Bonus damage boost from base stats (the same as normal spider), boosts by 10% for each value.");
+
             DroneUseInitialStageCostCoef = config.Bind("Mechanical Spider Drone", "Use Initial Stage Cost Coefficient", false, "Use initial stage coefficient for price. Basically it means that the cost of spider drone won't scale with time on current stage, using the same price coefficient that was used when initial interactables were spawned. So if spider drone spawns the moment you enter a stage or 5 minutes into it price will be the same.");
+            DroneType = config.Bind("Mechanical Spider Drone", "Drone Type", RoR2.DroneType.Combat, "Drone type. Used for Drone Catalog and determines highlight color, somewhere (lol).");
+            DroneTier = config.Bind("Mechanical Spider Drone", "Drone Tier", ItemTier.Tier2, "Drone tier. Determines what scrap is dropped.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
 
