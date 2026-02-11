@@ -10,6 +10,8 @@ namespace EnemiesReturns.Configuration.Judgement
 
         public static ConfigEntry<bool> ForceUnlock;
 
+        public static ConfigEntry<float> WaveMaxDuration;
+
         public static ConfigEntry<string> JudgementEnemyBlacklist;
         public static ConfigEntry<bool> EulogyZeroSupport;
 
@@ -57,6 +59,8 @@ namespace EnemiesReturns.Configuration.Judgement
                 "LunarWispMaster", "NullifierMaster", "VoidJailerMaster", "HalcyoniteMaster", "LunarExploderMaster", "VoidBarnacleMaster", "TitanMaster",
                 "MimicMaster", "RobGreatGargoyleMaster", "RobGargoyleMaster", "TitanGoldMaster", "SuperRoboBallBossMaster"),
                 "List of enemies that are blacklisted from appearing in Judgement. Requires master names, you can get master names via DebugToolkit's list_ai command");
+
+            WaveMaxDuration = config.Bind("Wave", "Wave Maximum Duration", 450f, "Maximum duration of a single wave, in seconds. Mainly serves for instances when the game is royally screwed and doesn't allow you to progress further because enemies are unkillable, respawn endlesslly or wave gets stuck as uncompleted. Default value is 7 minutes 30 seconds which is plenty long where you won't even hit it in normal play but if you get stuck it is not that long for a single wave to sit out.");
 
             MithrixHammerAeonianBonusDamage = config.Bind("Mithrix Hammer", "Mithrix Hammer Bonus Damage Against Aeonians", 500f, "Bonus damage multiplier against Aeonian elites. Also used for other boss weapons.");
             MithrixHammerDamageCoefficient = config.Bind("Mithrix Hammer", "Mithrix Hammer Damage Coefficient", 30f, "Mithrix Hammer damage coefficient off base damage.");

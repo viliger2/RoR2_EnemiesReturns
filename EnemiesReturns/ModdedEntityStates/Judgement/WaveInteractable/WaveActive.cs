@@ -5,13 +5,14 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
 {
-    // TODO: investigate wave end effect not firing on clients
     [RegisterEntityState]
     public class WaveActive : BaseJudgementIntaractable
     {
         public static string soundEntryEvent = "Play_boss_spawn_radius_appear";
 
         public static float gracePeriod = 10f;
+
+        public static float waveMaxDuration = Configuration.Judgement.Judgement.WaveMaxDuration.Value;
 
         private Transform waveStartedEffects;
 
@@ -37,9 +38,22 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.WaveInteractable
                 return;
             }
 
-            if (isAuthority && JudgementMissionController.instance)
+            if (JudgementMissionController.instance && isAuthority)
             {
                 var instance = JudgementMissionController.instance;
+                if (fixedAge > waveMaxDuration)
+                {
+                    for (int i = 0; i < instance.combatDirectors.Length; i++)
+                    {
+                        var director = instance.combatDirectors[i];
+                        var squad = director.combatSquad;
+                        foreach(var master in squad.readOnlyMembersList)
+                        {
+                            squad.RemoveMember(master);
+                        }
+                    }
+                }
+
                 var endRound = true;
                 for (int i = 0; i < instance.combatDirectors.Length; i++)
                 {
