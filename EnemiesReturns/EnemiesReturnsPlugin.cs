@@ -18,7 +18,6 @@ using System.Reflection;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
 {
-    // TODO: flowers visuals when aeonian elite dies, careful with performance
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]

@@ -11,8 +11,6 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
 {
     public class SetupSkill
     {
-        // TODO: config
-
         public static SkillDef normalSkill;
 
         public static SkillDef scepterSkill;
@@ -30,8 +28,8 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             (skillDef as ScriptableObject).name = skillDef.skillName;
             skillDef.activationState = new SerializableEntityStateType(typeof(PlaceMechSpider));
             skillDef.activationStateMachineName = "Weapon";
-            skillDef.baseMaxStock = 2;
-            skillDef.baseRechargeInterval = 30f;
+            skillDef.baseMaxStock = Configuration.MechanicalSpider.EngiSkillBaseMaxStock.Value;
+            skillDef.baseRechargeInterval = Configuration.MechanicalSpider.EngiSkillBaseRecharge.Value;
             skillDef.beginSkillCooldownOnSkillEnd = false;
             skillDef.canceledFromSprinting = false;
             skillDef.cancelSprintingOnActivation = true;
@@ -39,7 +37,7 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             skillDef.interruptPriority = InterruptPriority.Skill;
             skillDef.isCombatSkill = false;
             skillDef.mustKeyPress = false;
-            skillDef.rechargeStock = 1;
+            skillDef.rechargeStock = Configuration.MechanicalSpider.EngiSkillRechargeStock.Value;
             skillDef.requiredStock = 1;
             skillDef.stockToConsume = 0;
 
@@ -57,8 +55,8 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             (skillDef as ScriptableObject).name = skillDef.skillName;
             skillDef.activationState = new SerializableEntityStateType(typeof(PlaceMechSpider));
             skillDef.activationStateMachineName = "Weapon";
-            skillDef.baseMaxStock = 2;
-            skillDef.baseRechargeInterval = 30f;
+            skillDef.baseMaxStock = Configuration.MechanicalSpider.EngiSkillScepterBaseMaxStock.Value;
+            skillDef.baseRechargeInterval = Configuration.MechanicalSpider.EngiSkillScepterBaseRecharge.Value;
             skillDef.beginSkillCooldownOnSkillEnd = false;
             skillDef.canceledFromSprinting = false;
             skillDef.cancelSprintingOnActivation = true;
@@ -66,7 +64,7 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             skillDef.interruptPriority = InterruptPriority.Skill;
             skillDef.isCombatSkill = false;
             skillDef.mustKeyPress = false;
-            skillDef.rechargeStock = 1;
+            skillDef.rechargeStock = Configuration.MechanicalSpider.EngiSkillScepterRechargeStock.Value;
             skillDef.requiredStock = 1;
             skillDef.stockToConsume = 0;
 

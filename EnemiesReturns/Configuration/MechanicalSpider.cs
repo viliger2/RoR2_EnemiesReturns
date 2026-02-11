@@ -64,6 +64,14 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<bool> EngiSkillEnabled;
         public static ConfigEntry<bool> EngiSkillForceUnlock;
 
+        public static ConfigEntry<int> EngiSkillBaseMaxStock;
+        public static ConfigEntry<float> EngiSkillBaseRecharge;
+        public static ConfigEntry<int> EngiSkillRechargeStock;
+
+        public static ConfigEntry<int> EngiSkillScepterBaseMaxStock;
+        public static ConfigEntry<float> EngiSkillScepterBaseRecharge;
+        public static ConfigEntry<int> EngiSkillScepterRechargeStock;
+
         public static ConfigEntry<float> TurretBaseMoveSpeed;
         public static ConfigEntry<float> TurretBaseRegen;
         public static ConfigEntry<float> TurretLevelRegen;
@@ -159,6 +167,14 @@ namespace EnemiesReturns.Configuration
 
             EngiSkillEnabled = config.Bind("Engineer Special Skill", "Enable", true, "Enables Engineer Special skill to use Mechanical Spiders as turrets.");
             EngiSkillForceUnlock = config.Bind("Engineer Special Skill", "Force Unlock", false, "Force unlocks Engineer Special skill.");
+
+            EngiSkillBaseMaxStock = config.Bind("Engineer Special Skill", "Base Max Stock", 2, "Base maximum stock for Engineer skill. Does not affect maximum number of turrets.");
+            EngiSkillBaseRecharge = config.Bind("Engineer Special Skill", "Base Recharge Interval", 30f, "Base recharge interval for Engineer skill.");
+            EngiSkillRechargeStock = config.Bind("Engineer Special Skill", "Recharge Stock", 1, "Ammount of stock that gets recharged on skill cooldown.");
+
+            EngiSkillScepterBaseMaxStock = config.Bind("Engineer Special Skill", "Scepter Base Max Stock", 2, "Base maximum stock for Engineer skill with Scepter. Does not affect maximum number of turrets.");
+            EngiSkillScepterBaseRecharge = config.Bind("Engineer Special Skill", "Scepter Base Recharge Interval", 30f, "Base recharge interval for Engineer skill with Scepter.");
+            EngiSkillScepterRechargeStock = config.Bind("Engineer Special Skill", "Scepter Recharge Stock", 1, "Ammount of stock that gets recharged on skill cooldown with Scepter.");
 
             TurretBaseRegen = config.Bind("Engineer Special Skill", "Turret Base Regen", 1f, "Base health regeneration of Engi Mechanical Spider.");
             TurretLevelRegen = config.Bind("Engineer Special Skill", "Turret Level Regen", 0.2f, "Per level health regeneration of Engi Mechanical Spider.");

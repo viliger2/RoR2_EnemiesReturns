@@ -166,7 +166,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var projectileSimple = projectilePrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = lifetime;
-            projectileSimple.desiredForwardSpeed = Configuration.SandCrab.BubbleSpeed.Value; // TODO: curve multiplies this value, not assignes value by itself, so at the begining we can do like x5, then stop and then set it to x1
+            projectileSimple.desiredForwardSpeed = Configuration.SandCrab.BubbleSpeed.Value; // curve multiplies this value, not assignes value by itself, so at the begining we can do like x5, then stop and then set it to x1
             projectileSimple.updateAfterFiring = true;
             projectileSimple.enableVelocityOverLifetime = true;
             projectileSimple.velocityOverLifetime = acdBubbleSpeed.curve;
