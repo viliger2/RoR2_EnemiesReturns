@@ -55,6 +55,9 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<bool> DroneUseInitialStageCostCoef;
         public static ConfigEntry<DroneType> DroneType;
         public static ConfigEntry<ItemTier> DroneTier;
+        public static ConfigEntry<bool> DroneCanDrop;
+        public static ConfigEntry<bool> DroneCanScrap;
+        public static ConfigEntry<bool> DroneCanCombine;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -148,6 +151,9 @@ namespace EnemiesReturns.Configuration
             DroneUseInitialStageCostCoef = config.Bind("Mechanical Spider Drone", "Use Initial Stage Cost Coefficient", false, "Use initial stage coefficient for price. Basically it means that the cost of spider drone won't scale with time on current stage, using the same price coefficient that was used when initial interactables were spawned. So if spider drone spawns the moment you enter a stage or 5 minutes into it price will be the same.");
             DroneType = config.Bind("Mechanical Spider Drone", "Drone Type", RoR2.DroneType.Combat, "Drone type. Used for Drone Catalog and determines highlight color, somewhere (lol).");
             DroneTier = config.Bind("Mechanical Spider Drone", "Drone Tier", ItemTier.Tier2, "Drone tier. Determines what scrap is dropped.");
+            DroneCanDrop = config.Bind("Mechanical Spider Drone", "Drone Can Drop", false, "Enables drone to appear in drone shops.");
+            DroneCanScrap = config.Bind("Mechanical Spider Drone", "Drone Can Scrap", true, "Enables scrapping of drone.");
+            DroneCanCombine = config.Bind("Mechanical Spider Drone", "Drone Can Combine", true, "Enables combining of drone.");
 
             EmoteKey = config.Bind("Mechanical Spider Emotes", "Dance Emote", KeyCode.Alpha1, "Key used to Dance.");
 

@@ -247,9 +247,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             droneDef.bodyPrefab = bodyPrefab;
             //Content.Drones.MechanicalSpiderDrone.displayPrefab = ;
             droneDef.iconSprite = icon;
-            droneDef.canDrop = false;
-            droneDef.canScrap = true;
-            droneDef.canCombine = true;
+            droneDef.canDrop = Configuration.MechanicalSpider.DroneCanDrop.Value;
+            droneDef.canScrap = Configuration.MechanicalSpider.DroneCanScrap.Value;
+            droneDef.canCombine = Configuration.MechanicalSpider.DroneCanCombine.Value;
             droneDef.nameToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_NAME";
             droneDef.pickupToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_FUNCTION";
             droneDef.descriptionToken = "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_DESC";
