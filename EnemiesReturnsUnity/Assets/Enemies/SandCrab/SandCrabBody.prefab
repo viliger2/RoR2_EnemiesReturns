@@ -2599,6 +2599,8 @@ MonoBehaviour:
     transform: {fileID: 1134099601012389045}
   - name: HandR
     transform: {fileID: 460513123181406635}
+  - name: Chest
+    transform: {fileID: 4063651094575956793}
 --- !u!4 &2564023220825731167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 886974630498610205, guid: 704e7b6775446c34288f5b8598b2114c,

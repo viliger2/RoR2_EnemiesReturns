@@ -1078,6 +1078,8 @@ MonoBehaviour:
     transform: {fileID: 4414784279232512857}
   - name: BottomBody
     transform: {fileID: 7090835819194203266}
+  - name: Chest
+    transform: {fileID: 2989103161338954118}
 --- !u!114 &7035300327044305085
 MonoBehaviour:
   m_ObjectHideFlags: 0

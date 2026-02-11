@@ -11075,6 +11075,8 @@ MonoBehaviour:
     transform: {fileID: 1636855712231105488}
   - name: ImpactEffectMuzzle
     transform: {fileID: 6350868899645650454}
+  - name: Chest
+    transform: {fileID: 5304480431740663089}
 --- !u!114 &6132405027051348072
 MonoBehaviour:
   m_ObjectHideFlags: 0

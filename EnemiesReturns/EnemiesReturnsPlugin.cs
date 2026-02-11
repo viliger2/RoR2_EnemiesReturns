@@ -19,9 +19,6 @@ using System.Reflection;
 namespace EnemiesReturns
 {
     // TODO: flowers visuals when aeonian elite dies, careful with performance
-    // TODO: add effect to drone spiders spawning, similar to one used by drones
-    // TODO: move enable\disable configs to general
-    // TODO: add spiders to drone catalog, not purchasable, not usable by operator, just so you can combine them
     [BepInPlugin(GUID, ModName, Version)]
     [BepInDependency(AdvancedPredictionCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency(AncientScepterCompat.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
@@ -161,6 +158,7 @@ namespace EnemiesReturns
         {
             EnemiesReturns.Equipment.MithrixHammer.MithrixHammer.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Equipment.VoidlingWeapon.VoidlingWeapon.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Equipment.EliteAenonian.EliteAenonianBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.LynxFetish.LynxFetishFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.LunarFlower.LunarFlowerItemBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);

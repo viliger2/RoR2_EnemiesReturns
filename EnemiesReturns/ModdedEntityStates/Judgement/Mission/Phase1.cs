@@ -39,7 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         {
             base.FixedUpdate();
 #if DEBUG || NOWEAVER
-            if (Input.GetKeyDown(EnemiesReturns.Configuration.Colossus.EmoteKey.Value))
+            if (Input.GetKeyDown(KeyCode.Numlock))
             {
                 outer.SetNextState(new Phase2());
             }

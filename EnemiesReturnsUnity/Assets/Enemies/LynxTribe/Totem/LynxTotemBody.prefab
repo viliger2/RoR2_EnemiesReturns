@@ -3562,6 +3562,8 @@ MonoBehaviour:
     transform: {fileID: 3787932293901970176}
   - name: SpawnFromShamanEffectOrigin
     transform: {fileID: 2542351967733544437}
+  - name: Chest
+    transform: {fileID: 6500273433034928125}
 --- !u!114 &6227792108271355078
 MonoBehaviour:
   m_ObjectHideFlags: 0

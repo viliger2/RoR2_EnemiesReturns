@@ -84,7 +84,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 }
             }
             healthBarShowTime = Run.FixedTimeStamp.now + healthBarDelay;
-            ClearCorpses();
         }
 
         private void CombatSquad_onMemberAddedServer(CharacterMaster master)
@@ -182,14 +181,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                         component.Suicide();
                     }
                 }
-            }
-        }
-
-        public void ClearCorpses()
-        {
-            for (int num3 = RoR2.Corpse.instancesList.Count - 1; num3 >= 0; num3--)
-            {
-                RoR2.Corpse.DestroyCorpse(RoR2.Corpse.instancesList[num3]);
             }
         }
     }
