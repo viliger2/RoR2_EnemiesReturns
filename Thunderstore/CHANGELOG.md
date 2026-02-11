@@ -1,11 +1,23 @@
 <details>
 <summary>0.7.25</summary>
 
+* All settings related to content enabling have been moved to General config.
+  * _Originally hiding configs behind another config option was done because we were deploying rapid changes. These days it is still here mostly because it allows us to do balance changes without asking people to constantly wipe their configs. However if someone wants to disable a specific piece of content it would require them to enable config, which would obviously result in config values not updating. So now everything related to enabling\disabling of content is in General content, available without the need to enable full config._
+* Colossus
+  * Actually fixed Spawn Eye VFX not playing its sound.
+* Mechanical Spider
+  * Added Drone to Drone catalog.
+    * _This allows players to scrap and combine them. Operator skill is not planned and most likely will never happen. Spiders appearing is drone shops is disabled by default but can be enabled in the config. This also comes with new config options for Drone (separate stats between Enemy and Drone bodies, existing config options that added stat boosting items to Drone have been removed) and Turret variants (related to Engineer skill)._
 * Archer Bug
   * Disabled Jungle variant and moved its stages to Normal variant.
     * _This was actually done with 0.7.24. The reason behind this is simple - SS2 released their own Archer Bugs and they use basically the same texture as Jungle variant since it was also made by Synodii. To minimize confusion we decided to just remove Jungle variant from spawn pool. Jungle variant is not removed completely however, you can still move stages back from Normal variant if you desire via config._
 * Judgement
-  * Fixed an oopsie woopsie fucky wucky with blacklist that was made with 0.7.24 that resulted in Titans spawning during the encounter.
+  * Fixed an oopsie woopsie fucky wucky with blacklist that was made in 0.7.24 that resulted in Titans spawning during the encounter.
+  * Boss should speak less frequently.
+  * Added custom death visuals to enemies.
+    * _New visuals respect Max Corpse settings, so if you are not getting them - this means everything is working as intended._
+  * Added maximum wave duration and grace exit if it is reached.
+    * _After watching a stream where players got stuck on a wave with no way to complete it (even kill_all didn't help), we decided to add grace exits to waves in case they get stuck - after 7 minutes and 30 seconds (configurable) wave ends, all enemies remain alive, however all objectives compete and you are advanced to the next wave or next phase of the encounter._
 </details>
 <details>
 <summary>0.7.24</summary>
