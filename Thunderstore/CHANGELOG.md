@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.26</summary>
+
+* Fixed an issue that caused the game to hang at 99% if user has Wetland Downpour or Ancient Observatory installed (and maybe some other mods that I don't know about that used old config values).
+</details>
+<details>
 <summary>0.7.25</summary>
 
 * All settings related to content enabling have been moved to General config.
