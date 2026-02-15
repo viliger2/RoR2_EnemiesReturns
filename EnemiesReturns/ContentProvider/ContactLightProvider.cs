@@ -129,6 +129,11 @@ namespace EnemiesReturns
                 Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
+            {
+                _contentPack.unlockableDefs.Add(assets);
+            }));
+
             AssetBundle assetBundleStages = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 

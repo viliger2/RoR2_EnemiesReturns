@@ -44,7 +44,9 @@ GameObject:
   - component: {fileID: 3270191601990782915}
   - component: {fileID: 3582191769570606062}
   - component: {fileID: 1956395059178044620}
-  - component: {fileID: 6598523937726259224}
+  - component: {fileID: 3181418613874951994}
+  - component: {fileID: 3938452768294736477}
+  - component: {fileID: 2739661485347189961}
   m_Layer: 0
   m_Name: KeycardDoor
   m_TagString: Untagged
@@ -118,7 +120,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &6598523937726259224
+--- !u!114 &3181418613874951994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,34 +129,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 5402109417876497977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 370243918, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 11500000, guid: e46ddd73b4c6f8547840bd586f79de6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayNameToken: ENEMIES_RETURNS_CONTACTLIGHT_KEYCARDDOOR_NAME
-  contextToken: ENEMIES_RETURNS_CONTACTLIGHT_KEYCARDDOOR_CONTEXT
-  costType: 10
-  available: 1
-  cost: 1
-  solitudeCost: 0
-  automaticallyScaleCostWithDifficulty: 0
-  requiredUnlockable: 
-  ignoreSpherecastForInteractability: 0
-  purchaseStatNames: []
-  setUnavailableOnTeleporterActivated: 0
-  isShrine: 0
-  isGoldShrine: 0
-  isDrone: 0
-  shouldProximityHighlight: 1
-  saleStarCompatible: 0
-  disableSpawnOnInteraction: 0
-  allowRemoteOpInteraction: 0
-  requiredExpansion: {fileID: 0}
-  lastActivator: {fileID: 0}
-  lockGameObject: {fileID: 0}
-  onPurchase:
+  requiredItem: {fileID: 11400000, guid: c4df9cda41b287a46a67d21458618083, type: 2}
+  contextString: ENEMIES_RETURNS_CONTACTLIGHT_KEYCARDDOOR_CONTEXT
+  displayNameString: ENEMIES_RETURNS_CONTACTLIGHT_KEYCARDDOOR_NAME
+  onInteractionServer:
     m_PersistentCalls:
-      m_Calls: []
-  onDetailedPurchaseServer:
+      m_Calls:
+      - m_Target: {fileID: 3938452768294736477}
+        m_TargetAssemblyTypeName: RoR2.EntityLogic.DelayedEvent, RoR2
+        m_MethodName: CallDelayed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onInteractionClient:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3938452768294736477}
+        m_TargetAssemblyTypeName: RoR2.EntityLogic.DelayedEvent, RoR2
+        m_MethodName: CallDelayedIfActiveAndEnabled
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3938452768294736477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402109417876497977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 924743675, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6436064001788476506}
@@ -169,18 +192,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6598523937726259224}
-        m_TargetAssemblyTypeName: RoR2.PurchaseInteraction, RoR2
-        m_MethodName: SetAvailable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  timeStepType: 2
+--- !u!114 &2739661485347189961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402109417876497977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1271010, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InspectInfo: {fileID: 11400000, guid: 0420badd34e72ae44954cbcf2f176d7d, type: 2}
+  inspectHintOverrideToken: 
 --- !u!1 &6436064001788476506
 GameObject:
   m_ObjectHideFlags: 0

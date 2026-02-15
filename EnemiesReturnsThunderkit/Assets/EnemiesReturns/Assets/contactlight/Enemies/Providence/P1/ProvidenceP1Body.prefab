@@ -4505,6 +4505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2963873619053843280}
+  segments: 2
+  damageImmunityBuffDuration: 20
 --- !u!1 &5959275310516554732
 GameObject:
   m_ObjectHideFlags: 0

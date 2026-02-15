@@ -1508,6 +1508,10 @@ PrefabInstance:
       propertyPath: segments
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -3593341228920075978, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+      propertyPath: damageImmunityBuffDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -1520533190366740244, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: skillName
       value: PrimarySwingWithClones

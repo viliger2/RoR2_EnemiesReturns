@@ -35,7 +35,7 @@ MonoBehaviour:
     m_SubObjectType: 
   portalSelectionMessageString: ENEMIES_RETURNS_BAZAAR_SEER_ENEMIESRETURNS_CONTACTLIGHT
   filterOutOfBazaar: 1
-  shouldIncludeInLogbook: 0
+  shouldIncludeInLogbook: 1
   loreToken: ENEMIES_RETURNS_CONTACT_LIGHT_LORE
   dioramaPrefab: {fileID: 0}
   dioramaPrefabAddress:

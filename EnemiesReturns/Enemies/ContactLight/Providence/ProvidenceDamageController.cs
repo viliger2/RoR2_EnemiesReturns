@@ -56,7 +56,12 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
             var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
 
             var proviHasBuff = body.HasBuff(Content.Buffs.ProvidenceImmuneToDamage);
-            if (proviHasBuff && !endGameBossWeaponDamage)
+            if (endGameBossWeaponDamage && proviHasBuff)
+            {
+                body.RemoveBuff(Content.Buffs.ProvidenceImmuneToDamage);
+            }
+
+            if (proviHasBuff)
             {
                 damageInfo.damage = 1f;
             }
