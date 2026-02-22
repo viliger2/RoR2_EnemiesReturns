@@ -6,6 +6,8 @@ namespace EnemiesReturns.Behaviors
 {
     public class MaterialInjector : MonoBehaviour
     {
+        public AssetReferenceT<Material> materialReference;
+
         public string addressableMaterialPath;
 
         public bool isParticle;
@@ -25,44 +27,53 @@ namespace EnemiesReturns.Behaviors
                 renderer = GetComponent<ParticleSystemRenderer>();
             }
 
-            if (renderer && !string.IsNullOrEmpty(addressableMaterialPath))
+            if (!renderer)
             {
-                handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
-                if (!handle.IsValid())
-                {
-                    Log.Error($"Couldn't find material {addressableMaterialPath} while injecting it to {this.gameObject.name}");
-                    Addressables.Release(handle);
-                    UnityEngine.GameObject.Destroy(this);
-                    return;
-                }
+                return;
+            }
 
-                if (loadAsynchronous)
+            if (!string.IsNullOrEmpty(addressableMaterialPath)){
+                handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
+            } else
+            {
+                handle = materialReference.LoadAssetAsync<Material>();
+            }
+
+            //if (!handle.IsValid())
+            //{
+            //    Log.Error($"Couldn't find material {addressableMaterialPath} or {materialReference} while injecting it to {this.gameObject.name}");
+            //    Addressables.Release(handle);
+            //    UnityEngine.GameObject.Destroy(this);
+            //    return;
+            //}
+
+            if (loadAsynchronous)
+            {
+                handle.Completed += (operationResult) =>
                 {
-                    handle.Completed += (operationResult) =>
+                    if (operationResult.Status == AsyncOperationStatus.Succeeded)
                     {
-                        if (operationResult.Status == AsyncOperationStatus.Succeeded)
-                        {
-                            renderer.material = operationResult.Result;
-                            if (isTrailParticle)
-                            {
-                                (renderer as ParticleSystemRenderer).trailMaterial = operationResult.Result;
-                            }
-                        }
-                        else
-                        {
-                            Addressables.Release(operationResult);
-                        }
-                        //UnityEngine.GameObject.Destroy(this);
-                    };
-                }
-                else
-                {
-                    var material = handle.WaitForCompletion();
-                    renderer.material = material;
-                    if (isTrailParticle)
-                    {
-                        (renderer as ParticleSystemRenderer).trailMaterial = material;
+                        SetValues(operationResult.Result);
                     }
+                    else
+                    {
+                        Addressables.Release(operationResult);
+                    }
+                    //UnityEngine.GameObject.Destroy(this);
+                };
+            }
+            else
+            {
+                var material = handle.WaitForCompletion();
+                SetValues(material);
+            }
+
+            void SetValues(Material material)
+            {
+                renderer.material = material;
+                if (isTrailParticle)
+                {
+                    (renderer as ParticleSystemRenderer).trailMaterial = material;
                 }
             }
         }

@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace EnemiesReturns.Behaviors
 {
     public class MaterialInjector : MonoBehaviour
     {
+        public AssetReferenceT<Material> materialReference;
+
         public string addressableMaterialPath;
 
         public bool isParticle;
 
         public bool isTrailParticle;
 
+        public Renderer renderer;
+
         public bool loadAsynchronous = true;
 
-        public Renderer renderer;
+        private AsyncOperationHandle<Material> handle;
 
         private void Awake()
         {
@@ -24,24 +27,62 @@ namespace EnemiesReturns.Behaviors
                 renderer = GetComponent<ParticleSystemRenderer>();
             }
 
-            if(renderer && !string.IsNullOrEmpty(addressableMaterialPath))
+            if (!renderer)
             {
-                try
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(addressableMaterialPath)){
+                handle = Addressables.LoadAssetAsync<Material>(addressableMaterialPath);
+            } else
+            {
+                handle = materialReference.LoadAssetAsync<Material>();
+            }
+
+            //if (!handle.IsValid())
+            //{
+            //    Log.Error($"Couldn't find material {addressableMaterialPath} or {materialReference} while injecting it to {this.gameObject.name}");
+            //    Addressables.Release(handle);
+            //    UnityEngine.GameObject.Destroy(this);
+            //    return;
+            //}
+
+            if (loadAsynchronous)
+            {
+                handle.Completed += (operationResult) =>
                 {
-                    //var material = Addressables.LoadAssetAsync<Material>(addressableMaterialPath).WaitForCompletion();
-                    //renderer.material = material;
-                    //if (isTrailParticle)
-                    //{
-                    //    (renderer as ParticleSystemRenderer).trailMaterial = material;
-                    //}
-                }
-                catch (Exception e) 
+                    if (operationResult.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        renderer.material = operationResult.Result;
+                        if (isTrailParticle)
+                        {
+                            (renderer as ParticleSystemRenderer).trailMaterial = operationResult.Result;
+                        }
+                    }
+                    else
+                    {
+                        Addressables.Release(operationResult);
+                    }
+                    //UnityEngine.GameObject.Destroy(this);
+                };
+            }
+            else
+            {
+                var material = handle.WaitForCompletion();
+                renderer.material = material;
+                if (isTrailParticle)
                 {
-                    //Log.Error($"Error while injecting material into renderer belonging to {this.gameObject.name}: {e}");
+                    (renderer as ParticleSystemRenderer).trailMaterial = material;
                 }
             }
-            UnityEngine.GameObject.Destroy(this);
         }
 
+        private void OnDestroy()
+        {
+            if (handle.IsValid())
+            {
+                Addressables.Release(handle);
+            }
+        }
     }
 }
