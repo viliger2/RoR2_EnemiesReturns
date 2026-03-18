@@ -18,13 +18,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1
+    value: 0.48
   threshold:
     overrideState: 1
     value: 0.67
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.364
   clamp:
     overrideState: 0
     value: 65472
@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 1
   color:
     overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0.6132076, g: 0.26900142, b: 0.26900142, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -80,19 +80,19 @@ MonoBehaviour:
     value: 1
   fogIntensity:
     overrideState: 1
-    value: 0.63
+    value: 0.073
   fogPower:
     overrideState: 1
-    value: 0.8
+    value: 2.97
   fogZero:
     overrideState: 1
-    value: -0.015
+    value: -0.034
   fogOne:
     overrideState: 1
-    value: 0.12
+    value: 0.149
   fogHeightStart:
     overrideState: 0
-    value: 0
+    value: -43.8
   fogHeightEnd:
     overrideState: 0
     value: 100

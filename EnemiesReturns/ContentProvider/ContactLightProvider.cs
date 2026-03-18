@@ -26,6 +26,9 @@ namespace EnemiesReturns
             AssetBundle assetBundleStagesAssets = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesAssetsName), args.progressReceiver, (resultAssetBundle) => assetBundleStagesAssets = resultAssetBundle);
 
+            AssetBundle assetBundleStages = null;
+            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
+
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
                 SwapMaterials(assets);
@@ -133,9 +136,6 @@ namespace EnemiesReturns
             {
                 _contentPack.unlockableDefs.Add(assets);
             }));
-
-            AssetBundle assetBundleStages = null;
-            yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
             yield break;
         }
