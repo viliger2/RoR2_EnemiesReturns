@@ -2,45 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 public class ReplaceShaders : MonoBehaviour
 {
     #if UNITY_EDITOR
 
-        public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
-        {
-            {"stubbedror2/base/shaders/hgstandard", "RoR2/Base/Shaders/HGStandard.shader"},
-            {"stubbedror2/base/shaders/hgsnowtopped", "RoR2/Base/Shaders/HGSnowTopped.shader"},
-            {"stubbedror2/base/shaders/hgtriplanarterrainblend", "RoR2/Base/Shaders/HGTriplanarTerrainBlend.shader"},
-            {"stubbedror2/base/shaders/hgintersectioncloudremap", "RoR2/Base/Shaders/HGIntersectionCloudRemap.shader" },
-            {"stubbedror2/base/shaders/hgcloudremap", "RoR2/Base/Shaders/HGCloudRemap.shader" },
-            {"stubbedror2/base/shaders/hgopaquecloudremap", "RoR2/Base/Shaders/HGOpaqueCloudRemap.shader" },
-            {"stubbedror2/base/shaders/hgdistortion", "RoR2/Base/Shaders/HGDistortion.shader" },
-            {"stubbedcalm water/calmwater - dx11 - doublesided", "Calm Water/CalmWater - DX11 - DoubleSided.shader" },
-            {"stubbedcalm water/calmwater - dx11", "Calm Water/CalmWater - DX11.shader" },
-            {"stubbednature/speedtree", "RoR2/Base/Shaders/SpeedTreeCustom.shader"},
-            {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" },
-            {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" },
-            {"stubbedror2/base/shaders/hguianimatealpha", "RoR2/Base/Shaders/HGUIAnimateAlpha.shader" }
-        };
+    const string PREFIX = "Stubbed";
+    const int PREFIX_LENGTH = 7;
 
     // Start is called before the first frame update
     void Awake()
+    {
+        SwapShaders();
+    }
+
+    private void SwapShaders() 
     {
         Renderer[] components = Resources.FindObjectsOfTypeAll<Renderer>();
 
         foreach(var renderer in components)
         {
+            if(renderer.materials != null){
+                for(int i = 0; i < renderer.materials.Length; i++)
+                {
+                    var material = renderer.materials[i];
+
+                    if(!material){
+                        continue;
+                    }
+                    SwapShader(material);
+
+                    renderer.materials[i] = material; 
+                }
+            } 
             if(!renderer.material){
                 continue;
             }
-            if (ShaderLookup.TryGetValue(renderer.material.shader.name.ToLower(), out var matName))
+            SwapShader(renderer.material);
+        }
+
+        void SwapShader(Material material)
+        {
+            string stubbedShaderName = material.shader.name;
+            if (!stubbedShaderName.StartsWith(PREFIX)) 
             {
-                var replacementShader = Addressables.LoadAssetAsync<Shader>(matName).WaitForCompletion();
-                if (replacementShader)
-                {
-                    renderer.material.shader = replacementShader;
-                }
+                return;
+            }
+            IList<IResourceLocation> resourceLocations = Addressables.LoadResourceLocationsAsync(stubbedShaderName.Substring(PREFIX_LENGTH) + ".shader", typeof(Shader)).WaitForCompletion();
+            if (resourceLocations.Count > 0)
+            {
+                material.shader = Addressables.LoadAssetAsync<Shader>(resourceLocations[0]).WaitForCompletion();
             }
         }
     }
