@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4583654236740661167}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2766419692439105571}
   - component: {fileID: 7700222987615582}
   - component: {fileID: 1809667183168732254}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

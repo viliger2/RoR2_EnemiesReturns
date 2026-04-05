@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: matSpacecabinGenerin
+  m_Name: matSpacecabinWall
   m_Shader: {fileID: 4800000, guid: c6e3cc6d1ef256644b62462606b5ab4b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 89383b073f44cef46aba279a099b729d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3781cdbf6cfb3194eb08488806e7613f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -89,7 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: a59def70f875d8a41b20e992ebfcb615, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:

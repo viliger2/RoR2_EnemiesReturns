@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8068418596582444075}
   - component: {fileID: 6517362105505047911}
   - component: {fileID: 6509605303930474109}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2550420121611536258}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
