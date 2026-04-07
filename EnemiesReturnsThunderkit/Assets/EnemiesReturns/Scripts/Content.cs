@@ -52,6 +52,8 @@ namespace EnemiesReturns
             public static ItemDef PartyHat;
 
             public static ItemDef MechanicalSpiderTurretScepterHelper;
+
+            public static ItemDef AccessCard;
         }
 
         public static class ItemRelationshipProviders
@@ -115,6 +117,16 @@ namespace EnemiesReturns
             public static DeployableSlot SummonLynxTribeDeployable;
 
             public static DeployableSlot LynxFetishDeployable;
+        }
+
+        public static class Drones
+        {
+            public static DroneDef MechanicalSpiderDrone;
+        }
+
+        public static class CostTypes
+        {
+            public static CostTypeDef AccessCard;
         }
     }
 }

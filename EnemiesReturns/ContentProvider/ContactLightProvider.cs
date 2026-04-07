@@ -126,6 +126,7 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
             {
                 _contentPack.itemDefs.Add(assets);
+                Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
@@ -138,6 +139,46 @@ namespace EnemiesReturns
             {
                 _contentPack.unlockableDefs.Add(assets);
             }));
+
+            Content.CostTypes.AccessCard = new CostTypeDef()
+            {
+                name = "EnemiesReturnsKeycardCost",
+                costStringFormatToken = "ENEMIES_RETURNS_CONTACT_LIGHT_COST_KEYCARD_FORMAT",
+                isAffordable = delegate (CostTypeDef costTypeDef, CostTypeDef.IsAffordableContext context)
+                {
+                    if (context.activator)
+                    {
+                        var characterBody = context.activator.GetComponent<CharacterBody>();
+                        if (characterBody)
+                        {
+                            var inventory = characterBody.inventory;
+                            if (inventory && !inventory.inventoryDisabled)
+                            {
+                                return inventory.GetItemCountEffective(Content.Items.AccessCard) > 0;
+                            }
+                        }
+                    }
+                    return false;
+                },
+                payCost = delegate (CostTypeDef.PayCostContext context, CostTypeDef.PayCostResults result)
+                {
+                    if (context.activatorBody && context.activatorBody.inventory)
+                    {
+                        var inventory = context.activatorBody.inventory;
+                        Inventory.ItemTransformation itemTransformation = new Inventory.ItemTransformation()
+                        {
+                            originalItemIndex = Content.Items.AccessCard.itemIndex,
+                            newItemIndex = ItemIndex.None,
+                            maxToTransform = 1,
+                        };
+                        if (itemTransformation.TryTransform(inventory, out var result2))
+                        {
+                            result.AddTakenItemsFromTransformation(in result2);
+                        }
+                    }
+                },
+                colorIndex = ColorCatalog.ColorIndex.VoidCoin
+            };
 
             yield break;
         }

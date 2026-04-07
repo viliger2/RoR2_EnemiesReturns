@@ -224,9 +224,8 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Archer
                 position = ray.origin,
                 projectilePrefab = projectilePrefab,
                 rotation = rotation,
+                useSpeedOverride = true,
                 speedOverride = magnitude,
-                _speedOverride = magnitude,
-                useSpeedOverride = true
             };
 
             ProjectileManager.instance.FireProjectile(projectileInfo);

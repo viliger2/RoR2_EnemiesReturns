@@ -28,6 +28,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                     }
                 }
 
+                var doorCollider = childLocator.FindChild("DoorCollider");
+                if (doorCollider)
+                {
+                    doorCollider.gameObject.SetActive(false);
+                }
+
                 if (matTerminalGreen) 
                 {
                     var terminal1 = childLocator.FindChild("Terminal1");

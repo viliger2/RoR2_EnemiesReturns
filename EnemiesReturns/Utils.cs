@@ -378,5 +378,19 @@ namespace EnemiesReturns
 
             return result;
         }
+
+        public static CostTypeIndex GetCostTypeIndex(CostTypeDef costType)
+        {
+            for(int i = 0; i < CostTypeCatalog.costTypeCount; i++)
+            {
+                var costType2 = CostTypeCatalog.GetCostTypeDef((CostTypeIndex)i);
+                if(costType2 == costType)
+                {
+                    return (CostTypeIndex)i;
+                }
+            }
+
+            return CostTypeIndex.None;
+        }
     }
 }
