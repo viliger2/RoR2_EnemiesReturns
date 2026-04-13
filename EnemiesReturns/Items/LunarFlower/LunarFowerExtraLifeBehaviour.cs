@@ -50,6 +50,11 @@ namespace EnemiesReturns.Items.LunarFlower
                 return false;
             }
 
+            if (!master)
+            {
+                return false;
+            }
+
             var body = master.GetBody();
             if (!body)
             {
@@ -58,6 +63,11 @@ namespace EnemiesReturns.Items.LunarFlower
 
             var lunarFlowerComponent = body.GetComponent<LunarFlowerItemBehaviour>();
             if (!lunarFlowerComponent)
+            {
+                return false;
+            }
+
+            if (lunarFlowerComponent.trueKill)
             {
                 return false;
             }

@@ -9,6 +9,8 @@ namespace EnemiesReturns.Items.LunarFlower
     {
         public bool hasVoidDied;
 
+        public bool trueKill = false;
+
         private void Start()
         {
             hasVoidDied = false;
@@ -25,6 +27,34 @@ namespace EnemiesReturns.Items.LunarFlower
         private bool IsDamageVoidDeath(DamageInfo damageInfo)
         {
             return (damageInfo.damageType.damageType & DamageType.VoidDeath) == DamageType.VoidDeath;
+        }
+
+        public static void SetTrueKill(CharacterMaster master)
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if (!master)
+            {
+                return;
+            }
+
+            var body = master.GetBody();
+            if (!body)
+            {
+                return;
+            }
+
+
+            var lunarFlowerComponent = body.GetComponent<LunarFlowerItemBehaviour>();
+            if (!lunarFlowerComponent)
+            {
+                return;
+            }
+
+            lunarFlowerComponent.trueKill = true;
         }
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
@@ -46,7 +76,14 @@ namespace EnemiesReturns.Items.LunarFlower
             if (Configuration.General.EnableJudgement.Value)
             {
                 On.RoR2.CharacterMaster.TryReviveOnBodyDeath += CharacterMaster_TryReviveOnBodyDeath;
+                On.RoR2.CharacterMaster.TrueKill_GameObject_GameObject_DamageTypeCombo += CharacterMaster_TrueKill_GameObject_GameObject_DamageTypeCombo;
             }
+        }
+
+        private static void CharacterMaster_TrueKill_GameObject_GameObject_DamageTypeCombo(On.RoR2.CharacterMaster.orig_TrueKill_GameObject_GameObject_DamageTypeCombo orig, CharacterMaster self, UnityEngine.GameObject killerOverride, UnityEngine.GameObject inflictorOverride, DamageTypeCombo damageTypeOverride)
+        {
+            LunarFlowerItemBehaviour.SetTrueKill(self);
+            orig(self, killerOverride, inflictorOverride, damageTypeOverride);
         }
 
         private static bool CharacterMaster_TryReviveOnBodyDeath(On.RoR2.CharacterMaster.orig_TryReviveOnBodyDeath orig, CharacterMaster self, CharacterBody body)
