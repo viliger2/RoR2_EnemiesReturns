@@ -26,6 +26,11 @@ namespace ArraignSkinExample
             }
         }
 
+        public static void RegisterModdedSkin(Action action)
+        {
+            EnemiesReturns.Enemies.Judgement.AnointedSkins.onGatherModdedAnointedSkins += action;
+        }
+
         public static SkinDef CreateHiddenSkinDef(string bodyName, SkinDef skin, bool addEliteRamp)
         {
             return EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyName, skin, addEliteRamp);

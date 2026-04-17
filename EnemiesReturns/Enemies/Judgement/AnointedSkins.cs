@@ -20,6 +20,8 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject AeonianAnointedItemDisplay;
 
+        public static event Action onGatherModdedAnointedSkins;
+
         internal static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
 
         internal static Dictionary<UnlockableDef, string> AnointedSkinsUnlockablesAchivements = new Dictionary<UnlockableDef, string>();
@@ -199,6 +201,8 @@ namespace EnemiesReturns.Enemies.Judgement
         // thanks randy, you made this all possible
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
+            onGatherModdedAnointedSkins?.Invoke();
+
             var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
 
             var icon = AnointedSkinIcon;
