@@ -25,7 +25,7 @@ namespace ArraignSkinExample
     {
         public const string Author = "Viliger";
         public const string ModName = "ArraignExamplePlugin";
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.0";
         public const string GUID = "com." + Author + "." + ModName;
 
         public const string BodyName = "Bandit2Body";
