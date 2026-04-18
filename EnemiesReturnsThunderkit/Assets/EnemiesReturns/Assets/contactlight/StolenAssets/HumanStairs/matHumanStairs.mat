@@ -13,7 +13,6 @@ Material:
   m_InvalidKeywords:
   - BINARYBLEND
   - IGNORE_BIAS
-  - SPLATMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -202,7 +201,7 @@ Material:
     - _SpecularExponent: 1
     - _SpecularHighlights: 1
     - _SpecularStrength: 0
-    - _SplatmapOn: 1
+    - _SplatmapOn: 0
     - _SplatmapTileScale: 8.12
     - _SrcBlend: 1
     - _TriplanarOn: 0

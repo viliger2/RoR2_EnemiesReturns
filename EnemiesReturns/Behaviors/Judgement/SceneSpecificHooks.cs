@@ -7,7 +7,7 @@ namespace EnemiesReturns.Behaviors.Judgement
 {
     public class SceneSpecificHooks : MonoBehaviour
     {
-        private void Start()
+        private void OnEnable()
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 += PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
@@ -59,7 +59,7 @@ namespace EnemiesReturns.Behaviors.Judgement
             BossGroupTextOverride.ReplaceNames(self);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate -= HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 -= PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;

@@ -34,6 +34,7 @@ namespace EnemiesReturns
                 SwapMaterials(assets);
 
                 ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
+                ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>

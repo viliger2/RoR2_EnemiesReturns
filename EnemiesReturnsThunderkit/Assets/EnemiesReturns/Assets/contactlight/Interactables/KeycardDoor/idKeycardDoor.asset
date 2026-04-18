@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: idKeycardDoor
   m_EditorClassIdentifier: 
   Info:
-    Visual: {fileID: 0}
+    Visual: {fileID: 21300000, guid: 92a4b00e8a447d545a17392a972b96bd, type: 3}
     TitleToken: ENEMIES_RETURNS_CONTACT_LIGHT_KEYCARDDOOR_NAME
     DescriptionToken: ENEMIES_RETURNS_CONTACT_LIGHT_KEYCARDDOOR_DESC
     FlavorToken: ENEMIES_RETURNS_CONTACT_LIGHT_KEYCARDDOOR_LORE
