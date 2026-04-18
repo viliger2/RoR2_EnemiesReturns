@@ -54,16 +54,35 @@ namespace EnemiesReturns.Enemies.Judgement
         /// <summary>
         /// Creates Anointed skin by cloning existing <see cref="SkinDef"/> and making <see cref="HiddenSkinDef"/> 
         /// out of it with apropriate <see cref="UnlockableDef"/> and <see cref="EnemiesReturns.Achievements.JudgementClearedAchievement"/> tied to it.
+        /// <see cref="UnlockableDef"/> will use <see cref="SkinDef"/>'s icon as achievement icon.
         /// You will need to replace all references to your original <see cref="SkinDef"/> (like those in <see cref="ModelSkinController"/>) manually.
         /// This method needs to be called before all catalogs are initialized, otherwise EnemiesReturns will still generate "default" Anointed skin.
         /// Method also respects all of the config options of EnemiesReturns, so if Judgement is disabled no skin will be generated and original <see cref="SkinDef"/> will be returned,
-        /// if skins are ForceUnlocked then no <see cref="UnlockableDef"/> will be attached to the skin.
+        /// if skins are ForceUnlocked then no <see cref="UnlockableDef"/> will be attached to the skin. 
         /// </summary>
         /// <param name="bodyName">Name of the body, used for <see cref="ScriptableObject"/> names and later to properly setup achivement for this specific body.</param>
         /// <param name="fromSkin"><see cref="SkinDef"/> being cloned.</param>
         /// <param name="addEliteRamp">Whether skin uses aenonian elite\anointed ramp, like those generated automatically.</param>
         /// <returns><see cref="HiddenSkinDef"/> as <see cref="SkinDef"/></returns>
         public static SkinDef CreateAnointedSkin(string bodyName, SkinDef fromSkin, bool addEliteRamp)
+        {
+            return CreateAnointedSkin(bodyName, fromSkin, addEliteRamp, fromSkin.icon);
+        }
+
+        /// <summary>
+        /// Creates Anointed skin by cloning existing <see cref="SkinDef"/> and making <see cref="HiddenSkinDef"/> 
+        /// out of it with apropriate <see cref="UnlockableDef"/> and <see cref="EnemiesReturns.Achievements.JudgementClearedAchievement"/> tied to it.
+        /// You will need to replace all references to your original <see cref="SkinDef"/> (like those in <see cref="ModelSkinController"/>) manually.
+        /// This method needs to be called before all catalogs are initialized, otherwise EnemiesReturns will still generate "default" Anointed skin.
+        /// Method also respects all of the config options of EnemiesReturns, so if Judgement is disabled no skin will be generated and original <see cref="SkinDef"/> will be returned,
+        /// if skins are ForceUnlocked then no <see cref="UnlockableDef"/> will be attached to the skin. 
+        /// </summary>
+        /// <param name="bodyName">Name of the body, used for <see cref="ScriptableObject"/> names and later to properly setup achivement for this specific body.</param>
+        /// <param name="fromSkin"><see cref="SkinDef"/> being cloned.</param>
+        /// <param name="addEliteRamp">Whether skin uses aenonian elite\anointed ramp, like those generated automatically.</param>
+        /// <param name="unlockIcon">Icon to be used for achievement.</param>
+        /// <returns><see cref="HiddenSkinDef"/> as <see cref="SkinDef"/></returns>
+        public static SkinDef CreateAnointedSkin(string bodyName, SkinDef fromSkin, bool addEliteRamp, Sprite unlockIcon)
         {
             if (!Configuration.Judgement.Judgement.EnableAnointedSkins.Value || !Configuration.General.EnableJudgement.Value)
             {
@@ -72,7 +91,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
 
             HiddenSkinDef hiddenSkin = HiddenSkinDef.FromSkinDef(fromSkin);
-            hiddenSkin.unlockableDef = CreateAnointedUnlockable(bodyName);
+            hiddenSkin.unlockableDef = CreateAnointedUnlockable(bodyName, unlockIcon);
             if (hiddenSkin.unlockableDef)
             {
                 skinUnlockables.Add(hiddenSkin.unlockableDef);
@@ -291,7 +310,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 var eliteSkinDef = Utils.CreateHiddenSkinDef($"skin{sanitizedBodyName}EnemiesReturnsAnointed", model.gameObject, hideInLobby: true, baseSkin: defaultSkin);
                 eliteSkinDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                 eliteSkinDef.icon = icon;
-                eliteSkinDef.unlockableDef = CreateAnointedUnlockable(sanitizedBodyName);
+                eliteSkinDef.unlockableDef = CreateAnointedUnlockable(sanitizedBodyName, AnointedSkinIcon);
                 if (eliteSkinDef.unlockableDef)
                 {
                     HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, eliteSkinDef.unlockableDef);
@@ -322,8 +341,14 @@ namespace EnemiesReturns.Enemies.Judgement
             skinUnlockables = null;
         }
 
-        private static UnlockableDef CreateAnointedUnlockable(string bodyName)
+        private static UnlockableDef CreateAnointedUnlockable(string bodyName, Sprite icon)
         {
+            if(AnointedSkinsUnlockables.TryGetValue(bodyName, out var unlockableDef))
+            {
+                Log.Warning($"Body {bodyName} already has UnlockableDef {unlockableDef} for Anointed skin. Returning existing UnlockableDef...");
+                return unlockableDef;
+            }
+
             UnlockableDef skinUnlockDef = null;
             if (!Configuration.Judgement.Judgement.ForceUnlock.Value)
             {
@@ -332,7 +357,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 skinUnlockDef.cachedName = $"Skins.{bodyName}.EnemiesReturnsAnointed";
                 skinUnlockDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                 skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
-                skinUnlockDef.achievementIcon = AnointedSkinIcon;
+                skinUnlockDef.achievementIcon = icon;
 
                 AnointedSkinsUnlockables.Add(bodyName, skinUnlockDef);
                 AnointedSkinsUnlockablesAchivements.Add(skinUnlockDef, bodyName);
@@ -381,6 +406,11 @@ namespace EnemiesReturns.Enemies.Judgement
 
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
+
+                if (!skinUnlockable.achievementIcon)
+                {
+                    skinUnlockable.achievementIcon = AnointedSkinIcon;
+                }
 
                 if (skinUnlockable.achievementIcon)
                 {
