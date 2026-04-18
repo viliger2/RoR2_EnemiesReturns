@@ -33,7 +33,7 @@ namespace ArraignSkinExample
 
         public static SkinDef CreateHiddenSkinDef(string bodyName, SkinDef skin, bool addEliteRamp)
         {
-            return EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyName, skin, addEliteRamp);
+            return EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyName, skin, addEliteRamp, skin.icon);
         }
     }
 }

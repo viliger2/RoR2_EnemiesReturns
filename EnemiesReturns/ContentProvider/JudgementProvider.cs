@@ -387,7 +387,8 @@ namespace EnemiesReturns
                         if (newSkin)
                         {
                             var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(moddedSkinDef.bodyPrefab).WaitForCompletion();
-                            var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, moddedSkinDef.CreateSkinDef(), false);
+                            var skinDef = moddedSkinDef.CreateSkinDef();
+                            var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, skinDef, false, skinDef.icon);
                             var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                             HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
                         }

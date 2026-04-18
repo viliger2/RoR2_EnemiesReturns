@@ -51,19 +51,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
         }
 
-        /// <summary>
-        /// Creates Anointed skin by cloning existing <see cref="SkinDef"/> and making <see cref="HiddenSkinDef"/> 
-        /// out of it with apropriate <see cref="UnlockableDef"/> and <see cref="EnemiesReturns.Achievements.JudgementClearedAchievement"/> tied to it.
-        /// <see cref="UnlockableDef"/> will use <see cref="SkinDef"/>'s icon as achievement icon.
-        /// You will need to replace all references to your original <see cref="SkinDef"/> (like those in <see cref="ModelSkinController"/>) manually.
-        /// This method needs to be called before all catalogs are initialized, otherwise EnemiesReturns will still generate "default" Anointed skin.
-        /// Method also respects all of the config options of EnemiesReturns, so if Judgement is disabled no skin will be generated and original <see cref="SkinDef"/> will be returned,
-        /// if skins are ForceUnlocked then no <see cref="UnlockableDef"/> will be attached to the skin. 
-        /// </summary>
-        /// <param name="bodyName">Name of the body, used for <see cref="ScriptableObject"/> names and later to properly setup achivement for this specific body.</param>
-        /// <param name="fromSkin"><see cref="SkinDef"/> being cloned.</param>
-        /// <param name="addEliteRamp">Whether skin uses aenonian elite\anointed ramp, like those generated automatically.</param>
-        /// <returns><see cref="HiddenSkinDef"/> as <see cref="SkinDef"/></returns>
+        [Obsolete("Use CreateAnointedSkin with unlockIcon param")]
         public static SkinDef CreateAnointedSkin(string bodyName, SkinDef fromSkin, bool addEliteRamp)
         {
             return CreateAnointedSkin(bodyName, fromSkin, addEliteRamp, fromSkin.icon);
