@@ -1,4 +1,15 @@
 <details>
+<summary>0.7.27</summary>
+
+* Swift
+  * Added option to disable predictive aiming on Dive.
+* Judgement
+  * Fixes for creating custom Anointed skins.
+    * _This is for mod devs. Basically, if you create your skins before EnemiesReturns has a chance to load its assets then you would have no icon on achievement and it would result in logbook being broken. This update fixes that, on top of allowing mod creators to specify which icon to use for achievement and adding an event that you should be using for creating said skins to ensure that "default" skin is not created._
+  * Fixed void flower not respecting truekill.
+* Updates to zh-CN translation by [锅巴](https://space.bilibili.com/10832951?spm_id_from=333.1007.0.0)
+</details>
+<details>
 <summary>0.7.26</summary>
 
 * Fixed an issue that caused the game to hang at 99% if user has Wetland Downpour or Ancient Observatory installed (and maybe some other mods that I don't know about that used old config values).
