@@ -79,14 +79,20 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
                 if (predictor != null)
                 {
                     var transform = predictor.GetTargetTransform();
-                    if (transform)
+                    if (Configuration.Swift.DivePredictiveAiming.Value)
                     {
-                        var distance = Vector3.Distance(transform.position, base.transform.position);
-                        if (distance > 0)
+                        if (transform)
                         {
-                            var timeToTarget = distance / (moveSpeedStat * EnemiesReturns.ModdedEntityStates.Swift.Dive.Dive.diveSpeedCoefficient);
-                            predictor.GetPredictedTargetPosition(timeToTarget, out predictedPosition);
+                            var distance = Vector3.Distance(transform.position, base.transform.position);
+                            if (distance > 0)
+                            {
+                                var timeToTarget = distance / (moveSpeedStat * EnemiesReturns.ModdedEntityStates.Swift.Dive.Dive.diveSpeedCoefficient);
+                                predictor.GetPredictedTargetPosition(timeToTarget, out predictedPosition);
+                            }
                         }
+                    } else
+                    {
+                        predictedPosition = transform.position;
                     }
                 }
                 outer.SetNextState(new Dive() { diveTarget = predictedPosition });
@@ -97,6 +103,7 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
         {
             base.OnExit();
             PlayAnimation("Gesture, Override", "BufferEmpty");
+            predictor = null;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

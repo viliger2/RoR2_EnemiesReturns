@@ -32,6 +32,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<float> DiveMaxDuration;
         public static ConfigEntry<float> DiveTurnSpeed;
         public static ConfigEntry<float> DiveSpeedCoefficient;
+        public static ConfigEntry<bool> DivePredictiveAiming;
 
         public static ConfigEntry<KeyCode> EmoteKey;
 
@@ -82,6 +83,7 @@ namespace EnemiesReturns.Configuration
             DiveMaxDuration = config.Bind("Swift Dive", "Dive Maximum Duration", 3.5f, "Swift's Dive maximum duration after which it will stop diving if no targets or ground are hit.");
             DiveTurnSpeed = config.Bind("Swift Dive", "Dive Turn Speed", 200f, "Swift's Dive turn speed, the higher the value the faster it will turn following the aim vector.");
             DiveSpeedCoefficient = config.Bind("Swift Dive", "Dive Speed Coefficient", 6.3f, "Swift's Dive speed coefficient, multiplies base speed.");
+            DivePredictiveAiming = config.Bind("Swift Dive", "Enable Dive Predictive Aiming", false, "Enables Dive predictive aiming, where Swift will try to predict target's position. With it disabled Swift will Dive to the point where target was at the end of the charge animation.");
 
             EmoteKey = config.Bind("Swift Emotes", "Duck Dance Emote", KeyCode.Alpha1, "Key used to do the Duck Dance.");
         }
