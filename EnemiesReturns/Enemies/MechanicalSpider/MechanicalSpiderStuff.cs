@@ -168,6 +168,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             #endregion
 
             var flickerEmission = interactablePrefab.AddComponent<FlickerEmission>();
+            flickerEmission.playSound = true;
             flickerEmission.renderer = meshRenderer;
             flickerEmission.soundRepeatThreshold = 0.2f;
             flickerEmission.soundEmissionValue = 6.5f;

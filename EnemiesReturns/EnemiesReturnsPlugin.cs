@@ -44,7 +44,7 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.27";
+        public const string Version = "0.7.28";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
@@ -122,6 +122,7 @@ namespace EnemiesReturns
             Items.LunarFlower.LunarFlowerItemBehaviour.Hooks();
             CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
 
+            // TODO: wrap it
             IL.ProximityHighlight.OnPreRenderOutlineHighlight += ProximityHighlight_OnPreRenderOutlineHighlight;
             IL.RoR2.InteractionDriver.OnPreRenderOutlineHighlight += InteractionDriver_OnPreRenderOutlineHighlight;
 
@@ -220,6 +221,7 @@ namespace EnemiesReturns
             {
                 Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay(self);
             }
+            // TODO: wrap it
             Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
         }
 

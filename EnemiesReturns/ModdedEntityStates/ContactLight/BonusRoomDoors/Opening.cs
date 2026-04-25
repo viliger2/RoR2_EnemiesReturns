@@ -50,6 +50,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
                     meshRenderer.material = openedMaterial;
                 }
             }
+
+            var collider = childLocator.FindChild("MiddleCollider");
+            if (collider)
+            {
+                collider.gameObject.SetActive(false);
+            }
         }
     }
 }

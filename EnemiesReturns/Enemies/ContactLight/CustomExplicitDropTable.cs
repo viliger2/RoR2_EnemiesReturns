@@ -15,10 +15,10 @@ namespace EnemiesReturns.Enemies.ContactLight
 
         public override void Regenerate(Run run)
         {
-            GenerateWeightedSelection();
+            GenerateWeightedSelection(run);
         }
 
-        private void GenerateWeightedSelection()
+        private void GenerateWeightedSelection(Run run)
         {
             weightedSelection.Clear();
             for (int i = 0; i < entries.Length; i++)
@@ -27,7 +27,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                 if (itemIndex != ItemIndex.None)
                 {
                     var pickupIndex = PickupCatalog.FindPickupIndex(itemIndex);
-                    if (pickupIndex != PickupIndex.none)
+                    if (pickupIndex != PickupIndex.none && run.IsPickupAvailable(pickupIndex))
                     {
                         weightedSelection.AddChoice(new UniquePickup(pickupIndex), 1f);
                     }
@@ -38,7 +38,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                     if (equipmentIndex != EquipmentIndex.None)
                     {
                         var pickupIndex = PickupCatalog.FindPickupIndex(equipmentIndex);
-                        if (pickupIndex != PickupIndex.none)
+                        if (pickupIndex != PickupIndex.none && run.IsPickupAvailable(pickupIndex))
                         {
                             weightedSelection.AddChoice(new UniquePickup(pickupIndex), 1f);
                         }

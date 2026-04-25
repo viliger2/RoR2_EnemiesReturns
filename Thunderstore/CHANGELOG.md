@@ -1,4 +1,10 @@
 <details>
+<summary>0.7.28</summary>
+
+* Judgement
+  * Accidentally left Force Unlocked as true for skins. Oops.
+</details>
+<details>
 <summary>0.7.27</summary>
 
 * Swift

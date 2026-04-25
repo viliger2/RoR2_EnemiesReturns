@@ -1,12 +1,8 @@
 ﻿using R2API;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
 {
@@ -25,24 +21,14 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
 
         public int maxPurchaseCount;
 
-        public float refreshDuration;
-
         private int purchaseCount;
-
-        private float refreshTimer;
-
-        private bool waitingForRefresh;
 
         private GameObject tracerPrefab;
 
         private GameObject hitEffectPrefab;
 
-        private PurchaseInteraction purchaseInteraction;
-
         private void Awake()
         {
-            purchaseInteraction = GetComponent<PurchaseInteraction>();
-
             var handle = tracerPrefabReference.LoadAssetAsync();
             handle.Completed += (result) =>
             {
@@ -62,19 +48,6 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
                     Addressables.Release(handle);
                 }
             };
-        }
-
-        private void FixedUpdate()
-        {
-            if (waitingForRefresh)
-            {
-                refreshTimer -= Time.fixedDeltaTime;
-                if (refreshTimer <= 0f && purchaseCount < maxPurchaseCount)
-                {
-                    purchaseInteraction.SetAvailable(newAvailable: true);
-                    waitingForRefresh = false;
-                }
-            }
         }
 
         public void AddStack(Interactor interactor)
@@ -120,12 +93,6 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
             {
                 // do something, I dunoo
             }
-            else
-            {
-                refreshTimer += refreshDuration;
-                waitingForRefresh = true;
-            }
-
         }
 
     }

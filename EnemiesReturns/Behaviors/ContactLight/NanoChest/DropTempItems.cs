@@ -22,15 +22,9 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
 
         public int maxPurchaseCount;
 
-        public float refreshDuration;
-
         private int purchaseCount;
 
-        private float refreshTimer;
-
         private UniquePickup itemToDrop;
-
-        private bool waitingForRefresh;
 
         private PurchaseInteraction purchaseInteraction;
 
@@ -66,19 +60,6 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
             }
         }
 
-        private void FixedUpdate()
-        {
-            if (waitingForRefresh)
-            {
-                refreshTimer -= Time.fixedDeltaTime;
-                if (refreshTimer <= 0f && purchaseCount < maxPurchaseCount)
-                {
-                    purchaseInteraction.SetAvailable(newAvailable: true);
-                    waitingForRefresh = false;
-                }
-            }
-        }
-
         public void AddStack(Interactor interactor)
         {
             if (!NetworkServer.active)
@@ -110,11 +91,6 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
             if (purchaseCount >= maxPurchaseCount)
             {
                 // do something, I dunoo
-            }
-            else
-            {
-                refreshTimer += refreshDuration;
-                waitingForRefresh = true;
             }
         }
     }

@@ -13,7 +13,6 @@ Material:
   m_InvalidKeywords:
   - BINARYBLEND
   - DOUBLESAMPLE
-  - FRESNEL_EMISSION
   - SPLATMAP
   - USE_VERTEX_COLORS
   m_LightmapFlags: 4
@@ -168,7 +167,7 @@ Material:
     - _EliteIndex: 0
     - _EmPower: 1
     - _EnableCutout: 0
-    - _FEON: 1
+    - _FEON: 0
     - _Fade: 1
     - _FadeBias: 0
     - _FlowEmissionStrength: 1

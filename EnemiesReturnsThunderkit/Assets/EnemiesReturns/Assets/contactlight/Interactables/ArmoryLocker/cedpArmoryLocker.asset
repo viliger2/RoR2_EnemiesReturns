@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9effee25a13004c8dec8306c7189cc, type: 3}
+  m_Name: cedpArmoryLocker
+  m_EditorClassIdentifier: 
+  canDropBeReplaced: 0
+  entries:
+  - BossDamageBonus
+  - SecondarySkillMagazine
+  - CritGlasses
+  - ArmorPlate
+  - StickyBomb
+  - StunChanceOnHit
+  - Missile
+  - Phasing
+  - Behemoth
+  - CritDamage
+  - MoreMissile
+  - DroneWeapons
+  - BarrageOnBoss
+  - CommandMissile
+  - BFG
+  - GoldGat
+  - CLASSICITEMSRETURNS_ITEM_ARMSRACE
+  - CLASSICITEMSRETURNS_ITEM_MORTARTUBE
+  - CLASSICITEMSRETURNS_ITEM_HYPERTHREADER
+  - CLASSICITEMSRETURNS_ITEM_ENERGYCELL

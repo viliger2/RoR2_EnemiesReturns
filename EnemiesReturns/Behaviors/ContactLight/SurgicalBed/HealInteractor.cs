@@ -11,33 +11,7 @@ namespace EnemiesReturns.Behaviors.ContactLight.SurgicalBed
     {
         public int maxPurchaseCount;
 
-        public float refreshDuration;
-
         private int purchaseCount;
-
-        private float refreshTimer;
-
-        private bool waitingForRefresh;
-
-        private PurchaseInteraction purchaseInteraction;
-
-        private void Awake()
-        {
-            purchaseInteraction = GetComponent<PurchaseInteraction>();
-        }
-
-        private void FixedUpdate()
-        {
-            if (waitingForRefresh)
-            {
-                refreshTimer -= Time.fixedDeltaTime;
-                if (refreshTimer <= 0f && purchaseCount < maxPurchaseCount)
-                {
-                    purchaseInteraction.SetAvailable(newAvailable: true);
-                    waitingForRefresh = false;
-                }
-            }
-        }
 
         public void AddStack(Interactor interactor)
         {
@@ -65,14 +39,6 @@ namespace EnemiesReturns.Behaviors.ContactLight.SurgicalBed
             CleanseSystem.CleanseBodyServer(characterBody, true, false, true, true, true, false);
 
             purchaseCount++;
-            if(purchaseCount >= maxPurchaseCount)
-            {
-                // do something, I dunoo
-            } else
-            {
-                refreshTimer += refreshDuration;
-                waitingForRefresh = true;
-            }
         }
     }
 }
