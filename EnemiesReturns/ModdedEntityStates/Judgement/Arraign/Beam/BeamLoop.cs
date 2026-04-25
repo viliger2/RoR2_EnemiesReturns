@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
 {
+    // TODO: change pre beam effect from grounded to full
+    // add rotation speed up from 0 to full in like 3 seconds on P1 only (which is a problem because state is the same)
     [RegisterEntityState]
     public class BeamLoop : BaseBeam
     {

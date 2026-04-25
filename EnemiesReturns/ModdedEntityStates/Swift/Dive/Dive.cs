@@ -16,8 +16,6 @@ namespace EnemiesReturns.ModdedEntityStates.Swift.Dive
 
         public static float turnSmoothTime = 1f;
 
-        public static float turnSpeed => Configuration.Swift.DiveTurnSpeed.Value;
-
         public static float diveSpeedCoefficient => Configuration.Swift.DiveSpeedCoefficient.Value;
 
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.OmniImpactVFX_prefab).WaitForCompletion();
