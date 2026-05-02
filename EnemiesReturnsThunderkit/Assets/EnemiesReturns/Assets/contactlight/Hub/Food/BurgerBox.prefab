@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2843972118246447608}
+  - component: {fileID: 3566470155009577565}
   m_Layer: 11
   m_Name: BurgerBox
   m_TagString: Untagged
@@ -25,13 +26,32 @@ Transform:
   m_GameObject: {fileID: 5667097276402950925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8854530920908982737}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &3566470155009577565
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667097276402950925}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.032032996, y: 0.05683869, z: 0}
+  m_Size: 2.0101657
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.01
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7686149405231149758}
+  m_Enabled: 1
 --- !u!1001 &9037358347317374522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 025da1016ff46584f90f3129e51d8a11, type: 3}
+--- !u!23 &7686149405231149758 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 025da1016ff46584f90f3129e51d8a11, type: 3}
+  m_PrefabInstance: {fileID: 9037358347317374522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8854530920908982737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 025da1016ff46584f90f3129e51d8a11, type: 3}
