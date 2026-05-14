@@ -51,6 +51,8 @@ namespace EnemiesReturns
 
         private void Awake()
         {
+            // TODO: remove reflection, it is bad for unity
+            // maybe use code generation to generate Config.cs via reflection
             var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
             Log.Init(Logger);
             EnemiesReturns.Configuration.General.PopulateConfig(Config);

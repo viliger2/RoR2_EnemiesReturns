@@ -183,6 +183,8 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * laser weld - https://pixabay.com/ru/sound-effects/laser-weld-103309/
 * Cinematic Impact Boom 04 - https://pixabay.com/ru/sound-effects/cinematic-impact-boom-4-326123/
 * Godzilla atomic breath 2014-2019 sound effect - https://www.youtube.com/watch?v=ISqg6CRPsOI
+* Risk of Rain Starstorm OST - Judgement (Somewhere In Time) - https://www.youtube.com/watch?v=GN8muvxMuEI
+* Risk of Rain Starstorm OST - The Judge (Somewhere In Time) - https://www.youtube.com/watch?v=l_jCAVnrfik
 * The Origin - Eviternity II OST (MAP30) - https://www.youtube.com/watch?v=n1C2Qp4GIss
 </details>
 <details>

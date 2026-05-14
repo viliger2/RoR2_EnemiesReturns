@@ -659,10 +659,15 @@
 										</Sound>
 										<Sound Name="Colossus_GOGOGO" ID="{6F43243F-6333-4D31-8F47-1B47591BE2A2}" ShortID="117074778">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverrideConversion" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 												</Reference>
@@ -3171,7 +3176,9 @@
 												</Sound>
 												<Sound Name="ShamanTookTheDrug" ID="{4707980D-815C-401B-A533-F6D76172D64B}" ShortID="992278961">
 													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
 														<Property Name="OverrideConversion" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="Pitch" Type="int32">
 															<ModifierList>
 																<ModifierInfo>
@@ -3186,6 +3193,9 @@
 														</Property>
 													</PropertyList>
 													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
 														<Reference Name="Conversion">
 															<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 														</Reference>
@@ -5543,7 +5553,9 @@
 										</Sound>
 										<Sound Name="ArcherBug_BuckBumble" ID="{9D30E540-CA63-46E6-89F5-8A7D0FC01C9E}" ShortID="732280409">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="OverrideConversion" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-6</Value>
@@ -5551,6 +5563,9 @@
 												</Property>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
 												</Reference>

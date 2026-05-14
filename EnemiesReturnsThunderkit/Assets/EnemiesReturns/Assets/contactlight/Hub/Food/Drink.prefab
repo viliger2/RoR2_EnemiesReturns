@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1328606076796035750}
   - component: {fileID: 6384737604716680993}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Drink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +122,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b4c64b23d837bd644848a7daf39d40f0, type: 3}
       propertyPath: m_Name
       value: mdlDrink
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4c64b23d837bd644848a7daf39d40f0, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b4c64b23d837bd644848a7daf39d40f0, type: 3}
       propertyPath: m_StaticEditorFlags

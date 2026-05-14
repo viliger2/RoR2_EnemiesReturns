@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: -2104471216213569872}
   - component: {fileID: 9039177068070662539}
   - component: {fileID: 8632057155368215507}
+  - component: {fileID: 1237607893200700676}
   m_Layer: 0
   m_Name: KeycardDoorActual
   m_TagString: Untagged
@@ -412,6 +413,16 @@ MonoBehaviour:
     transform: {fileID: 6412295427583502633}
   - name: Panel2
     transform: {fileID: 1953444350544381638}
+--- !u!41 &1237607893200700676
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678293206160177207}
+  m_Open: 0
+  m_Center: {x: -0.0075302124, y: 4.9416995, z: -0.027450562}
+  m_Size: {x: 1.1656342, y: 13.189527, z: 11.542267}
 --- !u!1 &5235568446092065840
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +643,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1c700eac5dc7a2a45987226ff322ca0f, type: 2}
+    - target: {fileID: 7104208182643263933, guid: 0c76f5b52b183574b9a7a0c91bffe86a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 59cef342b48cdfe419ccfc858d83533f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c76f5b52b183574b9a7a0c91bffe86a, type: 3}
 --- !u!4 &5853316452425998257 stripped

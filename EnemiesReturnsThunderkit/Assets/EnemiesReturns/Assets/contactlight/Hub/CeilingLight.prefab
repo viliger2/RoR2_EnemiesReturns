@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3112742779689063361}
   - component: {fileID: 1111221127459929594}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7401139112070052780}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CeilingLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +193,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: abac9c17d2646a04c8313112ef5f2e64, type: 3}
       propertyPath: m_Name
       value: mdlCeilingLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: abac9c17d2646a04c8313112ef5f2e64, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: abac9c17d2646a04c8313112ef5f2e64, type: 3}
       propertyPath: m_StaticEditorFlags

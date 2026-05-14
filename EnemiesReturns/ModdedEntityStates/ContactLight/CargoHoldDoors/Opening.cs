@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
 {
@@ -15,6 +16,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
         public override void OnEnter()
         {
             base.OnEnter();
+            SetPingable(false);
+            var portal = gameObject.GetComponent<OcclusionPortal>();
+            if (portal)
+            {
+                portal.open = true;
+            }
+
             var childLocator = gameObject.GetComponent<ChildLocator>();
             if (childLocator)
             {

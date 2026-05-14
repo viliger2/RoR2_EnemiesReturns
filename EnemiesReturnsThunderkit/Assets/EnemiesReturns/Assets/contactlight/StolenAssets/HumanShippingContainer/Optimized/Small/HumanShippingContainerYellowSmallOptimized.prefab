@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 693745589058165061}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanShippingContainerYellowSmallOptimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2234105403257430825}
   - component: {fileID: 4136980742116724390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3648619122209781730}
   - component: {fileID: 3368458643795763957}
   - component: {fileID: 361071110117110417}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanShippingContainerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 6167216908033539571}
   - component: {fileID: 925188289372710002}
   - component: {fileID: 3908466241204372625}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanShippingContainerDoorMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

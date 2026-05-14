@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311134140767913585}
   - component: {fileID: 1797819467039157264}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BarBottlePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,6 +118,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fde84b36ed825fc42971fc8f78360a84, type: 3}
       propertyPath: m_Name
       value: mdlBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fde84b36ed825fc42971fc8f78360a84, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fde84b36ed825fc42971fc8f78360a84, type: 3}
       propertyPath: m_StaticEditorFlags
