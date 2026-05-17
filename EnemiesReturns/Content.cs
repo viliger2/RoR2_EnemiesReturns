@@ -54,6 +54,8 @@ namespace EnemiesReturns
             public static ItemDef MechanicalSpiderTurretScepterHelper;
 
             public static ItemDef AccessCard;
+
+            public static ItemDef AdrenalineCore;
         }
 
         public static class ItemRelationshipProviders
@@ -93,6 +95,8 @@ namespace EnemiesReturns
             public static BuffDef ImmuneToHammer;
 
             public static BuffDef ProvidenceImmuneToDamage;
+
+            public static BuffDef AdrenalineCoreProtection;
         }
 
         public static class Elites

@@ -128,12 +128,14 @@ namespace EnemiesReturns
             {
                 _contentPack.itemDefs.Add(assets);
                 Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
+                Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
             {
                 _contentPack.buffDefs.Add(assets);
                 Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
+                Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "AdrenalineCoreProtection");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>

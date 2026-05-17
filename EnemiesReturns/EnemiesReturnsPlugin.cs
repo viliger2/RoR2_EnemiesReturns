@@ -197,6 +197,7 @@ namespace EnemiesReturns
             EnemiesReturns.Items.LynxFetish.LynxFetishFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.LunarFlower.LunarFlowerItemBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Items.AdrenalineCore.AdrenalineCoreMasterComponent.CharacterBody_onBodyInventoryChangedGlobal(body);
         }
 
         private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)
