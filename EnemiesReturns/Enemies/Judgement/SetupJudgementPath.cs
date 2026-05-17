@@ -32,8 +32,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static GameObject JudgementInteractable;
 
-        public static GameObject VoidlingWeaponIndicator;
-
         public static MasterCatalog.MasterIndex ArraignP1MasterIndex;
 
         public static MasterCatalog.MasterIndex ArraignP2MasterIndex;
@@ -184,7 +182,6 @@ namespace EnemiesReturns.Enemies.Judgement
                 On.EntityStates.FrozenState.OnEnter += HalfFrozenState;
                 Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
                 On.RoR2.VoidRaidGauntletController.SpawnOutroPortal += SpawnVoidMegaTeleporter;
-                On.RoR2.EquipmentSlot.UpdateTargets += VoidlingWeaponTarget;
             }
         }
 
@@ -195,27 +192,6 @@ namespace EnemiesReturns.Enemies.Judgement
             prefab.GetComponentInChildren<TextMeshPro>().color = new Color(0.46f, 0, 1f, 1f); ;
 
             return prefab;
-        }
-
-        private static void VoidlingWeaponTarget(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)
-        {
-            if (Configuration.General.EnableJudgement.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
-            {
-                self.ConfigureTargetFinderForEnemies();
-                var source = self.targetFinder.GetResults().FirstOrDefault();
-                self.currentTarget = new UserTargetInfo(source);
-                var hasTarget = self.currentTarget.transformToIndicateAt;
-                if (hasTarget)
-                {
-                    self.targetIndicator.visualizerPrefab = VoidlingWeaponIndicator;
-                }
-                self.targetIndicator.active = hasTarget;
-                self.targetIndicator.targetTransform = (hasTarget ? self.currentTarget.transformToIndicateAt : null);
-            }
-            else
-            {
-                orig(self, targetingEquipmentIndex, userShouldAnticipateTarget);
-            }
         }
 
         private static void SpawnVoidMegaTeleporter(On.RoR2.VoidRaidGauntletController.orig_SpawnOutroPortal orig, VoidRaidGauntletController self)

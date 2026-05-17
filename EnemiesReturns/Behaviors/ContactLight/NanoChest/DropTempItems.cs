@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
 {
@@ -20,7 +21,11 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
 
         public bool useNormalReference;
 
+        public float delayBetweenDrops = 0.1f;
+
         public int maxPurchaseCount;
+
+        public bool staggeredDrop;
 
         private int purchaseCount;
 
@@ -29,6 +34,16 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
         private PurchaseInteraction purchaseInteraction;
 
         public PickupDropTable dropTable;
+
+        private Quaternion quaternion;
+
+        private Vector3 vector;
+
+        private bool isDropping;
+
+        private int numberDrops;
+
+        private float timer;
 
         private void Awake()
         {
@@ -58,6 +73,37 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
                     purchaseInteraction.SetAvailable(false);
                 }
             }
+
+            quaternion = UnityEngine.Quaternion.AngleAxis(180f / (numberToDrop + 1), Vector3.up);
+        }
+
+        private void FixedUpdate()
+        {
+            if (isDropping)
+            {
+                timer -= Time.fixedDeltaTime;
+                if(timer <= 0f)
+                {
+                    if (sameItem)
+                    {
+                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+                    }
+                    else
+                    {
+                        var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
+                        itemToDrop.decayValue = 1f;
+                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+                    }
+                    numberDrops++;
+                    vector = quaternion * vector;
+                    if(numberDrops >= numberToDrop)
+                    {
+                        isDropping = false;
+                        numberDrops = 0;
+                    }
+                    timer += delayBetweenDrops;
+                }
+            }
         }
 
         public void AddStack(Interactor interactor)
@@ -67,26 +113,32 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
                 return;
             }
 
-            var angle = 180f / (numberToDrop + 1); // plus 1 so we split into equal parts and spawn between each
-            var quaternion = UnityEngine.Quaternion.AngleAxis(angle, Vector3.up);
-            var vector = quaternion * transform.rotation * localEjectionVelocity;
-            int spawnedCount = 0;
-            while (spawnedCount < numberToDrop)
+            if (!staggeredDrop)
             {
-                if (sameItem)
+                var angle = 180f / (numberToDrop + 1); // plus 1 so we split into equal parts and spawn between each
+                var quaternion = UnityEngine.Quaternion.AngleAxis(angle, Vector3.up);
+                var vector = quaternion * transform.rotation * localEjectionVelocity;
+                int spawnedCount = 0;
+                while (spawnedCount < numberToDrop)
                 {
-                    PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+                    if (sameItem)
+                    {
+                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+                    }
+                    else
+                    {
+                        var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
+                        itemToDrop.decayValue = 1f;
+                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+                    }
+                    spawnedCount++;
+                    vector = quaternion * vector;
                 }
-                else
-                {
-                    var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
-                    itemToDrop.decayValue = 1f;
-                    PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
-                }
-                spawnedCount++;
-                vector = quaternion * vector;
+            } else
+            {
+                isDropping = true;
+                vector = quaternion * transform.rotation * localEjectionVelocity;
             }
-
             purchaseCount++;
             if (purchaseCount >= maxPurchaseCount)
             {

@@ -141,6 +141,19 @@ namespace EnemiesReturns
                 _contentPack.unlockableDefs.Add(assets);
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
+            {
+                Content.Equipment.EliteSlayer = assets.First(equipment => equipment.name == "EliteSlayer");
+
+                _contentPack.equipmentDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
+            {
+                var sprite = assets.First(sprite => sprite.name == "texArcaneCircleProviMask");
+                Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator(sprite);
+
+            }));
             Content.CostTypes.AccessCard = new CostTypeDef()
             {
                 name = "EnemiesReturnsKeycardCost",

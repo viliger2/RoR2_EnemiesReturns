@@ -210,14 +210,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberToDrop: 5
-  localEjectionVelocity: {x: 0, y: 15, z: -8}
+  localEjectionVelocity: {x: -10, y: 15, z: 0}
   sameItem: 0
   dropTableReference:
     m_AssetGUID: 3f6133b3cc2527544ab30c8e6765e79c
     m_SubObjectName: 
     m_SubObjectType: 
   useNormalReference: 0
+  delayBetweenDrops: 0.1
   maxPurchaseCount: 99
+  staggeredDrop: 1
   dropTable: {fileID: 0}
 --- !u!114 &5242645799624854476
 MonoBehaviour:

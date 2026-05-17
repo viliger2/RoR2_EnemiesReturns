@@ -48,6 +48,7 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<bool> EnableLynxShrine;
         public static ConfigEntry<bool> EnableLynxTrap;
         public static ConfigEntry<bool> EnableJudgement;
+        public static ConfigEntry<bool> EnableContactLight;
 
         public enum PartyTime
         {
@@ -106,6 +107,8 @@ namespace EnemiesReturns.Configuration
             EnableLynxShaman = config.Bind("Content", "Enable Lynx Shaman", true, "Enables Lynx Shaman to spawn.");
             EnableLynxShrine = config.Bind("Content", "Enable Lynx Shrine", true, "Enables Lynx Shrine. Has no effect if Lynx Totem is disabled.");
             EnableLynxTrap = config.Bind("Content", "Enable Lynx Trap", true, "Enables Lynx Trap. Has no effect is Lynx Totem is disabled.");
+
+            EnableContactLight = config.Bind("Content", "Enable Contact Light", true, "Enables content related to Contact Light.");
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Configuration.ArcherBug.Enabled = EnableArcherBug;

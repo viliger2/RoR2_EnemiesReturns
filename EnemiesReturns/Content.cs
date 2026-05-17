@@ -68,6 +68,8 @@ namespace EnemiesReturns
             public static EquipmentDef EliteAeonian;
 
             public static EquipmentDef VoidlingWeapon;
+
+            public static EquipmentDef EliteSlayer;
         }
 
         public static class Buffs

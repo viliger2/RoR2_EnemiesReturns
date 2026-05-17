@@ -1,13 +1,17 @@
 ﻿using RoR2;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static RoR2.EquipmentSlot;
 
 namespace EnemiesReturns.Equipment.VoidlingWeapon
 {
     public class VoidlingWeapon
     {
         public static GameObject VoidlingWeaponController;
+
+        public static GameObject VoidlingWeaponIndicator;
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
@@ -21,6 +25,20 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
                     }
                 }
             }
+        }
+
+        public static void UpdateTargets(EquipmentSlot self)
+        {
+            self.ConfigureTargetFinderForEnemies();
+            var source = self.targetFinder.GetResults().FirstOrDefault();
+            self.currentTarget = new UserTargetInfo(source);
+            var hasTarget = self.currentTarget.transformToIndicateAt;
+            if (hasTarget)
+            {
+                self.targetIndicator.visualizerPrefab = VoidlingWeaponIndicator;
+            }
+            self.targetIndicator.active = hasTarget;
+            self.targetIndicator.targetTransform = (hasTarget ? self.currentTarget.transformToIndicateAt : null);
         }
 
         public static void SetupEquipmentConfigValues(EquipmentDef equipment)

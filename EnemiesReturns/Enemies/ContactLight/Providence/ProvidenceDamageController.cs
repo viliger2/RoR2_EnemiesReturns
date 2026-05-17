@@ -25,6 +25,7 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
 
         public static void AddDamageImmuneOverlay(CharacterModel self)
         {
+            // TODO: add actual overlay instead of reusing Arraign
             if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ProvidenceImmuneToDamage))
             {
                 self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageOverlay;

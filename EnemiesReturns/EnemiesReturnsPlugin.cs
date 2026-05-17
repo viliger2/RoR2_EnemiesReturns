@@ -109,6 +109,7 @@ namespace EnemiesReturns
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
             On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
+            On.RoR2.EquipmentSlot.UpdateTargets += UpdateTargets;
             ColossalKnurlFactory.Hooks();
             IfritStuff.Hooks();
             SpawnPillarOnChampionKillFactory.Hooks();
@@ -119,14 +120,12 @@ namespace EnemiesReturns
             Behaviors.SubjectParamsChatMessage.Hooks();
             On.RoR2.CharacterModel.UpdateOverlays += UpdateOverlays;
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
+
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
             Items.LunarFlower.LunarFlowerItemBehaviour.Hooks();
-            CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
 
-            // TODO: wrap it
-            IL.ProximityHighlight.OnPreRenderOutlineHighlight += ProximityHighlight_OnPreRenderOutlineHighlight;
-            IL.RoR2.InteractionDriver.OnPreRenderOutlineHighlight += InteractionDriver_OnPreRenderOutlineHighlight;
+            Enemies.ContactLight.SetupContactLight.Hooks();
 
             if (MoreStatsCompat.enabled)
             {
@@ -138,83 +137,21 @@ namespace EnemiesReturns
             }
         }
 
-        private void InteractionDriver_OnPreRenderOutlineHighlight(ILContext il)
+        private static void UpdateTargets(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)
         {
-            ILCursor c = new ILCursor(il);
-            var match = c.TryGotoNext(MoveType.After,
-                x => x.MatchCallvirt<RoR2.OutlineHighlight>("AddHighlight"));
-
-            if (match)
+            if (Configuration.General.EnableJudgement.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
             {
-                c.Emit(OpCodes.Ldarg, 0); // outlinehighlight
-                c.Emit(OpCodes.Ldloc, 2); // game object with highlights
-                c.Emit(OpCodes.Ldloc, 4); // existing highlight
-                c.Emit(OpCodes.Ldloc, 5); // precalculcated color
-                c.EmitDelegate<Action<OutlineHighlight, GameObject, Highlight, Color>>(UpdateOtherHighlights);
+                Equipment.VoidlingWeapon.VoidlingWeapon.UpdateTargets(self);
+            }
+            else if (Configuration.General.EnableContactLight.Value && targetingEquipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex && userShouldAnticipateTarget)
+            {
+                Equipment.EliteSlayer.EliteSlayer.UpdateTargets(self);
             }
             else
             {
-                Log.Warning($"IL Hook Failed - ProximityHighlight.OnPreRenderOutlineHighlight: Contact Light doors will have only one outline.");
-            }
-
-            void UpdateOtherHighlights(OutlineHighlight outlineHighlight, GameObject highlightGameObject, RoR2.Highlight highlight, Color color)
-            {
-                var highlights = highlightGameObject.GetComponents<Highlight>();
-                if(highlights.Length < 2)
-                {
-                    return;
-                }
-
-                foreach(var highlight2 in highlights)
-                {
-                    if(highlight2 == highlight)
-                    {
-                        continue;
-                    }
-
-                    outlineHighlight.AddHighlight(highlight2.targetRenderer, color * highlight2.strength);
-                }
+                orig(self, targetingEquipmentIndex, userShouldAnticipateTarget);
             }
         }
-
-        private void ProximityHighlight_OnPreRenderOutlineHighlight(MonoMod.Cil.ILContext il)
-        {
-            ILCursor c = new ILCursor(il);
-            var match = c.TryGotoNext(MoveType.After,
-                x => x.MatchCallvirt<RoR2.OutlineHighlight>("AddHighlight"));
-
-            if (match)
-            {
-                c.Emit(OpCodes.Ldarg, 0); // self
-                c.Emit(OpCodes.Ldarg, 1); // outlinehighlight
-                c.Emit(OpCodes.Ldloc, 2); // gameObject
-                c.Emit(OpCodes.Ldloc, 4); // already found highlight
-                c.EmitDelegate<Action<ProximityHighlight, RoR2.OutlineHighlight, GameObject, RoR2.Highlight>>(UpdateOtherHighlights);
-            }
-            else
-            {
-                Log.Warning($"IL Hook Failed - ProximityHighlight.OnPreRenderOutlineHighlight: Contact Light doors will have only one outline.");
-            }
-
-            void UpdateOtherHighlights(ProximityHighlight self, RoR2.OutlineHighlight outline, GameObject gameObject, RoR2.Highlight highlight)
-            {
-                var highlights = gameObject.GetComponents<Highlight>();
-                if(highlights.Length < 2)
-                {
-                    return;
-                }
-                foreach(var highlight2 in highlights)
-                {
-                    if(highlight2 == highlight)
-                    {
-                        continue;
-                    }
-
-                    Color h = highlight2.GetColor() * highlight2.strength * self.highlightScale;
-                    outline.AddHighlight(highlight2.targetRenderer, h);
-                }
-            }
-        } 
 
         private static void UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
         {
@@ -223,8 +160,10 @@ namespace EnemiesReturns
             {
                 Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay(self);
             }
-            // TODO: wrap it
-            Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
+            if (Configuration.General.EnableContactLight.Value)
+            {
+                Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
+            }
         }
 
         private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
@@ -238,6 +177,13 @@ namespace EnemiesReturns
                 else if (equipmentDef.equipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex)
                 {
                     return Equipment.VoidlingWeapon.VoidlingWeapon.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                }
+            }
+            if (Configuration.General.EnableContactLight.Value)
+            {
+                if(equipmentDef.equipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex)
+                {
+                    return Equipment.EliteSlayer.EliteSlayer.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
                 }
             }
             return orig(self, equipmentDef);
@@ -303,12 +249,5 @@ namespace EnemiesReturns
             folders.Add(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(base.Info.Location), Language.LanguageFolder));
         }
 
-        private void ModHelper_getAdditionalEntries(List<CostTypeDef> list)
-        {
-            if(Content.CostTypes.AccessCard != null)
-            {
-                list.Add(Content.CostTypes.AccessCard);
-            }
-        }
     }
 }

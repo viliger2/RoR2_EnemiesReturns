@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4258445110479008388}
   - component: {fileID: 4823663007533758080}
   - component: {fileID: 2566373298318609807}
+  - component: {fileID: 8332752014295720015}
   m_Layer: 0
   m_Name: NanoChestTeleporter
   m_TagString: Untagged
@@ -168,6 +169,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8332752014295720015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062964807824935250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8b4d7a877be4341af6018ca4e6c0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expansionReference:
+    m_AssetGUID: 234e83997deed274291470be69e7662e
+    m_SubObjectName: 
+    m_SubObjectType: 
+  state: 1
 --- !u!1001 &2591913991911231285
 PrefabInstance:
   m_ObjectHideFlags: 0

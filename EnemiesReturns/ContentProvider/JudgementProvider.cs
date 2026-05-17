@@ -195,7 +195,7 @@ namespace EnemiesReturns
                     Equipment.VoidlingWeapon.VoidlingWeapon.VoidlingWeaponController = assets.First(asset => asset.name == "VoidlingWeaponController");
                     nopList.Add(Equipment.VoidlingWeapon.VoidlingWeapon.VoidlingWeaponController);
 
-                    SetupJudgementPath.VoidlingWeaponIndicator = SetupJudgementPath.CreateVoidlingWeaponIndicator();
+                    Equipment.VoidlingWeapon.VoidlingWeapon.VoidlingWeaponIndicator = SetupJudgementPath.CreateVoidlingWeaponIndicator();
 
                     ModdedEntityStates.Judgement.VoidlingWeapon.SpawnAndFire.voidlingWeaponVisualsPrefab = SetupJudgementPath.SetupVoidlingWeapon(assets.First(asset => asset.name == "VoidWeaponPrefab"));
 
