@@ -5,6 +5,7 @@ namespace EnemiesReturns
 {
     public static class Content
     {
+        // TODO: move every body, master and interactable here
         public static class Stages
         {
             public static SceneDef OutOfTime;

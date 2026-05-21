@@ -1,4 +1,5 @@
-﻿using HG;
+﻿using EnemiesReturns.Components;
+using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using RoR2;
@@ -47,8 +48,39 @@ namespace EnemiesReturns.Enemies.Judgement
                 IL.RoR2.CharacterModel.UpdateMaterials += SetupAnointedMaterials;
                 On.RoR2.SurvivorMannequins.SurvivorMannequinSlotController.ApplyLoadoutToMannequinInstance += AddAnointedOverlay;
                 IL.RoR2.UI.LoadoutPanelController.Row.FromSkin += HideHiddenSkinDefs;
-                RoR2.CharacterBody.onBodyStartGlobal += AddAnointedItem;
+                On.RoR2.CharacterMaster.OnServerStageBegin += AddHiddenAnointedItem;
             }
+        }
+
+        private static void AddHiddenAnointedItem(On.RoR2.CharacterMaster.orig_OnServerStageBegin orig, CharacterMaster self, Stage stage)
+        {
+            orig(self, stage);
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if(!self || !self.inventory)
+            {
+                return;
+            }
+
+            if(self.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0)
+            {
+                return;
+            }
+
+            if(!self.bodyPrefab || !self.bodyPrefab.TryGetComponent<CharacterBody>(out var body))
+            {
+                return;
+            }
+
+            var skinDef = SkinCatalog.GetBodySkinDef(body.bodyIndex, (int)(self.loadout?.bodyLoadoutManager?.GetSkinIndex(body.bodyIndex) ?? 0));
+            if (AnointedSkinsItemHashSet.Contains(skinDef))
+            {
+                self.inventory.GiveItemPermanent(Content.Items.HiddenAnointed); 
+                return;
+            };
         }
 
         [Obsolete("Use CreateAnointedSkin with unlockIcon param")]
@@ -515,41 +547,6 @@ namespace EnemiesReturns.Enemies.Judgement
                     return (skinDef as HiddenSkinDef).hideInLobby;
                 }
                 return false;
-            }
-        }
-
-        private static void AddAnointedItem(CharacterBody body)
-        {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-
-            if (!body.isPlayerControlled)
-            {
-                return;
-            }
-
-            if (body.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0)
-            {
-                return;
-            }
-
-            if (body.modelLocator && body.modelLocator.modelTransform)
-            {
-                var modelSkinController = body.modelLocator.modelTransform.GetComponent<ModelSkinController>();
-                if (modelSkinController)
-                {
-                    if (body.skinIndex < modelSkinController.skins.Length)
-                    {
-                        var skin = modelSkinController.skins[body.skinIndex];
-                        if (AnointedSkinsItemHashSet.Contains(skin))
-                        {
-                            body.inventory.GiveItemPermanent(Content.Items.HiddenAnointed);
-                            return;
-                        };
-                    }
-                }
             }
         }
     }

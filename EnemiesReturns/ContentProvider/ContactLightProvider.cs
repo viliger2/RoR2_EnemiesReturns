@@ -1,4 +1,6 @@
 ﻿using EnemiesReturns.EditorHelpers;
+using EnemiesReturns.Enemies.ContactLight;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Projectile;
@@ -86,6 +88,8 @@ namespace EnemiesReturns
                 //TempleGuard2Body = assets.First(prefab => prefab.name == "TempleGuard2Body");
                 //TempleGuard2Body.GetComponentInChildren<ModelSkinController>()._avatarAddress = new AssetReferenceT<Avatar>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarGolem.mdlLunarGolem_fbx);
 
+
+
                 ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
                 ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
 
@@ -122,6 +126,13 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
                 ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
 
+                var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
+                var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
+                pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
+                PrefabAPI.RegisterNetworkPrefab(wardrobe);
+
+                SetupContactLight.wardrobe = wardrobe;
+                nopList.Add(SetupContactLight.wardrobe);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

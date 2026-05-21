@@ -1,8 +1,10 @@
-﻿using Mono.Cecil.Cil;
+﻿using EnemiesReturns.Behaviors.SkinDefPicker;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using Rewired.ComponentControls.Effects;
 using RoR2;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,15 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 using static RoR2.EquipmentSlot;
 
 namespace EnemiesReturns.Enemies.ContactLight
 {
     public static class SetupContactLight
     {
+        public static GameObject wardrobe;
+
 
         public static void Hooks()
         {
@@ -25,7 +30,21 @@ namespace EnemiesReturns.Enemies.ContactLight
                 IL.RoR2.InteractionDriver.OnPreRenderOutlineHighlight += InteractionDriver_OnPreRenderOutlineHighlight;
 
                 CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
+                RoR2.Stage.onServerStageBegin += AddWardrobe;
             }
+        }
+
+        private static void AddWardrobe(Stage stage)
+        {
+            if (stage.sceneDef.cachedName != "bazaar")
+            {
+                return;
+            }
+
+            // TODO: add unlockable check
+
+            var newObject = UnityEngine.Object.Instantiate(wardrobe, new Vector3(8.97897816f, -5.73999977f, 7.62354374f), Quaternion.identity);
+            NetworkServer.Spawn(newObject);
         }
 
         private static void ModHelper_getAdditionalEntries(List<CostTypeDef> list)
@@ -130,6 +149,28 @@ namespace EnemiesReturns.Enemies.ContactLight
             prefab.GetComponentInChildren<TextMeshPro>().color = new Color(0.8490566f, 0.7833268f, 0f, 1f);
 
             return prefab;
+        }
+
+        public static GameObject CreateSkinDefPickerPanel()
+        {
+            var newPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Command.CommandPickerPanel_prefab).WaitForCompletion().InstantiateClone("SkinDefPickerPanel", false);
+            var pickerPanelComponent = newPrefab.GetComponent<PickupPickerPanel>();
+
+            var skinDefPanel = newPrefab.AddComponent<SkinDefPickerPanel>();
+            skinDefPanel.gridlayoutGroup = pickerPanelComponent.gridlayoutGroup;
+            skinDefPanel.buttonContainer = pickerPanelComponent.buttonContainer;
+            skinDefPanel.buttonPrefab = pickerPanelComponent.buttonPrefab;
+            skinDefPanel.coloredImages = pickerPanelComponent.coloredImages;
+            skinDefPanel.darkColoredImages = pickerPanelComponent.darkColoredImages;
+            skinDefPanel.maxColumnCount = pickerPanelComponent.maxColumnCount;
+            skinDefPanel.useLockSpriteForUnavailableOptions = pickerPanelComponent.useLockSpriteForUnavailableOptions;
+            skinDefPanel.shouldChangeButtonFrameColor = pickerPanelComponent.shouldChangeButtonFrameColor;
+            skinDefPanel.shouldLeaveDisabledButtonsInteractable = pickerPanelComponent.shouldLeaveDisabledButtonsInteractable;
+
+            UnityEngine.Object.DestroyImmediate(pickerPanelComponent);
+            UnityEngine.Object.DestroyImmediate(newPrefab.GetComponent<PickerPanelSizeAdjuster>());
+
+            return newPrefab;
         }
     }
 }
