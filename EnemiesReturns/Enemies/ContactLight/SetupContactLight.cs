@@ -156,6 +156,16 @@ namespace EnemiesReturns.Enemies.ContactLight
             var newPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Command.CommandPickerPanel_prefab).WaitForCompletion().InstantiateClone("SkinDefPickerPanel", false);
             var pickerPanelComponent = newPrefab.GetComponent<PickupPickerPanel>();
 
+            var labelTransform = newPrefab.transform.Find("MainPanel/Juice/Label");
+            if (labelTransform)
+            {
+                var textMesh = labelTransform.GetComponent<LanguageTextMeshController>();
+                if (textMesh)
+                {
+                    textMesh.token = "ENEMIESRETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER";
+                }
+            }
+
             var skinDefPanel = newPrefab.AddComponent<SkinDefPickerPanel>();
             skinDefPanel.gridlayoutGroup = pickerPanelComponent.gridlayoutGroup;
             skinDefPanel.buttonContainer = pickerPanelComponent.buttonContainer;
