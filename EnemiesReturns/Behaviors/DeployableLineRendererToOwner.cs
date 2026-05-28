@@ -1,78 +1,154 @@
 ﻿using RoR2;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.Behaviors
 {
-    // there is actually hopoo script for that, but at this point who cares
-    public class DeployableLineRendererToOwner : MonoBehaviour
+    public class DeployableLineRendererToOwner : NetworkBehaviour
     {
         public string childOriginName;
 
         public string ownerTargetName;
 
-        private Deployable deployable;
+        public LineRenderer lineRenderer;
 
-        private LineRenderer lineRenderer;
+        private GameObject ownerBodyObject;
 
         private Transform originPoint;
 
         private Transform targetPoint;
 
-        private void OnEnable()
+        private const uint OWNER_BODY_OBJECT_DIRTY_BIT = 1u;
+
+        private bool foundOwnerChild;
+
+        private void Start()
         {
-            originPoint = gameObject.transform;
-            var childLocator = GetComponent<ChildLocator>();
-            if (childLocator)
+            if (!lineRenderer)
             {
-                var child = childLocator.FindChild(childOriginName);
-                if (child)
+                this.enabled = false;
+                return;
+            }
+
+            originPoint = gameObject.transform;
+            var modelLocator = GetComponent<ModelLocator>();
+            if (modelLocator)
+            {
+                var modelTransform = modelLocator.modelTransform;
+                if (modelTransform)
                 {
-                    originPoint = child;
+                    var childLocator = modelTransform.GetComponent<ChildLocator>();
+                    if (childLocator)
+                    {
+                        var child = childLocator.FindChild(childOriginName);
+                        if (child)
+                        {
+                            originPoint = child;
+                        }
+                    }
                 }
             }
 
-            var characterModel = GetComponent<CharacterModel>();
-            if (characterModel && characterModel.body)
+            FindOwnerBodyGameObject();
+        }
+
+        private void FixedUpdate()
+        {
+            FindOwnerBodyGameObject();
+            if(!foundOwnerChild && ownerBodyObject)
             {
-                deployable = characterModel.body.GetComponent<Deployable>();
-            }
-            if (originPoint)
-            {
-                lineRenderer = originPoint.gameObject.GetComponent<LineRenderer>();
+                var modelLocator = ownerBodyObject.GetComponent<ModelLocator>();
+                if(!modelLocator || !modelLocator.modelTransform)
+                {
+                    return;
+                }
+
+                var childLocator = modelLocator.modelTransform.GetComponent<ChildLocator>();
+                if (!childLocator)
+                {
+                    return;
+                }
+
+                var child = childLocator.FindChild(ownerTargetName);
+                if (!child)
+                {
+                    return;
+                }
+
+                targetPoint = child;
+                foundOwnerChild = true;
             }
         }
 
-        private void Update()
+        private void LateUpdate()
         {
-            if (!targetPoint)
-            {
-                CharacterBody ownerBody = null;
-                if (deployable && deployable.ownerMaster)
-                {
-                    ownerBody = deployable.ownerMaster.GetBody();
-                }
-
-                ChildLocator ownerChildLocator = null;
-                if (ownerBody)
-                {
-                    ownerChildLocator = ownerBody.modelLocator?.modelTransform?.gameObject.GetComponent<ChildLocator>() ?? null;
-                }
-
-                if (ownerChildLocator)
-                {
-                    targetPoint = ownerChildLocator.FindChild("Chest");
-                }
-                else if (ownerBody)
-                {
-                    targetPoint = ownerBody.transform;
-                }
-            }
-
-            if (deployable && deployable.ownerMaster && lineRenderer)
+            if (lineRenderer && originPoint && targetPoint)
             {
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, originPoint.position);
-                lineRenderer.SetPosition(1, targetPoint?.position ?? originPoint.position);
+                lineRenderer.SetPosition(1, targetPoint.position);
+            }
+        }
+
+        private void FindOwnerBodyGameObject()
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if (this.ownerBodyObject)
+            {
+                return;
+            }
+
+            var body = GetComponent<CharacterBody>();
+            if (!body || !body.master)
+            {
+                return;
+            }
+
+            var deployable = body.master.GetComponent<Deployable>();
+            if (!deployable || !deployable.ownerMaster)
+            {
+                return;
+            }
+
+            var ownerBodyObject = deployable.ownerMaster.GetBodyObject();
+            if (!ownerBodyObject)
+            {
+                return;
+            }
+
+            this.ownerBodyObject = ownerBodyObject;
+            SetDirtyBit(OWNER_BODY_OBJECT_DIRTY_BIT);
+        }
+
+        public override bool OnSerialize(NetworkWriter writer, bool initialState)
+        {
+            uint num = syncVarDirtyBits;
+            if (initialState && ownerBodyObject)
+            {
+                num = OWNER_BODY_OBJECT_DIRTY_BIT;
+            }
+
+            writer.WritePackedUInt32(num);
+            if ((num & OWNER_BODY_OBJECT_DIRTY_BIT) != 0)
+            {
+                var networkIdentity = ownerBodyObject.GetComponent<NetworkIdentity>();
+                writer.Write(networkIdentity.netId);
+            }
+
+            return num != 0;
+        }
+
+        public override void OnDeserialize(NetworkReader reader, bool initialState)
+        {
+            uint num = reader.ReadPackedUInt32();
+            if ((num & OWNER_BODY_OBJECT_DIRTY_BIT) != 0)
+            {
+                var netId = reader.ReadNetworkId();
+                ownerBodyObject = Util.FindNetworkObject(netId);
             }
         }
 

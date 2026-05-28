@@ -30,7 +30,10 @@ namespace EnemiesReturns.Enemies.Ifrit.Pillar
             #endregion
 
             #region LineRendererHelper
-            model.AddComponent<DeployableLineRendererToOwner>().childOriginName = "LineOriginPoint";
+            var helper = body.AddComponent<DeployableLineRendererToOwner>();
+            helper.childOriginName = "LineOriginPoint";
+            helper.ownerTargetName = "Chest";
+            helper.lineRenderer = linerenderer;
             #endregion
 
             #region Light
