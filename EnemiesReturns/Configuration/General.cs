@@ -83,6 +83,9 @@ namespace EnemiesReturns.Configuration
             ProvidenceP1SpecialRingsToFire = config.Bind("Providence", "P1 Special Rings To Fire", 2);
             ProvidenceP1SpecialDelayBetweenRings = config.Bind("Providence", "P1 Special Delay Between Rings", 0.5f);
             ProvidenceP1SpecialOneRingDuration = config.Bind("Providence", "P1 Special One Ring Duration", 2f);
+
+
+
 #endif
             UseConfigFile = config.Bind<bool>("Config", "Use Config File", false, "Use config file for storring config. Each enemy gets their own config file. Due to mod being currently unfinished and unbalanced, we deploy rapid changes to values. So this way we can still have configs, but without the issue of people having those values saved.");
             SkipJudgementCutscene = config.Bind("Judgement", "Skip Judgement Cutscene", false, "Automatically skips Judgement cutscene. Sadly currently there is no way to skip it and it crashes the game if you quit during it, so if you don't want to see it after a few runs enable this value.");

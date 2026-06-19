@@ -1,9 +1,11 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.Enemies.ContactLight;
+using EnemiesReturns.Enemies.ContactLight.TempleGuard;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Projectile;
+using RoR2.Skills;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,6 +39,8 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
                 ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
+
+                ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.overclockMaterial = assets.First(material => material.name == "matTempleGuardOverclockOverlay");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
@@ -46,38 +50,6 @@ namespace EnemiesReturns
                 _contentPack.sceneDefs.Add(assets);
             }));
 
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ModdedSkinDefParams[]>)((assets) =>
-            {
-                var templeGuardians = assets.Where(item => item.name == "skinLunarGolemTempleGuardian").First();
-                var newSkin = templeGuardians.CreateSkinDef();
-                var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(templeGuardians.bodyPrefab).WaitForCompletion();
-                var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
-                if (newSkin)
-                {
-                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in newSkin);
-                }
-
-                var templeGuardians2 = assets.Where(item => item.name == "skinLunarGolemTempleGuardian2").First();
-                var newSkin2 = templeGuardians2.CreateSkinDef();
-                if (newSkin2)
-                {
-                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in newSkin2);
-                }
-
-                //var moddedSkinDefList = assets.Where(item => item.name.Contains("Judgement")).ToArray();
-                //foreach (var moddedSkinDef in moddedSkinDefList)
-                //{
-                //    var newSkin = moddedSkinDef.CreateSkinDef();
-                //    if (newSkin)
-                //    {
-                //        var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(moddedSkinDef.bodyPrefab).WaitForCompletion();
-                //        var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, moddedSkinDef.CreateSkinDef(), false);
-                //        var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
-                //        HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
-                //    }
-                //}
-            }));
-
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
             {
                 _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
@@ -85,10 +57,14 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                 _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                //TempleGuard2Body = assets.First(prefab => prefab.name == "TempleGuard2Body");
-                //TempleGuard2Body.GetComponentInChildren<ModelSkinController>()._avatarAddress = new AssetReferenceT<Avatar>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarGolem.mdlLunarGolem_fbx);
+                Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
 
+                Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
 
+                ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.projectilePrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryProjectile");
+                ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");
+                ModdedEntityStates.ContactLight.TempleGuard.Primary.ChargePrimary.effectPrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryCharge");
+                ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.preShieldEffect = assets.First(asset => asset.name == "TempleGuardOverclockCharge");
 
                 ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
                 ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
@@ -133,6 +109,11 @@ namespace EnemiesReturns
 
                 SetupContactLight.wardrobe = wardrobe;
                 nopList.Add(SetupContactLight.wardrobe);
+
+                nopList.Add(assets.First(prefab => prefab.name == "SurgicalBed"));
+                nopList.Add(assets.First(prefab => prefab.name == "EquipmentChest"));
+                nopList.Add(assets.First(prefab => prefab.name == "NanoChest"));
+                nopList.Add(assets.First(prefab => prefab.name == "GaussCannon"));
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -147,6 +128,7 @@ namespace EnemiesReturns
                 _contentPack.buffDefs.Add(assets);
                 Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
                 Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "AdrenalineCoreProtection");
+                Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
@@ -161,12 +143,28 @@ namespace EnemiesReturns
                 _contentPack.equipmentDefs.Add(assets);
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SpawnCard[]>)((assets) =>
+            {
+                Enemies.ContactLight.SetupContactLight.iscSwordShard = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShard");
+            }));
+            
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
             {
                 var sprite = assets.First(sprite => sprite.name == "texArcaneCircleProviMask");
                 Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator(sprite);
 
             }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
+            {
+                _contentPack.skillFamilies.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
+            {
+                _contentPack.skillDefs.Add(assets);
+            }));
+
             Content.CostTypes.AccessCard = new CostTypeDef()
             {
                 name = "EnemiesReturnsKeycardCost",

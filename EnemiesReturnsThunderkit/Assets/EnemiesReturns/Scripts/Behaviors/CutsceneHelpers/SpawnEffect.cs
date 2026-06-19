@@ -1,9 +1,6 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
-//using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets;
 
 namespace EnemiesReturns.Behaviors.CutsceneHelpers
 {
@@ -11,20 +8,22 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
     {
         public string assetPath;
 
+        public bool transmit = false;
+
         public float scale = -1f;
 
         private GameObject effectPrefab;
 
         private void Awake()
         {
-            // if (!string.IsNullOrEmpty(assetPath))
-            // {
-            //     var handle = Addressables.LoadAssetAsync<GameObject>(assetPath);
-            //     if (handle.IsValid())
-            //     {
-            //         effectPrefab = handle.WaitForCompletion();
-            //     }
-            // }
+            if (!string.IsNullOrEmpty(assetPath))
+            {
+                var handle = Addressables.LoadAssetAsync<GameObject>(assetPath);
+                if (handle.IsValid())
+                {
+                    effectPrefab = handle.WaitForCompletion();
+                }
+            }
         }
         private void OnEnable()
         {
@@ -33,12 +32,12 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                 var effectData = new EffectData();
                 effectData.origin = transform.position;
                 effectData.rotation = transform.rotation;
-                if(scale > 0)
+                if (scale > 0)
                 {
                     effectData.scale = scale;
                 }
 
-                EffectManager.SpawnEffect(effectPrefab, effectData, false);
+                EffectManager.SpawnEffect(effectPrefab, effectData, transmit);
             }
         }
     }

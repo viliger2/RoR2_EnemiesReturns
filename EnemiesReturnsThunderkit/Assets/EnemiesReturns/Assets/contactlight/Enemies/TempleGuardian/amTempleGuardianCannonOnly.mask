@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: amTempleGuardianCannonOnly
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/BackFootIK.L
+    m_Weight: 0
+  - m_Path: Armature/BackFootIK.L/BackFootIK.L_end
+    m_Weight: 0
+  - m_Path: Armature/BackFootIK.R
+    m_Weight: 0
+  - m_Path: Armature/BackFootIK.R/BackFootIK.R_end
+    m_Weight: 0
+  - m_Path: Armature/BackKnee.IK.L
+    m_Weight: 0
+  - m_Path: Armature/BackKnee.IK.L/BackKnee.IK.L_end
+    m_Weight: 0
+  - m_Path: Armature/BackKnee.IK.R
+    m_Weight: 0
+  - m_Path: Armature/BackKnee.IK.R/BackKnee.IK.R_end
+    m_Weight: 0
+  - m_Path: Armature/FrontFootIK.L
+    m_Weight: 0
+  - m_Path: Armature/FrontFootIK.L/FrontFootIK.L_end
+    m_Weight: 0
+  - m_Path: Armature/FrontFootIK.R
+    m_Weight: 0
+  - m_Path: Armature/FrontFootIK.R/FrontFootIK.R_end
+    m_Weight: 0
+  - m_Path: Armature/FrontKnee.IK.L
+    m_Weight: 0
+  - m_Path: Armature/FrontKnee.IK.L/FrontKnee.IK.L_end
+    m_Weight: 0
+  - m_Path: Armature/FrontKnee.IK.R
+    m_Weight: 0
+  - m_Path: Armature/FrontKnee.IK.R/FrontKnee.IK.R_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Body
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Body/Cannon.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/Base/Body/Cannon.L/Cannon.L_end
+    m_Weight: 1
+  - m_Path: Armature/ROOT/Base/Body/Cannon.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/Base/Body/Cannon.R/Cannon.R_end
+    m_Weight: 1
+  - m_Path: Armature/ROOT/Base/Pelvis
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.L/BackCalf.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.L/BackCalf.L/BackFoot.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.L/BackCalf.L/BackFoot.L/BackFoot.L_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.R/BackCalf.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.R/BackCalf.R/BackFoot.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/BackThigh.R/BackCalf.R/BackFoot.R/BackFoot.R_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L/Cloth2.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L/Cloth2.L/Cloth3.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L/Cloth2.L/Cloth3.L/Cloth4.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L/Cloth2.L/Cloth3.L/Cloth4.L/Cloth5.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.L/Cloth2.L/Cloth3.L/Cloth4.L/Cloth5.L/Cloth5.L_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R/Cloth2.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R/Cloth2.R/Cloth3.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R/Cloth2.R/Cloth3.R/Cloth4.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R/Cloth2.R/Cloth3.R/Cloth4.R/Cloth5.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/Cloth1.R/Cloth2.R/Cloth3.R/Cloth4.R/Cloth5.R/Cloth5.R_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1/ClothB.2
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1/ClothB.2/ClothB.3
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1/ClothB.2/ClothB.3/ClothB.4
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1/ClothB.2/ClothB.3/ClothB.4/ClothB.5
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothB.1/ClothB.2/ClothB.3/ClothB.4/ClothB.5/ClothB.5_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1/ClothF.2
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1/ClothF.2/ClothF.3
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1/ClothF.2/ClothF.3/ClothF.4
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1/ClothF.2/ClothF.3/ClothF.4/ClothF.5
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/ClothF.1/ClothF.2/ClothF.3/ClothF.4/ClothF.5/ClothF.5_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.L/FrontCalf.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.L/FrontCalf.L/FrontFoot.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.L/FrontCalf.L/FrontFoot.L/FrontFoot.L_end
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.R/FrontCalf.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.R/FrontCalf.R/FrontFoot.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/Base/Pelvis/FrontThigh.R/FrontCalf.R/FrontFoot.R/FrontFoot.R_end
+    m_Weight: 0
+  - m_Path: Body
+    m_Weight: 0
+  - m_Path: Cloth
+    m_Weight: 0

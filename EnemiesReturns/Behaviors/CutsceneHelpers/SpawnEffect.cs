@@ -8,6 +8,8 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
     {
         public string assetPath;
 
+        public bool transmit = false;
+
         public float scale = -1f;
 
         private GameObject effectPrefab;
@@ -35,7 +37,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                     effectData.scale = scale;
                 }
 
-                EffectManager.SpawnEffect(effectPrefab, effectData, false);
+                EffectManager.SpawnEffect(effectPrefab, effectData, transmit);
             }
         }
     }

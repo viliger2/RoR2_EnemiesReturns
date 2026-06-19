@@ -21,6 +21,12 @@ namespace EnemiesReturns.Enemies.ContactLight
     {
         public static GameObject wardrobe;
 
+        public static Dictionary<string, Vector3> SwordShardSpawnPositions = new Dictionary<string, Vector3>()
+        {
+            {"golemplains", Vector3.zero }
+        };
+
+        public static InteractableSpawnCard iscSwordShard;
 
         public static void Hooks()
         {
@@ -31,6 +37,53 @@ namespace EnemiesReturns.Enemies.ContactLight
 
                 CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
                 RoR2.Stage.onServerStageBegin += AddWardrobe;
+                RoR2.SceneDirector.onPostPopulateSceneServer += SpawnSwordShard;
+            }
+        }
+
+        private static void SpawnSwordShard(SceneDirector sceneDirector)
+        {
+            if (!RoR2.SceneInfo.instance || !RoR2.DirectorCore.instance)
+            {
+                return;
+            }
+
+            var sceneDef = RoR2.SceneInfo.instance.sceneDef;
+            if (!sceneDef)
+            {
+                return;
+            }
+
+            if(!(sceneDef.sceneType == SceneType.Stage && sceneDef.stageOrder >= 1 && sceneDef.stageOrder <= 5))
+            {
+                return;
+            }
+
+            if(SwordShardSpawnPositions == null)
+            {
+                return;
+            }
+
+            DirectorPlacementRule placementRule = new DirectorPlacementRule();
+
+            if(SwordShardSpawnPositions.TryGetValue(sceneDef.cachedName, out var position))
+            {
+                placementRule.position = position;
+                placementRule.placementMode = DirectorPlacementRule.PlacementMode.Direct;
+            } else
+            {
+                placementRule.placementMode = DirectorPlacementRule.PlacementMode.Random;
+            }
+
+            DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(iscSwordShard, placementRule, sceneDirector.rng));
+        }
+
+        public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender && sender.HasBuff(Content.Buffs.TempleGuardOverclock))
+            {
+                args.attackSpeedMultAdd += 0.5f; // TODO: config
+                args.primarySkill.cooldownReductionMultAdd += 1f; // TODO: config
             }
         }
 

@@ -23,7 +23,7 @@
 		<PackageReference Include="R2API.Orb" Version="1.0.1" />
 		<PackageReference Include="R2API.Prefab" Version="1.1.1" />
 		<PackageReference Include="R2API.ProcType" Version="1.0.2" />
-		<PackageReference Include="R2API.RecalculateStats" Version="1.6.3" />
+		<PackageReference Include="R2API.RecalculateStats" Version="1.6.6" />
 		<PackageReference Include="R2API.Sound" Version="1.0.3" />
 		<PackageReference Include="R2API.TempVisualEffect" Version="1.0.3" />
 		<PackageReference Include="RiskOfBrainrot-MoreStats" Version="1.2.7" />
@@ -31,7 +31,7 @@
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
 		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.1-r.0" />
 		<PackageReference Include="MMHOOK.RoR2" Version="2025.12.9" NoWarn="NU1701" />
-		<PackageReference Include="RoR2BepInExPack" Version="1.40.0" />
+		<PackageReference Include="RoR2BepInExPack" Version="1.41.0" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="Exists('D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll')">

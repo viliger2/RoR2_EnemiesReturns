@@ -216,6 +216,10 @@ namespace EnemiesReturns
             {
                 Enemies.Judgement.SetupJudgementPath.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
+            if (EnemiesReturns.Configuration.General.EnableContactLight.Value)
+            {
+                Enemies.ContactLight.SetupContactLight.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            }
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)

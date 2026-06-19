@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4795784444133607440}
   - component: {fileID: 7876351206691754564}
   - component: {fileID: 2683110237803847374}
-  - component: {fileID: 8613033877580366061}
+  - component: {fileID: 4947826399225347003}
+  - component: {fileID: 3421840183088682368}
   m_Layer: 0
   m_Name: ArmoryLocker
   m_TagString: Untagged
@@ -362,7 +363,22 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   timeStepType: 0
---- !u!114 &8613033877580366061
+--- !u!114 &4947826399225347003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330798740734522269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1630511094, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3421840183088682368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

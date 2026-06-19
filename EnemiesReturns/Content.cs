@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using UnityEngine;
 using static R2API.DamageAPI;
 
 namespace EnemiesReturns
@@ -98,6 +99,8 @@ namespace EnemiesReturns
             public static BuffDef ProvidenceImmuneToDamage;
 
             public static BuffDef AdrenalineCoreProtection;
+
+            public static BuffDef TempleGuardOverclock;
         }
 
         public static class Elites
@@ -134,6 +137,16 @@ namespace EnemiesReturns
         public static class CostTypes
         {
             public static CostTypeDef AccessCard;
+        }
+    
+        public static class BodyPrefabs
+        {
+            public static GameObject TempleGuardBody;
+        }
+
+        public static class MasterPrefabs
+        {
+            public static GameObject TempleGuardMaster;
         }
     }
 }

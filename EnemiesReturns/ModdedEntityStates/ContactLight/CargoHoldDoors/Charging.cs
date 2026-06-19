@@ -5,6 +5,7 @@ using RoR2.Hologram;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
 {
@@ -38,6 +39,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
             holdoutZoneController = GetComponent<HoldoutZoneController>();
             if (holdoutZoneController)
             {
+                holdoutZoneController.enabled = true;
                 holdoutZoneController.onCharged.AddListener(OnCharged);
             }
         }
@@ -65,18 +67,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!setCostType && fixedAge > graceTime && isAuthority)
+            if (!setCostType && fixedAge > graceTime)
             {
-                if (isAuthority)
+                if (purchaseInteraction && costTypeIndex != CostTypeIndex.None)
                 {
-                    if (purchaseInteraction && costTypeIndex != CostTypeIndex.None)
-                    {
-                        purchaseInteraction.costType = costTypeIndex;
-                        purchaseInteraction.cost = cost;
-                        purchaseInteraction.SetAvailable(true);
-                        purchaseInteraction.onDetailedPurchaseServer.AddListener(OnPurchasedWithKeyCard);
-                    };
+                    purchaseInteraction.costType = costTypeIndex;
+                    purchaseInteraction.cost = cost;
+                };
+
+                if (NetworkServer.active)
+                {
+                    purchaseInteraction.SetAvailable(true);
+                    purchaseInteraction.onDetailedPurchaseServer.AddListener(OnPurchasedWithKeyCard);
                 }
+
                 if (hologramProjectors != null)
                 {
                     foreach(var projector in hologramProjectors)
@@ -102,13 +106,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
             if (purchaseInteraction)
             {
                 purchaseInteraction.onDetailedPurchaseServer.RemoveListener(OnPurchasedWithKeyCard);
-            }
-            if (hologramProjectors != null)
-            {
-                foreach (var projector in hologramProjectors)
-                {
-                    projector.enabled = false;
-                }
             }
         }
     }

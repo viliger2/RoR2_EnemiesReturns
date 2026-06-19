@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4264717717516364959}
   - component: {fileID: 387975607813490052}
   - component: {fileID: 1938604583013001530}
+  - component: {fileID: 389098352405849035}
   m_Layer: 0
   m_Name: SurgicalBedTeleporter
   m_TagString: Untagged
@@ -124,7 +125,7 @@ MonoBehaviour:
   onDetailedPurchaseServer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 639387413467368562}
+      - m_Target: {fileID: 1439097464287821618}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -134,8 +135,67 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &389098352405849035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639387413467368562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 733712478, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1439097464287821618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7819732580185837473}
+  - component: {fileID: 3152764848252637164}
+  m_Layer: 0
+  m_Name: EffectOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7819732580185837473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439097464287821618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23, y: -3.28, z: 0.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4781925997055383924}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3152764848252637164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439097464287821618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be3193c671cb0348b1ef92902299599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetPath: RoR2/Base/Common/VFX/TeleportOutBoom.prefab
+  transmit: 1
+  scale: -1
 --- !u!1 &2352180937262025898
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +412,7 @@ Transform:
   - {fileID: 9014017964722154517}
   - {fileID: 7807124413773188532}
   - {fileID: 8851081671926026408}
+  - {fileID: 7819732580185837473}
   m_Father: {fileID: 6695540101803904642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
