@@ -228,7 +228,9 @@ namespace EnemiesReturns
                     var replacementShader = Addressables.LoadAssetAsync<Shader>(matName).WaitForCompletion();
                     if (replacementShader)
                     {
+                        var renderQueue = material.renderQueue;
                         material.shader = replacementShader;
+                        material.renderQueue = renderQueue;
                     }
                     else
                     {

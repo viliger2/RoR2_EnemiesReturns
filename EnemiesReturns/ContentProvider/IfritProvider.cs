@@ -57,15 +57,23 @@ namespace EnemiesReturns
 
                 IfritBody.Skills.Hellzone = ifritBody.CreateHellzoneSkill();
                 IfritBody.SkillFamilies.Secondary = Utils.CreateSkillFamily("IfritSecondaryFamily", IfritBody.Skills.Hellzone);
+                sdList.Add(IfritBody.Skills.Hellzone);
+                sfList.Add(IfritBody.SkillFamilies.Secondary);
 
                 IfritBody.Skills.SummonPylon = ifritBody.CreateSummonPylonSkill();
                 IfritBody.SkillFamilies.Special = Utils.CreateSkillFamily("IfritSpecialFamily", IfritBody.Skills.SummonPylon);
+                sdList.Add(IfritBody.Skills.SummonPylon);
+                sfList.Add(IfritBody.SkillFamilies.Special);
 
                 IfritBody.Skills.FlameCharge = ifritBody.CreateFlameChargeSkill();
                 IfritBody.SkillFamilies.Utility = Utils.CreateSkillFamily("IfritUtilityFamily", IfritBody.Skills.FlameCharge);
+                sdList.Add(IfritBody.Skills.FlameCharge);
+                sfList.Add(IfritBody.SkillFamilies.Utility);
 
                 IfritBody.Skills.Smash = ifritBody.CreateSmashSkill();
                 IfritBody.SkillFamilies.Primary = Utils.CreateSkillFamily("IfritPrimaryFamily", IfritBody.Skills.Smash);
+                sdList.Add(IfritBody.Skills.Smash);
+                sfList.Add(IfritBody.SkillFamilies.Primary);
 
                 var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);

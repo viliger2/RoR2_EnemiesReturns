@@ -40,7 +40,7 @@ namespace EnemiesReturns.Behaviors
             }
             else
             {
-                SendMessage();
+                SendMessageInvoke();
             }
         }
 

@@ -151,6 +151,5 @@ namespace EnemiesReturns.Behaviors
                 ownerBodyObject = Util.FindNetworkObject(netId);
             }
         }
-
     }
 }

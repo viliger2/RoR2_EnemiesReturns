@@ -145,6 +145,12 @@ namespace EnemiesReturns
                     Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser = assets.First(asset => (asset as ScriptableObject).name == "sdArraignHauntSkyLaser");
                     Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser.baseRechargeInterval = Configuration.Judgement.ArraignP2.SkyLaserCooldown.Value;
 
+                    _contentPack.skillDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
+                {
+                    _contentPack.skillFamilies.Add(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
