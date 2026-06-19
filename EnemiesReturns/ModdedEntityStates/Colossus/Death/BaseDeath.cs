@@ -68,6 +68,12 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             {
                 spotlight.gameObject.SetActive(false);
             }
+
+            var headSurface = childLocator.FindChild("HeadStandableSurface");
+            if (headSurface)
+            {
+                headSurface.gameObject.SetActive(false);
+            }
         }
 
         public override void Update()

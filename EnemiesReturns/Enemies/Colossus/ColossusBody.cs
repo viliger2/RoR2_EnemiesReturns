@@ -9,6 +9,7 @@ using EnemiesReturns.Components.ModelComponents.Hitboxes;
 using EnemiesReturns.EditorHelpers;
 using EnemiesReturns.PrefabSetupComponents.BodyComponents;
 using HG;
+using KinematicCharacterController;
 using R2API;
 using RoR2;
 using RoR2.Skills;
@@ -171,6 +172,16 @@ namespace EnemiesReturns.Enemies.Colossus
             printController.startingPrintBias = 0f;
             printController.maxPrintBias = 0f;
             printController.animateFlowmapPower = false;
+
+            var standableHead = mdlColossus.transform.Find("Armature/root/root_pelvis_control/spine/spine.001/head/StandableSurfacePosition");
+            var surface = standableHead.Find("StandableSurface");
+
+            var moverController = surface.gameObject.AddComponent<BasicPhysicsMoverController>();
+            moverController.referenceTransformPosition = standableHead;
+
+            var mover = surface.gameObject.AddComponent<PhysicsMover>();
+            mover.Rigidbody = surface.gameObject.GetComponent<Rigidbody>();
+            mover.MoverController = moverController;
 
             //var helper = body.AddComponent<WalkSpeedDebugHelper>();
             //helper.animator = body.transform.Find("ModelBase/mdlColossus").GetComponent<Animator>();

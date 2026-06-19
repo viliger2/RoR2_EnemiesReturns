@@ -34,14 +34,17 @@ namespace EnemiesReturns
 
                 var archerBugBody = new ArcherBugBody();
                 ArcherBugBody.Skills.CausticSpit = archerBugBody.CreateCausticSpitSkill();
-
                 sdList.Add(ArcherBugBody.Skills.CausticSpit);
+
                 ArcherBugBody.SkillFamilies.Primary = Utils.CreateSkillFamily("ArcherBugPrimaryFamily", ArcherBugBody.Skills.CausticSpit);
                 sfList.Add(ArcherBugBody.SkillFamilies.Primary);
+
                 ArcherBugBody.BodyPrefab = archerBugBody.AddBodyComponents(assets.First(body => body.name == "ArcherBugBody"), iconLookup["texArcherBugIcon"], archerBugLog);
                 bodyList.Add(ArcherBugBody.BodyPrefab);
+
                 ArcherBugMaster.MasterPrefab = new ArcherBugMaster().AddMasterComponents(assets.First(master => master.name == "ArcherBugMaster"), ArcherBugBody.BodyPrefab);
                 masterList.Add(ArcherBugMaster.MasterPrefab);
+
                 ArcherBugBody.SpawnCards.cscArcherBugDefault = archerBugBody.CreateCard("cscArcherBugDefault", ArcherBugMaster.MasterPrefab, ArcherBugBody.SkinDefs.Default, ArcherBugBody.BodyPrefab);
                 var dcArcherBugDefault = new DirectorCard
                 {
