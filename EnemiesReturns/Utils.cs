@@ -14,6 +14,19 @@ namespace EnemiesReturns
 {
     public static class Utils
     {
+        public struct PositionAndRotation
+        {
+            public Vector3 position;
+            public Vector3 rotation;
+
+            public PositionAndRotation(Vector3 position, Vector3 rotation)
+            {
+                this.position = position;
+                this.rotation = rotation;
+            }
+        }
+
+        // TODO: add DLC2 and DLC3 stages
         public static Dictionary<string, string> StageDccsPoolLookUp = new Dictionary<string, string>()
         {
             {"golemplains","RoR2/Base/golemplains/dpGolemplainsMonsters.asset"},

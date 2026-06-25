@@ -34,21 +34,31 @@ namespace EnemiesReturns.Configuration
         public static ConfigEntry<PartyTime> PartyTimeConfig;
 
         public static ConfigEntry<bool> EnableArcherBug;
+
         public static ConfigEntry<bool> EnableColossus;
         public static ConfigEntry<bool> EnableColossusItem;
+
         public static ConfigEntry<bool> EnableIfrit;
         public static ConfigEntry<bool> EnableIfritItem;
+
         public static ConfigEntry<bool> EnableSandCrab;
+
         public static ConfigEntry<bool> EnableSpitter;
+
         public static ConfigEntry<bool> EnableSwift;
+
         public static ConfigEntry<bool> EnableMechanicalSpider;
+
         public static ConfigEntry<bool> EnableLynxTotem;
         public static ConfigEntry<bool> EnableLynxTotemItem;
         public static ConfigEntry<bool> EnableLynxShaman;
         public static ConfigEntry<bool> EnableLynxShrine;
         public static ConfigEntry<bool> EnableLynxTrap;
+
         public static ConfigEntry<bool> EnableJudgement;
+
         public static ConfigEntry<bool> EnableContactLight;
+        public static ConfigEntry<bool> EnableAdrenalineCore;
 
         public enum PartyTime
         {
@@ -112,6 +122,7 @@ namespace EnemiesReturns.Configuration
             EnableLynxTrap = config.Bind("Content", "Enable Lynx Trap", true, "Enables Lynx Trap. Has no effect is Lynx Totem is disabled.");
 
             EnableContactLight = config.Bind("Content", "Enable Contact Light", true, "Enables content related to Contact Light.");
+            EnableAdrenalineCore = config.Bind("Content", "Enable Adrenaline Core", true, "Enables Adrenaline Core item.");
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Configuration.ArcherBug.Enabled = EnableArcherBug;

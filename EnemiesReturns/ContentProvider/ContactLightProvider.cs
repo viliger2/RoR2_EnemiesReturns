@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns
 {
@@ -57,6 +58,12 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                 _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
+                _contentPack.networkedObjectPrefabs.Add(assets.Where(asset => 
+                    asset.TryGetComponent<NetworkIdentity>(out _) 
+                        && !(asset.TryGetComponent<CharacterBody>(out _) 
+                            || asset.TryGetComponent<CharacterMaster>(out _) 
+                            || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
+
                 Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
 
                 Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
@@ -65,6 +72,9 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");
                 ModdedEntityStates.ContactLight.TempleGuard.Primary.ChargePrimary.effectPrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryCharge");
                 ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.preShieldEffect = assets.First(asset => asset.name == "TempleGuardOverclockCharge");
+
+                ModdedEntityStates.ContactLight.SwordHilt.SpawnPortal.portalContactLight = assets.First(asset => asset.name == "PortalContactLight");
+                Enemies.ContactLight.SetupContactLight.swordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
 
                 ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
                 ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
@@ -107,13 +117,14 @@ namespace EnemiesReturns
                 pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
                 PrefabAPI.RegisterNetworkPrefab(wardrobe);
 
-                SetupContactLight.wardrobe = wardrobe;
-                nopList.Add(SetupContactLight.wardrobe);
+                Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
+                //nopList.Add(SetupContactLight.wardrobe);
 
-                nopList.Add(assets.First(prefab => prefab.name == "SurgicalBed"));
-                nopList.Add(assets.First(prefab => prefab.name == "EquipmentChest"));
-                nopList.Add(assets.First(prefab => prefab.name == "NanoChest"));
-                nopList.Add(assets.First(prefab => prefab.name == "GaussCannon"));
+                //nopList.Add(assets.First(prefab => prefab.name == "SurgicalBed"));
+                //nopList.Add(assets.First(prefab => prefab.name == "EquipmentChest"));
+                //nopList.Add(assets.First(prefab => prefab.name == "NanoChest"));
+                //nopList.Add(assets.First(prefab => prefab.name == "GaussCannon"));
+                //nopList.Add(assets.First(asset => asset.name == "SwordShardInteractable"));
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

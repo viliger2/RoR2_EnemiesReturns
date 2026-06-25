@@ -13,6 +13,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static EnemiesReturns.Utils;
 using static RoR2.EquipmentSlot;
 
 namespace EnemiesReturns.Enemies.ContactLight
@@ -21,9 +22,19 @@ namespace EnemiesReturns.Enemies.ContactLight
     {
         public static GameObject wardrobe;
 
-        public static Dictionary<string, Vector3> SwordShardSpawnPositions = new Dictionary<string, Vector3>()
+        public static GameObject swordHilt;
+
+        public static Dictionary<string, PositionAndRotation> SwordShardSpawnPositions = new Dictionary<string, PositionAndRotation>()
         {
-            {"golemplains", Vector3.zero }
+            {"golemplains", new PositionAndRotation(Vector3.zero, Vector3.zero) }
+        };
+
+        public static Dictionary<string, PositionAndRotation> SwordHiltSpawnPositions = new Dictionary<string, PositionAndRotation>()
+        {
+            {"artifactworld", new PositionAndRotation(new Vector3(71.0199966f, 3.69985294f, 90.5f), new Vector3(0f ,69.2384033f ,0)) },
+            {"artifactworld01", new PositionAndRotation(new Vector3(-53.1899986f,24.6599979f,95.8899994f), new Vector3(0,329.253754f,0)) },
+            {"artifactworld02", new PositionAndRotation(new Vector3(-16.2054558f,14.1897697f,-43.7611961f), new Vector3(0,239.659424f,0)) },
+            {"artifactworld03", new PositionAndRotation(new Vector3(-18.3999996f,-4.36375141f,3.52999997f), new Vector3(0,242.920288f,0)) }
         };
 
         public static InteractableSpawnCard iscSwordShard;
@@ -37,11 +48,15 @@ namespace EnemiesReturns.Enemies.ContactLight
 
                 CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
                 RoR2.Stage.onServerStageBegin += AddWardrobe;
-                RoR2.SceneDirector.onPostPopulateSceneServer += SpawnSwordShard;
+                RoR2.SceneDirector.onPostPopulateSceneServer += SpawnThings;
+            }
+            if (Configuration.General.EnableAdrenalineCore.Value)
+            {
+                Items.AdrenalineCore.AdrenalineCoreUI.Hooks();
             }
         }
 
-        private static void SpawnSwordShard(SceneDirector sceneDirector)
+        private static void SpawnThings(SceneDirector sceneDirector)
         {
             if (!RoR2.SceneInfo.instance || !RoR2.DirectorCore.instance)
             {
@@ -54,23 +69,47 @@ namespace EnemiesReturns.Enemies.ContactLight
                 return;
             }
 
-            if(!(sceneDef.sceneType == SceneType.Stage && sceneDef.stageOrder >= 1 && sceneDef.stageOrder <= 5))
+            SpawnSwordHilt(sceneDef);
+            SpawnSwordShard(sceneDirector, sceneDef);
+        }
+
+        private static void SpawnSwordHilt(SceneDef sceneDef)
+        {
+            if(SwordHiltSpawnPositions == null)
             {
                 return;
             }
 
-            if(SwordShardSpawnPositions == null)
+            if(SwordHiltSpawnPositions.TryGetValue(sceneDef.cachedName, out var positionAndRotation))
+            {
+                var newHilt = UnityEngine.Object.Instantiate(swordHilt);
+                newHilt.transform.position = positionAndRotation.position;
+                newHilt.transform.rotation = Quaternion.Euler(positionAndRotation.rotation);
+                NetworkServer.Spawn(newHilt);
+            }
+        }
+
+        private static void SpawnSwordShard(SceneDirector sceneDirector, SceneDef sceneDef)
+        {
+            if (!(sceneDef.sceneType == SceneType.Stage && sceneDef.stageOrder >= 1 && sceneDef.stageOrder <= 5))
+            {
+                return;
+            }
+
+            if (SwordShardSpawnPositions == null)
             {
                 return;
             }
 
             DirectorPlacementRule placementRule = new DirectorPlacementRule();
 
-            if(SwordShardSpawnPositions.TryGetValue(sceneDef.cachedName, out var position))
+            if (SwordShardSpawnPositions.TryGetValue(sceneDef.cachedName, out var positionAndRotation))
             {
-                placementRule.position = position;
+                placementRule.position = positionAndRotation.position;
+                placementRule.rotation = Quaternion.Euler(positionAndRotation.rotation);
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Direct;
-            } else
+            }
+            else
             {
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Random;
             }

@@ -15,7 +15,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             public static float healthCheckFreq => 0.1f;
 
-            public static bool transendanceCheck => true;
+            public static bool transendanceCheck => Configuration.ContactLight.AdrenalineCore.TransendanceSupport.Value;
 
             public static float criticalDamage => 0.1f;
 
@@ -95,7 +95,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static int championPointReward => 5;
 
-        public static int normalPointReward => 10;
+        public static int normalPointReward => 1;
 
         public static float tier1EliteModifier => 2f;
 
@@ -103,17 +103,21 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static float pointsPerLevel => 25;
 
-        private int itemCount;
-
         [SyncVar]
         public float currentPoints;
-
-        private CharacterMaster master;
 
         [SyncVar]
         private float currentPointsPerLevel;
 
-        public int currentLevel;
+        public int currentLevel { get; private set; }
+
+        public bool useShields;
+
+        private int itemCount;
+
+        private CharacterMaster master;
+
+        private bool uiAttached;
 
         private void Awake()
         {
@@ -121,10 +125,18 @@ namespace EnemiesReturns.Items.AdrenalineCore
             this.enabled = false;
         }
 
+        private void Update()
+        {
+            if (!uiAttached)
+            {
+                EnableUI();
+            }
+        }
+
         private void Enable()
         {
             if (!master)
-            {                
+            {
                 return;
             }
 
@@ -142,7 +154,19 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
             currentPointsPerLevel = pointsPerLevel;
 
+            EnableUI();
+
             this.enabled = true;
+        }
+
+        private void EnableUI()
+        {
+            var instance = AdrenalineCoreUI.FindInstance(master);
+            if (instance)
+            {
+                instance.Enable(this);
+                uiAttached = true;
+            }           
         }
 
         private void Disable()
@@ -157,10 +181,25 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
             }
 
+            currentPoints = 0f;
+            currentLevel = 0;
+
             master.onBodyStart -= Master_onBodyStart;
             R2API.RecalculateStatsAPI.GetStatCoefficients -= RecalculateStatsAPI_GetStatCoefficients;
 
+            DisableUI();
+
             this.enabled = false;
+        }
+
+        private void DisableUI()
+        {
+            var instance = AdrenalineCoreUI.FindInstance(master);
+            if (instance)
+            {
+                instance.Disable();
+                uiAttached = false;
+            }
         }
 
         public void SetItemCount(int itemCount)
@@ -192,7 +231,12 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (currentLevel < MAX_LEVEL)
             {
-                int pointReward;
+                if((damageReport.victimBody.bodyFlags & CharacterBody.BodyFlags.Masterless) == CharacterBody.BodyFlags.Masterless)
+                {
+                    return;
+                }
+
+                float pointReward;
                 if (damageReport.victimIsChampion)
                 {
                     pointReward = championPointReward;
@@ -203,7 +247,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
                 if (damageReport.victimIsElite)
                 {
-                    if(damageReport.victimMaster && damageReport.victimMaster.inventory)
+                    var rewardModifier = tier1EliteModifier; // give tier1 reward for elites that could not be found
+                    if (damageReport.victimMaster && damageReport.victimMaster.inventory)
                     {
                         var equipmentState = damageReport.victimMaster.inventory.GetActiveEquipment();
                         if (equipmentState.equipmentDef)
@@ -213,14 +258,15 @@ namespace EnemiesReturns.Items.AdrenalineCore
                             {
                                 foreach(var eliteTierDef in CombatDirector.eliteTiers)
                                 {
-                                    if (eliteTierDef.availableDefs.Contains(eliteDef))
+                                    if (Array.Find(eliteTierDef.eliteTypes, item => item == eliteDef))
                                     {
-                                        pointReward *= (int)(eliteTierDef.costMultiplier > CombatDirector.baseEliteCostMultiplier ? tier2EliteModifier : tier1EliteModifier);
+                                        rewardModifier = (int)(eliteTierDef.costMultiplier > CombatDirector.baseEliteCostMultiplier ? tier2EliteModifier : tier1EliteModifier);
                                     }
                                 }
                             }
                         }
                     }
+                    pointReward *= rewardModifier;
                 }
 
                 currentPoints = Mathf.Min(currentPoints + pointReward, pointsPerLevel * MAX_LEVEL);
@@ -236,8 +282,17 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         damageReport.attackerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
                     }
                 }
-                Log.Info($"current points - {currentPoints}, current level - {currentLevel}");
             }
+        }
+
+        public float GetCurrentPointsPerLevel()
+        {
+            return currentPointsPerLevel;
+        }
+
+        public float GetCurrentPoints()
+        {
+            return currentPoints;
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
@@ -259,32 +314,30 @@ namespace EnemiesReturns.Items.AdrenalineCore
             {
                 obj.gameObject.AddComponent<AdrenalineCoreOnKilledOther>();
             }
+            uiAttached = false; // basically using this as transition between stages
         }
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.General.EnableContactLight.Value)
+            if (Configuration.General.EnableContactLight.Value && Configuration.General.EnableAdrenalineCore.Value)
             {
-                if (NetworkServer.active)
+                if(body && body.master && body.master.TryGetComponent<AdrenalineCoreMasterComponent>(out var component))
                 {
-                    if(body && body.master && body.master.TryGetComponent<AdrenalineCoreMasterComponent>(out var component))
+                    var itemCount = body.inventory.GetItemCountEffective(Content.Items.AdrenalineCore);
+                    if(itemCount > 0)
                     {
-                        var itemCount = body.inventory.GetItemCountEffective(Content.Items.AdrenalineCore);
-                        if(itemCount > 0)
+                        if (!component.enabled)
                         {
-                            if (!component.enabled)
-                            {
-                                component.Enable();
-                            }
+                            component.Enable();
+                        }
 
-                            component.SetItemCount(itemCount);
-                        } else
+                        component.SetItemCount(itemCount);
+                    } else
+                    {
+                        if (component.enabled)
                         {
-                            if (component.enabled)
-                            {
-                                component.Disable();
-                                component.SetItemCount(0);
-                            }
+                            component.Disable();
+                            component.SetItemCount(0);
                         }
                     }
                 }

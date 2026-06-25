@@ -96,10 +96,6 @@ namespace EnemiesReturns.Behaviors
 
             purchaseCount++;
             refreshTimer = refreshDuration;
-            if(purchaseCount >= maxPurchaseCount)
-            {
-                RpcSetPingable(false);
-            }
         }
 
         private void CombatSquad_onDefeatedServer()
