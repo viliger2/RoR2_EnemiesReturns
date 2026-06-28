@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace EnemiesReturns.Equipment.EliteSlayer
     public class EliteSlayer
     {
         public static GameObject EliteSlayerIndicator;
+
+        public static GameObject eliteSlayerProjectilePrefab;
 
         public static void UpdateTargets(EquipmentSlot self)
         {
@@ -37,32 +40,27 @@ namespace EnemiesReturns.Equipment.EliteSlayer
         {
             self.UpdateTargets(Content.Equipment.EliteSlayer.equipmentIndex, true);
             HurtBox hurtBox = self.currentTarget.hurtBox;
-            if (hurtBox && hurtBox.healthComponent && hurtBox.healthComponent.body && hurtBox.healthComponent.body.isElite && hurtBox.healthComponent.body.inventory)
+            if (hurtBox)
             {
-                var inventory = hurtBox.healthComponent.body.inventory;
-
-                var equipment = inventory.GetActiveEquipment();
-                if (!equipment.equipmentDef || !equipment.equipmentDef.passiveBuffDef)
+                var info = new FireProjectileInfo
                 {
-                    return false;
-                }
+                    projectilePrefab = eliteSlayerProjectilePrefab,
+                    position = hurtBox.transform.position,
+                    target = hurtBox.gameObject,
+                    damage = 1f,
+                    owner = self.gameObject,
+                    useFuseOverride = true,
+                    fuseOverride = 0.5f
+                };
 
-                if (hurtBox.healthComponent.body.master)
-                {
-                    hurtBox.healthComponent.body.master.TrueKill(self.gameObject);
-                }
-
-                Vector3 vector = (hurtBox.transform ? hurtBox.transform.position : Vector3.zero);
-                Vector3 normalized = (vector - self.characterBody.corePosition).normalized;
-                PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipment.equipmentDef.equipmentIndex)), vector, normalized * 15f, false);
-
-                // TODO: effects
+                ProjectileManager.instance.FireProjectile(info);
 
                 // TODO: replace with empty equipment, removing for now
                 if (self.characterBody && self.characterBody.inventory)
                 {
                     self.characterBody.inventory.RemoveEquipment(Content.Equipment.EliteSlayer.equipmentIndex);
                 }
+                self.InvalidateCurrentTarget();
                 return true;
             }
 

@@ -225,18 +225,15 @@ namespace EnemiesReturns.Enemies.ContactLight
             }
         }
 
-        public static GameObject CreateEliteSlayerIndicator(Sprite proviMask)
+        public static GameObject CreateEliteSlayerIndicator()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_PassiveHealing.WoodSpriteIndicator_prefab).WaitForCompletion().InstantiateClone("EliteSlayerWeaponIndicator", false);
+            var prefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_BossHunter.BossHunterIndicator_prefab).WaitForCompletion().InstantiateClone("EliteSlayerWeaponIndicator", false);
 
-            var spriteRenderer = prefab.GetComponentInChildren<SpriteRenderer>();
-
-            prefab.transform.Find("Holder").localScale = new Vector3(0.2f, 0.2f, 0.2f);
-
-            prefab.GetComponentInChildren<RotateAroundAxis>().slowRotationSpeed = 10f;
-
-            spriteRenderer.sprite = proviMask;
-            spriteRenderer.color = new Color(0.8490566f, 0.7833268f, 0f, 1f);
+            var spriteRenderers = prefab.GetComponentsInChildren<SpriteRenderer>();
+            foreach(var spriteRenderer in spriteRenderers)
+            {
+                spriteRenderer.color = new Color(0.8490566f, 0.7833268f, 0f, 1f);
+            }
 
             prefab.GetComponentInChildren<TextMeshPro>().color = new Color(0.8490566f, 0.7833268f, 0f, 1f);
 
@@ -273,6 +270,17 @@ namespace EnemiesReturns.Enemies.ContactLight
             UnityEngine.Object.DestroyImmediate(newPrefab.GetComponent<PickerPanelSizeAdjuster>());
 
             return newPrefab;
+        }
+
+        public static GameObject CreateAdrenalineLevelUpEffect(GameObject prefab)
+        {
+            prefab.transform.Find("Ring").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
+            prefab.transform.Find("Dust Explosion").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("BrightFlash").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("Spinner").GetComponent<ParticleSystemRenderer>().trailMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matGenericTrail_mat).WaitForCompletion();
+            prefab.transform.Find("BrightFlash, Lines").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.matOmniHitspark4Merc_mat).WaitForCompletion();
+
+            return prefab;
         }
     }
 }

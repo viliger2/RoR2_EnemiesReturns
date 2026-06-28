@@ -12,6 +12,8 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - DITHER
+  - FRESNEL_EMISSION
+  - SPLATMAP
   - _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -67,11 +69,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FresnelMask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 35333eedec40c4c499d526816891aaf9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FresnelRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cda90b48803b7d948a50ce937b491d21, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GreenChannelNormalTex:
@@ -79,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GreenChannelTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 35333eedec40c4c499d526816891aaf9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -111,28 +113,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SplatmapTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cda90b48803b7d948a50ce937b491d21, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlueChannelBias: 0
+    - _BlueChannelBias: -2
     - _BlueChannelSmoothness: 0
     - _BumpScale: 1
     - _ColorsOn: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DecalLayer: 0
-    - _Depth: 0.2
+    - _Depth: 0.31
     - _DetailNormalMapScale: 1
     - _DitherOn: 1
     - _DstBlend: 0
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
     - _EliteIndex: 0
-    - _EmPower: 1
+    - _EmPower: 3.76
     - _EnableCutout: 0
-    - _FEON: 0
+    - _FEON: 1
     - _Fade: 1
     - _FadeBias: 0
     - _FlowEmissionStrength: 1
@@ -144,12 +146,12 @@ Material:
     - _FlowTextureScaleFactor: 1
     - _FlowmapOn: 0
     - _ForceSpecOn: 0
-    - _FresnelBoost: 1
-    - _FresnelPower: 1
+    - _FresnelBoost: 1.59
+    - _FresnelPower: 1.19
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GreenChannelBias: 0
+    - _GreenChannelBias: -0.39
     - _GreenChannelSmoothness: 0
     - _LimbPrimeMask: 1
     - _LimbRemovalOn: 0
@@ -172,8 +174,8 @@ Material:
     - _SpecularExponent: 1
     - _SpecularHighlights: 1
     - _SpecularStrength: 0
-    - _SplatmapOn: 0
-    - _SplatmapTileScale: 1
+    - _SplatmapOn: 1
+    - _SplatmapTileScale: 1.39
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

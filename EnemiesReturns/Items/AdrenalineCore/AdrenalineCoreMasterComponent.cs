@@ -40,7 +40,6 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
             }
 
-
             private void FixedUpdate()
             {
                 if (!NetworkServer.active)
@@ -78,7 +77,6 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 stopwatch -= healthCheckFreq;
             }
 
-
             public void OnKilledOtherServer(DamageReport damageReport)
             {
                 var masterComponent = damageReport.attackerMaster.GetComponent<AdrenalineCoreMasterComponent>();
@@ -91,11 +89,22 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public const int MAX_LEVEL = 5;
 
+        public static GameObject levelUpEffectComponent;
+
+        public static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
+        {
+            {1, Color.yellow },
+            {2, Color.magenta },
+            {3, Color.white },
+            {4, Color.blue },
+            {5, Color.red }
+        };
+
         public static float itemCountModifier => 0.1f;
 
         public static int championPointReward => 5;
 
-        public static int normalPointReward => 1;
+        public static int normalPointReward => 24;
 
         public static float tier1EliteModifier => 2f;
 
@@ -133,7 +142,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
             }
         }
 
-        private void Enable()
+        public void Enable()
         {
             if (!master)
             {
@@ -169,7 +178,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
             }           
         }
 
-        private void Disable()
+        public void Disable()
         {
             var bodyObject = master.GetBodyObject();
             if (bodyObject)
@@ -231,7 +240,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (currentLevel < MAX_LEVEL)
             {
-                if((damageReport.victimBody.bodyFlags & CharacterBody.BodyFlags.Masterless) == CharacterBody.BodyFlags.Masterless)
+                if ((damageReport.victimBody.bodyFlags & CharacterBody.BodyFlags.Masterless) == CharacterBody.BodyFlags.Masterless)
                 {
                     return;
                 }
@@ -240,7 +249,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 if (damageReport.victimIsChampion)
                 {
                     pointReward = championPointReward;
-                } else
+                }
+                else
                 {
                     pointReward = normalPointReward;
                 }
@@ -256,7 +266,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                             var eliteDef = EliteCatalog.GetEliteDefFromEquipmentIndex(equipmentState.equipmentIndex);
                             if (eliteDef)
                             {
-                                foreach(var eliteTierDef in CombatDirector.eliteTiers)
+                                foreach (var eliteTierDef in CombatDirector.eliteTiers)
                                 {
                                     if (Array.Find(eliteTierDef.eliteTypes, item => item == eliteDef))
                                     {
@@ -269,18 +279,37 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     pointReward *= rewardModifier;
                 }
 
-                currentPoints = Mathf.Min(currentPoints + pointReward, pointsPerLevel * MAX_LEVEL);
-                if(currentLevel != (int)(currentPoints / currentPointsPerLevel))
+                AddPoints(damageReport.attackerBody, pointReward);
+            }
+        }
+
+        private void AddPoints(CharacterBody ownerBody, float pointReward)
+        {
+            currentPoints = Mathf.Min(currentPoints + pointReward, pointsPerLevel * MAX_LEVEL);
+            if (currentLevel != (int)(currentPoints / currentPointsPerLevel))
+            {
+                currentLevel = (int)(currentPoints / currentPointsPerLevel);
+                if (currentLevel > 0)
                 {
-                    currentLevel = (int)(currentPoints / currentPointsPerLevel);
-                    if(currentLevel > 0)
+                    if (levelUpEffectComponent)
                     {
-                        // TODO: play sound
+                        EffectData effectData = new EffectData
+                        {
+                            origin = transform.position,
+                            color = levelColors.GetValueOrDefault(currentLevel)
+
+                        };
+                        if (ownerBody.mainHurtBox)
+                        {
+                            effectData.SetHurtBoxReference(ownerBody.gameObject);
+                            effectData.scale = ownerBody.radius;
+                        }
+                        EffectManager.SpawnEffect(levelUpEffectComponent, effectData, transmit: true);
                     }
-                    if(currentLevel == MAX_LEVEL)
-                    {
-                        damageReport.attackerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
-                    }
+                }
+                if (currentLevel == MAX_LEVEL)
+                {
+                    ownerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
                 }
             }
         }

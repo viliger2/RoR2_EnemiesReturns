@@ -64,6 +64,24 @@ namespace EnemiesReturns
                             || asset.TryGetComponent<CharacterMaster>(out _) 
                             || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
 
+                var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
+                var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
+                pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
+                PrefabAPI.RegisterNetworkPrefab(wardrobe);
+
+                Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
+
+                Equipment.EliteSlayer.EliteSlayer.eliteSlayerProjectilePrefab = assets.First(prefab => prefab.name == "EliteSlayerProjectile");
+
+                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffectComponent = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
+
+
+
+
+
+
+
+
                 Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
 
                 Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
@@ -112,19 +130,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
                 ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
 
-                var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
-                var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
-                pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
-                PrefabAPI.RegisterNetworkPrefab(wardrobe);
 
-                Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
-                //nopList.Add(SetupContactLight.wardrobe);
-
-                //nopList.Add(assets.First(prefab => prefab.name == "SurgicalBed"));
-                //nopList.Add(assets.First(prefab => prefab.name == "EquipmentChest"));
-                //nopList.Add(assets.First(prefab => prefab.name == "NanoChest"));
-                //nopList.Add(assets.First(prefab => prefab.name == "GaussCannon"));
-                //nopList.Add(assets.First(asset => asset.name == "SwordShardInteractable"));
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -150,6 +156,7 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
             {
                 Content.Equipment.EliteSlayer = assets.First(equipment => equipment.name == "EliteSlayer");
+                Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator();
 
                 _contentPack.equipmentDefs.Add(assets);
             }));
@@ -160,10 +167,7 @@ namespace EnemiesReturns
             }));
             
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
-            {
-                var sprite = assets.First(sprite => sprite.name == "texArcaneCircleProviMask");
-                Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator(sprite);
-
+            {    
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
