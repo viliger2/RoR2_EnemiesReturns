@@ -297,6 +297,16 @@
     "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_NAME": "Engineer: Handyman",
     "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "As Engineer, repair a broken Mechanical Spider.",
 
+    "ENEMIES_RETURNS_TEMPLE_GUARD_NAME": "Temple Guard",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_LORE": "Field Notes:\n\nA robot creature that assembles itself.. I have not seen them materialize other than when I unknowingly trigger their presence. I cannot believe this is indeed a machine- and yet it is made from some alloy and uses heavy artillery! Was this on the ship, or are these guards a naturally occurring 'species' here? My suit's scanners are unable to detect any manufacturers' signature.\n\nThey seem to be determined not to let me pass. They attack with unlimited focus.",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_NAME": "Barrage",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_DESC": "Charges for a few seconds and fires barrage of projectiles.",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_OVERCLOCK_NAME": "Overclock",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_OVERCLOCK_DESC": "Overclocks internal systems, increasing attack speed and lowering Barrage cooldown.",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_NAME": "Shell",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_DESC": "Protects the body by limiting the incoming damage.",
+    "ENEMIES_RETURNS_UNLOCKABLE_LOG_TEMPLE_GUARD": "Monster Log: Temple Guard",
+
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINE_CORE_LEVEL": "Lv.{0}"
   }
 }

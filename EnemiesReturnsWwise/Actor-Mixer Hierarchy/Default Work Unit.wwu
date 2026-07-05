@@ -2982,13 +2982,6 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="PreCastNatureMagicHigh" ID="{F9F606AD-653C-4F0A-86F1-50BBC38D5C02}">
-															<Language>SFX</Language>
-															<AudioFile>LynxTribe\Shaman\PreCastNatureMagicHigh.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="932924990"/>
-															</MediaIDList>
-														</AudioFileSource>
 														<AudioFileSource Name="shaman_summon_projectile_no_voice" ID="{0043E0E1-21F4-48E2-8A12-F1F4567A6E99}">
 															<Language>SFX</Language>
 															<AudioFile>LynxTribe\Shaman\shaman_summon_projectile_no_voice.wav</AudioFile>
@@ -5475,7 +5468,7 @@
 								</Folder>
 								<Folder Name="ArcherBug" ID="{A79E5ACC-681D-4699-BDA2-ABC0BC21F0FF}" ShortID="1020138286">
 									<PropertyList>
-										<Property Name="Color" Type="int16" Value="6"/>
+										<Property Name="Color" Type="int16" Value="16"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 									</PropertyList>
 									<ChildrenList>
@@ -6535,13 +6528,6 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="hit-shell-01-266294" ID="{C2361A0A-F92D-48ED-819A-D4E51D26ED41}">
-													<Language>SFX</Language>
-													<AudioFile>SandCrab\hit-shell-01-266294.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="450373126"/>
-													</MediaIDList>
-												</AudioFileSource>
 												<AudioFileSource Name="charge_snip" ID="{B86EFCD7-8DF8-45E3-8F51-2A4FE2D7FBBD}">
 													<Language>SFX</Language>
 													<AudioFile>SandCrab\snip\charge_snip.wav</AudioFile>
@@ -6619,6 +6605,599 @@
 										</Sound>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Contact Light" ID="{38EEAA8E-47DE-4462-8188-0AE2101E5FEF}" ShortID="616373129">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="19"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Folder Name="AdrenalineCore" ID="{A0E084F0-E7AF-4EE1-8002-6BEA9D0B9EAC}" ShortID="638136593">
+											<ChildrenList>
+												<Sound Name="AdrenalineCore_LevelUp" ID="{2D413DE1-D16B-4A35-94F0-BEA2384A2F61}" ShortID="68598508">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="level_up" ID="{D2CDA36A-7B46-4EAF-85EF-CC7051F685CB}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\AdrenalineCore\level_up.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="948461342"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="level_up" ID="{D2CDA36A-7B46-4EAF-85EF-CC7051F685CB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="AdrenalineCore_LevelDown" ID="{F00CD9B0-901A-49A7-BC6B-361E068ED656}" ShortID="37941216">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="level_down" ID="{2D4A4AFB-D3A8-4A94-85EE-D1C74CB0F263}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\AdrenalineCore\level_down.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1011048311"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="level_down" ID="{2D4A4AFB-D3A8-4A94-85EE-D1C74CB0F263}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="AdrenalineCore_ShieldBreak" ID="{2BB77F1E-CAF1-453E-94DC-7D944D4B307F}" ShortID="334791101">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-9</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="break" ID="{8809B9CD-0125-4E60-9DFC-794AB2FD54D4}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\AdrenalineCore\break.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="935269870"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="break" ID="{8809B9CD-0125-4E60-9DFC-794AB2FD54D4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Path" ID="{8B2F489F-4B79-48F0-B94F-9BB6FFE59107}" ShortID="325232906">
+											<ChildrenList>
+												<Sound Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" ShortID="1011101009">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverrideConversion" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\SwordShard\swordShardLoop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="439272410"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="TempleGuard" ID="{4B2972D5-19B6-4399-A779-8450F36BC8A3}" ShortID="753629190">
+											<ChildrenList>
+												<Sound Name="TempleGuard_Spawn" ID="{ABEE654A-26E7-41ED-AD50-88DC60BC785B}" ShortID="396950562">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="spawn" ID="{86D3C688-664E-4C10-9DCA-BC8F69A58141}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\spawn.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="950072199"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="spawn" ID="{86D3C688-664E-4C10-9DCA-BC8F69A58141}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="TempleGuard_Death" ID="{5E055014-B7B2-4ABD-AA02-6DE98F80DE18}" ShortID="504735577">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="death" ID="{A714A55E-AFF0-4928-8B17-A7CD3C6021A2}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\death.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="887075120"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="death" ID="{A714A55E-AFF0-4928-8B17-A7CD3C6021A2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<ActorMixer Name="Random Pitch" ID="{2843666B-B1E2-4279-9B15-B068CF66B49F}" ShortID="610491344">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{83E6AA48-31A4-40FC-8B71-B7BD177454A8}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="TempleGuard_FireSingleProjectile" ID="{E5E1219C-150A-4B91-993D-489C1990C56A}" ShortID="336860681">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{834B6176-A25B-4E66-9073-5ADE85EB9AB9}">
+																				<PropertyList>
+																					<Property Name="Max" Type="Real64" Value="150"/>
+																					<Property Name="Min" Type="Real64" Value="-150"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-8</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="fire_single_projectile" ID="{85838B3F-FE57-4D82-967B-E77FC664D146}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\TempleGuard\fire_single_projectile.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="694583904"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="fire_single_projectile" ID="{85838B3F-FE57-4D82-967B-E77FC664D146}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<RandomSequenceContainer Name="TempleGuard_Step" ID="{84E8189C-5383-4BD1-8187-EEBE6B5F4D2B}" ShortID="182486426">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-10</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="footstep1" ID="{8786246B-2BD2-4BF8-BAB2-6AD574B5143A}" ShortID="318363783">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep1" ID="{227410DE-EE27-4D0E-BA27-637DB3FDE1BC}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\TempleGuard\Footsteps\footstep1.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="403210970"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep1" ID="{227410DE-EE27-4D0E-BA27-637DB3FDE1BC}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep2" ID="{57D346A2-E0A0-4698-AC50-913625531609}" ShortID="1003261626">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep2" ID="{79EF9AFC-1B1D-456E-84D8-CDA9B79F30F6}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\TempleGuard\Footsteps\footstep2.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="666047092"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep2" ID="{79EF9AFC-1B1D-456E-84D8-CDA9B79F30F6}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep3" ID="{05075999-4AFE-43C5-B61B-7B5897DCAFF0}" ShortID="784049792">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep3" ID="{00A20AAD-EE41-4B50-BD21-A49556B27DEA}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\TempleGuard\Footsteps\footstep3.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="641423349"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep3" ID="{00A20AAD-EE41-4B50-BD21-A49556B27DEA}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep4" ID="{685058FE-3C23-4C1E-B9E8-A7A91251D912}" ShortID="959798380">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep4" ID="{211F3EB4-1794-43B4-B372-C53568AD0915}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\TempleGuard\Footsteps\footstep4.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="633154863"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep4" ID="{211F3EB4-1794-43B4-B372-C53568AD0915}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep5" ID="{AA952BDF-71F7-450D-ADC0-E9706309E1EC}" ShortID="13071657">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep5" ID="{1EBDE887-AAAB-4B8B-8013-23FF36B7A2A4}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\TempleGuard\Footsteps\footstep5.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="294066190"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep5" ID="{1EBDE887-AAAB-4B8B-8013-23FF36B7A2A4}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<Sound Name="TempleGuard_MetalSqueak" ID="{BAA8C129-031A-4940-8282-3857B388BF8E}" ShortID="434704878">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="metal_squeak" ID="{BCFD1127-70A3-4151-B370-45CD660BF851}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\TempleGuard\metal_squeak.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1041439883"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="metal_squeak" ID="{BCFD1127-70A3-4151-B370-45CD660BF851}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</ActorMixer>
+												<Sound Name="TempleGuard_ChargePrimary" ID="{DDF188D6-FDF4-4730-95A2-BBB9ADD3D871}" ShortID="455651120">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="charge_primary_2" ID="{18E2746E-5A97-45FB-962E-E77162AEF2EE}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\charge_primary_2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="603084990"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<Reference>
+																<Local>
+																	<RTPC Name="" ID="{EA3FE164-D682-481D-B15C-D070DF5888C9}" ShortID="943579914">
+																		<PropertyList>
+																			<Property Name="PropertyName" Type="string" Value="Pitch"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="ControlInput">
+																				<ObjectRef Name="attackSpeed" ID="{12C2C4EF-A03F-4687-8A12-F850A057F7E5}" WorkUnitID="{340A7A4D-E82B-41CD-872B-F11446D437C8}"/>
+																			</Reference>
+																			<Reference Name="Curve">
+																				<Custom>
+																					<Curve Name="" ID="{A2659FAC-2697-4172-B7A0-A4EB420F2190}">
+																						<PropertyList>
+																							<Property Name="Flags" Type="int32" Value="65537"/>
+																						</PropertyList>
+																						<PointList>
+																							<Point>
+																								<XPos>0</XPos>
+																								<YPos>-4800</YPos>
+																								<Flags>5</Flags>
+																								<SegmentShape>SCurve</SegmentShape>
+																							</Point>
+																							<Point>
+																								<XPos>100</XPos>
+																								<YPos>4800</YPos>
+																								<Flags>37</Flags>
+																							</Point>
+																						</PointList>
+																					</Curve>
+																				</Custom>
+																			</Reference>
+																		</ReferenceList>
+																	</RTPC>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+													<ActiveSourceList>
+														<ActiveSource Name="charge_primary_2" ID="{18E2746E-5A97-45FB-962E-E77162AEF2EE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="TempleGuard_Landing" ID="{23058BF1-7864-47B5-95D7-C6ABE7D19B57}" ShortID="319920163">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="landing" ID="{CF06BB1C-4753-4F85-A8E2-DBB49DB83B9B}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\landing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="697007011"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="landing" ID="{CF06BB1C-4753-4F85-A8E2-DBB49DB83B9B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="TempleGuard_Jumping" ID="{D131940D-46DB-41EE-82AF-72681DA05B31}" ShortID="117331522">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="jumping" ID="{340EF9BA-97F9-4A87-B7F3-81A9A0C6FF5A}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\jumping.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="725496999"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="jumping" ID="{340EF9BA-97F9-4A87-B7F3-81A9A0C6FF5A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="TempleGuard_Alive_Loop" ID="{3991AE0D-DEAA-47ED-B98F-CBE7BB70D6F9}" ShortID="13522491">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-25</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="alive_loop" ID="{E4393111-BDEE-4174-85AD-BEE08310FFDD}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\alive_loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="416107976"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="alive_loop" ID="{E4393111-BDEE-4174-85AD-BEE08310FFDD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
@@ -6648,6 +7227,42 @@
 																	<Point>
 																		<XPos>100</XPos>
 																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{AE878E21-4438-4D1A-A821-B0822029E628}" ShortID="884646686">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Pitch"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="attackSpeed" ID="{12C2C4EF-A03F-4687-8A12-F850A057F7E5}" WorkUnitID="{340A7A4D-E82B-41CD-872B-F11446D437C8}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{86DC5EB5-27ED-4B72-A065-1366385193D9}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-4800</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>InvertedSCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>4800</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>

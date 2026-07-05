@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
 {
-    public class CustomCostHologramContent : MonoBehaviour
+    public class TimerHologramContent : MonoBehaviour
     {
         public float displayValue;
 

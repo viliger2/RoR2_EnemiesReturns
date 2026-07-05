@@ -845,7 +845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5709550786982482774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 7.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -864,10 +864,10 @@ MonoBehaviour:
   m_Script: {fileID: -1238519948, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckHeight: 5
+  duckHeight: 4
   animator: {fileID: 185723978475101500}
-  smoothdamp: 0.1
-  initialVerticalOffset: 5
+  smoothdamp: 0.3
+  initialVerticalOffset: 2
   crouchOriginOverride: {fileID: 0}
 --- !u!1 &6091599982452722340
 GameObject:
@@ -1066,13 +1066,14 @@ MonoBehaviour:
   limitCooldown: 0
   minCooldownCoefficient: 0
   hullClassification: 0
-  portraitIcon: {fileID: 2800000, guid: 0f1ec539938c56140b31c786eb9de41e, type: 3}
-  bodyColor: {r: 0, g: 0, b: 0, a: 0}
+  portraitIcon: {fileID: 2800000, guid: 42d319b05e6e0284ebe9bed9023a7e8d, type: 3}
+  bodyColor: {r: 0.5176471, g: 0.6039216, b: 0.6, a: 1}
   doNotReassignToTeamBasedCollisionLayer: 0
   isChampion: 0
   altDeathBodyName: 
   vehicleIdleStateMachine:
   - {fileID: 3424064185900511098}
+  - {fileID: 9085775290081261542}
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
@@ -1211,8 +1212,8 @@ MonoBehaviour:
     _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Spawn,
       EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
-    _typeName: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Main, EnemiesReturns,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   debug: 0
 --- !u!114 &9085775290081261542
 MonoBehaviour:
@@ -1429,14 +1430,14 @@ MonoBehaviour:
   m_Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: Play_lunar_golem_death
-  barkSound: Play_lunar_golem_idle_VO
+  deathSound: ER_TempleGuard_Death_Play
+  barkSound: 
   openSound: 
-  jumpSound: 
-  landingSound: 
+  jumpSound: ER_TempleGuard_Jumping_Play
+  landingSound: ER_TempleGuard_Landing_Play
   fallDamageSound: 
-  aliveLoopStart: Play_lunar_golem_idle_loop
-  aliveLoopStop: Stop_lunar_golem_idle_loop
+  aliveLoopStart: ER_TempleGuard_Alive_Play
+  aliveLoopStop: ER_TempleGuard_Alive_Stop
   sprintLoopStart: 
   sprintLoopStop: 
 --- !u!114 &686027193470644068
@@ -2056,14 +2057,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8288143309168018853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.76, y: 2.06, z: 7.91}
+  m_LocalRotation: {x: 0, y: 0.9363203, z: 0, w: 0.35114726}
+  m_LocalPosition: {x: -5.7211814, y: 0.8497219, z: 8.207401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4470085963225120733}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 138.885, z: 0}
 --- !u!1 &8306640528617491588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,6 +2512,48 @@ MonoBehaviour:
   maxFlowmapPower: 0
   onlyDisablePrintingWhenFinished: 0
   ignoreMaterialsWithPrintControllers: 0
+--- !u!114 &3591257729520503555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733851189425660873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55375caab27422546b8d3e5a9712d81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emissionTime: 1
+  emissionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  age: 0
+  disableWhenFinished: 1
+  paused: 0
+  startingEmissionValue: 10
+  endEmissionValue: 0
 --- !u!137 &4989208646109177229 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1640574174137304352, guid: d286f1a8f70ce224fa8e71d65576108e, type: 3}
@@ -2601,6 +2644,48 @@ MonoBehaviour:
   maxFlowmapPower: 0
   onlyDisablePrintingWhenFinished: 0
   ignoreMaterialsWithPrintControllers: 0
+--- !u!114 &8046688195489849420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568689628550530245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55375caab27422546b8d3e5a9712d81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emissionTime: 1
+  emissionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  age: 0
+  disableWhenFinished: 1
+  paused: 0
+  startingEmissionValue: 10
+  endEmissionValue: 0
 --- !u!1 &6861285165705616892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d286f1a8f70ce224fa8e71d65576108e, type: 3}
@@ -3189,10 +3274,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusPointTransform: {fileID: 4470085963225120733}
   cameraPositionTransform: {fileID: 5859065594105902700}
-  modelRotation: {x: 0, y: 0, z: 0, w: 1}
+  modelRotation: {x: 0, y: 0.38268346, z: 0, w: 0.9238795}
   modelPositionOffset: {x: 0, y: 0, z: 0}
-  minDistance: 3
-  maxDistance: 8
+  minDistance: 8
+  maxDistance: 25
   triggerOnLogbook:
     m_PersistentCalls:
       m_Calls: []
@@ -3386,7 +3471,7 @@ MonoBehaviour:
   m_Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFootstepString: Play_lunar_golem_step
+  baseFootstepString: ER_TempleGuard_Footstep_Play
   baseFootliftString: 
   sprintFootstepOverrideString: 
   sprintFootliftOverrideString: 
@@ -3417,7 +3502,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: add01052049538b46a19d03aaf1bc4a5, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 0
     hideOnDeath: 0
     ignoresMaterialOverrides: 0
@@ -3427,7 +3512,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 0b344884cbbfe694c85e241f79fdbcb8, type: 2}
-    defaultShadowCastingMode: 0
+    defaultShadowCastingMode: 1
     ignoreOverlays: 1
     hideOnDeath: 0
     ignoresMaterialOverrides: 0

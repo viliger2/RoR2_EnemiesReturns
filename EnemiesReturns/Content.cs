@@ -23,6 +23,8 @@ namespace EnemiesReturns
             public static MusicTrackDef UnknownBoss;
 
             public static MusicTrackDef TheOrigin;
+
+            public static MusicTrackDef CoalescenceReturns;
         }
 
         public static class GameEndings

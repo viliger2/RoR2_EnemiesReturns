@@ -24,8 +24,6 @@ namespace EnemiesReturns
 
         public static CharacterSpawnCard cscTempleGuardian;
 
-        public static GameObject TempleGuard2Body;
-
         public IEnumerator CreateContactLightAsync(LoadStaticContentAsyncArgs args, Dictionary<string, Sprite> iconLookup, Dictionary<string, Texture2D> rampLookups, Dictionary<string, AnimationCurveDef> acdLookup, string assetBundleFolderPath)
         {
             AssetBundle assetBundleStagesAssets = null;
@@ -33,6 +31,8 @@ namespace EnemiesReturns
 
             AssetBundle assetBundleStages = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
+
+            CreateContactLightMusic();
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
             {
@@ -58,10 +58,10 @@ namespace EnemiesReturns
                 _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                 _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                _contentPack.networkedObjectPrefabs.Add(assets.Where(asset => 
-                    asset.TryGetComponent<NetworkIdentity>(out _) 
-                        && !(asset.TryGetComponent<CharacterBody>(out _) 
-                            || asset.TryGetComponent<CharacterMaster>(out _) 
+                _contentPack.networkedObjectPrefabs.Add(assets.Where(asset =>
+                    asset.TryGetComponent<NetworkIdentity>(out _)
+                        && !(asset.TryGetComponent<CharacterBody>(out _)
+                            || asset.TryGetComponent<CharacterMaster>(out _)
                             || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
 
                 var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
@@ -73,9 +73,11 @@ namespace EnemiesReturns
 
                 Equipment.EliteSlayer.EliteSlayer.eliteSlayerProjectilePrefab = assets.First(prefab => prefab.name == "EliteSlayerProjectile");
 
-                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffectComponent = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
+                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffect = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
+                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelDownEffect = assets.First(prefab => prefab.name == "AdrenalineLevelDownEffect");
 
-
+                var contactLightDiorama = assets.First(asset => asset.name == "ContactLightDioramaDisplay");
+                contactLightDiorama.GetComponent<MusicTrackOverride>().track = Content.MusicTracks.CoalescenceReturns;
 
 
 
@@ -175,8 +177,15 @@ namespace EnemiesReturns
                 _contentPack.skillFamilies.Add(assets);
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
+            {
+                Enemies.ContactLight.TempleGuard.TempleGuardBody.SetupDirectiorCard(assets);
+            }));
+
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
             {
+                TempleGuardBody.SetupSkills(assets);
+
                 _contentPack.skillDefs.Add(assets);
             }));
 
@@ -221,6 +230,27 @@ namespace EnemiesReturns
             };
 
             yield break;
+        }
+
+        private void CreateContactLightMusic()
+        {
+            var dioramaTrack = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            dioramaTrack.cachedName = "EnemiesReturns_ContactLight_CoalescenceReturns";
+            dioramaTrack.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            dioramaTrack.comment = "Maria Papageorgiou & Chris Christodoulou - Coalescence Returns.. | ROR Returns (2023)";
+
+            dioramaTrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 1406885390U // Unknown
+            });
+            dioramaTrack.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 2607556080U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.CoalescenceReturns = dioramaTrack;
         }
     }
 }

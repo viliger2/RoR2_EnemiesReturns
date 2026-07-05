@@ -295,6 +295,18 @@
 		"ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_SCEPTER_DESCRIPTION": "Установка <style=cIsUtility>механического паукта</style> который <style=cIsUtility>наследует свойства всех ваших предметов</style>. Стреляет из бластера, нанося <style=cIsDamage>2x250% урона</style>. Можно вызвать до двух одновременно.\n<color=#d299ff>СКИПЕТР: Теперь стреляет 4 раза и в два раза быстрее.</color>",
 
 		"ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_NAME": "Инженер: очумелые ручки",
-		"ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "Играя за инженера, почините сломанного механического паука."
+		"ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "Играя за инженера, почините сломанного механического паука.",
+
+		"ENEMIES_RETURNS_TEMPLE_GUARD_NAME": "Страж храма",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_LORE": "Полевые заметки:\n\nРоботоподобное существо, которое собирает себя само... Я видел, как они появляются, только когда случайно провоцировал их своим присутствием. Я не могу поверить, что это реальный механизм, и всё же он сделан из какого-то сплава и даже использует тяжёлую артиллерию! Был ли это один из грузов на корабле, или эти стражи просто один из местных «видов»? Сканеры моего скафандра не смогли определить производителя.\n\nПри встрече они делают всё, чтобы не дать мне пройти. Они полны решимости меня уничтожить.",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_NAME": "Залп",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_DESC": "Заряжает атаку и запускает залп зарядов.",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_OVERCLOCK_NAME": "Перегрузка",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_OVERCLOCK_DESC": "Перегружает внутренние системы и увеличивает скорость атаки и уменьшает время перезарядки Залпа.",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_NAME": "Панцирь",
+		"ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_DESC": "Защищает тело, ограничивая входящий урон.",
+		"ENEMIES_RETURNS_UNLOCKABLE_LOG_TEMPLE_GUARD": "Запись о монстре: Страж храма",
+
+		"ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINE_CORE_LEVEL": "Ур.{0}"
 	}
 }

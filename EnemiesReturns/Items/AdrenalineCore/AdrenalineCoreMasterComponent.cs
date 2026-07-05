@@ -68,7 +68,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     ? (previousHp - healthComponent.shield) > healthComponent.fullShield * (criticalDamage)
                     : (previousHp - healthComponent.health) > healthComponent.fullHealth * (criticalDamage);
 
-                if(hpCheck && masterComponent)
+                if(hpCheck && masterComponent && masterComponent.currentPoints > 0)
                 {
                     masterComponent.TakeCriticalDamage();
                 }
@@ -89,15 +89,18 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public const int MAX_LEVEL = 5;
 
-        public static GameObject levelUpEffectComponent;
+        public static GameObject levelUpEffect;
+
+        public static GameObject levelDownEffect;
 
         public static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
         {
-            {1, Color.yellow },
-            {2, Color.magenta },
-            {3, Color.white },
-            {4, Color.blue },
-            {5, Color.red }
+            {0, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
+            {1, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
+            {2, new Color(Color.magenta.r, Color.magenta.g, Color.magenta.b, 0.5f) },
+            {3, new Color(Color.white.r, Color.white.g, Color.white.b, 0.5f) },
+            {4, new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.5f) },
+            {5, new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f) }
         };
 
         public static float itemCountModifier => 0.1f;
@@ -231,9 +234,24 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 return;
             }
 
+            if (levelDownEffect)
+            {
+                EffectData effectData = new EffectData
+                {
+                    origin = transform.position,
+                    color = levelColors.GetValueOrDefault(currentLevel)
+                };
+                if (body.mainHurtBox)
+                {
+                    effectData.origin = body.mainHurtBox.transform.position;
+                    effectData.SetHurtBoxReference(body.gameObject);
+                    effectData.scale = body.radius;
+                }
+                EffectManager.SpawnEffect(levelDownEffect, effectData, transmit: true);
+            }
+
             currentPoints = 0f;
             currentLevel = 0;
-            // TODO: play sound and\or effect
         }
 
         public void OnKilledOtherServer(DamageReport damageReport)
@@ -291,7 +309,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 currentLevel = (int)(currentPoints / currentPointsPerLevel);
                 if (currentLevel > 0)
                 {
-                    if (levelUpEffectComponent)
+                    if (levelUpEffect)
                     {
                         EffectData effectData = new EffectData
                         {
@@ -301,10 +319,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         };
                         if (ownerBody.mainHurtBox)
                         {
+                            effectData.origin = ownerBody.mainHurtBox.transform.position;
                             effectData.SetHurtBoxReference(ownerBody.gameObject);
                             effectData.scale = ownerBody.radius;
                         }
-                        EffectManager.SpawnEffect(levelUpEffectComponent, effectData, transmit: true);
+                        EffectManager.SpawnEffect(levelUpEffect, effectData, transmit: true);
                     }
                 }
                 if (currentLevel == MAX_LEVEL)

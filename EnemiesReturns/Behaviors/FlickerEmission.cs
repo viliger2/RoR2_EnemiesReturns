@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System;
 using UnityEngine;
 
 namespace EnemiesReturns.Behaviors
@@ -49,6 +50,21 @@ namespace EnemiesReturns.Behaviors
         private void OnEnable()
         {
             workingEmissionPower = initialEmissionPower;
+        }
+
+        private void OnDisable()
+        {
+            if (renderer)
+            {
+                renderer.GetPropertyBlock(propertyBlock);
+                propertyBlock.SetFloat("_EmPower", initialEmissionPower);
+                renderer.SetPropertyBlock(propertyBlock);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            propertyBlock = null;
         }
 
         private void Update()

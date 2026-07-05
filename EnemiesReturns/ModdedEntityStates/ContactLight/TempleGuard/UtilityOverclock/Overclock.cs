@@ -13,11 +13,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.UtilityOver
     [RegisterEntityState]
     public class Overclock : BaseState
     {
-        public static float buffDuration => 15f;
+        public static float buffDuration => Configuration.ContactLight.TempleGuard.OverclockBuffDuration.Value;
+
+        public static bool restockPrimary => Configuration.ContactLight.TempleGuard.OverclockRestockPrimary.Value;
 
         public static float baseDuration => 2f;
 
         public static float baseAnimationDuration => 1.1f;
+
 
         public static GameObject preShieldEffect;
 
@@ -72,7 +75,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.UtilityOver
                 {
                     characterBody.AddTimedBuff(Content.Buffs.TempleGuardOverclock, buffDuration);
                 }
-                if (isAuthority && skillLocator && skillLocator.primary)
+                if (Configuration.ContactLight.TempleGuard.OverclockRestockPrimary.Value && isAuthority && skillLocator && skillLocator.primary)
                 {
                     skillLocator.primary.ApplyAmmoPack();
                 }

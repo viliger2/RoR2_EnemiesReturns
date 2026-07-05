@@ -121,8 +121,8 @@ namespace EnemiesReturns.Enemies.ContactLight
         {
             if (sender && sender.HasBuff(Content.Buffs.TempleGuardOverclock))
             {
-                args.attackSpeedMultAdd += 0.5f; // TODO: config
-                args.primarySkill.cooldownReductionMultAdd += 1f; // TODO: config
+                args.attackSpeedMultAdd += Configuration.ContactLight.TempleGuard.OverclockAttackSpeedBuff.Value / 100f;
+                args.primarySkill.cooldownReductionMultAdd += Configuration.ContactLight.TempleGuard.OverclockPrimaryCooldownReduction.Value;
             }
         }
 

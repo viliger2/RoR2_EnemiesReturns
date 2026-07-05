@@ -4,6 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicSwitchContainer Name="EnemiesReturns_Music_System" ID="{ADED9DBF-3738-4CDD-AC02-2309081657DA}" ShortID="633174278">
+					<PropertyList>
+						<Property Name="ContinuePlay" Type="bool" Value="False"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -23,6 +26,7 @@
 												<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
 												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
 												<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+												<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
 											</PropertyList>
 											<TransitionInfo>
 												<SourceFadeOut>
@@ -672,6 +676,9 @@
 							</ObjectLists>
 						</MusicSwitchContainer>
 						<MusicSwitchContainer Name="Menu Switch" ID="{6096D8AC-13A7-46A0-8C1C-581786A35410}" ShortID="363384457">
+							<PropertyList>
+								<Property Name="ContinuePlay" Type="bool" Value="False"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
@@ -687,6 +694,9 @@
 											</PropertyList>
 											<ChildrenList>
 												<MusicTransition Name="Transition" ID="{3D1AA351-BC64-44D0-BFF7-66C7FF3CB0CB}">
+													<PropertyList>
+														<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+													</PropertyList>
 													<TransitionInfo/>
 												</MusicTransition>
 											</ChildrenList>
@@ -695,6 +705,182 @@
 									</Custom>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<MusicPlaylistContainer Name="CoalescenceReturns" ID="{AD426325-690A-4E70-B296-D1A7E367BF7C}" ShortID="151828673">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+										</Reference>
+										<Reference Name="PlaylistRoot">
+											<Custom>
+												<MusicPlaylistItem Name="" ID="{1F1F9F47-04EB-4305-BE7E-0412DCB6A857}" ShortID="294784430">
+													<ChildrenList>
+														<MusicPlaylistItem Name="" ID="{988F18D9-8C6D-4BED-8832-BCB1A9E9DA99}" ShortID="360388747">
+															<PropertyList>
+																<Property Name="LoopCount" Type="int16" Value="0"/>
+																<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Segment">
+																	<ObjectRef Name="CoalescenceReturns" ID="{CA4B05E9-DF10-4216-A158-5872BE505125}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+																</Reference>
+															</ReferenceList>
+														</MusicPlaylistItem>
+													</ChildrenList>
+												</MusicPlaylistItem>
+											</Custom>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{B7842C3F-6029-498B-B70B-DCAAAD4FD4AF}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<MusicTransition Name="Transition" ID="{F2CC5FBD-10F4-4FED-8425-AF17E6F6436C}">
+															<PropertyList>
+																<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</ChildrenList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="CoalescenceReturns" ID="{CA4B05E9-DF10-4216-A158-5872BE505125}" ShortID="878850053">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="311749.455782313"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="CoalescenceReturns" ID="{23D1A346-F609-41A4-AA04-5A46A7E3D8C5}" ShortID="92194567">
+													<PropertyList>
+														<Property Name="IsStreamingEnabled" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+														<Property Name="IsZeroLatency" Type="bool">
+															<ValueList>
+																<Value>True</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+														<Reference Name="TransitionRoot">
+															<Custom>
+																<MusicTransition Name="Root" ID="{8F59ABFC-294C-41C9-BD57-9A914EE597F6}">
+																	<PropertyList>
+																		<Property Name="IsFolder" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<TransitionInfo/>
+																</MusicTransition>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="CoalescenceReturns" ID="{2124B500-6CBB-478C-8ED2-B6508ECEB210}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Diorama\CoalescenceReturns.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="901887427"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{443450D4-C0A7-43E0-91B1-A8ABA5AB8E19}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="CoalescenceReturns" ID="{89A0C87B-62F0-4780-9C99-1D4570D5A95A}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="311749.455782313"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="CoalescenceReturns" ID="{2124B500-6CBB-478C-8ED2-B6508ECEB210}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{07C20E03-51B9-45F1-ABEB-3CB7006B2CF4}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{5E4B8488-DFE2-4EDA-8E91-02D56161D129}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="311749.455782313"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+								</MusicPlaylistContainer>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Arguments">
+									<Reference>
+										<ObjectRef Name="OutOfTime_gameplaySondChoice" ID="{5A40865D-5FC8-40CF-B739-62E4AB40B22E}" WorkUnitID="{2B774E06-CD67-4F05-B710-8CB35851C44D}"/>
+									</Reference>
+								</ObjectList>
+								<ObjectList Name="Entries">
+									<Reference>
+										<Local>
+											<MultiSwitchEntry Name="" ID="{79713D4E-274B-45B9-8DB8-280577EEC469}">
+												<ReferenceList>
+													<Reference Name="AudioNode">
+														<ObjectRef Name="CoalescenceReturns" ID="{AD426325-690A-4E70-B296-D1A7E367BF7C}" WorkUnitID="{3972AADD-0F3E-420B-98D1-47D264B9ECD3}"/>
+													</Reference>
+												</ReferenceList>
+												<ObjectLists>
+													<ObjectList Name="EntryPath">
+														<Reference>
+															<ObjectRef Name="ContactLight_CoalescenceReturns" ID="{7F07F719-3B87-4AD3-BB07-BEC737B27A17}" WorkUnitID="{2B774E06-CD67-4F05-B710-8CB35851C44D}"/>
+														</Reference>
+													</ObjectList>
+												</ObjectLists>
+											</MultiSwitchEntry>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</MusicSwitchContainer>
 						<MusicSwitchContainer Name="SecretLevel" ID="{102F19ED-95D8-43B0-B2EB-F3387A617A50}" ShortID="144015611">
 							<ReferenceList>

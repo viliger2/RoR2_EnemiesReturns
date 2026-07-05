@@ -15,19 +15,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Primary
     {
         public static GameObject projectilePrefab;
 
-        public static float baseFireCooldown => 0.5f;
+        public static float baseFireCooldown => Configuration.ContactLight.TempleGuard.BarragePerShotCooldown.Value;
 
-        public static int numberOfBarrages => 4;
+        public static int numberOfBarrages => Configuration.ContactLight.TempleGuard.BarrageNumberOfShots.Value;
 
         public static float baseSingleShotDuration => 0.6667f;
 
-        public static float spreadBloom => 0.2f;
+        public static float spreadBloom => Configuration.ContactLight.TempleGuard.BarrageSpreadBloom.Value;
 
-        public static float projectileDamage => 1f;
+        public static float projectileDamage => Configuration.ContactLight.TempleGuard.BarrageProjectileDamage.Value;
 
-        public static float speedOverride => 75f;
+        public static float speedOverride => Configuration.ContactLight.TempleGuard.BarrageProjectileSpeed.Value;
 
-        public static float correctionAngle = 2.5f;
+        public static float correctionAngle => Configuration.ContactLight.TempleGuard.BarrageCorrectionAngle.Value;
 
         public static GameObject primaryEffect;
 
@@ -98,6 +98,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Primary
 
         private void FireBarrage()
         {
+            //Util.PlaySound("ER_TempleGuard_FireSingle_Play", base.gameObject);
+            Util.PlayAttackSpeedSound("ER_TempleGuard_FireSingle_Play", base.gameObject, attackSpeedStat);
             PlayAnimation("Gesture, Additive", "FireBarrage", "dualShot.duration", singleShotDuration);
             if (isAuthority)
             {

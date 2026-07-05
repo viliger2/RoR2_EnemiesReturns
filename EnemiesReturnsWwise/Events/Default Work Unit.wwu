@@ -2007,6 +2007,193 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Contact Light" ID="{5A17094E-40E4-4383-B4EA-C7FA87DE5CFD}" ShortID="584892905">
+							<ChildrenList>
+								<Folder Name="Adrenaline Core" ID="{0AFF90E4-E430-4D1C-9287-8D2113C15409}" ShortID="1035311352">
+									<ChildrenList>
+										<Event Name="ER_AdrenalineCore_LevelUp_Play" ID="{109848E6-0F23-452E-A40C-0F81659451F8}">
+											<ChildrenList>
+												<Action Name="" ID="{38FF5D0B-6338-4F1F-A172-C923A9B93C8E}" ShortID="58253245">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="AdrenalineCore_LevelUp" ID="{2D413DE1-D16B-4A35-94F0-BEA2384A2F61}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_AdrenalineCore_LevelDown_Play" ID="{DD115AA2-5AA4-4D1F-8A77-81033014BAFA}">
+											<ChildrenList>
+												<Action Name="" ID="{D724E224-A567-4573-BD24-5CB3C3593AD5}" ShortID="474288314">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="AdrenalineCore_LevelDown" ID="{F00CD9B0-901A-49A7-BC6B-361E068ED656}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_AdrenalineCore_ShieldBreak_Play" ID="{4261B622-5C36-4266-AF4F-22DEE3D14740}">
+											<ChildrenList>
+												<Action Name="" ID="{DA216FFE-B50A-4F54-8240-BA567D8432D1}" ShortID="495227259">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="AdrenalineCore_ShieldBreak" ID="{2BB77F1E-CAF1-453E-94DC-7D944D4B307F}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Path" ID="{559B574A-375C-45AE-BF56-73F6F051F7A7}" ShortID="244144831">
+									<ChildrenList>
+										<Event Name="ER_SwordShard_Loop_Play" ID="{83258BC8-57F8-4804-8D35-D8A96575FE1B}">
+											<ChildrenList>
+												<Action Name="" ID="{873DBE67-18CF-484E-86EE-B92B7A218D33}" ShortID="182314417">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_SwordShard_Loop_Stop" ID="{E08D7F42-CE3A-49A0-9BA9-D072191CEABB}">
+											<ChildrenList>
+												<Action Name="" ID="{EA66F0AB-0EEF-4BE0-98E3-1D0A3DC48B19}" ShortID="74975172">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="TempleGuard" ID="{88576C6E-67F6-48CD-97C8-E430199251B2}" ShortID="274670707">
+									<ChildrenList>
+										<Event Name="ER_TempleGuard_Spawn_Play" ID="{769B44E1-B5CE-401B-AF1F-13549BB71947}">
+											<ChildrenList>
+												<Action Name="" ID="{2BE7EA54-3D81-4577-BDE1-B93054EB86F1}" ShortID="32804190">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Spawn" ID="{ABEE654A-26E7-41ED-AD50-88DC60BC785B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Death_Play" ID="{32CD3E6D-1F96-4368-BEA1-E1B4DDC378E4}">
+											<ChildrenList>
+												<Action Name="" ID="{4C8CB564-CBA0-4437-A431-D89C9EF4B33D}" ShortID="37257143">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Death" ID="{5E055014-B7B2-4ABD-AA02-6DE98F80DE18}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_FireSingle_Play" ID="{844587A9-E12B-46E4-874A-C2AB8F033B2C}">
+											<ChildrenList>
+												<Action Name="" ID="{986BD806-B8D9-4555-9F8B-1E0496D70FD4}" ShortID="865846219">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_FireSingleProjectile" ID="{E5E1219C-150A-4B91-993D-489C1990C56A}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_ChargePrimary_Play" ID="{A30948BA-A1F9-4CB4-88F9-F40B26E80AF9}">
+											<ChildrenList>
+												<Action Name="" ID="{91C32536-2BB7-4C6C-A78B-15612CFECB45}" ShortID="419115829">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_ChargePrimary" ID="{DDF188D6-FDF4-4730-95A2-BBB9ADD3D871}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Landing_Play" ID="{29B46860-8CA8-403D-8286-67CF812A8FBF}">
+											<ChildrenList>
+												<Action Name="" ID="{D29E096F-012E-41C3-8F30-E027C7C74361}" ShortID="332276055">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Landing" ID="{23058BF1-7864-47B5-95D7-C6ABE7D19B57}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Jumping_Play" ID="{717B8188-A38A-4526-BD9F-5F3DD7F882F0}">
+											<ChildrenList>
+												<Action Name="" ID="{78B361B2-AD2F-4884-85AF-5029E88E0F94}" ShortID="591522799">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Jumping" ID="{D131940D-46DB-41EE-82AF-72681DA05B31}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Footstep_Play" ID="{B30D8DB8-D901-4721-B9BA-F2E1ACEAE495}">
+											<ChildrenList>
+												<Action Name="" ID="{3535815D-1109-41B1-9A39-A024AB7B3A4A}" ShortID="504677070">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Step" ID="{84E8189C-5383-4BD1-8187-EEBE6B5F4D2B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Alive_Play" ID="{FEA4149C-ABAB-46F0-A771-07A8C45D723B}">
+											<ChildrenList>
+												<Action Name="" ID="{FE49D426-548D-416A-A451-B7AB7CFAAA30}" ShortID="931749255">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Alive_Loop" ID="{3991AE0D-DEAA-47ED-B98F-CBE7BB70D6F9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_Alive_Stop" ID="{A593DF13-A77E-4A98-BC8F-1C7D8556A11D}">
+											<ChildrenList>
+												<Action Name="" ID="{28A97B37-3D6A-4B9C-8259-C2E394F1C609}" ShortID="571853672">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_Alive_Loop" ID="{3991AE0D-DEAA-47ED-B98F-CBE7BB70D6F9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_TempleGuard_MetalSqueak_Play" ID="{8E7C6A41-8538-4C48-A7B4-0CEB41055894}">
+											<ChildrenList>
+												<Action Name="" ID="{45935450-7AD9-4018-8808-2FB959C6A996}" ShortID="307751930">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="TempleGuard_MetalSqueak" ID="{BAA8C129-031A-4940-8282-3857B388BF8E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{5D67AA33-F278-4D5A-BFF4-F9D9E4988DB5}" ShortID="404742623">

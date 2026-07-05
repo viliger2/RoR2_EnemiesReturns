@@ -17,6 +17,7 @@
 						<Property Name="InitialValue" Type="Real64" Value="100"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="attackSpeed" ID="{12C2C4EF-A03F-4687-8A12-F850A057F7E5}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

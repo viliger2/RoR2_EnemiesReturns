@@ -12,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Primary
     [RegisterEntityState]
     public class ChargePrimary : BaseState
     {
-        public static float baseDuration => 2f;
+        public static float baseDuration => Configuration.ContactLight.TempleGuard.BarrageChargeDuration.Value;
 
         public static GameObject effectPrefab;
 
@@ -30,7 +30,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Primary
                 SpawnEffect("CannonL");
             }
 
-            PlayCrossfade("Gesture, Override", "PrepBarrage", 0.1f);
+            Util.PlayAttackSpeedSound("ER_TempleGuard_ChargePrimary_Play", base.gameObject, attackSpeedStat);
+
+            PlayCrossfade("Gesture, Override, Mask", "PrepBarrage", 0.1f);
 
             void SpawnEffect(string childName)
             {
@@ -62,7 +64,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Primary
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            PlayCrossfade("Gesture, Override, Mask", "BufferEmpty", 0.1f);
             for (int i = 0; i < chargeEffects.Count; i++)
             {
                 if ((bool)chargeEffects[i])

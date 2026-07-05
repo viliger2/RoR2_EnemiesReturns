@@ -278,7 +278,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
 
         public void UpdateHologramContent(GameObject hologramContentObject, Transform viewerBody)
         {
-            var component = hologramContentObject.GetComponent<CustomCostHologramContent>();
+            var component = hologramContentObject.GetComponent<Behaviors.TimerHologramContent>();
             if (component)
             {
                 component.displayValue = escapeDuration - escapeTimer;

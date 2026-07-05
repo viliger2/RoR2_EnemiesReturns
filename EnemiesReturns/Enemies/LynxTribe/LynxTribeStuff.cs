@@ -119,7 +119,7 @@ namespace EnemiesReturns.Enemies.LynxTribe
             var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/CostHologramContent.prefab").WaitForCompletion().InstantiateClone("CustomCostHologramContentPrefab", false);
 
             UnityEngine.Object.DestroyImmediate(prefab.GetComponent<CostHologramContent>());
-            var hologramContent = prefab.AddComponent<CustomCostHologramContent>();
+            var hologramContent = prefab.AddComponent<Behaviors.TimerHologramContent>();
             hologramContent.targetTextMesh = prefab.transform.Find("Text").GetComponent<TextMeshPro>();
             hologramContent.targetTextMesh.fontSize = 10f;
 

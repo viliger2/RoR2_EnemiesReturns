@@ -120,6 +120,7 @@ namespace EnemiesReturns
             Behaviors.SubjectParamsChatMessage.Hooks();
             On.RoR2.CharacterModel.UpdateOverlays += UpdateOverlays;
             On.RoR2.MusicController.StartIntroMusic += MusicController_StartIntroMusic;
+            On.RoR2.UI.ModelPanel.BuildModelInstance += ModelPanel_BuildModelInstance;
 
             Enemies.Judgement.SetupJudgementPath.Hooks();
             Enemies.Judgement.AnointedSkins.Hooks();
@@ -135,6 +136,12 @@ namespace EnemiesReturns
             {
                 ShamanStuff.Hooks();
             }
+        }
+
+        private void ModelPanel_BuildModelInstance(On.RoR2.UI.ModelPanel.orig_BuildModelInstance orig, RoR2.UI.ModelPanel self, GameObject newModelPrefab)
+        {
+            orig(self, newModelPrefab);
+            Behaviors.EmissionController.ModelPanel_BuildModelInstance(self, newModelPrefab);
         }
 
         private static void UpdateTargets(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)

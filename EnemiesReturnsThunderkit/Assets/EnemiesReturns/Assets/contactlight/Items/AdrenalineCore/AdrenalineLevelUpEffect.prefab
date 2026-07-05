@@ -12010,6 +12010,7 @@ GameObject:
   - component: {fileID: 114452970406053250}
   - component: {fileID: 114606275883393723}
   - component: {fileID: 7490822051221520448}
+  - component: {fileID: 5628377250295971426}
   m_Layer: 0
   m_Name: AdrenalineLevelUpEffect
   m_TagString: Untagged
@@ -12055,7 +12056,7 @@ MonoBehaviour:
   parentToReferencedTransform: 1
   noEffectData: 0
   applyScale: 1
-  soundName: 
+  soundName: ER_AdrenalineCore_LevelUp_Play
   disregardZScale: 0
   applyScaleFirst: 0
 --- !u!54 &54613330658291029
@@ -12138,4 +12139,19 @@ MonoBehaviour:
   - {fileID: 198720579246222821}
   - {fileID: 198427947502194173}
   - {fileID: 198382861330766313}
+  effectComponent: {fileID: 114448362534037192}
+--- !u!114 &5628377250295971426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963910325370673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b6bf7be461f9c24488a8349d3fbd0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 108288828952523759}
   effectComponent: {fileID: 114448362534037192}
