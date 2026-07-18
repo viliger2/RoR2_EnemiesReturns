@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
     Visual: {fileID: 21300000, guid: 92a4b00e8a447d545a17392a972b96bd, type: 3}
-    TitleToken: ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_NAME
-    DescriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_DESC
-    FlavorToken: 
+    TitleToken: ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_NAME
+    DescriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_DESC
+    FlavorToken: ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_LORE
     TitleColor: {r: 1, g: 1, b: 1, a: 1}
     isConsumedItem: 0
     upgradeCount: 0

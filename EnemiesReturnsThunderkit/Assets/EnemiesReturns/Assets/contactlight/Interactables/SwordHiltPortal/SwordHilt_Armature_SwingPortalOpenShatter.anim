@@ -10646,10 +10646,31 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 2.0416667
+    functionName: PlaySound
+    data: ER_SwordHilt_SwordSwing_Play
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.0833333
+    functionName: SetChildEnable
+    data: SwingEffect
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
   - time: 2.2083333
     functionName: CreateEffect
     data: ShatterEffectLocation
     objectReferenceParameter: {fileID: 3830580389532003380, guid: 6e6d201f59f927046b70b9c6b2adf52a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.25
+    functionName: PlaySound
+    data: ER_SwordHilt_SwordHum_Stop
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

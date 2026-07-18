@@ -12329,10 +12329,24 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 2.7083333
+    functionName: PlaySound
+    data: ER_SwordHilt_ShardWoosh_Play
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2.8333333
     functionName: CreateEffect
     data: Shard1
     objectReferenceParameter: {fileID: 3830580389532003380, guid: 899710cdd4e2eba4289cd55d92093962, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3.0416667
+    functionName: PlaySound
+    data: ER_SwordHilt_ShardWoosh_Play
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -12343,10 +12357,24 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 3.375
+    functionName: PlaySound
+    data: ER_SwordHilt_ShardWoosh_Play
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 3.5
     functionName: CreateEffect
     data: Shard3
     objectReferenceParameter: {fileID: 3830580389532003380, guid: 899710cdd4e2eba4289cd55d92093962, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3.7083333
+    functionName: PlaySound
+    data: ER_SwordHilt_ShardWoosh_Play
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -12357,10 +12385,24 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 4.0416665
+    functionName: PlaySound
+    data: ER_SwordHilt_ShardWoosh_Play
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 4.1666665
     functionName: CreateEffect
     data: Shard5
     objectReferenceParameter: {fileID: 3830580389532003380, guid: 899710cdd4e2eba4289cd55d92093962, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5.3333335
+    functionName: PlaySound
+    data: ER_SwordHilt_SwordHum_Play
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

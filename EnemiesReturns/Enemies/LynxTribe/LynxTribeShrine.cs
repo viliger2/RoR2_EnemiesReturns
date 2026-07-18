@@ -284,10 +284,5 @@ namespace EnemiesReturns.Enemies.LynxTribe
                 component.displayValue = escapeDuration - escapeTimer;
             }
         }
-
-        public IInspectInfoProvider GetInspectInfoProvider()
-        {
-            return GetComponent<IInspectInfoProvider>();
-        }
     }
 }

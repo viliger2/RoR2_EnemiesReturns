@@ -6740,6 +6740,261 @@
 														<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
+												<Folder Name="SwordHilt" ID="{E4485E6A-B903-4FD6-9432-CD1D8A8F9549}" ShortID="320874614">
+													<ChildrenList>
+														<Sound Name="SwordHilt_ShardSpawn" ID="{EFE6A6CB-09DB-4941-9B7E-0AA8A7ACB8ED}" ShortID="974306503">
+															<PropertyList>
+																<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+																<Property Name="MaxSoundPerInstance" Type="int16">
+																	<ValueList>
+																		<Value>1</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{0CB7F5F2-3BF8-4DBC-946D-34675456901E}"/>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="UseMaxSoundPerInstance" Type="bool">
+																	<ValueList>
+																		<Value>True</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-10</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\interactable_shard_spawn.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="231006949"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<RandomSequenceContainer Name="Random Pitch" ID="{BD8504A4-FDAB-4AD4-BBF6-961BF28152FF}" ShortID="721665384">
+															<PropertyList>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{79339B8C-C2B4-480A-B40E-16A735F7F4B2}">
+																				<PropertyList>
+																					<Property Name="Enabled" Type="bool" Value="True"/>
+																					<Property Name="Max" Type="Real64" Value="150"/>
+																					<Property Name="Min" Type="Real64" Value="-150"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="SwordHilt_ShardReconnect" ID="{389EC516-6298-4DE3-BD00-AE3AB4237954}" ShortID="201799110">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																		<Property Name="Pitch" Type="int32">
+																			<ModifierList>
+																				<ModifierInfo>
+																					<Modifier Name="" ID="{33D87ED3-4940-4EC4-97DF-3C6FBB3A2C63}"/>
+																				</ModifierInfo>
+																			</ModifierList>
+																		</Property>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-13</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_shard_reconnect.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="622916882"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="SwordHilt_ShardWoosh" ID="{33BD43F8-5297-47E0-9465-5537A3B2E0F2}" ShortID="130784325">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																		<Property Name="Pitch" Type="int32">
+																			<ModifierList>
+																				<ModifierInfo>
+																					<Modifier Name="" ID="{FD49821C-59D9-4669-A76D-2E1FA7283614}">
+																						<PropertyList>
+																							<Property Name="Max" Type="Real64" Value="150"/>
+																							<Property Name="Min" Type="Real64" Value="-150"/>
+																						</PropertyList>
+																					</Modifier>
+																				</ModifierInfo>
+																			</ModifierList>
+																		</Property>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-10</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_shard_woosh.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="900287607"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<Sound Name="SwordHilt_SwordHum" ID="{B3F6A236-EA30-4D23-A42A-23C4282D8149}" ShortID="552970179">
+															<PropertyList>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="Lowpass" Type="int16">
+																	<ValueList>
+																		<Value>40</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																		<Property Name="LoopEnd" Type="Real64" Value="3.44947916666667"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\interactable_sword_hum.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="822115196"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SwordHilt_SwordSwing" ID="{0B0420FB-FF85-4794-A9E5-64A57834572C}" ShortID="748016844">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-4</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\interactable_sword_swing.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="10692106"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SwordHilt_SwordShatter" ID="{DA784073-B0A3-4029-A591-5CBBC247681E}" ShortID="971283435">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-12</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\interactable_sword_shatter.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="370745387"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="TempleGuard" ID="{4B2972D5-19B6-4399-A779-8450F36BC8A3}" ShortID="753629190">

@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using RoR2;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,7 +13,7 @@ using static UnityEngine.ResourceManagement.ResourceProviders.AssetBundleResourc
 namespace EnemiesReturns.Behaviors.SkinDefPicker
 {
     [RequireComponent(typeof(NetworkUIPromptController))]
-    public class SkinDefPickerController : NetworkBehaviour, IInteractable
+    public class SkinDefPickerController : NetworkBehaviour, IInteractable, IInspectable
     {
         public struct Option
         {
@@ -275,6 +276,11 @@ namespace EnemiesReturns.Behaviors.SkinDefPicker
                     {
                         continue;
                     }
+
+                    if(skins[i].unlockableDef.requiredExpansion && !RoR2.EntitlementManagement.EntitlementManager.networkUserEntitlementTracker.UserHasEntitlement(networkUser, skins[i].unlockableDef.requiredExpansion.requiredEntitlement))
+                    {
+                        continue;
+                    }
                 }
 
                 if (i == body.skinIndex)
@@ -320,6 +326,12 @@ namespace EnemiesReturns.Behaviors.SkinDefPicker
             body.master.loadout.bodyLoadoutManager.SetSkinIndex(body.bodyIndex, (uint)localSkinIndex);
             body.master.SetDirtyBit(CharacterMaster.loadoutDirtyBit);
             body.skinIndex = (uint)localSkinIndex;
+
+            var effect = Run.instance.GetTeleportEffectPrefab(body.gameObject);
+            if (effect)
+            {
+                EffectManager.SimpleEffect(effect, body.corePosition, UnityEngine.Quaternion.identity, transmit: true);
+            }
 
             RpcSwapSkin(localSkinIndex, body.netId);
         }
@@ -435,6 +447,11 @@ namespace EnemiesReturns.Behaviors.SkinDefPicker
         public bool ShouldShowOnScanner()
         {
             return true;
+        }
+
+        public IInspectInfoProvider GetInspectInfoProvider()
+        {
+            return GetComponent<IInspectInfoProvider>();
         }
     }
 }

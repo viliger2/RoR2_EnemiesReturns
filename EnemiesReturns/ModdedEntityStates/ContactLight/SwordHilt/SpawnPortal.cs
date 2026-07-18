@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.SwordHilt
     {
         public static GameObject portalContactLight;
 
-        public static string contactLightChatMessageToken = "ENEMIES_RETURNS_JUDGEMENT_PORTAL_OPEN";
+        public static string contactLightChatMessageToken = "ENEMIES_RETURNS_CONTACTLIGHT_PORTAL_OPEN";
 
         private Animator animator;
 

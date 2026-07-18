@@ -135,7 +135,7 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             // TODO: add unlockable check
 
-            var newObject = UnityEngine.Object.Instantiate(wardrobe, new Vector3(8.97897816f, -5.73999977f, 7.62354374f), Quaternion.identity);
+            var newObject = UnityEngine.Object.Instantiate(wardrobe, new Vector3(-136.080002f, -21.1499996f, -33.4500008f), new Quaternion(-0.0393915996f, 0.618751168f, 0.0498490371f, 0.783013642f));
             NetworkServer.Spawn(newObject);
         }
 
@@ -251,7 +251,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                 var textMesh = labelTransform.GetComponent<LanguageTextMeshController>();
                 if (textMesh)
                 {
-                    textMesh.token = "ENEMIESRETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER";
+                    textMesh.token = "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER";
                 }
             }
 

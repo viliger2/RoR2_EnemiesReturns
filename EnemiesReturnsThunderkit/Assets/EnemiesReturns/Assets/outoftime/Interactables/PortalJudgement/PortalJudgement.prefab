@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useOverallCurveOnly: 0
   resetOnAwake: 1
+  resetOnDisable: 0
   useUnscaledTime: 0
   curveX:
     serializedVersion: 2
@@ -150,6 +151,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   timeMax: 1
+  ignoreResetOnEnable: 0
+  loop: 0
 --- !u!1 &2082552163651489743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,6 +5437,7 @@ MonoBehaviour:
   shouldIgnoreSpherecastForInteractibility: 0
   contextToken: ENEMIES_RETURNS_JUDGEMENT_PORTAL_CONTEXT
   shouldProximityHighlight: 1
+  allowRemoteOpInteraction: 0
   onActivation:
     m_PersistentCalls:
       m_Calls:

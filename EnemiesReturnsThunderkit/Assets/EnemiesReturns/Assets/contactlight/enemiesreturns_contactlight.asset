@@ -21,8 +21,8 @@ MonoBehaviour:
   isOfflineScene: 0
   stageOrder: 9999
   requiredExpansion: {fileID: 0}
-  nameToken: ENEMIES_RETURNS_CONTACT_LIGHT_NAME
-  subtitleToken: ENEMIES_RETURNS_CONTACT_LIGHT_SUBTITLE
+  nameToken: ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME
+  subtitleToken: ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_SUBTITLE
   previewTexture: {fileID: 0}
   previewTextureReference:
     m_AssetGUID: 
@@ -33,10 +33,10 @@ MonoBehaviour:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
-  portalSelectionMessageString: ENEMIES_RETURNS_BAZAAR_SEER_ENEMIESRETURNS_CONTACTLIGHT
+  portalSelectionMessageString: ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_BAZAAR_SEER
   filterOutOfBazaar: 1
   shouldIncludeInLogbook: 1
-  loreToken: ENEMIES_RETURNS_CONTACT_LIGHT_LORE
+  loreToken: ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE
   dioramaPrefab: {fileID: 206030452575530099, guid: f7b3aa4ce570f07499ba3e8265f23ae2, type: 3}
   dioramaPrefabAddress:
     m_AssetGUID: 

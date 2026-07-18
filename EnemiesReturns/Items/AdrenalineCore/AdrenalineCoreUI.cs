@@ -33,7 +33,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (textMesh)
             {
-                textMesh.SetText(string.Format(RoR2.Language.GetString("ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINE_CORE_LEVEL"), (int)(adrenalineLevel / adrenalinePerLevel)));
+                textMesh.SetText(string.Format(RoR2.Language.GetString("ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_UI_LEVEL"), (int)(adrenalineLevel / adrenalinePerLevel)));
             }
             if (levelBar)
             {
@@ -78,16 +78,16 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static void Hooks()
         {
-            On.RoR2.UI.HUD.Awake += HUD_Awake;
+            if (Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
+            {
+                On.RoR2.UI.HUD.Awake += HUD_Awake;
+            }
         }
 
         private static void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             orig(self);
-            if (Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
-            {
-                CreateUI(self);
-            }
+            CreateUI(self);
         }
 
         public static void CreateUI(RoR2.UI.HUD HUD)

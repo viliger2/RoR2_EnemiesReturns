@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 370243918, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayNameToken: ENEMIESRETURNS_CONTACTLIGHT_MEDICALCABINET_NAME
-  contextToken: ENEMIESRETURNS_CONTACTLIGHT_MEDICALCABINET_CONTEXT
+  displayNameToken: ENEMIES_RETURNS_CONTACTLIGHT_MEDICALCABINET_NAME
+  contextToken: ENEMIES_RETURNS_CONTACTLIGHT_MEDICALCABINET_CONTEXT
   costType: 0
   available: 1
   cost: 0

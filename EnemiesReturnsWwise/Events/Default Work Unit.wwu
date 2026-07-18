@@ -2073,6 +2073,94 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Folder Name="SwordHilt" ID="{91568420-8443-4FA6-9E41-18B6CA04A55D}" ShortID="743565304">
+											<ChildrenList>
+												<Event Name="ER_SwordHilt_ShardSpawn_Play" ID="{45C0712B-E180-4296-95B0-77B541ED26CB}">
+													<ChildrenList>
+														<Action Name="" ID="{5B097BE9-1394-40ED-86B8-BA3A1CAC852A}" ShortID="687435553">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_ShardSpawn" ID="{EFE6A6CB-09DB-4941-9B7E-0AA8A7ACB8ED}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_ShardWoosh_Play" ID="{BCFECAC9-4A7C-4043-8E45-AAA432029F9E}">
+													<ChildrenList>
+														<Action Name="" ID="{FACAEE1A-BEE1-45B8-96D6-9E3E75915641}" ShortID="193567393">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_ShardWoosh" ID="{33BD43F8-5297-47E0-9465-5537A3B2E0F2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_ShardReconnect_Play" ID="{7AE303AC-21C1-413F-92AB-0EE6AACD0559}">
+													<ChildrenList>
+														<Action Name="" ID="{117535D2-347B-4CFD-BF7C-FD626EBE3B84}" ShortID="584359399">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_ShardReconnect" ID="{389EC516-6298-4DE3-BD00-AE3AB4237954}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_SwordHum_Play" ID="{602D8387-C668-4687-9C2E-4F3B8C8CB32E}">
+													<ChildrenList>
+														<Action Name="" ID="{7622F488-E866-4CB5-A4A1-083CE2EB3A2E}" ShortID="535643568">
+															<PropertyList>
+																<Property Name="FadeInCurve" Type="int16" Value="1"/>
+																<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_SwordHum" ID="{B3F6A236-EA30-4D23-A42A-23C4282D8149}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_SwordHum_Stop" ID="{3E69309B-65EE-4627-8EF5-35CEE2FC8886}">
+													<ChildrenList>
+														<Action Name="" ID="{D83A5DFF-9D1F-49A3-9BBB-7C70EFAAC91F}" ShortID="145427688">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_SwordHum" ID="{B3F6A236-EA30-4D23-A42A-23C4282D8149}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_SwordSwing_Play" ID="{6EBB2631-CEC3-473E-A677-D8C44F66AF37}">
+													<ChildrenList>
+														<Action Name="" ID="{064D40C5-FC40-4CC9-9B16-419ADD4DE4D1}" ShortID="416682838">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_SwordSwing" ID="{0B0420FB-FF85-4794-A9E5-64A57834572C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordHilt_SwordShatter_Play" ID="{EE44F077-A8F3-49D0-8D50-9C0184180F91}">
+													<ChildrenList>
+														<Action Name="" ID="{57745FEB-803B-4A00-BDD6-C9632CB7AA62}" ShortID="834939428">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordHilt_SwordShatter" ID="{DA784073-B0A3-4029-A591-5CBBC247681E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="TempleGuard" ID="{88576C6E-67F6-48CD-97C8-E430199251B2}" ShortID="274670707">
@@ -2185,6 +2273,24 @@
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="TempleGuard_MetalSqueak" ID="{BAA8C129-031A-4940-8282-3857B388BF8E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="EliteSlayer" ID="{5F6992B5-61E9-44AC-A805-1606C2B34D07}" ShortID="437230722">
+									<ChildrenList>
+										<Event Name="ER_EliteSlayer_SwordSwing_Play" ID="{1D0886EF-4EC5-4113-A3ED-02E7A07EA155}">
+											<ChildrenList>
+												<Action Name="" ID="{2448DEC8-C7D6-4A89-89BA-C501242F0129}" ShortID="725242825">
+													<PropertyList>
+														<Property Name="Delay" Type="Real64" Value="0.4"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="SwordHilt_SwordSwing" ID="{0B0420FB-FF85-4794-A9E5-64A57834572C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>

@@ -58,7 +58,8 @@ namespace EnemiesReturns
             {"stubbednature/speedtree", "RoR2/Base/Shaders/SpeedTreeCustom.shader"},
             {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" },
             {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" },
-            {"stubbedror2/base/shaders/hguianimatealpha", "RoR2/Base/Shaders/HGUIAnimateAlpha.shader" }
+            {"stubbedror2/base/shaders/hguianimatealpha", "RoR2/Base/Shaders/HGUIAnimateAlpha.shader" },
+            {"stubbedror2/base/shaders/hgsolidparallax", "RoR2/Base/Shaders/HGSolidParallax.shader" }
         };
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?

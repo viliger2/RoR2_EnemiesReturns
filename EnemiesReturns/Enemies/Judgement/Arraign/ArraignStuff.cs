@@ -67,7 +67,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public GameObject CreateArraignSwingComboEffect()
         {
-            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSwing1.prefab").WaitForCompletion().InstantiateClone("ArraignSwingComboEffect", false);
+            var prefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSwing1.prefab").WaitForCompletion();
 
             return prefab;
         }

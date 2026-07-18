@@ -244,6 +244,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
         public DroneDef CreateDroneDef(GameObject bodyPrefab, Sprite icon)
         {
             // TODO: fix mechanical spider display prefab since currenly we have none and its a fucking mirracle noone caught it yet
+            // TODO: add remote op config?
             var droneDef = ScriptableObject.CreateInstance<DroneDef>();
             (droneDef as ScriptableObject).name = "EnemiesReturnsMechanicalSpiderDrone";
             droneDef.bodyPrefab = bodyPrefab;
