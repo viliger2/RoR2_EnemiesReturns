@@ -18,6 +18,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.RechargableInteractable
             {
                 PlayAnimationOnAnimator(animator, "Base", "Ready");
             }
+            if (sfxLocator)
+            {
+                Util.PlaySound(sfxLocator.deathSound, gameObject);
+            }
             if (isAuthority)
             {
                 var purchaseInteraction = gameObject.GetComponent<PurchaseInteraction>();

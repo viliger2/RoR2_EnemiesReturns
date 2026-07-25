@@ -93,7 +93,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static GameObject levelDownEffect;
 
-        public static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
+        private static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
         {
             {0, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
             {1, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
@@ -330,6 +330,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 {
                     ownerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
                 }
+                ownerBody.MarkAllStatsDirty();
             }
         }
 

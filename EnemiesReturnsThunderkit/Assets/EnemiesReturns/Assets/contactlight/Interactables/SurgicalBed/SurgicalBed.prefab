@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3601787993201840361}
   - component: {fileID: 4211239963781667065}
   - component: {fileID: 5241352578503332647}
+  - component: {fileID: 3522570508702551778}
   m_Layer: 0
   m_Name: SurgicalBed
   m_TagString: Untagged
@@ -178,7 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPurchaseCount: 99
-  refreshDuration: 60
 --- !u!114 &3601787993201840361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +228,28 @@ MonoBehaviour:
   transformPairs:
   - name: Animator
     transform: {fileID: 8688052560525741231}
+--- !u!114 &3522570508702551778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639387413467368562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: ER_SurgicalBed_Ready_Play
+  barkSound: 
+  openSound: ER_SurgicalBed_Open_Play
+  jumpSound: 
+  landingSound: 
+  fallDamageSound: 
+  aliveLoopStart: 
+  aliveLoopStop: 
+  sprintLoopStart: 
+  sprintLoopStop: 
 --- !u!1 &2931030376722146083
 GameObject:
   m_ObjectHideFlags: 0

@@ -922,6 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetPath: RoR2/Base/Common/VFX/TeleportOutBoom.prefab
+  transmit: 0
   scale: -1
 --- !u!1 &408055194
 GameObject:
@@ -1061,11 +1062,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/limbo/matLimboFloor.mat
   isParticle: 0
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 408055199}
+  loadAsynchronous: 1
 --- !u!1001 &420146108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2836,7 +2841,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707090898}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -3024,7 +3029,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: 801e80f8b714c394086cadee4de99201, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 1
+  m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -6269455883897799412, guid: 801e80f8b714c394086cadee4de99201, type: 2}
@@ -4005,7 +4010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &982383226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9283,11 +9288,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matGenericWeatherDust.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!1 &1166739799
 GameObject:
   m_ObjectHideFlags: 0
@@ -14232,11 +14241,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matSnowflake.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!1001 &1288242531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14700,11 +14713,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Brother/matBrotherStib.mat
   isParticle: 0
   isTrailParticle: 0
-  loadAsynchronous: 0
   renderer: {fileID: 1497041672}
+  loadAsynchronous: 0
 --- !u!1001 &1547008697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18248,7 +18265,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023492989}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -18545,11 +18562,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Brother/matBrotherHammer.mat
   isParticle: 0
   isTrailParticle: 0
-  loadAsynchronous: 0
   renderer: {fileID: 2060876891}
+  loadAsynchronous: 0
 --- !u!1001 &2073553024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18770,11 +18791,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/moon/matMoonWater.mat
   isParticle: 0
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 2128891741}
+  loadAsynchronous: 1
 --- !u!1 &2130240404
 GameObject:
   m_ObjectHideFlags: 0
@@ -19127,11 +19152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matShrineFloorDust.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!4 &421716693710911876
 Transform:
   m_ObjectHideFlags: 0
@@ -24222,11 +24251,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!33 &1888943305276188054
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35816,11 +35849,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!114 &4944433341818612563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35833,11 +35870,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!4 &5017940736614524612
 Transform:
   m_ObjectHideFlags: 0
@@ -36063,11 +36104,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matShrineFloorDust.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!1 &6158764644679124938
 GameObject:
   m_ObjectHideFlags: 0
@@ -47920,11 +47965,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
   addressableMaterialPath: RoR2/Base/Common/VFX/matTracerBright.mat
   isParticle: 1
   isTrailParticle: 0
-  loadAsynchronous: 1
   renderer: {fileID: 0}
+  loadAsynchronous: 1
 --- !u!114 &9109359968694096499
 MonoBehaviour:
   m_ObjectHideFlags: 0

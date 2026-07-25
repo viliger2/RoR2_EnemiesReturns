@@ -2298,6 +2298,36 @@
 										</Event>
 									</ChildrenList>
 								</Folder>
+								<Folder Name="Interactables" ID="{3BDF8818-ACF8-407D-9F88-0392D7852504}" ShortID="88961540">
+									<ChildrenList>
+										<Folder Name="SurgicalBed" ID="{3741DE4B-F7C5-4E20-8E07-BF84B00AD6DE}" ShortID="842112401">
+											<ChildrenList>
+												<Event Name="ER_SurgicalBed_Open_Play" ID="{02098B7B-BB0F-4BAC-BF01-0FB7F41D16F1}">
+													<ChildrenList>
+														<Action Name="" ID="{353823EE-92F7-4CB8-BBF7-E3C3E274E387}" ShortID="150322523">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SurgicalBed_Open" ID="{3FA41DF3-F71C-471D-83BB-FE0A2D7F1B84}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SurgicalBed_Ready_Play" ID="{63B18F5D-7887-4F4F-BF69-8900222A2187}">
+													<ChildrenList>
+														<Action Name="" ID="{2C327399-3E70-4A46-8465-447539344571}" ShortID="187625812">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SurigcalBed_Ready" ID="{A04574C1-A569-4DEC-B93D-2A87CFE4E689}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

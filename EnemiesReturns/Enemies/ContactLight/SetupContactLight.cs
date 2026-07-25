@@ -282,5 +282,16 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             return prefab;
         }
+
+        public static GameObject CreateCleanseNovaEffect()
+        {
+            var newObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_TPHealingNova.TeleporterHealNovaPulse_prefab).WaitForCompletion().InstantiateClone("SurgicalBedNovaPulse", true);
+
+            var esm = newObject.GetComponent<EntityStateMachine>();
+            esm.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ContactLight.RechargableInteractable.SurgicalBed.BedHealNovaPulse));
+            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ContactLight.RechargableInteractable.SurgicalBed.BedHealNovaPulse));
+
+            return newObject;
+        }
     }
 }

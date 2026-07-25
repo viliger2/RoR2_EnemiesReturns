@@ -207,7 +207,6 @@ namespace EnemiesReturns
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
             yield break;
-
         }
 
         void SwapMaterials(Material[] assets)

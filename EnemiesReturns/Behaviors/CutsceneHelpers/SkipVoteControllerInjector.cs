@@ -16,8 +16,9 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                 return;
             }
             var skipVoteOverlay = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_UI.SkipVoteOverlay_prefab).WaitForCompletion();
-            skipVoteOverlay.transform.SetParent(base.transform, false);
-            var nakedButton = skipVoteOverlay.transform.Find("CanvasGroup/NakedButton");
+            var overlay = UnityEngine.Object.Instantiate(skipVoteOverlay);
+            overlay.transform.SetParent(base.transform, false);
+            var nakedButton = overlay.transform.Find("CanvasGroup/NakedButton");
             if (nakedButton)
             {
                 var hgButton = nakedButton.GetComponent<HGButton>();
@@ -26,7 +27,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                     hgButton.onClick.AddListener(voteController.SubmitVoteZeroFotAllLocalUsers);
                 }
             }
-            var voteInfoPanel = skipVoteOverlay.transform.Find("CanvasGroup/NakedButton/VoteInfoPanel");
+            var voteInfoPanel = overlay.transform.Find("CanvasGroup/NakedButton/VoteInfoPanel");
             if (voteInfoPanel)
             {
                 var controller = voteInfoPanel.GetComponent<VoteInfoPanelController>();
@@ -35,7 +36,6 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                     controller.voteController = voteController;
                 }
             }
-
         }
 
     }

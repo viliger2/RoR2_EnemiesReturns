@@ -71,13 +71,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Aeonian
 
         public void SpawnEffect()
         {
-            EffectData data = new EffectData()
+            if (characterBody)
             {
-                origin = characterBody.corePosition,
-                scale = characterBody.bestFitActualRadius
-            };
+                EffectData data = new EffectData()
+                {
+                    origin = characterBody.corePosition,
+                    scale = characterBody.bestFitActualRadius
+                };
 
-            EffectManager.SpawnEffect(effectPrefab, data, false);
+                EffectManager.SpawnEffect(effectPrefab, data, false);
+            }
         }
 
     }

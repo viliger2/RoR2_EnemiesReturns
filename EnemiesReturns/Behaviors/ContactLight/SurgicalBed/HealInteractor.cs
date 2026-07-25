@@ -9,6 +9,8 @@ namespace EnemiesReturns.Behaviors.ContactLight.SurgicalBed
 {
     public class HealInteractor : NetworkBehaviour
     {
+        public static GameObject healNovaPrefab;
+
         public int maxPurchaseCount;
 
         private int purchaseCount;
@@ -35,8 +37,12 @@ namespace EnemiesReturns.Behaviors.ContactLight.SurgicalBed
                 return;
             }
 
-            characterBody.healthComponent.HealFraction(1, default);
-            CleanseSystem.CleanseBodyServer(characterBody, true, false, true, true, true, false);
+            if (healNovaPrefab)
+            {
+                var newObject = UnityEngine.Object.Instantiate(healNovaPrefab, this.transform.position, this.transform.rotation);
+                newObject.GetComponent<TeamFilter>().teamIndex = characterBody.teamComponent.teamIndex;
+                NetworkServer.Spawn(newObject);
+            }
 
             purchaseCount++;
         }

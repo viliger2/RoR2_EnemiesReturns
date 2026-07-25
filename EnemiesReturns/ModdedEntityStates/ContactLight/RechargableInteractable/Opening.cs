@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.RechargableInteractable
             if (animator)
             {
                 PlayAnimationOnAnimator(animator, "Base", "Opening");
+            }
+            if (sfxLocator)
+            {
+                Util.PlaySound(sfxLocator.openSound, gameObject);
             }
         }
 

@@ -79,10 +79,8 @@ namespace EnemiesReturns
                 var contactLightDiorama = assets.First(asset => asset.name == "ContactLightDioramaDisplay");
                 contactLightDiorama.GetComponent<MusicTrackOverride>().track = Content.MusicTracks.CoalescenceReturns;
 
-
-
-
-
+                Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab = SetupContactLight.CreateCleanseNovaEffect();
+                nopList.Add(Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab);
 
                 Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
 

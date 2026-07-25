@@ -7451,6 +7451,82 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="Interactables" ID="{B91E2263-C547-4A2C-855F-B9D21E216D8F}" ShortID="473565030">
+											<ChildrenList>
+												<Folder Name="SurgicalBed" ID="{59B87E2E-D8C8-4840-BFEF-81DCB8C752CC}" ShortID="482390970">
+													<ChildrenList>
+														<Sound Name="SurgicalBed_Open" ID="{3FA41DF3-F71C-471D-83BB-FE0A2D7F1B84}" ShortID="13121203">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-10</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="surgical_bed_open" ID="{5BDB52A9-943F-4333-AF2D-6F0D9481A14D}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SyrgicalBed\surgical_bed_open.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="721279464"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="surgical_bed_open" ID="{5BDB52A9-943F-4333-AF2D-6F0D9481A14D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SurigcalBed_Ready" ID="{A04574C1-A569-4DEC-B93D-2A87CFE4E689}" ShortID="12470725">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-8</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="surgical_bed_ready" ID="{81ED091F-8A3F-43AB-A51E-617D1B038DC7}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SyrgicalBed\surgical_bed_ready.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="254183099"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="surgical_bed_ready" ID="{81ED091F-8A3F-43AB-A51E-617D1B038DC7}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
