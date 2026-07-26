@@ -3029,7 +3029,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: 801e80f8b714c394086cadee4de99201, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 2
+  m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -6269455883897799412, guid: 801e80f8b714c394086cadee4de99201, type: 2}
@@ -3685,7 +3685,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1166739802}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4222,7 +4222,7 @@ RectTransform:
   - {fileID: 677836412}
   - {fileID: 52900865}
   m_Father: {fileID: 1166739802}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9381,10 +9381,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1600901133}
-  - {fileID: 915506735}
   - {fileID: 1638192407}
   - {fileID: 1049088645}
+  - {fileID: 915506735}
+  - {fileID: 1600901133}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14919,7 +14919,7 @@ Transform:
   m_Children:
   - {fileID: 2023492990}
   m_Father: {fileID: 1166739802}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -25.576, y: 145.614, z: 0}
 --- !u!114 &1600901135
 MonoBehaviour:
@@ -14947,6 +14947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fov: 60
+  barsCanvas: {fileID: 1638192410}
+  textCanvas: {fileID: 1049088648}
 --- !u!95 &1600901137
 Animator:
   serializedVersion: 5
@@ -15001,7 +15003,7 @@ RectTransform:
   m_Children:
   - {fileID: 699934093}
   m_Father: {fileID: 1166739802}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15058,7 +15060,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2023492991}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

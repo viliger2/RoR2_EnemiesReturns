@@ -356,7 +356,7 @@ namespace EnemiesReturns
             return HasEquipment(inventory, equipmentDef.equipmentIndex);
         }
 
-        public static void SubmitVoteZeroFotAllLocalUsers(this VoteController voteController)
+        public static void SubmitVoteZeroForAllLocalUsers(this VoteController voteController)
         {
             voteController.SubmitVoteForAllLocalUsers(0);
         }

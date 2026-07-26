@@ -43,6 +43,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             {
                 outer.SetNextState(new Phase2());
             }
+            if (Input.GetKeyDown(KeyCode.PageDown))
+            {
+                outer.SetNextState(new PreEnding());
+            }
 #endif
             if (missionController && missionController.missionClear && isAuthority)
             {

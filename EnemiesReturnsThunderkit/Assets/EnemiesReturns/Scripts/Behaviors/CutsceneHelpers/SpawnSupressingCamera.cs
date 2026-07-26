@@ -11,6 +11,10 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
     {
         public float fov = 60f;
 
+        public Canvas barsCanvas;
+
+        public Canvas textCanvas;
+
         private GameObject camera;
 
         private CameraState cameraState;

@@ -8,6 +8,10 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
     {
         public float fov = 60f;
 
+        public Canvas barsCanvas;
+
+        public Canvas textCanvas;
+
         private GameObject camera;
 
         private CameraState cameraState;
@@ -18,6 +22,13 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
             camera.transform.localRotation = Quaternion.identity;
             var cameraRigController = camera.GetComponent<CameraRigController>();
             cameraRigController.suppressPlayerCameras = true;
+
+            barsCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            barsCanvas.worldCamera = cameraRigController.uiCam;
+
+            textCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            textCanvas.worldCamera = cameraRigController.uiCam; // it should be scene cam but it breaks the text for some reason
+
             cameraState = new CameraState();
         }
 

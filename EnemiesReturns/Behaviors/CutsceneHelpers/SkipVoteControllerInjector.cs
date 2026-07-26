@@ -24,7 +24,7 @@ namespace EnemiesReturns.Behaviors.CutsceneHelpers
                 var hgButton = nakedButton.GetComponent<HGButton>();
                 if (hgButton)
                 {
-                    hgButton.onClick.AddListener(voteController.SubmitVoteZeroFotAllLocalUsers);
+                    hgButton.onClick.AddListener(voteController.SubmitVoteZeroForAllLocalUsers);
                 }
             }
             var voteInfoPanel = overlay.transform.Find("CanvasGroup/NakedButton/VoteInfoPanel");
