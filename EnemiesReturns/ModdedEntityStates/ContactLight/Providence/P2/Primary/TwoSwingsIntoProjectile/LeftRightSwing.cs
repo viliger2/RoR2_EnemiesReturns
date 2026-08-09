@@ -11,29 +11,43 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
     [RegisterEntityState]
     public class LeftRightSwing : BaseLeftRightSwing
     {
-        public override float baseFirstSwing => 1f;
-
-        public override float baseSecondSwing => 1f;
-
         public override float damageCoefficient => 2f;
 
-        public override string layerName => "UpperBodyOnly";
+        public override float baseDuration => 1.5f;
 
-        public override string firstSwingStateName => "Slash1";
+        public override string hitBoxGroupName => "SwordHitbox";
 
-        public override string secondSwingStateName => "Slash2";
+        public override float procCoefficient => 1f;
 
-        public override string playbackParam => "combo.playbackRate";
+        public override float pushAwayForce => 500f;
 
-        public override string hitboxName => "Sword";
+        public override Vector3 forceVector => Vector3.zero;
 
-        public override string firstAttackParam => "Slash1.attack";
+        public override float hitPauseDuration => 0.1f;
 
-        public override string secondAttackParam => "Slash2.attack";
+        public override string swingEffectMuzzleString => ""; // TODO
+
+        public override string mecanimHitboxActiveParameter => "Slash1.attack";
+
+        public override float shorthopVelocityFromHit => 0f;
+
+        public override string beginStateSoundString => ""; // TODO
+
+        public override string beginSwingSoundString => ""; // TODO
+
+        public override bool forceForwardVelocity => false;
+
+        public override bool scaleHitPauseDurationAndVelocityWithAttackSpeed => false;
+
+        public override bool ignoreAttackSpeed => false;
+
+        public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
+
+        public override float earlyExit => 2f;
+
+        public static string fireCloneMecanimParam = "FireClone.attack";
 
         public static GameObject cloneProjectile;
-
-        public static float cloneFireDelay = 0.2f;
 
         public static float maxSearchDistance = 250f;
 
@@ -43,49 +57,22 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public static float cloneProjectileDamage = 2f;
 
+        public static float projectileHealthThreshold = 0.85f;
+
         private bool firedClone;
 
-        private float cloneTimer;
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            cloneTimer = cloneFireDelay;
-        }
         public override EntityState GetNextStateIfMissed()
         {
             return new FireProjectiles();
         }
 
-        public override void FireFirstAttack()
+        public override void AuthorityFixedUpdate()
         {
-            base.FireFirstAttack();
-            CheckAndFireClone();
-        }
-
-        public override void FireSecondAttack()
-        {
-            base.FireSecondAttack();
-            CheckAndFireClone();
-        }
-
-        public override void StartSecondSwingAnimation()
-        {
-            base.StartSecondSwingAnimation();
-            cloneTimer = cloneFireDelay;
-            firedClone = false;
-        }
-
-        private void CheckAndFireClone()
-        {
-            if (!firedClone)
+            base.AuthorityFixedUpdate();
+            if (animator.GetFloat(fireCloneMecanimParam) > 0.9f && healthComponent.healthFraction <= projectileHealthThreshold && !firedClone)
             {
-                if (cloneTimer <= 0)
-                {
-                    FireCloneProjectile();
-                    firedClone = true;
-                }
-                cloneTimer -= GetDeltaTime();
+                FireCloneProjectile();
+                firedClone = true;
             }
         }
 
@@ -142,5 +129,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
             return null;
         }
+
     }
 }

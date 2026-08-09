@@ -37,7 +37,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
             }
             if (levelBar)
             {
-                if (adrenalineLevel >= adrenalinePerLevel * 5)
+                if (adrenalineLevel >= adrenalinePerLevel * AdrenalineCoreMasterComponent.MAX_LEVEL)
                 {
                     levelBar.fillAmount = 1f;
                 }

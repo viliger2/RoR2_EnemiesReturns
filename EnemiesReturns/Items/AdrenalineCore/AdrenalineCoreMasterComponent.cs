@@ -139,7 +139,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void Update()
         {
-            if (!uiAttached)
+            if (!uiAttached && Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
             {
                 EnableUI();
             }
@@ -173,6 +173,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void EnableUI()
         {
+            if (!Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
+            {
+                return;
+            }
+
             var instance = AdrenalineCoreUI.FindInstance(master);
             if (instance)
             {
@@ -206,6 +211,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void DisableUI()
         {
+            if (!Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
+            {
+                return;
+            }
+
             var instance = AdrenalineCoreUI.FindInstance(master);
             if (instance)
             {

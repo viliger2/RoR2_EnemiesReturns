@@ -16,16 +16,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Orbs
 
         public static float damageCoefficient = 2f;
 
-        private Vector3 startingDirection;
-
-        private Quaternion rotation;
-
         private bool fired;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayCrossfade("Gesture", "Thundercall", 0.1f);
+            PlayCrossfade("Gesture", "ProjectileSummon", 0.1f);
         }
 
         public override void FixedUpdate()

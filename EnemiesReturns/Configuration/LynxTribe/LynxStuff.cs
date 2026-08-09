@@ -83,8 +83,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
             LynxShrineTierBossMaxSpawns = config.Bind("Lynx Shrine Behaviour", "Lynx Shrine Tier Boss Max Spawns", 5, "Maximum number of enemies that are spawned when Boss Tier item is selected.");
             LynxShrineTierBossEliteBias = config.Bind("Lynx Shrine Behaviour", "Lynx Shrine Tier Boss Elite Bias", 0.5f, "Elite bias of Boss Tier item. Basically, the lower the value the cheaper elites are to spawn, which means there will be more of them.");
 
-            LynxTrapDirectorCost = config.Bind("Lynx Trap Spawn", "Lynx Trap Director Cost", 2, "Lynx Trap's director cost. The same as other shrines by default.");
-            LynxTrapSelectionWeight = config.Bind("Lynx Trap Spawn", "Lynx Trap Selection Weight", 1, "Lynx Trap's selection weight. The same as Combat shrine by default.");
+            LynxTrapDirectorCost = config.Bind("Lynx Trap Spawn", "Lynx Trap Director Cost", 2, "Lynx Trap's director cost. Double of the barrel by default as it gives more money on killing the enemies.");
+            LynxTrapSelectionWeight = config.Bind("Lynx Trap Spawn", "Lynx Trap Selection Weight", 1, "Lynx Trap's selection weight.");
             LynxTrapSpawnCategory = config.Bind("Lynx Trap Spawn", "Lynx Trap Spawn Category", DirectorAPI.InteractableCategory.Barrels, "Lynx Trap's spawn category.");
             LynxTrapMaxSpawnPerStage = config.Bind("Lynx Trap Spawn", "Lynx Trap Max Spawn Per Stage", 3, "Max spawns of Lynx Trap per stage.");
 

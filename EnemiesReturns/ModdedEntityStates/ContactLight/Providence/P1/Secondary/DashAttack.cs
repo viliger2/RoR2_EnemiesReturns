@@ -9,8 +9,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
     [RegisterEntityState]
     public class DashAttack : BasicMeleeAttack
     {
-        public static AnimationCurve acdSlash1;
-
         public static GameObject swingEffect;
 
         public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
@@ -21,20 +19,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         {
             this.baseDuration = Configuration.General.ProvidenceP1SecondaryDuration.Value;
             base.damageCoefficient = 3f;
-            base.hitBoxGroupName = "SecondaryProvidence";
+            base.hitBoxGroupName = "DashStabHitbox";
             base.hitEffectPrefab = hitEffect;
             base.procCoefficient = 1f;
             base.pushAwayForce = 1000f;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
-            base.swingEffectMuzzleString = "SwingCombo1EffectMuzzle";
-            //base.mecanimHitboxActiveParameter = "Slash1.attack";
+            base.swingEffectMuzzleString = "";
             base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP1_Play";
-            //base.impactSound = "";
+            base.beginSwingSoundString = "";
+            //base.impactSound = 
             base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 1f, 0f, 1f);
+            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 1.5f, 0f, 1.5f);
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
             base.duration = base.baseDuration / attackSpeedStat;
@@ -53,13 +50,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 
         public override void PlayAnimation()
         {
-            PlayCrossfade("Gesture, Override", "Slash1", "combo.playbackRate", duration, 0.05f);
+            PlayCrossfade("Gesture, Override", "DashStab", "combo.playbackRate", duration, 0.05f);
         }
 
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-            //skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "FireOrbs");
             base.OnExit();
         }
 

@@ -1,0 +1,367 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskProvidenceUpperBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: MeshERProviAccessories
+    m_Weight: 0
+  - m_Path: MeshERProviBody
+    m_Weight: 0
+  - m_Path: MeshERProviCloak
+    m_Weight: 0
+  - m_Path: meshERProviSword
+    m_Weight: 0
+  - m_Path: MeshProviEye
+    m_Weight: 0
+  - m_Path: ProviArmature
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmIK.L
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmIK.L/ArmIK.L_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmIK.R
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmIK.R/ArmIK.R_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmPole.L
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmPole.L/ArmPole.L_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmPole.R
+    m_Weight: 0
+  - m_Path: ProviArmature/ArmPole.R/ArmPole.R_end
+    m_Weight: 0
+  - m_Path: ProviArmature/LegIK.L
+    m_Weight: 0
+  - m_Path: ProviArmature/LegIK.L/LegIK.L_end
+    m_Weight: 0
+  - m_Path: ProviArmature/LegIK.R
+    m_Weight: 0
+  - m_Path: ProviArmature/LegIK.R/LegIK.R_end
+    m_Weight: 0
+  - m_Path: ProviArmature/LegPole.L
+    m_Weight: 0
+  - m_Path: ProviArmature/LegPole.L/LegPole.L_end
+    m_Weight: 0
+  - m_Path: ProviArmature/LegPole.R
+    m_Weight: 0
+  - m_Path: ProviArmature/LegPole.R/LegPole.R_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Base
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Base/Stomach
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L/Index2.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L/Index2.L/Index3.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Index1.L/Index2.L/Index3.L/Index3.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L/Middle2.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L/Middle2.L/Middle3.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Middle1.L/Middle2.L/Middle3.L/Middle3.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Pinkie1.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Pinkie1.L/Pinkie2.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Pinkie1.L/Pinkie2.L/Pinkie3.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Pinkie1.L/Pinkie2.L/Pinkie3.L/Pinkie3.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L/Ring2.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L/Ring2.L/Ring3.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Ring1.L/Ring2.L/Ring3.L/Ring3.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L/Thumb2.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.L/UpperArm.L/LowerArm.L/Hand.L/Thumb1.L/Thumb2.L/Thumb2.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R/Index2.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R/Index2.R/Index3.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Index1.R/Index2.R/Index3.R/Index3.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R/Middle2.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R/Middle2.R/Middle3.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Middle1.R/Middle2.R/Middle3.R/Middle3.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Pinkie1.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Pinkie1.R/Pinkie2.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Pinkie1.R/Pinkie2.R/Pinkie3.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Pinkie1.R/Pinkie2.R/Pinkie3.R/Pinkie3.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R/Ring2.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R/Ring2.R/Ring3.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Ring1.R/Ring2.R/Ring3.R/Ring3.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R/Thumb2.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Thumb1.R/Thumb2.R/Thumb2.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt/WeaponSmear1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt/WeaponSmear1/WeaponSmear2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt/WeaponSmear1/WeaponSmear2/WeaponSmear3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt/WeaponSmear1/WeaponSmear2/WeaponSmear3/WeaponSmear4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Clavicle.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/WeaponHilt/WeaponSmear1/WeaponSmear2/WeaponSmear3/WeaponSmear4/WeaponSmear4_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2/CloakB1.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2/CloakB1.3/CloakB1.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2/CloakB1.3/CloakB1.4/CloakB1.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2/CloakB1.3/CloakB1.4/CloakB1.5/CloakB1.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB1.1/CloakB1.2/CloakB1.3/CloakB1.4/CloakB1.5/CloakB1.6/CloakB1.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2/CloakB2.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2/CloakB2.3/CloakB2.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2/CloakB2.3/CloakB2.4/CloakB2.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2/CloakB2.3/CloakB2.4/CloakB2.5/CloakB2.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB2.1/CloakB2.2/CloakB2.3/CloakB2.4/CloakB2.5/CloakB2.6/CloakB2.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2/CloakB3.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2/CloakB3.3/CloakB3.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2/CloakB3.3/CloakB3.4/CloakB3.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2/CloakB3.3/CloakB3.4/CloakB3.5/CloakB3.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB3.1/CloakB3.2/CloakB3.3/CloakB3.4/CloakB3.5/CloakB3.6/CloakB3.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2/CloakB4.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2/CloakB4.3/CloakB4.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2/CloakB4.3/CloakB4.4/CloakB4.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2/CloakB4.3/CloakB4.4/CloakB4.5/CloakB4.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB4.1/CloakB4.2/CloakB4.3/CloakB4.4/CloakB4.5/CloakB4.6/CloakB4.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2/CloakB5.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2/CloakB5.3/CloakB5.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2/CloakB5.3/CloakB5.4/CloakB5.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2/CloakB5.3/CloakB5.4/CloakB5.5/CloakB5.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB5.1/CloakB5.2/CloakB5.3/CloakB5.4/CloakB5.5/CloakB5.6/CloakB5.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2/CloakB6.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2/CloakB6.3/CloakB6.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2/CloakB6.3/CloakB6.4/CloakB6.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2/CloakB6.3/CloakB6.4/CloakB6.5/CloakB6.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakB6.1/CloakB6.2/CloakB6.3/CloakB6.4/CloakB6.5/CloakB6.6/CloakB6.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2/CloakF1.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2/CloakF1.3/CloakF1.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2/CloakF1.3/CloakF1.4/CloakF1.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2/CloakF1.3/CloakF1.4/CloakF1.5/CloakF1.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF1.1/CloakF1.2/CloakF1.3/CloakF1.4/CloakF1.5/CloakF1.6/CloakF1.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2/CloakF2.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2/CloakF2.3/CloakF2.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2/CloakF2.3/CloakF2.4/CloakF2.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2/CloakF2.3/CloakF2.4/CloakF2.5/CloakF2.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF2.1/CloakF2.2/CloakF2.3/CloakF2.4/CloakF2.5/CloakF2.6/CloakF2.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2/CloakF3.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2/CloakF3.3/CloakF3.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2/CloakF3.3/CloakF3.4/CloakF3.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2/CloakF3.3/CloakF3.4/CloakF3.5/CloakF3.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF3.1/CloakF3.2/CloakF3.3/CloakF3.4/CloakF3.5/CloakF3.6/CloakF3.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2/CloakF4.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2/CloakF4.3/CloakF4.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2/CloakF4.3/CloakF4.4/CloakF4.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2/CloakF4.3/CloakF4.4/CloakF4.5/CloakF4.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF4.1/CloakF4.2/CloakF4.3/CloakF4.4/CloakF4.5/CloakF4.6/CloakF4.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2/CloakF5.3
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2/CloakF5.3/CloakF5.4
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2/CloakF5.3/CloakF5.4/CloakF5.5
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2/CloakF5.3/CloakF5.4/CloakF5.5/CloakF5.6
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/CloakF5.1/CloakF5.2/CloakF5.3/CloakF5.4/CloakF5.5/CloakF5.6/CloakF5.6_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck/Head
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck/Head/Dongle.L
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck/Head/Dongle.L/Dongle.L_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck/Head/Dongle.R
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Base/Stomach/Chest/Neck/Head/Dongle.R/Dongle.R_end
+    m_Weight: 1
+  - m_Path: ProviArmature/ROOT/Pelvis
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Loincloth1
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Loincloth1/Loincloth2
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Loincloth1/Loincloth2/Loincloth3
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Loincloth1/Loincloth2/Loincloth3/Loincloth3_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.L
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.L/Calf.L
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.L/Calf.L/Foot.L
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.L/Calf.L/Foot.L/Toe.l
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.L/Calf.L/Foot.L/Toe.l/Toe.l_end
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.R
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.R/Calf.R
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.R/Calf.R/Foot.R
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.R/Calf.R/Foot.R/Toe.r
+    m_Weight: 0
+  - m_Path: ProviArmature/ROOT/Pelvis/Thigh.R/Calf.R/Foot.R/Toe.r/Toe.r_end
+    m_Weight: 0

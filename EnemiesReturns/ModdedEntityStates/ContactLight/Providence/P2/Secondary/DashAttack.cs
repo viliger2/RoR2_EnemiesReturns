@@ -45,12 +45,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
             base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP1_Play";
             //base.impactSound = "";
             base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 1f, 0f, 1f);
+            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 3f, 0f, 3f);
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
             base.duration = base.baseDuration / attackSpeedStat;
-
-            clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxClones, (float)minClones));
 
             base.OnEnter();
 
@@ -72,9 +70,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-            //skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "FireOrbs");
             base.OnExit();
         }
+
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
+        {
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.damageType.damageSource = DamageSource.Secondary;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
 
         public override void AuthorityOnFinish()
         {
@@ -88,6 +97,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
             {
                 return;
             }
+
+            clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxClones, (float)minClones));
 
             var info = new FireProjectileInfo()
             {
@@ -105,17 +116,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
             };
 
             ProjectileManager.instance.FireProjectile(info);
-        }
-
-        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
-        {
-            base.AuthorityModifyOverlapAttack(overlapAttack);
-            overlapAttack.damageType.damageSource = DamageSource.Secondary;
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
         }
     }
 }

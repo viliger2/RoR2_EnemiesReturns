@@ -8,14 +8,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
     [RegisterEntityState]
     public class TeleportToCenter : BaseState
     {
-        public static float baseDuration => Configuration.General.ProvidenceP1SpecialTeleportDuration.Value;
+        public static float baseDuration => 3f;
 
         private Vector3 position;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayAnimation("Gesture, Override", "EnterSkyLeap", "SkyLeap.playbackRate", baseDuration);
+            PlayCrossfade("Gesture, Override", "RingsInitial", 0.1f);
             position = transform.position;
 
             var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
@@ -39,16 +39,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             }
         }
 
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-        }
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Death;
         }
     }
 }
