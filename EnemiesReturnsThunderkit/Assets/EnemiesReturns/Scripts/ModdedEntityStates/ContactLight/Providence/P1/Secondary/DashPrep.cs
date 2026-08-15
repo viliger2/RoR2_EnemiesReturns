@@ -6,7 +6,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
     [RegisterEntityState]
     public class DashPrep : BaseState
     {
-        public static float baseDuration => 1f;
+        public static float baseDuration => 0.583f;
 
         private float duration;
 
@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayAnimation("Gesture, Override", "SlashInit", "combo.playbackRate", duration);
+            PlayAnimation("Gesture, Override", "DashPrep", "combo.playbackRate", duration);
         }
 
         public override void FixedUpdate()

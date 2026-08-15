@@ -8,14 +8,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
     [RegisterEntityState]
     public class TeleportToCenter : BaseState
     {
-        public static float baseDuration => 1f;
+        public static float baseDuration => 3f;
 
         private Vector3 position;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayAnimation("Gesture, Override", "EnterSkyLeap", "SkyLeap.playbackRate", baseDuration);
+            PlayCrossfade("Gesture, Override", "RingsInitial", 0.1f);
             position = transform.position;
 
             var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
@@ -35,20 +35,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
             if (fixedAge > baseDuration && isAuthority)
             {
                 base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.25f, Quaternion.identity);
-                outer.SetNextState(new FireRingsWithClones());
+                outer.SetNextState(new FireRings());
             }
-        }
-
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Death;
         }
     }
 }

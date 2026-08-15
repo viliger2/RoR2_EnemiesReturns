@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public static int cloneCount = 3;
 
-        public static float defaultDistance = 50f;
+        public static float defaultDistance = 100f;
 
         public static float maxAngle = 75;
 
@@ -31,6 +31,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
         public override float swingForce => 0f;
 
         public override GameObject hitEffect => null;
+
+        public static float projectileSpread = 45f;
 
         public override string swingSoundEffect => "";
 
@@ -52,10 +54,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
                 Vector3 rhs = Vector3.Cross(Vector3.up, aimRay.direction);
                 Vector3 axis = Vector3.Cross(aimRay.direction, rhs);
-                float angle = 45f / (cloneCount - 1);
 
-                Vector3 direction = Quaternion.AngleAxis((0f - 1) * 0.5f, axis) * aimRay.direction;
-                Quaternion quaternion = Quaternion.AngleAxis(angle, axis);
+                float angle = projectileSpread / (cloneCount - 1);
+
+                Vector3 direction = Quaternion.AngleAxis(-projectileSpread * 0.5f, axis) * aimRay.direction;
+                Quaternion rotation = Quaternion.AngleAxis(angle, axis);
+
+                Ray aimRay2 = new Ray(aimRay.origin, direction);
 
                 for (int i = 0; i < cloneCount; i++)
                 {
@@ -68,7 +73,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
                         maxDistance = distance,
                         owner = gameObject,
                         position = aimRay.origin,
-                        rotation = quaternion,
+                        rotation = Util.QuaternionSafeLookRotation(aimRay2.direction),
                         useFuseOverride = true,
                         useSpeedOverride = true,
                         speedOverride = cloneProjectileSpeed,
@@ -76,9 +81,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
                     };
                     ProjectileManager.instance.FireProjectile(projectileInfo);
 
-                    quaternion = Util.QuaternionSafeLookRotation(quaternion * direction);
+                    aimRay2.direction = rotation * aimRay2.direction;
                 }
-
 
                 clonesFired = true;
             }

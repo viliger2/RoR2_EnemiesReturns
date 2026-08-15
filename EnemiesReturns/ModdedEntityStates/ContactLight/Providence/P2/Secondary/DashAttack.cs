@@ -8,15 +8,9 @@ using UnityEngine.AddressableAssets;
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
 {
     [RegisterEntityState]
-    public class DashAttack : BasicMeleeAttack
+    public class DashAttack : P1.Secondary.DashAttack
     {
-        public static AnimationCurve acdSlash1;
-
-        public static GameObject swingEffect;
-
         public static GameObject projectileClone;
-
-        public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
 
         public static float dashDamageCoefficient = 3f;
 
@@ -24,71 +18,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
 
         public static int maxClones = 3;
 
-        private Vector3 desiredDirection;
-
-        private int clonesCount;
-
-        public override void OnEnter()
-        {
-            this.baseDuration = Configuration.General.ProvidenceP1SecondaryDuration.Value;
-            base.damageCoefficient = dashDamageCoefficient;
-            base.hitBoxGroupName = "SecondaryProvidence";
-            base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 1000f;
-            base.forceVector = Vector3.zero;
-            base.hitPauseDuration = 0.1f;
-            base.swingEffectPrefab = swingEffect;
-            base.swingEffectMuzzleString = "SwingCombo1EffectMuzzle";
-            //base.mecanimHitboxActiveParameter = "Slash1.attack";
-            base.shorthopVelocityFromHit = 0f;
-            base.beginSwingSoundString = "ER_Arraign_ThreeHitComboSwingP1_Play";
-            //base.impactSound = "";
-            base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 3f, 0f, 3f);
-            base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
-            base.ignoreAttackSpeed = false;
-            base.duration = base.baseDuration / attackSpeedStat;
-
-            base.OnEnter();
-
-            desiredDirection = inputBank.aimDirection;
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            Vector3 targetMoveVelocity = Vector3.zero;
-            characterDirection.forward = Vector3.SmoothDamp(characterDirection.forward, desiredDirection, ref targetMoveVelocity, 0.01f, 90f);
-        }
-
-        public override void PlayAnimation()
-        {
-            PlayCrossfade("Gesture, Override", "Slash1", "combo.playbackRate", duration, 0.05f);
-        }
-
-        public override void OnExit()
-        {
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
-            base.OnExit();
-        }
-
-        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
-        {
-            base.AuthorityModifyOverlapAttack(overlapAttack);
-            overlapAttack.damageType.damageSource = DamageSource.Secondary;
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
-        }
-
-
         public override void AuthorityOnFinish()
         {
-            outer.SetNextState(new DashEnd());
             FireProjectileAuthority();
+            base.AuthorityOnFinish();
         }
 
         private void FireProjectileAuthority()
@@ -98,7 +31,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
                 return;
             }
 
-            clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxClones, (float)minClones));
+            int clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxClones, (float)minClones));
 
             var info = new FireProjectileInfo()
             {

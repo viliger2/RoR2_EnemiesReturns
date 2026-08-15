@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile
 {
-    public abstract class BaseFireProjectiles : BaseState
+    public abstract class BaseFireProjectiles : GenericCharacterMain
     {
         public abstract float baseDuration { get; }
 

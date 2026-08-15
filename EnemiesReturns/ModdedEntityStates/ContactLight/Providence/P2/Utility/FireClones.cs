@@ -37,7 +37,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
         public static GameObject projectilePrefab;
 
-        public static float predictionTime => Configuration.General.ProvidenceP1UtilityPredictionTimer.Value;
+        public static float predictionTime => 0.75f;
 
         private RoR2.Projectile.Predictor predictor;
 

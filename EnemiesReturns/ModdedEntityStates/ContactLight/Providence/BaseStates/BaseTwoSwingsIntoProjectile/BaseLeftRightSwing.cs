@@ -95,24 +95,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.AuthorityFixedUpdate();
             if(fixedAge >= earlyExit && !targetsHit)
             {
-                outer.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
+                // we use main here so no skill overrides the orbs
+                var esm = EntityStateMachine.FindByCustomName(gameObject, "Body");
+                if (characterBody.isPlayerControlled && inputBank.skill1.down)
+                {
+                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
+                }
+                else if (!characterBody.isPlayerControlled && !targetsHit)
+                {
+                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
+                }
+                outer.SetNextStateToMain();
             }
         }
 
         public abstract EntityState GetNextStateIfMissed();
-
-        //public override void AuthorityOnFinish()
-        //{
-        //    var esm = EntityStateMachine.FindByCustomName(gameObject, "Body");
-        //    if (characterBody.isPlayerControlled && inputBank.skill1.down)
-        //    {
-        //        esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
-        //    }
-        //    else if (!characterBody.isPlayerControlled && targetsHit)
-        //    {
-        //        esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
-        //    }
-        //    outer.SetNextStateToMain();
-        //}
     }
 }

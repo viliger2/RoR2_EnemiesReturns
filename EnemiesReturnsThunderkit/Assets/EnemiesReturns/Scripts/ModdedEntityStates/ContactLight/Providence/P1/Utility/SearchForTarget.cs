@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         public override string layerName => "Gesture, Override";
 
-        public override string animationStateName => "SlashInit";
+        public override string animationStateName => "Disappear";
 
         public override string playbackParamName => "combo.playbackRate";
 

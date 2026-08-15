@@ -14,9 +14,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         public override string animatorAttackParam => "Leap.attack";
 
-        public override float baseDuration => Configuration.General.ProvidenceP1UtilityAttackDuraion.Value;
+        public override float baseDuration => 3.5f;
 
-        public override float earlyExit => Configuration.General.ProvidenceP1UtilityEarlyExit.Value;
+        public override float earlyExit => 1.25f;
 
         public override int waveCount => 4;
 

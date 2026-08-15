@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 1162282349616290818}
   - component: {fileID: 4810802965051555593}
   - component: {fileID: 1971129291444294069}
-  - component: {fileID: 3372504834716886907}
   - component: {fileID: 1074069841503665960}
   - component: {fileID: 274565481402184747}
   - component: {fileID: 1606962296500798017}
@@ -243,7 +242,7 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
+  maxUserHealthFraction: 0.95
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 10
@@ -317,52 +316,6 @@ MonoBehaviour:
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
---- !u!114 &3372504834716886907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796795507270346501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1811796171, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customName: FireOrbs
-  skillSlot: 1
-  requiredSkill: {fileID: 11400000, guid: dcd701b0157bbc44eb80ceb4b8ae8660, type: 2}
-  requireSkillReady: 1
-  requireEquipmentReady: 0
-  minUserHealthFraction: -Infinity
-  maxUserHealthFraction: Infinity
-  minTargetHealthFraction: -Infinity
-  maxTargetHealthFraction: Infinity
-  minDistance: 0
-  maxDistance: Infinity
-  selectionRequiresTargetLoS: 0
-  selectionRequiresOnGround: 0
-  selectionRequiresTargetNonFlier: 0
-  selectionRequiresAimTarget: 0
-  maxTimesSelected: -1
-  moveTargetType: 0
-  activationRequiresTargetLoS: 0
-  activationRequiresAimTargetLoS: 0
-  activationRequiresAimConfirmation: 0
-  movementType: 0
-  moveInputScale: 1
-  aimVectorDampTimeOverride: -1
-  aimVectorMaxSpeedOverride: -1
-  aimType: 1
-  ignoreNodeGraph: 0
-  shouldSprint: 0
-  shouldFireEquipment: 0
-  shouldTapButton: 0
-  buttonPressType: 0
-  driverUpdateTimerOverride: -1
-  resetCurrentEnemyOnNextDriverSelection: 0
-  noRepeat: 0
-  nextHighPriorityOverride: {fileID: 0}
 --- !u!114 &1074069841503665960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +334,7 @@ MonoBehaviour:
   requireSkillReady: 1
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
-  maxUserHealthFraction: 0.95
+  maxUserHealthFraction: 0.9
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 30

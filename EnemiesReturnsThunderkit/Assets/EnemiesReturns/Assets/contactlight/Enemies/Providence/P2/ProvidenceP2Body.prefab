@@ -23,6 +23,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ceebda0ed5d46a74494b6891d0deef99, type: 2}
+    - target: {fileID: 2859791027360040491, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+      propertyPath: initialStateType._typeName
+      value: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Spawn,
+        EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 2963873619053843280, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: baseNameToken
       value: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP2_BODY_NAME

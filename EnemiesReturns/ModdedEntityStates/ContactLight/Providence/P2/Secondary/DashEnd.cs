@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayAnimation("Gesture, Override", "SlashInit", "combo.playbackRate", -duration);
+            //PlayAnimation("Gesture, Override", "SlashInit", "combo.playbackRate", -duration);
         }
 
         public override void FixedUpdate()

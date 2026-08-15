@@ -7,9 +7,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     [RegisterEntityState]
     public class SearchForTarget : BaseSearchForTarget
     {
-        public override float baseDuration => Configuration.General.ProvidenceP1UtilityPreDuration.Value;
+        public override float baseDuration => 0.75f;
 
-        public override float predictionTime => Configuration.General.ProvidenceP1UtilityPredictionTimer.Value;
+        public override float predictionTime => 0.75f;
 
         public override string layerName => "Gesture, Override";
 

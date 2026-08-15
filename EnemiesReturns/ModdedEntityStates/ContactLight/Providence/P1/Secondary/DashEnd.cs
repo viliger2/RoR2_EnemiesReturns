@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void OnExit()
         {
             base.OnExit();
-            //PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

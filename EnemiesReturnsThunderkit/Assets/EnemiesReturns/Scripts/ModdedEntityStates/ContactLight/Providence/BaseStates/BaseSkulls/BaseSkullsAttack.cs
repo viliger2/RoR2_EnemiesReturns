@@ -12,6 +12,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract GameObject effectPrefab { get; }
 
+        public abstract GameObject effectPrefabRed { get; }
+
         public abstract float damageCoefficient { get; }
 
         public abstract float baseFireFrequency { get; }
@@ -23,6 +25,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         public abstract float projectileSpeed { get; }
 
         public abstract float maxDistance { get; }
+
+        public abstract bool canBeRed { get; }
 
         private int totalProjectiles;
 
@@ -36,7 +40,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             base.OnEnter();
 
-            
+            //activePlayers = Utils.GetActiveAndAlivePlayerBodies();
             totalProjectiles = projectilesToSpawn + additionalProjectilesPerPlayer * Mathf.Max(0, activePlayers.Count - 1);
         }
 
@@ -61,6 +65,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     projectilesSpawned++;
                     return;
                 }
+
+                bool isRed = canBeRed && ((projectilesSpawned / activePlayers.Count) % 2 != 0);
 
                 var xOffset = GetRandomOffset();
                 var zOffset = GetRandomOffset();
@@ -92,7 +98,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     rotation = Quaternion.identity,
                 };
 
-                EffectManager.SpawnEffect(effectPrefab, effectData, true);
+                EffectManager.SpawnEffect(isRed ? effectPrefabRed : effectPrefab, effectData, true);
 
                 var projectileInfo = new FireProjectileInfo()
                 {
@@ -102,11 +108,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     maxDistance = distance,
                     owner = gameObject,
                     position = gameObject.transform.position,
+                    rotation = Util.QuaternionSafeLookRotation((position - gameObject.transform.position).normalized),
                     useFuseOverride = true,
                     useSpeedOverride = true,
                     speedOverride = projectileSpeed,
                     projectilePrefab = projectilePrefab
                 };
+                if (isRed)
+                {
+                    projectileInfo.damage = 99999f;
+                    projectileInfo.damageTypeOverride |= DamageType.NonLethal | DamageType.BypassArmor | DamageType.BypassBlock | DamageType.BypassOneShotProtection;
+                }
 
                 ProjectileManager.instance.FireProjectile(projectileInfo);
 

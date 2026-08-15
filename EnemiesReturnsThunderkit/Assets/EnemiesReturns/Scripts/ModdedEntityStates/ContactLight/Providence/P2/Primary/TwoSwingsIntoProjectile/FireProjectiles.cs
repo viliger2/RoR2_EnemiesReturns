@@ -26,9 +26,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override GameObject projectilePrefab => staticProjecilePrefab;
 
-        public override string layerName => "Gesture";
+        public override string layerName => "UpperBodyOnly";
 
-        public override string animationStateName => "Thundercall";
+        public override string animationStateName => "ProjectileSummon";
 
         public override string[] originChildNames => new string[]
         {

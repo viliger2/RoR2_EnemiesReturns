@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using EnemiesReturns.Reflection;
+using EntityStates;
 using RoR2;
 using RoR2.Projectile;
 using System;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
 {
+    [RegisterEntityState]
     public class SpawnRotatingLaser : BaseState
     {
         public static float baseDuration = 3f;

@@ -6,139 +6,99 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile
 {
-    public abstract class BaseLeftRightSwing : BaseState
+    // TODO: values for static objects
+    public abstract class BaseLeftRightSwing : BasicMeleeAttack
     {
-        public abstract float baseFirstSwing { get; }
+        public new static GameObject hitEffectPrefab;
 
-        public abstract float baseSecondSwing { get; }
+        public new static GameObject swingEffectPrefab;
 
-        public abstract float damageCoefficient { get; }
+        public new static NetworkSoundEventDef impactSound;
 
-        public abstract string layerName { get; }
+        public new abstract float baseDuration { get; }
 
-        public abstract string firstSwingStateName { get; }
+        public new abstract float damageCoefficient { get; }
 
-        public abstract string secondSwingStateName { get; }
+        public new abstract string hitBoxGroupName { get; }
 
-        public abstract string playbackParam { get; }
+        public new abstract float procCoefficient { get; }
 
-        public abstract string hitboxName { get; }
+        public new abstract float pushAwayForce { get; }
 
-        public abstract string firstAttackParam { get; }
+        public new abstract Vector3 forceVector { get; }
 
-        public abstract string secondAttackParam { get; }
+        public new abstract float hitPauseDuration { get; }
 
-        private float firstSwing;
+        public new abstract string swingEffectMuzzleString { get; }
 
-        private float secondSwing;
+        public new abstract string mecanimHitboxActiveParameter { get; }
 
-        private DamageDealtReciever damageDealtReciever;
+        public new abstract float shorthopVelocityFromHit { get; }
 
-        private Animator animator;
+        public new abstract string beginStateSoundString { get; }
 
-        private OverlapAttack overlapAttack;
+        public new abstract string beginSwingSoundString { get; }
 
-        private bool playedSecondAnimation;
+        public new abstract bool forceForwardVelocity { get; }
+
+        public new abstract bool scaleHitPauseDurationAndVelocityWithAttackSpeed { get; }
+
+        public new abstract bool ignoreAttackSpeed { get; }
+
+        public new abstract DamageTypeCombo damageType { get; }
+
+        public abstract float earlyExit { get; }
+
+        private bool targetsHit;
 
         public override void OnEnter()
         {
+            base.baseDuration = baseDuration;
+            base.damageCoefficient = damageCoefficient;
+            base.hitBoxGroupName = hitBoxGroupName;
+            base.hitEffectPrefab = hitEffectPrefab;
+            base.procCoefficient = procCoefficient;
+            base.pushAwayForce = pushAwayForce;
+            base.forceVector = forceVector;
+            base.hitPauseDuration = hitPauseDuration;
+            base.swingEffectPrefab = swingEffectPrefab;
+            base.swingEffectMuzzleString = swingEffectMuzzleString;
+            base.mecanimHitboxActiveParameter = mecanimHitboxActiveParameter;
+            base.shorthopVelocityFromHit = shorthopVelocityFromHit;
+            base.beginStateSoundString = beginStateSoundString;
+            base.beginSwingSoundString = beginSwingSoundString;
+            base.impactSound = impactSound;
+            base.forceForwardVelocity = forceForwardVelocity;
+            base.scaleHitPauseDurationAndVelocityWithAttackSpeed = scaleHitPauseDurationAndVelocityWithAttackSpeed;
+            base.ignoreAttackSpeed = ignoreAttackSpeed;
+            base.damageType = damageType;
+
             base.OnEnter();
-            firstSwing = baseFirstSwing / attackSpeedStat;
-            secondSwing = baseSecondSwing / attackSpeedStat;
-            PlayCrossfade(layerName, firstSwingStateName, playbackParam, firstSwing, 0.1f);
-            damageDealtReciever = GetComponent<DamageDealtReciever>();
-            if (damageDealtReciever)
-            {
-                damageDealtReciever.ResetDamageDealt();
-            }
-            animator = GetModelAnimator();
 
-            var modelTransform = GetModelTransform();
-            var hitboxes = modelTransform.GetComponents<HitBoxGroup>();
-            overlapAttack = SetupAttack(Array.Find(hitboxes, (element) => element.groupName == hitboxName));
-            characterBody.SetAimTimer(firstSwing + secondSwing);
+            targetsHit = false;
         }
 
-        public override void FixedUpdate()
+        public override void OnMeleeHitAuthority()
         {
-            base.FixedUpdate();
-            if (isAuthority && animator && animator.GetFloat(firstAttackParam) > 0.9f)
-            {
-                FireFirstAttack();
-            }
-            if (isAuthority && animator && animator.GetFloat(secondAttackParam) > 0.9f)
-            {
-                FireSecondAttack();
-            }
-            if (!playedSecondAnimation && fixedAge > firstSwing)
-            {
-                StartSecondSwingAnimation();
-            }
-            if (isAuthority && fixedAge > firstSwing + secondSwing)
-            {
-                var esm = EntityStateMachine.FindByCustomName(gameObject, "Body");
-                if (characterBody.isPlayerControlled && inputBank.skill1.down)
-                {
-                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
-                }
-                else if (!characterBody.isPlayerControlled && damageDealtReciever && !damageDealtReciever.DamageDealt)
-                {
-                    esm.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
-                }
-                outer.SetNextStateToMain();
-            }
+            base.OnMeleeHitAuthority();
+            targetsHit = true;
         }
 
-        public virtual void StartSecondSwingAnimation()
+        public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
         {
-            PlayCrossfade(layerName, secondSwingStateName, playbackParam, secondSwing, 0.1f);
-            playedSecondAnimation = true;
-            if (isAuthority)
+            base.AuthorityModifyOverlapAttack(overlapAttack);
+            overlapAttack.retriggerTimeout = 1f;
+        }
+
+        public override void AuthorityFixedUpdate()
+        {
+            base.AuthorityFixedUpdate();
+            if(fixedAge >= earlyExit && !targetsHit)
             {
-                overlapAttack.ResetIgnoredHealthComponents();
+                outer.SetInterruptState(GetNextStateIfMissed(), InterruptPriority.Skill);
             }
-        }
-
-        public virtual void FireSecondAttack()
-        {
-            overlapAttack.Fire();
-        }
-
-        public virtual void FireFirstAttack()
-        {
-            overlapAttack.Fire();
         }
 
         public abstract EntityState GetNextStateIfMissed();
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            PlayCrossfade(layerName, "BufferEmpty", 0.1f);
-            if (damageDealtReciever)
-            {
-                damageDealtReciever.ResetDamageDealt();
-            }
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
-        }
-
-        private OverlapAttack SetupAttack(HitBoxGroup hitBoxGroup)
-        {
-            var attack = new OverlapAttack();
-            attack.attacker = gameObject;
-            attack.inflictor = gameObject;
-            attack.teamIndex = GetTeam();
-            attack.damage = damageCoefficient * damageStat;
-            attack.isCrit = RollCrit();
-            attack.hitBoxGroup = hitBoxGroup;
-            attack.procCoefficient = 1f;
-            attack.damageType = DamageSource.Primary;
-
-            return attack;
-        }
     }
 }

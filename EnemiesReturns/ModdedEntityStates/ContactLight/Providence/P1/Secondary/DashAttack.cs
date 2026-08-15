@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 
         public override void OnEnter()
         {
-            this.baseDuration = Configuration.General.ProvidenceP1SecondaryDuration.Value;
+            this.baseDuration = 0.75f;
             base.damageCoefficient = 3f;
             base.hitBoxGroupName = "DashStabHitbox";
             base.hitEffectPrefab = hitEffect;

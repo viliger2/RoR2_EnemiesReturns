@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
-            PlayAnimation("Gesture, Override", "SlashInit", "combo.playbackRate", -duration);
+            //PlayAnimation("Gesture, Override", "SlashInit", "combo.playbackRate", -duration);
         }
 
         public override void FixedUpdate()
@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            //PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

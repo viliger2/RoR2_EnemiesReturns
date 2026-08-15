@@ -12,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         public override GameObject predictedPositionEffect => staticPredictedPositionEffect;
 
-        public override float baseDuration => Configuration.General.ProvidenceP1UtilityInvisibleDuration.Value;
+        public override float baseDuration => 1f;
 
         public override EntityState GetNextState()
         {

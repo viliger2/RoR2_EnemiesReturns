@@ -13,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
     {
         public override float damageCoefficient => 2f;
 
-        public override float baseDuration => 1.5f;
+        public override float baseDuration => 3f;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
@@ -43,7 +43,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => 2f;
+        public override float earlyExit => 2.5f;
 
         public static string fireCloneMecanimParam = "FireClone.attack";
 
@@ -57,13 +57,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public static float cloneProjectileDamage = 2f;
 
-        public static float projectileHealthThreshold = 0.85f;
+        public static float projectileHealthThreshold = 1f;
 
         private bool firedClone;
 
         public override EntityState GetNextStateIfMissed()
         {
             return new FireProjectiles();
+        }
+
+        public override void PlayAnimation()
+        {
+            PlayCrossfade("UpperBodyOnly", "SlashP2", "combo.playbackRate", duration, 0.1f);
         }
 
         public override void AuthorityFixedUpdate()

@@ -8,11 +8,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     {
         public override string layerName => "Gesture, Override";
 
-        public override string animationStateName => "ExitSkyLeap";
+        public override string animationStateName => "Leap";
 
-        public override string playbackRateParams => "SkyLeap.playbackRate";
+        public override string playbackRateParams => "Leap.playbackRate";
 
-        public override string animatorAttackParam => "SkyLeap.firstAttack";
+        public override string animatorAttackParam => "Leap.attack";
 
         public override float baseDuration => 1f;
 

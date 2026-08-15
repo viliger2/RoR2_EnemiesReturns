@@ -75,11 +75,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
         public override void AuthorityFixedUpdate()
         {
             base.AuthorityFixedUpdate();
-            if(animator.GetFloat(fireCloneMecanimParam) > 0.9f && healthComponent.healthFraction <= projectileHealthThreshold && !firedClone)
-            {
-                FireCloneProjectile();
-                firedClone = true;
-            }
+            //if(animator.GetFloat(fireCloneMecanimParam) > 0.9f && healthComponent.healthFraction <= projectileHealthThreshold && !firedClone)
+            //{
+            //    FireCloneProjectile();
+            //    firedClone = true;
+            //}
         }
 
         public override void OnExit()
@@ -88,59 +88,59 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
             PlayAnimation("UpperBodyOnly", "BufferEmpty");
         }
 
-        private void FireCloneProjectile()
-        {
-            var aimRay = GetAimRay();
-            var target = FindTarget(aimRay);
-            if (!target)
-            {
-                return;
-            }
+        //private void FireCloneProjectile()
+        //{
+        //    var aimRay = GetAimRay();
+        //    var target = FindTarget(aimRay);
+        //    if (!target)
+        //    {
+        //        return;
+        //    }
 
-            var distance = Vector3.Distance(aimRay.origin, target.transform.position);
+        //    var distance = Vector3.Distance(aimRay.origin, target.transform.position);
 
-            var projectileInfo = new RoR2.Projectile.FireProjectileInfo()
-            {
-                crit = RollCrit(),
-                damage = damageStat * cloneProjectileDamage,
-                damageTypeOverride = DamageTypeCombo.GenericPrimary,
-                fuseOverride = distance / cloneProjectileSpeed,
-                maxDistance = distance,
-                owner = gameObject,
-                position = aimRay.origin,
-                rotation = Util.QuaternionSafeLookRotation((target.transform.position - aimRay.origin).normalized),
-                useFuseOverride = true,
-                useSpeedOverride = true,
-                speedOverride = cloneProjectileSpeed,
-                projectilePrefab = cloneProjectile
-            };
+        //    var projectileInfo = new RoR2.Projectile.FireProjectileInfo()
+        //    {
+        //        crit = RollCrit(),
+        //        damage = damageStat * cloneProjectileDamage,
+        //        damageTypeOverride = DamageTypeCombo.GenericPrimary,
+        //        fuseOverride = distance / cloneProjectileSpeed,
+        //        maxDistance = distance,
+        //        owner = gameObject,
+        //        position = aimRay.origin,
+        //        rotation = Util.QuaternionSafeLookRotation((target.transform.position - aimRay.origin).normalized),
+        //        useFuseOverride = true,
+        //        useSpeedOverride = true,
+        //        speedOverride = cloneProjectileSpeed,
+        //        projectilePrefab = cloneProjectile
+        //    };
 
-            ProjectileManager.instance.FireProjectile(projectileInfo);
-        }
+        //    ProjectileManager.instance.FireProjectile(projectileInfo);
+        //}
 
-        private GameObject FindTarget(Ray aimRay)
-        {
-            BullseyeSearch search = new BullseyeSearch();
-            search.teamMaskFilter = TeamMask.allButNeutral;
-            if (teamComponent)
-            {
-                search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
-            }
-            search.maxDistanceFilter = maxSearchDistance;
-            search.maxAngleFilter = maxSearchAngle;
-            search.searchOrigin = aimRay.origin;
-            search.searchDirection = aimRay.direction;
-            search.filterByLoS = false;
-            search.sortMode = BullseyeSearch.SortMode.Angle;
-            search.RefreshCandidates();
-            var hurtBox = search.GetResults().FirstOrDefault();
-            if (hurtBox)
-            {
-                return hurtBox.healthComponent.gameObject;
-            }
+        //private GameObject FindTarget(Ray aimRay)
+        //{
+        //    BullseyeSearch search = new BullseyeSearch();
+        //    search.teamMaskFilter = TeamMask.allButNeutral;
+        //    if (teamComponent)
+        //    {
+        //        search.teamMaskFilter.RemoveTeam(teamComponent.teamIndex);
+        //    }
+        //    search.maxDistanceFilter = maxSearchDistance;
+        //    search.maxAngleFilter = maxSearchAngle;
+        //    search.searchOrigin = aimRay.origin;
+        //    search.searchDirection = aimRay.direction;
+        //    search.filterByLoS = false;
+        //    search.sortMode = BullseyeSearch.SortMode.Angle;
+        //    search.RefreshCandidates();
+        //    var hurtBox = search.GetResults().FirstOrDefault();
+        //    if (hurtBox)
+        //    {
+        //        return hurtBox.healthComponent.gameObject;
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
     }
 }

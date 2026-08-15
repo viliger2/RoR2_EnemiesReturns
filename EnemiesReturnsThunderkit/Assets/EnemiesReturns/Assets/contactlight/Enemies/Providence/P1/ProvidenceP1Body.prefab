@@ -2031,7 +2031,6 @@ GameObject:
   - component: {fileID: 3602628820203683220}
   - component: {fileID: 4670884398897931420}
   - component: {fileID: -4561139627196630957}
-  - component: {fileID: 4813135780523483581}
   - component: {fileID: 2558075397671752026}
   - component: {fileID: -217684116850925860}
   - component: {fileID: -3593341228920075978}
@@ -2575,8 +2574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customName: Body
   initialStateType:
-    _typeName: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Spawn,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   mainStateType:
     _typeName: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -2679,28 +2678,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillFamily: {fileID: 11400000, guid: aaccea5bb55ec1e4d8d9a9672fa168d1, type: 2}
   skillName: Special
-  loadoutTitleToken: 
-  hideInCharacterSelect: 0
-  hideInLoadoutSelect: 0
-  skillAkEvent:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
-  hasExecutedSuccessfully: 0
---- !u!114 &4813135780523483581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916704582772687778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skillFamily: {fileID: 11400000, guid: a88b787978dbf8147abf1047d8065d8c, type: 2}
-  skillName: FireOrbs
   loadoutTitleToken: 
   hideInCharacterSelect: 0
   hideInLoadoutSelect: 0
@@ -6304,9 +6281,9 @@ MonoBehaviour:
       m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 5f509dfe4f4455146b7f54bbe6a983c8, type: 2}
     defaultShadowCastingMode: 0
-    ignoreOverlays: 0
-    hideOnDeath: 0
-    ignoresMaterialOverrides: 0
+    ignoreOverlays: 1
+    hideOnDeath: 1
+    ignoresMaterialOverrides: 1
   fullBodyPing: 0
   baseLightInfos:
   - light: {fileID: 7359145791607205021}

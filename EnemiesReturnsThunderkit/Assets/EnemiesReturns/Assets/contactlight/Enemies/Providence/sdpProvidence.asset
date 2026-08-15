@@ -80,9 +80,9 @@ MonoBehaviour:
       m_SubObjectType: 
     defaultMaterial: {fileID: 2100000, guid: 5f509dfe4f4455146b7f54bbe6a983c8, type: 2}
     defaultShadowCastingMode: 0
-    ignoreOverlays: 0
-    hideOnDeath: 0
-    ignoresMaterialOverrides: 0
+    ignoreOverlays: 1
+    hideOnDeath: 1
+    ignoresMaterialOverrides: 1
   gameObjectActivations: []
   meshReplacements: []
   projectileGhostReplacements: []

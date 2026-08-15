@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile
 {
-    public abstract class BaseFireProjectiles : GenericCharacterMain
+    public abstract class BaseFireProjectiles : BaseState
     {
         public abstract float baseDuration { get; }
 
@@ -46,6 +46,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             duration = baseDuration / attackSpeedStat;
             spawnTime = baseSpawnProjectilesTime / attackSpeedStat;
             projectileDelay = baseProjectileDelay / attackSpeedStat;
+
+            StartAimMode(duration);
 
             originTransforms = Array.ConvertAll(originChildNames, childName => FindModelChild(childName));
 
