@@ -1218,9 +1218,9 @@ namespace EnemiesReturns.Enemies.Judgement
                     followerPrefabAddress = new AssetReferenceGameObject(""),
                     limbMask = LimbFlags.None,
                     childName = "Head",
-                    localPos = new Vector3(0.01259F, 0.63227F, -0.60423F),
+                    localPos = new Vector3(0.01227F, 0.64081F, -0.57297F),
                     localAngles = new Vector3(306.2482F, 177.9596F, 182.6374F),
-                    localScale = new Vector3(0.05021F, 0.05021F, 0.05021F)
+                    localScale = new Vector3(0.075F, 0.075F, 0.075F)
                 }
             })); 
             dictionary.Add("ElectricianBody", CreateItemDisplayRule(new ItemDisplayRule[]

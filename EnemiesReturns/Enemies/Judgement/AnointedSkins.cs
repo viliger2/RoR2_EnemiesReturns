@@ -509,7 +509,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
             if (self && self.mannequinInstanceTransform && self.currentSurvivorDef && self.currentSurvivorDef.survivorIndex != SurvivorIndex.None)
             {
-                // TODO: maybe add a component that spawns the halo to the mannequin
+                // TODO: maybe add a component that spawns the halo to the mannequin, or don't, because due to lack of child locator it is basically impossible to find the child to attach to
                 BodyIndex bodyIndexFromSurvivorIndex = SurvivorCatalog.GetBodyIndexFromSurvivorIndex(self.currentSurvivorDef.survivorIndex);
                 int skinIndex = (int)self.currentLoadout.bodyLoadoutManager.GetSkinIndex(bodyIndexFromSurvivorIndex);
                 SkinDef safe = ArrayUtils.GetSafe(SkinCatalog.GetBodySkinDefs(bodyIndexFromSurvivorIndex), skinIndex);
@@ -520,7 +520,6 @@ namespace EnemiesReturns.Enemies.Judgement
                     {
                         // this is such a fucking hack holy shit but this is only for the lobby so it should be fine
                         // this should add halo by itself but since lobby models lack child locator it results in no halo
-
                         characterModel.inventoryEquipmentIndex = Content.Equipment.EliteAeonian.equipmentIndex;
                     }
                     else
