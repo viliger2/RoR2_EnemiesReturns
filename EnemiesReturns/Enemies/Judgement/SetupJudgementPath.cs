@@ -1209,6 +1209,20 @@ namespace EnemiesReturns.Enemies.Judgement
                     localScale = new Vector3(0.12456F, 0.12456F, 0.12456F)
                 }
             }));
+            dictionary.Add("SS2UChirrBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(0.01259F, 0.63227F, -0.60423F),
+                    localAngles = new Vector3(306.2482F, 177.9596F, 182.6374F),
+                    localScale = new Vector3(0.05021F, 0.05021F, 0.05021F)
+                }
+            })); 
             dictionary.Add("ElectricianBody", CreateItemDisplayRule(new ItemDisplayRule[]
             {
                 new ItemDisplayRule

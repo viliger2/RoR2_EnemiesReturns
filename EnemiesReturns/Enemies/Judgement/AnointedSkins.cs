@@ -1,8 +1,10 @@
 ﻿using EnemiesReturns.Components;
+using EnemiesReturns.EditorHelpers;
 using HG;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using RoR2;
+using RoR2.ContentManagement;
 using RoR2BepInExPack.Utilities;
 using System;
 using System.Collections;
@@ -26,6 +28,8 @@ namespace EnemiesReturns.Enemies.Judgement
         internal static Dictionary<string, UnlockableDef> AnointedSkinsUnlockables = new Dictionary<string, UnlockableDef>();
 
         internal static Dictionary<UnlockableDef, string> AnointedSkinsUnlockablesAchivements = new Dictionary<UnlockableDef, string>();
+
+        internal static ModdedSkinDefParams[] moddedSkinDefParams;
 
         private static HashSet<SkinDef> AnointedSkinsOverlayHashSet = new HashSet<SkinDef>();
 
@@ -241,6 +245,32 @@ namespace EnemiesReturns.Enemies.Judgement
         private static void CreateAnointedSkins(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             onGatherModdedAnointedSkins?.Invoke();
+
+            if(moddedSkinDefParams != null)
+            {
+                foreach(var moddedSkinDef in moddedSkinDefParams)
+                {
+                    if (!moddedSkinDef.useCatalog)
+                    {
+                        continue;
+                    }
+
+                    var survivorDef = RoR2.ContentManagement.ContentManager._survivorDefs.FirstOrDefault(survivorDef => survivorDef.bodyPrefab && survivorDef.bodyPrefab.name == moddedSkinDef.bodyPrefabNameCatalog);
+                    if(survivorDef == null)
+                    {
+                        Log.Info($"Couldn't find survivor with body name {moddedSkinDef.bodyPrefabNameCatalog} for {moddedSkinDef}. Skipping...");
+                        continue;
+                    }
+
+                    var skinDef = moddedSkinDef.CreateSkinDef(survivorDef.bodyPrefab);
+                    if (skinDef)
+                    {
+                        var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(survivorDef.bodyPrefab.name, skinDef, false, skinDef.icon);
+                        var modelSkinController = survivorDef.bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
+                        HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                    }
+                }
+            }
 
             var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
 

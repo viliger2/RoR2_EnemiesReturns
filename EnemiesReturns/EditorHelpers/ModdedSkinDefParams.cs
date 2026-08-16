@@ -35,13 +35,20 @@ namespace EnemiesReturns.EditorHelpers
             public Mesh mesh;
         }
 
+        [Tooltip("true - uses catalog and catalog names to find bodies instead of loading assets via Addressables")]
+        public bool useCatalog = false;
+
         public AssetReferenceT<SkinDef> baseSkin;
+
+        public AssetReferenceT<GameObject> bodyPrefab;
+
+        public string bodyPrefabNameCatalog;
+
+        public string baseSkinCatalog;
 
         public string nameToken;
 
         public Sprite icon;
-
-        public AssetReferenceT<GameObject> bodyPrefab;
 
         public RenderInfo[] renderInfos = Array.Empty<RenderInfo>();
 
@@ -49,6 +56,12 @@ namespace EnemiesReturns.EditorHelpers
 
         public SkinDef CreateSkinDef()
         {
+            if (useCatalog)
+            {
+                Log.Warning($"Can't build a skin via CreateSkinDef when useCatalog is true. Skipping {this}...");
+                return null;
+            }
+
             if (!bodyPrefab.RuntimeKeyIsValid())
             {
                 Log.Warning($"BodyPrefab for {this} is not valid!");
@@ -62,6 +75,7 @@ namespace EnemiesReturns.EditorHelpers
             }
 
             var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(bodyPrefab).WaitForCompletion();
+            var skinDef = AssetAsyncReferenceManager<SkinDef>.LoadAsset(baseSkin).WaitForCompletion();
 
             var modelLocator = bodyObject.GetComponent<ModelLocator>();
             if (!modelLocator)
@@ -84,6 +98,50 @@ namespace EnemiesReturns.EditorHelpers
                 return null;
             }
 
+            return CreateSkinDef(modelGameObject, skinDef);
+        }
+
+        public SkinDef CreateSkinDef(GameObject bodyObject)
+        {
+            if (!useCatalog)
+            {
+                Log.Warning($"Why are you using method for catalog bodies for def without catalog flag. Skipping {this}...");
+                return null;
+            }
+
+            var modelLocator = bodyObject.GetComponent<ModelLocator>();
+            if (!modelLocator)
+            {
+                Log.Warning($"Game object {bodyObject} doesn't have ModelLocator!");
+                return null;
+            }
+
+            var modelGameObject = modelLocator.modelTransform.gameObject;
+            if (!modelGameObject)
+            {
+                Log.Warning($"Game object {bodyObject}'s ModelLocator doesn't have modelTransform!");
+                return null;
+            }
+
+            var modelSkinController = modelGameObject.GetComponent<ModelSkinController>();
+            if (!modelSkinController)
+            {
+                Log.Warning($"Game object {bodyObject} doesn't have ModelSkinController!");
+                return null;
+            }
+
+            var baseSkin = modelSkinController.skins.FirstOrDefault(skin => skin.name == baseSkinCatalog);
+            if(baseSkin == null)
+            {
+                Log.Warning($"Game object {bodyObject} doesn't have skin with name {baseSkinCatalog}!");
+                return null;
+            }
+
+            return CreateSkinDef(modelGameObject, baseSkin);
+        }
+
+        public SkinDef CreateSkinDef(GameObject modelGameObject, SkinDef baseSkinDef)
+        {
             var modelRenderers = modelGameObject.GetComponentsInChildren<Renderer>();
 
             var skin = ScriptableObject.CreateInstance<SkinDef>();
@@ -92,7 +150,7 @@ namespace EnemiesReturns.EditorHelpers
             skin.nameToken = this.nameToken;
             skin.rootObject = modelGameObject;
             skin.skinDefParamsAddress = new AssetReferenceT<SkinDefParams>("");
-            skin.baseSkins = new SkinDef[] { AssetAsyncReferenceManager<SkinDef>.LoadAsset(baseSkin).WaitForCompletion() };
+            skin.baseSkins = new SkinDef[] { baseSkinDef };
 
             var skinDefParams = ScriptableObject.CreateInstance<SkinDefParams>();
             (skinDefParams as ScriptableObject).name = this.name + "Params";

@@ -386,15 +386,19 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ModdedSkinDefParams[]>)((assets) =>
                 {
-                    var moddedSkinDefList = assets.Where(item => item.name.Contains("Judgement")).ToArray();
-                    foreach (var moddedSkinDef in moddedSkinDefList)
+                    Enemies.Judgement.AnointedSkins.moddedSkinDefParams = assets.Where(item => item.name.Contains("Judgement")).ToArray();
+
+                    foreach (var moddedSkinDef in Enemies.Judgement.AnointedSkins.moddedSkinDefParams)
                     {
+                        if (moddedSkinDef.useCatalog)
+                        {
+                            continue;
+                        }
                         var newSkin = moddedSkinDef.CreateSkinDef();
                         if (newSkin)
                         {
                             var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(moddedSkinDef.bodyPrefab).WaitForCompletion();
-                            var skinDef = moddedSkinDef.CreateSkinDef();
-                            var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, skinDef, false, skinDef.icon);
+                            var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, newSkin, false, newSkin.icon);
                             var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                             HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
                         }

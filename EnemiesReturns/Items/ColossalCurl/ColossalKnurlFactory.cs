@@ -35,7 +35,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
             itemDef.pickupIconSprite = icon;
-            itemDef.tags = new ItemTag[] { ItemTag.Damage | ItemTag.CanBeTemporary };
+            itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CanBeTemporary };
 
             return itemDef;
         }
