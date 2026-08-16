@@ -43,6 +43,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5598845379545495536}
   - component: {fileID: 2318034442026882177}
+  - component: {fileID: 5488840627768412575}
+  - component: {fileID: 2788022009641570689}
   m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
@@ -79,6 +81,32 @@ CapsuleCollider:
   m_Height: 2.142331
   m_Direction: 1
   m_Center: {x: 0, y: 0.5140487, z: 0.000000029802322}
+--- !u!114 &5488840627768412575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612801214345543999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &2788022009641570689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612801214345543999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1001 &3680417665695662116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -145,6 +173,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f611c1e9649eed4b97e290dddd38755, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7f611c1e9649eed4b97e290dddd38755, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7f611c1e9649eed4b97e290dddd38755, type: 3}
       propertyPath: m_Name

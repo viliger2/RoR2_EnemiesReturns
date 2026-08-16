@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4242345071165473219}
   - component: {fileID: 1102224165613721284}
   - component: {fileID: 7552891779945998755}
+  - component: {fileID: 3090499523116699496}
+  - component: {fileID: 5736080352546244175}
   m_Layer: 0
   m_Name: HumanCanister1Mesh
   m_TagString: Untagged
@@ -98,3 +100,29 @@ CapsuleCollider:
   m_Height: 4.1964664
   m_Direction: 2
   m_Center: {x: 0.0072438717, y: -0.0037556887, z: 0.5941644}
+--- !u!114 &3090499523116699496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708997097623026311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &5736080352546244175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708997097623026311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdStone.asset

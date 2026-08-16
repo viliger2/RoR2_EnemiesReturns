@@ -83,6 +83,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7577739868436781572, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823334100980793467, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
       propertyPath: m_Name
       value: mdlPlantPot2
@@ -93,11 +101,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032823420476312315, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103962308120395736, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9103962308120395736, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}
@@ -119,6 +131,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6635945, y: 1.6635942, z: 2.1953983}
   m_Center: {x: 0, y: -2.6920052e-16, z: 0.050193314}
+--- !u!114 &7969072012504728676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968290497602492488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &4360415694809779118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968290497602492488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdStone.asset
 --- !u!4 &7101536447671124091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 718986f37ceaafc4dbe94241ad2c98e4, type: 3}

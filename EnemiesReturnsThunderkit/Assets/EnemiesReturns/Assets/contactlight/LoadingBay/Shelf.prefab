@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7048189547162363848}
   - component: {fileID: 7156832049239395516}
+  - component: {fileID: 1614158353381506923}
+  - component: {fileID: 8385892878450556490}
   m_Layer: 11
   m_Name: GameObject (8)
   m_TagString: Untagged
@@ -45,6 +47,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28854337, y: 29.898596, z: 0.47413254}
   m_Center: {x: 1.9674923, y: 0.47382075, z: 11.31518}
+--- !u!114 &1614158353381506923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875508250439764616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &8385892878450556490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875508250439764616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &3696726900824579498
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +83,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2866478040901176572}
   - component: {fileID: 1154633588481421382}
+  - component: {fileID: 7759809319593863884}
+  - component: {fileID: 2988615443830505066}
   m_Layer: 11
   m_Name: GameObject (4)
   m_TagString: Untagged
@@ -90,6 +120,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.0111437, y: 0.9038944, z: 23.71317}
   m_Center: {x: 3.844363, y: 1.041154, z: -0.30433863}
+--- !u!114 &7759809319593863884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696726900824579498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &2988615443830505066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696726900824579498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &3712846610292088496
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +204,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3712846610292088496}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -192,6 +248,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3710020900675785266}
   - component: {fileID: 1167595587452674223}
+  - component: {fileID: 2329490271516975653}
+  - component: {fileID: 7775428729423409528}
   m_Layer: 11
   m_Name: GameObject (5)
   m_TagString: Untagged
@@ -227,6 +285,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28854337, y: 29.898596, z: 0.47413254}
   m_Center: {x: 1.9674923, y: 0.47382075, z: 11.31518}
+--- !u!114 &2329490271516975653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147230486492044628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &7775428729423409528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147230486492044628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &4374952537241595547
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +321,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5710212560437230725}
   - component: {fileID: 6037493614016274144}
+  - component: {fileID: 7304375187204891212}
+  - component: {fileID: 53813590609818546}
   m_Layer: 11
   m_Name: GameObject (7)
   m_TagString: Untagged
@@ -272,6 +358,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28854337, y: 29.898596, z: 0.47413254}
   m_Center: {x: 1.9674923, y: 0.47382075, z: 11.31518}
+--- !u!114 &7304375187204891212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374952537241595547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &53813590609818546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374952537241595547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &5739015495863254804
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3673800226081015514}
   - component: {fileID: 8917554952652037956}
+  - component: {fileID: 8399148167937876848}
+  - component: {fileID: 4941290917502740924}
   m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
@@ -317,6 +431,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9995313, y: 0.9038944, z: 23.71317}
   m_Center: {x: 3.8501687, y: 1.041154, z: -0.30433863}
+--- !u!114 &8399148167937876848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739015495863254804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &4941290917502740924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739015495863254804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &5765993139812555326
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +467,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8602395875827045205}
   - component: {fileID: 5505366052966486745}
+  - component: {fileID: 863425343162267178}
+  - component: {fileID: 151604958824546974}
   m_Layer: 11
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -362,6 +504,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.0332446, y: 0.9038944, z: 23.71317}
   m_Center: {x: 3.833311, y: 1.041154, z: -0.30433863}
+--- !u!114 &863425343162267178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765993139812555326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &151604958824546974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765993139812555326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &6565395105636637591
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +540,8 @@ GameObject:
   m_Component:
   - component: {fileID: 879298527292017697}
   - component: {fileID: 3324617571667533729}
+  - component: {fileID: 6393125389972598251}
+  - component: {fileID: 5025360781361041819}
   m_Layer: 11
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -407,6 +577,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.022205, y: 0.9038944, z: 23.71317}
   m_Center: {x: 3.838831, y: 1.041154, z: -0.30433863}
+--- !u!114 &6393125389972598251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565395105636637591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &5025360781361041819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565395105636637591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &7059127022439940561
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +613,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4102030724387097964}
   - component: {fileID: 76379606265358689}
+  - component: {fileID: 2714545972025913694}
+  - component: {fileID: 2716838653232168110}
   m_Layer: 11
   m_Name: GameObject (6)
   m_TagString: Untagged
@@ -452,6 +650,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28854337, y: 29.898596, z: 0.47413254}
   m_Center: {x: 1.9674923, y: 0.47382075, z: 11.31518}
+--- !u!114 &2714545972025913694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059127022439940561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &2716838653232168110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059127022439940561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &7981734209411027148
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +686,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7572156784258611299}
   - component: {fileID: 2722212856028023599}
+  - component: {fileID: 8821186627349654419}
+  - component: {fileID: 874121235949858871}
   m_Layer: 11
   m_Name: GameObject (3)
   m_TagString: Untagged
@@ -497,3 +723,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.0150886, y: 0.9038944, z: 23.71317}
   m_Center: {x: 3.842391, y: 1.041154, z: -0.30433863}
+--- !u!114 &8821186627349654419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981734209411027148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &874121235949858871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981734209411027148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset

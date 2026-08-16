@@ -53,13 +53,15 @@ namespace EnemiesReturns
             {"stubbedror2/base/shaders/hgcloudremap", "RoR2/Base/Shaders/HGCloudRemap.shader" },
             {"stubbedror2/base/shaders/hgopaquecloudremap", "RoR2/Base/Shaders/HGOpaqueCloudRemap.shader" },
             {"stubbedror2/base/shaders/hgdistortion", "RoR2/Base/Shaders/HGDistortion.shader" },
+            {"stubbedror2/base/shaders/hggrass", "RoR2/Base/Shaders/HGGrass.shader" },
             {"stubbedcalm water/calmwater - dx11 - doublesided", "Calm Water/CalmWater - DX11 - DoubleSided.shader" },
             {"stubbedcalm water/calmwater - dx11", "Calm Water/CalmWater - DX11.shader" },
             {"stubbednature/speedtree", "RoR2/Base/Shaders/SpeedTreeCustom.shader"},
             {"stubbeddecalicious/decaliciousdeferreddecal", "Decalicious/DecaliciousDeferredDecal.shader" },
             {"stubbedror2/base/shaders/hgdamagenumber", "RoR2/Base/Shaders/HGDamageNumber.shader" },
             {"stubbedror2/base/shaders/hguianimatealpha", "RoR2/Base/Shaders/HGUIAnimateAlpha.shader" },
-            {"stubbedror2/base/shaders/hgsolidparallax", "RoR2/Base/Shaders/HGSolidParallax.shader" }
+            {"stubbedror2/base/shaders/hgsolidparallax", "RoR2/Base/Shaders/HGSolidParallax.shader" },
+            {"stubbedror2/base/shaders/hgdistantwater", "RoR2/Base/Shaders/HGDistantWater.shader"}
         };
 
         public static Dictionary<string, Material> MaterialCache = new Dictionary<string, Material>(); //apparently you need it because reasons?

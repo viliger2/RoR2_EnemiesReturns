@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7798599780444462618}
   - component: {fileID: 379875552460050566}
   - component: {fileID: 6851721455783104133}
-  m_Layer: 0
+  - component: {fileID: 1011878926557849357}
+  - component: {fileID: 7637195131465314225}
+  m_Layer: 11
   m_Name: HumanShippingContainerDoorMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +52,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3419466168055448121}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -97,6 +99,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.567467, y: 0.95964646, z: 14.854578}
   m_Center: {x: -3.7837336, y: 0, z: 0}
+--- !u!114 &1011878926557849357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419466168055448121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &7637195131465314225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419466168055448121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &5435397639825404373
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +137,9 @@ GameObject:
   - component: {fileID: 4935754890159832643}
   - component: {fileID: 8053194673004113447}
   - component: {fileID: 1296622368487907247}
-  m_Layer: 0
+  - component: {fileID: 5771084845928809132}
+  - component: {fileID: 2624755587539929165}
+  m_Layer: 11
   m_Name: HumanShippingContainerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +177,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5435397639825404373}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -195,6 +225,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1928075720654650287, guid: 42ca7f7dff1f7f54daff8439dde9d4e1, type: 3}
+--- !u!114 &5771084845928809132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435397639825404373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &2624755587539929165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435397639825404373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &7226973828049596890
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +263,9 @@ GameObject:
   - component: {fileID: 514774029195839327}
   - component: {fileID: 7848518550207272063}
   - component: {fileID: 7488415406014577663}
-  m_Layer: 0
+  - component: {fileID: 3263010780399129443}
+  - component: {fileID: 7457447471636514868}
+  m_Layer: 11
   m_Name: HumanShippingContainerDoorMesh (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +303,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7226973828049596890}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -292,6 +350,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.567467, y: 0.95964646, z: 14.854578}
   m_Center: {x: -3.7837336, y: 0, z: 0}
+--- !u!114 &3263010780399129443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226973828049596890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1052602003, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDef: {fileID: 0}
+--- !u!114 &7457447471636514868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226973828049596890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3f6bc89640549408c2a4c5f9a7d0f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceDefAddress: RoR2/Base/Common/sdMetal.asset
 --- !u!1 &8287693613227853068
 GameObject:
   m_ObjectHideFlags: 0

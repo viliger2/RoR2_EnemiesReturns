@@ -92,7 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c055ce94cf1a5cc4ea927670a6ec881d, type: 3}
+        m_Texture: {fileID: 2800000, guid: f83ec338608c4b4449708bfb13084718, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -100,7 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 17adbbba2077df74ca1568a43f9b26c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -136,7 +136,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SplatmapTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 15e7d61e5811fd843abbbf9a1b4e1fd6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -195,7 +195,7 @@ Material:
     - _Metallic: 0
     - _MixColorsOn: 0
     - _Mode: 0
-    - _NormalStrength: 1
+    - _NormalStrength: 5
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -232,7 +232,7 @@ Material:
     - _VerticalBiasOn: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
     - _EmColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
