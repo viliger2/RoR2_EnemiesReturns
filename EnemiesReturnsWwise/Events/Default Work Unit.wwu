@@ -2326,6 +2326,144 @@
 												</Event>
 											</ChildrenList>
 										</Folder>
+										<Folder Name="SteamJumpPad" ID="{DDF93B36-1C77-4E29-B4C7-B8D0D97401AE}" ShortID="665724892">
+											<ChildrenList>
+												<Event Name="ER_SteamJumpPad_AliveLoop_Play" ID="{5EBD12DF-4EF9-424D-B6C6-32166917082D}">
+													<ChildrenList>
+														<Action Name="" ID="{9F9AD125-0885-4C37-9A6C-E14F84A52D2E}" ShortID="147382112">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SteamJumpPad_Loop" ID="{29654C04-06A0-4A3A-AA5C-1AB68A81CF3B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SteamJumpPad_AliveLoop_Stop" ID="{7A4D92F0-DDFF-4F60-977B-5AF8E15FD73D}">
+													<ChildrenList>
+														<Action Name="" ID="{FB4A8CCC-8FF4-49EC-AC40-3442220FD9A5}" ShortID="847893002">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SteamJumpPad_Loop" ID="{29654C04-06A0-4A3A-AA5C-1AB68A81CF3B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SteamJumpPad_Jump_Play" ID="{9EB3F0E9-4873-4651-82E7-8301EB09CC7E}">
+													<ChildrenList>
+														<Action Name="" ID="{42C338E1-C7A7-4744-A51E-6F09A8390BDD}" ShortID="424395292">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SteamJumpPad_Jump" ID="{37D4C4FF-F602-40A8-BE94-8D614CFD0797}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="HeavyDoor" ID="{D758ABF4-7B3F-48DF-AAD4-354864CE0152}" ShortID="762851282">
+											<ChildrenList>
+												<Event Name="ER_HeavyDoor_Open_Play" ID="{257E4B52-543D-4FEE-90C5-3F6D8D5D6398}">
+													<ChildrenList>
+														<Action Name="" ID="{30AA5386-5B92-4116-8489-6C9614C4F3DF}" ShortID="832304602">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Door_Beep" ID="{148D7661-EB44-4C2F-9AF3-C82DFB96BC19}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+														<Action Name="" ID="{363950C8-B79E-497C-8F40-AD8E75BA4655}" ShortID="350714722">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="HeavyDoor_Open" ID="{4DB03171-59D9-42E9-9883-F8249E176650}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="BonusDoor" ID="{84C8905B-C475-4E67-85CC-9B1A00AC6D0C}" ShortID="326868798">
+											<ChildrenList>
+												<Event Name="ER_BonusDoor_Open_Play" ID="{A27722E3-65EC-4901-B82E-89760AEB8EBA}">
+													<ChildrenList>
+														<Action Name="" ID="{39EB478D-DA07-4743-A820-8E45B792B03D}" ShortID="78203967">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Door_Beep" ID="{148D7661-EB44-4C2F-9AF3-C82DFB96BC19}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+														<Action Name="" ID="{6AE3463A-DBAA-4EB9-834B-91C406CC7106}" ShortID="549887489">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="BonusDoor_Open" ID="{EF2308FC-DF15-4B4A-A678-EF00D4C02F7E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Ambiance" ID="{F1902F04-D99D-40A8-933C-D393342A02E1}" ShortID="1015780324">
+									<ChildrenList>
+										<Event Name="ER_ContactLight_Ambiance_Play" ID="{FFB76D1A-7632-4DFB-A8EA-A80F98AC223E}">
+											<ChildrenList>
+												<Action Name="" ID="{8D1D5E34-8DBC-4FB8-9B2D-99206B556ADB}" ShortID="364829050">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="StageAmbiance" ID="{127EC835-4799-48E7-8C34-844A989EA997}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_ContactLight_Ambiance_Stop" ID="{5650EB7A-E7D7-47DD-8B75-4F189A79AB5D}">
+											<ChildrenList>
+												<Action Name="" ID="{50D0C108-61E0-495A-A668-5F0082C8D475}" ShortID="1049159345">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="StageAmbiance" ID="{127EC835-4799-48E7-8C34-844A989EA997}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_ContactLight_HitItSon_Play" ID="{172A3BEF-835D-49F2-8C31-9D76932ECABA}">
+											<ChildrenList>
+												<Action Name="" ID="{B3C59F02-BE64-4B09-8C1A-3B36DDF2A872}" ShortID="314028671">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="HitItSon" ID="{B173A58D-BBAD-4797-AA91-E29107295407}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_ContactLight_HitItSon_Stop" ID="{31993486-4A93-4D5D-AF10-97F442084847}">
+											<ChildrenList>
+												<Action Name="" ID="{827CF91D-7E5C-4B06-AA52-584BA8A97C89}" ShortID="954875087">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="HitItSon" ID="{B173A58D-BBAD-4797-AA91-E29107295407}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

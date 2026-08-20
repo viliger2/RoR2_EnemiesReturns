@@ -141,6 +141,11 @@ namespace EnemiesReturns
             public static CostTypeDef AccessCard;
         }
     
+        public static class Interactables
+        {
+            public static GameObject BoomBox;
+        }
+
         public static class BodyPrefabs
         {
             public static GameObject TempleGuardBody;

@@ -203,6 +203,15 @@ namespace EnemiesReturns
             }
         }
 
+        [ConCommand(commandName = "returns_spawn_boombox", flags = ConVarFlags.ExecuteOnServer, helpText = "Hit it Boy!")]
+        private static void CCHitItBoy(ConCommandArgs args)
+        {
+            var position = args.senderBody.footPosition;
+
+            var boombox = UnityEngine.Object.Instantiate(Content.Interactables.BoomBox, position, Quaternion.LookRotation(args.senderBody.characterDirection.forward));
+            NetworkServer.Spawn(boombox);
+        }
+
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)
         {
             var args = arguments.ToList();

@@ -4,6 +4,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
 {
@@ -19,6 +20,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
             if (purchase && costType != null)
             {
                 purchase.costType = Utils.GetCostTypeIndex(costType);
+            }
+
+            var portal = gameObject.GetComponent<OcclusionPortal>();
+            if (portal)
+            {
+                portal.open = false;
             }
         }
     }

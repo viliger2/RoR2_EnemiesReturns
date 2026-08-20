@@ -26,6 +26,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                     }
                 }
             }
+            var portal = gameObject.GetComponent<OcclusionPortal>();
+            if (portal)
+            {
+                portal.open = false;
+            }
         }
     }
 }

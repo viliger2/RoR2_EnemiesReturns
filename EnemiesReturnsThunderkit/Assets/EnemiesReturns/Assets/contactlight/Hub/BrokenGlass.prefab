@@ -90,46 +90,15 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 312c8d5d3ce76154fad959b85f46223c, type: 2}
     - target: {fileID: 919132149155446097, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
       propertyPath: m_Name
       value: mdlBrokenGlass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
---- !u!23 &7373326109616683983 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
-  m_PrefabInstance: {fileID: 8183819690841352011}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8509689876890730656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
   m_PrefabInstance: {fileID: 8183819690841352011}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9030752407885126170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d06e5fb37e218c34aa16afb45dfbd789, type: 3}
-  m_PrefabInstance: {fileID: 8183819690841352011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4864619834619733915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030752407885126170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialReference:
-    m_AssetGUID: 6bff8473c67f05842b1ad43322726ae6
-    m_SubObjectName: 
-    m_SubObjectType: 
-  addressableMaterialPath: 
-  isParticle: 0
-  isTrailParticle: 0
-  renderer: {fileID: 7373326109616683983}
-  loadAsynchronous: 1

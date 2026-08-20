@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,9 +13,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
     {
         public static Material openedMaterial;
 
+        public static string openSound = "ER_BonusDoor_Open_Play";
+
         public override void OnEnter()
         {
             base.OnEnter();
+
+            var sfxLocator = gameObject.GetComponent<SfxLocator>();
+            if (sfxLocator)
+            {
+                Util.PlaySound(sfxLocator.openSound, gameObject);
+            }
+
             var childLocator = gameObject.GetComponent<ChildLocator>();
             if (!childLocator)
             {
@@ -55,6 +65,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
             if (collider)
             {
                 collider.gameObject.SetActive(false);
+            }
+
+            var portal = gameObject.GetComponent<OcclusionPortal>();
+            if (portal)
+            {
+                portal.open = true;
             }
         }
     }

@@ -87,6 +87,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             podMesh2.transform.localRotation = Quaternion.Euler(new Vector3(-81.10505f, 0f, 0f));
 
             mesh = null;
+            UnityEngine.Object.DestroyImmediate(podMesh);
             podMesh = null;
             #endregion
 

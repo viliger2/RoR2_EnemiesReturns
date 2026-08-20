@@ -12,7 +12,7 @@ namespace EnemiesReturns.Behaviors
     {
         public AssetReferenceT<SpawnCard> interactableSpawnCard;
 
-        private void OnEnable()
+        private void Awake()
         {
             if (!NetworkServer.active)
             {
@@ -27,39 +27,37 @@ namespace EnemiesReturns.Behaviors
             SceneDirector.onPostPopulateSceneServer += SceneDirector_onPostPopulateSceneServer;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             SceneDirector.onPostPopulateSceneServer -= SceneDirector_onPostPopulateSceneServer;
         }
 
         private void SceneDirector_onPostPopulateSceneServer(SceneDirector obj)
         {
-            var handle = interactableSpawnCard.LoadAssetAsync();
-            handle.Completed += (result) =>
+            if (!this.enabled)
             {
-                if (result.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
-                {
-                    var spawnCard = handle.Result;
-                    DirectorPlacementRule rule = new DirectorPlacementRule()
-                    {
-                        placementMode = DirectorPlacementRule.PlacementMode.Direct,
-                        position = transform.position,
-                        rotation = transform.rotation,
-                    };
+                return;
+            }
 
-                    var gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, rule, Run.instance.stageRng));
+            var spawnCard = interactableSpawnCard.LoadAssetAsync().WaitForCompletion();
 
-                    if ((bool)gameObject)
-                    {
-                        PurchaseInteraction component = gameObject.GetComponent<PurchaseInteraction>();
-                        if ((bool)component && component.costType == CostTypeIndex.Money)
-                        {
-                            component.Networkcost = Run.instance.GetDifficultyScaledCost(component.cost);
-                        }
-                    }
-                    Addressables.Release(handle);
-                }
+            DirectorPlacementRule rule = new DirectorPlacementRule()
+            {
+                placementMode = DirectorPlacementRule.PlacementMode.Direct,
+                position = transform.position,
+                rotation = transform.rotation,
             };
+
+            var gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, rule, Run.instance.stageRng));
+
+            if ((bool)gameObject)
+            {
+                PurchaseInteraction component = gameObject.GetComponent<PurchaseInteraction>();
+                if ((bool)component && component.costType == CostTypeIndex.Money)
+                {
+                    component.Networkcost = Run.instance.GetDifficultyScaledCost(component.cost);
+                }
+            }
         }
     }
 }

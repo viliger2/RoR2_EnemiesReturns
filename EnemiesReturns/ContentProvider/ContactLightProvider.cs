@@ -10,9 +10,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.TextCore.Text;
 
 namespace EnemiesReturns
 {
@@ -39,6 +41,8 @@ namespace EnemiesReturns
                 SwapMaterials(assets);
 
                 ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
+                ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
+
                 ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
 
                 ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.overclockMaterial = assets.First(material => material.name == "matTempleGuardOverclockOverlay");
@@ -68,6 +72,8 @@ namespace EnemiesReturns
                 var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
                 pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
                 PrefabAPI.RegisterNetworkPrefab(wardrobe);
+
+                Content.Interactables.BoomBox = assets.First(asset => asset.name == "BoomBox");
 
                 Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
 
@@ -187,10 +193,18 @@ namespace EnemiesReturns
                 _contentPack.skillDefs.Add(assets);
             }));
 
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<TMP_SpriteAsset[]>)((assets) =>
+            {
+                foreach(var asset in assets)
+                {
+                    TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(asset);
+                }
+            }));
+
             Content.CostTypes.AccessCard = new CostTypeDef()
             {
                 name = "EnemiesReturnsKeycardCost",
-                costStringFormatToken = "ENEMIES_RETURNS_CONTACT_LIGHT_COST_KEYCARD_FORMAT",
+                costStringFormatToken = "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT",
                 isAffordable = delegate (CostTypeDef costTypeDef, CostTypeDef.IsAffordableContext context)
                 {
                     if (context.activator)

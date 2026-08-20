@@ -169,10 +169,11 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 <summary>Judgement</summary>
 
 * Model, rigging and animations by Sentinel
-* Additional modeling and texturing by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
+* Additional modeling and texturing, Commando and Bandit Judgement skins by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
 * Additional animations by [TheTimesweeper](https://thunderstore.io/package/TheTimesweeper/)
 * Elite icon by Glad
 * Code by [viliger](https://thunderstore.io/package/viliger/)
+* SS2U Chirr Judgement skin by modanon
 * Majority of sounds come from Ys 10, RoRR, Starstorm and WoW.
 * Lightsaber Hum and Swings 2 - https://freesound.org/people/Sheyvan/sounds/703384/
 * armor - https://pixabay.com/sound-effects/armor-6890/

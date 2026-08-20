@@ -5,6 +5,7 @@ using RoR2.Hologram;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
@@ -14,11 +15,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
     {
         public static float graceTime = 3f;
 
+        public static Material matTerminalYellow;
+
+        public static string chargingSound = "Play_ui_obj_nullWard_activate";
+
         public static CostTypeDef costType => Content.CostTypes.AccessCard;
 
         public static int cost = 1;
 
-        public static float graceExit = 60f;
+        public static float graceExit = 35f; // 5 seconds longer than holdout zone
 
         private PurchaseInteraction purchaseInteraction;
 
@@ -33,6 +38,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
         public override void OnEnter()
         {
             base.OnEnter();
+            Util.PlaySound(chargingSound, gameObject);
+
             costTypeIndex = Utils.GetCostTypeIndex(costType);
             purchaseInteraction = GetComponent<PurchaseInteraction>();
             hologramProjectors = gameObject.GetComponents<HologramProjector>();
@@ -41,6 +48,38 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
             {
                 holdoutZoneController.enabled = true;
                 holdoutZoneController.onCharged.AddListener(OnCharged);
+            }
+            var childLocator = gameObject.GetComponent<ChildLocator>();
+            if (childLocator)
+            {
+                if (matTerminalYellow)
+                {
+                    var terminal1 = childLocator.FindChild("Terminal1");
+                    if (terminal1)
+                    {
+                        var renderer = terminal1.GetComponent<Renderer>();
+                        if (renderer)
+                        {
+                            renderer.material = matTerminalYellow;
+                        }
+                    }
+
+                    var terminal2 = childLocator.FindChild("Terminal2");
+                    if (terminal2)
+                    {
+                        var renderer = terminal2.GetComponent<Renderer>();
+                        if (renderer)
+                        {
+                            renderer.material = matTerminalYellow;
+                        }
+                    }
+                }
+            }
+
+            var sfxLocator = GetComponent<SfxLocator>();
+            if (sfxLocator)
+            {
+                Util.PlaySound(sfxLocator.openSound, gameObject);
             }
         }
 

@@ -323,7 +323,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_DESC": "You've never seen a boombox or something?",
     "ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_LORE": "lore",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_NAME": "Keypad",
+    "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_NAME": "Keypad Door",
     "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_CONTEXT": "Open",
     "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_DESC": "Opens nearby door. Requires Keycard to open.",
 
@@ -332,7 +332,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_MEDICALCABINET_DESC": "Might contain medicine-related item.",
     "ENEMIES_RETURNS_CONTACTLIGHT_MEDICALCABINET_LORE": "lore",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_NAME": "Cargo Door Panel",
+    "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_NAME": "Large Cargo Door",
     "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_CONTEXT": "Open",
     "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_DESC": "Interacting with the panel starts a timer to open the cargo door. Timer can be bypassed by using Keycard on the panel.",
     "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_PANEL_LORE": "lore",
@@ -360,9 +360,9 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_NAME": "Broken Sword Hilt",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_CONTEXT": "Reforge",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_NAME": "Sword Shard",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_NAME": "Composite Shard",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_CONTEXT": "Pick Up",
-    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DESC": "Shard of a broken sword. There is still lingering power within.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DESC": "Shard made out of strange material. There is still lingering power within.",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_LORE": "lore",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_NAME": "Lunar Mirror",
@@ -382,14 +382,19 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_LORE": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_LORE",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_UI_LEVEL": "Lv.{0}",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_NAME": "Sword Shard",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_PICKUP": "Shard of a broken sword. There is still lingering power within.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_NAME": "Composite Shard",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_PICKUP": "Shard made out of strange material. There is still lingering power within.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "Its almost like you can hear a hum from it, but no matter how hard you concentrate you can't make it out.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE": "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME": "UES Contact Light",
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_SUBTITLE": "Risk of Rain",
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE": "<style=cMono>//-command log 01</style>\r\nUES Class-D Ship 'Contact Light' is capable of carrying 8 million standard-load crates in a single voyage. Freight containers of varying sizes can be magnetized to its cargo hold, with rotational drums stabilizing any disturbances that may occur during space travel. With 50 years of shipments under its wing, it's still a relatively juvenile freighter within the D Suite. Recent restructuring has caused shipment schedules to be rotated among the lesser ships. With half of Class-A ships out of commission due to [REDACTED], the 'Contact Light' has been chosen to deliver [REDACTED]'s previously scheduled cargo. A new captain has been assigned to oversee the journey, and we have placed agents on-board for security reasons. Godspeed.",
-    "UNLOCKABLE_LOG_MAP_ENEMIESRETURNS_CONTACTLIGHT": "Environment Log: UES Contact Light"
+    "UNLOCKABLE_LOG_MAP_ENEMIESRETURNS_CONTACTLIGHT": "Environment Log: UES Contact Light",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL": "Wait for the <style=cDeath>Cargo Door</style> to open... ({0}%)",
+    "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_WHERE_ARE_YOU": "<sprite name=\"ER_TestSprite\" tint=1> <sprite name=\"CloudLeft\" tint=1> Figure out what is this place",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT": "{0} Keycard"
   }
 }

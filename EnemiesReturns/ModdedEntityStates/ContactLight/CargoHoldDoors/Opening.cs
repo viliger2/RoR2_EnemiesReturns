@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,10 +14,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
     {
         public static Material matTerminalGreen;
 
+        public static string openSound = "ER_HeavyDoor_Open_Play";
+
         public override void OnEnter()
         {
             base.OnEnter();
             SetPingable(false);
+            Util.PlaySound(openSound, gameObject);
             var portal = gameObject.GetComponent<OcclusionPortal>();
             if (portal)
             {
@@ -64,6 +68,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                         }
                     }
                 }
+            }
+
+            var sfxLocator = GetComponent<SfxLocator>();
+            if (sfxLocator)
+            {
+                Util.PlaySound(sfxLocator.deathSound, gameObject);
             }
         }
     }

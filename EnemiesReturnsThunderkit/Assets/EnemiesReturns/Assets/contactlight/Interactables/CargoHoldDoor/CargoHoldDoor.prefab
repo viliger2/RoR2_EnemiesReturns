@@ -490,8 +490,8 @@ MonoBehaviour:
   radiusIndicator: {fileID: 0}
   healingNovaItemEffect: {fileID: 0}
   healingNovaRoot: {fileID: 0}
-  inBoundsObjectiveToken: ENEMIES_RETURNS_CONTACT_LIGHT_OBJECTIVE_DOOR_PANEL
-  outOfBoundsObjectiveToken: ENEMIES_RETURNS_CONTACT_LIGHT_OBJECTIVE_DOOR_PANEL_OOB
+  inBoundsObjectiveToken: ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL
+  outOfBoundsObjectiveToken: ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL
   showObjective: 1
   applyFocusConvergence: 0
   applyHealingNova: 0

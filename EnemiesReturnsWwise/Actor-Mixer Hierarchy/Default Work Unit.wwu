@@ -7525,8 +7525,242 @@
 														</Sound>
 													</ChildrenList>
 												</Folder>
+												<Folder Name="SteamJumpPad" ID="{2264A60D-22F4-4EA5-B3B1-EA4548E0DCE3}" ShortID="529523937">
+													<ChildrenList>
+														<Sound Name="SteamJumpPad_Loop" ID="{29654C04-06A0-4A3A-AA5C-1AB68A81CF3B}" ShortID="807409189">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="steam_loop" ID="{DE174384-D1D0-497B-A101-FFF7D83CE62D}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Steam\steam_loop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="209488334"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="steam_loop" ID="{DE174384-D1D0-497B-A101-FFF7D83CE62D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SteamJumpPad_Jump" ID="{37D4C4FF-F602-40A8-BE94-8D614CFD0797}" ShortID="1017851253">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="steam_fire" ID="{4AE12BBF-F60E-43DF-95F4-7903366D7641}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Steam\steam_fire.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="689588484"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="steam_fire" ID="{4AE12BBF-F60E-43DF-95F4-7903366D7641}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Doors" ID="{0BFF702E-E618-4059-903D-E1781497C688}" ShortID="851551464">
+													<ChildrenList>
+														<Sound Name="HeavyDoor_Open" ID="{4DB03171-59D9-42E9-9883-F8249E176650}" ShortID="1044102638">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="freesound_community-door-opening-37271" ID="{AA371617-80ED-4766-85A6-FDA3D0AD0ECF}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Doors\freesound_community-door-opening-37271.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="220469940"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="wBlastdoor" ID="{6F05717E-98A4-4757-A58B-A0A4711DB4B6}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Doors\wBlastdoor.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="777260865"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="wBlastdoor" ID="{6F05717E-98A4-4757-A58B-A0A4711DB4B6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Door_Beep" ID="{148D7661-EB44-4C2F-9AF3-C82DFB96BC19}" ShortID="835780438">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>2</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="beep" ID="{6EF825D0-3DD8-4FAD-9C5B-8AA635F8DF4B}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Doors\beep.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="774488403"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="beep" ID="{6EF825D0-3DD8-4FAD-9C5B-8AA635F8DF4B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="BonusDoor_Open" ID="{EF2308FC-DF15-4B4A-A678-EF00D4C02F7E}" ShortID="965014167">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="universfield-opening-metal-door-199581" ID="{B721BB75-2E46-466E-AC5C-A5FAE1FA75DF}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Doors\universfield-opening-metal-door-199581.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="948475651"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="universfield-opening-metal-door-199581" ID="{B721BB75-2E46-466E-AC5C-A5FAE1FA75DF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
 											</ChildrenList>
 										</Folder>
+										<Sound Name="StageAmbiance" ID="{127EC835-4799-48E7-8C34-844A989EA997}" ShortID="54502872">
+											<PropertyList>
+												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-25</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="ambiance" ID="{AF8C0DF9-5CDA-4C7D-9696-61E331933BFD}">
+													<Language>SFX</Language>
+													<AudioFile>ContactLight\ambiance.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="840422806"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="ambiance" ID="{AF8C0DF9-5CDA-4C7D-9696-61E331933BFD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="HitItSon" ID="{B173A58D-BBAD-4797-AA91-E29107295407}" ShortID="768164620">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverrideConversion" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="HitItSon" ID="{0C0F0E79-4ACC-45BC-B9B0-1968940124BE}">
+													<Language>SFX</Language>
+													<AudioFile>ContactLight\HitItSon.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="562681022"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="HitItSon" ID="{0C0F0E79-4ACC-45BC-B9B0-1968940124BE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
