@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
     [RegisterEntityState]
     public class TeleportToCenter : BaseState
     {
-        public static float baseDuration => Configuration.General.ProvidenceP1SpecialTeleportDuration.Value;
+        public static float baseDuration => 2f;
 
         private Vector3 position;
 

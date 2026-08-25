@@ -6,9 +6,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Utility
     [RegisterEntityState]
     public class Attack : BaseAttack
     {
-        public override float baseDuration => Configuration.General.ProvidenceP1UtilityAttackDuraion.Value;
+        public override float baseDuration => 3.5f;
 
-        public override float earlyExit => Configuration.General.ProvidenceP1UtilityEarlyExit.Value;
+        public override float earlyExit => 1.25f;
 
         public override string layerName => "Gesture, Override";
 

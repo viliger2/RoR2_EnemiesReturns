@@ -6,7 +6,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 {
     public abstract class BasePrePrimaryWeaponSwing : BaseState, SteppedSkillDef.IStepSetter
     {
-        public static float baseDuration => Configuration.General.ProvidenceP1PrimaryPreSwingDuration.Value;
+        public static float baseDuration => 0.5f;
 
         private float duration;
 

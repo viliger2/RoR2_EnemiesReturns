@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary
 
         public static GameObject cloneEffect;
 
-        public static float projectileTime => Configuration.General.ProvidenceP1PrimaryProjectileTime.Value;
+        public static float projectileTime => 0.5f;
 
         public static float cloneDelay = 0.2f;
 

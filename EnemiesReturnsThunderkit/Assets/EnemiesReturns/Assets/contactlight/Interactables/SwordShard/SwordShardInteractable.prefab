@@ -377,20 +377,20 @@ MonoBehaviour:
   goldRewardCoefficient: 1
   minSeriesSpawnInterval: 0.5
   maxSeriesSpawnInterval: 0.5
-  minRerollSpawnInterval: 0.1
-  maxRerollSpawnInterval: 0
+  minRerollSpawnInterval: 1
+  maxRerollSpawnInterval: 2
   moneyWaveIntervals: []
   teamIndex: 2
   creditMultiplier: 1
   spawnDistanceMultiplier: 1
-  maxSpawnDistance: Infinity
+  maxSpawnDistance: 50
   minSpawnRange: 0
   shouldSpawnOneWave: 1
   targetPlayers: 1
   skipSpawnIfTooCheap: 0
   maxConsecutiveCheapSkips: 2147483647
-  resetMonsterCardIfFailed: 1
-  maximumNumberToSpawnBeforeSkipping: 6
+  resetMonsterCardIfFailed: 0
+  maximumNumberToSpawnBeforeSkipping: 100
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -402,12 +402,12 @@ MonoBehaviour:
   combatSquad: {fileID: 3829818883337969712}
   maxSquadCount: 0
   spawnEffectPrefab: {fileID: 0}
-  ignoreTeamSizeLimit: 0
+  ignoreTeamSizeLimit: 1
   _monsterCards: {fileID: 0}
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
-  currentSpawnTarget: {fileID: 0}
+  currentSpawnTarget: {fileID: 1073728612368593614}
   _customPlacementBase: {fileID: 0}
 --- !u!114 &3829818883337969712
 MonoBehaviour:
@@ -632,7 +632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073728612368593614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7127, z: 0}
+  m_LocalPosition: {x: 0, y: 0.461, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

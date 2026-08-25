@@ -6,7 +6,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
     [RegisterEntityState]
     public class DashEnd : BaseState
     {
-        public static float baseDuration => Configuration.General.ProvidenceP1SecondaryPostDuration.Value;
+        public static float baseDuration => 0.25f;
 
         private float duration;
 

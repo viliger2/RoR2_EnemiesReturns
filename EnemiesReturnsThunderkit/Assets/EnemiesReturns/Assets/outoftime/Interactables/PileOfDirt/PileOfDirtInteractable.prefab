@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 123312933226050086}
   - component: {fileID: 6562695257684271736}
   - component: {fileID: 1904275795438905884}
+  - component: {fileID: 501241989454431206}
   m_Layer: 0
   m_Name: PileOfDirtInteractable
   m_TagString: Untagged
@@ -123,6 +124,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 501241989454431206}
+        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.EventFlagSetter, EnemiesReturns
+        m_MethodName: SetRunFlags
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   shouldShowOnScanner: 0
 --- !u!114 &123312933226050086
 MonoBehaviour:
@@ -167,6 +180,21 @@ MonoBehaviour:
   withDelay: 1
   delay: 2
   onAwake: 1
+--- !u!114 &501241989454431206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968770900678513371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b24fd72b1417b4ca1e3ece44c48f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventFlags:
+  - ER_PileOfDirtDropped
+  runOnEnable: 0
 --- !u!1 &7196816218256534991
 GameObject:
   m_ObjectHideFlags: 0

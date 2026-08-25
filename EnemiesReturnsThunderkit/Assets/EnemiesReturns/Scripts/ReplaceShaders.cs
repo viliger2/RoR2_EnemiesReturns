@@ -54,7 +54,9 @@ public class ReplaceShaders : MonoBehaviour
             IList<IResourceLocation> resourceLocations = Addressables.LoadResourceLocationsAsync(stubbedShaderName.Substring(PREFIX_LENGTH) + ".shader", typeof(Shader)).WaitForCompletion();
             if (resourceLocations.Count > 0)
             {
+                var renderQueue = material.renderQueue;
                 material.shader = Addressables.LoadAssetAsync<Shader>(resourceLocations[0]).WaitForCompletion();
+                material.renderQueue = renderQueue;
             }
         }
     }

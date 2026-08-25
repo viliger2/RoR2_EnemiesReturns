@@ -364,6 +364,8 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_CONTEXT": "Pick Up",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DESC": "Shard made out of strange material. There is still lingering power within.",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_LORE": "lore",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_INTERACT": "<style=cWorldEvent>Guardian protects the remaining power.</style>",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DROP": "<style=cWorldEvent>The power is released.</style>",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_NAME": "Lunar Mirror",
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_CONTEXT": "Reshape",
@@ -389,12 +391,17 @@
 
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME": "UES Contact Light",
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_SUBTITLE": "Risk of Rain",
-    "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE": "<style=cMono>//-command log 01</style>\r\nUES Class-D Ship 'Contact Light' is capable of carrying 8 million standard-load crates in a single voyage. Freight containers of varying sizes can be magnetized to its cargo hold, with rotational drums stabilizing any disturbances that may occur during space travel. With 50 years of shipments under its wing, it's still a relatively juvenile freighter within the D Suite. Recent restructuring has caused shipment schedules to be rotated among the lesser ships. With half of Class-A ships out of commission due to [REDACTED], the 'Contact Light' has been chosen to deliver [REDACTED]'s previously scheduled cargo. A new captain has been assigned to oversee the journey, and we have placed agents on-board for security reasons. Godspeed.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE": "<style=cMono>//-command log 01</style>\r\nUES Class-D Ship 'Contact Light' is capable of carrying 8 million standard-load crates in a single voyage. Freight containers of varying sizes can be magnetized to its cargo hold, with rotational drums stabilizing any disturbances that may occur during space travel.\n\nWith 50 years of shipments under its wing, it's still a relatively juvenile freighter within the D Suite. Recent restructuring has caused shipment schedules to be rotated among the lesser ships. With half of Class-A ships out of commission due to [REDACTED], the 'Contact Light' has been chosen to deliver [REDACTED]'s previously scheduled cargo. A new captain has been assigned to oversee the journey, and we have placed agents on-board for security reasons.\n\nGodspeed.",
     "UNLOCKABLE_LOG_MAP_ENEMIESRETURNS_CONTACTLIGHT": "Environment Log: UES Contact Light",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL": "Wait for the <style=cDeath>Cargo Door</style> to open... ({0}%)",
-    "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_WHERE_ARE_YOU": "<sprite name=\"ER_TestSprite\" tint=1> <sprite name=\"CloudLeft\" tint=1> Figure out what is this place",
+    "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_WHERE_ARE_YOU": "Figure out what is this place",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT": "{0} Keycard"
+    "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT": "{0} Keycard",
+
+    "ACHIEVEMENT_ENEMIESRETURNSSLAINPROVIDENCE_NAME": "Guilty Conscience",
+    "ACHIEVEMENT_ENEMIESRETURNSSLAINPROVIDENCE_DESCRIPTION": "Defeat the Bulwark.",
+    "ACHIEVEMENT_ENEMIESRETURNSESCAPEDINTOTHEPAST_NAME": "Opportunity",
+    "ACHIEVEMENT_ENEMIESRETURNSESCAPEDINTOTHEPAST_DESCRIPTION": "Escape into the past."
   }
 }

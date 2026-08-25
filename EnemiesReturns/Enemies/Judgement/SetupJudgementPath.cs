@@ -24,6 +24,8 @@ namespace EnemiesReturns.Enemies.Judgement
 {
     public static class SetupJudgementPath
     {
+        public static string PILE_OF_DIRT_DROPPED = "ER_PileOfDirtDropped";
+
         public static GameObject PileOfDirt;
 
         public static GameObject BrokenTeleporter;
@@ -505,6 +507,11 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
+            if (!RoR2.Run.instance)
+            {
+                return;
+            }
+
             if (!SceneInfo.instance
                 || !SceneInfo.instance.sceneDef)
             {
@@ -512,7 +519,7 @@ namespace EnemiesReturns.Enemies.Judgement
             }
 
             if (SceneInfo.instance.sceneDef.baseSceneName == "mysteryspace"
-                && PileOfDirt)
+                && PileOfDirt && !RoR2.Run.instance.GetEventFlag(PILE_OF_DIRT_DROPPED))
             {
                 var newPile = UnityEngine.Object.Instantiate(PileOfDirt);
                 newPile.transform.position = new Vector3(44.72055f, -55.80222f, 0.2936229f);

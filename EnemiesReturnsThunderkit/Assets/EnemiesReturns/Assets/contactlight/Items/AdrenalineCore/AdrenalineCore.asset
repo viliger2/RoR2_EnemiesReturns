@@ -18,7 +18,7 @@ MonoBehaviour:
   pickupToken: ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_PICKUP
   descriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC
   loreToken: ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_LORE
-  unlockableDef: {fileID: 0}
+  unlockableDef: {fileID: 11400000, guid: 07b9c8b23a0f7c14fa5d986fb71ede2a, type: 2}
   pickupModelPrefab: {fileID: 489464879134974171, guid: 6676497a4cb94e64c82b5e2fde88dfd6, type: 3}
   pickupModelReference:
     m_AssetGUID: 
