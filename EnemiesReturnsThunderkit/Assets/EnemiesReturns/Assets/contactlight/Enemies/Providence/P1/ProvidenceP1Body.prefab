@@ -2413,8 +2413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathStateMachine: {fileID: 2859791027360040491}
   deathState:
-    _typeName: EntityStates.BrotherMonster.InstantDeathState, RoR2, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.DeathState,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   idleStateMachine:
   - {fileID: 8228178633749228936}
   deathAkEvent:

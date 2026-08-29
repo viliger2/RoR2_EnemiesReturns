@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1495945701, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: EscapedIntoThePast
+  m_EditorClassIdentifier: 
+  endingTextToken: ENEMIES_RETURNS_CONTACTLIGHT_GAME_RESULT
+  backgroundColor: {r: 1, g: 0.4866872, b: 0.4575472, a: 1}
+  foregroundColor: {r: 0.5613208, g: 1, b: 0.8495439, a: 1}
+  icon: {fileID: 21300000, guid: 174c67f1f9da054498a707953c16a720, type: 3}
+  material: {fileID: 2100000, guid: 1d711eebf7a45b541b84774b97884c91, type: 2}
+  defaultKillerOverride: {fileID: 0}
+  isWin: 1
+  showCredits: 0
+  gameOverControllerState:
+    _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Ending.EscapedEnding,
+      EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  lunarCoinReward: 10

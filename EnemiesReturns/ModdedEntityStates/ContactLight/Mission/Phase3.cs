@@ -12,9 +12,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
     {
         public static string phaseControllerChildString = "Phase3";
 
+        public static float bossSpawnDelay = 5f;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private GameObject phaseControllerObject;
+
+        private bool hasSpawned;
 
         public override void OnEnter()
         {
@@ -27,11 +31,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 if (phaseControllerObject)
                 {
                     phaseControllerObject.SetActive(true);
+                    var phaseChildLocator = phaseControllerObject.GetComponent<ChildLocator>();
 
-                    combatEncounter = phaseControllerObject.transform.Find("BossSpawn").gameObject.GetComponent<ScriptedCombatEncounter>();
+                    var combatEncounterTransform = phaseChildLocator.FindChild("CombatEncounter");
+                    if (combatEncounterTransform)
+                    {
+                        combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                    }
                 }
             }
-            BeginEncounter();
             ClearCorpses();
         }
 
@@ -39,7 +47,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         {
             base.FixedUpdate();
 
-            if (NetworkServer.active && fixedAge > 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
+            if (!hasSpawned && fixedAge > bossSpawnDelay)
+            {
+                hasSpawned = true;
+                BeginEncounter();
+            }
+
+            if (NetworkServer.active && fixedAge > bossSpawnDelay + 10 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
                 outer.SetNextState(new Phase4());
             }

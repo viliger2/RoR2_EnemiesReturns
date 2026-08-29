@@ -42,6 +42,7 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
                 ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
+                ModdedEntityStates.ContactLight.CargoHoldDoors.ClosedWithKeycard.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
 
                 ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
 
@@ -96,6 +97,8 @@ namespace EnemiesReturns
                 ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");
                 ModdedEntityStates.ContactLight.TempleGuard.Primary.ChargePrimary.effectPrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryCharge");
                 ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.preShieldEffect = assets.First(asset => asset.name == "TempleGuardOverclockCharge");
+
+                ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.positionIndicatorPrefab = SetupContactLight.SetupCargoDoorIndicator(assets.First(asset => asset.name == "CargoDoorChargePositionIndicator"));
 
                 ModdedEntityStates.ContactLight.SwordHilt.SpawnPortal.portalContactLight = assets.First(asset => asset.name == "PortalContactLight");
                 Enemies.ContactLight.SetupContactLight.swordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
@@ -157,6 +160,13 @@ namespace EnemiesReturns
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
             {
                 _contentPack.unlockableDefs.Add(assets);
+            }));
+
+            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
+            {
+                Content.GameEndings.EscapeIntoPast = assets.First(item => item.cachedName == "EscapedIntoThePast");
+
+                _contentPack.gameEndingDefs.Add(assets);
             }));
 
             yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>

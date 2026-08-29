@@ -13,7 +13,28 @@ namespace EnemiesReturns.Achievements
     {
         public class SlainProvidenceServerAchievement : BaseServerAchievement
         {
+            public override void OnInstall()
+            {
+                base.OnInstall();
+                ModdedEntityStates.ContactLight.Mission.PostFight.onProvidenceDefeated += PostFight_onProvidenceDefeated;
+            }
 
+            private void PostFight_onProvidenceDefeated()
+            {
+                Grant();
+            }
+
+            public override void OnUninstall()
+            {
+                base.OnUninstall();
+                ModdedEntityStates.ContactLight.Mission.PostFight.onProvidenceDefeated -= PostFight_onProvidenceDefeated;
+            }
+        }
+
+        public override void OnInstall()
+        {
+            base.OnInstall();
+            SetServerTracked(true);
         }
     }
 }

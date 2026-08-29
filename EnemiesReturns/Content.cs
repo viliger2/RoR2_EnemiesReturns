@@ -30,6 +30,8 @@ namespace EnemiesReturns
         public static class GameEndings
         {
             public static GameEndingDef SurviveJudgement;
+
+            public static GameEndingDef EscapeIntoPast;
         }
 
         public static class ItemTiers

@@ -12,9 +12,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
     {
         public static string phaseControllerChildString = "Phase1";
 
+        public static float bossSpawnDelay = 5f;
+
+        public static float doorCloseDelay = 7f;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private GameObject phaseControllerObject;
+
+        private GameObject doorToClose;
+
+        private bool hasSpawned;
+
+        private bool hasClosedDoor;
 
         public override void OnEnter()
         {
@@ -27,11 +37,21 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 if (phaseControllerObject)
                 {
                     phaseControllerObject.SetActive(true);
+                    var phaseChildLocator = phaseControllerObject.GetComponent<ChildLocator>();
 
-                    combatEncounter = phaseControllerObject.transform.Find("BossSpawn").gameObject.GetComponent<ScriptedCombatEncounter>();
+                    var combatEncounterTransform = phaseChildLocator.FindChild("CombatEncounter");
+                    if (combatEncounterTransform)
+                    {
+                        combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                    }
+
+                    var doorToCloseTransform = phaseChildLocator.FindChild("DoorToClose");
+                    if (doorToCloseTransform)
+                    {
+                        doorToClose = doorToCloseTransform.gameObject;
+                    }
                 }
             }
-            BeginEncounter();
             ClearCorpses();
         }
 
@@ -39,15 +59,35 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         {
             base.FixedUpdate();
 
-            if (NetworkServer.active && fixedAge > 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
+            if(!hasSpawned && fixedAge > bossSpawnDelay)
             {
-                outer.SetNextState(new Phase3());
+                hasSpawned = true;
+                BeginEncounter();
+            }
+
+            if (!hasClosedDoor && doorToClose && fixedAge > doorCloseDelay)
+            {
+                if (NetworkServer.active)
+                {
+                    var esm = doorToClose.GetComponent<EntityStateMachine>();
+                    if (esm)
+                    {
+                        esm.SetNextState(new ModdedEntityStates.ContactLight.CargoHoldDoors.Closed());
+                    }
+                }
+                hasClosedDoor = true;
+            }
+
+            if (NetworkServer.active && fixedAge > bossSpawnDelay + 10f && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
+            {
+                //outer.SetNextState(new Phase2());
+                outer.SetNextState(new PostFight()); // TODO: REMEMBER TO FIX
             }
         }
 
         private void BeginEncounter()
         {
-            if (NetworkServer.active)
+            if (NetworkServer.active && combatEncounter)
             {
                 combatEncounter.BeginEncounter();
             }

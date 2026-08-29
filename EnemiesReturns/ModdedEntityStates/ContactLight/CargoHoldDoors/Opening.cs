@@ -70,6 +70,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                 }
             }
 
+            var combatDirector = gameObject.GetComponent<CombatDirector>();
+            if (combatDirector)
+            {
+                combatDirector.enabled = false;
+            }
+
+            var purchaseInteraction = gameObject.GetComponent<PurchaseInteraction>();
+            if (purchaseInteraction)
+            {
+                purchaseInteraction.SetAvailable(false);
+            }
+
             var sfxLocator = GetComponent<SfxLocator>();
             if (sfxLocator)
             {

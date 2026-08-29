@@ -260,6 +260,5 @@ namespace EnemiesReturns
         {
             folders.Add(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(base.Info.Location), Language.LanguageFolder));
         }
-
     }
 }

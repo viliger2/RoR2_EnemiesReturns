@@ -17,7 +17,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
 
         public override void OnEnter()
         {
-            bodyPreservationDuration = 0.4f;
+            bodyPreservationDuration = deathDelay;
             base.OnEnter();
 
             if (isVoidDeath)
@@ -44,6 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.ArcherBugs
                 }
             }
         }
+
         public override void OnExit()
         {
             base.DestroyModel();

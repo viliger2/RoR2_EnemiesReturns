@@ -353,5 +353,27 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             return newObject;
         }
+
+        public static GameObject SetupCargoDoorIndicator(GameObject prefab)
+        {
+            var material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset_TRACER___SDF_Material_).WaitForCompletion();
+            var font = Addressables.LoadAssetAsync<TMP_FontAsset>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset).WaitForCompletion();
+
+            var textMeshPro = prefab.transform.Find("BoingyScaler/DoorSprite/TextMeshPro");
+            var component = textMeshPro.GetComponent<TextMeshPro>();
+            component.font = font;
+            component.material = material;
+
+            textMeshPro.GetComponent<MeshRenderer>().material = material;
+
+            var textMeshPro2 = prefab.transform.Find("BoingyScaler/DoorSprite/TextMeshPro");
+            var component2 = textMeshPro2.GetComponent<TextMeshPro>();
+            component2.font = font;
+            component2.material = material;
+
+            textMeshPro2.GetComponent<MeshRenderer>().material = material;
+
+            return prefab;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using EntityStates;
 using RoR2;
 using RoR2.Hologram;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
 
         public static CostTypeDef costType => Content.CostTypes.AccessCard;
 
+        public static GameObject positionIndicatorPrefab;
+
         public static int cost = 1;
 
         public static float graceExit = 35f; // 5 seconds longer than holdout zone
@@ -34,6 +37,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
         private CostTypeIndex costTypeIndex;
 
         private bool setCostType;
+
+        private ChargeIndicatorController chargeIndicator;
 
         public override void OnEnter()
         {
@@ -49,6 +54,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                 holdoutZoneController.enabled = true;
                 holdoutZoneController.onCharged.AddListener(OnCharged);
             }
+
             var childLocator = gameObject.GetComponent<ChildLocator>();
             if (childLocator)
             {
@@ -74,6 +80,25 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                         }
                     }
                 }
+            }
+
+            if (positionIndicatorPrefab)
+            {
+                Transform position = null;
+                if (childLocator)
+                {
+                    position = childLocator.FindChild("ChargePositionIndicator");
+                    if (!position)
+                    {
+                        position = this.transform;
+                    }
+                }
+                var positionIndicatorInstance = UnityEngine.Object.Instantiate(positionIndicatorPrefab, base.transform.position, Quaternion.identity);
+                var positionIndicator = positionIndicatorInstance.GetComponent<PositionIndicator>();
+                positionIndicator.targetTransform = position;
+
+                chargeIndicator = positionIndicatorInstance.GetComponent<ChargeIndicatorController>();
+                chargeIndicator.holdoutZoneController = holdoutZoneController;
             }
 
             var sfxLocator = GetComponent<SfxLocator>();
@@ -117,6 +142,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                 if (NetworkServer.active)
                 {
                     purchaseInteraction.SetAvailable(true);
+                    purchaseInteraction.onDetailedPurchaseServer = new DetailedPurchaseEvent(); // to remove existing persisten listeners
                     purchaseInteraction.onDetailedPurchaseServer.AddListener(OnPurchasedWithKeyCard);
                 }
 
@@ -145,6 +171,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
             if (purchaseInteraction)
             {
                 purchaseInteraction.onDetailedPurchaseServer.RemoveListener(OnPurchasedWithKeyCard);
+            }
+            if (chargeIndicator)
+            {
+                UnityEngine.Object.Destroy(chargeIndicator.gameObject);
+                chargeIndicator = null;
             }
         }
     }

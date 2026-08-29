@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.UI;
 
 public class ReplaceShaders : MonoBehaviour
 {
@@ -42,6 +43,19 @@ public class ReplaceShaders : MonoBehaviour
                 continue;
             }
             SwapShader(renderer.material);
+        }
+        
+        Image[] images = Resources.FindObjectsOfTypeAll<Image>();
+        foreach(var image in images)
+        {
+            if(!image.material){
+                continue;
+            }
+
+            var copyMaterial = UnityEngine.Object.Instantiate(image.material);
+
+            SwapShader(copyMaterial);
+            image.material = copyMaterial;
         }
 
         void SwapShader(Material material)
