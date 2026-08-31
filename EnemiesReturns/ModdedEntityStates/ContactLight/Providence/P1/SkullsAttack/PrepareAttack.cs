@@ -7,11 +7,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAtt
     [RegisterEntityState]
     public class PrepareAttack : BasePrepareAttack
     {
-        public override float baseDuration => 3.75f;
+        public override float baseDuration => 1.5f;
 
         public override string layerName => "Gesture, Override";
 
-        public override string animationStateName => "SummonSkulls";
+        public override string animationStateName => "SummonSkullsInit";
 
         public override EntityState GetNextState()
         {

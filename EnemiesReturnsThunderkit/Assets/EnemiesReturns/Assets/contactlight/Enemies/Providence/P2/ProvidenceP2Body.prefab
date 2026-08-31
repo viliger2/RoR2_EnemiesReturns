@@ -19,6 +19,11 @@ PrefabInstance:
       propertyPath: _skillFamily
       value: 
       objectReference: {fileID: 11400000, guid: 5e2b3cd07e3609145a98075e7240400f, type: 2}
+    - target: {fileID: 329618885089715151, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+      propertyPath: deathState._typeName
+      value: EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.DeathState,
+        EnemiesReturns, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 2413003441898197763, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_Controller
       value: 

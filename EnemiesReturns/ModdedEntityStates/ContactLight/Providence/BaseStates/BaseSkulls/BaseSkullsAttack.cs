@@ -6,8 +6,14 @@ using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
-    public abstract class BaseSkullsAttack : GenericCharacterMain
+    public abstract class BaseSkullsAttack : BaseState
     {
+        public abstract string layerName { get; }
+
+        public abstract string animationState { get; }
+
+        public abstract string playbackRateParamName { get; }
+
         public abstract GameObject projectilePrefab { get; }
 
         public abstract GameObject effectPrefab { get; }
@@ -44,85 +50,88 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             totalProjectiles = projectilesToSpawn + additionalProjectilesPerPlayer * Mathf.Max(0, activePlayers.Count - 1);
         }
 
+        public abstract EntityState GetNextState(); 
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!isAuthority)
-            {
-                return;
-            }
 
-            if (projectilesSpawned >= totalProjectiles)
+            if (projectilesSpawned >= totalProjectiles && isAuthority)
             {
-                outer.SetNextStateToMain();
+                outer.SetNextState(GetNextState());
             }
 
             if (timer <= 0f)
             {
-                var targetBody = activePlayers[projectilesSpawned % activePlayers.Count];
-                if (!targetBody || !targetBody.healthComponent || !targetBody.healthComponent.alive)
+                PlayCrossfade(layerName, animationState, playbackRateParamName, baseFireFrequency, 0.1f);
+                if (isAuthority)
                 {
+                    var targetBody = activePlayers[projectilesSpawned % activePlayers.Count];
+                    if (!targetBody || !targetBody.healthComponent || !targetBody.healthComponent.alive)
+                    {
+                        projectilesSpawned++;
+                        return;
+                    }
+
+
+                    bool isRed = canBeRed && ((projectilesSpawned / activePlayers.Count) % 2 != 0);
+
+                    var xOffset = GetRandomOffset();
+                    var zOffset = GetRandomOffset();
+                    var yOffset = 0f;
+
+                    if (!targetBody.characterMotor.isGrounded)
+                    {
+                        yOffset = GetRandomOffset();
+                        var distanceToFloor = maxDistance;
+                        var distanceToCeiling = maxDistance;
+                        if (Physics.Raycast(targetBody.transform.position, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        {
+                            distanceToFloor = Vector3.Distance(targetBody.transform.position, hitInfo.point);
+                        }
+                        if (Physics.Raycast(targetBody.transform.position, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        {
+                            distanceToCeiling = Vector3.Distance(targetBody.transform.position, hitInfo2.point);
+                        }
+                        yOffset = Mathf.Clamp(yOffset, -distanceToFloor, distanceToCeiling);
+                    }
+
+                    var position = targetBody.transform.position + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
+                    var distance = Vector3.Distance(gameObject.transform.position, position);
+
+                    var effectData = new EffectData()
+                    {
+                        genericFloat = distance / projectileSpeed, // use EffectRetimer component on effect to rescale effect duration
+                        origin = position,
+                        rotation = Quaternion.identity,
+                    };
+
+                    EffectManager.SpawnEffect(isRed ? effectPrefabRed : effectPrefab, effectData, true);
+
+                    var projectileInfo = new FireProjectileInfo()
+                    {
+                        crit = RollCrit(),
+                        damage = damageStat * damageCoefficient,
+                        fuseOverride = distance / projectileSpeed,
+                        maxDistance = distance,
+                        owner = gameObject,
+                        position = gameObject.transform.position,
+                        rotation = Util.QuaternionSafeLookRotation((position - gameObject.transform.position).normalized),
+                        useFuseOverride = true,
+                        useSpeedOverride = true,
+                        speedOverride = projectileSpeed,
+                        projectilePrefab = projectilePrefab
+                    };
+                    if (isRed)
+                    {
+                        projectileInfo.damage = 99999f;
+                        projectileInfo.damageTypeOverride |= DamageType.NonLethal | DamageType.BypassArmor | DamageType.BypassBlock | DamageType.BypassOneShotProtection;
+                    }
+
+                    ProjectileManager.instance.FireProjectile(projectileInfo);
+
                     projectilesSpawned++;
-                    return;
                 }
-
-                bool isRed = canBeRed && ((projectilesSpawned / activePlayers.Count) % 2 != 0);
-
-                var xOffset = GetRandomOffset();
-                var zOffset = GetRandomOffset();
-                var yOffset = 0f;
-
-                if (!targetBody.characterMotor.isGrounded)
-                {
-                    yOffset = GetRandomOffset();
-                    var distanceToFloor = maxDistance;
-                    var distanceToCeiling = maxDistance;
-                    if (Physics.Raycast(targetBody.transform.position, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
-                    {
-                        distanceToFloor = Vector3.Distance(targetBody.transform.position, hitInfo.point);
-                    }
-                    if (Physics.Raycast(targetBody.transform.position, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
-                    {
-                        distanceToCeiling = Vector3.Distance(targetBody.transform.position, hitInfo2.point);
-                    }
-                    yOffset = Mathf.Clamp(yOffset, -distanceToFloor, distanceToCeiling);
-                }
-
-                var position = targetBody.transform.position + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
-                var distance = Vector3.Distance(gameObject.transform.position, position);
-
-                var effectData = new EffectData()
-                {
-                    genericFloat = distance / projectileSpeed, // use EffectRetimer component on effect to rescale effect duration
-                    origin = position,
-                    rotation = Quaternion.identity,
-                };
-
-                EffectManager.SpawnEffect(isRed ? effectPrefabRed : effectPrefab, effectData, true);
-
-                var projectileInfo = new FireProjectileInfo()
-                {
-                    crit = RollCrit(),
-                    damage = damageStat * damageCoefficient,
-                    fuseOverride = distance / projectileSpeed,
-                    maxDistance = distance,
-                    owner = gameObject,
-                    position = gameObject.transform.position,
-                    rotation = Util.QuaternionSafeLookRotation((position - gameObject.transform.position).normalized),
-                    useFuseOverride = true,
-                    useSpeedOverride = true,
-                    speedOverride = projectileSpeed,
-                    projectilePrefab = projectilePrefab
-                };
-                if (isRed)
-                {
-                    projectileInfo.damage = 99999f;
-                    projectileInfo.damageTypeOverride |= DamageType.NonLethal | DamageType.BypassArmor | DamageType.BypassBlock | DamageType.BypassOneShotProtection;
-                }
-
-                ProjectileManager.instance.FireProjectile(projectileInfo);
-
-                projectilesSpawned++;
                 timer += baseFireFrequency;
             }
             timer -= GetDeltaTime();

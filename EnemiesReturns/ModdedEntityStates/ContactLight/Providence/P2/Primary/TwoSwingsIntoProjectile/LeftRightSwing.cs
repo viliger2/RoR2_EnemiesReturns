@@ -134,6 +134,5 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
             return null;
         }
-
     }
 }

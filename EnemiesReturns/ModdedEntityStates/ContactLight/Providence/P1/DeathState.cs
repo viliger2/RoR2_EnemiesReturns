@@ -38,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1
                 hasDied = true;
                 var data = new EffectData()
                 {
-                    origin = base.characterBody.corePosition,
+                    origin = FindModelChild("TeleportEffectOrigin").position,
                     rotation = Quaternion.identity,
                 };
                 EffectManager.SpawnEffect(teleportEffect, data, false);

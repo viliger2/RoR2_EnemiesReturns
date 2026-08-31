@@ -11,9 +11,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
         public override float predictionTime => 0.75f;
 
-        public override string layerName => "Gesture";
+        public override string layerName => "Gesture, Override";
 
-        public override string animationStateName => "Thundercall";
+        public override string animationStateName => "Disappear";
 
         public override string playbackParamName => "combo.playbackRate";
 

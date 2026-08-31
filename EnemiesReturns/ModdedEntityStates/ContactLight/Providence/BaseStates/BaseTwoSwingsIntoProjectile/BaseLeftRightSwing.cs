@@ -75,6 +75,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
             base.OnEnter();
 
+            StartAimMode(duration);
+
             targetsHit = false;
         }
 
