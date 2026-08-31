@@ -89,6 +89,8 @@ namespace EnemiesReturns.Enemies.ContactLight
 
         public static InteractableSpawnCard iscSwordShard;
 
+        public static UnlockableDef wardrobeUnlockable;
+
         public static void Hooks()
         {
             if (Configuration.General.EnableContactLight.Value)
@@ -193,7 +195,10 @@ namespace EnemiesReturns.Enemies.ContactLight
                 return;
             }
 
-            // TODO: add unlockable check
+            if(!(RoR2.Run.instance.IsUnlockableUnlocked(wardrobeUnlockable) || Configuration.ContactLight.ContactLight.ForceUnlock.Value))
+            {
+                return;
+            }
 
             var newObject = UnityEngine.Object.Instantiate(wardrobe, new Vector3(-136.080002f, -21.1499996f, -33.4500008f), new Quaternion(-0.0393915996f, 0.618751168f, 0.0498490371f, 0.783013642f));
             NetworkServer.Spawn(newObject);

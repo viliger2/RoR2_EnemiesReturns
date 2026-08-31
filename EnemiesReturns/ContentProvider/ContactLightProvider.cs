@@ -34,223 +34,238 @@ namespace EnemiesReturns
             AssetBundle assetBundleStages = null;
             yield return LoadAssetBundle(System.IO.Path.Combine(assetBundleFolderPath, AssetBundleContactLightStagesName), args.progressReceiver, (resultAssetBundle) => assetBundleStages = resultAssetBundle);
 
-            CreateContactLightMusic();
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
+            if (Configuration.General.EnableContactLight.Value)
             {
-                SwapMaterials(assets);
+                CreateContactLightMusic();
 
-                ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
-                ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
-                ModdedEntityStates.ContactLight.CargoHoldDoors.ClosedWithKeycard.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
-
-                ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
-
-                ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.overclockMaterial = assets.First(material => material.name == "matTempleGuardOverclockOverlay");
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
-            {
-                Content.Stages.ContactLight = assets.First(sd => sd.cachedName == "enemiesreturns_contactlight");
-
-                _contentPack.sceneDefs.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
-            {
-                _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
-                _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
-                _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
-                _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
-
-                _contentPack.networkedObjectPrefabs.Add(assets.Where(asset =>
-                    asset.TryGetComponent<NetworkIdentity>(out _)
-                        && !(asset.TryGetComponent<CharacterBody>(out _)
-                            || asset.TryGetComponent<CharacterMaster>(out _)
-                            || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
-
-                var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
-                var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
-                pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
-                PrefabAPI.RegisterNetworkPrefab(wardrobe);
-
-                Content.Interactables.BoomBox = assets.First(asset => asset.name == "BoomBox");
-
-                Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
-
-                Equipment.EliteSlayer.EliteSlayer.eliteSlayerProjectilePrefab = assets.First(prefab => prefab.name == "EliteSlayerProjectile");
-
-                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffect = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
-                Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelDownEffect = assets.First(prefab => prefab.name == "AdrenalineLevelDownEffect");
-
-                var contactLightDiorama = assets.First(asset => asset.name == "ContactLightDioramaDisplay");
-                contactLightDiorama.GetComponent<MusicTrackOverride>().track = Content.MusicTracks.CoalescenceReturns;
-
-                Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab = SetupContactLight.CreateCleanseNovaEffect();
-                nopList.Add(Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab);
-
-                Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
-
-                Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
-
-                ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.projectilePrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryProjectile");
-                ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");
-                ModdedEntityStates.ContactLight.TempleGuard.Primary.ChargePrimary.effectPrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryCharge");
-                ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.preShieldEffect = assets.First(asset => asset.name == "TempleGuardOverclockCharge");
-
-                ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.positionIndicatorPrefab = SetupContactLight.SetupCargoDoorIndicator(assets.First(asset => asset.name == "CargoDoorChargePositionIndicator"));
-
-                ModdedEntityStates.ContactLight.SwordHilt.SpawnPortal.portalContactLight = assets.First(asset => asset.name == "PortalContactLight");
-                Enemies.ContactLight.SetupContactLight.swordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
-
-                ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
-                ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
-
-                ModdedEntityStates.ContactLight.Providence.P2.Primary.ProjectileSwingsWithClones.cloneEffect = assets.First(prefab => prefab.name == "ProvidenceP2PrimaryShadowClone");
-                ModdedEntityStates.ContactLight.Providence.P2.Secondary.DashAttack.projectileClone = assets.First(prefab => prefab.name == "ProvidenceSecondaryCloneProjectile");
-                ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.cloneEffectPrefab = assets.First(prefab => prefab.name == "ProvidenceP2SpecialShadowClone");
-                ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
-                ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
-
-                //ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
-
-                var orbProjectilePrefab = assets.First(prefab => prefab.name == "ProviTwoSwingsProjectile");
-                orbProjectilePrefab.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
-                ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
-                ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
-
-                ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-                ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
-                ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
-                ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                ModdedEntityStates.ContactLight.Providence.P3.Special.SpawnRotatingLaser.projectilePrefab = assets.First(prefab => prefab.name == "LaserProjectile");
-                ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
-                ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
-                ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
-                ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-                ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
-                ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
-                ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
-
-
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
-            {
-                _contentPack.itemDefs.Add(assets);
-                Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
-                Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
-            {
-                _contentPack.buffDefs.Add(assets);
-                Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
-                Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "AdrenalineCoreProtection");
-                Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
-            {
-                _contentPack.unlockableDefs.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
-            {
-                Content.GameEndings.EscapeIntoPast = assets.First(item => item.cachedName == "EscapedIntoThePast");
-
-                _contentPack.gameEndingDefs.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
-            {
-                Content.Equipment.EliteSlayer = assets.First(equipment => equipment.name == "EliteSlayer");
-                Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator();
-
-                _contentPack.equipmentDefs.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SpawnCard[]>)((assets) =>
-            {
-                Enemies.ContactLight.SetupContactLight.iscSwordShard = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShard");
-            }));
-            
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
-            {    
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
-            {
-                _contentPack.skillFamilies.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
-            {
-                Enemies.ContactLight.TempleGuard.TempleGuardBody.SetupDirectiorCard(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
-            {
-                TempleGuardBody.SetupSkills(assets);
-
-                _contentPack.skillDefs.Add(assets);
-            }));
-
-            yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<TMP_SpriteAsset[]>)((assets) =>
-            {
-                foreach(var asset in assets)
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
                 {
-                    TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(asset);
-                }
-            }));
+                    SwapMaterials(assets);
 
-            Content.CostTypes.AccessCard = new CostTypeDef()
-            {
-                name = "EnemiesReturnsKeycardCost",
-                costStringFormatToken = "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT",
-                isAffordable = delegate (CostTypeDef costTypeDef, CostTypeDef.IsAffordableContext context)
+                    ModdedEntityStates.ContactLight.CargoHoldDoors.Opening.matTerminalGreen = assets.First(material => material.name == "matTerminalGreen");
+                    ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
+                    ModdedEntityStates.ContactLight.CargoHoldDoors.ClosedWithKeycard.matTerminalYellow = assets.First(material => material.name == "matTerminalYellow");
+
+                    ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
+
+                    ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.overclockMaterial = assets.First(material => material.name == "matTempleGuardOverclockOverlay");
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
                 {
-                    if (context.activator)
+                    Content.Stages.ContactLight = assets.First(sd => sd.cachedName == "enemiesreturns_contactlight");
+
+                    _contentPack.sceneDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
+                {
+                    _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                    _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                    _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                    _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+
+                    _contentPack.networkedObjectPrefabs.Add(assets.Where(asset =>
+                        asset.TryGetComponent<NetworkIdentity>(out _)
+                            && !(asset.TryGetComponent<CharacterBody>(out _)
+                                || asset.TryGetComponent<CharacterMaster>(out _)
+                                || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
+
+                    var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
+                    var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
+                    pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
+                    PrefabAPI.RegisterNetworkPrefab(wardrobe);
+
+                    Content.Interactables.BoomBox = assets.First(asset => asset.name == "BoomBox");
+
+                    Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
+
+                    Equipment.EliteSlayer.EliteSlayer.eliteSlayerProjectilePrefab = assets.First(prefab => prefab.name == "EliteSlayerProjectile");
+
+                    Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffect = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
+                    Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelDownEffect = assets.First(prefab => prefab.name == "AdrenalineLevelDownEffect");
+
+                    var contactLightDiorama = assets.First(asset => asset.name == "ContactLightDioramaDisplay");
+                    contactLightDiorama.GetComponent<MusicTrackOverride>().track = Content.MusicTracks.CoalescenceReturns;
+
+                    Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab = SetupContactLight.CreateCleanseNovaEffect();
+                    nopList.Add(Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab);
+
+                    Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
+
+                    Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
+
+                    ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.projectilePrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryProjectile");
+                    ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");
+                    ModdedEntityStates.ContactLight.TempleGuard.Primary.ChargePrimary.effectPrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryCharge");
+                    ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.preShieldEffect = assets.First(asset => asset.name == "TempleGuardOverclockCharge");
+
+                    ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.positionIndicatorPrefab = SetupContactLight.SetupCargoDoorIndicator(assets.First(asset => asset.name == "CargoDoorChargePositionIndicator"));
+
+                    ModdedEntityStates.ContactLight.SwordHilt.SpawnPortal.portalContactLight = assets.First(asset => asset.name == "PortalContactLight");
+                    Enemies.ContactLight.SetupContactLight.swordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
+
+                    ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
+                    ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+
+                    ModdedEntityStates.ContactLight.Providence.P2.Primary.ProjectileSwingsWithClones.cloneEffect = assets.First(prefab => prefab.name == "ProvidenceP2PrimaryShadowClone");
+                    ModdedEntityStates.ContactLight.Providence.P2.Secondary.DashAttack.projectileClone = assets.First(prefab => prefab.name == "ProvidenceSecondaryCloneProjectile");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.cloneEffectPrefab = assets.First(prefab => prefab.name == "ProvidenceP2SpecialShadowClone");
+                    ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
+                    ModdedEntityStates.ContactLight.Providence.P2.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+
+                    //ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+
+                    var orbProjectilePrefab = assets.First(prefab => prefab.name == "ProviTwoSwingsProjectile");
+                    orbProjectilePrefab.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
+                    ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
+                    ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
+
+                    ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
+                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
+                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                    ModdedEntityStates.ContactLight.Providence.P3.Special.SpawnRotatingLaser.projectilePrefab = assets.First(prefab => prefab.name == "LaserProjectile");
+                    ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
+                    ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
+                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "LandingEffect");
+                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+
+                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
+                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
+                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "LandingEffectRed");
+
+
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
+                {
+                    Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
+                    Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
+
+                    if (Configuration.ContactLight.ContactLight.ForceUnlock.Value)
                     {
-                        var characterBody = context.activator.GetComponent<CharacterBody>();
-                        if (characterBody)
+                        Content.Items.AdrenalineCore.unlockableDef = null;
+                    }
+
+                    _contentPack.itemDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
+                {
+                    _contentPack.buffDefs.Add(assets);
+                    Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
+                    Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "AdrenalineCoreProtection");
+                    Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
+                {
+                    Enemies.ContactLight.SetupContactLight.wardrobeUnlockable = assets.First(unlockable => unlockable.cachedName == "Interactables.ER_Wardrobe.0");
+
+                    _contentPack.unlockableDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
+                {
+                    Content.GameEndings.EscapeIntoPast = assets.First(item => item.cachedName == "EscapedIntoThePast");
+
+                    _contentPack.gameEndingDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
+                {
+                    Content.Equipment.EliteSlayer = assets.First(equipment => equipment.name == "EliteSlayer");
+                    Equipment.EliteSlayer.EliteSlayer.EliteSlayerIndicator = Enemies.ContactLight.SetupContactLight.CreateEliteSlayerIndicator();
+
+                    if (Configuration.ContactLight.ContactLight.ForceUnlock.Value)
+                    {
+                        Content.Equipment.EliteSlayer.unlockableDef = null;
+                    }
+
+                    _contentPack.equipmentDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SpawnCard[]>)((assets) =>
+                {
+                    Enemies.ContactLight.SetupContactLight.iscSwordShard = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShard");
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>
+                {
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
+                {
+                    _contentPack.skillFamilies.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
+                {
+                    Enemies.ContactLight.TempleGuard.TempleGuardBody.SetupDirectiorCard(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
+                {
+                    TempleGuardBody.SetupSkills(assets);
+
+                    _contentPack.skillDefs.Add(assets);
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<TMP_SpriteAsset[]>)((assets) =>
+                {
+                    foreach (var asset in assets)
+                    {
+                        TMP_Settings.defaultSpriteAsset.fallbackSpriteAssets.Add(asset);
+                    }
+                }));
+
+                Content.CostTypes.AccessCard = new CostTypeDef()
+                {
+                    name = "EnemiesReturnsKeycardCost",
+                    costStringFormatToken = "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT",
+                    isAffordable = delegate (CostTypeDef costTypeDef, CostTypeDef.IsAffordableContext context)
+                    {
+                        if (context.activator)
                         {
-                            var inventory = characterBody.inventory;
-                            if (inventory && !inventory.inventoryDisabled)
+                            var characterBody = context.activator.GetComponent<CharacterBody>();
+                            if (characterBody)
                             {
-                                return inventory.GetItemCountEffective(Content.Items.AccessCard) > 0;
+                                var inventory = characterBody.inventory;
+                                if (inventory && !inventory.inventoryDisabled)
+                                {
+                                    return inventory.GetItemCountEffective(Content.Items.AccessCard) > 0;
+                                }
                             }
                         }
-                    }
-                    return false;
-                },
-                payCost = delegate (CostTypeDef.PayCostContext context, CostTypeDef.PayCostResults result)
-                {
-                    if (context.activatorBody && context.activatorBody.inventory)
+                        return false;
+                    },
+                    payCost = delegate (CostTypeDef.PayCostContext context, CostTypeDef.PayCostResults result)
                     {
-                        var inventory = context.activatorBody.inventory;
-                        Inventory.ItemTransformation itemTransformation = new Inventory.ItemTransformation()
+                        if (context.activatorBody && context.activatorBody.inventory)
                         {
-                            originalItemIndex = Content.Items.AccessCard.itemIndex,
-                            newItemIndex = ItemIndex.None,
-                            maxToTransform = 1,
-                        };
-                        if (itemTransformation.TryTransform(inventory, out var result2))
-                        {
-                            result.AddTakenItemsFromTransformation(in result2);
+                            var inventory = context.activatorBody.inventory;
+                            Inventory.ItemTransformation itemTransformation = new Inventory.ItemTransformation()
+                            {
+                                originalItemIndex = Content.Items.AccessCard.itemIndex,
+                                newItemIndex = ItemIndex.None,
+                                maxToTransform = 1,
+                            };
+                            if (itemTransformation.TryTransform(inventory, out var result2))
+                            {
+                                result.AddTakenItemsFromTransformation(in result2);
+                            }
                         }
-                    }
-                },
-                colorIndex = ColorCatalog.ColorIndex.VoidCoin
-            };
-
+                    },
+                    colorIndex = ColorCatalog.ColorIndex.VoidCoin
+                };
+            }
             yield break;
         }
 

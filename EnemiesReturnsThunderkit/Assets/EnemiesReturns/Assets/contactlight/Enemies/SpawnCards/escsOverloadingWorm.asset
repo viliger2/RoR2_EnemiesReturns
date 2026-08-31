@@ -32,6 +32,8 @@ MonoBehaviour:
     m_AssetGUID: 77dad8657bf12fe48a732bbcfafeb49f
     m_SubObjectName: 
     m_SubObjectType: 
-  itemNamesToGrant: []
+  itemNamesToGrant:
+  - itemName: BoostDamage
+    count: 2
   equipmentNamesToGrant:
   - EliteFireEquipment

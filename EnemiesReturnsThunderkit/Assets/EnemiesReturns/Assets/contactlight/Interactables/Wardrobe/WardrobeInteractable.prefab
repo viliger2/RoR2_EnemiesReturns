@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 6645866845491025700}
   - component: {fileID: 4808641831913572553}
   - component: {fileID: 3163943988516859016}
-  - component: {fileID: 8408636064939263355}
   m_Layer: 0
   m_Name: WardrobeInteractable
   m_TagString: Untagged
@@ -356,23 +355,6 @@ MonoBehaviour:
   isWeakSpot: 0
   forceUseHitOriginForPosition: 0
   networkedBodyAttachmentOverride: {fileID: 0}
---- !u!114 &8408636064939263355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6839126271681974720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1610432528, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requiredUnlockable: 
-  forbiddenUnlockable: 
-  requiredUnlockableDef: {fileID: 11400000, guid: 7a26534a2dc0b114787f8fe5969b2afb, type: 2}
-  forbiddenUnlockableDef: {fileID: 0}
-  AchievementToDisable: 
 --- !u!1001 &4926351787625874231
 PrefabInstance:
   m_ObjectHideFlags: 0

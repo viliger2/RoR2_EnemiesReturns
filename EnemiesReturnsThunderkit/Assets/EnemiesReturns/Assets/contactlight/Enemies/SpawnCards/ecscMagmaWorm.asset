@@ -35,5 +35,7 @@ MonoBehaviour:
   itemNamesToGrant:
   - itemName: BoostHp
     count: 50
+  - itemName: BoostDamage
+    count: 2
   equipmentNamesToGrant:
   - EliteLightningEquipment

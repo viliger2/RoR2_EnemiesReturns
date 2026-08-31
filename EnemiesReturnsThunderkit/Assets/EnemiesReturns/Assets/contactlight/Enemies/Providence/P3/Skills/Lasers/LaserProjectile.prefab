@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 6578176647834316912}
   - component: {fileID: 5778863503292623734}
   - component: {fileID: -5093273788489378812}
+  - component: {fileID: 2447321586740809914}
   m_Layer: 0
   m_Name: LaserProjectile
   m_TagString: Untagged
@@ -609,6 +610,18 @@ MonoBehaviour:
   oscillate: 0
   oscillateMagnitude: 0
   oscillateSpeed: 0
+--- !u!114 &2447321586740809914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551610540239970763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b69362ada82b9547af3bf4e2f99a4ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2646246593956690368
 GameObject:
   m_ObjectHideFlags: 0
