@@ -70,42 +70,6 @@ MonoBehaviour:
         _address: 
         _useDirectReference: 0
         _canLoadFromCatalog: 1
-    - spawnCard:
-        _asset: {fileID: 0}
-        _address: 0a8dba9ed8f044f42bad974647536053
-        _useDirectReference: 0
-      selectionWeight: 8
-      spawnDistance: 0
-      preventOverhead: 0
-      minimumStageCompletions: 0
-      requiredUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-      forbiddenUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-    - spawnCard:
-        _asset: {fileID: 0}
-        _address: 79f8cea0f42e0924c967b6480ff65e19
-        _useDirectReference: 0
-      selectionWeight: 2
-      spawnDistance: 0
-      preventOverhead: 0
-      minimumStageCompletions: 0
-      requiredUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-      forbiddenUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
     selectionWeight: 45
   - name: Barrels
     cards:
@@ -132,43 +96,7 @@ MonoBehaviour:
     cards: []
     selectionWeight: 7
   - name: Drones
-    cards:
-    - spawnCard:
-        _asset: {fileID: 0}
-        _address: 749e2ff7e1839074885efb0f82197ba7
-        _useDirectReference: 0
-      selectionWeight: 2
-      spawnDistance: 0
-      preventOverhead: 0
-      minimumStageCompletions: 0
-      requiredUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-      forbiddenUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-    - spawnCard:
-        _asset: {fileID: 0}
-        _address: 81e6491f830f9c143bb5954640a383b1
-        _useDirectReference: 0
-      selectionWeight: 4
-      spawnDistance: 0
-      preventOverhead: 0
-      minimumStageCompletions: 0
-      requiredUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
-      forbiddenUnlockableDef:
-        _asset: {fileID: 0}
-        _address: 
-        _useDirectReference: 0
-        _canLoadFromCatalog: 1
+    cards: []
     selectionWeight: 4.5
   - name: Rare
     cards:

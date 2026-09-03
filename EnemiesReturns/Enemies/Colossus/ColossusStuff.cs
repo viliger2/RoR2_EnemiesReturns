@@ -64,7 +64,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
         public GameObject CreateDeathFallEffect()
         {
-            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusStompEffect", false);
+            var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleGuard/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("ColossusDeathFallEffect", false);
 
             var shakeEmitter = clonedEffect.GetComponent<ShakeEmitter>();
             shakeEmitter.duration = 4f;

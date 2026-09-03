@@ -175,3 +175,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+--- !u!1 &2420474466203360621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5916704582772687778, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+  m_PrefabInstance: {fileID: 8325778897918746319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-86765193281350387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420474466203360621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -578974823, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logUnlockableName: 
+  logUnlockableDef: {fileID: 11400000, guid: d3b4c7193b92cec4689422ba0378a3cc, type: 2}
+  bossDropTable: {fileID: 0}
+  useLogbookDropChanceOverride: 1
+  logbookDropChanceOverride: 10
+  overrideBossDropRewards: 0
+  bossPickup:
+    pickupName: 

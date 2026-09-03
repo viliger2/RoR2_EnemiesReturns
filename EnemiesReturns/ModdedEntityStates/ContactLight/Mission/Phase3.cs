@@ -14,11 +14,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float bossSpawnDelay = 5f;
 
+        public static float templeGuardDirectorDelay = 15f;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private GameObject phaseControllerObject;
 
+        private GameObject templeGuardsCombatDirector;
+
         private bool hasSpawned;
+
+        private bool hasEnabledTempleGuards;
 
         public override void OnEnter()
         {
@@ -38,6 +44,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     {
                         combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
                     }
+                    var templeGuardsCombatDirectorTransform = phaseChildLocator.FindChild("TempleGuardCombatDirector");
+                    if (templeGuardsCombatDirectorTransform)
+                    {
+                        templeGuardsCombatDirector = templeGuardsCombatDirectorTransform.gameObject;
+
+                        var combatDirector = templeGuardsCombatDirector.GetComponent<CombatDirector>();
+                        var placementArray = templeGuardsCombatDirector.GetComponent<CustomPlacement_Array>();
+                        if(combatDirector && placementArray)
+                        {
+                            combatDirector.customPlacementBase = placementArray;
+                        }
+                    }
                 }
             }
             ClearCorpses();
@@ -51,6 +69,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             {
                 hasSpawned = true;
                 BeginEncounter();
+            }
+
+            if(!hasEnabledTempleGuards && fixedAge > templeGuardDirectorDelay) 
+            {
+                templeGuardsCombatDirector.SetActive(true);
+                hasEnabledTempleGuards = true;
             }
 
             if (NetworkServer.active && fixedAge > bossSpawnDelay + 10 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)

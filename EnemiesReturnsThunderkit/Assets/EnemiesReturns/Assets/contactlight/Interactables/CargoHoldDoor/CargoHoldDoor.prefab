@@ -310,7 +310,6 @@ GameObject:
   - component: {fileID: 8218232045566024675}
   - component: {fileID: 5620557653748226952}
   - component: {fileID: 2078498414356351918}
-  - component: {fileID: 6442782883347999120}
   - component: {fileID: 5237060596929336033}
   - component: {fileID: 2062229487634081133}
   - component: {fileID: 7778127778680856375}
@@ -318,6 +317,7 @@ GameObject:
   - component: {fileID: 804554618725030898}
   - component: {fileID: 6583220222549263370}
   - component: {fileID: 4809605232493376463}
+  - component: {fileID: 1227717609174793307}
   m_Layer: 0
   m_Name: CargoHoldDoor
   m_TagString: Untagged
@@ -557,7 +557,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6442782883347999120}
+      - m_Target: {fileID: 1227717609174793307}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -674,20 +674,6 @@ MonoBehaviour:
   normalMaxAngleDelta: 90
   shouldOverrideLogbookModel: 0
   logbookOverrideBodyName: 
---- !u!114 &6442782883347999120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8613017746711655976}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gateToEnableWhenEnabled: 
-  gateToDisableWhenEnabled: 
 --- !u!114 &5237060596929336033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +793,20 @@ MonoBehaviour:
   isWeakSpot: 0
   forceUseHitOriginForPosition: 0
   networkedBodyAttachmentOverride: {fileID: 0}
+--- !u!114 &1227717609174793307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613017746711655976}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateToEnableWhenEnabled: 
+  gateToDisableWhenEnabled: 
 --- !u!1001 &2683809188039422151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,6 +1043,10 @@ PrefabInstance:
     - target: {fileID: 1684134620245294940, guid: ca71ffa79083aba43a67d1fa60b77a31, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154852608069174681, guid: ca71ffa79083aba43a67d1fa60b77a31, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2154852608069174681, guid: ca71ffa79083aba43a67d1fa60b77a31, type: 3}
       propertyPath: m_StaticEditorFlags

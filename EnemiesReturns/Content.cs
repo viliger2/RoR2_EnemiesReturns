@@ -62,6 +62,8 @@ namespace EnemiesReturns
             public static ItemDef AccessCard;
 
             public static ItemDef AdrenalineCore;
+
+            public static ItemDef SwordShard;
         }
 
         public static class ItemRelationshipProviders

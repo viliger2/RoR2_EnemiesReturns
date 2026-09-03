@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using static R2API.DirectorAPI;
+using static RoR2.Navigation.NodeGraph;
 
 namespace EnemiesReturns
 {
@@ -404,6 +405,55 @@ namespace EnemiesReturns
             }
 
             return CostTypeIndex.None;
+        }
+
+        public static Mesh GenerateLinkDebugMeshOnlyActiveGates(this RoR2.Navigation.NodeGraph nodeGraph, HullMask hullMask)
+        {
+            using WireMeshBuilder wireMeshBuilder = new WireMeshBuilder();
+            Link[] array = nodeGraph.links;
+            for (int i = 0; i < array.Length; i++)
+            {
+                Link link = array[i];
+                if (((uint)link.hullMask & (uint)hullMask) == 0)
+                {
+                    continue;
+                }
+
+                if (!nodeGraph.openGates[link.gateIndex])
+                {
+                    continue;
+                }
+
+                Vector3 position = nodeGraph.nodes[link.nodeIndexA.nodeIndex].position;
+                Vector3 position2 = nodeGraph.nodes[link.nodeIndexB.nodeIndex].position;
+                Vector3 vector = (position + position2) * 0.5f;
+                bool num = ((uint)link.jumpHullMask & (uint)hullMask) != 0;
+                Color color = (num ? Color.cyan : Color.green);
+                if (num)
+                {
+                    Vector3 apexPos = vector;
+                    apexPos.y = position.y + link.minJumpHeight;
+                    int num2 = 8;
+                    Vector3 p = position;
+                    for (int j = 1; j <= num2; j++)
+                    {
+                        if (j > num2 / 2)
+                        {
+                            color.a = 0.1f;
+                        }
+                        Vector3 quadraticCoordinates = nodeGraph.GetQuadraticCoordinates((float)j / (float)num2, position, apexPos, position2);
+                        wireMeshBuilder.AddLine(p, color, quadraticCoordinates, color);
+                        p = quadraticCoordinates;
+                    }
+                }
+                else
+                {
+                    Color c = color;
+                    c.a = 0.1f;
+                    wireMeshBuilder.AddLine(position, color, (position + position2) * 0.5f, c);
+                }
+            }
+            return wireMeshBuilder.GenerateMesh();
         }
     }
 }

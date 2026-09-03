@@ -80,6 +80,9 @@ namespace EnemiesReturns
 #endif
             ModIsLoaded = true;
 
+#if DEBUG || NOWEAVER
+            DebugClass.DebugHooks();
+#endif
             void MakeNonConfigs(IEnumerable<System.Type> configs)
             {
                 var notSavedConfigFile = new ConfigFile(System.IO.Path.Combine(Paths.ConfigPath, "Config"), false)
@@ -94,6 +97,8 @@ namespace EnemiesReturns
                 }
             }
         }
+
+
 
         private void RegisterOrbs()
         {

@@ -148,6 +148,7 @@ namespace EnemiesReturns
                 {
                     Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
                     Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
+                    Content.Items.SwordShard = assets.First(item => item.name == "SwordShard");
 
                     if (Configuration.ContactLight.ContactLight.ForceUnlock.Value)
                     {

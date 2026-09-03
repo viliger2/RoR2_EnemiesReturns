@@ -78,10 +78,28 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 hasClosedDoor = true;
             }
 
+#if DEBUG || NOWEAVER
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                outer.SetNextState(new Phase2());
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                outer.SetNextState(new Phase3());
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                outer.SetNextState(new Phase4());
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                outer.SetNextState(new PostFight());
+            }
+#endif
+
             if (NetworkServer.active && fixedAge > bossSpawnDelay + 10f && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
             {
-                //outer.SetNextState(new Phase2());
-                outer.SetNextState(new PostFight()); // TODO: REMEMBER TO FIX
+                outer.SetNextState(new Phase2());
             }
         }
 

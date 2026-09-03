@@ -1,11 +1,16 @@
 ﻿using EnemiesReturns.Enemies.Colossus;
 using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.Spitter;
+using HG;
 using RoR2;
+using RoR2.Navigation;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using Console = RoR2.Console;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -115,7 +120,7 @@ namespace EnemiesReturns
             SpawnMonster(Enemies.SandCrab.SandCrabBody.SpawnCards.cscSandCrabSulfur, localPlayer.modelLocator.modelBaseTransform.position);
         }
 
-        [ConCommand(commandName = "returns_spawn_temple_guardian", flags = ConVarFlags.None, helpText = "Spawns Lunar Golem skinned as Temple Guardian")]
+        [ConCommand(commandName = "returns_spawn_temple_guardian", flags = ConVarFlags.None, helpText = "Spawns all Temple Guardian variants")]
         private static void CCSpawnTempleGuardian(ConCommandArgs args)
         {
             var localPlayers = LocalUserManager.readOnlyLocalUsersList;
@@ -210,6 +215,63 @@ namespace EnemiesReturns
 
             var boombox = UnityEngine.Object.Instantiate(Content.Interactables.BoomBox, position, Quaternion.LookRotation(args.senderBody.characterDirection.forward));
             NetworkServer.Spawn(boombox);
+        }
+
+        [ConCommand(commandName = "returns_draw_nodegraph", flags = ConVarFlags.None, helpText = "Draws nodegraph with only enabled gates. Updates in real time as you enable/disable gates. Same parameters debug_scene_draw_nodegraph. as Hits performance hard compared to vanilla method since this one doesn't memorize the output depending on input, redrawing the entire thing every frame..")]
+        private static void CCDrawNodeGraphWithGates(ConCommandArgs args)
+        {
+            bool shouldDraw = args.GetArgBool(0);
+            MapNodeGroup.GraphType graphType = args.GetArgEnum<MapNodeGroup.GraphType>(1);
+            HullMask hullMask = (HullMask)(1 << (int)args.GetArgEnum<HullClassification>(2));
+            if (hullMask == HullMask.None)
+            {
+                throw new ConCommandException("Cannot use HullMask.None.");
+            }
+            for (int i = 3; i < args.Count; i++)
+            {
+                HullClassification? hullClassification = args.TryGetArgEnum<HullClassification>(i);
+                if (hullClassification.HasValue)
+                {
+                    hullMask = (HullMask)((int)hullMask | (1 << (int)hullClassification.Value));
+                }
+            }
+
+            (MapNodeGroup.GraphType, HullMask) key = (graphType, hullMask);
+            DebugOverlay.MeshDrawer drawer;
+            if (shouldDraw)
+            {
+                if (RoR2.SceneInfo.NodeGraphOverlay.drawers == null)
+                {
+                    RoR2.SceneInfo.NodeGraphOverlay.drawers = new Dictionary<(MapNodeGroup.GraphType, HullMask), (DebugOverlay.MeshDrawer, Action)>();
+                    RoR2Application.onUpdate += RoR2.SceneInfo.NodeGraphOverlay.StaticUpdate;
+                }
+                if (!RoR2.SceneInfo.NodeGraphOverlay.drawers.ContainsKey(key))
+                {
+                    drawer = DebugOverlay.GetMeshDrawer();
+                    drawer.hasMeshOwnership = true;
+                    drawer.material = DebugOverlay.defaultWireMaterial;
+
+                    RoR2.SceneInfo.NodeGraphOverlay.drawers.Add(key, (drawer, Updater));
+                }
+            }
+            else if (RoR2.SceneInfo.NodeGraphOverlay.drawers != null)
+            {
+                if (RoR2.SceneInfo.NodeGraphOverlay.drawers.TryGetValue(key, out var value))
+                {
+                    value.Item1.Dispose();
+                    RoR2.SceneInfo.NodeGraphOverlay.drawers.Remove(key);
+                }
+                if (RoR2.SceneInfo.NodeGraphOverlay.drawers.Count == 0)
+                {
+                    RoR2.SceneInfo.NodeGraphOverlay.drawers = null;
+                    RoR2Application.onUpdate -= RoR2.SceneInfo.NodeGraphOverlay.StaticUpdate;
+                }
+            }
+
+            void Updater()
+            {
+                drawer.mesh = RoR2.SceneInfo.instance.GetNodeGraph(graphType).GenerateLinkDebugMeshOnlyActiveGates(hullMask);
+            }
         }
 
         public static void InvokeCMD(NetworkUser user, string commandName, params string[] arguments)
