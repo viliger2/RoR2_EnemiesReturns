@@ -2408,8 +2408,41 @@
 														</Action>
 													</ChildrenList>
 												</Event>
+												<Event Name="ER_BrokenDoor_Open_Play" ID="{72989009-F3DF-4470-88AD-B3AE57512439}">
+													<ChildrenList>
+														<Action Name="" ID="{7C25F046-12CB-4A36-970E-19CDEAFE97EC}" ShortID="982868491">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="BrokenDoor_Open" ID="{7D220D3A-8D98-40E6-87EB-FF7FE0D9A9A1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
 											</ChildrenList>
 										</Folder>
+										<Event Name="ER_ButtonClick_Play" ID="{0C7C1F0E-596B-40B4-85A2-E256C9451AA7}">
+											<ChildrenList>
+												<Action Name="" ID="{64B692C3-085A-481B-B24C-A917EF8B093D}" ShortID="22826084">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="ButtonClick" ID="{4C798936-30AA-48A9-AE3F-B534555C9CF2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Alarm_Play" ID="{1E119596-B2EB-4594-A5F1-87C802718010}">
+											<ChildrenList>
+												<Action Name="" ID="{CD70310E-38D2-4FFD-A2F8-DADEA85CCEE4}" ShortID="604289291">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Alarm" ID="{4C43C602-EB94-480C-A0D6-33EAEFC91A1C}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Ambiance" ID="{F1902F04-D99D-40A8-933C-D393342A02E1}" ShortID="1015780324">

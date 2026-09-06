@@ -4902,9 +4902,8 @@ GameObject:
   - component: {fileID: 551540698379244017}
   - component: {fileID: 7955438474681003457}
   - component: {fileID: 2880030125806599797}
-  - component: {fileID: 4195992491510047315}
   - component: {fileID: 587669798320244342}
-  - component: {fileID: 361799720703876900}
+  - component: {fileID: 4730384512046667135}
   - component: {fileID: 7955096248484970351}
   - component: {fileID: 8295876989802027924}
   m_Layer: 0
@@ -5008,19 +5007,6 @@ MonoBehaviour:
   highlightColor: 0
   CustomColor: {r: 1, g: 0, b: 1, a: 1}
   isOn: 0
---- !u!114 &4195992491510047315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8830538252390402186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1620867292, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_NAME
 --- !u!114 &587669798320244342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5038,7 +5024,7 @@ MonoBehaviour:
   bounds: {fileID: 5019000469587133068}
   renderers:
   - {fileID: 7096982032898765763}
---- !u!114 &361799720703876900
+--- !u!114 &4730384512046667135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5047,15 +5033,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 8830538252390402186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1777312123, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 370243918, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactability: 2
-  shouldIgnoreSpherecastForInteractibility: 0
+  displayNameToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_NAME
   contextToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_CONTEXT
+  costType: 0
+  available: 1
+  cost: 0
+  solitudeCost: 0
+  automaticallyScaleCostWithDifficulty: 0
+  requiredUnlockable: 
+  ignoreSpherecastForInteractability: 0
+  purchaseStatNames: []
+  setUnavailableOnTeleporterActivated: 0
+  isShrine: 0
+  isGoldShrine: 0
+  isDrone: 0
   shouldProximityHighlight: 1
-  allowRemoteOpInteraction: 1
-  onActivation:
+  saleStarCompatible: 0
+  disableSpawnOnInteraction: 0
+  allowRemoteOpInteraction: 0
+  requiredExpansion: {fileID: 0}
+  lastActivator: {fileID: 0}
+  lockGameObject: {fileID: 0}
+  onPurchase:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8295876989802027924}
@@ -5071,7 +5073,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  shouldShowOnScanner: 0
+  onDetailedPurchaseServer:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7955096248484970351
 MonoBehaviour:
   m_ObjectHideFlags: 0

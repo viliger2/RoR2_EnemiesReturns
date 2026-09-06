@@ -54,7 +54,7 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
                 {
                     Content.Stages.ContactLight = assets.First(sd => sd.cachedName == "enemiesreturns_contactlight");
-
+                    Content.Stages.ContactLight.mainTrack = Content.MusicTracks.Coalescence;
                     _contentPack.sceneDefs.Add(assets);
                 }));
 
@@ -227,6 +227,19 @@ namespace EnemiesReturns
                     }
                 }));
 
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<InspectDef[]>)((assets) =>
+                {
+                    var chestIcon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base.ChestIcon_1_png).WaitForCompletion();
+                    var info = assets.First(asset => asset.name == "idGoldenBarrel");
+                    info.Info.Visual = chestIcon;
+
+                    info = assets.First(asset => asset.name == "idMedicalCabinet");
+                    info.Info.Visual = chestIcon;
+
+                    info = assets.First(asset => asset.name == "isdArmoryLocker");
+                    info.Info.Visual = chestIcon;
+                }));
+
                 Content.CostTypes.AccessCard = new CostTypeDef()
                 {
                     name = "EnemiesReturnsKeycardCost",
@@ -272,6 +285,7 @@ namespace EnemiesReturns
 
         private void CreateContactLightMusic()
         {
+            #region CoalescenceReturns
             var dioramaTrack = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
             dioramaTrack.cachedName = "EnemiesReturns_ContactLight_CoalescenceReturns";
             dioramaTrack.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
@@ -289,6 +303,67 @@ namespace EnemiesReturns
             });
 
             Content.MusicTracks.CoalescenceReturns = dioramaTrack;
+            #endregion
+
+            #region Coalescence
+            var coalescence = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            coalescence.cachedName = "EnemiesReturns_ContactLight_Coalescence";
+            coalescence.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            coalescence.comment = "Chris Christodoulou - Coalescence [2023 Remaster] | ROR Returns (2023)";
+
+            coalescence.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 4061259333U // Coalescence
+            });
+            coalescence.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.Coalescence = coalescence;
+            #endregion
+
+            #region Precipitation
+            var precipitation = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            precipitation.cachedName = "EnemiesReturns_ContactLight_Precipitation";
+            precipitation.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            precipitation.comment = "Chris Christodoulou - Precipitation [2023 Remaster] | ROR Returns (2023)";
+
+            precipitation.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 2859217581U // Coalescence
+            });
+            precipitation.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.Precipitation = precipitation;
+            #endregion
+
+            #region DoubleFuckingRainbowReturns
+            var doubleRainbow = ScriptableObject.CreateInstance<SoundAPI.Music.CustomMusicTrackDef>();
+            doubleRainbow.cachedName = "EnemiesReturns_ContactLight_DoubleFngRainbowreturns";
+            doubleRainbow.CustomStates = new List<SoundAPI.Music.CustomMusicTrackDef.CustomState>();
+            doubleRainbow.comment = "Chris Christodoulou - Double F-ing Rainbow Returns | ROR Returns (2023)";
+
+            doubleRainbow.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 3811162539U, // gathered from the MOD's Init bank txt file, state group id for gameplaySondChoice
+                StateId = 3810378790U // DoubleFngRainbowreturns
+            });
+            doubleRainbow.CustomStates.Add(new SoundAPI.Music.CustomMusicTrackDef.CustomState
+            {
+                GroupId = 792781730U, // gathered from the GAME's Init bank txt file
+                StateId = 89505537U // gathered from the GAME's Init bank txt file
+            });
+
+            Content.MusicTracks.DoubleFngRainbowReturns = doubleRainbow;
+            #endregion
         }
     }
 }

@@ -22,8 +22,21 @@ namespace EnemiesReturns.Equipment.EliteSlayer
             {
                 if (target && target.healthComponent && target.healthComponent.body && target.healthComponent.body.isElite)
                 {
-                    source = target;
-                    break;
+                    if (!Configuration.ContactLight.ContactLight.EliteSlayerDropAllElites.Value)
+                    {
+                        var eqIndex = target.healthComponent.body.equipmentSlot.equipmentIndex;
+                        var equipmentDef = EquipmentCatalog.GetEquipmentDef(eqIndex);
+
+                        if (equipmentDef.dropOnDeathChance > 0)
+                        {
+                            source = target;
+                            break;
+                        }
+                    } else
+                    {
+                        source = target;
+                        break;
+                    }
                 }
             };
             self.currentTarget = new UserTargetInfo(source);
@@ -36,7 +49,7 @@ namespace EnemiesReturns.Equipment.EliteSlayer
             self.targetIndicator.targetTransform = (hasTarget ? self.currentTarget.transformToIndicateAt : null);
         }
 
-        public static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        public static bool EquipmentSlot_PerformEquipmentAction(EquipmentSlot self, EquipmentDef equipmentDef)
         {
             self.UpdateTargets(Content.Equipment.EliteSlayer.equipmentIndex, true);
             HurtBox hurtBox = self.currentTarget.hurtBox;

@@ -53,7 +53,7 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
             return mithrixHammer;
         }
 
-        public static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        public static bool EquipmentSlot_PerformEquipmentAction(EquipmentSlot self, EquipmentDef equipmentDef)
         {
             self.UpdateTargets(Content.Equipment.VoidlingWeapon.equipmentIndex, true);
 

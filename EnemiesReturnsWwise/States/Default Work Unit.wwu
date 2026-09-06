@@ -10,6 +10,9 @@
 						<State Name="Arraign_bossTrackP1" ID="{4A9A06CD-E44B-4ADF-9A7B-AA5FAA92FF52}"/>
 						<State Name="Arraign_bossTrackP2" ID="{09AB4B7F-7FD2-4BB4-94D1-8B56EEEC5159}"/>
 						<State Name="ContactLight_CoalescenceReturns" ID="{7F07F719-3B87-4AD3-BB07-BEC737B27A17}"/>
+						<State Name="ContactLight_Coalescence" ID="{499AD6F0-EFDE-438A-8558-AAA03FDAE44A}"/>
+						<State Name="ContactLight_Precipitation" ID="{2F13BFA4-8C43-4568-ADE7-B90D54EDB0CA}"/>
+						<State Name="ContactLight_DoubleFingRainbowReturns" ID="{C8EC3B6A-25A6-4418-99A9-ADC9C3B7985A}"/>
 					</ChildrenList>
 				</StateGroup>
 				<StateGroup Name="bossStatus" ID="{A8B72AD9-53C8-4D44-A30E-BDB67F0D9AF6}">

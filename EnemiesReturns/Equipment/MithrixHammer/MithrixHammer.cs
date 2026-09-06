@@ -26,7 +26,7 @@ namespace EnemiesReturns.Equipment.MithrixHammer
             }
         }
 
-        public static bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        public static bool EquipmentSlot_PerformEquipmentAction(EquipmentSlot self, EquipmentDef equipmentDef)
         {
             var hammerController = UnityEngine.Object.Instantiate(MithrixHammerController);
             hammerController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(self.characterBody.gameObject, "Base");

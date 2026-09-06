@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static EnemiesReturns.Content;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 {
@@ -18,6 +19,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public static InteractableSpawnCard portalBazaar = Addressables.LoadAssetAsync<InteractableSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_PortalShop.iscShopPortal_asset).WaitForCompletion();
 
         public static event Action onProvidenceDefeated;
+
+        public static MusicTrackDef musicTrack => Addressables.LoadAssetAsync<MusicTrackDef>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_MusicTrackDefs.muNone_asset).WaitForCompletion();
 
         public static float consoleAvailable = 3f;
 
@@ -73,6 +76,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                         }
 
                         portalLocation = childLocator.FindChild("PortalSpawnLocation");
+
+                        var musicTrackOverride = childLocator.FindChild("MusicTrackOverride");
+                        if (musicTrackOverride && musicTrackOverride.TryGetComponent<MusicTrackOverride>(out var musicComponent))
+                        {
+                            musicComponent.track = musicTrack;
+                            musicTrackOverride.gameObject.SetActive(true);
+                        }
                     }
                 }
             }

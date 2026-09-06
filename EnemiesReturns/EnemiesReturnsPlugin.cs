@@ -184,18 +184,18 @@ namespace EnemiesReturns
             {
                 if (equipmentDef.equipmentIndex == Content.Equipment.MithrixHammer.equipmentIndex)
                 {
-                    return Equipment.MithrixHammer.MithrixHammer.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                    return Equipment.MithrixHammer.MithrixHammer.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
                 }
                 else if (equipmentDef.equipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex)
                 {
-                    return Equipment.VoidlingWeapon.VoidlingWeapon.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                    return Equipment.VoidlingWeapon.VoidlingWeapon.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
                 }
             }
             if (Configuration.General.EnableContactLight.Value)
             {
                 if(equipmentDef.equipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex)
                 {
-                    return Equipment.EliteSlayer.EliteSlayer.EquipmentSlot_PerformEquipmentAction(orig, self, equipmentDef);
+                    return Equipment.EliteSlayer.EliteSlayer.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
                 }
             }
             return orig(self, equipmentDef);

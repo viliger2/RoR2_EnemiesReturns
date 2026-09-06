@@ -4,6 +4,7 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using static EnemiesReturns.Content;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 {
@@ -13,6 +14,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public static string phaseControllerChildString = "Phase4";
 
         public static float bossSpawnDelay = 10f;
+
+        public static MusicTrackDef musicTrack => Content.MusicTracks.DoubleFngRainbowReturns;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -37,6 +40,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     if (combatEncounterTransform)
                     {
                         combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                    }
+
+                    var musicTrackOverride = phaseChildLocator.FindChild("MusicTrackOverride");
+                    if (musicTrackOverride && musicTrackOverride.TryGetComponent<MusicTrackOverride>(out var musicComponent))
+                    {
+                        musicComponent.track = musicTrack;
+                        musicTrackOverride.gameObject.SetActive(true);
                     }
                 }
             }

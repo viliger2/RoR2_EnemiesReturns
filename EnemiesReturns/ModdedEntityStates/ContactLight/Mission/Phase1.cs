@@ -16,6 +16,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float doorCloseDelay = 7f;
 
+        public static MusicTrackDef musicTrack => Content.MusicTracks.Precipitation;
+
         private ScriptedCombatEncounter combatEncounter;
 
         private GameObject phaseControllerObject;
@@ -49,6 +51,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     if (doorToCloseTransform)
                     {
                         doorToClose = doorToCloseTransform.gameObject;
+                    }
+
+                    var musicTrackOverride = phaseChildLocator.FindChild("MusicTrackOverride");
+                    if (musicTrackOverride && musicTrackOverride.TryGetComponent<MusicTrackOverride>(out var musicComponent))
+                    {
+                        musicComponent.track = musicTrack;
+                        musicTrackOverride.gameObject.SetActive(true);
                     }
                 }
             }

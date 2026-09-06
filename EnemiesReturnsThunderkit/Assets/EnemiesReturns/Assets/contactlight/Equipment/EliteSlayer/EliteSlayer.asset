@@ -17,7 +17,7 @@ MonoBehaviour:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
-  cooldown: 0
+  cooldown: 10
   nameToken: ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME
   pickupToken: ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP
   descriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC

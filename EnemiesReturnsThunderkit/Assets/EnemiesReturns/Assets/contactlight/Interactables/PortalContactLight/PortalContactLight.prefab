@@ -5365,6 +5365,7 @@ GameObject:
   - component: {fileID: 3493859114700636878}
   - component: {fileID: 3726263679665102192}
   - component: {fileID: 6655067753231466894}
+  - component: {fileID: 3872428897908307650}
   m_Layer: 0
   m_Name: PortalContactLight
   m_TagString: Untagged
@@ -5501,6 +5502,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayToken: ENEMIES_RETURNS_CONTACTLIGHT_PORTAL_NAME
+--- !u!114 &3872428897908307650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013200216436802203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -287833090, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggeringEvent: 2
+  akSoundEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  soundEvent: Play_obj_portalColossus_activate
+  ShowDebug: 0
 --- !u!1 &9057465904797296698
 GameObject:
   m_ObjectHideFlags: 0

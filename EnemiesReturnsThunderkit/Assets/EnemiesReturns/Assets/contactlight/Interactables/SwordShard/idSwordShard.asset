@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: idSwordShard
   m_EditorClassIdentifier: 
   Info:
-    Visual: {fileID: 21300000, guid: 0f1ec539938c56140b31c786eb9de41e, type: 3}
+    Visual: {fileID: 0}
     TitleToken: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_NAME
     DescriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DESC
     FlavorToken: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_LORE

@@ -25,6 +25,12 @@ namespace EnemiesReturns
             public static MusicTrackDef TheOrigin;
 
             public static MusicTrackDef CoalescenceReturns;
+
+            public static MusicTrackDef Coalescence;
+
+            public static MusicTrackDef Precipitation;
+
+            public static MusicTrackDef DoubleFngRainbowReturns;
         }
 
         public static class GameEndings

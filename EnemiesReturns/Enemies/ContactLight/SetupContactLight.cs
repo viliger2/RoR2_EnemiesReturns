@@ -97,6 +97,7 @@ namespace EnemiesReturns.Enemies.ContactLight
             {
                 IL.ProximityHighlight.OnPreRenderOutlineHighlight += ProximityHighlight_OnPreRenderOutlineHighlight;
                 IL.RoR2.InteractionDriver.OnPreRenderOutlineHighlight += InteractionDriver_OnPreRenderOutlineHighlight;
+                On.RoR2.UI.LogBook.LogBookController.CanSelectEquipmentEntry += LogBookController_CanSelectEquipmentEntry;
 
                 CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
                 RoR2.Stage.onServerStageBegin += AddWardrobe;
@@ -106,6 +107,17 @@ namespace EnemiesReturns.Enemies.ContactLight
             {
                 Items.AdrenalineCore.AdrenalineCoreUI.Hooks();
             }
+        }
+
+        // this is such a fucking hack holy shit but its fine
+        private static bool LogBookController_CanSelectEquipmentEntry(On.RoR2.UI.LogBook.LogBookController.orig_CanSelectEquipmentEntry orig, EquipmentDef equipmentDef, Dictionary<RoR2.ExpansionManagement.ExpansionDef, bool> expansionAvailability)
+        {
+            var result = orig(equipmentDef, expansionAvailability);
+            if(!result && equipmentDef == Content.Equipment.EliteSlayer)
+            {
+                return true;
+            }
+            return result;
         }
 
         private static void SpawnThings(SceneDirector sceneDirector)

@@ -299,7 +299,7 @@
     "ACHIEVEMENT_ENEMIESRETURNSENGIPURCHASESPIDERDRONEACHIEVEMENT_DESCRIPTION": "As Engineer, repair a broken Mechanical Spider.",
 
     "ENEMIES_RETURNS_TEMPLE_GUARD_NAME": "Temple Guard",
-    "ENEMIES_RETURNS_TEMPLE_GUARD_LORE": "Field Notes:\n\nA robot creature that assembles itself.. I have not seen them materialize other than when I unknowingly trigger their presence. I cannot believe this is indeed a machine- and yet it is made from some alloy and uses heavy artillery! Was this on the ship, or are these guards a naturally occurring 'species' here? My suit's scanners are unable to detect any manufacturers' signature.\n\nThey seem to be determined not to let me pass. They attack with unlimited focus.",
+    "ENEMIES_RETURNS_TEMPLE_GUARD_LORE": "\"Again?\"\n\n\"Your kind have already stolen so much.. and yet you come back to strip us of what remains of our guardian?\"\n\n\"I will not allow it.\"\n\n\"WE will not allow it.\"",
     "ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_NAME": "Barrage",
     "ENEMIES_RETURNS_TEMPLE_GUARD_DUAL_BARRAGE_DESC": "Charges for a few seconds and fires barrage of projectiles.",
     "ENEMIES_RETURNS_TEMPLE_GUARD_OVERCLOCK_NAME": "Overclock",
@@ -308,9 +308,22 @@
     "ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_DESC": "Protects the body by limiting the incoming damage.",
     "ENEMIES_RETURNS_UNLOCKABLE_LOG_TEMPLE_GUARD": "Monster Log: Temple Guard",
 
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP1_BODY_NAME": "Providence",
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP1_BODY_SUBTITLE": "Bulwark of the Weak",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP2_BODY_NAME": "Providence",
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP2_BODY_SUBTITLE": "Bulwark of the Weak",
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP2_BODY_LORE": "The Guardian awoke to the rustling of grass.\n\nHe gathered his blade, and began to move across the land.\n\nAt first he wandered through his garden, followers gathered.\n\nSecondly, he sat in a temple, more followers gathered.\n\nA youngling tried to follow behind, but the guardian ushered them to stay.\n\nThe Guardian took a deep breath, and lastly, took his followers to a cliffside.\n\nIn front of them stood a gate, made of stolen plans and broken hearts.\n\nWith the raise of his hand, the gate began to hum, and with a flash, they were taken beyond the planet's sky...",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP3_BODY_NAME": "Providence",
+    "ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP3_BODY_SUBTITLE": "Bulwark of the Weak",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_NAME": "Gilded Wurms",
+    "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_SUBTITLE": "Hands of Providence",
+
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_NAME",
-    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_PICKUP",
-    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_DESC",
+    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP": "<style=cIsDamage>Execute</style> an elite and claim its <color=#FF8000>power</color>. <style=cIsUtility>Consumed</style> on use.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC": "<style=cIsDamage>Execute</style> any elite enemy with <color=#FF8000>aspect</color> that can be dropped and it will <style=cIsUtility>drop</style> that aspect. Equipment is <style=cIsUtility>consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_LORE": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_LORE",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ARMORYLOCKER_NAME": "Armory Locker",
@@ -322,6 +335,10 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_CONTEXT": "Hit it Son!",
     "ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_DESC": "You've never seen a boombox or something?",
     "ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_LORE": "lore",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_TELEPORT_BUTTON_NAME": "Teleport Button",
+    "ENEMIES_RETURNS_CONTACTLIGHT_TELEPORT_BUTTON_CONTEXT": "Teleport Boombox",
+    "ENEMIES_RETURNS_CONTACTLIGHT_TELEPORT_BUTTON_DESC": "Teleports Boombox to the arena. Maybe you shouldn't interupt the party...",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_NAME": "Keypad Door",
     "ENEMIES_RETURNS_CONTACTLIGHT_DOOR_PANEL_CONTEXT": "Open",
@@ -374,24 +391,24 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER": "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_NAME": "Keycard",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_PICKUP": "Opens locked doors on the UES Contact Light.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_DESC": "Opens locked doors on the UES Contact Light.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_LORE": "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_LORE",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_PICKUP": "<style=cIsUtility>Opens locked doors</style> on the UES Contact Light.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_DESC": "<style=cIsUtility>Opens locked doors</style> on the UES Contact Light.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_LORE": "\"Managed to swipe one of these from a box for your journey, you'll need this Passenger Pass to access most of the ship such as the cabins, medical bay and your target: the storage rooms. Thankfully the cards have no names attached, so we don't have to wear disguises this time thankfully. Just promise you wont be caught. We can't bust you out when you're in the middle of nowhere!\" \n\n\"(I'll need this back when you return, happy travels!)\"",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_NAME": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_NAME",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_PICKUP": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_PICKUP",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_NAME": "Adrenaline Core",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_PICKUP": "Enables gaining of <style=cIsHealth>Adrenaline</style> levels that improve your stats.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_DESC",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_LORE": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_LORE",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_LORE": "\"-with him at the top of the world, everyone thought he was unbeatable. Countless partnerships with brands, book deals and even movie cameos. However, one day a damning report was released which detailed his rampant use of several body enhancements, notably one which skyrocketed the body's adrenaline output while in the ring. After the report, he retreated into the background of society where no one has seen him since...\"\n\n- Excerpt of \"Boxing Legends: From Kings to Peasants\"",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_UI_LEVEL": "Lv.{0}",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_NAME": "Composite Shard",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_PICKUP": "Shard made out of strange material. There is still lingering power within.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "Its almost like you can hear a hum from it, but no matter how hard you concentrate you can't make it out.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE": "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE": "\"...I was patrolling around camp when I found this glowing shard in the ground, thing was really stuck in there but I managed to get it out. When I brought it back to camp, strange things began to hap-eN-\n\nV-OI-CE.. LISTEN.\n\nYOU SEEK THE TRUTH?\n\nYOU SEEK ANSWERS?\n\nFIND MORE.\n\nMAKE IT WHOLE AGAIN.\n\nAND IT WILL SHOW WHAT YOU SE-E-K.\n\n-F-ter I shot the behemoth, its core exploded and its stone body fell to the ground. The team are currently assessing if we should move location or request an extraction.\"\n\n\"P.S, I'm definitely keeping this\"",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME": "UES Contact Light",
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_SUBTITLE": "Risk of Rain",
-    "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE": "<style=cMono>//-command log 01</style>\r\nUES Class-D Ship 'Contact Light' is capable of carrying 8 million standard-load crates in a single voyage. Freight containers of varying sizes can be magnetized to its cargo hold, with rotational drums stabilizing any disturbances that may occur during space travel.\n\nWith 50 years of shipments under its wing, it's still a relatively juvenile freighter within the D Suite. Recent restructuring has caused shipment schedules to be rotated among the lesser ships. With half of Class-A ships out of commission due to [REDACTED], the 'Contact Light' has been chosen to deliver [REDACTED]'s previously scheduled cargo. A new captain has been assigned to oversee the journey, and we have placed agents on-board for security reasons.\n\nGodspeed.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_LORE": "UESC CARGO CRUISER : UES CONTACT LIGHT BLACKBOX ACTIVE AT 7/5/2056, 24:15 LOCAL TIME.\n. . . \nUESC CARGO CRUISER : UES CONTACT LIGHT DEPARTS FROM MARS SHIPYARD AT 24:30 LOCAL TIME.\n. . .\nUESC CARGO CRUISER : UES CONTACT LIGHT ESCAPES ORBIT AT 7/6/2056 01:05 MARS LOCAL TIME.\n. . .\nUESC CARGO CRUISER : UES CONTACT LIGHT BEGINS ASSIGNED ROUND TRIP JOURNEY WITH PRIORITY EQUIPMENT ON BOARD.\n. . .\n. . . \n. . .\nUESC CARGO CRUISER : UES CONTACT LIGHT COURSE CHANGE AT 9/24/2056 VIA RED-LEVEL CLEARANCE OVERRIDE.\n. . .\n. . .\nUNKNOWN OBJECT LOCATED AT CARGO HOLD 1 IS POWERED AT 9/26/2056\nPASSENGER WITH UNKNOWN CLEARANCE BOARDS SHIP\nUESC CARGO CRUISER : UES CONTACT LIGHT SUFFERS MAJOR DAMAGE TO CARGO HOLD 1, ACTIVATES AUTOMATIC DEFENSE SYSTEM, ACTIVATES ALERT SYSTEM, CAPTAIN IS NOTIFIED\nUESC CARGO CRUISER : UES CONTACT LIGHT SUFFERS MAJOR DAMAGE TO DECK, AUTOMATIC DEFENSE SYSTEM FAILURE, CARGO IS LOST, ESCAPE PODS ARE READY, CAPTAIN IS NOWHERE TO BE FOUND\nUESC CARGO CRUISER : UES CONTACT LIGHT BLACKBOX IS EJECTED AT 9/26/2056, 15:54 MARS LOCAL TIME.\nUESC CARGO CRUISER : UES CONTACT LIGHT BLACKBOX RETURNING TO MARS SHIPYARD...",
     "UNLOCKABLE_LOG_MAP_ENEMIESRETURNS_CONTACTLIGHT": "Environment Log: UES Contact Light",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL": "Wait for the <style=cDeath><sprite name=\"ER_CargoDoor\" tint=1>Cargo Door</style> to open... ({0}%)",
