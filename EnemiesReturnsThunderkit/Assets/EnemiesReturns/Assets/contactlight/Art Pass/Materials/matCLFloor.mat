@@ -122,7 +122,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DecalLayer: 1
-    - _Depth: 0.184
+    - _Depth: 0.18
     - _DetailNormalMapScale: 1
     - _DitherOn: 0
     - _DstBlend: 0
@@ -154,7 +154,7 @@ Material:
     - _LimbRemovalOn: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 1.783054
+    - _NormalStrength: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -162,7 +162,7 @@ Material:
     - _PrintDirection: 0
     - _PrintEmissionToAlbedoLerp: 0
     - _PrintOn: 0
-    - _RampInfo: 0
+    - _RampInfo: 1
     - _SliceAlphaDepth: 0.1
     - _SliceBandHeight: 1
     - _SliceHeight: 5
@@ -172,7 +172,7 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularStrength: 0
     - _SplatmapOn: 1
-    - _SplatmapTileScale: 1.4
+    - _SplatmapTileScale: 3
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

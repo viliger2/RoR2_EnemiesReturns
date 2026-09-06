@@ -12,6 +12,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - BINARYBLEND
+  - FORCE_SPEC
   - IGNORE_BIAS
   - SPLATMAP
   m_LightmapFlags: 4
@@ -166,7 +167,7 @@ Material:
     - _FlowSpeed: 1
     - _FlowTextureScaleFactor: 1
     - _FlowmapOn: 0
-    - _ForceSpecOn: 0
+    - _ForceSpecOn: 1
     - _FresnelBoost: 1
     - _FresnelPower: 1
     - _GlossMapScale: 1
@@ -180,7 +181,7 @@ Material:
     - _LimbRemovalOn: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 1.9
+    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -188,7 +189,7 @@ Material:
     - _PrintDirection: 0
     - _PrintEmissionToAlbedoLerp: 0
     - _PrintOn: 0
-    - _RampInfo: 0
+    - _RampInfo: 1
     - _SliceAlphaDepth: 0.1
     - _SliceBandHeight: 1
     - _SliceHeight: 5
@@ -201,7 +202,7 @@ Material:
     - _SnowSpecularStrength: 0
     - _SpecularExponent: 1
     - _SpecularHighlights: 1
-    - _SpecularStrength: 0
+    - _SpecularStrength: 0.04
     - _SplatmapOn: 1
     - _SplatmapTileScale: 1
     - _SrcBlend: 1

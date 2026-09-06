@@ -154,7 +154,7 @@ Material:
     - _LimbRemovalOn: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 1.565173
+    - _NormalStrength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PrintBias: 0
@@ -162,7 +162,7 @@ Material:
     - _PrintDirection: 0
     - _PrintEmissionToAlbedoLerp: 0
     - _PrintOn: 0
-    - _RampInfo: 0
+    - _RampInfo: 1
     - _SliceAlphaDepth: 0.1
     - _SliceBandHeight: 1
     - _SliceHeight: 5
@@ -170,7 +170,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularExponent: 1
     - _SpecularHighlights: 1
-    - _SpecularStrength: 0
+    - _SpecularStrength: 0.04
     - _SplatmapOn: 1
     - _SplatmapTileScale: 1.4
     - _SrcBlend: 1
