@@ -77,8 +77,8 @@ namespace EnemiesReturns
                     PrefabAPI.RegisterNetworkPrefab(wardrobe);
 
                     Content.Interactables.BoomBox = assets.First(asset => asset.name == "BoomBox");
-
-                    Enemies.ContactLight.SetupContactLight.wardrobe = wardrobe;
+                    Content.Interactables.SwordShardBazaar = assets.First(asset => asset.name == "SwordShardInteractableLunar");
+                    Content.Interactables.Wardrobe = wardrobe;
 
                     Equipment.EliteSlayer.EliteSlayer.eliteSlayerProjectilePrefab = assets.First(prefab => prefab.name == "EliteSlayerProjectile");
 
@@ -103,7 +103,7 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.CargoHoldDoors.Charging.positionIndicatorPrefab = SetupContactLight.SetupCargoDoorIndicator(assets.First(asset => asset.name == "CargoDoorChargePositionIndicator"));
 
                     ModdedEntityStates.ContactLight.SwordHilt.SpawnPortal.portalContactLight = assets.First(asset => asset.name == "PortalContactLight");
-                    Enemies.ContactLight.SetupContactLight.swordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
+                    Content.Interactables.SwordHilt = assets.First(asset => asset.name == "SwordHiltPortal");
 
                     ModdedEntityStates.ContactLight.Providence.P1.Orbs.FireSingleOrb.projectilePrefab = assets.First(prefab => prefab.name == "OrbProjectile");
                     ModdedEntityStates.ContactLight.Providence.P1.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
@@ -195,7 +195,8 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SpawnCard[]>)((assets) =>
                 {
-                    Enemies.ContactLight.SetupContactLight.iscSwordShard = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShard");
+                    Content.InteractableSpawnCards.iscSwordShard = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShard");
+                    Content.InteractableSpawnCards.iscSwordShardFree = (InteractableSpawnCard)assets.First(sc => sc.name == "iscSwordShardFree");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Sprite[]>)((assets) =>

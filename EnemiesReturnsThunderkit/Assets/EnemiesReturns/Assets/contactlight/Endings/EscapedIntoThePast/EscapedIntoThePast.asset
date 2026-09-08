@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EscapedIntoThePast
   m_EditorClassIdentifier: 
   endingTextToken: ENEMIES_RETURNS_CONTACTLIGHT_GAME_RESULT
-  backgroundColor: {r: 1, g: 0.4866872, b: 0.4575472, a: 1}
-  foregroundColor: {r: 0.5613208, g: 1, b: 0.8495439, a: 1}
+  backgroundColor: {r: 0.5613208, g: 1, b: 0.8495439, a: 1}
+  foregroundColor: {r: 1, g: 0.4862745, b: 0.45882353, a: 1}
   icon: {fileID: 21300000, guid: 174c67f1f9da054498a707953c16a720, type: 3}
   material: {fileID: 2100000, guid: 1d711eebf7a45b541b84774b97884c91, type: 2}
   defaultKillerOverride: {fileID: 0}

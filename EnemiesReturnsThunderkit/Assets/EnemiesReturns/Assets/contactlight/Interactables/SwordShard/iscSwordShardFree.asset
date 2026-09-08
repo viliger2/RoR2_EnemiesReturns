@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1063210218, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: iscSwordShard
+  m_Name: iscSwordShardFree
   m_EditorClassIdentifier: 
-  prefab: {fileID: 439300124950165135, guid: 78df10557fd64af48a62ea576efd4295, type: 3}
+  prefab: {fileID: 439300124950165135, guid: 324ed309be2be6f489b4094632de9028, type: 3}
   sendOverNetwork: 1
   hullSize: 0
   nodeGraphType: 0
   requiredFlags: 0
-  forbiddenFlags: 24
+  forbiddenFlags: 8
   directorCreditCost: 0
   occupyPosition: 1
   eliteRules: 0

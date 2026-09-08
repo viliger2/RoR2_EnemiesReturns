@@ -15,7 +15,7 @@ MonoBehaviour:
   targetPool: {fileID: 11400000, guid: 9453fc2301770a5409592d5ca629c4fd, type: 2}
   poolCategories:
   - name: Standard
-    categoryWeight: 0.98
+    categoryWeight: 1
     alwaysIncluded:
     - dccs: {fileID: 11400000, guid: 99904fb9d3a8a3d47885db3f6f55cd42, type: 2}
       familyDccs:

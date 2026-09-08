@@ -162,9 +162,10 @@ GameObject:
   - component: {fileID: 5950904572808614268}
   - component: {fileID: 3879170605094660251}
   - component: {fileID: 7986338952616614697}
-  - component: {fileID: -8611994451973897299}
+  - component: {fileID: 3436773477298556466}
+  - component: {fileID: -2707167825015537437}
   m_Layer: 0
-  m_Name: SwordShardInteractableFree
+  m_Name: SwordShardInteractableLunar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,9 +279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayNameToken: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_NAME
   contextToken: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_CONTEXT
-  costType: 0
+  costType: 3
   available: 1
-  cost: 0
+  cost: 10
   solitudeCost: 0
   automaticallyScaleCostWithDifficulty: 0
   requiredUnlockable: 
@@ -312,7 +313,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -8611994451973897299}
+      - m_Target: {fileID: -2707167825015537437}
         m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.EventFlagSetter, EnemiesReturns
         m_MethodName: SetRunFlags
         m_Mode: 1
@@ -445,7 +446,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToDrop: {fileID: 11400000, guid: 6b386b530f503fd41afd3e96048c45e2, type: 2}
   dropletOrigin: {fileID: 8620656618647944356}
---- !u!114 &-8611994451973897299
+--- !u!114 &3436773477298556466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439300124950165135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1322397448, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayDistance: 15
+  hologramPivot: {fileID: 4741039456938544417}
+  disableHologramRotation: 0
+  hologramContentInstance: {fileID: 0}
+--- !u!114 &-2707167825015537437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -458,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventFlags:
-  - ER_SwordShard_GoldCoast
+  - ER_SwordShard_Bazaar
   runOnEnable: 0
 --- !u!1 &1073728612368593614
 GameObject:
@@ -491,8 +508,40 @@ Transform:
   - {fileID: 7353628342488944339}
   - {fileID: 8620656618647944356}
   - {fileID: 7632281898202692399}
+  - {fileID: 4741039456938544417}
   m_Father: {fileID: 375422000965978169}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7946292771136891615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4741039456938544417}
+  m_Layer: 0
+  m_Name: HologramPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4741039456938544417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946292771136891615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 320562054948867451}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8378211647319376278
 GameObject:

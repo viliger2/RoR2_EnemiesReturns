@@ -154,6 +154,12 @@ namespace EnemiesReturns
         public static class Interactables
         {
             public static GameObject BoomBox;
+
+            public static GameObject Wardrobe;
+
+            public static GameObject SwordHilt;
+
+            public static GameObject SwordShardBazaar;
         }
 
         public static class BodyPrefabs
@@ -164,6 +170,18 @@ namespace EnemiesReturns
         public static class MasterPrefabs
         {
             public static GameObject TempleGuardMaster;
+        }
+
+        public static class InteractableSpawnCards
+        {
+            public static InteractableSpawnCard iscSwordShard;
+
+            public static InteractableSpawnCard iscSwordShardFree;
+        }
+
+        public static class CharacterSpawnCards
+        {
+
         }
     }
 }

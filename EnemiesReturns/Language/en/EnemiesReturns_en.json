@@ -135,9 +135,9 @@
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "A low hum comes from within. Not useful to me.",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "LORE HERE",
 
-    "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>Newt: Shape, come close.</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff><size=120%>Newt: Shape, come close.</color></size>",
     "ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "Trade",
-    "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>Newt: Good. Take, delicate shape.</color>",
+    "ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff><size=120%>Newt: Good. Take, delicate shape.</color></size>",
 
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "A Brother's Promise",
     "ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "It looks very fragile.",
@@ -324,7 +324,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_NAME",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP": "<style=cIsDamage>Execute</style> an elite and claim its <color=#FF8000>power</color>. <style=cIsUtility>Consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC": "<style=cIsDamage>Execute</style> any elite enemy with <color=#FF8000>aspect</color> that can be dropped and it will <style=cIsUtility>drop</style> that aspect. Equipment is <style=cIsUtility>consumed</style> on use.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_LORE": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_LORE",
+    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_LORE": "...Until one day.\n\nWord spreads beyond, word that the crystalline blade falters.\n\nWithout the blade to foil their plans, they believed taking the planet would be easy.\n\nThat is what they thought.\n\nWhat they did not know is that beings, born from steel boxes, would rain from the sky above to lay waste to the land they wished to claim.",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ARMORYLOCKER_NAME": "Armory Locker",
     "ENEMIES_RETURNS_CONTACTLIGHT_ARMORYLOCKER_CONTEXT": "Open",

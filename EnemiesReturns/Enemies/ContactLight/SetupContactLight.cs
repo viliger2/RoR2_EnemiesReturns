@@ -22,9 +22,9 @@ namespace EnemiesReturns.Enemies.ContactLight
     {
         public const string PROVIDENCE_FLAG = "ER_ProviKilled";
 
-        public static GameObject wardrobe;
+        public const string BAZAAR_SHARD_BOUGHT = "ER_SwordShard_Bazaar";
 
-        public static GameObject swordHilt;
+        public const string GOLD_SHORES_SHARD_FOUND = "ER_SwordShard_GoldCoast";
 
         public static Dictionary<string, PositionAndRotation> SwordShardSpawnPositions = new Dictionary<string, PositionAndRotation>()
         {
@@ -87,8 +87,6 @@ namespace EnemiesReturns.Enemies.ContactLight
             {"artifactworld03", new PositionAndRotation(new Vector3(-18.3999996f,-4.36375141f,3.52999997f), new Vector3(0,242.920288f,0)) }
         };
 
-        public static InteractableSpawnCard iscSwordShard;
-
         public static UnlockableDef wardrobeUnlockable;
 
         public static void Hooks()
@@ -100,7 +98,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                 On.RoR2.UI.LogBook.LogBookController.CanSelectEquipmentEntry += LogBookController_CanSelectEquipmentEntry;
 
                 CostTypeCatalog.modHelper.getAdditionalEntries += ModHelper_getAdditionalEntries;
-                RoR2.Stage.onServerStageBegin += AddWardrobe;
+                RoR2.Stage.onServerStageBegin += AddBazaarThings;
                 RoR2.SceneDirector.onPostPopulateSceneServer += SpawnThings;
             }
             if (Configuration.General.EnableAdrenalineCore.Value)
@@ -145,6 +143,7 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             SpawnSwordHilt(sceneDef);
             SpawnSwordShard(sceneDirector, sceneDef);
+            SpawnSwordShardGoldShores(sceneDirector, sceneDef);
         }
 
         private static void SpawnSwordHilt(SceneDef sceneDef)
@@ -156,11 +155,31 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             if(SwordHiltSpawnPositions.TryGetValue(sceneDef.cachedName, out var positionAndRotation))
             {
-                var newHilt = UnityEngine.Object.Instantiate(swordHilt);
+                var newHilt = UnityEngine.Object.Instantiate(Content.Interactables.SwordHilt);
                 newHilt.transform.position = positionAndRotation.position;
                 newHilt.transform.rotation = Quaternion.Euler(positionAndRotation.rotation);
                 NetworkServer.Spawn(newHilt);
             }
+        }
+
+        private static void SpawnSwordShardGoldShores(SceneDirector sceneDirector, SceneDef sceneDef)
+        {
+            if(sceneDef.cachedName != "goldshores")
+            {
+                return;
+            }
+
+            if (!Content.InteractableSpawnCards.iscSwordShardFree)
+            {
+                return;
+            }
+
+            if (RoR2.Run.instance.GetEventFlag(GOLD_SHORES_SHARD_FOUND))
+            {
+                return;
+            }
+
+            DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(Content.InteractableSpawnCards.iscSwordShardFree, new DirectorPlacementRule { placementMode = DirectorPlacementRule.PlacementMode.Random}, sceneDirector.rng));  
         }
 
         private static void SpawnSwordShard(SceneDirector sceneDirector, SceneDef sceneDef)
@@ -188,7 +207,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                 placementRule.placementMode = DirectorPlacementRule.PlacementMode.Random;
             }
 
-            DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(iscSwordShard, placementRule, sceneDirector.rng));
+            DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(Content.InteractableSpawnCards.iscSwordShard, placementRule, sceneDirector.rng));
         }
 
         public static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
@@ -200,20 +219,24 @@ namespace EnemiesReturns.Enemies.ContactLight
             }
         }
 
-        private static void AddWardrobe(Stage stage)
+        private static void AddBazaarThings(Stage stage)
         {
             if (stage.sceneDef.cachedName != "bazaar")
             {
                 return;
             }
 
-            if(!(RoR2.Run.instance.IsUnlockableUnlocked(wardrobeUnlockable) || Configuration.ContactLight.ContactLight.ForceUnlock.Value))
+            if(RoR2.Run.instance.IsUnlockableUnlocked(wardrobeUnlockable) || Configuration.ContactLight.ContactLight.ForceUnlock.Value)
             {
-                return;
+                var newObject = UnityEngine.Object.Instantiate(Content.Interactables.Wardrobe, new Vector3(-136.080002f, -21.1499996f, -33.4500008f), new Quaternion(-0.0393915996f, 0.618751168f, 0.0498490371f, 0.783013642f));
+                NetworkServer.Spawn(newObject);
             }
 
-            var newObject = UnityEngine.Object.Instantiate(wardrobe, new Vector3(-136.080002f, -21.1499996f, -33.4500008f), new Quaternion(-0.0393915996f, 0.618751168f, 0.0498490371f, 0.783013642f));
-            NetworkServer.Spawn(newObject);
+            if (!RoR2.Run.instance.GetEventFlag(BAZAAR_SHARD_BOUGHT))
+            {
+                var newObject = UnityEngine.Object.Instantiate(Content.Interactables.SwordShardBazaar, new Vector3(-112.393997f, -22.8290005f, -49.4799995f), new Quaternion(-0.0497661158f, 0.226223052f, 0.0115738111f, 0.97273463f));
+                NetworkServer.Spawn(newObject);
+            }
         }
 
         private static void ModHelper_getAdditionalEntries(List<CostTypeDef> list)
