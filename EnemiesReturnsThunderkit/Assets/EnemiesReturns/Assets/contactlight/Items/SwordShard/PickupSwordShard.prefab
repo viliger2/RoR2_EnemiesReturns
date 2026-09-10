@@ -51,8 +51,8 @@ MonoBehaviour:
   cameraPositionTransform: {fileID: 6861551413972343076}
   modelRotation: {x: 0, y: 0, z: 0, w: 1}
   modelPositionOffset: {x: 0, y: 0, z: 0}
-  minDistance: 1
-  maxDistance: 10
+  minDistance: 0.94
+  maxDistance: 2.59
   triggerOnLogbook:
     m_PersistentCalls:
       m_Calls: []
@@ -80,7 +80,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3328918222156947291}
   m_LocalRotation: {x: 0.0036985066, y: 0.9961781, z: -0.05324426, w: 0.06914162}
-  m_LocalPosition: {x: -0.343, y: 0.474, z: 2.573}
+  m_LocalPosition: {x: -0.108, y: 0.225, z: 0.888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

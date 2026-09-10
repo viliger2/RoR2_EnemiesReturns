@@ -47,6 +47,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     return;
                 }
 
+                if (!masterComponent)
+                {
+                    return;
+                }
+
                 stopwatch += Time.fixedDeltaTime;
                 if(stopwatch > healthCheckFreq)
                 {
@@ -93,6 +98,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static GameObject levelDownEffect;
 
+        public static GameObject protectionDestroyedEffect;
+
         private static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
         {
             {0, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
@@ -107,7 +114,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static int championPointReward => 5;
 
+#if DEBUG || NOWEAVER 
         public static int normalPointReward => 24;
+#else
+        public static int normalPointReward => 1;
+#endif
 
         public static float tier1EliteModifier => 2f;
 
@@ -198,11 +209,20 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
             }
 
+            var body = bodyObject.GetComponent<CharacterBody>();
+            if (body)
+            {
+                body.RemoveBuff(Content.Buffs.AdrenalineCoreProtection);
+                body.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, 0);
+            }
+
             currentPoints = 0f;
             currentLevel = 0;
 
             master.onBodyStart -= Master_onBodyStart;
             R2API.RecalculateStatsAPI.GetStatCoefficients -= RecalculateStatsAPI_GetStatCoefficients;
+
+
 
             DisableUI();
 
@@ -240,7 +260,21 @@ namespace EnemiesReturns.Items.AdrenalineCore
             if(body.GetBuffCount(Content.Buffs.AdrenalineCoreProtection) > 0)
             {
                 body.RemoveBuff(Content.Buffs.AdrenalineCoreProtection);
-                // TODO: play sound and\or effect
+                if (protectionDestroyedEffect)
+                {
+                    EffectData effectData = new EffectData
+                    {
+                        origin = transform.position,
+                        color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f)
+                    };
+                    if (body.mainHurtBox)
+                    {
+                        effectData.origin = body.mainHurtBox.transform.position;
+                        effectData.SetHurtBoxReference(body.gameObject);
+                        effectData.scale = body.radius;
+                    }
+                    EffectManager.SpawnEffect(protectionDestroyedEffect, effectData, transmit: true);
+                }
                 return;
             }
 
@@ -249,7 +283,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 EffectData effectData = new EffectData
                 {
                     origin = transform.position,
-                    color = levelColors.GetValueOrDefault(currentLevel)
+                    color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.5f)
                 };
                 if (body.mainHurtBox)
                 {
@@ -259,6 +293,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
                 EffectManager.SpawnEffect(levelDownEffect, effectData, transmit: true);
             }
+
+            body.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, 0);
 
             currentPoints = 0f;
             currentLevel = 0;
@@ -336,6 +372,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         EffectManager.SpawnEffect(levelUpEffect, effectData, transmit: true);
                     }
                 }
+                ownerBody.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, currentLevel);
+
                 if (currentLevel == MAX_LEVEL)
                 {
                     ownerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
@@ -363,7 +401,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 args.moveSpeedMultAdd += ((15f / 100) + ((10f / 100) * (itemCount - 1))) * ((currentLevel >= 2) ? 1 : 0);
                 args.baseHealthAdd += (25f + (15f * (itemCount - 1))) * ((currentLevel >= 3) ? 1 : 0);
                 args.baseShieldAdd += ((sender.maxHealth * 0.1f) + (sender.maxHealth * 0.05f) * (itemCount - 1)) * ((currentLevel >= 4) ? 1 : 0);
-                args.baseHealthAdd += (10f + (5f * (itemCount - 1))) * ((currentLevel >= 5) ? 1 : 0);
+                args.critAdd += (10f + (5f * (itemCount - 1))) * ((currentLevel >= 5) ? 1 : 0);
             }
         }
 

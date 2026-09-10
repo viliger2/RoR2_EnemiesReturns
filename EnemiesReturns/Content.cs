@@ -112,6 +112,8 @@ namespace EnemiesReturns
 
             public static BuffDef AdrenalineCoreProtection;
 
+            public static BuffDef AdrenalineCoreLevels;
+
             public static BuffDef TempleGuardOverclock;
         }
 

@@ -84,6 +84,7 @@ namespace EnemiesReturns
 
                     Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelUpEffect = SetupContactLight.CreateAdrenalineLevelUpEffect(assets.First(prefab => prefab.name == "AdrenalineLevelUpEffect"));
                     Items.AdrenalineCore.AdrenalineCoreMasterComponent.levelDownEffect = assets.First(prefab => prefab.name == "AdrenalineLevelDownEffect");
+                    Items.AdrenalineCore.AdrenalineCoreMasterComponent.protectionDestroyedEffect = assets.First(prefab => prefab.name == "AdrenalineProtectionDestroyedEffect");
 
                     var contactLightDiorama = assets.First(asset => asset.name == "ContactLightDioramaDisplay");
                     contactLightDiorama.GetComponent<MusicTrackOverride>().track = Content.MusicTracks.CoalescenceReturns;
@@ -162,8 +163,9 @@ namespace EnemiesReturns
                 {
                     _contentPack.buffDefs.Add(assets);
                     Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
-                    Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "AdrenalineCoreProtection");
+                    Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "bdAdrenalineCoreProtection");
                     Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
+                    Content.Buffs.AdrenalineCoreLevels = assets.First(buff => buff.name == "bdAdrenalineCoreLevels");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
