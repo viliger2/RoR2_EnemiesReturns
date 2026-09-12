@@ -3,6 +3,7 @@ using EntityStates;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
@@ -14,7 +15,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float bossSpawnDelay = 5f;
 
-        public static float doorCloseDelay = 7f;
+        public static float doorCloseDelay = 6f;
+
+        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
 
         public static MusicTrackDef musicTrack => Content.MusicTracks.Precipitation;
 
@@ -59,6 +62,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                         musicComponent.track = musicTrack;
                         musicTrackOverride.gameObject.SetActive(true);
                     }
+
+                    var teleportPositions = phaseChildLocator.FindChild("TeleportPositions");
+                    if (teleportPositions)
+                    {
+                        TeleportPlayersToPositions(teleportPositions);
+                    }
                 }
             }
             ClearCorpses();
@@ -81,7 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     var esm = doorToClose.GetComponent<EntityStateMachine>();
                     if (esm)
                     {
-                        esm.SetNextState(new ModdedEntityStates.ContactLight.CargoHoldDoors.Closed());
+                        esm.SetNextState(new ModdedEntityStates.ContactLight.CargoHoldDoors.Closing());
                     }
                 }
                 hasClosedDoor = true;
@@ -130,6 +139,27 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             }
         }
 
+        private void TeleportPlayersToPositions(Transform teleportPositionsParent)
+        {
+            var positionsCount = teleportPositionsParent.childCount;
+
+            for(int i = 0; i < PlayerCharacterMasterController.instances.Count; i++)
+            {
+                var instance = PlayerCharacterMasterController.instances[i];
+                CharacterBody body = instance.master.GetBody();
+                var position = teleportPositionsParent.GetChild(i % positionsCount).position;
+                if (Util.HasEffectiveAuthority(body.gameObject))
+                {
+                    TeleportHelper.TeleportBody(body, position, true);
+                }
+                var data = new EffectData()
+                {
+                    origin = position,
+                    rotation = Quaternion.identity,
+                };
+                EffectManager.SpawnEffect(teleportEffect, data, false);
+            }
+        }
 
         public void KillAllMonsters()
         {

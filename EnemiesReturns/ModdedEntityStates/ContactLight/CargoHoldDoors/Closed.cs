@@ -25,6 +25,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
                         PlayAnimationOnAnimator(animator, "Base", "Closed");
                     }
                 }
+
+                var doorCollider = childLocator.FindChild("DoorCollider");
+                if (doorCollider)
+                {
+                    doorCollider.gameObject.SetActive(true);
+                }
             }
             var portal = gameObject.GetComponent<OcclusionPortal>();
             if (portal)

@@ -25,6 +25,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.CargoHoldDoors
         {
             base.OnEnter();
 
+            SetPingable(true);
             var costTypeIndex = Utils.GetCostTypeIndex(costType);
             purchaseInteraction = GetComponent<PurchaseInteraction>();
             var hologramProjectors = gameObject.GetComponents<HologramProjector>();
