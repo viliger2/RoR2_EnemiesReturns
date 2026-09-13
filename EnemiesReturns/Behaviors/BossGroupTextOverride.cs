@@ -13,17 +13,11 @@ namespace EnemiesReturns.Behaviors
 
         public BossGroup bossGroup;
 
-        public static FixedConditionalWeakTable<BossGroup, BossGroupTextOverride> overrideDictionary = new FixedConditionalWeakTable<BossGroup, BossGroupTextOverride>();
-
         private void OnEnable()
         {
             if (!bossGroup)
             {
                 bossGroup = GetComponent<BossGroup>();
-            }
-            if (bossGroup)
-            {
-                overrideDictionary.Add(bossGroup, this);
             }
         }
 
@@ -33,24 +27,18 @@ namespace EnemiesReturns.Behaviors
             {
                 return;
             }
-            if (overrideDictionary.TryGetValue(self.currentBossGroup, out var component))
-            {
-                if (!string.IsNullOrEmpty(component.nameTokenOverride))
-                {
-                    self.bossNameLabel.SetText(RoR2.Language.GetString(component.nameTokenOverride));
-                }
-                if (!string.IsNullOrEmpty(component.subtitleTokenOverride))
-                {
-                    self.bossSubtitleLabel.SetText(RoR2.Language.GetString(component.subtitleTokenOverride));
-                }
-            }
-        }
 
-        private void OnDisable()
-        {
-            if (bossGroup)
+            var textOverride = self.currentBossGroup.gameObject.GetComponent<BossGroupTextOverride>();
+            if (textOverride)
             {
-                overrideDictionary.Remove(bossGroup);
+                if (!string.IsNullOrEmpty(textOverride.nameTokenOverride))
+                {
+                    self.bossNameLabel.SetText(RoR2.Language.GetString(textOverride.nameTokenOverride));
+                }
+                if (!string.IsNullOrEmpty(textOverride.subtitleTokenOverride))
+                {
+                    self.bossSubtitleLabel.SetText(RoR2.Language.GetString(textOverride.subtitleTokenOverride));
+                }
             }
         }
     }

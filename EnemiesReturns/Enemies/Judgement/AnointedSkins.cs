@@ -39,8 +39,6 @@ namespace EnemiesReturns.Enemies.Judgement
 
         private static HashSet<string> AnointedBlacklist = new HashSet<string>();
 
-        private static readonly FixedConditionalWeakTable<CharacterModel, ModelSkinController> skinControlerDictionary = new FixedConditionalWeakTable<CharacterModel, ModelSkinController>();
-
         internal static List<UnlockableDef> skinUnlockables = new List<UnlockableDef>();
 
         internal static void Hooks()
@@ -222,11 +220,8 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 if (charModel.shaderEliteRampIndex == -1)
                 {
-                    if (!skinControlerDictionary.TryGetValue(charModel, out var modelSkinController))
-                    {
-                        modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
-                        skinControlerDictionary.Add(charModel, modelSkinController);
-                    }
+                    var modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
+
                     if (modelSkinController && modelSkinController.currentSkinIndex > 0)
                     {
                         var skin = modelSkinController.skins[modelSkinController.currentSkinIndex];
