@@ -626,6 +626,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mdlSurgicalTable
       objectReference: {fileID: 0}
+    - target: {fileID: 1747245959856913073, guid: 5817b3e6e7d783b4e99cede1b59ee772, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1062998263621625757, guid: 933676866d4d070438292875d823c1d1, type: 3}
+    - target: {fileID: 1747245959856913073, guid: 5817b3e6e7d783b4e99cede1b59ee772, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b644fab2f532bb0428c3ddc0e6b39f3a, type: 2}
     - target: {fileID: 5866666021909216657, guid: 5817b3e6e7d783b4e99cede1b59ee772, type: 3}
       propertyPath: m_Controller
       value: 
