@@ -31,14 +31,8 @@ namespace EnemiesReturns.ModCompats
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(replacementSkill, bodyName, originalSkill);
         }
 
-        [SystemInitializer(new Type[] { typeof(ItemCatalog) })]
-        private static void Init()
+        internal static void InitItemCatalog()
         {
-            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
-            {
-                return;
-            }
-
             if (!enabled)
             {
                 return;

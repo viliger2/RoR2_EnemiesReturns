@@ -18,8 +18,7 @@ namespace EnemiesReturns.ModCompats
 
         public static bool enabled;
 
-        [SystemInitializer(new Type[] { typeof(ItemCatalog) })]
-        private static void Init()
+        internal static void InitItemCatalog()
         {
             if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
             {

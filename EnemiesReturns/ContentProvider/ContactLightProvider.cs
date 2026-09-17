@@ -148,15 +148,19 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
                 {
                     Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
-                    Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
                     Content.Items.SwordShard = assets.First(item => item.name == "SwordShard");
 
-                    if (Configuration.ContactLight.ContactLight.ForceUnlock.Value)
-                    {
-                        Content.Items.AdrenalineCore.unlockableDef = null;
-                    }
+                    _contentPack.itemDefs.Add(new ItemDef[] {Content.Items.AccessCard, Content.Items.SwordShard});
 
-                    _contentPack.itemDefs.Add(assets);
+                    if (Configuration.General.EnableAdrenalineCore.Value)
+                    {
+                        Content.Items.AdrenalineCore = assets.First(item => item.name == "AdrenalineCore");
+                        if (Configuration.ContactLight.ContactLight.ForceUnlock.Value)
+                        {
+                            Content.Items.AdrenalineCore.unlockableDef = null;
+                        }
+                        _contentPack.itemDefs.Add(new ItemDef[] { Content.Items.AdrenalineCore });
+                    }
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>

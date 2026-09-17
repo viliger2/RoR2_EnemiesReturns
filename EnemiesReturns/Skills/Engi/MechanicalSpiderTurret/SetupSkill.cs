@@ -134,14 +134,8 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             return blueprintObject;
         }
 
-        [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
-        private static void Init()
+        internal static void InitMasterCatalog()
         {
-            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
-            {
-                return;
-            }
-
             if (!EnemiesReturns.Configuration.MechanicalSpider.EngiSkillEnabled.Value)
             {
                 return;

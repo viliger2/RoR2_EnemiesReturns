@@ -40,21 +40,12 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
-        [SystemInitializer(new Type[] { typeof(MasterCatalog), typeof(BodyCatalog) })]
-        private static void Init()
+        internal static void InitBodyCatalog()
         {
-            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
-            {
-                return;
-            }
-
             if (!EnemiesReturns.Configuration.General.EnableJudgement.Value)
             {
                 return;
             }
-
-            ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
-            ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
 
             AddAeonianAnointedItemDisplays();
 
@@ -66,6 +57,19 @@ namespace EnemiesReturns.Enemies.Judgement
             var idrsArraign = ArraignBody.CreateIDRS();
             ArraignBody.ArraignP1Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
             ArraignBody.ArraignP2Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
+
+
+        }
+
+        internal static void InitMasterCatalog()
+        {
+            if (!EnemiesReturns.Configuration.General.EnableJudgement.Value)
+            {
+                return;
+            }
+
+            ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
+            ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
         }
 
         private static void AddAeonianAnointedItemDisplays()

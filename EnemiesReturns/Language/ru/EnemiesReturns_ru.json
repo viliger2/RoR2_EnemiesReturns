@@ -135,9 +135,9 @@
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_DESC": "Изнутри слышен гул. Бесполезна для меня.",
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_TRADABLEROCK_LORE": "LORE HERE",
 
-		"ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff>Тритон: Форма, подойди ближе.</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_OFFER": "<color=#c6d5ff><size=120%>Тритон: Форма, подойди ближе.</color></size>",
 		"ENEMIES_RETURNS_JUDGEMENT_NEWT_TRADE_CONTEXT": "Обменять",
-		"ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff>Тритон: Хорошо. Возьми, изящная форма.</color>",
+		"ENEMIES_RETURNS_JUDGEMENT_NEWT_SUCCESSFUL_TRADE": "<color=#c6d5ff><size=120%>Тритон: Хорошо. Возьми, изящная форма.</color></size>",
 
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_NAME": "Братское обещание",
 		"ENEMIES_RETURNS_JUDGEMENT_ITEM_LUNARFLOWER_PICKUP": "Выглядит очень хрупким.",
@@ -307,6 +307,8 @@
 		"ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_NAME": "Панцирь",
 		"ENEMIES_RETURNS_TEMPLE_GUARD_SHELL_DESC": "Защищает тело, ограничивая входящий урон.",
 		"ENEMIES_RETURNS_UNLOCKABLE_LOG_TEMPLE_GUARD": "Запись о монстре: Страж храма",
+
+		"ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER": "Новая форма. Отличная форма. Отличная отличная.",
 
 		"ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINE_CORE_LEVEL": "Ур.{0}"
 	}

@@ -94,14 +94,8 @@ namespace EnemiesReturns.Items.LynxFetish
             }
         }
 
-        [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
-        public static void Init()
+        internal static void InitBodyCatalog()
         {
-            if (!EnemiesReturns.EnemiesReturnsPlugin.ModIsLoaded)
-            {
-                return;
-            }
-
             if (!RoR2.BodyCatalog.availability.available)
             {
                 Log.Warning("Somehow got here without inialized BodyCatalog.");

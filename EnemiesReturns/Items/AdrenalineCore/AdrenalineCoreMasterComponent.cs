@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Items.LunarFlower;
+using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
     {
         public class AdrenalineCoreOnKilledOther : MonoBehaviour, IOnKilledOtherServerReceiver
         {
-            public static float healthCheckFreq => 0.1f;
+            public static float healthCheckFreq => Configuration.ContactLight.AdrenalineCore.HealthFreqCheck.Value;
 
             public static bool transendanceCheck => Configuration.ContactLight.AdrenalineCore.TransendanceSupport.Value;
 
-            public static float criticalDamage => 0.1f;
+            public static float criticalDamage => Configuration.ContactLight.AdrenalineCore.HealthThreshold.Value;
 
             private HealthComponent healthComponent;
 
@@ -70,8 +71,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
 
                 bool hpCheck = shieldCheck
-                    ? (previousHp - healthComponent.shield) > healthComponent.fullShield * (criticalDamage)
-                    : (previousHp - healthComponent.health) > healthComponent.fullHealth * (criticalDamage);
+                    ? (previousHp - healthComponent.shield) > healthComponent.fullShield * (criticalDamage / 100f)
+                    : (previousHp - healthComponent.health) > healthComponent.fullHealth * (criticalDamage / 100f);
 
                 if(hpCheck && masterComponent && masterComponent.currentPoints > 0)
                 {
@@ -90,9 +91,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     masterComponent.OnKilledOtherServer(damageReport);
                 }
             }
-        }
 
-        public const int MAX_LEVEL = 5;
+        }
 
         public static GameObject levelUpEffect;
 
@@ -100,37 +100,41 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static GameObject protectionDestroyedEffect;
 
-        private static Dictionary<int, Color> levelColors = new Dictionary<int, Color>()
-        {
-            {0, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
-            {1, new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f) },
-            {2, new Color(Color.magenta.r, Color.magenta.g, Color.magenta.b, 0.5f) },
-            {3, new Color(Color.white.r, Color.white.g, Color.white.b, 0.5f) },
-            {4, new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.5f) },
-            {5, new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f) }
-        };
+        public static int defaultMaxLevel => Configuration.ContactLight.AdrenalineCore.MaxLevel.Value;
 
-        public static float itemCountModifier => 0.1f;
+        public static int perStackMaxLevel => Configuration.ContactLight.AdrenalineCore.MaxLevelPerStack.Value;
 
-        public static int championPointReward => 5;
+        public static float attackSpeedPerLevel => Configuration.ContactLight.AdrenalineCore.AttackSpeed.Value;
+
+        public static float movementSpeedPerLevel => Configuration.ContactLight.AdrenalineCore.MovementSpeed.Value;
+
+        public static float critChanceAtLevel5 => Configuration.ContactLight.AdrenalineCore.CritChance.Value;
+
+        public static float critDamageAtLevel5 => Configuration.ContactLight.AdrenalineCore.CritDamage.Value;
+
+        public static float itemCountModifier => Configuration.ContactLight.AdrenalineCore.PointPerLevelReduction.Value;
+
+        public static float championPointReward => Configuration.ContactLight.AdrenalineCore.ChampionReward.Value;
 
 #if DEBUG || NOWEAVER 
         public static int normalPointReward => 24;
 #else
-        public static int normalPointReward => 1;
+        public static int normalPointReward => Configuration.ContactLight.AdrenalineCore.NormalReward.Value;
 #endif
 
-        public static float tier1EliteModifier => 2f;
+        public static float tier1EliteModifier => Configuration.ContactLight.AdrenalineCore.T1EliteModifier.Value;
 
-        public static float tier2EliteModifier => 3f;
+        public static float tier2EliteModifier => Configuration.ContactLight.AdrenalineCore.T2EliteModifier.Value;
 
-        public static float pointsPerLevel => 25;
+        public static float pointsPerLevel => Configuration.ContactLight.AdrenalineCore.PointsPerLevel.Value;
 
         [SyncVar]
-        public float currentPoints;
+        private float currentPoints;
 
         [SyncVar]
         private float currentPointsPerLevel;
+
+        public int currentMaxLevel => defaultMaxLevel + (perStackMaxLevel * (itemCount - 1));
 
         public int currentLevel { get; private set; }
 
@@ -142,6 +146,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private bool uiAttached;
 
+        private bool gotProtectionBuff;
+
         private void Awake()
         {
             master = GetComponent<CharacterMaster>();
@@ -150,7 +156,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void Update()
         {
-            if (!uiAttached && Configuration.ContactLight.AdrenalineCore.EnableUI.Value)
+            if (!uiAttached)
             {
                 EnableUI();
             }
@@ -222,8 +228,6 @@ namespace EnemiesReturns.Items.AdrenalineCore
             master.onBodyStart -= Master_onBodyStart;
             R2API.RecalculateStatsAPI.GetStatCoefficients -= RecalculateStatsAPI_GetStatCoefficients;
 
-
-
             DisableUI();
 
             this.enabled = false;
@@ -248,7 +252,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (itemCount > 0)
             {
-                currentPointsPerLevel = pointsPerLevel * (1f - Util.ConvertAmplificationPercentageIntoReductionNormalized(itemCountModifier * (itemCount - 1)));
+                currentPointsPerLevel = pointsPerLevel * (1f - Util.ConvertAmplificationPercentageIntoReductionNormalized((itemCountModifier / 100f) * (itemCount - 1)));
             }
 
             this.itemCount = itemCount;
@@ -296,13 +300,15 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
             body.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, 0);
 
+            gotProtectionBuff = false;
+
             currentPoints = 0f;
             currentLevel = 0;
         }
 
         public void OnKilledOtherServer(DamageReport damageReport)
         {
-            if (currentLevel < MAX_LEVEL)
+            if (currentLevel < currentMaxLevel)
             {
                 if ((damageReport.victimBody.bodyFlags & CharacterBody.BodyFlags.Masterless) == CharacterBody.BodyFlags.Masterless)
                 {
@@ -349,7 +355,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void AddPoints(CharacterBody ownerBody, float pointReward)
         {
-            currentPoints = Mathf.Min(currentPoints + pointReward, pointsPerLevel * MAX_LEVEL);
+            currentPoints = Mathf.Min(currentPoints + pointReward, pointsPerLevel * currentMaxLevel);
             if (currentLevel != (int)(currentPoints / currentPointsPerLevel))
             {
                 currentLevel = (int)(currentPoints / currentPointsPerLevel);
@@ -360,7 +366,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         EffectData effectData = new EffectData
                         {
                             origin = transform.position,
-                            color = levelColors.GetValueOrDefault(currentLevel)
+                            color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.5f)
 
                         };
                         if (ownerBody.mainHurtBox)
@@ -374,9 +380,10 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
                 ownerBody.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, currentLevel);
 
-                if (currentLevel == MAX_LEVEL)
+                if (currentLevel >= defaultMaxLevel && !gotProtectionBuff)
                 {
                     ownerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
+                    gotProtectionBuff = true;
                 }
                 ownerBody.MarkAllStatsDirty();
             }
@@ -392,16 +399,50 @@ namespace EnemiesReturns.Items.AdrenalineCore
             return currentPoints;
         }
 
+        public static void Hooks()
+        {
+            if (Configuration.General.EnableAdrenalineCore.Value)
+            {
+                EnemiesReturns.Language.onCurrentLangaugeChanged += Language_onCurrentLangaugeChanged;
+            }
+        }
+
+        private static void Language_onCurrentLangaugeChanged(RoR2.Language language, List<KeyValuePair<string, string>> output)
+        {
+            var keyPair = output.Find(item => item.Key == "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC");
+            if (!keyPair.Equals(default(KeyValuePair<string, string>)))
+            {
+                string description = string.Format(
+                    keyPair.Value,
+                    Configuration.ContactLight.AdrenalineCore.MaxLevel.Value,
+                    Configuration.ContactLight.AdrenalineCore.MaxLevelPerStack.Value,
+                    (Configuration.ContactLight.AdrenalineCore.AttackSpeed.Value / 100f).ToString("###%"),
+                    (Configuration.ContactLight.AdrenalineCore.MovementSpeed.Value / 100f).ToString("###%"),
+                    (Configuration.ContactLight.AdrenalineCore.CritChance.Value / 100f).ToString("###%"),
+                    (Configuration.ContactLight.AdrenalineCore.CritDamage.Value / 100f).ToString("###%"),
+                    Configuration.ContactLight.AdrenalineCore.PointsPerLevel.Value,
+                    (Configuration.ContactLight.AdrenalineCore.PointPerLevelReduction.Value / 100f).ToString("###%"),
+                    Configuration.ContactLight.AdrenalineCore.NormalReward.Value,
+                    Configuration.ContactLight.AdrenalineCore.ChampionReward.Value,
+                    Configuration.ContactLight.AdrenalineCore.T1EliteModifier.Value,
+                    Configuration.ContactLight.AdrenalineCore.T2EliteModifier.Value,
+                    (Configuration.ContactLight.AdrenalineCore.HealthThreshold.Value / 100f).ToString("###%"));
+
+                language.SetStringByToken("ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC", description);
+            }
+        }
+
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
             if(sender.master == master)
             {
-                // TODO: values
-                args.attackSpeedMultAdd += ((15f / 100) + ((10f / 100) * (itemCount - 1))) * ((currentLevel >= 1) ? 1 : 0);
-                args.moveSpeedMultAdd += ((15f / 100) + ((10f / 100) * (itemCount - 1))) * ((currentLevel >= 2) ? 1 : 0);
-                args.baseHealthAdd += (25f + (15f * (itemCount - 1))) * ((currentLevel >= 3) ? 1 : 0);
-                args.baseShieldAdd += ((sender.maxHealth * 0.1f) + (sender.maxHealth * 0.05f) * (itemCount - 1)) * ((currentLevel >= 4) ? 1 : 0);
-                args.critAdd += (10f + (5f * (itemCount - 1))) * ((currentLevel >= 5) ? 1 : 0);
+                args.attackSpeedMultAdd += (attackSpeedPerLevel / 100f) * currentLevel;
+                args.moveSpeedMultAdd += (movementSpeedPerLevel / 100f) * currentLevel;
+                if(currentLevel > 5)
+                {
+                    args.critAdd += critChanceAtLevel5;
+                    args.critDamageMultAdd += (critDamageAtLevel5 / 100f);
+                }
             }
         }
 
@@ -416,7 +457,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            if (Configuration.General.EnableContactLight.Value && Configuration.General.EnableAdrenalineCore.Value)
+            if (Configuration.General.EnableAdrenalineCore.Value)
             {
                 if(body && body.master && body.master.TryGetComponent<AdrenalineCoreMasterComponent>(out var component))
                 {
@@ -441,17 +482,19 @@ namespace EnemiesReturns.Items.AdrenalineCore
             }
         }
 
-        [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
-        public static void Init()
+        internal static void InitMasterCatalog()
         {
-            // I am sorry for I have sinned
-            for (int i = 0; i < MasterCatalog.masterPrefabs.Length; i++)
+            if (Configuration.General.EnableAdrenalineCore.Value)
             {
-                var masterObject = MasterCatalog.masterPrefabs[i];
-                if (masterObject.GetComponent<CharacterMaster>())
+                // I am sorry for I have sinned
+                for (int i = 0; i < MasterCatalog.masterPrefabs.Length; i++)
                 {
-                    var component = masterObject.AddComponent<AdrenalineCoreMasterComponent>();
-                    component.enabled = false;
+                    var masterObject = MasterCatalog.masterPrefabs[i];
+                    if (masterObject.GetComponent<CharacterMaster>())
+                    {
+                        var component = masterObject.AddComponent<AdrenalineCoreMasterComponent>();
+                        component.enabled = false;
+                    }
                 }
             }
         }

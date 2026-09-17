@@ -104,6 +104,7 @@ namespace EnemiesReturns.Enemies.ContactLight
             if (Configuration.General.EnableAdrenalineCore.Value)
             {
                 Items.AdrenalineCore.AdrenalineCoreUI.Hooks();
+                Items.AdrenalineCore.AdrenalineCoreMasterComponent.Hooks();
             }
         }
 

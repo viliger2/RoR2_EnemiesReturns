@@ -25,11 +25,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (masterBehaviour) 
             {
-                UpdateUI(masterBehaviour.GetCurrentPoints(), masterBehaviour.GetCurrentPointsPerLevel());
+                UpdateUI(masterBehaviour.GetCurrentPoints(), masterBehaviour.GetCurrentPointsPerLevel(), masterBehaviour.currentMaxLevel);
             }
         }
 
-        private void UpdateUI(float adrenalineLevel, float adrenalinePerLevel)
+        private void UpdateUI(float adrenalineLevel, float adrenalinePerLevel, int currentMaxLevel)
         {
             if (textMesh)
             {
@@ -37,7 +37,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
             }
             if (levelBar)
             {
-                if (adrenalineLevel >= adrenalinePerLevel * AdrenalineCoreMasterComponent.MAX_LEVEL)
+                if (adrenalineLevel >= adrenalinePerLevel * currentMaxLevel)
                 {
                     levelBar.fillAmount = 1f;
                 }
@@ -178,6 +178,5 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
             instanceList.Add(instance);
         }
-
     }
 }

@@ -130,8 +130,7 @@ namespace EnemiesReturns.Enemies.Judgement
         }
 
         // second iteration is purely to support modded skins
-        [SystemInitializer(new Type[] { typeof(BodyCatalog) })]
-        private static IEnumerator CreateAnointedSkinsSecondIteration()
+        internal static IEnumerator CreateAnointedSkinsSecondIteration()
         {
             var judgementConfiguration = Configuration.Judgement.Judgement.JudgementConfig;
             for (int i = 0; i < anointedSkinsSecondIterationList.Count; i++)

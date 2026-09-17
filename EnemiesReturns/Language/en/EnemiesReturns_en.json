@@ -25,7 +25,7 @@
 
     "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_NAME": "Colossal Fist",
     "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_PICKUP": "Chance on hit to summon a giant fist.",
-    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsDamage>{0}</style> chance on hit to summon a <style=cIsDamage>Colossal Fist</style> that deals <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> TOTAL damage.",
+    "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION": "<style=cIsDamage>{0}</style> chance on hit to summon a <style=cIsDamage>Colossal Fist</style> that deals <style=cIsDamage>{1}</style><style=cStack> (+{2} per stack)</style> TOTAL damage.",
     "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE": "Destination: 6542, Fractured Rock, Unknown\n\nDate: 7/22/2056\n\nThere is obviously some essence left in this hunk; the Knurl is still attracting nearby earth and dirt, trying to reconstruct itself. Perhaps I can use this to my advantage; a self-repairing chunk of earth could serve as a good shield.",
 
     "ENEMIES_RETURNS_IFRIT_BODY_NAME": "Ifrit",
@@ -45,8 +45,8 @@
 
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Infernal Lantern",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "Upon large or elite monster kill summon a fiery pillar.",
-    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius. <style=cIsDamage>Killing elite monsters</style> has <style=cIsDamage>{4}</style> chance to cause the same effect.",
-    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack>(+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius.",
+    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack> (+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius. <style=cIsDamage>Killing elite monsters</style> has <style=cIsDamage>{4}</style> chance to cause the same effect.",
+    "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_NO_ELITES": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack> (+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius.",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE": "Destination: Lot Z, Auction House, Unknown\n\nDate: 4/10/2056\n\nWhen I finally took the beast down, I tore the lantern off the tower it summoned, hoping for it to help on this journey. I've felt a strange power since obtaining it... while I feel stronger, I feel like I am no longer alone.",
 
     "ENEMIES_RETURNS_MECHANICAL_SPIDER_BODY_LORE": "Field Notes:\n\nThe malware of our age! These mechanical parasites were probably lurking on the ship before the crash. Pirates will use these bugs to collect especially valuable cargo, redirect transmission signals, or even hijack ships. Spiders can be programmed with all kinds of malicious objectives. \n\nIn general they are quite difficult to find and eradicate on large vessels, but now that they're loose they seem to be able to operate outside their software. They have retained their defense capabilities, and are risky to engage. Though, I wonder, how long will they continue to run without access to an electrical grid?",
@@ -117,7 +117,7 @@
 
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_NAME": "Lynx Fetish",
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_PICKUP": "Recruit Lynx Tribe members.",
-    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Every 15 seconds <style=cIsUtility>summon Lynx Tribesman</style> with bonus <style=cIsDamage>{0}<style=cStack>(+{1} after 4th stack)</style> damage</style> and <style=cIsHealth>{2}<style=cStack>(+{3} after 4th stack)</style> health</style>. Can have up to <style=cIsUtility>1<style=cStack>(+1 per stack, up to 4)</style></style>. Each <style=cIsUtility>Lynx Tribesman</style> provides unique <style=cIsUtility>buff</style> in <style=cIsUtility>{4}m</style> around them.\r\n<style=cIsDamage>Lynx Archer</style> increases <style=cIsDamage>damage by {5}</style>.\r\n<style=cIsHealing>Lynx Hunter</style> increases <style=cIsHealing>armor by {6}</style>.\r\n<style=cIsUtility>Lynx Scout</style> increases <style=cIsUtility>attack and movement speed by {7}</style>.\r\n<style=cIsHealth>Lynx Shaman</style> increases <style=cIsHealth>damage done by special abilities by {8}</style>.",
+    "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION": "Every 15 seconds <style=cIsUtility>summon Lynx Tribesman</style> with bonus <style=cIsDamage>{0}<style=cStack> (+{1} after 4th stack)</style> damage</style> and <style=cIsHealth>{2}<style=cStack> (+{3} after 4th stack)</style> health</style>. Can have up to <style=cIsUtility>1<style=cStack> (+1 per stack, up to 4)</style></style>. Each <style=cIsUtility>Lynx Tribesman</style> provides unique <style=cIsUtility>buff</style> in <style=cIsUtility>{4}m</style> around them.\r\n<style=cIsDamage>Lynx Archer</style> increases <style=cIsDamage>damage by {5}</style>.\r\n<style=cIsHealing>Lynx Hunter</style> increases <style=cIsHealing>armor by {6}</style>.\r\n<style=cIsUtility>Lynx Scout</style> increases <style=cIsUtility>attack and movement speed by {7}</style>.\r\n<style=cIsHealth>Lynx Shaman</style> increases <style=cIsHealth>damage done by special abilities by {8}</style>.",
     "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE": "<style=cMono>FIELDTECH Sound-To-Text Translator (v1.6.8a)\r\n# Awaiting input... done.\r\n# Reading sound for text... done.\r\n# Transcribing data... done.\r\n# Translating sound... done. [6 exceptions raised]\r\nComplete: outputting results.</style>\r\n\r\nWe hold this Relic to high regard, there once was many, now there are few.\r\nWe worshiped the balance [REDACTED] brought to the world. When [REDACTED] called, we answered.\r\nWe brought [REDACTED] gifts, relics of our tribes. Some brought weapons, some brought food, some brought toys, crafted from string and cloth.\r\nOne day, another appears. [The Hero] speaks urgently, ushering us to a structure made from stones and sparks.\r\nWe lost contact with [REDACTED], lost homes, lost relics, lost our way.\r\nWe hold this Relic to high regard for this reason.\r\n\r\n<style=cMono>Translation Errors:<\/style>\r\n# [The Hero] could not be fully translated.\r\n# Details on [REDACTED] are only available to Crew with Red-Level Clearance.",
 
     "ENEMIES_RETURNS_ARCHERBUG_BODY_NAME": "Archer Bug",
@@ -321,7 +321,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_NAME": "Gilded Wurms",
     "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_SUBTITLE": "Hands of Providence",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "ENEMIESRETURNS_CONTACTLIGHT_ELITESLAYER_NAME",
+    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "Her Gift",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP": "<style=cIsDamage>Execute</style> an elite and claim its <color=#FF8000>power</color>. <style=cIsUtility>Consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC": "<style=cIsDamage>Execute</style> any elite enemy with <color=#FF8000>aspect</color> that can be dropped and it will <style=cIsUtility>drop</style> that aspect. Equipment is <style=cIsUtility>consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_LORE": "...Until one day.\n\nWord spreads beyond, word that the crystalline blade falters.\n\nWithout the blade to foil their plans, they believed taking the planet would be easy.\n\nThat is what they thought.\n\nWhat they did not know is that beings, born from steel boxes, would rain from the sky above to lay waste to the land they wished to claim.",
@@ -388,7 +388,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_CONTEXT": "Reshape",
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_DESC": "Changes survivor's current skin to the selected one.",
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_LORE": "lore",
-    "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER": "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER",
+    "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_INTERACTION_HEADER": "New shape. Good shape. Good good.",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_NAME": "Keycard",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ACCESSCARD_PICKUP": "<style=cIsUtility>Opens locked doors</style> on the UES Contact Light.",
@@ -397,13 +397,13 @@
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_NAME": "Adrenaline Core",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_PICKUP": "Enables gaining of <style=cIsHealth>Adrenaline</style> levels that improve your stats.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC": "ENEMIESRETURNS_CONTACTLIGHT_ADRENALINECORE_DESC",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_DESC": "Gain the ability to acquire <style=cIsHealth>Adrenaline</style> levels, up to <style=cIsUtility>{0}</style><style=cStack> (+{1} per stack)</style>. Levels persist through stage transitions. Each level grants <style=cIsDamage>{2} attack speed</style> and <style=cIsUtility>{3} movement speed</style>. At level <style=cIsUtility>{0}</style>, gain <style=cIsDamage>{4} crit chance</style> and <style=cIsDamage>{5} crit damage</style>. Each Adrenaline level takes <style=cIsUtility>{6} points to reach</style><style=cStack> (-{7} per stack, stacking hyperbolically)</style>. Normal enemies reward <style=cIsUtility>{8} point(s)</style>, bosses reward <style=cIsUtility>{9}</style>, tier 1 elites <style=cIsUtility>multiply the value by {10}</style>, and tier 2 by <style=cIsUtility>{11}</style>. Losing more than <style=cIsHealth>{12} health</style> results in <style=cDeath>losing all Adrenaline levels</style>. Level <style=cIsUtility>{0}</style> also grants a <style=cIsUtility>protective shield</style> that preserves your Adrenaline levels upon taking threshold damage, but it <style=cDeath>does not prevent the damage itself</style>.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_LORE": "\"-with him at the top of the world, everyone thought he was unbeatable. Countless partnerships with brands, book deals and even movie cameos. However, one day a damning report was released which detailed his rampant use of several body enhancements, notably one which skyrocketed the body's adrenaline output while in the ring. After the report, he retreated into the background of society where no one has seen him since...\"\n\n- Excerpt of \"Boxing Legends: From Kings to Peasants\"",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_ADRENALINECORE_UI_LEVEL": "Lv.{0}",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_NAME": "Composite Shard",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_PICKUP": "Shard made out of strange material. There is still lingering power within.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "Its almost like you can hear a hum from it, but no matter how hard you concentrate you can't make it out.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "You can almost hear a hum coming from it, but no matter how hard you concentrate, you can't make it out.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE": "\"...I was patrolling around camp when I found this glowing shard in the ground, thing was really stuck in there but I managed to get it out. When I brought it back to camp, strange things began to hap-eN- \n\nV-OI-CE.. LISTEN.\n\nYOU SEEK THE TRUTH?\n\nYOU SEEK ANSWERS?\n\nFIND MORE.\n\nMAKE IT WHOLE AGAIN.\n\nAND IT WILL SHOW WHAT YOU SE-E-K.\n\n-F-ter I shot the behemoth, its core exploded and its stone body fell to the ground. The team are currently assessing if we should move location or request an extraction.\"\n\n\"P.S, I'm definitely keeping this\"",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME": "UES Contact Light",
