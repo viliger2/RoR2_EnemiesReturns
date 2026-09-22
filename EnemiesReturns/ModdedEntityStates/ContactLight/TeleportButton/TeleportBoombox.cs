@@ -64,7 +64,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TeleportButton
                 var placementRule = new DirectorPlacementRule()
                 {
                     placementMode = DirectorPlacementRule.PlacementMode.Direct,
-                    position = dancingTransform.position
+                    position = dancingTransform.position,
+                    rotation = dancingTransform.rotation,
                 };
 
                 var directorSpawnRequest = new DirectorSpawnRequest(spawnCard, placementRule, RoR2Application.rng)

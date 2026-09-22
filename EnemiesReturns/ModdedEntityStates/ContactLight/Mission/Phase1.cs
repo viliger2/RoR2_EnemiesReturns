@@ -68,6 +68,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     {
                         TeleportPlayersToPositions(teleportPositions);
                     }
+
+                    var objectives = phaseChildLocator.FindChild("Objectives");
+                    if (objectives)
+                    {
+                        objectives.gameObject.SetActive(false);
+                    }
                 }
             }
             ClearCorpses();

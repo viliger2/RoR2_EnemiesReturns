@@ -321,7 +321,7 @@
     "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_NAME": "Gilded Wurms",
     "ENEMIES_RETURNS_CONTACTLIGHT_WORMS_SUBTITLE": "Hands of Providence",
 
-    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "Her Gift",
+    "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_NAME": "Planetary Charter",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_PICKUP": "<style=cIsDamage>Execute</style> an elite and claim its <color=#FF8000>power</color>. <style=cIsUtility>Consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_DESC": "<style=cIsDamage>Execute</style> any elite enemy with <color=#FF8000>aspect</color> that can be dropped and it will <style=cIsUtility>drop</style> that aspect. Equipment is <style=cIsUtility>consumed</style> on use.",
     "ENEMIES_RETURNS_CONTACTLIGHT_EQUIP_ELITESLAYER_LORE": "...Until one day.\n\nWord spreads beyond, word that the crystalline blade falters.\n\nWithout the blade to foil their plans, they believed taking the planet would be easy.\n\nThat is what they thought.\n\nWhat they did not know is that beings, born from steel boxes, would rain from the sky above to lay waste to the land they wished to claim.",
@@ -403,7 +403,7 @@
 
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_NAME": "Composite Shard",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_PICKUP": "Shard made out of strange material. There is still lingering power within.",
-    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "You can almost hear a hum coming from it, but no matter how hard you concentrate, you can't make it out.",
+    "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_DESC": "You can almost hear a melody coming from it, but no matter how hard you concentrate, you can't make it out.",
     "ENEMIES_RETURNS_CONTACTLIGHT_ITEM_SWORD_SHARD_LORE": "\"...I was patrolling around camp when I found this glowing shard in the ground, thing was really stuck in there but I managed to get it out. When I brought it back to camp, strange things began to hap-eN- \n\nV-OI-CE.. LISTEN.\n\nYOU SEEK THE TRUTH?\n\nYOU SEEK ANSWERS?\n\nFIND MORE.\n\nMAKE IT WHOLE AGAIN.\n\nAND IT WILL SHOW WHAT YOU SE-E-K.\n\n-F-ter I shot the behemoth, its core exploded and its stone body fell to the ground. The team are currently assessing if we should move location or request an extraction.\"\n\n\"P.S, I'm definitely keeping this\"",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_MAP_CONTACTLIGHT_NAME": "UES Contact Light",
@@ -413,6 +413,13 @@
 
     "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_DOOR_PANEL": "Wait for the <style=cDeath><sprite name=\"ER_CargoDoor\" tint=1>Cargo Door</style> to open... ({0}%)",
     "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_WHERE_ARE_YOU": "Figure out what is this place",
+    "ENEMIES_RETURNS_CONTACTLIGHT_OBJECTIVE_GET_TO_BRIDGE": "Get to the Bridge",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_BOSSPANEL_NAME": "Control Panel",
+    "ENEMIES_RETURNS_CONTACTLIGHT_BOSSPANEL_CONTEXT": "Escape the planet",
+
+    "ENEMIES_RETURNS_CONTACTLIGHT_CONSOLE_GAME_END_ACTIVE": "<style=cWorldEvent>Control Panel is active again...</style>",
+    "ENEMIES_RETURNS_CONTACTLIGHT_CARGO_DOOR_AWAITS_KEYCARD": "<style=cWorldEvent>Cargo Door awaits input...</style>",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_COST_KEYCARD_FORMAT": "{0} Keycard",
 

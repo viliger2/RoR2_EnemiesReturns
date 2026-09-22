@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bdAdrenalineCoreLevels
   m_EditorClassIdentifier: 
   iconPath: Textures/ItemIcons/texNullIcon
-  iconSprite: {fileID: 21300000, guid: a517f70cf641d00439bd52b6fe323bcd, type: 3}
+  iconSprite: {fileID: 21300000, guid: d943a2332aed8c343a56b91428837503, type: 3}
   buffColor: {r: 0.023637246, g: 0.6603774, b: 0, a: 1}
   canStack: 1
   eliteDef: {fileID: 0}
