@@ -23,6 +23,21 @@ namespace EnemiesReturns.Behaviors.ContactLight.SwordHilt
 
         private int itemsGiven;
 
+        private void OnEnable()
+        {
+            RoR2.ArtifactTrialMissionController.onShellDeathServer += ArtifactTrialMissionController_onShellDeathServer;
+        }
+
+        private void OnDisable()
+        {
+            RoR2.ArtifactTrialMissionController.onShellDeathServer -= ArtifactTrialMissionController_onShellDeathServer;
+        }
+
+        private void ArtifactTrialMissionController_onShellDeathServer(ArtifactTrialMissionController arg1, DamageReport arg2)
+        {
+            available = true;
+        }
+
         public string GetContextString([NotNull] Interactor activator)
         {
             return RoR2.Language.GetString(contextString);

@@ -67,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public override EntityState GetNextStateIfMissed()
         {
-            return EntityStateCatalog.InstantiateState(ref outer.mainStateType);
+            return new GenericCharacterMain();
         }
 
         public override void PlayAnimation()

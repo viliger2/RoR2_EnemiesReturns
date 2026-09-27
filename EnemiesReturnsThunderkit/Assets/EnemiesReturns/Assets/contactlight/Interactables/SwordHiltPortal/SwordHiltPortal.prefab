@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e91103fd86cdf84f9822bca8f4d0a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  available: 1
+  available: 0
   itemToTake: {fileID: 11400000, guid: 6b386b530f503fd41afd3e96048c45e2, type: 2}
   requiredItemNumber: 5
   contextString: ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_CONTEXT

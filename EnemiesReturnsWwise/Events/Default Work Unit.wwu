@@ -2048,31 +2048,6 @@
 								</Folder>
 								<Folder Name="Path" ID="{559B574A-375C-45AE-BF56-73F6F051F7A7}" ShortID="244144831">
 									<ChildrenList>
-										<Event Name="ER_SwordShard_Loop_Play" ID="{83258BC8-57F8-4804-8D35-D8A96575FE1B}">
-											<ChildrenList>
-												<Action Name="" ID="{873DBE67-18CF-484E-86EE-B92B7A218D33}" ShortID="182314417">
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
-										<Event Name="ER_SwordShard_Loop_Stop" ID="{E08D7F42-CE3A-49A0-9BA9-D072191CEABB}">
-											<ChildrenList>
-												<Action Name="" ID="{EA66F0AB-0EEF-4BE0-98E3-1D0A3DC48B19}" ShortID="74975172">
-													<PropertyList>
-														<Property Name="ActionType" Type="int16" Value="2"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Target">
-															<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
-														</Reference>
-													</ReferenceList>
-												</Action>
-											</ChildrenList>
-										</Event>
 										<Folder Name="SwordHilt" ID="{91568420-8443-4FA6-9E41-18B6CA04A55D}" ShortID="743565304">
 											<ChildrenList>
 												<Event Name="ER_SwordHilt_ShardSpawn_Play" ID="{45C0712B-E180-4296-95B0-77B541ED26CB}">
@@ -2154,6 +2129,57 @@
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="SwordHilt_SwordShatter" ID="{DA784073-B0A3-4029-A591-5CBBC247681E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="SwordShard" ID="{C2A5CD9F-E5A2-4F19-B05A-020AADA6B4CC}" ShortID="646979509">
+											<ChildrenList>
+												<Event Name="ER_SwordShard_Loop_Stop" ID="{E08D7F42-CE3A-49A0-9BA9-D072191CEABB}">
+													<ChildrenList>
+														<Action Name="" ID="{EA66F0AB-0EEF-4BE0-98E3-1D0A3DC48B19}" ShortID="74975172">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordShard_Loop_Play" ID="{83258BC8-57F8-4804-8D35-D8A96575FE1B}">
+													<ChildrenList>
+														<Action Name="" ID="{873DBE67-18CF-484E-86EE-B92B7A218D33}" ShortID="182314417">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordShard_Shield_Play" ID="{B80B77AE-C77C-468A-9022-4F3A12E02F26}">
+													<ChildrenList>
+														<Action Name="" ID="{718920D3-A30F-4763-B35A-BBE4AF468F01}" ShortID="915128755">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordShard_Shield" ID="{97AA97FD-FCE4-4FB1-B534-6916778036D4}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_SwordShard_ShieldPop_Play" ID="{B8CD35D7-CF18-4846-9B90-48AF07D5E148}">
+													<ChildrenList>
+														<Action Name="" ID="{599B37CA-01BB-4A08-BC7F-5E7925B30346}" ShortID="349747388">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="SwordShard_ShieldPop" ID="{79E10CF8-B076-474F-B861-001AC279542B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 																</Reference>
 															</ReferenceList>
 														</Action>

@@ -6704,42 +6704,6 @@
 										</Folder>
 										<Folder Name="Path" ID="{8B2F489F-4B79-48F0-B94F-9BB6FFE59107}" ShortID="325232906">
 											<ChildrenList>
-												<Sound Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" ShortID="1011101009">
-													<PropertyList>
-														<Property Name="3DSpatialization" Type="int16" Value="1"/>
-														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-														<Property Name="OverrideConversion" Type="bool" Value="True"/>
-														<Property Name="OverridePositioning" Type="bool" Value="True"/>
-														<Property Name="Volume" Type="Real64">
-															<ValueList>
-																<Value>-10</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Attenuation">
-															<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-														</Reference>
-														<Reference Name="Conversion">
-															<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}">
-															<Language>SFX</Language>
-															<AudioFile>ContactLight\SwordShard\swordShardLoop.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="439272410"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<Folder Name="SwordHilt" ID="{E4485E6A-B903-4FD6-9432-CD1D8A8F9549}" ShortID="320874614">
 													<ChildrenList>
 														<Sound Name="SwordHilt_ShardSpawn" ID="{EFE6A6CB-09DB-4941-9B7E-0AA8A7ACB8ED}" ShortID="974306503">
@@ -6991,6 +6955,90 @@
 															</ChildrenList>
 															<ActiveSourceList>
 																<ActiveSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="SwordShard" ID="{5D69ACE0-2315-47B6-A74C-B2526358E9FF}" ShortID="356841349">
+													<ChildrenList>
+														<Sound Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" ShortID="1011101009">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="OverrideConversion" Type="bool" Value="True"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-10</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\swordShardLoop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="439272410"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SwordShard_Shield" ID="{97AA97FD-FCE4-4FB1-B534-6916778036D4}" ShortID="1010184286">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\swordshard_shield.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="251737566"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="SwordShard_ShieldPop" ID="{79E10CF8-B076-474F-B861-001AC279542B}" ShortID="389347331">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\SwordShard\swordshard_shieldpop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="897736972"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
@@ -7617,13 +7665,6 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="freesound_community-door-opening-37271" ID="{AA371617-80ED-4766-85A6-FDA3D0AD0ECF}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\Doors\freesound_community-door-opening-37271.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="220469940"/>
-																	</MediaIDList>
-																</AudioFileSource>
 																<AudioFileSource Name="wBlastdoor" ID="{6F05717E-98A4-4757-A58B-A0A4711DB4B6}">
 																	<Language>SFX</Language>
 																	<AudioFile>ContactLight\Doors\wBlastdoor.wav</AudioFile>

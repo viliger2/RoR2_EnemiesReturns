@@ -108,6 +108,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.RechargableInteractable
         public override void OnExit()
         {
             base.OnExit();
+            healPulse = null;
             if (effectTransform)
             {
                 effectTransform.gameObject.SetActive(false);
