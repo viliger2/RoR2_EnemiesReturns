@@ -5,7 +5,6 @@ using EntityStates;
 using RoR2;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 

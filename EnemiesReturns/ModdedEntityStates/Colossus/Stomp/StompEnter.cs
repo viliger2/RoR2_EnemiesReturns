@@ -24,7 +24,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                 Transform closestLeftTransform = null;
                 if (lefttList.Count > 0)
                 {
-                    closestLeftTransform = lefttList.First()?.healthComponent?.body.modelLocator.modelTransform ?? null;
+                    closestLeftTransform = GetFirstTransform(lefttList[0]);
                 }
 
                 var rightTransform = FindModelChild("StompRightSearchPoint");
@@ -32,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                 Transform closestRightTransform = null;
                 if (rightList.Count > 0)
                 {
-                    closestRightTransform = rightList.First()?.healthComponent?.body.modelLocator.modelTransform ?? null;
+                    closestRightTransform = GetFirstTransform(rightList[0]);    
                 }
 
                 var resultL = (leftTransform.position - closestLeftTransform?.position)?.sqrMagnitude ?? float.PositiveInfinity;
@@ -45,6 +45,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                 {
                     outer.SetNextState(new StompR());
                 }
+            }
+
+            Transform GetFirstTransform(HurtBox hurtBox)
+            {
+                if (!hurtBox) return null;
+                if(!hurtBox.healthComponent) return null;
+                if(!hurtBox.healthComponent.body) return null;
+                if(!hurtBox.healthComponent.body.modelLocator) return null;
+                return hurtBox.healthComponent.body.modelLocator.modelTransform;
             }
         }
 

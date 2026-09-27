@@ -74,7 +74,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Orbs
         {
             base.OnExit();
             PlayCrossfade("Gesture", "BufferEmpty", 0.1f);
-            skillLocator.secondary = skillLocator.allSkills.First(component => component.skillName == "DashAttack");
+            skillLocator.secondary = skillLocator.allSkills.FirstOrDefault(component => component.skillName == "DashAttack");
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

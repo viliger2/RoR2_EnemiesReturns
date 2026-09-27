@@ -1,6 +1,5 @@
 ﻿using RoR2;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.Enemies.Colossus
@@ -39,7 +38,7 @@ namespace EnemiesReturns.Enemies.Colossus
                 bullseyeSearch.RefreshCandidates();
                 bullseyeSearch.FilterOutGameObject(gameObject);
 
-                var result = bullseyeSearch.GetResults().ToArray();
+                var result = bullseyeSearch.GetResults();
                 List<HealthComponent> targets = new List<HealthComponent>();
                 foreach (var hurtbox in result)
                 {

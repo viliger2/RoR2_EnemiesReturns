@@ -103,7 +103,6 @@ namespace EnemiesReturns.Components.MasterComponents
                 // Second iteration: going through all AISkillDriverParams array again and finding states that need nextHighPriorityOverride
                 // from there we find that state in list and set the value
                 // ye, its a mess but this is all because we can't reorder components via code
-                // also linq doesn't allow us to get null if sequence doesn't have the value so hope to god everything is setup correctly
                 foreach (var aiParam in aiParams)
                 {
                     if (aiParam.nextHighPriorityOverride == null)

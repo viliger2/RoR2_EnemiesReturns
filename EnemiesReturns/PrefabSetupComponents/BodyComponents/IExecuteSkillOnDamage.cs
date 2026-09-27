@@ -24,7 +24,7 @@ namespace EnemiesReturns.PrefabSetupComponents.BodyComponents
             ExecuteSkillOnDamage skillOnDamage = null;
             if (NeedToAddExecuteSkillOnDamage())
             {
-                var mainStateMachine = esms.First(item => item.customName == skillOnDamageParams.mainStateMachineName);
+                var mainStateMachine = esms.FirstOrDefault(item => item.customName == skillOnDamageParams.mainStateMachineName);
                 if (!mainStateMachine)
                 {
 #if DEBUG || NOWEAVER

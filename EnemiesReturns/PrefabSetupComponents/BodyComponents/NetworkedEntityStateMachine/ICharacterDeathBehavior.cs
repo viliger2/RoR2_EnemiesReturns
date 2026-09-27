@@ -30,7 +30,12 @@ namespace EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine
             {
                 // surely I didn't fuck up
                 var clonedArray = HG.ArrayUtils.Clone(stateMachines);
-                var deathStateMachine = clonedArray.First(item => item.customName == characterDeathBehaviorParams.mainStateMachineName);
+                var deathStateMachine = clonedArray.FirstOrDefault(item => item.customName == characterDeathBehaviorParams.mainStateMachineName);
+                if (!deathStateMachine)
+                {
+                    Log.Warning($"Couldn't add CharacterDeathBehavior to {bodyPrefab.name} because it lacks ESM with the name {characterDeathBehaviorParams.mainStateMachineName}");
+                    return null;
+                }
                 HG.ArrayUtils.ArrayRemoveAtAndResize(ref clonedArray, Array.IndexOf(clonedArray, deathStateMachine));
 
                 characterDeathBehavior = bodyPrefab.GetOrAddComponent<CharacterDeathBehavior>();

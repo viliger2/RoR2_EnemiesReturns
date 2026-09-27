@@ -3,7 +3,6 @@ using EnemiesReturns.Projectiles;
 using EntityStates;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
@@ -221,9 +220,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private void SetupNewRings()
         {
-            currentRings = rngTable[startingArray].Take(ringsToFire).ToArray();
+            currentRings = new int[ringsToFire];
+            for(int i = 0; i < ringsToFire; i++)
+            {
+                currentRings[i] = rngTable[this.startingArray][i];
+            }
             SetEffects(true);
-            startingArray = (startingArray + 1) % rngTable.Length;
+            this.startingArray = (this.startingArray + 1) % rngTable.Length;
         }
 
         private void SetEffects(bool active)

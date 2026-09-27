@@ -4,7 +4,6 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
-using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile

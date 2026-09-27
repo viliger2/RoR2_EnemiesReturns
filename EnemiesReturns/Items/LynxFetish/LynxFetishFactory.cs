@@ -3,7 +3,6 @@ using MonoMod.Cil;
 using RoR2;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -20,7 +19,7 @@ namespace EnemiesReturns.Items.LynxFetish
 
         public static IndexToCards[] spawnCards;
 
-        private static BodyIndex[] bodiesToIgnore;
+        private static HashSet<BodyIndex> bodiesToIgnore;
 
         public static void Hooks()
         {
@@ -114,13 +113,13 @@ namespace EnemiesReturns.Items.LynxFetish
                     new IndexToCards{ bodyIndex = scoutIndex, spawnCard = Enemies.LynxTribe.Scout.ScoutBodyAlly.SpawnCards.cscLynxScoutAlly}
                 };
 
-                bodiesToIgnore = new BodyIndex[] { archerIndex, hunterIndex, scoutIndex };
+                bodiesToIgnore = new HashSet<BodyIndex> { archerIndex, hunterIndex, scoutIndex };
 
                 if (EnemiesReturns.Configuration.General.EnableLynxShaman.Value)
                 {
                     var shamanIndex = BodyCatalog.FindBodyIndex(Enemies.LynxTribe.Shaman.ShamanBodyAlly.BodyPrefab);
                     HG.ArrayUtils.ArrayAppend(ref spawnCards, new IndexToCards { bodyIndex = shamanIndex, spawnCard = Enemies.LynxTribe.Shaman.ShamanBodyAlly.SpawnCards.cscLynxShamanAlly });
-                    HG.ArrayUtils.ArrayAppend(ref bodiesToIgnore, shamanIndex);
+                    bodiesToIgnore.Add(shamanIndex);
                 }
             }
         }

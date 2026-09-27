@@ -33,7 +33,12 @@ namespace EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine
             if (NeedToAddSetStateOnHurt())
             {
                 var clonedArray = HG.ArrayUtils.Clone(esms);
-                var targetStateMachine = clonedArray.First(item => item.customName == hurtParams.mainStateMachine);
+                var targetStateMachine = clonedArray.FirstOrDefault(item => item.customName == hurtParams.mainStateMachine);
+                if (!targetStateMachine)
+                {
+                    Log.Warning($"Couldn't add SetStateOnHurt to {bodyPrefab.name} because it lacks ESM with the name {hurtParams.mainStateMachine}");
+                    return state;
+                }
                 HG.ArrayUtils.ArrayRemoveAtAndResize(ref clonedArray, Array.IndexOf(clonedArray, targetStateMachine));
 
                 state = bodyPrefab.GetOrAddComponent<SetStateOnHurt>();

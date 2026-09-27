@@ -355,10 +355,14 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 foreach (var card in category.cards)
                 {
-                    if (mixEnemiesDirectorCards.Where(item => item.spawnCard == card.spawnCard).Count() == 0)
+                    foreach(var item in mixEnemiesDirectorCards)
                     {
-                        mixEnemiesDirectorCards.Add(card);
+                        if(item.spawnCard == card.spawnCard)
+                        {
+                            return;
+                        }
                     }
+                    mixEnemiesDirectorCards.Add(card);
                 }
             }
         }

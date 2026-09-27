@@ -4,7 +4,6 @@ using EnemiesReturns.PrefabSetupComponents.MasterComponents;
 using R2API;
 using Rewired.Utils;
 using RoR2;
-using System.Linq;
 using UnityEngine;
 
 namespace EnemiesReturns.Components
@@ -17,7 +16,7 @@ namespace EnemiesReturns.Components
             AddCharacterMaster(masterPrefab, bodyPrefab, GetCharacterMasterParams());
             AddInventory(masterPrefab);
             var esms = AddEntityStateMachines(masterPrefab, GetEntityStateMachineParams());
-            AddBaseAI(masterPrefab, !esms.IsNullOrDestroyed() && esms.Count() > 0 ? esms[0] : null, GetBaseAIParams());
+            AddBaseAI(masterPrefab, !esms.IsNullOrDestroyed() && esms.Length > 0 ? esms[0] : null, GetBaseAIParams());
             AddMinionOwnership(masterPrefab);
             AddAISkillDrivers(masterPrefab, GetAISkillDriverParams());
             AddAIOwnership(masterPrefab);

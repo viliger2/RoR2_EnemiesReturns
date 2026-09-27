@@ -5,7 +5,6 @@ using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -114,10 +113,10 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     if (eliteDef)
                     {
                         var costMultipier = CombatDirector.baseEliteCostMultiplier;
-                        var eliteTiers = CombatDirector.eliteTiers.Where(tier => tier.eliteTypes.Contains(eliteDef)).ToArray();
-                        if (eliteTiers.Length > 0)
+                        var eliteTier = GetEliteTierDef(eliteDef);
+                        if (eliteTier != null)
                         {
-                            costMultipier = eliteTiers[0].costMultiplier;
+                            costMultipier = eliteTier.costMultiplier;
                         }
                         else
                         {
@@ -135,6 +134,21 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     }
                 }
             }
+        }
+
+        private CombatDirector.EliteTierDef GetEliteTierDef(EliteDef eliteDef)
+        {
+            foreach(var tier in CombatDirector.eliteTiers)
+            {
+                foreach(var type in tier.eliteTypes)
+                {
+                    if(type == eliteDef)
+                    {
+                        return tier;
+                    }
+                }
+            }
+            return null;
         }
 
         private void DeleteMinionItems(Inventory inventory)
