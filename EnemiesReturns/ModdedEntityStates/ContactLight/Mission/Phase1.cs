@@ -13,6 +13,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
     {
         public static string phaseControllerChildString = "Phase1";
 
+        public static float screensDelay = 1.5f;
+
         public static float bossSpawnDelay = 5f;
 
         public static float doorCloseDelay = 6f;
@@ -20,6 +22,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
 
         public static MusicTrackDef musicTrack => Content.MusicTracks.Precipitation;
+
+        public static Material matPanelBossScreenWarning;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -30,6 +34,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         private bool hasSpawned;
 
         private bool hasClosedDoor;
+
+        private bool hasSwitchedMaterial;
+
+        private Transform panelBossScreens;
 
         public override void OnEnter()
         {
@@ -74,6 +82,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     {
                         objectives.gameObject.SetActive(false);
                     }
+
+                    panelBossScreens = phaseChildLocator.FindChild("PanelBossScreens");
                 }
             }
             ClearCorpses();
@@ -100,6 +110,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     }
                 }
                 hasClosedDoor = true;
+            }
+
+            if(!hasSwitchedMaterial && panelBossScreens && fixedAge > screensDelay)
+            {
+                if (panelBossScreens.gameObject.TryGetComponent<Renderer>(out var renderer))
+                {
+                    renderer.material = matPanelBossScreenWarning;
+                }
+                hasSwitchedMaterial = true;
             }
 
 #if DEBUG || NOWEAVER

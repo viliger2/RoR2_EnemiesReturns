@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2144992915573499588}
   - component: {fileID: 6818442624114599102}
   - component: {fileID: 4993486919346172318}
+  - component: {fileID: 127863958833139090}
   m_Layer: 0
   m_Name: GaussCannon
   m_TagString: Untagged
@@ -238,6 +239,23 @@ MonoBehaviour:
   transformPairs:
   - name: Animator
     transform: {fileID: 5693829659079206233}
+--- !u!114 &127863958833139090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331857987825415848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 268574540, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: 1
+  oldFade: 1
+  bounds: {fileID: 5408733467274722827}
+  renderers:
+  - {fileID: 5145629984859126637}
 --- !u!1 &1549779811272729404
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +402,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -3522717939673671870, guid: dd488e565794ab249a5835feffeb0f5a, type: 3}
   m_PrefabInstance: {fileID: 5228171833462915762}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8522364228168339400
+--- !u!65 &5408733467274722827
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,11 +410,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545771354198660592}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.3127112, y: 2.4999857, z: 2.4679263}
-  m_Center: {x: -0.3518177, y: -0.00000014710533, z: 1.2340088}
+  m_Center: {x: -0.35181767, y: -0.00000014710533, z: 1.2340088}
 --- !u!114 &7846641016252550300
 MonoBehaviour:
   m_ObjectHideFlags: 0

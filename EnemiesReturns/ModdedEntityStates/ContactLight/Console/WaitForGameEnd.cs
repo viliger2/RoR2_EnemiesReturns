@@ -4,6 +4,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Console
@@ -11,6 +12,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Console
     [RegisterEntityState]
     public class WaitForGameEnd : BaseState
     {
+        public static Material matPanelBossMain;
+
         private GenericInteraction genericInteraction;
 
         public override void OnEnter()
@@ -30,6 +33,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Console
                 {
                     baseToken = "ENEMIES_RETURNS_CONTACTLIGHT_CONSOLE_GAME_END_ACTIVE"
                 });
+            }
+
+            var modelTransform = GetModelTransform();
+            if (modelTransform)
+            {
+                var screens = modelTransform.Find("Screens");
+                if (screens)
+                {
+                    if (screens.gameObject.TryGetComponent<Renderer>(out var renderer))
+                    {
+                        renderer.material = matPanelBossMain;
+                    }
+                }
             }
         }
 

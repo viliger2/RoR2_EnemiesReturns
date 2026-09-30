@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 5242645799624854476}
   - component: {fileID: 5206376125705228393}
   - component: {fileID: 112478152075111453}
+  - component: {fileID: 9004232327470651048}
+  - component: {fileID: 1337557623713065473}
   m_Layer: 0
   m_Name: NanoChest
   m_TagString: Untagged
@@ -157,19 +159,6 @@ MonoBehaviour:
   onPurchase:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7071823673770241900}
-        m_TargetAssemblyTypeName: EnemiesReturns.Behaviors.ContactLight.NanoChest.DropTempItems,
-          EnemiesReturns
-        m_MethodName: AddStack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2566373298318609807}
         m_TargetAssemblyTypeName: RoR2.PurchaseInteraction, RoR2
         m_MethodName: SetAvailable
@@ -270,6 +259,45 @@ MonoBehaviour:
   transformPairs:
   - name: Animator
     transform: {fileID: 1371058044995887603}
+--- !u!114 &9004232327470651048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062964807824935250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 268574540, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: 1
+  oldFade: 1
+  bounds: {fileID: 8503168292647045133}
+  renderers:
+  - {fileID: 8960008821488645510}
+--- !u!114 &1337557623713065473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062964807824935250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 952828898, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: 
+  barkSound: 
+  openSound: Play_UI_tripleChestShutter
+  jumpSound: 
+  landingSound: 
+  fallDamageSound: 
+  aliveLoopStart: 
+  aliveLoopStop: 
+  sprintLoopStart: 
+  sprintLoopStop: 
 --- !u!1001 &1480632570454902296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,36 +364,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 462eae52e4fdb1544bd5d5159375449a, type: 3}
   m_PrefabInstance: {fileID: 1480632570454902296}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &8960008821488645510 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7553693224454648734, guid: 462eae52e4fdb1544bd5d5159375449a, type: 3}
-  m_PrefabInstance: {fileID: 1480632570454902296}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &9030979284029658709 stripped
+--- !u!1 &1751102746206649161 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7626908322794917965, guid: 462eae52e4fdb1544bd5d5159375449a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 462eae52e4fdb1544bd5d5159375449a, type: 3}
   m_PrefabInstance: {fileID: 1480632570454902296}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &134124147444610813
+--- !u!65 &8503168292647045133
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030979284029658709}
+  m_GameObject: {fileID: 1751102746206649161}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3171296, y: 2.4615226, z: 2.475236}
-  m_Center: {x: 0.05088651, y: -0.028093578, z: 1.2268523}
---- !u!114 &5648290081875676916
+  m_Size: {x: 3.3171296, y: 2.5121362, z: 2.5511687}
+  m_Center: {x: 0.05088651, y: 1.136016, z: 0.075389266}
+--- !u!114 &1653011569116162242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030979284029658709}
+  m_GameObject: {fileID: 1751102746206649161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -46258121, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundCenter: {fileID: 0}
+--- !u!114 &3531502456692156468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751102746206649161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1161602148, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -373,3 +409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 8062964807824935250}
   entityZoneIndex: 0
+--- !u!137 &8960008821488645510 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7553693224454648734, guid: 462eae52e4fdb1544bd5d5159375449a, type: 3}
+  m_PrefabInstance: {fileID: 1480632570454902296}
+  m_PrefabAsset: {fileID: 0}

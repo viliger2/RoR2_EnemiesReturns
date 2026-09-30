@@ -49,6 +49,9 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.BonusRoomDoors.Opening.openedMaterial = assets.First(material => material.name == "matKeypadOpened");
 
                     ModdedEntityStates.ContactLight.TempleGuard.UtilityOverclock.Overclock.overclockMaterial = assets.First(material => material.name == "matTempleGuardOverclockOverlay");
+
+                    ModdedEntityStates.ContactLight.Mission.Phase1.matPanelBossScreenWarning = assets.First(material => material.name == "matPanelBossScreenWarning");
+                    ModdedEntityStates.ContactLight.Console.WaitForGameEnd.matPanelBossMain = assets.First(material => material.name == "matPanelBossScreen");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>

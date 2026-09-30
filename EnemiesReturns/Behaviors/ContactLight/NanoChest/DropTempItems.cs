@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
 {
-    public class DropTempItems : NetworkBehaviour
+    public class DropTempItems : NetworkBehaviour, IChestBehavior
     {
         public int numberToDrop = 5;
 
@@ -84,19 +84,10 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
                 timer -= Time.fixedDeltaTime;
                 if(timer <= 0f)
                 {
-                    if (sameItem)
-                    {
-                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
-                    }
-                    else
-                    {
-                        var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
-                        itemToDrop.decayValue = 1f;
-                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
-                    }
+                    DropSingleItem();
                     numberDrops++;
                     vector = quaternion * vector;
-                    if(numberDrops >= numberToDrop)
+                    if (numberDrops >= numberToDrop)
                     {
                         isDropping = false;
                         numberDrops = 0;
@@ -106,7 +97,26 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
             }
         }
 
+        private void DropSingleItem()
+        {
+            if (sameItem)
+            {
+                PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+            }
+            else
+            {
+                var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
+                itemToDrop.decayValue = 1f;
+                PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
+            }
+        }
+
         public void AddStack(Interactor interactor)
+        {
+            DropItemsBase();
+        }
+
+        private void DropItemsBase()
         {
             if (!NetworkServer.active)
             {
@@ -121,20 +131,12 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
                 int spawnedCount = 0;
                 while (spawnedCount < numberToDrop)
                 {
-                    if (sameItem)
-                    {
-                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
-                    }
-                    else
-                    {
-                        var itemToDrop = dropTable.GeneratePickup(RoR2.Run.instance.treasureRng);
-                        itemToDrop.decayValue = 1f;
-                        PickupDropletController.CreatePickupDroplet(itemToDrop, transform.position, vector, false, false);
-                    }
+                    DropSingleItem();
                     spawnedCount++;
                     vector = quaternion * vector;
                 }
-            } else
+            }
+            else
             {
                 isDropping = true;
                 vector = quaternion * transform.rotation * localEjectionVelocity;
@@ -144,6 +146,21 @@ namespace EnemiesReturns.Behaviors.ContactLight.NanoChest
             {
                 // do something, I dunoo
             }
+        }
+
+        public bool HasRolledPickup(PickupIndex pickupIndex)
+        {
+            return false;
+        }
+
+        public void Roll()
+        {
+            return;
+        }
+
+        public void ItemDrop()
+        {
+            DropItemsBase();
         }
     }
 }

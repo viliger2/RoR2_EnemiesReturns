@@ -34,7 +34,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit.Pillar
         public override void Update()
         {
             base.Update();
-            AkSoundEngine.SetRTPCValue("ER_Ifrit_Pillar_Fire_Volume", Mathf.Clamp((age / duration) * 100, 20, 100));
+            AkSoundEngine.SetRTPCValue("ER_Ifrit_Pillar_Fire_Volume", Mathf.Clamp((age / duration) * 100, 20, 100), fireball.gameObject);
             if (fireball)
             {
                 fireball.localScale = Vector3.Lerp(fireballStartScale, fireballFinishScale, age / duration);

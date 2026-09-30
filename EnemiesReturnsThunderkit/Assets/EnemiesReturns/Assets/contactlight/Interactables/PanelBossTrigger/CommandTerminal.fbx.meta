@@ -5,6 +5,16 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat3DTerminal.001
+    second: {fileID: 2100000, guid: 71f6315d9233dc040a5970663dbed78c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat3DTerminalScreen
+    second: {fileID: 2100000, guid: 5bc6a278618dcb442b22c699f9cb2a07, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: TexCommandTerminalScreenOnTemp

@@ -39,11 +39,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         {
             base.FixedUpdate();
 #if DEBUG || NOWEAVER
-            if (Input.GetKeyDown(KeyCode.Numlock))
+            if (Input.GetKeyDown(KeyCode.Keypad2))
             {
                 outer.SetNextState(new Phase2());
             }
-            if (Input.GetKeyDown(KeyCode.PageDown))
+            if (Input.GetKeyDown(KeyCode.Keypad3))
             {
                 outer.SetNextState(new PreEnding());
             }
