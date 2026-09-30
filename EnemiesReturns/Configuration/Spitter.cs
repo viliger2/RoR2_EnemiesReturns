@@ -61,7 +61,9 @@ namespace EnemiesReturns.Configuration
                     "FBLScene",
                     "agatevillage",
                     "snowtime_gmconstruct",
-                    "snowtime_gmflatgrass"
+                    "snowtime_gmflatgrass",
+                    "swampybog_winslow",
+                    "swampybognight_winslow"
                 ),
                 "Stages that Default Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Spitter.LakesStageList = config.Bind("Spitter Director", "Lakes Variant Stage List",

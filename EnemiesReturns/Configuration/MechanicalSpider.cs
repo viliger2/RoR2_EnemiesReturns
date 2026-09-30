@@ -108,7 +108,8 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDelta),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.RallypointDeltaSimulacrum),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PretendersPrecipice),
+                    "forgottenwreckage_ws"
                 ),
                 "Stages that Snowy Mechanical Spider appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
