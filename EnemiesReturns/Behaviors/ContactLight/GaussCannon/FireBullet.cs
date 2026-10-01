@@ -17,7 +17,7 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
 
         public AssetReferenceT<GameObject> hitEffectPrefabReference;
 
-        public Transform aimOrigin;
+        public Transform[] aimOrigins;
 
         public int maxPurchaseCount;
 
@@ -67,27 +67,40 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
                 return;
             }
 
-            BulletAttack bulletAttack = new BulletAttack();
-            bulletAttack.owner = characterBody.gameObject;
-            bulletAttack.weapon = gameObject;
-            bulletAttack.procCoefficient = 0f;
-            bulletAttack.origin = aimOrigin.position;
-            bulletAttack.aimVector = aimOrigin.forward;
-            bulletAttack.minSpread = 0;
-            bulletAttack.maxSpread = 0;
-            bulletAttack.bulletCount = 1u;
-            bulletAttack.damage = damageCoefficient * characterBody.damage;
-            bulletAttack.force = 0;
-            bulletAttack.tracerEffectPrefab = tracerPrefab;
-            bulletAttack.hitEffectPrefab = hitEffectPrefab;
-            bulletAttack.isCrit = Util.CheckRoll(characterBody.crit, characterBody.master);
-            bulletAttack.radius = bulletRadius;
-            bulletAttack.smartCollision = true;
-            bulletAttack.stopperMask = LayerIndex.world.mask;
-            bulletAttack.hitMask = LayerIndex.entityPrecise.mask;
-            bulletAttack.damageType.AddModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
-            bulletAttack.Fire();
+            if(aimOrigins == null)
+            {
+                return;
+            }
+            for(int i = 0; i < aimOrigins.Length; i++)
+            {
+                var origin = aimOrigins[i];
 
+                if (!origin)
+                {
+                    continue;
+                }
+                BulletAttack bulletAttack = new BulletAttack();
+                bulletAttack.owner = characterBody.gameObject;
+                bulletAttack.weapon = gameObject;
+                bulletAttack.procCoefficient = 0f;
+                bulletAttack.origin = origin.position;
+                bulletAttack.aimVector = origin.forward;
+                bulletAttack.minSpread = 0;
+                bulletAttack.maxSpread = 0;
+                bulletAttack.bulletCount = 1u;
+                bulletAttack.damage = damageCoefficient * characterBody.damage;
+                bulletAttack.force = 0;
+                bulletAttack.tracerEffectPrefab = tracerPrefab;
+                bulletAttack.hitEffectPrefab = hitEffectPrefab;
+                bulletAttack.isCrit = Util.CheckRoll(characterBody.crit, characterBody.master);
+                bulletAttack.radius = bulletRadius;
+                bulletAttack.smartCollision = true;
+                bulletAttack.stopperMask = LayerIndex.world.mask;
+                bulletAttack.hitMask = LayerIndex.entityPrecise.mask;
+                bulletAttack.damageType.AddModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+                bulletAttack.muzzleName = i.ToString();
+                bulletAttack.Fire();
+            }
             purchaseCount++;
             if (purchaseCount >= maxPurchaseCount)
             {

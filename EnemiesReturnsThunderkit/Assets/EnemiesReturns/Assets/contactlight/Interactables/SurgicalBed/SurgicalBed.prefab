@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: 1
   oldFade: 1
-  bounds: {fileID: 3586104062669196240}
+  bounds: {fileID: 1475144560905877820}
   renderers:
   - {fileID: 7433162914664796661}
 --- !u!1 &4841111692832454669
@@ -457,8 +457,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8819250283359746855, guid: 5817b3e6e7d783b4e99cede1b59ee772, type: 3}
   m_PrefabInstance: {fileID: 9158228965338524484}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3586104062669196240
-BoxCollider:
+--- !u!64 &1475144560905877820
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -467,6 +467,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6147103, y: 5.2967663, z: 4.6187367}
-  m_Center: {x: 0.35340163, y: -0.0687006, z: 0.2578299}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1062998263621625757, guid: 933676866d4d070438292875d823c1d1, type: 3}

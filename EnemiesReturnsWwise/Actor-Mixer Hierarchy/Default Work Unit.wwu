@@ -7080,7 +7080,7 @@
 													<PropertyList>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-10</Value>
+																<Value>-8</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -7147,7 +7147,7 @@
 																</Property>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
-																		<Value>-8</Value>
+																		<Value>-9</Value>
 																	</ValueList>
 																</Property>
 															</PropertyList>
@@ -7170,9 +7170,23 @@
 																		<MediaID ID="694583904"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="fire_single_projectile - Copy" ID="{2712976A-2938-41DD-A485-A3B95B941C36}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\TempleGuard\fire_single_projectile - Copy.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="322714001"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="fire_single_projectile - Copy_2" ID="{DC595ECC-755D-498A-A937-F6A94374DD42}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\TempleGuard\fire_single_projectile - Copy_2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="733381621"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="fire_single_projectile" ID="{85838B3F-FE57-4D82-967B-E77FC664D146}" Platform="Linked"/>
+																<ActiveSource Name="fire_single_projectile - Copy_2" ID="{DC595ECC-755D-498A-A937-F6A94374DD42}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<RandomSequenceContainer Name="TempleGuard_Step" ID="{84E8189C-5383-4BD1-8187-EEBE6B5F4D2B}" ShortID="182486426">
@@ -7359,6 +7373,13 @@
 																<MediaID ID="603084990"/>
 															</MediaIDList>
 														</AudioFileSource>
+														<AudioFileSource Name="charge_primary_2_2 - Copy" ID="{0FA0BA27-08AC-4EC3-AB1D-FB9E427242B0}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\TempleGuard\charge_primary_2_2 - Copy.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="121249157"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
 													<ObjectLists>
 														<ObjectList Name="RTPC">
@@ -7401,7 +7422,7 @@
 														</ObjectList>
 													</ObjectLists>
 													<ActiveSourceList>
-														<ActiveSource Name="charge_primary_2" ID="{18E2746E-5A97-45FB-962E-E77162AEF2EE}" Platform="Linked"/>
+														<ActiveSource Name="charge_primary_2_2 - Copy" ID="{0FA0BA27-08AC-4EC3-AB1D-FB9E427242B0}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 												<Sound Name="TempleGuard_Landing" ID="{23058BF1-7864-47B5-95D7-C6ABE7D19B57}" ShortID="319920163">
@@ -7755,6 +7776,78 @@
 															</ChildrenList>
 															<ActiveSourceList>
 																<ActiveSource Name="brokenDoorOpen" ID="{8C87CC30-07DE-488E-9C31-582DFD06C30D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Gauss" ID="{D04C11D8-6077-4C7F-B50B-D7CB17F9D9E6}" ShortID="403301461">
+													<ChildrenList>
+														<Sound Name="GaussFire" ID="{F9A5D5D7-6EBC-4971-B380-130C1367539B}" ShortID="73254375">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="gauss_fire" ID="{8B9D2E85-E04C-4294-B99E-D51C64FC8C5C}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Gauss\gauss_fire.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="600125774"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="gauss_fire" ID="{8B9D2E85-E04C-4294-B99E-D51C64FC8C5C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="GaussReady" ID="{FF33FDE9-9932-4955-A756-AC87E73D37FB}" ShortID="720028728">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-9</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="gauss_ready" ID="{0BAF0440-6E12-4807-A01C-FE9871C3D2D8}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Gauss\gauss_ready.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1031481466"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="gauss_ready" ID="{0BAF0440-6E12-4807-A01C-FE9871C3D2D8}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>

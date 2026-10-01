@@ -28,11 +28,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float doorUnlocks = 6f;
 
+        private bool judgementEnabled => Configuration.General.EnableJudgement.Value;
+
         private GameObject closedDoor;
 
         private GameObject console;
 
         private Transform portalLocation;
+
+        private GameObject teleporterJudgement;
 
         private bool enabledConsole;
 
@@ -69,6 +73,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                             this.closedDoor = closedDoor.gameObject;
                         }
 
+                        var teleporterJudgement = childLocator.FindChild("TeleporterJudgement");
+                        if (teleporterJudgement)
+                        {
+                            this.teleporterJudgement = teleporterJudgement.gameObject;
+                        }
+
                         var console = childLocator.FindChild("Console");
                         if (console)
                         {
@@ -101,9 +111,16 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 OpenPortal(portalBazaar, portalLocation.position, portalLocation.localRotation.eulerAngles);
                 spawnedPortal = true;
             }
-            if(fixedAge > doorUnlocks && closedDoor && !unlockedDoor)
+            if(fixedAge > doorUnlocks && judgementEnabled && !unlockedDoor)
             {
-                ModifyClosedDoor(closedDoor);
+                if (closedDoor)
+                {
+                    ModifyClosedDoor(closedDoor);
+                }
+                if (teleporterJudgement)
+                {
+                    EnableTeleportJudgement(teleporterJudgement);
+                }
                 unlockedDoor = true;
             }
         }
@@ -123,6 +140,22 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             if (esm && Util.HasEffectiveAuthority(console))
             {
                 esm.SetNextState(new ModdedEntityStates.ContactLight.Console.WaitForGameEnd());
+            }
+        }
+
+        private void EnableTeleportJudgement(GameObject teleporter)
+        {
+            if (Util.HasEffectiveAuthority(teleporter)) {
+                var interactable = teleporter.GetComponent<GenericInteraction>();
+                if (interactable)
+                {
+                    interactable.SetInteractabilityAvailable();
+                }
+                var networkIdentity = teleporter.GetComponent<NetworkIdentity>();
+                if (networkIdentity)
+                {
+                    networkIdentity.isPingable = true;
+                }
             }
         }
 

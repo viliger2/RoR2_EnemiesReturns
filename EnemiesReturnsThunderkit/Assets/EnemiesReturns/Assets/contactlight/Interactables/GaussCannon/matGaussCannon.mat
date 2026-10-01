@@ -11,6 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: c6e3cc6d1ef256644b62462606b5ab4b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
+  - DITHER
   - _EMISSION
   - _NORMALMAP
   m_LightmapFlags: 1
@@ -125,7 +126,7 @@ Material:
     - _DecalLayer: 0
     - _Depth: 0.2
     - _DetailNormalMapScale: 1
-    - _DitherOn: 0
+    - _DitherOn: 1
     - _DstBlend: 0
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0

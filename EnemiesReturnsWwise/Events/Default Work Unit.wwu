@@ -2469,6 +2469,32 @@
 												</Action>
 											</ChildrenList>
 										</Event>
+										<Folder Name="Gauss" ID="{07101670-D62F-45A2-9334-56EFACB13A9E}" ShortID="477771767">
+											<ChildrenList>
+												<Event Name="ER_GaussCannon_Fire_Play" ID="{ABB4687E-4C0C-49FF-90CD-00DCAB4863C6}">
+													<ChildrenList>
+														<Action Name="" ID="{200CC44A-53FF-41C8-9302-B99FBD0F4506}" ShortID="287100664">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="GaussFire" ID="{F9A5D5D7-6EBC-4971-B380-130C1367539B}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_GaussCannon_Ready_Play" ID="{F3C613DF-4821-4E21-91DC-0BA4C448BA5E}">
+													<ChildrenList>
+														<Action Name="" ID="{2383FE43-C970-4B66-9A46-0D8110DA3024}" ShortID="188963627">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="GaussReady" ID="{FF33FDE9-9932-4955-A756-AC87E73D37FB}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="Ambiance" ID="{F1902F04-D99D-40A8-933C-D393342A02E1}" ShortID="1015780324">
