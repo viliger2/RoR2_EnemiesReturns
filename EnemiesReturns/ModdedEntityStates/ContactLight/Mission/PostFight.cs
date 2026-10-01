@@ -22,11 +22,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static MusicTrackDef musicTrack => Addressables.LoadAssetAsync<MusicTrackDef>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_MusicTrackDefs.muNone_asset).WaitForCompletion();
 
-        public static float consoleAvailable = 3f;
+        public static float consoleAvailable = 2f;
 
-        public static float portalSpawns = 6f;
+        public static float portalSpawns = 4f;
 
-        public static float doorUnlocks = 9f;
+        public static float doorUnlocks = 6f;
 
         private GameObject closedDoor;
 
