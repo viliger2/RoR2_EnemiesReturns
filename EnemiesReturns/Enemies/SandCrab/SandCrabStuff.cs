@@ -254,7 +254,6 @@ namespace EnemiesReturns.Enemies.SandCrab
             impactExplosion.destroyOnWorld = true;
             impactExplosion.impactOnWorld = true;
             impactExplosion.timerAfterImpact = false;
-            impactExplosion.explodeOnLifeTimeExpiration = true;
             impactExplosion.lifetime = lifetime;
             impactExplosion.lifetimeRandomOffset = 1f;
             impactExplosion.transformSpace = ProjectileImpactExplosion.TransformSpace.World;

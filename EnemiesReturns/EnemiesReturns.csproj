@@ -17,8 +17,8 @@
 		<PackageReference Include="Moffein-Risky_Artifacts" Version="2.4.21" />
 		<PackageReference Include="R2API.DamageType" Version="1.1.7" />
 		<PackageReference Include="R2API.Deployable" Version="1.0.1" />
-		<PackageReference Include="R2API.Director" Version="2.3.7" />
-		<PackageReference Include="R2API.Elites" Version="1.0.7" />
+		<PackageReference Include="R2API.Director" Version="3.1.0" />
+		<PackageReference Include="R2API.Elites" Version="1.1.1" />
 		<PackageReference Include="R2API.Networking" Version="1.0.4" />
 		<PackageReference Include="R2API.Orb" Version="1.0.1" />
 		<PackageReference Include="R2API.Prefab" Version="1.1.1" />
@@ -28,10 +28,10 @@
 		<PackageReference Include="R2API.TempVisualEffect" Version="1.0.3" />
 		<PackageReference Include="RiskOfBrainrot-MoreStats" Version="1.2.7" />
 		<PackageReference Include="score-AdvancedPrediction" Version="1.0.4" />
-		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.1-r.0" />
-		<PackageReference Include="MMHOOK.RoR2" Version="2025.12.9" NoWarn="NU1701" />
-		<PackageReference Include="RoR2BepInExPack" Version="1.41.0" />
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.5.0-r.1" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2026.10.8" NoWarn="NU1701" />
+		<PackageReference Include="RoR2BepInExPack" Version="1.44.0" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="Exists('D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll')">
@@ -48,33 +48,18 @@
 	  <!--<Reference Include="AdvPrediction" Private="false">
 	    <HintPath>libs\AdvPrediction.dll</HintPath>
 	  </Reference>-->
-	  <Reference Include="Decalicious" Private="false">
+	  <!--<Reference Include="Decalicious" Private="false">
 	    <HintPath>libs\Decalicious.dll</HintPath>
-	  </Reference>
+	  </Reference>-->
 	  <!--<Reference Include="EliteReworks" Private="false">
 	    <HintPath>libs\EliteReworks.dll</HintPath>
 	  </Reference>-->
 	  <!--<Reference Include="MoreStats" Private="false">
 	    <HintPath>libs\MoreStats.dll</HintPath>
 	  </Reference>-->
-	  <!--<Reference Include="ReviveAPI" Private="false">
-	    <HintPath>libs\ReviveAPI.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="R2API.Director">
-	    <HintPath>libs\R2API.Director.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="MMHOOK_RoR2">
-	    <HintPath>libs\MMHOOK_RoR2.dll</HintPath>
-	  </Reference>-->
 	  <!--<Reference Include="Risky_Artifacts" Private="false">
 	    <HintPath>libs\Risky_Artifacts.dll</HintPath>
 	  </Reference>-->
-	  <!--<Reference Include="RoR2">
-	    <HintPath>libs\RoR2.dll</HintPath>
-	  </Reference>-->
-	  <Reference Include="Unity.Postprocessing.Runtime" Private="false">
-	    <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>

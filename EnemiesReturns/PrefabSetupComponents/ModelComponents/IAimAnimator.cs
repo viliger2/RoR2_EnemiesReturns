@@ -26,7 +26,6 @@ namespace EnemiesReturns.Components.ModelComponents
             public AimAnimator.AimType aimType = AimAnimator.AimType.Direct;
 
             public bool enableAimWeight = false;
-            public bool UseTransformedAimVector = false;
         }
 
         protected bool NeedToAddAimAnimator();
@@ -55,7 +54,6 @@ namespace EnemiesReturns.Components.ModelComponents
                 aimAnimator.fullYaw = aimParams.fullYaw;
                 aimAnimator.aimType = aimParams.aimType;
                 aimAnimator.enableAimWeight = aimParams.enableAimWeight;
-                aimAnimator.UseTransformedAimVector = aimParams.UseTransformedAimVector;
             }
             return aimAnimator;
         }

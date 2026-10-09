@@ -337,7 +337,6 @@ namespace EnemiesReturns.Components
                 aimType = AimAnimator.AimType.Direct,
 
                 enableAimWeight = false,
-                UseTransformedAimVector = false
             };
         }
 
