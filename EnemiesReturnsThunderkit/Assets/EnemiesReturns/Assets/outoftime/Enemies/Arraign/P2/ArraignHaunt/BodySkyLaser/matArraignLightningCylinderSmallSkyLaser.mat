@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -41,9 +41,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaBias: 0
-    - _AlphaBoost: 1.25
-    - _Boost: 6.13
+    - _AlphaBias: 0.118
+    - _AlphaBoost: 0.43
+    - _Boost: 8.16
     - _BumpScale: 1
     - _CalcTextureAlphaOn: 0
     - _CloudOffsetOn: 0
@@ -65,7 +65,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _InternalSimpleBlendMode: 1
-    - _InvFade: 0.528
+    - _InvFade: 0.685
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -84,7 +84,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CutoffScroll: {r: 0, g: 0, b: 0, a: -10}
+    - _CutoffScroll: {r: 0, g: 0, b: 0, a: -15}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

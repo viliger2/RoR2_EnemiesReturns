@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138158747}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18612,6 +18611,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 0
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
@@ -18636,6 +18638,10 @@ MonoBehaviour:
     cullChance: 0
   spawnOnStart: 0
   grantUniqueBonusScaling: 1
+  maximumDistance: 1000
+  expRewardCoefficient: 0.2
+  goldRewardCoefficient: 1
+  applyGoldAndExp: 0
 --- !u!114 &170823294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18669,6 +18675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &170823296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23671,6 +23678,39 @@ Transform:
   m_Father: {fileID: 1316245748}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -144.25, z: 0}
+--- !u!1 &217653781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217653782}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &217653782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217653781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0013565756, y: 2.8037584, z: -2.5766258}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1363194138}
+  - {fileID: 616823535}
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218046606
 GameObject:
   m_ObjectHideFlags: 0
@@ -45774,6 +45814,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 1
   maximumNumberToSpawnBeforeSkipping: 1
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 999
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -45790,6 +45831,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 1
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 0}
   _customPlacementBase: {fileID: 0}
 --- !u!1 &390148999
@@ -47258,6 +47300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporterSpawnCard: {fileID: 0}
+  usePlacedSpawnPoints: 0
   expRewardCoefficient: 0.06666667
   eliteBias: 2
   spawnDistanceMultiplier: 6
@@ -47277,6 +47320,8 @@ MonoBehaviour:
     forbiddenUnlockable: 
     requiredUnlockableDef: {fileID: 0}
     forbiddenUnlockableDef: {fileID: 0}
+    isExclusivelyElite: 0
+    eliteDef: {fileID: 0}
 --- !u!114 &401810058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72544,6 +72589,50 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 1
   gateName: 
+--- !u!1 &616823534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616823535}
+  - component: {fileID: 616823536}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &616823535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616823534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 217653782}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616823536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616823534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330b6a6113eb5f448a9bf56d4b40b091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617126569
 GameObject:
   m_ObjectHideFlags: 0
@@ -73240,7 +73329,9 @@ MonoBehaviour:
   m_Script: {fileID: 871971028, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useForPingHighlight: 0
   targetRenderer: {fileID: 624568138}
+  targetRendererList: []
   strength: 1
   highlightColor: 3
   CustomColor: {r: 1, g: 0, b: 1, a: 1}
@@ -77591,6 +77682,7 @@ MonoBehaviour:
   explicitDestination: {fileID: 0}
   explicitSpawnEffectPrefab: {fileID: 0}
   destinationIdealRadius: 0
+  useExactExplicitPositionAndRotation: 0
 --- !u!65 &668725980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99849,6 +99941,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 0
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
@@ -99873,6 +99968,10 @@ MonoBehaviour:
     cullChance: 0
   spawnOnStart: 0
   grantUniqueBonusScaling: 1
+  maximumDistance: 1000
+  expRewardCoefficient: 0.2
+  goldRewardCoefficient: 1
+  applyGoldAndExp: 0
 --- !u!114 &864627262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99906,6 +100005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &864627264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103875,7 +103975,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemAcquisitionOrder: 
-  wasRecentlyExtraEquipmentSwapped: 0
   wasRecentlyCreated: 0
   beadAppliedHealth: 0
   beadAppliedShield: 0
@@ -103987,6 +104086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &895504754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168779,6 +168879,50 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 1
   gateName: 
+--- !u!1 &1363194137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363194138}
+  - component: {fileID: 1363194139}
+  m_Layer: 0
+  m_Name: ShaderSwapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363194138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363194137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 217653782}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363194139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363194137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd719a82a1ab4642b0cb7e152fdcd67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365993463
 GameObject:
   m_ObjectHideFlags: 0
@@ -169957,6 +170101,7 @@ MonoBehaviour:
   explicitDestination: {fileID: 0}
   explicitSpawnEffectPrefab: {fileID: 0}
   destinationIdealRadius: 0
+  useExactExplicitPositionAndRotation: 0
 --- !u!65 &1376912671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172530,6 +172675,7 @@ MonoBehaviour:
   explicitDestination: {fileID: 0}
   explicitSpawnEffectPrefab: {fileID: 0}
   destinationIdealRadius: 0
+  useExactExplicitPositionAndRotation: 0
 --- !u!65 &1402357750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -175954,6 +176100,7 @@ MonoBehaviour:
   explicitDestination: {fileID: 0}
   explicitSpawnEffectPrefab: {fileID: 0}
   destinationIdealRadius: 0
+  useExactExplicitPositionAndRotation: 0
 --- !u!65 &1435817029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -213360,6 +213507,7 @@ MonoBehaviour:
   explicitDestination: {fileID: 0}
   explicitSpawnEffectPrefab: {fileID: 0}
   destinationIdealRadius: 0
+  useExactExplicitPositionAndRotation: 0
 --- !u!65 &1796284141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -238428,8 +238576,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterDccsPool: {fileID: 0}
   interactableDccsPool: {fileID: 0}
+  ignoreArtifactsThatRebuildCards: 0
   contentSourceMixLimitOverride: 0
   contentSourceMixLimitOverrideValue: 2
+  contentInteractableOnlySourceMixLimitOverride: 0
+  contentInteractableOnlySourceMixLimitOverrideValue: 2
   sceneDirectorInteractibleCredits: 0
   sceneDirectorMonsterCredits: 0
   bonusInteractibleCreditObjects: []
@@ -238456,6 +238607,7 @@ MonoBehaviour:
   approximateMapBoundMesh: {fileID: 0}
   groundNodesAsset: {fileID: 11400000, guid: e60d1a5a5eeada74c922414c517b49ae, type: 2}
   airNodesAsset: {fileID: 11400000, guid: ec40118389972014683632c7af1bf6ac, type: 2}
+  sceneStartDifficultyCoefTimestampServer: 0
 --- !u!4 &1999782523
 Transform:
   m_ObjectHideFlags: 0
@@ -246587,6 +246739,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
@@ -246655,6 +246810,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 0
   maximumNumberToSpawnBeforeSkipping: 4
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -246671,6 +246827,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 0}
   _customPlacementBase: {fileID: 0}
 --- !u!114 &2076602370
@@ -254446,6 +254603,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
@@ -254512,6 +254672,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 0
   maximumNumberToSpawnBeforeSkipping: 4
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -254528,6 +254689,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 0}
   _customPlacementBase: {fileID: 0}
 --- !u!114 &3387025989190138701
@@ -254706,6 +254868,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 0
   maximumNumberToSpawnBeforeSkipping: 4
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -254722,6 +254885,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 0}
   _customPlacementBase: {fileID: 0}
 --- !u!114 &3387025989243308943
@@ -254775,6 +254939,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
@@ -254943,6 +255110,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 0
   maximumNumberToSpawnBeforeSkipping: 4
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -254959,6 +255127,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 0}
   _customPlacementBase: {fileID: 0}
 --- !u!4 &3387025989888032496
@@ -254995,6 +255164,9 @@ MonoBehaviour:
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
+  barrageOnBossDelayOverride: -1
+  shouldGenerateSpecialNameForHealthBar: 0
+  specialNameForHealthBar: 
   forceTier3Reward: 0
   currentPriority: 0
   bodiesOfCurrentPriority: 0
