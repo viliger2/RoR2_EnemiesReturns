@@ -18,7 +18,9 @@ namespace EnemiesReturns.Enemies.ArcherBug
             ProjectileDamage projectileDamage = clonedProjectile.GetComponent<ProjectileDamage>();
             projectileDamage.damageType = DamageTypeCombo.GenericPrimary;
 
-            clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion();
+            var controller = clonedProjectile.GetComponent<ProjectileController>();
+            controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion();
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
 
             return clonedProjectile;
         }

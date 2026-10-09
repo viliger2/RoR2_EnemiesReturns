@@ -151,6 +151,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = clonedEffectGhost;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.ghostTransformAnchor = ghostAnchor.transform;
 
             var hitbox = clonedEffect.transform.Find("Hitbox");
@@ -186,6 +187,7 @@ namespace EnemiesReturns.Enemies.Colossus
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = rockGhost;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.allowPrediction = true;
             projectileController.flightSoundLoop = null;
 

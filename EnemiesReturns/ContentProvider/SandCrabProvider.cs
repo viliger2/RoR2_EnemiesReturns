@@ -36,7 +36,7 @@ namespace EnemiesReturns
 
                 var sandCrabBody = new SandCrabBody();
 
-                var sandCrabLog = Utils.CreateUnlockableDef("Logs.SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
+                var sandCrabLog = Utils.CreateUnlockableDef("Logs.ER_SandCrabBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SANDCRAB");
                 unlockablesList.Add(sandCrabLog);
 
                 SandCrabBody.Skills.ClawSnip = sandCrabBody.CreateClawSnipSkill();

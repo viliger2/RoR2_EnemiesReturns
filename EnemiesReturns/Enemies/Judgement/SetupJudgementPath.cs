@@ -273,25 +273,18 @@ namespace EnemiesReturns.Enemies.Judgement
             // since for sure indexes for values will change
             ILCursor c = new ILCursor(il);
             if (c.TryGotoNext(MoveType.After,
-                x => x.MatchLdloc(112),
-                x => x.MatchLdloc(46),
+                x => x.MatchLdloc(136),
+                x => x.MatchLdloc(47),
                 x => x.MatchConvR4(),
                 x => x.MatchLdcR4(1),
                 x => x.MatchMul(),
                 x => x.MatchAdd(),
-                x => x.MatchStloc(112)))
+                x => x.MatchStloc(136)))
             {
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.Emit(OpCodes.Ldloc, 112); // 112 is float where slows are collected
-                c.EmitDelegate<System.Func<RoR2.CharacterBody, float, float>>((self, ammount) =>
-                {
-                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
-                    {
-                        return 1;
-                    }
-                    return ammount;
-                });
-                c.Emit(OpCodes.Stloc, 112);
+                c.Emit(OpCodes.Ldloc, 136); // 136 is float where slows are collected
+                c.EmitDelegate<System.Func<RoR2.CharacterBody, float, float>>(RemoveSlowAeonian);
+                c.Emit(OpCodes.Stloc, 136);
             }
             else
             {
@@ -299,20 +292,31 @@ namespace EnemiesReturns.Enemies.Judgement
             }
 
             while (c.TryGotoNext(MoveType.Before,
-                x => x.MatchStloc(126)))
+                x => x.MatchStloc(153)))
             {
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.Emit(OpCodes.Ldloc, 126); // 126 is float where attack speed is stored
-                c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>((newValue, self, origValue) =>
-                {
-                    if (self.HasBuff(Content.Buffs.AffixAeoninan))
-                    {
-                        return Mathf.Max(newValue, origValue);
-                    }
-                    return newValue;
-                });
+                c.Emit(OpCodes.Ldloc, 153); // 153 is float where attack speed is stored
+                c.EmitDelegate<System.Func<float, RoR2.CharacterBody, float, float>>(RemoveAttackSpeedSlowAeonian);
                 c.Index++;
             }
+        }
+
+        private static float RemoveAttackSpeedSlowAeonian(float newValue, CharacterBody self, float origValue)
+        {
+            if (self.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                return Mathf.Max(newValue, origValue);
+            }
+            return newValue;
+        }
+
+        private static float RemoveSlowAeonian(CharacterBody self, float ammount)
+        {
+            if (self.HasBuff(Content.Buffs.AffixAeoninan))
+            {
+                return 1f;
+            }
+            return ammount;
         }
 
         [Obsolete("Please use methods from EnemiesReturns.Enemies.AnointedSkins, this method now does nothing and is only left for backcompat.")]

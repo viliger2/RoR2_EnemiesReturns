@@ -155,6 +155,7 @@ namespace EnemiesReturns.Enemies.SandCrab
 
             var projectileController = projectilePrefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = projectileGhost;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = flightLoop;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = 1f;

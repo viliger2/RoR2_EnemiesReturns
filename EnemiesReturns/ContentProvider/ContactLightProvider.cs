@@ -58,17 +58,17 @@ namespace EnemiesReturns
                 {
                     Content.Stages.ContactLight = assets.First(sd => sd.cachedName == "enemiesreturns_contactlight");
                     Content.Stages.ContactLight.mainTrack = Content.MusicTracks.Coalescence;
-                    _contentPack.sceneDefs.Add(assets);
+                    scenesList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
                 {
-                    _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
-                    _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
-                    _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
-                    _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+                    bodyList.AddRange(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                    masterList.AddRange(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                    projectilesList.AddRange(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                    effectsList.AddRange(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                    _contentPack.networkedObjectPrefabs.Add(assets.Where(asset =>
+                   nopList.AddRange(assets.Where(asset =>
                         asset.TryGetComponent<NetworkIdentity>(out _)
                             && !(asset.TryGetComponent<CharacterBody>(out _)
                                 || asset.TryGetComponent<CharacterMaster>(out _)
@@ -153,7 +153,8 @@ namespace EnemiesReturns
                     Content.Items.AccessCard = assets.First(item => item.name == "AccessCard");
                     Content.Items.SwordShard = assets.First(item => item.name == "SwordShard");
 
-                    _contentPack.itemDefs.Add(new ItemDef[] {Content.Items.AccessCard, Content.Items.SwordShard});
+                    itemList.Add(Content.Items.AccessCard);
+                    itemList.Add(Content.Items.SwordShard);
 
                     if (Configuration.General.EnableAdrenalineCore.Value)
                     {
@@ -162,13 +163,13 @@ namespace EnemiesReturns
                         {
                             Content.Items.AdrenalineCore.unlockableDef = null;
                         }
-                        _contentPack.itemDefs.Add(new ItemDef[] { Content.Items.AdrenalineCore });
+                        itemList.Add(Content.Items.AdrenalineCore);
                     }
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
                 {
-                    _contentPack.buffDefs.Add(assets);
+                    bdList.AddRange(assets);
                     Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
                     Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "bdAdrenalineCoreProtection");
                     Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
@@ -177,16 +178,16 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<UnlockableDef[]>)((assets) =>
                 {
-                    Enemies.ContactLight.SetupContactLight.wardrobeUnlockable = assets.First(unlockable => unlockable.cachedName == "Interactables.ER_Wardrobe.0");
+                    Content.Unlockables.Wardrobe = assets.First(unlockable => unlockable.cachedName == "Interactables.ER_Wardrobe.0");
 
-                    _contentPack.unlockableDefs.Add(assets);
+                    unlockablesList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameEndingDef[]>)((assets) =>
                 {
                     Content.GameEndings.EscapeIntoPast = assets.First(item => item.cachedName == "EscapedIntoThePast");
 
-                    _contentPack.gameEndingDefs.Add(assets);
+                    endingsList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
@@ -199,7 +200,7 @@ namespace EnemiesReturns
                         Content.Equipment.EliteSlayer.unlockableDef = null;
                     }
 
-                    _contentPack.equipmentDefs.Add(assets);
+                    equipmentList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SpawnCard[]>)((assets) =>
@@ -214,7 +215,7 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
                 {
-                    _contentPack.skillFamilies.Add(assets);
+                    sfList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>
@@ -225,8 +226,7 @@ namespace EnemiesReturns
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
                 {
                     TempleGuardBody.SetupSkills(assets);
-
-                    _contentPack.skillDefs.Add(assets);
+                    sdList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<TMP_SpriteAsset[]>)((assets) =>

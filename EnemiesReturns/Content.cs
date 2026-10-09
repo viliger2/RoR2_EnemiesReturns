@@ -185,5 +185,10 @@ namespace EnemiesReturns
         {
 
         }
+
+        public static class Unlockables
+        {
+            public static UnlockableDef Wardrobe;
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace EnemiesReturns
         {
             if (Configuration.General.EnableMechanicalSpider.Value)
             {
-                var spiderLog = Utils.CreateUnlockableDef("Logs.MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
+                var spiderLog = Utils.CreateUnlockableDef("Logs.ER_MechanicalSpiderBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_MECHANICAL_SPIDER");
                 unlockablesList.Add(spiderLog);
 
                 var spiderStuff = new MechanicalSpiderStuff();

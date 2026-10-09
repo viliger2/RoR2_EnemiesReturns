@@ -29,7 +29,7 @@ namespace EnemiesReturns.Behaviors.Judgement
 
         private void PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3(On.RoR2.PickupDropletController.orig_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 orig, GenericPickupController.CreatePickupInfo pickupInfo, Vector3 position, Vector3 velocity)
         {
-            if (RoR2.Stage.instance.sceneDef.cachedName == "enemiesreturns_outoftime")
+            if (RoR2.Stage.instance.sceneDef.cachedName == Content.Stages.OutOfTime.cachedName)
             {
                 if (!pickupInfo.pickup.isTempItem)
                 {

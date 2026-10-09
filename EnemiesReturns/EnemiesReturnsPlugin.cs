@@ -151,7 +151,7 @@ namespace EnemiesReturns
 
         private static void UpdateTargets(On.RoR2.EquipmentSlot.orig_UpdateTargets orig, EquipmentSlot self, EquipmentIndex targetingEquipmentIndex, bool userShouldAnticipateTarget)
         {
-            if (Configuration.General.EnableJudgement.Value && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
+            if (Configuration.General.EnableJudgement.Value && Content.Equipment.VoidlingWeapon && targetingEquipmentIndex == Content.Equipment.VoidlingWeapon.equipmentIndex && userShouldAnticipateTarget)
             {
                 Equipment.VoidlingWeapon.VoidlingWeapon.UpdateTargets(self);
             }

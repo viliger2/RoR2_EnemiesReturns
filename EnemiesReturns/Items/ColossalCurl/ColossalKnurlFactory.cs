@@ -59,6 +59,7 @@ namespace EnemiesReturns.Items.ColossalKnurl
 
             var projectileController = fistPrefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = fistGhostPrefab;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.cannotBeDeleted = true; // why would you allow captain to delete stone fist, that's just inapropriate
             projectileController.canImpactOnTrigger = false;
             projectileController.allowPrediction = true;

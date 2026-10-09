@@ -73,7 +73,7 @@ namespace EnemiesReturns.Behaviors.Judgement.BrokenTeleporter
                 return;
             }
 
-            characterBody.inventory.RemoveItem(requiredItem, characterBody.inventory.GetItemCount(requiredItem));
+            //characterBody.inventory.RemoveItem(requiredItem, characterBody.inventory.GetItemCount(requiredItem));
             ScrapperController.CreateItemTakenOrb(characterBody.transform.position, this.gameObject, requiredItem.itemIndex);
             Invoke("SpawnPortal", 1.5f);
 

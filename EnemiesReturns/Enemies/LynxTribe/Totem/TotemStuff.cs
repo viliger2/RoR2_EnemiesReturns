@@ -69,6 +69,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             prefab.AddComponent<TeamFilter>();
 
             var projectileController = prefab.AddComponent<ProjectileController>();
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = 1f;
             projectileController.cannotBeDeleted = true;

@@ -31,37 +31,40 @@ namespace EnemiesReturns.Items.LynxFetish
         private static void HealthComponent_TakeDamageProcess(ILContext il)
         {
             // TODO: check it after each game update
+            // float incomingDamage = damageInfo.damage;
             // look for ldfld float32 RoR2.DamageInfo::damage, stloc.s X where X is your desired number
             ILCursor c = new ILCursor(il);
             if (c.TryGotoNext(MoveType.After,
-                x => x.MatchStloc(10)))
+                x => x.MatchStloc(12)))
             {
-                c.Emit(OpCodes.Ldloc, 10); // 10 is stloc.s number after RoR2.DamageInfo::damage
+                c.Emit(OpCodes.Ldloc, 12); // 12 is stloc.s number after RoR2.DamageInfo::damage
                 c.Emit(OpCodes.Ldarg_1); // damageInfo
                 c.Emit(OpCodes.Ldarg_0); // self (healthComponent)
-                c.EmitDelegate<Func<float, DamageInfo, HealthComponent, float>>((origDamage, damageInfo, self) =>
-                {
-                    float newDamage = origDamage;
-                    CharacterBody victimBody = self.body;
-                    if (victimBody && damageInfo.attacker)
-                    {
-                        CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                        if (attackerBody)
-                        {
-                            if ((damageInfo.damageType & DamageSource.Special) == DamageSource.Special && attackerBody.HasBuff(Content.Buffs.LynxShamanSpecialDamage))
-                            {
-                                newDamage *= 1 + (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishShamanSpecialBuff.Value / 100f);
-                            }
-                        }
-                    }
-                    return newDamage;
-                });
-                c.Emit(OpCodes.Stloc, 10);
+                c.EmitDelegate<Func<float, DamageInfo, HealthComponent, float>>(BuffSpecialDamage);
+                c.Emit(OpCodes.Stloc, 12);
             }
             else
             {
                 Log.Warning("IL Hook Failed - RoR2.HealthComponent.TakeDamageProcess: Lynx Fetish Special damage buff won't be working.");
             }
+        }
+
+        private static float BuffSpecialDamage(float origDamage, DamageInfo damageInfo, HealthComponent self)
+        {
+            float newDamage = origDamage;
+            CharacterBody victimBody = self.body;
+            if (victimBody && damageInfo.attacker)
+            {
+                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                if (attackerBody)
+                {
+                    if ((damageInfo.damageType & DamageSource.Special) == DamageSource.Special && attackerBody.HasBuff(Content.Buffs.LynxShamanSpecialDamage))
+                    {
+                        newDamage *= 1 + (EnemiesReturns.Configuration.LynxTribe.LynxTotem.LynxFetishShamanSpecialBuff.Value / 100f);
+                    }
+                }
+            }
+            return newDamage;
         }
 
         public static void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)

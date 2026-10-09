@@ -350,6 +350,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/FlyingVermin/VerminSpitProjectile.prefab").WaitForCompletion().InstantiateClone("MechanicalSpiderDoubleShotProjectile", true);
 
             var projectileController = projectilePrefab.GetComponent<ProjectileController>();
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.ghostPrefab = CreateDoubleShotGhostPrefab();
             projectileController.flightSoundLoop = CreateProjectileLoopSoundDef();
 
@@ -364,7 +365,7 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             var projectileFlightSoundLoop = ScriptableObject.CreateInstance<LoopSoundDef>();
             (projectileFlightSoundLoop as ScriptableObject).name = "lsdMechanicalSpiderProjectileFlight";
             projectileFlightSoundLoop.startSoundName = "ER_Spider_Projectile_Loop_Play";
-            projectileFlightSoundLoop.startSoundName = "ER_Spider_Projectile_Loop_Stop";
+            projectileFlightSoundLoop.stopSoundName = "ER_Spider_Projectile_Loop_Stop";
 
             ProjectileFlightSoundLoop = projectileFlightSoundLoop;
 
