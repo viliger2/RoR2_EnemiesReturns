@@ -19,7 +19,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/MechanicalSpider/texMechanicalSpiderEnemyIcon.png" alt="Mechanical Spider"></td>
 		<td>Mechanical Spider</td>
 		<td>Re-programmable malware of the modern age. They will harass you at range and dash away from your attacks.</td>
-		<td>Verdant Falls, Viscous Falls, Rallypoint Delta, Sirens Call, Conduit Canyon, Pretender's Precipice</td>
+		<td>Verdant Falls, Viscous Falls, Rallypoint Delta, Sirens Call, Conduit Canyon, Pretender's Precipice, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Forlorn_Wreckage/">Forlorn Wreckage</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Broadcast_Perch/">Broadcast Perch</a></td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Shaman/texLynxShamanIcon.png" alt="Lynx Shaman"></td>
@@ -31,7 +31,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
 		<td>Archer Bug</td>
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
-		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a></td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a></td>
 	</tr>	
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>
@@ -51,13 +51,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a>, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a></td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a>, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Broadcast_Perch/">Broadcast Perch</a></td>
 	</tr>
 		<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/SandCrab/texSandCrabIcon.png" alt="Sand Crab"></td>
 		<td>Sand Crab</td>
 		<td>Slows prey down and then chops it up with its giant claws.</td>
-		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Iron Alluvium, Iron Auroras, Repurposed Crater</td>
+		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Iron Alluvium, Iron Auroras, Repurposed Crater, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Desolate_Coast/">Desolate Coast</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a></td>
 	</tr>
 	<thead>
 		<tr>
@@ -71,7 +71,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Colossus/texColossusIcon.png" alt="Colossus"></td>
 		<td>Colossus</td>
 		<td>The one and only.</td>
-		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Pretender's Precipice, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a></td>
+		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Pretender's Precipice, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Forlorn_Wreckage/">Forlorn Wreckage</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a></td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
@@ -83,7 +83,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Totem/texLynxTotemIcon.png" alt="Lynx Totem"></td>
 		<td>Lynx Totem</td>
 		<td>Lynx Tribe's object of worship. Do not be deceived, it is not as immobile and harmless as it seems.</td>
-		<td>Titanic Plains, Distant Roost, Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a></td>
+		<td>Titanic Plains, Distant Roost, Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Hollow_Summit/">Hollow Summit</a></td>
 	</tr>		
 </table>
 
