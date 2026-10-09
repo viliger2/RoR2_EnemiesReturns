@@ -28,7 +28,7 @@ namespace EnemiesReturns
                 return;
             }
 
-            Items.AdrenalineCore.AdrenalineCoreMasterComponent.InitMasterCatalog();
+            //Items.AdrenalineCore.AdrenalineCoreMasterComponent.InitMasterCatalog();
             EnemiesReturns.Skills.Engi.MechanicalSpiderTurret.SetupSkill.InitMasterCatalog();
             EnemiesReturns.Enemies.Judgement.SetupJudgementPath.InitMasterCatalog();
         }
