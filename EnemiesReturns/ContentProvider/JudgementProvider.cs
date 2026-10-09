@@ -460,7 +460,6 @@ namespace EnemiesReturns
                 //effectsList.Add(new EffectDef(ArraignDamageController.hitEffectPrefab));
 
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
-                //BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
                 Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
                 // TODO: remove

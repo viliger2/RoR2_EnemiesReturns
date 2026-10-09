@@ -1,4 +1,31 @@
 <details>
+<summary>0.7.29</summary>
+
+* Updated for DLC4.
+  * _Due to existence of vanilla Lynx tribe and other fun things, now every single object from this mod starts with "ER_" prefix. I am sorry for the inconvenience if you were searching catalogs by name, but without it I would not be able to load the mod at all due to name collisions. This is something that should've been done ages ago and I apologize for not doing this sooner._
+  * _Also update was made somewhat in a rush, so let me know if anything breaks, both error and visual wise._
+* Added support for Winslow stages (Stagnant Pipeworks and Forlorn Wreckage).
+* Swift
+  * Re-enabled predictive aiming config value.
+* Ifrit
+  * Fixed LineRenderer from Ifrit to pillars not working and networked it.
+* Colossus
+  * You can now stand on his head.
+  * Nerfed homing on Rock Clap to 20 (was 40).
+    * _This will get touched again once I start playing the DLC, because it seems they changed something again and 20 is now not enough._
+* Sand Crab
+  * Fixed acid globes appearing during intro cutscene.
+* Archer Bug
+  * Restored Jungle variant. Now Jungle variant disables itself if SS2O is found.
+* Judgement
+  * Aeonian elite ramp adjustments. It should now have more contrast.
+  * Fixed potential NRE on Aeonian elite death.
+  * Fixed SkipController, so now you can skip ending cutscene.
+  * Added Judgement skin to SS2U Chirr.
+  * Some visual changes due to game update.  
+    * _Most of these are not intentional and will get additional pass._
+</details>
+<details>
 <summary>0.7.28</summary>
 
 * Judgement
