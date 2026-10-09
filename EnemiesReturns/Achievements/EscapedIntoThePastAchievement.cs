@@ -19,16 +19,5 @@ namespace EnemiesReturns.Achievements
             }
             return false;
         }
-
-        public override void TryToCompleteActivity()
-        {
-            bool flag = base.localUser.id == LocalUserManager.GetFirstLocalUser().id;
-            if (shouldGrant && flag)
-            {
-                BaseActivitySelector baseActivitySelector = new BaseActivitySelector();
-                baseActivitySelector.activityAchievementID = "EnemiesReturnsEscapedIntoThePast";
-                PlatformSystems.activityManager.TryToCompleteActivity(baseActivitySelector);
-            }
-        }
     }
 }

@@ -55,16 +55,5 @@ namespace EnemiesReturns.Achievements
             SetServerTracked(shouldTrack: false);
             base.OnBodyRequirementBroken();
         }
-
-        public override void TryToCompleteActivity()
-        {
-            bool flag = base.localUser.id == LocalUserManager.GetFirstLocalUser().id;
-            if (shouldGrant && flag)
-            {
-                BaseActivitySelector baseActivitySelector = new BaseActivitySelector();
-                baseActivitySelector.activityAchievementID = achievementDef.identifier;
-                PlatformSystems.activityManager.TryToCompleteActivity(baseActivitySelector);
-            }
-        }
     }
 }

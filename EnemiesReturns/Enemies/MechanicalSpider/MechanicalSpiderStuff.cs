@@ -109,7 +109,6 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             modelLocator.modelTransform = modelTransform;
             modelLocator.modelVisibility = null;
             modelLocator.modelBaseTransform = modelBase;
-            modelLocator.modelScaleCompensation = 1f;
 
             modelLocator.autoUpdateModelTransform = false;
             modelLocator.dontDetatchFromParent = true;
