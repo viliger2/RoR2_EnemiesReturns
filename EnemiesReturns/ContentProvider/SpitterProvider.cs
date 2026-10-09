@@ -31,7 +31,7 @@ namespace EnemiesReturns
                 Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile = spitterStuff.CreateNormalSpitProjectile();
                 projectilesList.Add(Junk.ModdedEntityStates.Spitter.NormalSpit.normalSpitProjectile);
 
-                var spitterLog = Utils.CreateUnlockableDef("Logs.SpitterBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER");
+                var spitterLog = Utils.CreateUnlockableDef("Logs.ER_SpitterBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SPITTER");
                 unlockablesList.Add(spitterLog);
 
                 var spitterBody = new SpitterBody();

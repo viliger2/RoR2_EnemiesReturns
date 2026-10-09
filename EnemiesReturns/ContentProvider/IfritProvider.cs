@@ -75,7 +75,7 @@ namespace EnemiesReturns
                 sdList.Add(IfritBody.Skills.Smash);
                 sfList.Add(IfritBody.SkillFamilies.Primary);
 
-                var ifritLog = Utils.CreateUnlockableDef("Logs.IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
+                var ifritLog = Utils.CreateUnlockableDef("Logs.ER_IfritBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_IFRIT");
                 unlockablesList.Add(ifritLog);
 
                 IfritBody.BodyPrefab = ifritBody.AddBodyComponents(assets.First(body => body.name == "IfritBody"), iconLookup["texIconIfritBody"], ifritLog, dtIfrit);

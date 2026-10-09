@@ -47,14 +47,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 c.Index--;
                 c.Emit(OpCodes.Ldarg_0); // self
-                c.EmitDelegate<System.Func<float, RoR2.HealthComponent, float>>((amount, self) =>
-                {
-                    if (self.body && self.body.HasBuff(Content.Buffs.ReduceHealing))
-                    {
-                        amount *= (1f - EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesHealingFraction.Value);
-                    }
-                    return amount;
-                });
+                c.EmitDelegate<System.Func<float, RoR2.HealthComponent, float>>(LynxShamanDebuffReduceHealing);
                 c.Emit(OpCodes.Starg, 1);
                 c.Emit(OpCodes.Ldarg_1);
             }
@@ -62,6 +55,15 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             {
                 Log.Warning("IL Hook Failed - RoR2.HealthComponent.Heal: Lynx Shaman debuff won't reduce incoming healing.");
             }
+        }
+
+        private static float LynxShamanDebuffReduceHealing(float amount, HealthComponent self)
+        {
+            if (self.body && self.body.HasBuff(Content.Buffs.ReduceHealing))
+            {
+                amount *= (1f - EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectilesHealingFraction.Value);
+            }
+            return amount;
         }
 
         public GameObject CreateReduceHealingVisualEffect()
@@ -319,6 +321,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = ghost;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = loopSound;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = EnemiesReturns.Configuration.LynxTribe.LynxShaman.SummonProjectileProcCoefficient.Value;

@@ -407,6 +407,11 @@ namespace EnemiesReturns
             return CostTypeIndex.None;
         }
 
+        public static void Rename(this EffectDef effectDef, string newName)
+        {
+            effectDef.prefabName = newName;
+            effectDef.prefab.name = newName;
+        }
         public static Mesh GenerateLinkDebugMeshOnlyActiveGates(this RoR2.Navigation.NodeGraph nodeGraph, HullMask hullMask)
         {
             using WireMeshBuilder wireMeshBuilder = new WireMeshBuilder();

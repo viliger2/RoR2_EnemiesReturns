@@ -22,7 +22,7 @@ namespace EnemiesReturns
                 ModdedEntityStates.ArcherBugs.FireCausticSpit.projectilePrefab = ArcherBugCausticSpitProjectile;
                 projectilesList.Add(ArcherBugCausticSpitProjectile);
 
-                var archerBugLog = Utils.CreateUnlockableDef("Logs.ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
+                var archerBugLog = Utils.CreateUnlockableDef("Logs.ER_ArcherBugBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_ARCHERBUG");
                 unlockablesList.Add(archerBugLog);
 
                 var ArcherBugDeathEffect = archerBugStuff.CreateDeathEffect();

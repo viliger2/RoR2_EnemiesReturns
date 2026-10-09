@@ -48,6 +48,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var controller = gameObject.GetComponent<ProjectileController>();
             controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/MegaFireballGhost.prefab").WaitForCompletion();
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "Play_lemurianBruiser_m1_shoot";
             controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
 
@@ -70,6 +71,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var controller = gameObject.GetComponent<ProjectileController>();
             controller.ghostPrefab = null;
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
 
             var scale = EnemiesReturns.Configuration.Ifrit.HellzoneRadius.Value;
@@ -112,6 +114,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var controller = gameObject.GetComponent<ProjectileController>();
             controller.ghostPrefab = null;
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "ER_Ifrit_Volcano_Play";
 
             gameObject.GetComponent<ProjectileDamage>().damageType = new DamageTypeCombo(DamageType.IgniteOnHit, DamageTypeExtended.Generic, DamageSource.Secondary);
@@ -181,6 +184,7 @@ namespace EnemiesReturns.Enemies.Ifrit
 
             var projectileController = gameObject.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = CreateHellzonePillarProjectileGhost(ghostPrefab);
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.cannotBeDeleted = true;
             projectileController.canImpactOnTrigger = false;
             projectileController.allowPrediction = false;

@@ -48,7 +48,9 @@ namespace EnemiesReturns.Enemies.Spitter
                 UnityEngine.Object.DestroyImmediate(component2);
             }
 
-            clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetRecoloredSpitProjectileGhost();
+            var controller = clonedProjectile.GetComponent<ProjectileController>();
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
+            controller.ghostPrefab = GetRecoloredSpitProjectileGhost();
 
             #region MainSpitZone
 
@@ -116,7 +118,9 @@ namespace EnemiesReturns.Enemies.Spitter
                 UnityEngine.Object.DestroyImmediate(component2);
             }
 
-            clonedProjectile.GetComponent<ProjectileController>().ghostPrefab = GetRecoloredSpitProjectileGhost();
+            var controller = clonedProjectile.GetComponent<ProjectileController>();
+            controller.ghostPrefab = GetRecoloredSpitProjectileGhost();
+            controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosion>();
             explosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;

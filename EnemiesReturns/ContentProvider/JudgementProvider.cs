@@ -96,7 +96,7 @@ namespace EnemiesReturns
                         Content.Elites.Aeonian.damageBoostCoefficient = Judgement.AeonianEliteDamageMultiplier.Value;
                     }
 
-                    _contentPack.eliteDefs.Add(assets);
+                    elitesList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SceneDef[]>)((assets) =>
@@ -104,7 +104,7 @@ namespace EnemiesReturns
                     Content.Stages.OutOfTime = assets.First(sd => sd.cachedName == "enemiesreturns_outoftime");
                     Content.Stages.JudgementOutro = assets.First(sd => sd.cachedName == "enemiesreturns_judgementoutro");
 
-                    _contentPack.sceneDefs.Add(assets);
+                    scenesList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
@@ -145,12 +145,12 @@ namespace EnemiesReturns
                     Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser = assets.First(asset => (asset as ScriptableObject).name == "sdArraignHauntSkyLaser");
                     Enemies.Judgement.Arraign.ArraignBody.HauntSkills.SummonSkyLaser.baseRechargeInterval = Configuration.Judgement.ArraignP2.SkyLaserCooldown.Value;
 
-                    _contentPack.skillDefs.Add(assets);
+                    sdList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillFamily[]>)((assets) =>
                 {
-                    _contentPack.skillFamilies.Add(assets);
+                    sfList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<BuffDef[]>)((assets) =>
@@ -160,7 +160,7 @@ namespace EnemiesReturns
                     Content.Buffs.ImmuneToAllDamageExceptHammer = assets.First(buff => buff.name == "bdImmuneToAllDamageExceptHammer");
                     Content.Buffs.ImmuneToAllDamageExceptHammer.iconSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarGolem.texBuffLunarShellIcon_tif).WaitForCompletion();
 
-                    _contentPack.buffDefs.Add(assets);
+                    bdList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<Material[]>)((assets) =>
@@ -170,10 +170,10 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<GameObject[]>)((assets) =>
                 {
-                    _contentPack.bodyPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
-                    _contentPack.masterPrefabs.Add(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
-                    _contentPack.projectilePrefabs.Add(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
-                    _contentPack.effectDefs.Add(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
+                    bodyList.AddRange(assets.Where(asset => asset.TryGetComponent<CharacterBody>(out _)).ToArray());
+                    masterList.AddRange(assets.Where(asset => asset.TryGetComponent<CharacterMaster>(out _)).ToArray());
+                    projectilesList.AddRange(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
+                    effectsList.AddRange(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
                     var p1Body = assets.First(asset => asset.name == "ArraignP1Body");
                     Enemies.Judgement.Arraign.ArraignBody.ArraignP1Body = ArraignBody.SetupP1Body(p1Body);
@@ -291,7 +291,7 @@ namespace EnemiesReturns
 
                     Content.Items.HiddenAnointed = assets.First(item => item.name == "HiddenAnointed");
 
-                    _contentPack.itemDefs.Add(assets);
+                    itemList.AddRange(assets);
 
                     var lunarEliteRecipe = ScriptableObject.CreateInstance<CraftableDef>();
                     (lunarEliteRecipe as ScriptableObject).name = "cdEnemiesReturnsEliteLunar";
@@ -347,7 +347,7 @@ namespace EnemiesReturns
                 {
                     Content.GameEndings.SurviveJudgement = assets.First(item => item.cachedName == "SurviveJudgement");
 
-                    _contentPack.gameEndingDefs.Add(assets);
+                    endingsList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemTierDef[]>)((assets) =>
@@ -355,7 +355,7 @@ namespace EnemiesReturns
                     Content.ItemTiers.HiddenInLogbook = assets.First(item => item.name == "HiddenInLogbook");
                     Content.ItemTiers.HiddenInLogbook.highlightPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/HighlightTier1Item.prefab").WaitForCompletion();
                     Content.ItemTiers.HiddenInLogbook.dropletDisplayPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/BossOrb.prefab").WaitForCompletion();
-                    _contentPack.itemTierDefs.Add(assets);
+                    tiersList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<EquipmentDef[]>)((assets) =>
@@ -372,7 +372,7 @@ namespace EnemiesReturns
                     Content.Equipment.VoidlingWeapon.pickupModelPrefab = Equipment.VoidlingWeapon.VoidlingWeapon.SetupPickupDisplay(Content.Equipment.VoidlingWeapon.pickupModelPrefab);
 #pragma warning restore CS0618 // Type or member is obsolete
 
-                    _contentPack.equipmentDefs.Add(assets);
+                    equipmentList.AddRange(assets);
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<CharacterSpawnCard[]>)((assets) =>

@@ -86,8 +86,6 @@ namespace EnemiesReturns.Enemies.ContactLight
             {"artifactworld03", new PositionAndRotation(new Vector3(-18.3999996f,-4.36375141f,3.52999997f), new Vector3(0,242.920288f,0)) }
         };
 
-        public static UnlockableDef wardrobeUnlockable;
-
         public static void Hooks()
         {
             if (Configuration.General.EnableContactLight.Value)
@@ -226,7 +224,7 @@ namespace EnemiesReturns.Enemies.ContactLight
                 return;
             }
 
-            if(RoR2.Run.instance.IsUnlockableUnlocked(wardrobeUnlockable) || Configuration.ContactLight.ContactLight.ForceUnlock.Value)
+            if(RoR2.Run.instance.IsUnlockableUnlocked(Content.Unlockables.Wardrobe) || Configuration.ContactLight.ContactLight.ForceUnlock.Value)
             {
                 var newObject = UnityEngine.Object.Instantiate(Content.Interactables.Wardrobe, new Vector3(-136.080002f, -21.1499996f, -33.4500008f), new Quaternion(-0.0393915996f, 0.618751168f, 0.0498490371f, 0.783013642f));
                 NetworkServer.Spawn(newObject);
@@ -266,23 +264,25 @@ namespace EnemiesReturns.Enemies.ContactLight
                 Log.Warning($"IL Hook Failed - ProximityHighlight.OnPreRenderOutlineHighlight: Contact Light doors will have only one outline.");
             }
 
-            void UpdateOtherHighlights(OutlineHighlight outlineHighlight, GameObject highlightGameObject, RoR2.Highlight highlight, Color color)
+
+        }
+
+        private static void UpdateOtherHighlights(OutlineHighlight outlineHighlight, GameObject highlightGameObject, RoR2.Highlight highlight, Color color)
+        {
+            var highlights = highlightGameObject.GetComponents<Highlight>();
+            if (highlights.Length < 2)
             {
-                var highlights = highlightGameObject.GetComponents<Highlight>();
-                if (highlights.Length < 2)
+                return;
+            }
+
+            foreach (var highlight2 in highlights)
+            {
+                if (highlight2 == highlight)
                 {
-                    return;
+                    continue;
                 }
 
-                foreach (var highlight2 in highlights)
-                {
-                    if (highlight2 == highlight)
-                    {
-                        continue;
-                    }
-
-                    outlineHighlight.AddHighlight(highlight2.targetRenderer, color * highlight2.strength);
-                }
+                outlineHighlight.AddHighlight(highlight2.targetRenderer, color * highlight2.strength);
             }
         }
 
@@ -305,23 +305,25 @@ namespace EnemiesReturns.Enemies.ContactLight
                 Log.Warning($"IL Hook Failed - ProximityHighlight.OnPreRenderOutlineHighlight: Contact Light doors will have only one outline.");
             }
 
-            void UpdateOtherHighlights(ProximityHighlight self, RoR2.OutlineHighlight outline, GameObject gameObject, RoR2.Highlight highlight)
-            {
-                var highlights = gameObject.GetComponents<Highlight>();
-                if (highlights.Length < 2)
-                {
-                    return;
-                }
-                foreach (var highlight2 in highlights)
-                {
-                    if (highlight2 == highlight)
-                    {
-                        continue;
-                    }
 
-                    Color h = highlight2.GetColor() * highlight2.strength * self.highlightScale;
-                    outline.AddHighlight(highlight2.targetRenderer, h);
+        }
+
+        private static void UpdateOtherHighlights(ProximityHighlight self, RoR2.OutlineHighlight outline, GameObject gameObject, RoR2.Highlight highlight)
+        {
+            var highlights = gameObject.GetComponents<Highlight>();
+            if (highlights.Length < 2)
+            {
+                return;
+            }
+            foreach (var highlight2 in highlights)
+            {
+                if (highlight2 == highlight)
+                {
+                    continue;
                 }
+
+                Color h = highlight2.GetColor() * highlight2.strength * self.highlightScale;
+                outline.AddHighlight(highlight2.targetRenderer, h);
             }
         }
 

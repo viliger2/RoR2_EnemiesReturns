@@ -61,7 +61,7 @@ namespace EnemiesReturns
 
                 ModdedEntityStates.Colossus.HeadLaserBarrage.HeadLaserBarrageAttack.intencityGraph = acdLookup["LaserBarrageLightIntencity"].curve;
 
-                var colossusLog = Utils.CreateUnlockableDef("Logs.ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
+                var colossusLog = Utils.CreateUnlockableDef("Logs.ER_ColossusBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_COLOSSUS");
                 unlockablesList.Add(colossusLog);
 
                 var laserEffect = colossusStuff.CreateLaserEffect();

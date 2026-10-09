@@ -16,7 +16,7 @@ namespace EnemiesReturns
         {
             if (Configuration.General.EnableSwift.Value)
             {
-                var swiftLog = Utils.CreateUnlockableDef("Logs.SwiftBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT");
+                var swiftLog = Utils.CreateUnlockableDef("Logs.ER_SwiftBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_SWIFT");
 
                 var swiftStuff = new SwiftStuff();
                 ModdedEntityStates.Swift.Dive.DivePrep.effectPrefab = swiftStuff.CreateDiveChargeEffect(assets.First(effect => effect.name == "SwiftChargeDiveEffect"));

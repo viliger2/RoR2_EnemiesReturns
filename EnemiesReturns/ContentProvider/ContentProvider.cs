@@ -18,6 +18,8 @@ namespace EnemiesReturns
     {
         public string identifier => EnemiesReturnsPlugin.GUID + "." + nameof(ContentProvider);
 
+        public const string ER_PREFIX = "ER_";
+
         private readonly ContentPack _contentPack = new ContentPack();
 
         public const string AssetBundleName = "enemiesreturns";
@@ -43,6 +45,11 @@ namespace EnemiesReturns
         private readonly List<BuffDef> bdList = new List<BuffDef>();
         private readonly List<CraftableDef> craftableList = new List<CraftableDef>();
         private readonly List<DroneDef> dronesList = new List<DroneDef>();
+        private readonly List<GameEndingDef> endingsList = new List<GameEndingDef>();
+        private readonly List<ItemTierDef> tiersList = new List<ItemTierDef>();
+        private readonly List<EquipmentDef> equipmentList = new List<EquipmentDef>();
+        private readonly List<SceneDef> scenesList = new List<SceneDef>();
+        private readonly List<EliteDef> elitesList = new List<EliteDef>();
 
         public static readonly Dictionary<string, string> ShaderLookup = new Dictionary<string, string>()
         {
@@ -190,21 +197,27 @@ namespace EnemiesReturns
             }
 #endif
             _contentPack.entityStateTypes.Add(entityStateTypes);
-            _contentPack.bodyPrefabs.Add(bodyList.ToArray());
-            _contentPack.masterPrefabs.Add(masterList.ToArray());
-            _contentPack.skillDefs.Add(sdList.ToArray());
-            _contentPack.skillFamilies.Add(sfList.ToArray());
+            _contentPack.bodyPrefabs.Add(AddPrefix(bodyList.ToArray()));
+            _contentPack.masterPrefabs.Add(AddPrefix(masterList.ToArray()));
+            _contentPack.skillDefs.Add(AddPrefix(sdList.ToArray()));
+            _contentPack.skillFamilies.Add(AddPrefix(sfList.ToArray()));
             _contentPack.entityStateTypes.Add(stateList.ToArray());
-            _contentPack.effectDefs.Add(effectsList.ToArray());
-            _contentPack.projectilePrefabs.Add(projectilesList.ToArray());
-            _contentPack.unlockableDefs.Add(unlockablesList.ToArray());
-            _contentPack.itemDefs.Add(itemList.ToArray());
-            _contentPack.networkSoundEventDefs.Add(nseList.ToArray());
-            _contentPack.networkedObjectPrefabs.Add(nopList.ToArray());
+            _contentPack.effectDefs.Add(AddPrefix(effectsList.ToArray()));
+            _contentPack.projectilePrefabs.Add(AddPrefix(projectilesList.ToArray()));
+            _contentPack.unlockableDefs.Add(unlockablesList.ToArray()); // game does lookups based on name so its better to not touch it and rename manually where needed
+            _contentPack.itemDefs.Add(AddPrefix(itemList.ToArray()));
+            _contentPack.networkSoundEventDefs.Add(AddPrefix(nseList.ToArray()));
+            _contentPack.networkedObjectPrefabs.Add(AddPrefix(nopList.ToArray()));
             _contentPack.itemRelationshipProviders.Add(new[] { Content.ItemRelationshipProviders.ModdedContagiousItemProvider });
-            _contentPack.buffDefs.Add(bdList.ToArray());
-            _contentPack.craftableDefs.Add(craftableList.ToArray());
-            _contentPack.droneDefs.Add(dronesList.ToArray());
+            _contentPack.buffDefs.Add(AddPrefix(bdList.ToArray()));
+            _contentPack.craftableDefs.Add(AddPrefix(craftableList.ToArray()));
+            _contentPack.droneDefs.Add(AddPrefix(dronesList.ToArray()));
+            _contentPack.gameEndingDefs.Add(AddPrefix(endingsList.ToArray()));
+            _contentPack.itemTierDefs.Add(AddPrefix(tiersList.ToArray()));
+            _contentPack.equipmentDefs.Add(AddPrefix(equipmentList.ToArray()));
+            _contentPack.sceneDefs.Add(scenesList.ToArray()); // all scenes already have enemiesreturns in their names
+            _contentPack.eliteDefs.Add(AddPrefix(elitesList.ToArray()));
+
             totalStopwatch.Stop();
             Log.Info("Total loading time: " + totalStopwatch.elapsedSeconds);
 
@@ -372,6 +385,24 @@ namespace EnemiesReturns
                     $"Error loading bank : {SoundsSoundBankFileName} " +
                     $"Error code : {akResult}");
             }
+        }
+
+        private T[] AddPrefix<T>(T[] objectList) where T : UnityEngine.Object
+        {
+            foreach(var objectInstance in objectList)
+            {
+                objectInstance.name = ER_PREFIX + objectInstance.name;
+            }
+            return objectList;
+        }
+
+        private EffectDef[] AddPrefix(EffectDef[] objectList)
+        {
+            foreach(var effectDef in objectList)
+            {
+                effectDef.Rename(ER_PREFIX + effectDef.prefabName);
+            }
+            return objectList;
         }
     }
 }

@@ -451,7 +451,7 @@ namespace EnemiesReturns
             LynxStormOrb.orbEffect = totemStuff.CreateStormSummonOrb(assets.First(prefab => prefab.name == "TotemSummonStormOrb"));
             effectsList.Add(new EffectDef(LynxStormOrb.orbEffect));
 
-            var totemLog = Utils.CreateUnlockableDef("Logs.LynxTotemBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM");
+            var totemLog = Utils.CreateUnlockableDef("Logs.ER_LynxTotemBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_TOTEM");
             unlockablesList.Add(totemLog);
 
             var totemBody = new TotemBody();
@@ -607,7 +607,7 @@ namespace EnemiesReturns
             ModdedEntityStates.LynxTribe.Shaman.SummonTrackingProjectilesShotgun.summonEffect = projectilesSummonEffect;
             effectsList.Add(new EffectDef(projectilesSummonEffect));
 
-            var shamanLog = Utils.CreateUnlockableDef("Logs.LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
+            var shamanLog = Utils.CreateUnlockableDef("Logs.ER_LynxShamanBody.0", "ENEMIES_RETURNS_UNLOCKABLE_LOG_LYNX_SHAMAN");
             unlockablesList.Add(shamanLog);
 
             var shamanBody = new ShamanBody();

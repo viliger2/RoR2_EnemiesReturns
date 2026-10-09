@@ -117,9 +117,9 @@ namespace EnemiesReturns.Items.AdrenalineCore
         public static float championPointReward => Configuration.ContactLight.AdrenalineCore.ChampionReward.Value;
 
 #if DEBUG || NOWEAVER 
-        public static int normalPointReward => 24;
+        public static float normalPointReward => 24f;
 #else
-        public static int normalPointReward => Configuration.ContactLight.AdrenalineCore.NormalReward.Value;
+        public static float normalPointReward => Configuration.ContactLight.AdrenalineCore.NormalReward.Value;
 #endif
 
         public static float tier1EliteModifier => Configuration.ContactLight.AdrenalineCore.T1EliteModifier.Value;

@@ -72,6 +72,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
 
             var projectileController = prefab.AddComponent<ProjectileController>();
             projectileController.ghostPrefab = ghost;
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = lsd;
             projectileController.allowPrediction = true;
             projectileController.procCoefficient = EnemiesReturns.Configuration.LynxTribe.LynxArcher.FireArrowProcCoefficient.Value;

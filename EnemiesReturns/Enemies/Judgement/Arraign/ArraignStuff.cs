@@ -50,6 +50,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
         {
             var projectileController = prefab.GetComponent<ProjectileController>();
             projectileController.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSunderWaveGhost.prefab").WaitForCompletion();
+            projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/Brother/lsdBrotherShockwave.asset").WaitForCompletion();
 
             prefab.GetComponent<ProjectileOverlapAttack>().impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion();

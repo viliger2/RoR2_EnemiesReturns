@@ -215,20 +215,22 @@ namespace EnemiesReturns.Enemies.Judgement
                 Log.Warning($"IL Hook Failed - RoR2.CharacterModel.UpdateMaterials: Anointed skins won't have their elite ramp applied.");
             }
 
-            static void UpdateRampProperly(CharacterModel charModel)
-            {
-                if (charModel.shaderEliteRampIndex == -1)
-                {
-                    var modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
 
-                    if (modelSkinController && modelSkinController.currentSkinIndex > 0)
+        }
+
+        private static void UpdateRampProperly(CharacterModel charModel)
+        {
+            if (charModel.shaderEliteRampIndex == -1)
+            {
+                var modelSkinController = charModel.gameObject.GetComponent<ModelSkinController>();
+
+                if (modelSkinController && modelSkinController.currentSkinIndex > 0)
+                {
+                    var skin = modelSkinController.skins[modelSkinController.currentSkinIndex];
+                    if (AnointedSkinsOverlayHashSet.Contains(skin))
                     {
-                        var skin = modelSkinController.skins[modelSkinController.currentSkinIndex];
-                        if (AnointedSkinsOverlayHashSet.Contains(skin))
-                        {
-                            charModel.propertyStorage.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
-                            charModel.propertyStorage.SetFloat(CommonShaderProperties._EliteIndex, 1f);
-                        }
+                        charModel.propertyStorage.SetTexture(Behaviors.SetEliteRampOnShader.EliteRampPropertyID, aeonianEliteRamp);
+                        charModel.propertyStorage.SetFloat(CommonShaderProperties._EliteIndex, 1f);
                     }
                 }
             }
@@ -545,35 +547,34 @@ namespace EnemiesReturns.Enemies.Judgement
             {
                 Log.Warning("IL Hook Failed - RoR2.UI.LoadoutPanelController.Row.FromSkin: Anointed skins won't be hidden in the lobby if they aren't unlocked.");
             }
-
-            static bool CheckForSpecialSkinDef(RoR2.UI.LoadoutPanelController owner, SkinDef skinDef)
+        }
+        private static bool CheckForSpecialSkinDef(RoR2.UI.LoadoutPanelController owner, SkinDef skinDef)
+        {
+            if (!skinDef.unlockableDef)
             {
-                if (!skinDef.unlockableDef)
-                {
-                    return false;
-                }
-
-                if (owner == null)
-                {
-                    return false;
-                }
-
-                UserProfile obj = owner.currentDisplayData.userProfile;
-                if (obj == null)
-                {
-                    return false;
-                }
-
-                if (obj.HasUnlockable(skinDef.unlockableDef))
-                {
-                    return false;
-                }
-                if (skinDef is HiddenSkinDef)
-                {
-                    return (skinDef as HiddenSkinDef).hideInLobby;
-                }
                 return false;
             }
+
+            if (owner == null)
+            {
+                return false;
+            }
+
+            UserProfile obj = owner.currentDisplayData.userProfile;
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (obj.HasUnlockable(skinDef.unlockableDef))
+            {
+                return false;
+            }
+            if (skinDef is HiddenSkinDef)
+            {
+                return (skinDef as HiddenSkinDef).hideInLobby;
+            }
+            return false;
         }
     }
 }
