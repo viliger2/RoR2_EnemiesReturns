@@ -274,6 +274,8 @@ namespace EnemiesReturns
                     brittleDeathScalable.GetComponent<EffectComponent>().applyScale = true;
                     effectsList.Add(new EffectDef(brittleDeathScalable));
                     ModdedEntityStates.Judgement.Aeonian.DeathState.effectPrefab = brittleDeathScalable;
+
+                    ModdedEntityStates.Judgement.Arraign.Beam.BeamLoop.beamPrefab = assets.First(asset => asset.name == "BeamVisuals");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -458,7 +460,7 @@ namespace EnemiesReturns
                 //effectsList.Add(new EffectDef(ArraignDamageController.hitEffectPrefab));
 
                 ModdedEntityStates.Judgement.Arraign.BaseSkyLeap.BaseHoldSkyLeap.markEffect = arraignStuff.CreateSkyLeapMarktempVisualEffect();
-                BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
+                //BeamLoop.beamPrefab = arraignStuff.CreateBeamEffect();
 
                 Enemies.Judgement.Arraign.ArraignDamageController.immuneToAllDamageExceptHammerMaterial = ContentProvider.GetOrCreateMaterial("matImmuneToAllExceptHammer", CreateImmuneToAllExceptHammerMaterial);
                 // TODO: remove
