@@ -35,7 +35,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 characterBody = GetComponent<CharacterBody>();
                 healthComponent = GetComponent<HealthComponent>();
 
-                if(characterBody && characterBody.master)
+                if (characterBody && characterBody.master)
                 {
                     masterComponent = characterBody.master.GetComponent<AdrenalineCoreMasterComponent>();
                 }
@@ -54,7 +54,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
 
                 stopwatch += Time.fixedDeltaTime;
-                if(stopwatch > healthCheckFreq)
+                if (stopwatch > healthCheckFreq)
                 {
                     return;
                 }
@@ -74,7 +74,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     ? (previousHp - healthComponent.shield) > healthComponent.fullShield * (criticalDamage / 100f)
                     : (previousHp - healthComponent.health) > healthComponent.fullHealth * (criticalDamage / 100f);
 
-                if(hpCheck && masterComponent && masterComponent.currentPoints > 0)
+                if (hpCheck && masterComponent && masterComponent.currentPoints > 0)
                 {
                     masterComponent.TakeCriticalDamage();
                 }
@@ -138,15 +138,22 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         public int currentLevel { get; private set; }
 
-        public bool useShields;
-
         private int itemCount;
 
         private CharacterMaster master;
 
         private bool uiAttached;
 
-        private bool gotProtectionBuff;
+        public bool GotProtectionBuff
+        {
+            get
+            {
+                if (!master) return false;
+                var body = master.GetBody();
+                if (!body) return false;
+                return body.HasBuff(Content.Buffs.AdrenalineCoreProtection);
+            }
+        }
 
         private void Awake()
         {
@@ -274,7 +281,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     if (body.mainHurtBox)
                     {
                         effectData.origin = body.mainHurtBox.transform.position;
-                        effectData.SetHurtBoxReference(body.gameObject);
+                        effectData.SetNetworkedObjectReference(body.gameObject);
                         effectData.scale = body.radius;
                     }
                     EffectManager.SpawnEffect(protectionDestroyedEffect, effectData, transmit: true);
@@ -292,15 +299,13 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 if (body.mainHurtBox)
                 {
                     effectData.origin = body.mainHurtBox.transform.position;
-                    effectData.SetHurtBoxReference(body.gameObject);
+                    effectData.SetNetworkedObjectReference(body.gameObject);
                     effectData.scale = body.radius;
                 }
                 EffectManager.SpawnEffect(levelDownEffect, effectData, transmit: true);
             }
 
             body.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, 0);
-
-            gotProtectionBuff = false;
 
             currentPoints = 0f;
             currentLevel = 0;
@@ -340,7 +345,8 @@ namespace EnemiesReturns.Items.AdrenalineCore
                                 {
                                     if (Array.Find(eliteTierDef.eliteTypes, item => item == eliteDef))
                                     {
-                                        rewardModifier = (int)(eliteTierDef.costMultiplier > CombatDirector.baseEliteCostMultiplier ? tier2EliteModifier : tier1EliteModifier);
+                                        rewardModifier = (eliteTierDef.costMultiplier > CombatDirector.baseEliteCostMultiplier ? tier2EliteModifier : tier1EliteModifier);
+                                        break;
                                     }
                                 }
                             }
@@ -372,7 +378,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         if (ownerBody.mainHurtBox)
                         {
                             effectData.origin = ownerBody.mainHurtBox.transform.position;
-                            effectData.SetHurtBoxReference(ownerBody.gameObject);
+                            effectData.SetNetworkedObjectReference(ownerBody.gameObject);
                             effectData.scale = ownerBody.radius;
                         }
                         EffectManager.SpawnEffect(levelUpEffect, effectData, transmit: true);
@@ -380,10 +386,9 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 }
                 ownerBody.SetBuffCount(Content.Buffs.AdrenalineCoreLevels.buffIndex, currentLevel);
 
-                if (currentLevel >= defaultMaxLevel && !gotProtectionBuff)
+                if (currentLevel >= defaultMaxLevel && !GotProtectionBuff)
                 {
                     ownerBody.AddBuff(Content.Buffs.AdrenalineCoreProtection);
-                    gotProtectionBuff = true;
                 }
                 ownerBody.MarkAllStatsDirty();
             }
@@ -434,7 +439,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(sender.master == master)
+            if(sender.master == master && sender.inventory.GetItemCountEffective(Content.Items.AdrenalineCore.itemIndex) > 0)
             {
                 args.attackSpeedMultAdd += (attackSpeedPerLevel / 100f) * currentLevel;
                 args.moveSpeedMultAdd += (movementSpeedPerLevel / 100f) * currentLevel;
@@ -461,7 +466,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
             {
                 if(body && body.master && body.master.TryGetComponent<AdrenalineCoreMasterComponent>(out var component))
                 {
-                    var itemCount = body.inventory.GetItemCountEffective(Content.Items.AdrenalineCore);
+                    var itemCount = body.inventory.GetItemCountPermanent(Content.Items.AdrenalineCore);
                     if(itemCount > 0)
                     {
                         if (!component.enabled)

@@ -25,11 +25,11 @@ namespace EnemiesReturns.Items.AdrenalineCore
         {
             if (masterBehaviour) 
             {
-                UpdateUI(masterBehaviour.GetCurrentPoints(), masterBehaviour.GetCurrentPointsPerLevel(), masterBehaviour.currentMaxLevel);
+                UpdateUI(masterBehaviour.GetCurrentPoints(), masterBehaviour.GetCurrentPointsPerLevel(), masterBehaviour.currentMaxLevel, masterBehaviour.GotProtectionBuff);
             }
         }
 
-        private void UpdateUI(float adrenalineLevel, float adrenalinePerLevel, int currentMaxLevel)
+        private void UpdateUI(float adrenalineLevel, float adrenalinePerLevel, int currentMaxLevel, bool hasProtectionBuff)
         {
             if (textMesh)
             {
@@ -46,6 +46,13 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     levelBar.fillAmount = Mathf.Clamp((float)adrenalineLevel % adrenalinePerLevel / adrenalinePerLevel, 0f, 1f);
                 }
 
+                if (hasProtectionBuff)
+                {
+                    levelBar.color = Color.blue;
+                } else
+                {
+                    levelBar.color = Color.yellow;
+                }
             }
         }
 
