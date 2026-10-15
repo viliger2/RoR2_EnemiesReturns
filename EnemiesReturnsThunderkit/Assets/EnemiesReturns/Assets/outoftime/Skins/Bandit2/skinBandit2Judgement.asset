@@ -12,17 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f16e491ff8a51e459a1d078b43e413d, type: 3}
   m_Name: skinBandit2Judgement
   m_EditorClassIdentifier: 
+  useCatalog: 0
   baseSkin:
     m_AssetGUID: 5c194d792f377224d823bc5f4e805317
     m_SubObjectName: 
     m_SubObjectType: 
-  bodyName: Bandit2Body
-  nameToken: ENEMIES_RETURNS_BANDIT2_SKIN_JUDGEMENT
-  icon: {fileID: 21300000, guid: d53458da447dce84f988c74c3fa9d2ad, type: 3}
-  bodyPrefab:
-    m_AssetGUID: 22c5b5de3a57a7b45bf3a6528e86c2fe
+  survivorDef:
+    m_AssetGUID: 1524b4e289414654bb0d6f6ae0bed9cd
     m_SubObjectName: 
     m_SubObjectType: 
+  bodyPrefabNameCatalog: 
+  baseSkinCatalog: 
+  nameToken: ENEMIES_RETURNS_BANDIT2_SKIN_JUDGEMENT
+  icon: {fileID: 21300000, guid: d53458da447dce84f988c74c3fa9d2ad, type: 3}
+  unlockable: {fileID: 0}
   renderInfos:
   - rendererName: Bandit2HatMesh
     material: {fileID: 2100000, guid: f506e083e3a16934b96644aeb2204584, type: 2}
@@ -59,3 +62,4 @@ MonoBehaviour:
     mesh: {fileID: 8377331823030118, guid: 82fba7388f042d744a209b7366acfb07, type: 3}
   - rendererName: Bandit2AccessoriesMesh
     mesh: {fileID: 0}
+  gameObjectActivations: []
