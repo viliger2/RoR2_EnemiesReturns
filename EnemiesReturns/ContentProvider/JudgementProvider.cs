@@ -399,10 +399,16 @@ namespace EnemiesReturns
                         var newSkin = moddedSkinDef.CreateSkinDef();
                         if (newSkin)
                         {
-                            var bodyObject = AssetAsyncReferenceManager<GameObject>.LoadAsset(moddedSkinDef.bodyPrefab).WaitForCompletion();
+                            var survivorDef = AssetAsyncReferenceManager<SurvivorDef>.LoadAsset(moddedSkinDef.survivorDef).WaitForCompletion();
+                            var bodyObject = survivorDef.bodyPrefab;
                             var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(bodyObject.name, newSkin, false, newSkin.icon);
                             var modelSkinController = bodyObject.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                             HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                            var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                            if (modelSkinController2)
+                            {
+                                HG.ArrayUtils.ArrayAppend(ref modelSkinController2.skins, in anointedSkin);
+                            }
                         }
                     }
                 }));

@@ -264,6 +264,11 @@ namespace EnemiesReturns.Enemies.Judgement
                         var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(survivorDef.bodyPrefab.name, skinDef, false, skinDef.icon);
                         var modelSkinController = survivorDef.bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                         HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                        var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                        if (modelSkinController2)
+                        {
+                            HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                        }
                     }
                 }
             }
@@ -362,11 +367,12 @@ namespace EnemiesReturns.Enemies.Judgement
                     HG.ArrayUtils.ArrayAppend(ref RoR2.ContentManagement.ContentManager._unlockableDefs, eliteSkinDef.unlockableDef);
                 }
 
-                var skinsArray = modelSkins.skins;
-                var index = skinsArray.Length;
-                Array.Resize(ref skinsArray, index + 1);
-                skinsArray[index] = eliteSkinDef;
-                modelSkins.skins = skinsArray;
+                HG.ArrayUtils.ArrayAppend(ref modelSkins.skins, eliteSkinDef);
+                var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                if (modelSkinController)
+                {
+                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
+                }
 
                 anointedSkinsLocal.Add(eliteSkinDef);
                 if (addToList)
@@ -447,7 +453,8 @@ namespace EnemiesReturns.Enemies.Judgement
                     descriptionToken = "ENEMIES_RETURNS_" + (bodyName + "JudgementCleared").ToUpper() + "_DESC",
                     type = typeof(Achievements.JudgementClearedAchievement),
                     serverTrackerType = typeof(Achievements.JudgementClearedAchievement.JudgementClearedServerAchievement),
-                    lunarCoinReward = 10u
+                    lunarCoinReward = 10u,
+                    silent = false
                 };
 
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
