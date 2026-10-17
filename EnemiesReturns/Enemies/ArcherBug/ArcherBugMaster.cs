@@ -27,7 +27,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
                 movementType = AISkillDriver.MovementType.Stop,
                 aimType = AISkillDriver.AimType.AtCurrentEnemy,
                 driverUpdateTimerOverride = 1f,
-                noRepeat = true
+                noRepeat = true,
             };
             return new IAISkillDriver.AISkillDriverParams[]
             {

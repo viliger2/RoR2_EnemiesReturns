@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -215,7 +216,7 @@ namespace EnemiesReturns.Behaviors
                     EquipmentIndex equipmentIndex = eliteDef?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
                     if (equipmentIndex != EquipmentIndex.None)
                     {
-                        master.inventory.SetEquipmentIndex(equipmentIndex, false);
+                        master.inventory.SetEquipmentIndex(equipmentIndex, master.inventory.activeEquipmentLocation);
                     }
                     if (combatSquad && combatSquad.grantBonusHealthInMultiplayer)
                     {

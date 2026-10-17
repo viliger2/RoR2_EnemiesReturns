@@ -7,7 +7,9 @@ using static RoR2.CharacterBody;
 
 namespace EnemiesReturns.Behaviors
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public abstract class BossDamageEquipmentOnDamageDealtServerReciever : ItemBehavior, IOnDamageDealtServerReceiver
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         public readonly static HashSet<BodyIndex> whiteListedBodies = new HashSet<BodyIndex>();
 
@@ -63,15 +65,11 @@ namespace EnemiesReturns.Behaviors
             var vector = Vector3.up * 20f + transform.forward * 2f;
             PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipmentIndex)), body.transform.position, vector, false);
 
-            for (uint i = 0; i < body.inventory.GetEquipmentSlotCount(); i++)
+            var location = body.inventory.GetEquipmentStateAndLocation(equipmentIndex).Item2;
+            if (!location.Equals(EquipmentLocation.invalid))
             {
-                var equipmentSlot = body.inventory.GetEquipment(i, body.inventory.FindBestEquipmentSetIndex());
-                if (equipmentSlot.equipmentIndex == equipmentIndex)
-                {
-                    var equipmentState = new EquipmentState(EquipmentIndex.None, Run.FixedTimeStamp.now, 0);
-                    body.inventory.SetEquipment(equipmentState, i, body.inventory.FindBestEquipmentSetIndex());
-                    break;
-                }
+                var equipmentState = new EquipmentState(EquipmentIndex.None, Run.FixedTimeStamp.now, 0);
+                body.inventory.SetEquipment(equipmentState, location);
             }
         }
 

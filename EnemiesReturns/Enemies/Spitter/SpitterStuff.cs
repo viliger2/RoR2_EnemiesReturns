@@ -50,7 +50,9 @@ namespace EnemiesReturns.Enemies.Spitter
 
             var controller = clonedProjectile.GetComponent<ProjectileController>();
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = GetRecoloredSpitProjectileGhost();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             #region MainSpitZone
 
@@ -119,7 +121,9 @@ namespace EnemiesReturns.Enemies.Spitter
             }
 
             var controller = clonedProjectile.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = GetRecoloredSpitProjectileGhost();
+#pragma warning restore CS0618 // Type or member is obsolete
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
 
             var explosion = clonedProjectile.AddComponent<ProjectileImpactExplosion>();

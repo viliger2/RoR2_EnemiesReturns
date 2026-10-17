@@ -421,7 +421,7 @@ namespace EnemiesReturns
 
         private void ModifyCredits(GameObject ourCreditPanel)
         {
-            var creditPanel = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_UI.CreditsPanel_prefab).WaitForCompletion();
+            var creditPanel = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_UI_CreditsPanel.CreditsPanel_prefab).WaitForCompletion();
             creditPanel.GetComponent<CreditsPanelController>().scrollDuration += 10f;
             var creditsContent = creditPanel.transform.Find("MainArea/Viewport/CreditsContent");
             var community = creditsContent.Find("CompanyCredits - Community");

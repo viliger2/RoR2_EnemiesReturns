@@ -509,7 +509,7 @@ namespace EnemiesReturns.Enemies.Judgement
             chatMessage.delay = 3f;
 
             var onPlayerEnterEvent = shopkeeperTrigger.gameObject.GetComponent<OnPlayerEnterEvent>();
-            onPlayerEnterEvent.action.AddListener(chatMessage.Send);
+            onPlayerEnterEvent.onPlayerEntered.AddListener(chatMessage.Send);
         }
 
         public static void SpawnObjects(SceneDirector sceneDirector)
@@ -733,7 +733,7 @@ namespace EnemiesReturns.Enemies.Judgement
             var newMaterial = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/voidoutro/matCapturedPlantOrb.mat").WaitForCompletion());
             newMaterial.name = "matVoidFlowerSphere";
 
-            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texCloudLightning1_png).WaitForCompletion());
+            newMaterial.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_TiledTextures.texCloudLightning1_png).WaitForCompletion());
             newMaterial.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC1_Common_ColorRamps.texRampVoidRaidCrabEye_png).WaitForCompletion());
 
             return newMaterial;

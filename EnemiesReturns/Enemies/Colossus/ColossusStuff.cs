@@ -150,7 +150,9 @@ namespace EnemiesReturns.Enemies.Colossus
             ghostAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
 
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = clonedEffectGhost;
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.ghostTransformAnchor = ghostAnchor.transform;
 
@@ -186,7 +188,9 @@ namespace EnemiesReturns.Enemies.Colossus
         {
             var clonedEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandparentMiniBoulder.prefab").WaitForCompletion().InstantiateClone("ColossusFlyingRockProjectile", true);
             var projectileController = clonedEffect.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = rockGhost;
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.allowPrediction = true;
             projectileController.flightSoundLoop = null;

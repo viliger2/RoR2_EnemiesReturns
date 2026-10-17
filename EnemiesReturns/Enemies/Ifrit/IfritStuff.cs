@@ -47,7 +47,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpit.prefab").WaitForCompletion().InstantiateClone("IfritHellzoneProjectile", true);
 
             var controller = gameObject.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/LemurianBruiser/MegaFireballGhost.prefab").WaitForCompletion();
+#pragma warning restore CS0618 // Type or member is obsolete
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "Play_lemurianBruiser_m1_shoot";
             controller.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/LemurianBruiser/lsdLemurianBruiserFireballFlight.asset").WaitForCompletion();
@@ -70,7 +72,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             var gameObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Titan/TitanPreFistProjectile.prefab").WaitForCompletion().InstantiateClone("IfritHellzonePreProjectile", true);
 
             var controller = gameObject.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = null;
+#pragma warning restore CS0618 // Type or member is obsolete
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "ER_Ifrit_Hellzone_Spawn_Play";
 
@@ -113,7 +117,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             gameObject.GetComponent<ProjectileDotZone>().lifetime = lifetime;
 
             var controller = gameObject.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = null;
+#pragma warning restore CS0618 // Type or member is obsolete
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             controller.startSound = "ER_Ifrit_Volcano_Play";
 
@@ -183,7 +189,9 @@ namespace EnemiesReturns.Enemies.Ifrit
             gameObject.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             var projectileController = gameObject.AddComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = CreateHellzonePillarProjectileGhost(ghostPrefab);
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.cannotBeDeleted = true;
             projectileController.canImpactOnTrigger = false;

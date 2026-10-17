@@ -232,7 +232,9 @@ namespace EnemiesReturns.Junk.Items.ColossalKnurl
         {
             if (body && body.inventory)
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 body.AddItemBehavior<ColossalKnurlBodyBehavior>(body.inventory.GetItemCountEffective(EnemiesReturns.Content.Items.ColossalCurl));
+#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
 

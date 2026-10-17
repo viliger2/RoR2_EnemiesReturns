@@ -5,7 +5,9 @@ using static RoR2.CharacterBody;
 
 namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class PillarItemBehavior : ItemBehavior, IOnKilledOtherServerReceiver
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         public void OnKilledOtherServer(DamageReport damageReport)
         {

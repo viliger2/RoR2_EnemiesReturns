@@ -296,24 +296,34 @@ namespace EnemiesReturns
             return sphereSearch;
         }
 
-        public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
+        public static (EquipmentState, EquipmentLocation) GetEquipmentStateAndLocation(this Inventory inventory, EquipmentIndex equipmentIndex)
         {
             for (uint i = 0; i < inventory.GetEquipmentSlotCount(); i++)
             {
-                for (uint k = 0; k < inventory.GetEquipmentSetCount(i); k++)
+                for (uint k = 0; k < inventory.GetEquipmentSetCount(); k++)
                 {
-                    var equipmentState = inventory.GetEquipment(i, k);
+                    var location = new EquipmentLocation
+                    {
+                        slot = i,
+                        set = k
+                    };
+                    var equipmentState = inventory.GetEquipment(location);
                     if (!equipmentState.Equals(EquipmentState.empty))
                     {
                         if (equipmentState.equipmentIndex == equipmentIndex)
                         {
-                            return true;
+                            return (equipmentState, location);
                         }
                     }
                 }
             }
 
-            return false;
+            return (EquipmentState.empty, EquipmentLocation.invalid);
+        }
+
+        public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
+        {
+            return inventory.GetEquipmentStateAndLocation(equipmentIndex).Item1.Equals(EquipmentState.empty);
         }
 
         public static void AddPersistentListener<T0, T1>(this UnityEvent<T0, T1> unityEvent, UnityAction<T0, T1> action)

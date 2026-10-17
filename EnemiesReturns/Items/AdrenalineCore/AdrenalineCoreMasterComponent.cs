@@ -274,7 +274,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                     if (body.mainHurtBox)
                     {
                         effectData.origin = body.mainHurtBox.transform.position;
-                        effectData.SetHurtBoxReference(body.gameObject);
+                        effectData.SetHurtBoxReference(body.mainHurtBox);
                         effectData.scale = body.radius;
                     }
                     EffectManager.SpawnEffect(protectionDestroyedEffect, effectData, transmit: true);
@@ -292,7 +292,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                 if (body.mainHurtBox)
                 {
                     effectData.origin = body.mainHurtBox.transform.position;
-                    effectData.SetHurtBoxReference(body.gameObject);
+                    effectData.SetHurtBoxReference(body.mainHurtBox);
                     effectData.scale = body.radius;
                 }
                 EffectManager.SpawnEffect(levelDownEffect, effectData, transmit: true);
@@ -372,7 +372,7 @@ namespace EnemiesReturns.Items.AdrenalineCore
                         if (ownerBody.mainHurtBox)
                         {
                             effectData.origin = ownerBody.mainHurtBox.transform.position;
-                            effectData.SetHurtBoxReference(ownerBody.gameObject);
+                            effectData.SetHurtBoxReference(ownerBody.mainHurtBox);
                             effectData.scale = ownerBody.radius;
                         }
                         EffectManager.SpawnEffect(levelUpEffect, effectData, transmit: true);

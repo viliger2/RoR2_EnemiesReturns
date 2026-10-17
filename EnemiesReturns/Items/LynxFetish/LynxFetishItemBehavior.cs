@@ -6,7 +6,9 @@ using static RoR2.CharacterBody;
 
 namespace EnemiesReturns.Items.LynxFetish
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class LynxFetishItemBehavior : ItemBehavior
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private DirectorPlacementRule placementRule;
 

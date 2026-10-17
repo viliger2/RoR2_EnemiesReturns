@@ -49,7 +49,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
         public GameObject SetupWaveProjectile(GameObject prefab)
         {
             var projectileController = prefab.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/BrotherSunderWaveGhost.prefab").WaitForCompletion();
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/Brother/lsdBrotherShockwave.asset").WaitForCompletion();
 

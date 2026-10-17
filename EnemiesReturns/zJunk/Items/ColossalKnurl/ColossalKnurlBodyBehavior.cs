@@ -2,7 +2,9 @@
 
 namespace EnemiesReturns.Junk.Items.ColossalKnurl
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class ColossalKnurlBodyBehavior : CharacterBody.ItemBehavior
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         public CharacterMaster master;
 

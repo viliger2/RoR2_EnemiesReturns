@@ -81,7 +81,10 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
                 unlockableDef.cachedName = "Skills.Engi.EnemiesReturnsSpiderTurret";
                 unlockableDef.nameToken = "ENEMIES_RETURNS_ENGI_SPECIAL_MECHSPIDER_NAME";
                 unlockableDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
+#pragma warning disable CS0618 // Type or member is obsolete
                 unlockableDef.achievementIcon = icon;
+#pragma warning restore CS0618 // Type or member is obsolete
+                unlockableDef.achievementIconRef = new AssetReferenceT<Sprite>("");
             }
             return unlockableDef;
         }
@@ -93,12 +96,13 @@ namespace EnemiesReturns.Skills.Engi.MechanicalSpiderTurret
             itemDef.name = "MechanicalSpiderTurretScepterHelper";
 #pragma warning disable CS0618 // Type or member is obsolete
             itemDef.deprecatedTier = ItemTier.NoTier;
+            itemDef.pickupIconSprite = null;
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.descriptionToken = "Stat modifier for Mech Spiders summoned by Engi with Scepter.";
             itemDef.nameToken = "MechanicalSpiderTurretScepterHelper";
             itemDef.pickupToken = "Stat modifier for Mech Spiders summoned by Engi with Scepter.";
             itemDef.hidden = true;
-            itemDef.pickupIconSprite = null;
+            itemDef.pickupIconSpriteReference = new AssetReferenceT<Sprite>("");
             itemDef.tags = new[]
             {
                 ItemTag.WorldUnique,
