@@ -323,7 +323,7 @@ namespace EnemiesReturns
 
         public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
         {
-            return inventory.GetEquipmentStateAndLocation(equipmentIndex).Item1.Equals(EquipmentState.empty);
+            return !inventory.GetEquipmentStateAndLocation(equipmentIndex).Item1.Equals(EquipmentState.empty);
         }
 
         public static void AddPersistentListener<T0, T1>(this UnityEvent<T0, T1> unityEvent, UnityAction<T0, T1> action)
