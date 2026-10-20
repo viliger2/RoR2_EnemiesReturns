@@ -79,6 +79,11 @@ namespace EnemiesReturns.Configuration
 
         public static ConfigEntry<bool> AddToArtifactOfOrigin;
 
+        public static ConfigEntry<bool> QuestPillarEnable;
+        public static ConfigEntry<int> QuestPillarCount;
+        public static ConfigEntry<float> QuestPillarSpawnDistanceMin;
+        public static ConfigEntry<float> QuestPillarSpawnDistanceMax;
+
         public void PopulateConfig(ConfigFile config)
         {
             Ifrit.SelectionWeight = config.Bind("Ifrit Director", "Selection Weight", 1, "Selection weight of Ifrit.");
@@ -164,6 +169,11 @@ namespace EnemiesReturns.Configuration
             SpawnPillarOnChampionKillEliteKills = config.Bind("Infernal Lantern", "Infernal Lanter Spawn On Elite Kills", false, "Enables Infernal Lanter chance spawn on elite kills.");
 
             AddToArtifactOfOrigin = config.Bind("Mod Compat", "RiskyArtifacts - Artifact of Origin", true, "Add monster to Artifact of Origin.");
+
+            QuestPillarEnable = config.Bind("Quest", "Add Survive Pillar Quest", true, "Adds Survive Pillars quest to Shrine of Compulsion. Requires Ifrit to be enabled.");
+            QuestPillarCount = config.Bind("Quest", "Pillar Count", 4, "Number of pillars that spawn during quest.");
+            QuestPillarSpawnDistanceMin = config.Bind("Quest", "Pillar Min Spawn Distance", 80f, "Minimal spawn distance of pillars from the interactor.");
+            QuestPillarSpawnDistanceMax = config.Bind("Quest", "Pillar Max Spawn Distance", 100f, "Maximum spawn distance of pillars from the interactor.");
         }
     }
 }

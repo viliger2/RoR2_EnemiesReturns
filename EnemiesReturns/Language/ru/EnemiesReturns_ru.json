@@ -43,6 +43,9 @@
 
 		"ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "Пылающая колонна",
 
+		"ENEMIES_RETURNS_QUEST_PILLARS_SURVIVE": "Переживите пылающий ад!",
+		"ENEMIES_RETURNS_QUEST_PILLARS_SUBTITLE": "Игра в прятки",
+
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Адовый фонарь",
 		"ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "При убистве большого или элитного монстра призывает пылающую колонну.",
 		"ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>Убийство большого монстра</style> призывает <style=cIsDamage>пылающую колонну</style>. Через <style=cIsUtility>{0}с</style> колонна <style=cIsDamage>взрывается</style> нанося <style=cIsDamage>{1}</style><style=cStack>(+{2} за штуку)</style> базового урона в <style=cIsDamage>{3}м</style> вокруг. <style=cIsDamage>Убийство элитного монстра</style> имеет <style=cIsDamage>{4}</style> шанс вызвать этот эффект.",

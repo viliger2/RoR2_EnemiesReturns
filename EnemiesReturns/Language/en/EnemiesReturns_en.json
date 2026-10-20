@@ -43,6 +43,9 @@
 
     "ENEMIES_RETURNS_IFRIT_PYLON_BODY_NAME": "Fiery Pillar",
 
+    "ENEMIES_RETURNS_QUEST_PILLARS_SURVIVE": "Survive the fiery hell!",
+    "ENEMIES_RETURNS_QUEST_PILLARS_SUBTITLE": "Hide and Seek",
+
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_NAME": "Infernal Lantern",
     "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_PICKUP": "Upon large or elite monster kill summon a fiery pillar.",
     "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION_ELITES": "<style=cIsDamage>Killing large monsters</style> spawns a <style=cIsDamage>fiery pillar</style>. After <style=cIsUtility>{0}s</style> pillar <style=cIsDamage>explodes</style> dealing <style=cIsDamage>{1}</style><style=cStack> (+{2} per stack)</style> base damage in <style=cIsDamage>{3}m</style> radius. <style=cIsDamage>Killing elite monsters</style> has <style=cIsDamage>{4}</style> chance to cause the same effect.",
