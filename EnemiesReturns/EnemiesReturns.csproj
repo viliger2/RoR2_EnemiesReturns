@@ -34,34 +34,6 @@
 		<PackageReference Include="RoR2BepInExPack" Version="1.44.0" />
 	</ItemGroup>
 
-	<!--<ItemGroup Condition="Exists('D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll')">
-		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
-		<Reference Include="RoR2" Publicize="true">
-			<HintPath>D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll</HintPath>
-		</Reference>
-		<Reference Include="Grumpy" Publicize="true">
-			<HintPath>D:\Steam Games\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Grumpy.dll</HintPath>
-		</Reference>
-	</ItemGroup>-->	
-
-	<ItemGroup>
-	  <!--<Reference Include="AdvPrediction" Private="false">
-	    <HintPath>libs\AdvPrediction.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="Decalicious" Private="false">
-	    <HintPath>libs\Decalicious.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="EliteReworks" Private="false">
-	    <HintPath>libs\EliteReworks.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="MoreStats" Private="false">
-	    <HintPath>libs\MoreStats.dll</HintPath>
-	  </Reference>-->
-	  <!--<Reference Include="Risky_Artifacts" Private="false">
-	    <HintPath>libs\Risky_Artifacts.dll</HintPath>
-	  </Reference>-->
-	</ItemGroup>
-
 	<ItemGroup>
 	  <None Update="Language\en\EnemiesReturns_en.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -6,7 +6,7 @@ namespace EnemiesReturns
 {
     public partial class ContentProvider : IContentPackProvider
     {
-        private void CreatePartyHat(GameObject[] assets)
+        private void CreateMiscStuff(GameObject[] assets)
         {
             if (Items.PartyHat.PartyHatFactory.ShouldThrowParty())
             {
@@ -16,6 +16,10 @@ namespace EnemiesReturns
 
                 itemList.Add(Content.Items.PartyHat);
             }
+
+            var reduceHpFactory = new Items.ReduceHP.ReduceHP();
+            Content.Items.ReduceHP = reduceHpFactory.CreateItem();
+            itemList.Add(Content.Items.ReduceHP);
         }
     }
 }

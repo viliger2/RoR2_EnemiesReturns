@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Components;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
@@ -181,6 +182,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var mover = surface.gameObject.AddComponent<PhysicsMover>();
             mover.Rigidbody = surface.gameObject.GetComponent<Rigidbody>();
+            mover.MoveWithPhysics = true;
             mover.MoverController = moverController;
 
             //var helper = body.AddComponent<WalkSpeedDebugHelper>();
@@ -285,7 +287,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
                 hullClassification = HullClassification.BeetleQueen,
                 bodyColor = new Color(0.36f, 0.36f, 0.44f),
-                isChampion = true
+                isChampion = true,
+                doNotReassignCollision = true,
             };
         }
 

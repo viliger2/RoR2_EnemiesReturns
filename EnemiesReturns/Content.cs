@@ -70,6 +70,8 @@ namespace EnemiesReturns
             public static ItemDef AdrenalineCore;
 
             public static ItemDef SwordShard;
+
+            public static ItemDef ReduceHP;
         }
 
         public static class ItemRelationshipProviders

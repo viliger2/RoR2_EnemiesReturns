@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -121,6 +122,8 @@ namespace EnemiesReturns
             MechanicalSpiderVictoryDanceController.Hooks();
             MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
+            Items.ReduceHP.ReduceHP.Hooks();
+            Behaviors.ChampRushSupport.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             Behaviors.SubjectParamsChatMessage.Hooks();
             On.RoR2.CharacterModel.UpdateOverlays += UpdateOverlays;
