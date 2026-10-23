@@ -11,7 +11,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary
     [RegisterEntityState]
     public class ProjectileSwings : BasePrimaryWeaponSwing
     {
-        public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
+        public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Merc.EvisProjectile_prefab).WaitForCompletion();
 
         public static float projectileTime => 0.5f;
 

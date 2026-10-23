@@ -32,7 +32,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Aeonian
                     TemporaryOverlayInstance temporaryOverlayInstance = TemporaryOverlayManager.AddOverlay(cachedModelTransform.gameObject);
                     temporaryOverlayInstance.duration = 0.5f;
                     temporaryOverlayInstance.destroyObjectOnEnd = true;
-                    temporaryOverlayInstance.originalMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matShatteredGlass_mat).WaitForCompletion();
+                    temporaryOverlayInstance.originalMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matShatteredGlass_mat).WaitForCompletion();
                     temporaryOverlayInstance.inspectorCharacterModel = cachedModelTransform.gameObject.GetComponent<CharacterModel>();
                     temporaryOverlayInstance.alphaCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
                     temporaryOverlayInstance.animateShaderAlpha = true;

@@ -70,14 +70,14 @@ namespace EnemiesReturns.Enemies.ContactLight.TempleGuard
         {
             var primary = skills.First(skill => (skill as ScriptableObject).name == "sdTempleGuardPrimary");
             primary.baseRechargeInterval = Configuration.ContactLight.TempleGuard.BarrageCooldown.Value;
-            primary.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Mage.texMageSkillIcons_png_texMageSkillIcons_0_).WaitForCompletion();            
+            primary.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Mage.texMageSkillIcons_png_texMageSkillIcons_0_).WaitForCompletion();            
 
             var overclock = skills.First(skill => (skill as ScriptableObject).name == "sdTempleGuardianOverclock");
             overclock.baseRechargeInterval = Configuration.ContactLight.TempleGuard.OverclockCooldown.Value;
-            overclock.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Drone_Tech.texDroneTechSkillIcons_png_texDroneTechSkillIcons_7_).WaitForCompletion();
+            overclock.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Drone_Tech.texDroneTechSkillIcons_png_texDroneTechSkillIcons_7_).WaitForCompletion();
 
             var shield = skills.First(skill => (skill as ScriptableObject).name == "sdTempleGuardianShell");
-            shield.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common.texBuffGenericShield_tif).WaitForCompletion();
+            shield.icon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texBuffGenericShield_tif).WaitForCompletion();
         }
 
     }

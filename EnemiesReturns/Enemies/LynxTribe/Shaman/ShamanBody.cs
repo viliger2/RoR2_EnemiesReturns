@@ -583,7 +583,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.37162F, -0.22024F, 0.12253F),
                 localAngles = new Vector3(0.19945F, 127.763F, 0.14044F),
@@ -593,7 +593,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(-0.50622F, -0.21832F, 0.14011F),
                 localAngles = new Vector3(359.9843F, 229.722F, 359.7677F),
@@ -603,7 +603,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.01307F, -0.33927F, 0.47666F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -614,7 +614,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleCollective,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
             });
             #endregion
 

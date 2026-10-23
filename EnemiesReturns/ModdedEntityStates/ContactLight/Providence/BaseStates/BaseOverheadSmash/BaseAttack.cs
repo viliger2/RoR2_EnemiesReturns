@@ -26,7 +26,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract float waveProjectileForce { get; }
 
-        public static GameObject waveProjectile = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Brother.BrotherSunderWave_prefab).WaitForCompletion();
+        public static GameObject waveProjectile = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.BrotherSunderWave_prefab).WaitForCompletion();
 
         private bool attackFired = false;
 

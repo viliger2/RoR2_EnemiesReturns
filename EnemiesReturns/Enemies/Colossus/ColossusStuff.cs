@@ -392,10 +392,10 @@ namespace EnemiesReturns.Enemies.Colossus
 
             prefab.AddComponent<DestroyOnParticleEnd>();
 
-            prefab.transform.Find("Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_PowerOrbShieldTank.matShieldTankStartImpactFlash_mat).WaitForCompletion();
-            prefab.transform.Find("Lines").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
-            prefab.transform.Find("Glow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matGlow1_mat).WaitForCompletion();
-            prefab.transform.Find("Glow(1)").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
+            prefab.transform.Find("Flash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_PowerOrbShieldTank.matShieldTankStartImpactFlash_mat).WaitForCompletion();
+            prefab.transform.Find("Lines").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("Glow").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matGlow1_mat).WaitForCompletion();
+            prefab.transform.Find("Glow(1)").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
 
             return prefab;
         }

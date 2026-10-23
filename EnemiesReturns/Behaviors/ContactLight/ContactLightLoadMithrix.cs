@@ -13,7 +13,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
         {
             //if (combatEncounter && combatEncounter.spawns.Length > 0)
             //{
-            //    combatEncounter.spawns[0].spawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Brother.cscBrother_asset).WaitForCompletion();
+            //    combatEncounter.spawns[0].spawnCard = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.cscBrother_asset).WaitForCompletion();
             //}
         }
 

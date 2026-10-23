@@ -239,7 +239,7 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<InspectDef[]>)((assets) =>
                 {
-                    var chestIcon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base.ChestIcon_1_png).WaitForCompletion();
+                    var chestIcon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base.ChestIcon_1_png).WaitForCompletion();
                     var info = assets.First(asset => asset.name == "idGoldenBarrel");
                     info.Info.Visual = chestIcon;
 
@@ -296,7 +296,7 @@ namespace EnemiesReturns
         private static void SetupProviTwoSwingsProjectile(GameObject orbProjectilePrefab)
         {
             var controller = orbProjectilePrefab.GetComponent<ProjectileController>();
-            controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
+            controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
         }
 
         private void CreateContactLightMusic()

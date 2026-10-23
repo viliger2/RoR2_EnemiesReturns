@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float doorCloseDelay = 6f;
 
-        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
+        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
 
         public static MusicTrackDef musicTrack => Content.MusicTracks.Precipitation;
 

@@ -20,7 +20,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TeleportButton
             PlayAnimation("Base", "Press");
             Util.PlaySound("ER_ButtonClick_Play", gameObject);
 
-            var cscGolem = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Golem.cscGolem_asset).WaitForCompletion();
+            var cscGolem = Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Golem.cscGolem_asset).WaitForCompletion();
 
             var childLocator = GetComponent<ChildLocator>();
             if (childLocator)

@@ -267,10 +267,10 @@ namespace EnemiesReturns
 
                     //ModdedEntityStates.Judgement.Aeonian.DeathState.flowerPrefab;
                     var moonFlowers = assets.First(asset => asset.name == "MoonFlowers");
-                    moonFlowers.transform.Find("ParticleSystem").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_moon.matGhostPlant_mat).WaitForCompletion();
+                    moonFlowers.transform.Find("ParticleSystem").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_moon.matGhostPlant_mat).WaitForCompletion();
                     ModdedEntityStates.Judgement.Aeonian.DeathState.flowerPrefab = moonFlowers;
 
-                    var brittleDeathScalable = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.BrittleDeath_prefab).WaitForCompletion().InstantiateClone("BrittleDeathScalable", false);
+                    var brittleDeathScalable = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.BrittleDeath_prefab).WaitForCompletion().InstantiateClone("BrittleDeathScalable", false);
                     brittleDeathScalable.GetComponent<EffectComponent>().applyScale = true;
                     effectsList.Add(new EffectDef(brittleDeathScalable));
                     ModdedEntityStates.Judgement.Aeonian.DeathState.effectPrefab = brittleDeathScalable;

@@ -19,7 +19,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard.Utility
 
         public static float baseAnimationDuration => 1.1f;
 
-        public static GameObject preShieldEffect => Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarGolem.LunarGolemShieldCharge_prefab).WaitForCompletion();
+        public static GameObject preShieldEffect => Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarGolem.LunarGolemShieldCharge_prefab).WaitForCompletion();
 
         private float duration;
 
