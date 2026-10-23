@@ -52,6 +52,7 @@ namespace EnemiesReturns
 
         private void Awake()
         {
+            RoR2BepInExPack.RoR2BepInExPack.LoadJunkContent();
             // TODO: remove reflection, it is bad for unity
             // maybe use code generation to generate Config.cs via reflection
             var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
@@ -98,8 +99,6 @@ namespace EnemiesReturns
                 }
             }
         }
-
-
 
         private void RegisterOrbs()
         {
