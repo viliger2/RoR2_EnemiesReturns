@@ -267,7 +267,7 @@ namespace EnemiesReturns.Enemies.Judgement
                         if (survivorDef.displayPrefab)
                         {
                             var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                            if (modelSkinController2)
+                            if (modelSkinController2 && modelSkinController.skins != null)
                             {
                                 HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
                             }
@@ -374,7 +374,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 if (survivorDef.displayPrefab)
                 {
                     var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                    if (modelSkinController)
+                    if (modelSkinController && modelSkinController.skins != null)
                     {
                         HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
                     }

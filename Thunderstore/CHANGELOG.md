@@ -1,4 +1,9 @@
 <details>
+<summary>0.7.32</summary>
+
+* Fixed Anointed skin generation throwing errors again if survivor display has null skin array.
+</details>
+<details>
 <summary>0.7.31</summary>
 
 * Fixed Anointed skin generation throwing errors if there were survivors without lobby displays (???).
