@@ -24,7 +24,8 @@ namespace EnemiesReturns.Enemies.Colossus
             "railgunnerbody",
             "seekerbody",
             "drifterbody",
-            "rangerbody"
+            "rangerbody",
+            "acolytebody"
         };
 
         public void OnKilledServer(DamageReport damageReport)
