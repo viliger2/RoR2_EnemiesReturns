@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using static R2API.DirectorAPI;
 using static RoR2.Navigation.NodeGraph;
+using static RoR2.OverlapAttack;
 
 namespace EnemiesReturns
 {
@@ -469,6 +470,16 @@ namespace EnemiesReturns
                 }
             }
             return wireMeshBuilder.GenerateMesh();
+        }
+
+        public static bool OverlapAttackAuthorityFilter(OverlapAttackFilterStruct filterStruct)
+        {
+            if(filterStruct.healthComponent && Util.HasEffectiveAuthority(filterStruct.healthComponent.gameObject))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -4,6 +4,7 @@ using RoR2;
 using RoR2.CharacterAI;
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 {
@@ -43,31 +44,34 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
                 return;
             }
 
-            totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
+            if (NetworkServer.active)
+            {
+                totalLaserCount = baseLaserCount + (int)Math.Round(additionalLaserPerPlayer * (bodies.Count - 1), MidpointRounding.ToEven);
 
-            var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
-            if (sceneChildLocator)
-            {
-                var laserPoints = sceneChildLocator.FindChild("LaserSpawnPoints");
-                if (laserPoints)
+                var sceneChildLocator = SceneInfo.instance.gameObject.GetComponent<ChildLocator>();
+                if (sceneChildLocator)
                 {
-                    laserPointLocator = laserPoints.gameObject.GetComponent<ChildLocator>();
+                    var laserPoints = sceneChildLocator.FindChild("LaserSpawnPoints");
+                    if (laserPoints)
+                    {
+                        laserPointLocator = laserPoints.gameObject.GetComponent<ChildLocator>();
+                    }
                 }
-            }
 
-            if (laserPointLocator)
-            {
-                var staringIndex = UnityEngine.Random.Range(0, laserPointLocator.Count);
-                for (int i = 0; i < totalLaserCount; i++)
+                if (laserPointLocator)
                 {
-                    SummonSkyLaser(laserPointLocator.FindChild((staringIndex + i) % laserPointLocator.Count));
+                    var staringIndex = UnityEngine.Random.Range(0, laserPointLocator.Count);
+                    for (int i = 0; i < totalLaserCount; i++)
+                    {
+                        SummonSkyLaser(laserPointLocator.FindChild((staringIndex + i) % laserPointLocator.Count));
+                    }
                 }
-            }
-            else
-            {
-                for (int i = 0; i < totalLaserCount; i++)
+                else
                 {
-                    SummonSkyLaser(null);
+                    for (int i = 0; i < totalLaserCount; i++)
+                    {
+                        SummonSkyLaser(null);
+                    }
                 }
             }
         }

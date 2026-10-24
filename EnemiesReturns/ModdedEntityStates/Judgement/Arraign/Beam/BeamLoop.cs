@@ -27,7 +27,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
 
         public static GameObject pushBackEffectStatic;
 
-        private OverlapAttackAuthority overlapAttack;
+        private OverlapAttack overlapAttack;
 
         private GameObject forwardBeam;
 
@@ -95,9 +95,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             }
         }
 
-        private OverlapAttackAuthority CreateOverlapAttack(Transform modelTransform)
+        private OverlapAttack CreateOverlapAttack(Transform modelTransform)
         {
-            var overlapAttack = new OverlapAttackAuthority();
+            var overlapAttack = new OverlapAttack();
             overlapAttack.attacker = gameObject;
             overlapAttack.inflictor = gameObject;
             overlapAttack.teamIndex = TeamComponent.GetObjectTeam(gameObject);
@@ -108,6 +108,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             overlapAttack.procCoefficient = procCoefficient;
             overlapAttack.damageType = new DamageTypeCombo(DamageType.BypassBlock | DamageType.BypassOneShotProtection | DamageType.BypassArmor, DamageTypeExtended.Generic, DamageSource.Special);
             overlapAttack.retriggerTimeout = 0.25f;
+            overlapAttack.attackerFiltering = AttackerFiltering.CustomFilter;
+            overlapAttack.filterCallback = Utils.OverlapAttackAuthorityFilter; 
 
             return overlapAttack;
         }
