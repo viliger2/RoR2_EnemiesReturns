@@ -264,10 +264,13 @@ namespace EnemiesReturns.Enemies.Judgement
                         var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(survivorDef.bodyPrefab.name, skinDef, false, skinDef.icon);
                         var modelSkinController = survivorDef.bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                         HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
-                        var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                        if (modelSkinController2)
+                        if (survivorDef.displayPrefab)
                         {
-                            HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                            var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                            if (modelSkinController2)
+                            {
+                                HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                            }
                         }
                     }
                 }
@@ -368,10 +371,13 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
 
                 HG.ArrayUtils.ArrayAppend(ref modelSkins.skins, eliteSkinDef);
-                var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                if (modelSkinController)
+                if (survivorDef.displayPrefab)
                 {
-                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
+                    var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                    if (modelSkinController)
+                    {
+                        HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
+                    }
                 }
 
                 anointedSkinsLocal.Add(eliteSkinDef);
