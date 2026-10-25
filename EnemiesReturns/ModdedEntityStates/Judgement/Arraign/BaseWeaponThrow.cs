@@ -55,7 +55,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                 var bodies = Utils.GetActiveAndAlivePlayerBodies();
                 foreach (var body in bodies)
                 {
-                    if (body && body.characterMotor && !body.characterMotor.isGrounded)
+                    if (body && body.characterMotor && (!body.characterMotor.isGrounded || Utils.ArraignKarmaCheck(requiredKarmaLevel)))
                     {
                         target = body;
                     }
@@ -67,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                         ai.currentEnemy.gameObject = target.gameObject;
                         ai.enemyAttention = duration + 1f;
                     }
-                    inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
+                    inputBank.aimDirection = target.corePosition - GetAimRay().origin;
                 }
                 if (characterDirection)
                 {

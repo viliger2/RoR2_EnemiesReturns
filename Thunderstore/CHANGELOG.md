@@ -1,4 +1,13 @@
 <details>
+<summary>0.7.33</summary>
+
+* Colossus
+  * Fixed physics colliders not being disabled on death.
+* Judgement
+  * Karma support.
+    * _It's the most fun you can possibly have._
+</details>
+<details>
 <summary>0.7.32</summary>
 
 * Fixed Anointed skin generation throwing errors again if survivor display has null skin array.

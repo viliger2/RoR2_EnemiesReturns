@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &4257141646231213978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,13 +104,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catalogIndex: -1
   ghostPrefab: {fileID: 4457118556339744930, guid: 354636198a8774f429b4d61fbd64cf28, type: 3}
-  ghostPrefabReference:
+  ghostPrefabAddress:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
+  doNotPerformImpactOnCollision: 0
   authorityHandlesCollisionEvents: 0
   flightSoundLoop: {fileID: 11400000, guid: 8f860893016a6c64ebef22fb4989f57c, type: 2}
   canImpactOnTrigger: 0
@@ -119,6 +121,7 @@ MonoBehaviour:
   procCoefficient: 1
   combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
+  CanBeParried: 1
 --- !u!54 &462146401626301299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,6 +203,7 @@ MonoBehaviour:
     damageType: 0
     damageTypeExtended: 0
     damageSource: 0
+    attackIdentityIndex: 0
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!65 &6957592842447747386
@@ -213,8 +217,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.27455318, y: 0.76830274, z: 3.323822}
-  m_Center: {x: -0.022600591, y: -0.02591154, z: -0.41037726}
+  m_Size: {x: 0.27455318, y: 0.3681427, z: 3.323822}
+  m_Center: {x: -0.022600591, y: -0.003680423, z: -0.41037726}
 --- !u!114 &6401190177795715460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +244,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
+  useAuthorityNotServer: 0
   rotationSpeed: 90
+  modifySpeedOverTime: 0
+  maxRotationSpeed: 0
+  minRotationSpeed: 0
+  rotationChangePerSecond: 0
 --- !u!114 &8194337428104596402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,5 +278,7 @@ MonoBehaviour:
   destroyWhenNotAlive: 1
   destroyOnWorld: 1
   impactEffect: {fileID: 0}
+  hitSound: {fileID: 0}
+  enemyHitSound: {fileID: 0}
   hitSoundString: Play_item_use_lighningArm
   enemyHitSoundString: Play_item_use_lighningArm
