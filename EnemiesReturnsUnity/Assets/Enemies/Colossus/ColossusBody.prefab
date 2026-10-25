@@ -8432,6 +8432,32 @@ MonoBehaviour:
     transform: {fileID: 765401380514182499}
   - name: HeadStandableSurface
     transform: {fileID: 6481335782202778470}
+  - name: WorldCollider0
+    transform: {fileID: 4558550507383483936}
+  - name: WorldCollider1
+    transform: {fileID: 322405958132439066}
+  - name: WorldCollider2
+    transform: {fileID: 4665527436606535661}
+  - name: WorldCollider3
+    transform: {fileID: 577037217935806057}
+  - name: WorldCollider4
+    transform: {fileID: 8896800121080347687}
+  - name: WorldCollider5
+    transform: {fileID: 1426423211244300650}
+  - name: WorldCollider6
+    transform: {fileID: 1959543256842412517}
+  - name: WorldCollider7
+    transform: {fileID: 7042665370178474121}
+  - name: WorldCollider8
+    transform: {fileID: 4242304376234898514}
+  - name: WorldCollider9
+    transform: {fileID: 4582978268171650617}
+  - name: WorldCollider10
+    transform: {fileID: 7447960990400527442}
+  - name: WorldCollider11
+    transform: {fileID: 630212246833737344}
+  - name: WorldCollider12
+    transform: {fileID: 7469630173449956617}
 --- !u!114 &7706340093702680604
 MonoBehaviour:
   m_ObjectHideFlags: 0
