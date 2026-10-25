@@ -12,6 +12,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     [RegisterEntityState]
     public class Phase3 : BaseState
     {
+        public static int requiredKarmaLevel = 5;
+
         public static float spawnDelay = 0f;
 
         public static string phaseControllerChildString = "Phase3";
@@ -42,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public override void OnEnter()
         {
-            KillAllMonsters();
+            Utils.KillAllMonsters();
             base.OnEnter();
             childLocator = GetComponent<ChildLocator>();
             if (childLocator)
@@ -56,22 +58,29 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     var phaseObjects = phaseControllerObject.transform.Find("PhaseObjects");
                     phaseObjects.gameObject.SetActive(true);
 
-                    var musicOverrideObject = phaseObjects.Find("MusicOverride");
-                    if (musicOverrideObject)
+                    var childLocator = phaseObjects.GetComponent<ChildLocator>();
+                    if (childLocator)
                     {
-                        var musicOverride = musicOverrideObject.GetComponent<MusicTrackOverride>();
-                        if (Configuration.Judgement.Judgement.EnableCustomPhase3Music.Value)
+                        var musicController = childLocator.FindChild("MusicController");
+                        if(musicController && musicController.gameObject.TryGetComponent<MusicTrackOverride>(out var musicOverride))
                         {
-                            musicOverride.track = Content.MusicTracks.TheOrigin;
+                            if (Configuration.Judgement.Judgement.EnableCustomPhase3Music.Value)
+                            {
+                                musicOverride.track = Content.MusicTracks.TheOrigin;
+                            }
+                            else
+                            {
+                                musicOverride.track = Content.MusicTracks.UnknownBoss;
+                            }
+                            musicController.gameObject.SetActive(true);
                         }
-                        else
-                        {
-                            musicOverride.track = Content.MusicTracks.UnknownBoss;
-                        }
-
-                        musicOverrideObject.gameObject.SetActive(true);
                     }
 
+                    var karmaAdditions = childLocator.FindChild("KarmaAdditions");
+                    if(karmaAdditions && Utils.ArraignKarmaCheck(requiredKarmaLevel))
+                    {
+                        karmaAdditions.gameObject.SetActive(true);
+                    }
                 }
 
             }
@@ -163,25 +172,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             };
 
             return DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
-        }
-
-        public void KillAllMonsters()
-        {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-            foreach (TeamComponent item in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
-            {
-                if ((bool)item)
-                {
-                    HealthComponent component = item.GetComponent<HealthComponent>();
-                    if ((bool)component)
-                    {
-                        component.Suicide();
-                    }
-                }
-            }
         }
     }
 }

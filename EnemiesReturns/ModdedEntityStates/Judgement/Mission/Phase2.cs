@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterAI;
 using RoR2.CharacterSpeech;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float healthBarDelay = 1f;
 
+        public static float hauntSpawnDelay = 20f;
+
         public static GameObject speechControllerPrefab;
+
+        public static CharacterSpawnCard cscArraignHauntP1;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -31,13 +36,15 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private bool hasSpawned;
 
+        private bool hasHauntSpawned;
+
         private CombatSquad combatSquad;
 
         private Run.FixedTimeStamp healthBarShowTime = Run.FixedTimeStamp.positiveInfinity;
 
         public override void OnEnter()
         {
-            KillAllMonsters();
+            Utils.KillAllMonsters();
             base.OnEnter();
             childLocator = GetComponent<ChildLocator>();
             if (childLocator)
@@ -90,6 +97,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     BeginEncounter();
                 }
             }
+            if (fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
+            {
+                if (SummonHaunt())
+                {
+                    hasHauntSpawned = true;
+                }
+            }
+
             phaseBossGroup.shouldDisplayHealthBarOnHud = healthBarShowTime.hasPassed;
 
             if (NetworkServer.active && fixedAge > spawnDelay + 2 && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
@@ -110,7 +125,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         public override void OnExit()
         {
             base.OnExit();
-            KillAllMonsters();
+            Utils.KillAllMonsters();
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
@@ -121,24 +136,29 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             }
         }
 
-
-        public void KillAllMonsters()
+        private GameObject SummonHaunt()
         {
-            if (!NetworkServer.active)
+            var placementRule = new DirectorPlacementRule();
+            placementRule.placementMode = DirectorPlacementRule.PlacementMode.NearestNode;
+            placementRule.position = Vector3.zero;
+
+            DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(cscArraignHauntP1, placementRule, RoR2Application.rng);
+            directorSpawnRequest.summonerBodyObject = gameObject;
+            directorSpawnRequest.ignoreTeamMemberLimit = true;
+            directorSpawnRequest.teamIndexOverride = TeamIndex.Monster;
+            directorSpawnRequest.onSpawnedServer = (spawnResult) =>
             {
-                return;
-            }
-            foreach (TeamComponent item in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
-            {
-                if ((bool)item)
+                if (spawnResult.success && spawnResult.spawnedInstance && characterBody)
                 {
-                    HealthComponent component = item.GetComponent<HealthComponent>();
-                    if ((bool)component)
+                    var baseAI = spawnResult.spawnedInstance.GetComponent<BaseAI>();
+                    if (baseAI && baseAI.body)
                     {
-                        component.Suicide();
+                        baseAI.ForceAcquireNearestEnemyIfNoCurrentEnemy();
                     }
                 }
-            }
+            };
+
+            return DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
         }
     }
 }

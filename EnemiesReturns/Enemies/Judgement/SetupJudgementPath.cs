@@ -38,6 +38,10 @@ namespace EnemiesReturns.Enemies.Judgement
 
         public static MasterCatalog.MasterIndex ArraignP2MasterIndex;
 
+        public static BodyIndex ArraignP1BodyIndex;
+
+        public static BodyIndex ArraignP2BodyIndex;
+
         public static List<DirectorCard> mixEnemiesDirectorCards = new List<DirectorCard>();
 
         internal static void InitBodyCatalog()
@@ -58,7 +62,8 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignBody.ArraignP1Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
             ArraignBody.ArraignP2Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
 
-
+            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
+            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
         }
 
         internal static void InitMasterCatalog()

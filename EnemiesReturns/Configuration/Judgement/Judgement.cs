@@ -16,6 +16,8 @@ namespace EnemiesReturns.Configuration.Judgement
 
         public static ConfigEntry<float> WaveMaxDuration;
 
+        public static ConfigEntry<bool> EnableKarma;
+
         public static ConfigEntry<string> JudgementEnemyBlacklist;
         public static ConfigEntry<bool> EulogyZeroSupport;
 
@@ -94,6 +96,8 @@ namespace EnemiesReturns.Configuration.Judgement
             WavesTierBossItemMaxCount = config.Bind("Waves", "Boss Tier Item Max Count", 10, "Maximum number of Boss Tier items that will be given to monsters.");
 
             EulogyZeroSupport = config.Bind("Waves", "Eulogy Zero Support", true, "Allows Eulogy Zero to replace items with lunars. Number of items given will between lowest number of Tier 3 to highest number of Tier 1.");
+
+            EnableKarma = config.Bind("Judgement", "Enable Karma Changes", true, "Enables Karma changes to the encounter.");
         }
     }
 }

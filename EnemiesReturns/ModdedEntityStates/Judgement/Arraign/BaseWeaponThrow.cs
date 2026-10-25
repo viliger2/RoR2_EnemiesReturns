@@ -8,6 +8,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public abstract class BaseWeaponThrow : BaseState
     {
+        public abstract int requiredKarmaLevel { get; }
+
+        public abstract float karmaCoefficient { get; }
+
         public abstract GameObject projectilePrefab { get; }
 
         public abstract float baseDuration { get; }
@@ -42,6 +46,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                duration *= karmaCoefficient;
+            }
             if (NetworkServer.active && isAuthority)
             {
                 var bodies = Utils.GetActiveAndAlivePlayerBodies();

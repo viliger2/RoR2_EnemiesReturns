@@ -7,6 +7,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
     [RegisterEntityState]
     public class BeamStart : BaseBeam
     {
+        public static int requiredKarmaLevel = 4;
+
         public override GameObject pushBackEffect => pushBackEffectStatic;
 
         public static float baseDuration = 4f;
@@ -52,6 +54,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             {
                 EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectForward") }, false);
                 EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectBackward") }, false);
+                if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+                {
+                    EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectLeft") }, false);
+                    EffectManager.SpawnEffect(preBeamIndicatorEffect, new EffectData { rootObject = base.gameObject, modelChildIndex = (short)childLocator.FindChildIndex("SwordBeamEffectRight") }, false);
+                }
             }
         }
 

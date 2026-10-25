@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 using static R2API.DirectorAPI;
 using static RoR2.Navigation.NodeGraph;
 using static RoR2.OverlapAttack;
@@ -480,6 +481,30 @@ namespace EnemiesReturns
             }
 
             return false;
+        }
+
+        public static bool ArraignKarmaCheck(int requiredKarma)
+        {
+            return Configuration.Judgement.Judgement.EnableKarma.Value && KarmaManager.instance.GetEffectiveKarma() >= requiredKarma;
+        }
+
+        public static void KillAllMonsters()
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+            foreach (TeamComponent item in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
+            {
+                if ((bool)item)
+                {
+                    HealthComponent component = item.GetComponent<HealthComponent>();
+                    if ((bool)component)
+                    {
+                        component.Suicide();
+                    }
+                }
+            }
         }
     }
 }

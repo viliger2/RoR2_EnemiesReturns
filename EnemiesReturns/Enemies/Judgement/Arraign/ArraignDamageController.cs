@@ -17,9 +17,15 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public int segments;
 
+        public int additionalSegmentsKarma;
+
+        public int requiredKarmaLevel;
+
         private uint segmentStatus = 0;
 
         private int currentSegment;
+
+        private int totalSegments;
 
         private static HashSet<BodyIndex> bodiesToBypassArmor = new HashSet<BodyIndex>();
 
@@ -48,6 +54,11 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             if (!body)
             {
                 body = GetComponent<CharacterBody>();
+            }
+            totalSegments = segments;
+            if(Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                totalSegments += additionalSegmentsKarma;
             }
             childLocator = body.modelLocator.modelTransform.GetComponent<ChildLocator>();
             currentSegment = 0;
@@ -125,12 +136,12 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
-            if (currentSegment >= segments)
+            if (currentSegment >= totalSegments)
             {
                 return;
             }
             var healthComponent = damageReport.victim;
-            var segmentHealthSize = body.maxHealth / segments;
+            var segmentHealthSize = body.maxHealth / totalSegments;
             var currentSegmentStatus = (segmentStatus & (uint)1 << currentSegment) == 0;
 
             if (damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
@@ -144,9 +155,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private void OnValidate()
         {
-            if (segments > 16)
+            if (segments + additionalSegmentsKarma > 16)
             {
-                segments = 16;
+                Debug.LogWarning("ArraignDamageController: Can't have more than 16 total segments!");
             }
         }
     }

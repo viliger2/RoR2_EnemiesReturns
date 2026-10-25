@@ -8,6 +8,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     [RegisterEntityState]
     public class Phase1 : BaseState
     {
+        public static int requiredKarmaLevel = 6;
+
         public static string phaseControllerChildString = "Phase1";
 
         private ChildLocator childLocator;
@@ -47,10 +49,21 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
             {
                 outer.SetNextState(new PreEnding());
             }
+            if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                outer.SetNextState(new Phase15());
+            }
 #endif
             if (missionController && missionController.missionClear && isAuthority)
             {
-                outer.SetNextState(new PrePhase2());
+                if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+                {
+                    outer.SetNextState(new PrePhase15());
+                }
+                else
+                {
+                    outer.SetNextState(new PrePhase2());
+                }
             }
         }
 

@@ -16,7 +16,11 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
 
         public static GameObject projectilePrefab;
 
+        public static int requiredKarmaLevel = 3;
+
         public static int projectileCount => Configuration.Judgement.ArraignP1.LightningStrikesCount.Value;
+
+        public static int karmaProjectileCount => Configuration.Judgement.ArraignP1.LightningStrikesCountKarma.Value;
 
         public static float delayBetweenSpawns => Configuration.Judgement.ArraignP1.LightningStrikesDelayBetweenProjectiles.Value;
 
@@ -25,6 +29,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public static float minSpawnDistance => Configuration.Judgement.ArraignP1.LightningStrikesMinDistance.Value;
 
         public static float damageCoefficient => Configuration.Judgement.ArraignP1.LightningStrikesDamage.Value;
+
+        private int _projectileCount;
 
         private float timer;
 
@@ -38,6 +44,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         {
             base.OnEnter();
             PlayCrossfade("Gesture", "Thundercall", 0.1f);
+
+            _projectileCount = projectileCount;
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                _projectileCount += karmaProjectileCount;
+            }
 
             spawnDistance = maxSpawnDistance - minSpawnDistance;
             if (isAuthority)
@@ -78,7 +90,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
             }
 
             timer += GetDeltaTime();
-            if (isAuthority && timer > delayBetweenSpawns && projectilesSpawned < projectileCount)
+            if (isAuthority && timer > delayBetweenSpawns && projectilesSpawned < _projectileCount)
             {
                 var xOffest = GetRandomOffset();
                 var zOffest = GetRandomOffset();
@@ -92,7 +104,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
                 projectilesSpawned++;
             }
 
-            if (projectilesSpawned >= projectileCount && isAuthority && fixedAge > baseDuration)
+            if (projectilesSpawned >= _projectileCount && isAuthority && fixedAge > baseDuration)
             {
                 outer.SetNextStateToMain();
             }

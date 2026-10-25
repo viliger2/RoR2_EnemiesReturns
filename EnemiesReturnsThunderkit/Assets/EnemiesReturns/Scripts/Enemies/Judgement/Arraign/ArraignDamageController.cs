@@ -1,9 +1,7 @@
 ﻿using EnemiesReturns.Behaviors;
 using R2API;
 using RoR2;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,15 +9,45 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 {
     public class ArraignDamageController : NetworkBehaviour, IOnIncomingDamageServerReceiver, IOnTakeDamageServerReceiver
     {
+        public static GameObject hitEffectPrefab;
+
         public CharacterBody body;
+
+        private ChildLocator childLocator;
 
         public int segments;
 
+        public int additionalSegmentsKarma;
+
+        public int requiredKarmaLevel;
+
         private uint segmentStatus = 0;
 
-        private float segmentHealthSize;
-
         private int currentSegment;
+
+        private int totalSegments;
+
+        private static HashSet<BodyIndex> bodiesToBypassArmor = new HashSet<BodyIndex>();
+
+        public static Material immuneToAllDamageExceptHammerMaterial;
+
+        public static void AddDamageImmuneOverlay(CharacterModel self)
+        {
+            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer))
+            {
+                self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageExceptHammerMaterial;
+            }
+        }
+
+        public static void AddBodyToArmorBypass(BodyIndex bodyIndex)
+        {
+            if (bodyIndex != BodyIndex.None) bodiesToBypassArmor.Add(bodyIndex);
+        }
+
+        public static bool BodyCanBypassArmor(BodyIndex bodyIndex)
+        {
+            return bodiesToBypassArmor.Contains(bodyIndex);
+        }
 
         private void OnEnable()
         {
@@ -27,67 +55,98 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             {
                 body = GetComponent<CharacterBody>();
             }
+            totalSegments = segments;
+            // if(Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            // {
+            //     totalSegments += additionalSegmentsKarma;
+            // }
+            childLocator = body.modelLocator.modelTransform.GetComponent<ChildLocator>();
             currentSegment = 0;
-        }
-
-        private void Start()
-        {
-            segmentHealthSize = body.maxHealth / segments;
         }
 
         public void OnIncomingDamageServer(DamageInfo damageInfo)
         {
-            var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
-            var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
-            if (arraignIsImmune && !endGameBossWeaponDamage)
+            if (!damageInfo.attacker)
             {
-                damageInfo.rejected = true;
-                RenderDamageNumber();
+                return;
             }
 
-            if (arraignIsImmune && endGameBossWeaponDamage)
+            var attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+
+            if (!attackerBody)
+            {
+                return;
+            }
+
+            var arraignIsImmune = body.HasBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
+            var endGameBossWeaponDamage = damageInfo.damageType.HasModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+            bool aeonianDamage = false;
+            if (!endGameBossWeaponDamage && attackerBody && attackerBody.master && attackerBody.master.inventory)
+            {
+                //aeonianDamage |= attackerBody.master.inventory.HasEquipment(Content.Equipment.EliteAeonian);
+                aeonianDamage |= attackerBody.master.inventory.GetItemCountPermanent(Content.Items.HiddenAnointed) > 0;
+                aeonianDamage |= bodiesToBypassArmor.Contains(attackerBody.bodyIndex);
+            }
+            if (arraignIsImmune && !(endGameBossWeaponDamage || aeonianDamage))
+            {
+                damageInfo.rejected = true;
+                RenderDamageNumber(damageInfo.position);
+            }
+
+            if (arraignIsImmune && (endGameBossWeaponDamage || aeonianDamage))
             {
                 body.RemoveBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
+                if (childLocator)
+                {
+                    var effectData = new EffectData()
+                    {
+                        rootObject = base.gameObject,
+                        modelChildIndex = (short)childLocator.FindChildIndex("Chest"),
+                        scale = 3.5f
+                    };
+
+                    EffectManager.SpawnEffect(hitEffectPrefab, effectData, true);
+                }
             }
 
             if (body.HasBuff(Content.Buffs.ImmuneToHammer) && endGameBossWeaponDamage)
             {
                 damageInfo.rejected = true;
-                RenderDamageNumber();
+                RenderDamageNumber(damageInfo.position);
             }
         }
 
-        public void RenderDamageNumber()
+        public void RenderDamageNumber(Vector3 position)
         {
             if (ImmuneDamageNumbers.instance)
             {
-                ImmuneDamageNumbers.instance.SpawnDamageNumber(body.corePosition);
-                RpcRenderDamageNumber();
+                ImmuneDamageNumbers.instance.SpawnDamageNumber(position);
+                RpcRenderDamageNumber(position);
             }
         }
 
         [ClientRpc]
-        private void RpcRenderDamageNumber()
+        private void RpcRenderDamageNumber(Vector3 position)
         {
-            if (ImmuneDamageNumbers.instance)
+            if (ImmuneDamageNumbers.instance && !NetworkServer.active)
             {
-                ImmuneDamageNumbers.instance.SpawnDamageNumber(body.corePosition);
+                ImmuneDamageNumbers.instance.SpawnDamageNumber(position);
             }
         }
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
-            if(currentSegment >= segments)
+            if (currentSegment >= totalSegments)
             {
                 return;
             }
             var healthComponent = damageReport.victim;
-
+            var segmentHealthSize = body.maxHealth / totalSegments;
             var currentSegmentStatus = (segmentStatus & (uint)1 << currentSegment) == 0;
 
-            if(damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < healthComponent.fullCombinedHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
+            if (damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
             {
-                healthComponent.health = healthComponent.fullCombinedHealth - (segmentHealthSize * (currentSegment + 1)) + 1;
+                healthComponent.health = body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1;
                 damageReport.victimBody.AddBuff(Content.Buffs.ImmuneToAllDamageExceptHammer);
                 segmentStatus |= (uint)1 << currentSegment;
                 currentSegment++;
@@ -96,9 +155,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         private void OnValidate()
         {
-            if(segments > 16)
+            if (segments + additionalSegmentsKarma > 16)
             {
-                segments = 16;
+                Debug.LogWarning("ArraignDamageController: Can't have more than 16 total segments!");
             }
         }
     }

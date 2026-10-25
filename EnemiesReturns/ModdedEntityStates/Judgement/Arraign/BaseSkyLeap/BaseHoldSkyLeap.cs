@@ -13,6 +13,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
 
         public abstract float baseTargetDropped { get; }
 
+        public abstract float karmaCoefficient { get; }
+
+        public abstract int requiredKarmaLevel { get; }
+
         public static GameObject dropEffectPrefab;
 
         public static GameObject markEffect;
@@ -49,6 +53,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.BaseSkyLeap
             duration = baseDuration / attackSpeedStat;
             targetMarked = baseTargetMarked / attackSpeedStat;
             targetDropped = baseTargetDropped / attackSpeedStat;
+
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                duration *= karmaCoefficient;
+                targetMarked *= karmaCoefficient;
+                targetDropped *= karmaCoefficient;
+            }
+
             Transform modelTransform = GetModelTransform();
             if (modelTransform)
             {

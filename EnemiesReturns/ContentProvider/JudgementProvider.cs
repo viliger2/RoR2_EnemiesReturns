@@ -384,6 +384,7 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.Judgement.Arraign.Phase2.SummonSkyLasers.cscSkyLaser = assets.First(asset => asset.name == "cscSkyLaser");
                     ModdedEntityStates.Judgement.Mission.Phase3.cscArraignHaunt = assets.First(asset => asset.name == "cscArraignHaunt");
+                    ModdedEntityStates.Judgement.Mission.Phase2.cscArraignHauntP1 = assets.First(asset => asset.name == "cscArraignHauntP1");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ModdedSkinDefParams[]>)((assets) =>

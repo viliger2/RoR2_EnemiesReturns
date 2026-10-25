@@ -13,6 +13,7 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<float> LevelArmor;
         public static ConfigEntry<float> SprintMultiplier;
         public static ConfigEntry<int> HealthSegments;
+        public static ConfigEntry<int> KarmaHealthSegments;
 
         public static ConfigEntry<float> ThreeHitComboCooldown;
         public static ConfigEntry<float> ThreeHitComboFirstSwingDamage;
@@ -57,6 +58,7 @@ namespace EnemiesReturns.Configuration.Judgement
 
         public static ConfigEntry<float> LightningStrikesCooldown;
         public static ConfigEntry<int> LightningStrikesCount;
+        public static ConfigEntry<int> LightningStrikesCountKarma;
         public static ConfigEntry<float> LightningStrikesDelayBetweenProjectiles;
         public static ConfigEntry<float> LightningStrikesMinDistance;
         public static ConfigEntry<float> LightningStrikesMaxDistance;
@@ -76,6 +78,7 @@ namespace EnemiesReturns.Configuration.Judgement
             SprintMultiplier = config.Bind("Arraign P1 Character Stats", "Sprint Multiplier", 3.2f, "Arraign P1' health increase per level.");
 
             HealthSegments = config.Bind("Arraign P1 Character Stats", "Number of Health Segments", 5, "Arraign P1' number of health segments that you need to break with hammer.");
+            KarmaHealthSegments = config.Bind("Arraign P1 Character Stats", "Number of Additional Health Segments From Karma", 3, "Arraign P1' number of additional health segments gained from Karma.");
 
             ThreeHitComboCooldown = config.Bind("ThreeHitCombo", "ThreeHitCombo Cooldown", 12f, "ThreeHitCombo cooldown.");
             ThreeHitComboFirstSwingDamage = config.Bind("ThreeHitCombo", "ThreeHitCombo First Swing Damage", 3f, "ThreeHitCombo first swing damage.");
@@ -123,6 +126,7 @@ namespace EnemiesReturns.Configuration.Judgement
 
             LightningStrikesCooldown = config.Bind("LightningStrikes", "LightningStrikes Cooldown", 15f, "LightningStrikes cooldown");
             LightningStrikesCount = config.Bind("LightningStrikes", "LightningStrikes Count", 20, "LightningStrikes projectile count");
+            LightningStrikesCountKarma = config.Bind("LightningStrikes", "LightningStrikes Count Karma", 10, "Additional LightningStrikes projectile count from karma");
             LightningStrikesDelayBetweenProjectiles = config.Bind("LightningStrikes", "LightningStrikes Delay Between Projeciles", 0.1f, "LightningStrikes delay between projectiles.");
             LightningStrikesMinDistance = config.Bind("LightningStrikes", "LightningStrikes Min Projectile Distance", 0f, "LightningStrikes minimum projectile spawn distance from target.");
             LightningStrikesMaxDistance = config.Bind("LightningStrikes", "LightningStrikes Max Projectile Distance", 30f, "LightningStrikes maximum projectile spawn distance from target.");

@@ -41,7 +41,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public override void OnEnter()
         {
-            KillAllMonsters();
+            Utils.KillAllMonsters();
             base.OnEnter();
             var childLocator = GetComponent<ChildLocator>();
             if (childLocator)
@@ -157,7 +157,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public override void OnExit()
         {
             base.OnExit();
-            KillAllMonsters();
+            Utils.KillAllMonsters();
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
@@ -183,25 +183,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     rotation = Quaternion.identity,
                 };
                 EffectManager.SpawnEffect(teleportEffect, data, false);
-            }
-        }
-
-        public void KillAllMonsters()
-        {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
-            foreach (TeamComponent item in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
-            {
-                if ((bool)item)
-                {
-                    HealthComponent component = item.GetComponent<HealthComponent>();
-                    if ((bool)component)
-                    {
-                        component.Suicide();
-                    }
-                }
             }
         }
 

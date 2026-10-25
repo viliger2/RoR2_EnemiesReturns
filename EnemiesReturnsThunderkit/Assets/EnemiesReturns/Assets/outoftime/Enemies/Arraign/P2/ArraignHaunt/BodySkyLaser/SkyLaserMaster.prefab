@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 9001850891657022754}
   - component: {fileID: 999008244413483042}
   - component: {fileID: 4655277767421450784}
+  - component: {fileID: 3095056592660970044}
+  - component: {fileID: -7269406749448745799}
   m_Layer: 0
   m_Name: SkyLaserMaster
   m_TagString: Untagged
@@ -85,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masterIndex: 0
+  hideAllyCard: 0
   bodyPrefab: {fileID: 201946377172454069, guid: 50127855b659ad442b07d75f2f2d5db8, type: 3}
   spawnOnStart: 0
   _teamIndex: 2
@@ -92,11 +95,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyOnBodyDeath: 1
+  cannotRevive: 0
   ExtraBossMissileMoneyRemainder: 0
   trackedFreeUnlocks: 0
   trackedMissileCount: 0
   isBoss: 0
   preventGameOver: 1
+  _seekerRevivedOnce: 0
+  _seekerRevitalize: 0
+  seekerSelfRevive: 0
   devotionInventoryPrefab: {fileID: 0}
   devotionInventoryUpdaterRef: {fileID: 0}
   devotionItem: 0
@@ -116,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemAcquisitionOrder: 
+  wasRecentlyCreated: 0
   beadAppliedHealth: 0
   beadAppliedShield: 0
   beadAppliedRegen: 0
@@ -146,8 +154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugStateChanges: 0
   fullVision: 1
+  xrayVision: 0
+  retaliateUntargetable: 0
   neverRetaliateFriendlies: 1
+  ignoreFliers: 0
   enemyAttentionDuration: 5
+  leaderTargetCooldown: 3
   desiredSpawnNodeGraphType: 0
   stateMachine: {fileID: 9001850891657022754}
   scanState:
@@ -155,13 +167,22 @@ MonoBehaviour:
       PublicKeyToken=null
   isHealer: 0
   enemyAttention: 0
+  leaderTargetCopied:
+    t: -Infinity
   prioritizePlayers: 1
+  copyLeaderTarget: 0
   aimVectorDampTime: 0.2
   aimVectorMaxSpeed: 360
   selectedSkilldriverName: 
   shouldMissFirstOffScreenShot: 0
   forceUpdateEveryFrame: 0
   debugEnemyHurtBox: {fileID: 0}
+  followPattern:
+    targetOffset: {x: 0, y: 0, z: 0}
+    minHorizontalDistance: 0
+    maxHorizontalDistance: 0
+    minVerticalDistance: 0
+    maxVerticalDistance: 0
 --- !u!114 &9001850891657022754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,17 +218,27 @@ MonoBehaviour:
   customName: ChaseOffNodegraph
   skillSlot: -1
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 0
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
   maxDistance: 7
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
+  selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -215,12 +246,16 @@ MonoBehaviour:
   activationRequiresAimConfirmation: 0
   movementType: 1
   moveInputScale: 1
+  aimVectorDampTimeOverride: -1
+  aimVectorMaxSpeedOverride: -1
   aimType: 1
   ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -240,17 +275,27 @@ MonoBehaviour:
   customName: PathFromAfar
   skillSlot: -1
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 0
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
   maxDistance: Infinity
   selectionRequiresTargetLoS: 0
   selectionRequiresOnGround: 0
+  selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -258,13 +303,64 @@ MonoBehaviour:
   activationRequiresAimConfirmation: 0
   movementType: 1
   moveInputScale: 1
+  aimVectorDampTimeOverride: -1
+  aimVectorMaxSpeedOverride: -1
   aimType: 1
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &3095056592660970044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261611187677257612}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1399583993, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentDef: {fileID: 0}
+  equipmentString: 
+  overwriteEquipment: 0
+  itemDefInfos: []
+  itemInfos:
+  - itemString: Hoof
+    count: 3
+--- !u!114 &-7269406749448745799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261611187677257612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1453748088, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredKarma: 2
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3095056592660970044}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2

@@ -11,6 +11,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
     [RegisterEntityState]
     public class BeamLoop : BaseBeam
     {
+        public static int requiredKarmaLevel = 4;
+
         public override GameObject pushBackEffect => pushBackEffectStatic;
 
         public static float baseDuration => Configuration.Judgement.ArraignP1.SwordBeamDuration.Value;
@@ -20,6 +22,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         public static float beamDamage => Configuration.Judgement.ArraignP1.SwordBeamDamage.Value;
 
         public static string hitBoxGroupName = "SwordBeam";
+
+        public static string hitBoxGroupNameKarma = "SwordBeamKarma";
 
         public static float procCoefficient => Configuration.Judgement.ArraignP1.SwordBeamProcCoefficient.Value;
 
@@ -32,6 +36,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
         private GameObject forwardBeam;
 
         private GameObject backwardsBeam;
+
+        private GameObject leftBeam;
+
+        private GameObject rightBeam;
 
         public GameObject ppBeamInstance;
 
@@ -51,6 +59,19 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             backwardsBeam.transform.SetParent(FindModelChild("SwordBeamEffectBackward"));
             backwardsBeam.transform.localPosition = Vector3.zero;
             backwardsBeam.transform.localRotation = Quaternion.identity;
+
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                leftBeam = UnityEngine.Object.Instantiate(beamPrefab);
+                leftBeam.transform.SetParent(FindModelChild("SwordBeamEffectLeft"));
+                leftBeam.transform.localPosition = Vector3.zero;
+                leftBeam.transform.localRotation = Quaternion.identity;
+
+                rightBeam = UnityEngine.Object.Instantiate(beamPrefab);
+                rightBeam.transform.SetParent(FindModelChild("SwordBeamEffectRight"));
+                rightBeam.transform.localPosition = Vector3.zero;
+                rightBeam.transform.localRotation = Quaternion.identity;
+            }
 
             Util.PlaySound("ER_Arraign_BeamLoop_Play", gameObject);
         }
@@ -89,6 +110,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             {
                 UnityEngine.Object.Destroy(backwardsBeam);
             }
+            if(rightBeam)
+            {
+                UnityEngine.Object.Destroy(rightBeam);
+            }
+            if (leftBeam)
+            {
+                UnityEngine.Object.Destroy(leftBeam);
+            }
             if (ppBeamInstance)
             {
                 UnityEngine.Object.Destroy(ppBeamInstance);
@@ -104,7 +133,14 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Beam
             overlapAttack.damage = beamDamage * damageStat;
             //swordAttack.hitEffectPrefab = ;
             overlapAttack.isCrit = RollCrit();
-            overlapAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == hitBoxGroupName);
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                overlapAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == hitBoxGroupNameKarma);
+            }
+            else
+            {
+                overlapAttack.hitBoxGroup = Array.Find(modelTransform.GetComponents<HitBoxGroup>(), (element) => element.groupName == hitBoxGroupName);
+            }
             overlapAttack.procCoefficient = procCoefficient;
             overlapAttack.damageType = new DamageTypeCombo(DamageType.BypassBlock | DamageType.BypassOneShotProtection | DamageType.BypassArmor, DamageTypeExtended.Generic, DamageSource.Special);
             overlapAttack.retriggerTimeout = 0.25f;
