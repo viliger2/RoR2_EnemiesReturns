@@ -595,6 +595,26 @@ namespace EnemiesReturns.Enemies.LynxTribe.Archer
             });
             #endregion
 
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "Head",
+                localPos = new Vector3(-0.11145F, 2.46633F, 0.4013F),
+                localAngles = new Vector3(0F, 182.1605F, 0F),
+                localScale = new Vector3(3.38751F, 3.38751F, 3.38751F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 

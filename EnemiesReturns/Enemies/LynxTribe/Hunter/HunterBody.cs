@@ -568,6 +568,26 @@ namespace EnemiesReturns.Enemies.LynxTribe.Hunter
             });
             #endregion
 
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "Head",
+                localPos = new Vector3(-0.03434F, 1.95334F, 0.27905F),
+                localAngles = new Vector3(0F, 172.9843F, 0F),
+                localScale = new Vector3(1.85496F, 1.85496F, 1.85496F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 

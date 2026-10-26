@@ -1069,6 +1069,26 @@ namespace EnemiesReturns.Enemies.Colossus
             });
             #endregion
 
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "Head",
+                localPos = new Vector3(-0.01382F, 0.52226F, -0.01505F),
+                localAngles = new Vector3(357.1792F, 176.8772F, 3.22415F),
+                localScale = new Vector3(0.66871F, 0.66871F, 0.66871F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 

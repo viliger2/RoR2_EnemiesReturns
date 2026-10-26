@@ -1345,6 +1345,59 @@ namespace EnemiesReturns.Enemies.Judgement
                     localScale = new Vector3(0.025F, 0.025F, 0.025F),
                 }
             }));
+            dictionary.Add("AcolyteBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Head",
+                    localPos = new Vector3(-0.64304F, -0.16905F, 0F),
+                    localAngles = new Vector3(-0.00002F, 270F, 180F),
+                    localScale = new Vector3(0.05F, 0.05F, 0.05F)
+                }
+            }));
+            dictionary.Add("LynxArcherBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Mask",
+                    localPos = new Vector3(-0.12019F, 0.68421F, -0.18224F),
+                    localAngles = new Vector3(270F, 0F, 0F),
+                    localScale = new Vector3(0.09368F, 0.09368F, 0.09368F)
+                }
+            }));
+            dictionary.Add("LynxTotem", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Mask",
+                    localPos = new Vector3(0F, 0.68126F, -0.21404F),
+                    localAngles = new Vector3(271.3137F, 183.5048F, 176.5844F),
+                    localScale = new Vector3(0.11767F, 0.11767F, 0.11767F),
+                },
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "TotemBase",
+                    localPos = new Vector3(-0.0014F, 1.34265F, -1.03946F),
+                    localAngles = new Vector3(271.3137F, 183.5033F, 176.5859F),
+                    localScale = new Vector3(0.58023F, 0.56539F, 0.46537F)
+                }
+            }));
 #pragma warning restore CS0618 // Type or member is obsolete
             return dictionary;
 

@@ -904,6 +904,36 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             });
             #endregion
 
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(0F, 1.09802F, 0F),
+                localAngles = new Vector3(0F, 175.312F, 0F),
+                localScale = new Vector3(5.98323F, 4.43649F, 3.25217F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "ShamanHead",
+                localPos = new Vector3(-0.92353F, 0.45088F, 0.1938F),
+                localAngles = new Vector3(0F, 181.7001F, 0F),
+                localScale = new Vector3(0.71116F, 0.71116F, 0.71116F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
+            });
+            #endregion
+
             return idrs;
         }
 
