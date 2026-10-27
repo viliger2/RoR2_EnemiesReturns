@@ -11,7 +11,7 @@ using RoR2;
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings
 {
     public abstract class BaseFireRings : BaseState
-    { 
+    {
         public abstract int baseTimesToFire { get; }
 
         public abstract int baseRingToFire { get; }
@@ -71,7 +71,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private ChildLocator locator;
 
-        private OverlapAttackAuthority overlapAttack;
+        private OverlapAttack overlapAttack;
 
         private int[] currentRings;
 
@@ -141,7 +141,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
                 timesFired++;
             }
-            if(spawnShadowEffect && !shadowEffectSpawned && shadowEffectDelayTimer <= 0)
+            if (spawnShadowEffect && !shadowEffectSpawned && shadowEffectDelayTimer <= 0)
             {
                 SpawnGhostEffect();
                 shadowEffectSpawned = true;
@@ -198,19 +198,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             ringsToFire = reader.ReadByte();
         }
 
-        private OverlapAttackAuthority SetupOverlapAttack()
+        private OverlapAttack SetupOverlapAttack()
         {
-            return new OverlapAttackAuthority()
+            return new OverlapAttack()
             {
                 attacker = base.gameObject,
-                attackerFiltering = RoR2.AttackerFiltering.NeverHitSelf,
                 inflictor = base.gameObject,
                 teamIndex = TeamComponent.GetObjectTeam(gameObject),
                 damage = baseDamage * damageStat,
                 isCrit = RollCrit(),
                 forceVector = new Vector3(0f, forceVectorValue, 0f),
-                retriggerTimeout = 1f
-            };
+                retriggerTimeout = 1f,
+                attackerFiltering = AttackerFiltering.CustomFilter,
+                filterCallback = Utils.OverlapAttackAuthorityFilter
+        };
         }
 
         private void PlayAnimation()
@@ -221,7 +222,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         private void SetupNewRings()
         {
             currentRings = new int[ringsToFire];
-            for(int i = 0; i < ringsToFire; i++)
+            for (int i = 0; i < ringsToFire; i++)
             {
                 currentRings[i] = rngTable[this.startingArray][i];
             }

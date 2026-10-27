@@ -68,11 +68,11 @@ namespace EnemiesReturns
                     projectilesList.AddRange(assets.Where(asset => asset.TryGetComponent<ProjectileController>(out _)).ToArray());
                     effectsList.AddRange(Array.ConvertAll(assets.Where(asset => asset.TryGetComponent<EffectComponent>(out _)).ToArray(), item => new EffectDef(item)));
 
-                   nopList.AddRange(assets.Where(asset =>
-                        asset.TryGetComponent<NetworkIdentity>(out _)
-                            && !(asset.TryGetComponent<CharacterBody>(out _)
-                                || asset.TryGetComponent<CharacterMaster>(out _)
-                                || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
+                    nopList.AddRange(assets.Where(asset =>
+                         asset.TryGetComponent<NetworkIdentity>(out _)
+                             && !(asset.TryGetComponent<CharacterBody>(out _)
+                                 || asset.TryGetComponent<CharacterMaster>(out _)
+                                 || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
 
                     var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
                     var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
@@ -121,7 +121,7 @@ namespace EnemiesReturns
                     //ModdedEntityStates.ContactLight.Providence.P2.Utility.Disappear.staticPredictedPositionEffect = assets.First(prefab => prefab.name == "LandingEffect");
 
                     var orbProjectilePrefab = assets.First(prefab => prefab.name == "ProviTwoSwingsProjectile");
-                    orbProjectilePrefab.GetComponent<ProjectileController>().ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
+                    SetupProviTwoSwingsProjectile(orbProjectilePrefab);
                     ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
 
@@ -239,7 +239,7 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<InspectDef[]>)((assets) =>
                 {
-                    var chestIcon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base.ChestIcon_1_png).WaitForCompletion();
+                    var chestIcon = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base.ChestIcon_1_png).WaitForCompletion();
                     var info = assets.First(asset => asset.name == "idGoldenBarrel");
                     info.Info.Visual = chestIcon;
 
@@ -291,6 +291,12 @@ namespace EnemiesReturns
                 };
             }
             yield break;
+        }
+
+        private static void SetupProviTwoSwingsProjectile(GameObject orbProjectilePrefab)
+        {
+            var controller = orbProjectilePrefab.GetComponent<ProjectileController>();
+            controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarWisp.LunarWispTrackingBombGhost_prefab).WaitForCompletion();
         }
 
         private void CreateContactLightMusic()

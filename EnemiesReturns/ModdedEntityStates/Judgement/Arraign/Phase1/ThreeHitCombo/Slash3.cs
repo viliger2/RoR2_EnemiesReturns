@@ -9,6 +9,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
     [RegisterEntityState]
     public class Slash3 : BasicMeleeAttack
     {
+        public static int requiredKarmaLevel = 2;
+
+        public static float karmaCoefficient = 0.5f;
+
         public static AnimationCurve acdSlash3;
 
         public static float blastAttackRadius => Configuration.Judgement.ArraignP1.ThreeHitComboExplosionRadius.Value;
@@ -34,6 +38,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1.ThreeHitCom
         public override void OnEnter()
         {
             this.baseDuration = 2.96f;
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                this.baseDuration *= karmaCoefficient;
+            }
             base.damageCoefficient = Configuration.Judgement.ArraignP1.ThreeHitComboThirdSwingDamage.Value;
             base.hitBoxGroupName = "SwordNormal";
             base.hitEffectPrefab = hitEffect;

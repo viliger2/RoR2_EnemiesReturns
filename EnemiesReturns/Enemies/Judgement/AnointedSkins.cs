@@ -264,10 +264,13 @@ namespace EnemiesReturns.Enemies.Judgement
                         var anointedSkin = EnemiesReturns.Enemies.Judgement.AnointedSkins.CreateAnointedSkin(survivorDef.bodyPrefab.name, skinDef, false, skinDef.icon);
                         var modelSkinController = survivorDef.bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ModelSkinController>();
                         HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
-                        var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                        if (modelSkinController2)
+                        if (survivorDef.displayPrefab)
                         {
-                            HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                            var modelSkinController2 = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                            if (modelSkinController2 && modelSkinController.skins != null)
+                            {
+                                HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, in anointedSkin);
+                            }
                         }
                     }
                 }
@@ -368,10 +371,13 @@ namespace EnemiesReturns.Enemies.Judgement
                 }
 
                 HG.ArrayUtils.ArrayAppend(ref modelSkins.skins, eliteSkinDef);
-                var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
-                if (modelSkinController)
+                if (survivorDef.displayPrefab)
                 {
-                    HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
+                    var modelSkinController = survivorDef.displayPrefab.GetComponentInChildren<ModelSkinController>();
+                    if (modelSkinController && modelSkinController.skins != null)
+                    {
+                        HG.ArrayUtils.ArrayAppend(ref modelSkinController.skins, eliteSkinDef);
+                    }
                 }
 
                 anointedSkinsLocal.Add(eliteSkinDef);
@@ -409,7 +415,10 @@ namespace EnemiesReturns.Enemies.Judgement
                 skinUnlockDef.cachedName = $"Skins.{bodyName}.EnemiesReturnsAnointed";
                 skinUnlockDef.nameToken = "ENEMIES_RETURNS_JUDGEMENT_SKIN_ANOINTED_NAME";
                 skinUnlockDef.hidden = false; // it actually does fucking nothing, it only hides it on game finish
+#pragma warning disable CS0618 // Type or member is obsolete
                 skinUnlockDef.achievementIcon = icon;
+#pragma warning restore CS0618 // Type or member is obsolete
+                skinUnlockDef.achievementIconRef = new UnityEngine.AddressableAssets.AssetReferenceT<Sprite>("");
 
                 AnointedSkinsUnlockables.Add(bodyName, skinUnlockDef);
                 AnointedSkinsUnlockablesAchivements.Add(skinUnlockDef, bodyName);
@@ -460,6 +469,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.nameToken, RoR2.Language.GetString(survivorDef.displayNameToken) + ": ???");
                 RoR2.Language.currentLanguage.SetStringByToken(cheevoDef.descriptionToken, RoR2.Language.GetString("ENEMIES_RETURNS_JUDGEMENT_ACHIEVEMENT_SURVIVE_JUDGEMENT_DESC"));
 
+#pragma warning disable CS0618 // Type or member is obsolete
                 if (!skinUnlockable.achievementIcon)
                 {
                     skinUnlockable.achievementIcon = AnointedSkinIcon;
@@ -469,6 +479,7 @@ namespace EnemiesReturns.Enemies.Judgement
                 {
                     cheevoDef.SetAchievedIcon(skinUnlockable.achievementIcon);
                 }
+#pragma warning restore CS0618 // Type or member is obsolete
 
                 AchievementManager.achievementIdentifiers.Add(cheevoDef.identifier);
                 AchievementManager.achievementNamesToDefs.Add(cheevoDef.identifier, cheevoDef);

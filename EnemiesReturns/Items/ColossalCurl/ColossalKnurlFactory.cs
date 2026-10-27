@@ -32,9 +32,10 @@ namespace EnemiesReturns.Items.ColossalKnurl
             itemDef.descriptionToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_COLOSSAL_KNURL_LORE";
             itemDef.pickupModelPrefab = prefab;
+            itemDef.pickupIconSprite = icon;
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
-            itemDef.pickupIconSprite = icon;
+            itemDef.pickupIconSpriteReference = new AssetReferenceT<Sprite>("");
             itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CanBeTemporary };
 
             return itemDef;
@@ -58,7 +59,9 @@ namespace EnemiesReturns.Items.ColossalKnurl
             fistPrefab.AddComponent<TeamFilter>();
 
             var projectileController = fistPrefab.AddComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = fistGhostPrefab;
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.cannotBeDeleted = true; // why would you allow captain to delete stone fist, that's just inapropriate
             projectileController.canImpactOnTrigger = false;

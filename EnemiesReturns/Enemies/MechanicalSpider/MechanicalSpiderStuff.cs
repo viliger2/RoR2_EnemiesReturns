@@ -248,7 +248,10 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
             (droneDef as ScriptableObject).name = "EnemiesReturnsMechanicalSpiderDrone";
             droneDef.bodyPrefab = bodyPrefab;
             //Content.Drones.MechanicalSpiderDrone.displayPrefab = ;
+#pragma warning disable CS0618 // Type or member is obsolete
             droneDef.iconSprite = icon;
+#pragma warning restore CS0618 // Type or member is obsolete
+            droneDef.iconSpriteReference = new AssetReferenceT<Sprite>("");
             droneDef.canDrop = Configuration.MechanicalSpider.DroneCanDrop.Value;
             droneDef.canScrap = Configuration.MechanicalSpider.DroneCanScrap.Value;
             droneDef.canCombine = Configuration.MechanicalSpider.DroneCanCombine.Value;
@@ -351,7 +354,9 @@ namespace EnemiesReturns.Enemies.MechanicalSpider
 
             var projectileController = projectilePrefab.GetComponent<ProjectileController>();
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = CreateDoubleShotGhostPrefab();
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.flightSoundLoop = CreateProjectileLoopSoundDef();
 
             var projectileSingleTargetImpact = projectilePrefab.GetComponent<ProjectileSingleTargetImpact>();

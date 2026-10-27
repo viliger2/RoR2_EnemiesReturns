@@ -16,11 +16,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
     {
         public static string phaseControllerChildString = "PostFight";
 
-        public static InteractableSpawnCard portalBazaar = Addressables.LoadAssetAsync<InteractableSpawnCard>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_PortalShop.iscShopPortal_asset).WaitForCompletion();
+        public static InteractableSpawnCard portalBazaar = Addressables.LoadAssetAsync<InteractableSpawnCard>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_PortalShop.iscShopPortal_asset).WaitForCompletion();
 
         public static event Action onProvidenceDefeated;
 
-        public static MusicTrackDef musicTrack => Addressables.LoadAssetAsync<MusicTrackDef>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_MusicTrackDefs.muNone_asset).WaitForCompletion();
+        public static MusicTrackDef musicTrack => Addressables.LoadAssetAsync<MusicTrackDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_MusicTrackDefs.muNone_asset).WaitForCompletion();
 
         public static float consoleAvailable = 2f;
 

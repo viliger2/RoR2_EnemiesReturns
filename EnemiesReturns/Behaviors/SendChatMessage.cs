@@ -22,6 +22,11 @@ namespace EnemiesReturns.Behaviors
             }
         }
 
+        public void Send(CharacterBody body)
+        {
+            Send();
+        }
+
         public void Send()
         {
             if (!NetworkServer.active)

@@ -17,13 +17,13 @@ namespace EnemiesReturns.Enemies.Spitter
             {
                 return;
             }
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            GlobalEventManager.onCharacterDeathServer += GlobalEventManager_onCharacterDeathGlobal;
         }
 
         private void OnDisable()
         {
             if (!NetworkServer.active) { return; }
-            GlobalEventManager.onCharacterDeathGlobal -= GlobalEventManager_onCharacterDeathGlobal;
+            GlobalEventManager.onCharacterDeathServer -= GlobalEventManager_onCharacterDeathGlobal;
         }
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)

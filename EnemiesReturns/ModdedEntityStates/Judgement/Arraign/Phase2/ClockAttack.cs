@@ -109,6 +109,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static GameObject effectPrefab;
 
+        public static int requiredKarmaLevel = 7;
+
         public static float delayBetweenSpawns => Configuration.Judgement.ArraignP2.ClockAttackDelayBetweenSpawns.Value;
 
         public static int projectileCountPerRow = 1;
@@ -119,7 +121,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
         public static int additionalPairs => Configuration.Judgement.ArraignP2.ClockAttackAdditionalPairs.Value;
 
+        public static int additionalPairsKarma => Configuration.Judgement.ArraignP2.ClockAttackAdditionalPairsKarma.Value;
+
         public static int pairsDistanceFromOrigin => Configuration.Judgement.ArraignP2.ClockAttackDistanceFromStart.Value;
+
 
         private ClockFiringLine[] lines = Array.Empty<ClockFiringLine>();
 
@@ -153,8 +158,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase2
 
                 for (int i = 0; i < additionalPairs; i++)
                 {
-                    linesList.Add(CreateLine(clockChildLocator, (staringIndex + pairsDistanceFromOrigin * i + 1) % 12));
-                    linesList.Add(CreateLine(clockChildLocator, (12 + (staringIndex - (pairsDistanceFromOrigin * i + 1))) % 12));
+                    linesList.Add(CreateLine(clockChildLocator, (staringIndex + pairsDistanceFromOrigin * (i + 1)) % 12));
+                    linesList.Add(CreateLine(clockChildLocator, (12 + (staringIndex - (pairsDistanceFromOrigin * (i + 1)))) % 12));
+                }
+                if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+                {
+                    for(int i = 0; i < additionalPairsKarma; i++)
+                    {
+                        linesList.Add(CreateLine(clockChildLocator, (staringIndex + (i + 1)) % 12));
+                        linesList.Add(CreateLine(clockChildLocator, (12 + (staringIndex - (i + 1))) % 12));
+                    }
                 }
                 lines = linesList.ToArray();
             }

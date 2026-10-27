@@ -8,8 +8,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 using static R2API.DirectorAPI;
 using static RoR2.Navigation.NodeGraph;
+using static RoR2.OverlapAttack;
 
 namespace EnemiesReturns
 {
@@ -296,24 +298,34 @@ namespace EnemiesReturns
             return sphereSearch;
         }
 
-        public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
+        public static (EquipmentState, EquipmentLocation) GetEquipmentStateAndLocation(this Inventory inventory, EquipmentIndex equipmentIndex)
         {
             for (uint i = 0; i < inventory.GetEquipmentSlotCount(); i++)
             {
-                for (uint k = 0; k < inventory.GetEquipmentSetCount(i); k++)
+                for (uint k = 0; k < inventory.GetEquipmentSetCount(); k++)
                 {
-                    var equipmentState = inventory.GetEquipment(i, k);
+                    var location = new EquipmentLocation
+                    {
+                        slot = i,
+                        set = k
+                    };
+                    var equipmentState = inventory.GetEquipment(location);
                     if (!equipmentState.Equals(EquipmentState.empty))
                     {
                         if (equipmentState.equipmentIndex == equipmentIndex)
                         {
-                            return true;
+                            return (equipmentState, location);
                         }
                     }
                 }
             }
 
-            return false;
+            return (EquipmentState.empty, EquipmentLocation.invalid);
+        }
+
+        public static bool HasEquipment(this Inventory inventory, EquipmentIndex equipmentIndex)
+        {
+            return !inventory.GetEquipmentStateAndLocation(equipmentIndex).Item1.Equals(EquipmentState.empty);
         }
 
         public static void AddPersistentListener<T0, T1>(this UnityEvent<T0, T1> unityEvent, UnityAction<T0, T1> action)
@@ -371,6 +383,19 @@ namespace EnemiesReturns
                 T temp = array[n];
                 array[n] = array[k];
                 array[k] = temp;
+            }
+
+        }
+
+        public static void Shuffle<T>(this Xoroshiro128Plus rng, List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                int k = rng.RangeInt(0, n--);
+                T temp = list[n];
+                list[n] = list[k];
+                list[k] = temp;
             }
 
         }
@@ -459,6 +484,40 @@ namespace EnemiesReturns
                 }
             }
             return wireMeshBuilder.GenerateMesh();
+        }
+
+        public static bool OverlapAttackAuthorityFilter(OverlapAttackFilterStruct filterStruct)
+        {
+            if(filterStruct.healthComponent && Util.HasEffectiveAuthority(filterStruct.healthComponent.gameObject))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool ArraignKarmaCheck(int requiredKarma)
+        {
+            return Configuration.Judgement.Judgement.EnableKarma.Value && KarmaManager.instance.GetEffectiveKarma() >= requiredKarma;
+        }
+
+        public static void KillAllMonsters()
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+            foreach (TeamComponent item in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
+            {
+                if ((bool)item)
+                {
+                    HealthComponent component = item.GetComponent<HealthComponent>();
+                    if ((bool)component)
+                    {
+                        component.Suicide();
+                    }
+                }
+            }
         }
     }
 }

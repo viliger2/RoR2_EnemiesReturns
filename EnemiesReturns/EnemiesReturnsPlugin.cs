@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EnemiesReturns
@@ -44,13 +45,14 @@ namespace EnemiesReturns
     {
         public const string Author = "Viliger";
         public const string ModName = "EnemiesReturns";
-        public const string Version = "0.7.29";
+        public const string Version = "0.7.34";
         public const string GUID = "com." + Author + "." + ModName;
 
         public static bool ModIsLoaded = false;
 
         private void Awake()
         {
+            RoR2BepInExPack.RoR2BepInExPack.LoadJunkContent();
             // TODO: remove reflection, it is bad for unity
             // maybe use code generation to generate Config.cs via reflection
             var configs = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && typeof(IConfiguration).IsAssignableFrom(type));
@@ -98,8 +100,6 @@ namespace EnemiesReturns
             }
         }
 
-
-
         private void RegisterOrbs()
         {
             R2API.OrbAPI.AddOrb(typeof(LynxStormOrb));
@@ -121,6 +121,8 @@ namespace EnemiesReturns
             MechanicalSpiderVictoryDanceController.Hooks();
             MechanicalSpiderDroneOnPurchaseEvents.Hooks();
             LynxFetishFactory.Hooks();
+            Items.ReduceHP.ReduceHP.Hooks();
+            Behaviors.ChampRushSupport.Hooks();
             Enemies.LynxTribe.LynxShrineChatMessage.Hooks();
             Behaviors.SubjectParamsChatMessage.Hooks();
             On.RoR2.CharacterModel.UpdateOverlays += UpdateOverlays;

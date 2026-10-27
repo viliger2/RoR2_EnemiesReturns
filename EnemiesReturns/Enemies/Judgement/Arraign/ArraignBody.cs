@@ -96,6 +96,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             var damageController = bodyPrefab.GetComponent<ArraignDamageController>();
             damageController.segments = ArraignP1.HealthSegments.Value;
+            damageController.additionalSegmentsKarma = ArraignP1.KarmaHealthSegments.Value;
 
             return bodyPrefab;
         }
@@ -116,6 +117,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
             var damageController = bodyPrefab.GetComponent<ArraignDamageController>();
             damageController.segments = ArraignP2.P2HealthSegments.Value;
+            damageController.additionalSegmentsKarma = ArraignP2.P2KarmaHealthSegments.Value;
 
             return bodyPrefab;
         }

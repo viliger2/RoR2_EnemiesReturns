@@ -86,7 +86,8 @@ namespace EnemiesReturns.Configuration
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepths),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbyssalDepthsSimulacrum),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.HelminthHatchery),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.DampCaverns)
                 ),
                 "Stages that Depth Spitter appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

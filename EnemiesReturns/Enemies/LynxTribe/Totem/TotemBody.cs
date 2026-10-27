@@ -848,7 +848,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "ShamanHead",
                 localPos = new Vector3(-0.01657F, -0.21418F, 0.07045F),
                 localAngles = new Vector3(0.30287F, 136.5743F, 2.16158F),
@@ -858,7 +858,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "ShamanHead",
                 localPos = new Vector3(-0.00402F, -0.21199F, 0.03897F),
                 localAngles = new Vector3(0.00611F, 233.6097F, 359.7848F),
@@ -868,7 +868,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "BodyTop",
                 localPos = new Vector3(1.51284F, -1.36331F, 0.72975F),
                 localAngles = new Vector3(0F, 180F, 0F),
@@ -878,7 +878,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "BodyTop",
                 localPos = new Vector3(-1.32988F, -1.36333F, 0.72975F),
                 localAngles = new Vector3(0F, 180F, 0F),
@@ -888,7 +888,7 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
                 childName = "BodyMiddle1",
                 localPos = new Vector3(0F, 0.00783F, -0.439F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -900,7 +900,37 @@ namespace EnemiesReturns.Enemies.LynxTribe.Totem
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleCollective,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "BodyMiddle1",
+                localPos = new Vector3(0F, 1.09802F, 0F),
+                localAngles = new Vector3(0F, 175.312F, 0F),
+                localScale = new Vector3(5.98323F, 4.43649F, 3.25217F),
+                limbMask = LimbFlags.None
+            });
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "ShamanHead",
+                localPos = new Vector3(-0.92353F, 0.45088F, 0.1938F),
+                localAngles = new Vector3(0F, 181.7001F, 0F),
+                localScale = new Vector3(0.71116F, 0.71116F, 0.71116F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
             });
             #endregion
 

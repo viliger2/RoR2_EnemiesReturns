@@ -21,7 +21,9 @@ namespace EnemiesReturns.Equipment.VoidlingWeapon
                 {
                     if (body && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         body.AddItemBehavior<VoidlingWeaponOnDamageDealtServerReciever>(body.inventory.HasEquipment(Content.Equipment.VoidlingWeapon) ? 1 : 0);
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }

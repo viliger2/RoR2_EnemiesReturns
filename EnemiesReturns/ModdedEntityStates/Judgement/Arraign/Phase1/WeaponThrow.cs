@@ -27,5 +27,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign.Phase1
         public override string throwSound => "ER_Arraign_SwordThrow_Throw_Play";
 
         public override string chargeSound => "ER_Arraign_SwordThrow_Charge_Play";
+
+        public override int requiredKarmaLevel => 2;
+
+        public override float karmaCoefficient => 0.5f;
     }
 }

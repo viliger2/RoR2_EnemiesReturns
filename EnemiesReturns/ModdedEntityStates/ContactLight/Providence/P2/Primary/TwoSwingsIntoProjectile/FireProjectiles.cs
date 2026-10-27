@@ -8,7 +8,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
     [RegisterEntityState]
     public class FireProjectiles : BaseFireProjectiles
     {
-        public static GameObject staticEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_LunarWisp.LunarWispBombChargeUp_prefab).WaitForCompletion();
+        public static GameObject staticEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarWisp.LunarWispBombChargeUp_prefab).WaitForCompletion();
 
         public static GameObject staticProjecilePrefab;
 

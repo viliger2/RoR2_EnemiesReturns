@@ -12,7 +12,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard
     [RegisterEntityState]
     public class Death : GenericCharacterDeath
     {
-        public static GameObject explosionEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.OmniExplosionVFX_prefab).WaitForCompletion();
+        public static GameObject explosionEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.OmniExplosionVFX_prefab).WaitForCompletion();
 
         public static float effectScale = 5f;
 

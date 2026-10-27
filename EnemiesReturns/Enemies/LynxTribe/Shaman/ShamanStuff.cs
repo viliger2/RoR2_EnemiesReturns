@@ -320,7 +320,9 @@ namespace EnemiesReturns.Enemies.LynxTribe.Shaman
             prefab.AddComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             var projectileController = prefab.AddComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = ghost;
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = loopSound;
             projectileController.allowPrediction = true;

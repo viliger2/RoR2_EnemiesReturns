@@ -20,7 +20,9 @@ namespace EnemiesReturns.Equipment.MithrixHammer
                 {
                     if (body && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var result = body.AddItemBehavior<MithrixHammerOnDamageDealtServerReciever>(body.inventory.HasEquipment(Content.Equipment.MithrixHammer) ? 1 : 0);
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }

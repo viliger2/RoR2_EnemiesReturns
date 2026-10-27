@@ -15,12 +15,12 @@ namespace EnemiesReturns.Behaviors
 
         public void OnEnable()
         {
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            GlobalEventManager.onCharacterDeathServer += GlobalEventManager_onCharacterDeathGlobal;
         }
 
         public void OnDisable()
         {
-            GlobalEventManager.onCharacterDeathGlobal -= GlobalEventManager_onCharacterDeathGlobal;
+            GlobalEventManager.onCharacterDeathServer -= GlobalEventManager_onCharacterDeathGlobal;
         }
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)

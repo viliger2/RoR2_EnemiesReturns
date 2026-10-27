@@ -9,7 +9,9 @@ using static RoR2.CharacterBody;
 
 namespace EnemiesReturns.Equipment.EliteAenonian
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class EliteAenonianBehaviour : ItemBehavior
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private SerializableEntityStateType originalDeathState;
 
@@ -21,7 +23,9 @@ namespace EnemiesReturns.Equipment.EliteAenonian
                 {
                     if (body && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         var result = body.AddItemBehavior<EliteAenonianBehaviour>(body.inventory.HasEquipment(Content.Equipment.EliteAeonian) ? 1 : 0);
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }

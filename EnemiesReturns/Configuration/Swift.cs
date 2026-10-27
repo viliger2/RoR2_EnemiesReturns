@@ -56,7 +56,8 @@ namespace EnemiesReturns.Configuration
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.PrimeMeridian),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.VoidCell),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.IronAlluvium),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.IronAuroras)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.IronAuroras),
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.LuridBasilica)
                 ),
                 "Stages that Default Swift appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

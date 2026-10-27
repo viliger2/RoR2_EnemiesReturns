@@ -5,7 +5,9 @@ using static RoR2.CharacterMasterNotificationQueue;
 
 namespace EnemiesReturns.Items.LunarFlower
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class LunarFlowerItemBehaviour : ItemBehavior, IOnKilledServerReceiver
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         public bool hasVoidDied;
 
@@ -65,7 +67,9 @@ namespace EnemiesReturns.Items.LunarFlower
                 {
                     if (body && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         body.AddItemBehavior<LunarFlowerItemBehaviour>(body.inventory.GetItemCountPermanent(Content.Items.LunarFlower));
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }

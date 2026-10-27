@@ -12,6 +12,28 @@ namespace EnemiesReturns.Behaviors.Judgement
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 += PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
             On.RoR2.BossGroup.ReportObjective += BossGroup_ReportObjective;
+            On.RoR2.BrotherKarmaUtils.IsBrother += BrotherKarmaUtils_IsBrother;
+            On.RoR2.BrotherKarmaUtils.IsBrotherStrict += BrotherKarmaUtils_IsBrotherStrict;
+        }
+
+        private bool BrotherKarmaUtils_IsBrotherStrict(On.RoR2.BrotherKarmaUtils.orig_IsBrotherStrict orig, CharacterBody body)
+        {
+            if (body.bodyIndex == Enemies.Judgement.SetupJudgementPath.ArraignP1BodyIndex
+                || body.bodyIndex == Enemies.Judgement.SetupJudgementPath.ArraignP2BodyIndex)
+            {
+                return true;
+            }
+            return orig(body);
+        }
+
+        private bool BrotherKarmaUtils_IsBrother(On.RoR2.BrotherKarmaUtils.orig_IsBrother orig, CharacterBody body)
+        {
+            if (body.bodyIndex == Enemies.Judgement.SetupJudgementPath.ArraignP1BodyIndex
+                || body.bodyIndex == Enemies.Judgement.SetupJudgementPath.ArraignP2BodyIndex)
+            {
+                return true;
+            }
+            return orig(body);
         }
 
         private void BossGroup_ReportObjective(On.RoR2.BossGroup.orig_ReportObjective orig, BossGroup self, CharacterMaster master, System.Collections.Generic.List<RoR2.UI.ObjectivePanelController.ObjectiveSourceDescriptor> output)
@@ -60,6 +82,8 @@ namespace EnemiesReturns.Behaviors.Judgement
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate -= HUDBossHealthBarController_LateUpdate;
             On.RoR2.PickupDropletController.CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3 -= PickupDropletController_CreatePickupDroplet_CreatePickupInfo_Vector3_Vector3;
             On.RoR2.BossGroup.ReportObjective -= BossGroup_ReportObjective;
+            On.RoR2.BrotherKarmaUtils.IsBrother -= BrotherKarmaUtils_IsBrother;
+            On.RoR2.BrotherKarmaUtils.IsBrotherStrict -= BrotherKarmaUtils_IsBrotherStrict;
         }
     }
 }

@@ -41,8 +41,13 @@ namespace EnemiesReturns.EditorHelpers
                 var equipmentIndex = EquipmentCatalog.FindEquipmentIndex(equipmentNamesToGrant[i]);
                 if (equipmentIndex != EquipmentIndex.None)
                 {
-                    var state = summonedInventory.GetEquipment((uint)i, 0u);
-                    summonedInventory.SetEquipment(new EquipmentState(equipmentIndex, state.chargeFinishTime, state.charges), (uint)i, 0u);
+                    EquipmentLocation equipmentLocation = new EquipmentLocation { 
+                        slot = (uint)i,
+                        set = 0
+                    };
+                    EquipmentState equipment = summonedInventory.GetEquipment(in equipmentLocation);
+                    EquipmentState equipmentState = new EquipmentState(equipmentIndex, equipment.chargeFinishTime, equipment.charges);
+                    summonedInventory.SetEquipment(in equipmentState, in equipmentLocation);
                 }
             }
         }

@@ -614,7 +614,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.34177F, 0.29711F, 0.64638F),
                 localAngles = new Vector3(42.94006F, 134.199F, 300.0563F),
@@ -624,7 +624,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(-0.25198F, 0.18859F, 0.6848F),
                 localAngles = new Vector3(313.6962F, 38.58762F, 130.4261F),
@@ -634,7 +634,7 @@ namespace EnemiesReturns.Enemies.ArcherBug
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.00785F, 1.07915F, 0.02346F),
                 localAngles = new Vector3(270F, 0F, 0F),
@@ -645,7 +645,27 @@ namespace EnemiesReturns.Enemies.ArcherBug
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleCollective,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "BugButt",
+                localPos = new Vector3(-0.00506F, -0.67815F, -0.16619F),
+                localAngles = new Vector3(45.56144F, 1.05222F, 179.2657F),
+                localScale = new Vector3(1.8178F, 1.8178F, 1.8178F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
             });
             #endregion
 

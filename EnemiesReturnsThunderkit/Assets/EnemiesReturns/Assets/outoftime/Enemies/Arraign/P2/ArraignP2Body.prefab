@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: segments
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 936655539752334188, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
+      propertyPath: additionalSegmentsKarma
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1168142624984321759, guid: 66cad8d9238f0774ab2e6ac38537a1f1, type: 3}
       propertyPath: m_IsActive
       value: 1

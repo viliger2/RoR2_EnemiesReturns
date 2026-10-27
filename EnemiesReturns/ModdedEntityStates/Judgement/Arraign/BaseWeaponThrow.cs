@@ -8,6 +8,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
 {
     public abstract class BaseWeaponThrow : BaseState
     {
+        public abstract int requiredKarmaLevel { get; }
+
+        public abstract float karmaCoefficient { get; }
+
         public abstract GameObject projectilePrefab { get; }
 
         public abstract float baseDuration { get; }
@@ -42,12 +46,16 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                duration *= karmaCoefficient;
+            }
             if (NetworkServer.active && isAuthority)
             {
                 var bodies = Utils.GetActiveAndAlivePlayerBodies();
                 foreach (var body in bodies)
                 {
-                    if (body && body.characterMotor && !body.characterMotor.isGrounded)
+                    if (body && body.characterMotor && (!body.characterMotor.isGrounded || Utils.ArraignKarmaCheck(requiredKarmaLevel)))
                     {
                         target = body;
                     }
@@ -59,7 +67,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Arraign
                         ai.currentEnemy.gameObject = target.gameObject;
                         ai.enemyAttention = duration + 1f;
                     }
-                    inputBank.aimDirection = target.gameObject.transform.position - GetAimRay().origin;
+                    inputBank.aimDirection = target.corePosition - GetAimRay().origin;
                 }
                 if (characterDirection)
                 {

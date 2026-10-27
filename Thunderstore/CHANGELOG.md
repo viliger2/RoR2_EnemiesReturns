@@ -1,8 +1,53 @@
 <details>
+<summary>0.7.34</summary>
+
+* Item displays for new elite and support for Aeonian elite displays for new enemies.
+* Archer Bug
+  * Added to Tenebrous Quagmire.
+* Judgement
+  * Karma 
+    * Bonus wave now has adaptive armor and Aeonian elite equipment (without stat bonuses).
+</details>
+<details>
+<summary>0.7.33</summary>
+
+* Colossus
+  * Fixed physics colliders not being disabled on death.
+* Judgement
+  * Karma support.
+    * _It's the most fun you can possibly have._
+</details>
+<details>
+<summary>0.7.32</summary>
+
+* Fixed Anointed skin generation throwing errors again if survivor display has null skin array.
+</details>
+<details>
+<summary>0.7.31</summary>
+
+* Fixed Anointed skin generation throwing errors if there were survivors without lobby displays (???).
+</details>
+<details>
+<summary>0.7.30</summary>
+
+* DLC4 stages support.
+* Lynx Tribe
+  * Renamed into Exiled Lynx Tribe.
+* Colossus
+  * Redid collision, now his entire body is solid. Well, as solid as it can be when he is made out of capsules.
+  * Expanded awooga body list with new survivors.
+    * _Feature length._
+* Added a quest.
+  * _Have fun._
+* Soulbound Threshold support for ER enemies.
+  * _Have even more fun._
+* Fixed an issue with Ritual Helmet not pushing enemies away on clients.
+</details>
+<details>
 <summary>0.7.29</summary>
 
 * Updated for DLC4.
-  * _Due to existence of vanilla Lynx tribe and other fun things, now every single object from this mod starts with "ER_" prefix. I am sorry for the inconvenience if you were searching catalogs by name, but without it I would not be able to load the mod at all due to name collisions. This is something that should've been done ages ago and I apologize for not doing this sooner._
+  * _Due to existence of vanilla Lynx tribe and other fun things, now every single object from this mod starts with "ER\_" prefix. I am sorry for the inconvenience if you were searching catalogs by name, but without it I would not be able to load the mod at all due to name collisions. This is something that should've been done ages ago and I apologize for not doing this sooner._
   * _Also update was made somewhat in a rush, so let me know if anything breaks, both error and visual wise._
 * Added support for Winslow stages (Stagnant Pipeworks and Forlorn Wreckage).
 * Swift

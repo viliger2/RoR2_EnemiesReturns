@@ -19,7 +19,9 @@ namespace EnemiesReturns.Enemies.ArcherBug
             projectileDamage.damageType = DamageTypeCombo.GenericPrimary;
 
             var controller = clonedProjectile.GetComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             controller.ghostPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BeetleQueen.BeetleQueenSpitGhost_prefab).WaitForCompletion();
+#pragma warning restore CS0618 // Type or member is obsolete
             controller.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
 
             return clonedProjectile;

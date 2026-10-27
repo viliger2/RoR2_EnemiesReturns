@@ -9,6 +9,9 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public float distanceToGround = 20f;
 
+        [Tooltip("Overrides anti air check if karma level is reached")]
+        public int requiredKarmaLevel = 8;
+
         public GenericSkill antiAirSkill;
 
         public CharacterBody body;
@@ -41,6 +44,12 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
                 if (antiAirSkill.IsReady() && emssFree)
                 {
+                    if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+                    {
+                        antiAirSkill.ExecuteIfReady();
+                        return;
+                    }
+
                     var bodies = Utils.GetActiveAndAlivePlayerBodies();
                     foreach (var body in bodies)
                     {

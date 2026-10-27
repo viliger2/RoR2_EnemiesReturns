@@ -76,7 +76,9 @@ namespace EnemiesReturns.Items.LynxFetish
                     // we ignore summoned tribesmen, otherwise it causes a chain reaction where each summoned tribesman gets lynx fetish which in turn summons another tribesman, filling the stage with lynx
                     if (body && bodiesToIgnore != null && !bodiesToIgnore.Contains(body.bodyIndex) && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         body.AddItemBehavior<LynxFetishItemBehavior>(body.inventory.GetItemCountEffective(Content.Items.LynxFetish));
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }
@@ -147,9 +149,10 @@ namespace EnemiesReturns.Items.LynxFetish
             itemDef.descriptionToken = "ENEMIES_RETURNS_ITEM_LYNX_FETISH_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_LYNX_FETISH_LORE";
             itemDef.pickupModelPrefab = prefab;
+            itemDef.pickupIconSprite = icon;
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
-            itemDef.pickupIconSprite = icon;
+            itemDef.pickupIconSpriteReference = new UnityEngine.AddressableAssets.AssetReferenceT<Sprite>("");
             itemDef.tags = new ItemTag[] { ItemTag.Utility, ItemTag.CannotCopy, ItemTag.CanBeTemporary, ItemTag.ExtractorUnitBlacklist };
 
             return itemDef;

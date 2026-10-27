@@ -344,7 +344,7 @@ namespace EnemiesReturns.Enemies.ContactLight
 
         public static GameObject CreateSkinDefPickerPanel()
         {
-            var newPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Command.CommandPickerPanel_prefab).WaitForCompletion().InstantiateClone("SkinDefPickerPanel", false);
+            var newPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Command.CommandPickerPanel_prefab).WaitForCompletion().InstantiateClone("SkinDefPickerPanel", false);
             var pickerPanelComponent = newPrefab.GetComponent<PickupPickerPanel>();
 
             var labelTransform = newPrefab.transform.Find("MainPanel/Juice/Label");
@@ -376,18 +376,18 @@ namespace EnemiesReturns.Enemies.ContactLight
 
         public static GameObject CreateAdrenalineLevelUpEffect(GameObject prefab)
         {
-            prefab.transform.Find("Ring").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
-            prefab.transform.Find("Dust Explosion").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
-            prefab.transform.Find("BrightFlash").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
-            prefab.transform.Find("Spinner").GetComponent<ParticleSystemRenderer>().trailMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.matGenericTrail_mat).WaitForCompletion();
-            prefab.transform.Find("BrightFlash, Lines").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Merc.matOmniHitspark4Merc_mat).WaitForCompletion();
+            prefab.transform.Find("Ring").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matOmniRing1Generic_mat).WaitForCompletion();
+            prefab.transform.Find("Dust Explosion").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("BrightFlash").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matTracerBright_mat).WaitForCompletion();
+            prefab.transform.Find("Spinner").GetComponent<ParticleSystemRenderer>().trailMaterial = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.matGenericTrail_mat).WaitForCompletion();
+            prefab.transform.Find("BrightFlash, Lines").GetComponent<Renderer>().material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Merc.matOmniHitspark4Merc_mat).WaitForCompletion();
 
             return prefab;
         }
 
         public static GameObject CreateCleanseNovaEffect()
         {
-            var newObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_TPHealingNova.TeleporterHealNovaPulse_prefab).WaitForCompletion().InstantiateClone("SurgicalBedNovaPulse", true);
+            var newObject = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_TPHealingNova.TeleporterHealNovaPulse_prefab).WaitForCompletion().InstantiateClone("SurgicalBedNovaPulse", true);
 
             var esm = newObject.GetComponent<EntityStateMachine>();
             esm.initialStateType = new EntityStates.SerializableEntityStateType(typeof(ModdedEntityStates.ContactLight.RechargableInteractable.SurgicalBed.BedHealNovaPulse));
@@ -398,8 +398,8 @@ namespace EnemiesReturns.Enemies.ContactLight
 
         public static GameObject SetupCargoDoorIndicator(GameObject prefab)
         {
-            var material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset_TRACER___SDF_Material_).WaitForCompletion();
-            var font = Addressables.LoadAssetAsync<TMP_FontAsset>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset).WaitForCompletion();
+            var material = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset_TRACER___SDF_Material_).WaitForCompletion();
+            var font = Addressables.LoadAssetAsync<TMP_FontAsset>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_Fonts_Traceroute.tmpTRACER___SDFBOLD_DROPSHADOW_asset).WaitForCompletion();
 
             var textMeshPro = prefab.transform.Find("BoingyScaler/DoorSprite/TextMeshPro");
             var component = textMeshPro.GetComponent<TextMeshPro>();

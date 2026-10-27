@@ -57,7 +57,7 @@ namespace EnemiesReturns.Behaviors.Judgement.WaveInteractable
             var equipmentIndex = eliteType?.eliteEquipmentDef?.equipmentIndex ?? EquipmentIndex.None;
             if (equipmentIndex != EquipmentIndex.None)
             {
-                component.inventory.SetEquipmentIndex(equipmentIndex, false);
+                component.inventory.SetEquipmentIndex(equipmentIndex, component.inventory.activeEquipmentLocation);
             }
 
             component.inventory.GiveItemPermanent(RoR2Content.Items.BoostHp, Mathf.RoundToInt((healthBoost - 1) * 10f));

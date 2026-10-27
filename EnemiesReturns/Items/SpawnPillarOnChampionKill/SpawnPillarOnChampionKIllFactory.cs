@@ -31,9 +31,10 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
             itemDef.descriptionToken = "ENEMIES_RETURNS_SPAWN_PILLAR_ON_CHAMPION_KILL_DESCRIPTION";
             itemDef.loreToken = "ENEMIES_RETURNS_ITEM_SPAWN_PILLAR_ON_CHAMPION_KILL_LORE";
             itemDef.pickupModelPrefab = prefab;
+            itemDef.pickupIconSprite = icon;
 #pragma warning restore CS0618 // Type or member is obsolete
             itemDef.canRemove = true;
-            itemDef.pickupIconSprite = icon;
+            itemDef.pickupIconSpriteReference = new AssetReferenceT<Sprite>("");
             itemDef.tags = new ItemTag[] { ItemTag.Damage, ItemTag.CannotCopy, ItemTag.OnKillEffect, ItemTag.CanBeTemporary };
 
             return itemDef;
@@ -61,7 +62,9 @@ namespace EnemiesReturns.Items.SpawnPillarOnChampionKill
                 {
                     if (body && body.inventory)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         body.AddItemBehavior<PillarItemBehavior>(body.inventory.GetItemCountEffective(Content.Items.SpawnPillarOnChampionKill));
+#pragma warning restore CS0618 // Type or member is obsolete
                     }
                 }
             }

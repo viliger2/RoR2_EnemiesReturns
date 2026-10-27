@@ -23,7 +23,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
 
         public static float movementSpeed => Configuration.Judgement.ArraignP2.SkyLaserMovementSpeed.Value;
 
-        private OverlapAttackAuthority overlapAttack;
+        private OverlapAttack overlapAttack;
 
         public override void OnEnter()
         {
@@ -53,9 +53,9 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
             }
         }
 
-        private OverlapAttackAuthority SetupOverlapAttack(Transform modelTransform)
+        private OverlapAttack SetupOverlapAttack(Transform modelTransform)
         {
-            var overlapAttack = new OverlapAttackAuthority();
+            var overlapAttack = new OverlapAttack();
             overlapAttack.attacker = gameObject;
             overlapAttack.inflictor = gameObject;
             overlapAttack.teamIndex = TeamComponent.GetObjectTeam(gameObject);
@@ -66,6 +66,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.SkyLaser
             overlapAttack.procCoefficient = procCoefficient;
             overlapAttack.damageType = new DamageTypeCombo(DamageType.BypassBlock | DamageType.BypassOneShotProtection | DamageType.BypassArmor, DamageTypeExtended.Generic, DamageSource.NoneSpecified);
             overlapAttack.retriggerTimeout = 0.25f;
+            overlapAttack.attackerFiltering = AttackerFiltering.CustomFilter;
+            overlapAttack.filterCallback = Utils.OverlapAttackAuthorityFilter;
 
             return overlapAttack;
         }

@@ -13,6 +13,7 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<float> P2LevelArmor;
         public static ConfigEntry<float> P2SprintMultiplier;
         public static ConfigEntry<int> P2HealthSegments;
+        public static ConfigEntry<int> P2KarmaHealthSegments;
 
         public static ConfigEntry<float> ThreeHitComboCooldown;
         public static ConfigEntry<float> ThreeHitComboFirstSwingDamage;
@@ -55,6 +56,7 @@ namespace EnemiesReturns.Configuration.Judgement
         public static ConfigEntry<float> ClockAttackProjectileDistance;
         public static ConfigEntry<float> ClockAttackProjectileDamage;
         public static ConfigEntry<int> ClockAttackAdditionalPairs;
+        public static ConfigEntry<int> ClockAttackAdditionalPairsKarma;
         public static ConfigEntry<int> ClockAttackDistanceFromStart;
 
         public static ConfigEntry<float> SkyLaserCooldown;
@@ -80,6 +82,7 @@ namespace EnemiesReturns.Configuration.Judgement
             P2SprintMultiplier = config.Bind("Arraign P2 Character Stats", "Sprint Multiplier", 3.2f, "Arraign P2' health increase per level.");
 
             P2HealthSegments = config.Bind("Arraign P2 Character Stats", "Number of Health Segments", 3, "Arraign P2' number of health segments that you need to break with hammer.");
+            P2KarmaHealthSegments = config.Bind("Arraign P2 Character Stats", "Number of Additional Health Segments with Karma", 2, "Arraign P2' number of additional health segments from Karma.");
 
             ThisEntryDoesNothing = config.Bind("Phases Share Beam and Lightning Attacks", "Please Use ArraignP1 Config For Those Attacks", false, "Maybe someday I'll separate them, but probably not.");
 
@@ -130,6 +133,7 @@ namespace EnemiesReturns.Configuration.Judgement
             ClockAttackProjectileDistance = config.Bind("ClockAttack", "ClockAttack Projectile Spawn Distance", 10f, "ClockAttack distance between projectile spawns in a single line.");
             ClockAttackProjectileDamage = config.Bind("ClockAttack", "ClockAttack Projectile Damage", 4f, "ClockAttack projectile damage.");
             ClockAttackAdditionalPairs = config.Bind("ClockAttack", "ClockAttack Additional Line Pairs", 1, "ClockAttack additional line pairs.");
+            ClockAttackAdditionalPairsKarma = config.Bind("ClockAttack", "ClockAttack Additional Line Pairs Karma", 1, "ClockAttack additional line pairs from karma.");
             ClockAttackDistanceFromStart = config.Bind("ClockAttack", "ClockAttack Distance From Origin", 2, "ClockAttack additional lines distance from original. Imagine a clock and then add or subtract this number of hours, this will be origin point of additional lines.");
 
             SkyLaserCooldown = config.Bind("SkyLaser", "SkyLaser Cooldown", 40f, "SkyLaser cooldown.");

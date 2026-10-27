@@ -15,7 +15,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2
     {
         public static float deathDelay = 3f;
 
-        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
+        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
 
         private bool hasDied;
 

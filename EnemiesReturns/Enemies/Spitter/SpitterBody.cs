@@ -680,7 +680,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "JawR",
                 localPos = new Vector3(-0.04977F, 0.71974F, 0.43647F),
                 localAngles = new Vector3(31.99997F, 138.8635F, 347.7262F),
@@ -690,7 +690,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "JawL",
                 localPos = new Vector3(-0.30734F, 0.72922F, 0.54457F),
                 localAngles = new Vector3(32.16174F, 195.7662F, 6.04966F),
@@ -700,7 +700,7 @@ namespace EnemiesReturns.Enemies.Spitter
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.01009F, 2.07758F, 0.30767F),
                 localAngles = new Vector3(339.0323F, 0.46254F, 358.0071F),
@@ -711,7 +711,27 @@ namespace EnemiesReturns.Enemies.Spitter
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleCollective,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "Head",
+                localPos = new Vector3(-0.09102F, -0.55414F, -0.00508F),
+                localAngles = new Vector3(0F, 176.811F, 0F),
+                localScale = new Vector3(4.87611F, 4.87611F, 4.87611F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
             });
             #endregion
 

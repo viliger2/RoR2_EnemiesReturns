@@ -30,7 +30,7 @@ namespace EnemiesReturns.Projectiles
 
         public int maximumOverlapTargets = 100;
 
-        private OverlapAttackAuthority attack;
+        private OverlapAttack attack;
 
         public float fireFrequency = 60f;
 
@@ -54,7 +54,7 @@ namespace EnemiesReturns.Projectiles
         {
             projectileController = GetComponent<ProjectileController>();
             projectileDamage = GetComponent<ProjectileDamage>();
-            attack = new OverlapAttackAuthority();
+            attack = new OverlapAttack();
             UpdateAttackValues();
             projectileDamage.DamageInfoChanged += UpdateAttackValues;
             attack.hitBoxGroup = GetComponent<HitBoxGroup>();
@@ -93,7 +93,8 @@ namespace EnemiesReturns.Projectiles
             attack.damageType = projectileDamage.damageType;
             attack.procChainMask = projectileController.procChainMask;
             attack.maximumOverlapTargets = maximumOverlapTargets;
-            attack.attackerFiltering = (canHitOwner ? AttackerFiltering.AlwaysHit : AttackerFiltering.NeverHitSelf);
+            attack.attackerFiltering = AttackerFiltering.CustomFilter;
+            attack.filterCallback = Utils.OverlapAttackAuthorityFilter;
         }
 
         public void OnProjectileImpact(ProjectileImpactInfo impactInfo)

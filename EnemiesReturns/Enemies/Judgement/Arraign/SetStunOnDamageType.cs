@@ -14,6 +14,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public SerializableEntityStateType stunState;
 
+        public int requiredKarmaLevel = 3;
+
         public float stunDuration;
 
         public bool applyBuff;
@@ -50,6 +52,10 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
+            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            {
+                return;
+            }
             if (!targetStateMachine)
             {
                 return;

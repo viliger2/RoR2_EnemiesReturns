@@ -100,7 +100,8 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     inventory.CopyItemsFrom(characterBody.inventory);
                     DeleteMinionItems(inventory);
                 }
-                var eliteDef = inventory.GetEquipment(0, inventory.FindBestEquipmentSetIndex()).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
+                ;
+                var eliteDef = inventory.GetEquipment(inventory.FindBestEquipmentLocationOrCurrent(Inventory.EquipmentLocationQueryArgs.defaultPickup)).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
                 {

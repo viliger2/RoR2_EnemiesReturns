@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Components;
+﻿using EnemiesReturns.Behaviors;
+using EnemiesReturns.Components;
 using EnemiesReturns.Components.BodyComponents;
 using EnemiesReturns.Components.BodyComponents.CharacterMotor;
 using EnemiesReturns.Components.BodyComponents.NetworkedEntityStateMachine;
@@ -181,6 +182,7 @@ namespace EnemiesReturns.Enemies.Colossus
 
             var mover = surface.gameObject.AddComponent<PhysicsMover>();
             mover.Rigidbody = surface.gameObject.GetComponent<Rigidbody>();
+            mover.MoveWithPhysics = true;
             mover.MoverController = moverController;
 
             //var helper = body.AddComponent<WalkSpeedDebugHelper>();
@@ -285,7 +287,8 @@ namespace EnemiesReturns.Enemies.Colossus
 
                 hullClassification = HullClassification.BeetleQueen,
                 bodyColor = new Color(0.36f, 0.36f, 0.44f),
-                isChampion = true
+                isChampion = true,
+                doNotReassignCollision = true,
             };
         }
 
@@ -1031,7 +1034,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(0.03755F, 0.10504F, 0.04729F),
                 localAngles = new Vector3(357.394F, 147.3612F, 2.12563F),
@@ -1041,7 +1044,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveHorn_prefab),
                 childName = "Head",
                 localPos = new Vector3(-0.10096F, 0.10564F, 0.08435F),
                 localAngles = new Vector3(3.88379F, 32.60304F, 181.3249F),
@@ -1051,7 +1054,7 @@ namespace EnemiesReturns.Enemies.Colossus
             displayRuleCollective.AddDisplayRule(new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
-                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.DisplayEliteCollectiveRing_prefab),
                 childName = "Head",
                 localPos = new Vector3(-0.03266F, 0.16963F, 0.06099F),
                 localAngles = new Vector3(0F, 0F, 0F),
@@ -1062,7 +1065,27 @@ namespace EnemiesReturns.Enemies.Colossus
             ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
             {
                 displayRuleGroup = displayRuleCollective,
-                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC3_Collective.EliteCollectiveEquipment_asset)
+            });
+            #endregion
+
+            #region Death
+            var displayRuleDeath = new DisplayRuleGroup();
+            displayRuleDeath.AddDisplayRule(new ItemDisplayRule
+            {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                followerPrefabAddress = new AssetReferenceGameObject(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.DisplayEliteDeath_prefab),
+                childName = "Head",
+                localPos = new Vector3(-0.01382F, 0.52226F, -0.01505F),
+                localAngles = new Vector3(357.1792F, 176.8772F, 3.22415F),
+                localScale = new Vector3(0.66871F, 0.66871F, 0.66871F),
+                limbMask = LimbFlags.None
+            });
+
+            ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new KeyAssetRuleGroup
+            {
+                displayRuleGroup = displayRuleDeath,
+                keyAssetAddress = new RoR2.AddressableAssets.IDRSKeyAssetReference(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4_EliteDeath.EliteDeathEquipment_asset)
             });
             #endregion
 

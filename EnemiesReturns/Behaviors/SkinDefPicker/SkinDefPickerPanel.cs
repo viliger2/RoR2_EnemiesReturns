@@ -90,7 +90,7 @@ namespace EnemiesReturns.Behaviors.SkinDefPicker
         {
             if (lockedSprite == null)
             {
-                lockedSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_MiscIcons.texUnlockIcon_png).WaitForCompletion();
+                lockedSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_MiscIcons.texUnlockIcon_png).WaitForCompletion();
             }
             pickupOptions[pickupOption].available = false;
             MPButton mPButton = buttonAllocator.elements[pickupOption];
@@ -110,7 +110,7 @@ namespace EnemiesReturns.Behaviors.SkinDefPicker
             ReadOnlyCollection<MPButton> elements = buttonAllocator.elements;
             if (lockedSprite)
             {
-                lockedSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Common_MiscIcons.texUnlockIcon_png).WaitForCompletion();
+                lockedSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_MiscIcons.texUnlockIcon_png).WaitForCompletion();
             }
             Sprite sprite = lockedSprite;
             if (options.Length != 0)

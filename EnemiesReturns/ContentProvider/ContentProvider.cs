@@ -167,7 +167,7 @@ namespace EnemiesReturns
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                CreatePartyHat(assets);
+                CreateMiscStuff(assets);
 
                 CreateSpitter(assets, iconLookup);
 

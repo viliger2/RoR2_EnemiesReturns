@@ -154,7 +154,9 @@ namespace EnemiesReturns.Enemies.SandCrab
             dissableCollisions.collidersB = new Collider[] { hurtBoxTransform.GetComponent<SphereCollider>() };
 
             var projectileController = projectilePrefab.AddComponent<ProjectileController>();
+#pragma warning disable CS0618 // Type or member is obsolete
             projectileController.ghostPrefab = projectileGhost;
+#pragma warning restore CS0618 // Type or member is obsolete
             projectileController.ghostPrefabAddress = new AssetReferenceT<GameObject>("");
             projectileController.flightSoundLoop = flightLoop;
             projectileController.allowPrediction = true;
@@ -277,7 +279,7 @@ namespace EnemiesReturns.Enemies.SandCrab
             var material = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_BarrierOnKill.matBarrier_mat).WaitForCompletion());
             material.name = "matSandCrabBubble";
             material.SetColor("_TintColor", new Color(107f / 255f, 139f / 255f, 1f, 1f));
-            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texCloudDifferenceBW1_png).WaitForCompletion());
+            material.SetTexture("_MainTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_TiledTextures.texCloudDifferenceBW1_png).WaitForCompletion());
             material.SetTexture("_RemapTex", Addressables.LoadAssetAsync<Texture2D>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_ColorRamps.texRampDefault_png).WaitForCompletion());
             material.SetFloat("_InvFade", 2f);
             material.SetFloat("_Boost", 1f);

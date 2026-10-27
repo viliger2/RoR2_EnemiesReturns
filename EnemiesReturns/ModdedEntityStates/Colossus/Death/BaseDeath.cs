@@ -74,6 +74,15 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Death
             {
                 headSurface.gameObject.SetActive(false);
             }
+
+            for(int i = 0; i < 13; i++)
+            {
+                var collider = childLocator.FindChild("WorldCollider" + i);
+                if (collider)
+                {
+                    collider.gameObject.SetActive(false);
+                }
+            }
         }
 
         public override void Update()

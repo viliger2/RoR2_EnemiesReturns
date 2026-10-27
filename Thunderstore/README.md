@@ -23,21 +23,21 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Shaman/texLynxShamanIcon.png" alt="Lynx Shaman"></td>
-		<td>Lynx Shaman</td>
-		<td>The leader of Lynx Tribe. His deep connection to N'kuhana empowers him.</td>
+		<td>Exiled Lynx Shaman</td>
+		<td>The leader of Exiled Lynx Tribe. Their connection to N'kuhana was severed but they still worship her.</td>
 		<td>Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a></td>
 	</tr>	
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
 		<td>Archer Bug</td>
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
-		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a></td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a>, Tenebrous Quagmire</td>
 	</tr>	
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>
 		<td>Swift</td>
 		<td>Stones...Flying stones!</td>
-		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest, Iron Alluvium, Iron Auroras, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a></td>
+		<td>Distant Roost, Rallypoint Delta, Aphelian Sanctuary, Siphoned Forest, Iron Alluvium, Iron Auroras, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a>, Lurid Basilica</td>
 	</tr>	
 	<thead>
 		<tr>
@@ -51,13 +51,13 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Spitter/texSpitterIcon.png" alt="Spitter"></td>
 		<td>Spitter</td>
 		<td>Lobs acid spit that  explodes and leaves a lingering puddle.</td>
-		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a>, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Broadcast_Perch/">Broadcast Perch</a></td>
+		<td>Wetland Aspect, Verdant Falls, Sulfur Pools, Abyssal Depths, Helminth Hatchery, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, <a href="https://thunderstore.io/package/viliger/RemoteVillage/">Remote Village</a>, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Broadcast_Perch/">Broadcast Perch</a>, Damp Caverns</td>
 	</tr>
 		<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/SandCrab/texSandCrabIcon.png" alt="Sand Crab"></td>
 		<td>Sand Crab</td>
 		<td>Slows prey down and then chops it up with its giant claws.</td>
-		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Iron Alluvium, Iron Auroras, Repurposed Crater, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Desolate_Coast/">Desolate Coast</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a></td>
+		<td>Sulfur Pools, Distant Roost, Reformed Altar, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Iron Alluvium, Iron Auroras, Repurposed Crater, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Desolate_Coast/">Desolate Coast</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, Tenebrous Quagmire</td>
 	</tr>
 	<thead>
 		<tr>
@@ -81,8 +81,8 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Totem/texLynxTotemIcon.png" alt="Lynx Totem"></td>
-		<td>Lynx Totem</td>
-		<td>Lynx Tribe's object of worship. Do not be deceived, it is not as immobile and harmless as it seems.</td>
+		<td>Exiled Lynx Totem</td>
+		<td>Exiled Lynx Tribe's object of worship. Do not be deceived, it is not as immobile and harmless as it seems.</td>
 		<td>Titanic Plains, Distant Roost, Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Hollow_Summit/">Hollow Summit</a></td>
 	</tr>		
 </table>
@@ -139,7 +139,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 * Old Fan With Start Sound - https://pixabay.com/sound-effects/old-fan-with-start-sound-247598/
 </details>
 <details>
-<summary>Lynx Tribe</summary>
+<summary>Exiled Lynx Tribe</summary>
 
 * Lynx Tribe models, rigging, texturing, animations (Shaman, Hunter), lore by [FORCED_REASSEMBLY](https://thunderstore.io/package/Forced_Reassembly/) 
 * Rigging, animations (Archer, Totem, Hunter, Scout) by Sentinel
