@@ -123,6 +123,7 @@ namespace EnemiesReturns.Components
         protected virtual bool AddExecuteSkillOnDamage => false;
         protected virtual bool AddRemoveJitterBones => false;
         protected virtual bool AddRigidbodyMotor => false;
+        protected virtual bool AddKeyItemSlot => true;
 
         protected class SkillParams
         {
@@ -559,7 +560,6 @@ namespace EnemiesReturns.Components
         bool IRemoveJitterBones.NeedToAddRemoveJitterBones() => AddRemoveJitterBones;
         bool IRigidbodyMotor.NeedToAddRigidbodyMotor() => AddRigidbodyMotor;
         bool IRigidBodyDirection.NeedToAddRigidBodyDirection() => AddRigidbodyMotor;
-
-
+        bool IKeyItemSlot.NeedToAddKeyItemSlot() => AddKeyItemSlot;
     }
 }
