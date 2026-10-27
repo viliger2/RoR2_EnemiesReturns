@@ -72,7 +72,8 @@ namespace EnemiesReturns.Configuration
                 DirectorAPI.ToInternalStageName(DirectorAPI.Stage.ArtifactReliquary_ScorchedAcres_Theme),
                 "snowtime_gmconstruct",
                 "snowtime_sandtrap",
-                "snowtime_gmflatgrass"
+                "snowtime_gmflatgrass",
+                DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TenebrousQuagmire)
                 );
 
             string jungleStageList = string.Join(
