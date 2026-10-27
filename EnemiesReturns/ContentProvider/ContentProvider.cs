@@ -159,7 +159,7 @@ namespace EnemiesReturns
 
             yield return CreateJudgementAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
 #if DEBUG || NOWEAVER
-            yield return CreateContactLightAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
+            //yield return CreateContactLightAsync(args, iconLookup, rampLookups, acdLookup, assetBundleFolderPath);
 #endif
 
             yield return LoadAllAssetsAsync(assetbundle, args.progressReceiver, (Action<GameObject[]>)((assets) =>

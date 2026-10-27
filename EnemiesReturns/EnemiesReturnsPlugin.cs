@@ -131,7 +131,7 @@ namespace EnemiesReturns
             Enemies.Judgement.AnointedSkins.Hooks();
             Items.LunarFlower.LunarFlowerItemBehaviour.Hooks();
 
-            Enemies.ContactLight.SetupContactLight.Hooks();
+            //Enemies.ContactLight.SetupContactLight.Hooks();
 
             if (MoreStatsCompat.enabled)
             {
@@ -155,10 +155,10 @@ namespace EnemiesReturns
             {
                 Equipment.VoidlingWeapon.VoidlingWeapon.UpdateTargets(self);
             }
-            else if (Configuration.General.EnableContactLight.Value && targetingEquipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex && userShouldAnticipateTarget)
-            {
-                Equipment.EliteSlayer.EliteSlayer.UpdateTargets(self);
-            }
+            //else if (Configuration.General.EnableContactLight.Value && Content.Equipment.EliteSlayer && targetingEquipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex && userShouldAnticipateTarget)
+            //{
+            //    Equipment.EliteSlayer.EliteSlayer.UpdateTargets(self);
+            //}
             else
             {
                 orig(self, targetingEquipmentIndex, userShouldAnticipateTarget);
@@ -172,10 +172,10 @@ namespace EnemiesReturns
             {
                 Enemies.Judgement.Arraign.ArraignDamageController.AddDamageImmuneOverlay(self);
             }
-            if (Configuration.General.EnableContactLight.Value)
-            {
-                Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
-            }
+            //if (Configuration.General.EnableContactLight.Value)
+            //{
+            //    Enemies.ContactLight.Providence.ProvidenceDamageController.AddDamageImmuneOverlay(self);
+            //}
         }
 
         private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
@@ -191,25 +191,25 @@ namespace EnemiesReturns
                     return Equipment.VoidlingWeapon.VoidlingWeapon.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
                 }
             }
-            if (Configuration.General.EnableContactLight.Value)
-            {
-                if(equipmentDef.equipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex)
-                {
-                    return Equipment.EliteSlayer.EliteSlayer.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
-                }
-            }
+            //if (Configuration.General.EnableContactLight.Value)
+            //{
+            //    if(equipmentDef.equipmentIndex == Content.Equipment.EliteSlayer.equipmentIndex)
+            //    {
+            //        return Equipment.EliteSlayer.EliteSlayer.EquipmentSlot_PerformEquipmentAction(self, equipmentDef);
+            //    }
+            //}
             return orig(self, equipmentDef);
         }
 
         private void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody body)
         {
-            EnemiesReturns.Equipment.MithrixHammer.MithrixHammer.CharacterBody_onBodyInventoryChangedGlobal(body);
-            EnemiesReturns.Equipment.VoidlingWeapon.VoidlingWeapon.CharacterBody_onBodyInventoryChangedGlobal(body);
-            EnemiesReturns.Equipment.EliteAenonian.EliteAenonianBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.LynxFetish.LynxFetishFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.SpawnPillarOnChampionKill.SpawnPillarOnChampionKillFactory.CharacterBody_onBodyInventoryChangedGlobal(body);
             EnemiesReturns.Items.LunarFlower.LunarFlowerItemBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
-            EnemiesReturns.Items.AdrenalineCore.AdrenalineCoreMasterComponent.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Equipment.MithrixHammer.MithrixHammer.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Equipment.VoidlingWeapon.VoidlingWeapon.CharacterBody_onBodyInventoryChangedGlobal(body);
+            EnemiesReturns.Equipment.EliteAenonian.EliteAenonianBehaviour.CharacterBody_onBodyInventoryChangedGlobal(body);
+            //EnemiesReturns.Items.AdrenalineCore.AdrenalineCoreMasterComponent.CharacterBody_onBodyInventoryChangedGlobal(body);
         }
 
         private void MusicController_StartIntroMusic(On.RoR2.MusicController.orig_StartIntroMusic orig, MusicController self)
@@ -228,10 +228,10 @@ namespace EnemiesReturns
             {
                 Enemies.Judgement.SetupJudgementPath.RecalculateStatsAPI_GetStatCoefficients(sender, args);
             }
-            if (EnemiesReturns.Configuration.General.EnableContactLight.Value)
-            {
-                Enemies.ContactLight.SetupContactLight.RecalculateStatsAPI_GetStatCoefficients(sender, args);
-            }
+            //if (EnemiesReturns.Configuration.General.EnableContactLight.Value)
+            //{
+            //    Enemies.ContactLight.SetupContactLight.RecalculateStatsAPI_GetStatCoefficients(sender, args);
+            //}
         }
 
         private void GlobalEventManager_onServerDamageDealt(DamageReport obj)

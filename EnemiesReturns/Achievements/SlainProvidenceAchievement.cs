@@ -8,7 +8,7 @@ using static EnemiesReturns.Achievements.EscapedIntoThePastAchievement;
 namespace EnemiesReturns.Achievements
 {
     // TODO: remove 1 with full release
-    [RegisterAchievement("EnemiesReturnsSlainProvidence", "Items.AdrenalineCore.0", null, 5u, typeof(SlainProvidenceServerAchievement))]
+    //[RegisterAchievement("EnemiesReturnsSlainProvidence", "Items.AdrenalineCore.0", null, 5u, typeof(SlainProvidenceServerAchievement))]
     public class SlainProvidenceAchievement : BaseAchievement
     {
         public class SlainProvidenceServerAchievement : BaseServerAchievement
