@@ -78,8 +78,8 @@ namespace EnemiesReturns.Configuration
             EnableLynxShrine = config.Bind("Content", "Enable Lynx Shrine", true, "Enables Lynx Shrine. Has no effect if Lynx Totem is disabled.");
             EnableLynxTrap = config.Bind("Content", "Enable Lynx Trap", true, "Enables Lynx Trap. Has no effect is Lynx Totem is disabled.");
 
-            //EnableContactLight = config.Bind("Content", "Enable Contact Light", true, "Enables content related to Contact Light.");
-            //EnableAdrenalineCore = config.Bind("Content", "Enable Adrenaline Core", true, "Enables Adrenaline Core item.");
+            EnableContactLight = config.Bind("Content", "Enable Contact Light", true, "Enables content related to Contact Light.");
+            EnableAdrenalineCore = config.Bind("Content", "Enable Adrenaline Core", true, "Enables Adrenaline Core item.");
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Configuration.ArcherBug.Enabled = EnableArcherBug;

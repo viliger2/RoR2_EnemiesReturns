@@ -8,7 +8,7 @@ using System.Text;
 namespace EnemiesReturns.Achievements
 {
     // TODO: remove 1 with full release
-    //[RegisterAchievement("EnemiesReturnsEscapedIntoThePast", "Interactables.ER_Wardrobe.0", null, 3u)]
+    [RegisterAchievement("EnemiesReturnsEscapedIntoThePast", "Interactables.ER_Wardrobe.0", null, 3u)]
     public class EscapedIntoThePastAchievement : BaseEndingAchievement
     {
         public override bool ShouldGrant(RunReport runReport)
