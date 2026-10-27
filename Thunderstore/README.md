@@ -31,7 +31,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
 		<td>Archer Bug</td>
 		<td>An incessant pest. Shoots a spread of projectiles.</td>
-		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a></td>
+		<td>Aphelian Sanctuary, Sundered Grove, Treeborn Colony, Golden Dieback, Scorched Acres, Sirens Call, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Sandtrap</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Stagnant_Pipeworks/">Stagnant Pipeworks</a>, Tenebrous Quagmire</td>
 	</tr>	
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Swift/texSwiftIcon.png" alt="Swift"></td>

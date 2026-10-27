@@ -1,4 +1,14 @@
 <details>
+<summary>0.7.34</summary>
+
+* Item displays for new elite and support for Aeonian elite displays for new enemies.
+* Archer Bug
+  * Added to Tenebrous Quagmire.
+* Judgement
+  * Karma 
+    * Bonus wave now has adaptive armor and Aeonian elite equipment (without stat bonuses).
+</details>
+<details>
 <summary>0.7.33</summary>
 
 * Colossus
