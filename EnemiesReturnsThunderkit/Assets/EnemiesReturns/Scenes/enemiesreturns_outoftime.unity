@@ -29390,6 +29390,7 @@ GameObject:
   - component: {fileID: 270452650}
   - component: {fileID: 270452649}
   - component: {fileID: 270452648}
+  - component: {fileID: 270452653}
   m_Layer: 0
   m_Name: Boss2
   m_TagString: Untagged
@@ -29530,6 +29531,21 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &270452653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270452646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a58c5fec0fc5549880f7df0e97b9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameTokenOverride: 
+  subtitleTokenOverride: ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE
+  bossGroup: {fileID: 270452648}
 --- !u!1 &270463342
 GameObject:
   m_ObjectHideFlags: 0
@@ -88855,6 +88871,7 @@ GameObject:
   - component: {fileID: 760537761}
   - component: {fileID: 760537760}
   - component: {fileID: 760537759}
+  - component: {fileID: 760537764}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -88995,6 +89012,21 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &760537764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760537757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a58c5fec0fc5549880f7df0e97b9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameTokenOverride: 
+  subtitleTokenOverride: ENEMIES_RETURNS_JUDGEMENT_AEONIAN_SUBTITLE
+  bossGroup: {fileID: 760537759}
 --- !u!1 &760837162
 GameObject:
   m_ObjectHideFlags: 0

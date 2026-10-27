@@ -387,6 +387,19 @@ namespace EnemiesReturns
 
         }
 
+        public static void Shuffle<T>(this Xoroshiro128Plus rng, List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                int k = rng.RangeInt(0, n--);
+                T temp = list[n];
+                list[n] = list[k];
+                list[k] = temp;
+            }
+
+        }
+
         public static Vector3 CalculateLaunchVelocityForRigidBody(Vector3 start, Vector3 target, float timeToTarget)
         {
             Vector3 distance = target - start;

@@ -8,7 +8,7 @@ namespace EnemiesReturns.Items.ReduceHP
 {
     internal class ReduceHP
     {
-        public static readonly float healthReductionFraction = 0.05f;
+        public static readonly float healthReductionFraction = 0.01f;
 
         public static void Hooks()
         {

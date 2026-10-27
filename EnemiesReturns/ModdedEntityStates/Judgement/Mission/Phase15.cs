@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static RoR2.Inventory;
 
 namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 {
@@ -14,8 +15,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     public class Phase15 : BaseState
     {
         public static string phaseControllerChildString = "Phase15";
-
-        public static int healthReductionItemCount => Mathf.CeilToInt(0.5f / Items.ReduceHP.ReduceHP.healthReductionFraction);
 
         public static int reduceDamageItemCount => Mathf.CeilToInt(0.2f / 0.01f);
 
@@ -104,11 +103,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 inventory.AddItemsFrom(this.inventory);
             }
 
-            //inventory.GiveItemPermanent(Content.Items.ReduceHP.itemIndex, healthReductionItemCount);
+            inventory.SetEquipmentIndex(Content.Equipment.EliteAeonian.equipmentIndex, inventory.FindBestEquipmentLocationOrCurrent(in EquipmentLocationQueryArgs.defaultPickup));
             inventory.GiveItemPermanent(DLC4Content.Items.ReduceDamage.itemIndex, reduceDamageItemCount);
             inventory.GiveItemPermanent(RoR2Content.Items.InvadingDoppelganger, 1);
-            // Giving 90% health reduction to combat doppelganger plus 1 to cut the remaining in half
-            inventory.GiveItemPermanent(Content.Items.ReduceHP.itemIndex, 19);
+            // Giving 90% health reduction to combat doppelganger plus 5 to cut the remaining in half
+            inventory.GiveItemPermanent(Content.Items.ReduceHP.itemIndex, 95);
+            inventory.GiveItemPermanent(RoR2Content.Items.AdaptiveArmor);
         }
 
         private int KarmaManager_GetEffectiveKarma(On.RoR2.KarmaManager.orig_GetEffectiveKarma orig, KarmaManager self)
@@ -138,13 +138,10 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 list.Add(Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_DLC4.cscProvidence_asset).WaitForCompletion());
             }
 
-            var array = list.ToArray();
-            rng.Shuffle<CharacterSpawnCard>(array);
+            SetupEncounter(this.childLocator.FindChild("Boss1"), rng.NextElementUniform(list));
+            SetupEncounter(this.childLocator.FindChild("Boss2"), rng.NextElementUniform(list));
 
-            SetupEncounter(this.childLocator.FindChild("Boss1"), array, 0);
-            SetupEncounter(this.childLocator.FindChild("Boss2"), array, 1);
-
-            void SetupEncounter(Transform child, CharacterSpawnCard[] spawnCards, int index)
+            void SetupEncounter(Transform child, CharacterSpawnCard spawnCard)
             {
                 if (child)
                 {
@@ -153,7 +150,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     {
                         if (combatEncounter.spawns != null && combatEncounter.spawns.Length > 0)
                         {
-                            combatEncounter.spawns[0].spawnCard = spawnCards[index % spawnCards.Length];
+                            combatEncounter.spawns[0].spawnCard = spawnCard;
                         }
                         var combatSquad = child.gameObject.GetComponent<CombatSquad>();
                         if (combatSquad)

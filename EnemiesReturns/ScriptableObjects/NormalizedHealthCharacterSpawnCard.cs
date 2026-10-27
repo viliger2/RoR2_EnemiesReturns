@@ -10,13 +10,6 @@ namespace EnemiesReturns.ScriptableObjects
     {
         public float targetHealth;
 
-        public NormalizedHealthCharacterSpawnCard() { }
-
-        public NormalizedHealthCharacterSpawnCard(CharacterSpawnCard origin)
-        {
-
-        }
-
         public NormalizedHealthCharacterSpawnCard FillFromCharacterSpawnCard(CharacterSpawnCard card)
         {
             (this as ScriptableObject).name = card.name + "NormalizedHealth";
