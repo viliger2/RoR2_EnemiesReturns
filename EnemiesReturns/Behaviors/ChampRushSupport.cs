@@ -87,7 +87,7 @@ namespace EnemiesReturns.Behaviors
                     },
                     new ItemOrder()
                     {
-                        amount = Mathf.CeilToInt(itemCount * 2.5f), // reduceHp reduces HP by 5%, scale reduces scale by 1%, we want half the scale for each reduce health, so we multiply item count by 2.5
+                        amount = Mathf.CeilToInt(itemCount / 2), // reduceHp reduces HP by 1%, scale reduces scale by 1%, we want half the scale for each reduce health, so we divide it by half
                         item = DLC4Content.Items.ReduceCharacterScale
                     }
                 }
