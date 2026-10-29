@@ -138,7 +138,8 @@ namespace EnemiesReturns.Configuration
                 string.Join(
                     ",",
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueduct),
-                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueductSimulacrum)
+                    DirectorAPI.ToInternalStageName(DirectorAPI.Stage.AbandonedAqueductSimulacrum),
+                    "forgottenhaven"
                 ),
                 "Stages that Sandy Colossus appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
             Colossus.SnowyStageList = config.Bind("Colossus Director", "Snowy Variant Stage List",

@@ -73,6 +73,7 @@ namespace EnemiesReturns
                         break;
                     case "skymeadow":
                     case "itskymeadow":
+                    case "slumberingsatellite":
                         lynxTrap = lynxStuff.CreateTrapPrefab(lynxTrap, leavesPrefab, GetOrCreateMaterial("SkyMeadowLeaves_LOD0", lynxStuff.CreateSkyMeadowLeavesMaterialLOD0, material));
                         break;
                     case "village":

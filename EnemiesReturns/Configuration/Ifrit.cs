@@ -104,7 +104,8 @@ namespace EnemiesReturns.Configuration
                     "catacombs_DS1_Catacombs",
                     "snowtime_gephyrophobia",
                     "snowtime_gmconstruct",
-                    "snowtime_gmflatgrass"
+                    "snowtime_gmflatgrass",
+                    "drybasin"
                     ),
                 "Stages that Default Ifrit appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 

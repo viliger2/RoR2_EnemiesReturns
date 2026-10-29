@@ -92,7 +92,8 @@ namespace EnemiesReturns.Configuration.LynxTribe
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.TitanicPlainsSimulacrum),
                     DirectorAPI.ToInternalStageName(DirectorAPI.Stage.SkyMeadowSimulacrum),
                     "snowtime_gmconstruct",
-                    "snowtime_gmflatgrass"
+                    "snowtime_gmflatgrass",
+                    "slumberingsatellite"
                 ),
                 "Stages that Default Lynx Totem appears in. Stages should be separated by coma, internal names can be found in game via \"list_scenes\" command.");
 
