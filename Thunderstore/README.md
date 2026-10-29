@@ -25,7 +25,7 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Shaman/texLynxShamanIcon.png" alt="Lynx Shaman"></td>
 		<td>Exiled Lynx Shaman</td>
 		<td>The leader of Exiled Lynx Tribe. Their connection to N'kuhana was severed but they still worship her.</td>
-		<td>Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a></td>
+		<td>Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/TechDebtCollector/Forgotten_Relics/">Slumbering Satellite</a></td>
 	</tr>	
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/ArcherBug/texArcherBugIcon.png" alt="Lynx Shaman"></td>
@@ -71,19 +71,19 @@ This mod adds enemies and bosses from Risk of Rain Returns.
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/main/EnemiesReturnsUnity/Assets/Enemies/Colossus/texColossusIcon.png" alt="Colossus"></td>
 		<td>Colossus</td>
 		<td>The one and only.</td>
-		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Pretender's Precipice, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Forlorn_Wreckage/">Forlorn Wreckage</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a></td>
+		<td>Sky Meadow, Titanic Plains, Abandoned Aqueduct, Siphoned Forest, Rallypoint Delta, Shattered Abodes, Disturbed Impact, <a href="https://thunderstore.io/package/viliger/BobombBattlefield/">Bob-omb Battlefield</a>, <a href="https://thunderstore.io/package/JaceDaDorito/FogboundLagoon/">Fogbound Lagoon</a>, Pretender's Precipice, <a href="https://thunderstore.io/package/wormsworms/Ancient_Observatory/">Ancient Observatory</a>, <a href="https://thunderstore.io/c/riskofrain2/p/Winslow/Forlorn_Wreckage/">Forlorn Wreckage</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunken_Tombs_Returns/">Sunken Tombs Returns</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, <a href="https://thunderstore.io/c/riskofrain2/p/TechDebtCollector/Forgotten_Relics/">Forgotten Haven</a></td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/Ifrit/texIconIfritBody.png" alt="Ifrit"></td>
 		<td>Ifrit</td>
 		<td>Fiery spawn of Hell. He will burn you with every attack.</td>
-		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, <a href="https://thunderstore.io/package/viliger/Catacombs/">Catacombs</a>, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Gephyrophobia</a>, Pretender's Precipice</td>
+		<td>Abyssal Depths, Siphoned Forest, Rallypoint Delta, Helminth Hatchery, <a href="https://thunderstore.io/package/viliger/Catacombs/">Catacombs</a>, <a href="https://thunderstore.io/package/winterwonderland/SnowtimeStages/">Gephyrophobia</a>, Pretender's Precipice, <a href="https://thunderstore.io/c/riskofrain2/p/TechDebtCollector/Forgotten_Relics/">Dry Basin</a></td>
 	</tr>
 	<tr>
 		<td><img src="https://raw.githubusercontent.com/viliger2/RoR2_EnemiesReturns/refs/heads/main/EnemiesReturnsUnity/Assets/Enemies/LynxTribe/Totem/texLynxTotemIcon.png" alt="Lynx Totem"></td>
 		<td>Exiled Lynx Totem</td>
 		<td>Exiled Lynx Tribe's object of worship. Do not be deceived, it is not as immobile and harmless as it seems.</td>
-		<td>Titanic Plains, Distant Roost, Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Hollow_Summit/">Hollow Summit</a></td>
+		<td>Titanic Plains, Distant Roost, Shattered Abodes, Disturbed Impact, Wetland Aspect, Treeborn Colony, Golden Dieback, Sundered Grove, Sky Meadow, <a href="https://thunderstore.io/package/wormsworms/Wetland_Downpour/">Wetland Downpour</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Sunset_Tropics/">Sunset Tropics</a>, <a href="https://thunderstore.io/c/riskofrain2/p/wormsworms/Hollow_Summit/">Hollow Summit</a>, <a href="https://thunderstore.io/c/riskofrain2/p/TechDebtCollector/Forgotten_Relics/">Slumbering Satellite</a></td>
 	</tr>		
 </table>
 

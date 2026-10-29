@@ -1,6 +1,13 @@
 <details>
 <summary>0.7.34</summary>
 
+* Colossus
+  * Fixed him being too fun sized on Souldbound Threshold.
+* Added support for Forgotten Relics stages.  
+</details>
+<details>
+<summary>0.7.34</summary>
+
 * Item displays for new elite and support for Aeonian elite displays for new enemies.
 * Archer Bug
   * Added to Tenebrous Quagmire.
