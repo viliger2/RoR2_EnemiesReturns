@@ -211,12 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forcedAnimatorAtStart: {fileID: 0}
   _modelTransform: {fileID: 7435684202063892083}
   modelVisibility: {fileID: 0}
   modelBaseTransform: {fileID: 6425604146047289864}
-  modelScaleCompensation: 1
-  initialScale: {x: 0, y: 0, z: 0}
   autoUpdateModelTransform: 1
+  compensateForInitialScale: 1
   dontDetatchFromParent: 1
   noCorpse: 0
   dontReleaseModelOnDeath: 0
@@ -239,7 +239,11 @@ MonoBehaviour:
   m_Script: {fileID: 871971028, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRenderer: {fileID: 777342994498712648}
+  useForPingHighlight: 1
+  targetRenderer: {fileID: 0}
+  targetRendererList:
+  - {fileID: 6425067118784593029}
+  - {fileID: 777342994498712648}
   strength: 1
   highlightColor: 0
   CustomColor: {r: 1, g: 0, b: 1, a: 1}

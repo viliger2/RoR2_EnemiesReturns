@@ -18,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.BonusRoomDoors
         public override void OnEnter()
         {
             base.OnEnter();
-
+            SetPingable(false);
             var sfxLocator = gameObject.GetComponent<SfxLocator>();
             if (sfxLocator)
             {

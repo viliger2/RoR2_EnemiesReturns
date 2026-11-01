@@ -13,7 +13,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
 
         private LoopSoundDef currentTrack;
 
-        private GenericInteraction genericInteraction;
+        private PurchaseInteraction genericInteraction;
 
         [SyncVar(hook = nameof(OnTrackChanged))]
         private int currentTrackIndex;
@@ -24,7 +24,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
 
         private void Awake()
         {
-            genericInteraction = GetComponent<GenericInteraction>();
+            genericInteraction = GetComponent<PurchaseInteraction>();
         }
 
         private void Start()
@@ -60,7 +60,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
 
             refreshTimer = reuseDelay;
             waitingForRefresh = true;
-            genericInteraction.SetInteractabilityConditionsNotMet();
+            genericInteraction.SetAvailable(false);
         }
 
         private void FixedUpdate()
@@ -75,9 +75,17 @@ namespace EnemiesReturns.Behaviors.ContactLight
                 refreshTimer -= Time.fixedDeltaTime;
                 if(refreshTimer <= 0f)
                 {
-                    genericInteraction.SetInteractabilityAvailable();
+                    genericInteraction.SetAvailableTrue();
                     waitingForRefresh = false;
                 }
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (currentTrack)
+            {
+                Util.PlaySound(currentTrack.stopSoundName, gameObject);
             }
         }
 

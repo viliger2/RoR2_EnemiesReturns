@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
     {
         public static string phaseControllerChildString = "Phase15";
 
-        public static int reduceDamageItemCount => Mathf.CeilToInt(0.2f / 0.01f);
+        public static int reduceDamageItemCount => Mathf.CeilToInt(0.2f / 0.01f); // we want 80% damage, so 20% damage reduction
 
         private ChildLocator childLocator;
 
@@ -27,8 +27,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private Inventory inventory;
 
         private List<ScriptedCombatEncounter> combatEncounters = new List<ScriptedCombatEncounter>();
-
-        private GameObject effectInstance;
 
         public override void OnEnter()
         {
@@ -172,10 +170,6 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 {
                     encounter.combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;
                 }
-            }
-            if (effectInstance)
-            {
-                UnityEngine.Object.Destroy(effectInstance);
             }
             combatEncounters = null;
             phaseControllerObject.SetActive(false);
