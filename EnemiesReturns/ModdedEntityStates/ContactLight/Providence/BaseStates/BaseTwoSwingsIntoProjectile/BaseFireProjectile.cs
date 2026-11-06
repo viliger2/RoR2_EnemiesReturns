@@ -57,11 +57,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 {
                     var chargeEffectInstance = UnityEngine.Object.Instantiate(effectPrefab, origin.position, origin.rotation);
                     chargeEffectInstance.transform.parent = origin;
-                    chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>().newDuration = spawnTime;
+                    //chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>().newDuration = spawnTime;
                 }
             }
 
-            PlayCrossfade(layerName, animationStateName, 0.1f);
+            PlayAnimation(layerName, animationStateName);
         }
 
         public override void FixedUpdate()

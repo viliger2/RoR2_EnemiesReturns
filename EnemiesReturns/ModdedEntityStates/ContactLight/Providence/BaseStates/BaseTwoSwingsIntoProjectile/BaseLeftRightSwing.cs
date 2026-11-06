@@ -29,7 +29,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public new abstract float hitPauseDuration { get; }
 
-        public new abstract string swingEffectMuzzleString { get; }
+        public new abstract string swingEffectMuzzleString { get; set; }
 
         public new abstract string mecanimHitboxActiveParameter { get; }
 
@@ -112,5 +112,21 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         }
 
         public abstract EntityState GetNextStateIfMissed();
+
+        public override void FixedUpdate()
+        {
+            fixedAge += GetDeltaTime();
+            if (animator.GetFloat(mecanimHitboxActiveParameter) > 0.5f)
+            {
+                BeginMeleeAttackEffect();
+            } else
+            {
+                meleeAttackStartTime = Run.FixedTimeStamp.positiveInfinity;
+            }
+            if (base.isAuthority)
+            {
+                AuthorityFixedUpdate();
+            }
+        }
     }
 }

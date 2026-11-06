@@ -25,8 +25,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override float hitPauseDuration => 0.1f;
 
-        public override string swingEffectMuzzleString => ""; // TODO
-
         public override string mecanimHitboxActiveParameter => "Slash1.attack";
 
         public override float shorthopVelocityFromHit => 0f;
@@ -45,6 +43,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override float earlyExit => 2.5f;
 
+        public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
+
         public static string fireCloneMecanimParam = "FireClone.attack";
 
         public static GameObject cloneProjectile;
@@ -58,6 +58,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
         public static float cloneProjectileDamage = 2f;
 
         public static float projectileHealthThreshold = 1f;
+
+        private string _swingEffectMuzzleString;
 
         private bool firedClone;
 

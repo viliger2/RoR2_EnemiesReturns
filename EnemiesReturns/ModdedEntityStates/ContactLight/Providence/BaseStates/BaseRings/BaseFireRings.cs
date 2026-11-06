@@ -28,6 +28,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static GameObject cloneEffectPrefab;
 
+        public static GameObject teleportEffect;
+
         public static float forceVectorValue = 300f;
 
         public static float baseSingleRingDuration = 1.666f;
@@ -36,12 +38,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static float baseShadowEffectDelay = 0.8f;
 
-        public static string[] effectList = new string[]
+        public static GameObject[] effectList = Array.Empty<GameObject>();
+
+        public static readonly string[] indicatorList = new string[]
         {
         "Ring1", "Ring2", "Ring3", "Ring4", "Ring5"
         };
 
-        public static string[] hitboxList = new string[]
+        public static readonly string[] hitboxList = new string[]
         {
         "FirstRing", "SecondRing", "ThirdRing", "FourthRing", "FifthRing"
         };
@@ -118,6 +122,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
             oneRingTimer += baseSingleRingDuration;
             muzzleFloor = FindModelChild("MuzzleFloor");
+
+            if (teleportEffect)
+            {
+                var origin = locator.FindChild("TeleportEffectOrigin");
+                if (origin)
+                {
+                    EffectManager.SimpleEffect(teleportEffect, origin.position, origin.rotation, false);
+                }
+            }
         }
 
         public override void FixedUpdate()
@@ -186,15 +199,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             base.OnSerialize(writer);
             writer.Write((byte)startingArray);
-            writer.Write((byte)timesToFire);
             writer.Write((byte)ringsToFire);
         }
 
         public override void OnDeserialize(NetworkReader reader)
         {
             base.OnDeserialize(reader);
-            startingArray = reader.ReadByte();
-            timesToFire = reader.ReadByte();
+            startingArray = reader.ReadByte();;
             ringsToFire = reader.ReadByte();
         }
 
@@ -234,7 +245,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             for (int i = 0; i < currentRings.Length; i++)
             {
-                var child = locator.FindChild(effectList[currentRings[i]]);
+                var child = locator.FindChild(indicatorList[currentRings[i]]);
                 if (child)
                 {
                     child.gameObject.SetActive(active);
@@ -263,6 +274,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         overlapAttack.addIgnoredHitList(box.healthComponent);
                     }
                     hits.Clear();
+                }
+
+                var child = locator.FindChild(indicatorList[number]);
+                if (child)
+                {
+                    if(effectList.Length > number)
+                    {
+                        var effectObject = effectList[number];
+                        if (effectObject)
+                        {
+                            EffectManager.SimpleEffect(effectObject, child.position, Quaternion.identity, false);
+                        }
+                    }
                 }
             }
         }

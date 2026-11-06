@@ -25,8 +25,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override float hitPauseDuration => 0.1f;
 
-        public override string swingEffectMuzzleString => ""; // TODO
-
         public override string mecanimHitboxActiveParameter => "Slash1.attack";
 
         public override float shorthopVelocityFromHit => 0f;
@@ -45,6 +43,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override float earlyExit => 2f;
 
+        public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
+
         public static string fireCloneMecanimParam = "FireClone.attack";
 
         public static GameObject cloneProjectile;
@@ -58,6 +58,16 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
         public static float cloneProjectileDamage = 2f;
 
         public static float projectileHealthThreshold = 0.85f;
+
+        private string _swingEffectMuzzleString;
+
+        private bool firstSwing;
+
+        public override void OnEnter()
+        {
+            swingEffectMuzzleString = "FirstSwingMuzzle";
+            base.OnEnter();
+        }
 
         public override EntityState GetNextStateIfMissed()
         {
@@ -77,7 +87,55 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
         public override void OnExit()
         {
             base.OnExit();
-            PlayAnimation("UpperBodyOnly", "BufferEmpty");
+//            PlayAnimation("UpperBodyOnly", "BufferEmpty");
         }
+
+        public override void BeginMeleeAttackEffect()
+        {
+            if(meleeAttackStartTime != Run.FixedTimeStamp.positiveInfinity && !firstSwing)
+            {
+                firstSwing = true;
+            }
+            if(meleeAttackStartTime == Run.FixedTimeStamp.positiveInfinity && firstSwing)
+            {
+                swingEffectMuzzleString = "SecondSwingMuzzle";
+            }
+            // it works fine when I copy paste the method, it doesn't if I just call base, whatever
+            //base.BeginMeleeAttackEffect();
+            if (meleeAttackStartTime != Run.FixedTimeStamp.positiveInfinity)
+            {
+                return;
+            }
+            meleeAttackStartTime = Run.FixedTimeStamp.now;
+            Util.PlaySound(beginSwingSoundString, base.gameObject);
+            if (!swingEffectPrefab)
+            {
+                return;
+            }
+            Transform transform = FindModelChild(swingEffectMuzzleString);
+            if ((bool)transform)
+            {
+                if (!EffectManager.ShouldUsePooledEffect(swingEffectPrefab))
+                {
+                    swingEffectInstance = Object.Instantiate(swingEffectPrefab, transform);
+                }
+                else
+                {
+                    _emh_swingEffectInstance = EffectManager.GetAndActivatePooledEffect(swingEffectPrefab, transform, inResetLocal: true);
+                    swingEffectInstance = _emh_swingEffectInstance.gameObject;
+                }
+                ScaleParticleSystemDuration component = swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+                if ((bool)component)
+                {
+                    component.newDuration = component.initialDuration;
+                }
+            }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
     }
 }

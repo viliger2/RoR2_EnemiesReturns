@@ -34,7 +34,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Special
             base.FixedUpdate();
             if (fixedAge > baseDuration && isAuthority)
             {
-                base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.25f, Quaternion.identity);
+                base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.05f, Quaternion.identity);
                 outer.SetNextState(new FireRings());
             }
         }

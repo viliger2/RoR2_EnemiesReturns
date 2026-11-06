@@ -143,14 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: 73
-  ghostPrefab: {fileID: 0}
-  ghostPrefabReference:
-    m_AssetGUID: 1c192e5444337c348904c7e3c70d536a
+  ghostPrefab: {fileID: 7883537700349489055, guid: e3bb0d9767056db4bae059a0edc6a4f5, type: 3}
+  ghostPrefabAddress:
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
+  doNotPerformImpactOnCollision: 0
   authorityHandlesCollisionEvents: 0
   flightSoundLoop: {fileID: 0}
   canImpactOnTrigger: 0
@@ -160,6 +161,7 @@ MonoBehaviour:
   procCoefficient: 1
   combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
+  CanBeParried: 1
 --- !u!54 &54690151806513192
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -207,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEffect: {fileID: 0}
   lifetime: 15
   lifetimeExpiredEffect: {fileID: 0}
   desiredForwardSpeed: 60
@@ -273,6 +274,7 @@ MonoBehaviour:
     damageType: 0
     damageTypeExtended: 0
     damageSource: 0
+    attackIdentityIndex: 0
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &114171121433553315
@@ -288,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &114066040010977054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +312,7 @@ MonoBehaviour:
   canRejectForce: 1
   projectileHealthComponent: {fileID: 0}
   explosionEffect: {fileID: 0}
+  preserveExplosionScale: 0
   blastImpactEffect: {fileID: 0}
   preserveExplosionOrientation: 0
   explosionSoundString: 
@@ -327,6 +331,7 @@ MonoBehaviour:
   rangeYawDegrees: 0
   useLocalSpaceForChildren: 0
   useChildRotation: 0
+  childInheritsRotation: 0
   applyDot: 0
   dotIndex: -1
   dotDuration: 0
@@ -336,7 +341,8 @@ MonoBehaviour:
   calculateTotalDamage: 0
   totalDamageMultiplier: 0
   timedDebuffs: []
-  impactEffect: {fileID: 1954473855138878, guid: cd5ac21d37f28d84cb55523b046e107c, type: 2}
+  impactEffect: {fileID: 6137659279216796007, guid: 4f4f147401291974d99702422d9ea213, type: 3}
+  expiredEffect: {fileID: 0}
   lifetimeExpiredSoundString: 
   lifetimeExpiredSound: {fileID: 0}
   offsetForLifetimeExpiredSound: 0
@@ -351,8 +357,8 @@ MonoBehaviour:
   lifetimeAfterImpact: 0
   lifetimeRandomOffset: 0
   minimumPhysicsStepsToKeepAliveAfterImpact: 0
+  onlyFireChildrenOnWorld: 0
   transformSpace: 0
-  explodeOnLifeTimeExpiration: 0
 --- !u!114 &114588922777335467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +390,7 @@ MonoBehaviour:
   allowTargetLoss: 0
   testLoS: 1
   ignoreAir: 0
+  canTargetNeutral: 0
   flierAltitudeTolerance: Infinity
   sortMode: 3
   onNewTargetFound:
@@ -405,10 +412,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
-  rotationSpeed: 60
-  increaseSpeedOverTime: 0
+  useAuthorityNotServer: 0
+  rotationSpeed: 30
+  modifySpeedOverTime: 0
   maxRotationSpeed: 0
-  rotationAddPerSecond: 0
+  minRotationSpeed: 0
+  rotationChangePerSecond: 0
 --- !u!114 &5499251837169641849
 MonoBehaviour:
   m_ObjectHideFlags: 0

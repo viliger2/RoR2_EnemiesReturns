@@ -1,9 +1,13 @@
 ﻿using EntityStates;
+using RoR2;
+using UnityEngine;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls
 {
     public abstract class BasePrepareAttack : BaseState
     {
+        public static GameObject portalEffectPrefab;
+
         public abstract float baseDuration { get; }
 
         public abstract string layerName { get; }
@@ -14,6 +18,21 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             base.OnEnter();
             PlayCrossfade(layerName, animationStateName, 0.1f);
+
+            if (portalEffectPrefab)
+            {
+                var origin = FindModelChild("PortalClonesEffectOrigin");
+                if (origin)
+                {
+                    var effectData = new EffectData()
+                    {
+                        rootObject = base.gameObject,
+                        modelChildIndex = (short)GetModelChildLocator().FindChildIndex(origin)
+                    };
+
+                    EffectManager.SpawnEffect(portalEffectPrefab, effectData, false);
+                }
+            }
         }
 
         public override void FixedUpdate()

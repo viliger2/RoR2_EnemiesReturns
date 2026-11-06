@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 5184069221446857009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.13, z: 1.52}
-  m_LocalScale: {x: 9, y: 9, z: 9}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8330737001069877828}
   m_RootOrder: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
     damageType: 0
     damageTypeExtended: 0
     damageSource: 0
+    attackIdentityIndex: 0
   useDotMaxStacksFromAttacker: 0
   dotMaxStacksFromAttacker: 4294967295
 --- !u!114 &2065128960640195832
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTeam: -1
+  maintainDefault: 0
 --- !u!114 &1125173844930758129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,13 +168,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catalogIndex: -1
   ghostPrefab: {fileID: 218202194783822089, guid: 00b61c8d94164264aae1d955bc523539, type: 3}
-  ghostPrefabReference:
+  ghostPrefabAddress:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
   startSound: 
   cannotBeDeleted: 0
+  doNotPerformImpactOnCollision: 0
   authorityHandlesCollisionEvents: 0
   flightSoundLoop: {fileID: 0}
   canImpactOnTrigger: 0
@@ -182,6 +185,7 @@ MonoBehaviour:
   procCoefficient: 1
   combo: 0
   CheckChildrenForCollidersAndIncludeDisabled: 0
+  CanBeParried: 1
 --- !u!114 &9129042587754145585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +237,9 @@ MonoBehaviour:
   ScaleWithVelocityAxis: {x: 0, y: 0, z: 1}
   isOverrideTeam: 0
   OverrideTeamIndex: 0
-  canHitOwner: 0
+  attackFiltering: 2
+  attackOriginPreference: 0
+  HitBoxGroupName: 
 --- !u!114 &7407989199349358436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEffect: {fileID: 0}
   lifetime: 0.5
   lifetimeExpiredEffect: {fileID: 0}
   desiredForwardSpeed: 0

@@ -43,7 +43,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 }
             }
 
-            base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.25f, Quaternion.identity);
+            base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.5f, Quaternion.identity);
 
             if (modelTransform)
             {

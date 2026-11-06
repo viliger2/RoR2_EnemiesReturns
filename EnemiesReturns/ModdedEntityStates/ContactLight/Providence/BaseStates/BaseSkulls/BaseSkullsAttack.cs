@@ -42,12 +42,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private int projectilesSpawned;
 
+        private Transform originPoint;
+
         public override void OnEnter()
         {
             base.OnEnter();
 
             activePlayers = Utils.GetActiveAndAlivePlayerBodies();
             totalProjectiles = projectilesToSpawn + additionalProjectilesPerPlayer * Mathf.Max(0, activePlayers.Count - 1);
+
+            originPoint = FindModelChild("ClonesSpawnOrigin");
+            if (!originPoint)
+            {
+                originPoint = gameObject.transform;
+            }
         }
 
         public abstract EntityState GetNextState(); 
@@ -97,7 +105,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     }
 
                     var position = targetBody.transform.position + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
-                    var distance = Vector3.Distance(gameObject.transform.position, position);
+                    var distance = Vector3.Distance(originPoint.position, position);
 
                     var effectData = new EffectData()
                     {
@@ -115,8 +123,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         fuseOverride = distance / projectileSpeed,
                         maxDistance = distance,
                         owner = gameObject,
-                        position = gameObject.transform.position,
-                        rotation = Util.QuaternionSafeLookRotation((position - gameObject.transform.position).normalized),
+                        position = originPoint.position,
+                        rotation = Util.QuaternionSafeLookRotation((position - originPoint.position).normalized),
                         useFuseOverride = true,
                         useSpeedOverride = true,
                         speedOverride = projectileSpeed,

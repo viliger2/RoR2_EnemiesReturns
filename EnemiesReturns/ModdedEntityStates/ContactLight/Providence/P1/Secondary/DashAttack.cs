@@ -15,6 +15,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 
         private Vector3 desiredDirection;
 
+        private Transform dashEffect;
+
         public override void OnEnter()
         {
             this.baseDuration = 0.75f;
@@ -36,6 +38,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             base.ignoreAttackSpeed = false;
             base.duration = base.baseDuration / attackSpeedStat;
 
+            dashEffect = FindModelChild("DashEffect");
+            if (dashEffect)
+            {
+                dashEffect.gameObject.SetActive(true);
+            }
+
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
@@ -56,6 +64,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
         public override void OnExit()
         {
             PlayCrossfade("Gesture, Override", "BufferEmpty", 0.1f);
+            if (dashEffect)
+            {
+                dashEffect.gameObject.SetActive(false);
+            }
             base.OnExit();
         }
 

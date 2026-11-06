@@ -7,6 +7,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="libs\**" />
+	  <EmbeddedResource Remove="libs\**" />
+	  <None Remove="libs\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="amogus_lovers-StandaloneAncientScepter" Version="1.1.34" />
 		<PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
 			<PrivateAssets>all</PrivateAssets>
@@ -54,7 +60,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Behaviors\ContactLight\Providence\" />
-	  <Folder Include="libs\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

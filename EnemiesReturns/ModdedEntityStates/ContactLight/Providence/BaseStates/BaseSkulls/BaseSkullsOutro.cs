@@ -17,6 +17,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             base.OnEnter();
             PlayCrossfade(layerName, animationStateName, 0.1f);
+            var origin = FindModelChild("PortalClonesEffectOrigin");
+            if(origin && origin.childCount > 0)
+            {
+                // a bit dirty but that's effects for you
+                UnityEngine.Object.Destroy(origin.GetChild(0).gameObject);
+            }
         }
 
         public override void FixedUpdate()
