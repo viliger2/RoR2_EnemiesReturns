@@ -24,19 +24,24 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract float waveProjectileDamage { get; }
 
-        public abstract float waveProjectileForce { get; }
+        public abstract byte comboCount { get; }
 
-        public static GameObject waveProjectile = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.BrotherSunderWave_prefab).WaitForCompletion();
+        public static GameObject waveProjectile;
+
+        public static GameObject landingEffect;
 
         private bool attackFired = false;
 
         private Animator modelAnimator;
+
+        private Transform muzzleFloor;
 
         public override void OnEnter()
         {
             base.OnEnter();
             modelAnimator = GetModelAnimator();
             PlayAnimation(layerName, animationStateName, playbackRateParams, baseDuration);
+            muzzleFloor = FindModelChild("MuzzleFloor");
         }
 
         public override void FixedUpdate()
@@ -45,6 +50,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             if (!attackFired && modelAnimator.GetFloat(animatorAttackParam) > 0.9f)
             {
                 FireAttackAuthority();
+                if (landingEffect && muzzleFloor)
+                {
+                    EffectManager.SimpleEffect(landingEffect, muzzleFloor.position, Quaternion.identity, false);
+                }
 
                 attackFired = true;
             }
@@ -97,23 +106,25 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
             float num = 360f / (float)waveCount;
             Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
-            Vector3 footPosition = base.characterBody.footPosition;
+            Vector3 corePosition = base.characterBody.corePosition;
             bool crit = RollCrit();
             for (int i = 0; i < waveCount; i++)
             {
                 Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
+                forward = Utils.PitchUp(forward, 45f);
                 if (base.isAuthority)
                 {
                     var info = new FireProjectileInfo
                     {
                         projectilePrefab = waveProjectile,
-                        position = footPosition,
+                        position = corePosition,
                         rotation = Util.QuaternionSafeLookRotation(forward),
                         owner = base.gameObject,
                         damage = base.characterBody.damage * waveProjectileDamage,
-                        force = waveProjectileForce,
                         damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility),
-                        crit = crit
+                        crit = crit,
+                        comboNumber = comboCount,
+                        speedOverride = 20f
                     };
                     ProjectileManager.instance.FireProjectile(info);
                 }

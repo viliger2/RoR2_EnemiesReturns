@@ -13,6 +13,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAtt
 
         public override string animationStateName => "SummonSkullsInit";
 
+        public override float effectSpawnDelay => 1f;
+
         public override EntityState GetNextState()
         {
             return new SkullsAttack();

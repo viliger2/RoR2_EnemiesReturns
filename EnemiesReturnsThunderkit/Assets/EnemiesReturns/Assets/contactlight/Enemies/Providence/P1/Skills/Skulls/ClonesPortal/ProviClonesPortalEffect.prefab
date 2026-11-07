@@ -220,7 +220,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeMax: 1.5
+  timeMax: 0.5
   ignoreResetOnEnable: 0
   loop: 0
   playOnlyWhenReady: 0
@@ -233,6 +233,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7776736830522844173}
+  - component: {fileID: 4344934181362239782}
+  - component: {fileID: 3701265398545003842}
+  - component: {fileID: 4639522125507851222}
   m_Layer: 20
   m_Name: PP
   m_TagString: Untagged
@@ -255,6 +258,76 @@ Transform:
   m_Father: {fileID: 4517810314655486633}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4344934181362239782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818249425020597157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -432102721, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ppVolume: {fileID: 0}
+  ppWeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxDuration: 0.5
+  destroyOnEnd: 0
+  useUnscaledTime: 0
+--- !u!114 &3701265398545003842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818249425020597157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: a6e8bb7eba226b442b1a59e0e5ded254, type: 2}
+  isGlobal: 0
+  blendDistance: 16.5
+  weight: 1
+  priority: 99
+--- !u!135 &4639522125507851222
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818249425020597157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.57
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5362831773071521874
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +384,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5257,7 +5330,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeMax: 1.5
+  timeMax: 0.2
   ignoreResetOnEnable: 0
   loop: 0
   playOnlyWhenReady: 0
@@ -5317,7 +5390,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2

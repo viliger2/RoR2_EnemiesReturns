@@ -22,6 +22,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Utility
 
         public override float waveProjectileDamage => 2f;
 
-        public override float waveProjectileForce => 500f;
+        public override byte comboCount => 2;
     }
 }

@@ -30,6 +30,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static GameObject teleportEffect;
 
+        public static GameObject slamEffect;
+
         public static float forceVectorValue = 300f;
 
         public static float baseSingleRingDuration = 1.666f;
@@ -255,6 +257,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private void FireRing()
         {
+            if (slamEffect && muzzleFloor)
+            {
+                EffectManager.SimpleEffect(slamEffect, muzzleFloor.position, Quaternion.identity, false);
+            }
+
             var hitBoxes = modelTransform.GetComponents<HitBoxGroup>();
             List<HurtBox> hits = new List<HurtBox>();
             for (int i = 0; i < currentRings.Length; i++)

@@ -519,5 +519,11 @@ namespace EnemiesReturns
                 }
             }
         }
+
+        public static Vector3 PitchUp(Vector3 forward, float degrees)
+        {
+            Vector3 axis = Vector3.Cross(forward, Vector3.up); // horizontal axis perpendicular to forward
+            return Quaternion.AngleAxis(degrees, axis) * forward;
+        }
     }
 }

@@ -2241,7 +2241,7 @@ MonoBehaviour:
   inLava: 0
   baseNameToken: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP1_BODY_NAME
   subtitleNameToken: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCEP1_BODY_SUBTITLE
-  bodyFlags: 2065
+  bodyFlags: 608273
   lavaCooldown: 0.2
   shieldBrokeSinceDangerCheck: 0
   rootMotionInMainState: 0
@@ -2880,8 +2880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2963873619053843280}
-  segments: 2
-  damageImmunityBuffDuration: 20
+  segments: 1
+  damageImmunityBuffDuration: 10
 --- !u!1 &5965427186758955113
 GameObject:
   m_ObjectHideFlags: 0

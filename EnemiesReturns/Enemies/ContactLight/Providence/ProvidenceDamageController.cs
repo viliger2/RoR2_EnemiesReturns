@@ -75,7 +75,7 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
                 return;
             }
 
-            var segmentHealthSize = body.maxHealth / segments;
+            var segmentHealthSize = body.maxHealth / segments + 1;
             var currentSegmentStatus = (segmentStatus & (uint)1 << currentSegment) == 0;
 
             if (damageReport.combinedHealthBeforeDamage - damageReport.damageDealt < body.maxHealth - (segmentHealthSize * (currentSegment + 1)) + 1 && currentSegmentStatus)
