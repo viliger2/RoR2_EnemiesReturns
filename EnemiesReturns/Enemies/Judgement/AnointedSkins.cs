@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using static RoR2.Loadout;
 
 namespace EnemiesReturns.Enemies.Judgement
 {
@@ -77,11 +78,15 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
+            if((int)body.bodyIndex >= BodyLoadoutManager.defaultBodyLoadouts.Length)
+            {
+                return;
+            }
+
             var skinDef = SkinCatalog.GetBodySkinDef(body.bodyIndex, (int)(self.loadout?.bodyLoadoutManager?.GetSkinIndex(body.bodyIndex) ?? 0));
             if (AnointedSkinsItemHashSet.Contains(skinDef))
             {
                 self.inventory.GiveItemPermanent(Content.Items.HiddenAnointed); 
-                return;
             };
         }
 
