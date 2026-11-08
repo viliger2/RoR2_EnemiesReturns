@@ -1,4 +1,16 @@
 <details>
+<summary>0.7.36</summary>
+
+* Fixed potential OOB exception related to Anointed skin on stage start. 
+</details>
+<details>
+<summary>0.7.35</summary>
+
+* Colossus
+  * Fixed him being too fun sized on Souldbound Threshold.
+* Added support for Forgotten Relics stages.  
+</details>
+<details>
 <summary>0.7.34</summary>
 
 * Colossus
