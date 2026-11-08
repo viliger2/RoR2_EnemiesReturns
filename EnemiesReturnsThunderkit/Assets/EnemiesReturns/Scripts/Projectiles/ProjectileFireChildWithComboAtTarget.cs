@@ -1,9 +1,6 @@
 ﻿using EnemiesReturns.EditorHelpers;
 using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -15,6 +12,10 @@ namespace EnemiesReturns.Projectiles
     public class ProjectileFireChildWithComboAtTarget : MonoBehaviour
     {
         public PrefabDef childToFire;
+
+        public GameObject lifetimeExpireEffect;
+
+        public Transform effectOrigin;
 
         private ProjectileTargetComponent targetComponent;
 
@@ -36,18 +37,19 @@ namespace EnemiesReturns.Projectiles
                 return;
             }
 
-            if(!controller || !damage)
+            if (!controller || !damage)
             {
                 return;
             }
 
-            if(controller.combo == 0)
+            if (controller.combo == 0)
             {
+                UnityEngine.Object.Destroy(this.gameObject);
                 return;
             }
 
             var rotation = transform.forward.normalized;
-            if(targetComponent && targetComponent.target)
+            if (targetComponent && targetComponent.target)
             {
                 rotation = (targetComponent.target.position - transform.position).normalized;
             }
@@ -65,10 +67,12 @@ namespace EnemiesReturns.Projectiles
                 procChainMask = controller.procChainMask,
                 projectilePrefab = childToFire.prefab,
                 rotation = Util.QuaternionSafeLookRotation(rotation),
-                fuseOverride = 2f
+                fuseOverride = 1f
             };
 
             ProjectileManager.instance.FireProjectile(info);
+
+            UnityEngine.Object.Destroy(this.gameObject);
         }
     }
 }

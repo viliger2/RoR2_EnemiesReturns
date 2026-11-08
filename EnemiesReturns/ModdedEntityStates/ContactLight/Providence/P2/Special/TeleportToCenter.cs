@@ -10,6 +10,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
     {
         public static float baseDuration => 3f;
 
+        private bool teleported;
+
         private Vector3 position;
 
         public override void OnEnter()
@@ -32,9 +34,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (fixedAge > baseDuration - 1f && isAuthority && !teleported)
+            {
+                base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.05f, Quaternion.identity);
+                teleported = true;
+            }
             if (fixedAge > baseDuration && isAuthority)
             {
-                base.characterMotor.Motor.SetPositionAndRotation(position + Vector3.up * 0.25f, Quaternion.identity);
                 outer.SetNextState(new FireRings());
             }
         }

@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
     {
         public static string phaseControllerChildString = "Phase2";
 
-        public static float bossSpawnDelay = 10f;
+        public static float bossSpawnDelay = 7f;
 
         private GameObject phaseControllerObject;
 

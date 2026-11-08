@@ -14,16 +14,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAtt
 
         public override string playbackRateParamName => "Skulls.singlePlayback";
 
-        public static GameObject staticProjectilePrefab;
-
-        public static GameObject staticEffectPrefab;
-
-        public static GameObject staticEffectRedPrefab;
-
-        public override GameObject projectilePrefab => staticProjectilePrefab;
-
-        public override GameObject effectPrefab => staticEffectPrefab;
-
         public override float damageCoefficient => 2f;
 
         public override float baseFireFrequency => 0.25f;
@@ -35,8 +25,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.SkullsAtt
         public override float projectileSpeed => 50f;
 
         public override float maxDistance => 15f;
-
-        public override GameObject effectPrefabRed => staticEffectRedPrefab;
 
         public override bool canBeRed => false;
 

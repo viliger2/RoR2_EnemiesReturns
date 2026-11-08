@@ -20,6 +20,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            characterDirection.forward = GetAimRay().direction.normalized;
+
             if (fixedAge > duration && isAuthority)
             {
                 outer.SetNextState(new DashAttack());

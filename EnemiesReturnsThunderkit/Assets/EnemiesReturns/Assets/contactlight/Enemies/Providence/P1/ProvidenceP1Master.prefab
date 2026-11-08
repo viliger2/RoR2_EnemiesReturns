@@ -424,7 +424,7 @@ MonoBehaviour:
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
-  maxDistance: 50
+  maxDistance: 30
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0

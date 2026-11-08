@@ -142,26 +142,17 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
                     ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
 
-                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
-                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
-                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefabRed = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.projectileNormalPrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.projectileRedPrefab = assets.First(prefab => prefab.name == "ProviShadowRedPrimary");
 
                     ModdedEntityStates.ContactLight.Providence.P3.Special.SpawnRotatingLaser.projectilePrefab = assets.First(prefab => prefab.name == "LaserProjectile");
 
                     ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
                     ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
 
-                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator"); ;
-                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticProjectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-                    ModdedEntityStates.ContactLight.Providence.P3.Secondary.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
-
                     ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-
-                    ModdedEntityStates.ContactLight.Providence.P1.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
-
-                    ModdedEntityStates.ContactLight.Providence.P2.SkullsAttack.SkullsAttack.staticEffectRedPrefab = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile.BaseLeftRightSwing.swingEffectPrefab = assets.First(prefab => prefab.name == "ProviSwingEffect");
 
@@ -169,7 +160,6 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash.BaseAttack.waveProjectile = assets.First(prefab => prefab.name == "ProviLandingBouncingProjectile");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash.BaseAttack.landingEffect = assets.First(prefab => prefab.name == "ProviRingsSlamEffect");
-
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

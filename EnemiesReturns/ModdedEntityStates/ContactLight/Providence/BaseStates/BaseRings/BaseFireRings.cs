@@ -38,7 +38,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static float baseEffectDelayDuration = 0.3f;
 
-        public static float baseShadowEffectDelay = 0.8f;
+        public static float baseShadowEffectDelay = 1.166f;
 
         public static GameObject[] effectList = Array.Empty<GameObject>();
 
@@ -123,6 +123,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             modelChildLocator = GetModelChildLocator();
 
             oneRingTimer += baseSingleRingDuration;
+            shadowEffectDelayTimer = baseShadowEffectDelay;
             muzzleFloor = FindModelChild("MuzzleFloor");
 
             if (teleportEffect)
@@ -229,7 +230,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private void PlayAnimation()
         {
-            PlayCrossfade("Gesture, Override", "RingLoopStart", 0.1f);
+            PlayAnimation("Gesture, Override", "RingLoopStart");
         }
 
         private void SetupNewRings()

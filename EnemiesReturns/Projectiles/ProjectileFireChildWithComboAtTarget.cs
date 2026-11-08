@@ -13,6 +13,10 @@ namespace EnemiesReturns.Projectiles
     {
         public PrefabDef childToFire;
 
+        public GameObject lifetimeExpireEffect;
+
+        public Transform effectOrigin;
+
         private ProjectileTargetComponent targetComponent;
 
         private ProjectileDamage damage;
@@ -36,6 +40,17 @@ namespace EnemiesReturns.Projectiles
             if (!controller || !damage)
             {
                 return;
+            }
+
+            if (lifetimeExpireEffect)
+            {
+                var spawnPosition = this.transform;
+                if (effectOrigin)
+                {
+                    spawnPosition = effectOrigin;
+                }
+
+                EffectManager.SimpleEffect(lifetimeExpireEffect, spawnPosition.position, Quaternion.identity, true);
             }
 
             if (controller.combo == 0)

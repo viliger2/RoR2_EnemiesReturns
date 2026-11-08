@@ -24686,7 +24686,6 @@ GameObject:
   - component: {fileID: 2486920497327090661}
   - component: {fileID: 1485573753959779688}
   - component: {fileID: 7413525173316130092}
-  - component: {fileID: 3079417156677939990}
   m_Layer: 0
   m_Name: HugeFlash
   m_TagString: Untagged
@@ -29489,7 +29488,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2f2b067d741d19e4a8f250c8d6ad057e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29540,24 +29539,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3079417156677939990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6921970794615018835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82c02025cb052d42b142d7d764b9287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialReference:
-    m_AssetGUID: 23b2aab4f5d2d154395a9668780a9ab6
-    m_SubObjectName: 
-    m_SubObjectType: 
-  addressableMaterialPath: 
-  isParticle: 1
-  isTrailParticle: 0
-  renderer: {fileID: 7413525173316130092}
-  loadAsynchronous: 0

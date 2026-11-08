@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &137107901773928177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5832869033468494293}
+  m_Layer: 14
+  m_Name: EffectOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5832869033468494293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137107901773928177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.2, z: 1.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8330737001069877828}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5184069221446857009
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +92,7 @@ GameObject:
   - component: {fileID: 9129042587754145585}
   - component: {fileID: 4781459425134226100}
   - component: {fileID: 7407989199349358436}
+  - component: {fileID: -7532715688866698388}
   m_Layer: 14
   m_Name: ProviShadowPrimaryOverlapProjectile
   m_TagString: Untagged
@@ -81,6 +113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7789654092536900112}
+  - {fileID: 5832869033468494293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -252,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.5
+  lifetime: 0.6
   lifetimeExpiredEffect: {fileID: 0}
   desiredForwardSpeed: 0
   updateAfterFiring: 0
@@ -266,3 +299,17 @@ MonoBehaviour:
   oscillate: 0
   oscillateMagnitude: 20
   oscillateSpeed: 0
+--- !u!114 &-7532715688866698388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045889996961886450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05233ba3b0355234683bec88a3ad2fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 1966186678505972128, guid: 35c575e6587ea714ab94a88f7c7895aa, type: 3}
+  effectOrigin: {fileID: 5832869033468494293}

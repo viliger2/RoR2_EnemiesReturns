@@ -14,11 +14,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract string playbackRateParamName { get; }
 
-        public abstract GameObject projectilePrefab { get; }
+        public static GameObject projectileNormalPrefab;
 
-        public abstract GameObject effectPrefab { get; }
+        public static GameObject projectileRedPrefab;
 
-        public abstract GameObject effectPrefabRed { get; }
+        public static GameObject effectPrefab;
+
+        public static GameObject effectPrefabRed;
 
         public abstract float damageCoefficient { get; }
 
@@ -128,10 +130,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         useFuseOverride = true,
                         useSpeedOverride = true,
                         speedOverride = projectileSpeed,
-                        projectilePrefab = projectilePrefab
+                        projectilePrefab = projectileNormalPrefab
                     };
                     if (isRed)
                     {
+                        projectileInfo.projectilePrefab = projectileRedPrefab;
                         projectileInfo.damage = 99999f;
                         projectileInfo.damageTypeOverride |= DamageType.NonLethal | DamageType.BypassArmor | DamageType.BypassBlock | DamageType.BypassOneShotProtection;
                     }
