@@ -102,12 +102,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PrintRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 3892515353316868905, guid: 36a7f30248449c94fa2f122e2753cd87, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SliceAlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 63f2027d5b1940841a82aa60c0451b92, type: 3}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _SplatmapTex:
         m_Texture: {fileID: 0}
@@ -157,15 +157,15 @@ Material:
     - _NormalStrength: 2.55
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PrintBias: 0
-    - _PrintBoost: 1
-    - _PrintDirection: 0
+    - _PrintBias: 0.82
+    - _PrintBoost: 1.14
+    - _PrintDirection: 3
     - _PrintEmissionToAlbedoLerp: 0
     - _PrintOn: 0
     - _RampInfo: 0
-    - _SliceAlphaDepth: 0.1
-    - _SliceBandHeight: 1
-    - _SliceHeight: 5
+    - _SliceAlphaDepth: 1
+    - _SliceBandHeight: 10
+    - _SliceHeight: -0.3
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularExponent: 1

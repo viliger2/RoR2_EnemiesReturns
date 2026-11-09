@@ -147,10 +147,10 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.projectileNormalPrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.projectileRedPrefab = assets.First(prefab => prefab.name == "ProviShadowRedPrimary");
 
-                    ModdedEntityStates.ContactLight.Providence.P3.Special.SpawnRotatingLaser.projectilePrefab = assets.First(prefab => prefab.name == "LaserProjectile");
+                    ModdedEntityStates.ContactLight.Providence.P3.Special.RotatingLaserBegin.laserProjectile = assets.First(prefab => prefab.name == "LaserProjectilePrep");
 
                     ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.projectilePrefab = assets.First(prefab => prefab.name == "ProvidenceCloneUtilityPreProjectile");
-                    ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
+                    ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "ProviLandingEffect");
 
                     ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
 
@@ -160,6 +160,19 @@ namespace EnemiesReturns
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash.BaseAttack.waveProjectile = assets.First(prefab => prefab.name == "ProviLandingBouncingProjectile");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash.BaseAttack.landingEffect = assets.First(prefab => prefab.name == "ProviRingsSlamEffect");
+
+                    var teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
+                    ModdedEntityStates.ContactLight.Providence.P1.DeathState.teleportEffect = teleportEffect;
+                    ModdedEntityStates.ContactLight.Providence.P2.DeathState.teleportEffect = teleportEffect;
+                    ModdedEntityStates.ContactLight.Providence.P3.Spawn.teleportEffect = teleportEffect;
+                    ModdedEntityStates.ContactLight.Providence.P3.Special.TeleportToCenter.teleportEffect = teleportEffect;
+
+                    var brotherDeathEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.BrotherDeathEffect_prefab).WaitForCompletion();
+                    ModdedEntityStates.ContactLight.Providence.P1.DeathState.brotherDeathEffect = brotherDeathEffect;
+                    ModdedEntityStates.ContactLight.Providence.P2.DeathState.brotherDeathEffect = brotherDeathEffect;
+                    ModdedEntityStates.ContactLight.Providence.P3.DeathState.brotherDeathEffect = brotherDeathEffect;
+
+                    ModdedEntityStates.ContactLight.Providence.P3.DeathState.swordProp = assets.First(prefab => prefab.name == "ProviSwordProp");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

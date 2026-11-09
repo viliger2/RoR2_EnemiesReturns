@@ -15,13 +15,19 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1
     {
         public static float deathDelay = 3f;
 
-        public static GameObject teleportEffect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.TeleportOutBoom_prefab).WaitForCompletion();
+        public static GameObject teleportEffect;
+
+        public static GameObject brotherDeathEffect;
 
         private bool hasDied;
 
         public override void OnEnter()
         {
             bodyPreservationDuration = deathDelay;
+            if (brotherDeathEffect)
+            {
+                EffectManager.SimpleMuzzleFlash(brotherDeathEffect, base.gameObject, "Chest", transmit: false);
+            }
             base.OnEnter();
         }
 

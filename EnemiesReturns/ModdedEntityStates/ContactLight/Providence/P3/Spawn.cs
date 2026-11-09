@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3
@@ -12,7 +13,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3
     [RegisterEntityState]
     public class Spawn : BaseState
     {
-        public static float baseDuration = 5.0f;
+        public static float baseDuration = 3.0f;
+
+        public static GameObject teleportEffect;
 
         private HurtBoxGroup hurtboxGroup;
 
@@ -27,7 +30,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3
                 hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
             }
 
-            PlayAnimation("Body", "Spawn1", "Spawn1.playbackRate", baseDuration);
+            PlayAnimation("Gesture, Override", "Spawn3");
+
+            var data = new EffectData()
+            {
+                origin = FindModelChild("TeleportEffectOrigin").position,
+                rotation = Quaternion.identity,
+            };
+            EffectManager.SpawnEffect(teleportEffect, data, false);
 
             if (hurtboxGroup)
             {

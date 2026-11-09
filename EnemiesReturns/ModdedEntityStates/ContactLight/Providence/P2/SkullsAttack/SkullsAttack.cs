@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.SkullsAtt
 
         public override float damageCoefficient => 2f;
 
-        public override float baseFireFrequency => 0.15f;
+        public override float baseFireFrequency => 0.3f;
 
         public override int projectilesToSpawn => 25;
 

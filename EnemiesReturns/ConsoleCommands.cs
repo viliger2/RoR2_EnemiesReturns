@@ -217,7 +217,7 @@ namespace EnemiesReturns
             NetworkServer.Spawn(boombox);
         }
 
-        [ConCommand(commandName = "returns_draw_nodegraph", flags = ConVarFlags.None, helpText = "Draws nodegraph with only enabled gates. Updates in real time as you enable/disable gates. Same parameters debug_scene_draw_nodegraph. as Hits performance hard compared to vanilla method since this one doesn't memorize the output depending on input, redrawing the entire thing every frame..")]
+        [ConCommand(commandName = "returns_draw_nodegraph", flags = ConVarFlags.None, helpText = "Draws nodegraph with only enabled gates. Updates in real time as you enable/disable gates. Same parameters debug_scene_draw_nodegraph. as Hits performance hard compared to vanilla method since this one doesn't memorize the output depending on input, redrawing the entire thing every frame.")]
         private static void CCDrawNodeGraphWithGates(ConCommandArgs args)
         {
             bool shouldDraw = args.GetArgBool(0);

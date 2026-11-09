@@ -24,7 +24,7 @@ Shader "StubbedRoR2/Base/Shaders/HGStandard" {
 		_FresnelBoost ("Fresnel Boost", Range(0, 20)) = 1
 		[Header(Print Behavior)] [Toggle(PRINT_CUTOFF)] _PrintOn ("Enable Printing", Float) = 0
 		_SliceHeight ("Slice Height", Range(-25, 25)) = 5
-		_SliceBandHeight ("Print Band Height", Range(0, 10)) = 1
+		_SliceBandHeight ("Print Band Height", Range(0, 200)) = 1
 		_SliceAlphaDepth ("Print Alpha Depth", Range(0, 1)) = 0.1
 		_SliceAlphaTex ("Print Alpha Texture", 2D) = "gray" {}
 		_PrintBoost ("Print Color Boost", Range(0, 10)) = 1

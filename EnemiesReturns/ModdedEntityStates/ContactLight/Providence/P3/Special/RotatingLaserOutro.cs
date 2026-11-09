@@ -9,12 +9,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
     [RegisterEntityState]
     public class RotatingLaserOutro : BaseState
     {
-        public static float baseDuration = 0.833f;
+        public static float baseDuration = 5.2f;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            PlayCrossfade("Gesture, Override", "BeamExit", 0.1f);
+            PlayCrossfade("Gesture, Override", "BeamEnd", 0.1f);
         }
 
         public override void FixedUpdate()

@@ -52,10 +52,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1b289ce2ae71dba4d832ace455b22920, type: 2}
-    - target: {fileID: 2856079305601889576, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 99e31f2b8f5ac4f4c97a6f7fbfeafee2, type: 2}
     - target: {fileID: 2859791027360040491, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: mainStateType._typeName
       value: EntityStates.GenericCharacterMain, RoR2, Version=0.0.0.0, Culture=neutral,
@@ -200,19 +196,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.16174051
+      value: 0.16220403
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.011909481
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9840973
+      value: 0.9867573
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07246165
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -220,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0
+      value: 161.3303
       objectReference: {fileID: 0}
     - target: {fileID: 4605653531225686238, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4670884398897931420, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
       propertyPath: skillName
@@ -268,6 +264,61 @@ MonoBehaviour:
   m_Script: {fileID: 298587437, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3376867019928473544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6725582208015421703, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
+  m_PrefabInstance: {fileID: 8325778897918746319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4294059025964464049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376867019928473544}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 80205854, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  printTime: 5
+  printCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  age: 0
+  disableWhenFinished: 0
+  paused: 0
+  materialPrintCutoffPostSkinApplying: 0
+  startingPrintHeight: -2.5
+  maxPrintHeight: 5
+  startingPrintBias: 0
+  maxPrintBias: 4
+  animateFlowmapPower: 0
+  startingFlowmapPower: 0
+  maxFlowmapPower: 0
+  onlyDisablePrintingWhenFinished: 0
+  ignoreMaterialsWithPrintControllers: 0
 --- !u!114 &3690849872558122652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -4561139627196630957, guid: e66ac5e457fba444d92bd84d0c1813b0, type: 3}
