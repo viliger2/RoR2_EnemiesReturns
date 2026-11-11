@@ -17,6 +17,10 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
 
         public float damageImmunityBuffDuration = 5f;
 
+        public GameObject shieldDestroyEffect;
+
+        public string shieldDestroyEffectChildName;
+
         private uint segmentStatus = 0;
 
         private int currentSegment;

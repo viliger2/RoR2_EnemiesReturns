@@ -2502,7 +2502,7 @@
 												<ActiveSource Name="charge" ID="{A6648F13-E02D-4B07-AF45-0BC56B810AE1}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" ShortID="478291165">
+										<Sound Name="Spider_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" ShortID="478291165">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
@@ -6702,349 +6702,6 @@
 												</Sound>
 											</ChildrenList>
 										</Folder>
-										<Folder Name="Path" ID="{8B2F489F-4B79-48F0-B94F-9BB6FFE59107}" ShortID="325232906">
-											<ChildrenList>
-												<Folder Name="SwordHilt" ID="{E4485E6A-B903-4FD6-9432-CD1D8A8F9549}" ShortID="320874614">
-													<ChildrenList>
-														<Sound Name="SwordHilt_ShardSpawn" ID="{EFE6A6CB-09DB-4941-9B7E-0AA8A7ACB8ED}" ShortID="974306503">
-															<PropertyList>
-																<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-																<Property Name="MaxSoundPerInstance" Type="int16">
-																	<ValueList>
-																		<Value>1</Value>
-																	</ValueList>
-																</Property>
-																<Property Name="Pitch" Type="int32">
-																	<ModifierList>
-																		<ModifierInfo>
-																			<Modifier Name="" ID="{0CB7F5F2-3BF8-4DBC-946D-34675456901E}"/>
-																		</ModifierInfo>
-																	</ModifierList>
-																</Property>
-																<Property Name="UseMaxSoundPerInstance" Type="bool">
-																	<ValueList>
-																		<Value>True</Value>
-																	</ValueList>
-																</Property>
-																<Property Name="Volume" Type="Real64">
-																	<ValueList>
-																		<Value>-10</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\interactable_shard_spawn.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="231006949"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<RandomSequenceContainer Name="Random Pitch" ID="{BD8504A4-FDAB-4AD4-BBF6-961BF28152FF}" ShortID="721665384">
-															<PropertyList>
-																<Property Name="Pitch" Type="int32">
-																	<ModifierList>
-																		<ModifierInfo>
-																			<Modifier Name="" ID="{79339B8C-C2B4-480A-B40E-16A735F7F4B2}">
-																				<PropertyList>
-																					<Property Name="Enabled" Type="bool" Value="True"/>
-																					<Property Name="Max" Type="Real64" Value="150"/>
-																					<Property Name="Min" Type="Real64" Value="-150"/>
-																				</PropertyList>
-																			</Modifier>
-																		</ModifierInfo>
-																	</ModifierList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<Sound Name="SwordHilt_ShardReconnect" ID="{389EC516-6298-4DE3-BD00-AE3AB4237954}" ShortID="201799110">
-																	<PropertyList>
-																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
-																		<Property Name="Pitch" Type="int32">
-																			<ModifierList>
-																				<ModifierInfo>
-																					<Modifier Name="" ID="{33D87ED3-4940-4EC4-97DF-3C6FBB3A2C63}"/>
-																				</ModifierInfo>
-																			</ModifierList>
-																		</Property>
-																		<Property Name="Volume" Type="Real64">
-																			<ValueList>
-																				<Value>-13</Value>
-																			</ValueList>
-																		</Property>
-																	</PropertyList>
-																	<ReferenceList>
-																		<Reference Name="Attenuation">
-																			<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-																		</Reference>
-																		<Reference Name="Conversion">
-																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																		</Reference>
-																		<Reference Name="OutputBus">
-																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																		</Reference>
-																	</ReferenceList>
-																	<ChildrenList>
-																		<AudioFileSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}">
-																			<Language>SFX</Language>
-																			<AudioFile>ContactLight\SwordShard\interactable_shard_reconnect.wav</AudioFile>
-																			<MediaIDList>
-																				<MediaID ID="622916882"/>
-																			</MediaIDList>
-																		</AudioFileSource>
-																	</ChildrenList>
-																	<ActiveSourceList>
-																		<ActiveSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}" Platform="Linked"/>
-																	</ActiveSourceList>
-																</Sound>
-																<Sound Name="SwordHilt_ShardWoosh" ID="{33BD43F8-5297-47E0-9465-5537A3B2E0F2}" ShortID="130784325">
-																	<PropertyList>
-																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
-																		<Property Name="Pitch" Type="int32">
-																			<ModifierList>
-																				<ModifierInfo>
-																					<Modifier Name="" ID="{FD49821C-59D9-4669-A76D-2E1FA7283614}">
-																						<PropertyList>
-																							<Property Name="Max" Type="Real64" Value="150"/>
-																							<Property Name="Min" Type="Real64" Value="-150"/>
-																						</PropertyList>
-																					</Modifier>
-																				</ModifierInfo>
-																			</ModifierList>
-																		</Property>
-																		<Property Name="Volume" Type="Real64">
-																			<ValueList>
-																				<Value>-10</Value>
-																			</ValueList>
-																		</Property>
-																	</PropertyList>
-																	<ReferenceList>
-																		<Reference Name="Attenuation">
-																			<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-																		</Reference>
-																		<Reference Name="Conversion">
-																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																		</Reference>
-																		<Reference Name="OutputBus">
-																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																		</Reference>
-																	</ReferenceList>
-																	<ChildrenList>
-																		<AudioFileSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}">
-																			<Language>SFX</Language>
-																			<AudioFile>ContactLight\SwordShard\interactable_shard_woosh.wav</AudioFile>
-																			<MediaIDList>
-																				<MediaID ID="900287607"/>
-																			</MediaIDList>
-																		</AudioFileSource>
-																	</ChildrenList>
-																	<ActiveSourceList>
-																		<ActiveSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}" Platform="Linked"/>
-																	</ActiveSourceList>
-																</Sound>
-															</ChildrenList>
-														</RandomSequenceContainer>
-														<Sound Name="SwordHilt_SwordHum" ID="{B3F6A236-EA30-4D23-A42A-23C4282D8149}" ShortID="552970179">
-															<PropertyList>
-																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-																<Property Name="Lowpass" Type="int16">
-																	<ValueList>
-																		<Value>40</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}">
-																	<PropertyList>
-																		<Property Name="LoopBegin" Type="Real64" Value="0"/>
-																		<Property Name="LoopEnd" Type="Real64" Value="3.44947916666667"/>
-																	</PropertyList>
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\interactable_sword_hum.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="822115196"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="SwordHilt_SwordSwing" ID="{0B0420FB-FF85-4794-A9E5-64A57834572C}" ShortID="748016844">
-															<PropertyList>
-																<Property Name="Volume" Type="Real64">
-																	<ValueList>
-																		<Value>-4</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\interactable_sword_swing.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="10692106"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="SwordHilt_SwordShatter" ID="{DA784073-B0A3-4029-A591-5CBBC247681E}" ShortID="971283435">
-															<PropertyList>
-																<Property Name="Volume" Type="Real64">
-																	<ValueList>
-																		<Value>-12</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\interactable_sword_shatter.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="370745387"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</Folder>
-												<Folder Name="SwordShard" ID="{5D69ACE0-2315-47B6-A74C-B2526358E9FF}" ShortID="356841349">
-													<ChildrenList>
-														<Sound Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" ShortID="1011101009">
-															<PropertyList>
-																<Property Name="3DSpatialization" Type="int16" Value="1"/>
-																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-																<Property Name="OverrideConversion" Type="bool" Value="True"/>
-																<Property Name="OverridePositioning" Type="bool" Value="True"/>
-																<Property Name="Volume" Type="Real64">
-																	<ValueList>
-																		<Value>-10</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<ReferenceList>
-																<Reference Name="Attenuation">
-																	<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
-																</Reference>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\swordShardLoop.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="439272410"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="SwordShard_Shield" ID="{97AA97FD-FCE4-4FB1-B534-6916778036D4}" ShortID="1010184286">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\swordshard_shield.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="251737566"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="SwordShard_ShieldPop" ID="{79E10CF8-B076-474F-B861-001AC279542B}" ShortID="389347331">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}">
-																	<Language>SFX</Language>
-																	<AudioFile>ContactLight\SwordShard\swordshard_shieldpop.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="897736972"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</Folder>
-											</ChildrenList>
-										</Folder>
 										<Folder Name="TempleGuard" ID="{4B2972D5-19B6-4399-A779-8450F36BC8A3}" ShortID="753629190">
 											<ChildrenList>
 												<Sound Name="TempleGuard_Spawn" ID="{ABEE654A-26E7-41ED-AD50-88DC60BC785B}" ShortID="396950562">
@@ -7852,6 +7509,349 @@
 														</Sound>
 													</ChildrenList>
 												</Folder>
+												<Folder Name="Path" ID="{8B2F489F-4B79-48F0-B94F-9BB6FFE59107}" ShortID="325232906">
+													<ChildrenList>
+														<Folder Name="SwordHilt" ID="{E4485E6A-B903-4FD6-9432-CD1D8A8F9549}" ShortID="320874614">
+															<ChildrenList>
+																<Sound Name="SwordHilt_ShardSpawn" ID="{EFE6A6CB-09DB-4941-9B7E-0AA8A7ACB8ED}" ShortID="974306503">
+																	<PropertyList>
+																		<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+																		<Property Name="MaxSoundPerInstance" Type="int16">
+																			<ValueList>
+																				<Value>1</Value>
+																			</ValueList>
+																		</Property>
+																		<Property Name="Pitch" Type="int32">
+																			<ModifierList>
+																				<ModifierInfo>
+																					<Modifier Name="" ID="{0CB7F5F2-3BF8-4DBC-946D-34675456901E}"/>
+																				</ModifierInfo>
+																			</ModifierList>
+																		</Property>
+																		<Property Name="UseMaxSoundPerInstance" Type="bool">
+																			<ValueList>
+																				<Value>True</Value>
+																			</ValueList>
+																		</Property>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-10</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_shard_spawn.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="231006949"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_shard_spawn" ID="{39404AE0-EB43-491B-B072-FCFAE077C2D6}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<RandomSequenceContainer Name="Random Pitch" ID="{BD8504A4-FDAB-4AD4-BBF6-961BF28152FF}" ShortID="721665384">
+																	<PropertyList>
+																		<Property Name="Pitch" Type="int32">
+																			<ModifierList>
+																				<ModifierInfo>
+																					<Modifier Name="" ID="{79339B8C-C2B4-480A-B40E-16A735F7F4B2}">
+																						<PropertyList>
+																							<Property Name="Enabled" Type="bool" Value="True"/>
+																							<Property Name="Max" Type="Real64" Value="150"/>
+																							<Property Name="Min" Type="Real64" Value="-150"/>
+																						</PropertyList>
+																					</Modifier>
+																				</ModifierInfo>
+																			</ModifierList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<Sound Name="SwordHilt_ShardReconnect" ID="{389EC516-6298-4DE3-BD00-AE3AB4237954}" ShortID="201799110">
+																			<PropertyList>
+																				<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																				<Property Name="Pitch" Type="int32">
+																					<ModifierList>
+																						<ModifierInfo>
+																							<Modifier Name="" ID="{33D87ED3-4940-4EC4-97DF-3C6FBB3A2C63}"/>
+																						</ModifierInfo>
+																					</ModifierList>
+																				</Property>
+																				<Property Name="Volume" Type="Real64">
+																					<ValueList>
+																						<Value>-13</Value>
+																					</ValueList>
+																				</Property>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="Attenuation">
+																					<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																				</Reference>
+																				<Reference Name="Conversion">
+																					<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																				</Reference>
+																				<Reference Name="OutputBus">
+																					<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																				</Reference>
+																			</ReferenceList>
+																			<ChildrenList>
+																				<AudioFileSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}">
+																					<Language>SFX</Language>
+																					<AudioFile>ContactLight\SwordShard\interactable_shard_reconnect.wav</AudioFile>
+																					<MediaIDList>
+																						<MediaID ID="622916882"/>
+																					</MediaIDList>
+																				</AudioFileSource>
+																			</ChildrenList>
+																			<ActiveSourceList>
+																				<ActiveSource Name="interactable_shard_reconnect" ID="{E08700BD-E6AE-4BDB-AC3D-83F72077EA9A}" Platform="Linked"/>
+																			</ActiveSourceList>
+																		</Sound>
+																		<Sound Name="SwordHilt_ShardWoosh" ID="{33BD43F8-5297-47E0-9465-5537A3B2E0F2}" ShortID="130784325">
+																			<PropertyList>
+																				<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																				<Property Name="Pitch" Type="int32">
+																					<ModifierList>
+																						<ModifierInfo>
+																							<Modifier Name="" ID="{FD49821C-59D9-4669-A76D-2E1FA7283614}">
+																								<PropertyList>
+																									<Property Name="Max" Type="Real64" Value="150"/>
+																									<Property Name="Min" Type="Real64" Value="-150"/>
+																								</PropertyList>
+																							</Modifier>
+																						</ModifierInfo>
+																					</ModifierList>
+																				</Property>
+																				<Property Name="Volume" Type="Real64">
+																					<ValueList>
+																						<Value>-10</Value>
+																					</ValueList>
+																				</Property>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="Attenuation">
+																					<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																				</Reference>
+																				<Reference Name="Conversion">
+																					<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																				</Reference>
+																				<Reference Name="OutputBus">
+																					<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																				</Reference>
+																			</ReferenceList>
+																			<ChildrenList>
+																				<AudioFileSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}">
+																					<Language>SFX</Language>
+																					<AudioFile>ContactLight\SwordShard\interactable_shard_woosh.wav</AudioFile>
+																					<MediaIDList>
+																						<MediaID ID="900287607"/>
+																					</MediaIDList>
+																				</AudioFileSource>
+																			</ChildrenList>
+																			<ActiveSourceList>
+																				<ActiveSource Name="interactable_shard_woosh" ID="{A0B83D56-001D-4A04-8B46-F32D0E9101E0}" Platform="Linked"/>
+																			</ActiveSourceList>
+																		</Sound>
+																	</ChildrenList>
+																</RandomSequenceContainer>
+																<Sound Name="SwordHilt_SwordHum" ID="{B3F6A236-EA30-4D23-A42A-23C4282D8149}" ShortID="552970179">
+																	<PropertyList>
+																		<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																		<Property Name="Lowpass" Type="int16">
+																			<ValueList>
+																				<Value>40</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}">
+																			<PropertyList>
+																				<Property Name="LoopBegin" Type="Real64" Value="0"/>
+																				<Property Name="LoopEnd" Type="Real64" Value="3.44947916666667"/>
+																			</PropertyList>
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_sword_hum.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="822115196"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_sword_hum" ID="{F5687EE0-2B8D-4049-876E-C00F32EFD493}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="SwordHilt_SwordSwing" ID="{0B0420FB-FF85-4794-A9E5-64A57834572C}" ShortID="748016844">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-4</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_sword_swing.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="10692106"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_sword_swing" ID="{0B8F20C0-6A56-4130-A530-2B8AD1AF3922}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="SwordHilt_SwordShatter" ID="{DA784073-B0A3-4029-A591-5CBBC247681E}" ShortID="971283435">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-12</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\interactable_sword_shatter.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="370745387"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="interactable_sword_shatter" ID="{899848C1-EAFD-4308-A4A4-8DB9D67947EF}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</Folder>
+														<Folder Name="SwordShard" ID="{5D69ACE0-2315-47B6-A74C-B2526358E9FF}" ShortID="356841349">
+															<ChildrenList>
+																<Sound Name="SwordShard_Loop" ID="{F04DA164-1B66-404B-8487-D1D743716342}" ShortID="1011101009">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="1"/>
+																		<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																		<Property Name="OverrideConversion" Type="bool" Value="True"/>
+																		<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-10</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="CloseRangeSounds" ID="{E0A8CC93-CA01-4545-98F6-1396B4D0A49E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="LowerQuality" ID="{229650A1-E56C-4441-8784-E2E9A952B056}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\swordShardLoop.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="439272410"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swordShardLoop" ID="{9F6FEC3E-82BD-4191-A77A-386C65C978AC}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="SwordShard_Shield" ID="{97AA97FD-FCE4-4FB1-B534-6916778036D4}" ShortID="1010184286">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\swordshard_shield.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="251737566"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swordshard_shield" ID="{EEC5D49A-ECB0-49CF-84C5-4F6CE068DDA5}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="SwordShard_ShieldPop" ID="{79E10CF8-B076-474F-B861-001AC279542B}" ShortID="389347331">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\SwordShard\swordshard_shieldpop.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="897736972"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swordshard_shieldpop" ID="{B8E61234-2EFE-4309-A004-206AD9855C20}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</Folder>
+													</ChildrenList>
+												</Folder>
 											</ChildrenList>
 										</Folder>
 										<Sound Name="StageAmbiance" ID="{127EC835-4799-48E7-8C34-844A989EA997}" ShortID="54502872">
@@ -7982,6 +7982,835 @@
 												<ActiveSource Name="wCutsceneAlarm" ID="{CCC6588B-0DF0-4C4B-B432-A652DAF1B843}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Folder Name="Providence" ID="{DFFD7E28-DEF2-4EBC-BE3E-5EF218C4EC84}" ShortID="887193302">
+											<ChildrenList>
+												<ActorMixer Name="Random Pitch" ID="{ABCCE8FB-28E4-43C3-B01F-51D17C8B53B5}" ShortID="930162532">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{AAC042B7-0121-42F1-A41D-256169BB87DC}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="150"/>
+																			<Property Name="Min" Type="Real64" Value="-150"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<RandomSequenceContainer Name="Providence_Swings" ID="{28D825B5-F63B-423E-B295-03BB0622B1E9}" ShortID="1029710461">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="swing_1" ID="{C6CAFA4D-C239-4341-A2D3-7866E6EF1242}" ShortID="987169603">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swing_1" ID="{6EFA4315-86BF-4B6A-8FB7-28CE3A9F3668}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Swings\swing_1.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="710171769"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swing_1" ID="{6EFA4315-86BF-4B6A-8FB7-28CE3A9F3668}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="swing_2" ID="{99B44C95-6E11-4DA8-8B40-40805512DB31}" ShortID="728479356">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swing_2" ID="{C025FF68-58D1-4997-95C0-6F76B029B20F}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Swings\swing_2.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="334790601"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swing_2" ID="{C025FF68-58D1-4997-95C0-6F76B029B20F}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="swing_3" ID="{000847F2-DE5D-46D6-8409-1A2DF54BC30E}" ShortID="577427731">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swing_3" ID="{25594CCC-7E4C-4637-B749-7CACDF934D45}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Swings\swing_3.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="1015304194"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swing_3" ID="{25594CCC-7E4C-4637-B749-7CACDF934D45}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="swing_4" ID="{25EBFA26-C5CC-4F73-AB34-8937B2295262}" ShortID="502741778">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swing_4" ID="{7C028644-CE73-452C-96A9-AA3DCBBCE4A6}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Swings\swing_4.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="82114481"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swing_4" ID="{7C028644-CE73-452C-96A9-AA3DCBBCE4A6}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="swing_5" ID="{C91B750F-94C8-4763-8720-E0CA2D7B8D11}" ShortID="329250582">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="swing_5" ID="{5911D3A3-6356-4CE8-9EBD-9920EDE29D7B}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Swings\swing_5.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="245110607"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="swing_5" ID="{5911D3A3-6356-4CE8-9EBD-9920EDE29D7B}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<RandomSequenceContainer Name="Providence_Footstep" ID="{CA4B01CC-E714-48EB-9C47-C1EC6D549BAC}" ShortID="999002484">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<Sound Name="footstep_soft_1" ID="{B31B8CA8-471C-4686-BF2E-80600EA963C5}" ShortID="464827974">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep_soft_1" ID="{755A1F6D-B935-4DD8-97E6-B5FB6B74BF06}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Footsteps\footstep_soft_1.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="737437061"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep_soft_1" ID="{755A1F6D-B935-4DD8-97E6-B5FB6B74BF06}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep_soft_2" ID="{6E639AFA-7C8F-4797-80E2-8760CEE1A527}" ShortID="996542374">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep_soft_2" ID="{0C6E69B1-FD22-4A02-AC1A-A2A744265E16}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Footsteps\footstep_soft_2.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="692813397"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep_soft_2" ID="{0C6E69B1-FD22-4A02-AC1A-A2A744265E16}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep_soft_3" ID="{13176427-71A8-4E83-9351-F1649456E8BB}" ShortID="319416724">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep_soft_3" ID="{17477C35-E81D-4136-888F-5D50EAC9AAF8}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Footsteps\footstep_soft_3.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="76890080"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep_soft_3" ID="{17477C35-E81D-4136-888F-5D50EAC9AAF8}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep_soft_4" ID="{5845447F-01E2-4FE0-86CE-A2E5B4013029}" ShortID="1002754054">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep_soft_4" ID="{D122CE7D-5A81-4057-9041-F6A8DF297A4F}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Footsteps\footstep_soft_4.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="774984266"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep_soft_4" ID="{D122CE7D-5A81-4057-9041-F6A8DF297A4F}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="footstep_soft_5" ID="{F50B64F1-0BA7-4ABF-8D26-3CCC9C8D429A}" ShortID="449520833">
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="footstep_soft_5" ID="{BC3C24F0-DE42-4736-A522-FF6E47F7ECD7}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\Footsteps\footstep_soft_5.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="198786109"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="footstep_soft_5" ID="{BC3C24F0-DE42-4736-A522-FF6E47F7ECD7}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</RandomSequenceContainer>
+														<Folder Name="ShadowClones" ID="{60DFD31B-FFA8-4EFF-95FF-D52A42C5B7F9}" ShortID="778448940">
+															<ChildrenList>
+																<Sound Name="Provi_ShadowClone_Fire" ID="{9B75FC93-8936-480F-9DAC-4A46FDFA24F2}" ShortID="206038993">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-6</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBoss1PhantomSlash" ID="{54832B88-90F6-4728-823F-3107F55A5613}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBoss1PhantomSlash.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="102319349"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBoss1PhantomSlash" ID="{54832B88-90F6-4728-823F-3107F55A5613}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Provi_ShadowClone_Spawn" ID="{CFFC8738-B980-4546-AC2C-B183C883A651}" ShortID="1020569414">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-3</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBoss1PhantomSpawn" ID="{592FD3F6-F5BC-4DC7-8A05-F5BCD95167CC}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBoss1PhantomSpawn.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="173559574"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBoss1PhantomSpawn" ID="{592FD3F6-F5BC-4DC7-8A05-F5BCD95167CC}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Provi_ShadowClone_Skull" ID="{79A81912-DB12-4884-B339-10F927399EB4}" ShortID="483652829">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																		<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-6</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBoss1Skull" ID="{A2E39B60-27F4-432C-938A-FE0B5F5F8A32}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBoss1Skull.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="933313769"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBoss1Skull" ID="{A2E39B60-27F4-432C-938A-FE0B5F5F8A32}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Provi_ShadowClone_Land" ID="{2208D56F-2203-49E5-9684-90D101B07CB9}" ShortID="284435272">
+																	<PropertyList>
+																		<Property Name="InitialDelay" Type="Real64">
+																			<ValueList>
+																				<Value>0.2</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBoss1PhantomStab" ID="{1FBFFF95-C13A-4A9C-AF71-7CA4BE704E76}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBoss1PhantomStab.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="1030113840"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBoss1PhantomStab" ID="{1FBFFF95-C13A-4A9C-AF71-7CA4BE704E76}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Provi_ShadowClone_Disappear" ID="{22A6F396-8C36-46AD-9835-0391237B0560}" ShortID="906510882">
+																	<PropertyList>
+																		<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																		<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Attenuation">
+																			<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																		</Reference>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="se_s00260" ID="{69EC5D97-AE05-4789-8686-A4D2B79C7B23}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\ShadowDissapear\se_s00260.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="812954397"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="se_s00260" ID="{69EC5D97-AE05-4789-8686-A4D2B79C7B23}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</Folder>
+														<Folder Name="Projectiles" ID="{710CBD5E-5128-4A4B-B816-CA5E16D97A07}" ShortID="965190769">
+															<ChildrenList>
+																<Sound Name="Projectile_Effect_Spawn" ID="{C6CB6EC9-7042-4D5A-A1EB-2B9EE2F8B8BD}" ShortID="385816773">
+																	<PropertyList>
+																		<Property Name="InitialDelay" Type="Real64">
+																			<ModifierList>
+																				<ModifierInfo>
+																					<Modifier Name="" ID="{8BC0D547-A84D-45B0-ABC5-487F28963C04}">
+																						<PropertyList>
+																							<Property Name="Enabled" Type="bool" Value="True"/>
+																							<Property Name="Max" Type="Real64" Value="0.1"/>
+																							<Property Name="Min" Type="Real64" Value="-0.1"/>
+																						</PropertyList>
+																					</Modifier>
+																				</ModifierInfo>
+																			</ModifierList>
+																		</Property>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-4</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBossOrbSpawn" ID="{A313EF29-38B4-4C7D-BF1A-E2E7368E9890}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBossOrbSpawn.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="921970452"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBossOrbSpawn" ID="{A313EF29-38B4-4C7D-BF1A-E2E7368E9890}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+																<Sound Name="Projectile_Fire" ID="{C6F7F306-445E-4540-AA4F-5158FA464E66}" ShortID="157926135">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64">
+																			<ValueList>
+																				<Value>-2</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Conversion">
+																			<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																		</Reference>
+																		<Reference Name="OutputBus">
+																			<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																		</Reference>
+																	</ReferenceList>
+																	<ChildrenList>
+																		<AudioFileSource Name="wBossOrbShoot" ID="{792A8F7E-2584-4FAE-9A42-660E7DE3EE78}">
+																			<Language>SFX</Language>
+																			<AudioFile>ContactLight\Providence\wBossOrbShoot.wav</AudioFile>
+																			<MediaIDList>
+																				<MediaID ID="616091327"/>
+																			</MediaIDList>
+																		</AudioFileSource>
+																	</ChildrenList>
+																	<ActiveSourceList>
+																		<ActiveSource Name="wBossOrbShoot" ID="{792A8F7E-2584-4FAE-9A42-660E7DE3EE78}" Platform="Linked"/>
+																	</ActiveSourceList>
+																</Sound>
+															</ChildrenList>
+														</Folder>
+													</ChildrenList>
+												</ActorMixer>
+												<Sound Name="Providence_Teleport_In" ID="{8A32A8BD-C11D-42C9-838C-DD4DEFF72740}" ShortID="920216860">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wBoss1Warp2" ID="{01899D26-54A9-460D-99BD-19E315FF86C4}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Providence\wBoss1Warp2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="618995643"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wBoss1Warp2" ID="{01899D26-54A9-460D-99BD-19E315FF86C4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Providence_Teleport_Out" ID="{D96D9FAC-EC05-4810-A3A8-84589C9737A1}" ShortID="216485778">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="General" ID="{DBE9F5A5-9840-40A5-B299-3E649B664F5D}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wBoss1Warp1" ID="{F003F1E6-536C-4A76-B696-3476E1F4CB48}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Providence\wBoss1Warp1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="324310231"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wBoss1Warp1" ID="{F003F1E6-536C-4A76-B696-3476E1F4CB48}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Folder Name="Laser" ID="{8691426E-F0AF-4335-B332-355F4AA1AD51}" ShortID="575649965">
+													<ChildrenList>
+														<Sound Name="Laser_Spawn" ID="{3359D9BD-BDA3-4641-BA69-AEBF7350A847}" ShortID="226510081">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="wBossLaser1Fire" ID="{A5811FF0-85A8-42CC-A02B-167FA63B888A}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Providence\wBossLaser1Fire.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="533071097"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="wBossLaser1Fire" ID="{A5811FF0-85A8-42CC-A02B-167FA63B888A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="Laser_Loop" ID="{41C3C878-B76B-4B6B-A046-70ED690486D9}" ShortID="114330035">
+															<PropertyList>
+																<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-3</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="wBossLaser1Loop" ID="{9537190E-CA75-4B58-9484-314CB10CBC57}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Providence\wBossLaser1Loop.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1004696908"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="wBossLaser1Loop" ID="{9537190E-CA75-4B58-9484-314CB10CBC57}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</Folder>
+												<Sound Name="Providence_GroundSlam" ID="{2912FD9A-DFDD-49FB-A6CA-8A7901CD8576}" ShortID="279674341">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wBoss1GroundStab" ID="{943F27E0-1FEE-4D0D-AE73-B6218CC6C5AD}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Providence\wBoss1GroundStab.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="82362295"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wBoss1GroundStab" ID="{943F27E0-1FEE-4D0D-AE73-B6218CC6C5AD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<RandomSequenceContainer Name="Provi_ShadowClone_Loop" ID="{024AA3A6-4C58-47D5-89F4-B94C977C9757}" ShortID="649223144">
+													<PropertyList>
+														<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{942F89A3-5A8B-4598-85DF-226C0B313CE5}">
+																		<PropertyList>
+																			<Property Name="Enabled" Type="bool" Value="True"/>
+																			<Property Name="Max" Type="Real64" Value="1"/>
+																		</PropertyList>
+																	</Modifier>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
+														<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+														<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="sound" ID="{718C1054-A245-484A-B76D-4F17D08D985C}" ShortID="639228731">
+															<PropertyList>
+																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="InitialDelay" Type="Real64">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{CF2D8418-27E7-4A42-915D-50DFEFBD1E32}">
+																				<PropertyList>
+																					<Property Name="Max" Type="Real64" Value="0.5"/>
+																					<Property Name="Min" Type="Real64" Value="-0.5"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="OverridePositioning" Type="bool" Value="True"/>
+																<Property Name="Pitch" Type="int32">
+																	<ModifierList>
+																		<ModifierInfo>
+																			<Modifier Name="" ID="{B9AAA041-86B2-4CC2-B021-F4829B1CC009}">
+																				<PropertyList>
+																					<Property Name="Enabled" Type="bool" Value="True"/>
+																					<Property Name="Max" Type="Real64" Value="150"/>
+																					<Property Name="Min" Type="Real64" Value="-150"/>
+																				</PropertyList>
+																			</Modifier>
+																		</ModifierInfo>
+																	</ModifierList>
+																</Property>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>-5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Attenuation">
+																	<ObjectRef Name="VeryCloseRangeSounds" ID="{35562924-FD8B-4088-A29F-656A0DF08F8E}" WorkUnitID="{D367D371-69FC-4387-8AA2-7A19A8AC497D}"/>
+																</Reference>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="se_s00538" ID="{E55F086D-34A0-456C-8F6B-829BE594903C}">
+																	<Language>SFX</Language>
+																	<AudioFile>ContactLight\Providence\se_s00538.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="229346226"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="se_s00538" ID="{E55F086D-34A0-456C-8F6B-829BE594903C}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Sound Name="Providence_Dash_Prep" ID="{9EB6F05C-A8FD-4062-AA36-064438B73660}" ShortID="980250361">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="mWooshLargeCrit" ID="{4D4110FE-C583-4568-AD61-7349CF1BC46A}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Providence\mWooshLargeCrit.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="274106392"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="mWooshLargeCrit" ID="{4D4110FE-C583-4568-AD61-7349CF1BC46A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Providence_OpenClonePortal" ID="{214DFFAE-ABC2-4EEA-85C1-DBC757549FDC}" ShortID="1002643137">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>500</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9290F9ED-67E6-4289-A47C-51FDFEF8B2FC}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{7EE467A6-4360-46F5-84F1-AEA27BE1082F}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="wImpPortal2" ID="{BBEAAAF3-4F81-4CC9-A0AF-3EAC55B9DAA3}">
+															<Language>SFX</Language>
+															<AudioFile>ContactLight\Providence\wImpPortal2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="32913038"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="wImpPortal2" ID="{BBEAAAF3-4F81-4CC9-A0AF-3EAC55B9DAA3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>

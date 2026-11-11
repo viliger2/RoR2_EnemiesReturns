@@ -15,6 +15,10 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
 
         public int segments = 2;
 
+        public GameObject shieldDestroyEffect;
+
+        public string shieldDestroyEffectChildName;
+
         public float damageImmunityBuffDuration = 5f;
 
         private uint segmentStatus = 0;
@@ -60,6 +64,10 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
             if (endGameBossWeaponDamage && proviHasBuff)
             {
                 body.RemoveBuff(Content.Buffs.ProvidenceImmuneToDamage);
+                if (shieldDestroyEffect)
+                {
+                    EffectManager.SimpleMuzzleFlash(shieldDestroyEffect, base.gameObject, shieldDestroyEffectChildName, true);
+                }
             }
 
             if (proviHasBuff)

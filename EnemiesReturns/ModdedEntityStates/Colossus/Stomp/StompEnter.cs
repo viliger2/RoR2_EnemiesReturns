@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,8 @@ namespace EnemiesReturns.ModdedEntityStates.Colossus.Stomp
                     closestRightTransform = GetFirstTransform(rightList[0]);    
                 }
 
-                var resultL = (leftTransform.position - closestLeftTransform?.position)?.sqrMagnitude ?? float.PositiveInfinity;
-                var resultR = (rightTransform.position - closestRightTransform?.position)?.sqrMagnitude ?? float.PositiveInfinity;
+                var resultL = (leftTransform.position - closestLeftTransform.AsValidOrNull()?.position)?.sqrMagnitude ?? float.PositiveInfinity;
+                var resultR = (rightTransform.position - closestRightTransform.AsValidOrNull()?.position)?.sqrMagnitude ?? float.PositiveInfinity;
                 if (resultL < resultR)
                 {
                     outer.SetNextState(new StompL());

@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<Folder Name="Sounds" ID="{191D3DB3-BD92-4604-A57C-C7F86AEC1E41}" ShortID="767002557">
 					<ChildrenList>
-						<Folder Name="Spiiter" ID="{02B669BB-8724-4283-BA57-823E24DD6E9A}" ShortID="248100046">
+						<Folder Name="Spitter" ID="{02B669BB-8724-4283-BA57-823E24DD6E9A}" ShortID="248100046">
 							<ChildrenList>
 								<Event Name="ER_Spitter_Spawn_Play" ID="{3D2355D2-F588-424F-AC8C-DCE23B7B62BD}">
 									<ChildrenList>
@@ -552,7 +552,7 @@
 										<Action Name="" ID="{4559FEC0-9EA0-4DD9-BE00-199C7B126812}" ShortID="789392772">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+													<ObjectRef Name="Spider_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -566,7 +566,7 @@
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Spitter_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+													<ObjectRef Name="Spider_Projectile_Loop" ID="{82CBC63B-4D74-4551-9C6D-F912A00BF00E}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -2544,6 +2544,237 @@
 													<ReferenceList>
 														<Reference Name="Target">
 															<ObjectRef Name="HitItSon" ID="{B173A58D-BBAD-4797-AA91-E29107295407}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Providence" ID="{F4EEBE2F-FD17-4E8B-8AA5-7B1FAF4565AD}" ShortID="84952831">
+									<ChildrenList>
+										<Event Name="ER_Providence_Swing_Play" ID="{3021E851-9062-4709-B82F-8625494C4FA2}">
+											<ChildrenList>
+												<Action Name="" ID="{0FB09D4E-A3A5-43F3-AFD1-D217F07283C5}" ShortID="142256938">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_Swings" ID="{28D825B5-F63B-423E-B295-03BB0622B1E9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Providence_Footstep_Play" ID="{625791A0-1F82-4BEF-9704-9E6844E79DC2}">
+											<ChildrenList>
+												<Action Name="" ID="{65F2C21C-7E6B-43D3-A069-3595043B7DB5}" ShortID="682313526">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_Footstep" ID="{CA4B01CC-E714-48EB-9C47-C1EC6D549BAC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Providence_Teleport_Out_Play" ID="{7A6AB0F8-C9D2-488D-A71A-623D2FEA7343}">
+											<ChildrenList>
+												<Action Name="" ID="{1C4CD57A-923A-44FC-A0B6-BAC035EF4B73}" ShortID="704872501">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_Teleport_Out" ID="{D96D9FAC-EC05-4810-A3A8-84589C9737A1}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Providence_Teleport_In_Play" ID="{87F7E3EA-9B4D-4D4D-9164-871BD122B39F}">
+											<ChildrenList>
+												<Action Name="" ID="{3C036C9B-F5AE-492B-8A73-E9E25E44892E}" ShortID="105265910">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_Teleport_In" ID="{8A32A8BD-C11D-42C9-838C-DD4DEFF72740}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Folder Name="Laser" ID="{B832B37F-2F5F-44C7-ADB0-E9C318906478}" ShortID="173972142">
+											<ChildrenList>
+												<Event Name="ER_Providence_Laser_Start_Play" ID="{62B8AE4D-3DBA-4FAA-8073-E0F24A1A1BC4}">
+													<ChildrenList>
+														<Action Name="" ID="{53834070-113B-40C2-8EE8-8316DC03A65E}" ShortID="606910170">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Laser_Spawn" ID="{3359D9BD-BDA3-4641-BA69-AEBF7350A847}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_Laser_Loop_Play" ID="{036ED971-E468-4C1D-AD67-6A02F14B78A4}">
+													<ChildrenList>
+														<Action Name="" ID="{6CDB9C8A-113C-4CE0-92D9-0EB1CB5F1928}" ShortID="649410237">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Laser_Loop" ID="{41C3C878-B76B-4B6B-A046-70ED690486D9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_Laser_Loop_Stop" ID="{0CD41100-B70E-4BE4-A62B-96FCA742353B}">
+													<ChildrenList>
+														<Action Name="" ID="{053EB618-7D22-4009-B5D4-6668766C50AF}" ShortID="732617666">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Laser_Loop" ID="{41C3C878-B76B-4B6B-A046-70ED690486D9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="ShadowClones" ID="{C6EF7182-90AB-4460-B925-FB585A6DB504}" ShortID="793491137">
+											<ChildrenList>
+												<Event Name="ER_Providence_ShadowClone_Projectile_Fire_Play" ID="{9AF7AF35-AE8E-42D7-B1EA-09FBE36BA3F7}">
+													<ChildrenList>
+														<Action Name="" ID="{A5DB8F6B-3576-4684-8037-AB2FBCC068D3}" ShortID="889884735">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Fire" ID="{9B75FC93-8936-480F-9DAC-4A46FDFA24F2}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Projectile_Spawn_Play" ID="{CC296A34-F384-4F48-B8B2-CE46C60EAD2B}">
+													<ChildrenList>
+														<Action Name="" ID="{9FB4B957-2B4B-4A58-B84A-558CA16389B1}" ShortID="115021388">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Spawn" ID="{CFFC8738-B980-4546-AC2C-B183C883A651}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Skull_Spawn_Play" ID="{BC83EA81-4BB8-446E-A16D-70CA1F4A7763}">
+													<ChildrenList>
+														<Action Name="" ID="{86D8A8E8-F486-4FD6-996F-D17FEDEA2A13}" ShortID="90909455">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Skull" ID="{79A81912-DB12-4884-B339-10F927399EB4}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Land_Play" ID="{4D3D2AEA-26C0-4A84-8C08-97A3E95B7C0A}">
+													<ChildrenList>
+														<Action Name="" ID="{AD2C3FCF-0F91-49E5-AB35-9A4CDD4B9709}" ShortID="765902817">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Land" ID="{2208D56F-2203-49E5-9684-90D101B07CB9}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Dissapear_Play" ID="{CB37BD6A-8EAC-43E7-8006-02DB684346A1}">
+													<ChildrenList>
+														<Action Name="" ID="{84B092D9-BE8E-48C1-9933-12C433C3DBD6}" ShortID="696689662">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Disappear" ID="{22A6F396-8C36-46AD-9835-0391237B0560}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Loop_Play" ID="{54578FDC-1261-475B-B368-D504AF093919}">
+													<ChildrenList>
+														<Action Name="" ID="{B1AF668A-5D55-421D-A95D-BEE80B098AD9}" ShortID="398200126">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Loop" ID="{024AA3A6-4C58-47D5-89F4-B94C977C9757}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_ShadowClone_Loop_Stop" ID="{2543B903-FC84-4131-BDA2-860D9A081D61}">
+													<ChildrenList>
+														<Action Name="" ID="{31B38F5B-7792-4A0C-AF34-52A582B391F8}" ShortID="202840175">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Provi_ShadowClone_Loop" ID="{024AA3A6-4C58-47D5-89F4-B94C977C9757}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Projectiles" ID="{75567C78-228C-4CD3-B0E3-63EC4A82E9E3}" ShortID="194858874">
+											<ChildrenList>
+												<Event Name="ER_Providence_ProjectileEffect_Spawn_Play" ID="{968D2163-5783-4C5C-B642-74F323715329}">
+													<ChildrenList>
+														<Action Name="" ID="{13858A0C-48FA-4A7F-9D73-8E9BD44FE665}" ShortID="330251812">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Projectile_Effect_Spawn" ID="{C6CB6EC9-7042-4D5A-A1EB-2B9EE2F8B8BD}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="ER_Providence_Projectile_Fire_Play" ID="{8AC42E91-B2B3-4657-99AD-2F95E8F83D2B}">
+													<ChildrenList>
+														<Action Name="" ID="{E5C21554-4CEE-4AD7-A38D-2E44A44CCB73}" ShortID="773509758">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Projectile_Fire" ID="{C6F7F306-445E-4540-AA4F-5158FA464E66}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Event Name="ER_Providence_GroundSlam_Play" ID="{CA2399DB-774C-437E-94A4-AAF421F08F21}">
+											<ChildrenList>
+												<Action Name="" ID="{8209A4A6-EB50-4AD3-B11A-144BE002F393}" ShortID="823570818">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_GroundSlam" ID="{2912FD9A-DFDD-49FB-A6CA-8A7901CD8576}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Providence_DashPrep_Play" ID="{968D9ACD-643D-47B9-8F83-6A0344FF37E1}">
+											<ChildrenList>
+												<Action Name="" ID="{553B8E4C-696D-4E73-AFD1-D72F218ABD3C}" ShortID="455257887">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_Dash_Prep" ID="{9EB6F05C-A8FD-4062-AA36-064438B73660}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="ER_Providence_OpenClonePortal_Play" ID="{21C708B8-8421-425E-B3F2-D0876AB9A3D6}">
+											<ChildrenList>
+												<Action Name="" ID="{8503928B-78FB-4CC9-8AAF-C5CD10E0DAD3}" ShortID="825519209">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Providence_OpenClonePortal" ID="{214DFFAE-ABC2-4EEA-85C1-DBC757549FDC}" WorkUnitID="{EBDF897A-B049-4E49-8CC2-FC8AB1F8585A}"/>
 														</Reference>
 													</ReferenceList>
 												</Action>

@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using HG;
+using RoR2;
 using RoR2.Audio;
 using RoR2.Projectile;
 using UnityEngine;
@@ -369,7 +370,7 @@ namespace EnemiesReturns.Projectiles
             {
                 return;
             }
-            CharacterBody characterBody = blastAttack.attacker?.GetComponent<CharacterBody>();
+            CharacterBody characterBody = blastAttack.attacker.AsValidOrNull()?.GetComponent<CharacterBody>();
             BlastAttack.HitPoint[] hitPoints = result.hitPoints;
             for (int i = 0; i < hitPoints.Length; i++)
             {

@@ -98,6 +98,7 @@ namespace EnemiesReturns.Behaviors.ContactLight.GaussCannon
                 bulletAttack.stopperMask = LayerIndex.world.mask;
                 bulletAttack.hitMask = LayerIndex.entityPrecise.mask;
                 bulletAttack.damageType.AddModdedDamageType(Content.DamageTypes.EndGameBossWeapon);
+                bulletAttack.damageType.AddModdedDamageType(Content.DamageTypes.CanStunArraign);
                 bulletAttack.muzzleName = i.ToString();
                 bulletAttack.Fire();
             }

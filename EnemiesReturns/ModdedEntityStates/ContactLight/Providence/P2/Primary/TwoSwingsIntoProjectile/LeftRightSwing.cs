@@ -31,7 +31,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override string beginStateSoundString => ""; // TODO
 
-        public override string beginSwingSoundString => ""; // TODO
+        public override string beginSwingSoundString => "ER_Providence_Swing_Play"; // TODO
 
         public override bool forceForwardVelocity => false;
 

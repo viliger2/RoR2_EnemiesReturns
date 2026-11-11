@@ -57,6 +57,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 {
                     var chargeEffectInstance = UnityEngine.Object.Instantiate(effectPrefab, origin.position, origin.rotation);
                     chargeEffectInstance.transform.parent = origin;
+                    Util.PlaySound("ER_Providence_ProjectileEffect_Spawn_Play", origin.gameObject);
                     //chargeEffectInstance.GetComponent<ScaleParticleSystemDuration>().newDuration = spawnTime;
                 }
             }
@@ -86,6 +87,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                     {
                         projectileInfo.position = currentOriginTransform.position;
                         ProjectileManager.instance.FireProjectile(projectileInfo);
+                        if(currentOriginTransform.childCount > 0)
+                        {
+                            UnityEngine.Object.Destroy(currentOriginTransform.GetChild(0).gameObject);
+                        }
                     }
 
                     projectileFiredCount++;
@@ -102,7 +107,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         public override void OnExit()
         {
             base.OnExit();
-            PlayCrossfade(layerName, "BufferEmpty", 0.1f);
+            //PlayCrossfade(layerName, "BufferEmpty", 0.1f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

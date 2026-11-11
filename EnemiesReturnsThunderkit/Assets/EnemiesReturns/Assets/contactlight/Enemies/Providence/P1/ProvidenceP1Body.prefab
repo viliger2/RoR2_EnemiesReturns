@@ -21617,6 +21617,7 @@ GameObject:
   - component: {fileID: 2558075397671752026}
   - component: {fileID: -217684116850925860}
   - component: {fileID: -3593341228920075978}
+  - component: {fileID: 5790820606196755754}
   m_Layer: 0
   m_Name: ProvidenceP1Body
   m_TagString: Untagged
@@ -22339,6 +22340,30 @@ MonoBehaviour:
   body: {fileID: 2963873619053843280}
   segments: 1
   damageImmunityBuffDuration: 10
+  shieldDestroyEffect: {fileID: 1333522165216002, guid: a3dc33e05deab934ab2dd9936771505f, type: 3}
+  shieldDestroyEffectChildName: Chest
+--- !u!114 &5790820606196755754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916704582772687778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d680e1a4e5b2fa4688b34024f0c50f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetStateMachine: {fileID: 2859791027360040491}
+  idleStateMachines:
+  - {fileID: 8228178633749228936}
+  stunState:
+    _typeName: EntityStates.StunState, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  stunDuration: 3.33
+  applyBuff: 0
+  buff: {fileID: 0}
+  buffDuration: -1
+  checkForKarma: 0
 --- !u!1 &5965427186758955113
 GameObject:
   m_ObjectHideFlags: 0
@@ -35782,7 +35807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelTransformOverride: {fileID: 0}
-  baseFootstepString: Play_moonBrother_step
+  baseFootstepString: ER_Providence_Footstep_Play
   baseFootliftString: 
   sprintFootstepOverrideString: 
   sprintFootliftOverrideString: 

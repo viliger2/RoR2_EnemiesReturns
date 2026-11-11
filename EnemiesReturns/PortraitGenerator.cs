@@ -10,6 +10,7 @@ using EnemiesReturns.Enemies.LynxTribe.Totem;
 using EnemiesReturns.Enemies.MechanicalSpider.Enemy;
 using EnemiesReturns.Enemies.SandCrab;
 using EnemiesReturns.Enemies.Spitter;
+using HG;
 using RoR2;
 using RoR2.UI;
 using System;
@@ -92,16 +93,16 @@ namespace EnemiesReturns
                 try
                 {
                     Debug.LogFormat("Generating portrait for {0}", gameObject.name);
-                    modelPanel.modelPrefab = gameObject.GetComponent<ModelLocator>()?.modelTransform.gameObject;
+                    modelPanel.modelPrefab = gameObject.GetComponent<ModelLocator>().AsValidOrNull()?.modelTransform.gameObject;
                     //modelPanel.modelPostProcessVolumePrefab = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Cube);
                     modelPanel.SetAnglesForCharacterThumbnail(setZoom: true);
                     PrintController printController;
-                    if ((object)(printController = modelPanel.modelPrefab?.GetComponentInChildren<PrintController>()) != null)
+                    if ((object)(printController = modelPanel.modelPrefab.AsValidOrNull()?.GetComponentInChildren<PrintController>()) != null)
                     {
                         num = Mathf.Max(num, printController.printTime + 1f);
                     }
                     TemporaryOverlay temporaryOverlay;
-                    if ((object)(temporaryOverlay = modelPanel.modelPrefab?.GetComponentInChildren<TemporaryOverlay>()) != null)
+                    if ((object)(temporaryOverlay = modelPanel.modelPrefab.AsValidOrNull()?.GetComponentInChildren<TemporaryOverlay>()) != null)
                     {
                         num = Mathf.Max(num, temporaryOverlay.duration + 1f);
                     }

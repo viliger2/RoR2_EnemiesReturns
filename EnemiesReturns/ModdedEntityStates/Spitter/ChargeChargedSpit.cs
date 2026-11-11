@@ -65,8 +65,6 @@ namespace EnemiesReturns.ModdedEntityStates.Spitter
             base.FixedUpdate();
             if (fixedAge >= duration && isAuthority)
             {
-                //outer.SetNextStateToMain();
-                //EntityStateMachine.FindByCustomName(characterBody.gameObject, "Body")?.SetState(RoR2.EntityStateCatalog.InstantiateState(typeof(ModdedEntityStates.Spitter.FireChargedSpit)));
                 outer.SetNextState(new FireChargedSpit());
             }
         }

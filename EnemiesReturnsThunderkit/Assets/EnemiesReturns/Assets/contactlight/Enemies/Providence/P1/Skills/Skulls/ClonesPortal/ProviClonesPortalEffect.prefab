@@ -55,7 +55,7 @@ MonoBehaviour:
   parentToReferencedTransform: 1
   noEffectData: 0
   applyScale: 0
-  soundName: 
+  soundName: ER_Providence_OpenClonePortal_Play
   disregardZScale: 0
   applyScaleFirst: 0
 --- !u!114 &-5556661852864150214
@@ -220,7 +220,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeMax: 0.5
+  timeMax: 0.25
   ignoreResetOnEnable: 0
   loop: 0
   playOnlyWhenReady: 0
@@ -384,7 +384,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.25
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5390,7 +5390,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.5
+    scalar: 0.25
     minScalar: 0
     maxCurve:
       serializedVersion: 2

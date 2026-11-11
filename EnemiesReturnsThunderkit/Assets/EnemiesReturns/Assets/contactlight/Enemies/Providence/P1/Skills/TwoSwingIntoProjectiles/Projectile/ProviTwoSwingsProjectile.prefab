@@ -149,11 +149,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
-  startSound: 
+  startSound: ER_Providence_Projectile_Fire_Play
   cannotBeDeleted: 0
   doNotPerformImpactOnCollision: 0
   authorityHandlesCollisionEvents: 0
-  flightSoundLoop: {fileID: 0}
+  flightSoundLoop: {fileID: 11400000, guid: 4f6b6170842fb364995cc70a65374196, type: 2}
   canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}

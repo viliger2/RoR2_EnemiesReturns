@@ -47,6 +47,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
         private int projectilesFired;
 
+        private bool playedSound;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -128,6 +130,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
                     projectileTimer += delayBetweenProjectiles;
                 }
                 projectilesFired++;
+            }
+
+            if(fixedAge > predictionEffectTimer + projectileLifetime - 1 && !playedSound)
+            {
+                Util.PlaySound("ER_Providence_GroundSlam_Play", base.gameObject);
+                playedSound = true;
             }
 
             if ((projectilesFired >= projectileCount && fixedAge > predictionEffectTimer + projectileLifetime) && isAuthority)

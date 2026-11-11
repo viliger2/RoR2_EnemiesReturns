@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Behaviors;
 using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using RoR2.CharacterAI;
 using System;
@@ -117,7 +118,7 @@ namespace EnemiesReturns.Junk.ModdedEntityStates.LynxTribe.Shaman
                     }
                 }
             };
-            return DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
+            return DirectorCore.instance.AsValidOrNull()?.TrySpawnObject(directorSpawnRequest);
         }
 
         public override void FixedUpdate()

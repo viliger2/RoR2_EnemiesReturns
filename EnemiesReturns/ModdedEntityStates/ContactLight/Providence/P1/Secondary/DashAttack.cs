@@ -47,6 +47,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             base.OnEnter();
 
             desiredDirection = inputBank.aimDirection;
+            Util.PlaySound("ER_Arraign_SpearThrowProjectileLoop_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
@@ -68,6 +69,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             {
                 dashEffect.gameObject.SetActive(false);
             }
+            Util.PlaySound("ER_Arraign_SpearThrowProjectileLoop_Stop", base.gameObject);
             base.OnExit();
         }
 

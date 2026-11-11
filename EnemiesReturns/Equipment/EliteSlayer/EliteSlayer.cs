@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using HG;
+using RoR2;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace EnemiesReturns.Equipment.EliteSlayer
                 {
                     if (!Configuration.ContactLight.ContactLight.EliteSlayerDropAllElites.Value)
                     {
-                        var equipmentState = target.healthComponent.body.inventory.GetActiveEquipment();
+                        var equipmentState = target.healthComponent.AsValidOrNull()?.body.AsValidOrNull()?.inventory.AsValidOrNull()?.GetActiveEquipment() ?? EquipmentState.empty;
                         if (!equipmentState.Equals(EquipmentState.empty))
                         {
                             var eqIndex = equipmentState.equipmentIndex;

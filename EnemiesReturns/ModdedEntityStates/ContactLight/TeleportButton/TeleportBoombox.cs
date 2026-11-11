@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Components;
 using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -97,7 +98,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TeleportButton
         {
             if(body && NetworkServer.active)
             {
-                EntityStateMachine.FindByCustomName(body.gameObject, "Body")?.SetNextStateToMain();
+                EntityStateMachine.FindByCustomName(body.gameObject, "Body").AsValidOrNull()?.SetNextStateToMain();
                 body.master.onBodyStart -= OnBodyStart;
             }
         }

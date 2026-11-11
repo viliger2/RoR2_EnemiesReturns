@@ -3,6 +3,7 @@ using EnemiesReturns.Enemies.MechanicalSpider;
 using EnemiesReturns.Enemies.MechanicalSpider.Drone;
 using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using System;
 using UnityEngine;
@@ -101,11 +102,11 @@ namespace EnemiesReturns.ModdedEntityStates.MechanicalSpider.Death
                     DeleteMinionItems(inventory);
                 }
                 ;
-                var eliteDef = inventory.GetEquipment(inventory.FindBestEquipmentLocationOrCurrent(Inventory.EquipmentLocationQueryArgs.defaultPickup)).equipmentDef?.passiveBuffDef?.eliteDef ?? null;
+                var eliteDef = inventory.GetEquipment(inventory.FindBestEquipmentLocationOrCurrent(Inventory.EquipmentLocationQueryArgs.defaultPickup)).equipmentDef.AsValidOrNull()?.passiveBuffDef.AsValidOrNull()?.eliteDef ?? null;
                 var setEliteRamp = result.GetComponent<SetEliteRampOnShader>();
                 if (setEliteRamp && inventory)
                 {
-                    setEliteRamp.SetEliteRampIndex(eliteDef?.shaderEliteRampIndex ?? -1, eliteDef?.eliteIndex ?? EliteIndex.None); // surely, SURELY it won't break
+                    setEliteRamp.SetEliteRampIndex(eliteDef.AsValidOrNull()?.shaderEliteRampIndex ?? -1, eliteDef.AsValidOrNull()?.eliteIndex ?? EliteIndex.None); // surely, SURELY it won't break
                 }
                 var purchaseInteraction = result.GetComponent<PurchaseInteraction>();
                 if (purchaseInteraction && purchaseInteraction.costType == CostTypeIndex.Money && inventory)

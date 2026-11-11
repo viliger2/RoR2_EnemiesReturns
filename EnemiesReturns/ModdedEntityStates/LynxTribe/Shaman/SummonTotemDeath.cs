@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -116,7 +117,7 @@ namespace EnemiesReturns.ModdedEntityStates.LynxTribe.Shaman
         {
             if (body && NetworkServer.active)
             {
-                EntityStateMachine.FindByCustomName(body.gameObject, "Body")?.SetState(new ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman());
+                EntityStateMachine.FindByCustomName(body.gameObject, "Body").AsValidOrNull()?.SetState(new ModdedEntityStates.LynxTribe.Totem.SpawnStateFromShaman());
                 body.master.onBodyStart -= OnBodyStart;
             }
         }

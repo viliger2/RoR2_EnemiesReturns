@@ -2637,6 +2637,7 @@ MonoBehaviour:
   applyBuff: 1
   buff: {fileID: 11400000, guid: 0e911e7301c5d7647a78819a0ff662a6, type: 2}
   buffDuration: 15
+  checkForKarma: 1
 --- !u!114 &936655539752334188
 MonoBehaviour:
   m_ObjectHideFlags: 0

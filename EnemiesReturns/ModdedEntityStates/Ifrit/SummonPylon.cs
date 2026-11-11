@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Enemies.Ifrit.Pillar;
 using EnemiesReturns.Reflection;
 using EntityStates;
+using HG;
 using RoR2;
 using RoR2.CharacterAI;
 using UnityEngine;
@@ -125,7 +126,7 @@ namespace EnemiesReturns.ModdedEntityStates.Ifrit
                     }
                 }
             };
-            return DirectorCore.instance?.TrySpawnObject(directorSpawnRequest);
+            return DirectorCore.instance.AsValidOrNull()?.TrySpawnObject(directorSpawnRequest);
         }
     }
 }

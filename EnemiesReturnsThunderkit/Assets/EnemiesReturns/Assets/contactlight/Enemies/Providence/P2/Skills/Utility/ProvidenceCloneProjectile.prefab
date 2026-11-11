@@ -366,11 +366,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
   ghostTransformAnchor: {fileID: 0}
-  startSound: 
+  startSound: ER_Providence_ShadowClone_Land_Play
   cannotBeDeleted: 0
   doNotPerformImpactOnCollision: 0
   authorityHandlesCollisionEvents: 0
-  flightSoundLoop: {fileID: 0}
+  flightSoundLoop: {fileID: 11400000, guid: eded77b03812d034b9364801602abb04, type: 2}
   canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}

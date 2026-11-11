@@ -112,6 +112,7 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.cloneEffectPrefab = assets.First(prefab => prefab.name == "ProvidenceP2SpecialShadowClone");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.slamEffect = assets.First(prefab => prefab.name == "ProviRingsSlamEffect");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.teleportEffect = assets.First(prefab => prefab.name == "ProviTeleportEffect");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_VFX.OmniImpactVFX_prefab).WaitForCompletion();
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseRings.BaseFireRings.effectList = new GameObject[] {
                         assets.First(prefab => prefab.name == "RingsExplosionEffect1") ,
                         assets.First(prefab => prefab.name == "RingsExplosionEffect2") ,
@@ -155,6 +156,7 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile.BaseLeftRightSwing.swingEffectPrefab = assets.First(prefab => prefab.name == "ProviSwingEffect");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile.BaseLeftRightSwing.hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BasePrepareAttack.portalEffectPrefab = assets.First(prefab => prefab.name == "ProviClonesPortalEffect");
 

@@ -32,6 +32,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static GameObject slamEffect;
 
+        public static GameObject hitEffectPrefab;
+
         public static float forceVectorValue = 300f;
 
         public static float baseSingleRingDuration = 1.666f;
@@ -133,6 +135,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 {
                     EffectManager.SimpleEffect(teleportEffect, origin.position, origin.rotation, false);
                 }
+                Util.PlaySound("ER_Providence_Teleport_Out_Play", base.gameObject);
             }
         }
 
@@ -224,8 +227,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 forceVector = new Vector3(0f, forceVectorValue, 0f),
                 retriggerTimeout = 1f,
                 attackerFiltering = AttackerFiltering.CustomFilter,
-                filterCallback = Utils.OverlapAttackAuthorityFilter
-        };
+                filterCallback = Utils.OverlapAttackAuthorityFilter,
+                hitEffectPrefab = hitEffectPrefab
+            };
         }
 
         private void PlayAnimation()

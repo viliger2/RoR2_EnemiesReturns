@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
+using RoR2;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
 {
@@ -15,6 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             PlayAnimation("Gesture, Override", "DashPrep", "combo.playbackRate", duration);
+            Util.PlaySound("ER_Providence_DashPrep_Play", base.gameObject);
         }
 
         public override void FixedUpdate()

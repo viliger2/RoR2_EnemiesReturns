@@ -25,6 +25,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public float buffDuration = -1f;
 
+        public bool checkForKarma;
+
         public static R2API.DamageAPI.ModdedDamageType damageType;
 
         private bool hasEffectiveAuthority = true;

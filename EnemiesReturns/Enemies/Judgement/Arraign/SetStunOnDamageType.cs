@@ -24,6 +24,8 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public float buffDuration = -1f;
 
+        public bool checkForKarma;
+
         public ModdedDamageType moddedDamateType => Content.DamageTypes.CanStunArraign;
 
         private bool hasEffectiveAuthority = true;
@@ -52,7 +54,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
-            if (Utils.ArraignKarmaCheck(requiredKarmaLevel))
+            if (checkForKarma && Utils.ArraignKarmaCheck(requiredKarmaLevel))
             {
                 return;
             }

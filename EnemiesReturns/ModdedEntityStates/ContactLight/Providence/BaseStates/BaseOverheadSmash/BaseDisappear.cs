@@ -63,6 +63,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.gameObject.layer = LayerIndex.GetAppropriateFakeLayerForTeam(base.teamComponent.teamIndex).intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
             EffectManager.SimpleEffect(predictedPositionEffect, predictedPosition, Quaternion.identity, false);
+            Util.PlaySound("ER_Providence_GroundSlam_Play", base.gameObject);
         }
 
         public override void FixedUpdate()
