@@ -25,10 +25,30 @@ namespace EnemiesReturns.Projectiles
 
         private ProjectileController controller;
 
+        private EquipmentDef cachedEquipment;
+
         private void Awake()
         {
             targetComponent = GetComponent<ProjectileTargetComponent>();
             controller = GetComponent<ProjectileController>();
+        }
+
+        private void FixedUpdate()
+        {
+            if (!NetworkServer.active)
+            {
+                return;
+            }
+
+            if (!dropEliteEquipment)
+            {
+                return;
+            }
+
+            if (!cachedEquipment)
+            {
+                cachedEquipment = GetTargetEquipment(GetTargetBody());
+            }
         }
 
         public void SlayTarget()
@@ -38,62 +58,91 @@ namespace EnemiesReturns.Projectiles
                 return;
             }
 
-            if(!targetComponent || !targetComponent.target)
+            var body = GetTargetBody();
+            if (body)
             {
-                return;
+                if (dropEliteEquipment)
+                {
+                    var equipmentDef = GetTargetEquipment(body);
+                    if (equipmentDef)
+                    {
+                        var hurtBoxPosition = body.corePosition;
+                        var rotation = Vector3.zero;
+                        if (controller)
+                        {
+                            rotation = (hurtBoxPosition - controller.owner.transform.position).normalized;
+                        }
+
+                        PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipmentDef.equipmentIndex)), hurtBoxPosition, rotation * 15f, false);
+                    }
+                }
+
+                if (spawnEffect)
+                {
+                    GameObject effect = null;
+                    if (addressableEffectPrefab.RuntimeKeyIsValid())
+                    {
+                        effect = addressableEffectPrefab.LoadAssetAsync().WaitForCompletion();
+                    }
+                    else if (effectPrefab)
+                    {
+                        effect = effectPrefab;
+                    }
+
+                    if (effect)
+                    {
+                        EffectManager.SpawnEffect(effect, new EffectData
+                        {
+                            origin = body.corePosition,
+                            rotation = Quaternion.identity
+                        }, transmit: true);
+                    }
+                }
+
+                body.master.TrueKill(controller.owner);
+            } else
+            {
+                if (cachedEquipment && dropEliteEquipment)
+                {
+                    PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(cachedEquipment.equipmentIndex)), this.transform.position, Vector3.zero, false);
+                }
+            }
+        }
+
+        private EquipmentDef GetTargetEquipment(CharacterBody body)
+        {
+            if (!body.master)
+            {
+                return null;
+            }
+
+            if (body.isElite && body.inventory)
+            {
+                var equipment = body.inventory.GetActiveEquipment();
+                if (equipment.equipmentDef && equipment.equipmentDef.passiveBuffDef)
+                {
+                    return equipment.equipmentDef;
+                }
+            }
+
+            return null;
+        }
+
+        private CharacterBody GetTargetBody()
+        {
+            if (!targetComponent || !targetComponent.target)
+            {
+                return null;
             }
 
             var hurtBox = targetComponent.target.GetComponent<HurtBox>();
             if (!hurtBox || !hurtBox.healthComponent || !hurtBox.healthComponent.body)
             {
-                return;
+                return null;
             }
 
-            var body = hurtBox.healthComponent.body;
-
-            if (!body.master)
-            {
-                return;
-            }
-
-            var hurtBoxPosition = hurtBox.transform.position;
-            var rotation = Vector3.zero;
-            if (controller)
-            {
-                rotation = (hurtBoxPosition - controller.owner.transform.position).normalized;
-            }
-
-            if (dropEliteEquipment && body.isElite && body.inventory)
-            {
-                var equipment = body.inventory.GetActiveEquipment();
-                if (equipment.equipmentDef && equipment.equipmentDef.passiveBuffDef)
-                {
-                    PickupDropletController.CreatePickupDroplet(new UniquePickup(PickupCatalog.FindPickupIndex(equipment.equipmentDef.equipmentIndex)), hurtBoxPosition, rotation * 15f, false);
-                }
-            }
-
-            if (spawnEffect)
-            {
-                GameObject effect = null;
-                if (addressableEffectPrefab.RuntimeKeyIsValid())
-                {
-                    effect = addressableEffectPrefab.LoadAssetAsync().WaitForCompletion();
-                } else if (effectPrefab)
-                {
-                    effect = effectPrefab;
-                }
-
-                if (effect)
-                {
-                    EffectManager.SpawnEffect(effect, new EffectData
-                    {
-                        origin = hurtBoxPosition,
-                        rotation = Util.QuaternionSafeLookRotation(rotation, Vector3.up)
-                    }, transmit: true);
-                }
-            }
-
-            body.master.TrueKill(controller.owner);
+            return hurtBox.healthComponent.body;
         }
+
     }
 }

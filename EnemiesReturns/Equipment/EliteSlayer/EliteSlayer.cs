@@ -24,13 +24,17 @@ namespace EnemiesReturns.Equipment.EliteSlayer
                 {
                     if (!Configuration.ContactLight.ContactLight.EliteSlayerDropAllElites.Value)
                     {
-                        var eqIndex = target.healthComponent.body.equipmentSlot.equipmentIndex;
-                        var equipmentDef = EquipmentCatalog.GetEquipmentDef(eqIndex);
-
-                        if (equipmentDef.dropOnDeathChance > 0)
+                        var equipmentState = target.healthComponent.body.inventory.GetActiveEquipment();
+                        if (!equipmentState.Equals(EquipmentState.empty))
                         {
-                            source = target;
-                            break;
+                            var eqIndex = equipmentState.equipmentIndex;
+                            var equipmentDef = EquipmentCatalog.GetEquipmentDef(eqIndex);
+
+                            if (equipmentDef.dropOnDeathChance > 0)
+                            {
+                                source = target;
+                                break;
+                            }
                         }
                     } else
                     {
