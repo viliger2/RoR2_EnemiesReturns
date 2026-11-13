@@ -20,9 +20,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract string animatorAttackParam { get; }
 
-        public abstract int waveCount { get; }
+        public abstract int orbCount { get; }
 
-        public abstract float waveProjectileDamage { get; }
+        public abstract float orbProjectileDamage { get; }
+
+        public abstract float orbSpeedOverride { get; }
+
+        public abstract float orbInitialAngle { get; }
+
+        public abstract float landingDamage { get; }
+
+        public abstract float landingRadius { get; }
 
         public abstract byte comboCount { get; }
 
@@ -83,7 +91,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             {
                 aimVector = Vector3.up,
                 bulletCount = 1,
-                damage = damageStat * 3f,
+                damage = damageStat * landingDamage,
                 falloffModel = BulletAttack.FalloffModel.None,
                 damageType = DamageSource.Utility,
                 hitMask = LayerIndex.entityPrecise.mask,
@@ -92,7 +100,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 owner = gameObject,
                 minSpread = 0f,
                 maxSpread = 0f,
-                radius = 8f,
+                radius = landingRadius,
                 origin = characterBody.footPosition + Vector3.down * 5f,
                 isCrit = RollCrit()
             };
@@ -104,14 +112,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         private void FireRingAuthority()
         {
-            float num = 360f / (float)waveCount;
+            float num = 360f / (float)orbCount;
             Vector3 vector = Vector3.ProjectOnPlane(base.inputBank.aimDirection, Vector3.up);
             Vector3 corePosition = base.characterBody.corePosition;
             bool crit = RollCrit();
-            for (int i = 0; i < waveCount; i++)
+            for (int i = 0; i < orbCount; i++)
             {
                 Vector3 forward = Quaternion.AngleAxis(num * (float)i, Vector3.up) * vector;
-                forward = Utils.PitchUp(forward, 45f);
+                forward = Utils.PitchUp(forward, orbInitialAngle);
                 if (base.isAuthority)
                 {
                     var info = new FireProjectileInfo
@@ -120,11 +128,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         position = corePosition,
                         rotation = Util.QuaternionSafeLookRotation(forward),
                         owner = base.gameObject,
-                        damage = base.characterBody.damage * waveProjectileDamage,
+                        damage = base.characterBody.damage * orbProjectileDamage,
                         damageTypeOverride = new DamageTypeCombo(DamageType.Generic, DamageTypeExtended.Generic, DamageSource.Utility),
                         crit = crit,
                         comboNumber = comboCount,
-                        speedOverride = 20f
+                        speedOverride = orbSpeedOverride
                     };
                     ProjectileManager.instance.FireProjectile(info);
                 }

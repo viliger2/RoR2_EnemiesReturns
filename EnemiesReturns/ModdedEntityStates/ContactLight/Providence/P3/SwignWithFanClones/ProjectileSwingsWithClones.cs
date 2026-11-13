@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseProjectilePrimary;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseProjectilePrimary;
 using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.Reflection;
 using EntityStates;
@@ -13,15 +14,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
     [RegisterEntityState]
     public class ProjectileSwingsWithClones : BaseLeftRightSwing
     {
-        public override float damageCoefficient => 2f;
+        public override float damageCoefficient => ProvidencePhase3.P3PrimaryDamage.Value;
 
-        public override float baseDuration => 3f;
+        public override float baseDuration => ProvidencePhase3.P3PrimaryDuration.Value;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
-        public override float procCoefficient => 1f;
+        public override float procCoefficient => ProvidencePhase3.P3PrimaryProcCoefficient.Value;
 
-        public override float pushAwayForce => 500f;
+        public override float pushAwayForce => ProvidencePhase3.P3PrimaryPushAwayForce.Value;
 
         public override Vector3 forceVector => Vector3.zero;
 
@@ -43,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => 2.5f;
+        public override float earlyExit => 3.5f;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
 
@@ -51,17 +52,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public static GameObject projectilePrefab;
 
-        public static float maxSearchDistance = 100f;
+        public static float maxSearchDistance => ProvidencePhase3.P3PrimaryCloneSearchDistance.Value;
 
-        public static float maxSearchAngle = 75f;
+        public static float maxSearchAngle => ProvidencePhase3.P3PrimaryCloneMaxSearchAngle.Value;
 
-        public static float cloneProjectileSpeed = 50f;
+        public static float cloneProjectileSpeed => ProvidencePhase3.P3PrimaryCloneSpeed.Value;
 
-        public static float cloneProjectileDamage = 2f;
+        public static float cloneProjectileDamage => ProvidencePhase3.P3PrimaryCloneDamage.Value;
 
-        public static float projectileSpread = 45f;
+        public static float projectileSpread => ProvidencePhase3.P3PrimaryCloneSpread.Value;
 
-        public static int cloneCount = 3;
+        public static int cloneCount => ProvidencePhase3.P3PrimaryCloneCount.Value;
 
         private bool firedClone;
 

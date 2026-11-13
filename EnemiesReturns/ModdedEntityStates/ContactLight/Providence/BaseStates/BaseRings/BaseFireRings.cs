@@ -26,6 +26,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract bool spawnShadowEffect { get; }
 
+        public abstract float baseDamage { get; }
+
+        public abstract float forceVectorValue { get; } 
+
+        public abstract float healthModifiersMax { get; } 
+
+        public abstract float healthModifiersMin { get; } 
+
         public static GameObject cloneEffectPrefab;
 
         public static GameObject teleportEffect;
@@ -33,8 +41,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         public static GameObject slamEffect;
 
         public static GameObject hitEffectPrefab;
-
-        public static float forceVectorValue = 300f;
 
         public static float baseSingleRingDuration = 1.666f;
 
@@ -53,8 +59,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
         {
         "FirstRing", "SecondRing", "ThirdRing", "FourthRing", "FifthRing"
         };
-
-        public static float baseDamage = 2f;
 
         private static int[][] rngTable = new int[][]
         {
@@ -112,8 +116,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             if (isAuthority)
             {
                 startingArray = UnityEngine.Random.Range(0, rngTable.Length);
-                timesToFire = baseTimesToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalTimesMax, (float)additionalTimesMin), additionalTimesMin, baseTimesToFire + additionalTimesMax);
-                ringsToFire = baseRingToFire + (int)Mathf.Clamp(Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.3f, healthComponent.fullHealth * 0.8f, (float)additionalRingsMax, (float)additionalRingsMin), additionalRingsMin, rngTable[0].Length);
+                timesToFire = baseTimesToFire + (int)Mathf.Clamp(
+                    Util.Remap(healthComponent.health, healthComponent.fullHealth * healthModifiersMax, healthComponent.fullHealth * healthModifiersMin, (float)additionalTimesMax, (float)additionalTimesMin), 
+                    additionalTimesMin, 
+                    baseTimesToFire + additionalTimesMax);
+                ringsToFire = baseRingToFire + (int)Mathf.Clamp(
+                    Util.Remap(healthComponent.health, healthComponent.fullHealth * healthModifiersMax, healthComponent.fullHealth * healthModifiersMin, (float)additionalRingsMax, (float)additionalRingsMin), 
+                    additionalRingsMin, 
+                    rngTable[0].Length);
             }
 
             locator = GetModelChildLocator();

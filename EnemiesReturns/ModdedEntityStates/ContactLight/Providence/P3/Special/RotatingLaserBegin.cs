@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
@@ -17,7 +18,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
 
         public static GameObject laserProjectile;
 
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient => ProvidencePhase3.P3LaserDamage.Value;
 
         private Animator animator;
 
@@ -75,7 +76,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
                 owner = gameObject,
                 position = newPosition,
                 projectilePrefab = laserProjectile,
-                rotation = Quaternion.identity,
+                rotation = Quaternion.identity
             };
 
             ProjectileManager.instance.FireProjectile(projectileInfo);

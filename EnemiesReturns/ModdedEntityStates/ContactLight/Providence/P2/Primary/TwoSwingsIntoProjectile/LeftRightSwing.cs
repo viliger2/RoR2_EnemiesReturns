@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
@@ -11,15 +12,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
     [RegisterEntityState]
     public class LeftRightSwing : BaseLeftRightSwing
     {
-        public override float damageCoefficient => 2f;
+        public override float damageCoefficient => ProvidencePhase2.P2PrimaryDamage.Value;
 
-        public override float baseDuration => 3f;
+        public override float baseDuration => ProvidencePhase2.P2PrimaryDuration.Value;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
-        public override float procCoefficient => 1f;
+        public override float procCoefficient => ProvidencePhase2.P2PrimaryProcCoefficient.Value;
 
-        public override float pushAwayForce => 500f;
+        public override float pushAwayForce => ProvidencePhase2.P2PrimaryPushAwayForce.Value;
 
         public override Vector3 forceVector => Vector3.zero;
 
@@ -41,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => 2.5f;
+        public override float earlyExit => ProvidencePhase2.P2PrimaryEarlyExit.Value;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
 
@@ -49,15 +50,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public static GameObject cloneProjectile;
 
-        public static float maxSearchDistance = 250f;
+        public static float maxSearchDistance => ProvidencePhase2.P2PrimaryCloneSearchDistance.Value;
 
-        public static float maxSearchAngle = 75f;
+        public static float maxSearchAngle => ProvidencePhase2.P2PrimaryCloneMaxSearchAngle.Value;
 
-        public static float cloneProjectileSpeed = 50f;
+        public static float cloneProjectileSpeed => ProvidencePhase2.P2PrimaryCloneSpeed.Value;
 
-        public static float cloneProjectileDamage = 2f;
+        public static float cloneProjectileDamage => ProvidencePhase2.P2PrimaryCloneDamage.Value;
 
-        public static float projectileHealthThreshold = 1f;
+        public static float projectileHealthThreshold => ProvidencePhase2.P2PrimaryCloneHealthThreshold.Value;
 
         private string _swingEffectMuzzleString;
 

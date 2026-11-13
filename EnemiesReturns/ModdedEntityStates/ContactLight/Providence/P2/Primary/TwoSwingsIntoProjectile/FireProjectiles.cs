@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.Reflection;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -12,15 +13,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public static GameObject staticProjecilePrefab;
 
-        public override float baseDuration => 2.2f;
+        public override float baseDuration => ProvidencePhase2.P2OrbsDuration.Value;
 
-        public override float baseSpawnProjectilesTime => 1f;
+        public override float baseSpawnProjectilesTime => ProvidencePhase2.P2OrbsProjectileSpawnTime.Value;
 
-        public override float damageCoefficient => 2f;
+        public override float damageCoefficient => ProvidencePhase2.P2OrbsDamage.Value;
 
-        public override int projectileCount => 5;
+        public override int projectileCount => ProvidencePhase2.P2OrbsProjectileCount.Value;
 
-        public override float baseProjectileDelay => 0.2f;
+        public override float baseProjectileDelay => ProvidencePhase2.P2OrbsDelayBetween.Value;
 
         public override GameObject effectPrefab => staticEffectPrefab;
 

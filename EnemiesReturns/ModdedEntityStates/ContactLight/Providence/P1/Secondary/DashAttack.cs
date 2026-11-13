@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using UnityEngine;
@@ -19,12 +20,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
 
         public override void OnEnter()
         {
-            this.baseDuration = 0.75f;
-            base.damageCoefficient = 3f;
+            this.baseDuration = ProvidencePhase1.P1SecondaryDuration.Value;
+            base.damageCoefficient = ProvidencePhase1.P1PrimaryDamage.Value;
             base.hitBoxGroupName = "DashStabHitbox";
             base.hitEffectPrefab = hitEffect;
-            base.procCoefficient = 1f;
-            base.pushAwayForce = 1000f;
+            base.procCoefficient = ProvidencePhase1.P1PrimaryProcCoefficient.Value;
+            base.pushAwayForce = ProvidencePhase1.P1PrimaryPushAwayForce.Value;
             base.forceVector = Vector3.zero;
             base.hitPauseDuration = 0.1f;
             base.swingEffectPrefab = swingEffect;
@@ -33,7 +34,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Secondary
             base.beginSwingSoundString = "";
             //base.impactSound = 
             base.forceForwardVelocity = true;
-            base.forwardVelocityCurve = AnimationCurve.Linear(0f, 1.5f, 0f, 1.5f);
+            var coefficient = ProvidencePhase1.P1SecondaryForwardSpeedCoef.Value;
+            base.forwardVelocityCurve = AnimationCurve.Linear(0f, coefficient, 0f, coefficient);
             base.scaleHitPauseDurationAndVelocityWithAttackSpeed = false;
             base.ignoreAttackSpeed = false;
             base.duration = base.baseDuration / attackSpeedStat;

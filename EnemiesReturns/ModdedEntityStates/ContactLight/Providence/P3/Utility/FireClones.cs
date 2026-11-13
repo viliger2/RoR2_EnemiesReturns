@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -29,15 +30,21 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Utility
 
         private bool spawnedPrediction;
 
-        public static int minProjectileCount = 5;
+        public static int minProjectileCount => ProvidencePhase3.P3UtilityCloneMinCount.Value;
 
-        public static int maxProjectileCount = 5;
+        public static int maxProjectileCount => ProvidencePhase3.P3UtilityCloneMaxCount.Value;
 
-        public static float delayBetweenProjectiles = 0.2f;
+        public static float delayBetweenProjectiles => ProvidencePhase3.P3UtilityCloneDelayBetweenProjectiles.Value;
+
+        public static float projectileDamage => ProvidencePhase3.P3UtilityCloneDamage.Value;
+
+        public static float minProjectileHealth => ProvidencePhase3.P3UtilityCloneMinHealthThreshold.Value;
+
+        public static float maxProjectileHealth => ProvidencePhase3.P3UtilityCloneMaxHealthThreshold.Value;
+
+        public static float predictionTime => ProvidencePhase3.P3UtilityPredictionTimer.Value;
 
         public static GameObject projectilePrefab;
-
-        public static float predictionTime => 0.75f;
 
         private RoR2.Projectile.Predictor predictor;
 
@@ -79,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Utility
             
             SetupPredictor();
 
-            projectileCount = Mathf.Clamp((int)Mathf.Min(maxProjectileCount, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxProjectileCount, (float)minProjectileCount)), minProjectileCount, maxProjectileCount);
+            projectileCount = Mathf.Clamp((int)Mathf.Min(maxProjectileCount, Util.Remap(healthComponent.health * minProjectileHealth, healthComponent.fullHealth * maxProjectileHealth, healthComponent.fullHealth, (float)minProjectileCount, (float)maxProjectileCount)), minProjectileCount, maxProjectileCount);
             projectileTimer += delayBetweenProjectiles;
 
             predictionEffectTimer = projectileCount * delayBetweenProjectiles + projectileLifetime - predictionEffectMinusTimer;

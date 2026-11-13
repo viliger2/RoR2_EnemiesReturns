@@ -74,6 +74,8 @@ namespace EnemiesReturns
                                  || asset.TryGetComponent<CharacterMaster>(out _)
                                  || asset.TryGetComponent<ProjectileController>(out _))).ToArray());
 
+                    SetupContactLight.SetConfigValues(assets);
+
                     var wardrobe = assets.First(prefab => prefab.name == "WardrobeInteractable");
                     var pickerController = wardrobe.GetComponent<Behaviors.SkinDefPicker.SkinDefPickerController>();
                     pickerController.panelPrefab = SetupContactLight.CreateSkinDefPickerPanel();
@@ -141,7 +143,6 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticEffectPrefab = chargeEffectPrefab;
 
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
-                    ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefabRed = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
@@ -254,6 +255,7 @@ namespace EnemiesReturns
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<SkillDef[]>)((assets) =>
                 {
+                    SetupContactLight.SetupSkills(assets);
                     TempleGuardBody.SetupSkills(assets);
                     sdList.AddRange(assets);
                 }));

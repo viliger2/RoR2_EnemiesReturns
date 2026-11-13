@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
 using EnemiesReturns.Reflection;
 using EntityStates;
 
@@ -9,7 +10,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
     {
         public override float baseDuration => 0.75f;
 
-        public override float predictionTime => 0.75f;
+        public override float predictionTime => ProvidencePhase1.P1UtilityPredictionTimer.Value;
 
         public override string layerName => "Gesture, Override";
 

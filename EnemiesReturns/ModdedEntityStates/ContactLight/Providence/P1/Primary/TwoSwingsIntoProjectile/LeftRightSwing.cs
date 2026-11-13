@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile;
 using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility;
 using EnemiesReturns.Reflection;
 using EntityStates;
@@ -11,15 +12,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
     [RegisterEntityState]
     public class LeftRightSwing : BaseLeftRightSwing
     {
-        public override float damageCoefficient => 2f;
+        public override float damageCoefficient => ProvidencePhase1.P1PrimaryDamage.Value;
 
-        public override float baseDuration => 3f;
+        public override float baseDuration => ProvidencePhase1.P1PrimaryDuration.Value;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
-        public override float procCoefficient => 1f;
+        public override float procCoefficient => ProvidencePhase1.P1PrimaryProcCoefficient.Value;
 
-        public override float pushAwayForce => 500f;
+        public override float pushAwayForce => ProvidencePhase1.P1PrimaryPushAwayForce.Value;
 
         public override Vector3 forceVector => Vector3.zero;
 
@@ -41,23 +42,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => 2f;
+        public override float earlyExit => ProvidencePhase1.P1PrimaryEarlyExit.Value;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
-
-        public static string fireCloneMecanimParam = "FireClone.attack";
-
-        public static GameObject cloneProjectile;
-
-        public static float maxSearchDistance = 250f;
-
-        public static float maxSearchAngle = 75f;
-
-        public static float cloneProjectileSpeed = 50f;
-
-        public static float cloneProjectileDamage = 2f;
-
-        public static float projectileHealthThreshold = 0.85f;
 
         private string _swingEffectMuzzleString;
 

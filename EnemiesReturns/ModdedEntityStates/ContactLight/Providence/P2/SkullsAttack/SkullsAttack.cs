@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using UnityEngine;
@@ -14,17 +15,17 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.SkullsAtt
 
         public override string playbackRateParamName => "Skulls.singlePlayback";
 
-        public override float damageCoefficient => 2f;
+        public override float damageCoefficient => ProvidencePhase2.P2SkullsDamage.Value;
 
-        public override float baseFireFrequency => 0.3f;
+        public override float baseFireFrequency => ProvidencePhase2.P2SkullsFireFrequency.Value;
 
-        public override int projectilesToSpawn => 25;
+        public override int projectilesToSpawn => ProvidencePhase2.P2SkullsProjectileCount.Value;
 
-        public override int additionalProjectilesPerPlayer => 15;
+        public override int additionalProjectilesPerPlayer => ProvidencePhase2.P2SkullsProjectileCountPerPlayer.Value;
 
-        public override float projectileSpeed => 50f;
+        public override float projectileSpeed => ProvidencePhase2.P2SkullsProjectileSpeed.Value;
 
-        public override float maxDistance => 15f;
+        public override float maxDistance => ProvidencePhase2.P2SkullsMaxDistance.Value;
 
         public override bool canBeRed => true;
 

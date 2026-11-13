@@ -1,7 +1,9 @@
 {
     "name": "EditorMaybe",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:5d12a314990967541bd33e4f5dfdec38"
+    ],
     "includePlatforms": [
         "Editor"
     ],
@@ -9,7 +11,8 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "RoR2.dll"
+        "RoR2.dll",
+        "BepInEx.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

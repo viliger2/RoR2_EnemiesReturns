@@ -22,7 +22,8 @@
         "Unity.ResourceManager.dll",
         "RoR2BepInExPack.dll",
         "BepInEx.dll",
-        "R2API.ProcType.dll"
+        "R2API.ProcType.dll",
+        "R2API.Director.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -17,6 +18,20 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
         public static float projectileLifetime = 1.5f;
 
+        public static float projectileDamage => ProvidencePhase2.P2UtilityCloneDamage.Value;
+
+        public static int minProjectileCount => ProvidencePhase2.P2UtilityCloneMinCount.Value;
+
+        public static int maxProjectileCount => ProvidencePhase2.P2UtilityCloneMaxCount.Value;
+
+        public static float delayBetweenProjectiles => ProvidencePhase2.P2UtilityCloneDelayBetweenProjectiles.Value;
+
+        public static float minProjectileHealth => ProvidencePhase2.P2UtilityCloneMinHealthThreshold.Value;
+
+        public static float maxProjectileHealth => ProvidencePhase2.P2UtilityCloneMaxHealthThreshold.Value;
+
+        public static float predictionTime => ProvidencePhase2.P2UtilityPredictionTimer.Value;
+
         public Vector3 predictedPosition;
 
         private CharacterModel characterModel;
@@ -29,15 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
         private bool spawnedPrediction;
 
-        public static int minProjectileCount = 5;
-
-        public static int maxProjectileCount = 10;
-
-        public static float delayBetweenProjectiles = 0.2f;
-
         public static GameObject projectilePrefab;
-
-        public static float predictionTime => 0.75f;
 
         private RoR2.Projectile.Predictor predictor;
 
@@ -79,7 +86,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
             
             SetupPredictor();
 
-            projectileCount = Mathf.Clamp((int)Mathf.Min(maxProjectileCount, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxProjectileCount, (float)minProjectileCount)), minProjectileCount, maxProjectileCount);
+            projectileCount = Mathf.Clamp((int)Mathf.Min(maxProjectileCount, Util.Remap(healthComponent.health, healthComponent.fullHealth * maxProjectileHealth, healthComponent.fullHealth * minProjectileHealth, (float)maxProjectileCount, (float)minProjectileCount)), minProjectileCount, maxProjectileCount);
             projectileTimer += delayBetweenProjectiles;
 
             predictionEffectTimer = projectileCount * delayBetweenProjectiles + projectileLifetime - predictionEffectMinusTimer;
@@ -140,7 +147,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
 
             if ((projectilesFired >= projectileCount && fixedAge > predictionEffectTimer + projectileLifetime) && isAuthority)
             {
-                base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.25f, Quaternion.identity);
+                base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.05f, Quaternion.identity);
                 outer.SetNextState(new Attack());
             }
 
@@ -182,7 +189,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Utility
             var info = new FireProjectileInfo()
             {
                 crit = RollCrit(),
-                damage = damageStat * 2f,
+                damage = damageStat * projectileDamage,
                 damageTypeOverride = DamageSource.Utility,
                 owner = gameObject,
                 position = position,

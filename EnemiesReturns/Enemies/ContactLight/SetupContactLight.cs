@@ -1,12 +1,17 @@
 ﻿using EnemiesReturns.Behaviors.SkinDefPicker;
+using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Projectiles;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using Rewired.ComponentControls.Effects;
 using RoR2;
+using RoR2.Projectile;
+using RoR2.Skills;
 using RoR2.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -101,6 +106,119 @@ namespace EnemiesReturns.Enemies.ContactLight
                 Items.AdrenalineCore.AdrenalineCoreUI.Hooks();
                 Items.AdrenalineCore.AdrenalineCoreMasterComponent.Hooks();
             }
+        }
+
+        public static void SetConfigValues(GameObject[] assets)
+        {
+            #region AllPhases
+            var proviTwoSwingsProjectile = assets.First(assets => assets.name == "ProviTwoSwingsProjectile");
+            var impactExplosion = proviTwoSwingsProjectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius = ProvidencePhase1.PrimaryOrbsExplosionRadius.Value;
+            impactExplosion.lifetime = ProvidencePhase1.PrimaryOrbsLifetime.Value;
+            var steer = proviTwoSwingsProjectile.GetComponent<ProjectileSteerTowardTarget>();
+            steer.rotationSpeed = ProvidencePhase1.PrimaryOrbsRotationSpeed.Value;
+
+            var proviLandingBouncingProjectile = assets.First(assets => assets.name == "ProviLandingBouncingProjectile");
+            var comboLimit = proviLandingBouncingProjectile.GetComponent<ProjectileExplosionComboLimit>();
+            comboLimit.blastRadius = ProvidencePhase1.UtilityOrbBlastRadius.Value;
+            var overlapAttack = proviLandingBouncingProjectile.GetComponent<ProjectileOverlapAttack>();
+            overlapAttack.damageCoefficient = ProvidencePhase1.UtilityOrbOverlapAttackDamage.Value;
+            #endregion
+
+            #region Phase1
+            var phase1Prefab = assets.First(assets => assets.name == "ProvidenceP1Body");
+            var phase1Body = phase1Prefab.GetComponent<CharacterBody>();
+            phase1Body.baseMaxHealth = ProvidencePhase1.BaseMaxHealth.Value;
+            phase1Body.baseMoveSpeed = ProvidencePhase1.BaseMoveSpeed.Value;
+            phase1Body.baseDamage = ProvidencePhase1.BaseDamage.Value;
+            phase1Body.baseArmor = ProvidencePhase1.BaseArmor.Value;
+            phase1Body.levelMaxHealth = ProvidencePhase1.LevelMaxHealth.Value;
+            phase1Body.levelDamage = ProvidencePhase1.LevelDamage.Value;
+            phase1Body.levelArmor = ProvidencePhase1.LevelArmor.Value;
+            #endregion
+
+            #region Phase2
+            var proviDashPrefab = assets.First(assets => assets.name == "ProvidenceSecondaryCloneProjectile");
+            proviDashPrefab.GetComponent<ProjectileCharacterController>().velocity = ProvidencePhase2.P2SecondaryCloneSpeed.Value;
+
+            var phase2Prefab = assets.First(assets => assets.name == "ProvidenceP2Body");
+            var phase2Body = phase1Prefab.GetComponent<CharacterBody>();
+            phase2Body.baseMaxHealth = ProvidencePhase2.BaseMaxHealth.Value;
+            phase2Body.baseMoveSpeed = ProvidencePhase2.BaseMoveSpeed.Value;
+            phase2Body.baseDamage = ProvidencePhase2.BaseDamage.Value;
+            phase2Body.baseArmor = ProvidencePhase2.BaseArmor.Value;
+            phase2Body.levelMaxHealth = ProvidencePhase2.LevelMaxHealth.Value;
+            phase2Body.levelDamage = ProvidencePhase2.LevelDamage.Value;
+            phase2Body.levelArmor = ProvidencePhase2.LevelArmor.Value;
+            #endregion
+
+            #region Phase3
+            var laserPrefab = assets.First(assets => assets.name == "LaserProjectile");
+            laserPrefab.GetComponent<ProjectileOverlapAttackAuthority>().resetInterval = ProvidencePhase3.P3LaserOverlapAttackResetInverval.Value;
+            laserPrefab.GetComponent<ProjectileSimple>().lifetime = ProvidencePhase3.P3LaserLifetime.Value;
+            laserPrefab.GetComponent<RotateAroundAxis>().slowRotationSpeed = ProvidencePhase3.P3LaserRotationSpeed.Value;
+
+            var phase3Prefab = assets.First(assets => assets.name == "ProvidenceP3Body");
+            var phase3Body = phase1Prefab.GetComponent<CharacterBody>();
+            phase3Body.baseMaxHealth = ProvidencePhase3.BaseMaxHealth.Value;
+            phase3Body.baseMoveSpeed = ProvidencePhase3.BaseMoveSpeed.Value;
+            phase3Body.baseDamage = ProvidencePhase3.BaseDamage.Value;
+            phase3Body.baseArmor = ProvidencePhase3.BaseArmor.Value;
+            phase3Body.levelMaxHealth = ProvidencePhase3.LevelMaxHealth.Value;
+            phase3Body.levelDamage = ProvidencePhase3.LevelDamage.Value;
+            phase3Body.levelArmor = ProvidencePhase3.LevelArmor.Value;
+            #endregion
+        }
+
+        public static void SetupSkills(SkillDef[] assets)
+        {
+            #region Phase1
+            var p1Secondary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP1Secondary");
+            p1Secondary.baseRechargeInterval = ProvidencePhase1.P1SecondaryCooldown.Value;
+
+            var p1Skulls = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceSkullsP1");
+            p1Skulls.baseRechargeInterval = ProvidencePhase1.P1SkullsCooldown.Value;
+
+            var p1Special = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP1Special");
+            p1Special.baseRechargeInterval = ProvidencePhase1.P1SpecialCooldown.Value;
+
+            var p1Primary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceTwoSwingsIntoProjectileP1");
+            p1Primary.baseRechargeInterval = ProvidencePhase1.P1PrimaryCooldown.Value;
+
+            var p1Utility = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP1Utility");
+            p1Utility.baseRechargeInterval = ProvidencePhase1.P1UtilityCooldown.Value;
+            #endregion
+
+            #region Phase2
+            var p2Secondary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP2Secondary");
+            p2Secondary.baseRechargeInterval = ProvidencePhase2.P2SecondaryCooldown.Value;
+
+            var p2Skulls = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceSkullsP2");
+            p2Skulls.baseRechargeInterval = ProvidencePhase2.P2SkullsCooldown.Value;
+
+            var p2Special = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP2Special");
+            p2Special.baseRechargeInterval = ProvidencePhase2.P2SpecialCooldown.Value;
+
+            var p2Primary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceTwoSwingsIntoProjectileP2");
+            p2Primary.baseRechargeInterval = ProvidencePhase2.P2PrimaryCooldown.Value;
+
+            var p2Utility = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP2Utility");
+            p2Utility.baseRechargeInterval = ProvidencePhase2.P2UtilityCooldown.Value;
+            #endregion
+
+            #region Phase3
+            var p3Lasers = assets.First(asset => (asset as ScriptableObject).name == "LasersP3");
+            p3Lasers.baseRechargeInterval = ProvidencePhase3.P3LaserCooldown.Value;
+
+            var p3Leap = assets.First(asset => (asset as ScriptableObject).name == "LeapAttackP3");
+            p3Leap.baseRechargeInterval = ProvidencePhase3.P3UtilityCooldown.Value;
+
+            var p3Primary = assets.First(asset => (asset as ScriptableObject).name == "PrimarySwingWithClonesP3");
+            p3Primary.baseRechargeInterval = ProvidencePhase3.P3PrimaryCooldown.Value;
+
+            var p3Skulls = assets.First(asset => (asset as ScriptableObject).name == "SkullsP3");
+            p3Skulls.baseRechargeInterval = ProvidencePhase3.P3SkullsCooldown.Value;
+            #endregion
         }
 
         // this is such a fucking hack holy shit but its fine

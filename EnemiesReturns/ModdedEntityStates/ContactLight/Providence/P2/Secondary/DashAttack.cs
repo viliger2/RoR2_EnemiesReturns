@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
 using RoR2.Projectile;
@@ -12,11 +13,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
     {
         public static GameObject projectileClone;
 
-        public static float dashDamageCoefficient = 3f;
+        public static float dashDamageCoefficient => ProvidencePhase2.P2SecondaryCloneDamage.Value;
 
-        public static int minClones = 1;
+        public static int minClones => ProvidencePhase2.P2SecondaryCloneMinSpawns.Value;
 
-        public static int maxClones = 3;
+        public static int maxClones => ProvidencePhase2.P2SecondaryCloneMaxSpawns.Value;
+
+        public static float minClonesHealth => ProvidencePhase2.P2SecondaryCloneMinHealthThreshold.Value;
+
+        public static float maxClonesHealth => ProvidencePhase2.P2SecondaryCloneMaxHealthThreshold.Value;
 
         public override void AuthorityOnFinish()
         {
@@ -31,7 +36,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Secondary
                 return;
             }
 
-            int clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * 0.25f, healthComponent.fullHealth, (float)maxClones, (float)minClones));
+            int clonesCount = (int)Mathf.Min(maxClones, Util.Remap(healthComponent.health, healthComponent.fullHealth * maxClonesHealth, healthComponent.fullHealth * minClonesHealth, (float)maxClones, (float)minClones));
+
+            if(clonesCount == 0)
+            {
+                return;
+            }
 
             var info = new FireProjectileInfo()
             {

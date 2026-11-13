@@ -95,18 +95,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         yOffset = GetRandomOffset();
                         var distanceToFloor = maxDistance;
                         var distanceToCeiling = maxDistance;
-                        if (Physics.Raycast(targetBody.transform.position, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        if (Physics.Raycast(targetBody.corePosition, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
                         {
-                            distanceToFloor = Vector3.Distance(targetBody.transform.position, hitInfo.point);
+                            distanceToFloor = Vector3.Distance(targetBody.corePosition, hitInfo.point);
                         }
-                        if (Physics.Raycast(targetBody.transform.position, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        if (Physics.Raycast(targetBody.corePosition, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
                         {
-                            distanceToCeiling = Vector3.Distance(targetBody.transform.position, hitInfo2.point);
+                            distanceToCeiling = Vector3.Distance(targetBody.corePosition, hitInfo2.point);
                         }
                         yOffset = Mathf.Clamp(yOffset, -distanceToFloor, distanceToCeiling);
                     }
 
-                    var position = targetBody.transform.position + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
+                    var position = targetBody.corePosition + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
                     var distance = Vector3.Distance(originPoint.position, position);
 
                     var effectData = new EffectData()

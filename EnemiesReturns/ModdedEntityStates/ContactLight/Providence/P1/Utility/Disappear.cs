@@ -1,4 +1,5 @@
-﻿using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
+﻿using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.BaseOverheadSmash;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Utility
 
         public override GameObject predictedPositionEffect => staticPredictedPositionEffect;
 
-        public override float baseDuration => 1f;
+        public override float baseDuration => ProvidencePhase1.P1UtilityDisappearDuration.Value;
 
         public override EntityState GetNextState()
         {
