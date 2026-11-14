@@ -8,6 +8,8 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
     {
         public EquipmentDef equipmentToDrop;
 
+        public bool checkForItem;
+
         public ItemDef itemToCheck;
 
         public string dropChatToken;
@@ -91,31 +93,37 @@ namespace EnemiesReturns.Behaviors.Judgement.MithrixWeaponDrop
         private void TryToDropEquipment(GameObject bodyObject)
         {
             bool itemFound = false;
-            if (LunarFlowerCheckerSingleton.instance)
+            if (checkForItem)
             {
-                itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
-            }
-
-            if (!itemFound)
-            {
-                foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
+                if (LunarFlowerCheckerSingleton.instance)
                 {
-                    if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
-                    {
-                        continue;
-                    }
+                    itemFound = LunarFlowerCheckerSingleton.instance.haveFlower;
+                }
 
-                    if (!playerCharacterMaster.master.inventory)
+                if (!itemFound)
+                {
+                    foreach (var playerCharacterMaster in PlayerCharacterMasterController.instances)
                     {
-                        continue;
-                    }
+                        if (!playerCharacterMaster.isConnected || !playerCharacterMaster.master)
+                        {
+                            continue;
+                        }
 
-                    if (playerCharacterMaster.master.inventory.GetItemCountPermanent(itemToCheck) > 0)
-                    {
-                        itemFound = true;
-                        break;
+                        if (!playerCharacterMaster.master.inventory)
+                        {
+                            continue;
+                        }
+
+                        if (playerCharacterMaster.master.inventory.GetItemCountPermanent(itemToCheck) > 0)
+                        {
+                            itemFound = true;
+                            break;
+                        }
                     }
                 }
+            } else
+            {
+                itemFound = true;
             }
 
             if (itemFound)

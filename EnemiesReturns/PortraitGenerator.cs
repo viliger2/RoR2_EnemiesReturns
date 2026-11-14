@@ -56,6 +56,7 @@ namespace EnemiesReturns
             yield return new WaitForEndOfFrame();
             modelPanel.BuildRenderTexture();
             yield return new WaitForEndOfFrame();
+            yield return GeneratePortrait(modelPanel, Content.BodyPrefabs.ProvidenceP1Body);
             yield return GeneratePortrait(modelPanel, Content.BodyPrefabs.TempleGuardBody);
             yield return GeneratePortrait(modelPanel, SandCrabBody.BodyPrefab);
             yield return GeneratePortrait(modelPanel, Enemies.Swift.SwiftBody.BodyPrefab);

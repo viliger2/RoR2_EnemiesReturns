@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 3823735355819416839}
   - component: {fileID: -5740981471657444875}
   - component: {fileID: 8467567748382182381}
+  - component: {fileID: 1486194903270019609}
   m_Layer: 0
   m_Name: ProvidenceP3Master
   m_TagString: Untagged
@@ -90,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemAcquisitionOrder: 
-  wasRecentlyExtraEquipmentSwapped: 0
   wasRecentlyCreated: 0
   beadAppliedHealth: 0
   beadAppliedShield: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyOnBodyDeath: 1
+  cannotRevive: 0
   ExtraBossMissileMoneyRemainder: 0
   trackedFreeUnlocks: 0
   trackedMissileCount: 0
@@ -240,10 +241,17 @@ MonoBehaviour:
   customName: FireLaser
   skillSlot: 3
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 1
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -252,6 +260,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -265,8 +275,10 @@ MonoBehaviour:
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -286,10 +298,17 @@ MonoBehaviour:
   customName: MeleeWthProjectiles
   skillSlot: 0
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 1
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -298,6 +317,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -311,8 +332,10 @@ MonoBehaviour:
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -332,10 +355,17 @@ MonoBehaviour:
   customName: FireSkulls
   skillSlot: 1
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 1
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: 0.85
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -344,6 +374,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -357,8 +389,10 @@ MonoBehaviour:
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -378,10 +412,17 @@ MonoBehaviour:
   customName: Overhead
   skillSlot: 2
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 1
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: 0.925
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -390,6 +431,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -403,8 +446,10 @@ MonoBehaviour:
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -424,10 +469,17 @@ MonoBehaviour:
   customName: ChaseOffNodes
   skillSlot: -1
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 0
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 0
@@ -436,6 +488,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -449,8 +503,10 @@ MonoBehaviour:
   ignoreNodeGraph: 1
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
@@ -470,10 +526,17 @@ MonoBehaviour:
   customName: Chase
   skillSlot: -1
   requiredSkill: {fileID: 0}
+  forbiddenSkill: {fileID: 0}
+  additionalForbiddenSkills: []
   requireSkillReady: 0
+  selectionRequiresSkillFullyStocked: 0
+  minTimeSinceSkillSlotLastActivated: -Infinity
+  maxTimeSinceSkillSlotLastActivated: Infinity
   requireEquipmentReady: 0
   minUserHealthFraction: -Infinity
   maxUserHealthFraction: Infinity
+  minUserTimeSinceDamaged: -Infinity
+  maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
   minDistance: 100
@@ -482,6 +545,8 @@ MonoBehaviour:
   selectionRequiresOnGround: 0
   selectionRequiresTargetNonFlier: 0
   selectionRequiresAimTarget: 0
+  selectionRequiresAimConfirmationByEnemy: 0
+  selectionRequiresAimConfirmationByLeader: 0
   maxTimesSelected: -1
   moveTargetType: 0
   activationRequiresTargetLoS: 0
@@ -495,9 +560,27 @@ MonoBehaviour:
   ignoreNodeGraph: 0
   shouldSprint: 0
   shouldFireEquipment: 0
+  shouldJump: 0
   shouldTapButton: 0
   buttonPressType: 0
+  buttonEnsureReleasedForOneSample: 0
   driverUpdateTimerOverride: -1
   resetCurrentEnemyOnNextDriverSelection: 0
   noRepeat: 0
   nextHighPriorityOverride: {fileID: 0}
+--- !u!114 &1486194903270019609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796795507270346501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6ec24b529baa44bac0c24b0b4a39f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentToDrop: {fileID: 11400000, guid: d79b80f362e64624ea8300389dfa4bfc, type: 2}
+  checkForItem: 0
+  itemToCheck: {fileID: 0}
+  dropChatToken: 

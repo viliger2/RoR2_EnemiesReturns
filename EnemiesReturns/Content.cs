@@ -4,6 +4,9 @@ using static R2API.DamageAPI;
 
 namespace EnemiesReturns
 {
+    /// <summary>
+    /// This class should have references to every relevant game and scriptable object of the mod. If part of the content is disabled, then the relevant fields will be null, so remember to either null check or check for config options.
+    /// </summary>
     public static class Content
     {
         // TODO: move every body, master and interactable here
@@ -31,6 +34,8 @@ namespace EnemiesReturns
             public static MusicTrackDef Precipitation;
 
             public static MusicTrackDef DoubleFngRainbowReturns;
+
+            public static MusicTrackDef None;
         }
 
         public static class GameEndings
@@ -169,6 +174,12 @@ namespace EnemiesReturns
         public static class BodyPrefabs
         {
             public static GameObject TempleGuardBody;
+
+            public static GameObject ProvidenceP1Body;
+
+            public static GameObject ProvidenceP2Body;
+
+            public static GameObject ProvidenceP3Body;
         }
 
         public static class MasterPrefabs

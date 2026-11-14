@@ -58,10 +58,6 @@
 	  </None>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Behaviors\ContactLight\Providence\" />
-	</ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 	  <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;" />
 	</Target>

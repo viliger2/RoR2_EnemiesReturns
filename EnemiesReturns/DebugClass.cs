@@ -1,11 +1,14 @@
 ﻿using EnemiesReturns.Quests;
 using RoR2;
 using RoR2.Quests;
+using RoR2.Stats;
+using RoR2.UI.LogBook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 
@@ -19,7 +22,64 @@ namespace EnemiesReturns
             //On.RoR2.Quests.QuestRunner.OnDeserialize += QuestRunner_OnDeserialize;
             //On.RoR2.Quests.QuestRunner.OnSerialize += QuestRunner_OnSerialize;
             //On.RoR2.RoR2Application.OnLoad += RoR2Application_OnLoad;
-            FunTimeWithWhatevers();
+            //FunTimeWithWhatevers();
+            //On.EntityStates.StunState.PlayStunAnimation += StunState_PlayStunAnimation;
+            //On.RoR2.UI.LogBook.LogBookController.GetMonsterStatus += LogBookController_GetMonsterStatus;
+        }
+
+        private static RoR2.UI.LogBook.EntryStatus LogBookController_GetMonsterStatus(On.RoR2.UI.LogBook.LogBookController.orig_GetMonsterStatus orig, ref RoR2.UI.LogBook.Entry entry, UserProfile viewerProfile)
+        {
+            CharacterBody characterBody = (CharacterBody)entry.extraData;
+            UnlockableDef unlockableDef = characterBody.GetComponent<DeathRewards>()?.logUnlockableDef;
+            if (!unlockableDef)
+            {
+                return EntryStatus.None;
+            }
+            if (viewerProfile.HasUnlockable(unlockableDef))
+            {
+                return EntryStatus.Available;
+            }
+            if (viewerProfile.statSheet.GetStatValueULong(PerBodyStatDef.killsAgainst, characterBody.gameObject.name) != 0)
+            {
+                return EntryStatus.Unencountered;
+            }
+            return EntryStatus.Locked;
+        }
+
+        private static void StunState_PlayStunAnimation(On.EntityStates.StunState.orig_PlayStunAnimation orig, EntityStates.StunState self)
+        {
+            Animator modelAnimator = self.GetModelAnimator();
+            if ((bool)modelAnimator)
+            {
+                int layerIndex = modelAnimator.GetLayerIndex("Body");
+                modelAnimator.CrossFadeInFixedTime((UnityEngine.Random.Range(0, 2) == 0) ? "Hurt1" : "Hurt2", 0.1f);
+                modelAnimator.Update(0f);
+                AnimatorStateInfo nextAnimatorStateInfo = modelAnimator.GetNextAnimatorStateInfo(layerIndex);
+                self.duration = Mathf.Max(self.duration, Mathf.Max(self.stunDuration, nextAnimatorStateInfo.length));
+                if (self.stunDuration >= 0f)
+                {
+                    if ((bool)self.stunVfxInstance)
+                    {
+                        self.ReleaseStunVFX();
+                    }
+                    if (!EffectManager.ShouldUsePooledEffect(EntityStates.StunState.stunVfxPrefab))
+                    {
+                        self.stunVfxInstance = UnityEngine.Object.Instantiate(EntityStates.StunState.stunVfxPrefab, self.transform);
+                    }
+                    else
+                    {
+                        self._efhStunEffect = EffectManager.GetAndActivatePooledEffect(EntityStates.StunState.stunVfxPrefab, self.transform);
+                        self.stunVfxInstance = self._efhStunEffect.gameObject;
+                    }
+                    ScaleParticleSystemDuration component = self.stunVfxInstance.GetComponent<ScaleParticleSystemDuration>();
+                    component.newDuration = self.duration;
+                    component.UpdateDuration();
+                }
+            }
+            else
+            {
+                self.duration = self.stunDuration;
+            }
         }
 
         private static bool QuestRunner_OnSerialize(On.RoR2.Quests.QuestRunner.orig_OnSerialize orig, QuestRunner self, UnityEngine.Networking.NetworkWriter writer, bool initialState)

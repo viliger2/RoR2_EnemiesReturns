@@ -58,6 +58,7 @@ namespace EnemiesReturns.Enemies.Judgement.Arraign
             {
                 return;
             }
+
             if (!targetStateMachine)
             {
                 return;

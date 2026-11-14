@@ -126,8 +126,8 @@ namespace EnemiesReturns.Enemies.ContactLight
             #endregion
 
             #region Phase1
-            var phase1Prefab = assets.First(assets => assets.name == "ProvidenceP1Body");
-            var phase1Body = phase1Prefab.GetComponent<CharacterBody>();
+            Content.BodyPrefabs.ProvidenceP1Body = assets.First(assets => assets.name == "ProvidenceP1Body");
+            var phase1Body = Content.BodyPrefabs.ProvidenceP1Body.GetComponent<CharacterBody>();
             phase1Body.baseMaxHealth = ProvidencePhase1.BaseMaxHealth.Value;
             phase1Body.baseMoveSpeed = ProvidencePhase1.BaseMoveSpeed.Value;
             phase1Body.baseDamage = ProvidencePhase1.BaseDamage.Value;
@@ -141,8 +141,8 @@ namespace EnemiesReturns.Enemies.ContactLight
             var proviDashPrefab = assets.First(assets => assets.name == "ProvidenceSecondaryCloneProjectile");
             proviDashPrefab.GetComponent<ProjectileCharacterController>().velocity = ProvidencePhase2.P2SecondaryCloneSpeed.Value;
 
-            var phase2Prefab = assets.First(assets => assets.name == "ProvidenceP2Body");
-            var phase2Body = phase1Prefab.GetComponent<CharacterBody>();
+            Content.BodyPrefabs.ProvidenceP2Body = assets.First(assets => assets.name == "ProvidenceP2Body");
+            var phase2Body = Content.BodyPrefabs.ProvidenceP2Body.GetComponent<CharacterBody>();
             phase2Body.baseMaxHealth = ProvidencePhase2.BaseMaxHealth.Value;
             phase2Body.baseMoveSpeed = ProvidencePhase2.BaseMoveSpeed.Value;
             phase2Body.baseDamage = ProvidencePhase2.BaseDamage.Value;
@@ -158,8 +158,8 @@ namespace EnemiesReturns.Enemies.ContactLight
             laserPrefab.GetComponent<ProjectileSimple>().lifetime = ProvidencePhase3.P3LaserLifetime.Value;
             laserPrefab.GetComponent<RotateAroundAxis>().slowRotationSpeed = ProvidencePhase3.P3LaserRotationSpeed.Value;
 
-            var phase3Prefab = assets.First(assets => assets.name == "ProvidenceP3Body");
-            var phase3Body = phase1Prefab.GetComponent<CharacterBody>();
+            Content.BodyPrefabs.ProvidenceP3Body = assets.First(assets => assets.name == "ProvidenceP3Body");
+            var phase3Body = Content.BodyPrefabs.ProvidenceP3Body.GetComponent<CharacterBody>();
             phase3Body.baseMaxHealth = ProvidencePhase3.BaseMaxHealth.Value;
             phase3Body.baseMoveSpeed = ProvidencePhase3.BaseMoveSpeed.Value;
             phase3Body.baseDamage = ProvidencePhase3.BaseDamage.Value;

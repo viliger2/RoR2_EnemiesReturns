@@ -578,6 +578,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
             var dropEquipment = mithrixHurtBody.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.LunarFlower;
+            dropEquipment.checkForItem = true;
             dropEquipment.equipmentToDrop = Content.Equipment.MithrixHammer;
             dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_HAMMER_DROP";
         }
@@ -588,6 +589,7 @@ namespace EnemiesReturns.Enemies.Judgement
 
             var dropEquipment = voidling3Master.AddComponent<DropEquipment>();
             dropEquipment.itemToCheck = Content.Items.VoidFlower;
+            dropEquipment.checkForItem = true;
             dropEquipment.equipmentToDrop = Content.Equipment.VoidlingWeapon;
             dropEquipment.dropChatToken = "ENEMIES_RETURNS_JUDGEMENT_VOIDLING_DROP";
         }

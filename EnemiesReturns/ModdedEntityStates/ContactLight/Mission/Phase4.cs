@@ -15,13 +15,25 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
 
         public static float bossSpawnDelay = 10f;
 
+        public static float healthBarDelay = 16f;
+
         public static MusicTrackDef musicTrack => Content.MusicTracks.DoubleFngRainbowReturns;
 
+        public static MusicTrackDef musicTrackNone => Content.MusicTracks.None;
+
         private ScriptedCombatEncounter combatEncounter;
+
+        private BossGroup bossGroup;
 
         private GameObject phaseControllerObject;
 
         private bool hasSpawned;
+
+        private GameObject musicTrackOverrideNone;
+
+        private ChildLocator phaseChildLocator;
+
+        private bool healthBarDisplayed;
 
         public override void OnEnter()
         {
@@ -34,18 +46,21 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 if (phaseControllerObject)
                 {
                     phaseControllerObject.SetActive(true);
-                    var phaseChildLocator = phaseControllerObject.GetComponent<ChildLocator>();
+                    phaseChildLocator = phaseControllerObject.GetComponent<ChildLocator>();
 
                     var combatEncounterTransform = phaseChildLocator.FindChild("CombatEncounter");
                     if (combatEncounterTransform)
                     {
                         combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                        bossGroup = combatEncounterTransform.gameObject.GetComponent<BossGroup>();
                     }
 
-                    var musicTrackOverride = phaseChildLocator.FindChild("MusicTrackOverride");
+                    var musicTrackOverride = phaseChildLocator.FindChild("MusicTrackOverrideNone");
                     if (musicTrackOverride && musicTrackOverride.TryGetComponent<MusicTrackOverride>(out var musicComponent))
                     {
-                        musicComponent.track = musicTrack;
+                        musicTrackOverrideNone = musicTrackOverride.gameObject;
+
+                        musicComponent.track = musicTrackNone;
                         musicTrackOverride.gameObject.SetActive(true);
                     }
                 }
@@ -61,6 +76,25 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             {
                 hasSpawned = true;
                 BeginEncounter();
+                if (musicTrackOverrideNone)
+                {
+                    musicTrackOverrideNone.SetActive(false);
+                }
+                var musicTrackOverride = phaseChildLocator.FindChild("MusicTrackOverride");
+                if (musicTrackOverride && musicTrackOverride.TryGetComponent<MusicTrackOverride>(out var musicComponent))
+                {
+                    musicComponent.track = musicTrack;
+                    musicTrackOverride.gameObject.SetActive(true);
+                }
+            }
+
+            if(!healthBarDisplayed && fixedAge > healthBarDelay)
+            {
+                if (bossGroup)
+                {
+                    bossGroup.shouldDisplayHealthBarOnHud = true;
+                }
+                healthBarDisplayed = true;
             }
 
             if (NetworkServer.active && fixedAge > bossSpawnDelay + 10f && combatEncounter && combatEncounter.combatSquad.memberCount == 0)
@@ -94,5 +128,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 RoR2.Corpse.DestroyCorpse(RoR2.Corpse.instancesList[num3]);
             }
         }
+
     }
 }

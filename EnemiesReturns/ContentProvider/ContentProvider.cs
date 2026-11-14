@@ -108,6 +108,8 @@ namespace EnemiesReturns
             Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationshipType = Addressables.LoadAssetAsync<ItemRelationshipType>("RoR2/DLC1/Common/ContagiousItem.asset").WaitForCompletion();
             Content.ItemRelationshipProviders.ModdedContagiousItemProvider.relationships = Array.Empty<ItemDef.Pair>();
 
+            Content.MusicTracks.None = Addressables.LoadAssetAsync<MusicTrackDef>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common_MusicTrackDefs.muNone_asset).WaitForCompletion();
+
             Stopwatch segmentStopWatch = new Stopwatch();
             segmentStopWatch.Start();
             string soundbanksFolderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(typeof(ContentProvider).Assembly.Location), SoundbankFolder);

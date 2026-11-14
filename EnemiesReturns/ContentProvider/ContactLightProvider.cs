@@ -201,6 +201,7 @@ namespace EnemiesReturns
                 {
                     bdList.AddRange(assets);
                     Content.Buffs.ProvidenceImmuneToDamage = assets.First(buff => buff.name == "ProvidenceImmuneToDamage");
+                    Content.Buffs.ProvidenceImmuneToDamage.iconSprite = Addressables.LoadAssetAsync<Sprite>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Common.texBuffGenericShield_tif).WaitForCompletion();
                     Content.Buffs.AdrenalineCoreProtection = assets.First(buff => buff.name == "bdAdrenalineCoreProtection");
                     Content.Buffs.TempleGuardOverclock = assets.First(buff => buff.name == "bdTempleGuardOverclock");
                     Content.Buffs.AdrenalineCoreLevels = assets.First(buff => buff.name == "bdAdrenalineCoreLevels");
