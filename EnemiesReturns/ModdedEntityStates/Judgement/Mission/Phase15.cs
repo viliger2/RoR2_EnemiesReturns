@@ -22,16 +22,12 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private GameObject phaseControllerObject;
 
-        private Xoroshiro128Plus rng;
-
         private Inventory inventory;
 
         private List<ScriptedCombatEncounter> combatEncounters = new List<ScriptedCombatEncounter>();
 
         public override void OnEnter()
         {
-            rng = new Xoroshiro128Plus(Run.instance.spawnRng.nextUlong);
-
             Utils.KillAllMonsters();
             base.OnEnter();
             inventory = GetComponent<Inventory>();
@@ -41,23 +37,21 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                 phaseControllerObject = childLocator.FindChild(phaseControllerChildString).gameObject;
                 if (phaseControllerObject)
                 {
-                    var phaseObjects = phaseControllerObject.transform.Find("PhaseObjects");
-
-                    this.childLocator = phaseObjects.GetComponent<ChildLocator>();
-
-                    GenerateSpawns();
-
-                    phaseObjects.gameObject.SetActive(true);
-
-                    foreach(var encounter in combatEncounters)
-                    {
-                        encounter.BeginEncounter();
-                    }
+                    this.childLocator = phaseControllerObject.GetComponent<ChildLocator>();
 
                     var phaseCounter = this.childLocator.FindChild("PhaseCounter");
-                    if(phaseCounter && phaseCounter.TryGetComponent<PhaseCounter>(out var counter))
+                    if (phaseCounter && phaseCounter.TryGetComponent<PhaseCounter>(out var counter))
                     {
                         counter.phase = 3;
+                    }
+
+                    if (NetworkServer.active)
+                    {
+                        GenerateSpawns();
+                        foreach (var encounter in combatEncounters)
+                        {
+                            encounter.BeginEncounter();
+                        }
                     }
                 }
             }
@@ -116,6 +110,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         private void GenerateSpawns()
         {
+            var rng = new Xoroshiro128Plus(Run.instance.spawnRng.nextUlong);
+
             List<CharacterSpawnCard> list = new List<CharacterSpawnCard>();
             list.Add(Addressables.LoadAssetAsync<CharacterSpawnCard>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Brother.cscBrother_asset).WaitForCompletion());
             if (Run.instance.IsExpansionEnabled(DLC2Content.DLC2))

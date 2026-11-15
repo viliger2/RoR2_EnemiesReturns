@@ -23693,7 +23693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &217653782
 Transform:
   m_ObjectHideFlags: 0
@@ -29429,7 +29429,7 @@ MonoBehaviour:
   bossDropChance: 0.15
   dropPosition: {fileID: 0}
   dropTable: {fileID: 0}
-  scaleRewardsByPlayerCount: 1
+  scaleRewardsByPlayerCount: 0
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
@@ -50652,14 +50652,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432473702}
-  - component: {fileID: 432473703}
   m_Layer: 0
   m_Name: PhaseObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &432473702
 Transform:
   m_ObjectHideFlags: 0
@@ -50678,25 +50677,6 @@ Transform:
   m_Father: {fileID: 1606147083}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &432473703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432473701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformPairs:
-  - name: Boss1
-    transform: {fileID: 760537758}
-  - name: Boss2
-    transform: {fileID: 270452647}
-  - name: PhaseCounter
-    transform: {fileID: 1534308436}
 --- !u!1 &432744090
 GameObject:
   m_ObjectHideFlags: 0
@@ -88910,7 +88890,7 @@ MonoBehaviour:
   bossDropChance: 0.15
   dropPosition: {fileID: 0}
   dropTable: {fileID: 0}
-  scaleRewardsByPlayerCount: 1
+  scaleRewardsByPlayerCount: 0
   shouldDisplayHealthBarOnHud: 1
   thresholdController: {fileID: 0}
   shouldCreateObjectiveEntry: 1
@@ -196155,6 +196135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1606147083}
+  - component: {fileID: 1606147084}
   m_Layer: 0
   m_Name: Phase1.5
   m_TagString: Untagged
@@ -196178,6 +196159,25 @@ Transform:
   m_Father: {fileID: 895504749}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1606147084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606147082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPairs:
+  - name: Boss1
+    transform: {fileID: 760537758}
+  - name: Boss2
+    transform: {fileID: 270452647}
+  - name: PhaseCounter
+    transform: {fileID: 1534308436}
 --- !u!1 &1607498438
 GameObject:
   m_ObjectHideFlags: 0
