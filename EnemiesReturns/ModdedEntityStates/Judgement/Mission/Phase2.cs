@@ -22,6 +22,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
 
         public static float hauntSpawnDelay = 20f;
 
+        public static int requiredKarma = 7;
+
         public static GameObject speechControllerPrefab;
 
         public static CharacterSpawnCard cscArraignHauntP1;
@@ -39,6 +41,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
         private bool hasHauntSpawned;
 
         private CombatSquad combatSquad;
+
+        private bool shouldSummonHaunt;
 
         private Run.FixedTimeStamp healthBarShowTime = Run.FixedTimeStamp.positiveInfinity;
 
@@ -76,6 +80,8 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
                 }
             }
+            shouldSummonHaunt = Utils.ArraignKarmaCheck(requiredKarma);
+
             healthBarShowTime = Run.FixedTimeStamp.now + healthBarDelay;
         }
 
@@ -97,7 +103,7 @@ namespace EnemiesReturns.ModdedEntityStates.Judgement.Mission
                     BeginEncounter();
                 }
             }
-            if (fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
+            if (shouldSummonHaunt && fixedAge > hauntSpawnDelay && NetworkServer.active && !hasHauntSpawned)
             {
                 if (SummonHaunt())
                 {
