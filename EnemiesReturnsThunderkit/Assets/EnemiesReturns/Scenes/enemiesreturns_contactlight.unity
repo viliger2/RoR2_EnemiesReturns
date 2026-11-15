@@ -3941,6 +3941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &19061180 stripped
@@ -13445,6 +13449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &85560115 stripped
@@ -14581,12 +14589,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 19.631866, y: 70.86365, z: 624.3712}
-  - {x: 16.300346, y: 60.40412, z: 625.8398}
-  - {x: 12.931872, y: 53.431103, z: 627.2279}
-  - {x: 9.5264435, y: 49.9446, z: 628.53577}
-  - {x: 6.0840597, y: 49.944595, z: 629.76324}
-  - {x: 2.6047215, y: 53.431107, z: 630.9104}
-  - {x: -0.9115709, y: 60.404125, z: 631.97723}
+  - {x: 16.417767, y: 60.370464, z: 625.64465}
+  - {x: 13.127572, y: 53.375008, z: 626.90283}
+  - {x: 9.761284, y: 49.87728, z: 628.1456}
+  - {x: 6.3189, y: 49.877277, z: 629.37317}
+  - {x: 2.8004222, y: 53.375008, z: 630.5853}
+  - {x: -0.7941506, y: 60.370464, z: 631.7822}
   - {x: -4.464818, y: 70.86365, z: 632.9637}
   m_Parameters:
     serializedVersion: 3
@@ -20264,6 +20272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -21521,6 +21533,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -26111,6 +26127,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -30904,12 +30924,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 10.871865, y: 70.86365, z: 622.5412}
-  - {x: 17.639957, y: 60.343624, z: 631.8869}
-  - {x: 24.371067, y: 53.33027, z: 641.1555}
-  - {x: 31.065191, y: 49.823597, z: 650.3469}
-  - {x: 37.722336, y: 49.823597, z: 659.4612}
-  - {x: 44.342495, y: 53.330273, z: 668.49835}
-  - {x: 50.92567, y: 60.34362, z: 677.4583}
+  - {x: 17.755264, y: 60.492924, z: 631.5451}
+  - {x: 24.563244, y: 53.579105, z: 640.5859}
+  - {x: 31.295803, y: 50.1222, z: 649.6634}
+  - {x: 37.95295, y: 50.122196, z: 658.77765}
+  - {x: 44.53467, y: 53.579105, z: 667.9287}
+  - {x: 51.040974, y: 60.492924, z: 677.1165}
   - {x: 57.471863, y: 70.86365, z: 686.3412}
   m_Parameters:
     serializedVersion: 3
@@ -31061,12 +31081,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 16.961246, y: 54.94144, z: 490.82764}
-  - {x: 17.005596, y: 47.92711, z: 489.24524}
-  - {x: 17.014914, y: 41.720657, z: 487.58405}
-  - {x: 16.989199, y: 36.322086, z: 485.84406}
-  - {x: 16.928453, y: 31.731394, z: 484.02524}
-  - {x: 16.832676, y: 27.94858, z: 482.12766}
+  - {x: 17.08375, y: 54.954544, z: 490.52176}
+  - {x: 17.20977, y: 47.948948, z: 488.73544}
+  - {x: 17.259922, y: 41.74687, z: 486.97232}
+  - {x: 17.234207, y: 36.348293, z: 485.23233}
+  - {x: 17.132627, y: 31.753233, z: 483.51547}
+  - {x: 16.95518, y: 27.961685, z: 481.82175}
   - {x: 16.701866, y: 24.973646, z: 480.1512}
   m_Parameters:
     serializedVersion: 3
@@ -31867,6 +31887,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -36921,14 +36945,14 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 45.43186, y: 70.86365, z: 677.4712}
-  - {x: 46.505768, y: 58.05854, z: 676.3977}
-  - {x: 47.558872, y: 48.45472, z: 675.27826}
-  - {x: 48.591183, y: 42.052166, z: 674.1127}
-  - {x: 49.60269, y: 38.850887, z: 672.9011}
-  - {x: 50.59341, y: 38.85089, z: 671.6435}
-  - {x: 51.56333, y: 42.052166, z: 670.33984}
-  - {x: 52.512455, y: 48.454716, z: 668.9902}
-  - {x: 53.44078, y: 58.058544, z: 667.5945}
+  - {x: 46.60842, y: 58.03835, z: 676.07263}
+  - {x: 47.738518, y: 48.419376, z: 674.70935}
+  - {x: 48.822155, y: 42.00673, z: 673.3812}
+  - {x: 49.85933, y: 38.8004, z: 672.0884}
+  - {x: 50.850048, y: 38.800404, z: 670.8308}
+  - {x: 51.794304, y: 42.00673, z: 669.60846}
+  - {x: 52.6921, y: 48.419376, z: 668.42126}
+  - {x: 53.543434, y: 58.03835, z: 667.2695}
   - {x: 54.348312, y: 70.86365, z: 666.1528}
   m_Parameters:
     serializedVersion: 3
@@ -38933,12 +38957,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.265106, y: 57.03045, z: 416.5734}
-  - {x: 32.289165, y: 51.474983, z: 419.13528}
-  - {x: 26.274055, y: 46.75725, z: 421.61694}
-  - {x: 20.219769, y: 42.87725, z: 424.0184}
-  - {x: 14.126309, y: 39.834984, z: 426.3396}
-  - {x: 7.993673, y: 37.63045, z: 428.5805}
+  - {x: 38.37577, y: 57.045673, z: 416.15622}
+  - {x: 32.47361, y: 51.500362, z: 418.44}
+  - {x: 26.495388, y: 46.78771, z: 420.78262}
+  - {x: 20.441101, y: 42.907707, z: 423.18405}
+  - {x: 14.310751, y: 39.860363, z: 425.6443}
+  - {x: 8.104339, y: 37.64568, z: 428.16333}
   - {x: 1.8218632, y: 36.26365, z: 430.7412}
   m_Parameters:
     serializedVersion: 3
@@ -41661,6 +41685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &275107233 stripped
@@ -42510,6 +42538,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -43369,6 +43401,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -46105,7 +46141,7 @@ MonoBehaviour:
   maxSquadCount: 2
   spawnEffectPrefab: {fileID: 0}
   ignoreTeamSizeLimit: 0
-  _monsterCards: {fileID: 11400000, guid: 47f7735ae4e3baa46a1a492840a96f4e, type: 2}
+  _monsterCards: {fileID: 11400000, guid: 2fad29a4e01aaf748b62f8045563390f, type: 2}
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
@@ -47875,6 +47911,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -50282,6 +50322,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -56719,6 +56763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &376959599 stripped
@@ -57338,6 +57386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &384379370 stripped
@@ -57902,7 +57954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &389658715
 Transform:
   m_ObjectHideFlags: 0
@@ -61351,6 +61403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &412610355 stripped
@@ -61594,12 +61650,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 14.878698, y: 56.712826, z: 490.98358}
-  - {x: 12.838966, y: 51.46799, z: 489.55472}
-  - {x: 10.762672, y: 47.029144, z: 488.04456}
-  - {x: 8.649814, y: 43.396286, z: 486.4531}
-  - {x: 6.500394, y: 40.569416, z: 484.7804}
-  - {x: 4.314411, y: 38.54854, z: 483.02643}
+  - {x: 15.002352, y: 56.725807, z: 490.66223}
+  - {x: 13.045056, y: 51.48962, z: 489.0191}
+  - {x: 11.009979, y: 47.055103, z: 487.40182}
+  - {x: 8.897122, y: 43.422245, z: 485.8104}
+  - {x: 6.706485, y: 40.59105, z: 484.2448}
+  - {x: 4.4380655, y: 38.56152, z: 482.70508}
   - {x: 2.0918655, y: 37.33365, z: 481.1912}
   m_Parameters:
     serializedVersion: 3
@@ -70534,12 +70590,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 42.96, y: -28.349974, z: -85.69997}
-  - {x: 42.80512, y: -32.211548, z: -86.02939}
-  - {x: 42.60996, y: -35.17355, z: -86.43901}
-  - {x: 42.37452, y: -37.235977, z: -86.92882}
-  - {x: 42.09881, y: -38.398834, z: -87.49882}
-  - {x: 41.782818, y: -38.662117, z: -88.14901}
-  - {x: 41.426548, y: -38.025833, z: -88.879395}
+  - {x: 42.911808, y: -32.24493, z: -86.36538}
+  - {x: 42.787777, y: -35.22919, z: -86.998985}
+  - {x: 42.587906, y: -37.30275, z: -87.60079}
+  - {x: 42.31219, y: -38.465607, z: -88.17079}
+  - {x: 41.960636, y: -38.717762, z: -88.70899}
+  - {x: 41.533237, y: -38.05922, z: -89.215385}
   - {x: 41.03, y: -36.489975, z: -89.68997}
   m_Parameters:
     serializedVersion: 3
@@ -72540,6 +72596,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -81045,6 +81105,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -89571,6 +89635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -94487,7 +94555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &637495327
 Transform:
   m_ObjectHideFlags: 0
@@ -94619,12 +94687,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 57.031868, y: 70.86365, z: 662.27124}
-  - {x: 56.37431, y: 60.626736, z: 666.07465}
-  - {x: 55.679993, y: 53.802128, z: 669.8013}
-  - {x: 54.948902, y: 50.389824, z: 673.4512}
-  - {x: 54.18105, y: 50.389828, z: 677.02423}
-  - {x: 53.376427, y: 53.802128, z: 680.5206}
-  - {x: 52.535038, y: 60.62674, z: 683.9402}
+  - {x: 56.491875, y: 60.32641, z: 665.71216}
+  - {x: 55.87593, y: 53.30159, z: 669.1971}
+  - {x: 55.18403, y: 49.78918, z: 672.72614}
+  - {x: 54.416176, y: 49.789177, z: 676.29926}
+  - {x: 53.572365, y: 53.30159, z: 679.91644}
+  - {x: 52.652603, y: 60.326412, z: 683.5777}
   - {x: 51.656883, y: 70.86365, z: 687.283}
   m_Parameters:
     serializedVersion: 3
@@ -112691,6 +112759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &763753418 stripped
@@ -115405,12 +115477,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.252907, y: 57.225887, z: 412.3113}
-  - {x: 32.268837, y: 51.854527, z: 410.60992}
-  - {x: 26.249662, y: 47.30956, z: 408.8271}
-  - {x: 20.195375, y: 43.59099, z: 406.96283}
-  - {x: 14.10598, y: 40.698814, z: 405.0171}
-  - {x: 7.981476, y: 38.633034, z: 402.98987}
+  - {x: 38.37949, y: 57.164116, z: 411.9505}
+  - {x: 32.479805, y: 51.75157, z: 410.00858}
+  - {x: 26.502823, y: 47.186016, z: 408.1055}
+  - {x: 20.448536, y: 43.46744, z: 406.2412}
+  - {x: 14.316947, y: 40.59586, z: 404.4157}
+  - {x: 8.108056, y: 38.57126, z: 402.6291}
   - {x: 1.8218632, y: 37.393646, z: 400.88123}
   m_Parameters:
     serializedVersion: 3
@@ -117764,12 +117836,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 39.120003, y: -28.349974, z: -85.69997}
-  - {x: 39.54235, y: -32.189583, z: -86.010765}
-  - {x: 39.924393, y: -35.12651, z: -86.40277}
-  - {x: 40.26613, y: -37.16076, z: -86.875984}
-  - {x: 40.56756, y: -38.292328, z: -87.43041}
-  - {x: 40.82868, y: -38.521217, z: -88.066055}
-  - {x: 41.049496, y: -37.847435, z: -88.78291}
+  - {x: 39.65109, y: -32.18702, z: -86.26806}
+  - {x: 40.10562, y: -35.122242, z: -86.8316}
+  - {x: 40.4836, y: -37.15564, z: -87.39058}
+  - {x: 40.785027, y: -38.28721, z: -87.94501}
+  - {x: 41.009907, y: -38.516953, z: -88.49488}
+  - {x: 41.15823, y: -37.84487, z: -89.04021}
   - {x: 41.230003, y: -36.270966, z: -89.58098}
   m_Parameters:
     serializedVersion: 3
@@ -119242,6 +119314,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -121203,12 +121279,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.26841, y: 58.778435, z: 418.2616}
-  - {x: 32.294678, y: 54.96544, z: 422.5104}
-  - {x: 26.280668, y: 51.984653, z: 426.6777}
-  - {x: 20.226381, y: 49.836082, z: 430.7634}
-  - {x: 14.131819, y: 48.519722, z: 434.76755}
-  - {x: 7.9969797, y: 48.03558, z: 438.69016}
+  - {x: 38.374672, y: 58.77685, z: 418.02084}
+  - {x: 32.471783, y: 54.9628, z: 422.10916}
+  - {x: 26.493196, y: 51.981487, z: 426.19617}
+  - {x: 20.43891, y: 49.832916, z: 430.2819}
+  - {x: 14.308926, y: 48.517082, z: 434.3663}
+  - {x: 8.103244, y: 48.033993, z: 438.4494}
   - {x: 1.8218632, y: 48.383644, z: 442.53122}
   m_Parameters:
     serializedVersion: 3
@@ -122493,6 +122569,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -125682,6 +125762,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -138661,6 +138745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -139325,7 +139413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &946423803
 Transform:
   m_ObjectHideFlags: 0
@@ -145468,12 +145556,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.721863, y: 25.953648, z: 467.4912}
-  - {x: 33.81712, y: 22.355751, z: 468.50323}
-  - {x: 33.798717, y: 19.290487, z: 469.43362}
-  - {x: 33.66666, y: 16.757854, z: 470.2824}
-  - {x: 33.420948, y: 14.757855, z: 471.04953}
-  - {x: 33.061577, y: 13.290487, z: 471.73505}
-  - {x: 32.588547, y: 12.355752, z: 472.33893}
+  - {x: 33.929688, y: 22.360775, z: 468.24756}
+  - {x: 33.986332, y: 19.298859, z: 469.00748}
+  - {x: 33.8918, y: 16.767902, z: 469.77103}
+  - {x: 33.646084, y: 14.767902, z: 470.53815}
+  - {x: 33.24919, y: 13.29886, z: 471.3089}
+  - {x: 32.70112, y: 12.360775, z: 472.08325}
   - {x: 32.001865, y: 11.953648, z: 472.8612}
   m_Parameters:
     serializedVersion: 3
@@ -149038,7 +149126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1012686984
 Transform:
   m_ObjectHideFlags: 0
@@ -151854,6 +151942,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -162600,6 +162692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1107398177 stripped
@@ -162755,6 +162851,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -170620,6 +170720,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -178493,7 +178597,7 @@ GameObject:
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1186927336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178915,12 +179019,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 35.896236, y: 59.20899, z: 421.55527}
-  - {x: 30.233912, y: 55.832546, z: 421.04843}
-  - {x: 24.534893, y: 53.29433, z: 420.46075}
-  - {x: 18.799177, y: 51.594326, z: 419.79214}
-  - {x: 13.026767, y: 50.732548, z: 419.04272}
-  - {x: 7.2176623, y: 50.708984, z: 418.2124}
+  - {x: 36.01116, y: 59.23651, z: 421.2334}
+  - {x: 30.425455, y: 55.878418, z: 420.51202}
+  - {x: 24.764744, y: 53.349377, z: 419.81702}
+  - {x: 19.02903, y: 51.649372, z: 419.14847}
+  - {x: 13.21831, y: 50.77842, z: 418.5063}
+  - {x: 7.3325887, y: 50.736507, z: 417.89056}
   - {x: 1.3718624, y: 51.523643, z: 417.3012}
   m_Parameters:
     serializedVersion: 3
@@ -182391,6 +182495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -184195,7 +184303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1222373451
 Transform:
   m_ObjectHideFlags: 0
@@ -190214,12 +190322,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 17.13168, y: 54.864815, z: 492.60767}
-  - {x: 17.344885, y: 47.774166, z: 492.8058}
-  - {x: 17.52149, y: 41.4917, z: 492.92557}
-  - {x: 17.66149, y: 36.017414, z: 492.96698}
-  - {x: 17.764887, y: 31.351309, z: 492.93008}
-  - {x: 17.831678, y: 27.49339, z: 492.81482}
+  - {x: 17.249613, y: 54.827164, z: 492.249}
+  - {x: 17.541445, y: 47.711414, z: 492.208}
+  - {x: 17.75736, y: 41.416393, z: 492.2082}
+  - {x: 17.897358, y: 35.94211, z: 492.24963}
+  - {x: 17.961443, y: 31.288553, z: 492.33228}
+  - {x: 17.949614, y: 27.455734, z: 492.45615}
   - {x: 17.861866, y: 24.443647, z: 492.62122}
   m_Parameters:
     serializedVersion: 3
@@ -193734,6 +193842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1277872373 stripped
@@ -194747,6 +194859,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -201223,6 +201339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1338486944 stripped
@@ -203303,12 +203423,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 15.6318655, y: 62.76365, z: 512.77124}
-  - {x: 18.79988, y: 56.04705, z: 514.17706}
-  - {x: 21.92903, y: 50.157413, z: 515.5157}
-  - {x: 25.01932, y: 45.094738, z: 516.7872}
-  - {x: 28.07075, y: 40.859024, z: 517.9914}
-  - {x: 31.083317, y: 37.45027, z: 519.12854}
-  - {x: 34.057022, y: 34.868477, z: 520.1984}
+  - {x: 18.915056, y: 56.076107, z: 514.0063}
+  - {x: 22.120995, y: 50.205845, z: 515.2312}
+  - {x: 25.249676, y: 45.15286, z: 516.4457}
+  - {x: 28.301107, y: 40.91714, z: 517.65}
+  - {x: 31.27528, y: 37.498703, z: 518.844}
+  - {x: 34.172203, y: 34.897537, z: 520.0278}
   - {x: 36.991867, y: 33.113647, z: 521.20123}
   m_Parameters:
     serializedVersion: 3
@@ -209583,6 +209703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1397888434 stripped
@@ -213066,6 +213190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1424673656 stripped
@@ -215187,6 +215315,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -220230,6 +220362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1482153038 stripped
@@ -220662,6 +220798,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -229490,12 +229630,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.671867, y: 25.953648, z: 467.4912}
-  - {x: 33.918724, y: 22.276325, z: 468.39502}
-  - {x: 34.05472, y: 19.12049, z: 469.21802}
-  - {x: 34.079865, y: 16.486145, z: 469.96024}
-  - {x: 33.99415, y: 14.373286, z: 470.62167}
-  - {x: 33.797577, y: 12.781919, z: 471.20233}
-  - {x: 33.49015, y: 11.712038, z: 471.70215}
+  - {x: 34.033745, y: 22.246267, z: 467.99048}
+  - {x: 34.24643, y: 19.070393, z: 468.5438}
+  - {x: 34.309914, y: 16.42603, z: 469.15115}
+  - {x: 34.2242, y: 14.313171, z: 469.8126}
+  - {x: 33.989285, y: 12.731822, z: 470.52808}
+  - {x: 33.605175, y: 11.681981, z: 471.2976}
   - {x: 33.071865, y: 11.163648, z: 472.12122}
   m_Parameters:
     serializedVersion: 3
@@ -229709,7 +229849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1559209415
 Transform:
   m_ObjectHideFlags: 0
@@ -232441,6 +232581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -233066,6 +233210,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -234217,6 +234365,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -238982,6 +239134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1629379708 stripped
@@ -242984,6 +243140,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -248717,6 +248877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -251225,6 +251389,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -254847,12 +255015,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 9.001865, y: 70.86365, z: 626.0312}
-  - {x: 4.872635, y: 59.41023, z: 635.2751}
-  - {x: 0.7036493, y: 51.44319, z: 644.4378}
-  - {x: -3.5050929, y: 46.962532, z: 653.51935}
-  - {x: -7.75359, y: 45.968246, z: 662.51965}
-  - {x: -12.041844, y: 48.46034, z: 671.4388}
-  - {x: -16.369852, y: 54.438805, z: 680.27673}
+  - {x: 4.98226, y: 59.40392, z: 635.062}
+  - {x: 0.8863579, y: 51.432674, z: 644.08264}
+  - {x: -3.2858417, y: 46.94991, z: 653.09314}
+  - {x: -7.5343404, y: 45.95562, z: 662.0935}
+  - {x: -11.859136, y: 48.449818, z: 671.0836}
+  - {x: -16.260227, y: 54.432495, z: 680.0636}
   - {x: -20.737617, y: 63.90365, z: 689.03345}
   m_Parameters:
     serializedVersion: 3
@@ -259868,6 +260036,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -266502,12 +266674,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.924267, y: 58.41186, z: 423.15732}
-  - {x: 48.290157, y: 54.22972, z: 424.2571}
-  - {x: 51.61953, y: 50.877224, z: 425.28058}
-  - {x: 54.912384, y: 48.354366, z: 426.2277}
-  - {x: 58.168728, y: 46.66115, z: 427.0985}
-  - {x: 61.38855, y: 45.797577, z: 427.89304}
+  - {x: 45.040813, y: 58.404762, z: 422.86087}
+  - {x: 48.484398, y: 54.21789, z: 423.76303}
+  - {x: 51.85262, y: 50.863026, z: 424.68768}
+  - {x: 55.14547, y: 48.340168, z: 425.63483}
+  - {x: 58.362965, y: 46.649323, z: 426.60446}
+  - {x: 61.505093, y: 45.79048, z: 427.5966}
   - {x: 64.57186, y: 45.76365, z: 428.6112}
   m_Parameters:
     serializedVersion: 3
@@ -267093,6 +267265,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -271216,7 +271392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1851576878
 Transform:
   m_ObjectHideFlags: 0
@@ -271253,6 +271429,8 @@ MonoBehaviour:
     transform: {fileID: 382461026}
   - name: MusicTrackOverrideNone
     transform: {fileID: 1867129796}
+  - name: FinalPP
+    transform: {fileID: 946423803}
 --- !u!1 &1851943885
 GameObject:
   m_ObjectHideFlags: 0
@@ -288077,6 +288255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &1971768926 stripped
@@ -294290,6 +294472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -299356,6 +299542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &2053939644 stripped
@@ -301726,6 +301916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FusionCell (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
 --- !u!4 &2072298458 stripped
@@ -302298,12 +302492,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.927418, y: 57.436398, z: 422.24252}
-  - {x: 48.295406, y: 52.27728, z: 422.42245}
-  - {x: 51.625828, y: 47.946293, z: 422.52097}
-  - {x: 54.918686, y: 44.443436, z: 422.53812}
-  - {x: 58.173977, y: 41.76871, z: 422.47388}
-  - {x: 61.3917, y: 39.922115, z: 422.32822}
+  - {x: 45.04913, y: 57.445415, z: 421.93954}
+  - {x: 48.498264, y: 52.292313, z: 421.91748}
+  - {x: 51.869255, y: 47.964333, z: 421.915}
+  - {x: 55.16211, y: 44.46147, z: 421.93216}
+  - {x: 58.37683, y: 41.78374, z: 421.9689}
+  - {x: 61.513412, y: 39.931133, z: 422.02524}
   - {x: 64.57186, y: 38.90365, z: 422.1012}
   m_Parameters:
     serializedVersion: 3
@@ -303376,6 +303570,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -305049,6 +305247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldenBarrel (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -305159,6 +305361,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -307831,6 +308037,10 @@ PrefabInstance:
     - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_Name
       value: GoldenBarrel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933728322982785588, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
       propertyPath: m_RootOrder
@@ -310567,12 +310777,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 54.031868, y: 70.86365, z: 657.9712}
-  - {x: 59.787075, y: 58.91137, z: 649.5029}
-  - {x: 65.50443, y: 50.449852, z: 640.9549}
-  - {x: 71.18395, y: 45.479095, z: 632.32715}
-  - {x: 76.82562, y: 43.99909, z: 623.6196}
-  - {x: 82.42945, y: 46.00985, z: 614.83234}
-  - {x: 87.99544, y: 51.51137, z: 605.9652}
+  - {x: 59.905144, y: 58.922554, z: 649.1356}
+  - {x: 65.70122, y: 50.4685, z: 640.3427}
+  - {x: 71.42009, y: 45.501465, z: 631.59247}
+  - {x: 77.06177, y: 44.02147, z: 622.8849}
+  - {x: 82.626236, y: 46.0285, z: 614.2201}
+  - {x: 88.11351, y: 51.522556, z: 605.5979}
   - {x: 93.523575, y: 60.503647, z: 597.01843}
   m_Parameters:
     serializedVersion: 3
@@ -310730,6 +310940,10 @@ PrefabInstance:
     - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
       propertyPath: m_Name
       value: FusionCell (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236160303804244872, guid: 71d418d42e244f74894581d435df4861, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d418d42e244f74894581d435df4861, type: 3}
@@ -313638,7 +313852,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2146577533}
+  - component: {fileID: 2146577541}
   - component: {fileID: 2146577539}
+  - component: {fileID: 2146577540}
   - component: {fileID: 2146577538}
   m_Layer: 15
   m_Name: MissionController
@@ -313704,6 +313920,53 @@ MonoBehaviour:
     _typeName: EnemiesReturns.ModdedEntityStates.ContactLight.Mission.Phase1, EnemiesReturns,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   debug: 0
+--- !u!114 &2146577540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146577532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1918207524, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachines:
+  - {fileID: 2146577539}
+--- !u!114 &2146577541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146577532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &2146594540
 GameObject:
   m_ObjectHideFlags: 0
@@ -385693,12 +385956,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 50.432877, y: 90.561165, z: 128.6759}
-  - {x: 50.653458, y: 90.03554, z: 129.67538}
-  - {x: 50.782776, y: 89.33678, z: 130.4532}
-  - {x: 50.82084, y: 88.4649, z: 131.0093}
-  - {x: 50.76764, y: 87.41988, z: 131.34369}
-  - {x: 50.623184, y: 86.20175, z: 131.45639}
-  - {x: 50.387474, y: 84.810486, z: 131.34741}
+  - {x: 50.768333, y: 89.764534, z: 129.48491}
+  - {x: 50.97424, y: 88.88511, z: 130.13571}
+  - {x: 51.050594, y: 87.9229, z: 130.62831}
+  - {x: 50.9974, y: 86.877884, z: 130.9627}
+  - {x: 50.81465, y: 85.750084, z: 131.13892}
+  - {x: 50.50235, y: 84.53949, z: 131.15692}
   - {x: 50.0605, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3
@@ -385798,12 +386061,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 4.1184254, y: 87.62415, z: 86.838135}
-  - {x: 4.354972, y: 87.340744, z: 87.78123}
-  - {x: 4.4993353, y: 86.8899, z: 88.493774}
-  - {x: 4.5515146, y: 86.27162, z: 88.97575}
-  - {x: 4.5115104, y: 85.4859, z: 89.22718}
-  - {x: 4.3793225, y: 84.53275, z: 89.248055}
-  - {x: 4.154951, y: 83.41217, z: 89.038376}
+  - {x: 4.4696093, y: 87.19648, z: 87.54866}
+  - {x: 4.6903973, y: 86.64945, z: 88.10616}
+  - {x: 4.780789, y: 85.983086, z: 88.51062}
+  - {x: 4.740785, y: 85.19737, z: 88.76205}
+  - {x: 4.5703845, y: 84.29231, z: 88.86044}
+  - {x: 4.2695885, y: 83.26791, z: 88.80582}
   - {x: 3.838396, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -530576,12 +530839,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 2.8084278, y: 87.62415, z: 86.838135}
-  - {x: 3.0496387, y: 87.36032, z: 87.79515}
-  - {x: 3.1971114, y: 86.92252, z: 88.516975}
-  - {x: 3.2508457, y: 86.310776, z: 89.0036}
-  - {x: 3.2108417, y: 85.525055, z: 89.25503}
-  - {x: 3.0770988, y: 84.565384, z: 89.27126}
-  - {x: 2.849618, y: 83.43175, z: 89.0523}
+  - {x: 3.160121, y: 86.98479, z: 87.59269}
+  - {x: 3.3812485, y: 86.29664, z: 88.179535}
+  - {x: 3.4718099, y: 85.55971, z: 88.59867}
+  - {x: 3.4318058, y: 84.773994, z: 88.850105}
+  - {x: 3.261236, y: 83.9395, z: 88.93383}
+  - {x: 2.9601, y: 83.05621, z: 88.84984}
   - {x: 2.5283985, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -530681,12 +530944,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 48.690567, y: 90.561165, z: 128.6759}
-  - {x: 48.898533, y: 90.03732, z: 129.67204}
-  - {x: 49.01945, y: 89.33977, z: 130.4476}
-  - {x: 49.053307, y: 88.468475, z: 131.0026}
-  - {x: 49.00011, y: 87.42347, z: 131.33699}
-  - {x: 48.85986, y: 86.204735, z: 131.45082}
-  - {x: 48.632553, y: 84.81228, z: 131.34406}
+  - {x: 49.030247, y: 89.873886, z: 129.48015}
+  - {x: 49.23897, y: 89.06737, z: 130.12778}
+  - {x: 49.31673, y: 88.1416, z: 130.6188}
+  - {x: 49.263535, y: 87.096596, z: 130.9532}
+  - {x: 49.07938, y: 85.93234, z: 131.131}
+  - {x: 48.764267, y: 84.64884, z: 131.15216}
   - {x: 48.31819, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3

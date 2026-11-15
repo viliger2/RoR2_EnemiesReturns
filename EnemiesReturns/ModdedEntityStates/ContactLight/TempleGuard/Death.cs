@@ -36,6 +36,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.TempleGuard
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!animator)
+            {
+                return;
+            }
             if(animator.GetFloat(LeftCannonExplosion) > 0.9f && !firstExplosion)
             {
                 var effectParams = new EffectData()

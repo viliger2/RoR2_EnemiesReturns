@@ -61,6 +61,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 1
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -157,6 +159,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 1
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -222,6 +226,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -287,6 +293,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -383,6 +391,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -479,6 +489,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -544,6 +556,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 1
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -658,6 +672,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -785,6 +801,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -1015,15 +1033,16 @@ MonoBehaviour:
   levelArmor: 0
   extraSecondaryFromSkill: 0
   extraSpecialFromSkill: 0
+  hasConsumedSprintDamageReadyBuffServer: 0
   increaseDamageOnMultiKillItemDisplayUpdater: {fileID: 0}
   allSkillsDisabled: 0
   isTeleporting: 0
   boostAllStatsDisplay: {fileID: 0}
-  currentGrowthNectarBuffCount: 0
-  maxGrowthNectarBuffCount: 0
   alwaysAim: 0
+  canAimWhileRunning: 0
   wasLucky: 0
   spreadBloomDecayTime: 3.5
+  spreadBloomDecayWithAttackSpeed: 0
   spreadBloomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1065,15 +1084,17 @@ MonoBehaviour:
   scanOverrideTransform: {fileID: 0}
   limitCooldown: 0
   minCooldownCoefficient: 0
-  hullClassification: 0
+  hullClassification: 1
   portraitIcon: {fileID: 2800000, guid: 42d319b05e6e0284ebe9bed9023a7e8d, type: 3}
   bodyColor: {r: 0.5176471, g: 0.6039216, b: 0.6, a: 1}
   doNotReassignToTeamBasedCollisionLayer: 0
   isChampion: 0
+  hideExtraEffects: 0
   altDeathBodyName: 
   vehicleIdleStateMachine:
   - {fileID: 3424064185900511098}
   - {fileID: 9085775290081261542}
+  isNotFlying: 0
   currentVehicle: {fileID: 0}
   preferredPodPrefab: {fileID: 0}
   preferredInitialStateType:
@@ -1081,6 +1102,9 @@ MonoBehaviour:
       PublicKeyToken=null
   skinIndex: 0
   requestEquipmentFire: 0
+  requestKeyItemFire: 0
+  suspendEquipmentInputCount: 0
+  suspendKeyItemInputCount: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
 --- !u!114 &465312137285225238
@@ -1096,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeedPenaltyCoefficient: 1
+  jumpPowerPenaltyCoefficient: 1
   gravityScale: 1
   characterDirection: {fileID: 0}
   muteWalkMotion: 0
@@ -1111,6 +1136,7 @@ MonoBehaviour:
     antiGravityNeutralizerCount: 0
     channeledAntiGravityGranterCount: 0
   useHangtimeGravity: 0
+  gravityMultiplier: 1
   useCustomGravity: 0
   CustomGravity: 0
   _flightParameters:
@@ -1158,12 +1184,12 @@ MonoBehaviour:
   m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forcedAnimatorAtStart: {fileID: 0}
   _modelTransform: {fileID: 6085486994865653574}
   modelVisibility: {fileID: 0}
   modelBaseTransform: {fileID: 3564273314525738525}
-  modelScaleCompensation: 1.5
-  initialScale: {x: 0, y: 0, z: 0}
   autoUpdateModelTransform: 1
+  compensateForInitialScale: 1
   dontDetatchFromParent: 0
   noCorpse: 0
   dontReleaseModelOnDeath: 0
@@ -1272,6 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideAllyCardDisplay: 0
+  hideIndicator: 0
   _teamIndex: -1
 --- !u!114 &7807109102202366196
 MonoBehaviour:
@@ -1287,6 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   shield: 0
+  regainableHealth: 0
   echoDamage: 0
   barrier: 0
   magnetiCharge: 0
@@ -1310,6 +1338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxInteractionDistance: 3
   isRemoteOp: 0
+  playInteractionAnimation: 0
 --- !u!114 &7243217054205277289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,7 +1378,6 @@ MonoBehaviour:
   canBeHitStunned: 1
   canBeStunned: 1
   canBeFrozen: 1
-  isFrozen: 1
   canBeTaunted: 1
 --- !u!114 &5096423888632347354
 MonoBehaviour:
@@ -1721,6 +1749,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -1786,6 +1816,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -1900,6 +1932,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -1965,6 +1999,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -2030,6 +2066,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -2157,6 +2195,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -2286,6 +2326,8 @@ MonoBehaviour:
   healthComponent: {fileID: 7807109102202366196}
   isBullseye: 0
   isSniperTarget: 0
+  isPriorityTarget: 0
+  isIgnoredByFriendlyProjectiles: 0
   bypassInvulnerable: 0
   damageModifier: 0
   hurtBoxGroup: {fileID: 2568456591597027164}
@@ -3218,6 +3260,7 @@ MonoBehaviour:
   - {fileID: 1316617102174215917}
   - {fileID: 2924591980871264874}
   mainHurtBox: {fileID: 2438240121509323839}
+  ignoreDeactivateHurtboxes: []
   bullseyeCount: 1
 --- !u!114 &2835676484849441850
 MonoBehaviour:
@@ -3259,7 +3302,6 @@ MonoBehaviour:
   fullYaw: 1
   aimType: 0
   enableAimWeight: 0
-  UseTransformedAimVector: 0
 --- !u!114 &5045006222187105624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,6 +3513,7 @@ MonoBehaviour:
   m_Script: {fileID: 1480773730, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelTransformOverride: {fileID: 0}
   baseFootstepString: ER_TempleGuard_Footstep_Play
   baseFootliftString: 
   sprintFootstepOverrideString: 
@@ -3518,10 +3561,12 @@ MonoBehaviour:
     ignoresMaterialOverrides: 0
   fullBodyPing: 0
   baseLightInfos: []
+  visbilityAffectedByHollow: 0
   constraintItemDisplaysScale: 0
   ignoreJitterBones: 0
   corpseFade: 1
   speedFade: 1
+  disableFade: 0
   CharacterOnScreen: 0
   visibilityChecker: {fileID: 0}
   useHullForFadeCalc: 0

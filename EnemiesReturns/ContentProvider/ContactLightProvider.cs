@@ -97,9 +97,12 @@ namespace EnemiesReturns
                     Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab = SetupContactLight.CreateCleanseNovaEffect();
                     nopList.Add(Behaviors.ContactLight.SurgicalBed.HealInteractor.healNovaPrefab);
 
-                    Content.BodyPrefabs.TempleGuardBody = new TempleGuardBody().SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
+                    var templeGuardSetup = new TempleGuardBody();
+                    Content.BodyPrefabs.TempleGuardBody = templeGuardSetup.SetupBody(assets.First(asset => asset.name == "TempleGuardBody"));
+                    Content.BodyPrefabs.SanctuaryGuardBody = templeGuardSetup.SetupBody(assets.First(asset => asset.name == "SancuaryGuardBody"));
 
                     Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "TempleGuardMaster");
+                    Content.MasterPrefabs.TempleGuardMaster = assets.First(asset => asset.name == "SancuaryGuardMaster");
 
                     ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.projectilePrefab = assets.First(asset => asset.name == "TempleGuardianPrimaryProjectile");
                     ModdedEntityStates.ContactLight.TempleGuard.Primary.FirePrimary.primaryEffect = assets.First(asset => asset.name == "TempleGuardianPrimaryFiring");

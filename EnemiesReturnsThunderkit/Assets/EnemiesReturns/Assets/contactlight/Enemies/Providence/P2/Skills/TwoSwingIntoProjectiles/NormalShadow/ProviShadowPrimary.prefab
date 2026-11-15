@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2971719846631467240}
   - component: {fileID: 1601321554}
   - component: {fileID: 3318062424113822748}
+  - component: {fileID: 3531104751429508355}
   m_Layer: 8
   m_Name: ProviShadowPrimary
   m_TagString: Untagged
@@ -262,3 +263,22 @@ MonoBehaviour:
   calculateTotalDamage: 0
   totalDamageMultiplier: 0
   timedDebuffs: []
+--- !u!114 &3531104751429508355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660678482377394972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionTransmitInterval: 0.033333335
+  interpolationFactor: 1
+  allowClientsideCollision: 0
+  checkForLocalPlayerAuthority: 0
+  singletonArrayIndex: -1
+  serverPosition: {x: 0, y: 0, z: 0}
+  serverRotation: {x: 0, y: 0, z: 0, w: 0}

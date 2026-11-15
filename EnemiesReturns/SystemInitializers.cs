@@ -18,6 +18,7 @@ namespace EnemiesReturns
             Enemies.Judgement.AnointedSkins.CreateAnointedSkinsSecondIteration();
             Items.LynxFetish.LynxFetishFactory.InitBodyCatalog();
             EnemiesReturns.Enemies.Judgement.SetupJudgementPath.InitBodyCatalog();
+            EnemiesReturns.Enemies.ContactLight.SetupContactLight.InitBodyCatalog();
         }
 
         [SystemInitializer(new Type[] { typeof(MasterCatalog) })]
@@ -31,6 +32,7 @@ namespace EnemiesReturns
             Items.AdrenalineCore.AdrenalineCoreMasterComponent.InitMasterCatalog();
             EnemiesReturns.Skills.Engi.MechanicalSpiderTurret.SetupSkill.InitMasterCatalog();
             EnemiesReturns.Enemies.Judgement.SetupJudgementPath.InitMasterCatalog();
+            EnemiesReturns.Enemies.ContactLight.SetupContactLight.InitMasterCatalog();
         }
 
         [SystemInitializer(new Type[] { typeof(ItemCatalog) })]

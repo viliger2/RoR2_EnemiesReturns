@@ -42,12 +42,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1
             if (base.fixedAge > deathDelay && !hasDied)
             {
                 hasDied = true;
-                var data = new EffectData()
+                if (isAuthority)
                 {
-                    origin = FindModelChild("TeleportEffectOrigin").position,
-                    rotation = Quaternion.identity,
-                };
-                EffectManager.SpawnEffect(teleportEffect, data, false);
+                    var data = new EffectData()
+                    {
+                        origin = FindModelChild("TeleportEffectOrigin").position,
+                        rotation = Quaternion.identity,
+                    };
+                    EffectManager.SpawnEffect(teleportEffect, data, true);
+                }
                 DestroyModel();
                 if (NetworkServer.active)
                 {

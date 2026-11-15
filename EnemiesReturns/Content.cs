@@ -175,6 +175,8 @@ namespace EnemiesReturns
         {
             public static GameObject TempleGuardBody;
 
+            public static GameObject SanctuaryGuardBody;
+
             public static GameObject ProvidenceP1Body;
 
             public static GameObject ProvidenceP2Body;
@@ -185,6 +187,8 @@ namespace EnemiesReturns
         public static class MasterPrefabs
         {
             public static GameObject TempleGuardMaster;
+
+            public static GameObject SanctuaryGuardMaster;
         }
 
         public static class InteractableSpawnCards

@@ -62,8 +62,8 @@ namespace EnemiesReturns.Enemies.Judgement
             ArraignBody.ArraignP1Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
             ArraignBody.ArraignP2Body.transform.Find("ModelBase/mdlArraignP1").GetComponent<CharacterModel>().itemDisplayRuleSet = idrsArraign;
 
-            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ArraignP1Body");
-            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ArraignP2Body");
+            ArraignP1BodyIndex = BodyCatalog.FindBodyIndex("ER_ArraignP1Body");
+            ArraignP2BodyIndex = BodyCatalog.FindBodyIndex("ER_ArraignP2Body");
         }
 
         internal static void InitMasterCatalog()
@@ -73,8 +73,8 @@ namespace EnemiesReturns.Enemies.Judgement
                 return;
             }
 
-            ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ArraignP1Master");
-            ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ArraignP2Master");
+            ArraignP1MasterIndex = MasterCatalog.FindMasterIndex("ER_ArraignP1Master");
+            ArraignP2MasterIndex = MasterCatalog.FindMasterIndex("ER_ArraignP2Master");
         }
 
         private static void AddAeonianAnointedItemDisplays()

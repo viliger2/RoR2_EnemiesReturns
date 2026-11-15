@@ -93,6 +93,7 @@ namespace EnemiesReturns.Projectiles
             attack.damageType = projectileDamage.damageType;
             attack.procChainMask = projectileController.procChainMask;
             attack.maximumOverlapTargets = maximumOverlapTargets;
+            attack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             attack.attackerFiltering = AttackerFiltering.CustomFilter;
             attack.filterCallback = Utils.OverlapAttackAuthorityFilter;
         }
@@ -124,6 +125,7 @@ namespace EnemiesReturns.Projectiles
             }
             fireTimer = 1f / fireFrequency;
             attack.damage = damageCoefficient * projectileDamage.damage;
+            Log.Info("Firing overlap authority attack");
             attack.Fire();
         }
 

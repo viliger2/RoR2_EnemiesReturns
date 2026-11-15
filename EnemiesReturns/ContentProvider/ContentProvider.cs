@@ -198,6 +198,7 @@ namespace EnemiesReturns
                 Log.Info($"Found type {type} when searching for RegisterEntityState attribute.");
             }
 #endif
+            // TODO: move this stuff somewhere else and create content class similarly to how vanilla does it
             _contentPack.entityStateTypes.Add(entityStateTypes);
             _contentPack.bodyPrefabs.Add(AddPrefix(bodyList.ToArray()));
             _contentPack.masterPrefabs.Add(AddPrefix(masterList.ToArray()));

@@ -1,7 +1,11 @@
-﻿using EnemiesReturns.Reflection;
+﻿using EnemiesReturns.Enemies.ContactLight;
+using EnemiesReturns.Enemies.Judgement;
+using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -59,6 +63,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 }
             }
             ClearCorpses();
+            BossGroup.onBossGroupStartServer += SpawnGoldTitanOnProvi;
         }
 
         public override void FixedUpdate()
@@ -99,6 +104,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             {
                 phaseControllerObject.SetActive(false);
             }
+            BossGroup.onBossGroupStartServer -= SpawnGoldTitanOnProvi;
         }
 
         public void ClearCorpses()
@@ -108,5 +114,73 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 RoR2.Corpse.DestroyCorpse(RoR2.Corpse.instancesList[num3]);
             }
         }
+
+        private static void SpawnGoldTitanOnProvi(BossGroup bossGroup)
+        {
+            CombatSquad combatSquad = bossGroup.combatSquad;
+            bool flag = false;
+            foreach (CharacterMaster readOnlyMembers in combatSquad.readOnlyMembersList)
+            {
+                if (readOnlyMembers.masterIndex == SetupContactLight.ProvidenceP2Master)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            float timer;
+            if (flag)
+            {
+                timer = 2f;
+                RoR2Application.onFixedUpdate += Check;
+            }
+            void Check()
+            {
+                bool flag2 = true;
+                Vector3 approximatePosition = Vector3.zero;
+                try
+                {
+                    if ((bool)combatSquad)
+                    {
+                        ReadOnlyCollection<CharacterMaster> readOnlyMembersList = combatSquad.readOnlyMembersList;
+                        for (int i = 0; i < readOnlyMembersList.Count; i++)
+                        {
+                            CharacterMaster characterMaster = readOnlyMembersList[i];
+                            if ((bool)characterMaster)
+                            {
+                                CharacterBody body = characterMaster.GetBody();
+                                if (body)
+                                {
+                                    approximatePosition = body.transform.position;
+                                }
+                                if (body.HasBuff(RoR2Content.Buffs.HiddenInvincibility) || body.outOfCombat)
+                                {
+                                    flag2 = false;
+                                }
+                                else
+                                {
+                                    timer -= Time.fixedDeltaTime;
+                                    if (timer > 0f)
+                                    {
+                                        flag2 = false;
+                                    }
+                                }
+                            }
+                        }
+                        if (flag2)
+                        {
+                            GoldTitanManager.TryStartChannelingTitansServer(combatSquad, approximatePosition);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                if (flag2)
+                {
+                    RoR2Application.onFixedUpdate -= Check;
+                }
+            }
+        }
+
     }
 }

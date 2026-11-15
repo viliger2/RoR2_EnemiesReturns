@@ -1,5 +1,6 @@
 ﻿using EnemiesReturns.Behaviors.SkinDefPicker;
 using EnemiesReturns.Configuration.ContactLight.Providence;
+using EnemiesReturns.Enemies.Judgement.Arraign;
 using EnemiesReturns.Projectiles;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -19,6 +20,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using static EnemiesReturns.Utils;
 using static RoR2.EquipmentSlot;
+using static RoR2.MasterCatalog;
 
 namespace EnemiesReturns.Enemies.ContactLight
 {
@@ -91,6 +93,42 @@ namespace EnemiesReturns.Enemies.ContactLight
             {"artifactworld03", new PositionAndRotation(new Vector3(-18.3999996f,-4.36375141f,3.52999997f), new Vector3(0,242.920288f,0)) }
         };
 
+        public static BodyIndex ProvidenceP1Body;
+
+        public static BodyIndex ProvidenceP2Body;
+
+        public static BodyIndex ProvidenceP3Body;
+
+        public static MasterIndex ProvidenceP1Master;
+
+        public static MasterIndex ProvidenceP2Master;
+
+        public static MasterIndex ProvidenceP3Master;
+
+        internal static void InitBodyCatalog()
+        {
+            if (!EnemiesReturns.Configuration.General.EnableContactLight.Value)
+            {
+                return;
+            }
+
+            ProvidenceP1Body = BodyCatalog.FindBodyIndex("ER_ProvidenceP1Body");
+            ProvidenceP2Body = BodyCatalog.FindBodyIndex("ER_ProvidenceP2Body");
+            ProvidenceP3Body = BodyCatalog.FindBodyIndex("ER_ProvidenceP3Body");
+        }
+
+        internal static void InitMasterCatalog()
+        {
+            if (!EnemiesReturns.Configuration.General.EnableContactLight.Value)
+            {
+                return;
+            }
+
+            ProvidenceP1Master = MasterCatalog.FindMasterIndex("ER_ProvidenceP1Master");
+            ProvidenceP2Master = MasterCatalog.FindMasterIndex("ER_ProvidenceP2Master");
+            ProvidenceP3Master = MasterCatalog.FindMasterIndex("ER_ProvidenceP3Master");
+        }
+
         public static void Hooks()
         {
             if (Configuration.General.EnableContactLight.Value)
@@ -154,7 +192,7 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             #region Phase3
             var laserPrefab = assets.First(assets => assets.name == "LaserProjectile");
-            laserPrefab.GetComponent<ProjectileOverlapAttackAuthority>().resetInterval = ProvidencePhase3.P3LaserOverlapAttackResetInverval.Value;
+            laserPrefab.GetComponent<ProjectileOverlapAttack>().resetInterval = ProvidencePhase3.P3LaserOverlapAttackResetInverval.Value;
             laserPrefab.GetComponent<ProjectileSimple>().lifetime = ProvidencePhase3.P3LaserLifetime.Value;
             laserPrefab.GetComponent<RotateAroundAxis>().slowRotationSpeed = ProvidencePhase3.P3LaserRotationSpeed.Value;
 

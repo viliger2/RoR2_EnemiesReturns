@@ -83,6 +83,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                         objectives.gameObject.SetActive(false);
                     }
 
+                    var cutsceneController = phaseChildLocator.FindChild("CutsceneController");
+                    if(cutsceneController)
+                    {
+                        cutsceneController.gameObject.SetActive(true);
+                    }
+
+
                     panelBossScreens = phaseChildLocator.FindChild("PanelBossScreens");
                 }
             }

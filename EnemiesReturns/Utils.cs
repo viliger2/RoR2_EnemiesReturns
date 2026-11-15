@@ -488,7 +488,7 @@ namespace EnemiesReturns
 
         public static bool OverlapAttackAuthorityFilter(OverlapAttackFilterStruct filterStruct)
         {
-            if(filterStruct.healthComponent && Util.HasEffectiveAuthority(filterStruct.healthComponent.gameObject))
+            if (filterStruct.healthComponent && Util.HasEffectiveAuthority(filterStruct.healthComponent.gameObject))
             {
                 return true;
             }

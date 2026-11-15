@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
+using static RoR2.OverlapAttack;
 
 namespace EnemiesReturns
 {
@@ -25,6 +26,162 @@ namespace EnemiesReturns
             //FunTimeWithWhatevers();
             //On.EntityStates.StunState.PlayStunAnimation += StunState_PlayStunAnimation;
             //On.RoR2.UI.LogBook.LogBookController.GetMonsterStatus += LogBookController_GetMonsterStatus;
+            //On.RoR2.OverlapAttack.HurtBoxPassesFilter += OverlapAttack_HurtBoxPassesFilter;
+            //On.RoR2.OverlapAttack.Fire += OverlapAttack_Fire;
+        }
+
+        private static bool OverlapAttack_Fire(On.RoR2.OverlapAttack.orig_Fire orig, OverlapAttack self, List<HurtBox> hitResults)
+        {
+            if (!self.hitBoxGroup)
+            {
+                return false;
+            }
+            HitBox[] hitBoxes = self.hitBoxGroup.hitBoxes;
+            foreach (HitBox hitBox in hitBoxes)
+            {
+                if (!hitBox || !hitBox.enabled || !hitBox.gameObject || !hitBox.gameObject.activeInHierarchy || !hitBox.transform)
+                {
+                    continue;
+                }
+                Transform transform = hitBox.transform;
+                Vector3 position = transform.position;
+                Vector3 halfExtents = transform.lossyScale * 0.5f;
+                Quaternion rotation = transform.rotation;
+                if (float.IsInfinity(halfExtents.x) || float.IsInfinity(halfExtents.y) || float.IsInfinity(halfExtents.z))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxHalfExtents are infinite.");
+                    continue;
+                }
+                if (float.IsNaN(halfExtents.x) || float.IsNaN(halfExtents.y) || float.IsNaN(halfExtents.z))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxHalfExtents are NaN.");
+                    continue;
+                }
+                if (float.IsInfinity(position.x) || float.IsInfinity(position.y) || float.IsInfinity(position.z))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxCenter is infinite.");
+                    continue;
+                }
+                if (float.IsNaN(position.x) || float.IsNaN(position.y) || float.IsNaN(position.z))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxCenter is NaN.");
+                    continue;
+                }
+                if (float.IsInfinity(rotation.x) || float.IsInfinity(rotation.y) || float.IsInfinity(rotation.z) || float.IsInfinity(rotation.w))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxRotation is infinite.");
+                    continue;
+                }
+                if (float.IsNaN(rotation.x) || float.IsNaN(rotation.y) || float.IsNaN(rotation.z) || float.IsNaN(rotation.w))
+                {
+                    Chat.AddMessage("Aborting OverlapAttack.Fire: hitBoxRotation is NaN.");
+                    continue;
+                }
+                int num = 0;
+                Collider[] colliders;
+                if (self.isSphereOverlap)
+                {
+                    Vector3 lossyScale = transform.lossyScale;
+                    float radius = Mathf.Max(lossyScale.x, lossyScale.y, lossyScale.z);
+                    num = HGPhysics.OverlapSphere(out colliders, position, radius, LayerIndex.entityPrecise.mask);
+                }
+                else
+                {
+                    num = HGPhysics.OverlapBox(out colliders, position, halfExtents, rotation, LayerIndex.entityPrecise.mask);
+                }
+                self.cleanupRetriggerList();
+                discoveredHurtboxes.Clear();
+                damageProcessorHurtboxes.Clear();
+                self.charactersWithAttackHitProcessors.Clear();
+                for (int j = 0; j < num; j++)
+                {
+                    if (!colliders[j])
+                    {
+                        continue;
+                    }
+                    HurtBox component = colliders[j].GetComponent<HurtBox>();
+                    if (!component || !component.transform || self.HealthComponentAlreadyHit(component))
+                    {
+                        continue;
+                    }
+                    discoveredHurtboxes.Add(component);
+                    if ((bool)component.healthComponent && component.hasAttackHitRejector)
+                    {
+                        damageProcessorHurtboxes.Add(component);
+                        if (!self.charactersWithAttackHitProcessors.Contains(component.healthComponent))
+                        {
+                            self.charactersWithAttackHitProcessors.Add(component.healthComponent);
+                        }
+                    }
+                }
+                self.hasDamageProcessingHurtboxes = damageProcessorHurtboxes.Count > 0;
+                num = discoveredHurtboxes.Count;
+                int num2 = 0;
+                for (int k = 0; k < num; k++)
+                {
+                    HurtBox hurtBox = discoveredHurtboxes[k];
+                    if (!self.HurtBoxPassesFilter(hurtBox))
+                    {
+                        Log.Info($"{hurtBox} didnt pass filter");
+                        continue;
+                    }
+                    Vector3 position2 = hurtBox.transform.position;
+                    AttackUtils.ResolveHitOriginArgs resolveHitOriginArgs = default(AttackUtils.ResolveHitOriginArgs);
+                    resolveHitOriginArgs.attackCenter = position;
+                    resolveHitOriginArgs.attackOriginPreference = self.attackOriginPreference;
+                    resolveHitOriginArgs.attacker = self.attacker;
+                    resolveHitOriginArgs.inflictor = self.inflictor;
+                    AttackUtils.ResolveHitOriginArgs args = resolveHitOriginArgs;
+                    OverlapInfo overlapInfo = default(OverlapInfo);
+                    overlapInfo.hurtBox = hurtBox;
+                    overlapInfo.hitPosition = position2;
+                    overlapInfo.pushDirection = (position2 - position).normalized;
+                    overlapInfo.hitOrigin = AttackUtils.ResolveHitOrigin(in args);
+                    OverlapInfo overlapInfo2 = overlapInfo;
+                    if (self.hasDamageProcessingHurtboxes)
+                    {
+                        bool flag = false;
+                        for (int l = 0; l < damageProcessorHurtboxes.Count; l++)
+                        {
+                            if (damageProcessorHurtboxes[l].AttackHitRejectsHurtbox(new HurtBox.HurtBoxAttackHitProcessorArgs(overlapInfo2, self.attacker)))
+                            {
+                                if (!self.HealthComponentAlreadyHit(overlapInfo2.hurtBox))
+                                {
+                                    self.addIgnoredHitList(overlapInfo2.hurtBox.healthComponent);
+                                }
+                                flag = true;
+                            }
+                        }
+                        if (flag)
+                        {
+                            Log.Info("Damage proccessing hitboxes or something");
+                            continue;
+                        }
+                    }
+                    self.overlapList.Add(overlapInfo2);
+                    self.lastHitObject = hurtBox.healthComponent.gameObject;
+                    self.addIgnoredHitList(hurtBox.healthComponent);
+                    hitResults?.Add(hurtBox);
+                    num2++;
+                    if (num2 >= self.maximumOverlapTargets)
+                    {
+                        break;
+                    }
+                }
+                HGPhysics.ReturnResults(colliders);
+            }
+            Log.Info($"actually process hits, number of hits: {self.overlapList.Count}");
+            self.ProcessHits(self.overlapList);
+            bool result = self.overlapList.Count > 0;
+            self.overlapList.Clear();
+            return result;
+        }
+
+        private static bool OverlapAttack_HurtBoxPassesFilter(On.RoR2.OverlapAttack.orig_HurtBoxPassesFilter orig, OverlapAttack self, HurtBox hurtBox)
+        {
+            var result = orig(self, hurtBox);
+            Log.Info($"result for {hurtBox.healthComponent.gameObject} is {result}");
+            return result;
         }
 
         private static RoR2.UI.LogBook.EntryStatus LogBookController_GetMonsterStatus(On.RoR2.UI.LogBook.LogBookController.orig_GetMonsterStatus orig, ref RoR2.UI.LogBook.Entry entry, UserProfile viewerProfile)

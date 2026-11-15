@@ -63,6 +63,12 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                         musicComponent.track = musicTrackNone;
                         musicTrackOverride.gameObject.SetActive(true);
                     }
+
+                    var finalPP = phaseChildLocator.FindChild("FinalPP");
+                    if(finalPP)
+                    {
+                        finalPP.gameObject.SetActive(true);
+                    }
                 }
             }
             ClearCorpses();

@@ -149,7 +149,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P3LaserDamage = config.Bind("Phase 3 Laser", "Rotating Laser Damage", 9f, "Damage of each tick of rotating laser's overlap attack.");
             P3LaserCooldown = config.Bind("Phase 3 Laser", "Rotating Laser Cooldown", 70f, "Cooldown of rotating laser skill.");
             P3LaserLifetime = config.Bind("Phase 3 Laser", "Rotating Laser Lifetime", 40f, "Lifetime of rotating laser projectile.");
-            P3LaserRotationSpeed = config.Bind("Phase 3 Laser", "Rotating Laser Rotation Speed", 5f, "Rotation speed, in degrees per second, of laser.");
+            P3LaserRotationSpeed = config.Bind("Phase 3 Laser", "Rotating Laser Rotation Speed", 8.5f, "Rotation speed, in degrees per second, of laser.");
             P3LaserOverlapAttackResetInverval = config.Bind("Phase 3 Laser", "Rotating Laser Overlap Attack Reset Interval", 0.25f, "Reset timer of rotating laser's overlap attack.");
         }
     }

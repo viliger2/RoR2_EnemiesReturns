@@ -238,10 +238,10 @@ GameObject:
   - component: {fileID: 2103537614084065814}
   - component: {fileID: 7242291295002464609}
   - component: {fileID: 2766697850778358782}
-  - component: {fileID: 6578176647834316912}
   - component: {fileID: 5778863503292623734}
   - component: {fileID: -5093273788489378812}
   - component: {fileID: 2447321586740809914}
+  - component: {fileID: -2568743040949137336}
   m_Layer: 0
   m_Name: LaserProjectile
   m_TagString: Untagged
@@ -387,30 +387,6 @@ MonoBehaviour:
   - {fileID: 1209012261911675008}
   - {fileID: 2575808833992056965}
   - {fileID: 8060454665501897283}
---- !u!114 &6578176647834316912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551610540239970763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c058b8ce5b53a814dbb87458166d44af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageCoefficient: 1
-  impactEffect: {fileID: 0}
-  forceVector: {x: 0, y: 0, z: 0}
-  pushAwayForce: 0
-  overlapProcCoefficient: 1
-  maximumOverlapTargets: 100
-  fireFrequency: 60
-  resetInterval: 0.25
-  requireDelayOnePhysicsFrame: 0
-  isOverrideTeam: 0
-  OverrideTeamIndex: 0
-  canHitOwner: 0
 --- !u!114 &5778863503292623734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,8 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _slowRotationSpeed: 5
-  _fastRotationSpeed: 5
+  _slowRotationSpeed: 8.5
+  _fastRotationSpeed: 8.5
   _rotateAroundAxis: 1
   _relativeTo: 1
   _reverse: 0
@@ -467,6 +443,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b69362ada82b9547af3bf4e2f99a4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2568743040949137336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551610540239970763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -899414464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCoefficient: 1
+  impactEffect: {fileID: 0}
+  forceVector: {x: 0, y: 0, z: 0}
+  pushAwayForce: 0
+  overlapProcCoefficient: 1
+  maximumOverlapTargets: 100
+  onServerHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onServerHitGameObject:
+    m_PersistentCalls:
+      m_Calls: []
+  onServerHitHurtBox:
+    m_PersistentCalls:
+      m_Calls: []
+  fireFrequency: 60
+  resetInterval: 0.25
+  isSphereOverlap: 0
+  requireDelayOnePhysicsFrame: 0
+  ScaleWithVelocity: 0
+  ScaleVelocitySource: {fileID: 0}
+  ScaleWithVelocityAxis: {x: 0, y: 0, z: 1}
+  isOverrideTeam: 0
+  OverrideTeamIndex: 0
+  attackFiltering: 2
+  attackOriginPreference: 0
+  HitBoxGroupName: 
 --- !u!1 &2646246593956690368
 GameObject:
   m_ObjectHideFlags: 0

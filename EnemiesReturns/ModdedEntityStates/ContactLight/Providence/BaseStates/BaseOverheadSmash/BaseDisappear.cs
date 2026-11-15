@@ -31,19 +31,23 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                 CleanseSystem.CleanseBodyServer(base.characterBody, true, false, false, true, false, false);
                 base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
             }
-            if (SceneInfo.instance && SceneInfo.instance.groundNodes)
+            if (isAuthority)
             {
-                var closestNode = SceneInfo.instance.groundNodes.FindClosestNode(predictedPosition, HullClassification.Golem);
-                if (closestNode != RoR2.Navigation.NodeGraph.NodeIndex.invalid)
+                if (SceneInfo.instance && SceneInfo.instance.groundNodes)
                 {
-                    if (SceneInfo.instance.groundNodes.GetNodePosition(closestNode, out var nodePosition))
+                    var closestNode = SceneInfo.instance.groundNodes.FindClosestNode(predictedPosition, HullClassification.Golem);
+                    if (closestNode != RoR2.Navigation.NodeGraph.NodeIndex.invalid)
                     {
-                        predictedPosition = nodePosition;
+                        if (SceneInfo.instance.groundNodes.GetNodePosition(closestNode, out var nodePosition))
+                        {
+                            predictedPosition = nodePosition;
+                        }
                     }
                 }
-            }
 
-            base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.5f, Quaternion.identity);
+                base.characterMotor.Motor.SetPositionAndRotation(predictedPosition + Vector3.up * 0.5f, Quaternion.identity);
+                EffectManager.SimpleEffect(predictedPositionEffect, predictedPosition, Quaternion.identity, true);
+            }
 
             if (modelTransform)
             {
@@ -62,7 +66,6 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             originalLayer = base.gameObject.layer;
             base.gameObject.layer = LayerIndex.GetAppropriateFakeLayerForTeam(base.teamComponent.teamIndex).intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
-            EffectManager.SimpleEffect(predictedPositionEffect, predictedPosition, Quaternion.identity, false);
             Util.PlaySound("ER_Providence_GroundSlam_Play", base.gameObject);
         }
 
