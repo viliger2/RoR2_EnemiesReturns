@@ -29,7 +29,7 @@ namespace EnemiesReturns.Behaviors
             }
             if (self.fillRectImage)
             {
-                if (self.gameObject.TryGetComponent<BossGroupHealthColorOverride>(out var component))
+                if (self.currentBossGroup.gameObject.TryGetComponent<BossGroupHealthColorOverride>(out var component))
                 {
                     self.fillRectImage.color = component.healthBarColorOverride;
                 }
