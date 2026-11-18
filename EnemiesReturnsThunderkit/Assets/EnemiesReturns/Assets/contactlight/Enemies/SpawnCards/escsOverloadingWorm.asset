@@ -35,5 +35,7 @@ MonoBehaviour:
   itemNamesToGrant:
   - itemName: BoostDamage
     count: 2
+  - itemName: ER_ReduceHP
+    count: 89
   equipmentNamesToGrant:
   - EliteFireEquipment

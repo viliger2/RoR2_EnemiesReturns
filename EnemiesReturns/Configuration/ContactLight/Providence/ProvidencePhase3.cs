@@ -74,6 +74,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> P3SkullsMaxDistance;
         public static ConfigEntry<bool> P3SkullsCanBeRed;
         public static ConfigEntry<float> P3SkullsCooldown;
+        public static ConfigEntry<int> P3SkullDirectTargetEachOrb;
 
         public static ConfigEntry<float> P3LaserDamage;
         public static ConfigEntry<float> P3LaserRotationSpeed;
@@ -94,7 +95,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             LevelArmor = config.Bind("Providence P3 Character Stats", "Armor per Level", 0f, "Providence P3' armor increase per level.");
 
             P3PrimaryDamage = config.Bind("Phase 3 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P3PrimaryDuration = config.Bind("Phase 3 Primary", "Primary Duration", 3f, "Duration of the state, in seconds.");
+            P3PrimaryDuration = config.Bind("Phase 3 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
             P3PrimaryProcCoefficient = config.Bind("Phase 3 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
             P3PrimaryPushAwayForce = config.Bind("Phase 3 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
             P3PrimaryCooldown = config.Bind("Phase 3 Primary", "Primary Cooldown", 5f, "Primary skill cooldown.");
@@ -145,12 +146,13 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P3SkullsMaxDistance = config.Bind("Phase 3 Skulls", "Skulls Max Distance Spawn From Target", 15f, "How far from the target will projectile target spawn. It will spawn within these limits on all axis.");
             P3SkullsCanBeRed = config.Bind("Phase 3 Skulls", "Skulls Can Be Red", true, "Projectile can be red, red projectiles deal non-lethal 99999 damage.");
             P3SkullsCooldown = config.Bind("Phase 3 Skulls", "Skulls Cooldown", 20f, "Skulls skill cooldown. Skulls are used on health thresholds, so cooldown is only a part of when it is used.");
+            P3SkullDirectTargetEachOrb = config.Bind("Phase 3 Skulls", "Skulls Direct Target Each Orb", 3, "Every X skulls it will be spawned directly on the target instead around it.");
 
-            P3LaserDamage = config.Bind("Phase 3 Laser", "Rotating Laser Damage", 9f, "Damage of each tick of rotating laser's overlap attack.");
+            P3LaserDamage = config.Bind("Phase 3 Laser", "Rotating Laser Damage", 0.9f, "Damage of each tick of rotating laser's overlap attack.");
             P3LaserCooldown = config.Bind("Phase 3 Laser", "Rotating Laser Cooldown", 70f, "Cooldown of rotating laser skill.");
             P3LaserLifetime = config.Bind("Phase 3 Laser", "Rotating Laser Lifetime", 40f, "Lifetime of rotating laser projectile.");
             P3LaserRotationSpeed = config.Bind("Phase 3 Laser", "Rotating Laser Rotation Speed", 8.5f, "Rotation speed, in degrees per second, of laser.");
-            P3LaserOverlapAttackResetInverval = config.Bind("Phase 3 Laser", "Rotating Laser Overlap Attack Reset Interval", 0.25f, "Reset timer of rotating laser's overlap attack.");
+            P3LaserOverlapAttackResetInverval = config.Bind("Phase 3 Laser", "Rotating Laser Overlap Attack Reset Interval", 0.1f, "Reset timer of rotating laser's overlap attack.");
         }
     }
 }

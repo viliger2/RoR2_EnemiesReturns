@@ -3,6 +3,7 @@ using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
@@ -13,15 +14,58 @@ namespace EnemiesReturns.Behaviors.ContactLight.SwordHilt
         [SyncVar]
         public bool available;
 
+        [Tooltip("Effect that is used when artifact mission is completed.")]
+        public GameObject unlockEffect;
+
         public ItemDef itemToTake;
+
+        public bool requireArtifactMission = true;
 
         public int requiredItemNumber;
 
         public string contextString;
 
+        public string lockedString;
+
+        public string unlockString;
+
         public EntityStateMachine esm;
 
         private int itemsGiven;
+
+        private bool artifactMissionCompleted;
+
+        private void OnEnable()
+        {
+            if (requireArtifactMission)
+            {
+                RoR2.ArtifactTrialMissionController.onShellDeathServer += ArtifactTrialMissionController_onShellDeathServer;
+                artifactMissionCompleted = false;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (requireArtifactMission)
+            {
+                RoR2.ArtifactTrialMissionController.onShellDeathServer -= ArtifactTrialMissionController_onShellDeathServer;
+            }
+        }
+
+        private void ArtifactTrialMissionController_onShellDeathServer(ArtifactTrialMissionController arg1, DamageReport arg2)
+        {
+            //available = true;
+            artifactMissionCompleted = true;
+            if (NetworkServer.active)
+            {
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+                {
+                    baseToken = unlockString,
+                });
+                DisableLockedEffect();
+                RpcDisableLockedEffect();
+            }
+        }
 
         public string GetContextString([NotNull] Interactor activator)
         {
@@ -60,6 +104,16 @@ namespace EnemiesReturns.Behaviors.ContactLight.SwordHilt
                 return;
             }
 
+            if(requireArtifactMission && !artifactMissionCompleted)
+            {
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+                {
+                    baseToken = lockedString,
+                });
+                Invoke("UpdateAvailability", 1.5f);
+                return;
+            }
+
             if (!activator || !activator.TryGetComponent<CharacterBody>(out var characterBody))
             {
                 return;
@@ -91,6 +145,11 @@ namespace EnemiesReturns.Behaviors.ContactLight.SwordHilt
                 esm.SetNextState(new ModdedEntityStates.ContactLight.SwordHilt.Idle() { activeShardsCount = itemsGiven});
             }
 
+            UpdateAvailability();
+        }
+
+        public void UpdateAvailability()
+        {
             available = itemsGiven < requiredItemNumber;
         }
 
@@ -107,6 +166,40 @@ namespace EnemiesReturns.Behaviors.ContactLight.SwordHilt
         public bool ShouldShowOnScanner()
         {
             return false;
+        }
+
+        [ClientRpc]
+        private void RpcDisableLockedEffect()
+        {
+            if (!NetworkServer.active)
+            {
+                DisableLockedEffect();
+            }
+        }
+
+        private void DisableLockedEffect()
+        {
+            var modelLocator = GetComponent<ModelLocator>();
+            if (!modelLocator || !modelLocator.modelTransform)
+            {
+                return;
+            }
+
+            var childLocator = modelLocator.modelTransform.gameObject.GetComponent<ChildLocator>();
+            if (!childLocator)
+            {
+                return;
+            }
+
+            var lockedEffect = childLocator.FindChild("LockedEffect");
+            if (lockedEffect)
+            {
+                lockedEffect.gameObject.SetActive(false);
+                if (unlockEffect)
+                {
+                    EffectManager.SimpleEffect(unlockEffect, lockedEffect.position, lockedEffect.rotation, false);
+                }               
+            }
         }
     }
 }

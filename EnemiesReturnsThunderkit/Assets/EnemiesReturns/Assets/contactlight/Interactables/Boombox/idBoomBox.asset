@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: idBoomBox
   m_EditorClassIdentifier: 
   Info:
-    Visual: {fileID: 0}
+    Visual: {fileID: 21300000, guid: 0f1ec539938c56140b31c786eb9de41e, type: 3}
+    VisualReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
     TitleToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_NAME
     DescriptionToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_DESC
     FlavorToken: ENEMIES_RETURNS_CONTACTLIGHT_BOOMBOX_LORE
     TitleColor: {r: 1, g: 1, b: 1, a: 1}
     isConsumedItem: 0
-    upgradeCount: 0

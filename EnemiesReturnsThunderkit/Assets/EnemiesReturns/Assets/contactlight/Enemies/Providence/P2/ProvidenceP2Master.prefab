@@ -252,7 +252,7 @@ MonoBehaviour:
   maxUserTimeSinceDamaged: Infinity
   minTargetHealthFraction: -Infinity
   maxTargetHealthFraction: Infinity
-  minDistance: 10
+  minDistance: 25
   maxDistance: 80
   selectionRequiresTargetLoS: 1
   selectionRequiresOnGround: 1

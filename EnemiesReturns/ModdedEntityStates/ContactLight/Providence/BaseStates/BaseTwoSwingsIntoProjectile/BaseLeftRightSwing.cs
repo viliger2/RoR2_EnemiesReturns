@@ -48,7 +48,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public new abstract DamageTypeCombo damageType { get; }
 
-        public abstract float earlyExit { get; }
+        public abstract float earlyExitCoeff { get; }
+
+        private float earlyExit;
 
         private bool targetsHit;
 
@@ -75,6 +77,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
             base.damageType = damageType;
 
             base.OnEnter();
+
+            earlyExit = duration * earlyExitCoeff;
 
             StartAimMode(duration);
 

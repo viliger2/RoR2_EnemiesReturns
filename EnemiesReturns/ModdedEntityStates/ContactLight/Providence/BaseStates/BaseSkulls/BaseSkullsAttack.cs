@@ -36,6 +36,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public abstract bool canBeRed { get; }
 
+        public abstract int spawnOnPlayerEachCount { get; }
+
         private int totalProjectiles;
 
         private List<CharacterBody> activePlayers;
@@ -83,8 +85,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         return;
                     }
 
-
                     bool isRed = canBeRed && ((projectilesSpawned / activePlayers.Count) % 2 != 0);
+                    bool directSpawn = (projectilesSpawned / activePlayers.Count) % spawnOnPlayerEachCount != 0;
 
                     var xOffset = GetRandomOffset();
                     var zOffset = GetRandomOffset();
@@ -95,19 +97,24 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
                         yOffset = GetRandomOffset();
                         var distanceToFloor = maxDistance;
                         var distanceToCeiling = maxDistance;
-                        if (Physics.Raycast(targetBody.corePosition, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        if (Physics.Raycast(targetBody.footPosition, Vector3.down, out var hitInfo, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
                         {
-                            distanceToFloor = Vector3.Distance(targetBody.corePosition, hitInfo.point);
+                            distanceToFloor = Vector3.Distance(targetBody.footPosition, hitInfo.point);
                         }
-                        if (Physics.Raycast(targetBody.corePosition, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
+                        if (Physics.Raycast(targetBody.footPosition, Vector3.up, out var hitInfo2, maxDistance, LayerIndex.world.mask, QueryTriggerInteraction.UseGlobal))
                         {
-                            distanceToCeiling = Vector3.Distance(targetBody.corePosition, hitInfo2.point);
+                            distanceToCeiling = Vector3.Distance(targetBody.footPosition, hitInfo2.point);
                         }
                         yOffset = Mathf.Clamp(yOffset, -distanceToFloor, distanceToCeiling);
                     }
 
-                    var position = targetBody.corePosition + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
+                    var position = targetBody.footPosition + xOffset * Vector3.right + yOffset * Vector3.up + zOffset * Vector3.forward;
                     var distance = Vector3.Distance(originPoint.position, position);
+
+                    if (directSpawn)
+                    {
+                        position = targetBody.footPosition;
+                    }
 
                     var effectData = new EffectData()
                     {

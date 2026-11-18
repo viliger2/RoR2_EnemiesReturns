@@ -75,6 +75,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> P1SkullsMaxDistance;
         public static ConfigEntry<bool> P1SkullsCanBeRed;
         public static ConfigEntry<float> P1SkullsCooldown;
+        public static ConfigEntry<int> P1SkullDirectTargetEachOrb;
 
         public void PopulateConfig(ConfigFile config)
         {
@@ -88,10 +89,10 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             LevelArmor = config.Bind("Providence P1 Character Stats", "Armor per Level", 0f, "Providence P1' armor increase per level.");
 
             P1PrimaryDamage = config.Bind("Phase 1 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P1PrimaryDuration = config.Bind("Phase 1 Primary", "Primary Duration", 3f, "Duration of the state, in seconds.");
+            P1PrimaryDuration = config.Bind("Phase 1 Primary", "Primary Duration", 1.5f, "Duration of the state, in seconds.");
             P1PrimaryProcCoefficient = config.Bind("Phase 1 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
             P1PrimaryPushAwayForce = config.Bind("Phase 1 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
-            P1PrimaryEarlyExit = config.Bind("Phase 1 Primary", "Early Exit Duration", 2f, "Early exit from swings into firing orbs if no target was hit with the swing.");
+            P1PrimaryEarlyExit = config.Bind("Phase 1 Primary", "Early Exit Duration", 0.8f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
             P1PrimaryCooldown = config.Bind("Phase 1 Primary", "Primary Cooldown", 3.5f, "Primary skill cooldown.");
 
             P1OrbsDamage = config.Bind("Phase 1 Primary Orbs", "Orbs Damage", 2f, "Damage of orbs that are fired after primary swings.");
@@ -118,11 +119,11 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P1UtilityDamage = config.Bind("Phase 1 Utility", "Utility Landing Damage", 6f, "Damage of utility's landing.");
             P1UtilityRadius = config.Bind("Phase 1 Utility", "Utility Landing Radius", 8f, "Radius of utility's landing damage. It uses BulletAttack and is infinitely tall.");
             P1UtilityOrbProjectileDamage = config.Bind("Phase 1 Utility", "Utility Orb Damage", 4f, "Damage of utility's orb explosion.");
-            P1UtilityOrbCount = config.Bind("Phase 1 Utility", "Utility Orb Count", 4, "Number of orbs.");
+            P1UtilityOrbCount = config.Bind("Phase 1 Utility", "Utility Orb Count", 6, "Number of orbs.");
             P1UtilityOrbJumps = config.Bind<byte>("Phase 1 Utility", "Utility Orb Jumps", 1, "How many times orbs jump when hitting the ground.");
             P1UtilityOrbSpeed = config.Bind("Phase 1 Utility", "Utility Orb Speed", 20f, "Utility's orb speed.");
             P1UtilityOrbInitialAngle = config.Bind("Phase 1 Utility", "Utility Orb Initial Angle", 45f, "Angle of the initial projectile fired from Providence. Doesn't affect the angle of the projectiles fired after bounce.");
-            P1UtilityCooldown = config.Bind("Phase 1 Utility", "Utility Cooldown", 15f, "Utility skill cooldown.");
+            P1UtilityCooldown = config.Bind("Phase 1 Utility", "Utility Cooldown", 12f, "Utility skill cooldown.");
 
             UtilityOrbBlastRadius = config.Bind("All Phases Utility", "Orb Blast Radius", 6f, "Orb explosion radius. Used for all phases.");
             UtilityOrbOverlapAttackDamage = config.Bind("All Phases Utility", "Orb Overlap Attack Damage", 0.25f, "Orb overlap attack damage, scales of projectile damage. Used for all phases.");
@@ -147,6 +148,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P1SkullsMaxDistance = config.Bind("Phase 1 Skulls", "Skulls Max Distance Spawn From Target", 15f, "How far from the target will projectile target spawn. It will spawn within these limits on all axis.");
             P1SkullsCanBeRed = config.Bind("Phase 1 Skulls", "Skulls Can Be Red", false, "Projectile can be red, red projectiles deal non-lethal 99999 damage.");
             P1SkullsCooldown = config.Bind("Phase 1 Skulls", "Skulls Cooldown", 45f, "Skulls skill cooldown. Skulls are used on health thresholds, so cooldown is only a part of when it is used.");
+            P1SkullDirectTargetEachOrb = config.Bind("Phase 1 Skulls", "Skulls Direct Target Each Orb", 3, "Every X skulls it will be spawned directly on the target instead around it.");
         }
     }
 }

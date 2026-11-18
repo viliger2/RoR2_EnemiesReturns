@@ -29,6 +29,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Secondary
 
         public override bool canBeRed => ProvidencePhase3.P3SkullsCanBeRed.Value;
 
+        public override int spawnOnPlayerEachCount => ProvidencePhase3.P3SkullDirectTargetEachOrb.Value;
+
         public override EntityState GetNextState()
         {
             return new SkullsOutro();

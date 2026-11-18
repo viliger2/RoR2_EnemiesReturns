@@ -84,6 +84,8 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> P2SkullsMaxDistance;
         public static ConfigEntry<bool> P2SkullsCanBeRed;
         public static ConfigEntry<float> P2SkullsCooldown;
+        public static ConfigEntry<int> P2SkullDirectTargetEachOrb;
+
 
         public void PopulateConfig(ConfigFile config)
         {
@@ -97,10 +99,10 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             LevelArmor = config.Bind("Providence P2 Character Stats", "Armor per Level", 0f, "Providence P2' armor increase per level.");
 
             P2PrimaryDamage = config.Bind("Phase 2 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P2PrimaryDuration = config.Bind("Phase 2 Primary", "Primary Duration", 3f, "Duration of the state, in seconds.");
+            P2PrimaryDuration = config.Bind("Phase 2 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
             P2PrimaryProcCoefficient = config.Bind("Phase 2 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
             P2PrimaryPushAwayForce = config.Bind("Phase 2 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
-            P2PrimaryEarlyExit = config.Bind("Phase 2 Primary", "Early Exit Duration", 2.5f, "Early exit from swings into firing orbs if no target was hit with the swing.");
+            P2PrimaryEarlyExit = config.Bind("Phase 2 Primary", "Early Exit Duration", 0.83333f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
             P2PrimaryCooldown = config.Bind("Phase 2 Primary", "Primary Cooldown", 5f, "Primary skill cooldown.");
 
             P2PrimaryCloneSearchDistance = config.Bind("Phase 2 Primary Shadow Clones", "Search Distance", 250f, "How far Providence searches for target when firing shadow clone from primary.");
@@ -135,7 +137,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P2UtilityOrbJumps = config.Bind<byte>("Phase 2 Utility", "Utility Orb Jumps", 2, "How many times orbs jump when hitting the ground.");
             P2UtilityOrbSpeed = config.Bind("Phase 2 Utility", "Utility Orb Speed", 20f, "Utility's orb speed.");
             P2UtilityOrbInitialAngle = config.Bind("Phase 2 Utility", "Utility Orb Initial Angle", 45f, "Angle of the initial projectile fired from Providence. Doesn't affect the angle of the projectiles fired after bounce.");
-            P2UtilityCooldown = config.Bind("Phase 2 Utility", "Utility Cooldown", 15f, "Utility skill cooldown.");
+            P2UtilityCooldown = config.Bind("Phase 2 Utility", "Utility Cooldown", 12f, "Utility skill cooldown.");
 
             P2UtilityCloneDamage = config.Bind("Phase 2 Utility Shadow Clones", "Utility Clones Damage", 3f, "Utility clones projectile damage.");
             P2UtilityCloneMinCount = config.Bind("Phase 2 Utility Shadow Clones", "Utility Min Clones Count", 5, "Minimal number of spawned shadow clones. Scales of current HP.");
@@ -164,6 +166,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P2SkullsMaxDistance = config.Bind("Phase 2 Skulls", "Skulls Max Distance Spawn From Target", 15f, "How far from the target will projectile target spawn. It will spawn within these limits on all axis.");
             P2SkullsCanBeRed = config.Bind("Phase 2 Skulls", "Skulls Can Be Red", true, "Projectile can be red, red projectiles deal non-lethal 99999 damage.");
             P2SkullsCooldown = config.Bind("Phase 2 Skulls", "Skulls Cooldown", 45f, "Skulls skill cooldown. Skulls are used on health thresholds, so cooldown is only a part of when it is used.");
+            P2SkullDirectTargetEachOrb = config.Bind("Phase 2 Skulls", "Skulls Direct Target Each Orb", 4, "Every X skulls it will be spawned directly on the target instead around it.");
         }
     }
 }

@@ -410,9 +410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   falloffModel: 2
-  blastRadius: 6
-  blastDamageCoefficient: 1
-  blastProcCoefficient: 1
+  blastRadius: 0
+  blastDamageCoefficient: 0
+  blastProcCoefficient: 0
   blastAttackerFiltering: 0
   bonusBlastForce: {x: 0, y: 0, z: 0}
   canRejectForce: 1
@@ -448,6 +448,11 @@ MonoBehaviour:
   totalDamageMultiplier: 0
   timedDebuffs: []
   adjustSpawnPoint: 1
+  fireBullet: 1
+  bullerDirection: {x: 0, y: 1, z: 0}
+  bulletAttackEffect: {fileID: 0}
+  bulletAttackRadius: 6
+  bulletAttackDamageCoefficient: 1
 --- !u!135 &-5802343739195060782
 SphereCollider:
   m_ObjectHideFlags: 0

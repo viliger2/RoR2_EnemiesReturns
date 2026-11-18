@@ -42,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => ProvidencePhase2.P2PrimaryEarlyExit.Value;
+        public override float earlyExitCoeff => ProvidencePhase2.P2PrimaryEarlyExit.Value;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
 

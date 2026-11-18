@@ -381,12 +381,14 @@
 
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_NAME": "Broken Sword Hilt",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_CONTEXT": "Reforge",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_LOCKED": "<style=cWorldEvent>The Ambry guards the hilt.</style>",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_HILT_UNLOCK": "<style=cWorldEvent>Ambry's power over the hilt fades.</style>",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_NAME": "Composite Shard",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_CONTEXT": "Pick Up",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DESC": "Shard made out of strange material. There is still lingering power within.",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_LORE": "lore",
-    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_INTERACT": "<style=cWorldEvent>Guardian protects the remaining power.</style>",
+    "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_INTERACT": "<style=cWorldEvent>A Guardian protects a lingering power.</style>",
     "ENEMIES_RETURNS_CONTACTLIGHT_SWORD_SHARD_DROP": "<style=cWorldEvent>The power is released.</style>",
 
     "ENEMIES_RETURNS_CONTACTLIGHT_WARDROBE_NAME": "Lunar Mirror",

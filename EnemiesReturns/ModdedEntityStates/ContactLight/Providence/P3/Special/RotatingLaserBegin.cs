@@ -29,6 +29,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.Special
             base.OnEnter();
             animator = GetModelAnimator();
             PlayCrossfade("Gesture, Override", "BeamInit", 0.1f);
+            if (SceneInfo.instance)
+            {
+                SceneInfo.instance.GetComponent<ChildLocator>();
+            }
         }
 
         public override void FixedUpdate()

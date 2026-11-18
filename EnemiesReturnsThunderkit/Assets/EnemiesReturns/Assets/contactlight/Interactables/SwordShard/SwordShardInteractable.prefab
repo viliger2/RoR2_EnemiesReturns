@@ -10037,12 +10037,12 @@ MonoBehaviour:
   m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forcedAnimatorAtStart: {fileID: 0}
   _modelTransform: {fileID: 7353628342488944339}
   modelVisibility: {fileID: 0}
   modelBaseTransform: {fileID: 320562054948867451}
-  modelScaleCompensation: 1
-  initialScale: {x: 0, y: 0, z: 0}
   autoUpdateModelTransform: 1
+  compensateForInitialScale: 1
   dontDetatchFromParent: 1
   noCorpse: 0
   dontReleaseModelOnDeath: 0
@@ -10065,7 +10065,9 @@ MonoBehaviour:
   m_Script: {fileID: 871971028, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useForPingHighlight: 0
   targetRenderer: {fileID: 8522634415129736636}
+  targetRendererList: []
   strength: 1
   highlightColor: 0
   CustomColor: {r: 1, g: 0, b: 1, a: 1}
@@ -10103,6 +10105,12 @@ MonoBehaviour:
   requiredExpansion: {fileID: 0}
   lastActivator: {fileID: 0}
   lockGameObject: {fileID: 0}
+  onSetAvailable:
+    m_PersistentCalls:
+      m_Calls: []
+  onSetUnavailable:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchase:
     m_PersistentCalls:
       m_Calls:
@@ -10204,6 +10212,7 @@ MonoBehaviour:
   maxConsecutiveCheapSkips: 2147483647
   resetMonsterCardIfFailed: 0
   maximumNumberToSpawnBeforeSkipping: 100
+  maximumNumberOfSpawnsPerWaveOverride: -1
   eliteBias: 1
   increaseSpawnDistanceOnFailure: 0
   onSpawnedServer:
@@ -10220,6 +10229,7 @@ MonoBehaviour:
   _backupMonsterCards: {fileID: 0}
   fallBackToStageMonsterCards: 0
   ActiveEliteDefOverride: {fileID: 0}
+  ActiveEliteDefOverrideCostMultiplier: -1
   currentSpawnTarget: {fileID: 1073728612368593614}
   _customPlacementBase: {fileID: 0}
 --- !u!114 &3829818883337969712
@@ -10311,12 +10321,14 @@ MonoBehaviour:
   dodgeState:
     _typeName: 
   breakoutStateMachineName: 
+  suppressBreakout: 0
   massOverride: 100
   damageOverride: -1
   damageTypeOverride:
     damageType: 0
     damageTypeExtended: 0
     damageSource: 0
+    attackIdentityIndex: 0
   collisionToDisable: []
   renderersToDisable:
   - {fileID: 8522634415129736636}
@@ -10335,11 +10347,17 @@ MonoBehaviour:
   maxDurability: 0
   orientToFloor: 0
   durability: 0
+  totalRendererBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  distOffCenter: 0
   useSkillHighlightRenderers: 0
   skillHighlightRenderers: []
   isVoid: 0
+  overrideBody: 0
   bestName: 
   portraitIcon: {fileID: 2800000, guid: 0f1ec539938c56140b31c786eb9de41e, type: 3}
+  hauntedInteractableTrigger: {fileID: 0}
 --- !u!114 &3879170605094660251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15612,6 +15630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useOverallCurveOnly: 1
   resetOnAwake: 1
+  resetOnReady: 0
   resetOnDisable: 1
   useUnscaledTime: 0
   curveX:
@@ -15722,6 +15741,7 @@ MonoBehaviour:
   timeMax: 0.25
   ignoreResetOnEnable: 0
   loop: 0
+  playOnlyWhenReady: 0
 --- !u!1 &8642949883783383552
 GameObject:
   m_ObjectHideFlags: 0

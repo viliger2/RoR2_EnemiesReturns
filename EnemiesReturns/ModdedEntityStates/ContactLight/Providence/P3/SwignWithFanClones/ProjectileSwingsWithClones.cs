@@ -44,7 +44,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExit => 3.5f;
+        public override float earlyExitCoeff => 1f;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
 
