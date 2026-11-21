@@ -7218,6 +7218,7 @@
 														<Sound Name="SurigcalBed_Ready" ID="{A04574C1-A569-4DEC-B93D-2A87CFE4E689}" ShortID="12470725">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>
@@ -7476,6 +7477,7 @@
 														<Sound Name="GaussReady" ID="{FF33FDE9-9932-4955-A756-AC87E73D37FB}" ShortID="720028728">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 																<Property Name="OverridePositioning" Type="bool" Value="True"/>
 																<Property Name="Volume" Type="Real64">
 																	<ValueList>

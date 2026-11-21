@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &531484298202014813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 992568934880335472}
+  m_Layer: 0
+  m_Name: FireworksOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992568934880335472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531484298202014813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 2.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1756721389237214692}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062800072025650849
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,12 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: -1699741063, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forcedAnimatorAtStart: {fileID: 0}
   _modelTransform: {fileID: 7545959640597257953}
   modelVisibility: {fileID: 0}
   modelBaseTransform: {fileID: 1756721389237214692}
-  modelScaleCompensation: 1
-  initialScale: {x: 0, y: 0, z: 0}
   autoUpdateModelTransform: 1
+  compensateForInitialScale: 1
   dontDetatchFromParent: 0
   noCorpse: 0
   dontReleaseModelOnDeath: 0
@@ -163,7 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 871971028, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useForPingHighlight: 0
   targetRenderer: {fileID: 4679712314885589014}
+  targetRendererList: []
   strength: 1
   highlightColor: 0
   CustomColor: {r: 1, g: 0, b: 1, a: 1}
@@ -222,6 +255,7 @@ MonoBehaviour:
   closingState:
     _typeName: EntityStates.Barrel.Closing, RoR2, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  storageType: 1
   tier1Chance: 0.8
   tier2Chance: 0.2
   tier3Chance: 0.01
@@ -233,6 +267,7 @@ MonoBehaviour:
       m_Calls: []
   dropCount: 1
   isCommandChest: 0
+  isChestOpened: 0
   isChestReset: 0
   ppc: {fileID: 0}
 --- !u!114 &5032502276565549483
@@ -268,6 +303,12 @@ MonoBehaviour:
   requiredExpansion: {fileID: 0}
   lastActivator: {fileID: 0}
   lockGameObject: {fileID: 0}
+  onSetAvailable:
+    m_PersistentCalls:
+      m_Calls: []
+  onSetUnavailable:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchase:
     m_PersistentCalls:
       m_Calls: []
@@ -466,6 +507,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7545959640597257953}
+  - {fileID: 992568934880335472}
   m_Father: {fileID: 1818366609047480615}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -557,6 +599,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3336662784027236635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202226657926284379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPairs:
+  - name: FireworkOrigin
+    transform: {fileID: 992568934880335472}
 --- !u!4 &7545959640597257953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61fcfc2fd3c8a284cb605f2500f914c3, type: 3}

@@ -146,6 +146,7 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticEffectPrefab = chargeEffectPrefab;
 
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.cloneProjectile = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.LeftRightSwing.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseSkulls.BaseSkullsAttack.effectPrefabRed = assets.First(prefab => prefab.name == "ProviSkullRedIndicator");
@@ -158,6 +159,7 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P3.Utility.FireClones.predictedPositionEffect = assets.First(prefab => prefab.name == "ProviLandingEffect");
 
                     ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
+                    ModdedEntityStates.ContactLight.Providence.P3.SwignWithFanClones.ProjectileSwingsWithClones.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
 
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile.BaseLeftRightSwing.swingEffectPrefab = assets.First(prefab => prefab.name == "ProviSwingEffect");
                     ModdedEntityStates.ContactLight.Providence.BaseStates.BaseTwoSwingsIntoProjectile.BaseLeftRightSwing.hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();

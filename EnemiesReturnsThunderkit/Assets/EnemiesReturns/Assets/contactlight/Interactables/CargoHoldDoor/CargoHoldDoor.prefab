@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 6583220222549263370}
   - component: {fileID: 4809605232493376463}
   - component: {fileID: 1227717609174793307}
+  - component: {fileID: 6924460052689436078}
   m_Layer: 0
   m_Name: CargoHoldDoor
   m_TagString: Untagged
@@ -808,6 +809,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: 
   gateToDisableWhenEnabled: 
+--- !u!114 &6924460052689436078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613017746711655976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!1001 &2683809188039422151
 PrefabInstance:
   m_ObjectHideFlags: 0

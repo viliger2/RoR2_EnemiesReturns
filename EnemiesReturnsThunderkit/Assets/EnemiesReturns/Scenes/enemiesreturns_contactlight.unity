@@ -14589,12 +14589,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 19.631866, y: 70.86365, z: 624.3712}
-  - {x: 16.2187, y: 60.57495, z: 625.843}
-  - {x: 12.7957945, y: 53.715813, z: 627.23334}
-  - {x: 9.363151, y: 50.28625, z: 628.5423}
-  - {x: 5.9207673, y: 50.28625, z: 629.76984}
-  - {x: 2.468645, y: 53.715816, z: 630.91583}
-  - {x: -0.9932173, y: 60.574947, z: 631.9805}
+  - {x: 16.12178, y: 60.40184, z: 625.4799}
+  - {x: 12.63426, y: 53.4273, z: 626.6282}
+  - {x: 9.16931, y: 49.940033, z: 627.8161}
+  - {x: 5.726926, y: 49.94003, z: 629.0436}
+  - {x: 2.30711, y: 53.4273, z: 630.31067}
+  - {x: -1.090138, y: 60.401836, z: 631.6174}
   - {x: -4.464818, y: 70.86365, z: 632.9637}
   m_Parameters:
     serializedVersion: 3
@@ -14792,6 +14792,67 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 26
   gateName: Arena
+--- !u!1 &98606260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98606261}
+  - component: {fileID: 98606263}
+  - component: {fileID: 98606262}
+  m_Layer: 0
+  m_Name: AdditionalGateSetters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &98606261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98606260}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.4399986, y: 16.949991, z: -429.58224}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4862740164732043473}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98606262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98606260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateToEnableWhenEnabled: LoadingBay
+  gateToDisableWhenEnabled: 
+--- !u!114 &98606263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98606260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateToEnableWhenEnabled: Corridor
+  gateToDisableWhenEnabled: 
 --- !u!1 &98677018
 GameObject:
   m_ObjectHideFlags: 0
@@ -22052,8 +22113,8 @@ MonoBehaviour:
     - {fileID: 498769239}
     - {fileID: 1940741724}
     - {fileID: 903367703}
-    minEnabled: 5
-    maxEnabled: 7
+    minEnabled: 4
+    maxEnabled: 6
   - objects:
     - {fileID: 1945714566}
     - {fileID: 903570506}
@@ -22073,8 +22134,8 @@ MonoBehaviour:
     - {fileID: 1670125095}
     - {fileID: 182883499}
     - {fileID: 1328802254}
-    minEnabled: 3
-    maxEnabled: 5
+    minEnabled: 2
+    maxEnabled: 4
   - objects:
     - {fileID: 478977556}
     - {fileID: 1166377168}
@@ -30924,12 +30985,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 10.871865, y: 70.86365, z: 622.5412}
-  - {x: 17.55174, y: 60.394646, z: 631.88995}
-  - {x: 24.224037, y: 53.415318, z: 641.1606}
-  - {x: 30.888758, y: 49.92565, z: 650.353}
-  - {x: 37.5459, y: 49.925655, z: 659.46735}
-  - {x: 44.195465, y: 53.415318, z: 668.5034}
-  - {x: 50.837452, y: 60.39465, z: 677.4614}
+  - {x: 17.440577, y: 60.667995, z: 631.647}
+  - {x: 24.038765, y: 53.870895, z: 640.75555}
+  - {x: 30.66643, y: 50.472347, z: 649.867}
+  - {x: 37.32357, y: 50.472343, z: 658.9813}
+  - {x: 44.010193, y: 53.870895, z: 668.09845}
+  - {x: 50.726288, y: 60.667995, z: 677.2184}
   - {x: 57.471863, y: 70.86365, z: 686.3412}
   m_Parameters:
     serializedVersion: 3
@@ -31081,12 +31142,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 16.87095, y: 54.933598, z: 490.81598}
-  - {x: 16.855103, y: 47.914036, z: 489.22583}
-  - {x: 16.834322, y: 41.704975, z: 487.56076}
-  - {x: 16.808607, y: 36.3064, z: 485.82077}
-  - {x: 16.77796, y: 31.718323, z: 484.00583}
-  - {x: 16.74238, y: 27.940737, z: 482.116}
+  - {x: 16.77307, y: 54.942585, z: 490.5947}
+  - {x: 16.691965, y: 47.929024, z: 488.85703}
+  - {x: 16.638557, y: 41.722954, z: 487.11816}
+  - {x: 16.61284, y: 36.324383, z: 485.37817}
+  - {x: 16.614822, y: 31.733307, z: 483.63702}
+  - {x: 16.644497, y: 27.949728, z: 481.8947}
   - {x: 16.701866, y: 24.973646, z: 480.1512}
   m_Parameters:
     serializedVersion: 3
@@ -36945,14 +37006,14 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 45.43186, y: 70.86365, z: 677.4712}
-  - {x: 46.438046, y: 58.092693, z: 676.4087}
-  - {x: 47.440357, y: 48.51448, z: 675.2974}
-  - {x: 48.43881, y: 42.12901, z: 674.1374}
-  - {x: 49.433388, y: 38.936268, z: 672.9285}
-  - {x: 50.424107, y: 38.936268, z: 671.6709}
-  - {x: 51.410957, y: 42.129005, z: 670.36456}
-  - {x: 52.39394, y: 48.514484, z: 669.0094}
-  - {x: 53.37306, y: 58.092697, z: 667.60547}
+  - {x: 46.36255, y: 58.033028, z: 676.1539}
+  - {x: 47.308247, y: 48.41006, z: 674.85144}
+  - {x: 48.26895, y: 41.99475, z: 673.56396}
+  - {x: 49.24466, y: 38.78709, z: 672.2914}
+  - {x: 50.23538, y: 38.787094, z: 671.0338}
+  - {x: 51.2411, y: 41.99475, z: 669.79114}
+  - {x: 52.261833, y: 48.41006, z: 668.5634}
+  - {x: 53.29757, y: 58.033028, z: 667.3506}
   - {x: 54.348312, y: 70.86365, z: 666.1528}
   m_Parameters:
     serializedVersion: 3
@@ -38957,12 +39018,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.17574, y: 57.029488, z: 416.5774}
-  - {x: 32.140224, y: 51.473385, z: 419.14197}
-  - {x: 26.095325, y: 46.755333, z: 421.625}
-  - {x: 20.04104, y: 42.87533, z: 424.0264}
-  - {x: 13.977367, y: 39.83339, z: 426.34625}
-  - {x: 7.9043083, y: 37.629494, z: 428.5845}
+  - {x: 38.064224, y: 57.05676, z: 416.18918}
+  - {x: 31.95437, y: 51.51884, z: 418.49496}
+  - {x: 25.8723, y: 46.80988, z: 420.84857}
+  - {x: 19.818012, y: 42.92988, z: 423.25}
+  - {x: 13.791511, y: 39.87884, z: 425.69925}
+  - {x: 7.7927947, y: 37.656765, z: 428.19632}
   - {x: 1.8218632, y: 36.26365, z: 430.7412}
   m_Parameters:
     serializedVersion: 3
@@ -61650,12 +61711,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 14.791449, y: 56.69905, z: 490.9233}
-  - {x: 12.693553, y: 51.445034, z: 489.45422}
-  - {x: 10.588175, y: 47.0016, z: 487.92395}
-  - {x: 8.475318, y: 43.368736, z: 486.33255}
-  - {x: 6.3549805, y: 40.546463, z: 484.67993}
-  - {x: 4.2271633, y: 38.534767, z: 482.96616}
+  - {x: 14.689679, y: 56.679314, z: 490.5995}
+  - {x: 12.523934, y: 51.41214, z: 488.91452}
+  - {x: 10.384634, y: 46.962124, z: 487.27634}
+  - {x: 8.271776, y: 43.329266, z: 485.6849}
+  - {x: 6.185363, y: 40.51357, z: 484.14023}
+  - {x: 4.1253924, y: 38.515026, z: 482.64233}
   - {x: 2.0918655, y: 37.33365, z: 481.1912}
   m_Parameters:
     serializedVersion: 3
@@ -70590,12 +70651,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 42.96, y: -28.349974, z: -85.69997}
-  - {x: 42.70432, y: -32.232197, z: -86.154724}
-  - {x: 42.441956, y: -35.20797, z: -86.647896}
-  - {x: 42.17292, y: -37.277283, z: -87.17948}
-  - {x: 41.897205, y: -38.44014, z: -87.74948}
-  - {x: 41.614815, y: -38.696537, z: -88.357895}
-  - {x: 41.325745, y: -38.046486, z: -89.00473}
+  - {x: 42.59637, y: -31.82371, z: -86.22841}
+  - {x: 42.262047, y: -34.52715, z: -86.77069}
+  - {x: 41.957027, y: -36.4603, z: -87.32684}
+  - {x: 41.681313, y: -37.623158, z: -87.89684}
+  - {x: 41.434906, y: -38.015724, z: -88.4807}
+  - {x: 41.217796, y: -37.637997, z: -89.07841}
   - {x: 41.03, y: -36.489975, z: -89.68997}
   m_Parameters:
     serializedVersion: 3
@@ -94687,12 +94748,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 57.031868, y: 70.86365, z: 662.27124}
-  - {x: 56.28694, y: 60.43218, z: 666.05707}
-  - {x: 55.53437, y: 53.477867, z: 669.772}
-  - {x: 54.77416, y: 50.000713, z: 673.416}
-  - {x: 54.0063, y: 50.000717, z: 676.98914}
-  - {x: 53.230804, y: 53.47787, z: 680.49133}
-  - {x: 52.447666, y: 60.432182, z: 683.9226}
+  - {x: 56.172596, y: 60.452286, z: 665.85846}
+  - {x: 55.343796, y: 53.511383, z: 669.44104}
+  - {x: 54.54547, y: 50.040928, z: 673.0188}
+  - {x: 53.77761, y: 50.040928, z: 676.592}
+  - {x: 53.04023, y: 53.511383, z: 680.16034}
+  - {x: 52.33332, y: 60.45229, z: 683.72406}
   - {x: 51.656883, y: 70.86365, z: 687.283}
   m_Parameters:
     serializedVersion: 3
@@ -115477,12 +115538,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.166412, y: 57.1895, z: 412.2794}
-  - {x: 32.124683, y: 51.793877, z: 410.55676}
-  - {x: 26.076674, y: 47.236782, z: 408.76328}
-  - {x: 20.022387, y: 43.518208, z: 406.899}
-  - {x: 13.961823, y: 40.638165, z: 404.9639}
-  - {x: 7.894982, y: 38.59664, z: 402.95798}
+  - {x: 38.063156, y: 57.230408, z: 412.01886}
+  - {x: 31.95259, y: 51.86206, z: 410.12253}
+  - {x: 25.870165, y: 47.3186, z: 408.24222}
+  - {x: 19.815876, y: 43.60003, z: 406.37793}
+  - {x: 13.789732, y: 40.70635, z: 404.52966}
+  - {x: 7.791727, y: 38.63755, z: 402.69742}
   - {x: 1.8218632, y: 37.393646, z: 400.88123}
   m_Parameters:
     serializedVersion: 3
@@ -117836,12 +117897,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 39.120003, y: -28.349974, z: -85.69997}
-  - {x: 39.43812, y: -32.06574, z: -86.079636}
-  - {x: 39.75068, y: -34.920105, z: -86.51756}
-  - {x: 40.05767, y: -36.91307, z: -87.01374}
-  - {x: 40.359097, y: -38.044643, z: -87.56818}
-  - {x: 40.65496, y: -38.314816, z: -88.18086}
-  - {x: 40.945267, y: -37.72359, z: -88.85179}
+  - {x: 39.335266, y: -31.786695, z: -86.306274}
+  - {x: 39.579247, y: -34.455032, z: -86.895294}
+  - {x: 39.851955, y: -36.354984, z: -87.46702}
+  - {x: 40.153385, y: -37.486557, z: -88.02145}
+  - {x: 40.483536, y: -37.849743, z: -88.558586}
+  - {x: 40.84241, y: -37.444546, z: -89.07843}
   - {x: 41.230003, y: -36.270966, z: -89.58098}
   m_Parameters:
     serializedVersion: 3
@@ -121279,12 +121340,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.177937, y: 58.775352, z: 418.20587}
-  - {x: 32.143887, y: 54.960304, z: 422.4175}
-  - {x: 26.09972, y: 51.978493, z: 426.5662}
-  - {x: 20.045435, y: 49.829918, z: 430.65195}
-  - {x: 13.9810295, y: 48.514587, z: 434.67468}
-  - {x: 7.9065056, y: 48.032497, z: 438.63443}
+  - {x: 38.073967, y: 58.779995, z: 417.97473}
+  - {x: 31.9706, y: 54.968037, z: 422.03232}
+  - {x: 25.891777, y: 51.987774, z: 426.10397}
+  - {x: 19.837488, y: 49.839203, z: 430.1897}
+  - {x: 13.807742, y: 48.522327, z: 434.2895}
+  - {x: 7.802533, y: 48.03714, z: 438.40332}
   - {x: 1.8218632, y: 48.383644, z: 442.53122}
   m_Parameters:
     serializedVersion: 3
@@ -145556,12 +145617,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.721863, y: 25.953648, z: 467.4912}
-  - {x: 33.723946, y: 22.388489, z: 468.49033}
-  - {x: 33.64343, y: 19.34505, z: 469.4121}
-  - {x: 33.480312, y: 16.823332, z: 470.2566}
-  - {x: 33.2346, y: 14.823332, z: 471.0237}
-  - {x: 32.90629, y: 13.345051, z: 471.71353}
-  - {x: 32.495373, y: 12.388491, z: 472.32605}
+  - {x: 33.630024, y: 22.373274, z: 468.1849}
+  - {x: 33.486893, y: 19.319689, z: 468.90308}
+  - {x: 33.292473, y: 16.7929, z: 469.64575}
+  - {x: 33.046757, y: 14.792898, z: 470.4129}
+  - {x: 32.749752, y: 13.31969, z: 471.20453}
+  - {x: 32.401455, y: 12.373273, z: 472.02063}
   - {x: 32.001865, y: 11.953648, z: 472.8612}
   m_Parameters:
     serializedVersion: 3
@@ -179019,12 +179080,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 35.81713, y: 59.23845, z: 421.54584}
-  - {x: 30.102064, y: 55.88165, z: 421.03275}
-  - {x: 24.376678, y: 53.353252, z: 420.4419}
-  - {x: 18.64096, y: 51.65325, z: 419.77335}
-  - {x: 12.894921, y: 50.78165, z: 419.02704}
-  - {x: 7.1385546, y: 50.738445, z: 418.20297}
+  - {x: 35.71029, y: 59.201965, z: 421.29837}
+  - {x: 29.923998, y: 55.820843, z: 420.6203}
+  - {x: 24.162996, y: 53.28028, z: 419.94696}
+  - {x: 18.42728, y: 51.58028, z: 419.2784}
+  - {x: 12.716854, y: 50.720844, z: 418.6146}
+  - {x: 7.031714, y: 50.70196, z: 417.9555}
   - {x: 1.3718624, y: 51.523643, z: 417.3012}
   m_Parameters:
     serializedVersion: 3
@@ -190322,12 +190383,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 17.040379, y: 54.89345, z: 492.60965}
-  - {x: 17.192719, y: 47.821888, z: 492.8091}
-  - {x: 17.338888, y: 41.548965, z: 492.92953}
-  - {x: 17.47889, y: 36.07468, z: 492.97098}
-  - {x: 17.612719, y: 31.399033, z: 492.93338}
-  - {x: 17.740377, y: 27.522022, z: 492.8168}
+  - {x: 16.946568, y: 54.892536, z: 492.36884}
+  - {x: 17.03637, y: 47.82037, z: 492.4077}
+  - {x: 17.15127, y: 41.547146, z: 492.44788}
+  - {x: 17.29127, y: 36.072857, z: 492.4893}
+  - {x: 17.45637, y: 31.397512, z: 492.53198}
+  - {x: 17.646568, y: 27.52111, z: 492.57596}
   - {x: 17.861866, y: 24.443647, z: 492.62122}
   m_Parameters:
     serializedVersion: 3
@@ -203423,12 +203484,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 15.6318655, y: 62.76365, z: 512.77124}
-  - {x: 18.702251, y: 56.04283, z: 514.17236}
-  - {x: 21.76632, y: 50.150383, z: 515.50793}
-  - {x: 24.824066, y: 45.0863, z: 516.77783}
-  - {x: 27.875496, y: 40.850586, z: 517.9822}
-  - {x: 30.920605, y: 37.44324, z: 519.1208}
-  - {x: 33.959393, y: 34.86426, z: 520.19385}
+  - {x: 18.607258, y: 56.03842, z: 514.06775}
+  - {x: 21.607996, y: 50.143032, z: 515.3335}
+  - {x: 24.634079, y: 45.077484, z: 516.56854}
+  - {x: 27.685507, y: 40.841766, z: 517.7729}
+  - {x: 30.76228, y: 37.43589, z: 518.9464}
+  - {x: 33.864403, y: 34.859848, z: 520.0892}
   - {x: 36.991867, y: 33.113647, z: 521.20123}
   m_Parameters:
     serializedVersion: 3
@@ -221391,7 +221452,7 @@ MonoBehaviour:
   contentSourceMixLimitOverrideValue: 2
   contentInteractableOnlySourceMixLimitOverride: 0
   contentInteractableOnlySourceMixLimitOverrideValue: 2
-  sceneDirectorInteractibleCredits: 400
+  sceneDirectorInteractibleCredits: 250
   sceneDirectorMonsterCredits: 600
   bonusInteractibleCreditObjects: []
   monsterCards: []
@@ -229675,12 +229736,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.671867, y: 25.953648, z: 467.4912}
-  - {x: 33.83241, y: 22.273119, z: 468.33282}
-  - {x: 33.91087, y: 19.115149, z: 469.11438}
-  - {x: 33.907238, y: 16.479734, z: 469.83588}
-  - {x: 33.821526, y: 14.366877, z: 470.49728}
-  - {x: 33.653725, y: 12.776577, z: 471.09866}
-  - {x: 33.40384, y: 11.708834, z: 471.63998}
+  - {x: 33.72165, y: 22.257845, z: 468.13547}
+  - {x: 33.726273, y: 19.089691, z: 468.78543}
+  - {x: 33.685722, y: 16.449186, z: 469.44113}
+  - {x: 33.600006, y: 14.336329, z: 470.10257}
+  - {x: 33.469124, y: 12.751121, z: 470.7697}
+  - {x: 33.29308, y: 11.693561, z: 471.4426}
   - {x: 33.071865, y: 11.163648, z: 472.12122}
   m_Parameters:
     serializedVersion: 3
@@ -251585,6 +251646,67 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomLeft
+--- !u!1 &1717066842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717066843}
+  - component: {fileID: 1717066845}
+  - component: {fileID: 1717066844}
+  m_Layer: 0
+  m_Name: AdditionalGateSetters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1717066843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717066842}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -64.64, y: 16.949991, z: -429.58224}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4862740163124295196}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717066844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717066842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateToEnableWhenEnabled: LoadingBay
+  gateToDisableWhenEnabled: 
+--- !u!114 &1717066845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717066842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -689746241, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateToEnableWhenEnabled: Corridor
+  gateToDisableWhenEnabled: 
 --- !u!1 &1718338964
 GameObject:
   m_ObjectHideFlags: 0
@@ -255105,12 +255227,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 9.001865, y: 70.86365, z: 626.0312}
-  - {x: 4.7703447, y: 59.604065, z: 635.17834}
-  - {x: 0.5331642, y: 51.766247, z: 644.2765}
-  - {x: -3.7096741, y: 47.350197, z: 653.32574}
-  - {x: -7.9581714, y: 46.355907, z: 662.32605}
-  - {x: -12.212328, y: 48.78339, z: 671.2774}
-  - {x: -16.472143, y: 54.632633, z: 680.1799}
+  - {x: 4.670928, y: 59.49871, z: 634.93677}
+  - {x: 0.36747077, y: 51.590664, z: 643.8739}
+  - {x: -3.9085066, y: 47.139496, z: 652.84265}
+  - {x: -8.157003, y: 46.145206, z: 661.84296}
+  - {x: -12.378021, y: 48.607807, z: 670.8749}
+  - {x: -16.57156, y: 54.527287, z: 679.93835}
   - {x: -20.737617, y: 63.90365, z: 689.03345}
   m_Parameters:
     serializedVersion: 3
@@ -266764,12 +266886,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.834415, y: 58.409412, z: 423.17273}
-  - {x: 48.1404, y: 54.22564, z: 424.2828}
-  - {x: 51.43982, y: 50.872326, z: 425.3114}
-  - {x: 54.73268, y: 48.34947, z: 426.25858}
-  - {x: 58.01897, y: 46.65707, z: 427.12424}
-  - {x: 61.2987, y: 45.79513, z: 427.90845}
+  - {x: 44.739624, y: 58.41008, z: 422.80014}
+  - {x: 47.982414, y: 54.22675, z: 423.6618}
+  - {x: 51.250237, y: 50.873657, z: 424.56622}
+  - {x: 54.543095, y: 48.350796, z: 425.51337}
+  - {x: 57.860985, y: 46.65818, z: 426.50327}
+  - {x: 61.203907, y: 45.795795, z: 427.53586}
   - {x: 64.57186, y: 45.76365, z: 428.6112}
   m_Parameters:
     serializedVersion: 3
@@ -302582,12 +302704,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.854588, y: 57.402763, z: 422.2098}
-  - {x: 48.17402, y: 52.221226, z: 422.36792}
-  - {x: 51.480167, y: 47.87903, z: 422.45554}
-  - {x: 54.77302, y: 44.37617, z: 422.4727}
-  - {x: 58.05259, y: 41.712658, z: 422.41934}
-  - {x: 61.318867, y: 39.88848, z: 422.2955}
+  - {x: 44.732037, y: 57.421238, z: 421.94415}
+  - {x: 47.969772, y: 52.252014, z: 421.9251}
+  - {x: 51.235065, y: 47.915974, z: 421.9242}
+  - {x: 54.527924, y: 44.413116, z: 421.94135}
+  - {x: 57.84834, y: 41.743443, z: 421.97656}
+  - {x: 61.196323, y: 39.906956, z: 422.02985}
   - {x: 64.57186, y: 38.90365, z: 422.1012}
   m_Parameters:
     serializedVersion: 3
@@ -310867,12 +310989,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 54.031868, y: 70.86365, z: 657.9712}
-  - {x: 59.694157, y: 59.00986, z: 649.5082}
-  - {x: 65.34957, y: 50.614, z: 640.9636}
-  - {x: 70.998116, y: 45.676075, z: 632.3376}
-  - {x: 76.63979, y: 44.19607, z: 623.63007}
-  - {x: 82.27459, y: 46.174004, z: 614.841}
-  - {x: 87.90252, y: 51.60986, z: 605.9705}
+  - {x: 59.59052, y: 59.14172, z: 649.16376}
+  - {x: 65.176834, y: 50.833767, z: 640.3896}
+  - {x: 70.79083, y: 45.939793, z: 631.6488}
+  - {x: 76.43251, y: 44.459797, z: 622.9412}
+  - {x: 82.10186, y: 46.39377, z: 614.267}
+  - {x: 87.798874, y: 51.741722, z: 605.62604}
   - {x: 93.523575, y: 60.503647, z: 597.01843}
   m_Parameters:
     serializedVersion: 3
@@ -386046,12 +386168,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 50.432877, y: 90.561165, z: 128.6759}
-  - {x: 50.565224, y: 89.99957, z: 129.64476}
-  - {x: 50.635723, y: 89.27684, z: 130.40215}
-  - {x: 50.644375, y: 88.392975, z: 130.94803}
-  - {x: 50.59118, y: 87.34796, z: 131.28242}
-  - {x: 50.476135, y: 86.141815, z: 131.40535}
-  - {x: 50.299244, y: 84.77453, z: 131.31677}
+  - {x: 50.462135, y: 89.80446, z: 129.27406}
+  - {x: 50.46391, y: 88.95166, z: 129.78429}
+  - {x: 50.438198, y: 88.002754, z: 130.2066}
+  - {x: 50.385002, y: 86.95774, z: 130.54102}
+  - {x: 50.30432, y: 85.81663, z: 130.78749}
+  - {x: 50.19615, y: 84.57942, z: 130.94608}
   - {x: 50.0605, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3
@@ -386151,12 +386273,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 4.1184254, y: 87.62415, z: 86.838135}
-  - {x: 4.2559996, y: 87.33864, z: 87.74503}
-  - {x: 4.3343816, y: 86.88639, z: 88.43344}
-  - {x: 4.3535705, y: 86.26741, z: 88.90336}
-  - {x: 4.313566, y: 85.4817, z: 89.15479}
-  - {x: 4.214369, y: 84.52925, z: 89.18774}
-  - {x: 4.0559793, y: 83.410065, z: 89.00218}
+  - {x: 4.170629, y: 87.077324, z: 87.35551}
+  - {x: 4.192097, y: 86.45087, z: 87.78424}
+  - {x: 4.182829, y: 85.74478, z: 88.12431}
+  - {x: 4.1428246, y: 84.95907, z: 88.37575}
+  - {x: 4.0720844, y: 84.09373, z: 88.53853}
+  - {x: 3.9706082, y: 83.14876, z: 88.612656}
   - {x: 3.838396, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -454848,6 +454970,7 @@ GameObject:
   - component: {fileID: 1390731754000265964}
   - component: {fileID: 8530614347183792218}
   - component: {fileID: 8923330733016936335}
+  - component: {fileID: 8923330733016936336}
   m_Layer: 0
   m_Name: BrokenPodsDoor
   m_TagString: Untagged
@@ -501790,6 +501913,7 @@ GameObject:
   - component: {fileID: 1237607893477526768}
   - component: {fileID: 9213157775806455656}
   - component: {fileID: 9213157775806455657}
+  - component: {fileID: 9213157775806455658}
   m_Layer: 0
   m_Name: KeycardDoorActualCabin
   m_TagString: Untagged
@@ -501819,6 +501943,7 @@ GameObject:
   - component: {fileID: 1237607892203630524}
   - component: {fileID: 9213157776927538212}
   - component: {fileID: 9213157776927538213}
+  - component: {fileID: 9213157776927538214}
   m_Layer: 0
   m_Name: KeycardDoorActualStorage
   m_TagString: Untagged
@@ -501848,6 +501973,7 @@ GameObject:
   - component: {fileID: 1237607892567980490}
   - component: {fileID: 9213157777254066770}
   - component: {fileID: 9213157777254066771}
+  - component: {fileID: 9213157777254066772}
   m_Layer: 0
   m_Name: KeycardDoorActualArmory
   m_TagString: Untagged
@@ -501877,6 +502003,7 @@ GameObject:
   - component: {fileID: 1237607891869776445}
   - component: {fileID: 9213157777399015845}
   - component: {fileID: 9213157777399015846}
+  - component: {fileID: 9213157777399015847}
   m_Layer: 0
   m_Name: KeycardDoorActualMedibay
   m_TagString: Untagged
@@ -530931,12 +531058,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 2.8084278, y: 87.62415, z: 86.838135}
-  - {x: 2.9611957, y: 87.36015, z: 87.68395}
-  - {x: 3.0497065, y: 86.92224, z: 88.331635}
-  - {x: 3.0739596, y: 86.31043, z: 88.7812}
-  - {x: 3.0339553, y: 85.52472, z: 89.03263}
-  - {x: 2.929694, y: 84.5651, z: 89.08593}
-  - {x: 2.761175, y: 83.43158, z: 88.9411}
+  - {x: 2.8459249, y: 87.0228, z: 87.353355}
+  - {x: 2.8575885, y: 86.359985, z: 87.78065}
+  - {x: 2.8434181, y: 85.63573, z: 88.12001}
+  - {x: 2.8034139, y: 84.85001, z: 88.37144}
+  - {x: 2.7375758, y: 84.002846, z: 88.534935}
+  - {x: 2.645904, y: 83.09422, z: 88.610504}
   - {x: 2.5283985, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -531036,12 +531163,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 48.690567, y: 90.561165, z: 128.6759}
-  - {x: 48.823956, y: 89.95752, z: 129.65176}
-  - {x: 48.895157, y: 89.20676, z: 130.4138}
-  - {x: 48.904152, y: 88.30887, z: 130.96204}
-  - {x: 48.850956, y: 87.263855, z: 131.29645}
-  - {x: 48.735565, y: 86.071724, z: 131.41702}
-  - {x: 48.557976, y: 84.732475, z: 131.32379}
+  - {x: 48.718483, y: 89.751755, z: 129.27374}
+  - {x: 48.719364, y: 88.863815, z: 129.78377}
+  - {x: 48.693207, y: 87.89735, z: 130.20598}
+  - {x: 48.640007, y: 86.85233, z: 130.54037}
+  - {x: 48.559772, y: 85.72879, z: 130.78697}
+  - {x: 48.4525, y: 84.52672, z: 130.94576}
   - {x: 48.31819, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3
@@ -556171,6 +556298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1471563396407179612}
+  - {fileID: 1717066843}
   m_Father: {fileID: 1735638036}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -556219,6 +556347,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1471563395827077009}
+  - {fileID: 98606261}
   m_Father: {fileID: 1735638036}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574495,6 +574624,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 98606260}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &5312807811078007998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574575,6 +574716,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1717066842}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &5312807811814783295
 MonoBehaviour:
@@ -709874,6 +710027,7 @@ GameObject:
   - component: {fileID: 4809605234626105518}
   - component: {fileID: 2132747123}
   - component: {fileID: 8968392461985283249}
+  - component: {fileID: 8968392461985283250}
   m_Layer: 0
   m_Name: CargoHoldDoor (1)
   m_TagString: Untagged
@@ -709905,6 +710059,7 @@ GameObject:
   - component: {fileID: 6583220221927964936}
   - component: {fileID: 4809605233249908429}
   - component: {fileID: 8968392460609493716}
+  - component: {fileID: 8968392460609493717}
   m_Layer: 0
   m_Name: CargoHoldDoor
   m_TagString: Untagged
@@ -716505,6 +716660,19 @@ MonoBehaviour:
   aliveLoopStop: 
   sprintLoopStart: 
   sprintLoopStop: 
+--- !u!114 &8923330733016936336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476105600040090578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!23 &8925468799833986266
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -718985,6 +719153,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: CorridorToArena
   gateToDisableWhenEnabled: 
+--- !u!114 &8968392460609493717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613017747334034218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!114 &8968392461985283249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718999,6 +719180,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: Arena
   gateToDisableWhenEnabled: 
+--- !u!114 &8968392461985283250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613017746562422089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!1 &8969453752637199113
 GameObject:
   m_ObjectHideFlags: 0
@@ -729824,6 +730018,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: Cabin
   gateToDisableWhenEnabled: 
+--- !u!114 &9213157775806455658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678293205346480579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!114 &9213157776927538212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729860,6 +730067,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: Storage
   gateToDisableWhenEnabled: 
+--- !u!114 &9213157776927538214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678293206272709263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!114 &9213157777254066770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729896,6 +730116,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: Armory
   gateToDisableWhenEnabled: 
+--- !u!114 &9213157777254066772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678293206583313657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!114 &9213157777399015845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729932,6 +730165,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateToEnableWhenEnabled: Medibay
   gateToDisableWhenEnabled: 
+--- !u!114 &9213157777399015847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678293207009216270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1359759825, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldAllowOnInteractionBeginProc: 0
 --- !u!1 &9215519062247184212
 GameObject:
   m_ObjectHideFlags: 0

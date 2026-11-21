@@ -52,6 +52,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public static GameObject projectilePrefab;
 
+        public static GameObject effectPrefab;
+
         public static float maxSearchDistance => ProvidencePhase3.P3PrimaryCloneSearchDistance.Value;
 
         public static float maxSearchAngle => ProvidencePhase3.P3PrimaryCloneMaxSearchAngle.Value;
@@ -127,6 +129,18 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
                     projectilePrefab = projectilePrefab
                 };
                 ProjectileManager.instance.FireProjectile(projectileInfo);
+
+                if (effectPrefab)
+                {
+                    var effectData = new EffectData()
+                    {
+                        genericFloat = distance / cloneProjectileSpeed, // use EffectRetimer component on effect to rescale effect duration
+                        origin = aimRay.origin + aimRay2.direction * distance,
+                        rotation = Quaternion.identity,
+                    };
+
+                    EffectManager.SpawnEffect(effectPrefab, effectData, true);
+                }
 
                 aimRay2.direction = rotation * aimRay2.direction;
             }

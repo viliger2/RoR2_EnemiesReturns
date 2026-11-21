@@ -28,7 +28,26 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1
             {
                 EffectManager.SimpleMuzzleFlash(brotherDeathEffect, base.gameObject, "Chest", transmit: false);
             }
+            var origin = FindModelChild("PortalClonesEffectOrigin");
+            if (origin && origin.childCount > 0)
+            {
+                // a bit dirty but that's effects for you
+                UnityEngine.Object.Destroy(origin.GetChild(0).gameObject);
+            }
             base.OnEnter();
+            ForceUpdateOverlays();
+        }
+
+        private void ForceUpdateOverlays()
+        {
+            if (cachedModelTransform)
+            {
+                var model = cachedModelTransform.gameObject.GetComponent<CharacterModel>();
+                if (model)
+                {
+                    model.forceUpdate = true;
+                }
+            }
         }
 
         public override void FixedUpdate()

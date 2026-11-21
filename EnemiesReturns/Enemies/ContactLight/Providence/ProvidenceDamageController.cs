@@ -27,10 +27,12 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
 
         public static Material immuneToAllDamageOverlay;
 
+        private Action<CharacterBody> onDeathDelegate;
+
         public static void AddDamageImmuneOverlay(CharacterModel self)
         {
             // TODO: add actual overlay instead of reusing Arraign
-            if (self.body && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ProvidenceImmuneToDamage))
+            if (self.body && self.body.enabled && self.activeOverlayCount < RoR2.CharacterModel.maxOverlays && self.body.HasBuff(Content.Buffs.ProvidenceImmuneToDamage))
             {
                 self.currentOverlays[self.activeOverlayCount++] = immuneToAllDamageOverlay;
             }
@@ -41,6 +43,34 @@ namespace EnemiesReturns.Enemies.ContactLight.Providence
             if (!body)
             {
                 body = GetComponent<CharacterBody>();
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (body)
+            {
+                onDeathDelegate = new Action<CharacterBody>(OnBodyDeath);
+                body.OnBodyDeath = (Action<CharacterBody>)Delegate.Combine(body.OnBodyDeath, onDeathDelegate);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (body)
+            {
+                body.OnBodyDeath = (Action<CharacterBody>)Delegate.Remove(body.OnBodyDeath, onDeathDelegate);
+            }
+        }
+
+        private void OnBodyDeath(CharacterBody body)
+        {
+            if (NetworkServer.active)
+            {
+                if (body)
+                {
+                    body.RemoveBuff(Content.Buffs.ProvidenceImmuneToDamage);
+                }
             }
         }
 

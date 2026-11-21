@@ -53,7 +53,7 @@ namespace EnemiesReturns.Projectiles
                 hitMask = LayerIndex.entityPrecise.mask,
                 stopperMask = -1,
                 maxDistance = 1000f,
-                owner = gameObject,
+                owner = projectileController.owner,
                 minSpread = 0f,
                 maxSpread = 0f,
                 radius = bulletAttackRadius,

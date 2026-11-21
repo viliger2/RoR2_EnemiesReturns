@@ -96,7 +96,79 @@ MonoBehaviour:
     cards: []
     selectionWeight: 7
   - name: Drones
-    cards: []
+    cards:
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 8c0ba07e91edbbd4fa573a6702b0e49f
+        _useDirectReference: 0
+      selectionWeight: 7
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 47129a0298c286f4bb01754a8aaa36b0
+        _useDirectReference: 0
+      selectionWeight: 7
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 592ddd0e913440844b42eff65663abda
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 749e2ff7e1839074885efb0f82197ba7
+        _useDirectReference: 0
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 0
     selectionWeight: 4.5
   - name: Rare
     cards:

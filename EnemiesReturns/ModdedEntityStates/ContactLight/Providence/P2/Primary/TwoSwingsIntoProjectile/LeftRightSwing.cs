@@ -6,6 +6,7 @@ using RoR2;
 using RoR2.Projectile;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile
 {
@@ -49,6 +50,8 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
         public static string fireCloneMecanimParam = "FireClone.attack";
 
         public static GameObject cloneProjectile;
+
+        public static GameObject effectPrefab;
 
         public static float maxSearchDistance => ProvidencePhase2.P2PrimaryCloneSearchDistance.Value;
 
@@ -94,6 +97,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P2.Primary.T
             }
 
             var distance = Vector3.Distance(aimRay.origin, target.transform.position);
+
+            var effectData = new EffectData()
+            {
+                genericFloat = distance / cloneProjectileSpeed, // use EffectRetimer component on effect to rescale effect duration
+                origin = target.transform.position,
+                rotation = Quaternion.identity,
+            };
+
+            EffectManager.SpawnEffect(effectPrefab, effectData, true);
 
             var projectileInfo = new RoR2.Projectile.FireProjectileInfo()
             {
