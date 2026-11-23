@@ -1,8 +1,10 @@
-﻿using EnemiesReturns.Enemies.ContactLight;
+﻿using EnemiesReturns.Components;
+using EnemiesReturns.Enemies.ContactLight;
 using EnemiesReturns.Enemies.Judgement;
 using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterSpeech;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +21,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public static float bossSpawnDelay = 4f;
 
         public static float templeGuardDirectorDelay = 15f;
+
+        public static GameObject speechControllerPrefab;
+
+        private GameObject speechControllerInstance;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -47,6 +53,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     if (combatEncounterTransform)
                     {
                         combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                        if (combatEncounter)
+                        {
+                            combatEncounter.combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
+                        }
                     }
                     var templeGuardsCombatDirectorTransform = phaseChildLocator.FindChild("TempleGuardCombatDirector");
                     if (templeGuardsCombatDirectorTransform)
@@ -64,6 +74,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             }
             ClearCorpses();
             BossGroup.onBossGroupStartServer += SpawnGoldTitanOnProvi;
+        }
+
+        private void CombatSquad_onMemberAddedServer(CharacterMaster master)
+        {
+            if (speechControllerPrefab)
+            {
+                speechControllerInstance = UnityEngine.Object.Instantiate(speechControllerPrefab);
+                speechControllerInstance.GetComponent<CharacterSpeechController>().characterMaster = master;
+            }
         }
 
         public override void FixedUpdate()
@@ -103,6 +122,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
+            }
+            if (combatEncounter)
+            {
+                combatEncounter.combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;
+            }
+            if (speechControllerInstance)
+            {
+                UnityEngine.Object.Destroy(speechControllerInstance);
             }
             BossGroup.onBossGroupStartServer -= SpawnGoldTitanOnProvi;
         }

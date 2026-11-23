@@ -95,7 +95,25 @@ MonoBehaviour:
         _asset: {fileID: 11400000, guid: 4e01e4dcdfe8b0647b45a7bea1a421b4, type: 2}
         _address: 
         _useDirectReference: 1
-      selectionWeight: 1
+      selectionWeight: 2
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 7cecbc4df44ec1a4eb3fcbd8c82d9e96
+        _useDirectReference: 0
+      selectionWeight: 2
       spawnDistance: 0
       preventOverhead: 0
       minimumStageCompletions: 0
@@ -151,6 +169,24 @@ MonoBehaviour:
     - spawnCard:
         _asset: {fileID: 0}
         _address: f7a1bc2e4756beb448d61e9e1421a9e1
+        _useDirectReference: 0
+      selectionWeight: 1
+      spawnDistance: 0
+      preventOverhead: 0
+      minimumStageCompletions: 0
+      requiredUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+      forbiddenUnlockableDef:
+        _asset: {fileID: 0}
+        _address: 
+        _useDirectReference: 0
+        _canLoadFromCatalog: 1
+    - spawnCard:
+        _asset: {fileID: 0}
+        _address: 79a0217696fe62f40a8e88f039987a2c
         _useDirectReference: 0
       selectionWeight: 1
       spawnDistance: 0

@@ -8,6 +8,16 @@ namespace EnemiesReturns.Behaviors.ContactLight
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate += HUDBossHealthBarController_LateUpdate;
             On.RoR2.UI.RunTimerUIController.Start += RunTimerUIController_Start;
+            On.EntityStates.ImpBossMonster.GroundPound.OnEnter += GroundPound_OnEnter;
+        }
+
+        private void GroundPound_OnEnter(On.EntityStates.ImpBossMonster.GroundPound.orig_OnEnter orig, EntityStates.ImpBossMonster.GroundPound self)
+        {
+            orig(self);
+            if(self.attack != null)
+            {
+                self.attack.losType = RoR2.BlastAttack.LoSType.NearestHit;
+            }
         }
 
         private void RunTimerUIController_Start(On.RoR2.UI.RunTimerUIController.orig_Start orig, RoR2.UI.RunTimerUIController self)
@@ -30,6 +40,7 @@ namespace EnemiesReturns.Behaviors.ContactLight
         {
             On.RoR2.UI.HUDBossHealthBarController.LateUpdate -= HUDBossHealthBarController_LateUpdate;
             On.RoR2.UI.RunTimerUIController.Start -= RunTimerUIController_Start;
+            On.EntityStates.ImpBossMonster.GroundPound.OnEnter -= GroundPound_OnEnter;
         }
     }
 }

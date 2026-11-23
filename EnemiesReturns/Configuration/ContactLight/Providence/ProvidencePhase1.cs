@@ -142,8 +142,8 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
 
             P1SkullsDamage = config.Bind("Phase 1 Skulls", "Skulls Damage", 5f, "Damage of normal skull attack.");
             P1SkullsFireFrequency = config.Bind("Phase 1 Skulls", "Skulls Fire Frequency", 0.3f, "How frequently skulls are fired.");
-            P1SkullsProjectileCount = config.Bind("Phase 1 Skulls", "Skulls Count", 10, "Base number of skulls spawned by the attack.");
-            P1SkullsProjectileCountPerPlayer = config.Bind("Phase 1 Skulls", "Additional Skulls Count Per Player", 5, "Additional skulls spawned by the attack per player (above 1).");
+            P1SkullsProjectileCount = config.Bind("Phase 1 Skulls", "Skulls Count", 15, "Base number of skulls spawned by the attack.");
+            P1SkullsProjectileCountPerPlayer = config.Bind("Phase 1 Skulls", "Additional Skulls Count Per Player", 7, "Additional skulls spawned by the attack per player (above 1).");
             P1SkullsProjectileSpeed = config.Bind("Phase 1 Skulls", "Skulls Projectile Speed", 50f, "Skulls projectile speed");
             P1SkullsMaxDistance = config.Bind("Phase 1 Skulls", "Skulls Max Distance Spawn From Target", 15f, "How far from the target will projectile target spawn. It will spawn within these limits on all axis.");
             P1SkullsCanBeRed = config.Bind("Phase 1 Skulls", "Skulls Can Be Red", false, "Projectile can be red, red projectiles deal non-lethal 99999 damage.");

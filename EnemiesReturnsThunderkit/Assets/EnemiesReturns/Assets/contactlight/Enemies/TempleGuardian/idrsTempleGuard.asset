@@ -14,4 +14,275 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namedItemRuleGroups: []
   namedEquipmentRuleGroups: []
-  keyAssetRuleGroups: []
+  keyAssetRuleGroups:
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: d9114002dc5efcf4db59392053697322
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 38d7ef1adcce0dc44ab443812a8ee569
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0, y: 1.45599, z: 1.61309}
+        localAngles: {x: 9.0956, y: 358.3542, z: 0.8406}
+        localScale: {x: 3.54698, y: 3.54698, z: 3.54698}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 8e33f06887d0c2d4795d76929129dbc7
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 2b86af621f3e8724f9e51ab56aad6395
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0.26377, y: -0.08141, z: -0.00768}
+        localAngles: {x: 347.0678, y: 166.5163, z: 27.93682}
+        localScale: {x: 0.3031, y: 0.3031, z: 0.3031}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 20230db692192a54d8ca7612828bd789
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: b67c156e15e6f4245989c763f1a40b6f
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: -1.97241, y: 3.04951, z: 2.5423}
+        localAngles: {x: 329.6959, y: 105.6213, z: 274.3726}
+        localScale: {x: 3, y: 3, z: 3}
+        limbMask: 0
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: b67c156e15e6f4245989c763f1a40b6f
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 2.15809, y: 3.84361, z: 2.97289}
+        localAngles: {x: 348.1948, y: 248.5897, z: 94.89233}
+        localScale: {x: -3, y: 3, z: 3}
+        limbMask: 0
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 75f0fc718cdbfeb4f8cf87a93d4d88aa
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0, y: 2.18546, z: 1.92816}
+        localAngles: {x: 0, y: 180, z: 0}
+        localScale: {x: 4.34271, y: 4.34271, z: 4.34271}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 01774fa1e68a662458ea2685ec67988b
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 62ae3ef1031bb8c4d95d8f0fcfdbe86b
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0, y: 4.68576, z: -0.02026}
+        localAngles: {x: 348.9784, y: 178.2997, z: 0.06988}
+        localScale: {x: 4.29367, y: 4.29367, z: 4.29367}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 463f8f6917dd8af40860b023a520f051
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: f76a390c2ffbf9645862f81533eafc69
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: CannonL
+        localPos: {x: 3.40558, y: -0.39559, z: -2.51602}
+        localAngles: {x: 0.18238, y: 180, z: 0.00001}
+        localScale: {x: 15.40726, y: 8.72758, z: 8.72758}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: ff9f264d18696494f920343be0bf938a
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 880352d2f519466409abd39061d75b79
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: -1.60702, y: 4.28197, z: 0.11755}
+        localAngles: {x: 10.05996, y: 348.557, z: 4.06186}
+        localScale: {x: -0.68534, y: 0.68534, z: 0.68534}
+        limbMask: 0
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 880352d2f519466409abd39061d75b79
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 1.61086, y: 4.33068, z: 0.24494}
+        localAngles: {x: 8.01127, y: 10.15728, z: 3.7697}
+        localScale: {x: 0.68, y: 0.67995, z: 0.67995}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: e0cb1a7d6e97bb14d9256eabaf1c0b9b
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: f75c662c5bc0d744d8919219eeba482d
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0.0166, y: 1.34635, z: -0.42666}
+        localAngles: {x: 272.1611, y: 185.7743, z: 173.4614}
+        localScale: {x: 0.70348, y: 0.70348, z: 0.70348}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 4fc94356fd66a3142ae700bb460d1d8c
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 767a76f115c24384498eb6bed7decc4d
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: CannonR
+        localPos: {x: 0, y: 0.08498, z: -2.0878}
+        localAngles: {x: 2.3569, y: 357.6692, z: 90.64104}
+        localScale: {x: 0.26269, y: 0.26269, z: 0.37459}
+        limbMask: 0
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 767a76f115c24384498eb6bed7decc4d
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: CannonL
+        localPos: {x: 0.14157, y: 0.00291, z: -1.90377}
+        localAngles: {x: 358.4339, y: 358.5576, z: 259.0959}
+        localScale: {x: 0.26269, y: 0.26269, z: 0.37459}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: fd4fd78564c97074b8911e66a23edbae
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 01c99be16781ea64cb7c24f1ff1354d4
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: -1.57041, y: 3.06799, z: 1.09274}
+        localAngles: {x: 6.19259, y: 330.297, z: 176.4787}
+        localScale: {x: 1.06859, y: 1.06859, z: 1.06859}
+        limbMask: 0
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 01c99be16781ea64cb7c24f1ff1354d4
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 1.625, y: 3.11997, z: 1.1258}
+        localAngles: {x: 8.06816, y: 25.39622, z: 181.0041}
+        localScale: {x: 1.03189, y: 1.03189, z: 1.03189}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 3ce4d6625eb1f2a4ba4e37b91c003334
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 652606fbf5021f645b450f51e774524e
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0, y: 4.69977, z: -0.05135}
+        localAngles: {x: 270, y: 0, z: 0}
+        localScale: {x: 2.71923, y: 2.71923, z: 2.71923}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 2b9b9a2bc8a39ad4d914da2d2ee4cdcb
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: 5071e940404ac11438977d61b4f37e5c
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: Body
+        localPos: {x: 0.19221, y: 1.00846, z: -0.29457}
+        localAngles: {x: 299.0965, y: 284.7688, z: 254.1208}
+        localScale: {x: 0.64653, y: 0.59914, z: 1.14482}
+        limbMask: 0
+  - keyAsset: {fileID: 0}
+    keyAssetAddress:
+      m_AssetGUID: 118960de11f213c45806f7f0d2aef4d6
+      m_SubObjectName: 
+      m_SubObjectType: 
+    displayRuleGroup:
+      rules:
+      - ruleType: 0
+        followerPrefab: {fileID: 0}
+        followerPrefabAddress:
+          m_AssetGUID: a5888055b2e8dfe479af511631631c0a
+          m_SubObjectName: 
+          m_SubObjectType: 
+        childName: CannonL
+        localPos: {x: -0.47851, y: -0.0877, z: -1.98145}
+        localAngles: {x: 2.1841, y: 357.6737, z: 86.38808}
+        localScale: {x: 1.85784, y: 1.85784, z: 1.85784}
+        limbMask: 0

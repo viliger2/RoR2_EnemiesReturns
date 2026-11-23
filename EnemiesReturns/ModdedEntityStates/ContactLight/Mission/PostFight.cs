@@ -64,6 +64,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 var phaseObject = childLocator.FindChild(phaseControllerChildString);
                 if (phaseObject)
                 {
+                    phaseObject.gameObject.SetActive(true);
                     childLocator = phaseObject.GetComponent<ChildLocator>();
                     if (childLocator)
                     {

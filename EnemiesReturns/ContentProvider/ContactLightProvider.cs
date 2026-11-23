@@ -181,6 +181,10 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P3.DeathState.brotherDeathEffect = brotherDeathEffect;
 
                     ModdedEntityStates.ContactLight.Providence.P3.DeathState.swordProp = assets.First(prefab => prefab.name == "ProviSwordProp");
+
+                    ModdedEntityStates.ContactLight.Mission.Phase1.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP1");
+                    ModdedEntityStates.ContactLight.Mission.Phase3.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP2");
+                    ModdedEntityStates.ContactLight.Mission.Phase4.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP3");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>

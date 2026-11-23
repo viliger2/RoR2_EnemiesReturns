@@ -21704,7 +21704,7 @@ MonoBehaviour:
   shieldBrokeSinceDangerCheck: 0
   rootMotionInMainState: 0
   mainRootSpeed: 33
-  baseMaxHealth: 4000
+  baseMaxHealth: 1000
   baseRegen: 0
   baseMaxShield: 0
   baseMoveSpeed: 10
@@ -21718,7 +21718,7 @@ MonoBehaviour:
   baseJumpCount: 0
   sprintingSpeedMultiplier: 1
   autoCalculateLevelStats: 1
-  levelMaxHealth: 1200
+  levelMaxHealth: 300
   levelRegen: 0
   levelMaxShield: 0
   levelMoveSpeed: 0

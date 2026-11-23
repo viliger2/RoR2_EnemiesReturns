@@ -1400,6 +1400,20 @@ namespace EnemiesReturns.Enemies.Judgement
                     localScale = new Vector3(0.58023F, 0.56539F, 0.46537F)
                 }
             }));
+            dictionary.Add("ER_TempleGuardBody", CreateItemDisplayRule(new ItemDisplayRule[]
+            {
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = Enemies.Judgement.AnointedSkins.AeonianAnointedItemDisplay,
+                    followerPrefabAddress = new AssetReferenceGameObject(""),
+                    limbMask = LimbFlags.None,
+                    childName = "Body",
+                    localPos = new Vector3(0F, 6.52065F, 0.86855F),
+                    localAngles = new Vector3(90F, 0F, 0F),
+                    localScale = new Vector3(0.36454F, 0.36454F, 0.36454F)
+                }
+            }));
 #pragma warning restore CS0618 // Type or member is obsolete
             return dictionary;
 

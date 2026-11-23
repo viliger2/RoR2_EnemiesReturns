@@ -1,6 +1,7 @@
 ﻿using EnemiesReturns.Reflection;
 using EntityStates;
 using RoR2;
+using RoR2.CharacterSpeech;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -20,6 +21,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
         public static MusicTrackDef musicTrack => Content.MusicTracks.DoubleFngRainbowReturns;
 
         public static MusicTrackDef musicTrackNone => Content.MusicTracks.None;
+
+        public static GameObject speechControllerPrefab;
+
+        private GameObject speechControllerInstance;
 
         private ScriptedCombatEncounter combatEncounter;
 
@@ -52,6 +57,10 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                     if (combatEncounterTransform)
                     {
                         combatEncounter = combatEncounterTransform.gameObject.GetComponent<ScriptedCombatEncounter>();
+                        if (combatEncounter)
+                        {
+                            combatEncounter.combatSquad.onMemberAddedServer += CombatSquad_onMemberAddedServer;
+                        }
                         bossGroup = combatEncounterTransform.gameObject.GetComponent<BossGroup>();
                     }
 
@@ -72,6 +81,15 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
                 }
             }
             ClearCorpses();
+        }
+
+        private void CombatSquad_onMemberAddedServer(CharacterMaster master)
+        {
+            if (speechControllerPrefab)
+            {
+                speechControllerInstance = UnityEngine.Object.Instantiate(speechControllerPrefab);
+                speechControllerInstance.GetComponent<CharacterSpeechController>().characterMaster = master;
+            }
         }
 
         public override void FixedUpdate()
@@ -124,6 +142,14 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Mission
             if (phaseControllerObject)
             {
                 phaseControllerObject.SetActive(false);
+            }
+            if (combatEncounter)
+            {
+                combatEncounter.combatSquad.onMemberAddedServer -= CombatSquad_onMemberAddedServer;
+            }
+            if (speechControllerInstance)
+            {
+                UnityEngine.Object.Destroy(speechControllerInstance);
             }
         }
 

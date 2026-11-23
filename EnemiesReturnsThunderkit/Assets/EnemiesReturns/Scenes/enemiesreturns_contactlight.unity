@@ -1990,6 +1990,59 @@ Transform:
   m_Father: {fileID: 550244077}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8112782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8112783}
+  - component: {fileID: 8112784}
+  m_Layer: 0
+  m_Name: FW_Light (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8112783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112782}
+  m_LocalRotation: {x: 0.69445884, y: -0.26768628, z: 0.212633, w: 0.63313377}
+  m_LocalPosition: {x: -31.99, y: -15.96, z: -46.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 83.319, y: -157.975, z: -118.195}
+--- !u!114 &8112784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &8473464
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,6 +6169,59 @@ Transform:
   m_Father: {fileID: 376456525}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &34837456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 34837457}
+  - component: {fileID: 34837458}
+  m_Layer: 0
+  m_Name: FW_Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &34837457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34837456}
+  m_LocalRotation: {x: 0.14940448, y: -0.7570457, z: 0.11940352, w: 0.6247424}
+  m_LocalPosition: {x: -40.07, y: -13.55, z: -38.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 21.559, y: -101.843, z: -4.75}
+--- !u!114 &34837458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34837456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &35140004
 GameObject:
   m_ObjectHideFlags: 0
@@ -8909,6 +9015,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: LoadingBay
+--- !u!1 &57422537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57422538}
+  - component: {fileID: 57422539}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57422538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57422537}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.85, y: -16.12, z: 12.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728603651}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &57422539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57422537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &57609505
 GameObject:
   m_ObjectHideFlags: 0
@@ -9257,6 +9416,59 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &59911450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59911451}
+  - component: {fileID: 59911452}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &59911451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59911450}
+  m_LocalRotation: {x: 0.5229694, y: -0, z: -0, w: 0.8523515}
+  m_LocalPosition: {x: -33.03, y: -37.03, z: -111.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 63.063, y: 0, z: 0}
+--- !u!114 &59911452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59911450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &59948222
 GameObject:
   m_ObjectHideFlags: 0
@@ -9827,6 +10039,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldBottomLeft
+--- !u!1 &62398062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62398063}
+  - component: {fileID: 62398064}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &62398063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62398062}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 13.724, y: -30.39, z: 14.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728603651}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &62398064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62398062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &62452494
 GameObject:
   m_ObjectHideFlags: 0
@@ -10320,6 +10585,59 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!1 &63980615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63980616}
+  - component: {fileID: 63980617}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63980616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980615}
+  m_LocalRotation: {x: 0.23118189, y: 0.5313212, z: -0.15345554, w: 0.8004399}
+  m_LocalPosition: {x: 41.978, y: 1.15, z: -189.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1108852458}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 32.219, y: 67.151, z: 0}
+--- !u!114 &63980617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63980615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &64678457
 GameObject:
   m_ObjectHideFlags: 0
@@ -14589,12 +14907,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 19.631866, y: 70.86365, z: 624.3712}
-  - {x: 16.12178, y: 60.40184, z: 625.4799}
-  - {x: 12.63426, y: 53.4273, z: 626.6282}
-  - {x: 9.16931, y: 49.940033, z: 627.8161}
-  - {x: 5.726926, y: 49.94003, z: 629.0436}
-  - {x: 2.30711, y: 53.4273, z: 630.31067}
-  - {x: -1.090138, y: 60.401836, z: 631.6174}
+  - {x: 16.185572, y: 60.413357, z: 625.48553}
+  - {x: 12.740582, y: 53.446495, z: 626.6376}
+  - {x: 9.296896, y: 49.963066, z: 627.82733}
+  - {x: 5.8545113, y: 49.963066, z: 629.0549}
+  - {x: 2.4134314, y: 53.446495, z: 630.32007}
+  - {x: -1.0263448, y: 60.413357, z: 631.62305}
   - {x: -4.464818, y: 70.86365, z: 632.9637}
   m_Parameters:
     serializedVersion: 3
@@ -15514,6 +15832,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 2
   gateName: LoadingBay
+--- !u!1 &101503952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101503953}
+  - component: {fileID: 101503954}
+  m_Layer: 0
+  m_Name: FW_Light (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101503953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101503952}
+  m_LocalRotation: {x: 0.69445884, y: -0.26768628, z: 0.212633, w: 0.63313377}
+  m_LocalPosition: {x: -31.99, y: -15.96, z: -46.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 83.319, y: -157.975, z: -118.195}
+--- !u!114 &101503954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101503952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &101643050
 GameObject:
   m_ObjectHideFlags: 0
@@ -19275,6 +19646,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 2
   gateName: Cabin
+--- !u!1 &133852362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133852363}
+  - component: {fileID: 133852364}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133852363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133852362}
+  m_LocalRotation: {x: 0.25626904, y: -0.83625525, z: -0.25311336, w: 0.41344523}
+  m_LocalPosition: {x: -50.19, y: 1.66, z: -114.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -12.206, y: -122.837, z: -40.743}
+--- !u!114 &133852364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133852362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &133913773
 GameObject:
   m_ObjectHideFlags: 0
@@ -21935,6 +22359,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Corridor
+--- !u!1 &152335302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152335303}
+  - component: {fileID: 152335304}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &152335303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152335302}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 21.88, y: -7.69, z: -39.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705664298}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &152335304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152335302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &152942631
 GameObject:
   m_ObjectHideFlags: 0
@@ -27305,6 +27782,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: Armory
+--- !u!1 &184366562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184366563}
+  - component: {fileID: 184366564}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184366563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184366562}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 30.91, y: -5.75, z: -20.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705664298}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &184366564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184366562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &184406254
 GameObject:
   m_ObjectHideFlags: 0
@@ -30985,12 +31515,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 10.871865, y: 70.86365, z: 622.5412}
-  - {x: 17.440577, y: 60.667995, z: 631.647}
-  - {x: 24.038765, y: 53.870895, z: 640.75555}
-  - {x: 30.66643, y: 50.472347, z: 649.867}
-  - {x: 37.32357, y: 50.472343, z: 658.9813}
-  - {x: 44.010193, y: 53.870895, z: 668.09845}
-  - {x: 50.726288, y: 60.667995, z: 677.2184}
+  - {x: 17.51704, y: 60.51963, z: 631.7032}
+  - {x: 24.166204, y: 53.62362, z: 640.84937}
+  - {x: 30.819357, y: 50.175613, z: 649.97955}
+  - {x: 37.4765, y: 50.17561, z: 659.0938}
+  - {x: 44.13763, y: 53.623615, z: 668.1922}
+  - {x: 50.80275, y: 60.51963, z: 677.27466}
   - {x: 57.471863, y: 70.86365, z: 686.3412}
   m_Parameters:
     serializedVersion: 3
@@ -31142,12 +31672,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 16.77307, y: 54.942585, z: 490.5947}
-  - {x: 16.691965, y: 47.929024, z: 488.85703}
-  - {x: 16.638557, y: 41.722954, z: 487.11816}
-  - {x: 16.61284, y: 36.324383, z: 485.37817}
-  - {x: 16.614822, y: 31.733307, z: 483.63702}
-  - {x: 16.644497, y: 27.949728, z: 481.8947}
+  - {x: 16.841246, y: 54.960037, z: 490.5298}
+  - {x: 16.805595, y: 47.958107, z: 488.74887}
+  - {x: 16.774912, y: 41.75786, z: 486.98837}
+  - {x: 16.749199, y: 36.359283, z: 485.24838}
+  - {x: 16.728453, y: 31.762392, z: 483.52887}
+  - {x: 16.712675, y: 27.96718, z: 481.8298}
   - {x: 16.701866, y: 24.973646, z: 480.1512}
   m_Parameters:
     serializedVersion: 3
@@ -37006,14 +37536,14 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 45.43186, y: 70.86365, z: 677.4712}
-  - {x: 46.36255, y: 58.033028, z: 676.1539}
-  - {x: 47.308247, y: 48.41006, z: 674.85144}
-  - {x: 48.26895, y: 41.99475, z: 673.56396}
-  - {x: 49.24466, y: 38.78709, z: 672.2914}
-  - {x: 50.23538, y: 38.787094, z: 671.0338}
-  - {x: 51.2411, y: 41.99475, z: 669.79114}
-  - {x: 52.261833, y: 48.41006, z: 668.5634}
-  - {x: 53.29757, y: 58.033028, z: 667.3506}
+  - {x: 46.419014, y: 58.05267, z: 676.1352}
+  - {x: 47.407055, y: 48.44443, z: 674.8187}
+  - {x: 48.395992, y: 42.038944, z: 673.5219}
+  - {x: 49.385815, y: 38.836197, z: 672.24475}
+  - {x: 50.376534, y: 38.836197, z: 670.9871}
+  - {x: 51.36814, y: 42.038944, z: 669.74915}
+  - {x: 52.36064, y: 48.44443, z: 668.53076}
+  - {x: 53.35403, y: 58.052666, z: 667.332}
   - {x: 54.348312, y: 70.86365, z: 666.1528}
   m_Parameters:
     serializedVersion: 3
@@ -38013,6 +38543,59 @@ MonoBehaviour:
   isTrailParticle: 0
   renderer: {fileID: 248625356}
   loadAsynchronous: 1
+--- !u!1 &249370805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249370806}
+  - component: {fileID: 249370807}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249370806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249370805}
+  m_LocalRotation: {x: 0.13288611, y: -0.6340954, z: 0.02964694, w: 0.7611738}
+  m_LocalPosition: {x: -40.4, y: -4.68, z: -115.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 13.88, y: -80.482, z: -7.302}
+--- !u!114 &249370807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249370805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &249508291
 GameObject:
   m_ObjectHideFlags: 0
@@ -38086,6 +38669,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceDef: {fileID: 0}
+--- !u!1 &249718613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249718614}
+  - component: {fileID: 249718615}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249718614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249718613}
+  m_LocalRotation: {x: -0.10871498, y: 0.5739383, z: -0.14415103, w: 0.79874676}
+  m_LocalPosition: {x: 22.48, y: -16.15, z: -190.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1108852458}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.47, y: 71.484, z: -20.799}
+--- !u!114 &249718615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249718613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &250427759
 GameObject:
   m_ObjectHideFlags: 0
@@ -38500,6 +39136,59 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &252831922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252831923}
+  - component: {fileID: 252831924}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252831923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252831922}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 16.65, y: -23.68, z: -188.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1108852458}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &252831924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252831922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &252907744
 GameObject:
   m_ObjectHideFlags: 0
@@ -39018,12 +39707,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.064224, y: 57.05676, z: 416.18918}
-  - {x: 31.95437, y: 51.51884, z: 418.49496}
-  - {x: 25.8723, y: 46.80988, z: 420.84857}
-  - {x: 19.818012, y: 42.92988, z: 423.25}
-  - {x: 13.791511, y: 39.87884, z: 425.69925}
-  - {x: 7.7927947, y: 37.656765, z: 428.19632}
+  - {x: 38.142296, y: 57.05787, z: 416.2599}
+  - {x: 32.084488, y: 51.520687, z: 418.61282}
+  - {x: 26.02844, y: 46.812096, z: 420.99}
+  - {x: 19.974155, y: 42.932095, z: 423.39145}
+  - {x: 13.92163, y: 39.880688, z: 425.8171}
+  - {x: 7.870866, y: 37.65787, z: 428.26703}
   - {x: 1.8218632, y: 36.26365, z: 430.7412}
   m_Parameters:
     serializedVersion: 3
@@ -41452,6 +42141,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7946ef78ddfe8b34ba2f05df86b94caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &273585279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273585280}
+  - component: {fileID: 273585281}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273585280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273585279}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -40.86, y: 1.78, z: -111.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &273585281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273585279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &274247055
 GameObject:
   m_ObjectHideFlags: 0
@@ -43474,6 +44216,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 396173079152607664, guid: 71d418d42e244f74894581d435df4861, type: 3}
   m_PrefabInstance: {fileID: 286532395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &286642880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286642881}
+  - component: {fileID: 286642882}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286642881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286642880}
+  m_LocalRotation: {x: 0.6598203, y: 0.36209306, z: -0.33364227, w: 0.5676342}
+  m_LocalPosition: {x: 66.05, y: -56.38, z: -599.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902461829}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 97.823, y: 12.393997, z: -46.695984}
+--- !u!114 &286642882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286642880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &286761421
 GameObject:
   m_ObjectHideFlags: 0
@@ -48888,6 +49683,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Armory
+--- !u!1 &323796674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323796675}
+  - component: {fileID: 323796676}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323796675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323796674}
+  m_LocalRotation: {x: 0.70385146, y: -0.5563916, z: -0.059324514, w: 0.43760964}
+  m_LocalPosition: {x: 107.3, y: -47.44, z: -136.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 146.632, y: 43.084, z: 90.147}
+--- !u!114 &323796676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323796674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &324160687
 GameObject:
   m_ObjectHideFlags: 0
@@ -54014,6 +54862,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &358061871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358061872}
+  - component: {fileID: 358061873}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &358061872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358061871}
+  m_LocalRotation: {x: 0.5104789, y: -0.37807965, z: 0.09397507, w: 0.766574}
+  m_LocalPosition: {x: -151.59, y: -77.48, z: -481.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142221311}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 121.384, y: -248.255, z: -207.682}
+--- !u!114 &358061873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358061871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &358184327
 GameObject:
   m_ObjectHideFlags: 0
@@ -56450,6 +57351,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Corridor
+--- !u!1 &374001511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374001512}
+  - component: {fileID: 374001513}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &374001512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374001511}
+  m_LocalRotation: {x: 0.67393464, y: -0.007153469, z: 0.18456472, w: 0.7153298}
+  m_LocalPosition: {x: 14.1, y: -15.71, z: -57.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705664298}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 104.80301, y: -110.991, z: -95.27701}
+--- !u!114 &374001513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374001511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &375596892
 GameObject:
   m_ObjectHideFlags: 0
@@ -57656,7 +58610,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -57668,6 +58622,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -57683,6 +58641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8929871418770684618}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1705664297}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -57692,6 +58654,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -57707,6 +58673,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -57716,6 +58686,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -57731,6 +58705,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -57740,6 +58718,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -60857,6 +61839,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &410151925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410151926}
+  - component: {fileID: 410151927}
+  m_Layer: 0
+  m_Name: FW_Light (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410151926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410151925}
+  m_LocalRotation: {x: 0.7364302, y: 0.25936234, z: 0.035985954, w: 0.6237843}
+  m_LocalPosition: {x: 127.5, y: -75.84, z: -502.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722964185}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 115.83099, y: -59.796997, z: -78.449005}
+--- !u!114 &410151927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410151925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &410576818
 GameObject:
   m_ObjectHideFlags: 0
@@ -61711,12 +62746,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 14.689679, y: 56.679314, z: 490.5995}
-  - {x: 12.523934, y: 51.41214, z: 488.91452}
-  - {x: 10.384634, y: 46.962124, z: 487.27634}
-  - {x: 8.271776, y: 43.329266, z: 485.6849}
-  - {x: 6.185363, y: 40.51357, z: 484.14023}
-  - {x: 4.1253924, y: 38.515026, z: 482.64233}
+  - {x: 14.759634, y: 56.72617, z: 490.61972}
+  - {x: 12.640529, y: 51.490227, z: 488.94827}
+  - {x: 10.524546, y: 47.055832, z: 487.3168}
+  - {x: 8.411689, y: 43.422974, z: 485.72537}
+  - {x: 6.301956, y: 40.59166, z: 484.17395}
+  - {x: 4.1953487, y: 38.561882, z: 482.66257}
   - {x: 2.0918655, y: 37.33365, z: 481.1912}
   m_Parameters:
     serializedVersion: 3
@@ -70651,12 +71686,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 42.96, y: -28.349974, z: -85.69997}
-  - {x: 42.59637, y: -31.82371, z: -86.22841}
-  - {x: 42.262047, y: -34.52715, z: -86.77069}
-  - {x: 41.957027, y: -36.4603, z: -87.32684}
-  - {x: 41.681313, y: -37.623158, z: -87.89684}
-  - {x: 41.434906, y: -38.015724, z: -88.4807}
-  - {x: 41.217796, y: -37.637997, z: -89.07841}
+  - {x: 42.65984, y: -32.192764, z: -86.35513}
+  - {x: 42.36783, y: -35.142246, z: -86.98192}
+  - {x: 42.083965, y: -37.198414, z: -87.58031}
+  - {x: 41.80825, y: -38.36127, z: -88.1503}
+  - {x: 41.540688, y: -38.630814, z: -88.69191}
+  - {x: 41.281265, y: -38.00705, z: -89.20514}
   - {x: 41.03, y: -36.489975, z: -89.68997}
   m_Parameters:
     serializedVersion: 3
@@ -76108,6 +77143,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: Arena
+--- !u!1 &506344519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506344520}
+  - component: {fileID: 506344521}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506344520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506344519}
+  m_LocalRotation: {x: 0.5911681, y: 0.48042753, z: -0.30454838, w: 0.57180417}
+  m_LocalPosition: {x: 66.05, y: -35.77, z: -542.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902461829}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 104.375, y: -49.699005, z: -117.735}
+--- !u!114 &506344521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506344519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &506380744
 GameObject:
   m_ObjectHideFlags: 0
@@ -77067,6 +78155,59 @@ Transform:
   m_Father: {fileID: 1012686984}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &514401926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514401927}
+  - component: {fileID: 514401928}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514401927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514401926}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 16.53, y: -10.82, z: 15.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728603651}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &514401928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514401926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &514434253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77951,6 +79092,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &519137991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519137992}
+  - component: {fileID: 519137993}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &519137992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519137991}
+  m_LocalRotation: {x: 0.76664346, y: 0.047849808, z: 0.44223046, w: 0.46303388}
+  m_LocalPosition: {x: -107.73, y: -69.55, z: -618.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142221311}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 138.115, y: -76.00299, z: -40.438995}
+--- !u!114 &519137993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519137991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &519799218
 GameObject:
   m_ObjectHideFlags: 0
@@ -84508,6 +85702,59 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 26
   gateName: Arena
+--- !u!1 &567779809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567779810}
+  - component: {fileID: 567779811}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &567779810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567779809}
+  m_LocalRotation: {x: 0.64613926, y: -0.21262784, z: 0.040244505, w: 0.7318975}
+  m_LocalPosition: {x: -197, y: -65.98, z: -169.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142221311}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 105.649994, y: -253.949, z: -233.15201}
+--- !u!114 &567779811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567779809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &567979212
 GameObject:
   m_ObjectHideFlags: 0
@@ -88236,6 +89483,59 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.23952472, y: 2.3573928, z: 0.41894063}
     m_Extent: {x: 1.9153353, y: 2.5912929, z: 1.0446602}
   m_DirtyAABB: 0
+--- !u!1 &594001126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 594001127}
+  - component: {fileID: 594001128}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &594001127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594001126}
+  m_LocalRotation: {x: 0.14172903, y: -0.750903, z: 0.02062732, w: 0.6446954}
+  m_LocalPosition: {x: -40.4, y: -20.38, z: -111.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 12.341, y: -99.896, z: -10.991}
+--- !u!114 &594001128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594001126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &594030571
 GameObject:
   m_ObjectHideFlags: 0
@@ -93725,6 +95025,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &632845189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632845190}
+  - component: {fileID: 632845191}
+  m_Layer: 0
+  m_Name: FW_Light (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632845190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632845189}
+  m_LocalRotation: {x: 0.5311397, y: 0.48387682, z: -0.18727462, w: 0.6698374}
+  m_LocalPosition: {x: 129.17, y: -73.84, z: -518.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 63.226, y: -265.864, z: -324.26}
+--- !u!114 &632845191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632845189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &632915495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94748,12 +96101,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 57.031868, y: 70.86365, z: 662.27124}
-  - {x: 56.172596, y: 60.452286, z: 665.85846}
-  - {x: 55.343796, y: 53.511383, z: 669.44104}
-  - {x: 54.54547, y: 50.040928, z: 673.0188}
-  - {x: 53.77761, y: 50.040928, z: 676.592}
-  - {x: 53.04023, y: 53.511383, z: 680.16034}
-  - {x: 52.33332, y: 60.45229, z: 683.72406}
+  - {x: 56.267147, y: 60.415108, z: 665.7737}
+  - {x: 55.50138, y: 53.449413, z: 669.29974}
+  - {x: 54.73457, y: 49.96657, z: 672.8493}
+  - {x: 53.966717, y: 49.966564, z: 676.4224}
+  - {x: 53.197815, y: 53.449417, z: 680.0191}
+  - {x: 52.42787, y: 60.415108, z: 683.6393}
   - {x: 51.656883, y: 70.86365, z: 687.283}
   m_Parameters:
     serializedVersion: 3
@@ -97018,7 +98371,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -97030,6 +98383,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -97045,6 +98402,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8929871419899192911}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1108852457}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -97054,6 +98415,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -97069,6 +98434,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -97078,6 +98447,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -97093,6 +98466,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -97102,6 +98479,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -98420,6 +99801,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Corridor
+--- !u!1 &654972047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654972048}
+  - component: {fileID: 654972049}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654972048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654972047}
+  m_LocalRotation: {x: 0.5507356, y: 0.4427732, z: -0.36497, w: 0.6061676}
+  m_LocalPosition: {x: 78.91, y: -84.55, z: -383.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 82.253, y: -270.546, z: -340.391}
+--- !u!114 &654972049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654972047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &655675737
 GameObject:
   m_ObjectHideFlags: 0
@@ -101211,6 +102645,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceDef: {fileID: 0}
+--- !u!1 &677941014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677941015}
+  - component: {fileID: 677941016}
+  m_Layer: 0
+  m_Name: FW_Light (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &677941015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677941014}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -41.26, y: -7.69, z: -36.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &677941016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677941014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &677946683
 GameObject:
   m_ObjectHideFlags: 0
@@ -104608,6 +106095,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: Armory
+--- !u!1 &698373696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 698373697}
+  - component: {fileID: 698373698}
+  m_Layer: 0
+  m_Name: FW_Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &698373697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698373696}
+  m_LocalRotation: {x: 0.14940448, y: -0.7570457, z: 0.11940352, w: 0.6247424}
+  m_LocalPosition: {x: -40.07, y: -13.55, z: -38.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 21.559, y: -101.843, z: -4.75}
+--- !u!114 &698373698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698373696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &698404681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108401,6 +109941,41 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: Cabin
+--- !u!1 &728603650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728603651}
+  m_Layer: 0
+  m_Name: CloseToArena_FromSmallRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &728603651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728603650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2091325447}
+  - {fileID: 62398063}
+  - {fileID: 57422538}
+  - {fileID: 514401927}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728812929
 GameObject:
   m_ObjectHideFlags: 0
@@ -114861,6 +116436,46 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: LoadingBay
+--- !u!1 &777365435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777365436}
+  m_Layer: 0
+  m_Name: Hub_AboveArmory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &777365436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777365435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 59911451}
+  - {fileID: 594001127}
+  - {fileID: 2106992225}
+  - {fileID: 1454336164}
+  - {fileID: 978538689}
+  - {fileID: 8112783}
+  - {fileID: 698373697}
+  - {fileID: 677941015}
+  - {fileID: 948977738}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &777377097
 GameObject:
   m_ObjectHideFlags: 0
@@ -115538,12 +117153,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.063156, y: 57.230408, z: 412.01886}
-  - {x: 31.95259, y: 51.86206, z: 410.12253}
-  - {x: 25.870165, y: 47.3186, z: 408.24222}
-  - {x: 19.815876, y: 43.60003, z: 406.37793}
-  - {x: 13.789732, y: 40.70635, z: 404.52966}
-  - {x: 7.791727, y: 38.63755, z: 402.69742}
+  - {x: 38.140385, y: 57.228806, z: 411.928}
+  - {x: 32.0813, y: 51.859386, z: 409.9711}
+  - {x: 26.024614, y: 47.31539, z: 408.06052}
+  - {x: 19.970327, y: 43.59682, z: 406.1962}
+  - {x: 13.918441, y: 40.703674, z: 404.37823}
+  - {x: 7.8689523, y: 38.63595, z: 402.60657}
   - {x: 1.8218632, y: 37.393646, z: 400.88123}
   m_Parameters:
     serializedVersion: 3
@@ -117897,12 +119512,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 39.120003, y: -28.349974, z: -85.69997}
-  - {x: 39.335266, y: -31.786695, z: -86.306274}
-  - {x: 39.579247, y: -34.455032, z: -86.895294}
-  - {x: 39.851955, y: -36.354984, z: -87.46702}
-  - {x: 40.153385, y: -37.486557, z: -88.02145}
-  - {x: 40.483536, y: -37.849743, z: -88.558586}
-  - {x: 40.84241, y: -37.444546, z: -89.07843}
+  - {x: 39.40804, y: -32.178074, z: -86.43208}
+  - {x: 39.70054, y: -35.107327, z: -87.104965}
+  - {x: 39.997505, y: -37.13774, z: -87.71863}
+  - {x: 40.29893, y: -38.26931, z: -88.273056}
+  - {x: 40.604824, y: -38.50204, z: -88.76826}
+  - {x: 40.915184, y: -37.835926, z: -89.20423}
   - {x: 41.230003, y: -36.270966, z: -89.58098}
   m_Parameters:
     serializedVersion: 3
@@ -121340,12 +122955,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 44.201866, y: 63.423645, z: 413.9312}
-  - {x: 38.073967, y: 58.779995, z: 417.97473}
-  - {x: 31.9706, y: 54.968037, z: 422.03232}
-  - {x: 25.891777, y: 51.987774, z: 426.10397}
-  - {x: 19.837488, y: 49.839203, z: 430.1897}
-  - {x: 13.807742, y: 48.522327, z: 434.2895}
-  - {x: 7.802533, y: 48.03714, z: 438.40332}
+  - {x: 38.145267, y: 58.769554, z: 417.88617}
+  - {x: 32.08944, y: 54.950638, z: 421.8847}
+  - {x: 26.034382, y: 51.966892, z: 425.92685}
+  - {x: 19.980097, y: 49.818317, z: 430.01254}
+  - {x: 13.92658, y: 48.50492, z: 434.14185}
+  - {x: 7.8738365, y: 48.026695, z: 438.31476}
   - {x: 1.8218632, y: 48.383644, z: 442.53122}
   m_Parameters:
     serializedVersion: 3
@@ -127297,7 +128912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517089141591364893, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -130198,6 +131813,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1592714129}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -136111,6 +137758,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 948405129}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -139468,6 +141147,7 @@ GameObject:
   - component: {fileID: 946423803}
   - component: {fileID: 946423805}
   - component: {fileID: 946423804}
+  - component: {fileID: 946423806}
   m_Layer: 20
   m_Name: FinalPP
   m_TagString: Untagged
@@ -139547,6 +141227,45 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 99
+--- !u!114 &946423806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946423802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1630511094, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 318401783}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 248625353}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &946487414
 GameObject:
   m_ObjectHideFlags: 0
@@ -139766,6 +141485,45 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &948405129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948405130}
+  m_Layer: 0
+  m_Name: Outside_UnderMedibay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &948405130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948405129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1687514697}
+  - {fileID: 323796675}
+  - {fileID: 1963909054}
+  - {fileID: 1387388909}
+  - {fileID: 654972048}
+  - {fileID: 632845190}
+  - {fileID: 1120709254}
+  - {fileID: 1099340036}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &948822490
 GameObject:
   m_ObjectHideFlags: 0
@@ -139860,6 +141618,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Arena
+--- !u!1 &948977737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948977738}
+  - component: {fileID: 948977739}
+  m_Layer: 0
+  m_Name: FW_Light (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &948977738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948977737}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -64.149, y: -7.69, z: -71.066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &948977739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948977737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &949305303
 GameObject:
   m_ObjectHideFlags: 0
@@ -144406,6 +146217,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &978538688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978538689}
+  - component: {fileID: 978538690}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978538689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978538688}
+  m_LocalRotation: {x: 0.16112047, y: -0.5188707, z: 0.16606772, w: 0.8229428}
+  m_LocalPosition: {x: -50.17, y: 5.73, z: -113.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 25.946, y: -62.9, z: 6.778}
+--- !u!114 &978538690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978538688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &979017033
 GameObject:
   m_ObjectHideFlags: 0
@@ -145617,12 +147481,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.721863, y: 25.953648, z: 467.4912}
-  - {x: 33.630024, y: 22.373274, z: 468.1849}
-  - {x: 33.486893, y: 19.319689, z: 468.90308}
-  - {x: 33.292473, y: 16.7929, z: 469.64575}
-  - {x: 33.046757, y: 14.792898, z: 470.4129}
-  - {x: 32.749752, y: 13.31969, z: 471.20453}
-  - {x: 32.401455, y: 12.373273, z: 472.02063}
+  - {x: 33.681988, y: 22.360338, z: 468.24088}
+  - {x: 33.573498, y: 19.298132, z: 468.9964}
+  - {x: 33.396397, y: 16.767029, z: 469.7577}
+  - {x: 33.150684, y: 14.767029, z: 470.52484}
+  - {x: 32.836357, y: 13.298132, z: 471.2978}
+  - {x: 32.45342, y: 12.360338, z: 472.0766}
   - {x: 32.001865, y: 11.953648, z: 472.8612}
   m_Parameters:
     serializedVersion: 3
@@ -145805,6 +147669,59 @@ Transform:
   m_Father: {fileID: 531351764}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -1.2022567, y: -0.000013610013, z: 117.515594}
+--- !u!1 &988247518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988247519}
+  - component: {fileID: 988247520}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988247519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988247518}
+  m_LocalRotation: {x: 0.5229694, y: -0, z: -0, w: 0.8523515}
+  m_LocalPosition: {x: -33.03, y: -37.03, z: -111.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 63.063, y: 0, z: 0}
+--- !u!114 &988247520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988247518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &988307388
 GameObject:
   m_ObjectHideFlags: 0
@@ -148151,6 +150068,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 49.061703, y: 39.075565, z: 32.391388}
   m_Center: {x: -4.492716, y: 5.5905056, z: 15.695694}
+--- !u!1 &1006063635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1006063636}
+  - component: {fileID: 1006063637}
+  m_Layer: 0
+  m_Name: FW_Light (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1006063636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006063635}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -64.149, y: -7.69, z: -71.066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1006063637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006063635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1006110454
 GameObject:
   m_ObjectHideFlags: 0
@@ -150645,6 +152615,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1022244005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022244006}
+  - component: {fileID: 1022244007}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1022244006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022244005}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 23.203, y: -1.833, z: -188.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1108852458}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1022244007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022244005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &1022404267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161463,6 +163486,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &1099340035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099340036}
+  - component: {fileID: 1099340037}
+  m_Layer: 0
+  m_Name: FW_Light (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1099340036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099340035}
+  m_LocalRotation: {x: 0.37678465, y: 0.47899464, z: -0.43909106, w: 0.66014886}
+  m_LocalPosition: {x: 116.93, y: -64.99, z: -689.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 66.652, y: 49.537, z: -33.506}
+--- !u!114 &1099340037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099340035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1099455594
 GameObject:
   m_ObjectHideFlags: 0
@@ -162811,6 +164887,42 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1108852457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108852458}
+  m_Layer: 0
+  m_Name: Corridor_AboveStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1108852458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108852457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 252831923}
+  - {fileID: 249718614}
+  - {fileID: 1487964768}
+  - {fileID: 1022244006}
+  - {fileID: 63980616}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108884248
 GameObject:
   m_ObjectHideFlags: 0
@@ -164390,6 +166502,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CorridorToArena
+--- !u!1 &1120709253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120709254}
+  - component: {fileID: 1120709255}
+  m_Layer: 0
+  m_Name: FW_Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120709254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120709253}
+  m_LocalRotation: {x: 0.7183891, y: 0.0127735045, z: -0.58288854, w: 0.37946665}
+  m_LocalPosition: {x: 85.65, y: -73.84, z: -600.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 34.063, y: -92.248, z: -149.214}
+--- !u!114 &1120709255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120709253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1120921060
 GameObject:
   m_ObjectHideFlags: 0
@@ -166755,6 +168920,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: LoadingBay
+--- !u!1 &1137734172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137734173}
+  - component: {fileID: 1137734174}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137734173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137734172}
+  m_LocalRotation: {x: 0.7950582, y: -0.10719474, z: 0.029919581, w: 0.59623545}
+  m_LocalPosition: {x: 31.14, y: -86.02, z: -392.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722964185}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 107.351, y: 15.610992, z: 26.867996}
+--- !u!114 &1137734174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137734172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1137915397
 GameObject:
   m_ObjectHideFlags: 0
@@ -170067,6 +172285,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 777365435}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -179080,12 +181330,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 35.71029, y: 59.201965, z: 421.29837}
-  - {x: 29.923998, y: 55.820843, z: 420.6203}
-  - {x: 24.162996, y: 53.28028, z: 419.94696}
-  - {x: 18.42728, y: 51.58028, z: 419.2784}
-  - {x: 12.716854, y: 50.720844, z: 418.6146}
-  - {x: 7.031714, y: 50.70196, z: 417.9555}
+  - {x: 35.776993, y: 59.229954, z: 421.22003}
+  - {x: 30.035172, y: 55.867493, z: 420.48972}
+  - {x: 24.296406, y: 53.336266, z: 419.79025}
+  - {x: 18.560692, y: 51.636265, z: 419.1217}
+  - {x: 12.828029, y: 50.76749, z: 418.484}
+  - {x: 7.098419, y: 50.729954, z: 417.8772}
   - {x: 1.3718624, y: 51.523643, z: 417.3012}
   m_Parameters:
     serializedVersion: 3
@@ -180365,6 +182615,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1722964184}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -181733,6 +184015,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2142221310}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -183759,6 +186073,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   address: RoR2/DLC3/ironalluvium/IALight_Red.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
+--- !u!1 &1219341643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219341644}
+  - component: {fileID: 1219341645}
+  m_Layer: 0
+  m_Name: FW_Light (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219341644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219341643}
+  m_LocalRotation: {x: 0.7319964, y: 0.4008392, z: -0.31015274, w: 0.45531803}
+  m_LocalPosition: {x: 118.92, y: -65.1, z: -690.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722964185}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 113.76199, y: 12.766998, z: -49.06201}
+--- !u!114 &1219341645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219341643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
   setPositionAndRotationToZero: 1
   setPositionToZero: 1
   setRotationToZero: 1
@@ -185853,6 +188220,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &1232998882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232998883}
+  - component: {fileID: 1232998884}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232998883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232998882}
+  m_LocalRotation: {x: 0.32111165, y: 0.31561416, z: -0.392771, w: 0.8018765}
+  m_LocalPosition: {x: 66.05, y: -50.83, z: -642.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902461829}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 130.278, y: 203.126, z: 138.639}
+--- !u!114 &1232998884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232998882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1233031425
 GameObject:
   m_ObjectHideFlags: 0
@@ -187292,6 +189712,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: LoadingBay
+--- !u!1 &1240799708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1240799709}
+  - component: {fileID: 1240799710}
+  m_Layer: 0
+  m_Name: FW_Light (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1240799709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240799708}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3.1, y: -0.89, z: -22.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705664298}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1240799710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240799708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1241024871
 GameObject:
   m_ObjectHideFlags: 0
@@ -190383,12 +192856,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 16.881866, y: 62.76365, z: 492.3312}
-  - {x: 16.946568, y: 54.892536, z: 492.36884}
-  - {x: 17.03637, y: 47.82037, z: 492.4077}
-  - {x: 17.15127, y: 41.547146, z: 492.44788}
-  - {x: 17.29127, y: 36.072857, z: 492.4893}
-  - {x: 17.45637, y: 31.397512, z: 492.53198}
-  - {x: 17.646568, y: 27.52111, z: 492.57596}
+  - {x: 17.01421, y: 54.887943, z: 492.26276}
+  - {x: 17.149105, y: 47.81271, z: 492.23093}
+  - {x: 17.286554, y: 41.537952, z: 492.23572}
+  - {x: 17.426554, y: 36.063663, z: 492.27716}
+  - {x: 17.569105, y: 31.38985, z: 492.35522}
+  - {x: 17.714209, y: 27.516514, z: 492.4699}
   - {x: 17.861866, y: 24.443647, z: 492.62122}
   m_Parameters:
     serializedVersion: 3
@@ -197108,6 +199581,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &1304118017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304118018}
+  - component: {fileID: 1304118019}
+  m_Layer: 0
+  m_Name: FW_Light (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1304118018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304118017}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -41.26, y: -7.69, z: -36.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1304118019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304118017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1304878665
 GameObject:
   m_ObjectHideFlags: 0
@@ -199220,6 +201746,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 2
   gateName: CargoHoldTopRight
+--- !u!1 &1323203475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323203476}
+  - component: {fileID: 1323203477}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323203476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323203475}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 23, y: -0.82, z: -34.57}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705664298}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1323203477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323203475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1323945668
 GameObject:
   m_ObjectHideFlags: 0
@@ -203484,12 +206063,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 15.6318655, y: 62.76365, z: 512.77124}
-  - {x: 18.607258, y: 56.03842, z: 514.06775}
-  - {x: 21.607996, y: 50.143032, z: 515.3335}
-  - {x: 24.634079, y: 45.077484, z: 516.56854}
-  - {x: 27.685507, y: 40.841766, z: 517.7729}
-  - {x: 30.76228, y: 37.43589, z: 518.9464}
-  - {x: 33.864403, y: 34.859848, z: 520.0892}
+  - {x: 18.661083, y: 56.069817, z: 513.8205}
+  - {x: 21.697704, y: 50.19536, z: 514.92145}
+  - {x: 24.741728, y: 45.14027, z: 516.07404}
+  - {x: 27.79316, y: 40.904552, z: 517.2783}
+  - {x: 30.851992, y: 37.488213, z: 518.53424}
+  - {x: 33.91823, y: 34.891243, z: 519.8419}
   - {x: 36.991867, y: 33.113647, z: 521.20123}
   m_Parameters:
     serializedVersion: 3
@@ -207409,6 +209988,59 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1387388908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387388909}
+  - component: {fileID: 1387388910}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1387388909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387388908}
+  m_LocalRotation: {x: 0.3934581, y: 0.56802315, z: -0.51637566, w: 0.50586224}
+  m_LocalPosition: {x: 107, y: -75.1, z: -266.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 79.964, y: -284.992, z: -385.652}
+--- !u!114 &1387388910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387388908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1387567639
 GameObject:
   m_ObjectHideFlags: 0
@@ -214284,6 +216916,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomLeft
+--- !u!1 &1431783179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1431783180}
+  - component: {fileID: 1431783181}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1431783180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431783179}
+  m_LocalRotation: {x: 0.6503708, y: -0.111992076, z: 0.14975458, w: 0.7362399}
+  m_LocalPosition: {x: -144, y: -76.6, z: -279.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142221311}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 97.606995, y: -166.951, z: -145.57199}
+--- !u!114 &1431783181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431783179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1433003048
 GameObject:
   m_ObjectHideFlags: 0
@@ -217339,6 +220024,59 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &1454336163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454336164}
+  - component: {fileID: 1454336165}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454336164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454336163}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -40.86, y: 1.78, z: -111.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1454336165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454336163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1455009091
 GameObject:
   m_ObjectHideFlags: 0
@@ -221232,6 +223970,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &1487964767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487964768}
+  - component: {fileID: 1487964769}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487964768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487964767}
+  m_LocalRotation: {x: 0.0029552295, y: 0.81020164, z: 0.015889572, w: 0.5859285}
+  m_LocalPosition: {x: 22.48, y: -7.04, z: -190.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1108852458}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -1.277, y: 108.237, z: 1.342}
+--- !u!114 &1487964769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487964767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1488322328
 GameObject:
   m_ObjectHideFlags: 0
@@ -224362,7 +227153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512517040}
   - component: {fileID: 1512517041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226418,7 +229209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -226430,6 +229221,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -226445,6 +229240,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8929871418686901356}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1855390318}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -226454,6 +229253,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -226469,6 +229272,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -226478,6 +229285,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -226493,6 +229304,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -226502,6 +229317,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -227097,6 +229916,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1523607224}
     m_Modifications:
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1902461828}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -229233,6 +232084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552178862}
   - component: {fileID: 1552178863}
+  - component: {fileID: 1552178864}
   m_Layer: 0
   m_Name: PostFight
   m_TagString: Untagged
@@ -229279,6 +232131,45 @@ MonoBehaviour:
     transform: {fileID: 1867129796}
   - name: TeleporterJudgement
     transform: {fileID: 1721011196}
+--- !u!114 &1552178864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552178861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1630511094, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 318401783}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 248625353}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1552578338
 GameObject:
   m_ObjectHideFlags: 0
@@ -229736,12 +232627,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 33.671867, y: 25.953648, z: 467.4912}
-  - {x: 33.72165, y: 22.257845, z: 468.13547}
-  - {x: 33.726273, y: 19.089691, z: 468.78543}
-  - {x: 33.685722, y: 16.449186, z: 469.44113}
-  - {x: 33.600006, y: 14.336329, z: 470.10257}
-  - {x: 33.469124, y: 12.751121, z: 470.7697}
-  - {x: 33.29308, y: 11.693561, z: 471.4426}
+  - {x: 33.804512, y: 22.27517, z: 468.159}
+  - {x: 33.86437, y: 19.118563, z: 468.82465}
+  - {x: 33.851444, y: 16.483833, z: 469.4882}
+  - {x: 33.765728, y: 14.3709755, z: 470.14963}
+  - {x: 33.607227, y: 12.779993, z: 470.80893}
+  - {x: 33.37594, y: 11.710883, z: 471.46613}
   - {x: 33.071865, y: 11.163648, z: 472.12122}
   m_Parameters:
     serializedVersion: 3
@@ -234626,6 +237517,46 @@ MonoBehaviour:
   forbiddenHulls: 6
   flags: 0
   gateName: Corridor
+--- !u!1 &1592714129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592714130}
+  m_Layer: 0
+  m_Name: Hub_Cabin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1592714130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592714129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 988247519}
+  - {fileID: 1848625390}
+  - {fileID: 249370806}
+  - {fileID: 273585280}
+  - {fileID: 133852363}
+  - {fileID: 101503953}
+  - {fileID: 34837457}
+  - {fileID: 1304118018}
+  - {fileID: 1006063636}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593912513
 GameObject:
   m_ObjectHideFlags: 0
@@ -241707,6 +244638,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1648111927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648111928}
+  - component: {fileID: 1648111929}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1648111928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648111927}
+  m_LocalRotation: {x: -0.6967391, y: 0.12064283, z: -0.12064283, w: 0.6967391}
+  m_LocalPosition: {x: 8.17, y: 12.055, z: -234.137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1855390319}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -70.353, y: 90, z: -90}
+--- !u!114 &1648111929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648111927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1648254870
 GameObject:
   m_ObjectHideFlags: 0
@@ -245224,7 +248208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672089814}
   - component: {fileID: 1672089815}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247104,6 +250088,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &1687514696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1687514697}
+  - component: {fileID: 1687514698}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687514697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687514696}
+  m_LocalRotation: {x: 0.8223506, y: -0.13035287, z: -0.028983092, w: 0.55308914}
+  m_LocalPosition: {x: 80.6, y: -64.01, z: -109.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 115.563, y: 26.399994, z: 34.83}
+--- !u!114 &1687514698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687514696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1687881011
 GameObject:
   m_ObjectHideFlags: 0
@@ -250056,6 +253093,42 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomRight
+--- !u!1 &1705664297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705664298}
+  m_Layer: 0
+  m_Name: CloseToArena_FromHub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1705664298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705664297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 374001512}
+  - {fileID: 152335303}
+  - {fileID: 1323203476}
+  - {fileID: 184366563}
+  - {fileID: 1240799709}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706229371
 GameObject:
   m_ObjectHideFlags: 0
@@ -252308,6 +255381,41 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1722964184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722964185}
+  m_Layer: 0
+  m_Name: Outside_UnderCorridor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1722964185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722964184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1137734173}
+  - {fileID: 410151926}
+  - {fileID: 2006050125}
+  - {fileID: 1219341644}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722964604
 GameObject:
   m_ObjectHideFlags: 0
@@ -253295,6 +256403,47 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &1730546037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1730546038}
+  m_Layer: 0
+  m_Name: 'HOLDER: Gold Chest Breadcrumbs'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1730546038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730546037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.043087, y: 51.09, z: 570.1129}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1705664298}
+  - {fileID: 728603651}
+  - {fileID: 1108852458}
+  - {fileID: 1855390319}
+  - {fileID: 777365436}
+  - {fileID: 1592714130}
+  - {fileID: 948405130}
+  - {fileID: 2142221311}
+  - {fileID: 1722964185}
+  - {fileID: 1902461829}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731476084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6010888982122567798, guid: de19de945707c9846b0a4b51b29846b2, type: 3}
@@ -255227,12 +258376,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 9.001865, y: 70.86365, z: 626.0312}
-  - {x: 4.670928, y: 59.49871, z: 634.93677}
-  - {x: 0.36747077, y: 51.590664, z: 643.8739}
-  - {x: -3.9085066, y: 47.139496, z: 652.84265}
-  - {x: -8.157003, y: 46.145206, z: 661.84296}
-  - {x: -12.378021, y: 48.607807, z: 670.8749}
-  - {x: -16.57156, y: 54.527287, z: 679.93835}
+  - {x: 4.745386, y: 59.516815, z: 635.0436}
+  - {x: 0.49156654, y: 51.620827, z: 644.0519}
+  - {x: -3.7595909, y: 47.175697, z: 653.0562}
+  - {x: -8.008089, y: 46.18141, z: 662.0566}
+  - {x: -12.253925, y: 48.637978, z: 671.05286}
+  - {x: -16.497103, y: 54.545387, z: 680.04517}
   - {x: -20.737617, y: 63.90365, z: 689.03345}
   m_Parameters:
     serializedVersion: 3
@@ -266886,12 +270035,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.739624, y: 58.41008, z: 422.80014}
-  - {x: 47.982414, y: 54.22675, z: 423.6618}
-  - {x: 51.250237, y: 50.873657, z: 424.56622}
-  - {x: 54.543095, y: 48.350796, z: 425.51337}
-  - {x: 57.860985, y: 46.65818, z: 426.50327}
-  - {x: 61.203907, y: 45.795795, z: 427.53586}
+  - {x: 44.799667, y: 58.41712, z: 422.92743}
+  - {x: 48.082485, y: 54.23849, z: 423.874}
+  - {x: 51.370323, y: 50.887745, z: 424.82083}
+  - {x: 54.663177, y: 48.364887, z: 425.76797}
+  - {x: 57.961052, y: 46.66992, z: 426.7154}
+  - {x: 61.263947, y: 45.80284, z: 427.66318}
   - {x: 64.57186, y: 45.76365, z: 428.6112}
   m_Parameters:
     serializedVersion: 3
@@ -269929,6 +273078,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &1839276900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839276901}
+  - component: {fileID: 1839276902}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839276901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839276900}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5.97, y: -23.68, z: -236.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1855390319}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1839276902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839276900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1840340304
 GameObject:
   m_ObjectHideFlags: 0
@@ -271173,6 +274375,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: CargoHoldBottomLeft
+--- !u!1 &1848625389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848625390}
+  - component: {fileID: 1848625391}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848625390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848625389}
+  m_LocalRotation: {x: 0.14172903, y: -0.750903, z: 0.02062732, w: 0.6446954}
+  m_LocalPosition: {x: -40.4, y: -20.38, z: -111.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592714130}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 12.341, y: -99.896, z: -10.991}
+--- !u!114 &1848625391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848625389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1848802603
 GameObject:
   m_ObjectHideFlags: 0
@@ -272581,6 +275836,41 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 2
   gateName: CargoHoldUpperLeft
+--- !u!1 &1855390318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855390319}
+  m_Layer: 0
+  m_Name: Corridor_FromCorridor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1855390319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855390318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1839276901}
+  - {fileID: 1858742650}
+  - {fileID: 2082615579}
+  - {fileID: 1648111928}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855671900
 GameObject:
   m_ObjectHideFlags: 0
@@ -272906,6 +276196,59 @@ Transform:
   m_Father: {fileID: 8902333888092911100}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1858742649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858742650}
+  - component: {fileID: 1858742651}
+  m_Layer: 0
+  m_Name: FW_Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1858742650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858742649}
+  m_LocalRotation: {x: 0.12514178, y: 0.7580452, z: -0.007619679, w: 0.6400382}
+  m_LocalPosition: {x: 11.74, y: -16.18, z: -234.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1855390319}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 9.889, y: 100.563, z: 10.526}
+--- !u!114 &1858742651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858742649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1858966676
 GameObject:
   m_ObjectHideFlags: 0
@@ -278422,6 +281765,41 @@ Transform:
   - {fileID: 4782363674800890830}
   m_Father: {fileID: 543450652184582114}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1902461828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902461829}
+  m_Layer: 0
+  m_Name: Outside_BetweekCargo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1902461829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902461828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 506344520}
+  - {fileID: 286642881}
+  - {fileID: 1232998883}
+  - {fileID: 2091016407}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902824453
 GameObject:
@@ -287557,6 +290935,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldUpperLeft
+--- !u!1 &1963909053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963909054}
+  - component: {fileID: 1963909055}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963909054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963909053}
+  m_LocalRotation: {x: 0.6892946, y: 0.048648804, z: -0.18615977, w: 0.6984632}
+  m_LocalPosition: {x: 130.69, y: -68.64, z: -186.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 948405130}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 78.815, y: -76.582, z: -95.789}
+--- !u!114 &1963909055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963909053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &1965079059
 GameObject:
   m_ObjectHideFlags: 0
@@ -293388,6 +296819,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: Cabin
+--- !u!1 &2006050124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006050125}
+  - component: {fileID: 2006050126}
+  m_Layer: 0
+  m_Name: FW_Light (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006050125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006050124}
+  m_LocalRotation: {x: 0.2473222, y: 0.60772747, z: -0.58137953, w: 0.48114136}
+  m_LocalPosition: {x: 128.95, y: -72.38, z: -587.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722964185}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 109.155, y: -115.063, z: -232.079}
+--- !u!114 &2006050126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006050124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &2006472003
 GameObject:
   m_ObjectHideFlags: 0
@@ -301339,6 +304823,59 @@ Transform:
   m_Father: {fileID: 1334218573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2068027931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068027932}
+  - component: {fileID: 2068027933}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068027932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068027931}
+  m_LocalRotation: {x: 0.6948197, y: 0.26164898, z: 0.099364094, w: 0.66248935}
+  m_LocalPosition: {x: -95.33, y: -66.8, z: -89.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2142221311}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 119.701004, y: -78.063995, z: -91.70099}
+--- !u!114 &2068027933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068027931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &2068097007
 GameObject:
   m_ObjectHideFlags: 0
@@ -302704,12 +306241,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 41.521866, y: 63.423645, z: 421.9812}
-  - {x: 44.732037, y: 57.421238, z: 421.94415}
-  - {x: 47.969772, y: 52.252014, z: 421.9251}
-  - {x: 51.235065, y: 47.915974, z: 421.9242}
-  - {x: 54.527924, y: 44.413116, z: 421.94135}
-  - {x: 57.84834, y: 41.743443, z: 421.97656}
-  - {x: 61.196323, y: 39.906956, z: 422.02985}
+  - {x: 44.80717, y: 57.44264, z: 421.9982}
+  - {x: 48.094997, y: 52.287678, z: 422.01526}
+  - {x: 51.385334, y: 47.958775, z: 422.03235}
+  - {x: 54.67819, y: 44.455914, z: 422.04947}
+  - {x: 57.973564, y: 41.77911, z: 422.06665}
+  - {x: 61.271454, y: 39.928352, z: 422.0839}
   - {x: 64.57186, y: 38.90365, z: 422.1012}
   m_Parameters:
     serializedVersion: 3
@@ -304013,6 +307550,59 @@ MonoBehaviour:
   forbiddenHulls: 4
   flags: 0
   gateName: Cabin
+--- !u!1 &2082615578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2082615579}
+  - component: {fileID: 2082615580}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2082615579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082615578}
+  m_LocalRotation: {x: 0.3578111, y: 0.6012535, z: -0.15564944, w: 0.6973083}
+  m_LocalPosition: {x: 11.74, y: -0.99, z: -234.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1855390319}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 43.328, y: 88.351, z: 17.043}
+--- !u!114 &2082615580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082615578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &2082630445
 GameObject:
   m_ObjectHideFlags: 0
@@ -305448,6 +309038,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: CargoHoldTopRight
+--- !u!1 &2091016406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091016407}
+  - component: {fileID: 2091016408}
+  m_Layer: 0
+  m_Name: FW_Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091016407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091016406}
+  m_LocalRotation: {x: 0.5733708, y: 0.4718842, z: -0.31263, w: 0.5923123}
+  m_LocalPosition: {x: 60.76, y: -82.2, z: -700.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902461829}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 103.02301, y: 297.158, z: 229.276}
+--- !u!114 &2091016408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091016406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &2091080616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305519,6 +309162,59 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7549238328177122283, guid: 3625b4477b71f2b4480bd69f75d66fdc, type: 3}
   m_PrefabInstance: {fileID: 2091080616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2091325446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091325447}
+  - component: {fileID: 2091325448}
+  m_Layer: 0
+  m_Name: FW_Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091325447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091325446}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 9, y: -43, z: 7.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728603651}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2091325448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091325446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1001 &2091411101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308011,6 +311707,59 @@ MonoBehaviour:
   forbiddenHulls: 0
   flags: 0
   gateName: LoadingBay
+--- !u!1 &2106992224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2106992225}
+  - component: {fileID: 2106992226}
+  m_Layer: 0
+  m_Name: FW_Light (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2106992225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106992224}
+  m_LocalRotation: {x: 0.13288611, y: -0.6340954, z: 0.02964694, w: 0.7611738}
+  m_LocalPosition: {x: -40.4, y: -4.68, z: -115.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777365436}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 13.88, y: -80.482, z: -7.302}
+--- !u!114 &2106992226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106992224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b585ce31f93d58489807db4907df51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: RoR2/Base/frozenwall/FW_Light3.prefab
+  setPositionAndRotationToZero: 1
+  setPositionToZero: 1
+  setRotationToZero: 1
+  useLocalPositionAndRotation: 1
+  overrideLocalScale: 0
+  newLocalScale: {x: 1, y: 1, z: 1}
+  refreshInEditor: 1
+  hasNetworkIdentity: 0
 --- !u!1 &2108413714
 GameObject:
   m_ObjectHideFlags: 0
@@ -310989,12 +314738,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 54.031868, y: 70.86365, z: 657.9712}
-  - {x: 59.59052, y: 59.14172, z: 649.16376}
-  - {x: 65.176834, y: 50.833767, z: 640.3896}
-  - {x: 70.79083, y: 45.939793, z: 631.6488}
-  - {x: 76.43251, y: 44.459797, z: 622.9412}
-  - {x: 82.10186, y: 46.39377, z: 614.267}
-  - {x: 87.798874, y: 51.741722, z: 605.62604}
+  - {x: 59.673107, y: 59.085094, z: 649.16736}
+  - {x: 65.31449, y: 50.739395, z: 640.3957}
+  - {x: 70.95602, y: 45.826546, z: 631.65607}
+  - {x: 76.597694, y: 44.346546, z: 622.94855}
+  - {x: 82.23951, y: 46.299397, z: 614.2731}
+  - {x: 87.88147, y: 51.6851, z: 605.62976}
   - {x: 93.523575, y: 60.503647, z: 597.01843}
   m_Parameters:
     serializedVersion: 3
@@ -311502,7 +315251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -311514,6 +315263,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -311529,6 +315282,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8929871419582986672}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 728603650}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -311538,6 +315295,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -311553,6 +315314,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -311562,6 +315327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -311577,6 +315346,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -311586,6 +315359,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 320945807898438101, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1363737454953629785, guid: 5980c96b20413f64daeaebf42ccb614f, type: 3}
@@ -313223,6 +317000,42 @@ Transform:
   - {fileID: 1481170731469048744}
   m_Father: {fileID: 704171459}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2142221310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2142221311}
+  m_Layer: 0
+  m_Name: Outside_Cabin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2142221311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142221310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2068027932}
+  - {fileID: 567779810}
+  - {fileID: 1431783180}
+  - {fileID: 358061872}
+  - {fileID: 519137992}
+  m_Father: {fileID: 1730546038}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142416877
 GameObject:
@@ -386168,12 +389981,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 50.432877, y: 90.561165, z: 128.6759}
-  - {x: 50.462135, y: 89.80446, z: 129.27406}
-  - {x: 50.46391, y: 88.95166, z: 129.78429}
-  - {x: 50.438198, y: 88.002754, z: 130.2066}
-  - {x: 50.385002, y: 86.95774, z: 130.54102}
-  - {x: 50.30432, y: 85.81663, z: 130.78749}
-  - {x: 50.19615, y: 84.57942, z: 130.94608}
+  - {x: 50.5207, y: 89.679756, z: 129.49019}
+  - {x: 50.561516, y: 88.74381, z: 130.14453}
+  - {x: 50.555325, y: 87.753334, z: 130.63889}
+  - {x: 50.502125, y: 86.70833, z: 130.97328}
+  - {x: 50.401924, y: 85.60879, z: 131.14772}
+  - {x: 50.254715, y: 84.454704, z: 131.1622}
   - {x: 50.0605, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3
@@ -386273,12 +390086,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 4.1184254, y: 87.62415, z: 86.838135}
-  - {x: 4.170629, y: 87.077324, z: 87.35551}
-  - {x: 4.192097, y: 86.45087, z: 87.78424}
-  - {x: 4.182829, y: 85.74478, z: 88.12431}
-  - {x: 4.1428246, y: 84.95907, z: 88.37575}
-  - {x: 4.0720844, y: 84.09373, z: 88.53853}
-  - {x: 3.9706082, y: 83.14876, z: 88.612656}
+  - {x: 4.223055, y: 87.021164, z: 87.60648}
+  - {x: 4.279473, y: 86.35726, z: 88.20252}
+  - {x: 4.2876797, y: 85.632454, z: 88.62626}
+  - {x: 4.247676, y: 84.84675, z: 88.87769}
+  - {x: 4.1594605, y: 84.00012, z: 88.95681}
+  - {x: 4.0230336, y: 83.09259, z: 88.86363}
   - {x: 3.838396, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -531058,12 +534871,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 2.8084278, y: 87.62415, z: 86.838135}
-  - {x: 2.8459249, y: 87.0228, z: 87.353355}
-  - {x: 2.8575885, y: 86.359985, z: 87.78065}
-  - {x: 2.8434181, y: 85.63573, z: 88.12001}
-  - {x: 2.8034139, y: 84.85001, z: 88.37144}
-  - {x: 2.7375758, y: 84.002846, z: 88.534935}
-  - {x: 2.645904, y: 83.09422, z: 88.610504}
+  - {x: 2.912591, y: 87.02191, z: 87.57031}
+  - {x: 2.9686985, y: 86.358505, z: 88.142235}
+  - {x: 2.9767501, y: 85.63395, z: 88.55392}
+  - {x: 2.936746, y: 84.848236, z: 88.80534}
+  - {x: 2.848686, y: 84.001366, z: 88.89652}
+  - {x: 2.7125702, y: 83.09334, z: 88.82746}
   - {x: 2.5283985, y: 82.12415, z: 88.598145}
   m_Parameters:
     serializedVersion: 3
@@ -531163,12 +534976,12 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 48.690567, y: 90.561165, z: 128.6759}
-  - {x: 48.718483, y: 89.751755, z: 129.27374}
-  - {x: 48.719364, y: 88.863815, z: 129.78377}
-  - {x: 48.693207, y: 87.89735, z: 130.20598}
-  - {x: 48.640007, y: 86.85233, z: 130.54037}
-  - {x: 48.559772, y: 85.72879, z: 130.78697}
-  - {x: 48.4525, y: 84.52672, z: 130.94576}
+  - {x: 48.781174, y: 89.73695, z: 129.5032}
+  - {x: 48.82385, y: 88.83914, z: 130.16618}
+  - {x: 48.818584, y: 87.86773, z: 130.66489}
+  - {x: 48.76539, y: 86.82272, z: 130.9993}
+  - {x: 48.664253, y: 85.70411, z: 131.1694}
+  - {x: 48.515194, y: 84.51191, z: 131.17522}
   - {x: 48.31819, y: 83.2461, z: 131.01672}
   m_Parameters:
     serializedVersion: 3
@@ -632533,7 +636346,7 @@ GameObject:
   - component: {fileID: 6509605303598788001}
   - component: {fileID: 6023618238724488580}
   - component: {fileID: 2975791923831143147}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632806,7 +636619,7 @@ GameObject:
   - component: {fileID: 6509605302692952645}
   - component: {fileID: 6023618239966128736}
   - component: {fileID: 2975791925072522511}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663159,7 +666972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2550420122094101598}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanStairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663527,7 +667340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2550420123067315130}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HumanStairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

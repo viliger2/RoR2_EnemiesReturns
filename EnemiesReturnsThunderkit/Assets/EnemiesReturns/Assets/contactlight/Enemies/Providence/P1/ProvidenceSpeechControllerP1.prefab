@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &599226214316864359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771179999745655190}
+  - component: {fileID: -9062615766149408096}
+  - component: {fileID: 8289633837384601315}
+  - component: {fileID: 2354554642947886310}
+  m_Layer: 0
+  m_Name: ProvidenceSpeechControllerP1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771179999745655190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599226214316864359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1804428392214423981}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-9062615766149408096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599226214316864359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1548199047, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialCharacterMaster: {fileID: 0}
+  chatFormatToken: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCE_DIALOGUE_FORMAT
+--- !u!114 &8289633837384601315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599226214316864359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1051052972, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumDurationBetweenSpeech: 3
+  removeRepeats: 1
+  speechCategories: []
+  damageDealtRefName: 
+  scaleChanceOnDamageDealtByHealthFractionDealt: 1
+  scaleChanceOnDamageDealtMultiplier: 1
+  onBodyDamageDealt:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onBodyKill:
+    m_PersistentCalls:
+      m_Calls: []
+  onBodyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onBodyDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  onBossAllyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2354554642947886310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599226214316864359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c964742302aa6c242a2e260424aeb4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInfos: []
+  seeHereticResponses:
+  - token: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCE_DIALOGUE_PHASE1_SEE_HERETIC_01
+    duration: 2
+    maxWait: 0.5
+    priority: 10
+    mustPlay: 1
+  seeFalseSonResponses:
+  - token: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCE_DIALOGUE_PHASE1_SEE_FALSESON_01
+    duration: 2
+    maxWait: 0.5
+    priority: 10
+    mustPlay: 1
+  seeVoidFiendResponses:
+  - token: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCE_DIALOGUE_PHASE1_SEE_VOID_FIEND_01
+    duration: 2
+    maxWait: 0.5
+    priority: 10
+    mustPlay: 1
+  seeTitanGoldResponses: []
+  killTitanGoldResponses: []
+  killHereticResponses:
+  - token: ENEMIES_RETURNS_CONTACTLIGHT_PROVIDENCE_DIALOGUE_PHASE1_KILL_HERETIC_01
+    duration: 2
+    maxWait: 0.5
+    priority: 10
+    mustPlay: 1
+--- !u!1 &1201845157045100386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804428392214423981}
+  - component: {fileID: 882682707153604092}
+  - component: {fileID: 5754109133592593931}
+  m_Layer: 0
+  m_Name: InitialResponses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1804428392214423981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201845157045100386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1771179999745655190}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882682707153604092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201845157045100386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679506310, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 10
+  _timeStepType: 2
+  resetTimerOnEnable: 1
+  playTimerOnEnable: 1
+  loop: 0
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2354554642947886310}
+        m_TargetAssemblyTypeName: EnemiesReturns.Enemies.ContactLight.Providence.ProvidenceSpeechController,
+          EnemiesReturns
+        m_MethodName: DoSpawnResponse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5754109133592593931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201845157045100386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679506310, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 10
+  _timeStepType: 2
+  resetTimerOnEnable: 1
+  playTimerOnEnable: 1
+  loop: 0
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2354554642947886310}
+        m_TargetAssemblyTypeName: EnemiesReturns.Enemies.ContactLight.Providence.ProvidenceSpeechController,
+          EnemiesReturns
+        m_MethodName: DoInitialSightResponse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1201845157045100386}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
