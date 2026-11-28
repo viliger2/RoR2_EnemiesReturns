@@ -14,7 +14,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
     {
         public override float damageCoefficient => ProvidencePhase1.P1PrimaryDamage.Value;
 
-        public override float baseDuration => ProvidencePhase1.P1PrimaryDuration.Value;
+        public override float baseDuration => 1f;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
@@ -42,7 +42,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public override DamageTypeCombo damageType => DamageTypeCombo.GenericPrimary;
 
-        public override float earlyExitCoeff => ProvidencePhase1.P1PrimaryEarlyExit.Value;
+        public override float earlyExitCoeff => 1f;
 
         public override string swingEffectMuzzleString { get => _swingEffectMuzzleString; set => _swingEffectMuzzleString = value; }
 

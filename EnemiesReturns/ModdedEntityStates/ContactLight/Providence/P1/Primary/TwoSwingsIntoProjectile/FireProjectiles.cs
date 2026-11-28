@@ -13,9 +13,9 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P1.Primary.T
 
         public static GameObject staticProjecilePrefab;
 
-        public override float baseDuration => ProvidencePhase1.P1OrbsDuration.Value;
+        public override float baseDuration => 1f;
 
-        public override float baseSpawnProjectilesTime => ProvidencePhase1.P1OrbsProjectileSpawnTime.Value;
+        public override float baseSpawnProjectilesTime => 1f;
 
         public override float damageCoefficient => ProvidencePhase1.P1OrbsDamage.Value;
 

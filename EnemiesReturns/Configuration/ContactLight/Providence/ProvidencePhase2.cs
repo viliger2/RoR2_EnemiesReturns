@@ -89,31 +89,31 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
 
         public void PopulateConfig(ConfigFile config)
         {
-            BaseMaxHealth = config.Bind("Providence P2 Character Stats", "Base Max Health", 4000f, "Providence P2' base health.");
+            BaseMaxHealth = config.Bind("Providence P2 Character Stats", "Base Max Health", 1000f, "Providence P2' base health.");
             BaseMoveSpeed = config.Bind("Providence P2 Character Stats", "Base Movement Speed", 10f, "Providence P2' base movement speed.");
             BaseDamage = config.Bind("Providence P2 Character Stats", "Base Damage", 16f, "Providence P2' base damage.");
             BaseArmor = config.Bind("Providence P2 Character Stats", "Base Armor", 20f, "Providence P2' base armor.");
 
-            LevelMaxHealth = config.Bind("Providence P2 Character Stats", "Health per Level", 1200f, "Providence P2' health increase per level.");
+            LevelMaxHealth = config.Bind("Providence P2 Character Stats", "Health per Level", 300f, "Providence P2' health increase per level.");
             LevelDamage = config.Bind("Providence P2 Character Stats", "Damage per Level", 3.2f, "Providence P2' damage increase per level.");
             LevelArmor = config.Bind("Providence P2 Character Stats", "Armor per Level", 0f, "Providence P2' armor increase per level.");
 
             P2PrimaryDamage = config.Bind("Phase 2 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P2PrimaryDuration = config.Bind("Phase 2 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
+            //P2PrimaryDuration = config.Bind("Phase 2 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
             P2PrimaryProcCoefficient = config.Bind("Phase 2 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
-            P2PrimaryPushAwayForce = config.Bind("Phase 2 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
-            P2PrimaryEarlyExit = config.Bind("Phase 2 Primary", "Early Exit Duration", 0.83333f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
+            P2PrimaryPushAwayForce = config.Bind("Phase 2 Primary", "Primary Push Away Force", 1500f, "Push away force of primary swings.");
+            //P2PrimaryEarlyExit = config.Bind("Phase 2 Primary", "Early Exit Duration", 0.83333f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
             P2PrimaryCooldown = config.Bind("Phase 2 Primary", "Primary Cooldown", 5f, "Primary skill cooldown.");
 
-            P2PrimaryCloneSearchDistance = config.Bind("Phase 2 Primary Shadow Clones", "Search Distance", 250f, "How far Providence searches for target when firing shadow clone from primary.");
-            P2PrimaryCloneMaxSearchAngle = config.Bind("Phase 2 Primary Shadow Clones", "Max Search Angle", 75f, "Max search angle for shadow clone projectile before firing.");
-            P2PrimaryCloneSpeed = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Projectile Speed", 50f, "Primary shadow clone projectile speed.");
-            P2PrimaryCloneDamage = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Projectile Damage", 2.5f, "Primary shadow clone projectile damage.");
-            P2PrimaryCloneHealthThreshold = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Firing Health Threshold", 1f, "From what HP threshold Providence starts firing shadow clones from primary.");
+            //P2PrimaryCloneSearchDistance = config.Bind("Phase 2 Primary Shadow Clones", "Search Distance", 250f, "How far Providence searches for target when firing shadow clone from primary.");
+            //P2PrimaryCloneMaxSearchAngle = config.Bind("Phase 2 Primary Shadow Clones", "Max Search Angle", 75f, "Max search angle for shadow clone projectile before firing.");
+            //P2PrimaryCloneSpeed = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Projectile Speed", 50f, "Primary shadow clone projectile speed.");
+            //P2PrimaryCloneDamage = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Projectile Damage", 2.5f, "Primary shadow clone projectile damage.");
+            //P2PrimaryCloneHealthThreshold = config.Bind("Phase 2 Primary Shadow Clones", "Primary Clone Firing Health Threshold", 1f, "From what HP threshold Providence starts firing shadow clones from primary.");
 
             P2OrbsDamage = config.Bind("Phase 2 Primary Orbs", "Orbs Damage", 2f, "Damage of orbs that are fired after primary swings.");
-            P2OrbsDuration = config.Bind("Phase 2 Primary Orbs", "Orbs Duration", 2.2f, "Duration of orbs firing state. State will stop even if not all projectiles are fired so adjust accordingly.");
-            P2OrbsProjectileSpawnTime = config.Bind("Phase 2 Primary Orbs", "Orbs Initial Delay", 1f, "Duration of when orbs are fired after state is entered.");
+            //P2OrbsDuration = config.Bind("Phase 2 Primary Orbs", "Orbs Duration", 2.2f, "Duration of orbs firing state. State will stop even if not all projectiles are fired so adjust accordingly.");
+            //P2OrbsProjectileSpawnTime = config.Bind("Phase 2 Primary Orbs", "Orbs Initial Delay", 1f, "Duration of when orbs are fired after state is entered.");
             P2OrbsProjectileCount = config.Bind("Phase 2 Primary Orbs", "Orbs Count", 5, "Number of orbs fired. If above 3 then spawn position will be rotated from the start. Increasing count without increasing state duration can result in not all orbs being fired.");
             P2OrbsDelayBetween = config.Bind("Phase 2 Primary Orbs", "Orbs Delay Between Spawn", 0.2f, "Delay between projectiles being fired.");
 

@@ -227,6 +227,9 @@ namespace EnemiesReturns.Enemies.ContactLight
             var p1Primary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceTwoSwingsIntoProjectileP1");
             p1Primary.baseRechargeInterval = ProvidencePhase1.P1PrimaryCooldown.Value;
 
+            var p1Primary2 = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceiNewPrimaryP1");
+            p1Primary2.baseRechargeInterval = ProvidencePhase1.P1PrimaryCooldown.Value;
+
             var p1Utility = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP1Utility");
             p1Utility.baseRechargeInterval = ProvidencePhase1.P1UtilityCooldown.Value;
             #endregion
@@ -244,6 +247,9 @@ namespace EnemiesReturns.Enemies.ContactLight
             var p2Primary = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceTwoSwingsIntoProjectileP2");
             p2Primary.baseRechargeInterval = ProvidencePhase2.P2PrimaryCooldown.Value;
 
+            var p2Primary2 = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceiNewPrimaryP2");
+            p2Primary2.baseRechargeInterval = ProvidencePhase2.P2PrimaryCooldown.Value;
+
             var p2Utility = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceP2Utility");
             p2Utility.baseRechargeInterval = ProvidencePhase2.P2UtilityCooldown.Value;
             #endregion
@@ -257,6 +263,9 @@ namespace EnemiesReturns.Enemies.ContactLight
 
             var p3Primary = assets.First(asset => (asset as ScriptableObject).name == "PrimarySwingWithClonesP3");
             p3Primary.baseRechargeInterval = ProvidencePhase3.P3PrimaryCooldown.Value;
+
+            var p3Primary2 = assets.First(asset => (asset as ScriptableObject).name == "ProvidenceNewPrimaryP3");
+            p3Primary2.baseRechargeInterval = ProvidencePhase3.P3PrimaryCooldown.Value;
 
             var p3Skulls = assets.First(asset => (asset as ScriptableObject).name == "SkullsP3");
             p3Skulls.baseRechargeInterval = ProvidencePhase3.P3SkullsCooldown.Value;

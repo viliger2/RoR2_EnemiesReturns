@@ -16,17 +16,28 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> LevelArmor;
 
         public static ConfigEntry<float> P3PrimaryDamage;
-        public static ConfigEntry<float> P3PrimaryDuration;
+        //public static ConfigEntry<float> P3PrimaryDuration;
         public static ConfigEntry<float> P3PrimaryProcCoefficient;
         public static ConfigEntry<float> P3PrimaryPushAwayForce;
         public static ConfigEntry<float> P3PrimaryCooldown;
 
         public static ConfigEntry<float> P3PrimaryCloneSearchDistance;
         public static ConfigEntry<float> P3PrimaryCloneMaxSearchAngle;
-        public static ConfigEntry<float> P3PrimaryCloneSpeed;
+        //public static ConfigEntry<float> P3PrimaryCloneSpeed;
         public static ConfigEntry<float> P3PrimaryCloneDamage;
-        public static ConfigEntry<int> P3PrimaryCloneCount;
-        public static ConfigEntry<float> P3PrimaryCloneSpread;
+        //public static ConfigEntry<int> P3PrimaryCloneCount;
+        //public static ConfigEntry<float> P3PrimaryCloneSpread;
+        public static ConfigEntry<float> P3PrimaryCloneLifetime;
+
+        public static ConfigEntry<int> P3PrimaryCloneCircleCount;
+        public static ConfigEntry<float> P3PrimaryCloneCircleRadius;
+
+        public static ConfigEntry<int> P3PrimaryCloneCrossPointPerArm;
+        public static ConfigEntry<float> P3PrimaryCloneCrossPointDistanceBetween;
+
+        public static ConfigEntry<int> P3PrimaryCloneTriangleRowCount;
+        public static ConfigEntry<float> P3PrimaryCloneTriangleDistanceBetweenPoints;
+        public static ConfigEntry<float> P3PrimaryCloneTriangleDistanceBetweenRows;
 
         public static ConfigEntry<float> P3SecondaryCloneDamage;
         public static ConfigEntry<int> P3SecondaryCloneMinSpawns;
@@ -82,30 +93,40 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> P3LaserCooldown;
         public static ConfigEntry<float> P3LaserOverlapAttackResetInverval;
 
-
         public void PopulateConfig(ConfigFile config)
         {
-            BaseMaxHealth = config.Bind("Providence P3 Character Stats", "Base Max Health", 4000f, "Providence P3' base health.");
+            BaseMaxHealth = config.Bind("Providence P3 Character Stats", "Base Max Health", 1000f, "Providence P3' base health.");
             BaseMoveSpeed = config.Bind("Providence P3 Character Stats", "Base Movement Speed", 10f, "Providence P3' base movement speed.");
             BaseDamage = config.Bind("Providence P3 Character Stats", "Base Damage", 16f, "Providence P3' base damage.");
             BaseArmor = config.Bind("Providence P3 Character Stats", "Base Armor", 20f, "Providence P3' base armor.");
 
-            LevelMaxHealth = config.Bind("Providence P3 Character Stats", "Health per Level", 1200f, "Providence P3' health increase per level.");
+            LevelMaxHealth = config.Bind("Providence P3 Character Stats", "Health per Level", 300f, "Providence P3' health increase per level.");
             LevelDamage = config.Bind("Providence P3 Character Stats", "Damage per Level", 3.2f, "Providence P3' damage increase per level.");
             LevelArmor = config.Bind("Providence P3 Character Stats", "Armor per Level", 0f, "Providence P3' armor increase per level.");
 
             P3PrimaryDamage = config.Bind("Phase 3 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P3PrimaryDuration = config.Bind("Phase 3 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
+            //P3PrimaryDuration = config.Bind("Phase 3 Primary", "Primary Duration", 1.7f, "Duration of the state, in seconds.");
             P3PrimaryProcCoefficient = config.Bind("Phase 3 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
-            P3PrimaryPushAwayForce = config.Bind("Phase 3 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
+            P3PrimaryPushAwayForce = config.Bind("Phase 3 Primary", "Primary Push Away Force", 1500f, "Push away force of primary swings.");
             P3PrimaryCooldown = config.Bind("Phase 3 Primary", "Primary Cooldown", 5f, "Primary skill cooldown.");
 
             P3PrimaryCloneSearchDistance = config.Bind("Phase 3 Primary Shadow Clones", "Search Distance", 100f, "How far Providence searches for target when firing shadow clone from primary.");
             P3PrimaryCloneMaxSearchAngle = config.Bind("Phase 3 Primary Shadow Clones", "Max Search Angle", 75f, "Max search angle for shadow clone projectile before firing.");
-            P3PrimaryCloneSpeed = config.Bind("Phase 3 Primary Shadow Clones", "Primary Clone Projectile Speed", 45f, "Primary shadow clone projectile speed.");
+            //P3PrimaryCloneSpeed = config.Bind("Phase 3 Primary Shadow Clones", "Primary Clone Projectile Speed", 45f, "Primary shadow clone projectile speed.");
             P3PrimaryCloneDamage = config.Bind("Phase 3 Primary Shadow Clones", "Primary Clone Projectile Damage", 2.5f, "Primary shadow clone projectile damage.");
-            P3PrimaryCloneCount = config.Bind("Phase 3 Primary Shadow Clones", "Phase 3 Primary Shadow Clones Count", 3, "Number of clones spawned from primary.");
-            P3PrimaryCloneSpread = config.Bind("Phase 3 Primary Shadow Clones", "Phase 3 Primary Shadow Clones Angle Spread", 45f, "Angle within which shadow clones are spread from primary.");
+            //P3PrimaryCloneCount = config.Bind("Phase 3 Primary Shadow Clones", "Phase 3 Primary Shadow Clones Count", 3, "Number of clones spawned from primary.");
+            //P3PrimaryCloneSpread = config.Bind("Phase 3 Primary Shadow Clones", "Phase 3 Primary Shadow Clones Angle Spread", 45f, "Angle within which shadow clones are spread from primary.");
+            P3PrimaryCloneLifetime = config.Bind("Phase 3 Primary Shadow Clones", "Primary Clone Projectile Lifetime", 1f, "Shadow clone lifetime, how long it takes to fly to its destination.");
+
+            P3PrimaryCloneCircleCount = config.Bind("Phase 3 Primary Shadow Clones Circle Pattern", "Clone Count", 8, "Number of clones that are spawned in circle pattern.");
+            P3PrimaryCloneCircleRadius = config.Bind("Phase 3 Primary Shadow Clones Circle Pattern", "Circle Radius", 11.5f, "Radius of the circle pattern from the center.");
+
+            P3PrimaryCloneCrossPointPerArm = config.Bind("Phase 3 Primary Shadow Clones Cross Pattern", "Points Per Arm", 2, "How many clones are spawned on each arm from center.");
+            P3PrimaryCloneCrossPointDistanceBetween = config.Bind("Phase 3 Primary Shadow Clones Cross Pattern", "Distance Between Points", 8.5f, "Distance between points in the pattern.");
+
+            P3PrimaryCloneTriangleRowCount = config.Bind("Phase 3 Primary Shadow Clones Triangle Pattern", "Number of Rows", 3, "Number of rows in triangle pattern. If number is odd then center is in the middle row, if even - then between middle rows.");
+            P3PrimaryCloneTriangleDistanceBetweenPoints = config.Bind("Phase 3 Primary Shadow Clones Triangle Pattern", "Distance Between Points", 8f, "Distance between points within a row.");
+            P3PrimaryCloneTriangleDistanceBetweenRows = config.Bind("Phase 3 Primary Shadow Clones Triangle Pattern", "Distance Between Rows", 6.5f, "Distance between rows within triangle pattern.");
 
             P3UtilityPredictionTimer = config.Bind("Phase 3 Utility", "Utility Prediction Timer", 0.75f, "Utility prediction timer, how far into the future prediction position for the target is.");
             P3UtilityDuration = config.Bind("Phase 3 Utility", "Utility Duration", 3.5f, "Utility landing state duration.");
@@ -148,7 +169,7 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
             P3SkullsCooldown = config.Bind("Phase 3 Skulls", "Skulls Cooldown", 20f, "Skulls skill cooldown. Skulls are used on health thresholds, so cooldown is only a part of when it is used.");
             P3SkullDirectTargetEachOrb = config.Bind("Phase 3 Skulls", "Skulls Direct Target Each Orb", 3, "Every X skulls it will be spawned directly on the target instead around it.");
 
-            P3LaserDamage = config.Bind("Phase 3 Laser", "Rotating Laser Damage", 0.9f, "Damage of each tick of rotating laser's overlap attack.");
+            P3LaserDamage = config.Bind("Phase 3 Laser", "Rotating Laser Damage", 0.45f, "Damage of each tick of rotating laser's overlap attack.");
             P3LaserCooldown = config.Bind("Phase 3 Laser", "Rotating Laser Cooldown", 70f, "Cooldown of rotating laser skill.");
             P3LaserLifetime = config.Bind("Phase 3 Laser", "Rotating Laser Lifetime", 40f, "Lifetime of rotating laser projectile.");
             P3LaserRotationSpeed = config.Bind("Phase 3 Laser", "Rotating Laser Rotation Speed", 8.5f, "Rotation speed, in degrees per second, of laser.");

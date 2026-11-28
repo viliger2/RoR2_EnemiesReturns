@@ -16,7 +16,7 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
     {
         public override float damageCoefficient => ProvidencePhase3.P3PrimaryDamage.Value;
 
-        public override float baseDuration => ProvidencePhase3.P3PrimaryDuration.Value;
+        public override float baseDuration => 1f;
 
         public override string hitBoxGroupName => "SwordHitbox";
 
@@ -58,13 +58,13 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.P3.SwignWith
 
         public static float maxSearchAngle => ProvidencePhase3.P3PrimaryCloneMaxSearchAngle.Value;
 
-        public static float cloneProjectileSpeed => ProvidencePhase3.P3PrimaryCloneSpeed.Value;
+        public static float cloneProjectileSpeed => 1f;
 
         public static float cloneProjectileDamage => ProvidencePhase3.P3PrimaryCloneDamage.Value;
 
-        public static float projectileSpread => ProvidencePhase3.P3PrimaryCloneSpread.Value;
+        public static float projectileSpread => 1f;
 
-        public static int cloneCount => ProvidencePhase3.P3PrimaryCloneCount.Value;
+        public static int cloneCount => 3;
 
         private bool firedClone;
 

@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using static R2API.DirectorAPI;
+using static RoR2.BullseyeSearch;
 using static RoR2.Navigation.NodeGraph;
 using static RoR2.OverlapAttack;
 
@@ -296,6 +297,11 @@ namespace EnemiesReturns
         {
             sphereSearch.searchData.FilterByPlayers();
             return sphereSearch;
+        }
+
+        public static void FilterByPlayers(this BullseyeSearch search)
+        {
+            search.candidatesEnumerable.RemoveAll((CandidateInfo v) => !v.hurtBox.healthComponent.body.isPlayerControlled);
         }
 
         public static (EquipmentState, EquipmentLocation) GetEquipmentStateAndLocation(this Inventory inventory, EquipmentIndex equipmentIndex)

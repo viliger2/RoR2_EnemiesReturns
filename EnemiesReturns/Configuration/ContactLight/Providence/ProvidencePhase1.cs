@@ -16,15 +16,15 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
         public static ConfigEntry<float> LevelArmor;
 
         public static ConfigEntry<float> P1PrimaryDamage;
-        public static ConfigEntry<float> P1PrimaryDuration;
+        //public static ConfigEntry<float> P1PrimaryDuration;
         public static ConfigEntry<float> P1PrimaryProcCoefficient;
         public static ConfigEntry<float> P1PrimaryPushAwayForce;
-        public static ConfigEntry<float> P1PrimaryEarlyExit;
+        //public static ConfigEntry<float> P1PrimaryEarlyExit;
         public static ConfigEntry<float> P1PrimaryCooldown;
 
         public static ConfigEntry<float> P1OrbsDamage;
-        public static ConfigEntry<float> P1OrbsDuration;
-        public static ConfigEntry<float> P1OrbsProjectileSpawnTime;
+        //public static ConfigEntry<float> P1OrbsDuration;
+        //public static ConfigEntry<float> P1OrbsProjectileSpawnTime;
         public static ConfigEntry<int> P1OrbsProjectileCount;
         public static ConfigEntry<float> P1OrbsDelayBetween;
 
@@ -79,26 +79,26 @@ namespace EnemiesReturns.Configuration.ContactLight.Providence
 
         public void PopulateConfig(ConfigFile config)
         {
-            BaseMaxHealth = config.Bind("Providence P1 Character Stats", "Base Max Health", 4000f, "Providence P1' base health.");
+            BaseMaxHealth = config.Bind("Providence P1 Character Stats", "Base Max Health", 1000f, "Providence P1' base health.");
             BaseMoveSpeed = config.Bind("Providence P1 Character Stats", "Base Movement Speed", 10f, "Providence P1' base movement speed.");
             BaseDamage = config.Bind("Providence P1 Character Stats", "Base Damage", 16f, "Providence P1' base damage.");
             BaseArmor = config.Bind("Providence P1 Character Stats", "Base Armor", 20f, "Providence P1' base armor.");
 
-            LevelMaxHealth = config.Bind("Providence P1 Character Stats", "Health per Level", 1200f, "Providence P1' health increase per level.");
+            LevelMaxHealth = config.Bind("Providence P1 Character Stats", "Health per Level", 300f, "Providence P1' health increase per level.");
             LevelDamage = config.Bind("Providence P1 Character Stats", "Damage per Level", 3.2f, "Providence P1' damage increase per level.");
             LevelArmor = config.Bind("Providence P1 Character Stats", "Armor per Level", 0f, "Providence P1' armor increase per level.");
 
             P1PrimaryDamage = config.Bind("Phase 1 Primary", "Primary Damage", 2.5f, "Damage of both swings.");
-            P1PrimaryDuration = config.Bind("Phase 1 Primary", "Primary Duration", 1.5f, "Duration of the state, in seconds.");
+            //P1PrimaryDuration = config.Bind("Phase 1 Primary", "Primary Duration", 1.5f, "Duration of the state, in seconds.");
             P1PrimaryProcCoefficient = config.Bind("Phase 1 Primary", "Primary Proc Coefficient", 1f, "Proc coefficient of swings.");
-            P1PrimaryPushAwayForce = config.Bind("Phase 1 Primary", "Primary Push Away Force", 500f, "Push away force of primary swings.");
-            P1PrimaryEarlyExit = config.Bind("Phase 1 Primary", "Early Exit Duration", 0.8f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
+            P1PrimaryPushAwayForce = config.Bind("Phase 1 Primary", "Primary Push Away Force", 1500f, "Push away force of primary swings.");
+            //P1PrimaryEarlyExit = config.Bind("Phase 1 Primary", "Early Exit Duration", 0.8f, "Early exit from swings into firing orbs if no target was hit with the swing. Value is coefficient of the main duration.");
             P1PrimaryCooldown = config.Bind("Phase 1 Primary", "Primary Cooldown", 3.5f, "Primary skill cooldown.");
 
             P1OrbsDamage = config.Bind("Phase 1 Primary Orbs", "Orbs Damage", 2f, "Damage of orbs that are fired after primary swings.");
-            P1OrbsDuration = config.Bind("Phase 1 Primary Orbs", "Orbs Duration", 2.2f, "Duration of orbs firing state. State will stop even if not all projectiles are fired so adjust accordingly.");
-            P1OrbsProjectileSpawnTime = config.Bind("Phase 1 Primary Orbs", "Orbs Initial Delay", 1f, "Duration of when orbs are fired after state is entered.");
-            P1OrbsProjectileCount = config.Bind("Phase 1 Primary Orbs", "Orbs Count", 3, "Number of orbs fired. If above 3 then spawn position will be rotated from the start. Increasing count without increasing state duration can result in not all orbs being fired.");
+            //P1OrbsDuration = config.Bind("Phase 1 Primary Orbs", "Orbs Duration", 2.2f, "Duration of orbs firing state. State will stop even if not all projectiles are fired so adjust accordingly.");
+            //P1OrbsProjectileSpawnTime = config.Bind("Phase 1 Primary Orbs", "Orbs Initial Delay", 1f, "Duration of when orbs are fired after state is entered.");
+            P1OrbsProjectileCount = config.Bind("Phase 1 Primary Orbs", "Orbs Count", 3, "Number of orbs fired. If above 3 then spawn position will be rotated from the start.");
             P1OrbsDelayBetween = config.Bind("Phase 1 Primary Orbs", "Orbs Delay Between Spawn", 0.25f, "Delay between projectiles being fired.");
 
             PrimaryOrbsExplosionRadius = config.Bind("All Phases Primary Orbs", "Orbs Blast Explosion Radius", 6f, "Orb explosion radius.");

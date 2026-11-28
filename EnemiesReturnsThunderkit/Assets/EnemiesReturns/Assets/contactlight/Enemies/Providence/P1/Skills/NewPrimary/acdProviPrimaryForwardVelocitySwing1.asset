@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098b7d8900a891c4e9a5e213d2568a86, type: 3}
+  m_Name: acdProviPrimaryForwardVelocitySwing1
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.07
+      value: 0
+      inSlope: 0.0055676657
+      outSlope: 0.0055676657
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.071
+      value: 4
+      inSlope: -12.467019
+      outSlope: -12.467019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07482392
+    - serializedVersion: 3
+      time: 0.25
+      value: 0
+      inSlope: -0.00027007825
+      outSlope: -0.00027007825
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.28571427
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.14902207
+      outSlope: -0.14902207
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12595104
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

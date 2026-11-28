@@ -42,11 +42,11 @@ namespace EnemiesReturns.ModdedEntityStates.ContactLight.Providence.BaseStates.B
 
         public static GameObject hitEffectPrefab;
 
-        public static float baseSingleRingDuration = 1.666f;
+        public static float baseSingleRingDuration = 2f;
 
         public static float baseEffectDelayDuration = 0.3f;
 
-        public static float baseShadowEffectDelay = 1.166f;
+        public static float baseShadowEffectDelay = 1.5f;
 
         public static GameObject[] effectList = Array.Empty<GameObject>();
 

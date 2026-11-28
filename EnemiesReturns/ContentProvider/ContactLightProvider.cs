@@ -142,6 +142,12 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
                     ModdedEntityStates.ContactLight.Providence.P1.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticEffectPrefab = chargeEffectPrefab;
 
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BasePrepareAndFireProjectiles.effectPrefab = chargeEffectPrefab;
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BasePrepareAndFireProjectiles.projectilePrefab = orbProjectilePrefab;
+
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BaseProviSwing.swingEffectStaticPrefab = assets.First(prefab => prefab.name == "ProviSwingEffect");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BaseProviSwing.hitEffectPrefabStatic = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion();
+
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticProjecilePrefab = orbProjectilePrefab;
                     ModdedEntityStates.ContactLight.Providence.P2.Primary.TwoSwingsIntoProjectile.FireProjectiles.staticEffectPrefab = chargeEffectPrefab;
 
@@ -185,6 +191,9 @@ namespace EnemiesReturns
                     ModdedEntityStates.ContactLight.Mission.Phase1.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP1");
                     ModdedEntityStates.ContactLight.Mission.Phase3.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP2");
                     ModdedEntityStates.ContactLight.Mission.Phase4.speechControllerPrefab = assets.First(prefab => prefab.name == "ProvidenceSpeechControllerP3");
+
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BasePrepareAndFireSpawnClones.effectPrefab = assets.First(prefab => prefab.name == "ProviSkullNormalIndicator");
+                    ModdedEntityStates.ContactLight.Providence.BaseStates.BaseNewPrimary.BasePrepareAndFireSpawnClones.projectilePrefab = assets.First(prefab => prefab.name == "ProviShadowPrimary");
                 }));
 
                 yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<ItemDef[]>)((assets) =>
@@ -289,6 +298,18 @@ namespace EnemiesReturns
 
                     info = assets.First(asset => asset.name == "isdArmoryLocker");
                     info.Info.Visual = chestIcon;
+                }));
+
+                yield return LoadAllAssetsAsync(assetBundleStagesAssets, args.progressReceiver, (Action<AnimationCurveDef[]>)((assets) =>
+                {
+                    ModdedEntityStates.ContactLight.Providence.P1.NewPrimary.Swing1.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing1");
+                    ModdedEntityStates.ContactLight.Providence.P1.NewPrimary.Swing2.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing2");
+
+                    ModdedEntityStates.ContactLight.Providence.P2.NewPrimary.Swing1.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing1");
+                    ModdedEntityStates.ContactLight.Providence.P2.NewPrimary.Swing2.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing2");
+
+                    ModdedEntityStates.ContactLight.Providence.P3.NewPrimary.Swing1.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing1");
+                    ModdedEntityStates.ContactLight.Providence.P3.NewPrimary.Swing2.acdPrefab = assets.First(acd => acd.name == "acdProviPrimaryForwardVelocitySwing2");
                 }));
 
                 Content.CostTypes.AccessCard = new CostTypeDef()
